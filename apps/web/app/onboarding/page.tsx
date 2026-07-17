@@ -38,6 +38,9 @@ return ( <div className="min-h-screen bg-black flex items-center justify-center 
       </button>
 
       <button
+        onClick={() =>
+          router.push("/onboarding/placement-test")
+        }
         className="w-full mt-4 border border-red-600 text-red-500 hover:bg-red-950 transition font-semibold py-3 rounded-xl"
       >
         Làm bài test xếp trình độ

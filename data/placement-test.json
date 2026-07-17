@@ -1,0 +1,123 @@
+{
+  "testInfo": {
+    "title": "TOEIC Placement Test",
+    "description": "Bài test xếp trình độ TOEIC đầu vào",
+    "totalQuestions": 200,
+    "listeningQuestions": 100,
+    "readingQuestions": 100,
+    "listeningTime": 45,
+    "readingTime": 75
+  },
+  "parts": [
+    {
+      "partNumber": 1,
+      "title": "Photographs",
+      "titleVi": "Mô tả hình ảnh",
+      "section": "listening",
+      "description": "Nghe 4 câu miêu tả ngắn về một bức tranh và chọn câu miêu tả đúng nhất.",
+      "totalQuestions": 6,
+      "audio": "/uploads/tests/placement-test/audio/Test 01.mp3",
+      "questions": [
+        {
+          "questionNumber": 1,
+          "image": "/uploads/tests/placement-test/images/part1/1.jpg",
+          "options": ["A", "B", "C", "D"],
+          "correctAnswer": "A"
+        },
+        {
+          "questionNumber": 2,
+          "image": "/uploads/tests/placement-test/images/part1/2.jpg",
+          "options": ["A", "B", "C", "D"],
+          "correctAnswer": "A"
+        },
+        {
+          "questionNumber": 3,
+          "image": "/uploads/tests/placement-test/images/part1/3.jpg",
+          "options": ["A", "B", "C", "D"],
+          "correctAnswer": "A"
+        },
+        {
+          "questionNumber": 4,
+          "image": "/uploads/tests/placement-test/images/part1/4.jpg",
+          "options": ["A", "B", "C", "D"],
+          "correctAnswer": "A"
+        },
+        {
+          "questionNumber": 5,
+          "image": "/uploads/tests/placement-test/images/part1/5.jpg",
+          "options": ["A", "B", "C", "D"],
+          "correctAnswer": "A"
+        },
+        {
+          "questionNumber": 6,
+          "image": "/uploads/tests/placement-test/images/part1/6.jpg",
+          "options": ["A", "B", "C", "D"],
+          "correctAnswer": "A"
+        }
+      ]
+    },
+    {
+      "partNumber": 2,
+      "title": "Question - Response",
+      "titleVi": "Hỏi – Đáp",
+      "section": "listening",
+      "description": "Nghe một câu hỏi hoặc câu nói, sau đó nghe 3 câu trả lời. Chọn câu trả lời phù hợp.",
+      "totalQuestions": 25,
+      "audio": "/uploads/tests/placement-test/audio/Test 01.mp3",
+      "questions": []
+    },
+    {
+      "partNumber": 3,
+      "title": "Conversations",
+      "titleVi": "Đoạn hội thoại",
+      "section": "listening",
+      "description": "Nghe các đoạn hội thoại ngắn trong bối cảnh công việc. Mỗi đoạn có 3 câu hỏi.",
+      "totalQuestions": 39,
+      "groupSize": 3,
+      "groupCount": 13,
+      "audio": "/uploads/tests/placement-test/audio/Test 01.mp3",
+      "questions": []
+    },
+    {
+      "partNumber": 4,
+      "title": "Talks",
+      "titleVi": "Bài nói chuyện ngắn",
+      "section": "listening",
+      "description": "Nghe các đoạn độc thoại như thông báo, bài phát biểu, lời nhắn thoại. Mỗi đoạn có 3 câu hỏi.",
+      "totalQuestions": 30,
+      "groupSize": 3,
+      "groupCount": 10,
+      "audio": "/uploads/tests/placement-test/audio/Test 01.mp3",
+      "questions": []
+    },
+    {
+      "partNumber": 5,
+      "title": "Incomplete Sentences",
+      "titleVi": "Hoàn thành câu",
+      "section": "reading",
+      "description": "Chọn từ/cụm từ phù hợp để hoàn thành câu. Kiểm tra ngữ pháp và từ vựng.",
+      "totalQuestions": 30,
+      "questions": []
+    },
+    {
+      "partNumber": 6,
+      "title": "Text Completion",
+      "titleVi": "Hoàn thành đoạn văn",
+      "section": "reading",
+      "description": "Điền từ/câu phù hợp vào chỗ trống trong đoạn văn. Mỗi đoạn có 4 câu hỏi.",
+      "totalQuestions": 16,
+      "groupSize": 4,
+      "groupCount": 4,
+      "questions": []
+    },
+    {
+      "partNumber": 7,
+      "title": "Reading Comprehension",
+      "titleVi": "Đọc hiểu",
+      "section": "reading",
+      "description": "Đọc hiểu các đoạn văn. Single Passages (29 câu) và Multiple Passages (25 câu).",
+      "totalQuestions": 54,
+      "questions": []
+    }
+  ]
+}
