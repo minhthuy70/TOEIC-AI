@@ -1047,7 +1047,7 @@
           "questionNumber": 95,
           "correctAnswer": "A",
           "text": "What is the main purpose of the call?",
-          "image": "/uploads/tests/placement-test/images/part4/95_97.jpg",
+          "image": "/uploads/tests/placement-test/images/part4/53.jpg",
           "options": [
             "To place an order",
             "To dispute a charge",
@@ -1059,7 +1059,7 @@
           "questionNumber": 96,
           "correctAnswer": "D",
           "text": "Look at the graphic. Which model does the speaker prefer?",
-          "image": "/uploads/tests/placement-test/images/part4/95_97.jpg",
+          "image": "/uploads/tests/placement-test/images/part4/53.jpg",
           "options": [
             "SG-200",
             "SG-250",
@@ -1071,7 +1071,7 @@
           "questionNumber": 97,
           "correctAnswer": "C",
           "text": "What does the speaker ask about?",
-          "image": "/uploads/tests/placement-test/images/part4/95_97.jpg",
+          "image": "/uploads/tests/placement-test/images/part4/53.jpg",
           "options": [
             "A warranty",
             "A return process",
@@ -1083,7 +1083,7 @@
           "questionNumber": 98,
           "correctAnswer": "C",
           "text": "Who most likely are the listeners?",
-          "image": "/uploads/tests/placement-test/images/part4/98_100.jpg",
+          "image": "/uploads/tests/placement-test/images/part4/54.jpg",
           "options": [
             "Marketing experts",
             "Product testers",
@@ -1095,7 +1095,7 @@
           "questionNumber": 99,
           "correctAnswer": "B",
           "text": "Look at the graphic. What was the approval rating of the feature that will be improved?",
-          "image": "/uploads/tests/placement-test/images/part4/98_100.jpg",
+          "image": "/uploads/tests/placement-test/images/part4/54.jpg",
           "options": [
             "40 percent",
             "50 percent",
@@ -1107,7 +1107,7 @@
           "questionNumber": 100,
           "correctAnswer": "B",
           "text": "According to the speaker, why is a revision urgent?",
-          "image": "/uploads/tests/placement-test/images/part4/98_100.jpg",
+          "image": "/uploads/tests/placement-test/images/part4/54.jpg",
           "options": [
             "A competitor is making a similar product.",
             "A product will be offered for sale soon.",
@@ -1125,7 +1125,338 @@
       "section": "reading",
       "description": "Chọn từ/cụm từ phù hợp để hoàn thành câu. Kiểm tra ngữ pháp và từ vựng.",
       "totalQuestions": 30,
-      "questions": []
+      "questions": [
+        {
+          "questionNumber": 101,
+          "correctAnswer": "C",
+          "text": "When she held her last meeting, Ms. Toba ------- her sales staff to perform even better next quarter.",
+          "options": [
+            "encourage",
+            "is encouraging",
+            "encouraged",
+            "was encouraged"
+          ]
+        },
+        {
+          "questionNumber": 102,
+          "correctAnswer": "B",
+          "text": "All staff have been informed ------- the proposed partnership with ERI Finance.",
+          "options": [
+            "for",
+            "about",
+            "to",
+            "at"
+          ]
+        },
+        {
+          "questionNumber": 103,
+          "correctAnswer": "A",
+          "text": "On Friday, Mr. Nakamura will discuss ------- ideas for supporting busy waiters.",
+          "options": [
+            "his",
+            "him",
+            "himself",
+            "he"
+          ]
+        },
+        {
+          "questionNumber": 104,
+          "correctAnswer": "B",
+          "text": "The Forestry Commission was created to ------- the state's natural resources and wildlife.",
+          "options": [
+            "allow",
+            "manage",
+            "succeed",
+            "finish"
+          ]
+        },
+        {
+          "questionNumber": 105,
+          "correctAnswer": "D",
+          "text": "By following established guidelines, construction workers will be able to complete their tasks -------.",
+          "options": [
+            "safety",
+            "safe",
+            "safeness",
+            "safely"
+          ]
+        },
+        {
+          "questionNumber": 106,
+          "correctAnswer": "D",
+          "text": "With her numerous credentials, Dr. Kwan is highly ------- to teach medieval history at Maston University.",
+          "options": [
+            "arranged",
+            "ready",
+            "available",
+            "qualified"
+          ]
+        },
+        {
+          "questionNumber": 107,
+          "correctAnswer": "A",
+          "text": "------- at the annual technology conference is mandatory for all engineers at the Treemont Corporation.",
+          "options": [
+            "Attendance",
+            "Attend",
+            "Attends",
+            "Attended"
+          ]
+        },
+        {
+          "questionNumber": 108,
+          "correctAnswer": "B",
+          "text": "The café ------- features poets, folk singers, and drama groups on its stage.",
+          "options": [
+            "tightly",
+            "occasionally",
+            "vaguely",
+            "realistically"
+          ]
+        },
+        {
+          "questionNumber": 109,
+          "correctAnswer": "C",
+          "text": "Before the seminar began, attendees were assured ------- all scheduled presenters would appear.",
+          "options": [
+            "who",
+            "around",
+            "that",
+            "therefore"
+          ]
+        },
+        {
+          "questionNumber": 110,
+          "correctAnswer": "D",
+          "text": "Forever Pet has been a leader in bringing new products, ------- Fun Bone and Chew Right, to the market.",
+          "options": [
+            "however",
+            "furthermore",
+            "as if",
+            "such as"
+          ]
+        },
+        {
+          "questionNumber": 111,
+          "correctAnswer": "C",
+          "text": "Ms. Turner is in charge of ------- the organization of records in the human services department.",
+          "options": [
+            "improve",
+            "improved",
+            "improving",
+            "improvement"
+          ]
+        },
+        {
+          "questionNumber": 112,
+          "correctAnswer": "B",
+          "text": "Sheefon Bank clients always receive an e-mail or text ------- following any change to their account password.",
+          "options": [
+            "issue",
+            "alert",
+            "claim",
+            "member"
+          ]
+        },
+        {
+          "questionNumber": 113,
+          "correctAnswer": "D",
+          "text": "A drop in consumer demand has led to a ------- decrease in the production of large pickup trucks.",
+          "options": [
+            "remark",
+            "remarked",
+            "remarking",
+            "remarkable"
+          ]
+        },
+        {
+          "questionNumber": 114,
+          "correctAnswer": "D",
+          "text": "After coating the potatoes in flour and spices, chefs should place them ------- into the deep fryer.",
+          "options": [
+            "rarely",
+            "honestly",
+            "doubtfully",
+            "directly"
+          ]
+        },
+        {
+          "questionNumber": 115,
+          "correctAnswer": "A",
+          "text": "Several banks have released applications that allow ------- customers to pay bills easily by phone.",
+          "options": [
+            "their",
+            "they",
+            "them",
+            "themselves"
+          ]
+        },
+        {
+          "questionNumber": 116,
+          "correctAnswer": "B",
+          "text": "The personnel department will ------- only those applicants who have five or more years of experience for the position.",
+          "options": [
+            "participate",
+            "consider",
+            "grant",
+            "make"
+          ]
+        },
+        {
+          "questionNumber": 117,
+          "correctAnswer": "B",
+          "text": "Employees of Belfore Electronics Ltd. are ------- involved in community-assistance programs.",
+          "options": [
+            "active",
+            "actively",
+            "activate",
+            "activity"
+          ]
+        },
+        {
+          "questionNumber": 118,
+          "correctAnswer": "A",
+          "text": "The executives at Macalter Equipment decided they would not ------- the contract without major changes.",
+          "options": [
+            "renew",
+            "consume",
+            "identify",
+            "resemble"
+          ]
+        },
+        {
+          "questionNumber": 119,
+          "correctAnswer": "C",
+          "text": "Wet suits are made with a ------- layer of rubber that traps heat and keeps divers warm.",
+          "options": [
+            "protect",
+            "protects",
+            "protective",
+            "protectively"
+          ]
+        },
+        {
+          "questionNumber": 120,
+          "correctAnswer": "D",
+          "text": "Newcamp Services managers will meet to discuss the proposed ------- of three smaller branches into one large branch.",
+          "options": [
+            "security",
+            "bracket",
+            "connector",
+            "merger"
+          ]
+        },
+        {
+          "questionNumber": 121,
+          "correctAnswer": "B",
+          "text": "At Yarzen Technology, clients' records are ------- and can only be accessed by a small group of fund managers.",
+          "options": [
+            "confide",
+            "confidential",
+            "confidentially",
+            "confidentiality"
+          ]
+        },
+        {
+          "questionNumber": 122,
+          "correctAnswer": "C",
+          "text": "The featured panel at the NHJ Medical Conference will discuss recent ------- in online health-care services.",
+          "options": [
+            "memories",
+            "varieties",
+            "trends",
+            "rehearsals"
+          ]
+        },
+        {
+          "questionNumber": 123,
+          "correctAnswer": "D",
+          "text": "All of Millville's restaurants ------- several times a year by the city health department.",
+          "options": [
+            "inspect",
+            "inspected",
+            "are inspecting",
+            "are inspected"
+          ]
+        },
+        {
+          "questionNumber": 124,
+          "correctAnswer": "B",
+          "text": "Sweet Sunlight Bakery has steadily built a ------- base of customers with its delicious cookies and cakes.",
+          "options": [
+            "brief",
+            "loyal",
+            "strict",
+            "careful"
+          ]
+        },
+        {
+          "questionNumber": 125,
+          "correctAnswer": "D",
+          "text": "According to financial analysts, ------- in medical technology companies are expected to increase in value.",
+          "options": [
+            "invest",
+            "investing",
+            "invested",
+            "investments"
+          ]
+        },
+        {
+          "questionNumber": 126,
+          "correctAnswer": "A",
+          "text": "The city's harbor is ------- to container ships and fishing vessels of all sizes.",
+          "options": [
+            "accessible",
+            "formal",
+            "reasonable",
+            "likely"
+          ]
+        },
+        {
+          "questionNumber": 127,
+          "correctAnswer": "B",
+          "text": "Maya's Dancewear expanded its advertising markets, and sales have ------- increased.",
+          "options": [
+            "controlling",
+            "consequently",
+            "beneath",
+            "even though"
+          ]
+        },
+        {
+          "questionNumber": 128,
+          "correctAnswer": "B",
+          "text": "Dobson Ice Cream will not introduce any new flavors ------- the customer survey results are analyzed.",
+          "options": [
+            "around",
+            "until",
+            "despite",
+            "past"
+          ]
+        },
+        {
+          "questionNumber": 129,
+          "correctAnswer": "C",
+          "text": "The renovated company gym ------- with free weights and exercise machines.",
+          "options": [
+            "will equip",
+            "to equip",
+            "has been equipped",
+            "is equipping"
+          ]
+        },
+        {
+          "questionNumber": 130,
+          "correctAnswer": "B",
+          "text": "------- driving their cars, workers who travel to the town center should use the bus lines.",
+          "options": [
+            "Because of",
+            "Instead of",
+            "Whenever",
+            "Although"
+          ]
+        }
+      ]
     },
     {
       "partNumber": 6,
@@ -1134,7 +1465,200 @@
       "section": "reading",
       "description": "Điền từ/câu phù hợp vào chỗ trống trong đoạn văn. Mỗi đoạn có 4 câu hỏi.",
       "totalQuestions": 16,
-      "questions": []
+      "questions": [
+        {
+          "questionNumber": 131,
+          "correctAnswer": "B",
+          "text": "Select the best option for space [131].",
+          "passage": "Local Barbershop Wins State Competition\n\nBy Miranda Warren\n\nMALENDA COUNTY (January 12)—Pat and Kenny's Barbershop, [131] at 3949 Grand Street, has been named the best barbershop in the state by the Barber and Hairdresser's Coalition. The criteria for selection include reputation, affordability, professionalism, and accreditations.\n\n[132].\n\nFounders and owners Kenneth Webber and Patrick Miller have been best friends since childhood. [133] opened the shop 34 years ago. [134] the shop retains its old-fashioned charm, the barbers have mastered the latest styles, not just the more traditional ones. People of all ages seeking a haircut or a new style should try Pat and Kenny's Barbershop.",
+          "options": [
+            "locate",
+            "located",
+            "locates",
+            "location"
+          ]
+        },
+        {
+          "questionNumber": 132,
+          "correctAnswer": "C",
+          "text": "Select the best option for space [132].",
+          "passage": "Local Barbershop Wins State Competition\n\nBy Miranda Warren\n\nMALENDA COUNTY (January 12)—Pat and Kenny's Barbershop, [131] at 3949 Grand Street, has been named the best barbershop in the state by the Barber and Hairdresser's Coalition. The criteria for selection include reputation, affordability, professionalism, and accreditations.\n\n[132].\n\nFounders and owners Kenneth Webber and Patrick Miller have been best friends since childhood. [133] opened the shop 34 years ago. [134] the shop retains its old-fashioned charm, the barbers have mastered the latest styles, not just the more traditional ones. People of all ages seeking a haircut or a new style should try Pat and Kenny's Barbershop.",
+          "options": [
+            "The results will be announced later this month.",
+            "We are proud to serve our community with excellence.",
+            "Pat and Kenny's shop excelled in all four categories.",
+            "Please call in advance to schedule an appointment."
+          ]
+        },
+        {
+          "questionNumber": 133,
+          "correctAnswer": "C",
+          "text": "Select the best option for space [133].",
+          "passage": "Local Barbershop Wins State Competition\n\nBy Miranda Warren\n\nMALENDA COUNTY (January 12)—Pat and Kenny's Barbershop, [131] at 3949 Grand Street, has been named the best barbershop in the state by the Barber and Hairdresser's Coalition. The criteria for selection include reputation, affordability, professionalism, and accreditations.\n\n[132].\n\nFounders and owners Kenneth Webber and Patrick Miller have been best friends since childhood. [133] opened the shop 34 years ago. [134] the shop retains its old-fashioned charm, the barbers have mastered the latest styles, not just the more traditional ones. People of all ages seeking a haircut or a new style should try Pat and Kenny's Barbershop.",
+          "options": [
+            "I",
+            "We",
+            "They",
+            "He"
+          ]
+        },
+        {
+          "questionNumber": 134,
+          "correctAnswer": "A",
+          "text": "Select the best option for space [134].",
+          "passage": "Local Barbershop Wins State Competition\n\nBy Miranda Warren\n\nMALENDA COUNTY (January 12)—Pat and Kenny's Barbershop, [131] at 3949 Grand Street, has been named the best barbershop in the state by the Barber and Hairdresser's Coalition. The criteria for selection include reputation, affordability, professionalism, and accreditations.\n\n[132].\n\nFounders and owners Kenneth Webber and Patrick Miller have been best friends since childhood. [133] opened the shop 34 years ago. [134] the shop retains its old-fashioned charm, the barbers have mastered the latest styles, not just the more traditional ones. People of all ages seeking a haircut or a new style should try Pat and Kenny's Barbershop.",
+          "options": [
+            "While",
+            "Despite",
+            "Even",
+            "Yet"
+          ]
+        },
+        {
+          "questionNumber": 135,
+          "correctAnswer": "D",
+          "text": "Select the best option for space [135].",
+          "passage": "Gasgo Propane Tank Exchange\n\nYou have chosen a safe and [135] way to obtain fuel for your stoves, grills, heaters, fireplaces, or other devices. Simply follow the directions [136].\n\nWhen your tank runs out of propane, take it to our store and leave it on one of the clearly marked green shelves outside the store. [137]. Then, pay the cashier inside the store for a fresh tank of propane. Next, the cashier or another staff member will accompany you to the outdoor exchange area. The staff person will give you a full tank to take home and provide help if you have multiple tanks to carry. Follow the instructions on the tank to connect it to your device.\n\nBe sure to visit us again when you need a [138].",
+          "options": [
+            "economy",
+            "economics",
+            "economize",
+            "economical"
+          ]
+        },
+        {
+          "questionNumber": 136,
+          "correctAnswer": "A",
+          "text": "Select the best option for space [136].",
+          "passage": "Gasgo Propane Tank Exchange\n\nYou have chosen a safe and [135] way to obtain fuel for your stoves, grills, heaters, fireplaces, or other devices. Simply follow the directions [136].\n\nWhen your tank runs out of propane, take it to our store and leave it on one of the clearly marked green shelves outside the store. [137]. Then, pay the cashier inside the store for a fresh tank of propane. Next, the cashier or another staff member will accompany you to the outdoor exchange area. The staff person will give you a full tank to take home and provide help if you have multiple tanks to carry. Follow the instructions on the tank to connect it to your device.\n\nBe sure to visit us again when you need a [138].",
+          "options": [
+            "below",
+            "finally",
+            "sometimes",
+            "hourly"
+          ]
+        },
+        {
+          "questionNumber": 137,
+          "correctAnswer": "C",
+          "text": "Select the best option for space [137].",
+          "passage": "Gasgo Propane Tank Exchange\n\nYou have chosen a safe and [135] way to obtain fuel for your stoves, grills, heaters, fireplaces, or other devices. Simply follow the directions [136].\n\nWhen your tank runs out of propane, take it to our store and leave it on one of the clearly marked green shelves outside the store. [137]. Then, pay the cashier inside the store for a fresh tank of propane. Next, the cashier or another staff member will accompany you to the outdoor exchange area. The staff person will give you a full tank to take home and provide help if you have multiple tanks to carry. Follow the instructions on the tank to connect it to your device.\n\nBe sure to visit us again when you need a [138].",
+          "options": [
+            "Come again very soon.",
+            "It is warmer in the store.",
+            "Do not take it inside.",
+            "The tank is prefilled."
+          ]
+        },
+        {
+          "questionNumber": 138,
+          "correctAnswer": "D",
+          "text": "Select the best option for space [138].",
+          "passage": "Gasgo Propane Tank Exchange\n\nYou have chosen a safe and [135] way to obtain fuel for your stoves, grills, heaters, fireplaces, or other devices. Simply follow the directions [136].\n\nWhen your tank runs out of propane, take it to our store and leave it on one of the clearly marked green shelves outside the store. [137]. Then, pay the cashier inside the store for a fresh tank of propane. Next, the cashier or another staff member will accompany you to the outdoor exchange area. The staff person will give you a full tank to take home and provide help if you have multiple tanks to carry. Follow the instructions on the tank to connect it to your device.\n\nBe sure to visit us again when you need a [138].",
+          "options": [
+            "model",
+            "version",
+            "heater",
+            "replacement"
+          ]
+        },
+        {
+          "questionNumber": 139,
+          "correctAnswer": "A",
+          "text": "Select the best option for space [139].",
+          "passage": "To: Technicarn Enterprises Customers\nFrom: Technicarn Enterprises Customer Service\nDate: 10 September\nSubject: Serving You\n\nDear Valued Customer:\n\nWe want your [139] with Technicarn Enterprises to be easy and enjoyable. To that end, we are pleased to announce our newly designed Web site, with enhanced customer-friendly features.\n\nOur new Web site provides answers to your questions 24 hours a day, every day of the year.\n\nOn our home page, you can get information about system setup, or you can troubleshoot by visiting [140] the Internet Issues or TV and Streaming Issues pages. [141], you can find detailed information concerning account management, access, billing, and payment.\n\n[142]. Please explore the new Web site at your earliest convenience: www.technicarnenterprises.com. As always, thank you for allowing us to serve you.\n\nBest regards,\n\nThe Technicarn Enterprises Customer Service Team",
+          "options": [
+            "experience",
+            "experienced",
+            "experiencing",
+            "experiential"
+          ]
+        },
+        {
+          "questionNumber": 140,
+          "correctAnswer": "A",
+          "text": "Select the best option for space [140].",
+          "passage": "To: Technicarn Enterprises Customers\nFrom: Technicarn Enterprises Customer Service\nDate: 10 September\nSubject: Serving You\n\nDear Valued Customer:\n\nWe want your [139] with Technicarn Enterprises to be easy and enjoyable. To that end, we are pleased to announce our newly designed Web site, with enhanced customer-friendly features.\n\nOur new Web site provides answers to your questions 24 hours a day, every day of the year.\n\nOn our home page, you can get information about system setup, or you can troubleshoot by visiting [140] the Internet Issues or TV and Streaming Issues pages. [141], you can find detailed information concerning account management, access, billing, and payment.\n\n[142]. Please explore the new Web site at your earliest convenience: www.technicarnenterprises.com. As always, thank you for allowing us to serve you.\n\nBest regards,\n\nThe Technicarn Enterprises Customer Service Team",
+          "options": [
+            "either",
+            "both",
+            "rather",
+            "each"
+          ]
+        },
+        {
+          "questionNumber": 141,
+          "correctAnswer": "D",
+          "text": "Select the best option for space [141].",
+          "passage": "To: Technicarn Enterprises Customers\nFrom: Technicarn Enterprises Customer Service\nDate: 10 September\nSubject: Serving You\n\nDear Valued Customer:\n\nWe want your [139] with Technicarn Enterprises to be easy and enjoyable. To that end, we are pleased to announce our newly designed Web site, with enhanced customer-friendly features.\n\nOur new Web site provides answers to your questions 24 hours a day, every day of the year.\n\nOn our home page, you can get information about system setup, or you can troubleshoot by visiting [140] the Internet Issues or TV and Streaming Issues pages. [141], you can find detailed information concerning account management, access, billing, and payment.\n\n[142]. Please explore the new Web site at your earliest convenience: www.technicarnenterprises.com. As always, thank you for allowing us to serve you.\n\nBest regards,\n\nThe Technicarn Enterprises Customer Service Team",
+          "options": [
+            "Therefore",
+            "Regardless",
+            "For example",
+            "Moreover"
+          ]
+        },
+        {
+          "questionNumber": 142,
+          "correctAnswer": "D",
+          "text": "Select the best option for space [142].",
+          "passage": "To: Technicarn Enterprises Customers\nFrom: Technicarn Enterprises Customer Service\nDate: 10 September\nSubject: Serving You\n\nDear Valued Customer:\n\nWe want your [139] with Technicarn Enterprises to be easy and enjoyable. To that end, we are pleased to announce our newly designed Web site, with enhanced customer-friendly features.\n\nOur new Web site provides answers to your questions 24 hours a day, every day of the year.\n\nOn our home page, you can get information about system setup, or you can troubleshoot by visiting [140] the Internet Issues or TV and Streaming Issues pages. [141], you can find detailed information concerning account management, access, billing, and payment.\n\n[142]. Please explore the new Web site at your earliest convenience: www.technicarnenterprises.com. As always, thank you for allowing us to serve you.\n\nBest regards,\n\nThe Technicarn Enterprises Customer Service Team",
+          "options": [
+            "We also need to inform you that your payment is five days past due.",
+            "We recommend that you purchase all related accessories in our retail store.",
+            "If you get an error message, disconnect from the Internet and try again.",
+            "If you cannot find what you need online, simply call our support number."
+          ]
+        },
+        {
+          "questionNumber": 143,
+          "correctAnswer": "B",
+          "text": "Select the best option for space [143].",
+          "passage": "Garner City Transport Cares About the Environment\n\nBeginning May 1, the sale and use of paper tickets and transit passes will be [143] on all Garner City Transport bus and subway lines. This change applies to single-ride tickets [144] to weekly and monthly passes. Eliminating paper benefits the environment and leads to less litter.\n\nRiders can download the free Garner City Transport app. With the app, they can add money their accounts, purchase tickets, plan [145], and track arrival and departure times.\n\nAlternatively, passengers can purchase a rechargeable transit card at any station. [146]. Value can be added to the card via the Garner City Transport Web site at www.garnercitytransport.org.",
+          "options": [
+            "enlarged",
+            "discontinued",
+            "accessible",
+            "refreshed"
+          ]
+        },
+        {
+          "questionNumber": 144,
+          "correctAnswer": "D",
+          "text": "Select the best option for space [144].",
+          "passage": "Garner City Transport Cares About the Environment\n\nBeginning May 1, the sale and use of paper tickets and transit passes will be [143] on all Garner City Transport bus and subway lines. This change applies to single-ride tickets [144] to weekly and monthly passes. Eliminating paper benefits the environment and leads to less litter.\n\nRiders can download the free Garner City Transport app. With the app, they can add money their accounts, purchase tickets, plan [145], and track arrival and departure times.\n\nAlternatively, passengers can purchase a rechargeable transit card at any station. [146]. Value can be added to the card via the Garner City Transport Web site at www.garnercitytransport.org.",
+          "options": [
+            "sharing",
+            "but",
+            "except",
+            "as well as"
+          ]
+        },
+        {
+          "questionNumber": 145,
+          "correctAnswer": "A",
+          "text": "Select the best option for space [145].",
+          "passage": "Garner City Transport Cares About the Environment\n\nBeginning May 1, the sale and use of paper tickets and transit passes will be [143] on all Garner City Transport bus and subway lines. This change applies to single-ride tickets [144] to weekly and monthly passes. Eliminating paper benefits the environment and leads to less litter.\n\nRiders can download the free Garner City Transport app. With the app, they can add money their accounts, purchase tickets, plan [145], and track arrival and departure times.\n\nAlternatively, passengers can purchase a rechargeable transit card at any station. [146]. Value can be added to the card via the Garner City Transport Web site at www.garnercitytransport.org.",
+          "options": [
+            "routes",
+            "responses",
+            "software",
+            "careers"
+          ]
+        },
+        {
+          "questionNumber": 146,
+          "correctAnswer": "C",
+          "text": "Select the best option for space [146].",
+          "passage": "Garner City Transport Cares About the Environment\n\nBeginning May 1, the sale and use of paper tickets and transit passes will be [143] on all Garner City Transport bus and subway lines. This change applies to single-ride tickets [144] to weekly and monthly passes. Eliminating paper benefits the environment and leads to less litter.\n\nRiders can download the free Garner City Transport app. With the app, they can add money their accounts, purchase tickets, plan [145], and track arrival and departure times.\n\nAlternatively, passengers can purchase a rechargeable transit card at any station. [146]. Value can be added to the card via the Garner City Transport Web site at www.garnercitytransport.org.",
+          "options": [
+            "People often use credit cards to purchase meals during the flight.",
+            "Many people like public transportation because it is inexpensive.",
+            "The durable cards are made from recycled materials.",
+            "There was a small price increase last month."
+          ]
+        }
+      ]
     },
     {
       "partNumber": 7,

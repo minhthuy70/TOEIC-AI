@@ -406,7 +406,7 @@ export default function PlacementTestPage() {
             <p className="text-green-400 text-sm flex items-start gap-2">
               <span className="text-lg leading-5">⚡</span>
               <span>
-                <strong>Thông báo:</strong> Hiện tại Section Listening (Part 1, 2, 3, 4) đã có đầy đủ câu hỏi và hình ảnh ({totalAvailableQuestions} câu). Bạn có thể làm trọn vẹn phần thi Listening!
+                <strong>Thông báo:</strong> Hiện tại Part 1, 2, 3, 4, 5 và Part 6 đã có đầy đủ dữ liệu ({totalAvailableQuestions} câu). Bạn có thể thử sức ngay từ Part 1 đến Part 6!
               </span>
             </p>
           </div>
