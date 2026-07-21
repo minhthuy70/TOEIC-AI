@@ -213,12 +213,20 @@ export default function PlacementTestPage() {
     testData.parts.forEach((part) => {
       part.questions.forEach((q) => {
         const key = `p${part.partNumber}-q${q.questionNumber}`;
+        const userAns = answers[key];
+        const isCorrect =
+          userAns === q.correctAnswer ||
+          (userAns &&
+            q.options &&
+            q.options.indexOf(userAns) >= 0 &&
+            String.fromCharCode(65 + q.options.indexOf(userAns)) === q.correctAnswer);
+
         if (part.section === "listening") {
           listeningTotal++;
-          if (answers[key] === q.correctAnswer) listeningCorrect++;
+          if (isCorrect) listeningCorrect++;
         } else {
           readingTotal++;
-          if (answers[key] === q.correctAnswer) readingCorrect++;
+          if (isCorrect) readingCorrect++;
         }
       });
     });
@@ -394,12 +402,11 @@ export default function PlacementTestPage() {
           </div>
 
           {/* Warning */}
-          <div className="bg-yellow-600/10 border border-yellow-600/30 rounded-xl p-4 mb-6">
-            <p className="text-yellow-400 text-sm flex items-start gap-2">
+          <div className="bg-green-600/10 border border-green-600/30 rounded-xl p-4 mb-6">
+            <p className="text-green-400 text-sm flex items-start gap-2">
               <span className="text-lg leading-5">⚡</span>
               <span>
-                <strong>Lưu ý:</strong> Hiện tại chỉ có Part 1 có dữ liệu ({testData.parts[0].questions.length} câu). 
-                Các Part còn lại đang được cập nhật. Bạn có thể bắt đầu làm thử với Part 1.
+                <strong>Thông báo:</strong> Hiện tại Section Listening (Part 1, 2, 3, 4) đã có đầy đủ câu hỏi và hình ảnh ({totalAvailableQuestions} câu). Bạn có thể làm trọn vẹn phần thi Listening!
               </span>
             </p>
           </div>

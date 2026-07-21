@@ -16,75 +16,75 @@
       "section": "listening",
       "description": "Nghe 4 câu miêu tả ngắn về một bức tranh và chọn câu miêu tả đúng nhất.",
       "totalQuestions": 6,
-      "audio": "/uploads/tests/placement-test/audio/placement-test.mp3",
       "questions": [
         {
           "questionNumber": 1,
+          "correctAnswer": "D",
           "image": "/uploads/tests/placement-test/images/part1/1.jpg",
           "options": [
             "A",
             "B",
             "C",
             "D"
-          ],
-          "correctAnswer": "A"
+          ]
         },
         {
           "questionNumber": 2,
+          "correctAnswer": "C",
           "image": "/uploads/tests/placement-test/images/part1/2.jpg",
           "options": [
             "A",
             "B",
             "C",
             "D"
-          ],
-          "correctAnswer": "A"
+          ]
         },
         {
           "questionNumber": 3,
+          "correctAnswer": "B",
           "image": "/uploads/tests/placement-test/images/part1/3.jpg",
           "options": [
             "A",
             "B",
             "C",
             "D"
-          ],
-          "correctAnswer": "A"
+          ]
         },
         {
           "questionNumber": 4,
+          "correctAnswer": "C",
           "image": "/uploads/tests/placement-test/images/part1/4.jpg",
           "options": [
             "A",
             "B",
             "C",
             "D"
-          ],
-          "correctAnswer": "A"
+          ]
         },
         {
           "questionNumber": 5,
+          "correctAnswer": "D",
           "image": "/uploads/tests/placement-test/images/part1/5.jpg",
           "options": [
             "A",
             "B",
             "C",
             "D"
-          ],
-          "correctAnswer": "A"
+          ]
         },
         {
           "questionNumber": 6,
+          "correctAnswer": "A",
           "image": "/uploads/tests/placement-test/images/part1/6.jpg",
           "options": [
             "A",
             "B",
             "C",
             "D"
-          ],
-          "correctAnswer": "A"
+          ]
         }
-      ]
+      ],
+      "audio": "/uploads/tests/placement-test/audio/placement-test.mp3"
     },
     {
       "partNumber": 2,
@@ -93,234 +93,234 @@
       "section": "listening",
       "description": "Nghe một câu hỏi hoặc câu nói, sau đó nghe 3 câu trả lời. Chọn câu trả lời phù hợp.",
       "totalQuestions": 25,
-      "audio": "/uploads/tests/placement-test/audio/placement-test.mp3",
       "questions": [
         {
           "questionNumber": 7,
+          "correctAnswer": "B",
           "options": [
             "A",
             "B",
             "C"
-          ],
-          "correctAnswer": "A"
+          ]
         },
         {
           "questionNumber": 8,
+          "correctAnswer": "A",
           "options": [
             "A",
             "B",
             "C"
-          ],
-          "correctAnswer": "A"
+          ]
         },
         {
           "questionNumber": 9,
+          "correctAnswer": "B",
           "options": [
             "A",
             "B",
             "C"
-          ],
-          "correctAnswer": "A"
+          ]
         },
         {
           "questionNumber": 10,
+          "correctAnswer": "C",
           "options": [
             "A",
             "B",
             "C"
-          ],
-          "correctAnswer": "A"
+          ]
         },
         {
           "questionNumber": 11,
+          "correctAnswer": "A",
           "options": [
             "A",
             "B",
             "C"
-          ],
-          "correctAnswer": "A"
+          ]
         },
         {
           "questionNumber": 12,
+          "correctAnswer": "B",
           "options": [
             "A",
             "B",
             "C"
-          ],
-          "correctAnswer": "A"
+          ]
         },
         {
           "questionNumber": 13,
+          "correctAnswer": "A",
           "options": [
             "A",
             "B",
             "C"
-          ],
-          "correctAnswer": "A"
+          ]
         },
         {
           "questionNumber": 14,
+          "correctAnswer": "C",
           "options": [
             "A",
             "B",
             "C"
-          ],
-          "correctAnswer": "A"
+          ]
         },
         {
           "questionNumber": 15,
+          "correctAnswer": "A",
           "options": [
             "A",
             "B",
             "C"
-          ],
-          "correctAnswer": "A"
+          ]
         },
         {
           "questionNumber": 16,
+          "correctAnswer": "C",
           "options": [
             "A",
             "B",
             "C"
-          ],
-          "correctAnswer": "A"
+          ]
         },
         {
           "questionNumber": 17,
+          "correctAnswer": "B",
           "options": [
             "A",
             "B",
             "C"
-          ],
-          "correctAnswer": "A"
+          ]
         },
         {
           "questionNumber": 18,
+          "correctAnswer": "B",
           "options": [
             "A",
             "B",
             "C"
-          ],
-          "correctAnswer": "A"
+          ]
         },
         {
           "questionNumber": 19,
+          "correctAnswer": "C",
           "options": [
             "A",
             "B",
             "C"
-          ],
-          "correctAnswer": "A"
+          ]
         },
         {
           "questionNumber": 20,
+          "correctAnswer": "A",
           "options": [
             "A",
             "B",
             "C"
-          ],
-          "correctAnswer": "A"
+          ]
         },
         {
           "questionNumber": 21,
+          "correctAnswer": "C",
           "options": [
             "A",
             "B",
             "C"
-          ],
-          "correctAnswer": "A"
+          ]
         },
         {
           "questionNumber": 22,
+          "correctAnswer": "C",
           "options": [
             "A",
             "B",
             "C"
-          ],
-          "correctAnswer": "A"
+          ]
         },
         {
           "questionNumber": 23,
+          "correctAnswer": "B",
           "options": [
             "A",
             "B",
             "C"
-          ],
-          "correctAnswer": "A"
+          ]
         },
         {
           "questionNumber": 24,
+          "correctAnswer": "A",
           "options": [
             "A",
             "B",
             "C"
-          ],
-          "correctAnswer": "A"
+          ]
         },
         {
           "questionNumber": 25,
+          "correctAnswer": "B",
           "options": [
             "A",
             "B",
             "C"
-          ],
-          "correctAnswer": "A"
+          ]
         },
         {
           "questionNumber": 26,
+          "correctAnswer": "A",
           "options": [
             "A",
             "B",
             "C"
-          ],
-          "correctAnswer": "A"
+          ]
         },
         {
           "questionNumber": 27,
+          "correctAnswer": "C",
           "options": [
             "A",
             "B",
             "C"
-          ],
-          "correctAnswer": "A"
+          ]
         },
         {
           "questionNumber": 28,
+          "correctAnswer": "A",
           "options": [
             "A",
             "B",
             "C"
-          ],
-          "correctAnswer": "A"
+          ]
         },
         {
           "questionNumber": 29,
+          "correctAnswer": "C",
           "options": [
             "A",
             "B",
             "C"
-          ],
-          "correctAnswer": "A"
+          ]
         },
         {
           "questionNumber": 30,
+          "correctAnswer": "B",
           "options": [
             "A",
             "B",
             "C"
-          ],
-          "correctAnswer": "A"
+          ]
         },
         {
           "questionNumber": 31,
+          "correctAnswer": "B",
           "options": [
             "A",
             "B",
             "C"
-          ],
-          "correctAnswer": "A"
+          ]
         }
-      ]
+      ],
+      "audio": "/uploads/tests/placement-test/audio/placement-test.mp3"
     },
     {
       "partNumber": 3,
@@ -329,443 +329,447 @@
       "section": "listening",
       "description": "Nghe các đoạn hội thoại ngắn trong bối cảnh công việc. Mỗi đoạn có 3 câu hỏi.",
       "totalQuestions": 39,
-      "groupSize": 3,
-      "groupCount": 13,
-      "audio": "/uploads/tests/placement-test/audio/placement-test.mp3",
       "questions": [
         {
           "questionNumber": 32,
-          "text": "What is being discussed in this conversation?",
+          "correctAnswer": "A",
+          "text": "Why is the woman calling?",
           "options": [
-            "A",
-            "B",
-            "C",
-            "D"
-          ],
-          "correctAnswer": "A"
+            "To request a ticket change",
+            "To make a dinner reservation",
+            "To order merchandise",
+            "To plan a vacation"
+          ]
         },
         {
           "questionNumber": 33,
-          "text": "What is being discussed in this conversation?",
+          "correctAnswer": "D",
+          "text": "Why does the man apologize?",
           "options": [
-            "A",
-            "B",
-            "C",
-            "D"
-          ],
-          "correctAnswer": "A"
+            "An event was canceled.",
+            "A line is very long.",
+            "A payment option is unavailable.",
+            "A computer program is not working."
+          ]
         },
         {
           "questionNumber": 34,
-          "text": "What is being discussed in this conversation?",
+          "correctAnswer": "C",
+          "text": "What does the man remind the woman about?",
           "options": [
-            "A",
-            "B",
-            "C",
-            "D"
-          ],
-          "correctAnswer": "A"
+            "A meal voucher",
+            "Some free souvenirs",
+            "An increase in price",
+            "A refund policy"
+          ]
         },
         {
           "questionNumber": 35,
-          "text": "What is being discussed in this conversation?",
+          "correctAnswer": "C",
+          "text": "What event will the speakers be attending later today?",
           "options": [
-            "A",
-            "B",
-            "C",
-            "D"
-          ],
-          "correctAnswer": "A"
+            "A job fair",
+            "A film screening",
+            "A lunch",
+            "A conference"
+          ]
         },
         {
           "questionNumber": 36,
-          "text": "What is being discussed in this conversation?",
+          "correctAnswer": "A",
+          "text": "Why does the man say, \"she has a van\"?",
           "options": [
-            "A",
-            "B",
-            "C",
-            "D"
-          ],
-          "correctAnswer": "A"
+            "To suggest inquiring about a ride",
+            "To express surprise at a coworker's choice of vehicle",
+            "To explain why a coworker was late",
+            "To clarify that a coworker helped him move"
+          ]
         },
         {
           "questionNumber": 37,
-          "text": "What is being discussed in this conversation?",
+          "correctAnswer": "B",
+          "text": "What will the woman most likely do next?",
           "options": [
-            "A",
-            "B",
-            "C",
-            "D"
-          ],
-          "correctAnswer": "A"
+            "Reschedule an event",
+            "Talk to another coworker",
+            "Request time off",
+            "Make a phone call"
+          ]
         },
         {
           "questionNumber": 38,
-          "text": "What is being discussed in this conversation?",
+          "correctAnswer": "A",
+          "text": "Where do the speakers work?",
           "options": [
-            "A",
-            "B",
-            "C",
-            "D"
-          ],
-          "correctAnswer": "A"
+            "At a grocery store",
+            "At a shipping facility",
+            "At a restaurant",
+            "At a doctor's office"
+          ]
         },
         {
           "questionNumber": 39,
-          "text": "What is being discussed in this conversation?",
+          "correctAnswer": "B",
+          "text": "What does the woman say she is concerned about?",
           "options": [
-            "A",
-            "B",
-            "C",
-            "D"
-          ],
-          "correctAnswer": "A"
+            "Fuel prices",
+            "Her work hours",
+            "A staff shortage",
+            "An inventory process"
+          ]
         },
         {
           "questionNumber": 40,
-          "text": "What is being discussed in this conversation?",
+          "correctAnswer": "D",
+          "text": "What does the man suggest that the woman do?",
           "options": [
-            "A",
-            "B",
-            "C",
-            "D"
-          ],
-          "correctAnswer": "A"
+            "Complete a training program",
+            "Order extra equipment",
+            "Hire a consultant",
+            "Take time to make a decision"
+          ]
         },
         {
           "questionNumber": 41,
-          "text": "What is being discussed in this conversation?",
+          "correctAnswer": "C",
+          "text": "Why is the woman calling?",
           "options": [
-            "A",
-            "B",
-            "C",
-            "D"
-          ],
-          "correctAnswer": "A"
+            "Her taxi never arrived.",
+            "Her luggage is missing.",
+            "Her train was canceled.",
+            "Her ticket is lost."
+          ]
         },
         {
           "questionNumber": 42,
-          "text": "What is being discussed in this conversation?",
+          "correctAnswer": "B",
+          "text": "What event is the woman planning to attend?",
           "options": [
-            "A",
-            "B",
-            "C",
-            "D"
-          ],
-          "correctAnswer": "A",
-          "image": "/uploads/tests/placement-test/images/part3/42.jpg"
+            "An awards ceremony",
+            "A trade show",
+            "An art exhibit opening",
+            "A building inspection"
+          ]
         },
         {
           "questionNumber": 43,
-          "text": "What is being discussed in this conversation?",
+          "correctAnswer": "D",
+          "text": "What does the man give the woman as an apology?",
           "options": [
-            "A",
-            "B",
-            "C",
-            "D"
-          ],
-          "correctAnswer": "A",
-          "image": "/uploads/tests/placement-test/images/part3/43.jpg"
+            "A partial discount",
+            "Vouchers for future travel",
+            "A full refund",
+            "A better seat"
+          ]
         },
         {
           "questionNumber": 44,
-          "text": "What is being discussed in this conversation?",
+          "correctAnswer": "C",
+          "text": "Where does the woman work?",
           "options": [
-            "A",
-            "B",
-            "C",
-            "D"
-          ],
-          "correctAnswer": "A",
-          "image": "/uploads/tests/placement-test/images/part3/44.jpg"
+            "At a distribution center",
+            "At a conference center",
+            "At a car dealership",
+            "At a real estate agency"
+          ]
         },
         {
           "questionNumber": 45,
-          "text": "What is being discussed in this conversation?",
+          "correctAnswer": "D",
+          "text": "What problem with some e-mails does the man mention?",
           "options": [
-            "A",
-            "B",
-            "C",
-            "D"
-          ],
-          "correctAnswer": "A"
+            "Confusion about the intended recipients",
+            "A delay in message delivery",
+            "An incorrectly typed word",
+            "Lack of information"
+          ]
         },
         {
           "questionNumber": 46,
-          "text": "What is being discussed in this conversation?",
+          "correctAnswer": "B",
+          "text": "What will the woman most likely do next?",
           "options": [
-            "A",
-            "B",
-            "C",
-            "D"
-          ],
-          "correctAnswer": "A"
+            "Arrange a meeting",
+            "Make a phone call",
+            "Speak to her employees",
+            "Review an invoice"
+          ]
         },
         {
           "questionNumber": 47,
-          "text": "What is being discussed in this conversation?",
+          "correctAnswer": "B",
+          "text": "What is the conversation mainly about?",
           "options": [
-            "A",
-            "B",
-            "C",
-            "D"
-          ],
-          "correctAnswer": "A"
+            "A policy change",
+            "A product launch",
+            "Some customer feedback",
+            "A scheduled maintenance visit"
+          ]
         },
         {
           "questionNumber": 48,
-          "text": "What is being discussed in this conversation?",
+          "correctAnswer": "A",
+          "text": "What does the woman say people at the company are currently working on?",
           "options": [
-            "A",
-            "B",
-            "C",
-            "D"
-          ],
-          "correctAnswer": "A"
+            "Exploring publicity options",
+            "Finding a new vendor",
+            "Assembling a sales team",
+            "Negotiating a monthly fee"
+          ]
         },
         {
           "questionNumber": 49,
-          "text": "What is being discussed in this conversation?",
+          "correctAnswer": "D",
+          "text": "Why is the man concerned?",
           "options": [
-            "A",
-            "B",
-            "C",
-            "D"
-          ],
-          "correctAnswer": "A"
+            "Customers have complained.",
+            "Price estimates are high.",
+            "Some changes require approval.",
+            "A plan may be delayed."
+          ]
         },
         {
           "questionNumber": 50,
-          "text": "What is being discussed in this conversation?",
+          "correctAnswer": "C",
+          "text": "What are the speakers preparing for?",
           "options": [
-            "A",
-            "B",
-            "C",
-            "D"
-          ],
-          "correctAnswer": "A"
+            "An interview",
+            "A food delivery",
+            "A special event",
+            "An inspection"
+          ]
         },
         {
           "questionNumber": 51,
-          "text": "What is being discussed in this conversation?",
+          "correctAnswer": "D",
+          "text": "What does the woman say will be delivered in an hour?",
           "options": [
-            "A",
-            "B",
-            "C",
-            "D"
-          ],
-          "correctAnswer": "A"
+            "Some flower arrangements",
+            "Some gifts for attendees",
+            "Some audio equipment",
+            "Some tables and chairs"
+          ]
         },
         {
           "questionNumber": 52,
-          "text": "What is being discussed in this conversation?",
+          "correctAnswer": "A",
+          "text": "What will the speakers most likely do next?",
           "options": [
-            "A",
-            "B",
-            "C",
-            "D"
-          ],
-          "correctAnswer": "A"
+            "Review a guest list",
+            "Meet with a photographer",
+            "Take a break",
+            "Taste some food"
+          ]
         },
         {
           "questionNumber": 53,
-          "text": "What is being discussed in this conversation?",
+          "correctAnswer": "C",
+          "text": "What event are the speakers discussing?",
           "options": [
-            "A",
-            "B",
-            "C",
-            "D"
-          ],
-          "correctAnswer": "A"
+            "A bank opening",
+            "A contest",
+            "A business conference",
+            "A company anniversary"
+          ]
         },
         {
           "questionNumber": 54,
-          "text": "What is being discussed in this conversation?",
+          "correctAnswer": "C",
+          "text": "What does the man mean when he says, \"there's a lot of damage\"?",
           "options": [
-            "A",
-            "B",
-            "C",
-            "D"
-          ],
-          "correctAnswer": "A"
+            "He finally fully understands a problem.",
+            "The woman should expect a bill in the mail.",
+            "The woman's assumption is incorrect.",
+            "A schedule needs to be adjusted."
+          ]
         },
         {
           "questionNumber": 55,
-          "text": "What is being discussed in this conversation?",
+          "correctAnswer": "A",
+          "text": "What does the woman recommend?",
           "options": [
-            "A",
-            "B",
-            "C",
-            "D"
-          ],
-          "correctAnswer": "A"
+            "Using an outdoor area",
+            "Arranging technical support",
+            "Confirming a catering menu",
+            "Interviewing some job applicants"
+          ]
         },
         {
           "questionNumber": 56,
-          "text": "What is being discussed in this conversation?",
+          "correctAnswer": "A",
+          "text": "What industry do the speakers most likely work in?",
           "options": [
-            "A",
-            "B",
-            "C",
-            "D"
-          ],
-          "correctAnswer": "A"
+            "Medicine",
+            "Music",
+            "Publishing",
+            "Finance"
+          ]
         },
         {
           "questionNumber": 57,
-          "text": "What is being discussed in this conversation?",
+          "correctAnswer": "B",
+          "text": "According to the man, why has a software program become popular?",
           "options": [
-            "A",
-            "B",
-            "C",
-            "D"
-          ],
-          "correctAnswer": "A"
+            "It is less expensive than similar products.",
+            "It makes information more accessible.",
+            "It reduces environmental impact.",
+            "It comes with customer support."
+          ]
         },
         {
           "questionNumber": 58,
-          "text": "What is being discussed in this conversation?",
+          "correctAnswer": "A",
+          "text": "What might Marion still need to do?",
           "options": [
-            "A",
-            "B",
-            "C",
-            "D"
-          ],
-          "correctAnswer": "A"
+            "Contact some service providers",
+            "Sign a release form",
+            "Check some financial information",
+            "Repair some equipment"
+          ]
         },
         {
           "questionNumber": 59,
-          "text": "What is being discussed in this conversation?",
+          "correctAnswer": "C",
+          "text": "What are the speakers discussing?",
           "options": [
-            "A",
-            "B",
-            "C",
-            "D"
-          ],
-          "correctAnswer": "A"
+            "Proposing a business merger",
+            "Relocating a company's headquarters",
+            "Developing additional products",
+            "Hiring more employees"
+          ]
         },
         {
           "questionNumber": 60,
-          "text": "What is being discussed in this conversation?",
+          "correctAnswer": "B",
+          "text": "What challenge does Stan mention?",
           "options": [
-            "A",
-            "B",
-            "C",
-            "D"
-          ],
-          "correctAnswer": "A"
+            "A profit margin will decrease.",
+            "Additional equipment will be needed.",
+            "There are not enough job applicants.",
+            "There are delays in production."
+          ]
         },
         {
           "questionNumber": 61,
-          "text": "What is being discussed in this conversation?",
+          "correctAnswer": "A",
+          "text": "What does Pedro say he will do?",
           "options": [
-            "A",
-            "B",
-            "C",
-            "D"
-          ],
-          "correctAnswer": "A"
+            "Contact a facility manager",
+            "Adjust a budget",
+            "Change a work schedule",
+            "Research a product"
+          ]
         },
         {
           "questionNumber": 62,
-          "text": "What is being discussed in this conversation?",
+          "correctAnswer": "A",
+          "text": "According to the man, why is today's Sea-Ride Special tour popular?",
+          "image": "/uploads/tests/placement-test/images/part3/42.jpg",
           "options": [
-            "A",
-            "B",
-            "C",
-            "D"
-          ],
-          "correctAnswer": "A"
+            "It offers a chance to see migrating birds.",
+            "Water conditions are likely to be favorable.",
+            "A guest chef is preparing lunch.",
+            "Someone special will be guiding the tour."
+          ]
         },
         {
           "questionNumber": 63,
-          "text": "What is being discussed in this conversation?",
+          "correctAnswer": "D",
+          "text": "Look at the graphic. What time will the woman depart on a tour?",
+          "image": "/uploads/tests/placement-test/images/part3/42.jpg",
           "options": [
-            "A",
-            "B",
-            "C",
-            "D"
-          ],
-          "correctAnswer": "A"
+            "At 9 A.M.",
+            "At 10 A.M.",
+            "At 11 A.M.",
+            "At 12 P.M."
+          ]
         },
         {
           "questionNumber": 64,
-          "text": "What is being discussed in this conversation?",
+          "correctAnswer": "B",
+          "text": "What will the woman most likely do next?",
+          "image": "/uploads/tests/placement-test/images/part3/42.jpg",
           "options": [
-            "A",
-            "B",
-            "C",
-            "D"
-          ],
-          "correctAnswer": "A"
+            "Return to her hotel",
+            "Visit a café",
+            "Call a friend",
+            "Store her bags in a locker"
+          ]
         },
         {
           "questionNumber": 65,
-          "text": "What is being discussed in this conversation?",
+          "correctAnswer": "D",
+          "text": "Why does the woman apologize?",
+          "image": "/uploads/tests/placement-test/images/part3/43.jpg",
           "options": [
-            "A",
-            "B",
-            "C",
-            "D"
-          ],
-          "correctAnswer": "A"
+            "A conference session is full.",
+            "An elevator is not working.",
+            "A workshop has changed locations.",
+            "Parking is not free."
+          ]
         },
         {
           "questionNumber": 66,
-          "text": "What is being discussed in this conversation?",
+          "correctAnswer": "C",
+          "text": "Look at the graphic. Which location does the woman recommend?",
+          "image": "/uploads/tests/placement-test/images/part3/43.jpg",
           "options": [
-            "A",
-            "B",
-            "C",
-            "D"
-          ],
-          "correctAnswer": "A"
+            "Area 1",
+            "Area 2",
+            "Area 3",
+            "Area 4"
+          ]
         },
         {
           "questionNumber": 67,
-          "text": "What is being discussed in this conversation?",
+          "correctAnswer": "A",
+          "text": "Why is the man in a hurry?",
+          "image": "/uploads/tests/placement-test/images/part3/43.jpg",
           "options": [
-            "A",
-            "B",
-            "C",
-            "D"
-          ],
-          "correctAnswer": "A"
+            "A workshop is starting soon.",
+            "A parking pass is about to expire.",
+            "A shuttle is running late.",
+            "A friend is waiting outside."
+          ]
         },
         {
           "questionNumber": 68,
-          "text": "What is being discussed in this conversation?",
+          "correctAnswer": "B",
+          "text": "Why does the woman call?",
+          "image": "/uploads/tests/placement-test/images/part3/44.jpg",
           "options": [
-            "A",
-            "B",
-            "C",
-            "D"
-          ],
-          "correctAnswer": "A"
+            "She wants to request a refund.",
+            "She is unable to place an order online.",
+            "She wants to extend a deadline.",
+            "She is unhappy with a product purchased recently."
+          ]
         },
         {
           "questionNumber": 69,
-          "text": "What is being discussed in this conversation?",
+          "correctAnswer": "D",
+          "text": "Look at the graphic. What is the price of the item the woman wants to buy?",
+          "image": "/uploads/tests/placement-test/images/part3/44.jpg",
           "options": [
-            "A",
-            "B",
-            "C",
-            "D"
-          ],
-          "correctAnswer": "A"
+            "$169.99",
+            "$149.99",
+            "$129.99",
+            "$179.99"
+          ]
         },
         {
           "questionNumber": 70,
-          "text": "What is being discussed in this conversation?",
+          "correctAnswer": "D",
+          "text": "What will the man most likely do tomorrow?",
+          "image": "/uploads/tests/placement-test/images/part3/44.jpg",
           "options": [
-            "A",
-            "B",
-            "C",
-            "D"
-          ],
-          "correctAnswer": "A"
+            "Update a Web site",
+            "Search a storage area",
+            "Contact another store location",
+            "Check an incoming shipment"
+          ]
         }
-      ]
+      ],
+      "audio": "/uploads/tests/placement-test/audio/placement-test.mp3"
     },
     {
       "partNumber": 4,
@@ -774,10 +778,345 @@
       "section": "listening",
       "description": "Nghe các đoạn độc thoại như thông báo, bài phát biểu, lời nhắn thoại. Mỗi đoạn có 3 câu hỏi.",
       "totalQuestions": 30,
-      "groupSize": 3,
-      "groupCount": 10,
-      "audio": "/uploads/tests/placement-test/audio/placement-test.mp3",
-      "questions": []
+      "questions": [
+        {
+          "questionNumber": 71,
+          "correctAnswer": "C",
+          "text": "What feature of a business does the speaker emphasize?",
+          "options": [
+            "The quality of its food",
+            "The extended hours it is open",
+            "The style of its decor",
+            "The affordable prices it offers"
+          ]
+        },
+        {
+          "questionNumber": 72,
+          "correctAnswer": "D",
+          "text": "What can attendees do at the grand opening event?",
+          "options": [
+            "Go on a tour",
+            "Get a free gift",
+            "Talk to an actor",
+            "Watch some movies"
+          ]
+        },
+        {
+          "questionNumber": 73,
+          "correctAnswer": "B",
+          "text": "What does the speaker advise event attendees to do?",
+          "options": [
+            "Arrive early",
+            "Use public transportation",
+            "Order tickets in advance",
+            "Purchase a membership"
+          ]
+        },
+        {
+          "questionNumber": 74,
+          "correctAnswer": "C",
+          "text": "What does the listener want to do?",
+          "options": [
+            "Request shuttle service",
+            "Extend a hotel stay",
+            "Change a room assignment",
+            "Cancel a reservation"
+          ]
+        },
+        {
+          "questionNumber": 75,
+          "correctAnswer": "D",
+          "text": "Why does the speaker say, \"those rooms are always booked far in advance\"?",
+          "options": [
+            "To express approval for a room design",
+            "To explain why a hotel is successful",
+            "To indicate his disbelief",
+            "To deny the listener's request"
+          ]
+        },
+        {
+          "questionNumber": 76,
+          "correctAnswer": "B",
+          "text": "According to the speaker, what should the listener bring?",
+          "options": [
+            "Some warm clothes",
+            "Some swimwear",
+            "A credit card",
+            "A copy of a key"
+          ]
+        },
+        {
+          "questionNumber": 77,
+          "correctAnswer": "C",
+          "text": "Who most likely is the speaker?",
+          "options": [
+            "An archaeologist",
+            "A marine biologist",
+            "A conservation expert",
+            "An athletic trainer"
+          ]
+        },
+        {
+          "questionNumber": 78,
+          "correctAnswer": "A",
+          "text": "What does the speaker advise the listeners to do?",
+          "options": [
+            "Take a water bottle",
+            "Consult a site map",
+            "Apply sunscreen regularly",
+            "Write careful notes"
+          ]
+        },
+        {
+          "questionNumber": 79,
+          "correctAnswer": "B",
+          "text": "What does the speaker say she is going to do next?",
+          "options": [
+            "Answer some questions",
+            "Demonstrate a process",
+            "Introduce a colleague",
+            "Take the listeners to lunch"
+          ]
+        },
+        {
+          "questionNumber": 80,
+          "correctAnswer": "D",
+          "text": "Why will the speaker be traveling?",
+          "options": [
+            "To inspect a factory",
+            "To repair a product",
+            "To perform in a concert",
+            "To attend a workshop"
+          ]
+        },
+        {
+          "questionNumber": 81,
+          "correctAnswer": "C",
+          "text": "Why is the speaker concerned?",
+          "options": [
+            "A seating arrangement is wrong.",
+            "A company credit card was not charged.",
+            "Some meal tickets were not sent.",
+            "Her taxi driver is unable to find a hotel."
+          ]
+        },
+        {
+          "questionNumber": 82,
+          "correctAnswer": "A",
+          "text": "What does the speaker ask the listener to do?",
+          "options": [
+            "Send an e-mail",
+            "Meet at an office",
+            "Confirm a schedule",
+            "Look up an account number"
+          ]
+        },
+        {
+          "questionNumber": 83,
+          "correctAnswer": "D",
+          "text": "What does the speaker remind the listeners to do?",
+          "options": [
+            "Keep a gate closed",
+            "Return equipment to a shed",
+            "Check a list of supplies",
+            "Select a free gift"
+          ]
+        },
+        {
+          "questionNumber": 84,
+          "correctAnswer": "A",
+          "text": "According to the speaker, what can the listeners apply for?",
+          "options": [
+            "A garden plot",
+            "A volunteer opportunity",
+            "A gardening workshop",
+            "A farmers market table"
+          ]
+        },
+        {
+          "questionNumber": 85,
+          "correctAnswer": "A",
+          "text": "How can the listeners get information about future events?",
+          "options": [
+            "By signing up for a newsletter",
+            "By joining a membership program",
+            "By looking at a Web site",
+            "By attending weekly meetings"
+          ]
+        },
+        {
+          "questionNumber": 86,
+          "correctAnswer": "B",
+          "text": "What service does the business offer?",
+          "options": [
+            "Financial planning",
+            "Digital marketing",
+            "Real estate sales",
+            "International shipping"
+          ]
+        },
+        {
+          "questionNumber": 87,
+          "correctAnswer": "D",
+          "text": "According to the speaker, how is the business different from its competitors?",
+          "options": [
+            "It has several local offices.",
+            "It offers a money-back guarantee.",
+            "Its employees have industry certification.",
+            "Its employees work one-on-one with clients."
+          ]
+        },
+        {
+          "questionNumber": 88,
+          "correctAnswer": "C",
+          "text": "How can the listeners make an appointment?",
+          "options": [
+            "By sending an e-mail",
+            "By calling customer service",
+            "By filling out a questionnaire",
+            "By sending a text message"
+          ]
+        },
+        {
+          "questionNumber": 89,
+          "correctAnswer": "A",
+          "text": "Who most likely are the listeners?",
+          "options": [
+            "Marine biologists",
+            "Museum directors",
+            "Rare-book librarians",
+            "Agricultural engineers"
+          ]
+        },
+        {
+          "questionNumber": 90,
+          "correctAnswer": "B",
+          "text": "What does the speaker mean when he says, \"they received over 200 applications\"?",
+          "options": [
+            "An opportunity is unlikely to occur.",
+            "An award is impressive.",
+            "A decision will take longer than usual.",
+            "A competitor has been very successful."
+          ]
+        },
+        {
+          "questionNumber": 91,
+          "correctAnswer": "D",
+          "text": "Why does the speaker say that work cannot begin right away?",
+          "options": [
+            "Additional funds are needed.",
+            "Some special training is required.",
+            "An application has to be approved.",
+            "Some equipment needs to be ordered."
+          ]
+        },
+        {
+          "questionNumber": 92,
+          "correctAnswer": "D",
+          "text": "What is the purpose of the talk?",
+          "options": [
+            "To recognize outstanding achievements",
+            "To introduce new products to the public",
+            "To announce a manager's retirement",
+            "To provide new employees with information"
+          ]
+        },
+        {
+          "questionNumber": 93,
+          "correctAnswer": "C",
+          "text": "Where is the talk taking place?",
+          "options": [
+            "At a banquet hall",
+            "At a government building",
+            "At a factory",
+            "At a construction site"
+          ]
+        },
+        {
+          "questionNumber": 94,
+          "correctAnswer": "B",
+          "text": "What does the speaker mean when she says, \"I have a consultation with a client\"?",
+          "options": [
+            "She needs to reschedule a meeting.",
+            "She will not be with the listeners in the afternoon.",
+            "A customer has just placed a large order.",
+            "A marketing campaign will begin soon."
+          ]
+        },
+        {
+          "questionNumber": 95,
+          "correctAnswer": "A",
+          "text": "What is the main purpose of the call?",
+          "image": "/uploads/tests/placement-test/images/part4/95_97.jpg",
+          "options": [
+            "To place an order",
+            "To dispute a charge",
+            "To arrange a meeting",
+            "To check a store's inventory"
+          ]
+        },
+        {
+          "questionNumber": 96,
+          "correctAnswer": "D",
+          "text": "Look at the graphic. Which model does the speaker prefer?",
+          "image": "/uploads/tests/placement-test/images/part4/95_97.jpg",
+          "options": [
+            "SG-200",
+            "SG-250",
+            "XG-300",
+            "XG-350"
+          ]
+        },
+        {
+          "questionNumber": 97,
+          "correctAnswer": "C",
+          "text": "What does the speaker ask about?",
+          "image": "/uploads/tests/placement-test/images/part4/95_97.jpg",
+          "options": [
+            "A warranty",
+            "A return process",
+            "A delivery fee",
+            "Product availability"
+          ]
+        },
+        {
+          "questionNumber": 98,
+          "correctAnswer": "C",
+          "text": "Who most likely are the listeners?",
+          "image": "/uploads/tests/placement-test/images/part4/98_100.jpg",
+          "options": [
+            "Marketing experts",
+            "Product testers",
+            "Product designers",
+            "Audio engineers"
+          ]
+        },
+        {
+          "questionNumber": 99,
+          "correctAnswer": "B",
+          "text": "Look at the graphic. What was the approval rating of the feature that will be improved?",
+          "image": "/uploads/tests/placement-test/images/part4/98_100.jpg",
+          "options": [
+            "40 percent",
+            "50 percent",
+            "60 percent",
+            "80 percent"
+          ]
+        },
+        {
+          "questionNumber": 100,
+          "correctAnswer": "B",
+          "text": "According to the speaker, why is a revision urgent?",
+          "image": "/uploads/tests/placement-test/images/part4/98_100.jpg",
+          "options": [
+            "A competitor is making a similar product.",
+            "A product will be offered for sale soon.",
+            "A product will be introduced at a trade show.",
+            "The cost of a product's materials will rise soon."
+          ]
+        }
+      ],
+      "audio": "/uploads/tests/placement-test/audio/placement-test.mp3"
     },
     {
       "partNumber": 5,
@@ -795,8 +1134,6 @@
       "section": "reading",
       "description": "Điền từ/câu phù hợp vào chỗ trống trong đoạn văn. Mỗi đoạn có 4 câu hỏi.",
       "totalQuestions": 16,
-      "groupSize": 4,
-      "groupCount": 4,
       "questions": []
     },
     {
