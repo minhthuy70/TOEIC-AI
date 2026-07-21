@@ -72,8 +72,19 @@ export default function PlacementTestPage() {
   // ── Audio
   const audioRef = useRef<HTMLAudioElement | null>(null);
 
+  // ── Scroll container ref
+  const mainRef = useRef<HTMLElement | null>(null);
+
   // ── Sidebar mobile toggle
   const [sidebarOpen, setSidebarOpen] = useState(false);
+
+  // Scroll to top of window and main content area on question, part, or start state change
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "instant" });
+    if (mainRef.current) {
+      mainRef.current.scrollTop = 0;
+    }
+  }, [currentQuestionIndex, currentPartIndex, started]);
 
   /* ── Fetch data ── */
   useEffect(() => {
@@ -675,7 +686,7 @@ export default function PlacementTestPage() {
         </aside>
 
         {/* ─── Main Content ─── */}
-        <main className="flex-1 overflow-y-auto">
+        <main ref={mainRef} className="flex-1 overflow-y-auto">
           <div className="max-w-4xl mx-auto px-4 py-6 lg:px-8">
             {/* Part has no questions */}
             {!currentPart || currentPart.questions.length === 0 ? (
