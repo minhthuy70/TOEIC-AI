@@ -401,13 +401,6 @@ export default function PlacementTestPage() {
             </div>
           </div>
 
-          {/* Warning */}
-          <div className="bg-green-600/10 border border-green-600/30 rounded-xl p-4 mb-6">
-            <p className="text-green-400 text-sm flex items-start gap-2">
-              <span className="text-lg leading-5">⚡</span>
-            </p>
-          </div>
-
           {/* Buttons */}
           <div className="flex gap-3">
             <button
@@ -579,8 +572,8 @@ export default function PlacementTestPage() {
           <div className="flex items-center gap-3">
             <div
               className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-sm font-mono font-semibold ${timeLeft < 300
-                  ? "bg-red-600/20 text-red-400 animate-pulse"
-                  : "bg-zinc-800 text-white"
+                ? "bg-red-600/20 text-red-400 animate-pulse"
+                : "bg-zinc-800 text-white"
                 }`}
             >
               <span>⏱</span>
@@ -631,8 +624,8 @@ export default function PlacementTestPage() {
                   <button
                     onClick={() => goToPart(pIdx)}
                     className={`w-full text-left px-3 py-2.5 rounded-xl text-sm font-medium transition-all flex items-center justify-between ${isActive
-                        ? "bg-red-600/20 text-red-400 border border-red-600/30"
-                        : "text-gray-400 hover:bg-zinc-800 hover:text-white"
+                      ? "bg-red-600/20 text-red-400 border border-red-600/30"
+                      : "text-gray-400 hover:bg-zinc-800 hover:text-white"
                       }`}
                   >
                     <div className="flex items-center gap-2">
@@ -663,10 +656,10 @@ export default function PlacementTestPage() {
                             key={q.questionNumber}
                             onClick={() => goToQuestion(pIdx, qIdx)}
                             className={`w-full aspect-square rounded-lg text-xs font-semibold transition-all ${isCurrent
-                                ? "bg-red-600 text-white scale-110 shadow-lg shadow-red-600/30"
-                                : isAnswered
-                                  ? "bg-red-600/30 text-red-300 hover:bg-red-600/50"
-                                  : "bg-zinc-800 text-gray-500 hover:bg-zinc-700 hover:text-white"
+                              ? "bg-red-600 text-white scale-110 shadow-lg shadow-red-600/30"
+                              : isAnswered
+                                ? "bg-red-600/30 text-red-300 hover:bg-red-600/50"
+                                : "bg-zinc-800 text-gray-500 hover:bg-zinc-700 hover:text-white"
                               }`}
                           >
                             {q.questionNumber}
@@ -733,8 +726,8 @@ export default function PlacementTestPage() {
                 <div className="flex items-center gap-2 mb-4">
                   <span
                     className={`text-xs uppercase tracking-wider font-semibold px-2.5 py-1 rounded-full ${currentPart.section === "listening"
-                        ? "bg-blue-600/20 text-blue-400"
-                        : "bg-green-600/20 text-green-400"
+                      ? "bg-blue-600/20 text-blue-400"
+                      : "bg-green-600/20 text-green-400"
                       }`}
                   >
                     {currentPart.section === "listening" ? "🎧 Listening" : "📖 Reading"}
@@ -830,14 +823,14 @@ export default function PlacementTestPage() {
                               key={i}
                               onClick={() => selectAnswer(opt)}
                               className={`w-full flex items-center gap-4 p-4 rounded-xl border text-left transition-all duration-200 group ${isSelected
-                                  ? "bg-red-600/20 border-red-500/50 text-white shadow-lg shadow-red-600/10"
-                                  : "bg-black/30 border-zinc-800 text-gray-300 hover:border-zinc-600 hover:bg-zinc-800/50"
+                                ? "bg-red-600/20 border-red-500/50 text-white shadow-lg shadow-red-600/10"
+                                : "bg-black/30 border-zinc-800 text-gray-300 hover:border-zinc-600 hover:bg-zinc-800/50"
                                 }`}
                             >
                               <span
                                 className={`w-10 h-10 rounded-xl flex items-center justify-center text-sm font-bold shrink-0 transition-all ${isSelected
-                                    ? "bg-red-600 text-white"
-                                    : "bg-zinc-800 text-gray-400 group-hover:bg-zinc-700 group-hover:text-white"
+                                  ? "bg-red-600 text-white"
+                                  : "bg-zinc-800 text-gray-400 group-hover:bg-zinc-700 group-hover:text-white"
                                   }`}
                               >
                                 {letter}
@@ -865,10 +858,10 @@ export default function PlacementTestPage() {
                             key={idx}
                             onClick={() => goToQuestion(currentPartIndex, idx)}
                             className={`w-2.5 h-2.5 rounded-full transition-all ${idx === currentQuestionIndex
-                                ? "bg-red-500 scale-125"
-                                : answers[`p${currentPart.partNumber}-q${currentPart.questions[idx].questionNumber}`]
-                                  ? "bg-red-600/50"
-                                  : "bg-zinc-700"
+                              ? "bg-red-500 scale-125"
+                              : answers[`p${currentPart.partNumber}-q${currentPart.questions[idx].questionNumber}`]
+                                ? "bg-red-600/50"
+                                : "bg-zinc-700"
                               }`}
                           />
                         ))}
