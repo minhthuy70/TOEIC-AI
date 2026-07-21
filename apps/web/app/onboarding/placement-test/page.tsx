@@ -506,24 +506,8 @@ export default function PlacementTestPage() {
           <div className="flex gap-3">
             <button
               onClick={() => {
-                const user = JSON.parse(localStorage.getItem("user") || "{}");
-                if (user.id) {
-                  fetch(`${API}/profile/complete-first-login`, {
-                    method: "POST",
-                    headers: { "Content-Type": "application/json" },
-                    body: JSON.stringify({
-                      userId: user.id,
-                      currentScore: score.estimatedScore,
-                      targetScore: 990,
-                      examDate: new Date(Date.now() + 90 * 24 * 60 * 60 * 1000).toISOString().split("T")[0],
-                      dailyStudyTime: 60,
-                    }),
-                  }).then(() => {
-                    window.location.href = "/dashboard";
-                  });
-                } else {
-                  window.location.href = "/dashboard";
-                }
+                const estimatedScore = calculateScore().estimatedScore;
+                router.push(`/onboarding/setup?score=${estimatedScore}`);
               }}
               className="flex-1 bg-red-600 hover:bg-red-700 text-white py-3.5 rounded-xl font-semibold transition-all shadow-lg shadow-red-600/25"
             >

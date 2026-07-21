@@ -1,12 +1,22 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 export default function SetupPage() {
   const [currentScore, setCurrentScore] = useState("");
   const [targetScore, setTargetScore] = useState("");
   const [examDate, setExamDate] = useState("");
   const [dailyStudyTime, setDailyStudyTime] = useState<number>(60); // default 60 mins
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const params = new URLSearchParams(window.location.search);
+      const scoreParam = params.get("score");
+      if (scoreParam) {
+        setCurrentScore(scoreParam);
+      }
+    }
+  }, []);
 
   const studyTimeOptions = [
     { value: 30, label: "30 phút", desc: "Thư thả" },
