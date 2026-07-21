@@ -61,11 +61,16 @@ export class PlacementTestController {
 
           if (grp) {
             if (grp.image_url) {
-              let imgPath = grp.image_url;
-              if (!imgPath.startsWith('/')) {
-                imgPath = '/uploads/tests/placement-test/' + imgPath;
+              const trimmed = grp.image_url.trim();
+              if (trimmed.startsWith('/uploads/')) {
+                questionObj.image = trimmed;
+              } else if (trimmed.startsWith('uploads/')) {
+                questionObj.image = '/' + trimmed;
+              } else if (trimmed.startsWith('/')) {
+                questionObj.image = '/uploads/tests/placement-test' + trimmed;
+              } else {
+                questionObj.image = '/uploads/tests/placement-test/' + trimmed;
               }
-              questionObj.image = imgPath;
             }
             if (grp.passage) {
               questionObj.passage = grp.passage;

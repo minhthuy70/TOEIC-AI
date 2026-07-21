@@ -781,14 +781,26 @@ export default function PlacementTestPage() {
                     </div>
 
                     <div className="p-6">
-                      {/* Image for Part 1 */}
+                      {/* Image for Question */}
                       {currentQuestion.image && (
                         <div className="mb-6 flex justify-center">
-                          <div className="relative rounded-xl overflow-hidden border border-zinc-700 shadow-2xl max-w-lg w-full">
+                          <div className="relative rounded-xl overflow-hidden border border-zinc-700 shadow-2xl max-w-lg w-full bg-zinc-900 min-h-[160px] flex items-center justify-center">
                             <img
-                              src={`${API}${currentQuestion.image}`}
+                              src={
+                                currentQuestion.image.startsWith("http")
+                                  ? currentQuestion.image
+                                  : `${API}${currentQuestion.image.startsWith("/") ? "" : "/"}${currentQuestion.image}`
+                              }
                               alt={`Question ${currentQuestion.questionNumber}`}
                               className="w-full h-auto object-contain bg-zinc-800"
+                              onError={(e) => {
+                                const target = e.currentTarget;
+                                // Fallback strategy: try by questionNumber if group_id filename failed
+                                const altSrc = `${API}/uploads/tests/placement-test/images/part${currentPart.partNumber}/${currentQuestion.questionNumber}.jpg`;
+                                if (target.src !== altSrc) {
+                                  target.src = altSrc;
+                                }
+                              }}
                             />
                           </div>
                         </div>
