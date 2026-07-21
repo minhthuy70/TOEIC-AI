@@ -15,6 +15,7 @@ export class ProfileController {
       body.currentScore,
       body.targetScore,
       body.examDate,
+      body.dailyStudyTime ? Number(body.dailyStudyTime) : undefined,
     );
   }
 }

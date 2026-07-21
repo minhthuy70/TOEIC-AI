@@ -8,6 +8,7 @@ export class ProfileService {
     currentScore: number,
     targetScore: number,
     examDate: string,
+    dailyStudyTime?: number,
   ) {
     return prisma.userProfile.upsert({
       where: {
@@ -18,12 +19,14 @@ export class ProfileService {
         currentScore,
         targetScore,
         examDate: new Date(examDate),
+        dailyStudyTime: dailyStudyTime || null,
         firstLoginCompleted: true,
       },
       update: {
         currentScore,
         targetScore,
         examDate: new Date(examDate),
+        dailyStudyTime: dailyStudyTime || null,
         firstLoginCompleted: true,
       },
     });

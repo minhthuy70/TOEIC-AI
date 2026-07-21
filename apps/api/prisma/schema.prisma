@@ -23,6 +23,7 @@ model UserProfile {
   currentScore        Int?
   targetScore         Int?
   examDate            DateTime?
+  dailyStudyTime      Int?
 
   firstLoginCompleted Boolean  @default(false)
 

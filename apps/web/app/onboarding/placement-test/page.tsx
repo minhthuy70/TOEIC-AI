@@ -516,6 +516,7 @@ export default function PlacementTestPage() {
                       currentScore: score.estimatedScore,
                       targetScore: 990,
                       examDate: new Date(Date.now() + 90 * 24 * 60 * 60 * 1000).toISOString().split("T")[0],
+                      dailyStudyTime: 60,
                     }),
                   }).then(() => {
                     window.location.href = "/dashboard";
