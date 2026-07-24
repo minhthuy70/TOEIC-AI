@@ -18,11 +18,8 @@ interface Word {
 
 export default function VocabularyPage() {
     const [loading, setLoading] = useState(true);
-
     const [mode, setMode] = useState("");
-
     const [words, setWords] = useState<Word[]>([]);
-
     const [index, setIndex] = useState(0);
 
     useEffect(() => {
@@ -32,23 +29,49 @@ export default function VocabularyPage() {
     async function loadWords() {
         try {
             const res = await fetch(
-                "http://localhost:3001/vocabulary/learn?userId=1"
+                "http://localhost:3001/vocabulary/learning/1"
             );
 
             const data = await res.json();
 
-            setMode(data.mode);
-            setWords(data.words);
+            console.log(data);
+
+            setMode(data.mode ?? "");
+            setWords(data.words ?? []);
         } catch (err) {
             console.error(err);
+            setWords([]);
         } finally {
             setLoading(false);
         }
     }
 
+    async function answer(remembered: boolean) {
+        const word = words[index];
+
+        await fetch("http://localhost:3001/vocabulary/learn", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                userId: 1,
+                vocabularyId: word.id,
+                remembered,
+            }),
+        });
+
+        if (index < words.length - 1) {
+            setIndex(index + 1);
+        } else {
+            loadWords();
+            setIndex(0);
+        }
+    }
+
     if (loading) {
         return (
-            <div className="text-white text-center mt-20">
+            <div className="text-center text-white mt-20">
                 Đang tải...
             </div>
         );
@@ -57,7 +80,7 @@ export default function VocabularyPage() {
     if (words.length === 0) {
         return (
             <div className="text-center text-zinc-400 mt-20">
-                Không còn từ để học.
+                Không còn từ để học hôm nay 🎉
             </div>
         );
     }
@@ -88,38 +111,39 @@ export default function VocabularyPage() {
 
                 <div className="text-center">
 
-                    <p className="text-4xl font-bold text-white">
+                    <h1 className="text-5xl font-bold text-white">
                         {word.english}
-                    </p>
+                    </h1>
 
-                    <p className="text-zinc-400 mt-2">
+                    <p className="text-zinc-400 mt-3">
                         {word.pronounce}
                     </p>
 
                     {word.imageUrl && (
                         <img
                             src={word.imageUrl}
-                            className="w-64 h-48 object-cover rounded-xl mx-auto mt-6"
+                            alt={word.english}
+                            className="mx-auto mt-6 w-72 rounded-xl"
                         />
                     )}
 
                     <div className="mt-8">
 
-                        <p className="text-2xl text-red-400 font-semibold">
+                        <h2 className="text-2xl font-bold text-red-400">
                             {word.vietnamese}
-                        </p>
+                        </h2>
 
                         <p className="text-zinc-300 mt-4">
                             {word.explain}
                         </p>
 
-                        <div className="mt-6 text-left bg-zinc-800 rounded-xl p-4">
+                        <div className="mt-6 rounded-xl bg-zinc-800 p-4 text-left">
 
-                            <p className="text-white italic">
+                            <p className="italic text-white">
                                 {word.example}
                             </p>
 
-                            <p className="text-zinc-400 mt-2">
+                            <p className="mt-2 text-zinc-400">
                                 {word.exampleVietnamese}
                             </p>
 
@@ -134,12 +158,14 @@ export default function VocabularyPage() {
             <div className="grid grid-cols-2 gap-4 mt-6">
 
                 <button
+                    onClick={() => answer(false)}
                     className="h-14 rounded-xl bg-red-600 hover:bg-red-700 text-white font-bold"
                 >
                     👎 Chưa nhớ
                 </button>
 
                 <button
+                    onClick={() => answer(true)}
                     className="h-14 rounded-xl bg-green-600 hover:bg-green-700 text-white font-bold"
                 >
                     👍 Đã nhớ

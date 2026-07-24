@@ -15,11 +15,6 @@ export class VocabularyController {
     return this.vocabularyService.healthCheck();
   }
 
-  @Get('learning/:userId')
-  learning(@Param('userId') userId: string) {
-    return this.vocabularyService.learning(Number(userId));
-  }
-
   @Get('today/:userId')
   today(@Param('userId') userId: string) {
     return this.vocabularyService.today(Number(userId));
@@ -35,5 +30,11 @@ export class VocabularyController {
     @Body() dto: ReviewDto,
   ) {
     return this.vocabularyService.review(dto);
+  }
+  @Get('learn/:userId')
+  learnWords(
+    @Param('userId') userId: string,
+  ) {
+    return this.vocabularyService.learnWords(Number(userId));
   }
 }

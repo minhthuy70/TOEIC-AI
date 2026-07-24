@@ -18,7 +18,8 @@ export class VocabularyService {
     };
   }
 
-  async learning(userId: number) {
+  async learnWords(userId: number) {
+
     const profile = await this.prisma.userProfile.findUnique({
       where: {
         userId,
@@ -28,81 +29,77 @@ export class VocabularyService {
     if (!profile) {
       return {
         success: false,
-        message: 'Không tìm thấy hồ sơ học viên',
+        message: "Không tìm thấy người dùng",
       };
     }
 
-    const currentScore = profile.currentScore ?? 0;
-    const targetScore = profile.targetScore ?? 990;
+    const score = profile.currentScore ?? 0;
 
     let currentStage = 1;
 
-    if (currentScore >= 800) {
-      currentStage = 5;
-    } else if (currentScore >= 650) {
-      currentStage = 4;
-    } else if (currentScore >= 500) {
-      currentStage = 3;
-    } else if (currentScore >= 300) {
-      currentStage = 2;
-    }
-
-    const today = new Date();
-
-    today.setHours(0, 0, 0, 0);
-
-    const learnedToday =
-      await this.prisma.userVocabularyProgress.count({
-        where: {
-          userId,
-          learnedAt: {
-            gte: today,
-          },
-        },
-      });
+    if (score >= 800) currentStage = 5;
+    else if (score >= 650) currentStage = 4;
+    else if (score >= 500) currentStage = 3;
+    else if (score >= 300) currentStage = 2;
 
     const reviewWords =
-      await this.prisma.userVocabularyProgress.count({
+      await this.prisma.userVocabularyProgress.findMany({
         where: {
           userId,
           nextReview: {
             lte: new Date(),
           },
         },
+        include: {
+          vocabulary: true,
+        },
+        take: 10,
       });
 
-    const topics =
+    if (reviewWords.length > 0) {
+      return {
+        success: true,
+        mode: "REVIEW",
+        words: reviewWords.map((x) => ({
+          ...x.vocabulary,
+          isReview: true,
+        })),
+      };
+    }
+
+    const learned =
+      await this.prisma.userVocabularyProgress.findMany({
+        where: {
+          userId,
+        },
+        select: {
+          vocabularyId: true,
+        },
+      });
+
+    const learnedIds = learned.map((x) => x.vocabularyId);
+
+    const newWords =
       await this.prisma.vocabulary.findMany({
         where: {
           stage: currentStage,
+          id: {
+            notIn: learnedIds,
+          },
         },
-        distinct: ['topic'],
-        select: {
-          topic: true,
-        },
+        take: 10,
         orderBy: {
-          topic: 'asc',
+          id: "asc",
         },
       });
 
     return {
       success: true,
-
-      currentStage,
-
-      currentScore,
-
-      targetScore,
-
-      learnedToday,
-
-      newWordsLeft: Math.max(10 - learnedToday, 0),
-
-      reviewWords,
-
-      canUnlockNextStage: false,
-
-      topics: topics.map((x) => x.topic),
+      mode: "NEW",
+      words: newWords.map((x) => ({
+        ...x,
+        isReview: false,
+      })),
     };
   }
   async today(userId: number) {
