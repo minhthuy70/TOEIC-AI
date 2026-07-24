@@ -19,22 +19,32 @@ export class VocabularyController {
   today(@Param('userId') userId: string) {
     return this.vocabularyService.today(Number(userId));
   }
+
   @Post('learn')
   learn(
     @Body() dto: LearnDto,
   ) {
     return this.vocabularyService.learn(dto);
   }
+
   @Post('review')
   review(
     @Body() dto: ReviewDto,
   ) {
     return this.vocabularyService.review(dto);
   }
+
   @Get('learn/:userId')
   learnWords(
     @Param('userId') userId: string,
   ) {
     return this.vocabularyService.learnWords(Number(userId));
+  }
+
+  @Get('srs-status/:userId')
+  getSrsStatus(
+    @Param('userId') userId: string,
+  ) {
+    return this.vocabularyService.getSrsStatus(Number(userId));
   }
 }

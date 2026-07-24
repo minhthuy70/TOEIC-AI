@@ -41,7 +41,7 @@ export default function VocabularyPage() {
     async function loadWords(id: number) {
         try {
             const res = await fetch(
-                `http://localhost:3001/vocabulary/learning/${id}`
+                `http://localhost:3001/vocabulary/today/${id}`
             );
 
             const data = await res.json();

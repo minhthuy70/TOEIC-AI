@@ -167,7 +167,7 @@ export class VocabularyService {
     }
 
     // ==========================
-    // 2. Học từ mới
+    // 2. Học từ mới (20 từ/ngày)
     // ==========================
 
     const today = new Date();
@@ -183,7 +183,7 @@ export class VocabularyService {
         },
       });
 
-    const remain = Math.max(10 - learnedToday, 0);
+    const remain = Math.max(20 - learnedToday, 0);
 
     if (remain === 0) {
       return {
@@ -340,6 +340,10 @@ export class VocabularyService {
 
         },
 
+        include: {
+          vocabulary: true,
+        },
+
       });
 
     if (!progress) {
@@ -356,47 +360,61 @@ export class VocabularyService {
 
     const nextLevel = progress.reviewLevel + 1;
 
-    let hours = 0;
+    // ==========================
+    // Kiểm tra nếu user đã mở chặng mới
+    // → từ ở chặng cũ sẽ ôn cách 20 ngày
+    // ==========================
 
-    let days = 0;
+    const profile = await this.prisma.userProfile.findUnique({
+      where: { userId: dto.userId },
+    });
 
-    switch (nextLevel) {
+    const currentScore = profile?.currentScore ?? 0;
+    let userStage = 1;
+    if (currentScore >= 800) userStage = 5;
+    else if (currentScore >= 650) userStage = 4;
+    else if (currentScore >= 500) userStage = 3;
+    else if (currentScore >= 300) userStage = 2;
 
-      case 2:
-        hours = 3;
-        break;
+    const wordStage = progress.vocabulary.stage;
+    const isOldStage = wordStage < userStage;
 
-      case 3:
-        hours = 10;
-        break;
+    let nextReview = new Date();
 
-      case 4:
-        hours = 24;
-        break;
-
-      case 5:
-        days = 3;
-        break;
-
-      default:
-        days = 5;
-        break;
-
+    if (isOldStage && nextLevel >= 6) {
+      // Từ chặng cũ, đã qua level 5 → ôn cách 20 ngày
+      nextReview.setDate(nextReview.getDate() + 20);
+    } else {
+      // Lộ trình SRS chuẩn
+      switch (nextLevel) {
+        case 2:
+          // Lần 2: sau 3 tiếng
+          nextReview.setHours(nextReview.getHours() + 3);
+          break;
+        case 3:
+          // Lần 3: sau 10 tiếng
+          nextReview.setHours(nextReview.getHours() + 10);
+          break;
+        case 4:
+          // Lần 4: sau 24 tiếng
+          nextReview.setHours(nextReview.getHours() + 24);
+          break;
+        case 5:
+          // Lần 5: sau 3 ngày
+          nextReview.setDate(nextReview.getDate() + 3);
+          break;
+        default:
+          // Lần 6+: cách 5 ngày/lần
+          nextReview.setDate(nextReview.getDate() + 5);
+          break;
+      }
     }
 
-    const nextReview = new Date();
-
-    if (hours > 0) {
-
-      nextReview.setHours(nextReview.getHours() + hours);
-
-    }
-
-    if (days > 0) {
-
-      nextReview.setDate(nextReview.getDate() + days);
-
-    }
+    const newStatus = isOldStage && nextLevel >= 6
+      ? 'MASTERED'
+      : nextLevel >= 6
+        ? 'REVIEWING'
+        : 'REVIEWING';
 
     await this.prisma.userVocabularyProgress.update({
 
@@ -426,7 +444,7 @@ export class VocabularyService {
 
         nextReview,
 
-        status: 'REVIEWING',
+        status: newStatus,
 
       },
 
@@ -442,5 +460,147 @@ export class VocabularyService {
 
     };
 
+  }
+
+  // ==========================
+  // SRS Dashboard Status
+  // ==========================
+  async getSrsStatus(userId: number) {
+    const profile = await this.prisma.userProfile.findUnique({
+      where: { userId },
+    });
+
+    if (!profile) {
+      return { success: false, message: 'Không tìm thấy học viên' };
+    }
+
+    const currentScore = profile.currentScore ?? 0;
+    let stage = 1;
+    if (currentScore >= 800) stage = 5;
+    else if (currentScore >= 650) stage = 4;
+    else if (currentScore >= 500) stage = 3;
+    else if (currentScore >= 300) stage = 2;
+
+    const now = new Date();
+    const todayStart = new Date();
+    todayStart.setHours(0, 0, 0, 0);
+
+    // Số từ đã học hôm nay
+    const learnedToday = await this.prisma.userVocabularyProgress.count({
+      where: {
+        userId,
+        learnedAt: { gte: todayStart },
+      },
+    });
+
+    // Tổng từ đã học
+    const totalLearned = await this.prisma.userVocabularyProgress.count({
+      where: { userId },
+    });
+
+    // Từ cần ôn ngay
+    const reviewNow = await this.prisma.userVocabularyProgress.count({
+      where: {
+        userId,
+        nextReview: { lte: now },
+      },
+    });
+
+    // Lịch ôn tiếp theo
+    const nextReviewRecord = await this.prisma.userVocabularyProgress.findFirst({
+      where: {
+        userId,
+        nextReview: { gt: now },
+      },
+      orderBy: { nextReview: 'asc' },
+      select: { nextReview: true },
+    });
+
+    // Đếm theo SRS level
+    const levelStats = await this.prisma.userVocabularyProgress.groupBy({
+      by: ['reviewLevel'],
+      where: { userId },
+      _count: { id: true },
+    });
+
+    // Đếm từ MASTERED
+    const masteredCount = await this.prisma.userVocabularyProgress.count({
+      where: {
+        userId,
+        status: 'MASTERED',
+      },
+    });
+
+    // Đếm từ đang REVIEWING
+    const reviewingCount = await this.prisma.userVocabularyProgress.count({
+      where: {
+        userId,
+        status: 'REVIEWING',
+      },
+    });
+
+    // Streak: đếm số ngày liên tục có học
+    let streak = 0;
+    const checkDate = new Date();
+    checkDate.setHours(0, 0, 0, 0);
+
+    for (let i = 0; i < 365; i++) {
+      const dayStart = new Date(checkDate);
+      const dayEnd = new Date(checkDate);
+      dayEnd.setHours(23, 59, 59, 999);
+
+      const count = await this.prisma.userVocabularyProgress.count({
+        where: {
+          userId,
+          learnedAt: {
+            gte: dayStart,
+            lte: dayEnd,
+          },
+        },
+      });
+
+      if (count > 0) {
+        streak++;
+        checkDate.setDate(checkDate.getDate() - 1);
+      } else {
+        break;
+      }
+    }
+
+    // Tổng từ trong chặng hiện tại
+    const totalWordsInStage = await this.prisma.vocabulary.count({
+      where: { stage },
+    });
+
+    // Từ đã học trong chặng hiện tại
+    const learnedInStage = await this.prisma.userVocabularyProgress.count({
+      where: {
+        userId,
+        vocabulary: { stage },
+      },
+    });
+
+    // Phân bố level SRS
+    const srsLevels = {};
+    for (const stat of levelStats) {
+      srsLevels[`level_${stat.reviewLevel}`] = stat._count.id;
+    }
+
+    return {
+      success: true,
+      stage,
+      learnedToday,
+      dailyGoal: 20,
+      remainToday: Math.max(20 - learnedToday, 0),
+      totalLearned,
+      reviewNow,
+      nextReview: nextReviewRecord?.nextReview || null,
+      masteredCount,
+      reviewingCount,
+      streak,
+      totalWordsInStage,
+      learnedInStage,
+      srsLevels,
+    };
   }
 }
