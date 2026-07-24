@@ -8,14 +8,17 @@ export class VocabularyController {
   ) { }
 
   @Get('health')
-  async health() {
+  health() {
     return this.vocabularyService.healthCheck();
   }
 
   @Get('learning/:userId')
-  async learning(
-    @Param('userId') userId: string,
-  ) {
+  learning(@Param('userId') userId: string) {
     return this.vocabularyService.learning(Number(userId));
+  }
+
+  @Get('today/:userId')
+  today(@Param('userId') userId: string) {
+    return this.vocabularyService.today(Number(userId));
   }
 }
