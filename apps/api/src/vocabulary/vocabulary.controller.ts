@@ -1,5 +1,7 @@
 import { Controller, Get, Param } from '@nestjs/common';
 import { VocabularyService } from './vocabulary.service';
+import { Body, Post } from '@nestjs/common';
+import { LearnDto } from './dto/learn.dto';
 
 @Controller('vocabulary')
 export class VocabularyController {
@@ -20,5 +22,11 @@ export class VocabularyController {
   @Get('today/:userId')
   today(@Param('userId') userId: string) {
     return this.vocabularyService.today(Number(userId));
+  }
+  @Post('learn')
+  learn(
+    @Body() dto: LearnDto,
+  ) {
+    return this.vocabularyService.learn(dto);
   }
 }

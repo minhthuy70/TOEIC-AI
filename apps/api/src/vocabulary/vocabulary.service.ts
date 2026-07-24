@@ -1,5 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { PrismaService } from '../prisma/prisma.service';
+import { LearnDto } from './dto/learn.dto';
 
 @Injectable()
 export class VocabularyService {
@@ -260,5 +261,68 @@ export class VocabularyService {
         isReview: true,
       })),
     };
+  }
+  async learn(dto: LearnDto) {
+
+    const exist =
+      await this.prisma.userVocabularyProgress.findUnique({
+
+        where: {
+          userId_vocabularyId: {
+            userId: dto.userId,
+            vocabularyId: dto.vocabularyId,
+          },
+        },
+
+      });
+
+    if (exist) {
+
+      return {
+        success: true,
+        message: 'Đã học từ này trước đó',
+      };
+
+    }
+
+    const now = new Date();
+
+    const nextReview =
+      new Date(now.getTime() + 30 * 60 * 1000);
+
+    await this.prisma.userVocabularyProgress.create({
+
+      data: {
+
+        userId: dto.userId,
+
+        vocabularyId: dto.vocabularyId,
+
+        status: 'LEARNING',
+
+        reviewLevel: 1,
+
+        reviewCount: 1,
+
+        learnedAt: now,
+
+        lastReview: now,
+
+        nextReview,
+
+      },
+
+    });
+
+    return {
+
+      success: true,
+
+      message: 'Đã lưu tiến trình học',
+
+      nextReview,
+
+    };
+
   }
 }
