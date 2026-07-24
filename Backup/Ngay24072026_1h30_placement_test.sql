@@ -2,7 +2,7 @@
 -- PostgreSQL database dump
 --
 
-\restrict nSzVOOQ392MhQBMuz1K0c3vaHgk8SnPA7ncNI7r2qxVeQUMaUUxiRqgznqOAgf3
+\restrict ZvVZYhDhnfzUhtEVtYBasyIXepHMSs6exjwYtswIkQVLb1UQdDQWq8O2TQp1It7
 
 -- Dumped from database version 17.10
 -- Dumped by pg_dump version 17.10
@@ -488,6 +488,7 @@ ALTER TABLE ONLY public.tests ALTER COLUMN id SET DEFAULT nextval('public.tests_
 --
 
 COPY public."User" (id, "fullName", email, password, "createdAt") FROM stdin;
+1	user1	user1@gmail.com	$2b$10$wQblVvUA0v.4gJ9ejghpPenYmfIaFVNgdyr1U./i6HZ4Qa7qXR53u	2026-07-24 06:16:24.669
 \.
 
 
@@ -496,6 +497,7 @@ COPY public."User" (id, "fullName", email, password, "createdAt") FROM stdin;
 --
 
 COPY public."UserProfile" (id, "currentScore", "targetScore", "examDate", "dailyStudyTime", "firstLoginCompleted", "userId", "createdAt", "updatedAt") FROM stdin;
+1	100	648	2030-10-11 00:00:00	120	t	1	2026-07-24 06:16:24.669	2026-07-24 06:16:55.605
 \.
 
 
@@ -1548,7 +1550,7 @@ COPY public.tests (id, title, duration, total_questions, created_at, description
 -- Name: UserProfile_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public."UserProfile_id_seq"', 1, false);
+SELECT pg_catalog.setval('public."UserProfile_id_seq"', 2, true);
 
 
 --
@@ -1562,7 +1564,7 @@ SELECT pg_catalog.setval('public."UserVocabulary_id_seq"', 1, false);
 -- Name: User_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public."User_id_seq"', 1, false);
+SELECT pg_catalog.setval('public."User_id_seq"', 1, true);
 
 
 --
@@ -1782,5 +1784,5 @@ REVOKE USAGE ON SCHEMA public FROM PUBLIC;
 -- PostgreSQL database dump complete
 --
 
-\unrestrict nSzVOOQ392MhQBMuz1K0c3vaHgk8SnPA7ncNI7r2qxVeQUMaUUxiRqgznqOAgf3
+\unrestrict ZvVZYhDhnfzUhtEVtYBasyIXepHMSs6exjwYtswIkQVLb1UQdDQWq8O2TQp1It7
 
