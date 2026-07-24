@@ -2,7 +2,7 @@
 -- PostgreSQL database dump
 --
 
-\restrict IrSb3NRkeG8jmQScYnpdP6erWSVacbHcvnbHFX05lXVwe2Gzuvd31VU6c2HpI6L
+\restrict cRBe940TSdSBQmCsxSNuUzfPY0BdUK8hvW0Rd0HQmxaOakg1OIp75FZhmAvVzpi
 
 -- Dumped from database version 17.10
 -- Dumped by pg_dump version 17.10
@@ -294,6 +294,49 @@ ALTER SEQUENCE public.tests_id_seq OWNED BY public.tests.id;
 
 
 --
+-- Name: user_vocabulary_progress; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.user_vocabulary_progress (
+    id integer NOT NULL,
+    user_id integer NOT NULL,
+    vocabulary_id integer NOT NULL,
+    learned_at timestamp without time zone,
+    review_count integer DEFAULT 0,
+    next_review timestamp without time zone,
+    created_at timestamp without time zone DEFAULT now(),
+    status character varying(20) DEFAULT 'NEW'::character varying NOT NULL,
+    review_level smallint DEFAULT 0 NOT NULL,
+    last_review timestamp without time zone,
+    updated_at timestamp without time zone DEFAULT now()
+);
+
+
+ALTER TABLE public.user_vocabulary_progress OWNER TO postgres;
+
+--
+-- Name: user_vocabulary_progress_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public.user_vocabulary_progress_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER SEQUENCE public.user_vocabulary_progress_id_seq OWNER TO postgres;
+
+--
+-- Name: user_vocabulary_progress_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public.user_vocabulary_progress_id_seq OWNED BY public.user_vocabulary_progress.id;
+
+
+--
 -- Name: vocabulary; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -380,6 +423,13 @@ ALTER TABLE ONLY public.questions ALTER COLUMN id SET DEFAULT nextval('public.qu
 --
 
 ALTER TABLE ONLY public.tests ALTER COLUMN id SET DEFAULT nextval('public.tests_id_seq'::regclass);
+
+
+--
+-- Name: user_vocabulary_progress id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.user_vocabulary_progress ALTER COLUMN id SET DEFAULT nextval('public.user_vocabulary_progress_id_seq'::regclass);
 
 
 --
@@ -1429,6 +1479,14 @@ COPY public.tests (id, title, duration, total_questions, created_at, description
 
 
 --
+-- Data for Name: user_vocabulary_progress; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.user_vocabulary_progress (id, user_id, vocabulary_id, learned_at, review_count, next_review, created_at, status, review_level, last_review, updated_at) FROM stdin;
+\.
+
+
+--
 -- Data for Name: vocabulary; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
@@ -2417,6 +2475,13 @@ SELECT pg_catalog.setval('public.tests_id_seq', 1, true);
 
 
 --
+-- Name: user_vocabulary_progress_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.user_vocabulary_progress_id_seq', 1, false);
+
+
+--
 -- Name: vocabulary_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
@@ -2477,6 +2542,22 @@ ALTER TABLE ONLY public.questions
 
 ALTER TABLE ONLY public.tests
     ADD CONSTRAINT tests_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: user_vocabulary_progress user_vocabulary_progress_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.user_vocabulary_progress
+    ADD CONSTRAINT user_vocabulary_progress_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: user_vocabulary_progress user_vocabulary_progress_user_id_vocabulary_id_key; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.user_vocabulary_progress
+    ADD CONSTRAINT user_vocabulary_progress_user_id_vocabulary_id_key UNIQUE (user_id, vocabulary_id);
 
 
 --
@@ -2544,5 +2625,5 @@ REVOKE USAGE ON SCHEMA public FROM PUBLIC;
 -- PostgreSQL database dump complete
 --
 
-\unrestrict IrSb3NRkeG8jmQScYnpdP6erWSVacbHcvnbHFX05lXVwe2Gzuvd31VU6c2HpI6L
+\unrestrict cRBe940TSdSBQmCsxSNuUzfPY0BdUK8hvW0Rd0HQmxaOakg1OIp75FZhmAvVzpi
 
