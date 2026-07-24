@@ -1,0 +1,489 @@
+id,test_id,part,title,passage,image_url,audio_url,display_order,group_type,audio_start_time,audio_end_time
+1,1,1,,,images/part1/1.jpg,,1,IMAGE,,
+2,1,1,,,images/part1/2.jpg,,2,IMAGE,,
+3,1,1,,,images/part1/3.jpg,,3,IMAGE,,
+4,1,1,,,images/part1/4.jpg,,4,IMAGE,,
+5,1,1,,,images/part1/5.jpg,,5,IMAGE,,
+6,1,1,,,images/part1/6.jpg,,6,IMAGE,,
+7,1,2,,,,audio/placement-test.mp3,7,AUDIO,,
+8,1,2,,,,audio/placement-test.mp3,8,AUDIO,,
+9,1,2,,,,audio/placement-test.mp3,9,AUDIO,,
+10,1,2,,,,audio/placement-test.mp3,10,AUDIO,,
+11,1,2,,,,audio/placement-test.mp3,11,AUDIO,,
+12,1,2,,,,audio/placement-test.mp3,12,AUDIO,,
+13,1,2,,,,audio/placement-test.mp3,13,AUDIO,,
+14,1,2,,,,audio/placement-test.mp3,14,AUDIO,,
+15,1,2,,,,audio/placement-test.mp3,15,AUDIO,,
+16,1,2,,,,audio/placement-test.mp3,16,AUDIO,,
+17,1,2,,,,audio/placement-test.mp3,17,AUDIO,,
+18,1,2,,,,audio/placement-test.mp3,18,AUDIO,,
+19,1,2,,,,audio/placement-test.mp3,19,AUDIO,,
+20,1,2,,,,audio/placement-test.mp3,20,AUDIO,,
+21,1,2,,,,audio/placement-test.mp3,21,AUDIO,,
+22,1,2,,,,audio/placement-test.mp3,22,AUDIO,,
+23,1,2,,,,audio/placement-test.mp3,23,AUDIO,,
+24,1,2,,,,audio/placement-test.mp3,24,AUDIO,,
+25,1,2,,,,audio/placement-test.mp3,25,AUDIO,,
+26,1,2,,,,audio/placement-test.mp3,26,AUDIO,,
+27,1,2,,,,audio/placement-test.mp3,27,AUDIO,,
+28,1,2,,,,audio/placement-test.mp3,28,AUDIO,,
+29,1,2,,,,audio/placement-test.mp3,29,AUDIO,,
+30,1,2,,,,audio/placement-test.mp3,30,AUDIO,,
+31,1,2,,,,audio/placement-test.mp3,31,AUDIO,,
+32,1,3,,,,audio/placement-test.mp3,1,AUDIO,,
+33,1,3,,,,audio/placement-test.mp3,2,AUDIO,,
+34,1,3,,,,audio/placement-test.mp3,3,AUDIO,,
+35,1,3,,,,audio/placement-test.mp3,4,AUDIO,,
+36,1,3,,,,audio/placement-test.mp3,5,AUDIO,,
+37,1,3,,,,audio/placement-test.mp3,6,AUDIO,,
+38,1,3,,,,audio/placement-test.mp3,7,AUDIO,,
+39,1,3,,,,audio/placement-test.mp3,8,AUDIO,,
+40,1,3,,,,audio/placement-test.mp3,9,AUDIO,,
+41,1,3,,,,audio/placement-test.mp3,10,AUDIO,,
+43,1,3,,,images/part3/43.jpg,audio/placement-test.mp3,12,AUDIO,,
+44,1,3,,,images/part3/44.jpg,audio/placement-test.mp3,13,AUDIO,,
+42,1,3,,,images/part3/42.jpg,audio/placement-test.mp3,11,AUDIO,,
+45,1,4,,,,audio/placement-test.mp3,1,AUDIO,0,0
+46,1,4,,,,audio/placement-test.mp3,2,AUDIO,0,0
+47,1,4,,,,audio/placement-test.mp3,3,AUDIO,0,0
+48,1,4,,,,audio/placement-test.mp3,4,AUDIO,0,0
+49,1,4,,,,audio/placement-test.mp3,5,AUDIO,0,0
+50,1,4,,,,audio/placement-test.mp3,6,AUDIO,0,0
+51,1,4,,,,audio/placement-test.mp3,7,AUDIO,0,0
+52,1,4,,,,audio/placement-test.mp3,8,AUDIO,0,0
+53,1,4,,,images/part4/95_97.jpg,audio/placement-test.mp3,9,AUDIO,0,0
+54,1,4,,,images/part4/98_100.jpg,audio/placement-test.mp3,10,AUDIO,0,0
+55,1,5,Question 101,,,,1,READING,0,0
+56,1,5,Question 102,,,,2,READING,0,0
+57,1,5,Question 103,,,,3,READING,0,0
+58,1,5,Question 104,,,,4,READING,0,0
+59,1,5,Question 105,,,,5,READING,0,0
+60,1,5,Question 106,,,,6,READING,0,0
+61,1,5,Question 107,,,,7,READING,0,0
+62,1,5,Question 108,,,,8,READING,0,0
+63,1,5,Question 109,,,,9,READING,0,0
+64,1,5,Question 110,,,,10,READING,0,0
+65,1,5,Question 111,,,,11,READING,0,0
+66,1,5,Question 112,,,,12,READING,0,0
+67,1,5,Question 113,,,,13,READING,0,0
+68,1,5,Question 114,,,,14,READING,0,0
+69,1,5,Question 115,,,,15,READING,0,0
+70,1,5,Question 116,,,,16,READING,0,0
+71,1,5,Question 117,,,,17,READING,0,0
+72,1,5,Question 118,,,,18,READING,0,0
+73,1,5,Question 119,,,,19,READING,0,0
+74,1,5,Question 120,,,,20,READING,0,0
+75,1,5,Question 121,,,,21,READING,0,0
+76,1,5,Question 122,,,,22,READING,0,0
+77,1,5,Question 123,,,,23,READING,0,0
+78,1,5,Question 124,,,,24,READING,0,0
+79,1,5,Question 125,,,,25,READING,0,0
+80,1,5,Question 126,,,,26,READING,0,0
+81,1,5,Question 127,,,,27,READING,0,0
+82,1,5,Question 128,,,,28,READING,0,0
+83,1,5,Question 129,,,,29,READING,0,0
+84,1,5,Question 130,,,,30,READING,0,0
+85,1,6,Questions 131-134,"Local Barbershop Wins State Competition
+
+By Miranda Warren
+
+MALENDA COUNTY (January 12)—Pat and Kenny's Barbershop, [131] at 3949 Grand Street, has been named the best barbershop in the state by the Barber and Hairdresser's Coalition. The criteria for selection include reputation, affordability, professionalism, and accreditations.
+
+[132].
+
+Founders and owners Kenneth Webber and Patrick Miller have been best friends since childhood. [133] opened the shop 34 years ago. [134] the shop retains its old-fashioned charm, the barbers have mastered the latest styles, not just the more traditional ones. People of all ages seeking a haircut or a new style should try Pat and Kenny's Barbershop.",,,31,READING,0,0
+86,1,6,Questions 135-138,"Gasgo Propane Tank Exchange
+
+You have chosen a safe and [135] way to obtain fuel for your stoves, grills, heaters, fireplaces, or other devices. Simply follow the directions [136].
+
+When your tank runs out of propane, take it to our store and leave it on one of the clearly marked green shelves outside the store. [137]. Then, pay the cashier inside the store for a fresh tank of propane. Next, the cashier or another staff member will accompany you to the outdoor exchange area. The staff person will give you a full tank to take home and provide help if you have multiple tanks to carry. Follow the instructions on the tank to connect it to your device.
+
+Be sure to visit us again when you need a [138].",,,32,READING,0,0
+87,1,6,Questions 139-142,"To: Technicarn Enterprises Customers
+From: Technicarn Enterprises Customer Service
+Date: 10 September
+Subject: Serving You
+
+Dear Valued Customer:
+
+We want your [139] with Technicarn Enterprises to be easy and enjoyable. To that end, we are pleased to announce our newly designed Web site, with enhanced customer-friendly features.
+
+Our new Web site provides answers to your questions 24 hours a day, every day of the year.
+
+On our home page, you can get information about system setup, or you can troubleshoot by visiting [140] the Internet Issues or TV and Streaming Issues pages. [141], you can find detailed information concerning account management, access, billing, and payment.
+
+[142]. Please explore the new Web site at your earliest convenience: www.technicarnenterprises.com. As always, thank you for allowing us to serve you.
+
+Best regards,
+
+The Technicarn Enterprises Customer Service Team",,,33,READING,0,0
+88,1,6,Questions 143-146,"Garner City Transport Cares About the Environment
+
+Beginning May 1, the sale and use of paper tickets and transit passes will be [143] on all Garner City Transport bus and subway lines. This change applies to single-ride tickets [144] to weekly and monthly passes. Eliminating paper benefits the environment and leads to less litter.
+
+Riders can download the free Garner City Transport app. With the app, they can add money their accounts, purchase tickets, plan [145], and track arrival and departure times.
+
+Alternatively, passengers can purchase a rechargeable transit card at any station. [146]. Value can be added to the card via the Garner City Transport Web site at www.garnercitytransport.org.",,,34,READING,0,0
+89,1,7,Questions 147-148,"Advertisement
+
+Harbis Stationery Store Clearance Sale
+
+Prices indicated are for in-store purchases only.
+
+500 Pinstone Street / SHEFFIELD / S12HN
+
+Seasonal items
+
+• Box of ten preprinted seasonal cards (25% off) ........ £8.99
+• Box of five customizable seasonal cards or invitations (50% off) ........ £11.99
+
+All school supplies 10% off
+
+• Box of 24 pens ........ £1.79
+• Desk lamp ........ £19.99
+• Wireless mouse ........ £17.99
+• Backpack ........ £29.99
+
+Visit Harbis Stationery at www.harbisstationery.uk",,,1,READING,0,0
+90,1,7,Questions 149-150,"E-Mail
+
+To: Wenbin Peng <wpeng@chenconstruction.com>
+From: Toshi Auto Group <cs@toshiautogroup.com>
+Date: February 26
+Subject: Your leased vehicle
+
+Dear Mr. Peng:
+
+As you know, Toshi Auto Group handles all the service needs for cars leased by employees of Chen Construction. According to our records, you took possession of your leased car on March 1 of last year. Your car is now due for its required annual service and maintenance check. To book your appointment, please call us at (215) 555-0109 or visit us online at www.toshiautogroup.com/serviceappointments.
+
+Sincerely,
+
+Toshi Auto Group
+Customer Service",,,2,READING,0,0
+91,1,7,Questions 151-153,"Article
+
+LONDON (2 February)—On Thursday, Tillford Press announced the launch of its new imprint, Tillford Exalt. This new series will feature books promoting healthy lifestyles, memoirs with uplifting messages, and volumes that provide guidance for special occasions such as birthdays and weddings. Tillford Exalt will also publish calendars and greeting cards that complement the main products.
+
+Already contracted to write memoirs are award-winning actress Alexia Leoz, award-winning conductor and composer Seung-Hyun Bae, and celebrity cook Lain Lai. Ms. Lai's story of her life and career will be the first to be launched. It is set for release in December.
+
+Tillford vice president Frederick Bissett said the company saw a need for books that celebrated accomplishments and life events from multiple perspectives. ""We wanted authors from a wide variety of cultural backgrounds, and we think we're off to a great start,"" he said. He noted that Tillford Exalt's authors were not always famous; the books will be exploring their beginnings, their everyday lives, their first jobs, their marriages—and their achievements.
+
+Tillford Press is based in Manchester. It has offices in New York, Toronto, and Sydney, but its publications are sold throughout the world.",,,3,READING,0,0
+92,1,7,Questions 154-155,"Text-message chain
+
+Greg Skagen (8:58 A.M.): Hi, Brenda. I'm here in the warehouse. All of my trainees have arrived, but I noticed the power door at Loading Dock B is acting up.
+
+Brenda Sadauskas (8:59 A.M.): Again?
+
+Greg Skagen (8:59 A.M.): When I push the button to open it, it raises all the way up but then drops back down to the closed position after about 30 seconds.
+
+Brenda Sadauskas (9:00 A.M.): I'll come down with the maintenance technicians. Why don't you bring your trainees to my area? You can teach them how to create shipping labels and then have them pack and label this morning's shipments.
+
+Greg Skagen (9:02 A.M.): Yes, that works.
+
+Brenda Sadauskas (9:03 A.M.): Thanks. Then you could show them the loading dock operations in the afternoon.",,,4,READING,0,0
+93,1,7,Questions 156-157,"Service Request Form
+
+Complete all fields and deliver to Technology Services (room 412).
+
+Requester Name: Elenor Deckow
+
+Requester Office: Room 718
+
+Requester Phone: Ext. 5709
+
+Service Location: Room 500
+
+Service Type (choose one): Repair
+
+Description of Request
+
+There is a problem with the television audio. When I played an online video, the image was fine, but I could not hear anything. I checked all the settings, and I was able to hear the same video on other televisions with no problem.
+
+I'm supposed to deliver a product demonstration for a client in room 500 next Monday, so I would greatly appreciate it if the issue can be fixed by this Friday.",,,5,READING,0,0
+94,1,7,Questions 158-161,"Text-message chain
+
+Ella Glatt (11:34 A.M.)
+Hi. I know this is a busy day, but I wanted to know whether anyone from the finance team could come to the marketing meeting.
+
+Stef Goldberg (11:35 A.M.)
+Hi, Ella. I wish I could, but it starts at 2:00. I need to be at a different meeting at 2:30.
+
+Ella Glatt (11:36 A.M.)
+Oh, right. I forgot you were going to the executive board meeting.
+
+Daniel Seidal (11:36 A.M.)
+I'm also supposed to go to the 2:30 meeting. Is it essential that one of us attend the marketing meeting?
+
+Ella Glatt (11:37 A.M.)
+Well, it would be helpful to have someone from the finance department there at least for 15 minutes or so.
+
+Bill Iverman (11:38 A.M.)
+The quarterly reports just came in, and Daniel, Stef, and I need to review them by the end of the day.
+
+Ella Glatt (11:39 A.M.)
+You all have plenty to do.
+
+Daniel Seidal (11:41 A.M.)
+That's true! But I could come from 2:00 to 2:15. That's all I can commit to.
+
+Ella Glatt (11:43 A.M.)
+Sounds great. We just need one of you to clarify a few quick points about the budget for the next advertising campaign.",,,6,READING,0,0
+95,1,7,Questions 162-165,"E-Mail
+
+To: amal.abboud@bunzifoundation.org
+From: maria_mcfarland@myemail.com
+Date: Thursday, August 22
+Subject: Project Coordinator Position
+Attachment: résumé_m.mcfarland.pdf
+
+Dear Mr. Abboud,
+
+My friend Josiah Wilkins told me that you are seeking a project coordinator for your company. I have a degree in business administration and am attaching my résumé as I think I am an excellent fit for your needs. As you will see, I have experience using several cloud-based project-management programs. Furthermore, my organizational skills enable me to coordinate multiple activities simultaneously, and I can convey expectations clearly to team members involved in each phase of a project.
+
+My current role as project coordinator for an international engineering firm, where I have worked for the past five years, has also afforded me ample experience managing teams, schedules, and budgets. While I enjoy the kind of work I do, it has become clear to me that I need motivation from a strong mission. The goal of your company to create sustainable housing projects is something that I strongly support and would be delighted to work on.
+
+Through my work and volunteer activities, I have spent many months abroad in various countries throughout Asia and the Middle East. This seems particularly relevant to mention, as I am comfortable leading geographically and culturally diverse teams.
+
+Thank you for your attention, and I look forward to speaking with you soon.
+
+Kind regards,
+
+Maria McFarland",,,7,READING,0,0
+96,1,7,Questions 166-168,"Web Page
+
+https://trexdale.com/aboutus
+
+About Our Company
+
+Trexdale Supply specializes in designing, producing, and installing furniture for all types of scientific laboratories. We provide a range of fully assembled cabinets, workstations, benches, and more, all made exclusively at our production facility in Dallas, Texas. Our lab furniture is available in a wide variety of sizes and configurations to match the needs of any research application.
+
+Our business offers products as well as design-consulting services. For start-up labs, we have a team of consulting specialists available to evaluate your facility's specific needs and assist you in arranging your space and choosing the most suitable furniture. Recently, for example, we were chosen by a major producer of biofuels to provide expert help in changing the layout of a research laboratory to maximize available space. As a result of this project, this client has realized substantial savings by reducing energy usage in the lab.
+
+Please visit the ""Lab Planning"" section of this Web site if you are interested in learning more about building or renovating a laboratory facility. There, you can fill out an interest form to contact one of our consultants about your next project.",,,8,READING,0,0
+97,1,7,Questions 169-171,"Job Advertisement
+
+PRODUCT DEMONSTRATORS NEEDED!
+
+Are you outgoing and enthusiastic? -- [1] --. Do you enjoy talking to all types of people? Put your personality and communication skills to work! -- [2] --. BBD Staffing is seeking to hire in-store product demonstrators to promote our clients' merchandise to shoppers. -- [3] --. As a member of our team, you will demonstrate a wide range of small kitchen appliances and tools in grocery stores and other retail venues.
+
+For some products, you will be required to prepare simple recipes. You will also need to answer shoppers' questions. Thus, it is essential that you can become familiar with clients' products and provide key information to consumers. Because many of the demonstrations require working with food, candidates must have a Professional Food Handler certificate. -- [4] --.
+
+To apply, upload a video of no more than one minute in length telling us why you would be a successful product demonstrator at www.bbdstaffing.com/applications.",,,9,READING,0,0
+98,1,7,Questions 172-175,"Article
+
+Gorman Unveils Newest Smartphone Model
+
+LONDON (20 April)—Gorman Mobile unveiled its newest smartphone to an eager reception at the annual Technobrit Conference. The Pro Phone 4, which includes 512 GB of storage, a 7-inch screen display, and an optional stylus pen, will hit the shelves on 11 June. Unlike its predecessor—the Pro Phone 3—it features a larger screen, an ultrawide camera lens, and 8K-resolution filming capability.
+
+-- [1] --. The £999 starting price is £100 more than that of the previous model. Add-ons, such as the stylus pen, protective case, and wireless headphones, cost an additional £39, £59, and £79, respectively.
+
+Gorman Product Manager Ian Hill doesn't believe the price increase will dissuade customers. -- [2] --.
+
+""The Pro Phone 4 is a game changer in terms of its picture quality and sleek design,"" said Hill. ""Improvements were based on direct customer feedback, which cited the poor camera functionality as the biggest drawback of prior models. Our clients spoke, and we listened and adapted accordingly.""
+
+-- [3] --.
+
+""One similarity that the Pro Phone 4 has with previous models is the charger. Going against the trend of competing wireless companies, Gorman is instead focusing on convenience.
+
+""We want to afford our customers the ability to reuse elements of the other Gorman devices they've already purchased,"" said Hill. ""Why add to the overload of cables already in circulation?"" -- [4] --.",,,10,READING,0,0
+99,1,7,Questions 176-180,"Work Order
+
+WORK ORDER: 7549
+
+Requester: Xi, Gina
+Date Entered: Wednesday, 9 April
+Date Due: Thursday, 10 April
+Type: Technology end-user request
+Summary: Voice-mail security settings
+Technician Assigned: Arnold, Sam
+Computer Workstation ID: HYS31
+
+Description:
+
+Is it possible to remove the new layers of security on my voice mail in the new phone system? I really don't want to use a password, and I certainly don't want to change it every month. I don't need a high degree of security because my work is not confidential. If someone else gained access to my messages, it wouldn't do much harm.
+
+E-Mail
+
+To: Gina Xi
+From: Sam Arnold
+Date: Thursday, 10 April
+Subject: Tech support request 7549
+
+Hello, Ms. Xi,
+
+This is in reference to your work order 7549 related to the new phone system. I am happy to help you with that. I understand that you do not feel that a high degree of security is needed for your voice-mail settings, but the new system does require you to have a password to retrieve your voice mail. However, company policy allows me to change the settings for employees who do not work with confidential material. I can reduce the security settings so that you do not have to reset the password on a regular basis.
+
+I want to make sure that you understand the risk involved with a lower level of security. Anyone who gains access to your voice-mail account can do more than simply listen to your messages. They would be able to delete messages, change your greeting, or change your password so that you would lose access to your own voice mail (at least until someone here at IT could override the password change). If you still feel comfortable with that level of risk, let me know, and I will change the settings so that your password never expires.
+
+Sam Arnold
+
+Tech Support Associate",,,11,READING,0,0
+100,1,7,Questions 181-185,"E-Mail
+
+To: Linda Hanshu
+From: Cliff Merson
+Subject: Lighting Issue
+Date: September 4, 10:12 A.M.
+
+Hi, Ms. Hanshu:
+
+I want to check on the issue we discussed about lighting in the latest chapter of Titan Adventure. In past versions of the game, getting the reflections and lighting in green and blue areas correct has been a particular challenge, and it was a problem that kept arising. As the new release, Neptune's Voyage, is primarily an underwater adventure, addressing this problem is crucial. You said you would take charge of this, and I hope to hear that you have found a solution to the problem. The team was hoping to have one last rendering of the lighting for the game by October 10 for a preliminary run-through. Will the final version of the lighting be ready by then?
+
+All other aspects of the game are on schedule. Please send me an update about the lighting at your earliest convenience.
+
+Regards,
+
+Cliff Merson
+Project Manager, Rimerko Games
+
+Review
+
+Review of Titan Adventure: Neptune's Voyage
+By Leo Weber, April 1
+
+This new installment of Titan Adventure will surprise and delight both new players and old aficionados long familiar with the series. Though open-world formats have been widespread in recent years, Neptune's Voyage brings something new to the format. By stripping down instructional guides, the game gives users the opportunity to discover new areas and devices. In Neptune's Voyage, you wake up as Thetis, a dolphin that is tasked with rescuing Neptune from an underwater cave. Users then climb, run, ride, sail, and fly through the world of the game, encountering new towns, ruins, and other creatures along the way. Some of these creatures will be familiar to longtime fans, but there is plenty of novelty as well. This newest version also corrects the green and blue image rendering that was sometimes a problem in earlier installments of Titan Adventure.
+
+Neptune's Voyage launches May 5 on Rimerko Clutch and FS5. It is available in English, Korean, Japanese, French, and Spanish.",,,12,READING,0,0
+101,1,7,Questions 186-190,"Wonder Ridge Radio Broadcast Schedule, Monday–Friday
+
+6 A.M.–Noon
+COFFEE BREAK
+Local news and interviews with community members
+Host: Felice Finney
+
+Noon–4 P.M.
+AFTERNOON JAZZ
+Music from traditional jazz to jazz fusion
+Host: Malachi Mzee
+
+4 P.M.–7 P.M.
+FOLK FRENZY
+Folk music from around the world
+Host: Penny Ariza
+
+7 P.M.–10 P.M.
+JOSIE'S JOINT
+Modern sounds selected by our station's own music director
+Host: Josie Jones
+
+E-Mail
+
+To: feedback@wonderridgeradio.org
+From: pfabre@sendmail.net
+Subject: My new radio station!
+Date: October 22
+
+To the folks at Wonder Ridge Radio:
+
+As I was driving last week, I got tired of listening to sports talk and turned the dial. Suddenly, my car was filled with a song that I hadn't heard in many years. It was a traditional music from France, where my grandmother was born. She used to play that song when I was a child. I never expected to hear it on the radio here in Wonder Ridge. Thanks for this experience and for all your great programs.
+
+Your new fan,
+
+Pierre Fabre
+
+Wonder Ridge Radio Job Opening: Programming Assistant
+
+Posted November 2
+
+Job Description
+
+The programming assistant reports to the director of programming and supports the radio station by performing a variety of research and communication functions. This role is an entry-level, part-time position.
+
+Responsibilities
+
+• Conducting background research on interviewees
+• Keeping up-to-date on news and news makers in order to suggest potential topics and guests for on-air interviews
+• Updating the station's Web site and program host biography pages
+• Using scheduling software to update the broadcast schedule
+• Communicating with listeners, especially via e-mail and social media
+
+To apply, e-mail a résumé and cover letter to hiring@wonderridgeradio.org.",,,13,READING,0,0
+102,1,7,Questions 191-195,"Instructions for Requesting Records
+
+Thank you for your interest in official records and documents maintained by the City of Abilene. To file a request for public information, please follow these steps.
+
+1. Create an account in the Records Center Web portal. Currently, all requests must be made through the portal.
+
+2. Use the drop-down menu to locate the department from which you are seeking information and submit your request. You will receive a confirmation e-mail with a reference number.
+
+3. The department staff will locate the requested records and contact you when they are available. You can have the records delivered to you, or you can pick them up in person. If you prefer to pick them up in person, you must make an appointment with the department staff.
+
+4. If there are any fees associated with your request, you will receive an itemized statement detailing the services provided and the charges for those specific services.
+
+E-Mail Message
+
+To: Joo-Hee Park <jhpark@coa.net>
+From: Keith Brandenberg <kbrandenberg@mailcurrent.com>
+Date: May 3
+Subject: RE: Reference number W2486
+
+Dear Ms. Park,
+
+Thank you for confirming that my documents are available. I would like to pick them up in person as soon as possible. Do you have any appointments available this week?
+
+I have a question about the fee. Apparently, I am being charged $300 for my documents. I do not understand why the fee is so high, and there was no explanation included in your e-mail. I have requested records several times in the past in my role with RJ Environmental Engineering and have never paid such a high fee. In this case, I am only requesting two maps of the city's underground pipelines, which will inform our firm's current work advising the city on wastewater management.
+
+Please clarify this for me, and let me know if I can pick up my documents this week.
+
+Thank you.
+
+Best regards,
+
+Keith Brandenberg
+
+City of Abilene Administrative Building
+
+Visitors must sign in prior to entering this facility.
+Please enter your name and the room you will visit in the logbook.
+
+First-Floor Directory:
+IT Services — Room 100
+Parks and Recreation — Room 101
+Transportation — Room 102
+Wastewater — Room 103",,,14,READING,0,0
+103,1,7,Questions 196-200,"Famous Actor, First Book
+
+LONDON (25 February)—Fans of Simon Eklund will be delighted with his autobiography, The Theatre Lights Dimmed, the first book he has written in his storied career as an actor. It provides wonderful insight into his career, starting with his first roles in cinema in his native Sweden, moving into his work in France and Italy, and finishing with his recent theatre work in the U.K.
+
+In his book, Mr. Eklund dedicates a fair amount of text to discussing his mentor, Charles Gunnarsson, who helped him develop his skills early on in Stockholm. He also describes the difficulty of transitioning into different types of roles, especially from comedic to dramatic acting. He includes several funny anecdotes about his first attempts at acting onstage here in London. He describes them as disastrous, but anyone who saw his recent performance in Life and Games would say just the opposite.
+
+Mr. Eklund has long been a captivating actor on stage and screen, and now he is a thoroughly engaging author.
+
+—Uma Joshi
+
+E-Mail
+
+To: Edith Hocking
+From: Uma Joshi
+Date: 2 March
+Subject: RE: Opportunity
+
+Dear Edith,
+
+Thank you for agreeing to arrange an interview with Mr. Eklund for me. I think this will be a great follow-up to my recent piece.
+
+In a helpful coincidence, I will be visiting his home country next month to address a journalists' convention. I am the featured speaker and will discuss the benefits of diversity in journalism. I'm sure we can set up something with Mr. Eklund just before or after my speech.
+
+Best,
+
+Uma Joshi
+Arts and Culture Editor
+Top News U.K.
+
+E-Mail
+
+To: Uma Joshi <ujoshi@topnews.co.uk>
+From: Maria Cazalla <mcazalla@zephyrmail.se>
+Date: 20 March
+Subject: RE: Information
+
+Dear Ms. Joshi,
+
+We are all very excited about your interview next month with Mr. Eklund. He enjoys all your writing for Top News U.K.—the news stories, interviews, and, of course, your recent article about The Theatre Lights Dimmed!
+
+I just wanted to finalize a few details with you. We have arranged transportation for you from your hotel to Mr. Eklund's house and then back to the hotel. Please let me know how many people there will be in your group, because Mr. Eklund would like you all to stay for lunch.
+
+Sincerely,
+
+Maria Cazalla",,,15,READING,0,0
