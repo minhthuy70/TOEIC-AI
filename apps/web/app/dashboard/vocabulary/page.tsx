@@ -21,15 +21,27 @@ export default function VocabularyPage() {
     const [mode, setMode] = useState("");
     const [words, setWords] = useState<Word[]>([]);
     const [index, setIndex] = useState(0);
+    const [userId, setUserId] = useState<number | null>(null);
 
     useEffect(() => {
-        loadWords();
+        const user = localStorage.getItem("user");
+
+        if (!user) {
+            setLoading(false);
+            return;
+        }
+
+        const currentUser = JSON.parse(user);
+
+        setUserId(currentUser.id);
+
+        loadWords(currentUser.id);
     }, []);
 
-    async function loadWords() {
+    async function loadWords(id: number) {
         try {
             const res = await fetch(
-                "http://localhost:3001/vocabulary/learning/1"
+                `http://localhost:3001/vocabulary/learning/${id}`
             );
 
             const data = await res.json();
@@ -38,6 +50,7 @@ export default function VocabularyPage() {
 
             setMode(data.mode ?? "");
             setWords(data.words ?? []);
+            setIndex(0);
         } catch (err) {
             console.error(err);
             setWords([]);
@@ -47,25 +60,30 @@ export default function VocabularyPage() {
     }
 
     async function answer(remembered: boolean) {
+        if (!userId) return;
+
         const word = words[index];
 
-        await fetch("http://localhost:3001/vocabulary/learn", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-                userId: 1,
-                vocabularyId: word.id,
-                remembered,
-            }),
-        });
+        try {
+            await fetch("http://localhost:3001/vocabulary/learn", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    userId: userId,
+                    vocabularyId: word.id,
+                    remembered,
+                }),
+            });
 
-        if (index < words.length - 1) {
-            setIndex(index + 1);
-        } else {
-            loadWords();
-            setIndex(0);
+            if (index < words.length - 1) {
+                setIndex(index + 1);
+            } else {
+                loadWords(userId);
+            }
+        } catch (err) {
+            console.error(err);
         }
     }
 
@@ -97,10 +115,11 @@ export default function VocabularyPage() {
                 </div>
 
                 <div
-                    className={`px-3 py-1 rounded-full text-sm font-semibold ${mode === "REVIEW"
-                        ? "bg-yellow-500/20 text-yellow-400"
-                        : "bg-green-500/20 text-green-400"
-                        }`}
+                    className={`px-3 py-1 rounded-full text-sm font-semibold ${
+                        mode === "REVIEW"
+                            ? "bg-yellow-500/20 text-yellow-400"
+                            : "bg-green-500/20 text-green-400"
+                    }`}
                 >
                     {mode}
                 </div>

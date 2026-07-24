@@ -82,10 +82,11 @@ export default function CoursesPage() {
           <button
             key={tab.id}
             onClick={() => setActiveTab(tab.id)}
-            className={`flex-1 flex items-center justify-center gap-2 py-2.5 rounded-xl text-[13px] font-medium transition-all duration-200 ${activeTab === tab.id
+            className={`flex-1 flex items-center justify-center gap-2 py-2.5 rounded-xl text-[13px] font-medium transition-all duration-200 ${
+              activeTab === tab.id
                 ? "bg-red-600 text-white shadow-lg shadow-red-600/20"
                 : "text-zinc-400 hover:text-white hover:bg-zinc-800/60"
-              }`}
+            }`}
           >
             <span>{tab.icon}</span>
             <span className="hidden sm:inline">{tab.label}</span>
@@ -133,20 +134,20 @@ export default function CoursesPage() {
                     </div>
                   </div>
                   {topic.done === 0 ? (
-                    <Link
-                      href="/dashboard/vocabulary"
-                      className="mt-3 block w-full text-center text-[11px] text-zinc-500 hover:text-white py-1.5 rounded-lg border border-zinc-800 hover:border-zinc-700 transition-all"
-                    >
-                      Bắt đầu học
-                    </Link>
-                  ) : (
-                    <Link
-                      href="/dashboard/vocabulary"
-                      className="mt-3 block w-full text-center text-[11px] text-red-400 hover:text-red-300 py-1.5 rounded-lg border border-red-600/20 hover:border-red-600/40 transition-all"
-                    >
-                      Tiếp tục → {topic.done}/{topic.words}
-                    </Link>
-                  )}
+  <Link
+    href="/dashboard/vocabulary"
+    className="mt-3 block w-full text-center text-[11px] text-zinc-500 hover:text-white py-1.5 rounded-lg border border-zinc-800 hover:border-zinc-700 transition-all"
+  >
+    Bắt đầu học
+  </Link>
+) : (
+  <Link
+    href="/dashboard/vocabulary"
+    className="mt-3 block w-full text-center text-[11px] text-red-400 hover:text-red-300 py-1.5 rounded-lg border border-red-600/20 hover:border-red-600/40 transition-all"
+  >
+    Tiếp tục → {topic.done}/{topic.words}
+  </Link>
+)}
                 </div>
               );
             })}
@@ -159,11 +160,11 @@ export default function CoursesPage() {
               <p className="text-[11px] text-zinc-500 mt-0.5">Hệ thống ôn tập thông minh – từ được ôn đúng lúc trước khi bị quên</p>
             </div>
             <Link
-              href="/dashboard/vocabulary"
-              className="ml-auto text-[11px] bg-violet-600/20 hover:bg-violet-600/30 text-violet-300 px-3 py-1.5 rounded-lg border border-violet-600/20 transition-all shrink-0"
-            >
-              Ôn tập SRS
-            </Link>
+  href="/dashboard/vocabulary"
+  className="ml-auto text-[11px] bg-violet-600/20 hover:bg-violet-600/30 text-violet-300 px-3 py-1.5 rounded-lg border border-violet-600/20 transition-all shrink-0"
+>
+  Ôn tập SRS
+</Link>
           </div>
         </div>
       )}
