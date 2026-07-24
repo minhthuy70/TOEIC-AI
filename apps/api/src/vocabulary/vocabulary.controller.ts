@@ -2,6 +2,7 @@ import { Controller, Get, Param } from '@nestjs/common';
 import { VocabularyService } from './vocabulary.service';
 import { Body, Post } from '@nestjs/common';
 import { LearnDto } from './dto/learn.dto';
+import { ReviewDto } from './dto/review.dto';
 
 @Controller('vocabulary')
 export class VocabularyController {
@@ -28,5 +29,11 @@ export class VocabularyController {
     @Body() dto: LearnDto,
   ) {
     return this.vocabularyService.learn(dto);
+  }
+  @Post('review')
+  review(
+    @Body() dto: ReviewDto,
+  ) {
+    return this.vocabularyService.review(dto);
   }
 }

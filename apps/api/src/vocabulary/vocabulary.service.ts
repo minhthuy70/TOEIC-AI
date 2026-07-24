@@ -1,6 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { PrismaService } from '../prisma/prisma.service';
 import { LearnDto } from './dto/learn.dto';
+import { ReviewDto } from './dto/review.dto';
 
 @Injectable()
 export class VocabularyService {
@@ -319,6 +320,126 @@ export class VocabularyService {
       success: true,
 
       message: 'Đã lưu tiến trình học',
+
+      nextReview,
+
+    };
+
+  }
+  async review(dto: ReviewDto) {
+
+    const progress =
+      await this.prisma.userVocabularyProgress.findUnique({
+
+        where: {
+
+          userId_vocabularyId: {
+
+            userId: dto.userId,
+
+            vocabularyId: dto.vocabularyId,
+
+          },
+
+        },
+
+      });
+
+    if (!progress) {
+
+      return {
+
+        success: false,
+
+        message: 'Từ này chưa được học',
+
+      };
+
+    }
+
+    const nextLevel = progress.reviewLevel + 1;
+
+    let hours = 0;
+
+    let days = 0;
+
+    switch (nextLevel) {
+
+      case 2:
+        hours = 3;
+        break;
+
+      case 3:
+        hours = 10;
+        break;
+
+      case 4:
+        hours = 24;
+        break;
+
+      case 5:
+        days = 3;
+        break;
+
+      default:
+        days = 5;
+        break;
+
+    }
+
+    const nextReview = new Date();
+
+    if (hours > 0) {
+
+      nextReview.setHours(nextReview.getHours() + hours);
+
+    }
+
+    if (days > 0) {
+
+      nextReview.setDate(nextReview.getDate() + days);
+
+    }
+
+    await this.prisma.userVocabularyProgress.update({
+
+      where: {
+
+        userId_vocabularyId: {
+
+          userId: dto.userId,
+
+          vocabularyId: dto.vocabularyId,
+
+        },
+
+      },
+
+      data: {
+
+        reviewLevel: nextLevel,
+
+        reviewCount: {
+
+          increment: 1,
+
+        },
+
+        lastReview: new Date(),
+
+        nextReview,
+
+        status: 'REVIEWING',
+
+      },
+
+    });
+
+    return {
+
+      success: true,
+
+      reviewLevel: nextLevel,
 
       nextReview,
 
