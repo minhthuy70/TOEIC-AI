@@ -15,6 +15,8 @@ model User {
 
   profile   UserProfile?
 
+  vocabularyProgress UserVocabularyProgress[]
+
   createdAt DateTime @default(now())
 }
 
@@ -32,4 +34,51 @@ model UserProfile {
 
   createdAt           DateTime @default(now())
   updatedAt           DateTime @updatedAt
+}
+
+model Vocabulary {
+  id                 Int      @id @default(autoincrement())
+  english            String
+  type               String?
+  vietnamese         String
+  pronounce          String?
+  explain            String?
+  example            String?
+  exampleVietnamese  String?  @map("example_vietnamese")
+  imageUrl           String?  @map("image_url")
+  audioUrl           String?  @map("audio_url")
+  topic              String
+  topicUrl           String?  @map("topic_url")
+  stage              Int
+  createdAt          DateTime @default(now()) @map("created_at")
+
+  progresses         UserVocabularyProgress[]
+
+  @@map("vocabulary")
+}
+
+model UserVocabularyProgress {
+  id            Int       @id @default(autoincrement())
+
+  userId        Int       @map("user_id")
+  vocabularyId  Int       @map("vocabulary_id")
+
+  status        String    @default("NEW")
+  reviewLevel   Int       @default(0) @map("review_level")
+  reviewCount   Int       @default(0) @map("review_count")
+
+  learnedAt     DateTime? @map("learned_at")
+  lastReview    DateTime? @map("last_review")
+  nextReview    DateTime? @map("next_review")
+
+  createdAt     DateTime  @default(now()) @map("created_at")
+  updatedAt     DateTime  @updatedAt @map("updated_at")
+
+  user          User       @relation(fields: [userId], references: [id])
+  vocabulary    Vocabulary @relation(fields: [vocabularyId], references: [id])
+
+  @@unique([userId, vocabularyId])
+  @@index([userId, nextReview])
+  @@index([userId, status])
+  @@map("user_vocabulary_progress")
 }
