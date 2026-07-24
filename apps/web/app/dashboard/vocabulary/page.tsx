@@ -98,8 +98,8 @@ export default function VocabularyPage() {
 
                 <div
                     className={`px-3 py-1 rounded-full text-sm font-semibold ${mode === "REVIEW"
-                            ? "bg-yellow-500/20 text-yellow-400"
-                            : "bg-green-500/20 text-green-400"
+                        ? "bg-yellow-500/20 text-yellow-400"
+                        : "bg-green-500/20 text-green-400"
                         }`}
                 >
                     {mode}
