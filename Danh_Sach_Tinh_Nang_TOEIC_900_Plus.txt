@@ -1,0 +1,1238 @@
+DANH SÁCH TÍNH NĂNG CHI TIẾT CHO TRANG WEB TOEIC 900+
+Dựa trên lộ trình học TOEIC 900+ - Phiên bản nâng cấp
+================================================================================
+
+1. AUTHENTICATION & USER MANAGEMENT (XÁC THỰC & QUẢN LÝ NGƯỜI DÙNG)
+================================================================================
+
+1.1. Registration (Đăng ký)
+- Đăng ký bằng email/password - Cho phép người dùng tạo tài khoản mới với email và mật khẩu
+- Đăng ký bằng Google OAuth - Đăng ký nhanh bằng tài khoản Google
+- Đăng ký bằng Facebook OAuth - Đăng ký nhanh bằng tài khoản Facebook
+- Email verification (gửi mã xác nhận) - Gửi mã xác nhận đến email để xác thực tài khoản
+- Password strength indicator - Hiển thị độ mạnh của mật khẩu khi người dùng nhập
+- Terms & conditions checkbox - Checkbox đồng ý với điều khoản sử dụng
+- Privacy policy checkbox - Checkbox đồng ý với chính sách bảo mật
+
+1.2. Login (Đăng nhập)
+- Login bằng email/password - Đăng nhập bằng email và mật khẩu đã đăng ký
+- Login bằng Google OAuth - Đăng nhập nhanh bằng tài khoản Google
+- Login bằng Facebook OAuth - Đăng nhập nhanh bằng tài khoản Facebook
+- Remember me checkbox - Checkbox ghi nhớ đăng nhập cho lần sau
+- Forgot password link - Link để khôi phục mật khẩu khi quên
+- Show/hide password toggle - Nút hiện/ẩn mật khẩu để kiểm tra
+- Login attempt limiting (5 attempts) - Giới hạn 5 lần đăng nhập thất bại
+- Account lockout after failed attempts - Khóa tài khoản sau quá nhiều lần đăng nhập thất bại
+
+1.3. Password Recovery (Khôi phục mật khẩu)
+- Forgot password form - Form nhập email để yêu cầu khôi phục mật khẩu
+- Send reset email - Gửi email chứa link reset mật khẩu
+- Password reset link (expiring in 1 hour) - Link reset mật khẩu có hiệu lực trong 1 giờ
+- New password validation - Kiểm tra độ mạnh của mật khẩu mới
+- Confirm new password - Nhập lại mật khẩu mới để xác nhận
+- Password reset success notification - Thông báo khi reset mật khẩu thành công
+
+1.4. Profile Management (Quản lý hồ sơ)
+- View profile information - Xem thông tin hồ sơ cá nhân
+- Edit full name - Chỉnh sửa tên đầy đủ
+- Edit email (with verification) - Thay đổi email với xác thực
+- Change password (current + new + confirm) - Đổi mật khẩu (cũ + mới + xác nhận)
+- Upload avatar - Tải lên ảnh đại diện
+- Delete account (with confirmation) - Xóa tài khoản với xác nhận
+- Account deactivation - Vô hiệu hóa tài khoản tạm thời
+- View account creation date - Xem ngày tạo tài khoản
+- View last login date - Xem ngày đăng nhập gần nhất
+
+1.5. Session Management (Quản lý phiên đăng nhập)
+- Auto logout after inactivity (30 minutes) - Tự động đăng xuất sau 30 phút không hoạt động
+- Manual logout button - Nút đăng xuất thủ công
+- Logout from all devices - Đăng xuất khỏi tất cả các thiết bị
+- View active sessions - Xem các phiên đăng nhập đang hoạt động
+- Revoke specific session - Hủy phiên đăng nhập cụ thể
+- Session timeout warning (5 minutes before) - Cảnh báo hết phiên trước 5 phút
+
+================================================================================
+
+2. ONBOARDING & PLACEMENT (HƯỚNG DẪN & XẾP LOẠI)
+================================================================================
+
+2.1. First Login Setup (Thiết lập lần đầu đăng nhập)
+- Welcome screen with onboarding steps - Màn hình chào mừng với các bước hướng dẫn
+- Current TOEIC score input (0-990) - Nhập điểm TOEIC hiện tại (0-990)
+- Target TOEIC score input (0-990) - Nhập điểm TOEIC mục tiêu (0-990)
+- Target exam date picker - Chọn ngày thi mục tiêu
+- Daily study time selection (30/60/90/120 minutes) - Chọn thời gian học hàng ngày
+- Study schedule preference (morning/afternoon/evening) - Ưa thích thời gian học
+- Motivation level selection (1-10) - Chọn mức độ động lực (1-10)
+- Learning style selection (visual/auditory/reading) - Chọn phong cách học tập
+- Save onboarding data - Lưu dữ liệu hướng dẫn
+- Skip onboarding option - Tùy chọn bỏ qua hướng dẫn
+
+2.2. Placement Test (Kiểm tra xếp loại)
+- Start placement test button - Nút bắt đầu kiểm tra xếp loại
+- Test instructions modal - Hộp thoại hướng dẫn làm bài test
+- Test timer (45 phút listening + 75 phút reading) - Đồng hồ đếm ngược (45 phút nghe + 75 phút đọc)
+- Auto-submit when time expires - Tự động nộp bài khi hết giờ
+- Manual submit button - Nút nộp bài thủ công
+- Progress indicator (1/200 questions) - Chỉ số tiến độ (1/200 câu hỏi)
+- Navigate between questions - Điều hướng giữa các câu hỏi
+- Mark for review - Đánh dấu để xem lại
+- Review marked questions - Xem lại các câu đã đánh dấu
+- Submit confirmation modal - Hộp thoại xác nhận nộp bài
+- Real-time score calculation - Tính điểm thời gian thực
+- Detailed score breakdown by part - Phân tích chi tiết điểm số theo phần
+- Overall score display - Hiển thị tổng điểm
+- Performance analysis - Phân tích hiệu suất
+- Weakness identification - Xác định điểm yếu
+- Recommended stage assignment - Gán chặng được đề xuất
+- Retake option (7 days cooldown) - T làm lại sau 7 ngày
+
+2.3. Stage Assignment (Gán chặng)
+- Automatic stage assignment based on score - Tự động gán chặng dựa trên điểm số
+- Stage overview display (1-5) - Hiển thị tổng quan chặng (1-5)
+- Stage goals and objectives - Mục tiêu và mục đích của chặng
+- Estimated completion time - Thời gian hoàn thành ước tính
+- Accept stage assignment - Chấp nhận gán chặng
+- Request stage change (with reason) - Yêu cầu thay đổi chặng (với lý do)
+- Stage change approval system - Hệ thống phê duyệt thay đổi chặng
+
+================================================================================
+
+3. VOCABULARY SYSTEM (HỆ THỐNG TỪ VỰNG)
+================================================================================
+
+3.1. Vocabulary Dashboard (Bảng điều khiển từ vựng)
+- Total vocabulary count display - Hiển thị tổng số từ vựng
+- Mastered vocabulary count - Số từ đã thành thạo
+- Learning vocabulary count - Số từ đang học
+- New vocabulary count - Số từ mới
+- Review vocabulary count - Số từ cần ôn tập
+- Vocabulary progress bar - Thanh tiến độ từ vựng
+- Stage vocabulary progress - Tiến độ từ vựng theo chặng
+- Daily vocabulary goal (20/30/40 words) - Mục tiêu từ vựng hàng ngày
+- Today's learned count - Số từ đã học hôm nay
+- Today's reviewed count - Số từ đã ôn hôm nay
+
+3.2. Vocabulary Learning (Học từ vựng)
+- Learn new words button - Nút học từ mới
+- Display word in English - Hiển thị từ bằng tiếng Anh
+- Display pronunciation (IPA) - Hiển thị phiên âm (IPA)
+- Audio playback button - Nút phát âm thanh
+- Display Vietnamese meaning - Hiển thị nghĩa tiếng Việt
+- Display example sentence - Hiển thị câu ví dụ
+- Display example translation - Hiển thị dịch câu ví dụ
+- Display word type (noun/verb/adjective) - Hiển thị loại từ (danh từ/động từ/tính từ)
+- Display related image - Hiển thị hình ảnh liên quan
+- Display collocations - Hiển thị collocations
+- Display synonyms - Hiển thị từ đồng nghĩa
+- Display antonyms - Hiển thị từ trái nghĩa
+- Mark as learned button - Nút đánh dấu đã học
+- Skip word button - Nút bỏ qua từ
+- Add to favorites button - Nút thêm vào yêu thích
+- Report word button - Nút báo cáo từ
+- Next word button - Nút từ tiếp theo
+- Previous word button - Nút từ trước đó
+- Auto-play audio option - Tùy chọn phát âm thanh tự động
+- Show/hide meaning option - Tùy chọn hiện/ẩn nghĩa
+- Flashcard mode toggle - Chuyển đổi chế độ flashcard
+- Quiz mode toggle - Chuyển đổi chế độ trắc nghiệm
+
+3.3. Vocabulary Review (SRS) (Ôn tập từ vựng - SRS)
+- Review due words notification - Thông báo từ cần ôn tập
+- Review queue display - Hiển thị hàng đợi ôn tập
+- SRS level indicator (1-7) - Chỉ số mức SRS (1-7)
+- Review count display - Hiển thị số lần ôn
+- Last review date - Ngày ôn lần cuối
+- Next review date - Ngày ôn tiếp theo
+- Flashcard review mode - Chế độ ôn flashcard
+- Meaning review mode - Chế độ ôn nghĩa
+- Audio review mode - Chế độ ôn âm thanh
+- Spelling review mode - Chế độ ôn chính tả
+- Show answer button - Nút hiện đáp án
+- Correct/incorrect buttons - Nút đúng/sai
+- Easy/Good/Hard buttons - Nút dễ/tốt/khó
+- Skip review button - Nút bỏ qua ôn
+- Review progress bar - Thanh tiến độ ôn tập
+- Review session summary - Tóm tắt phiên ôn
+- Words mastered in session - Số từ thành thạo trong phiên
+- Words needing more review - Số từ cần ôn thêm
+
+3.4. Vocabulary Management (Quản lý từ vựng)
+- Search vocabulary by English - Tìm từ vựng bằng tiếng Anh
+- Search vocabulary by Vietnamese - Tìm từ vựng bằng tiếng Việt
+- Filter by stage (1-5) - Lọc theo chặng (1-5)
+- Filter by topic (Business, Finance, etc.) - Lọc theo chủ đề
+- Filter by status (New, Learning, Reviewing, Mastered) - Lọc theo trạng thái
+- Filter by SRS level (1-7) - Lọc theo mức SRS (1-7)
+- Sort by learned date - Sắp xếp theo ngày học
+- Sort by review date - Sắp xếp theo ngày ôn
+- Sort by alphabet - Sắp xếp theo bảng chữ cái
+- View vocabulary details - Xem chi tiết từ vựng
+- Edit vocabulary notes - Chỉnh sửa ghi chú từ vựng
+- Add personal notes - Thêm ghi chú cá nhân
+- Add custom example sentences - Thêm câu ví dụ tùy chỉnh
+- Delete vocabulary from learning - Xóa từ vựng khỏi danh sách học
+- Reset vocabulary progress - Đặt lại tiến độ từ vựng
+- Bulk operations (select multiple) - Thao tác hàng loạt (chọn nhiều)
+
+3.5. Vocabulary Statistics (Thống kê từ vựng)
+- Vocabulary growth chart (daily/weekly/monthly) - Biểu đồ tăng trưởng từ vựng
+- SRS level distribution chart - Biểu đồ phân phối mức SRS
+- Learning accuracy rate - Tỷ lệ chính xác khi học
+- Review success rate - Tỷ lệ thành công khi ôn
+- Mastered words timeline - Timeline từ đã thành thạo
+- Topic mastery breakdown - Phân tích thành thạo theo chủ đề
+- Daily learning streak - Chuỗi ngày học liên tiếp
+- Longest learning streak - Chuỗi ngày học dài nhất
+- Vocabulary retention rate - Tỷ lệ giữ lại từ vựng
+- Weak vocabulary topics - Chủ đề từ vựng yếu
+
+3.6. Vocabulary Settings (Cài đặt từ vựng)
+- Daily new words goal (10-50) - Mục tiêu từ mới hàng ngày (10-50)
+- Review priority setting - Cài đặt ưu tiên ôn tập
+- Audio auto-play toggle - Bật/tắt phát âm thanh tự động
+- Pronunciation accent selection (US/UK) - Chọn giọng phát âm (Mỹ/Anh)
+- Display mode preference (flashcard/list) - Ưa thích chế độ hiển thị
+- Review time preference (morning/evening) - Ưa thích thời gian ôn
+- SRS algorithm selection (standard/aggressive/conservative) - Chọn thuật toán SRS
+- Notification settings for review due - Cài đặt thông báo khi đến hạn ôn
+
+================================================================================
+
+4. LISTENING PRACTICE (LUYỆN NGHE)
+================================================================================
+
+4.1. Listening Dashboard (Bảng điều khiển nghe)
+- Overall listening score display - Hiển thị tổng điểm nghe
+- Score by part (1-4) - Điểm theo phần (1-4)
+- Listening accuracy rate - Tỷ lệ chính xác khi nghe
+- Average time per question - Thời gian trung bình mỗi câu
+- Listening practice streak - Chuỗi ngày luyện nghe
+- Total listening questions completed - Tổng số câu nghe đã hoàn thành
+- Weak listening parts identification - Xác định phần nghe yếu
+
+4.2. Part 1 Practice (Photographs) - Luyện Part 1: Mô tả hình ảnh
+- Select Part 1 practice button - Nút chọn luyện Part 1
+- Display photograph - Hiển thị bức tranh
+- Audio playback control (play/pause/replay) - Điều khiển phát âm thanh
+- Volume control - Điều khiển âm lượng
+- Playback speed (0.5x, 0.75x, 1x, 1.25x, 1.5x) - Tốc độ phát
+- Display 4 answer options - Hiển thị 4 lựa chọn đáp án
+- Select answer button - Nút chọn đáp án
+- Submit answer button - Nút nộp đáp án
+- Show correct answer - Hiển thị đáp án đúng
+- Show explanation - Hiển thị giải thích
+- Display transcript - Hiển thị bản ghi
+- Highlight key vocabulary - Highlight từ khóa quan trọng
+- Play audio with transcript - Phát âm thanh kèm bản ghi
+- Next question button - Nút câu tiếp theo
+- Previous question button - Nút câu trước đó
+- Mark for review - Đánh dấu xem lại
+- Question timer (optional) - Đồng hồ đếm câu (tùy chọn)
+- Practice mode (untimed/timed) - Chế độ luyện tập (không giới hạn/giới hạn thời gian)
+- Question count selector (5/10/20/all) - Chọn số câu hỏi
+
+4.3. Part 2 Practice (Question-Response) - Luyện Part 2: Hỏi-Đáp
+- Select Part 2 practice button - Nút chọn luyện Part 2
+- Audio playback control - Điều khiển phát âm thanh
+- Volume control - Điều khiển âm lượng
+- Playback speed - Tốc độ phát
+- Display 3 answer options - Hiển thị 3 lựa chọn đáp án
+- Select answer button - Nút chọn đáp án
+- Submit answer button - Nút nộp đáp án
+- Show correct answer - Hiển thị đáp án đúng
+- Show explanation - Hiển thị giải thích
+- Display transcript - Hiển thị bản ghi
+- Highlight question type (Wh-question/Yes-No/Statement) - Highlight loại câu hỏi
+- Play audio with transcript - Phát âm thanh kèm bản ghi
+- Next/previous navigation - Điều hướng tiếp/trước
+- Mark for review - Đánh dấu xem lại
+- Question timer - Đồng hồ đếm câu
+- Practice mode - Chế độ luyện tập
+- Question count selector - Chọn số câu hỏi
+
+4.4. Part 3 Practice (Conversations) - Luyện Part 3: Đoạn hội thoại
+- Select Part 3 practice button - Nút chọn luyện Part 3
+- Display conversation context - Hiển thị bối cảnh hội thoại
+- Audio playback control - Điều khiển phát âm thanh
+- Volume control - Điều khiển âm lượng
+- Playback speed - Tốc độ phát
+- Progress bar for audio - Thanh tiến độ âm thanh
+- Display 3 questions per conversation - Hiển thị 3 câu hỏi mỗi đoạn hội thoại
+- Display conversation transcript - Hiển thị bản ghi hội thoại
+- Question-by-question navigation - Điều hướng theo từng câu hỏi
+- Select answer per question - Chọn đáp án cho từng câu
+- Submit all answers button - Nút nộp tất cả đáp án
+- Show correct answers - Hiển thị đáp án đúng
+- Show explanations - Hiển thị giải thích
+- Highlight key information in transcript - Highlight thông tin quan trọng trong bản ghi
+- Note-taking area - Khu vực ghi chú
+- Save notes button - Nút lưu ghi chú
+- Playback specific question audio - Phát âm thanh câu hỏi cụ thể
+- Next/previous conversation - Đoạn hội thoại tiếp/trước
+- Mark for review - Đánh dấu xem lại
+- Conversation timer - Đồng hồ đếm đoạn hội thoại
+- Practice mode - Chế độ luyện tập
+- Conversation count selector - Chọn số đoạn hội thoại
+
+4.5. Part 4 Practice (Talks) - Luyện Part 4: Bài nói chuyện ngắn
+- Select Part 4 practice button - Nút chọn luyện Part 4
+- Display talk type (announcement/advertisement/etc.) - Hiển thị loại bài nói
+- Audio playback control - Điều khiển phát âm thanh
+- Volume control - Điều khiển âm lượng
+- Playback speed - Tốc độ phát
+- Progress bar for audio - Thanh tiến độ âm thanh
+- Display 3 questions per talk - Hiển thị 3 câu hỏi mỗi bài nói
+- Display talk transcript - Hiển thị bản ghi bài nói
+- Question-by-question navigation - Điều hướng theo từng câu hỏi
+- Select answer per question - Chọn đáp án cho từng câu
+- Submit all answers button - Nút nộp tất cả đáp án
+- Show correct answers - Hiển thị đáp án đúng
+- Show explanations - Hiển thị giải thích
+- Highlight key information in transcript - Highlight thông tin quan trọng trong bản ghi
+- Note-taking area - Khu vực ghi chú
+- Save notes button - Nút lưu ghi chú
+- Playback specific question audio - Phát âm thanh câu hỏi cụ thể
+- Next/previous talk - Bài nói tiếp/trước
+- Mark for review - Đánh dấu xem lại
+- Talk timer - Đồng hồ đếm bài nói
+- Practice mode - Chế độ luyện tập
+- Talk count selector - Chọn số bài nói
+
+4.6. Listening Mixed Practice - Luyện nghe hỗn hợp
+- Mixed parts practice (Part 1-4) - Luyện các phần hỗn hợp (Part 1-4)
+- Custom part selection - Chọn phần tùy chỉnh
+- Question count selector - Chọn số câu hỏi
+- Time limit setting - Cài đặt giới hạn thời gian
+- Practice mode (normal/timed/exam) - Chế độ luyện tập (bình thường/giới hạn thời gian/thi)
+- Shuffle questions - Xáo trộn câu hỏi
+- Sequential questions - Câu hỏi tuần tự
+- Real-time scoring - Tính điểm thời gian thực
+- Progress indicator - Chỉ số tiến độ
+- Pause/resume functionality - Chức năng tạm dừng/tiếp tục
+- Submit practice - Nộp bài luyện
+- Practice summary - Tóm tắt bài luyện
+- Score breakdown by part - Phân tích điểm theo phần
+- Time spent analysis - Phân tích thời gian đã dùng
+- Incorrect answers review - Xem lại câu sai
+- Add to error log - Thêm vào nhật ký lỗi
+
+4.7. Listening Settings - Cài đặt nghe
+- Default playback speed - Tốc độ phát mặc định
+- Volume level memory - Nhớ mức âm lượng
+- Auto-play next question - Tự động phát câu tiếp theo
+- Show transcript by default - Hiển thị bản ghi mặc định
+- Highlight keywords - Highlight từ khóa
+- Note-taking auto-save - Tự động lưu ghi chú
+- Timer display preference - Ưa thích hiển thị đồng hồ
+- Sound effects toggle - Bật/tắt hiệu ứng âm thanh
+- Background music option - Tùy chọn nhạc nền
+
+================================================================================
+
+5. READING PRACTICE (LUYỆN ĐỌC)
+================================================================================
+
+5.1. Reading Dashboard (Bảng điều khiển đọc)
+- Overall reading score display - Hiển thị tổng điểm đọc
+- Score by part (5-7) - Điểm theo phần (5-7)
+- Reading accuracy rate - Tỷ lệ chính xác khi đọc
+- Average time per question - Thời gian trung bình mỗi câu
+- Reading practice streak - Chuỗi ngày luyện đọc
+- Total reading questions completed - Tổng số câu đọc đã hoàn thành
+- Weak reading parts identification - Xác định phần đọc yếu
+- Reading speed (words/minute) - Tốc độ đọc (từ/phút)
+
+5.2. Part 5 Practice (Incomplete Sentences) - Luyện Part 5: Hoàn thành câu
+- Select Part 5 practice button - Nút chọn luyện Part 5
+- Display incomplete sentence - Hiển thị câu chưa hoàn thành
+- Display 4 answer options - Hiển thị 4 lựa chọn đáp án
+- Select answer button - Nút chọn đáp án
+- Submit answer button - Nút nộp đáp án
+- Show correct answer - Hiển thị đáp án đúng
+- Show explanation - Hiển thị giải thích
+- Grammar point explanation - Giải thích điểm ngữ pháp
+- Vocabulary explanation - Giải thích từ vựng
+- Related grammar rules link - Link quy tắc ngữ pháp liên quan
+- Add to grammar notes - Thêm vào ghi chú ngữ pháp
+- Next/previous question - Câu hỏi tiếp/trước
+- Mark for review - Đánh dấu xem lại
+- Question timer - Đồng hồ đếm câu
+- Practice mode - Chế độ luyện tập
+- Question count selector - Chọn số câu hỏi
+- Filter by grammar topic - Lọc theo chủ đề ngữ pháp
+- Filter by vocabulary topic - Lọc theo chủ đề từ vựng
+
+5.3. Part 6 Practice (Text Completion) - Luyện Part 6: Hoàn thành đoạn văn
+- Select Part 6 practice button - Nút chọn luyện Part 6
+- Display passage with blanks - Hiển thị đoạn văn với chỗ trống
+- Display 4 answer options per blank - Hiển thị 4 lựa chọn mỗi chỗ trống
+- Fill blanks one by one - Điền chỗ trống từng cái một
+- Fill all blanks at once - Điền tất cả chỗ trống cùng lúc
+- Submit answers button - Nút nộp đáp án
+- Show correct answers - Hiển thị đáp án đúng
+- Show explanations - Hiển thị giải thích
+- Display full passage with answers - Hiển thị đoạn văn đầy đủ với đáp án
+- Highlight grammar context - Highlight ngữ cảnh ngữ pháp
+- Show cohesion devices - Hiển thị thiết bị liên kết
+- Add to notes - Thêm vào ghi chú
+- Next/previous passage - Đoạn văn tiếp/trước
+- Mark for review - Đánh dấu xem lại
+- Passage timer - Đồng hồ đếm đoạn văn
+- Practice mode - Chế độ luyện tập
+- Passage count selector - Chọn số đoạn văn
+
+5.4. Part 7 Practice (Reading Comprehension) - Luyện Part 7: Đọc hiểu
+- Single Passages (Đoạn văn đơn):
+  - Select single passage practice - Chọn luyện đoạn văn đơn
+  - Display passage text - Hiển thị văn bản đoạn văn
+  - Scrollable text area - Khu vực văn bản có thể cuộn
+  - Text zoom in/out - Phóng to/thu nhỏ văn bản
+  - Highlight text tool - Công cụ highlight văn bản
+  - Add note to text - Thêm ghi chú vào văn bản
+  - Display questions below passage - Hiển thị câu hỏi dưới đoạn văn
+  - Question-by-question navigation - Điều hướng theo từng câu hỏi
+  - Display 4 answer options - Hiển thị 4 lựa chọn đáp án
+  - Select answer button - Nút chọn đáp án
+  - Submit answers button - Nút nộp đáp án
+  - Show correct answers - Hiển thị đáp án đúng
+  - Show explanations - Hiển thị giải thích
+  - Highlight evidence in text - Highlight bằng chứng trong văn bản
+  - Link question to text evidence - Link câu hỏi đến bằng chứng văn bản
+  - Next/previous passage - Đoạn văn tiếp/trước
+  - Mark for review - Đánh dấu xem lại
+  - Passage timer - Đồng hồ đếm đoạn văn
+  - Practice mode - Chế độ luyện tập
+  - Passage count selector - Chọn số đoạn văn
+
+- Multiple Passages (Đoạn văn kép):
+  - Select multiple passage practice - Chọn luyện đoạn văn kép
+  - Display 2-3 related passages - Hiển thị 2-3 đoạn văn liên quan
+  - Tab between passages - Chuyển tab giữa các đoạn văn
+  - Compare passages view - Chế độ so sánh đoạn văn
+  - Display questions - Hiển thị câu hỏi
+  - Identify which passage for each question - Xác định đoạn văn cho mỗi câu hỏi
+  - Answer selection - Chọn đáp án
+  - Submit answers - Nộp đáp án
+  - Show correct answers - Hiển thị đáp án đúng
+  - Show explanations - Hiển thị giải thích
+  - Cross-reference evidence - Tham chiếu chéo bằng chứng
+  - Next/previous set - Bộ tiếp/trước
+  - Mark for review - Đánh dấu xem lại
+  - Timer - Đồng hồ đếm
+  - Practice mode - Chế độ luyện tập
+  - Set count selector - Chọn số bộ
+
+5.5. Reading Mixed Practice - Luyện đọc hỗn hợp
+- Mixed parts practice (Part 5-7) - Luyện các phần hỗn hợp (Part 5-7)
+- Custom part selection - Chọn phần tùy chỉnh
+- Question count selector - Chọn số câu hỏi
+- Time limit setting - Cài đặt giới hạn thời gian
+- Practice mode (normal/timed/exam) - Chế độ luyện tập (bình thường/giới hạn thời gian/thi)
+- Shuffle questions - Xáo trộn câu hỏi
+- Sequential questions - Câu hỏi tuần tự
+- Real-time scoring - Tính điểm thời gian thực
+- Progress indicator - Chỉ số tiến độ
+- Pause/resume functionality - Chức năng tạm dừng/tiếp tục
+- Submit practice - Nộp bài luyện
+- Practice summary - Tóm tắt bài luyện
+- Score breakdown by part - Phân tích điểm theo phần
+- Time spent analysis - Phân tích thời gian đã dùng
+- Incorrect answers review - Xem lại câu sai
+- Add to error log - Thêm vào nhật ký lỗi
+
+5.6. Reading Settings - Cài đặt đọc
+- Default font size - Cỡ chữ mặc định
+- Font family selection - Chọn font chữ
+- Line height adjustment - Chỉnh độ cao dòng
+- Text highlighting color - Màu highlight văn bản
+- Auto-scroll speed - Tốc độ cuộn tự động
+- Show questions inline vs below - Hiển thị câu hỏi nội tuyến vs dưới
+- Timer display preference - Ưa thích hiển thị đồng hồ
+- Text-to-speech option - Tùy chọn văn bản thành giọng nói
+
+================================================================================
+
+6. GRAMMAR SYSTEM (HỆ THỐNG NGỮ PHÁP)
+================================================================================
+
+6.1. Grammar Dashboard (Bảng điều khiển ngữ pháp)
+- Grammar topics overview - Tổng quan chủ đề ngữ pháp
+- Mastered grammar topics - Chủ đề ngữ pháp đã thành thạo
+- Learning grammar topics - Chủ đề ngữ pháp đang học
+- Grammar accuracy rate - Tỷ lệ chính xác ngữ pháp
+- Weak grammar topics identification - Xác định chủ đề ngữ pháp yếu
+- Grammar progress by stage - Tiến độ ngữ pháp theo chặng
+
+6.2. Grammar Lessons (Bài học ngữ pháp)
+- Browse grammar topics by category - Duyệt chủ đề ngữ pháp theo danh mục
+- Search grammar topics - Tìm kiếm chủ đề ngữ pháp
+- Filter by stage (1-5) - Lọc theo chặng (1-5)
+- Filter by difficulty (basic/intermediate/advanced) - Lọc theo độ khó
+- Lesson list view - Chế độ xem danh sách bài học
+- Lesson detail view - Chế độ xem chi tiết bài học
+- Lesson title - Tiêu đề bài học
+- Lesson explanation - Giải thích bài học
+- Examples with explanations - Ví dụ với giải thích
+- Common mistakes - Lỗi thường gặp
+- Tips and tricks - Mẹo và thủ thuật
+- Related topics links - Link chủ đề liên quan
+- Mark lesson as complete - Đánh dấu bài học hoàn thành
+- Add lesson to favorites - Thêm bài học vào yêu thích
+- Share lesson button - Nút chia sẻ bài học
+
+6.3. Grammar Exercises (Bài tập ngữ pháp)
+- Exercise list by topic - Danh sách bài tập theo chủ đề
+- Exercise difficulty selector - Chọn độ khó bài tập
+- Question count selector - Chọn số câu hỏi
+- Start exercise button - Nút bắt đầu bài tập
+- Display grammar question - Hiển thị câu hỏi ngữ pháp
+- Display answer options - Hiển thị lựa chọn đáp án
+- Select answer button - Nút chọn đáp án
+- Submit answer button - Nút nộp đáp án
+- Show correct answer - Hiển thị đáp án đúng
+- Show detailed explanation - Hiển thị giải thích chi tiết
+- Show grammar rule reference - Hiển thị tham chiếu quy tắc ngữ pháp
+- Related examples - Ví dụ liên quan
+- Next question button - Nút câu hỏi tiếp theo
+- Previous question button - Nút câu hỏi trước đó
+- Mark for review - Đánh dấu xem lại
+- Exercise timer - Đồng hồ đếm bài tập
+- Exercise progress bar - Thanh tiến độ bài tập
+- Submit exercise - Nộp bài tập
+- Exercise summary - Tóm tắt bài tập
+- Score display - Hiển thị điểm
+- Incorrect answers review - Xem lại câu sai
+- Add to error log - Thêm vào nhật ký lỗi
+- Retry incorrect answers - Thử lại câu sai
+
+6.4. Grammar Reference (Tài liệu tham khảo ngữ pháp)
+- Grammar rules index - Chỉ mục quy tắc ngữ pháp
+- Search grammar rules - Tìm kiếm quy tắc ngữ pháp
+- Browse by category (tenses, clauses, etc.) - Duyệt theo danh mục
+- Rule detail view - Chế độ xem chi tiết quy tắc
+- Rule explanation - Giải thích quy tắc
+- Examples - Ví dụ
+- Exceptions - Ngoại lệ
+- Common errors - Lỗi thường gặp
+- Quick reference tables - Bảng tham khảo nhanh
+- Bookmark rules - Đánh dấu quy tắc
+- Print-friendly view - Chế độ xem in ấn
+
+6.5. Grammar Settings - Cài đặt ngữ pháp
+- Exercise difficulty preference - Ưa thích độ khó bài tập
+- Show explanations by default - Hiển thị giải thích mặc định
+- Auto-advance after correct answer - Tự động chuyển sau câu đúng
+- Sound effects toggle - Bật/tắt hiệu ứng âm thanh
+
+================================================================================
+
+7. TEST SYSTEM (HỆ THỐNG KIỂM TRA)
+================================================================================
+
+7.1. Mini Tests (Kiểm tra nhỏ)
+- Start mini test button (50 questions) - Nút bắt đầu kiểm tra nhỏ (50 câu)
+- Test configuration (select parts) - Cấu hình kiểm tra (chọn phần)
+- Time limit setting (30/45/60 minutes) - Cài đặt giới hạn thời gian
+- Test instructions modal - Hộp thoại hướng dẫn kiểm tra
+- Test timer display - Hiển thị đồng hồ kiểm tra
+- Pause/resume functionality - Chức năng tạm dừng/tiếp tục
+- Question navigation (jump to question) - Điều hướng câu hỏi (nhảy đến câu)
+- Mark for review - Đánh dấu xem lại
+- Review marked questions - Xem lại câu đã đánh dấu
+- Progress indicator - Chỉ số tiến độ
+- Submit test button - Nút nộp kiểm tra
+- Submit confirmation modal - Hộp thoại xác nhận nộp
+- Auto-submit on timeout - Tự động nộp khi hết giờ
+- Real-time scoring (optional) - Tính điểm thời gian thực (tùy chọn)
+- Score display after submission - Hiển thị điểm sau khi nộp
+- Detailed score breakdown - Phân tích chi tiết điểm
+- Time analysis per section - Phân tích thời gian theo phần
+- Accuracy analysis - Phân tích độ chính xác
+- Incorrect answers review - Xem lại câu sai
+- Correct answers display - Hiển thị đáp án đúng
+- Explanations display - Hiển thị giải thích
+- Add to error log - Thêm vào nhật ký lỗi
+- Retest option - Tùy chọn kiểm tra lại
+- Share results - Chia sẻ kết quả
+
+7.2. Full Tests (Kiểm tra đầy đủ)
+- Start full test button (200 questions) - Nút bắt đầu kiểm tra đầy đủ (200 câu)
+- Test configuration (standard/custom) - Cấu hình kiểm tra (chuẩn/tùy chỉnh)
+- Standard test (Part 1-7 in order) - Kiểm tra chuẩn (Part 1-7 theo thứ tự)
+- Custom test (select parts and counts) - Kiểm tra tùy chỉnh (chọn phần và số lượng)
+- Time limits: - Giới hạn thời gian:
+  - Listening: 45 minutes - Nghe: 45 phút
+  - Reading: 75 minutes - Đọc: 75 phút
+  - Custom: user-defined - Tùy chỉnh: do người dùng định nghĩa
+- Test instructions modal - Hộp thoại hướng dẫn kiểm tra
+- Section break notification - Thông báo nghỉ giữa phần
+- Reading section start button - Nút bắt đầu phần đọc
+- Test timer display (section-specific) - Hiển thị đồng hồ (theo phần)
+- Overall timer display - Hiển thị đồng hồ tổng thể
+- Pause/resume (limited uses) - Tạm dừng/tiếp tục (giới hạn sử dụng)
+- Question navigation - Điều hướng câu hỏi
+- Mark for review - Đánh dấu xem lại
+- Review marked questions - Xem lại câu đã đánh dấu
+- Progress indicator - Chỉ số tiến độ
+- Submit section button - Nút nộp phần
+- Submit test button - Nút nộp kiểm tra
+- Submit confirmation modal - Hộp thoại xác nhận nộp
+- Auto-submit on timeout - Tự động nộp khi hết giờ
+- Score display after submission - Hiển thị điểm sau khi nộp
+- Detailed score breakdown by part - Phân tích chi tiết điểm theo phần
+- Score breakdown by section - Phân tích chi tiết điểm theo phần
+- Time analysis per part - Phân tích thời gian theo phần
+- Accuracy analysis per part - Phân tích độ chính xác theo phần
+- Percentile ranking - Xếp hạng phần trăm
+- Performance comparison - So sánh hiệu suất
+- Incorrect answers review - Xem lại câu sai
+- Correct answers display - Hiển thị đáp án đúng
+- Explanations display - Hiển thị giải thích
+- Transcript display (listening) - Hiển thị bản ghi (nghe)
+- Evidence highlighting (reading) - Highlight bằng chứng (đọc)
+- Add to error log - Thêm vào nhật ký lỗi
+- Retest option - Tùy chọn kiểm tra lại
+- Share results - Chia sẻ kết quả
+- Download report PDF - Tải báo cáo PDF
+
+7.3. Test History (Lịch sử kiểm tra)
+- View all past tests - Xem tất cả kiểm tra trước
+- Filter by test type (mini/full) - Lọc theo loại kiểm tra (nhỏ/đầy đủ)
+- Filter by date range - Lọc theo khoảng ngày
+- Filter by score range - Lọc theo khoảng điểm
+- Sort by date/score - Sắp xếp theo ngày/điểm
+- Test list view with summary - Chế độ xem danh sách với tóm tắt
+- Test detail view - Chế độ xem chi tiết kiểm tra
+- Review specific test - Xem lại kiểm tra cụ thể
+- Compare tests - So sánh kiểm tra
+- Export test history - Xuất lịch sử kiểm tra
+- Delete test record - Xóa bản ghi kiểm tra
+
+7.4. Test Analytics (Phân tích kiểm tra)
+- Score trend chart - Biểu đồ xu hướng điểm
+- Accuracy trend chart - Biểu đồ xu hướng độ chính xác
+- Time trend chart - Biểu đồ xu hướng thời gian
+- Part-wise performance comparison - So sánh hiệu suất theo phần
+- Weakness identification - Xác định điểm yếu
+- Strength identification - Xác định điểm mạnh
+- Progress over time - Tiến độ theo thời gian
+- Predicted score - Điểm dự đoán
+- Goal progress tracking - Theo dõi tiến độ mục tiêu
+- Performance vs goal - Hiệu suất vs mục tiêu
+- Study time vs score correlation - Tương quan thời gian học vs điểm
+
+7.5. Test Settings - Cài đặt kiểm tra
+- Default test type - Loại kiểm tra mặc định
+- Default time limit - Giới hạn thời gian mặc định
+- Show timer preference - Ưa thích hiển thị đồng hồ
+- Allow pause preference - Ưa thích cho phép tạm dừng
+- Show real-time score preference - Ưa thích hiển thị điểm thời gian thực
+- Auto-submit preference - Ưa thích tự động nộp
+- Sound effects toggle - Bật/tắt hiệu ứng âm thanh
+
+================================================================================
+
+8. ERROR TRACKING SYSTEM (HỆ THỐNG THEO DÕI LỖI)
+================================================================================
+
+8.1. Error Log (Nhật ký lỗi)
+- View all logged errors - Xem tất cả lỗi đã ghi
+- Filter by error type (grammar/vocabulary/careless/timing) - Lọc theo loại lỗi
+- Filter by part (1-7) - Lọc theo phần (1-7)
+- Filter by date range - Lọc theo khoảng ngày
+- Filter by status (active/resolved) - Lọc theo trạng thái (hoạt động/đã giải quyết)
+- Sort by frequency - Sắp xếp theo tần suất
+- Sort by date - Sắp xếp theo ngày
+- Error list view - Chế độ xem danh sách lỗi
+- Error detail view - Chế độ xem chi tiết lỗi
+- Original question display - Hiển thị câu hỏi gốc
+- User's answer display - Hiển thị đáp án người dùng
+- Correct answer display - Hiển thị đáp án đúng
+- Explanation display - Hiển thị giải thích
+- Error type tag - Thẻ loại lỗi
+- Error note field - Trường ghi chú lỗi
+- Add personal note - Thêm ghi chú cá nhân
+- Edit error note - Chỉnh sửa ghi chú lỗi
+- Mark as resolved - Đánh dấu đã giải quyết
+- Mark as unresolved - Đánh dấu chưa giải quyết
+- Delete error record - Xóa bản ghi lỗi
+- Error frequency counter - Bộ đếm tần suất lỗi
+- Last occurrence date - Ngày xảy ra lần cuối
+
+8.2. Error Analysis (Phân tích lỗi)
+- Error type distribution chart - Biểu đồ phân phối loại lỗi
+- Error frequency chart - Biểu đồ tần suất lỗi
+- Error trend over time - Xu hướng lỗi theo thời gian
+- Top 10 errors list - Danh sách 10 lỗi hàng đầu
+- Weakness identification by part - Xác định điểm yếu theo phần
+- Weakness identification by topic - Xác định điểm yếu theo chủ đề
+- Error resolution rate - Tỷ lệ giải quyết lỗi
+- Recurring error alerts - Cảnh báo lỗi lặp lại
+- Error pattern detection - Phát hiện mẫu lỗi
+
+8.3. Error Drills (Bài tập lỗi)
+- Generate drill for specific error type - Tạo bài tập cho loại lỗi cụ thể
+- Generate drill for top 10 errors - Tạo bài tập cho 10 lỗi hàng đầu
+- Drill configuration (question count) - Cấu hình bài tập (số câu hỏi)
+- Start drill button - Nút bắt đầu bài tập
+- Drill timer - Đồng hồ đếm bài tập
+- Drill progress - Tiến độ bài tập
+- Real-time feedback - Phản hồi thời gian thực
+- Drill summary - Tóm tắt bài tập
+- Success rate calculation - Tính tỷ lệ thành công
+- Auto-resolve threshold (3 consecutive correct) - Ngưỡng tự động giải quyết (3 đúng liên tiếp)
+- Manual resolve option - Tùy chọn giải quyết thủ công
+- Schedule repeat drill - Lên lịch bài tập lặp lại
+
+8.4. Error Settings - Cài đặt lỗi
+- Auto-log errors toggle - Bật/tắt tự động ghi lỗi
+- Error notification preference - Ưa thích thông báo lỗi
+- Drill suggestion preference - Ưa thích gợi ý bài tập
+- Auto-resolve threshold setting - Cài đặt ngưỡng tự động giải quyết
+
+================================================================================
+
+9. PROGRESS TRACKING (THEO DÕI TIẾN ĐỘ)
+================================================================================
+
+9.1. Daily Dashboard (Bảng điều khiển hàng ngày)
+- Today's study time display - Hiển thị thời gian học hôm nay
+- Today's vocabulary count (new + reviewed) - Số từ vựng hôm nay (mới + ôn)
+- Today's practice questions count - Số câu luyện tập hôm nay
+- Today's accuracy rate - Tỷ lệ chính xác hôm nay
+- Today's streak count - Số chuỗi ngày hôm nay
+- Daily goals progress bars - Thanh tiến độ mục tiêu hàng ngày
+- Quick actions (learn vocabulary, practice, review) - Hành động nhanh
+- Today's schedule display - Hiển thị lịch trình hôm nay
+- Upcoming reviews notification - Thông báo ôn tập sắp tới
+- Today's achievements - Thành tích hôm nay
+- Daily motivation quote - Câu động lực hàng ngày
+
+9.2. Weekly Dashboard (Bảng điều khiển hàng tuần)
+- Weekly study time summary - Tóm tắt thời gian học hàng tuần
+- Weekly vocabulary total - Tổng từ vựng hàng tuần
+- Weekly practice total - Tổng luyện tập hàng tuần
+- Weekly accuracy rate - Tỷ lệ chính xác hàng tuần
+- Weekly test scores - Điểm kiểm tra hàng tuần
+- Weekly goals progress - Tiến độ mục tiêu hàng tuần
+- Weekly streak visualization - Trực quan hóa chuỗi hàng tuần
+- Day-by-day breakdown - Phân tích từng ngày
+- Weekly comparison (vs last week) - So sánh hàng tuần (vs tuần trước)
+- Weekly achievements - Thành tích hàng tuần
+- Weekly highlights - Điểm nổi bật hàng tuần
+
+9.3. Monthly Dashboard (Bảng điều khiển hàng tháng)
+- Monthly study time summary - Tóm tắt thời gian học hàng tháng
+- Monthly vocabulary total - Tổng từ vựng hàng tháng
+- Monthly practice total - Tổng luyện tập hàng tháng
+- Monthly accuracy rate - Tỷ lệ chính xác hàng tháng
+- Monthly test scores - Điểm kiểm tra hàng tháng
+- Monthly goals progress - Tiến độ mục tiêu hàng tháng
+- Monthly streak visualization - Trực quan hóa chuỗi hàng tháng
+- Week-by-week breakdown - Phân tích từng tuần
+- Monthly comparison (vs last month) - So sánh hàng tháng (vs tháng trước)
+- Monthly achievements - Thành tích hàng tháng
+- Placement test score - Điểm kiểm tra xếp loại
+- Stage progress percentage - Phần trăm tiến độ chặng
+- Time to goal estimation - Ước tính thời gian đến mục tiêu
+
+9.4. Statistics Overview (Tổng quan thống kê)
+- Total study time (all time) - Tổng thời gian học (tất cả thời gian)
+- Total vocabulary learned - Tổng từ vựng đã học
+- Total practice questions - Tổng câu luyện tập
+- Total tests taken - Tổng kiểm tra đã làm
+- Average accuracy rate - Tỷ lệ chính xác trung bình
+- Current streak - Chuỗi hiện tại
+- Longest streak - Chuỗi dài nhất
+- Current stage - Chặng hiện tại
+- Stage start date - Ngày bắt đầu chặng
+- Stage progress percentage - Phần trăm tiến độ chặng
+- Estimated completion date - Ngày hoàn thành ước tính
+- Overall score progression - Tiến độ điểm tổng thể
+- Skill balance (listening vs reading) - Cân bằng kỹ năng (nghe vs đọc)
+
+9.5. Detailed Analytics (Phân tích chi tiết)
+- Study time charts (daily/weekly/monthly) - Biểu đồ thời gian học
+- Vocabulary growth charts - Biểu đồ tăng trưởng từ vựng
+- Accuracy trend charts - Biểu đồ xu hướng độ chính xác
+- Score progression charts - Biểu đồ tiến độ điểm
+- Streak visualization - Trực quan hóa chuỗi
+- SRS level distribution - Phân phối mức SRS
+- Part-wise performance charts - Biểu đồ hiệu suất theo phần
+- Topic-wise performance charts - Biểu đồ hiệu suất theo chủ đề
+- Time management analysis - Phân tích quản lý thời gian
+- Weakness heat map - Bản đồ nhiệt điểm yếu
+- Strength identification - Xác định điểm mạnh
+- Progress velocity - Tốc độ tiến độ
+- Goal achievement rate - Tỷ lệ đạt mục tiêu
+- Prediction models - Mô hình dự đoán
+
+9.6. Goal Tracking (Theo dõi mục tiêu)
+- Set custom goals - Đặt mục tiêu tùy chỉnh
+- Goal type selection (score, vocabulary, study time) - Chọn loại mục tiêu
+- Goal target value - Giá trị mục tiêu
+- Goal deadline - Hạn mục mục tiêu
+- Goal progress display - Hiển thị tiến độ mục tiêu
+- Goal completion percentage - Phần trăm hoàn thành mục tiêu
+- Goal status (on track/behind/ahead) - Trạng thái mục tiêu (đúng lịch/lịch/trước lịch)
+- Goal history - Lịch sử mục tiêu
+- Edit goals - Chỉnh sửa mục tiêu
+- Delete goals - Xóa mục tiêu
+- Goal notifications - Thông báo mục tiêu
+- Goal celebration - Chúc mừng mục tiêu
+
+9.7. Achievements System (Hệ thống thành tích)
+- Achievement list view - Chế độ xem danh sách thành tích
+- Achievement categories (learning, practice, streak, accuracy) - Danh mục thành tích
+- Achievement criteria display - Hiển thị tiêu chí thành tích
+- Achievement progress indicator - Chỉ số tiến độ thành tích
+- Locked achievements - Thành tích bị khóa
+- Unlocked achievements - Thành tích đã mở khóa
+- Achievement date - Ngày thành tích
+- Achievement badge display - Hiển thị huy hiệu thành tích
+- Share achievement - Chia sẻ thành tích
+- Achievement points - Điểm thành tích
+- Leaderboard position - Vị trí bảng xếp hạng
+- Achievement notifications - Thông báo thành tích
+
+9.8. Streak System (Hệ thống chuỗi)
+- Current streak display - Hiển thị chuỗi hiện tại
+- Longest streak display - Hiển thị chuỗi dài nhất
+- Streak calendar view - Chế độ xem lịch chuỗi
+- Streak history - Lịch sử chuỗi
+- Streak freeze options - Tùy chọn đóng băng chuỗi
+- Streak protection - Bảo vệ chuỗi
+- Streak milestones - Cột mốc chuỗi
+- Streak rewards - Phần thưởng chuỗi
+- Streak notifications - Thông báo chuỗi
+- Streak motivation messages - Thông điệp động lực chuỗi
+
+================================================================================
+
+10. STUDY PLANNER & SCHEDULER (KẾ HOẠCH HỌC TẬP & LỊCH TRÌNH)
+================================================================================
+
+10.1. Study Schedule (Lịch trình học tập)
+- Weekly calendar view - Chế độ xem lịch hàng tuần
+- Daily time slots - Khung giờ hàng ngày
+- Set study time for each day - Đặt thời gian học mỗi ngày
+- Study session types (vocabulary, listening, reading, grammar, test) - Loại phiên học
+- Color-coded session types - Loại phiên được mã màu
+- Drag-and-drop scheduling - Lên lịch kéo thả
+- Copy schedule to other days - Sao chép lịch sang ngày khác
+- Recurring sessions - Phiên lặp lại
+- Schedule reminders - Nhắc nhở lịch trình
+- Schedule conflicts detection - Phát hiện xung đột lịch trình
+- Export schedule - Xuất lịch trình
+- Print schedule - In lịch trình
+
+10.2. Daily Planner (Kế hoạch hàng ngày)
+- Today's schedule timeline - Timeline lịch trình hôm nay
+- Upcoming tasks - Nhiệm vụ sắp tới
+- Task completion checkbox - Checkbox hoàn thành nhiệm vụ
+- Add custom task - Thêm nhiệm vụ tùy chỉnh
+- Edit task - Chỉnh sửa nhiệm vụ
+- Delete task - Xóa nhiệm vụ
+- Reorder tasks - Sắp xếp lại nhiệm vụ
+- Set task duration - Đặt thời lượng nhiệm vụ
+- Task reminders - Nhắc nhở nhiệm vụ
+- Task notes - Ghi chú nhiệm vụ
+- Mark task as done - Đánh dấu nhiệm vụ hoàn thành
+- Undo task completion - Hoàn tác hoàn thành nhiệm vụ
+- Daily progress bar - Thanh tiến độ hàng ngày
+
+10.3. Study Reminders (Nhắc nhở học tập)
+- Reminder settings - Cài đặt nhắc nhở
+- Reminder time selection - Chọn thời gian nhắc nhở
+- Reminder type (push notification/email) - Loại nhắc nhở
+- Custom reminder message - Thông điệp nhắc nhở tùy chỉnh
+- Reminder frequency (daily/weekly) - Tần suất nhắc nhở
+- Reminder for specific tasks - Nhắc nhở nhiệm vụ cụ thể
+- Reminder for reviews due - Nhắc nhở ôn tập đến hạn
+- Reminder for tests - Nhắc nhở kiểm tra
+- Reminder for streak maintenance - Nhắc nhở duy trì chuỗi
+- Snooze option - Tùy chọn hoãn
+- Disable reminders - Tắt nhắc nhở
+
+10.4. Smart Recommendations (Gợi ý thông minh)
+- AI-powered study suggestions - Gợi ý học tập AI
+- What to study next - Học gì tiếp theo
+- Weakness-based recommendations - Gợi ý dựa trên điểm yếu
+- Time-based recommendations - Gợi ý dựa trên thời gian
+- Goal-oriented recommendations - Gợi ý hướng mục tiêu
+- Personalized study plan - Kế hoạch học tập cá nhân hóa
+- Adaptive difficulty adjustment - Điều chỉnh độ khó thích ứng
+- Learning path optimization - Tối ưu hóa lộ trình học
+- Priority task ranking - Xếp hạng ưu tiên nhiệm vụ
+
+================================================================================
+
+11. GAMIFICATION (TRÒ CHƠI HÓA)
+================================================================================
+
+11.1. Points System (Hệ thống điểm)
+- Points for learning vocabulary - Điểm học từ vựng
+- Points for reviewing vocabulary - Điểm ôn từ vựng
+- Points for practice questions - Điểm câu luyện tập
+- Points for correct answers - Điểm câu đúng
+- Points for tests - Điểm kiểm tra
+- Points for streaks - Điểm chuỗi
+- Points for achievements - Điểm thành tích
+- Points multiplier (streak bonus) - Nhân điểm (bonus chuỗi)
+- Points leaderboard - Bảng xếp hạng điểm
+- Points history - Lịch sử điểm
+- Points redemption (future features) - Đổi điểm (tính năng tương lai)
+
+11.2. Levels & Badges (Cấp độ & Huy hiệu)
+- User level display - Hiển thị cấp độ người dùng
+- XP (experience points) - Điểm kinh nghiệm
+- Level progression bar - Thanh tiến độ cấp độ
+- Level requirements - Yêu cầu cấp độ
+- Level-up notification - Thông báo lên cấp
+- Badge collection - Bộ sưu tập huy hiệu
+- Badge categories - Danh mục huy hiệu
+- Badge criteria - Tiêu chí huy hiệu
+- Badge display on profile - Hiển thị huy hiệu trên hồ sơ
+- Rare badges - Huy hiệu hiếm
+- Limited edition badges - Huy hiệu phiên bản giới hạn
+- Share badges - Chia sẻ huy hiệu
+
+11.3. Leaderboard (Bảng xếp hạng)
+- Global leaderboard - Bảng xếp hạng toàn cầu
+- Friends leaderboard - Bảng xếp hạng bạn bè
+- Weekly leaderboard - Bảng xếp hạng hàng tuần
+- Monthly leaderboard - Bảng xếp hạng hàng tháng
+- Leaderboard by category (vocabulary, listening, reading) - Bảng xếp hạng theo danh mục
+- Leaderboard filters - Bộ lọc bảng xếp hạng
+- Leaderboard search - Tìm kiếm bảng xếp hạng
+- Leaderboard ranking - Xếp hạng bảng xếp hạng
+- Rank change indicator - Chỉ số thay đổi xếp hạng
+- Compare with friends - So sánh với bạn bè
+- Leaderboard notifications - Thông báo bảng xếp hạng
+
+11.4. Challenges (Thử thách)
+- Daily challenges - Thử thách hàng ngày
+- Weekly challenges - Thử thách hàng tuần
+- Monthly challenges - Thử thách hàng tháng
+- Special challenges - Thử thách đặc biệt
+- Challenge criteria - Tiêu chí thử thách
+- Challenge rewards - Phần thưởng thử thách
+- Challenge progress - Tiến độ thử thách
+- Challenge countdown - Đếm ngược thử thách
+- Challenge leaderboard - Bảng xếp hạng thử thách
+- Challenge history - Lịch sử thử thách
+- Accept challenge - Chấp nhận thử thách
+- Decline challenge - Từ chối thử thách
+- Create custom challenge - Tạo thử thách tùy chỉnh
+
+11.5. Rewards (Phần thưởng)
+- Reward points - Điểm phần thưởng
+- Reward redemption - Đổi phần thưởng
+- Reward categories - Danh mục phần thưởng
+- Reward catalog - Danh mục phần thưởng
+- Reward history - Lịch sử phần thưởng
+- Reward notifications - Thông báo phần thưởng
+- Special rewards - Phần thưởng đặc biệt
+- Limited-time rewards - Phần thưởng giới hạn thời gian
+- Share rewards - Chia sẻ phần thưởng
+
+================================================================================
+
+12. NOTIFICATIONS (THÔNG BÁO)
+================================================================================
+
+12.1. Push Notifications (Thông báo đẩy)
+- Review due reminders - Nhắc nhở ôn tập đến hạn
+- Study time reminders - Nhắc nhở thời gian học
+- Test reminders - Nhắc nhở kiểm tra
+- Streak warnings - Cảnh báo chuỗi
+- Goal progress updates - Cập nhật tiến độ mục tiêu
+- Achievement unlocked - Thành tích mở khóa
+- New content available - Nội dung mới có sẵn
+- Weekly summary - Tóm tắt hàng tuần
+- Monthly summary - Tóm tắt hàng tháng
+- Challenge updates - Cập nhật thử thách
+- Leaderboard changes - Thay đổi bảng xếp hạng
+
+12.2. Email Notifications (Thông báo email)
+- Daily progress report - Báo cáo tiến độ hàng ngày
+- Weekly progress report - Báo cáo tiến độ hàng tuần
+- Monthly progress report - Báo cáo tiến độ hàng tháng
+- Test results - Kết quả kiểm tra
+- Achievement unlocked - Thành tích mở khóa
+- Streak milestones - Cột mốc chuỗi
+- Goal achieved - Mục tiêu đạt được
+- Newsletter subscription - Đăng ký bản tin
+- Promotional content - Nội dung quảng cáo
+
+12.3. In-App Notifications (Thông báo trong ứng dụng)
+- Notification center - Trung tâm thông báo
+- Notification list - Danh sách thông báo
+- Mark as read - Đánh dấu đã đọc
+- Mark all as read - Đánh dấu tất cả đã đọc
+- Delete notification - Xóa thông báo
+- Notification settings - Cài đặt thông báo
+- Notification preferences - Ưa thích thông báo
+- Quiet hours - Giờ yên tĩnh
+- Do not disturb mode - Chế độ không làm phiền
+
+================================================================================
+
+13. SETTINGS (CÀI ĐẶT)
+================================================================================
+
+13.1. Account Settings (Cài đặt tài khoản)
+- Profile settings - Cài đặt hồ sơ
+- Email settings - Cài đặt email
+- Password settings - Cài đặt mật khẩu
+- Privacy settings - Cài đặt quyền riêng tư
+- Data export - Xuất dữ liệu
+- Account deletion - Xóa tài khoản
+- Connected accounts - Tài khoản kết nối
+- Notification preferences - Ưa thích thông báo
+
+13.2. Study Settings (Cài đặt học tập)
+- Daily goals configuration - Cấu hình mục tiêu hàng ngày
+- Study time preferences - Ưa thích thời gian học
+- Difficulty preferences - Ưa thích độ khó
+- Content preferences - Ưa thích nội dung
+- SRS settings - Cài đặt SRS
+- Audio settings - Cài đặt âm thanh
+- Display settings - Cài đặt hiển thị
+- Timer settings - Cài đặt đồng hồ
+- Auto-advance settings - Cài đặt tự động chuyển
+
+13.3. Appearance Settings (Cài đặt giao diện)
+- Theme selection (light/dark/custom) - Chọn chủ đề (sáng/tối/tùy chỉnh)
+- Font size selection - Chọn cỡ chữ
+- Font family selection - Chọn font chữ
+- Color scheme - Lược màu
+- Background color - Màu nền
+- Text color - Màu văn bản
+- Accent color - Màu nhấn
+- High contrast mode - Chế độ tương phản cao
+- Reduce motion - Giảm chuyển động
+
+13.4. Accessibility Settings (Cài đặt truy cập)
+- Screen reader support - Hỗ trợ trình đọc màn hình
+- Keyboard navigation - Điều hướng bàn phím
+- Voice control - Điều khiển giọng nói
+- Text-to-speech - Văn bản thành giọng nói
+- Speech-to-text - Giọng nói thành văn bản
+- Color blind mode - Chế độ mù màu
+- Large text mode - Chế độ văn bản lớn
+- Focus indicators - Chỉ số tiêu điểm
+
+13.5. Language Settings (Cài đặt ngôn ngữ)
+- Interface language selection - Chọn ngôn ngữ giao diện
+- Content language selection - Chọn ngôn ngữ nội dung
+- Vocabulary display language - Ngôn ngữ hiển thị từ vựng
+- Translation settings - Cài đặt dịch
+
+13.6. Privacy Settings (Cài đặt quyền riêng tư)
+- Profile visibility - Khả năng hiển thị hồ sơ
+- Progress visibility - Khả năng hiển thị tiến độ
+- Leaderboard participation - Tham gia bảng xếp hạng
+- Data sharing preferences - Ưa thích chia sẻ dữ liệu
+- Analytics consent - Đồng ý phân tích
+- Cookie preferences - Ưa thích cookie
+
+================================================================================
+
+14. MOBILE FEATURES (TÍNH NĂNG DI ĐỘNG)
+================================================================================
+
+14.1. Offline Mode (Chế độ ngoại tuyến)
+- Download vocabulary for offline - Tải từ vựng để dùng ngoại tuyến
+- Download lessons for offline - Tải bài học để dùng ngoại tuyến
+- Download tests for offline - Tải kiểm tra để dùng ngoại tuyến
+- Offline practice capability - Khả năng luyện tập ngoại tuyến
+- Sync when online - Đồng bộ khi online
+- Offline indicator - Chỉ số ngoại tuyến
+- Manage offline content - Quản lý nội dung ngoại tuyến
+
+14.2. Background Audio (Âm thanh nền)
+- Play audio in background - Phát âm thanh trong nền
+- Audio controls in notification - Điều khiển âm thanh trong thông báo
+- Lock screen controls - Điều khiển màn hình khóa
+- Headphone controls - Điều khiển tai nghe
+
+14.3. Widgets (Tiện ích)
+- Daily progress widget - Tiện ích tiến độ hàng ngày
+- Streak widget - Tiện ích chuỗi
+- Review due widget - Tiện ích ôn tập đến hạn
+- Quick actions widget - Tiện ích hành động nhanh
+
+================================================================================
+
+15. SOCIAL FEATURES (TÍNH NĂNG XÃ HỘI)
+================================================================================
+
+15.1. Friends System (Hệ thống bạn bè)
+- Send friend request - Gửi lời mời kết bạn
+- Accept friend request - Chấp nhận lời mời kết bạn
+- Decline friend request - Từ chối lời mời kết bạn
+- Friend list - Danh sách bạn bè
+- Friend profile view - Xem hồ sơ bạn bè
+- Friend progress view - Xem tiến độ bạn bè
+- Compare with friend - So sánh với bạn bè
+- Remove friend - Xóa bạn bè
+- Block user - Chặn người dùng
+
+15.2. Social Sharing (Chia sẻ xã hội)
+- Share progress on social media - Chia sẻ tiến độ trên mạng xã hội
+- Share achievements - Chia sẻ thành tích
+- Share test results - Chia sẻ kết quả kiểm tra
+- Share badges - Chia sẻ huy hiệu
+- Custom share message - Thông điệp chia sẻ tùy chỉnh
+- Share image generation - Tạo hình ảnh chia sẻ
+
+15.3. Study Groups (Nhóm học tập)
+- Create study group - Tạo nhóm học tập
+- Join study group - Tham gia nhóm học tập
+- Group chat - Trò chuyện nhóm
+- Group challenges - Thử thách nhóm
+- Group leaderboard - Bảng xếp hạng nhóm
+- Group progress tracking - Theo dõi tiến độ nhóm
+- Group activities - Hoạt động nhóm
+- Leave group - Rời nhóm
+
+================================================================================
+
+16. CONTENT MANAGEMENT (QUẢN LÝ NỘI DUNG)
+================================================================================
+
+16.1. Vocabulary Management (Admin) - Quản lý từ vựng (Quản trị viên)
+- Add new vocabulary - Thêm từ vựng mới
+- Edit vocabulary - Chỉnh sửa từ vựng
+- Delete vocabulary - Xóa từ vựng
+- Bulk import vocabulary - Nhập từ vựng hàng loạt
+- Bulk export vocabulary - Xuất từ vựng hàng loạt
+- Vocabulary approval queue - Hàng đợi phê duyệt từ vựng
+- Vocabulary categorization - Phân loại từ vựng
+- Vocabulary tagging - Gắn thẻ từ vựng
+- Vocabulary quality check - Kiểm tra chất lượng từ vựng
+
+16.2. Question Bank Management (Admin) - Quản lý ngân hàng câu hỏi (Quản trị viên)
+- Add new questions - Thêm câu hỏi mới
+- Edit questions - Chỉnh sửa câu hỏi
+- Delete questions - Xóa câu hỏi
+- Bulk import questions - Nhập câu hỏi hàng loạt
+- Question categorization - Phân loại câu hỏi
+- Question difficulty rating - Đánh giá độ khó câu hỏi
+- Question quality check - Kiểm tra chất lượng câu hỏi
+- Question statistics - Thống kê câu hỏi
+- Duplicate detection - Phát hiện trùng lặp
+
+16.3. Test Management (Admin) - Quản lý kiểm tra (Quản trị viên)
+- Create new tests - Tạo kiểm tra mới
+- Edit tests - Chỉnh sửa kiểm tra
+- Delete tests - Xóa kiểm tra
+- Test configuration - Cấu hình kiểm tra
+- Test publication - Xuất bản kiểm tra
+- Test scheduling - Lên lịch kiểm tra
+- Test analytics - Phân tích kiểm tra
+
+16.4. Content Analytics (Admin) - Phân tích nội dung (Quản trị viên)
+- Content usage statistics - Thống kê sử dụng nội dung
+- Popular content - Nội dung phổ biến
+- Content performance - Hiệu suất nội dung
+- User engagement - Sự tham gia người dùng
+- Content gaps identification - Xác định khoảng trống nội dung
+- Content quality metrics - Chỉ số chất lượng nội dung
+
+================================================================================
+
+17. ADMIN PANEL (BẢNG ĐIỀU KHIỂN QUẢN TRỊ)
+================================================================================
+
+17.1. User Management (Quản lý người dùng)
+- User list view - Chế độ xem danh sách người dùng
+- User search - Tìm kiếm người dùng
+- User filtering - Lọc người dùng
+- User detail view - Chế độ xem chi tiết người dùng
+- User status management - Quản lý trạng thái người dùng
+- User deletion - Xóa người dùng
+- User banning - Cấm người dùng
+- User analytics - Phân tích người dùng
+- User activity log - Nhật ký hoạt động người dùng
+
+17.2. System Analytics (Phân tích hệ thống)
+- Daily active users - Người dùng hoạt động hàng ngày
+- Weekly active users - Người dùng hoạt động hàng tuần
+- Monthly active users - Người dùng hoạt động hàng tháng
+- User retention rate - Tỷ lệ giữ chân người dùng
+- Churn rate - Tỷ lệ rời bỏ
+- Conversion rate - Tỷ lệ chuyển đổi
+- Revenue metrics - Chỉ số doanh thu
+- System performance - Hiệu suất hệ thống
+- Error logs - Nhật ký lỗi
+- Usage patterns - Mẫu sử dụng
+
+17.3. System Settings (Cài đặt hệ thống)
+- Application configuration - Cấu hình ứng dụng
+- Feature flags - Cờ tính năng
+- Maintenance mode - Chế độ bảo trì
+- API settings - Cài đặt API
+- Email settings - Cài đặt email
+- SMS settings - Cài đặt SMS
+- Payment settings - Cài đặt thanh toán
+- Integration settings - Cài đặt tích hợp
+
+================================================================================
+
+18. INTEGRATIONS (TÍCH HỢP)
+================================================================================
+
+18.1. Calendar Integration (Tích hợp lịch)
+- Sync with Google Calendar - Đồng bộ với Google Calendar
+- Sync with Outlook Calendar - Đồng bộ với Outlook Calendar
+- Sync with Apple Calendar - Đồng bộ với Apple Calendar
+- Export to iCal - Xuất sang iCal
+
+18.2. Third-Party Auth (Xác thực bên thứ ba)
+- Google OAuth - Google OAuth
+- Facebook OAuth - Facebook OAuth
+- Apple Sign In - Apple Sign In
+- Microsoft Account - Tài khoản Microsoft
+
+18.3. Analytics Integration (Tích hợp phân tích)
+- Google Analytics - Google Analytics
+- Mixpanel - Mixpanel
+- Amplitude - Amplitude
+- Custom analytics - Phân tích tùy chỉnh
+
+================================================================================
+
+19. SECURITY (BẢO MẬT)
+================================================================================
+
+19.1. Security Features (Tính năng bảo mật)
+- Two-factor authentication - Xác thực hai yếu tố
+- Login notifications - Thông báo đăng nhập
+- Suspicious activity detection - Phát hiện hoạt động đáng ngờ
+- Session management - Quản lý phiên
+- IP whitelist - Danh sách trắng IP
+- Rate limiting - Giới hạn tốc độ
+- DDoS protection - Bảo vệ DDoS
+- Data encryption - Mã hóa dữ liệu
+- Secure headers - Tiêu đề bảo mật
+- CSRF protection - Bảo vệ CSRF
+- XSS protection - Bảo vệ XSS
+
+================================================================================
+
+TỔNG KẾT:
+- Tổng số nhóm tính năng: 19 nhóm chính
+- Tổng số tính năng chi tiết: 500+ tính năng
+- Phạm vi bao phủ: Đầy đủ cho hệ thống học TOEIC 900+ điểm
+- Mức độ chi tiết: Từ tính năng cơ bản đến nâng cao
+- Khả năng mở rộng: Dễ dàng mở rộng và tùy chỉnh
+
+================================================================================
+Người tạo: AI Assistant
+Ngày tạo: 26/07/2026
+Phiên bản: 1.0
+Dựa trên: Lộ trình học TOEIC 900+ - Phiên bản nâng cao
+================================================================================

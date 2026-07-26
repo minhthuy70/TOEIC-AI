@@ -1,0 +1,1056 @@
+@startuml Class_Diagram_TOEIC_900_Plus
+
+!theme plain
+skinparam class {
+    BackgroundColor #E8F5E9
+    BorderColor #4CAF50
+    ArrowColor #2E7D32
+}
+skinparam backgroundColor #FEFEFE
+
+title TOEIC 900+ System - Class Diagram (Core Classes)
+
+' Core Classes
+class User {
+  + id: number
+  + fullName: string
+  + email: string
+  + password: string
+  + avatar?: string
+  + isVerified: boolean
+  + isActive: boolean
+  + role: UserRole
+  + createdAt: DateTime
+  + updatedAt: DateTime
+  + lastLoginAt?: DateTime
+  + validatePassword(password: string): boolean
+  + hashPassword(password: string): string
+  + generateVerificationToken(): string
+  + sendVerificationEmail(): void
+  + lockAccount(): void
+  + unlockAccount(): void
+  + isAdmin(): boolean
+  + isStudent(): boolean
+}
+
+class UserProfile {
+  + id: number
+  + userId: number
+  + currentScore: number
+  + targetScore: number
+  + examDate?: DateTime
+  + dailyStudyTime: number
+  + studySchedulePreference: SchedulePreference
+  + motivationLevel: number
+  + learningStyle: LearningStyle
+  + currentStage: number
+  + stageStartDate: DateTime
+  + firstLoginCompleted: boolean
+  + updateProfile(data: ProfileUpdateData): void
+  + calculateDaysUntilExam(): number
+  + calculateStudyProgress(): number
+  + determineStage(): number
+  + updateStage(newStage: number): void
+}
+
+class Session {
+  + id: number
+  + userId: number
+  + token: string
+  + deviceInfo: string
+  + ipAddress: string
+  + userAgent: string
+  + createdAt: DateTime
+  + expiresAt: DateTime
+  + lastActivityAt: DateTime
+  + isActive: boolean
+  + isValid(): boolean
+  + isExpired(): boolean
+  + extendSession(duration: number): void
+  + revoke(): void
+  + refresh(): string
+}
+
+enum UserRole {
+  STUDENT
+  ADMIN
+}
+
+enum SchedulePreference {
+  MORNING
+  AFTERNOON
+  EVENING
+  FLEXIBLE
+}
+
+enum LearningStyle {
+  VISUAL
+  AUDITORY
+  READING
+  KINESTHETIC
+}
+
+' Relationships
+User "1" -- "1" UserProfile
+User "1" -- "*" Session
+UserProfile "1" -- "1" User
+Session "*" -- "1" User
+
+note right of User
+  Core User Class
+  - Authentication
+  - Role management
+  - Account status
+end note
+
+note right of UserProfile
+  User Profile Data
+  - TOEIC scores
+  - Study preferences
+  - Stage assignment
+end note
+
+note right of Session
+  Session Management
+  - JWT tokens
+  - Device tracking
+  - Activity monitoring
+end note
+
+@enduml
+
+@startuml Class_Diagram_TOEIC_900_Plus_Vocabulary
+
+!theme plain
+skinparam class {
+    BackgroundColor #E8F5E9
+    BorderColor #4CAF50
+    ArrowColor #2E7D32
+}
+skinparam backgroundColor #FEFEFE
+
+title TOEIC 900+ System - Class Diagram (Vocabulary Classes)
+
+class Vocabulary {
+  + id: number
+  + english: string
+  + vietnamese: string
+  + pronounce?: string
+  + type?: string
+  + explain?: string
+  + example?: string
+  + exampleVietnamese?: string
+  + imageUrl?: string
+  + audioUrl?: string
+  + topic: string
+  + topicUrl?: string
+  + stage: number
+  + difficulty: number
+  + frequency: number
+  + collocations?: string[]
+  + synonyms?: string[]
+  + antonyms?: string[]
+  + createdAt: DateTime
+  + updatedAt: DateTime
+  + getDefinition(): string
+  + getPronunciation(): string
+  + playAudio(): void
+  + getImage(): string
+  + getCollocations(): string[]
+  + getSynonyms(): string[]
+  + getAntonyms(): string[]
+}
+
+class UserVocabularyProgress {
+  + id: number
+  + userId: number
+  + vocabularyId: number
+  + status: VocabularyStatus
+  + reviewLevel: number
+  + reviewCount: number
+  + correctCount: number
+  + incorrectCount: number
+  + learnedAt?: DateTime
+  + lastReviewAt?: DateTime
+  + nextReviewAt?: DateTime
+  + masteredAt?: DateTime
+  + personalNotes?: string
+  + isFavorite: boolean
+  + createdAt: DateTime
+  + updatedAt: DateTime
+  + markAsLearned(): void
+  + markAsMastered(): void
+  + updateSRSLevel(rating: SRSRating): void
+  + calculateNextReview(): DateTime
+  + incrementReview(): void
+  + recordResult(isCorrect: boolean): void
+  + getAccuracy(): number
+  + isDueForReview(): boolean
+}
+
+class SRSConfig {
+  + id: number
+  + userId: number
+  + algorithm: SRSAlgorithm
+  + dailyNewWordsGoal: number
+  + reviewPriority: ReviewPriority
+  + autoPlayAudio: boolean
+  + pronunciationAccent: Accent
+  + displayMode: DisplayMode
+  + reviewTimePreference: SchedulePreference
+  + calculateNextReview(level: number): DateTime
+  + getReviewSchedule(): DateTime[]
+  + updateConfig(config: Partial<SRSConfig>): void
+}
+
+enum VocabularyStatus {
+  NEW
+  LEARNING
+  REVIEWING
+  MASTERED
+}
+
+enum SRSRating {
+  AGAIN
+  HARD
+  GOOD
+  EASY
+}
+
+enum SRSAlgorithm {
+  STANDARD
+  AGGRESSIVE
+  CONSERVATIVE
+}
+
+enum ReviewPriority {
+  HIGH
+  MEDIUM
+  LOW
+}
+
+enum Accent {
+  US
+  UK
+}
+
+enum DisplayMode {
+  FLASHCARD
+  LIST
+  QUIZ
+}
+
+' Relationships
+Vocabulary "1" -- "*" UserVocabularyProgress
+UserVocabularyProgress "*" -- "1" Vocabulary
+UserVocabularyProgress "*" -- "1" User
+SRSConfig "1" -- "1" User
+
+note right of Vocabulary
+  Vocabulary Word
+  - English & Vietnamese
+  - Audio & Images
+  - Topic & Stage
+  - Difficulty & Frequency
+end note
+
+note right of UserVocabularyProgress
+  User Progress
+  - SRS tracking
+  - Review scheduling
+  - Mastery status
+  - Personal notes
+end note
+
+note right of SRSConfig
+  SRS Configuration
+  - Algorithm selection
+  - Daily goals
+  - Display preferences
+end note
+
+@enduml
+
+@startuml Class_Diagram_TOEIC_900_Plus_Practice
+
+!theme plain
+skinparam class {
+    BackgroundColor #E8F5E9
+    BorderColor #4CAF50
+    ArrowColor #2E7D32
+}
+skinparam backgroundColor #FEFEFE
+
+title TOEIC 900+ System - Class Diagram (Practice Classes)
+
+class ListeningPractice {
+  + id: number
+  + userId: number
+  + part: ListeningPart
+  + questionId: number
+  + userAnswer?: string
+  + correctAnswer: string
+  + isCorrect: boolean
+  + timeSpent: number
+  + audioUrl: string
+  + transcript?: string
+  + imageUrl?: string
+  + notes?: string
+  + createdAt: DateTime
+  + submitAnswer(answer: string): void
+  + checkAnswer(): boolean
+  + getExplanation(): string
+  + playAudio(): void
+  + showTranscript(): string
+  + saveNotes(notes: string): void
+}
+
+class ReadingPractice {
+  + id: number
+  + userId: number
+  + part: ReadingPart
+  + questionId: number
+  + passageId?: number
+  + userAnswer?: string
+  + correctAnswer: string
+  + isCorrect: boolean
+  + timeSpent: number
+  + passageText?: string
+  + evidenceText?: string
+  + notes?: string
+  + createdAt: DateTime
+  + submitAnswer(answer: string): void
+  + checkAnswer(): boolean
+  + getExplanation(): string
+  + highlightEvidence(): string
+  + saveNotes(notes: string): void
+}
+
+class GrammarLesson {
+  + id: number
+  + title: string
+  + topic: string
+  + category: GrammarCategory
+  + stage: number
+  + difficulty: number
+  + explanation: string
+  + examples: GrammarExample[]
+  + commonMistakes: string[]
+  + tips: string[]
+  + relatedTopics: number[]
+  + isCompleted: boolean
+  + createdAt: DateTime
+  + updatedAt: DateTime
+  + getExplanation(): string
+  + getExamples(): GrammarExample[]
+  + getCommonMistakes(): string[]
+  + getTips(): string[]
+  + markAsCompleted(userId: number): void
+}
+
+class GrammarExample {
+  + id: number
+  + lessonId: number
+  + sentence: string
+  + explanation: string
+  + isCorrect: boolean
+}
+
+class UserGrammarProgress {
+  + id: number
+  + userId: number
+  + lessonId: number
+  + isCompleted: boolean
+  + completedAt?: DateTime
+  + accuracy: number
+  + exerciseCount: number
+}
+
+enum ListeningPart {
+  PART_1
+  PART_2
+  PART_3
+  PART_4
+}
+
+enum ReadingPart {
+  PART_5
+  PART_6
+  PART_7
+}
+
+enum GrammarCategory {
+  TENSES
+  CLAUSES
+  CONDITIONALS
+  VOICE
+  MODALS
+  ARTICLES
+  PREPOSITIONS
+  CONJUNCTIONS
+}
+
+' Relationships
+ListeningPractice "*" -- "1" User
+ReadingPractice "*" -- "1" User
+GrammarLesson "1" -- "*" UserGrammarProgress
+GrammarLesson "1" -- "*" GrammarExample
+UserGrammarProgress "*" -- "1" User
+UserGrammarProgress "*" -- "1" GrammarLesson
+
+note right of ListeningPractice
+  Listening Practice
+  - Part 1-4
+  - Audio & Transcript
+  - Time tracking
+end note
+
+note right of ReadingPractice
+  Reading Practice
+  - Part 5-7
+  - Passage text
+  - Evidence highlighting
+end note
+
+note right of GrammarLesson
+  Grammar Lesson
+  - Topic & Category
+  - Examples & Tips
+  - Common mistakes
+end note
+
+@enduml
+
+@startuml Class_Diagram_TOEIC_900_Plus_Test
+
+!theme plain
+skinparam class {
+    BackgroundColor #E8F5E9
+    BorderColor #4CAF50
+    ArrowColor #2E7D32
+}
+skinparam backgroundColor #FEFEFE
+
+title TOEIC 900+ System - Class Diagram (Test Classes)
+
+class Test {
+  + id: number
+  + userId: number
+  + testType: TestType
+  + configuration: TestConfig
+  + listeningScore: number
+  + readingScore: number
+  + totalScore: number
+  + listeningTime: number
+  + readingTime: number
+  + totalTime: number
+  + part1Score: number
+  + part2Score: number
+  + part3Score: number
+  + part4Score: number
+  + part5Score: number
+  + part6Score: number
+  + part7Score: number
+  + startedAt: DateTime
+  + completedAt?: DateTime
+  + status: TestStatus
+  + startTest(): void
+  + submitTest(): void
+  + calculateScore(): number
+  + getScoreBreakdown(): ScoreBreakdown
+  + getTimeAnalysis(): TimeAnalysis
+  + getWeaknessAnalysis(): WeaknessAnalysis
+}
+
+class TestResult {
+  + id: number
+  + testId: number
+  + questionId: number
+  + part: number
+  + userAnswer?: string
+  + correctAnswer: string
+  + isCorrect: boolean
+  + timeSpent: number
+  + isMarkedForReview: boolean
+  + errorType?: ErrorType
+  + addedToErrorLog: boolean
+  + checkAnswer(): boolean
+  + getExplanation(): string
+  + addToErrorLog(): void
+  + markForReview(): void
+}
+
+class Question {
+  + id: number
+  + part: number
+  + type: QuestionType
+  + content: string
+  + options: QuestionOption[]
+  + correctAnswer: string
+  + explanation: string
+  + difficulty: number
+  + topic: string
+  + audioUrl?: string
+  + imageUrl?: string
+  + passageText?: string
+  + transcript?: string
+  + stage: number
+  + isActive: boolean
+  + createdAt: DateTime
+  + updatedAt: DateTime
+  + getOptions(): QuestionOption[]
+  + checkAnswer(answer: string): boolean
+  + getExplanation(): string
+  + playAudio(): void
+  + getImage(): string
+}
+
+class QuestionOption {
+  + id: number
+  + questionId: number
+  + label: string
+  + content: string
+  + isCorrect: boolean
+}
+
+enum TestType {
+  MINI
+  FULL
+  PLACEMENT
+}
+
+enum TestStatus {
+  NOT_STARTED
+  IN_PROGRESS
+  COMPLETED
+  ABANDONED
+}
+
+enum QuestionType {
+  MULTIPLE_CHOICE
+  FILL_BLANK
+  MATCHING
+}
+
+enum ErrorType {
+  GRAMMAR
+  VOCABULARY
+  CARELESS
+  TIMING
+  COMPREHENSION
+}
+
+' Relationships
+Test "1" -- "*" TestResult
+TestResult "*" -- "1" Test
+Test "*" -- "1" User
+Question "1" -- "*" TestResult
+Question "1" -- "*" QuestionOption
+QuestionOption "*" -- "1" Question
+
+note right of Test
+  Test
+  - Mini/Full/Placement
+  - Score breakdown
+  - Time analysis
+  - Weakness analysis
+end note
+
+note right of TestResult
+  Test Result
+  - Answer tracking
+  - Error classification
+  - Review marking
+end note
+
+note right of Question
+  Question
+  - Part & Type
+  - Options
+  - Audio/Image
+  - Stage & Difficulty
+end note
+
+@enduml
+
+@startuml Class_Diagram_TOEIC_900_Plus_Progress
+
+!theme plain
+skinparam class {
+    BackgroundColor #E8F5E9
+    BorderColor #4CAF50
+    ArrowColor #2E7D32
+}
+skinparam backgroundColor #FEFEFE
+
+title TOEIC 900+ System - Class Diagram (Progress Classes)
+
+class Goal {
+  + id: number
+  + userId: number
+  + goalType: GoalType
+  + targetValue: number
+  + currentValue: number
+  + deadline: DateTime
+  + status: GoalStatus
+  + createdAt: DateTime
+  + updatedAt: DateTime
+  + updateProgress(value: number): void
+  + getProgressPercentage(): number
+  + isOnTrack(): boolean
+  + isCompleted(): boolean
+  + getDaysRemaining(): number
+}
+
+class Achievement {
+  + id: number
+  + title: string
+  + description: string
+  + category: AchievementCategory
+  + icon: string
+  + badgeUrl: string
+  + criteria: AchievementCriteria
+  + points: number
+  + rarity: AchievementRarity
+  + createdAt: DateTime
+  + checkCriteria(user: User): boolean
+  + awardTo(user: User): void
+}
+
+class UserAchievement {
+  + id: number
+  + userId: number
+  + achievementId: number
+  + unlockedAt: DateTime
+  + isDisplayed: boolean
+}
+
+class Streak {
+  + id: number
+  + userId: number
+  + currentStreak: number
+  + longestStreak: number
+  + lastStudyDate: DateTime
+  + freezeCount: number
+  + totalStudyDays: number
+  + createdAt: DateTime
+  + updatedAt: DateTime
+  + incrementStreak(): void
+  + resetStreak(): void
+  + freezeStreak(): void
+  + getStreakMultiplier(): number
+  + isStreakActive(): boolean
+}
+
+enum GoalType {
+  SCORE
+  VOCABULARY
+  STUDY_TIME
+  STREAK
+}
+
+enum GoalStatus {
+  NOT_STARTED
+  IN_PROGRESS
+  ON_TRACK
+  BEHIND
+  AHEAD
+  COMPLETED
+  MISSED
+}
+
+enum AchievementCategory {
+  LEARNING
+  PRACTICE
+  STREAK
+  ACCURACY
+  SOCIAL
+}
+
+enum AchievementRarity {
+  COMMON
+  RARE
+  EPIC
+  LEGENDARY
+}
+
+' Relationships
+Goal "*" -- "1" User
+Achievement "1" -- "*" UserAchievement
+UserAchievement "*" -- "1" User
+UserAchievement "*" -- "1" Achievement
+Streak "*" -- "1" User
+
+note right of Goal
+  Goal
+  - Target & current value
+  - Deadline tracking
+  - Progress monitoring
+end note
+
+note right of Achievement
+  Achievement
+  - Criteria based
+  - Rarity levels
+  - Points reward
+end note
+
+note right of Streak
+  Streak
+  - Current & longest
+  - Freeze capability
+  - Multiplier calculation
+end note
+
+@enduml
+
+@startuml Class_Diagram_TOEIC_900_Plus_Error
+
+!theme plain
+skinparam class {
+    BackgroundColor #E8F5E9
+    BorderColor #4CAF50
+    ArrowColor #2E7D32
+}
+skinparam backgroundColor #FEFEFE
+
+title TOEIC 900+ System - Class Diagram (Error Tracking Classes)
+
+class ErrorLog {
+  + id: number
+  + userId: number
+  + questionId: number
+  + part: number
+  + userAnswer: string
+  + correctAnswer: string
+  + errorType: ErrorType
+  + frequency: number
+  + lastOccurredAt: DateTime
+  + status: ErrorStatus
+  + notes?: string
+  + resolvedAt?: DateTime
+  + createdAt: DateTime
+  + updatedAt: DateTime
+  + incrementFrequency(): void
+  + markAsResolved(): void
+  + markAsUnresolved(): void
+  + getDaysSinceLastOccurrence(): number
+}
+
+class ErrorDrill {
+  + id: number
+  + userId: number
+  + errorLogId: number
+  + questionId: number
+  + questions: number[]
+  + configuration: DrillConfig
+  + successRate: number
+  + attempts: number
+  + completedAt?: DateTime
+  + createdAt: DateTime
+  + startDrill(): void
+  + completeDrill(): void
+  + calculateSuccessRate(): number
+  + generateQuestions(): number[]
+}
+
+class DrillConfig {
+  + questionCount: number
+  + timeLimit: number
+  + autoResolveThreshold: number
+}
+
+enum ErrorStatus {
+  ACTIVE
+  RESOLVED
+  RECURRING
+}
+
+' Relationships
+ErrorLog "*" -- "1" User
+ErrorDrill "*" -- "1" User
+ErrorDrill "*" -- "1" ErrorLog
+ErrorLog "1" -- "1" ErrorDrill
+
+note right of ErrorLog
+  Error Log
+  - Error classification
+  - Frequency tracking
+  - Resolution status
+end note
+
+note right of ErrorDrill
+  Error Drill
+  - Question generation
+  - Success rate tracking
+  - Auto-resolve threshold
+end note
+
+@enduml
+
+@startuml Class_Diagram_TOEIC_900_Plus_StudyPlanner
+
+!theme plain
+skinparam class {
+    BackgroundColor #E8F5E9
+    BorderColor #4CAF50
+    ArrowColor #2E7D32
+}
+skinparam backgroundColor #FEFEFE
+
+title TOEIC 900+ System - Class Diagram (Study Planner Classes)
+
+class StudySchedule {
+  + id: number
+  + userId: number
+  + dayOfWeek: DayOfWeek
+  + startTime: string
+  + endTime: string
+  + sessionType: SessionType
+  + isRecurring: boolean
+  + isActive: boolean
+  + createdAt: DateTime
+  + updatedAt: DateTime
+  + checkConflict(otherSchedule: StudySchedule): boolean
+  + activate(): void
+  + deactivate(): void
+  + getDuration(): number
+}
+
+class Reminder {
+  + id: number
+  + userId: number
+  + type: ReminderType
+  + title: string
+  + message: string
+  + reminderTime: DateTime
+  + isRecurring: boolean
+  + recurringPattern?: string
+  + isSent: boolean
+  + sentAt?: DateTime
+  + createdAt: DateTime
+  + send(): void
+  + markAsSent(): void
+  + scheduleNext(): DateTime
+}
+
+enum DayOfWeek {
+  MONDAY
+  TUESDAY
+  WEDNESDAY
+  THURSDAY
+  FRIDAY
+  SATURDAY
+  SUNDAY
+}
+
+enum SessionType {
+  VOCABULARY
+  LISTENING
+  READING
+  GRAMMAR
+  TEST
+  REVIEW
+}
+
+enum ReminderType {
+  STUDY_TIME
+  REVIEW_DUE
+  TEST_REMINDER
+  STREAK_WARNING
+  GOAL_UPDATE
+}
+
+' Relationships
+StudySchedule "*" -- "1" User
+Reminder "*" -- "1" User
+
+note right of StudySchedule
+  Study Schedule
+  - Weekly planning
+  - Conflict detection
+  - Session types
+end note
+
+note right of Reminder
+  Reminder
+  - Multiple types
+  - Recurring patterns
+  - Send tracking
+end note
+
+@enduml
+
+@startuml Class_Diagram_TOEIC_900_Plus_Social
+
+!theme plain
+skinparam class {
+    BackgroundColor #E8F5E9
+    BorderColor #4CAF50
+    ArrowColor #2E7D32
+}
+skinparam backgroundColor #FEFEFE
+
+title TOEIC 900+ System - Class Diagram (Social Classes)
+
+class Friendship {
+  + id: number
+  + requesterId: number
+  + receiverId: number
+  + status: FriendshipStatus
+  + requestedAt: DateTime
+  + acceptedAt?: DateTime
+  + accept(): void
+  + decline(): void
+  + block(): void
+  + unfriend(): void
+}
+
+class StudyGroup {
+  + id: number
+  + name: string
+  + description: string
+  + ownerId: number
+  + maxMembers: number
+  + currentMembers: number
+  + isPublic: boolean
+  + createdAt: DateTime
+  + updatedAt: DateTime
+  + addMember(userId: number): void
+  + removeMember(userId: number): void
+  + isFull(): boolean
+}
+
+class GroupMember {
+  + id: number
+  + groupId: number
+  + userId: number
+  + role: GroupRole
+  + joinedAt: DateTime
+}
+
+enum FriendshipStatus {
+  PENDING
+  ACCEPTED
+  DECLINED
+  BLOCKED
+}
+
+enum GroupRole {
+  OWNER
+  ADMIN
+  MEMBER
+}
+
+' Relationships
+Friendship "*" -- "1" User
+Friendship "*" -- "1" User
+StudyGroup "1" -- "*" GroupMember
+StudyGroup "1" -- "1" User
+GroupMember "*" -- "1" StudyGroup
+GroupMember "*" -- "1" User
+
+note right of Friendship
+  Friendship
+  - Request management
+  - Status tracking
+  - Block capability
+end note
+
+note right of StudyGroup
+  Study Group
+  - Member management
+  - Role assignment
+  - Public/Private
+end note
+
+@enduml
+
+@startuml Class_Diagram_TOEIC_900_Plus_Notification
+
+!theme plain
+skinparam class {
+    BackgroundColor #E8F5E9
+    BorderColor #4CAF50
+    ArrowColor #2E7D32
+}
+skinparam backgroundColor #FEFEFE
+
+title TOEIC 900+ System - Class Diagram (Notification Classes)
+
+class Notification {
+  + id: number
+  + userId: number
+  + type: NotificationType
+  + title: string
+  + message: string
+  + data?: any
+  + isRead: boolean
+  + readAt?: DateTime
+  + createdAt: DateTime
+  + markAsRead(): void
+  + sendPush(): void
+  + sendEmail(): void
+}
+
+enum NotificationType {
+  REVIEW_DUE
+  STUDY_REMINDER
+  TEST_RESULT
+  ACHIEVEMENT_UNLOCKED
+  STREAK_MILESTONE
+  GOAL_ACHIEVED
+  FRIEND_REQUEST
+  GROUP_INVITE
+}
+
+' Relationships
+Notification "*" -- "1" User
+
+note right of Notification
+  Notification
+  - Multiple types
+  - Read status
+  - Push/Email delivery
+end note
+
+@enduml
+
+@startuml Class_Diagram_TOEIC_900_Plus_Admin
+
+!theme plain
+skinparam class {
+    BackgroundColor #E8F5E9
+    BorderColor #4CAF50
+    ArrowColor #2E7D32
+}
+skinparam backgroundColor #FEFEFE
+
+title TOEIC 900+ System - Class Diagram (Admin Classes)
+
+class SystemAnalytics {
+  + id: number
+  + date: DateTime
+  + dailyActiveUsers: number
+  + weeklyActiveUsers: number
+  + monthlyActiveUsers: number
+  + newRegistrations: number
+  + retentionRate: number
+  + churnRate: number
+  + averageStudyTime: number
+  + totalTestsTaken: number
+  + createdAt: DateTime
+  + calculateRetentionRate(): number
+  + calculateChurnRate(): number
+  + generateReport(): AnalyticsReport
+}
+
+note right of SystemAnalytics
+  System Analytics
+  - User metrics
+  - Retention tracking
+  - Test statistics
+  - Report generation
+end note
+
+@enduml
