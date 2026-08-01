@@ -6,13 +6,14 @@ import { PrismaModule } from "./prisma/prisma.module";
 import { PlacementTestModule } from "./placement-test/placement-test.module";
 import { VocabularyModule } from "./vocabulary/vocabulary.module";
 
-import { ProfileController } from "./profile/profile.controller";
-import { ProfileService } from "./profile/profile.service";
+
 import { AuthModule } from "./auth/auth.module";
+import { ProfileModule } from "./profile/profile.module";
 
 @Module({
   imports: [
     PrismaModule,
+    ProfileModule,
 
      AuthModule,
 
@@ -24,14 +25,6 @@ import { AuthModule } from "./auth/auth.module";
     PlacementTestModule,
 
     VocabularyModule,
-  ],
-
-  controllers: [
-    ProfileController,
-  ],
-
-  providers: [
-    ProfileService,
-  ],
+  ]
 })
 export class AppModule { }

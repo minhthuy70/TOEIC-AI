@@ -22,6 +22,16 @@ model User {
 
 model UserProfile {
   id                  Int      @id @default(autoincrement())
+
+  // ===== Thông tin cá nhân =====
+  avatar              String?
+  phone               String?
+  birthday            DateTime?
+  gender              String?
+  address             String?
+  bio                 String?
+
+  // ===== Thông tin học =====
   currentScore        Int?
   targetScore         Int?
   examDate            DateTime?
