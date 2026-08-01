@@ -1,6 +1,10 @@
 import { Injectable } from "@nestjs/common";
 import { PrismaService } from "../prisma/prisma.service";
-
+import * as bcrypt from "bcryptjs";
+import {
+  BadRequestException,
+  UnauthorizedException,
+} from "@nestjs/common";
 @Injectable()
 export class ProfileService {
   constructor(
@@ -73,45 +77,179 @@ async updateProfile(
   userId: number,
   data: any,
 ) {
+
   const user = await this.prisma.user.findUnique({
-    where: {
-      id: userId,
+    where:{
+      id:userId,
     },
   });
 
-  if (!user) {
+
+  if(!user){
     return {
-      message: "Không tìm thấy người dùng",
+      message:"Không tìm thấy người dùng",
     };
   }
 
+
+
+  // Cập nhật họ tên trong bảng User
   await this.prisma.user.update({
+
+    where:{
+      id:userId,
+    },
+
+    data:{
+      fullName:data.fullName,
+    }
+
+  });
+
+
+
+  // Cập nhật thông tin UserProfile
+  await this.prisma.userProfile.upsert({
+
+    where:{
+      userId,
+    },
+
+
+    create:{
+
+      userId,
+
+      avatar:data.avatar,
+
+      phone:data.phone,
+
+      birthday:data.birthday
+      ? new Date(data.birthday)
+      : null,
+
+      gender:data.gender,
+
+      address:data.address,
+
+      bio:data.bio,
+
+
+      // TOEIC
+      currentScore:data.currentScore,
+
+      targetScore:data.targetScore,
+
+      examDate:data.examDate
+      ? new Date(data.examDate)
+      : null,
+
+      dailyStudyTime:data.dailyStudyTime,
+
+    },
+
+
+    update:{
+
+      avatar:data.avatar,
+
+      phone:data.phone,
+
+      birthday:data.birthday
+      ? new Date(data.birthday)
+      : null,
+
+      gender:data.gender,
+
+      address:data.address,
+
+      bio:data.bio,
+
+
+      // TOEIC
+      currentScore:data.currentScore,
+
+      targetScore:data.targetScore,
+
+      examDate:data.examDate
+      ? new Date(data.examDate)
+      : null,
+
+      dailyStudyTime:data.dailyStudyTime,
+
+    }
+
+
+  });
+
+
+
+  return {
+
+    message:"Cập nhật hồ sơ thành công",
+
+  };
+
+}
+async changePassword(
+  userId: number,
+  data: any,
+) {
+
+  const user =
+    await this.prisma.user.findUnique({
+
+      where: {
+        id: userId,
+      },
+
+    });
+
+  if (!user) {
+
+    throw new BadRequestException(
+      "Không tìm thấy người dùng"
+    );
+
+  }
+
+  const match =
+    await bcrypt.compare(
+      data.oldPassword,
+      user.password,
+    );
+
+  if (!match) {
+
+    throw new UnauthorizedException(
+      "Mật khẩu hiện tại không đúng"
+    );
+
+  }
+
+  const hashed =
+    await bcrypt.hash(
+      data.newPassword,
+      10,
+    );
+
+  await this.prisma.user.update({
+
     where: {
       id: userId,
     },
-    data: {
-      fullName: data.fullName,
-    },
-  });
 
-  await this.prisma.userProfile.update({
-    where: {
-      userId,
-    },
     data: {
-      avatar: data.avatar,
-      phone: data.phone,
-      birthday: data.birthday
-        ? new Date(data.birthday)
-        : null,
-      gender: data.gender,
-      address: data.address,
-      bio: data.bio,
+      password: hashed,
     },
+
   });
 
   return {
-    message: "Cập nhật hồ sơ thành công",
+
+    message: "Đổi mật khẩu thành công",
+
   };
+
 }
 }

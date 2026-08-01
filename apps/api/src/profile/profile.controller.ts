@@ -45,4 +45,15 @@ updateProfile(
     body,
   );
 }
+@UseGuards(JwtAuthGuard)
+@Put("change-password")
+changePassword(
+  @Req() req: any,
+  @Body() body: any,
+) {
+  return this.profileService.changePassword(
+    req.user.userId,
+    body,
+  );
+}
 }

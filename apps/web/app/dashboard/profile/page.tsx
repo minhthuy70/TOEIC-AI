@@ -17,72 +17,346 @@ export default function ProfilePage() {
   const router = useRouter();
   const [activeTab, setActiveTab] = useState("info");
   const [user, setUser] = useState<{
-    id?: number;
-    fullName?: string;
-    email?: string;
-    currentScore?: number;
-    targetScore?: number;
-    dailyStudyTime?: number;
-  } | null>(null);
+id?: number;
+fullName?: string;
+email?: string;
 
-  const [fullName, setFullName] = useState("");
-  const [targetScore, setTargetScore] = useState(600);
-  const [dailyStudyTime, setDailyStudyTime] = useState(30);
+avatar?: string;
+phone?: string;
+birthday?: string;
+gender?: string;
+address?: string;
+bio?: string;
+
+currentScore?: number;
+targetScore?: number;
+examDate?: string;
+dailyStudyTime?: number;
+
+} | null>(null);
+
+const [fullName, setFullName] = useState("");
+
+const [currentScore, setCurrentScore] = useState(0);
+const [targetScore, setTargetScore] = useState(600);
+const [examDate, setExamDate] = useState("");
+
+const [dailyStudyTime, setDailyStudyTime] = useState(30);
+  const [phone, setPhone] = useState("");
+const [birthday, setBirthday] = useState("");
+const [gender, setGender] = useState("");
+const [address, setAddress] = useState("");
+const [bio, setBio] = useState("");
+
   const [oldPassword, setOldPassword] = useState("");
   const [newPassword, setNewPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [saveMsg, setSaveMsg] = useState("");
 
-  useEffect(() => {
-    const stored = localStorage.getItem("user");
-    if (!stored) { router.push("/login"); return; }
-    try {
-      const u = JSON.parse(stored);
-      setUser(u);
-      setFullName(u.fullName || "");
-      setTargetScore(u.targetScore || 600);
-      setDailyStudyTime(u.dailyStudyTime || 30);
-    } catch { router.push("/login"); }
-  }, [router]);
+ useEffect(() => {
+  loadProfile();
+}, []);
+async function loadProfile() {
+  const token = localStorage.getItem("accessToken");
 
+  if (!token) {
+    router.push("/login");
+    return;
+  }
+
+  const res = await fetch(
+    "http://localhost:3001/profile/me",
+    {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    }
+  );
+
+  if (!res.ok) {
+    router.push("/login");
+    return;
+  }
+
+  const data = await res.json();
+console.log("Profile API:", data);
+  setUser(data);
+  console.log("Current user state:", data);
+
+setFullName(data.fullName || "");
+
+
+setCurrentScore(
+  data.currentScore || 0
+);
+
+
+setTargetScore(
+  data.targetScore || 600
+);
+
+
+setExamDate(
+  data.examDate
+    ? data.examDate.substring(0,10)
+    : ""
+);
+
+
+setDailyStudyTime(
+  data.dailyStudyTime || 30
+);
+setPhone(data.phone || "");
+
+setBirthday(
+  data.birthday
+    ? data.birthday.substring(0,10)
+    : ""
+);
+
+setGender(data.gender || "");
+
+setAddress(data.address || "");
+
+setBio(data.bio || "");
+
+
+}
   const showSaved = (msg = "Đã lưu thành công!") => {
     setSaveMsg(msg);
     setTimeout(() => setSaveMsg(""), 3000);
   };
 
   const saveInfo = async () => {
-    const updated = { ...user, fullName };
-    localStorage.setItem("user", JSON.stringify(updated));
-    setUser(updated);
-    showSaved("Đã cập nhật thông tin!");
-  };
+
+const token = localStorage.getItem("accessToken");
+
+
+const res = await fetch(
+"http://localhost:3001/profile/me",
+{
+method:"PUT",
+headers:{
+"Content-Type":"application/json",
+Authorization:`Bearer ${token}`,
+},
+body:JSON.stringify({
+fullName,
+phone,
+birthday,
+gender,
+address,
+bio,
+})
+}
+);
+
+
+if(res.ok){
+
+const profileRes = await fetch(
+"http://localhost:3001/profile/me",
+{
+headers:{
+Authorization:`Bearer ${token}`,
+}
+}
+);
+
+const profile = await profileRes.json();
+
+setUser(profile);
+
+showSaved("Đã cập nhật thông tin!");
+
+}
+
+};
 
   const saveGoal = async () => {
-    const updated = { ...user, targetScore, dailyStudyTime };
-    localStorage.setItem("user", JSON.stringify(updated));
-    setUser(updated);
-    showSaved("Đã cập nhật mục tiêu!");
-  };
 
-  const savePassword = () => {
-    if (!oldPassword || !newPassword || !confirmPassword) {
-      setSaveMsg("Vui lòng điền đầy đủ thông tin.");
-      setTimeout(() => setSaveMsg(""), 3000);
-      return;
-    }
-    if (newPassword !== confirmPassword) {
-      setSaveMsg("Mật khẩu mới không khớp!");
-      setTimeout(() => setSaveMsg(""), 3000);
-      return;
-    }
-    if (newPassword.length < 6) {
-      setSaveMsg("Mật khẩu phải có ít nhất 6 ký tự.");
-      setTimeout(() => setSaveMsg(""), 3000);
-      return;
-    }
-    setOldPassword(""); setNewPassword(""); setConfirmPassword("");
-    showSaved("Đã đổi mật khẩu thành công!");
-  };
+const token = localStorage.getItem(
+"accessToken"
+);
+
+
+const res = await fetch(
+"http://localhost:3001/profile/me",
+{
+
+method:"PUT",
+
+headers:{
+"Content-Type":"application/json",
+Authorization:`Bearer ${token}`,
+},
+
+
+body:JSON.stringify({
+
+currentScore,
+
+targetScore,
+
+examDate,
+
+dailyStudyTime,
+
+})
+
+}
+);
+
+
+
+if(res.ok){
+
+const profileRes = await fetch(
+"http://localhost:3001/profile/me",
+{
+headers:{
+Authorization:`Bearer ${token}`,
+}
+}
+);
+
+
+const profile =
+await profileRes.json();
+
+
+setUser(profile);
+
+
+showSaved(
+"Đã cập nhật mục tiêu TOEIC!"
+);
+
+
+}
+
+};
+
+  const savePassword = async () => {
+
+  if (
+    !oldPassword ||
+    !newPassword ||
+    !confirmPassword
+  ) {
+
+    setSaveMsg(
+      "Vui lòng điền đầy đủ thông tin."
+    );
+
+    return;
+
+  }
+
+  if (
+    newPassword !== confirmPassword
+  ) {
+
+    setSaveMsg(
+      "Mật khẩu xác nhận không khớp."
+    );
+
+    return;
+
+  }
+  if (oldPassword === newPassword) {
+
+  setSaveMsg(
+    "Mật khẩu mới phải khác mật khẩu cũ."
+  );
+
+  return;
+
+}
+
+  if (newPassword.length < 6) {
+
+    setSaveMsg(
+      "Mật khẩu phải có ít nhất 6 ký tự."
+    );
+
+    return;
+
+  }
+  const regex =
+/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{6,}$/;
+
+if (!regex.test(newPassword)) {
+
+  setSaveMsg(
+    "Mật khẩu phải có chữ hoa, chữ thường và số."
+  );
+
+  return;
+
+}
+
+  const token =
+    localStorage.getItem(
+      "accessToken"
+    );
+
+  const res =
+    await fetch(
+
+      "http://localhost:3001/profile/change-password",
+
+      {
+
+        method: "PUT",
+
+        headers: {
+
+          "Content-Type":
+            "application/json",
+
+          Authorization:
+            `Bearer ${token}`,
+
+        },
+
+        body: JSON.stringify({
+
+          oldPassword,
+
+          newPassword,
+
+        }),
+
+      }
+
+    );
+
+  const data =
+    await res.json();
+
+  if (!res.ok) {
+
+    setSaveMsg(
+      data.message ||
+      "Đổi mật khẩu thất bại"
+    );
+
+    return;
+
+  }
+
+  setOldPassword("");
+
+  setNewPassword("");
+
+  setConfirmPassword("");
+
+  showSaved(
+    "Đổi mật khẩu thành công!"
+  );
+
+};
 
   const handleLogout = () => {
     localStorage.removeItem("user");
@@ -184,6 +458,86 @@ export default function ProfilePage() {
             />
             <p className="text-[10px] text-zinc-600 mt-1.5">Email không thể thay đổi</p>
           </div>
+          <div>
+<label className="text-[11px] text-zinc-500 uppercase tracking-wider font-medium block mb-2">
+Số điện thoại
+</label>
+
+<input
+value={phone}
+onChange={(e)=>setPhone(e.target.value)}
+placeholder="Nhập số điện thoại"
+className="w-full bg-zinc-800/60 border border-zinc-700/60 text-white rounded-xl px-4 py-3 text-[13px]"
+/>
+
+</div>
+
+
+<div>
+<label className="text-[11px] text-zinc-500 uppercase tracking-wider font-medium block mb-2">
+Ngày sinh
+</label>
+
+<input
+type="date"
+value={birthday}
+onChange={(e)=>setBirthday(e.target.value)}
+className="w-full bg-zinc-800/60 border border-zinc-700/60 text-white rounded-xl px-4 py-3 text-[13px]"
+/>
+
+</div>
+
+
+<div>
+<label className="text-[11px] text-zinc-500 uppercase tracking-wider font-medium block mb-2">
+Giới tính
+</label>
+
+<select
+value={gender}
+onChange={(e)=>setGender(e.target.value)}
+className="w-full bg-zinc-800/60 border border-zinc-700/60 text-white rounded-xl px-4 py-3"
+>
+
+<option value="">Chọn giới tính</option>
+<option value="male">Nam</option>
+<option value="female">Nữ</option>
+<option value="other">Khác</option>
+
+</select>
+
+</div>
+
+
+<div>
+<label className="text-[11px] text-zinc-500 uppercase tracking-wider font-medium block mb-2">
+Địa chỉ
+</label>
+
+<input
+value={address}
+onChange={(e)=>setAddress(e.target.value)}
+placeholder="Nhập địa chỉ"
+className="w-full bg-zinc-800/60 border border-zinc-700/60 text-white rounded-xl px-4 py-3"
+/>
+
+</div>
+
+
+<div>
+<label className="text-[11px] text-zinc-500 uppercase tracking-wider font-medium block mb-2">
+Giới thiệu
+</label>
+
+<textarea
+value={bio}
+onChange={(e)=>setBio(e.target.value)}
+rows={3}
+placeholder="Viết vài dòng về bạn..."
+className="w-full bg-zinc-800/60 border border-zinc-700/60 text-white rounded-xl px-4 py-3"
+/>
+
+</div>
           <button
             onClick={saveInfo}
             className="w-full bg-red-600 hover:bg-red-700 text-white font-semibold py-3 rounded-xl text-[13px] transition-all shadow-lg shadow-red-600/15"
@@ -197,11 +551,69 @@ export default function ProfilePage() {
       {activeTab === "goal" && (
         <div className="bg-zinc-900/60 border border-zinc-800/50 rounded-2xl p-6 space-y-5">
           <h3 className="text-sm font-semibold text-white">Mục tiêu TOEIC</h3>
+  {/* Preview */}
+          <div className="bg-black/30 border border-zinc-800/40 rounded-xl p-4">
+            <p className="text-[11px] text-zinc-500 uppercase tracking-wider font-medium mb-2">Xem trước</p>
+         
+              <p className="text-[13px] text-zinc-300">
 
-          <div>
+Hiện tại:
+<span className="text-yellow-400 font-bold">
+{" "}
+{currentScore} điểm
+</span>
+
+{" → "}
+
+Mục tiêu:
+<span className="text-green-400 font-bold">
+{" "}
+{targetScore} điểm
+</span>
+
+</p>
+
+
+<p className="text-[13px] text-zinc-300 mt-2">
+
+Lịch học:
+<span className="text-red-400 font-bold">
+{" "}
+{dailyStudyTime} phút/ngày
+</span>
+
+</p>
+          </div>
+          <div><label className="text-[11px] text-zinc-500 uppercase tracking-wider font-medium block mb-2">
+Điểm TOEIC hiện tại
+</label>
+
+
+<input
+
+type="number"
+
+value={currentScore}
+
+onChange={(e)=>
+setCurrentScore(
+Number(e.target.value)
+)
+}
+
+placeholder="Ví dụ: 450"
+
+className="w-full bg-zinc-800/60 border border-zinc-700/60 text-white rounded-xl px-4 py-3 text-[13px]"
+
+ />
+
+</div>
             <label className="text-[11px] text-zinc-500 uppercase tracking-wider font-medium block mb-3">
               Mục tiêu điểm TOEIC
             </label>
+            <div>
+
+
             <div className="grid grid-cols-5 gap-2">
               {TARGET_OPTIONS.map((score) => (
                 <button
@@ -240,15 +652,29 @@ export default function ProfilePage() {
             </div>
           </div>
 
-          {/* Preview */}
-          <div className="bg-black/30 border border-zinc-800/40 rounded-xl p-4">
-            <p className="text-[11px] text-zinc-500 uppercase tracking-wider font-medium mb-2">Xem trước</p>
-            <p className="text-[13px] text-zinc-300">
-              Bạn sẽ học{" "}
-              <span className="text-red-400 font-bold">{dailyStudyTime} phút/ngày</span> để đạt{" "}
-              <span className="text-green-400 font-bold">{targetScore} điểm TOEIC</span>
-            </p>
-          </div>
+        
+          <div>
+
+<label className="text-[11px] text-zinc-500 uppercase tracking-wider font-medium block mb-2">
+Ngày dự thi TOEIC
+</label>
+
+
+<input
+
+type="date"
+
+value={examDate}
+
+onChange={(e)=>
+setExamDate(e.target.value)
+}
+
+className="w-full bg-zinc-800/60 border border-zinc-700/60 text-white rounded-xl px-4 py-3 text-[13px]"
+
+/>
+
+</div>
 
           <button
             onClick={saveGoal}
