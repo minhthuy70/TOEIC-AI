@@ -52,6 +52,13 @@ const [bio, setBio] = useState("");
   const [newPassword, setNewPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [saveMsg, setSaveMsg] = useState("");
+  const [studyNotification, setStudyNotification] = useState(true);
+
+const [srsNotification, setSrsNotification] = useState(true);
+
+const [autoPronunciation, setAutoPronunciation] = useState(false);
+
+const [darkMode, setDarkMode] = useState(true);
 
  useEffect(() => {
   loadProfile();
@@ -119,6 +126,22 @@ setGender(data.gender || "");
 setAddress(data.address || "");
 
 setBio(data.bio || "");
+
+setStudyNotification(
+data.studyNotification ?? true
+);
+
+setSrsNotification(
+data.srsNotification ?? true
+);
+
+setAutoPronunciation(
+data.autoPronunciation ?? false
+);
+
+setDarkMode(
+data.darkMode ?? true
+);
 
 
 }
@@ -357,7 +380,46 @@ if (!regex.test(newPassword)) {
   );
 
 };
+const saveSettings = async () => {
 
+const token =
+localStorage.getItem("accessToken");
+
+const res =
+await fetch(
+"http://localhost:3001/profile/me",
+{
+
+method:"PUT",
+
+headers:{
+Authorization:`Bearer ${token}`,
+"Content-Type":"application/json"
+},
+
+body:JSON.stringify({
+
+studyNotification,
+
+srsNotification,
+
+autoPronunciation,
+
+darkMode
+
+})
+
+}
+
+);
+
+if(res.ok){
+
+showSaved("Đã lưu cài đặt!");
+
+}
+
+}
   const handleLogout = () => {
     localStorage.removeItem("user");
     router.push("/login");
@@ -371,7 +433,32 @@ if (!regex.test(newPassword)) {
     if (score >= 300) return { id: 2, label: "Chặng 2 – Củng cố" };
     return { id: 1, label: "Chặng 1 – Nền tảng" };
   })();
-
+  const SETTINGS = [
+  {
+    label: "Thông báo học tập",
+    desc: "Nhắc nhở học mỗi ngày",
+    value: studyNotification,
+    setValue: setStudyNotification,
+  },
+  {
+    label: "Thông báo SRS",
+    desc: "Nhắc ôn tập từ vựng theo lịch",
+    value: srsNotification,
+    setValue: setSrsNotification,
+  },
+  {
+    label: "Âm thanh phát âm",
+    desc: "Phát âm khi học flashcard",
+    value: autoPronunciation,
+    setValue: setAutoPronunciation,
+  },
+  {
+    label: "Dark mode",
+    desc: "Giao diện tối (mặc định)",
+    value: darkMode,
+    setValue: setDarkMode,
+  },
+];
   return (
     <div className="space-y-6 max-w-3xl mx-auto">
       {/* Header */}
@@ -726,30 +813,37 @@ className="w-full bg-zinc-800/60 border border-zinc-700/60 text-white rounded-xl
         <div className="space-y-3">
           <div className="bg-zinc-900/60 border border-zinc-800/50 rounded-2xl p-5 space-y-1">
             <h3 className="text-sm font-semibold text-white mb-4">Cài đặt tài khoản</h3>
-            {[
-              { label: "Thông báo học tập", desc: "Nhắc nhở học mỗi ngày", defaultOn: true },
-              { label: "Thông báo SRS", desc: "Nhắc ôn tập từ vựng theo lịch", defaultOn: true },
-              { label: "Âm thanh phát âm", desc: "Phát âm khi học flashcard", defaultOn: false },
-              { label: "Dark mode", desc: "Giao diện tối (mặc định)", defaultOn: true },
-            ].map((setting, i) => (
+            {SETTINGS.map((setting, i) => (
               <div key={i} className="flex items-center justify-between py-3 border-b border-zinc-800/30 last:border-0">
                 <div>
                   <p className="text-[13px] text-white font-medium">{setting.label}</p>
                   <p className="text-[11px] text-zinc-500 mt-0.5">{setting.desc}</p>
                 </div>
-                <div className={`w-11 h-6 rounded-full border cursor-pointer transition-all ${
-                  setting.defaultOn
-                    ? "bg-red-600 border-red-500"
-                    : "bg-zinc-800 border-zinc-700"
-                }`}>
-                  <div className={`w-4 h-4 rounded-full bg-white shadow-sm m-0.5 transition-all ${
-                    setting.defaultOn ? "translate-x-5" : "translate-x-0"
-                  }`} />
+<div
+  onClick={() => setting.setValue(!setting.value)}
+  className={`w-11 h-6 rounded-full border cursor-pointer transition-all ${
+    setting.value
+      ? "bg-red-600 border-red-500"
+      : "bg-zinc-800 border-zinc-700"
+  }`}
+>
+<div
+  className={`w-4 h-4 rounded-full bg-white shadow-sm m-0.5 transition-all ${
+    setting.value
+      ? "translate-x-5"
+      : "translate-x-0"
+  }`}
+/>
                 </div>
               </div>
             ))}
           </div>
-
+<button
+  onClick={saveSettings}
+  className="w-full bg-red-600 hover:bg-red-700 text-white font-semibold py-3 rounded-xl text-[13px] transition-all shadow-lg shadow-red-600/15"
+>
+  Lưu cài đặt
+</button>
           {/* Danger zone */}
           <div className="bg-red-600/5 border border-red-600/15 rounded-2xl p-5">
             <h3 className="text-sm font-semibold text-red-400 mb-4">Vùng nguy hiểm</h3>

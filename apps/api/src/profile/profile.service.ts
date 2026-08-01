@@ -71,6 +71,11 @@ export class ProfileService {
     targetScore: user.profile?.targetScore,
     examDate: user.profile?.examDate,
     dailyStudyTime: user.profile?.dailyStudyTime,
+    
+    studyNotification: user.profile?.studyNotification,
+srsNotification: user.profile?.srsNotification,
+autoPronunciation: user.profile?.autoPronunciation,
+darkMode: user.profile?.darkMode,
   };
 }
 async updateProfile(
@@ -146,6 +151,10 @@ async updateProfile(
 
       dailyStudyTime:data.dailyStudyTime,
 
+      studyNotification:data.studyNotification,
+srsNotification:data.srsNotification,
+autoPronunciation:data.autoPronunciation,
+darkMode:data.darkMode,
     },
 
 
@@ -176,6 +185,10 @@ async updateProfile(
       : null,
 
       dailyStudyTime:data.dailyStudyTime,
+      studyNotification:data.studyNotification,
+srsNotification:data.srsNotification,
+autoPronunciation:data.autoPronunciation,
+darkMode:data.darkMode,
 
     }
 
