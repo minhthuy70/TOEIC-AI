@@ -27,20 +27,24 @@ export default function LoginPage() {
 
     const data = await res.json();
 
-    if (data.id) {
-      localStorage.setItem(
-        "user",
-        JSON.stringify(data)
-      );
+if (data.accessToken) {
+  // Lưu JWT
+  localStorage.setItem("accessToken", data.accessToken);
 
-      if (!data.firstLoginCompleted) {
-        router.push("/onboarding");
-      } else {
-        router.push("/dashboard");
-      }
-    } else {
-      alert(data.message);
-    }
+  // Lưu thông tin user
+  localStorage.setItem(
+    "user",
+    JSON.stringify(data.user)
+  );
+
+  if (!data.user.firstLoginCompleted) {
+    router.push("/onboarding");
+  } else {
+    router.push("/dashboard");
+  }
+} else {
+  alert(data.message || "Đăng nhập thất bại");
+}
   }
 
   return (
