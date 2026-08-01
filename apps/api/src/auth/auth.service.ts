@@ -1,15 +1,24 @@
-import { PrismaClient } from '@prisma/client';
-import * as bcrypt from 'bcryptjs';
+import { Injectable } from "@nestjs/common";
+import { JwtService } from "@nestjs/jwt";
+import { PrismaService } from "../prisma/prisma.service";
+import * as bcrypt from "bcryptjs";
 
-const prisma = new PrismaClient();
 
+
+@Injectable()
 export class AuthService {
+
+  constructor(
+    private readonly prisma: PrismaService,
+    private readonly jwtService: JwtService,
+  ) {}
+
   async register(
     fullName: string,
     email: string,
     password: string,
   ) {
-    const user = await prisma.user.findUnique({
+    const user = await this.prisma.user.findUnique({
       where: { email },
     });
 
@@ -24,7 +33,7 @@ export class AuthService {
       10,
     );
 
-    const newUser = await prisma.user.create({
+    const newUser = await this.prisma.user.create({
       data: {
         fullName,
         email,
@@ -53,7 +62,7 @@ export class AuthService {
     email: string,
     password: string,
   ) {
-    const user = await prisma.user.findUnique({
+    const user = await this.prisma.user.findUnique({
       where: { email },
 
       include: {
@@ -78,12 +87,22 @@ export class AuthService {
       };
     }
 
-    return {
-      id: user.id,
-      fullName: user.fullName,
+   const payload = {
+  sub: user.id,
+  email: user.email,
+};
 
-      firstLoginCompleted:
-        user.profile?.firstLoginCompleted,
-    };
+const accessToken = this.jwtService.sign(payload);
+
+return {
+  accessToken,
+  user: {
+    id: user.id,
+    fullName: user.fullName,
+    email: user.email,
+    firstLoginCompleted:
+      user.profile?.firstLoginCompleted,
+  },
+};
   }
 }

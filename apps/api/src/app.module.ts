@@ -9,10 +9,13 @@ import { VocabularyModule } from "./vocabulary/vocabulary.module";
 import { AuthController } from "./auth/auth.controller";
 import { ProfileController } from "./profile/profile.controller";
 import { ProfileService } from "./profile/profile.service";
+import { AuthModule } from "./auth/auth.module";
 
 @Module({
   imports: [
     PrismaModule,
+
+     AuthModule,
 
     ServeStaticModule.forRoot({
       rootPath: join(process.cwd(), "..", "..", "uploads"),
