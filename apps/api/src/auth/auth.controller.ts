@@ -2,8 +2,12 @@ import {
   Body,
   Controller,
   Post,
-} from '@nestjs/common';
+  Get,
+  Req,
+  UseGuards,
+} from "@nestjs/common";
 
+import { JwtAuthGuard } from "./jwt-auth.guard";
 import { AuthService } from './auth.service';
 
 @Controller('auth')
@@ -41,4 +45,9 @@ constructor(
       body.password,
     );
   }
+  @UseGuards(JwtAuthGuard)
+@Get("me")
+getMe(@Req() req: any) {
+  return req.user;
+}
 }

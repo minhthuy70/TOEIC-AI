@@ -6,7 +6,6 @@ import { PrismaModule } from "./prisma/prisma.module";
 import { PlacementTestModule } from "./placement-test/placement-test.module";
 import { VocabularyModule } from "./vocabulary/vocabulary.module";
 
-import { AuthController } from "./auth/auth.controller";
 import { ProfileController } from "./profile/profile.controller";
 import { ProfileService } from "./profile/profile.service";
 import { AuthModule } from "./auth/auth.module";
@@ -28,7 +27,6 @@ import { AuthModule } from "./auth/auth.module";
   ],
 
   controllers: [
-    AuthController,
     ProfileController,
   ],
 

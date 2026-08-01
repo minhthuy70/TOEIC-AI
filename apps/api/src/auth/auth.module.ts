@@ -5,23 +5,18 @@ import { AuthController } from "./auth.controller";
 import { AuthService } from "./auth.service";
 import { JwtStrategy } from "./jwt.strategy";
 
+import { PrismaModule } from "../prisma/prisma.module";
+
 @Module({
-
-    imports: [
-
-        JwtModule.register({
-
-            secret: "BELLA_SECRET_KEY",
-
-            signOptions: {
-
-                expiresIn: "7d"
-
-            }
-
-        })
-
-    ],
+  imports: [
+    PrismaModule,
+    JwtModule.register({
+      secret: "BELLA_SECRET_KEY",
+      signOptions: {
+        expiresIn: "7d",
+      },
+    }),
+  ],
 
     controllers: [
 
