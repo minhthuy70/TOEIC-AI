@@ -1,9 +1,8 @@
-import { IsInt } from 'class-validator';
+import { IsInt } from "class-validator";
 
 export class ReviewDto {
-    @IsInt()
-    userId: number;
+  userId?: number;
 
-    @IsInt()
-    vocabularyId: number;
+  @IsInt()
+  vocabularyId: number;
 }

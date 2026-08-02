@@ -1,17 +1,7 @@
 export class LearningResponseDto {
-    currentStage: number;
+  success: boolean;
 
-    currentScore: number;
+  mode: 'NEW' | 'REVIEW' | 'DONE_TODAY' | 'PRACTICE';
 
-    targetScore: number;
-
-    learnedToday: number;
-
-    newWordsLeft: number;
-
-    reviewWords: number;
-
-    canUnlockNextStage: boolean;
-
-    topics: string[];
+  words: any[];
 }

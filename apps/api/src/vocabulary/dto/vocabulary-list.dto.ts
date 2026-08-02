@@ -1,4 +1,4 @@
-export class TodayWordDto {
+export class VocabularyItemDto {
   id: number;
 
   english: string;
@@ -9,12 +9,6 @@ export class TodayWordDto {
 
   pronounce: string | null;
 
-  explain: string | null;
-
-  example: string | null;
-
-  exampleVietnamese: string | null;
-
   topic: string;
 
   stage: number;
@@ -22,6 +16,18 @@ export class TodayWordDto {
   imageUrl: string | null;
 
   audioUrl: string | null;
+}
 
-  isReview: boolean;
+export class VocabularyListDto {
+  success: boolean;
+
+  total: number;
+
+  page: number;
+
+  limit: number;
+
+  totalPages: number;
+
+  items: VocabularyItemDto[];
 }
