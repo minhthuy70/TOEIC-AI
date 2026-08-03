@@ -194,9 +194,14 @@ export interface LessonsResponse {
 
 export interface VocabularyWordWithProgress extends VocabularyWord {
   status: "NEW" | "LEARNING" | "REVIEW" | "MASTERED";
+
   reviewLevel: number;
+
   learnedAt: string | null;
+
   nextReview: string | null;
+
+  isReview: boolean;
 }
 
 export interface LessonWordsResponse {

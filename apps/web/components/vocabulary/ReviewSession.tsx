@@ -27,44 +27,67 @@ export default function ReviewSession({
   // Local state for words progress in this review session
   const [localWords, setLocalWords] = useState<VocabularyWordWithProgress[]>(words);
 
-  const currentWord = localWords[currentIndex];
+ const reviewWords = localWords.filter((w) => w.isReview);
+
+const currentWord = reviewWords[currentIndex];
 
   const handleReviewWord = async (wordId: number) => {
-    const word = localWords.find((w) => w.id === wordId);
-    if (!word || word.status === "MASTERED" || !word.isReview) {
-      return;
-    }
+  const word = localWords.find((w) => w.id === wordId);
 
-    try {
-      setLoadingMap((prev) => ({ ...prev, [wordId]: true }));
-      const res = await reviewWord(wordId);
-      if (res.success) {
-        // Update local status so it reflects in UI instantly
-        setLocalWords((prev) =>
-          prev.map((w) =>
-            w.id === wordId
-              ? {
-                  ...w,
-                  isReview: false,
-                  reviewLevel: res.reviewLevel,
-                  status: res.status as any,
-                }
-              : w
-          )
+  if (!word || word.status === "MASTERED" || !word.isReview) {
+    return;
+  }
+
+  try {
+    setLoadingMap((prev) => ({
+      ...prev,
+      [wordId]: true,
+    }));
+
+    const res = await reviewWord(wordId);
+
+    if (res.success) {
+      // cập nhật local
+      const updatedWords: VocabularyWordWithProgress[] =
+        localWords.map((w) =>
+          w.id === wordId
+            ? {
+                ...w,
+                isReview: false,
+                reviewLevel: res.reviewLevel,
+                status: res.status as VocabularyWordWithProgress["status"],
+              }
+            : w
         );
-        onReload(); // Refresh parent stats
-      }
-    } catch (err) {
-      console.error(err);
-      alert("Không thể lưu tiến trình ôn tập");
-    } finally {
-      setLoadingMap((prev) => ({ ...prev, [wordId]: false }));
+
+      // chỉ còn các từ chưa ôn
+      const remainWords = updatedWords.filter(
+    (w) => w.isReview
+);
+
+setLocalWords(updatedWords);
+
+setIsFlipped(false);
+
+// luôn đứng ở phần tử đầu tiên của danh sách còn lại
+setCurrentIndex(0);
+
+      onReload();
     }
-  };
+  } catch (err) {
+    console.error(err);
+    alert("Không thể lưu tiến trình ôn tập");
+  } finally {
+    setLoadingMap((prev) => ({
+      ...prev,
+      [wordId]: false,
+    }));
+  }
+};
 
   const handleNext = () => {
     setIsFlipped(false);
-    if (currentIndex < localWords.length - 1) {
+    if (currentIndex < reviewWords.length - 1) {
       setCurrentIndex((prev) => prev + 1);
     }
   };
@@ -83,7 +106,7 @@ export default function ReviewSession({
   };
 
   const reviewedCount = localWords.filter((w) => !w.isReview).length;
-  const isSessionCompleted = reviewedCount === localWords.length;
+const isSessionCompleted = reviewWords.length === 0;
 
   return (
     <div className="bg-zinc-950/60 border border-zinc-800/80 rounded-2xl p-6 shadow-xl space-y-6">
@@ -270,7 +293,7 @@ export default function ReviewSession({
 
             <button
               onClick={handleNext}
-              disabled={currentIndex === localWords.length - 1}
+              disabled={currentIndex === reviewWords.length - 1}
               className="flex-1 px-4 py-2.5 border border-zinc-850 bg-zinc-900 text-zinc-300 hover:text-white rounded-xl text-xs font-bold transition disabled:opacity-40"
             >
               Sau →
@@ -279,7 +302,7 @@ export default function ReviewSession({
 
           {/* Progress Indicator */}
           <span className="text-xs text-zinc-500 font-medium">
-            Từ {currentIndex + 1} / {localWords.length}
+            Từ {currentIndex + 1} / {reviewWords.length}
           </span>
         </div>
       )}
@@ -287,7 +310,7 @@ export default function ReviewSession({
       {/* DETAIL LIST MODE */}
       {viewMode === "list" && (
         <div className="grid sm:grid-cols-2 gap-4">
-          {localWords.map((word, idx) => (
+          {reviewWords.map((word, idx) => (
             <div
               key={word.id}
               className="bg-zinc-900/40 border border-zinc-800/80 rounded-2xl p-5 shadow flex flex-col justify-between space-y-4 hover:border-zinc-700/60 transition"

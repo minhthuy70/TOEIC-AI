@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { VocabularyWordWithProgress } from "@/types/vocabulary";
 import { learnWord } from "@/services/vocabulary";
 
@@ -27,46 +27,69 @@ export default function LessonLearning({
 
   const activeWords = localWords.filter((w) => w.status === "NEW");
   const currentWord = activeWords[currentIndex];
+useEffect(() => {
+  if (currentIndex >= activeWords.length) {
+    setCurrentIndex(
+      Math.max(activeWords.length - 1, 0)
+    );
+  }
+}, [activeWords.length]);
+  const handleLearnToggle = async (
+  wordId: number,
+  currentStatus: string
+) => {
+  if (currentStatus !== "NEW") return;
 
-  const handleLearnToggle = async (wordId: number, currentStatus: string) => {
-    if (currentStatus !== "NEW") {
-      // Already learned. In this new flow, they already put it in SRS.
-      return;
-    }
+  try {
+    setLoadingMap((prev) => ({
+      ...prev,
+      [wordId]: true,
+    }));
 
-    try {
-      setLoadingMap((prev) => ({ ...prev, [wordId]: true }));
-      const res = await learnWord(wordId);
-      if (res.success) {
-        // Find index in current activeWords
-        const activeIndex = activeWords.findIndex((w) => w.id === wordId);
+    const res = await learnWord(wordId);
 
-        // Update local status
-        setLocalWords((prev) =>
-          prev.map((w) =>
-            w.id === wordId
-              ? { ...w, status: "LEARNING", reviewLevel: 1, isReview: false }
-              : w
-          )
-        );
+    if (!res.success) return;
 
-        // Auto transition to next word
-        setIsFlipped(false);
-        if (activeIndex === activeWords.length - 1 && activeIndex > 0) {
-          setCurrentIndex(activeIndex - 1);
-        } else {
-          // Stay on same index (will naturally point to the next item since this one is removed)
+    // cập nhật local trước
+    const updatedWords: VocabularyWordWithProgress[] =
+  localWords.map((w) =>
+    w.id === wordId
+      ? {
+          ...w,
+          status: "LEARNING" as const,
+          reviewLevel: 1,
+          isReview: false,
         }
+      : w
+    );
 
-        onReload(); // Notify parent of progress change
-      }
-    } catch (err) {
-      console.error(err);
-      alert("Không thể lưu tiến trình");
-    } finally {
-      setLoadingMap((prev) => ({ ...prev, [wordId]: false }));
+    setLocalWords(updatedWords);
+
+    // danh sách NEW sau khi đã học xong từ hiện tại
+    const remainingWords = updatedWords.filter(
+      (w) => w.status === "NEW"
+    );
+
+    setIsFlipped(false);
+
+    if (remainingWords.length === 0) {
+      setCurrentIndex(0);
+    } else if (currentIndex >= remainingWords.length) {
+      setCurrentIndex(remainingWords.length - 1);
     }
-  };
+
+    // KHÔNG reload ở đây
+    // onReload();
+
+  } catch (err) {
+    console.error(err);
+  } finally {
+    setLoadingMap((prev) => ({
+      ...prev,
+      [wordId]: false,
+    }));
+  }
+};
 
   const handleNext = () => {
     setIsFlipped(false);
