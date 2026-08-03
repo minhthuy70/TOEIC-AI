@@ -40,6 +40,58 @@ export class VocabularyService {
     return 1;
   }
 
+  private async getStreak(userId: number): Promise<number> {
+    const progress = await this.prisma.userVocabularyProgress.findMany({
+      where: {
+        userId,
+        learnedAt: { not: null },
+      },
+      select: {
+        learnedAt: true,
+      },
+      orderBy: {
+        learnedAt: 'desc',
+      },
+    });
+
+    if (progress.length === 0) return 0;
+
+    const dates = new Set(
+      progress.map((p) => {
+        const d = new Date(p.learnedAt!);
+        return `${d.getFullYear()}-${d.getMonth() + 1}-${d.getDate()}`;
+      })
+    );
+
+    let streak = 0;
+    const current = new Date();
+    current.setHours(0, 0, 0, 0);
+
+    // Check if user has learned anything today or yesterday to start counting
+    const todayStr = `${current.getFullYear()}-${current.getMonth() + 1}-${current.getDate()}`;
+    current.setDate(current.getDate() - 1);
+    const yesterdayStr = `${current.getFullYear()}-${current.getMonth() + 1}-${current.getDate()}`;
+
+    if (!dates.has(todayStr) && !dates.has(yesterdayStr)) {
+      return 0;
+    }
+
+    let checkDate = dates.has(todayStr) ? new Date() : current;
+    checkDate.setHours(0, 0, 0, 0);
+
+    while (true) {
+      const dateStr = `${checkDate.getFullYear()}-${checkDate.getMonth() + 1}-${checkDate.getDate()}`;
+      if (dates.has(dateStr)) {
+        streak++;
+        checkDate.setDate(checkDate.getDate() - 1);
+      } else {
+        break;
+      }
+    }
+
+    return streak;
+  }
+
   // =====================================================
   // HEALTH CHECK
   // =====================================================
@@ -417,35 +469,50 @@ export class VocabularyService {
         },
       });
 
-    if (exist) {
-      return {
-        success: true,
-        message: 'Đã học từ này trước đó',
-      };
-    }
-
     const now = new Date();
-
     const nextReview = new Date(
       now.getTime() + 30 * 60 * 1000,
     );
 
+    if (exist) {
+      if (exist.status !== 'NEW') {
+        return {
+          success: true,
+          message: 'Đã học từ này trước đó',
+        };
+      }
+
+      await this.prisma.userVocabularyProgress.update({
+        where: {
+          id: exist.id,
+        },
+        data: {
+          status: 'LEARNING',
+          reviewLevel: 1,
+          reviewCount: 1,
+          learnedAt: now,
+          lastReview: now,
+          nextReview,
+        },
+      });
+
+      return {
+        success: true,
+        message: 'Đã cập nhật tiến trình học',
+        reviewLevel: 1,
+        nextReview,
+      };
+    }
+
     await this.prisma.userVocabularyProgress.create({
       data: {
         userId: dto.userId!,
-
         vocabularyId: dto.vocabularyId,
-
         status: 'LEARNING',
-
         reviewLevel: 1,
-
         reviewCount: 1,
-
         learnedAt: now,
-
         lastReview: now,
-
         nextReview,
       },
     });
@@ -485,46 +552,41 @@ export class VocabularyService {
       };
     }
 
-    const profile = await this.getProfile(dto.userId!);
-
-    const userStage = this.getStage(profile.currentScore ?? 0);
-
-    const wordStage = progress.vocabulary.stage;
-
-    const isOldStage = wordStage < userStage;
-
     const nextLevel = progress.reviewLevel + 1;
-
     const nextReview = new Date();
 
-    if (isOldStage && nextLevel >= 6) {
-      nextReview.setDate(nextReview.getDate() + 20);
-    } else {
-      switch (nextLevel) {
-        case 2:
-          nextReview.setHours(nextReview.getHours() + 3);
-          break;
+    switch (nextLevel) {
+      case 2: // 3 hours
+        nextReview.setHours(nextReview.getHours() + 3);
+        break;
 
-        case 3:
-          nextReview.setHours(nextReview.getHours() + 10);
-          break;
+      case 3: // 10 hours
+        nextReview.setHours(nextReview.getHours() + 10);
+        break;
 
-        case 4:
-          nextReview.setHours(nextReview.getHours() + 24);
-          break;
+      case 4: // 24 hours
+        nextReview.setHours(nextReview.getHours() + 24);
+        break;
 
-        case 5:
-          nextReview.setDate(nextReview.getDate() + 3);
-          break;
+      case 5: // 3 days
+        nextReview.setDate(nextReview.getDate() + 3);
+        break;
 
-        default:
-          nextReview.setDate(nextReview.getDate() + 5);
-          break;
-      }
+      case 6: // 5 days
+        nextReview.setDate(nextReview.getDate() + 5);
+        break;
+
+      case 7: // 20 days
+        nextReview.setDate(nextReview.getDate() + 20);
+        break;
+
+      default: // Mastered or fallback
+        nextReview.setDate(nextReview.getDate() + 20);
+        break;
     }
 
     const status =
-      nextLevel >= 6
+      nextLevel >= 8
         ? 'MASTERED'
         : 'REVIEW';
 
@@ -586,6 +648,7 @@ export class VocabularyService {
       learnedStage,
       nextReviewRecord,
       levelStats,
+      streak,
     ] = await Promise.all([
 
       this.prisma.userVocabularyProgress.count({
@@ -606,6 +669,7 @@ export class VocabularyService {
       this.prisma.userVocabularyProgress.count({
         where: {
           userId,
+          status: { not: 'MASTERED' },
           nextReview: {
             lte: now,
           },
@@ -646,6 +710,7 @@ export class VocabularyService {
       this.prisma.userVocabularyProgress.findFirst({
         where: {
           userId,
+          status: { not: 'MASTERED' },
           nextReview: {
             gt: now,
           },
@@ -659,11 +724,13 @@ export class VocabularyService {
         by: ['reviewLevel'],
         where: {
           userId,
+          status: { not: 'MASTERED' },
         },
         _count: {
           id: true,
         },
       }),
+      this.getStreak(userId),
     ]);
 
     const srsLevels: Record<string, number> = {};
@@ -715,6 +782,292 @@ export class VocabularyService {
             ),
 
       srsLevels,
+      streak,
+    };
+  }
+
+  // =====================================================
+  // LESSONS
+  // =====================================================
+
+  async getLessons(userId: number) {
+    const profile = await this.getProfile(userId);
+    const stage = this.getStage(profile.currentScore ?? 0);
+
+    // Get all vocabulary words in the stage sorted by ID ascending
+    const words = await this.prisma.vocabulary.findMany({
+      where: { stage },
+      orderBy: { id: 'asc' },
+      select: { id: true },
+    });
+
+    // Get user's progress for this stage
+    const progress = await this.prisma.userVocabularyProgress.findMany({
+      where: {
+        userId,
+        vocabulary: { stage },
+        status: { not: 'NEW' },
+      },
+      select: { vocabularyId: true },
+    });
+
+    const learnedSet = new Set(progress.map((p) => p.vocabularyId));
+
+    const totalWords = words.length;
+    const lessonsCount = Math.ceil(totalWords / 20);
+    const lessons: any[] = [];
+
+    let previousCompleted = true; // Lesson 1 is always unlocked because index 0 previous is true
+
+    for (let i = 0; i < lessonsCount; i++) {
+      const lessonNumber = i + 1;
+      const lessonWords = words.slice(i * 20, (i + 1) * 20);
+      
+      const totalInLesson = lessonWords.length;
+      const learnedInLesson = lessonWords.filter((w) => learnedSet.has(w.id)).length;
+      const isCompleted = learnedInLesson === totalInLesson && totalInLesson > 0;
+
+      let status: 'completed' | 'in_progress' | 'locked' = 'locked';
+      if (isCompleted) {
+        status = 'completed';
+      } else if (previousCompleted) {
+        status = 'in_progress';
+      }
+
+      lessons.push({
+        lessonNumber,
+        totalWords: totalInLesson,
+        learnedWords: learnedInLesson,
+        status,
+      });
+
+      previousCompleted = isCompleted;
+    }
+
+    return {
+      success: true,
+      stage,
+      totalLessons: lessonsCount,
+      lessons,
+    };
+  }
+
+  async getLessonWords(userId: number, lessonNumber: number) {
+    const profile = await this.getProfile(userId);
+    const stage = this.getStage(profile.currentScore ?? 0);
+
+    const words = await this.prisma.vocabulary.findMany({
+      where: { stage },
+      orderBy: { id: 'asc' },
+    });
+
+    const totalWords = words.length;
+    const lessonsCount = Math.ceil(totalWords / 20);
+
+    if (lessonNumber < 1 || lessonNumber > lessonsCount) {
+      throw new NotFoundException('Không tìm thấy bài học');
+    }
+
+    const lessonWords = words.slice((lessonNumber - 1) * 20, lessonNumber * 20);
+    const wordIds = lessonWords.map((w) => w.id);
+
+    const progress = await this.prisma.userVocabularyProgress.findMany({
+      where: {
+        userId,
+        vocabularyId: { in: wordIds },
+      },
+    });
+
+    const progressMap = new Map(progress.map((p) => [p.vocabularyId, p]));
+
+    const wordsWithProgress = lessonWords.map((w) => {
+      const prog = progressMap.get(w.id);
+      return {
+        ...w,
+        status: prog?.status || 'NEW',
+        reviewLevel: prog?.reviewLevel || 0,
+        learnedAt: prog?.learnedAt || null,
+        nextReview: prog?.nextReview || null,
+        isReview: (prog && prog.nextReview) ? prog.nextReview <= new Date() && prog.status !== 'MASTERED' : false,
+      };
+    });
+
+    return {
+      success: true,
+      lessonNumber,
+      words: wordsWithProgress,
+    };
+  }
+
+  // =====================================================
+  // SRS REVIEW LEVELS
+  // =====================================================
+
+  async getReviewLevels(userId: number) {
+    const now = new Date();
+
+    const progress = await this.prisma.userVocabularyProgress.findMany({
+      where: {
+        userId,
+        status: { not: 'MASTERED' },
+        nextReview: { lte: now },
+      },
+      select: {
+        reviewLevel: true,
+      },
+    });
+
+    // We have 7 levels:
+    // 1: 30 minutes, 2: 3 hours, 3: 10 hours, 4: 24 hours, 5: 3 days, 6: 5 days, 7: 20 days
+    const counts = {
+      level_1: 0,
+      level_2: 0,
+      level_3: 0,
+      level_4: 0,
+      level_5: 0,
+      level_6: 0,
+      level_7: 0,
+    };
+
+    progress.forEach((p) => {
+      const key = `level_${p.reviewLevel}`;
+      if (key in counts) {
+        counts[key as keyof typeof counts]++;
+      }
+    });
+
+    return {
+      success: true,
+      levels: [
+        { level: 1, label: '30 phút', icon: '🔔', count: counts.level_1 },
+        { level: 2, label: '3 giờ', icon: '⏰', count: counts.level_2 },
+        { level: 3, label: '10 giờ', icon: '🌙', count: counts.level_3 },
+        { level: 4, label: '24 giờ', icon: '📅', count: counts.level_4 },
+        { level: 5, label: '3 ngày', icon: '🗓️', count: counts.level_5 },
+        { level: 6, label: '5 ngày', icon: '🔄', count: counts.level_6 },
+        { level: 7, label: '20 ngày', icon: '✅', count: counts.level_7 },
+      ],
+    };
+  }
+
+  async getReviewWords(userId: number, level: number) {
+    const now = new Date();
+
+    const progress = await this.prisma.userVocabularyProgress.findMany({
+      where: {
+        userId,
+        reviewLevel: level,
+        status: { not: 'MASTERED' },
+        nextReview: { lte: now },
+      },
+      include: {
+        vocabulary: true,
+      },
+      orderBy: {
+        nextReview: 'asc',
+      },
+    });
+
+    return {
+      success: true,
+      level,
+      words: progress.map((p) => ({
+        ...p.vocabulary,
+        status: p.status,
+        reviewLevel: p.reviewLevel,
+        nextReview: p.nextReview,
+        isReview: true,
+      })),
+    };
+  }
+
+  // =====================================================
+  // FILTERED VOCABULARY
+  // =====================================================
+
+  async getWordsFiltered(
+    userId: number,
+    query: {
+      stage?: number;
+      topic?: string;
+      search?: string;
+      sort?: 'asc' | 'desc';
+      page?: number;
+      limit?: number;
+    },
+  ) {
+    const profile = await this.getProfile(userId);
+    const userMaxStage = this.getStage(profile.currentScore ?? 0);
+
+    const page = Number(query.page ?? 1);
+    const limit = Number(query.limit ?? 20);
+    const sort = query.sort === 'desc' ? 'desc' : 'asc';
+
+    // Build Prisma where conditions
+    const where: any = {};
+
+    // Filter by stage: if not specified or "all" stage, query all stages up to userMaxStage
+    if (query.stage) {
+      const requestedStage = Number(query.stage);
+      where.stage = requestedStage <= userMaxStage ? requestedStage : userMaxStage;
+    } else {
+      where.stage = { lte: userMaxStage };
+    }
+
+    if (query.topic) {
+      where.topic = query.topic;
+    }
+
+    if (query.search) {
+      const searchLower = query.search.trim().toLowerCase();
+      where.OR = [
+        { english: { contains: searchLower, mode: 'insensitive' } },
+        { vietnamese: { contains: searchLower, mode: 'insensitive' } },
+      ];
+    }
+
+    const [items, total] = await Promise.all([
+      this.prisma.vocabulary.findMany({
+        where,
+        skip: (page - 1) * limit,
+        take: limit,
+        orderBy: {
+          english: sort,
+        },
+      }),
+      this.prisma.vocabulary.count({
+        where,
+      }),
+    ]);
+
+    // Fetch user progress for these returned items
+    const itemIds = items.map((item) => item.id);
+    const progress = await this.prisma.userVocabularyProgress.findMany({
+      where: {
+        userId,
+        vocabularyId: { in: itemIds },
+      },
+    });
+
+    const progressMap = new Map(progress.map((p) => [p.vocabularyId, p]));
+
+    const itemsWithProgress = items.map((w) => {
+      const prog = progressMap.get(w.id);
+      return {
+        ...w,
+        status: prog?.status || 'NEW',
+        reviewLevel: prog?.reviewLevel || 0,
+        isReview: (prog && prog.nextReview) ? prog.nextReview <= new Date() && prog.status !== 'MASTERED' : false,
+      };
+    });
+
+    return {
+      success: true,
+      total,
+      page,
+      limit,
+      totalPages: Math.ceil(total / limit),
+      items: itemsWithProgress,
     };
   }
 }

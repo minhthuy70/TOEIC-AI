@@ -80,6 +80,77 @@ today(
   );
 }
 
+
+  // =====================================================
+  // Lessons List
+  // =====================================================
+
+  @Get("lessons")
+  getLessons(
+    @Request() req,
+  ) {
+    return this.vocabularyService.getLessons(req.user.userId);
+  }
+
+  // =====================================================
+  // Lesson Detail
+  // =====================================================
+
+  @Get("lessons/:lesson")
+  getLessonWords(
+    @Request() req,
+    @Param("lesson", ParseIntPipe) lesson: number,
+  ) {
+    return this.vocabularyService.getLessonWords(req.user.userId, lesson);
+  }
+
+  // =====================================================
+  // Review Levels List
+  // =====================================================
+
+  @Get("review-levels")
+  getReviewLevels(
+    @Request() req,
+  ) {
+    return this.vocabularyService.getReviewLevels(req.user.userId);
+  }
+
+  // =====================================================
+  // Review Level Words
+  // =====================================================
+
+  @Get("review-words/:level")
+  getReviewWords(
+    @Request() req,
+    @Param("level", ParseIntPipe) level: number,
+  ) {
+    return this.vocabularyService.getReviewWords(req.user.userId, level);
+  }
+
+  // =====================================================
+  // Filtered Vocabulary List
+  // =====================================================
+
+  @Get("filtered")
+  getFiltered(
+    @Request() req,
+    @Query('page') page?: string,
+    @Query('limit') limit?: string,
+    @Query('stage') stage?: string,
+    @Query('topic') topic?: string,
+    @Query('search') search?: string,
+    @Query('sort') sort?: 'asc' | 'desc',
+  ) {
+    return this.vocabularyService.getWordsFiltered(req.user.userId, {
+      page: page ? Number(page) : undefined,
+      limit: limit ? Number(limit) : undefined,
+      stage: stage ? Number(stage) : undefined,
+      topic,
+      search,
+      sort,
+    });
+  }
+
   // =====================================================
   // Vocabulary List
   // =====================================================

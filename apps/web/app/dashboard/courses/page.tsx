@@ -2,6 +2,8 @@
 
 import { useState, useEffect, useCallback } from "react";
 import Link from "next/link";
+import { getSrs } from "@/services/vocabulary";
+import type { SrsResponse } from "@/types/vocabulary";
 
 const TABS = [
   { id: "vocabulary", label: "Từ vựng", icon: "📖" },
@@ -142,17 +144,13 @@ function CircularProgress({ value, max, size = 100, strokeWidth = 8, children }:
 
 export default function CoursesPage() {
   const [activeTab, setActiveTab] = useState("vocabulary");
-  const [srsStatus, setSrsStatus] = useState<SrsStatus | null>(null);
+  const [srsStatus, setSrsStatus] = useState<SrsResponse | null>(null);
   const [srsLoading, setSrsLoading] = useState(true);
   const [countdown, setCountdown] = useState("");
 
   const loadSrs = useCallback(async () => {
     try {
-      const user = localStorage.getItem("user");
-      if (!user) return;
-      const { id } = JSON.parse(user);
-      const res = await fetch(`http://localhost:3001/vocabulary/srs-status/${id}`);
-      const data = await res.json();
+      const data = await getSrs();
       if (data.success) setSrsStatus(data);
     } catch (err) {
       console.error(err);
@@ -269,7 +267,7 @@ export default function CoursesPage() {
                     Ôn ngay để không quên – Hệ thống SRS sẽ nhắc bạn đúng lúc
                   </p>
                   <Link
-                    href="/dashboard/vocabulary"
+                    href="/dashboard/review"
                     className="mt-3 inline-flex items-center gap-2 text-[12px] font-semibold bg-gradient-to-r from-amber-600 to-amber-500 hover:from-amber-500 hover:to-amber-400 text-white px-4 py-2 rounded-xl shadow-lg shadow-amber-600/20 transition-all duration-200 hover:shadow-amber-600/30 hover:scale-[1.02]"
                   >
                     🧠 Ôn tập ngay
@@ -350,14 +348,14 @@ export default function CoursesPage() {
                 icon: "📚",
                 label: "Tổng đã học",
                 value: srsStatus?.totalLearned ?? 0,
-                sub: `/${srsStatus?.totalWordsInStage ?? "?"} chặng này`,
+                sub: `/${srsStatus?.totalStageWords ?? "?"} chặng này`,
                 accent: "from-blue-600/15 to-blue-600/5 border-blue-600/15",
                 textColor: "text-blue-400",
               },
               {
                 icon: "🔄",
                 label: "Đang ôn tập",
-                value: srsStatus?.reviewingCount ?? 0,
+                value: srsStatus?.learningCount ?? 0,
                 sub: "trong hệ thống SRS",
                 accent: "from-amber-600/15 to-amber-600/5 border-amber-600/15",
                 textColor: "text-amber-400",
