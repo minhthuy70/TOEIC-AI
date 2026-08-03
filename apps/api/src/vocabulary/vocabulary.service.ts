@@ -545,15 +545,26 @@ export class VocabularyService {
         },
       });
 
-    if (!progress) {
-      return {
-        success: false,
-        message: 'Từ này chưa được học',
-      };
-    }
+   if (!progress) {
+  return {
+    success: false,
+    message: 'Từ này chưa được học',
+  };
+}
 
-    const nextLevel = progress.reviewLevel + 1;
-    const nextReview = new Date();
+if (
+  progress.status !== 'MASTERED' &&
+  progress.nextReview &&
+  progress.nextReview > new Date()
+) {
+  return {
+    success: false,
+    message: 'Chưa đến thời gian ôn tập',
+  };
+}
+
+const nextLevel = Math.min(progress.reviewLevel + 1, 8);
+const nextReview = new Date();
 
     switch (nextLevel) {
       case 2: // 3 hours

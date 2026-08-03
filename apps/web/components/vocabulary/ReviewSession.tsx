@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { VocabularyWordWithProgress } from "@/types/vocabulary";
 import { reviewWord } from "@/services/vocabulary";
 
@@ -27,9 +27,17 @@ export default function ReviewSession({
   // Local state for words progress in this review session
   const [localWords, setLocalWords] = useState<VocabularyWordWithProgress[]>(words);
 
- const reviewWords = localWords.filter((w) => w.isReview);
+const reviewWords = useMemo(
+  () => localWords.filter((w) => w.isReview),
+  [localWords]
+);
 
 const currentWord = reviewWords[currentIndex];
+useEffect(() => {
+  if (currentIndex >= reviewWords.length) {
+    setCurrentIndex(0);
+  }
+}, [reviewWords.length, currentIndex]);
 
   const handleReviewWord = async (wordId: number) => {
   const word = localWords.find((w) => w.id === wordId);
@@ -72,7 +80,7 @@ setIsFlipped(false);
 // luôn đứng ở phần tử đầu tiên của danh sách còn lại
 setCurrentIndex(0);
 
-      onReload();
+     // onReload();
     }
   } catch (err) {
     console.error(err);
