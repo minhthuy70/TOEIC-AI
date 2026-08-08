@@ -5,6 +5,7 @@ import { join } from "path";
 import { PrismaModule } from "./prisma/prisma.module";
 import { PlacementTestModule } from "./placement-test/placement-test.module";
 import { VocabularyModule } from "./vocabulary/vocabulary.module";
+import { GrammarModule } from "./grammar/grammar.module";
 
 
 import { AuthModule } from "./auth/auth.module";
@@ -14,8 +15,7 @@ import { ProfileModule } from "./profile/profile.module";
   imports: [
     PrismaModule,
     ProfileModule,
-
-     AuthModule,
+    AuthModule,
 
     ServeStaticModule.forRoot({
       rootPath: join(process.cwd(), "..", "..", "uploads"),
@@ -23,8 +23,8 @@ import { ProfileModule } from "./profile/profile.module";
     }),
 
     PlacementTestModule,
-
     VocabularyModule,
-  ]
+    GrammarModule,
+  ],
 })
-export class AppModule { }
+export class AppModule {}

@@ -7,90 +7,118 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model User {
-  id        Int      @id @default(autoincrement())
-  fullName  String
-  email     String   @unique
-  password  String
+// =====================================================
+// USER
+// =====================================================
 
-  profile   UserProfile?
+model User {
+  id       Int    @id @default(autoincrement())
+  fullName String
+  email    String @unique
+  password String
+
+  profile UserProfile?
 
   vocabularyProgress UserVocabularyProgress[]
+  grammarProgress    UserGrammarProgress[]
 
   createdAt DateTime @default(now())
 }
 
+// =====================================================
+// USER PROFILE
+// =====================================================
+
 model UserProfile {
-  id                  Int      @id @default(autoincrement())
+  id Int @id @default(autoincrement())
 
   // ===== Thông tin cá nhân =====
-  avatar              String?
-  phone               String?
-  birthday            DateTime?
-  gender              String?
-  address             String?
-  bio                 String?
+
+  avatar   String?
+  phone    String?
+  birthday DateTime?
+  gender   String?
+  address  String?
+  bio      String?
 
   // ===== Thông tin học =====
-  currentScore        Int?
-  targetScore         Int?
-  examDate            DateTime?
-  dailyStudyTime      Int?
 
-  firstLoginCompleted Boolean  @default(false)
+  currentScore   Int?
+  targetScore    Int?
+  examDate       DateTime?
+  dailyStudyTime Int?
 
-  userId              Int      @unique
-  user                User     @relation(fields: [userId], references: [id])
+  firstLoginCompleted Boolean @default(false)
 
-  createdAt           DateTime @default(now())
-  updatedAt           DateTime @updatedAt
+  // ===== Settings =====
 
   studyNotification Boolean @default(true)
-srsNotification Boolean @default(true)
-autoPronunciation Boolean @default(false)
-darkMode Boolean @default(true)
+  srsNotification   Boolean @default(true)
+  autoPronunciation Boolean @default(false)
+  darkMode          Boolean @default(true)
+
+  // ===== Relation =====
+
+  userId Int  @unique
+  user   User @relation(fields: [userId], references: [id])
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }
 
-model Vocabulary {
-  id                 Int      @id @default(autoincrement())
-  english            String
-  type               String?
-  vietnamese         String
-  pronounce          String?
-  explain            String?
-  example            String?
-  exampleVietnamese  String?  @map("example_vietnamese")
-  imageUrl           String?  @map("image_url")
-  audioUrl           String?  @map("audio_url")
-  topic              String
-  topicUrl           String?  @map("topic_url")
-  stage              Int
-  createdAt          DateTime @default(now()) @map("created_at")
+// =====================================================
+// VOCABULARY
+// =====================================================
 
-  progresses         UserVocabularyProgress[]
+model Vocabulary {
+  id Int @id @default(autoincrement())
+
+  english           String
+  type              String?
+  vietnamese        String
+  pronounce         String?
+  explain           String?
+  example           String?
+  exampleVietnamese String? @map("example_vietnamese")
+
+  imageUrl String? @map("image_url")
+  audioUrl String? @map("audio_url")
+
+  topic    String
+  topicUrl String? @map("topic_url")
+
+  stage Int
+
+  createdAt DateTime @default(now()) @map("created_at")
+
+  progresses UserVocabularyProgress[]
 
   @@map("vocabulary")
 }
 
+// =====================================================
+// USER VOCABULARY PROGRESS
+// =====================================================
+
 model UserVocabularyProgress {
-  id            Int       @id @default(autoincrement())
+  id Int @id @default(autoincrement())
 
-  userId        Int       @map("user_id")
-  vocabularyId  Int       @map("vocabulary_id")
+  userId       Int @map("user_id")
+  vocabularyId Int @map("vocabulary_id")
 
-  status        String    @default("NEW")
-  reviewLevel   Int       @default(0) @map("review_level")
-  reviewCount   Int       @default(0) @map("review_count")
+  status      String @default("NEW")
+  reviewLevel Int    @default(0) @map("review_level")
+  reviewCount Int    @default(0) @map("review_count")
 
-  learnedAt     DateTime? @map("learned_at")
-  lastReview    DateTime? @map("last_review")
-  nextReview    DateTime? @map("next_review")
+  learnedAt  DateTime? @map("learned_at")
+  lastReview DateTime? @map("last_review")
+  nextReview DateTime? @map("next_review")
 
-  createdAt     DateTime  @default(now()) @map("created_at")
-  updatedAt     DateTime  @updatedAt @map("updated_at")
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
 
-  user          User       @relation(fields: [userId], references: [id])
-  vocabulary    Vocabulary @relation(fields: [vocabularyId], references: [id])
+  user       User       @relation(fields: [userId], references: [id])
+  vocabulary Vocabulary @relation(fields: [vocabularyId], references: [id])
 
   @@unique([userId, vocabularyId])
   @@index([userId, nextReview])
@@ -98,47 +126,81 @@ model UserVocabularyProgress {
   @@map("user_vocabulary_progress")
 }
 
+// =====================================================
+// GRAMMAR CATEGORY
+// =====================================================
+
 model GrammarCategory {
-  id          Int      @id @default(autoincrement())
+  id Int @id @default(autoincrement())
+
   name        String
   description String?
-  displayOrder Int?    @default(0) @map("display_order")
-  createdAt   DateTime? @default(now()) @map("created_at")
-  updatedAt   DateTime? @default(now()) @map("updated_at")
-  stage       Int
 
-  lessons     GrammarLesson[]
+  displayOrder Int @default(0) @map("display_order")
+
+  stage Int
+
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  lessons GrammarLesson[]
 
   @@map("grammar_categories")
 }
 
+// =====================================================
+// GRAMMAR LESSON
+// =====================================================
+
 model GrammarLesson {
-  id           Int      @id @default(autoincrement())
-  categoryId   Int      @map("category_id")
-  title        String
-  content      String?
-  displayOrder Int?     @default(0) @map("display_order")
-  createdAt    DateTime? @default(now()) @map("created_at")
-  updatedAt    DateTime? @default(now()) @map("updated_at")
-  testId       Int?     @map("test_id")
+  id Int @id @default(autoincrement())
 
-  category     GrammarCategory @relation(fields: [categoryId], references: [id])
-  progresses   UserGrammarProgress[]
+  categoryId Int @map("category_id")
 
+  title   String
+  content String?
+
+  displayOrder Int @default(0) @map("display_order")
+
+  testId Int? @map("test_id")
+
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  category   GrammarCategory       @relation(fields: [categoryId], references: [id])
+  progresses UserGrammarProgress[]
+
+  @@index([categoryId])
   @@map("grammar_lessons")
 }
 
+// =====================================================
+// USER GRAMMAR PROGRESS
+// =====================================================
+
 model UserGrammarProgress {
-  id          Int       @id @default(autoincrement())
-  userId      Int       @map("user_id")
-  lessonId    Int       @map("lesson_id")
-  completed   Boolean?  @default(false)
-  score       Int?      @default(0)
+  id Int @id @default(autoincrement())
+
+  userId   Int @map("user_id")
+  lessonId Int @map("lesson_id")
+
+  completed Boolean @default(false)
+  score     Int     @default(0)
+
   lastStudied DateTime? @map("last_studied")
-  createdAt   DateTime? @default(now()) @map("created_at")
-  updatedAt   DateTime? @default(now()) @map("updated_at")
 
-  lesson      GrammarLesson @relation(fields: [lessonId], references: [id])
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
 
+  user   User          @relation(fields: [userId], references: [id])
+  lesson GrammarLesson @relation(fields: [lessonId], references: [id])
+
+  // ===================================================
+  // Mỗi user chỉ có 1 progress cho 1 lesson
+  // ===================================================
+
+  @@unique([userId, lessonId])
+  @@index([userId])
+  @@index([lessonId])
   @@map("user_grammar_progress")
 }
