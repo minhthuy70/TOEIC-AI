@@ -15,16 +15,6 @@ export interface GrammarCategory {
 }
 
 // ===========================================
-// Grammar Lesson Progress
-// ===========================================
-
-export interface GrammarLessonProgress {
-  completed: boolean;
-  score: number;
-  lastStudied: string | null;
-}
-
-// ===========================================
 // Grammar Lesson
 // ===========================================
 
@@ -35,15 +25,26 @@ export interface GrammarLesson {
   displayOrder: number | null;
   testId: number | null;
 
-  progress: GrammarLessonProgress;
+  completed: boolean;
+  score: number;
+  lastStudied: string | null;
 }
 
 // ===========================================
 // Grammar Category Detail
 // ===========================================
 
-export interface GrammarCategoryDetail
-  extends GrammarCategory {
+export interface GrammarCategoryDetail {
+  id: number;
+  name: string;
+  description: string | null;
+  stage: number;
+  displayOrder: number | null;
+
+  totalLessons: number;
+  completedLessons: number;
+  progress: number;
+
   lessons: GrammarLesson[];
 }
 
@@ -51,10 +52,21 @@ export interface GrammarCategoryDetail
 // Grammar Lesson Detail
 // ===========================================
 
-export interface GrammarLessonDetail
-  extends GrammarLesson {
+export interface GrammarLessonDetail {
+  id: number;
+  title: string;
+  content: string | null;
+  displayOrder: number | null;
+  testId: number | null;
+
   category: {
     id: number;
     name: string;
+  };
+
+  progress: {
+    completed: boolean;
+    score: number;
+    lastStudied: string | null;
   };
 }
