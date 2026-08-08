@@ -4,6 +4,8 @@ import { useState, useEffect, useCallback } from "react";
 import Link from "next/link";
 import { getSrs } from "@/services/vocabulary";
 import type { SrsResponse } from "@/types/vocabulary";
+import { getGrammarCategories } from "@/services/grammar";
+import type { GrammarCategory } from "@/types/grammar";
 
 const TABS = [
   { id: "vocabulary", label: "Từ vựng", icon: "📖" },
@@ -21,17 +23,6 @@ const VOCAB_TOPICS = [
   { id: 6, label: "Shipping & Logistics", icon: "🚢", words: 85, done: 0, color: "from-orange-600 to-orange-500" },
   { id: 7, label: "Meetings & Conferences", icon: "🤝", words: 75, done: 0, color: "from-yellow-600 to-yellow-500" },
   { id: 8, label: "Technology & IT", icon: "💻", words: 105, done: 0, color: "from-indigo-600 to-indigo-500" },
-];
-
-const GRAMMAR_TOPICS = [
-  { id: 1, label: "Các thì tiếng Anh", icon: "⏰", lessons: 12, done: 8, level: "Cơ bản" },
-  { id: 2, label: "Từ loại (Word Forms)", icon: "🔤", lessons: 8, done: 5, level: "Cơ bản" },
-  { id: 3, label: "Câu bị động", icon: "🔄", lessons: 6, done: 3, level: "Trung bình" },
-  { id: 4, label: "Mệnh đề quan hệ", icon: "🔗", lessons: 7, done: 1, level: "Trung bình" },
-  { id: 5, label: "Liên từ & Giới từ", icon: "↔️", lessons: 9, done: 0, level: "Trung bình" },
-  { id: 6, label: "So sánh", icon: "⚖️", lessons: 5, done: 0, level: "Trung bình" },
-  { id: 7, label: "Câu điều kiện", icon: "❓", lessons: 6, done: 0, level: "Nâng cao" },
-  { id: 8, label: "Đảo ngữ", icon: "🔀", lessons: 4, done: 0, level: "Nâng cao" },
 ];
 
 const LISTENING_PARTS = [
@@ -147,6 +138,15 @@ export default function CoursesPage() {
   const [srsStatus, setSrsStatus] = useState<SrsResponse | null>(null);
   const [srsLoading, setSrsLoading] = useState(true);
   const [countdown, setCountdown] = useState("");
+  const [grammarTopics, setGrammarTopics] = useState<
+  GrammarCategory[]
+>([]);
+
+const [grammarLoading, setGrammarLoading] =
+  useState(false);
+
+const [grammarError, setGrammarError] =
+  useState<string | null>(null);
 
   const loadSrs = useCallback(async () => {
     try {
@@ -162,7 +162,33 @@ export default function CoursesPage() {
   useEffect(() => {
     loadSrs();
   }, [loadSrs]);
+useEffect(() => {
+  if (activeTab !== "grammar") return;
 
+  const loadGrammar = async () => {
+    try {
+      setGrammarLoading(true);
+      setGrammarError(null);
+
+      const data = await getGrammarCategories();
+
+      setGrammarTopics(data);
+    } catch (error) {
+      console.error(
+        "Load grammar categories error:",
+        error,
+      );
+
+      setGrammarError(
+        "Không thể tải dữ liệu ngữ pháp.",
+      );
+    } finally {
+      setGrammarLoading(false);
+    }
+  };
+
+  loadGrammar();
+}, [activeTab]);
   // Live countdown ticker
   useEffect(() => {
     if (!srsStatus?.nextReview) return;
@@ -454,39 +480,127 @@ export default function CoursesPage() {
 
       {/* ── Grammar ── */}
       {activeTab === "grammar" && (
-        <div className="space-y-3">
-          <p className="text-sm text-zinc-300 font-medium">Ngữ pháp TOEIC từ cơ bản đến nâng cao</p>
-          {GRAMMAR_TOPICS.map((topic) => {
-            const progress = Math.round((topic.done / topic.lessons) * 100);
-            return (
-              <div
-                key={topic.id}
-                className="bg-zinc-900/60 border border-zinc-800/50 hover:border-zinc-700/60 rounded-xl p-4 flex items-center gap-4 cursor-pointer transition-all group"
-              >
-                <span className="text-xl w-8 text-center">{topic.icon}</span>
-                <div className="flex-1 min-w-0">
-                  <div className="flex items-center gap-2 flex-wrap">
-                    <p className="text-[13px] text-white font-medium">{topic.label}</p>
-                    <span className={`text-[9px] font-semibold px-2 py-0.5 rounded-full border ${LEVEL_COLORS[topic.level]}`}>
-                      {topic.level}
-                    </span>
-                  </div>
-                  <div className="flex items-center gap-2 mt-2">
-                    <div className="flex-1 bg-zinc-800 rounded-full h-1.5">
-                      <div
-                        className="bg-gradient-to-r from-red-600 to-red-400 h-1.5 rounded-full"
-                        style={{ width: `${progress}%` }}
-                      />
-                    </div>
-                    <span className="text-[10px] text-zinc-500 shrink-0">{topic.done}/{topic.lessons} bài</span>
-                  </div>
-                </div>
-                <span className="text-zinc-600 group-hover:text-zinc-400 transition-colors">›</span>
-              </div>
-            );
-          })}
+  <div className="space-y-3">
+
+    {/* Header */}
+    <div className="flex items-center justify-between">
+      <p className="text-sm text-zinc-300 font-medium">
+        Ngữ pháp TOEIC từ cơ bản đến nâng cao
+      </p>
+
+      {!grammarLoading && !grammarError && (
+        <span className="text-xs text-zinc-500 bg-zinc-900/60 border border-zinc-800/50 px-3 py-1 rounded-full">
+          {grammarTopics.length} chủ đề
+        </span>
+      )}
+    </div>
+
+    {/* Loading */}
+    {grammarLoading && (
+      <div className="space-y-3">
+        {[1, 2, 3, 4].map((item) => (
+          <div
+            key={item}
+            className="h-20 bg-zinc-900/60 border border-zinc-800/50 rounded-xl animate-pulse"
+          />
+        ))}
+      </div>
+    )}
+
+    {/* Error */}
+    {!grammarLoading && grammarError && (
+      <div className="bg-red-950/30 border border-red-800/40 rounded-xl p-5">
+        <p className="text-sm text-red-400">
+          {grammarError}
+        </p>
+      </div>
+    )}
+
+    {/* Empty */}
+    {!grammarLoading &&
+      !grammarError &&
+      grammarTopics.length === 0 && (
+        <div className="bg-zinc-900/60 border border-zinc-800/50 rounded-xl p-6 text-center">
+          <p className="text-zinc-400 text-sm">
+            Chưa có dữ liệu ngữ pháp.
+          </p>
         </div>
       )}
+
+    {/* Categories */}
+    {!grammarLoading &&
+      !grammarError &&
+      grammarTopics.map((topic) => (
+        <Link
+          key={topic.id}
+          href={`/dashboard/courses/grammar/${topic.id}`}
+          className="bg-zinc-900/60 border border-zinc-800/50 hover:border-zinc-700/60 rounded-xl p-4 flex items-center gap-4 transition-all group"
+        >
+
+          {/* Icon */}
+          <div className="w-10 h-10 rounded-xl bg-red-600/15 border border-red-600/20 flex items-center justify-center text-lg shrink-0">
+            📝
+          </div>
+
+          {/* Content */}
+          <div className="flex-1 min-w-0">
+
+            <div className="flex items-center gap-2 flex-wrap">
+
+              <p className="text-[13px] text-white font-medium">
+                {topic.name}
+              </p>
+
+              <span className="text-[9px] font-semibold px-2 py-0.5 rounded-full border bg-blue-600/15 text-blue-400 border-blue-600/20">
+                Chặng {topic.stage}
+              </span>
+
+            </div>
+
+            {topic.description && (
+              <p className="text-[11px] text-zinc-500 mt-1 truncate">
+                {topic.description}
+              </p>
+            )}
+
+            {/* Progress */}
+            <div className="flex items-center gap-2 mt-2">
+
+              <div className="flex-1 bg-zinc-800 rounded-full h-1.5">
+                <div
+                  className="bg-gradient-to-r from-red-600 to-red-400 h-1.5 rounded-full transition-all"
+                  style={{
+                    width: `${topic.progress}%`,
+                  }}
+                />
+              </div>
+
+              <span className="text-[10px] text-zinc-500 shrink-0">
+                {topic.completedLessons}/
+                {topic.totalLessons} bài
+              </span>
+
+            </div>
+
+          </div>
+
+          {/* Percentage */}
+          <div className="text-right shrink-0">
+
+            <p className="text-xs text-zinc-400">
+              {topic.progress}%
+            </p>
+
+            <span className="text-zinc-600 group-hover:text-zinc-400 transition-colors">
+              ›
+            </span>
+
+          </div>
+
+        </Link>
+      ))}
+  </div>
+)}
 
       {/* ── Listening ── */}
       {activeTab === "listening" && (
