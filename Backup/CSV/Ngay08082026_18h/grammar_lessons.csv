@@ -1,0 +1,900 @@
+id,category_id,title,content,display_order,created_at,updated_at,test_id
+92,1,Trạng ngữ (Adverbial),"
+# Trạng ngữ (Adverbial)
+
+## 1. Khái niệm
+
+Adverbial (A) là trạng ngữ, cung cấp thêm thông tin về:
+
+- thời gian
+- địa điểm
+- cách thức
+- tần suất
+- nguyên nhân
+
+## 2. Trạng ngữ thời gian
+
+The manager arrived yesterday.
+
+yesterday = thời gian
+
+## 3. Trạng ngữ địa điểm
+
+She works in the office.
+
+in the office = địa điểm
+
+## 4. Trạng ngữ cách thức
+
+He works carefully.
+
+carefully = cách thức
+
+## 5. Trạng ngữ có thể đứng ở nhiều vị trí
+
+Yesterday, the manager arrived.
+
+The manager arrived yesterday.
+
+## 6. Mẹo TOEIC
+
+Trạng ngữ thường có thể được di chuyển hoặc loại bỏ mà câu vẫn giữ được cấu trúc chính.
+
+Ví dụ:
+
+The manager works.
+
+The manager works in the office.
+
+",6,2026-08-08 18:01:10.540921,2026-08-08 18:01:10.540921,
+94,1,Cấu trúc S + V + O,"
+# Cấu trúc S + V + O
+
+## 1. Công thức
+
+S + V + O
+
+S = Subject
+V = Verb
+O = Object
+
+## 2. Ví dụ
+
+She reads the report.
+
+She = S
+reads = V
+the report = O
+
+The manager checks the documents.
+
+The manager = S
+checks = V
+the documents = O
+
+## 3. Đặc điểm
+
+Động từ trong cấu trúc này thường là ngoại động từ, cần có Object để hoàn chỉnh ý nghĩa.
+
+## 4. Mẹo TOEIC
+
+Nếu sau động từ cần một đối tượng chịu tác động, hãy kiểm tra cấu trúc S + V + O.
+
+",8,2026-08-08 18:01:10.540921,2026-08-08 18:01:10.540921,
+95,1,Cấu trúc S + V + C,"
+# Cấu trúc S + V + C
+
+## 1. Công thức
+
+S + V + C
+
+C = Complement
+
+## 2. Ví dụ
+
+She is a manager.
+
+She = S
+is = V
+a manager = C
+
+The office is large.
+
+The office = S
+is = V
+large = C
+
+## 3. Động từ thường gặp
+
+Cấu trúc này thường xuất hiện với linking verbs:
+
+- be
+- become
+- seem
+- look
+- feel
+- sound
+
+Ví dụ:
+
+The plan seems effective.
+
+## 4. Phân biệt
+
+S + V + O:
+
+She reads a report.
+
+S + V + C:
+
+She is a manager.
+
+",9,2026-08-08 18:01:10.540921,2026-08-08 18:01:10.540921,
+96,1,Cấu trúc S + V + O + O,"
+# Cấu trúc S + V + O + O
+
+## 1. Công thức
+
+S + V + O + O
+
+Có hai tân ngữ:
+
+- Indirect Object (IO): tân ngữ gián tiếp
+- Direct Object (DO): tân ngữ trực tiếp
+
+## 2. Ví dụ
+
+She gave me a report.
+
+She = S
+gave = V
+me = IO
+a report = DO
+
+## 3. Một số động từ thường gặp
+
+- give
+- send
+- show
+- tell
+- offer
+- lend
+- buy
+
+Ví dụ:
+
+The manager sent me an email.
+
+## 4. Cách hiểu
+
+Người nhận = tân ngữ gián tiếp.
+
+Vật được trao/gửi = tân ngữ trực tiếp.
+
+",10,2026-08-08 18:01:10.540921,2026-08-08 18:01:10.540921,
+97,1,Cấu trúc S + V + O + C,"
+# Cấu trúc S + V + O + C
+
+## 1. Công thức
+
+S + V + O + C
+
+C = bổ ngữ cho Object.
+
+## 2. Ví dụ
+
+They elected him president.
+
+They = S
+elected = V
+him = O
+president = C
+
+## 3. Một số động từ thường gặp
+
+- make
+- call
+- name
+- elect
+- consider
+- find
+
+Ví dụ:
+
+The company appointed John manager.
+
+John = Object
+manager = Complement
+
+## 4. Phân biệt với S + V + O + O
+
+S + V + O + O:
+
+She gave me a book.
+
+""me"" và ""a book"" đều là Object.
+
+S + V + O + C:
+
+They made him manager.
+
+""him"" = Object
+""manager"" = Complement.
+
+",11,2026-08-08 18:01:10.540921,2026-08-08 18:01:10.540921,
+98,1,Câu khẳng định,"
+# Câu khẳng định
+
+## 1. Khái niệm
+
+Câu khẳng định dùng để đưa ra một thông tin hoặc khẳng định một sự việc.
+
+## 2. Cấu trúc cơ bản
+
+S + V + ...
+
+Ví dụ:
+
+She works at the company.
+
+The manager checks the report.
+
+## 3. Với động từ TO BE
+
+S + be + ...
+
+Ví dụ:
+
+She is a manager.
+
+They are busy.
+
+## 4. Với động từ thường
+
+S + V + ...
+
+Ví dụ:
+
+He works every day.
+
+She studies English.
+
+## 5. Mẹo TOEIC
+
+Hãy xác định chủ ngữ và động từ trước, sau đó mới xác định các thành phần còn lại.
+
+",12,2026-08-08 18:01:10.540921,2026-08-08 18:01:10.540921,
+99,1,Câu phủ định,"
+# Câu phủ định
+
+## 1. Với động từ TO BE
+
+S + be + not + ...
+
+Ví dụ:
+
+She is not busy.
+
+They are not ready.
+
+## 2. Với động từ thường
+
+S + do/does + not + V nguyên mẫu
+
+Ví dụ:
+
+She does not work here.
+
+They do not work here.
+
+## 3. Với quá khứ đơn
+
+S + did not + V nguyên mẫu
+
+Ví dụ:
+
+He did not attend the meeting.
+
+## 4. Lưu ý
+
+Sau do, does hoặc did, động từ chính phải trở về dạng nguyên mẫu.
+
+Sai:
+
+She does not works here.
+
+Đúng:
+
+She does not work here.
+
+## 5. Mẹo TOEIC
+
+Đây là một bẫy thường gặp trong câu hỏi ngữ pháp: sau does/did không chia động từ chính.
+
+",13,2026-08-08 18:01:10.540921,2026-08-08 18:01:10.540921,
+100,1,Câu nghi vấn,"
+# Câu nghi vấn
+
+## 1. Câu hỏi Yes/No
+
+Với TO BE:
+
+Be + S + ...?
+
+Ví dụ:
+
+Is she a manager?
+
+Are they ready?
+
+Với động từ thường:
+
+Do/Does + S + V...?
+
+Ví dụ:
+
+Does she work here?
+
+Do they need help?
+
+## 2. Câu hỏi WH
+
+Từ hỏi thường gặp:
+
+- What
+- Where
+- When
+- Why
+- Who
+- How
+
+Ví dụ:
+
+Where does she work?
+
+When does the meeting start?
+
+## 3. Lưu ý
+
+Sau do/does/did, động từ chính dùng dạng nguyên mẫu.
+
+Does he works here? ❌
+
+Does he work here? ✅
+
+## 4. Mẹo TOEIC
+
+Khi gặp câu hỏi, xác định:
+
+1. Từ để hỏi
+2. Trợ động từ
+3. Chủ ngữ
+4. Động từ chính
+
+",14,2026-08-08 18:01:10.540921,2026-08-08 18:01:10.540921,
+101,1,Câu mệnh lệnh,"
+# Câu mệnh lệnh
+
+## 1. Khái niệm
+
+Câu mệnh lệnh dùng để yêu cầu, hướng dẫn hoặc ra lệnh cho người khác thực hiện một hành động.
+
+## 2. Công thức
+
+V nguyên mẫu + ...
+
+Ví dụ:
+
+Open the door.
+
+Close the window.
+
+Check the report.
+
+## 3. Câu mệnh lệnh phủ định
+
+Do not + V nguyên mẫu
+
+Ví dụ:
+
+Do not open the door.
+
+Don't forget the meeting.
+
+## 4. Mệnh lệnh lịch sự
+
+Please + V nguyên mẫu.
+
+Ví dụ:
+
+Please send the report.
+
+Please check this document.
+
+## 5. Mẹo TOEIC
+
+Câu mệnh lệnh thường không có chủ ngữ được viết ra. Chủ ngữ ngầm hiểu là ""you"".
+
+",15,2026-08-08 18:01:10.540921,2026-08-08 18:01:10.540921,
+87,1,Các thành phần cơ bản của câu,"
+# Các thành phần cơ bản của câu
+
+## 1. Tổng quan
+
+Một câu tiếng Anh thường được tạo thành từ nhiều thành phần khác nhau. Những thành phần quan trọng nhất gồm:
+
+- Subject (S): Chủ ngữ
+- Verb (V): Động từ
+- Object (O): Tân ngữ
+- Complement (C): Bổ ngữ
+- Adverbial (A): Trạng ngữ
+
+Các thành phần này kết hợp với nhau để tạo thành những cấu trúc câu khác nhau.
+
+## 2. Chủ ngữ – Subject
+
+Chủ ngữ là người, vật hoặc sự việc thực hiện hành động hoặc được nói đến trong câu.
+
+Ví dụ:
+
+The manager works hard.
+→ Người quản lý làm việc chăm chỉ.
+
+The employees are busy.
+→ Các nhân viên đang bận.
+
+## 3. Động từ – Verb
+
+Động từ diễn tả hành động hoặc trạng thái.
+
+Ví dụ:
+
+She works every day.
+→ Cô ấy làm việc mỗi ngày.
+
+The office is large.
+→ Văn phòng rộng.
+
+## 4. Tân ngữ – Object
+
+Tân ngữ là đối tượng chịu tác động của hành động.
+
+Ví dụ:
+
+She reads the report.
+
+She = Subject
+reads = Verb
+the report = Object
+
+## 5. Bổ ngữ – Complement
+
+Bổ ngữ cung cấp thông tin bổ sung cho chủ ngữ hoặc tân ngữ.
+
+Ví dụ:
+
+She is a manager.
+
+a manager = Complement
+
+## 6. Trạng ngữ – Adverbial
+
+Trạng ngữ cung cấp thông tin về thời gian, địa điểm, cách thức hoặc nguyên nhân.
+
+Ví dụ:
+
+He works in the office.
+
+in the office = Adverbial
+
+## 7. Mẹo TOEIC
+
+Trong Part 5, hãy xác định trước:
+
+1. Chủ ngữ ở đâu?
+2. Động từ chính ở đâu?
+3. Sau động từ có cần Object hoặc Complement không?
+
+Nắm được thành phần câu sẽ giúp xác định nhanh cấu trúc của câu.
+",1,2026-08-08 18:01:10.540921,2026-08-08 18:01:10.540921,
+88,1,Chủ ngữ (Subject),"
+# Chủ ngữ (Subject)
+
+## 1. Khái niệm
+
+Subject (S) là chủ ngữ của câu. Chủ ngữ thường là người, vật hoặc sự việc thực hiện hành động hoặc được mô tả.
+
+## 2. Vị trí
+
+Chủ ngữ thường đứng trước động từ.
+
+Cấu trúc:
+
+S + V
+
+Ví dụ:
+
+The manager works.
+→ Người quản lý làm việc.
+
+The employees work.
+→ Các nhân viên làm việc.
+
+## 3. Chủ ngữ có thể là
+
+### Danh từ
+
+The company is successful.
+
+### Đại từ
+
+She works here.
+
+### Cụm danh từ
+
+The new manager works here.
+
+## 4. Mẹo TOEIC
+
+Khi gặp câu Part 5, hãy tìm chủ ngữ trước rồi xác định động từ cần chia theo chủ ngữ.
+
+Ví dụ:
+
+The manager ___ every day.
+
+A. work
+B. works
+C. working
+D. worked
+
+Đáp án: B. works
+
+Vì chủ ngữ ""The manager"" là số ít.
+",2,2026-08-08 18:01:10.540921,2026-08-08 18:01:10.540921,
+89,1,Động từ (Verb),"
+# Động từ (Verb)
+
+## 1. Khái niệm
+
+Verb (V) là động từ. Động từ diễn tả hành động hoặc trạng thái của chủ thể.
+
+Ví dụ:
+
+The employee works.
+
+She studies English.
+
+The company is successful.
+
+## 2. Động từ hành động
+
+Các động từ như:
+
+- work
+- study
+- open
+- close
+- send
+- receive
+
+Ví dụ:
+
+The employee sends an email.
+
+## 3. Động từ trạng thái
+
+Một số động từ mô tả trạng thái:
+
+- be
+- know
+- like
+- need
+- want
+
+Ví dụ:
+
+She knows the answer.
+
+## 4. Động từ trong câu
+
+Câu tiếng Anh hoàn chỉnh thường cần có động từ chính.
+
+Ví dụ:
+
+The manager works here.
+
+S = The manager
+V = works
+
+## 5. Mẹo TOEIC
+
+Nếu câu đã có chủ ngữ nhưng thiếu động từ chính, đáp án thường cần một dạng động từ phù hợp.
+
+",3,2026-08-08 18:01:10.540921,2026-08-08 18:01:10.540921,
+90,1,Tân ngữ (Object),"
+# Tân ngữ (Object)
+
+## 1. Khái niệm
+
+Object (O) là tân ngữ, thường là người hoặc vật chịu tác động của hành động.
+
+Ví dụ:
+
+She reads the report.
+
+She = Subject
+reads = Verb
+the report = Object
+
+## 2. Vị trí
+
+Tân ngữ thường đứng sau động từ ngoại động từ.
+
+Cấu trúc:
+
+S + V + O
+
+Ví dụ:
+
+The manager checks the document.
+
+The manager = S
+checks = V
+the document = O
+
+## 3. Tân ngữ có thể là
+
+Danh từ:
+
+She opened the door.
+
+Đại từ:
+
+The manager called me.
+
+Cụm danh từ:
+
+We received the new report.
+
+## 4. Mẹo TOEIC
+
+Nếu sau động từ cần một đối tượng chịu tác động, hãy kiểm tra khả năng xuất hiện của Object.
+
+",4,2026-08-08 18:01:10.540921,2026-08-08 18:01:10.540921,
+91,1,Bổ ngữ (Complement),"
+# Bổ ngữ (Complement)
+
+## 1. Khái niệm
+
+Complement (C) là bổ ngữ, cung cấp thông tin cần thiết để hoàn chỉnh ý nghĩa của câu.
+
+## 2. Bổ ngữ cho chủ ngữ
+
+Cấu trúc:
+
+S + V + C
+
+Ví dụ:
+
+She is a manager.
+
+She = S
+is = V
+a manager = C
+
+## 3. Bổ ngữ có thể là tính từ
+
+The office is large.
+
+large = Complement
+
+## 4. Bổ ngữ có thể là danh từ
+
+He is a teacher.
+
+a teacher = Complement
+
+## 5. Phân biệt Object và Complement
+
+Object nhận tác động của hành động.
+
+She reads a book.
+
+""a book"" = Object
+
+Complement mô tả hoặc xác định chủ thể.
+
+She is a teacher.
+
+""a teacher"" = Complement
+
+## 6. Mẹo TOEIC
+
+Sau các linking verbs như be, become, seem, feel, look, sound, thường có Complement.
+
+",5,2026-08-08 18:01:10.540921,2026-08-08 18:01:10.540921,
+93,1,Cấu trúc S + V,"
+# Cấu trúc S + V
+
+## 1. Công thức
+
+S + V
+
+Trong đó:
+
+S = Subject
+V = Verb
+
+Đây là cấu trúc câu cơ bản nhất.
+
+## 2. Ví dụ
+
+Employees work.
+
+Employees = S
+work = V
+
+The manager arrived.
+
+The manager = S
+arrived = V
+
+## 3. Động từ không cần tân ngữ
+
+Một số động từ có thể sử dụng mà không cần Object.
+
+Ví dụ:
+
+The baby sleeps.
+
+The meeting ended.
+
+The employees arrived.
+
+## 4. Mẹo TOEIC
+
+Nếu động từ không cần Object thì không nên cố thêm một danh từ làm tân ngữ.
+
+",7,2026-08-08 18:01:10.540921,2026-08-08 18:01:10.540921,
+102,2,Tổng quan về từ loại,,1,2026-08-08 18:01:10.540921,2026-08-08 18:01:10.540921,
+103,2,Danh từ (Noun),,2,2026-08-08 18:01:10.540921,2026-08-08 18:01:10.540921,
+104,2,Động từ (Verb),,3,2026-08-08 18:01:10.540921,2026-08-08 18:01:10.540921,
+105,2,Tính từ (Adjective),,4,2026-08-08 18:01:10.540921,2026-08-08 18:01:10.540921,
+106,2,Trạng từ (Adverb),,5,2026-08-08 18:01:10.540921,2026-08-08 18:01:10.540921,
+107,2,Đại từ (Pronoun),,6,2026-08-08 18:01:10.540921,2026-08-08 18:01:10.540921,
+108,2,Giới từ (Preposition),,7,2026-08-08 18:01:10.540921,2026-08-08 18:01:10.540921,
+109,2,Liên từ (Conjunction),,8,2026-08-08 18:01:10.540921,2026-08-08 18:01:10.540921,
+110,2,Cách nhận biết từ loại trong câu,,9,2026-08-08 18:01:10.540921,2026-08-08 18:01:10.540921,
+111,2,Vị trí của các từ loại trong câu,,10,2026-08-08 18:01:10.540921,2026-08-08 18:01:10.540921,
+112,3,Danh từ là gì?,,1,2026-08-08 18:01:10.540921,2026-08-08 18:01:10.540921,
+113,3,Danh từ số ít,,2,2026-08-08 18:01:10.540921,2026-08-08 18:01:10.540921,
+114,3,Danh từ số nhiều,,3,2026-08-08 18:01:10.540921,2026-08-08 18:01:10.540921,
+115,3,Quy tắc thêm -s và -es,,4,2026-08-08 18:01:10.540921,2026-08-08 18:01:10.540921,
+116,3,Danh từ bất quy tắc,,5,2026-08-08 18:01:10.540921,2026-08-08 18:01:10.540921,
+117,3,Danh từ đếm được,,6,2026-08-08 18:01:10.540921,2026-08-08 18:01:10.540921,
+118,3,Danh từ không đếm được,,7,2026-08-08 18:01:10.540921,2026-08-08 18:01:10.540921,
+119,3,Phân biệt danh từ đếm được và không đếm được,,8,2026-08-08 18:01:10.540921,2026-08-08 18:01:10.540921,
+120,3,Danh từ riêng và danh từ chung,,9,2026-08-08 18:01:10.540921,2026-08-08 18:01:10.540921,
+121,3,Danh từ ghép,,10,2026-08-08 18:01:10.540921,2026-08-08 18:01:10.540921,
+122,3,Cách thành lập danh từ,,11,2026-08-08 18:01:10.540921,2026-08-08 18:01:10.540921,
+123,4,Đại từ là gì?,,1,2026-08-08 18:01:10.540921,2026-08-08 18:01:10.540921,
+124,4,Đại từ nhân xưng làm chủ ngữ,,2,2026-08-08 18:01:10.540921,2026-08-08 18:01:10.540921,
+125,4,Đại từ nhân xưng làm tân ngữ,,3,2026-08-08 18:01:10.540921,2026-08-08 18:01:10.540921,
+126,4,Tính từ sở hữu,,4,2026-08-08 18:01:10.540921,2026-08-08 18:01:10.540921,
+127,4,Đại từ sở hữu,,5,2026-08-08 18:01:10.540921,2026-08-08 18:01:10.540921,
+128,4,Đại từ phản thân,,6,2026-08-08 18:01:10.540921,2026-08-08 18:01:10.540921,
+129,4,Đại từ chỉ định,,7,2026-08-08 18:01:10.540921,2026-08-08 18:01:10.540921,
+130,4,Đại từ bất định cơ bản,,8,2026-08-08 18:01:10.540921,2026-08-08 18:01:10.540921,
+131,4,Phân biệt các loại đại từ,,9,2026-08-08 18:01:10.540921,2026-08-08 18:01:10.540921,
+132,5,Động từ là gì?,,1,2026-08-08 18:01:10.540921,2026-08-08 18:01:10.540921,
+133,5,Động từ thường,,2,2026-08-08 18:01:10.540921,2026-08-08 18:01:10.540921,
+134,5,Động từ Be,,3,2026-08-08 18:01:10.540921,2026-08-08 18:01:10.540921,
+135,5,Động từ Have,,4,2026-08-08 18:01:10.540921,2026-08-08 18:01:10.540921,
+136,5,Động từ Do,,5,2026-08-08 18:01:10.540921,2026-08-08 18:01:10.540921,
+137,5,Nội động từ,,6,2026-08-08 18:01:10.540921,2026-08-08 18:01:10.540921,
+138,5,Ngoại động từ,,7,2026-08-08 18:01:10.540921,2026-08-08 18:01:10.540921,
+139,5,Động từ chỉ hành động,,8,2026-08-08 18:01:10.540921,2026-08-08 18:01:10.540921,
+140,5,Động từ chỉ trạng thái,,9,2026-08-08 18:01:10.540921,2026-08-08 18:01:10.540921,
+141,5,Động từ chính và trợ động từ,,10,2026-08-08 18:01:10.540921,2026-08-08 18:01:10.540921,
+142,6,Tính từ là gì?,,1,2026-08-08 18:01:10.540921,2026-08-08 18:01:10.540921,
+143,6,Tính từ đứng trước danh từ,,2,2026-08-08 18:01:10.540921,2026-08-08 18:01:10.540921,
+144,6,Tính từ đứng sau động từ Be,,3,2026-08-08 18:01:10.540921,2026-08-08 18:01:10.540921,
+145,6,Tính từ sau linking verbs,,4,2026-08-08 18:01:10.540921,2026-08-08 18:01:10.540921,
+146,6,Tính từ chỉ tính chất,,5,2026-08-08 18:01:10.540921,2026-08-08 18:01:10.540921,
+147,6,Tính từ chỉ cảm xúc,,6,2026-08-08 18:01:10.540921,2026-08-08 18:01:10.540921,
+148,6,Vị trí của nhiều tính từ,,7,2026-08-08 18:01:10.540921,2026-08-08 18:01:10.540921,
+149,6,Phân biệt tính từ -ed và -ing,,8,2026-08-08 18:01:10.540921,2026-08-08 18:01:10.540921,
+150,7,Trạng từ là gì?,,1,2026-08-08 18:01:10.540921,2026-08-08 18:01:10.540921,
+151,7,Trạng từ chỉ cách thức,,2,2026-08-08 18:01:10.540921,2026-08-08 18:01:10.540921,
+152,7,Trạng từ chỉ thời gian,,3,2026-08-08 18:01:10.540921,2026-08-08 18:01:10.540921,
+153,7,Trạng từ chỉ nơi chốn,,4,2026-08-08 18:01:10.540921,2026-08-08 18:01:10.540921,
+154,7,Trạng từ chỉ tần suất,,5,2026-08-08 18:01:10.540921,2026-08-08 18:01:10.540921,
+155,7,Trạng từ chỉ mức độ,,6,2026-08-08 18:01:10.540921,2026-08-08 18:01:10.540921,
+156,7,Vị trí của trạng từ trong câu,,7,2026-08-08 18:01:10.540921,2026-08-08 18:01:10.540921,
+157,7,Cách thành lập trạng từ,,8,2026-08-08 18:01:10.540921,2026-08-08 18:01:10.540921,
+158,8,Mạo từ là gì?,,1,2026-08-08 18:01:10.540921,2026-08-08 18:01:10.540921,
+159,8,Cách sử dụng A,,2,2026-08-08 18:01:10.540921,2026-08-08 18:01:10.540921,
+160,8,Cách sử dụng AN,,3,2026-08-08 18:01:10.540921,2026-08-08 18:01:10.540921,
+161,8,Cách sử dụng THE,,4,2026-08-08 18:01:10.540921,2026-08-08 18:01:10.540921,
+162,8,Phân biệt A và AN,,5,2026-08-08 18:01:10.540921,2026-08-08 18:01:10.540921,
+163,8,Trường hợp không dùng mạo từ,,6,2026-08-08 18:01:10.540921,2026-08-08 18:01:10.540921,
+164,8,Mạo từ với danh từ số ít,,7,2026-08-08 18:01:10.540921,2026-08-08 18:01:10.540921,
+165,8,Mạo từ với danh từ số nhiều,,8,2026-08-08 18:01:10.540921,2026-08-08 18:01:10.540921,
+166,8,Mạo từ với danh từ không đếm được,,9,2026-08-08 18:01:10.540921,2026-08-08 18:01:10.540921,
+167,9,Giới từ là gì?,,1,2026-08-08 18:01:10.540921,2026-08-08 18:01:10.540921,
+168,9,Giới từ IN,,2,2026-08-08 18:01:10.540921,2026-08-08 18:01:10.540921,
+169,9,Giới từ ON,,3,2026-08-08 18:01:10.540921,2026-08-08 18:01:10.540921,
+170,9,Giới từ AT,,4,2026-08-08 18:01:10.540921,2026-08-08 18:01:10.540921,
+171,9,Giới từ FROM,,5,2026-08-08 18:01:10.540921,2026-08-08 18:01:10.540921,
+172,9,Giới từ TO,,6,2026-08-08 18:01:10.540921,2026-08-08 18:01:10.540921,
+173,9,Giới từ FOR,,7,2026-08-08 18:01:10.540921,2026-08-08 18:01:10.540921,
+174,9,Giới từ WITH,,8,2026-08-08 18:01:10.540921,2026-08-08 18:01:10.540921,
+175,9,Giới từ BY,,9,2026-08-08 18:01:10.540921,2026-08-08 18:01:10.540921,
+176,9,Giới từ ABOUT,,10,2026-08-08 18:01:10.540921,2026-08-08 18:01:10.540921,
+177,9,Giới từ OF,,11,2026-08-08 18:01:10.540921,2026-08-08 18:01:10.540921,
+178,9,"Phân biệt IN, ON và AT",,12,2026-08-08 18:01:10.540921,2026-08-08 18:01:10.540921,
+179,10,Liên từ là gì?,,1,2026-08-08 18:01:10.540921,2026-08-08 18:01:10.540921,
+180,10,Liên từ AND,,2,2026-08-08 18:01:10.540921,2026-08-08 18:01:10.540921,
+181,10,Liên từ BUT,,3,2026-08-08 18:01:10.540921,2026-08-08 18:01:10.540921,
+182,10,Liên từ OR,,4,2026-08-08 18:01:10.540921,2026-08-08 18:01:10.540921,
+183,10,Liên từ SO,,5,2026-08-08 18:01:10.540921,2026-08-08 18:01:10.540921,
+184,10,Liên từ BECAUSE,,6,2026-08-08 18:01:10.540921,2026-08-08 18:01:10.540921,
+185,10,Liên từ ALTHOUGH,,7,2026-08-08 18:01:10.540921,2026-08-08 18:01:10.540921,
+186,10,Phân biệt các liên từ cơ bản,,8,2026-08-08 18:01:10.540921,2026-08-08 18:01:10.540921,
+187,11,Cấu trúc thì hiện tại đơn,,1,2026-08-08 18:01:10.540921,2026-08-08 18:01:10.540921,
+188,11,Cách sử dụng thì hiện tại đơn,,2,2026-08-08 18:01:10.540921,2026-08-08 18:01:10.540921,
+189,11,Động từ TO BE ở hiện tại đơn,,3,2026-08-08 18:01:10.540921,2026-08-08 18:01:10.540921,
+190,11,Động từ thường ở hiện tại đơn,,4,2026-08-08 18:01:10.540921,2026-08-08 18:01:10.540921,
+191,11,Quy tắc thêm S và ES,,5,2026-08-08 18:01:10.540921,2026-08-08 18:01:10.540921,
+192,11,Quy tắc đổi Y thành IES,,6,2026-08-08 18:01:10.540921,2026-08-08 18:01:10.540921,
+193,11,Câu phủ định hiện tại đơn,,7,2026-08-08 18:01:10.540921,2026-08-08 18:01:10.540921,
+194,11,Câu nghi vấn hiện tại đơn,,8,2026-08-08 18:01:10.540921,2026-08-08 18:01:10.540921,
+195,11,Trạng từ tần suất với hiện tại đơn,,9,2026-08-08 18:01:10.540921,2026-08-08 18:01:10.540921,
+196,11,Dấu hiệu nhận biết hiện tại đơn,,10,2026-08-08 18:01:10.540921,2026-08-08 18:01:10.540921,
+197,12,Cấu trúc thì hiện tại tiếp diễn,,1,2026-08-08 18:01:10.540921,2026-08-08 18:01:10.540921,
+198,12,Cách sử dụng hiện tại tiếp diễn,,2,2026-08-08 18:01:10.540921,2026-08-08 18:01:10.540921,
+199,12,Cách thêm -ING,,3,2026-08-08 18:01:10.540921,2026-08-08 18:01:10.540921,
+200,12,Câu phủ định hiện tại tiếp diễn,,4,2026-08-08 18:01:10.540921,2026-08-08 18:01:10.540921,
+201,12,Câu nghi vấn hiện tại tiếp diễn,,5,2026-08-08 18:01:10.540921,2026-08-08 18:01:10.540921,
+202,12,Dấu hiệu nhận biết hiện tại tiếp diễn,,6,2026-08-08 18:01:10.540921,2026-08-08 18:01:10.540921,
+203,12,Động từ không thường dùng ở tiếp diễn,,7,2026-08-08 18:01:10.540921,2026-08-08 18:01:10.540921,
+204,12,Phân biệt hiện tại đơn và hiện tại tiếp diễn,,8,2026-08-08 18:01:10.540921,2026-08-08 18:01:10.540921,
+205,13,Cấu trúc thì quá khứ đơn,,1,2026-08-08 18:01:10.540921,2026-08-08 18:01:10.540921,
+206,13,Cách sử dụng thì quá khứ đơn,,2,2026-08-08 18:01:10.540921,2026-08-08 18:01:10.540921,
+207,13,Động từ có quy tắc ở quá khứ,,3,2026-08-08 18:01:10.540921,2026-08-08 18:01:10.540921,
+208,13,Quy tắc thêm -ED,,4,2026-08-08 18:01:10.540921,2026-08-08 18:01:10.540921,
+209,13,Động từ bất quy tắc,,5,2026-08-08 18:01:10.540921,2026-08-08 18:01:10.540921,
+210,13,Động từ TO BE ở quá khứ,,6,2026-08-08 18:01:10.540921,2026-08-08 18:01:10.540921,
+211,13,Câu phủ định quá khứ đơn,,7,2026-08-08 18:01:10.540921,2026-08-08 18:01:10.540921,
+212,13,Câu nghi vấn quá khứ đơn,,8,2026-08-08 18:01:10.540921,2026-08-08 18:01:10.540921,
+213,13,Dấu hiệu nhận biết quá khứ đơn,,9,2026-08-08 18:01:10.540921,2026-08-08 18:01:10.540921,
+214,13,Phân biệt quá khứ đơn và hiện tại đơn,,10,2026-08-08 18:01:10.540921,2026-08-08 18:01:10.540921,
+215,14,Tương lai với WILL,,1,2026-08-08 18:01:10.540921,2026-08-08 18:01:10.540921,
+216,14,Cấu trúc WILL + V,,2,2026-08-08 18:01:10.540921,2026-08-08 18:01:10.540921,
+217,14,Cách sử dụng WILL,,3,2026-08-08 18:01:10.540921,2026-08-08 18:01:10.540921,
+218,14,Câu phủ định với WILL,,4,2026-08-08 18:01:10.540921,2026-08-08 18:01:10.540921,
+219,14,Câu nghi vấn với WILL,,5,2026-08-08 18:01:10.540921,2026-08-08 18:01:10.540921,
+220,14,Tương lai với BE GOING TO,,6,2026-08-08 18:01:10.540921,2026-08-08 18:01:10.540921,
+221,14,Cấu trúc BE GOING TO + V,,7,2026-08-08 18:01:10.540921,2026-08-08 18:01:10.540921,
+222,14,Cách sử dụng BE GOING TO,,8,2026-08-08 18:01:10.540921,2026-08-08 18:01:10.540921,
+223,14,Phân biệt WILL và BE GOING TO,,9,2026-08-08 18:01:10.540921,2026-08-08 18:01:10.540921,
+224,15,Khái niệm về so sánh,,1,2026-08-08 18:01:10.540921,2026-08-08 18:01:10.540921,
+225,15,So sánh bằng AS...AS,,2,2026-08-08 18:01:10.540921,2026-08-08 18:01:10.540921,
+226,15,So sánh hơn với tính từ ngắn,,3,2026-08-08 18:01:10.540921,2026-08-08 18:01:10.540921,
+227,15,So sánh hơn với tính từ dài,,4,2026-08-08 18:01:10.540921,2026-08-08 18:01:10.540921,
+228,15,Quy tắc thêm -ER,,5,2026-08-08 18:01:10.540921,2026-08-08 18:01:10.540921,
+229,15,Cách sử dụng MORE,,6,2026-08-08 18:01:10.540921,2026-08-08 18:01:10.540921,
+230,15,So sánh nhất với tính từ ngắn,,7,2026-08-08 18:01:10.540921,2026-08-08 18:01:10.540921,
+231,15,So sánh nhất với tính từ dài,,8,2026-08-08 18:01:10.540921,2026-08-08 18:01:10.540921,
+232,15,Cách sử dụng MOST,,9,2026-08-08 18:01:10.540921,2026-08-08 18:01:10.540921,
+233,15,Tính từ so sánh bất quy tắc,,10,2026-08-08 18:01:10.540921,2026-08-08 18:01:10.540921,
+234,16,Từ chỉ số lượng là gì?,,1,2026-08-08 18:01:10.540921,2026-08-08 18:01:10.540921,
+235,16,SOME,,2,2026-08-08 18:01:10.540921,2026-08-08 18:01:10.540921,
+236,16,ANY,,3,2026-08-08 18:01:10.540921,2026-08-08 18:01:10.540921,
+237,16,MUCH,,4,2026-08-08 18:01:10.540921,2026-08-08 18:01:10.540921,
+238,16,MANY,,5,2026-08-08 18:01:10.540921,2026-08-08 18:01:10.540921,
+239,16,A LOT OF và LOTS OF,,6,2026-08-08 18:01:10.540921,2026-08-08 18:01:10.540921,
+240,16,FEW và A FEW,,7,2026-08-08 18:01:10.540921,2026-08-08 18:01:10.540921,
+241,16,LITTLE và A LITTLE,,8,2026-08-08 18:01:10.540921,2026-08-08 18:01:10.540921,
+242,16,Phân biệt MUCH và MANY,,9,2026-08-08 18:01:10.540921,2026-08-08 18:01:10.540921,
+243,16,Phân biệt FEW và LITTLE,,10,2026-08-08 18:01:10.540921,2026-08-08 18:01:10.540921,

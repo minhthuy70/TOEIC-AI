@@ -1,0 +1,2 @@
+id,checksum,finished_at,migration_name,logs,rolled_back_at,started_at,applied_steps_count
+8bbaa831-edb0-4303-a639-b9c8ab25f978,a7a477bb41773bf1b31a8cdb9a2c0049d223a69d211a1221bb72fc878dcd0424,2026-07-23 16:52:20.053178+07,20260723095220_add_vocabulary_tables,,,2026-07-23 16:52:20.036786+07,1
