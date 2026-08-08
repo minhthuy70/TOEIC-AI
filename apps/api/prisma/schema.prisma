@@ -97,3 +97,48 @@ model UserVocabularyProgress {
   @@index([userId, status])
   @@map("user_vocabulary_progress")
 }
+
+model GrammarCategory {
+  id          Int      @id @default(autoincrement())
+  name        String
+  description String?
+  displayOrder Int?    @default(0) @map("display_order")
+  createdAt   DateTime? @default(now()) @map("created_at")
+  updatedAt   DateTime? @default(now()) @map("updated_at")
+  stage       Int
+
+  lessons     GrammarLesson[]
+
+  @@map("grammar_categories")
+}
+
+model GrammarLesson {
+  id           Int      @id @default(autoincrement())
+  categoryId   Int      @map("category_id")
+  title        String
+  content      String?
+  displayOrder Int?     @default(0) @map("display_order")
+  createdAt    DateTime? @default(now()) @map("created_at")
+  updatedAt    DateTime? @default(now()) @map("updated_at")
+  testId       Int?     @map("test_id")
+
+  category     GrammarCategory @relation(fields: [categoryId], references: [id])
+  progresses   UserGrammarProgress[]
+
+  @@map("grammar_lessons")
+}
+
+model UserGrammarProgress {
+  id          Int       @id @default(autoincrement())
+  userId      Int       @map("user_id")
+  lessonId    Int       @map("lesson_id")
+  completed   Boolean?  @default(false)
+  score       Int?      @default(0)
+  lastStudied DateTime? @map("last_studied")
+  createdAt   DateTime? @default(now()) @map("created_at")
+  updatedAt   DateTime? @default(now()) @map("updated_at")
+
+  lesson      GrammarLesson @relation(fields: [lessonId], references: [id])
+
+  @@map("user_grammar_progress")
+}
