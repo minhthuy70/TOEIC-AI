@@ -1,0 +1,401 @@
+id,lesson_id,title,audio_url,start_seconds,end_seconds,display_order,created_at,updated_at,image_url
+25,13,Question 25,/listening/part1/dataset01/q25.mp3,,,25,2026-08-09 17:24:00.807443,2026-08-09 17:24:00.807443,/listening/part1/images/q25.jpg
+26,17,Question 26,/listening/part1/dataset01/q26.mp3,,,26,2026-08-09 17:24:00.807443,2026-08-09 17:24:00.807443,/listening/part1/images/q26.jpg
+27,5,Question 27,/listening/part1/dataset01/q27.mp3,,,27,2026-08-09 17:24:00.807443,2026-08-09 17:24:00.807443,/listening/part1/images/q27.jpg
+28,17,Question 28,/listening/part1/dataset01/q28.mp3,,,28,2026-08-09 17:24:00.807443,2026-08-09 17:24:00.807443,/listening/part1/images/q28.jpg
+29,17,Question 29,/listening/part1/dataset01/q29.mp3,,,29,2026-08-09 17:24:00.807443,2026-08-09 17:24:00.807443,/listening/part1/images/q29.jpg
+30,1,Question 30,/listening/part1/dataset01/q30.mp3,,,30,2026-08-09 17:24:00.807443,2026-08-09 17:24:00.807443,/listening/part1/images/q30.jpg
+31,13,Question 31,/listening/part1/dataset01/q31.mp3,,,31,2026-08-09 17:24:00.807443,2026-08-09 17:24:00.807443,/listening/part1/images/q31.jpg
+32,1,Question 32,/listening/part1/dataset01/q32.mp3,,,32,2026-08-09 17:24:00.807443,2026-08-09 17:24:00.807443,/listening/part1/images/q32.jpg
+33,5,Question 33,/listening/part1/dataset01/q33.mp3,,,33,2026-08-09 17:24:00.807443,2026-08-09 17:24:00.807443,/listening/part1/images/q33.jpg
+34,1,Question 34,/listening/part1/dataset01/q34.mp3,,,34,2026-08-09 17:24:00.807443,2026-08-09 17:24:00.807443,/listening/part1/images/q34.jpg
+35,5,Question 35,/listening/part1/dataset01/q35.mp3,,,35,2026-08-09 17:24:00.807443,2026-08-09 17:24:00.807443,/listening/part1/images/q35.jpg
+36,1,Question 36,/listening/part1/dataset01/q36.mp3,,,36,2026-08-09 17:24:00.807443,2026-08-09 17:24:00.807443,/listening/part1/images/q36.jpg
+37,1,Question 37,/listening/part1/dataset01/q37.mp3,,,37,2026-08-09 17:24:00.807443,2026-08-09 17:24:00.807443,/listening/part1/images/q37.jpg
+38,5,Question 38,/listening/part1/dataset01/q38.mp3,,,38,2026-08-09 17:24:00.807443,2026-08-09 17:24:00.807443,/listening/part1/images/q38.jpg
+39,1,Question 39,/listening/part1/dataset01/q39.mp3,,,39,2026-08-09 17:24:00.807443,2026-08-09 17:24:00.807443,/listening/part1/images/q39.jpg
+40,17,Question 40,/listening/part1/dataset01/q40.mp3,,,40,2026-08-09 17:24:00.807443,2026-08-09 17:24:00.807443,/listening/part1/images/q40.jpg
+41,5,Question 41,/listening/part1/dataset01/q41.mp3,,,41,2026-08-09 17:24:00.807443,2026-08-09 17:24:00.807443,/listening/part1/images/q41.jpg
+42,17,Question 42,/listening/part1/dataset01/q42.mp3,,,42,2026-08-09 17:24:00.807443,2026-08-09 17:24:00.807443,/listening/part1/images/q42.jpg
+43,13,Question 43,/listening/part1/dataset01/q43.mp3,,,43,2026-08-09 17:24:00.807443,2026-08-09 17:24:00.807443,/listening/part1/images/q43.jpg
+44,17,Question 44,/listening/part1/dataset01/q44.mp3,,,44,2026-08-09 17:24:00.807443,2026-08-09 17:24:00.807443,/listening/part1/images/q44.jpg
+45,17,Question 45,/listening/part1/dataset01/q45.mp3,,,45,2026-08-09 17:24:00.807443,2026-08-09 17:24:00.807443,/listening/part1/images/q45.jpg
+46,13,Question 46,/listening/part1/dataset01/q46.mp3,,,46,2026-08-09 17:24:00.807443,2026-08-09 17:24:00.807443,/listening/part1/images/q46.jpg
+47,9,Question 47,/listening/part1/dataset01/q47.mp3,,,47,2026-08-09 17:24:00.807443,2026-08-09 17:24:00.807443,/listening/part1/images/q47.jpg
+48,1,Question 48,/listening/part1/dataset01/q48.mp3,,,48,2026-08-09 17:24:00.807443,2026-08-09 17:24:00.807443,/listening/part1/images/q48.jpg
+49,5,Question 49,/listening/part1/dataset01/q49.mp3,,,49,2026-08-09 17:24:00.807443,2026-08-09 17:24:00.807443,/listening/part1/images/q49.jpg
+50,5,Question 50,/listening/part1/dataset01/q50.mp3,,,50,2026-08-09 17:24:00.807443,2026-08-09 17:24:00.807443,/listening/part1/images/q50.jpg
+51,5,Question 51,/listening/part1/dataset01/q51.mp3,,,51,2026-08-09 17:24:00.807443,2026-08-09 17:24:00.807443,/listening/part1/images/q51.jpg
+52,17,Question 52,/listening/part1/dataset01/q52.mp3,,,52,2026-08-09 17:24:00.807443,2026-08-09 17:24:00.807443,/listening/part1/images/q52.jpg
+53,1,Question 53,/listening/part1/dataset01/q53.mp3,,,53,2026-08-09 17:24:00.807443,2026-08-09 17:24:00.807443,/listening/part1/images/q53.jpg
+54,17,Question 54,/listening/part1/dataset01/q54.mp3,,,54,2026-08-09 17:24:00.807443,2026-08-09 17:24:00.807443,/listening/part1/images/q54.jpg
+55,5,Question 55,/listening/part1/dataset01/q55.mp3,,,55,2026-08-09 17:24:00.807443,2026-08-09 17:24:00.807443,/listening/part1/images/q55.jpg
+56,17,Question 56,/listening/part1/dataset01/q56.mp3,,,56,2026-08-09 17:24:00.807443,2026-08-09 17:24:00.807443,/listening/part1/images/q56.jpg
+57,1,Question 57,/listening/part1/dataset01/q57.mp3,,,57,2026-08-09 17:24:00.807443,2026-08-09 17:24:00.807443,/listening/part1/images/q57.jpg
+58,5,Question 58,/listening/part1/dataset01/q58.mp3,,,58,2026-08-09 17:24:00.807443,2026-08-09 17:24:00.807443,/listening/part1/images/q58.jpg
+59,9,Question 59,/listening/part1/dataset01/q59.mp3,,,59,2026-08-09 17:24:00.807443,2026-08-09 17:24:00.807443,/listening/part1/images/q59.jpg
+60,9,Question 60,/listening/part1/dataset01/q60.mp3,,,60,2026-08-09 17:24:00.807443,2026-08-09 17:24:00.807443,/listening/part1/images/q60.jpg
+61,13,Question 61,/listening/part1/dataset01/q61.mp3,,,61,2026-08-09 17:24:00.807443,2026-08-09 17:24:00.807443,/listening/part1/images/q61.jpg
+62,17,Question 62,/listening/part1/dataset01/q62.mp3,,,62,2026-08-09 17:24:00.807443,2026-08-09 17:24:00.807443,/listening/part1/images/q62.jpg
+63,9,Question 63,/listening/part1/dataset01/q63.mp3,,,63,2026-08-09 17:24:00.807443,2026-08-09 17:24:00.807443,/listening/part1/images/q63.jpg
+64,1,Question 64,/listening/part1/dataset01/q64.mp3,,,64,2026-08-09 17:24:00.807443,2026-08-09 17:24:00.807443,/listening/part1/images/q64.jpg
+65,13,Question 65,/listening/part1/dataset01/q65.mp3,,,65,2026-08-09 17:24:00.807443,2026-08-09 17:24:00.807443,/listening/part1/images/q65.jpg
+66,5,Question 66,/listening/part1/dataset01/q66.mp3,,,66,2026-08-09 17:24:00.807443,2026-08-09 17:24:00.807443,/listening/part1/images/q66.jpg
+67,9,Question 67,/listening/part1/dataset01/q67.mp3,,,67,2026-08-09 17:24:00.807443,2026-08-09 17:24:00.807443,/listening/part1/images/q67.jpg
+68,17,Question 68,/listening/part1/dataset01/q68.mp3,,,68,2026-08-09 17:24:00.807443,2026-08-09 17:24:00.807443,/listening/part1/images/q68.jpg
+69,1,Question 69,/listening/part1/dataset01/q69.mp3,,,69,2026-08-09 17:24:00.807443,2026-08-09 17:24:00.807443,/listening/part1/images/q69.jpg
+70,5,Question 70,/listening/part1/dataset01/q70.mp3,,,70,2026-08-09 17:24:00.807443,2026-08-09 17:24:00.807443,/listening/part1/images/q70.jpg
+71,17,Question 71,/listening/part1/dataset01/q71.mp3,,,71,2026-08-09 17:24:00.807443,2026-08-09 17:24:00.807443,/listening/part1/images/q71.jpg
+72,5,Question 72,/listening/part1/dataset01/q72.mp3,,,72,2026-08-09 17:24:00.807443,2026-08-09 17:24:00.807443,/listening/part1/images/q72.jpg
+73,1,Question 73,/listening/part1/dataset01/q73.mp3,,,73,2026-08-09 17:24:00.807443,2026-08-09 17:24:00.807443,/listening/part1/images/q73.jpg
+74,13,Question 74,/listening/part1/dataset01/q74.mp3,,,74,2026-08-09 17:24:00.807443,2026-08-09 17:24:00.807443,/listening/part1/images/q74.jpg
+75,5,Question 75,/listening/part1/dataset01/q75.mp3,,,75,2026-08-09 17:24:00.807443,2026-08-09 17:24:00.807443,/listening/part1/images/q75.jpg
+76,5,Question 76,/listening/part1/dataset01/q76.mp3,,,76,2026-08-09 17:24:00.807443,2026-08-09 17:24:00.807443,/listening/part1/images/q76.jpg
+77,9,Question 77,/listening/part1/dataset01/q77.mp3,,,77,2026-08-09 17:24:00.807443,2026-08-09 17:24:00.807443,/listening/part1/images/q77.jpg
+78,9,Question 78,/listening/part1/dataset01/q78.mp3,,,78,2026-08-09 17:24:00.807443,2026-08-09 17:24:00.807443,/listening/part1/images/q78.jpg
+79,5,Question 79,/listening/part1/dataset01/q79.mp3,,,79,2026-08-09 17:24:00.807443,2026-08-09 17:24:00.807443,/listening/part1/images/q79.jpg
+1,9,Question 01,/listening/part1/dataset01/q01.mp3,,,1,2026-08-09 17:24:00.807443,2026-08-09 17:24:00.807443,/listening/part1/images/q01.jpg
+2,9,Question 02,/listening/part1/dataset01/q02.mp3,,,2,2026-08-09 17:24:00.807443,2026-08-09 17:24:00.807443,/listening/part1/images/q02.jpg
+3,17,Question 03,/listening/part1/dataset01/q03.mp3,,,3,2026-08-09 17:24:00.807443,2026-08-09 17:24:00.807443,/listening/part1/images/q03.jpg
+4,17,Question 04,/listening/part1/dataset01/q04.mp3,,,4,2026-08-09 17:24:00.807443,2026-08-09 17:24:00.807443,/listening/part1/images/q04.jpg
+5,1,Question 05,/listening/part1/dataset01/q05.mp3,,,5,2026-08-09 17:24:00.807443,2026-08-09 17:24:00.807443,/listening/part1/images/q05.jpg
+6,9,Question 06,/listening/part1/dataset01/q06.mp3,,,6,2026-08-09 17:24:00.807443,2026-08-09 17:24:00.807443,/listening/part1/images/q06.jpg
+7,17,Question 07,/listening/part1/dataset01/q07.mp3,,,7,2026-08-09 17:24:00.807443,2026-08-09 17:24:00.807443,/listening/part1/images/q07.jpg
+8,17,Question 08,/listening/part1/dataset01/q08.mp3,,,8,2026-08-09 17:24:00.807443,2026-08-09 17:24:00.807443,/listening/part1/images/q08.jpg
+9,5,Question 09,/listening/part1/dataset01/q09.mp3,,,9,2026-08-09 17:24:00.807443,2026-08-09 17:24:00.807443,/listening/part1/images/q09.jpg
+10,13,Question 10,/listening/part1/dataset01/q10.mp3,,,10,2026-08-09 17:24:00.807443,2026-08-09 17:24:00.807443,/listening/part1/images/q10.jpg
+11,1,Question 11,/listening/part1/dataset01/q11.mp3,,,11,2026-08-09 17:24:00.807443,2026-08-09 17:24:00.807443,/listening/part1/images/q11.jpg
+12,9,Question 12,/listening/part1/dataset01/q12.mp3,,,12,2026-08-09 17:24:00.807443,2026-08-09 17:24:00.807443,/listening/part1/images/q12.jpg
+13,5,Question 13,/listening/part1/dataset01/q13.mp3,,,13,2026-08-09 17:24:00.807443,2026-08-09 17:24:00.807443,/listening/part1/images/q13.jpg
+14,17,Question 14,/listening/part1/dataset01/q14.mp3,,,14,2026-08-09 17:24:00.807443,2026-08-09 17:24:00.807443,/listening/part1/images/q14.jpg
+15,5,Question 15,/listening/part1/dataset01/q15.mp3,,,15,2026-08-09 17:24:00.807443,2026-08-09 17:24:00.807443,/listening/part1/images/q15.jpg
+16,9,Question 16,/listening/part1/dataset01/q16.mp3,,,16,2026-08-09 17:24:00.807443,2026-08-09 17:24:00.807443,/listening/part1/images/q16.jpg
+17,17,Question 17,/listening/part1/dataset01/q17.mp3,,,17,2026-08-09 17:24:00.807443,2026-08-09 17:24:00.807443,/listening/part1/images/q17.jpg
+18,17,Question 18,/listening/part1/dataset01/q18.mp3,,,18,2026-08-09 17:24:00.807443,2026-08-09 17:24:00.807443,/listening/part1/images/q18.jpg
+19,1,Question 19,/listening/part1/dataset01/q19.mp3,,,19,2026-08-09 17:24:00.807443,2026-08-09 17:24:00.807443,/listening/part1/images/q19.jpg
+20,1,Question 20,/listening/part1/dataset01/q20.mp3,,,20,2026-08-09 17:24:00.807443,2026-08-09 17:24:00.807443,/listening/part1/images/q20.jpg
+21,9,Question 21,/listening/part1/dataset01/q21.mp3,,,21,2026-08-09 17:24:00.807443,2026-08-09 17:24:00.807443,/listening/part1/images/q21.jpg
+22,17,Question 22,/listening/part1/dataset01/q22.mp3,,,22,2026-08-09 17:24:00.807443,2026-08-09 17:24:00.807443,/listening/part1/images/q22.jpg
+23,9,Question 23,/listening/part1/dataset01/q23.mp3,,,23,2026-08-09 17:24:00.807443,2026-08-09 17:24:00.807443,/listening/part1/images/q23.jpg
+24,1,Question 24,/listening/part1/dataset01/q24.mp3,,,24,2026-08-09 17:24:00.807443,2026-08-09 17:24:00.807443,/listening/part1/images/q24.jpg
+138,6,Part 2 - Question Response 038,/listening/part2/dataset01/q38.mp3,,,38,2026-08-09 20:15:34.476221,2026-08-09 20:15:34.476221,
+139,6,Part 2 - Question Response 039,/listening/part2/dataset01/q39.mp3,,,39,2026-08-09 20:15:34.476221,2026-08-09 20:15:34.476221,
+140,6,Part 2 - Question Response 040,/listening/part2/dataset01/q40.mp3,,,40,2026-08-09 20:15:34.476221,2026-08-09 20:15:34.476221,
+141,10,Part 2 - Question Response 041,/listening/part2/dataset01/q41.mp3,,,41,2026-08-09 20:15:34.476221,2026-08-09 20:15:34.476221,
+142,10,Part 2 - Question Response 042,/listening/part2/dataset01/q42.mp3,,,42,2026-08-09 20:15:34.476221,2026-08-09 20:15:34.476221,
+143,10,Part 2 - Question Response 043,/listening/part2/dataset01/q43.mp3,,,43,2026-08-09 20:15:34.476221,2026-08-09 20:15:34.476221,
+144,10,Part 2 - Question Response 044,/listening/part2/dataset01/q44.mp3,,,44,2026-08-09 20:15:34.476221,2026-08-09 20:15:34.476221,
+145,10,Part 2 - Question Response 045,/listening/part2/dataset01/q45.mp3,,,45,2026-08-09 20:15:34.476221,2026-08-09 20:15:34.476221,
+101,2,Part 2 - Question Response 001,/listening/part2/dataset01/q01.mp3,,,1,2026-08-09 20:15:34.476221,2026-08-09 20:15:34.476221,
+102,2,Part 2 - Question Response 002,/listening/part2/dataset01/q02.mp3,,,2,2026-08-09 20:15:34.476221,2026-08-09 20:15:34.476221,
+103,2,Part 2 - Question Response 003,/listening/part2/dataset01/q03.mp3,,,3,2026-08-09 20:15:34.476221,2026-08-09 20:15:34.476221,
+104,2,Part 2 - Question Response 004,/listening/part2/dataset01/q04.mp3,,,4,2026-08-09 20:15:34.476221,2026-08-09 20:15:34.476221,
+105,2,Part 2 - Question Response 005,/listening/part2/dataset01/q05.mp3,,,5,2026-08-09 20:15:34.476221,2026-08-09 20:15:34.476221,
+106,2,Part 2 - Question Response 006,/listening/part2/dataset01/q06.mp3,,,6,2026-08-09 20:15:34.476221,2026-08-09 20:15:34.476221,
+107,2,Part 2 - Question Response 007,/listening/part2/dataset01/q07.mp3,,,7,2026-08-09 20:15:34.476221,2026-08-09 20:15:34.476221,
+108,2,Part 2 - Question Response 008,/listening/part2/dataset01/q08.mp3,,,8,2026-08-09 20:15:34.476221,2026-08-09 20:15:34.476221,
+109,2,Part 2 - Question Response 009,/listening/part2/dataset01/q09.mp3,,,9,2026-08-09 20:15:34.476221,2026-08-09 20:15:34.476221,
+110,2,Part 2 - Question Response 010,/listening/part2/dataset01/q10.mp3,,,10,2026-08-09 20:15:34.476221,2026-08-09 20:15:34.476221,
+80,17,Question 80,/listening/part1/dataset01/q80.mp3,,,80,2026-08-09 17:24:00.807443,2026-08-09 17:24:00.807443,/listening/part1/images/q80.jpg
+81,9,Question 81,/listening/part1/dataset01/q81.mp3,,,81,2026-08-09 17:24:00.807443,2026-08-09 17:24:00.807443,/listening/part1/images/q81.jpg
+82,1,Question 82,/listening/part1/dataset01/q82.mp3,,,82,2026-08-09 17:24:00.807443,2026-08-09 17:24:00.807443,/listening/part1/images/q82.jpg
+83,13,Question 83,/listening/part1/dataset01/q83.mp3,,,83,2026-08-09 17:24:00.807443,2026-08-09 17:24:00.807443,/listening/part1/images/q83.jpg
+84,9,Question 84,/listening/part1/dataset01/q84.mp3,,,84,2026-08-09 17:24:00.807443,2026-08-09 17:24:00.807443,/listening/part1/images/q84.jpg
+85,13,Question 85,/listening/part1/dataset01/q85.mp3,,,85,2026-08-09 17:24:00.807443,2026-08-09 17:24:00.807443,/listening/part1/images/q85.jpg
+86,1,Question 86,/listening/part1/dataset01/q86.mp3,,,86,2026-08-09 17:24:00.807443,2026-08-09 17:24:00.807443,/listening/part1/images/q86.jpg
+87,17,Question 87,/listening/part1/dataset01/q87.mp3,,,87,2026-08-09 17:24:00.807443,2026-08-09 17:24:00.807443,/listening/part1/images/q87.jpg
+88,5,Question 88,/listening/part1/dataset01/q88.mp3,,,88,2026-08-09 17:24:00.807443,2026-08-09 17:24:00.807443,/listening/part1/images/q88.jpg
+89,9,Question 89,/listening/part1/dataset01/q89.mp3,,,89,2026-08-09 17:24:00.807443,2026-08-09 17:24:00.807443,/listening/part1/images/q89.jpg
+90,1,Question 90,/listening/part1/dataset01/q90.mp3,,,90,2026-08-09 17:24:00.807443,2026-08-09 17:24:00.807443,/listening/part1/images/q90.jpg
+91,13,Question 91,/listening/part1/dataset01/q91.mp3,,,91,2026-08-09 17:24:00.807443,2026-08-09 17:24:00.807443,/listening/part1/images/q91.jpg
+92,1,Question 92,/listening/part1/dataset01/q92.mp3,,,92,2026-08-09 17:24:00.807443,2026-08-09 17:24:00.807443,/listening/part1/images/q92.jpg
+93,13,Question 93,/listening/part1/dataset01/q93.mp3,,,93,2026-08-09 17:24:00.807443,2026-08-09 17:24:00.807443,/listening/part1/images/q93.jpg
+94,13,Question 94,/listening/part1/dataset01/q94.mp3,,,94,2026-08-09 17:24:00.807443,2026-08-09 17:24:00.807443,/listening/part1/images/q94.jpg
+95,5,Question 95,/listening/part1/dataset01/q95.mp3,,,95,2026-08-09 17:24:00.807443,2026-08-09 17:24:00.807443,/listening/part1/images/q95.jpg
+96,5,Question 96,/listening/part1/dataset01/q96.mp3,,,96,2026-08-09 17:24:00.807443,2026-08-09 17:24:00.807443,/listening/part1/images/q96.jpg
+97,13,Question 97,/listening/part1/dataset01/q97.mp3,,,97,2026-08-09 17:24:00.807443,2026-08-09 17:24:00.807443,/listening/part1/images/q97.jpg
+98,5,Question 98,/listening/part1/dataset01/q98.mp3,,,98,2026-08-09 17:24:00.807443,2026-08-09 17:24:00.807443,/listening/part1/images/q98.jpg
+99,13,Question 99,/listening/part1/dataset01/q99.mp3,,,99,2026-08-09 17:24:00.807443,2026-08-09 17:24:00.807443,/listening/part1/images/q99.jpg
+100,5,Question 100,/listening/part1/dataset01/q100.mp3,,,100,2026-08-09 17:24:00.807443,2026-08-09 17:24:00.807443,/listening/part1/images/q10.jpg
+111,2,Part 2 - Question Response 011,/listening/part2/dataset01/q11.mp3,,,11,2026-08-09 20:15:34.476221,2026-08-09 20:15:34.476221,
+112,2,Part 2 - Question Response 012,/listening/part2/dataset01/q12.mp3,,,12,2026-08-09 20:15:34.476221,2026-08-09 20:15:34.476221,
+113,2,Part 2 - Question Response 013,/listening/part2/dataset01/q13.mp3,,,13,2026-08-09 20:15:34.476221,2026-08-09 20:15:34.476221,
+114,2,Part 2 - Question Response 014,/listening/part2/dataset01/q14.mp3,,,14,2026-08-09 20:15:34.476221,2026-08-09 20:15:34.476221,
+115,2,Part 2 - Question Response 015,/listening/part2/dataset01/q15.mp3,,,15,2026-08-09 20:15:34.476221,2026-08-09 20:15:34.476221,
+116,2,Part 2 - Question Response 016,/listening/part2/dataset01/q16.mp3,,,16,2026-08-09 20:15:34.476221,2026-08-09 20:15:34.476221,
+117,2,Part 2 - Question Response 017,/listening/part2/dataset01/q17.mp3,,,17,2026-08-09 20:15:34.476221,2026-08-09 20:15:34.476221,
+118,2,Part 2 - Question Response 018,/listening/part2/dataset01/q18.mp3,,,18,2026-08-09 20:15:34.476221,2026-08-09 20:15:34.476221,
+119,2,Part 2 - Question Response 019,/listening/part2/dataset01/q19.mp3,,,19,2026-08-09 20:15:34.476221,2026-08-09 20:15:34.476221,
+120,2,Part 2 - Question Response 020,/listening/part2/dataset01/q20.mp3,,,20,2026-08-09 20:15:34.476221,2026-08-09 20:15:34.476221,
+121,6,Part 2 - Question Response 021,/listening/part2/dataset01/q21.mp3,,,21,2026-08-09 20:15:34.476221,2026-08-09 20:15:34.476221,
+122,6,Part 2 - Question Response 022,/listening/part2/dataset01/q22.mp3,,,22,2026-08-09 20:15:34.476221,2026-08-09 20:15:34.476221,
+123,6,Part 2 - Question Response 023,/listening/part2/dataset01/q23.mp3,,,23,2026-08-09 20:15:34.476221,2026-08-09 20:15:34.476221,
+124,6,Part 2 - Question Response 024,/listening/part2/dataset01/q24.mp3,,,24,2026-08-09 20:15:34.476221,2026-08-09 20:15:34.476221,
+125,6,Part 2 - Question Response 025,/listening/part2/dataset01/q25.mp3,,,25,2026-08-09 20:15:34.476221,2026-08-09 20:15:34.476221,
+126,6,Part 2 - Question Response 026,/listening/part2/dataset01/q26.mp3,,,26,2026-08-09 20:15:34.476221,2026-08-09 20:15:34.476221,
+127,6,Part 2 - Question Response 027,/listening/part2/dataset01/q27.mp3,,,27,2026-08-09 20:15:34.476221,2026-08-09 20:15:34.476221,
+128,6,Part 2 - Question Response 028,/listening/part2/dataset01/q28.mp3,,,28,2026-08-09 20:15:34.476221,2026-08-09 20:15:34.476221,
+129,6,Part 2 - Question Response 029,/listening/part2/dataset01/q29.mp3,,,29,2026-08-09 20:15:34.476221,2026-08-09 20:15:34.476221,
+130,6,Part 2 - Question Response 030,/listening/part2/dataset01/q30.mp3,,,30,2026-08-09 20:15:34.476221,2026-08-09 20:15:34.476221,
+131,6,Part 2 - Question Response 031,/listening/part2/dataset01/q31.mp3,,,31,2026-08-09 20:15:34.476221,2026-08-09 20:15:34.476221,
+132,6,Part 2 - Question Response 032,/listening/part2/dataset01/q32.mp3,,,32,2026-08-09 20:15:34.476221,2026-08-09 20:15:34.476221,
+133,6,Part 2 - Question Response 033,/listening/part2/dataset01/q33.mp3,,,33,2026-08-09 20:15:34.476221,2026-08-09 20:15:34.476221,
+134,6,Part 2 - Question Response 034,/listening/part2/dataset01/q34.mp3,,,34,2026-08-09 20:15:34.476221,2026-08-09 20:15:34.476221,
+135,6,Part 2 - Question Response 035,/listening/part2/dataset01/q35.mp3,,,35,2026-08-09 20:15:34.476221,2026-08-09 20:15:34.476221,
+136,6,Part 2 - Question Response 036,/listening/part2/dataset01/q36.mp3,,,36,2026-08-09 20:15:34.476221,2026-08-09 20:15:34.476221,
+137,6,Part 2 - Question Response 037,/listening/part2/dataset01/q37.mp3,,,37,2026-08-09 20:15:34.476221,2026-08-09 20:15:34.476221,
+146,10,Part 2 - Question Response 046,/listening/part2/dataset01/q46.mp3,,,46,2026-08-09 20:15:34.476221,2026-08-09 20:15:34.476221,
+147,10,Part 2 - Question Response 047,/listening/part2/dataset01/q47.mp3,,,47,2026-08-09 20:15:34.476221,2026-08-09 20:15:34.476221,
+148,10,Part 2 - Question Response 048,/listening/part2/dataset01/q48.mp3,,,48,2026-08-09 20:15:34.476221,2026-08-09 20:15:34.476221,
+149,10,Part 2 - Question Response 049,/listening/part2/dataset01/q49.mp3,,,49,2026-08-09 20:15:34.476221,2026-08-09 20:15:34.476221,
+150,10,Part 2 - Question Response 050,/listening/part2/dataset01/q50.mp3,,,50,2026-08-09 20:15:34.476221,2026-08-09 20:15:34.476221,
+151,10,Part 2 - Question Response 051,/listening/part2/dataset01/q51.mp3,,,51,2026-08-09 20:15:34.476221,2026-08-09 20:15:34.476221,
+152,10,Part 2 - Question Response 052,/listening/part2/dataset01/q52.mp3,,,52,2026-08-09 20:15:34.476221,2026-08-09 20:15:34.476221,
+153,10,Part 2 - Question Response 053,/listening/part2/dataset01/q53.mp3,,,53,2026-08-09 20:15:34.476221,2026-08-09 20:15:34.476221,
+154,10,Part 2 - Question Response 054,/listening/part2/dataset01/q54.mp3,,,54,2026-08-09 20:15:34.476221,2026-08-09 20:15:34.476221,
+155,10,Part 2 - Question Response 055,/listening/part2/dataset01/q55.mp3,,,55,2026-08-09 20:15:34.476221,2026-08-09 20:15:34.476221,
+156,10,Part 2 - Question Response 056,/listening/part2/dataset01/q56.mp3,,,56,2026-08-09 20:15:34.476221,2026-08-09 20:15:34.476221,
+157,10,Part 2 - Question Response 057,/listening/part2/dataset01/q57.mp3,,,57,2026-08-09 20:15:34.476221,2026-08-09 20:15:34.476221,
+158,10,Part 2 - Question Response 058,/listening/part2/dataset01/q58.mp3,,,58,2026-08-09 20:15:34.476221,2026-08-09 20:15:34.476221,
+159,10,Part 2 - Question Response 059,/listening/part2/dataset01/q59.mp3,,,59,2026-08-09 20:15:34.476221,2026-08-09 20:15:34.476221,
+160,10,Part 2 - Question Response 060,/listening/part2/dataset01/q60.mp3,,,60,2026-08-09 20:15:34.476221,2026-08-09 20:15:34.476221,
+161,14,Part 2 - Question Response 061,/listening/part2/dataset01/q61.mp3,,,61,2026-08-09 20:15:34.476221,2026-08-09 20:15:34.476221,
+162,14,Part 2 - Question Response 062,/listening/part2/dataset01/q62.mp3,,,62,2026-08-09 20:15:34.476221,2026-08-09 20:15:34.476221,
+163,14,Part 2 - Question Response 063,/listening/part2/dataset01/q63.mp3,,,63,2026-08-09 20:15:34.476221,2026-08-09 20:15:34.476221,
+164,14,Part 2 - Question Response 064,/listening/part2/dataset01/q64.mp3,,,64,2026-08-09 20:15:34.476221,2026-08-09 20:15:34.476221,
+165,14,Part 2 - Question Response 065,/listening/part2/dataset01/q65.mp3,,,65,2026-08-09 20:15:34.476221,2026-08-09 20:15:34.476221,
+166,14,Part 2 - Question Response 066,/listening/part2/dataset01/q66.mp3,,,66,2026-08-09 20:15:34.476221,2026-08-09 20:15:34.476221,
+167,14,Part 2 - Question Response 067,/listening/part2/dataset01/q67.mp3,,,67,2026-08-09 20:15:34.476221,2026-08-09 20:15:34.476221,
+168,14,Part 2 - Question Response 068,/listening/part2/dataset01/q68.mp3,,,68,2026-08-09 20:15:34.476221,2026-08-09 20:15:34.476221,
+169,14,Part 2 - Question Response 069,/listening/part2/dataset01/q69.mp3,,,69,2026-08-09 20:15:34.476221,2026-08-09 20:15:34.476221,
+170,14,Part 2 - Question Response 070,/listening/part2/dataset01/q70.mp3,,,70,2026-08-09 20:15:34.476221,2026-08-09 20:15:34.476221,
+171,14,Part 2 - Question Response 071,/listening/part2/dataset01/q71.mp3,,,71,2026-08-09 20:15:34.476221,2026-08-09 20:15:34.476221,
+172,14,Part 2 - Question Response 072,/listening/part2/dataset01/q72.mp3,,,72,2026-08-09 20:15:34.476221,2026-08-09 20:15:34.476221,
+173,14,Part 2 - Question Response 073,/listening/part2/dataset01/q73.mp3,,,73,2026-08-09 20:15:34.476221,2026-08-09 20:15:34.476221,
+174,14,Part 2 - Question Response 074,/listening/part2/dataset01/q74.mp3,,,74,2026-08-09 20:15:34.476221,2026-08-09 20:15:34.476221,
+175,14,Part 2 - Question Response 075,/listening/part2/dataset01/q75.mp3,,,75,2026-08-09 20:15:34.476221,2026-08-09 20:15:34.476221,
+176,14,Part 2 - Question Response 076,/listening/part2/dataset01/q76.mp3,,,76,2026-08-09 20:15:34.476221,2026-08-09 20:15:34.476221,
+177,14,Part 2 - Question Response 077,/listening/part2/dataset01/q77.mp3,,,77,2026-08-09 20:15:34.476221,2026-08-09 20:15:34.476221,
+178,14,Part 2 - Question Response 078,/listening/part2/dataset01/q78.mp3,,,78,2026-08-09 20:15:34.476221,2026-08-09 20:15:34.476221,
+179,14,Part 2 - Question Response 079,/listening/part2/dataset01/q79.mp3,,,79,2026-08-09 20:15:34.476221,2026-08-09 20:15:34.476221,
+180,14,Part 2 - Question Response 080,/listening/part2/dataset01/q80.mp3,,,80,2026-08-09 20:15:34.476221,2026-08-09 20:15:34.476221,
+181,18,Part 2 - Question Response 081,/listening/part2/dataset01/q81.mp3,,,81,2026-08-09 20:15:34.476221,2026-08-09 20:15:34.476221,
+182,18,Part 2 - Question Response 082,/listening/part2/dataset01/q82.mp3,,,82,2026-08-09 20:15:34.476221,2026-08-09 20:15:34.476221,
+183,18,Part 2 - Question Response 083,/listening/part2/dataset01/q83.mp3,,,83,2026-08-09 20:15:34.476221,2026-08-09 20:15:34.476221,
+184,18,Part 2 - Question Response 084,/listening/part2/dataset01/q84.mp3,,,84,2026-08-09 20:15:34.476221,2026-08-09 20:15:34.476221,
+185,18,Part 2 - Question Response 085,/listening/part2/dataset01/q85.mp3,,,85,2026-08-09 20:15:34.476221,2026-08-09 20:15:34.476221,
+186,18,Part 2 - Question Response 086,/listening/part2/dataset01/q86.mp3,,,86,2026-08-09 20:15:34.476221,2026-08-09 20:15:34.476221,
+187,18,Part 2 - Question Response 087,/listening/part2/dataset01/q87.mp3,,,87,2026-08-09 20:15:34.476221,2026-08-09 20:15:34.476221,
+188,18,Part 2 - Question Response 088,/listening/part2/dataset01/q88.mp3,,,88,2026-08-09 20:15:34.476221,2026-08-09 20:15:34.476221,
+189,18,Part 2 - Question Response 089,/listening/part2/dataset01/q89.mp3,,,89,2026-08-09 20:15:34.476221,2026-08-09 20:15:34.476221,
+190,18,Part 2 - Question Response 090,/listening/part2/dataset01/q90.mp3,,,90,2026-08-09 20:15:34.476221,2026-08-09 20:15:34.476221,
+191,18,Part 2 - Question Response 091,/listening/part2/dataset01/q91.mp3,,,91,2026-08-09 20:15:34.476221,2026-08-09 20:15:34.476221,
+192,18,Part 2 - Question Response 092,/listening/part2/dataset01/q92.mp3,,,92,2026-08-09 20:15:34.476221,2026-08-09 20:15:34.476221,
+193,18,Part 2 - Question Response 093,/listening/part2/dataset01/q93.mp3,,,93,2026-08-09 20:15:34.476221,2026-08-09 20:15:34.476221,
+194,18,Part 2 - Question Response 094,/listening/part2/dataset01/q94.mp3,,,94,2026-08-09 20:15:34.476221,2026-08-09 20:15:34.476221,
+195,18,Part 2 - Question Response 095,/listening/part2/dataset01/q95.mp3,,,95,2026-08-09 20:15:34.476221,2026-08-09 20:15:34.476221,
+196,18,Part 2 - Question Response 096,/listening/part2/dataset01/q96.mp3,,,96,2026-08-09 20:15:34.476221,2026-08-09 20:15:34.476221,
+197,18,Part 2 - Question Response 097,/listening/part2/dataset01/q97.mp3,,,97,2026-08-09 20:15:34.476221,2026-08-09 20:15:34.476221,
+198,18,Part 2 - Question Response 098,/listening/part2/dataset01/q98.mp3,,,98,2026-08-09 20:15:34.476221,2026-08-09 20:15:34.476221,
+199,18,Part 2 - Question Response 099,/listening/part2/dataset01/q99.mp3,,,99,2026-08-09 20:15:34.476221,2026-08-09 20:15:34.476221,
+200,18,Part 2 - Question Response 100,/listening/part2/dataset01/q100.mp3,,,100,2026-08-09 20:15:34.476221,2026-08-09 20:15:34.476221,
+201,3,Part 3 - Conversation 01,/listening/part3/dataset01/g001.mp3,0.00,,1,2026-08-09 21:13:23.227169,2026-08-09 21:13:23.227169,
+202,3,Part 3 - Conversation 02,/listening/part3/dataset01/g002.mp3,0.00,,2,2026-08-09 21:13:23.227169,2026-08-09 21:13:23.227169,
+203,3,Part 3 - Conversation 03,/listening/part3/dataset01/g003.mp3,0.00,,3,2026-08-09 21:13:23.227169,2026-08-09 21:13:23.227169,
+204,3,Part 3 - Conversation 04,/listening/part3/dataset01/g004.mp3,0.00,,4,2026-08-09 21:13:23.227169,2026-08-09 21:13:23.227169,
+205,3,Part 3 - Conversation 05,/listening/part3/dataset01/g005.mp3,0.00,,5,2026-08-09 21:13:23.227169,2026-08-09 21:13:23.227169,
+206,3,Part 3 - Conversation 06,/listening/part3/dataset01/g006.mp3,0.00,,6,2026-08-09 21:13:23.227169,2026-08-09 21:13:23.227169,
+207,3,Part 3 - Conversation 07,/listening/part3/dataset01/g007.mp3,0.00,,7,2026-08-09 21:13:23.227169,2026-08-09 21:13:23.227169,
+208,3,Part 3 - Conversation 08,/listening/part3/dataset01/g008.mp3,0.00,,8,2026-08-09 21:13:23.227169,2026-08-09 21:13:23.227169,
+209,3,Part 3 - Conversation 09,/listening/part3/dataset01/g009.mp3,0.00,,9,2026-08-09 21:13:23.227169,2026-08-09 21:13:23.227169,
+210,3,Part 3 - Conversation 10,/listening/part3/dataset01/g010.mp3,0.00,,10,2026-08-09 21:13:23.227169,2026-08-09 21:13:23.227169,
+211,3,Part 3 - Conversation 11,/listening/part3/dataset01/g011.mp3,0.00,,11,2026-08-09 21:13:23.227169,2026-08-09 21:13:23.227169,
+212,3,Part 3 - Conversation 12,/listening/part3/dataset01/g012.mp3,0.00,,12,2026-08-09 21:13:23.227169,2026-08-09 21:13:23.227169,
+213,3,Part 3 - Conversation 13,/listening/part3/dataset01/g013.mp3,0.00,,13,2026-08-09 21:13:23.227169,2026-08-09 21:13:23.227169,
+214,3,Part 3 - Conversation 14,/listening/part3/dataset01/g014.mp3,0.00,,14,2026-08-09 21:13:23.227169,2026-08-09 21:13:23.227169,
+215,3,Part 3 - Conversation 15,/listening/part3/dataset01/g015.mp3,0.00,,15,2026-08-09 21:13:23.227169,2026-08-09 21:13:23.227169,
+216,3,Part 3 - Conversation 16,/listening/part3/dataset01/g016.mp3,0.00,,16,2026-08-09 21:13:23.227169,2026-08-09 21:13:23.227169,
+217,3,Part 3 - Conversation 17,/listening/part3/dataset01/g017.mp3,0.00,,17,2026-08-09 21:13:23.227169,2026-08-09 21:13:23.227169,
+218,3,Part 3 - Conversation 18,/listening/part3/dataset01/g018.mp3,0.00,,18,2026-08-09 21:13:23.227169,2026-08-09 21:13:23.227169,
+219,3,Part 3 - Conversation 19,/listening/part3/dataset01/g019.mp3,0.00,,19,2026-08-09 21:13:23.227169,2026-08-09 21:13:23.227169,
+220,3,Part 3 - Conversation 20,/listening/part3/dataset01/g020.mp3,0.00,,20,2026-08-09 21:13:23.227169,2026-08-09 21:13:23.227169,
+221,7,Part 3 - Conversation 21,/listening/part3/dataset01/g021.mp3,0.00,,21,2026-08-09 21:13:23.227169,2026-08-09 21:13:23.227169,
+222,7,Part 3 - Conversation 22,/listening/part3/dataset01/g022.mp3,0.00,,22,2026-08-09 21:13:23.227169,2026-08-09 21:13:23.227169,
+223,7,Part 3 - Conversation 23,/listening/part3/dataset01/g023.mp3,0.00,,23,2026-08-09 21:13:23.227169,2026-08-09 21:13:23.227169,
+224,7,Part 3 - Conversation 24,/listening/part3/dataset01/g024.mp3,0.00,,24,2026-08-09 21:13:23.227169,2026-08-09 21:13:23.227169,
+225,7,Part 3 - Conversation 25,/listening/part3/dataset01/g025.mp3,0.00,,25,2026-08-09 21:13:23.227169,2026-08-09 21:13:23.227169,
+226,7,Part 3 - Conversation 26,/listening/part3/dataset01/g026.mp3,0.00,,26,2026-08-09 21:13:23.227169,2026-08-09 21:13:23.227169,
+227,7,Part 3 - Conversation 27,/listening/part3/dataset01/g027.mp3,0.00,,27,2026-08-09 21:13:23.227169,2026-08-09 21:13:23.227169,
+228,7,Part 3 - Conversation 28,/listening/part3/dataset01/g028.mp3,0.00,,28,2026-08-09 21:13:23.227169,2026-08-09 21:13:23.227169,
+229,7,Part 3 - Conversation 29,/listening/part3/dataset01/g029.mp3,0.00,,29,2026-08-09 21:13:23.227169,2026-08-09 21:13:23.227169,
+230,7,Part 3 - Conversation 30,/listening/part3/dataset01/g030.mp3,0.00,,30,2026-08-09 21:13:23.227169,2026-08-09 21:13:23.227169,
+231,7,Part 3 - Conversation 31,/listening/part3/dataset01/g031.mp3,0.00,,31,2026-08-09 21:13:23.227169,2026-08-09 21:13:23.227169,
+232,7,Part 3 - Conversation 32,/listening/part3/dataset01/g032.mp3,0.00,,32,2026-08-09 21:13:23.227169,2026-08-09 21:13:23.227169,
+233,7,Part 3 - Conversation 33,/listening/part3/dataset01/g033.mp3,0.00,,33,2026-08-09 21:13:23.227169,2026-08-09 21:13:23.227169,
+234,7,Part 3 - Conversation 34,/listening/part3/dataset01/g034.mp3,0.00,,34,2026-08-09 21:13:23.227169,2026-08-09 21:13:23.227169,
+235,7,Part 3 - Conversation 35,/listening/part3/dataset01/g035.mp3,0.00,,35,2026-08-09 21:13:23.227169,2026-08-09 21:13:23.227169,
+236,7,Part 3 - Conversation 36,/listening/part3/dataset01/g036.mp3,0.00,,36,2026-08-09 21:13:23.227169,2026-08-09 21:13:23.227169,
+237,7,Part 3 - Conversation 37,/listening/part3/dataset01/g037.mp3,0.00,,37,2026-08-09 21:13:23.227169,2026-08-09 21:13:23.227169,
+238,7,Part 3 - Conversation 38,/listening/part3/dataset01/g038.mp3,0.00,,38,2026-08-09 21:13:23.227169,2026-08-09 21:13:23.227169,
+239,7,Part 3 - Conversation 39,/listening/part3/dataset01/g039.mp3,0.00,,39,2026-08-09 21:13:23.227169,2026-08-09 21:13:23.227169,
+240,7,Part 3 - Conversation 40,/listening/part3/dataset01/g040.mp3,0.00,,40,2026-08-09 21:13:23.227169,2026-08-09 21:13:23.227169,
+241,11,Part 3 - Conversation 41,/listening/part3/dataset01/g041.mp3,0.00,,41,2026-08-09 21:13:23.227169,2026-08-09 21:13:23.227169,
+242,11,Part 3 - Conversation 42,/listening/part3/dataset01/g042.mp3,0.00,,42,2026-08-09 21:13:23.227169,2026-08-09 21:13:23.227169,
+243,11,Part 3 - Conversation 43,/listening/part3/dataset01/g043.mp3,0.00,,43,2026-08-09 21:13:23.227169,2026-08-09 21:13:23.227169,
+244,11,Part 3 - Conversation 44,/listening/part3/dataset01/g044.mp3,0.00,,44,2026-08-09 21:13:23.227169,2026-08-09 21:13:23.227169,
+245,11,Part 3 - Conversation 45,/listening/part3/dataset01/g045.mp3,0.00,,45,2026-08-09 21:13:23.227169,2026-08-09 21:13:23.227169,
+246,11,Part 3 - Conversation 46,/listening/part3/dataset01/g046.mp3,0.00,,46,2026-08-09 21:13:23.227169,2026-08-09 21:13:23.227169,
+247,11,Part 3 - Conversation 47,/listening/part3/dataset01/g047.mp3,0.00,,47,2026-08-09 21:13:23.227169,2026-08-09 21:13:23.227169,
+248,11,Part 3 - Conversation 48,/listening/part3/dataset01/g048.mp3,0.00,,48,2026-08-09 21:13:23.227169,2026-08-09 21:13:23.227169,
+249,11,Part 3 - Conversation 49,/listening/part3/dataset01/g049.mp3,0.00,,49,2026-08-09 21:13:23.227169,2026-08-09 21:13:23.227169,
+250,11,Part 3 - Conversation 50,/listening/part3/dataset01/g050.mp3,0.00,,50,2026-08-09 21:13:23.227169,2026-08-09 21:13:23.227169,
+251,11,Part 3 - Conversation 51,/listening/part3/dataset01/g051.mp3,0.00,,51,2026-08-09 21:13:23.227169,2026-08-09 21:13:23.227169,
+252,11,Part 3 - Conversation 52,/listening/part3/dataset01/g052.mp3,0.00,,52,2026-08-09 21:13:23.227169,2026-08-09 21:13:23.227169,
+253,11,Part 3 - Conversation 53,/listening/part3/dataset01/g053.mp3,0.00,,53,2026-08-09 21:13:23.227169,2026-08-09 21:13:23.227169,
+254,11,Part 3 - Conversation 54,/listening/part3/dataset01/g054.mp3,0.00,,54,2026-08-09 21:13:23.227169,2026-08-09 21:13:23.227169,
+255,11,Part 3 - Conversation 55,/listening/part3/dataset01/g055.mp3,0.00,,55,2026-08-09 21:13:23.227169,2026-08-09 21:13:23.227169,
+256,11,Part 3 - Conversation 56,/listening/part3/dataset01/g056.mp3,0.00,,56,2026-08-09 21:13:23.227169,2026-08-09 21:13:23.227169,
+257,11,Part 3 - Conversation 57,/listening/part3/dataset01/g057.mp3,0.00,,57,2026-08-09 21:13:23.227169,2026-08-09 21:13:23.227169,
+258,11,Part 3 - Conversation 58,/listening/part3/dataset01/g058.mp3,0.00,,58,2026-08-09 21:13:23.227169,2026-08-09 21:13:23.227169,
+259,11,Part 3 - Conversation 59,/listening/part3/dataset01/g059.mp3,0.00,,59,2026-08-09 21:13:23.227169,2026-08-09 21:13:23.227169,
+260,11,Part 3 - Conversation 60,/listening/part3/dataset01/g060.mp3,0.00,,60,2026-08-09 21:13:23.227169,2026-08-09 21:13:23.227169,
+261,15,Part 3 - Conversation 61,/listening/part3/dataset01/g061.mp3,0.00,,61,2026-08-09 21:13:23.227169,2026-08-09 21:13:23.227169,
+262,15,Part 3 - Conversation 62,/listening/part3/dataset01/g062.mp3,0.00,,62,2026-08-09 21:13:23.227169,2026-08-09 21:13:23.227169,
+263,15,Part 3 - Conversation 63,/listening/part3/dataset01/g063.mp3,0.00,,63,2026-08-09 21:13:23.227169,2026-08-09 21:13:23.227169,
+264,15,Part 3 - Conversation 64,/listening/part3/dataset01/g064.mp3,0.00,,64,2026-08-09 21:13:23.227169,2026-08-09 21:13:23.227169,
+265,15,Part 3 - Conversation 65,/listening/part3/dataset01/g065.mp3,0.00,,65,2026-08-09 21:13:23.227169,2026-08-09 21:13:23.227169,
+266,15,Part 3 - Conversation 66,/listening/part3/dataset01/g066.mp3,0.00,,66,2026-08-09 21:13:23.227169,2026-08-09 21:13:23.227169,
+267,15,Part 3 - Conversation 67,/listening/part3/dataset01/g067.mp3,0.00,,67,2026-08-09 21:13:23.227169,2026-08-09 21:13:23.227169,
+268,15,Part 3 - Conversation 68,/listening/part3/dataset01/g068.mp3,0.00,,68,2026-08-09 21:13:23.227169,2026-08-09 21:13:23.227169,
+269,15,Part 3 - Conversation 69,/listening/part3/dataset01/g069.mp3,0.00,,69,2026-08-09 21:13:23.227169,2026-08-09 21:13:23.227169,
+270,15,Part 3 - Conversation 70,/listening/part3/dataset01/g070.mp3,0.00,,70,2026-08-09 21:13:23.227169,2026-08-09 21:13:23.227169,
+271,15,Part 3 - Conversation 71,/listening/part3/dataset01/g071.mp3,0.00,,71,2026-08-09 21:13:23.227169,2026-08-09 21:13:23.227169,
+272,15,Part 3 - Conversation 72,/listening/part3/dataset01/g072.mp3,0.00,,72,2026-08-09 21:13:23.227169,2026-08-09 21:13:23.227169,
+273,15,Part 3 - Conversation 73,/listening/part3/dataset01/g073.mp3,0.00,,73,2026-08-09 21:13:23.227169,2026-08-09 21:13:23.227169,
+274,15,Part 3 - Conversation 74,/listening/part3/dataset01/g074.mp3,0.00,,74,2026-08-09 21:13:23.227169,2026-08-09 21:13:23.227169,
+275,15,Part 3 - Conversation 75,/listening/part3/dataset01/g075.mp3,0.00,,75,2026-08-09 21:13:23.227169,2026-08-09 21:13:23.227169,
+276,15,Part 3 - Conversation 76,/listening/part3/dataset01/g076.mp3,0.00,,76,2026-08-09 21:13:23.227169,2026-08-09 21:13:23.227169,
+277,15,Part 3 - Conversation 77,/listening/part3/dataset01/g077.mp3,0.00,,77,2026-08-09 21:13:23.227169,2026-08-09 21:13:23.227169,
+278,15,Part 3 - Conversation 78,/listening/part3/dataset01/g078.mp3,0.00,,78,2026-08-09 21:13:23.227169,2026-08-09 21:13:23.227169,
+279,15,Part 3 - Conversation 79,/listening/part3/dataset01/g079.mp3,0.00,,79,2026-08-09 21:13:23.227169,2026-08-09 21:13:23.227169,
+280,15,Part 3 - Conversation 80,/listening/part3/dataset01/g080.mp3,0.00,,80,2026-08-09 21:13:23.227169,2026-08-09 21:13:23.227169,
+281,19,Part 3 - Conversation 81,/listening/part3/dataset01/g081.mp3,0.00,,81,2026-08-09 21:13:23.227169,2026-08-09 21:13:23.227169,
+282,19,Part 3 - Conversation 82,/listening/part3/dataset01/g082.mp3,0.00,,82,2026-08-09 21:13:23.227169,2026-08-09 21:13:23.227169,
+283,19,Part 3 - Conversation 83,/listening/part3/dataset01/g083.mp3,0.00,,83,2026-08-09 21:13:23.227169,2026-08-09 21:13:23.227169,
+284,19,Part 3 - Conversation 84,/listening/part3/dataset01/g084.mp3,0.00,,84,2026-08-09 21:13:23.227169,2026-08-09 21:13:23.227169,
+285,19,Part 3 - Conversation 85,/listening/part3/dataset01/g085.mp3,0.00,,85,2026-08-09 21:13:23.227169,2026-08-09 21:13:23.227169,
+286,19,Part 3 - Conversation 86,/listening/part3/dataset01/g086.mp3,0.00,,86,2026-08-09 21:13:23.227169,2026-08-09 21:13:23.227169,
+287,19,Part 3 - Conversation 87,/listening/part3/dataset01/g087.mp3,0.00,,87,2026-08-09 21:13:23.227169,2026-08-09 21:13:23.227169,
+288,19,Part 3 - Conversation 88,/listening/part3/dataset01/g088.mp3,0.00,,88,2026-08-09 21:13:23.227169,2026-08-09 21:13:23.227169,
+289,19,Part 3 - Conversation 89,/listening/part3/dataset01/g089.mp3,0.00,,89,2026-08-09 21:13:23.227169,2026-08-09 21:13:23.227169,
+290,19,Part 3 - Conversation 90,/listening/part3/dataset01/g090.mp3,0.00,,90,2026-08-09 21:13:23.227169,2026-08-09 21:13:23.227169,
+291,19,Part 3 - Conversation 91,/listening/part3/dataset01/g091.mp3,0.00,,91,2026-08-09 21:13:23.227169,2026-08-09 21:13:23.227169,
+292,19,Part 3 - Conversation 92,/listening/part3/dataset01/g092.mp3,0.00,,92,2026-08-09 21:13:23.227169,2026-08-09 21:13:23.227169,
+293,19,Part 3 - Conversation 93,/listening/part3/dataset01/g093.mp3,0.00,,93,2026-08-09 21:13:23.227169,2026-08-09 21:13:23.227169,
+294,19,Part 3 - Conversation 94,/listening/part3/dataset01/g094.mp3,0.00,,94,2026-08-09 21:13:23.227169,2026-08-09 21:13:23.227169,
+295,19,Part 3 - Conversation 95,/listening/part3/dataset01/g095.mp3,0.00,,95,2026-08-09 21:13:23.227169,2026-08-09 21:13:23.227169,
+296,19,Part 3 - Conversation 96,/listening/part3/dataset01/g096.mp3,0.00,,96,2026-08-09 21:13:23.227169,2026-08-09 21:13:23.227169,
+297,19,Part 3 - Conversation 97,/listening/part3/dataset01/g097.mp3,0.00,,97,2026-08-09 21:13:23.227169,2026-08-09 21:13:23.227169,
+298,19,Part 3 - Conversation 98,/listening/part3/dataset01/g098.mp3,0.00,,98,2026-08-09 21:13:23.227169,2026-08-09 21:13:23.227169,
+299,19,Part 3 - Conversation 99,/listening/part3/dataset01/g099.mp3,0.00,,99,2026-08-09 21:13:23.227169,2026-08-09 21:13:23.227169,
+300,19,Part 3 - Conversation 100,/listening/part3/dataset01/g100.mp3,0.00,,100,2026-08-09 21:13:23.227169,2026-08-09 21:13:23.227169,
+301,4,Part 4 - Talk 01 - Library Announcement,/listening/part4/dataset01/g001.mp3,0.00,,1,2026-08-09 21:34:42.767896,2026-08-09 21:34:42.767896,
+302,4,Part 4 - Talk 02 - Airport Announcement,/listening/part4/dataset01/g002.mp3,0.00,,2,2026-08-09 21:34:42.767896,2026-08-09 21:34:42.767896,
+303,4,Part 4 - Talk 03 - Office Meeting,/listening/part4/dataset01/g003.mp3,0.00,,3,2026-08-09 21:34:42.767896,2026-08-09 21:34:42.767896,
+304,4,Part 4 - Talk 04 - Restaurant Advertisement,/listening/part4/dataset01/g004.mp3,0.00,,4,2026-08-09 21:34:42.767896,2026-08-09 21:34:42.767896,
+305,4,Part 4 - Talk 05 - Museum Tour,/listening/part4/dataset01/g005.mp3,0.00,,5,2026-08-09 21:34:42.767896,2026-08-09 21:34:42.767896,
+306,4,Part 4 - Talk 06 - Train Announcement,/listening/part4/dataset01/g006.mp3,0.00,,6,2026-08-09 21:34:42.767896,2026-08-09 21:34:42.767896,
+307,4,Part 4 - Talk 07 - Weather Report,/listening/part4/dataset01/g007.mp3,0.00,,7,2026-08-09 21:34:42.767896,2026-08-09 21:34:42.767896,
+308,4,Part 4 - Talk 08 - Hotel Notice,/listening/part4/dataset01/g008.mp3,0.00,,8,2026-08-09 21:34:42.767896,2026-08-09 21:34:42.767896,
+309,4,Part 4 - Talk 09 - Store Advertisement,/listening/part4/dataset01/g009.mp3,0.00,,9,2026-08-09 21:34:42.767896,2026-08-09 21:34:42.767896,
+310,4,Part 4 - Talk 10 - Company Training,/listening/part4/dataset01/g010.mp3,0.00,,10,2026-08-09 21:34:42.767896,2026-08-09 21:34:42.767896,
+311,4,Part 4 - Talk 11 - Library Announcement,/listening/part4/dataset01/g011.mp3,0.00,,11,2026-08-09 21:34:42.767896,2026-08-09 21:34:42.767896,
+312,4,Part 4 - Talk 12 - Airport Announcement,/listening/part4/dataset01/g012.mp3,0.00,,12,2026-08-09 21:34:42.767896,2026-08-09 21:34:42.767896,
+313,4,Part 4 - Talk 13 - Office Meeting,/listening/part4/dataset01/g013.mp3,0.00,,13,2026-08-09 21:34:42.767896,2026-08-09 21:34:42.767896,
+314,4,Part 4 - Talk 14 - Restaurant Advertisement,/listening/part4/dataset01/g014.mp3,0.00,,14,2026-08-09 21:34:42.767896,2026-08-09 21:34:42.767896,
+315,4,Part 4 - Talk 15 - Museum Tour,/listening/part4/dataset01/g015.mp3,0.00,,15,2026-08-09 21:34:42.767896,2026-08-09 21:34:42.767896,
+316,4,Part 4 - Talk 16 - Train Announcement,/listening/part4/dataset01/g016.mp3,0.00,,16,2026-08-09 21:34:42.767896,2026-08-09 21:34:42.767896,
+317,4,Part 4 - Talk 17 - Weather Report,/listening/part4/dataset01/g017.mp3,0.00,,17,2026-08-09 21:34:42.767896,2026-08-09 21:34:42.767896,
+318,4,Part 4 - Talk 18 - Hotel Notice,/listening/part4/dataset01/g018.mp3,0.00,,18,2026-08-09 21:34:42.767896,2026-08-09 21:34:42.767896,
+319,4,Part 4 - Talk 19 - Store Advertisement,/listening/part4/dataset01/g019.mp3,0.00,,19,2026-08-09 21:34:42.767896,2026-08-09 21:34:42.767896,
+320,4,Part 4 - Talk 20 - Company Training,/listening/part4/dataset01/g020.mp3,0.00,,20,2026-08-09 21:34:42.767896,2026-08-09 21:34:42.767896,
+321,8,Part 4 - Talk 21 - Library Announcement,/listening/part4/dataset01/g021.mp3,0.00,,21,2026-08-09 21:34:42.767896,2026-08-09 21:34:42.767896,
+322,8,Part 4 - Talk 22 - Airport Announcement,/listening/part4/dataset01/g022.mp3,0.00,,22,2026-08-09 21:34:42.767896,2026-08-09 21:34:42.767896,
+323,8,Part 4 - Talk 23 - Office Meeting,/listening/part4/dataset01/g023.mp3,0.00,,23,2026-08-09 21:34:42.767896,2026-08-09 21:34:42.767896,
+324,8,Part 4 - Talk 24 - Restaurant Advertisement,/listening/part4/dataset01/g024.mp3,0.00,,24,2026-08-09 21:34:42.767896,2026-08-09 21:34:42.767896,
+325,8,Part 4 - Talk 25 - Museum Tour,/listening/part4/dataset01/g025.mp3,0.00,,25,2026-08-09 21:34:42.767896,2026-08-09 21:34:42.767896,
+326,8,Part 4 - Talk 26 - Train Announcement,/listening/part4/dataset01/g026.mp3,0.00,,26,2026-08-09 21:34:42.767896,2026-08-09 21:34:42.767896,
+327,8,Part 4 - Talk 27 - Weather Report,/listening/part4/dataset01/g027.mp3,0.00,,27,2026-08-09 21:34:42.767896,2026-08-09 21:34:42.767896,
+328,8,Part 4 - Talk 28 - Hotel Notice,/listening/part4/dataset01/g028.mp3,0.00,,28,2026-08-09 21:34:42.767896,2026-08-09 21:34:42.767896,
+329,8,Part 4 - Talk 29 - Store Advertisement,/listening/part4/dataset01/g029.mp3,0.00,,29,2026-08-09 21:34:42.767896,2026-08-09 21:34:42.767896,
+330,8,Part 4 - Talk 30 - Company Training,/listening/part4/dataset01/g030.mp3,0.00,,30,2026-08-09 21:34:42.767896,2026-08-09 21:34:42.767896,
+331,8,Part 4 - Talk 31 - Library Announcement,/listening/part4/dataset01/g031.mp3,0.00,,31,2026-08-09 21:34:42.767896,2026-08-09 21:34:42.767896,
+332,8,Part 4 - Talk 32 - Airport Announcement,/listening/part4/dataset01/g032.mp3,0.00,,32,2026-08-09 21:34:42.767896,2026-08-09 21:34:42.767896,
+333,8,Part 4 - Talk 33 - Office Meeting,/listening/part4/dataset01/g033.mp3,0.00,,33,2026-08-09 21:34:42.767896,2026-08-09 21:34:42.767896,
+334,8,Part 4 - Talk 34 - Restaurant Advertisement,/listening/part4/dataset01/g034.mp3,0.00,,34,2026-08-09 21:34:42.767896,2026-08-09 21:34:42.767896,
+335,8,Part 4 - Talk 35 - Museum Tour,/listening/part4/dataset01/g035.mp3,0.00,,35,2026-08-09 21:34:42.767896,2026-08-09 21:34:42.767896,
+336,8,Part 4 - Talk 36 - Train Announcement,/listening/part4/dataset01/g036.mp3,0.00,,36,2026-08-09 21:34:42.767896,2026-08-09 21:34:42.767896,
+337,8,Part 4 - Talk 37 - Weather Report,/listening/part4/dataset01/g037.mp3,0.00,,37,2026-08-09 21:34:42.767896,2026-08-09 21:34:42.767896,
+338,8,Part 4 - Talk 38 - Hotel Notice,/listening/part4/dataset01/g038.mp3,0.00,,38,2026-08-09 21:34:42.767896,2026-08-09 21:34:42.767896,
+339,8,Part 4 - Talk 39 - Store Advertisement,/listening/part4/dataset01/g039.mp3,0.00,,39,2026-08-09 21:34:42.767896,2026-08-09 21:34:42.767896,
+340,8,Part 4 - Talk 40 - Company Training,/listening/part4/dataset01/g040.mp3,0.00,,40,2026-08-09 21:34:42.767896,2026-08-09 21:34:42.767896,
+341,12,Part 4 - Talk 41 - Library Announcement,/listening/part4/dataset01/g041.mp3,0.00,,41,2026-08-09 21:34:42.767896,2026-08-09 21:34:42.767896,
+342,12,Part 4 - Talk 42 - Airport Announcement,/listening/part4/dataset01/g042.mp3,0.00,,42,2026-08-09 21:34:42.767896,2026-08-09 21:34:42.767896,
+343,12,Part 4 - Talk 43 - Office Meeting,/listening/part4/dataset01/g043.mp3,0.00,,43,2026-08-09 21:34:42.767896,2026-08-09 21:34:42.767896,
+344,12,Part 4 - Talk 44 - Restaurant Advertisement,/listening/part4/dataset01/g044.mp3,0.00,,44,2026-08-09 21:34:42.767896,2026-08-09 21:34:42.767896,
+345,12,Part 4 - Talk 45 - Museum Tour,/listening/part4/dataset01/g045.mp3,0.00,,45,2026-08-09 21:34:42.767896,2026-08-09 21:34:42.767896,
+346,12,Part 4 - Talk 46 - Train Announcement,/listening/part4/dataset01/g046.mp3,0.00,,46,2026-08-09 21:34:42.767896,2026-08-09 21:34:42.767896,
+347,12,Part 4 - Talk 47 - Weather Report,/listening/part4/dataset01/g047.mp3,0.00,,47,2026-08-09 21:34:42.767896,2026-08-09 21:34:42.767896,
+348,12,Part 4 - Talk 48 - Hotel Notice,/listening/part4/dataset01/g048.mp3,0.00,,48,2026-08-09 21:34:42.767896,2026-08-09 21:34:42.767896,
+349,12,Part 4 - Talk 49 - Store Advertisement,/listening/part4/dataset01/g049.mp3,0.00,,49,2026-08-09 21:34:42.767896,2026-08-09 21:34:42.767896,
+350,12,Part 4 - Talk 50 - Company Training,/listening/part4/dataset01/g050.mp3,0.00,,50,2026-08-09 21:34:42.767896,2026-08-09 21:34:42.767896,
+351,12,Part 4 - Talk 51 - Library Announcement,/listening/part4/dataset01/g051.mp3,0.00,,51,2026-08-09 21:34:42.767896,2026-08-09 21:34:42.767896,
+352,12,Part 4 - Talk 52 - Airport Announcement,/listening/part4/dataset01/g052.mp3,0.00,,52,2026-08-09 21:34:42.767896,2026-08-09 21:34:42.767896,
+353,12,Part 4 - Talk 53 - Office Meeting,/listening/part4/dataset01/g053.mp3,0.00,,53,2026-08-09 21:34:42.767896,2026-08-09 21:34:42.767896,
+354,12,Part 4 - Talk 54 - Restaurant Advertisement,/listening/part4/dataset01/g054.mp3,0.00,,54,2026-08-09 21:34:42.767896,2026-08-09 21:34:42.767896,
+355,12,Part 4 - Talk 55 - Museum Tour,/listening/part4/dataset01/g055.mp3,0.00,,55,2026-08-09 21:34:42.767896,2026-08-09 21:34:42.767896,
+356,12,Part 4 - Talk 56 - Train Announcement,/listening/part4/dataset01/g056.mp3,0.00,,56,2026-08-09 21:34:42.767896,2026-08-09 21:34:42.767896,
+357,12,Part 4 - Talk 57 - Weather Report,/listening/part4/dataset01/g057.mp3,0.00,,57,2026-08-09 21:34:42.767896,2026-08-09 21:34:42.767896,
+358,12,Part 4 - Talk 58 - Hotel Notice,/listening/part4/dataset01/g058.mp3,0.00,,58,2026-08-09 21:34:42.767896,2026-08-09 21:34:42.767896,
+359,12,Part 4 - Talk 59 - Store Advertisement,/listening/part4/dataset01/g059.mp3,0.00,,59,2026-08-09 21:34:42.767896,2026-08-09 21:34:42.767896,
+360,12,Part 4 - Talk 60 - Company Training,/listening/part4/dataset01/g060.mp3,0.00,,60,2026-08-09 21:34:42.767896,2026-08-09 21:34:42.767896,
+361,16,Part 4 - Talk 61 - Library Announcement,/listening/part4/dataset01/g061.mp3,0.00,,61,2026-08-09 21:34:42.767896,2026-08-09 21:34:42.767896,
+362,16,Part 4 - Talk 62 - Airport Announcement,/listening/part4/dataset01/g062.mp3,0.00,,62,2026-08-09 21:34:42.767896,2026-08-09 21:34:42.767896,
+363,16,Part 4 - Talk 63 - Office Meeting,/listening/part4/dataset01/g063.mp3,0.00,,63,2026-08-09 21:34:42.767896,2026-08-09 21:34:42.767896,
+364,16,Part 4 - Talk 64 - Restaurant Advertisement,/listening/part4/dataset01/g064.mp3,0.00,,64,2026-08-09 21:34:42.767896,2026-08-09 21:34:42.767896,
+365,16,Part 4 - Talk 65 - Museum Tour,/listening/part4/dataset01/g065.mp3,0.00,,65,2026-08-09 21:34:42.767896,2026-08-09 21:34:42.767896,
+366,16,Part 4 - Talk 66 - Train Announcement,/listening/part4/dataset01/g066.mp3,0.00,,66,2026-08-09 21:34:42.767896,2026-08-09 21:34:42.767896,
+367,16,Part 4 - Talk 67 - Weather Report,/listening/part4/dataset01/g067.mp3,0.00,,67,2026-08-09 21:34:42.767896,2026-08-09 21:34:42.767896,
+368,16,Part 4 - Talk 68 - Hotel Notice,/listening/part4/dataset01/g068.mp3,0.00,,68,2026-08-09 21:34:42.767896,2026-08-09 21:34:42.767896,
+369,16,Part 4 - Talk 69 - Store Advertisement,/listening/part4/dataset01/g069.mp3,0.00,,69,2026-08-09 21:34:42.767896,2026-08-09 21:34:42.767896,
+370,16,Part 4 - Talk 70 - Company Training,/listening/part4/dataset01/g070.mp3,0.00,,70,2026-08-09 21:34:42.767896,2026-08-09 21:34:42.767896,
+371,16,Part 4 - Talk 71 - Library Announcement,/listening/part4/dataset01/g071.mp3,0.00,,71,2026-08-09 21:34:42.767896,2026-08-09 21:34:42.767896,
+372,16,Part 4 - Talk 72 - Airport Announcement,/listening/part4/dataset01/g072.mp3,0.00,,72,2026-08-09 21:34:42.767896,2026-08-09 21:34:42.767896,
+373,16,Part 4 - Talk 73 - Office Meeting,/listening/part4/dataset01/g073.mp3,0.00,,73,2026-08-09 21:34:42.767896,2026-08-09 21:34:42.767896,
+374,16,Part 4 - Talk 74 - Restaurant Advertisement,/listening/part4/dataset01/g074.mp3,0.00,,74,2026-08-09 21:34:42.767896,2026-08-09 21:34:42.767896,
+375,16,Part 4 - Talk 75 - Museum Tour,/listening/part4/dataset01/g075.mp3,0.00,,75,2026-08-09 21:34:42.767896,2026-08-09 21:34:42.767896,
+376,16,Part 4 - Talk 76 - Train Announcement,/listening/part4/dataset01/g076.mp3,0.00,,76,2026-08-09 21:34:42.767896,2026-08-09 21:34:42.767896,
+377,16,Part 4 - Talk 77 - Weather Report,/listening/part4/dataset01/g077.mp3,0.00,,77,2026-08-09 21:34:42.767896,2026-08-09 21:34:42.767896,
+378,16,Part 4 - Talk 78 - Hotel Notice,/listening/part4/dataset01/g078.mp3,0.00,,78,2026-08-09 21:34:42.767896,2026-08-09 21:34:42.767896,
+379,16,Part 4 - Talk 79 - Store Advertisement,/listening/part4/dataset01/g079.mp3,0.00,,79,2026-08-09 21:34:42.767896,2026-08-09 21:34:42.767896,
+380,16,Part 4 - Talk 80 - Company Training,/listening/part4/dataset01/g080.mp3,0.00,,80,2026-08-09 21:34:42.767896,2026-08-09 21:34:42.767896,
+381,20,Part 4 - Talk 81 - Library Announcement,/listening/part4/dataset01/g081.mp3,0.00,,81,2026-08-09 21:34:42.767896,2026-08-09 21:34:42.767896,
+382,20,Part 4 - Talk 82 - Airport Announcement,/listening/part4/dataset01/g082.mp3,0.00,,82,2026-08-09 21:34:42.767896,2026-08-09 21:34:42.767896,
+383,20,Part 4 - Talk 83 - Office Meeting,/listening/part4/dataset01/g083.mp3,0.00,,83,2026-08-09 21:34:42.767896,2026-08-09 21:34:42.767896,
+384,20,Part 4 - Talk 84 - Restaurant Advertisement,/listening/part4/dataset01/g084.mp3,0.00,,84,2026-08-09 21:34:42.767896,2026-08-09 21:34:42.767896,
+385,20,Part 4 - Talk 85 - Museum Tour,/listening/part4/dataset01/g085.mp3,0.00,,85,2026-08-09 21:34:42.767896,2026-08-09 21:34:42.767896,
+386,20,Part 4 - Talk 86 - Train Announcement,/listening/part4/dataset01/g086.mp3,0.00,,86,2026-08-09 21:34:42.767896,2026-08-09 21:34:42.767896,
+387,20,Part 4 - Talk 87 - Weather Report,/listening/part4/dataset01/g087.mp3,0.00,,87,2026-08-09 21:34:42.767896,2026-08-09 21:34:42.767896,
+388,20,Part 4 - Talk 88 - Hotel Notice,/listening/part4/dataset01/g088.mp3,0.00,,88,2026-08-09 21:34:42.767896,2026-08-09 21:34:42.767896,
+389,20,Part 4 - Talk 89 - Store Advertisement,/listening/part4/dataset01/g089.mp3,0.00,,89,2026-08-09 21:34:42.767896,2026-08-09 21:34:42.767896,
+390,20,Part 4 - Talk 90 - Company Training,/listening/part4/dataset01/g090.mp3,0.00,,90,2026-08-09 21:34:42.767896,2026-08-09 21:34:42.767896,
+391,20,Part 4 - Talk 91 - Library Announcement,/listening/part4/dataset01/g091.mp3,0.00,,91,2026-08-09 21:34:42.767896,2026-08-09 21:34:42.767896,
+392,20,Part 4 - Talk 92 - Airport Announcement,/listening/part4/dataset01/g092.mp3,0.00,,92,2026-08-09 21:34:42.767896,2026-08-09 21:34:42.767896,
+393,20,Part 4 - Talk 93 - Office Meeting,/listening/part4/dataset01/g093.mp3,0.00,,93,2026-08-09 21:34:42.767896,2026-08-09 21:34:42.767896,
+394,20,Part 4 - Talk 94 - Restaurant Advertisement,/listening/part4/dataset01/g094.mp3,0.00,,94,2026-08-09 21:34:42.767896,2026-08-09 21:34:42.767896,
+395,20,Part 4 - Talk 95 - Museum Tour,/listening/part4/dataset01/g095.mp3,0.00,,95,2026-08-09 21:34:42.767896,2026-08-09 21:34:42.767896,
+396,20,Part 4 - Talk 96 - Train Announcement,/listening/part4/dataset01/g096.mp3,0.00,,96,2026-08-09 21:34:42.767896,2026-08-09 21:34:42.767896,
+397,20,Part 4 - Talk 97 - Weather Report,/listening/part4/dataset01/g097.mp3,0.00,,97,2026-08-09 21:34:42.767896,2026-08-09 21:34:42.767896,
+398,20,Part 4 - Talk 98 - Hotel Notice,/listening/part4/dataset01/g098.mp3,0.00,,98,2026-08-09 21:34:42.767896,2026-08-09 21:34:42.767896,
+399,20,Part 4 - Talk 99 - Store Advertisement,/listening/part4/dataset01/g099.mp3,0.00,,99,2026-08-09 21:34:42.767896,2026-08-09 21:34:42.767896,
+400,20,Part 4 - Talk 100 - Company Training,/listening/part4/dataset01/g100.mp3,0.00,,100,2026-08-09 21:34:42.767896,2026-08-09 21:34:42.767896,

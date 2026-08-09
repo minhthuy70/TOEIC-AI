@@ -1,0 +1,4602 @@
+[
+  {
+    "group": 1,
+    "title": "Part 4 - Talk 01 - Library Announcement",
+    "monologue": {
+      "speaker": "Announcer",
+      "text": "Good morning, everyone. The city library will close early this Friday for scheduled maintenance. Please return all borrowed materials before five o'clock. Normal opening hours will resume on Saturday morning."
+    },
+    "questions": [
+      {
+        "question": 1,
+        "question_text": "What is the announcement mainly about?",
+        "options": {
+          "A": "A schedule change",
+          "B": "A new employee",
+          "C": "A book sale",
+          "D": "A computer problem"
+        },
+        "correct": "A",
+        "explanation": "The talk states information that directly supports option A."
+      },
+      {
+        "question": 2,
+        "question_text": "Why will the library close early?",
+        "options": {
+          "A": "For scheduled maintenance",
+          "B": "For a private event",
+          "C": "For staff training",
+          "D": "For a holiday"
+        },
+        "correct": "A",
+        "explanation": "The talk states information that directly supports option A."
+      },
+      {
+        "question": 3,
+        "question_text": "When will normal opening hours resume?",
+        "options": {
+          "A": "Friday evening",
+          "B": "Saturday morning",
+          "C": "Sunday afternoon",
+          "D": "Next Monday"
+        },
+        "correct": "B",
+        "explanation": "The talk states information that directly supports option B."
+      }
+    ]
+  },
+  {
+    "group": 2,
+    "title": "Part 4 - Talk 02 - Airport Announcement",
+    "monologue": {
+      "speaker": "Announcer",
+      "text": "Attention passengers on Flight 218 to Chicago. The departure gate has been changed from Gate 12 to Gate 18. Please proceed to the new gate after completing the security check. Boarding will begin shortly."
+    },
+    "questions": [
+      {
+        "question": 1,
+        "question_text": "What is being announced?",
+        "options": {
+          "A": "A gate change",
+          "B": "A flight cancellation",
+          "C": "A ticket discount",
+          "D": "A baggage problem"
+        },
+        "correct": "A",
+        "explanation": "The talk states information that directly supports option A."
+      },
+      {
+        "question": 2,
+        "question_text": "Where should passengers go?",
+        "options": {
+          "A": "Gate 6",
+          "B": "Gate 12",
+          "C": "Gate 18",
+          "D": "Gate 24"
+        },
+        "correct": "C",
+        "explanation": "The talk states information that directly supports option C."
+      },
+      {
+        "question": 3,
+        "question_text": "What should passengers do before going to the new gate?",
+        "options": {
+          "A": "Buy a ticket",
+          "B": "Complete the security check",
+          "C": "Collect their luggage",
+          "D": "Visit the information desk"
+        },
+        "correct": "B",
+        "explanation": "The talk states information that directly supports option B."
+      }
+    ]
+  },
+  {
+    "group": 3,
+    "title": "Part 4 - Talk 03 - Office Meeting",
+    "monologue": {
+      "speaker": "Announcer",
+      "text": "A reminder to all department managers: tomorrow's monthly meeting will begin at nine thirty in Conference Room B. Please bring your sales reports and budget proposals. The meeting is expected to last about one hour."
+    },
+    "questions": [
+      {
+        "question": 1,
+        "question_text": "Who is being reminded about the meeting?",
+        "options": {
+          "A": "New employees",
+          "B": "Department managers",
+          "C": "Customers",
+          "D": "Visitors"
+        },
+        "correct": "B",
+        "explanation": "The talk states information that directly supports option B."
+      },
+      {
+        "question": 2,
+        "question_text": "When will the meeting begin?",
+        "options": {
+          "A": "8:30",
+          "B": "9:00",
+          "C": "9:30",
+          "D": "10:00"
+        },
+        "correct": "C",
+        "explanation": "The talk states information that directly supports option C."
+      },
+      {
+        "question": 3,
+        "question_text": "What should attendees bring?",
+        "options": {
+          "A": "Travel documents",
+          "B": "Sales reports and budget proposals",
+          "C": "Training materials",
+          "D": "Customer surveys"
+        },
+        "correct": "B",
+        "explanation": "The talk states information that directly supports option B."
+      }
+    ]
+  },
+  {
+    "group": 4,
+    "title": "Part 4 - Talk 04 - Restaurant Advertisement",
+    "monologue": {
+      "speaker": "Announcer",
+      "text": "This week, Green Garden Restaurant is offering a special lunch menu. Customers can choose any soup, main course, and dessert for fifteen dollars. The promotion is available from Monday through Friday."
+    },
+    "questions": [
+      {
+        "question": 1,
+        "question_text": "What is being promoted?",
+        "options": {
+          "A": "A dinner buffet",
+          "B": "A lunch menu",
+          "C": "A cooking class",
+          "D": "A delivery service"
+        },
+        "correct": "B",
+        "explanation": "The talk states information that directly supports option B."
+      },
+      {
+        "question": 2,
+        "question_text": "How much does the special menu cost?",
+        "options": {
+          "A": "Ten dollars",
+          "B": "Fifteen dollars",
+          "C": "Twenty dollars",
+          "D": "Twenty-five dollars"
+        },
+        "correct": "B",
+        "explanation": "The talk states information that directly supports option B."
+      },
+      {
+        "question": 3,
+        "question_text": "When is the promotion available?",
+        "options": {
+          "A": "Weekends only",
+          "B": "Monday through Friday",
+          "C": "Every evening",
+          "D": "Next month"
+        },
+        "correct": "B",
+        "explanation": "The talk states information that directly supports option B."
+      }
+    ]
+  },
+  {
+    "group": 5,
+    "title": "Part 4 - Talk 05 - Museum Tour",
+    "monologue": {
+      "speaker": "Announcer",
+      "text": "Welcome to the City History Museum. Our guided tour will begin in ten minutes near the main entrance. Visitors should remain with the group and may take photographs without flash. Please silence your mobile phones."
+    },
+    "questions": [
+      {
+        "question": 1,
+        "question_text": "Where are the listeners?",
+        "options": {
+          "A": "A train station",
+          "B": "A city museum",
+          "C": "A library",
+          "D": "A theater"
+        },
+        "correct": "B",
+        "explanation": "The talk states information that directly supports option B."
+      },
+      {
+        "question": 2,
+        "question_text": "When will the tour begin?",
+        "options": {
+          "A": "Immediately",
+          "B": "In ten minutes",
+          "C": "At noon",
+          "D": "Tomorrow morning"
+        },
+        "correct": "B",
+        "explanation": "The talk states information that directly supports option B."
+      },
+      {
+        "question": 3,
+        "question_text": "What may visitors do?",
+        "options": {
+          "A": "Use flash photography",
+          "B": "Leave the group",
+          "C": "Take photographs without flash",
+          "D": "Touch the exhibits"
+        },
+        "correct": "C",
+        "explanation": "The talk states information that directly supports option C."
+      }
+    ]
+  },
+  {
+    "group": 6,
+    "title": "Part 4 - Talk 06 - Train Announcement",
+    "monologue": {
+      "speaker": "Announcer",
+      "text": "The express train to Riverside will depart from Platform 4 at 2:15. Passengers traveling to Oakville should use the local train on Platform 6. Please check your tickets before boarding."
+    },
+    "questions": [
+      {
+        "question": 1,
+        "question_text": "What is the announcement about?",
+        "options": {
+          "A": "An express train",
+          "B": "A bus service",
+          "C": "A flight",
+          "D": "A taxi route"
+        },
+        "correct": "A",
+        "explanation": "The talk states information that directly supports option A."
+      },
+      {
+        "question": 2,
+        "question_text": "Where will the express train depart?",
+        "options": {
+          "A": "Platform 2",
+          "B": "Platform 4",
+          "C": "Platform 6",
+          "D": "Platform 8"
+        },
+        "correct": "B",
+        "explanation": "The talk states information that directly supports option B."
+      },
+      {
+        "question": 3,
+        "question_text": "Which platform should Oakville passengers use?",
+        "options": {
+          "A": "Platform 3",
+          "B": "Platform 4",
+          "C": "Platform 5",
+          "D": "Platform 6"
+        },
+        "correct": "D",
+        "explanation": "The talk states information that directly supports option D."
+      }
+    ]
+  },
+  {
+    "group": 7,
+    "title": "Part 4 - Talk 07 - Weather Report",
+    "monologue": {
+      "speaker": "Announcer",
+      "text": "Today's weather will be mostly sunny, with temperatures reaching twenty-eight degrees. Some light rain is expected this evening. Drivers should be careful on wet roads."
+    },
+    "questions": [
+      {
+        "question": 1,
+        "question_text": "What will the weather be like today?",
+        "options": {
+          "A": "Mostly sunny",
+          "B": "Snowy",
+          "C": "Stormy all day",
+          "D": "Foggy"
+        },
+        "correct": "A",
+        "explanation": "The talk states information that directly supports option A."
+      },
+      {
+        "question": 2,
+        "question_text": "What is expected this evening?",
+        "options": {
+          "A": "Heavy snow",
+          "B": "Light rain",
+          "C": "Strong winds",
+          "D": "Freezing temperatures"
+        },
+        "correct": "B",
+        "explanation": "The talk states information that directly supports option B."
+      },
+      {
+        "question": 3,
+        "question_text": "Who should be especially careful?",
+        "options": {
+          "A": "Swimmers",
+          "B": "Drivers",
+          "C": "Tourists",
+          "D": "Office workers"
+        },
+        "correct": "B",
+        "explanation": "The talk states information that directly supports option B."
+      }
+    ]
+  },
+  {
+    "group": 8,
+    "title": "Part 4 - Talk 08 - Hotel Notice",
+    "monologue": {
+      "speaker": "Announcer",
+      "text": "Guests at the Riverside Hotel are reminded that the swimming pool will be closed tomorrow morning for cleaning. It will reopen at noon. The fitness center will remain open as usual."
+    },
+    "questions": [
+      {
+        "question": 1,
+        "question_text": "What will be closed tomorrow morning?",
+        "options": {
+          "A": "The fitness center",
+          "B": "The restaurant",
+          "C": "The swimming pool",
+          "D": "The hotel lobby"
+        },
+        "correct": "C",
+        "explanation": "The talk states information that directly supports option C."
+      },
+      {
+        "question": 2,
+        "question_text": "Why will it be closed?",
+        "options": {
+          "A": "For cleaning",
+          "B": "For construction",
+          "C": "For a private event",
+          "D": "For repairs"
+        },
+        "correct": "A",
+        "explanation": "The talk states information that directly supports option A."
+      },
+      {
+        "question": 3,
+        "question_text": "When will it reopen?",
+        "options": {
+          "A": "At 10 a.m.",
+          "B": "At 11 a.m.",
+          "C": "At noon",
+          "D": "At 2 p.m."
+        },
+        "correct": "C",
+        "explanation": "The talk states information that directly supports option C."
+      }
+    ]
+  },
+  {
+    "group": 9,
+    "title": "Part 4 - Talk 09 - Store Advertisement",
+    "monologue": {
+      "speaker": "Announcer",
+      "text": "Central Electronics is having a weekend sale on laptops and computer accessories. Selected laptops are discounted by twenty percent. The sale begins Saturday morning and continues through Sunday."
+    },
+    "questions": [
+      {
+        "question": 1,
+        "question_text": "What is Central Electronics promoting?",
+        "options": {
+          "A": "A weekend sale",
+          "B": "A repair service",
+          "C": "A new store",
+          "D": "A training course"
+        },
+        "correct": "A",
+        "explanation": "The talk states information that directly supports option A."
+      },
+      {
+        "question": 2,
+        "question_text": "How much are selected laptops discounted?",
+        "options": {
+          "A": "10 percent",
+          "B": "15 percent",
+          "C": "20 percent",
+          "D": "30 percent"
+        },
+        "correct": "C",
+        "explanation": "The talk states information that directly supports option C."
+      },
+      {
+        "question": 3,
+        "question_text": "When does the sale begin?",
+        "options": {
+          "A": "Friday evening",
+          "B": "Saturday morning",
+          "C": "Saturday afternoon",
+          "D": "Sunday morning"
+        },
+        "correct": "B",
+        "explanation": "The talk states information that directly supports option B."
+      }
+    ]
+  },
+  {
+    "group": 10,
+    "title": "Part 4 - Talk 10 - Company Training",
+    "monologue": {
+      "speaker": "Announcer",
+      "text": "Employees who registered for the customer service workshop should report to Training Room 3 at eight forty-five. The workshop will last until noon, followed by a short lunch break."
+    },
+    "questions": [
+      {
+        "question": 1,
+        "question_text": "Who should report to Training Room 3?",
+        "options": {
+          "A": "Customers",
+          "B": "Department managers",
+          "C": "Registered workshop employees",
+          "D": "Visitors"
+        },
+        "correct": "C",
+        "explanation": "The talk states information that directly supports option C."
+      },
+      {
+        "question": 2,
+        "question_text": "When should participants arrive?",
+        "options": {
+          "A": "8:15",
+          "B": "8:30",
+          "C": "8:45",
+          "D": "9:15"
+        },
+        "correct": "C",
+        "explanation": "The talk states information that directly supports option C."
+      },
+      {
+        "question": 3,
+        "question_text": "What follows the workshop?",
+        "options": {
+          "A": "A staff meeting",
+          "B": "A short lunch break",
+          "C": "A sales presentation",
+          "D": "A company tour"
+        },
+        "correct": "B",
+        "explanation": "The talk states information that directly supports option B."
+      }
+    ]
+  },
+  {
+    "group": 11,
+    "title": "Part 4 - Talk 11 - Library Announcement",
+    "monologue": {
+      "speaker": "Announcer",
+      "text": "Good morning, everyone. The city library will close early this Friday for scheduled maintenance. Please return all borrowed materials before five o'clock. Normal opening hours will resume on Saturday morning."
+    },
+    "questions": [
+      {
+        "question": 1,
+        "question_text": "What is the announcement mainly about?",
+        "options": {
+          "A": "A schedule change",
+          "B": "A new employee",
+          "C": "A book sale",
+          "D": "A computer problem"
+        },
+        "correct": "A",
+        "explanation": "The talk states information that directly supports option A."
+      },
+      {
+        "question": 2,
+        "question_text": "Why will the library close early?",
+        "options": {
+          "A": "For scheduled maintenance",
+          "B": "For a private event",
+          "C": "For staff training",
+          "D": "For a holiday"
+        },
+        "correct": "A",
+        "explanation": "The talk states information that directly supports option A."
+      },
+      {
+        "question": 3,
+        "question_text": "When will normal opening hours resume?",
+        "options": {
+          "A": "Friday evening",
+          "B": "Saturday morning",
+          "C": "Sunday afternoon",
+          "D": "Next Monday"
+        },
+        "correct": "B",
+        "explanation": "The talk states information that directly supports option B."
+      }
+    ]
+  },
+  {
+    "group": 12,
+    "title": "Part 4 - Talk 12 - Airport Announcement",
+    "monologue": {
+      "speaker": "Announcer",
+      "text": "Attention passengers on Flight 218 to Chicago. The departure gate has been changed from Gate 12 to Gate 18. Please proceed to the new gate after completing the security check. Boarding will begin shortly."
+    },
+    "questions": [
+      {
+        "question": 1,
+        "question_text": "What is being announced?",
+        "options": {
+          "A": "A gate change",
+          "B": "A flight cancellation",
+          "C": "A ticket discount",
+          "D": "A baggage problem"
+        },
+        "correct": "A",
+        "explanation": "The talk states information that directly supports option A."
+      },
+      {
+        "question": 2,
+        "question_text": "Where should passengers go?",
+        "options": {
+          "A": "Gate 6",
+          "B": "Gate 12",
+          "C": "Gate 18",
+          "D": "Gate 24"
+        },
+        "correct": "C",
+        "explanation": "The talk states information that directly supports option C."
+      },
+      {
+        "question": 3,
+        "question_text": "What should passengers do before going to the new gate?",
+        "options": {
+          "A": "Buy a ticket",
+          "B": "Complete the security check",
+          "C": "Collect their luggage",
+          "D": "Visit the information desk"
+        },
+        "correct": "B",
+        "explanation": "The talk states information that directly supports option B."
+      }
+    ]
+  },
+  {
+    "group": 13,
+    "title": "Part 4 - Talk 13 - Office Meeting",
+    "monologue": {
+      "speaker": "Announcer",
+      "text": "A reminder to all department managers: tomorrow's monthly meeting will begin at nine thirty in Conference Room B. Please bring your sales reports and budget proposals. The meeting is expected to last about one hour."
+    },
+    "questions": [
+      {
+        "question": 1,
+        "question_text": "Who is being reminded about the meeting?",
+        "options": {
+          "A": "New employees",
+          "B": "Department managers",
+          "C": "Customers",
+          "D": "Visitors"
+        },
+        "correct": "B",
+        "explanation": "The talk states information that directly supports option B."
+      },
+      {
+        "question": 2,
+        "question_text": "When will the meeting begin?",
+        "options": {
+          "A": "8:30",
+          "B": "9:00",
+          "C": "9:30",
+          "D": "10:00"
+        },
+        "correct": "C",
+        "explanation": "The talk states information that directly supports option C."
+      },
+      {
+        "question": 3,
+        "question_text": "What should attendees bring?",
+        "options": {
+          "A": "Travel documents",
+          "B": "Sales reports and budget proposals",
+          "C": "Training materials",
+          "D": "Customer surveys"
+        },
+        "correct": "B",
+        "explanation": "The talk states information that directly supports option B."
+      }
+    ]
+  },
+  {
+    "group": 14,
+    "title": "Part 4 - Talk 14 - Restaurant Advertisement",
+    "monologue": {
+      "speaker": "Announcer",
+      "text": "This week, Green Garden Restaurant is offering a special lunch menu. Customers can choose any soup, main course, and dessert for fifteen dollars. The promotion is available from Monday through Friday."
+    },
+    "questions": [
+      {
+        "question": 1,
+        "question_text": "What is being promoted?",
+        "options": {
+          "A": "A dinner buffet",
+          "B": "A lunch menu",
+          "C": "A cooking class",
+          "D": "A delivery service"
+        },
+        "correct": "B",
+        "explanation": "The talk states information that directly supports option B."
+      },
+      {
+        "question": 2,
+        "question_text": "How much does the special menu cost?",
+        "options": {
+          "A": "Ten dollars",
+          "B": "Fifteen dollars",
+          "C": "Twenty dollars",
+          "D": "Twenty-five dollars"
+        },
+        "correct": "B",
+        "explanation": "The talk states information that directly supports option B."
+      },
+      {
+        "question": 3,
+        "question_text": "When is the promotion available?",
+        "options": {
+          "A": "Weekends only",
+          "B": "Monday through Friday",
+          "C": "Every evening",
+          "D": "Next month"
+        },
+        "correct": "B",
+        "explanation": "The talk states information that directly supports option B."
+      }
+    ]
+  },
+  {
+    "group": 15,
+    "title": "Part 4 - Talk 15 - Museum Tour",
+    "monologue": {
+      "speaker": "Announcer",
+      "text": "Welcome to the City History Museum. Our guided tour will begin in ten minutes near the main entrance. Visitors should remain with the group and may take photographs without flash. Please silence your mobile phones."
+    },
+    "questions": [
+      {
+        "question": 1,
+        "question_text": "Where are the listeners?",
+        "options": {
+          "A": "A train station",
+          "B": "A city museum",
+          "C": "A library",
+          "D": "A theater"
+        },
+        "correct": "B",
+        "explanation": "The talk states information that directly supports option B."
+      },
+      {
+        "question": 2,
+        "question_text": "When will the tour begin?",
+        "options": {
+          "A": "Immediately",
+          "B": "In ten minutes",
+          "C": "At noon",
+          "D": "Tomorrow morning"
+        },
+        "correct": "B",
+        "explanation": "The talk states information that directly supports option B."
+      },
+      {
+        "question": 3,
+        "question_text": "What may visitors do?",
+        "options": {
+          "A": "Use flash photography",
+          "B": "Leave the group",
+          "C": "Take photographs without flash",
+          "D": "Touch the exhibits"
+        },
+        "correct": "C",
+        "explanation": "The talk states information that directly supports option C."
+      }
+    ]
+  },
+  {
+    "group": 16,
+    "title": "Part 4 - Talk 16 - Train Announcement",
+    "monologue": {
+      "speaker": "Announcer",
+      "text": "The express train to Riverside will depart from Platform 4 at 2:15. Passengers traveling to Oakville should use the local train on Platform 6. Please check your tickets before boarding."
+    },
+    "questions": [
+      {
+        "question": 1,
+        "question_text": "What is the announcement about?",
+        "options": {
+          "A": "An express train",
+          "B": "A bus service",
+          "C": "A flight",
+          "D": "A taxi route"
+        },
+        "correct": "A",
+        "explanation": "The talk states information that directly supports option A."
+      },
+      {
+        "question": 2,
+        "question_text": "Where will the express train depart?",
+        "options": {
+          "A": "Platform 2",
+          "B": "Platform 4",
+          "C": "Platform 6",
+          "D": "Platform 8"
+        },
+        "correct": "B",
+        "explanation": "The talk states information that directly supports option B."
+      },
+      {
+        "question": 3,
+        "question_text": "Which platform should Oakville passengers use?",
+        "options": {
+          "A": "Platform 3",
+          "B": "Platform 4",
+          "C": "Platform 5",
+          "D": "Platform 6"
+        },
+        "correct": "D",
+        "explanation": "The talk states information that directly supports option D."
+      }
+    ]
+  },
+  {
+    "group": 17,
+    "title": "Part 4 - Talk 17 - Weather Report",
+    "monologue": {
+      "speaker": "Announcer",
+      "text": "Today's weather will be mostly sunny, with temperatures reaching twenty-eight degrees. Some light rain is expected this evening. Drivers should be careful on wet roads."
+    },
+    "questions": [
+      {
+        "question": 1,
+        "question_text": "What will the weather be like today?",
+        "options": {
+          "A": "Mostly sunny",
+          "B": "Snowy",
+          "C": "Stormy all day",
+          "D": "Foggy"
+        },
+        "correct": "A",
+        "explanation": "The talk states information that directly supports option A."
+      },
+      {
+        "question": 2,
+        "question_text": "What is expected this evening?",
+        "options": {
+          "A": "Heavy snow",
+          "B": "Light rain",
+          "C": "Strong winds",
+          "D": "Freezing temperatures"
+        },
+        "correct": "B",
+        "explanation": "The talk states information that directly supports option B."
+      },
+      {
+        "question": 3,
+        "question_text": "Who should be especially careful?",
+        "options": {
+          "A": "Swimmers",
+          "B": "Drivers",
+          "C": "Tourists",
+          "D": "Office workers"
+        },
+        "correct": "B",
+        "explanation": "The talk states information that directly supports option B."
+      }
+    ]
+  },
+  {
+    "group": 18,
+    "title": "Part 4 - Talk 18 - Hotel Notice",
+    "monologue": {
+      "speaker": "Announcer",
+      "text": "Guests at the Riverside Hotel are reminded that the swimming pool will be closed tomorrow morning for cleaning. It will reopen at noon. The fitness center will remain open as usual."
+    },
+    "questions": [
+      {
+        "question": 1,
+        "question_text": "What will be closed tomorrow morning?",
+        "options": {
+          "A": "The fitness center",
+          "B": "The restaurant",
+          "C": "The swimming pool",
+          "D": "The hotel lobby"
+        },
+        "correct": "C",
+        "explanation": "The talk states information that directly supports option C."
+      },
+      {
+        "question": 2,
+        "question_text": "Why will it be closed?",
+        "options": {
+          "A": "For cleaning",
+          "B": "For construction",
+          "C": "For a private event",
+          "D": "For repairs"
+        },
+        "correct": "A",
+        "explanation": "The talk states information that directly supports option A."
+      },
+      {
+        "question": 3,
+        "question_text": "When will it reopen?",
+        "options": {
+          "A": "At 10 a.m.",
+          "B": "At 11 a.m.",
+          "C": "At noon",
+          "D": "At 2 p.m."
+        },
+        "correct": "C",
+        "explanation": "The talk states information that directly supports option C."
+      }
+    ]
+  },
+  {
+    "group": 19,
+    "title": "Part 4 - Talk 19 - Store Advertisement",
+    "monologue": {
+      "speaker": "Announcer",
+      "text": "Central Electronics is having a weekend sale on laptops and computer accessories. Selected laptops are discounted by twenty percent. The sale begins Saturday morning and continues through Sunday."
+    },
+    "questions": [
+      {
+        "question": 1,
+        "question_text": "What is Central Electronics promoting?",
+        "options": {
+          "A": "A weekend sale",
+          "B": "A repair service",
+          "C": "A new store",
+          "D": "A training course"
+        },
+        "correct": "A",
+        "explanation": "The talk states information that directly supports option A."
+      },
+      {
+        "question": 2,
+        "question_text": "How much are selected laptops discounted?",
+        "options": {
+          "A": "10 percent",
+          "B": "15 percent",
+          "C": "20 percent",
+          "D": "30 percent"
+        },
+        "correct": "C",
+        "explanation": "The talk states information that directly supports option C."
+      },
+      {
+        "question": 3,
+        "question_text": "When does the sale begin?",
+        "options": {
+          "A": "Friday evening",
+          "B": "Saturday morning",
+          "C": "Saturday afternoon",
+          "D": "Sunday morning"
+        },
+        "correct": "B",
+        "explanation": "The talk states information that directly supports option B."
+      }
+    ]
+  },
+  {
+    "group": 20,
+    "title": "Part 4 - Talk 20 - Company Training",
+    "monologue": {
+      "speaker": "Announcer",
+      "text": "Employees who registered for the customer service workshop should report to Training Room 3 at eight forty-five. The workshop will last until noon, followed by a short lunch break."
+    },
+    "questions": [
+      {
+        "question": 1,
+        "question_text": "Who should report to Training Room 3?",
+        "options": {
+          "A": "Customers",
+          "B": "Department managers",
+          "C": "Registered workshop employees",
+          "D": "Visitors"
+        },
+        "correct": "C",
+        "explanation": "The talk states information that directly supports option C."
+      },
+      {
+        "question": 2,
+        "question_text": "When should participants arrive?",
+        "options": {
+          "A": "8:15",
+          "B": "8:30",
+          "C": "8:45",
+          "D": "9:15"
+        },
+        "correct": "C",
+        "explanation": "The talk states information that directly supports option C."
+      },
+      {
+        "question": 3,
+        "question_text": "What follows the workshop?",
+        "options": {
+          "A": "A staff meeting",
+          "B": "A short lunch break",
+          "C": "A sales presentation",
+          "D": "A company tour"
+        },
+        "correct": "B",
+        "explanation": "The talk states information that directly supports option B."
+      }
+    ]
+  },
+  {
+    "group": 21,
+    "title": "Part 4 - Talk 21 - Library Announcement",
+    "monologue": {
+      "speaker": "Announcer",
+      "text": "Good morning, everyone. The city library will close early this Friday for scheduled maintenance. Please return all borrowed materials before five o'clock. Normal opening hours will resume on Saturday morning."
+    },
+    "questions": [
+      {
+        "question": 1,
+        "question_text": "What is the announcement mainly about?",
+        "options": {
+          "A": "A schedule change",
+          "B": "A new employee",
+          "C": "A book sale",
+          "D": "A computer problem"
+        },
+        "correct": "A",
+        "explanation": "The talk states information that directly supports option A."
+      },
+      {
+        "question": 2,
+        "question_text": "Why will the library close early?",
+        "options": {
+          "A": "For scheduled maintenance",
+          "B": "For a private event",
+          "C": "For staff training",
+          "D": "For a holiday"
+        },
+        "correct": "A",
+        "explanation": "The talk states information that directly supports option A."
+      },
+      {
+        "question": 3,
+        "question_text": "When will normal opening hours resume?",
+        "options": {
+          "A": "Friday evening",
+          "B": "Saturday morning",
+          "C": "Sunday afternoon",
+          "D": "Next Monday"
+        },
+        "correct": "B",
+        "explanation": "The talk states information that directly supports option B."
+      }
+    ]
+  },
+  {
+    "group": 22,
+    "title": "Part 4 - Talk 22 - Airport Announcement",
+    "monologue": {
+      "speaker": "Announcer",
+      "text": "Attention passengers on Flight 218 to Chicago. The departure gate has been changed from Gate 12 to Gate 18. Please proceed to the new gate after completing the security check. Boarding will begin shortly."
+    },
+    "questions": [
+      {
+        "question": 1,
+        "question_text": "What is being announced?",
+        "options": {
+          "A": "A gate change",
+          "B": "A flight cancellation",
+          "C": "A ticket discount",
+          "D": "A baggage problem"
+        },
+        "correct": "A",
+        "explanation": "The talk states information that directly supports option A."
+      },
+      {
+        "question": 2,
+        "question_text": "Where should passengers go?",
+        "options": {
+          "A": "Gate 6",
+          "B": "Gate 12",
+          "C": "Gate 18",
+          "D": "Gate 24"
+        },
+        "correct": "C",
+        "explanation": "The talk states information that directly supports option C."
+      },
+      {
+        "question": 3,
+        "question_text": "What should passengers do before going to the new gate?",
+        "options": {
+          "A": "Buy a ticket",
+          "B": "Complete the security check",
+          "C": "Collect their luggage",
+          "D": "Visit the information desk"
+        },
+        "correct": "B",
+        "explanation": "The talk states information that directly supports option B."
+      }
+    ]
+  },
+  {
+    "group": 23,
+    "title": "Part 4 - Talk 23 - Office Meeting",
+    "monologue": {
+      "speaker": "Announcer",
+      "text": "A reminder to all department managers: tomorrow's monthly meeting will begin at nine thirty in Conference Room B. Please bring your sales reports and budget proposals. The meeting is expected to last about one hour."
+    },
+    "questions": [
+      {
+        "question": 1,
+        "question_text": "Who is being reminded about the meeting?",
+        "options": {
+          "A": "New employees",
+          "B": "Department managers",
+          "C": "Customers",
+          "D": "Visitors"
+        },
+        "correct": "B",
+        "explanation": "The talk states information that directly supports option B."
+      },
+      {
+        "question": 2,
+        "question_text": "When will the meeting begin?",
+        "options": {
+          "A": "8:30",
+          "B": "9:00",
+          "C": "9:30",
+          "D": "10:00"
+        },
+        "correct": "C",
+        "explanation": "The talk states information that directly supports option C."
+      },
+      {
+        "question": 3,
+        "question_text": "What should attendees bring?",
+        "options": {
+          "A": "Travel documents",
+          "B": "Sales reports and budget proposals",
+          "C": "Training materials",
+          "D": "Customer surveys"
+        },
+        "correct": "B",
+        "explanation": "The talk states information that directly supports option B."
+      }
+    ]
+  },
+  {
+    "group": 24,
+    "title": "Part 4 - Talk 24 - Restaurant Advertisement",
+    "monologue": {
+      "speaker": "Announcer",
+      "text": "This week, Green Garden Restaurant is offering a special lunch menu. Customers can choose any soup, main course, and dessert for fifteen dollars. The promotion is available from Monday through Friday."
+    },
+    "questions": [
+      {
+        "question": 1,
+        "question_text": "What is being promoted?",
+        "options": {
+          "A": "A dinner buffet",
+          "B": "A lunch menu",
+          "C": "A cooking class",
+          "D": "A delivery service"
+        },
+        "correct": "B",
+        "explanation": "The talk states information that directly supports option B."
+      },
+      {
+        "question": 2,
+        "question_text": "How much does the special menu cost?",
+        "options": {
+          "A": "Ten dollars",
+          "B": "Fifteen dollars",
+          "C": "Twenty dollars",
+          "D": "Twenty-five dollars"
+        },
+        "correct": "B",
+        "explanation": "The talk states information that directly supports option B."
+      },
+      {
+        "question": 3,
+        "question_text": "When is the promotion available?",
+        "options": {
+          "A": "Weekends only",
+          "B": "Monday through Friday",
+          "C": "Every evening",
+          "D": "Next month"
+        },
+        "correct": "B",
+        "explanation": "The talk states information that directly supports option B."
+      }
+    ]
+  },
+  {
+    "group": 25,
+    "title": "Part 4 - Talk 25 - Museum Tour",
+    "monologue": {
+      "speaker": "Announcer",
+      "text": "Welcome to the City History Museum. Our guided tour will begin in ten minutes near the main entrance. Visitors should remain with the group and may take photographs without flash. Please silence your mobile phones."
+    },
+    "questions": [
+      {
+        "question": 1,
+        "question_text": "Where are the listeners?",
+        "options": {
+          "A": "A train station",
+          "B": "A city museum",
+          "C": "A library",
+          "D": "A theater"
+        },
+        "correct": "B",
+        "explanation": "The talk states information that directly supports option B."
+      },
+      {
+        "question": 2,
+        "question_text": "When will the tour begin?",
+        "options": {
+          "A": "Immediately",
+          "B": "In ten minutes",
+          "C": "At noon",
+          "D": "Tomorrow morning"
+        },
+        "correct": "B",
+        "explanation": "The talk states information that directly supports option B."
+      },
+      {
+        "question": 3,
+        "question_text": "What may visitors do?",
+        "options": {
+          "A": "Use flash photography",
+          "B": "Leave the group",
+          "C": "Take photographs without flash",
+          "D": "Touch the exhibits"
+        },
+        "correct": "C",
+        "explanation": "The talk states information that directly supports option C."
+      }
+    ]
+  },
+  {
+    "group": 26,
+    "title": "Part 4 - Talk 26 - Train Announcement",
+    "monologue": {
+      "speaker": "Announcer",
+      "text": "The express train to Riverside will depart from Platform 4 at 2:15. Passengers traveling to Oakville should use the local train on Platform 6. Please check your tickets before boarding."
+    },
+    "questions": [
+      {
+        "question": 1,
+        "question_text": "What is the announcement about?",
+        "options": {
+          "A": "An express train",
+          "B": "A bus service",
+          "C": "A flight",
+          "D": "A taxi route"
+        },
+        "correct": "A",
+        "explanation": "The talk states information that directly supports option A."
+      },
+      {
+        "question": 2,
+        "question_text": "Where will the express train depart?",
+        "options": {
+          "A": "Platform 2",
+          "B": "Platform 4",
+          "C": "Platform 6",
+          "D": "Platform 8"
+        },
+        "correct": "B",
+        "explanation": "The talk states information that directly supports option B."
+      },
+      {
+        "question": 3,
+        "question_text": "Which platform should Oakville passengers use?",
+        "options": {
+          "A": "Platform 3",
+          "B": "Platform 4",
+          "C": "Platform 5",
+          "D": "Platform 6"
+        },
+        "correct": "D",
+        "explanation": "The talk states information that directly supports option D."
+      }
+    ]
+  },
+  {
+    "group": 27,
+    "title": "Part 4 - Talk 27 - Weather Report",
+    "monologue": {
+      "speaker": "Announcer",
+      "text": "Today's weather will be mostly sunny, with temperatures reaching twenty-eight degrees. Some light rain is expected this evening. Drivers should be careful on wet roads."
+    },
+    "questions": [
+      {
+        "question": 1,
+        "question_text": "What will the weather be like today?",
+        "options": {
+          "A": "Mostly sunny",
+          "B": "Snowy",
+          "C": "Stormy all day",
+          "D": "Foggy"
+        },
+        "correct": "A",
+        "explanation": "The talk states information that directly supports option A."
+      },
+      {
+        "question": 2,
+        "question_text": "What is expected this evening?",
+        "options": {
+          "A": "Heavy snow",
+          "B": "Light rain",
+          "C": "Strong winds",
+          "D": "Freezing temperatures"
+        },
+        "correct": "B",
+        "explanation": "The talk states information that directly supports option B."
+      },
+      {
+        "question": 3,
+        "question_text": "Who should be especially careful?",
+        "options": {
+          "A": "Swimmers",
+          "B": "Drivers",
+          "C": "Tourists",
+          "D": "Office workers"
+        },
+        "correct": "B",
+        "explanation": "The talk states information that directly supports option B."
+      }
+    ]
+  },
+  {
+    "group": 28,
+    "title": "Part 4 - Talk 28 - Hotel Notice",
+    "monologue": {
+      "speaker": "Announcer",
+      "text": "Guests at the Riverside Hotel are reminded that the swimming pool will be closed tomorrow morning for cleaning. It will reopen at noon. The fitness center will remain open as usual."
+    },
+    "questions": [
+      {
+        "question": 1,
+        "question_text": "What will be closed tomorrow morning?",
+        "options": {
+          "A": "The fitness center",
+          "B": "The restaurant",
+          "C": "The swimming pool",
+          "D": "The hotel lobby"
+        },
+        "correct": "C",
+        "explanation": "The talk states information that directly supports option C."
+      },
+      {
+        "question": 2,
+        "question_text": "Why will it be closed?",
+        "options": {
+          "A": "For cleaning",
+          "B": "For construction",
+          "C": "For a private event",
+          "D": "For repairs"
+        },
+        "correct": "A",
+        "explanation": "The talk states information that directly supports option A."
+      },
+      {
+        "question": 3,
+        "question_text": "When will it reopen?",
+        "options": {
+          "A": "At 10 a.m.",
+          "B": "At 11 a.m.",
+          "C": "At noon",
+          "D": "At 2 p.m."
+        },
+        "correct": "C",
+        "explanation": "The talk states information that directly supports option C."
+      }
+    ]
+  },
+  {
+    "group": 29,
+    "title": "Part 4 - Talk 29 - Store Advertisement",
+    "monologue": {
+      "speaker": "Announcer",
+      "text": "Central Electronics is having a weekend sale on laptops and computer accessories. Selected laptops are discounted by twenty percent. The sale begins Saturday morning and continues through Sunday."
+    },
+    "questions": [
+      {
+        "question": 1,
+        "question_text": "What is Central Electronics promoting?",
+        "options": {
+          "A": "A weekend sale",
+          "B": "A repair service",
+          "C": "A new store",
+          "D": "A training course"
+        },
+        "correct": "A",
+        "explanation": "The talk states information that directly supports option A."
+      },
+      {
+        "question": 2,
+        "question_text": "How much are selected laptops discounted?",
+        "options": {
+          "A": "10 percent",
+          "B": "15 percent",
+          "C": "20 percent",
+          "D": "30 percent"
+        },
+        "correct": "C",
+        "explanation": "The talk states information that directly supports option C."
+      },
+      {
+        "question": 3,
+        "question_text": "When does the sale begin?",
+        "options": {
+          "A": "Friday evening",
+          "B": "Saturday morning",
+          "C": "Saturday afternoon",
+          "D": "Sunday morning"
+        },
+        "correct": "B",
+        "explanation": "The talk states information that directly supports option B."
+      }
+    ]
+  },
+  {
+    "group": 30,
+    "title": "Part 4 - Talk 30 - Company Training",
+    "monologue": {
+      "speaker": "Announcer",
+      "text": "Employees who registered for the customer service workshop should report to Training Room 3 at eight forty-five. The workshop will last until noon, followed by a short lunch break."
+    },
+    "questions": [
+      {
+        "question": 1,
+        "question_text": "Who should report to Training Room 3?",
+        "options": {
+          "A": "Customers",
+          "B": "Department managers",
+          "C": "Registered workshop employees",
+          "D": "Visitors"
+        },
+        "correct": "C",
+        "explanation": "The talk states information that directly supports option C."
+      },
+      {
+        "question": 2,
+        "question_text": "When should participants arrive?",
+        "options": {
+          "A": "8:15",
+          "B": "8:30",
+          "C": "8:45",
+          "D": "9:15"
+        },
+        "correct": "C",
+        "explanation": "The talk states information that directly supports option C."
+      },
+      {
+        "question": 3,
+        "question_text": "What follows the workshop?",
+        "options": {
+          "A": "A staff meeting",
+          "B": "A short lunch break",
+          "C": "A sales presentation",
+          "D": "A company tour"
+        },
+        "correct": "B",
+        "explanation": "The talk states information that directly supports option B."
+      }
+    ]
+  },
+  {
+    "group": 31,
+    "title": "Part 4 - Talk 31 - Library Announcement",
+    "monologue": {
+      "speaker": "Announcer",
+      "text": "Good morning, everyone. The city library will close early this Friday for scheduled maintenance. Please return all borrowed materials before five o'clock. Normal opening hours will resume on Saturday morning."
+    },
+    "questions": [
+      {
+        "question": 1,
+        "question_text": "What is the announcement mainly about?",
+        "options": {
+          "A": "A schedule change",
+          "B": "A new employee",
+          "C": "A book sale",
+          "D": "A computer problem"
+        },
+        "correct": "A",
+        "explanation": "The talk states information that directly supports option A."
+      },
+      {
+        "question": 2,
+        "question_text": "Why will the library close early?",
+        "options": {
+          "A": "For scheduled maintenance",
+          "B": "For a private event",
+          "C": "For staff training",
+          "D": "For a holiday"
+        },
+        "correct": "A",
+        "explanation": "The talk states information that directly supports option A."
+      },
+      {
+        "question": 3,
+        "question_text": "When will normal opening hours resume?",
+        "options": {
+          "A": "Friday evening",
+          "B": "Saturday morning",
+          "C": "Sunday afternoon",
+          "D": "Next Monday"
+        },
+        "correct": "B",
+        "explanation": "The talk states information that directly supports option B."
+      }
+    ]
+  },
+  {
+    "group": 32,
+    "title": "Part 4 - Talk 32 - Airport Announcement",
+    "monologue": {
+      "speaker": "Announcer",
+      "text": "Attention passengers on Flight 218 to Chicago. The departure gate has been changed from Gate 12 to Gate 18. Please proceed to the new gate after completing the security check. Boarding will begin shortly."
+    },
+    "questions": [
+      {
+        "question": 1,
+        "question_text": "What is being announced?",
+        "options": {
+          "A": "A gate change",
+          "B": "A flight cancellation",
+          "C": "A ticket discount",
+          "D": "A baggage problem"
+        },
+        "correct": "A",
+        "explanation": "The talk states information that directly supports option A."
+      },
+      {
+        "question": 2,
+        "question_text": "Where should passengers go?",
+        "options": {
+          "A": "Gate 6",
+          "B": "Gate 12",
+          "C": "Gate 18",
+          "D": "Gate 24"
+        },
+        "correct": "C",
+        "explanation": "The talk states information that directly supports option C."
+      },
+      {
+        "question": 3,
+        "question_text": "What should passengers do before going to the new gate?",
+        "options": {
+          "A": "Buy a ticket",
+          "B": "Complete the security check",
+          "C": "Collect their luggage",
+          "D": "Visit the information desk"
+        },
+        "correct": "B",
+        "explanation": "The talk states information that directly supports option B."
+      }
+    ]
+  },
+  {
+    "group": 33,
+    "title": "Part 4 - Talk 33 - Office Meeting",
+    "monologue": {
+      "speaker": "Announcer",
+      "text": "A reminder to all department managers: tomorrow's monthly meeting will begin at nine thirty in Conference Room B. Please bring your sales reports and budget proposals. The meeting is expected to last about one hour."
+    },
+    "questions": [
+      {
+        "question": 1,
+        "question_text": "Who is being reminded about the meeting?",
+        "options": {
+          "A": "New employees",
+          "B": "Department managers",
+          "C": "Customers",
+          "D": "Visitors"
+        },
+        "correct": "B",
+        "explanation": "The talk states information that directly supports option B."
+      },
+      {
+        "question": 2,
+        "question_text": "When will the meeting begin?",
+        "options": {
+          "A": "8:30",
+          "B": "9:00",
+          "C": "9:30",
+          "D": "10:00"
+        },
+        "correct": "C",
+        "explanation": "The talk states information that directly supports option C."
+      },
+      {
+        "question": 3,
+        "question_text": "What should attendees bring?",
+        "options": {
+          "A": "Travel documents",
+          "B": "Sales reports and budget proposals",
+          "C": "Training materials",
+          "D": "Customer surveys"
+        },
+        "correct": "B",
+        "explanation": "The talk states information that directly supports option B."
+      }
+    ]
+  },
+  {
+    "group": 34,
+    "title": "Part 4 - Talk 34 - Restaurant Advertisement",
+    "monologue": {
+      "speaker": "Announcer",
+      "text": "This week, Green Garden Restaurant is offering a special lunch menu. Customers can choose any soup, main course, and dessert for fifteen dollars. The promotion is available from Monday through Friday."
+    },
+    "questions": [
+      {
+        "question": 1,
+        "question_text": "What is being promoted?",
+        "options": {
+          "A": "A dinner buffet",
+          "B": "A lunch menu",
+          "C": "A cooking class",
+          "D": "A delivery service"
+        },
+        "correct": "B",
+        "explanation": "The talk states information that directly supports option B."
+      },
+      {
+        "question": 2,
+        "question_text": "How much does the special menu cost?",
+        "options": {
+          "A": "Ten dollars",
+          "B": "Fifteen dollars",
+          "C": "Twenty dollars",
+          "D": "Twenty-five dollars"
+        },
+        "correct": "B",
+        "explanation": "The talk states information that directly supports option B."
+      },
+      {
+        "question": 3,
+        "question_text": "When is the promotion available?",
+        "options": {
+          "A": "Weekends only",
+          "B": "Monday through Friday",
+          "C": "Every evening",
+          "D": "Next month"
+        },
+        "correct": "B",
+        "explanation": "The talk states information that directly supports option B."
+      }
+    ]
+  },
+  {
+    "group": 35,
+    "title": "Part 4 - Talk 35 - Museum Tour",
+    "monologue": {
+      "speaker": "Announcer",
+      "text": "Welcome to the City History Museum. Our guided tour will begin in ten minutes near the main entrance. Visitors should remain with the group and may take photographs without flash. Please silence your mobile phones."
+    },
+    "questions": [
+      {
+        "question": 1,
+        "question_text": "Where are the listeners?",
+        "options": {
+          "A": "A train station",
+          "B": "A city museum",
+          "C": "A library",
+          "D": "A theater"
+        },
+        "correct": "B",
+        "explanation": "The talk states information that directly supports option B."
+      },
+      {
+        "question": 2,
+        "question_text": "When will the tour begin?",
+        "options": {
+          "A": "Immediately",
+          "B": "In ten minutes",
+          "C": "At noon",
+          "D": "Tomorrow morning"
+        },
+        "correct": "B",
+        "explanation": "The talk states information that directly supports option B."
+      },
+      {
+        "question": 3,
+        "question_text": "What may visitors do?",
+        "options": {
+          "A": "Use flash photography",
+          "B": "Leave the group",
+          "C": "Take photographs without flash",
+          "D": "Touch the exhibits"
+        },
+        "correct": "C",
+        "explanation": "The talk states information that directly supports option C."
+      }
+    ]
+  },
+  {
+    "group": 36,
+    "title": "Part 4 - Talk 36 - Train Announcement",
+    "monologue": {
+      "speaker": "Announcer",
+      "text": "The express train to Riverside will depart from Platform 4 at 2:15. Passengers traveling to Oakville should use the local train on Platform 6. Please check your tickets before boarding."
+    },
+    "questions": [
+      {
+        "question": 1,
+        "question_text": "What is the announcement about?",
+        "options": {
+          "A": "An express train",
+          "B": "A bus service",
+          "C": "A flight",
+          "D": "A taxi route"
+        },
+        "correct": "A",
+        "explanation": "The talk states information that directly supports option A."
+      },
+      {
+        "question": 2,
+        "question_text": "Where will the express train depart?",
+        "options": {
+          "A": "Platform 2",
+          "B": "Platform 4",
+          "C": "Platform 6",
+          "D": "Platform 8"
+        },
+        "correct": "B",
+        "explanation": "The talk states information that directly supports option B."
+      },
+      {
+        "question": 3,
+        "question_text": "Which platform should Oakville passengers use?",
+        "options": {
+          "A": "Platform 3",
+          "B": "Platform 4",
+          "C": "Platform 5",
+          "D": "Platform 6"
+        },
+        "correct": "D",
+        "explanation": "The talk states information that directly supports option D."
+      }
+    ]
+  },
+  {
+    "group": 37,
+    "title": "Part 4 - Talk 37 - Weather Report",
+    "monologue": {
+      "speaker": "Announcer",
+      "text": "Today's weather will be mostly sunny, with temperatures reaching twenty-eight degrees. Some light rain is expected this evening. Drivers should be careful on wet roads."
+    },
+    "questions": [
+      {
+        "question": 1,
+        "question_text": "What will the weather be like today?",
+        "options": {
+          "A": "Mostly sunny",
+          "B": "Snowy",
+          "C": "Stormy all day",
+          "D": "Foggy"
+        },
+        "correct": "A",
+        "explanation": "The talk states information that directly supports option A."
+      },
+      {
+        "question": 2,
+        "question_text": "What is expected this evening?",
+        "options": {
+          "A": "Heavy snow",
+          "B": "Light rain",
+          "C": "Strong winds",
+          "D": "Freezing temperatures"
+        },
+        "correct": "B",
+        "explanation": "The talk states information that directly supports option B."
+      },
+      {
+        "question": 3,
+        "question_text": "Who should be especially careful?",
+        "options": {
+          "A": "Swimmers",
+          "B": "Drivers",
+          "C": "Tourists",
+          "D": "Office workers"
+        },
+        "correct": "B",
+        "explanation": "The talk states information that directly supports option B."
+      }
+    ]
+  },
+  {
+    "group": 38,
+    "title": "Part 4 - Talk 38 - Hotel Notice",
+    "monologue": {
+      "speaker": "Announcer",
+      "text": "Guests at the Riverside Hotel are reminded that the swimming pool will be closed tomorrow morning for cleaning. It will reopen at noon. The fitness center will remain open as usual."
+    },
+    "questions": [
+      {
+        "question": 1,
+        "question_text": "What will be closed tomorrow morning?",
+        "options": {
+          "A": "The fitness center",
+          "B": "The restaurant",
+          "C": "The swimming pool",
+          "D": "The hotel lobby"
+        },
+        "correct": "C",
+        "explanation": "The talk states information that directly supports option C."
+      },
+      {
+        "question": 2,
+        "question_text": "Why will it be closed?",
+        "options": {
+          "A": "For cleaning",
+          "B": "For construction",
+          "C": "For a private event",
+          "D": "For repairs"
+        },
+        "correct": "A",
+        "explanation": "The talk states information that directly supports option A."
+      },
+      {
+        "question": 3,
+        "question_text": "When will it reopen?",
+        "options": {
+          "A": "At 10 a.m.",
+          "B": "At 11 a.m.",
+          "C": "At noon",
+          "D": "At 2 p.m."
+        },
+        "correct": "C",
+        "explanation": "The talk states information that directly supports option C."
+      }
+    ]
+  },
+  {
+    "group": 39,
+    "title": "Part 4 - Talk 39 - Store Advertisement",
+    "monologue": {
+      "speaker": "Announcer",
+      "text": "Central Electronics is having a weekend sale on laptops and computer accessories. Selected laptops are discounted by twenty percent. The sale begins Saturday morning and continues through Sunday."
+    },
+    "questions": [
+      {
+        "question": 1,
+        "question_text": "What is Central Electronics promoting?",
+        "options": {
+          "A": "A weekend sale",
+          "B": "A repair service",
+          "C": "A new store",
+          "D": "A training course"
+        },
+        "correct": "A",
+        "explanation": "The talk states information that directly supports option A."
+      },
+      {
+        "question": 2,
+        "question_text": "How much are selected laptops discounted?",
+        "options": {
+          "A": "10 percent",
+          "B": "15 percent",
+          "C": "20 percent",
+          "D": "30 percent"
+        },
+        "correct": "C",
+        "explanation": "The talk states information that directly supports option C."
+      },
+      {
+        "question": 3,
+        "question_text": "When does the sale begin?",
+        "options": {
+          "A": "Friday evening",
+          "B": "Saturday morning",
+          "C": "Saturday afternoon",
+          "D": "Sunday morning"
+        },
+        "correct": "B",
+        "explanation": "The talk states information that directly supports option B."
+      }
+    ]
+  },
+  {
+    "group": 40,
+    "title": "Part 4 - Talk 40 - Company Training",
+    "monologue": {
+      "speaker": "Announcer",
+      "text": "Employees who registered for the customer service workshop should report to Training Room 3 at eight forty-five. The workshop will last until noon, followed by a short lunch break."
+    },
+    "questions": [
+      {
+        "question": 1,
+        "question_text": "Who should report to Training Room 3?",
+        "options": {
+          "A": "Customers",
+          "B": "Department managers",
+          "C": "Registered workshop employees",
+          "D": "Visitors"
+        },
+        "correct": "C",
+        "explanation": "The talk states information that directly supports option C."
+      },
+      {
+        "question": 2,
+        "question_text": "When should participants arrive?",
+        "options": {
+          "A": "8:15",
+          "B": "8:30",
+          "C": "8:45",
+          "D": "9:15"
+        },
+        "correct": "C",
+        "explanation": "The talk states information that directly supports option C."
+      },
+      {
+        "question": 3,
+        "question_text": "What follows the workshop?",
+        "options": {
+          "A": "A staff meeting",
+          "B": "A short lunch break",
+          "C": "A sales presentation",
+          "D": "A company tour"
+        },
+        "correct": "B",
+        "explanation": "The talk states information that directly supports option B."
+      }
+    ]
+  },
+  {
+    "group": 41,
+    "title": "Part 4 - Talk 41 - Library Announcement",
+    "monologue": {
+      "speaker": "Announcer",
+      "text": "Good morning, everyone. The city library will close early this Friday for scheduled maintenance. Please return all borrowed materials before five o'clock. Normal opening hours will resume on Saturday morning."
+    },
+    "questions": [
+      {
+        "question": 1,
+        "question_text": "What is the announcement mainly about?",
+        "options": {
+          "A": "A schedule change",
+          "B": "A new employee",
+          "C": "A book sale",
+          "D": "A computer problem"
+        },
+        "correct": "A",
+        "explanation": "The talk states information that directly supports option A."
+      },
+      {
+        "question": 2,
+        "question_text": "Why will the library close early?",
+        "options": {
+          "A": "For scheduled maintenance",
+          "B": "For a private event",
+          "C": "For staff training",
+          "D": "For a holiday"
+        },
+        "correct": "A",
+        "explanation": "The talk states information that directly supports option A."
+      },
+      {
+        "question": 3,
+        "question_text": "When will normal opening hours resume?",
+        "options": {
+          "A": "Friday evening",
+          "B": "Saturday morning",
+          "C": "Sunday afternoon",
+          "D": "Next Monday"
+        },
+        "correct": "B",
+        "explanation": "The talk states information that directly supports option B."
+      }
+    ]
+  },
+  {
+    "group": 42,
+    "title": "Part 4 - Talk 42 - Airport Announcement",
+    "monologue": {
+      "speaker": "Announcer",
+      "text": "Attention passengers on Flight 218 to Chicago. The departure gate has been changed from Gate 12 to Gate 18. Please proceed to the new gate after completing the security check. Boarding will begin shortly."
+    },
+    "questions": [
+      {
+        "question": 1,
+        "question_text": "What is being announced?",
+        "options": {
+          "A": "A gate change",
+          "B": "A flight cancellation",
+          "C": "A ticket discount",
+          "D": "A baggage problem"
+        },
+        "correct": "A",
+        "explanation": "The talk states information that directly supports option A."
+      },
+      {
+        "question": 2,
+        "question_text": "Where should passengers go?",
+        "options": {
+          "A": "Gate 6",
+          "B": "Gate 12",
+          "C": "Gate 18",
+          "D": "Gate 24"
+        },
+        "correct": "C",
+        "explanation": "The talk states information that directly supports option C."
+      },
+      {
+        "question": 3,
+        "question_text": "What should passengers do before going to the new gate?",
+        "options": {
+          "A": "Buy a ticket",
+          "B": "Complete the security check",
+          "C": "Collect their luggage",
+          "D": "Visit the information desk"
+        },
+        "correct": "B",
+        "explanation": "The talk states information that directly supports option B."
+      }
+    ]
+  },
+  {
+    "group": 43,
+    "title": "Part 4 - Talk 43 - Office Meeting",
+    "monologue": {
+      "speaker": "Announcer",
+      "text": "A reminder to all department managers: tomorrow's monthly meeting will begin at nine thirty in Conference Room B. Please bring your sales reports and budget proposals. The meeting is expected to last about one hour."
+    },
+    "questions": [
+      {
+        "question": 1,
+        "question_text": "Who is being reminded about the meeting?",
+        "options": {
+          "A": "New employees",
+          "B": "Department managers",
+          "C": "Customers",
+          "D": "Visitors"
+        },
+        "correct": "B",
+        "explanation": "The talk states information that directly supports option B."
+      },
+      {
+        "question": 2,
+        "question_text": "When will the meeting begin?",
+        "options": {
+          "A": "8:30",
+          "B": "9:00",
+          "C": "9:30",
+          "D": "10:00"
+        },
+        "correct": "C",
+        "explanation": "The talk states information that directly supports option C."
+      },
+      {
+        "question": 3,
+        "question_text": "What should attendees bring?",
+        "options": {
+          "A": "Travel documents",
+          "B": "Sales reports and budget proposals",
+          "C": "Training materials",
+          "D": "Customer surveys"
+        },
+        "correct": "B",
+        "explanation": "The talk states information that directly supports option B."
+      }
+    ]
+  },
+  {
+    "group": 44,
+    "title": "Part 4 - Talk 44 - Restaurant Advertisement",
+    "monologue": {
+      "speaker": "Announcer",
+      "text": "This week, Green Garden Restaurant is offering a special lunch menu. Customers can choose any soup, main course, and dessert for fifteen dollars. The promotion is available from Monday through Friday."
+    },
+    "questions": [
+      {
+        "question": 1,
+        "question_text": "What is being promoted?",
+        "options": {
+          "A": "A dinner buffet",
+          "B": "A lunch menu",
+          "C": "A cooking class",
+          "D": "A delivery service"
+        },
+        "correct": "B",
+        "explanation": "The talk states information that directly supports option B."
+      },
+      {
+        "question": 2,
+        "question_text": "How much does the special menu cost?",
+        "options": {
+          "A": "Ten dollars",
+          "B": "Fifteen dollars",
+          "C": "Twenty dollars",
+          "D": "Twenty-five dollars"
+        },
+        "correct": "B",
+        "explanation": "The talk states information that directly supports option B."
+      },
+      {
+        "question": 3,
+        "question_text": "When is the promotion available?",
+        "options": {
+          "A": "Weekends only",
+          "B": "Monday through Friday",
+          "C": "Every evening",
+          "D": "Next month"
+        },
+        "correct": "B",
+        "explanation": "The talk states information that directly supports option B."
+      }
+    ]
+  },
+  {
+    "group": 45,
+    "title": "Part 4 - Talk 45 - Museum Tour",
+    "monologue": {
+      "speaker": "Announcer",
+      "text": "Welcome to the City History Museum. Our guided tour will begin in ten minutes near the main entrance. Visitors should remain with the group and may take photographs without flash. Please silence your mobile phones."
+    },
+    "questions": [
+      {
+        "question": 1,
+        "question_text": "Where are the listeners?",
+        "options": {
+          "A": "A train station",
+          "B": "A city museum",
+          "C": "A library",
+          "D": "A theater"
+        },
+        "correct": "B",
+        "explanation": "The talk states information that directly supports option B."
+      },
+      {
+        "question": 2,
+        "question_text": "When will the tour begin?",
+        "options": {
+          "A": "Immediately",
+          "B": "In ten minutes",
+          "C": "At noon",
+          "D": "Tomorrow morning"
+        },
+        "correct": "B",
+        "explanation": "The talk states information that directly supports option B."
+      },
+      {
+        "question": 3,
+        "question_text": "What may visitors do?",
+        "options": {
+          "A": "Use flash photography",
+          "B": "Leave the group",
+          "C": "Take photographs without flash",
+          "D": "Touch the exhibits"
+        },
+        "correct": "C",
+        "explanation": "The talk states information that directly supports option C."
+      }
+    ]
+  },
+  {
+    "group": 46,
+    "title": "Part 4 - Talk 46 - Train Announcement",
+    "monologue": {
+      "speaker": "Announcer",
+      "text": "The express train to Riverside will depart from Platform 4 at 2:15. Passengers traveling to Oakville should use the local train on Platform 6. Please check your tickets before boarding."
+    },
+    "questions": [
+      {
+        "question": 1,
+        "question_text": "What is the announcement about?",
+        "options": {
+          "A": "An express train",
+          "B": "A bus service",
+          "C": "A flight",
+          "D": "A taxi route"
+        },
+        "correct": "A",
+        "explanation": "The talk states information that directly supports option A."
+      },
+      {
+        "question": 2,
+        "question_text": "Where will the express train depart?",
+        "options": {
+          "A": "Platform 2",
+          "B": "Platform 4",
+          "C": "Platform 6",
+          "D": "Platform 8"
+        },
+        "correct": "B",
+        "explanation": "The talk states information that directly supports option B."
+      },
+      {
+        "question": 3,
+        "question_text": "Which platform should Oakville passengers use?",
+        "options": {
+          "A": "Platform 3",
+          "B": "Platform 4",
+          "C": "Platform 5",
+          "D": "Platform 6"
+        },
+        "correct": "D",
+        "explanation": "The talk states information that directly supports option D."
+      }
+    ]
+  },
+  {
+    "group": 47,
+    "title": "Part 4 - Talk 47 - Weather Report",
+    "monologue": {
+      "speaker": "Announcer",
+      "text": "Today's weather will be mostly sunny, with temperatures reaching twenty-eight degrees. Some light rain is expected this evening. Drivers should be careful on wet roads."
+    },
+    "questions": [
+      {
+        "question": 1,
+        "question_text": "What will the weather be like today?",
+        "options": {
+          "A": "Mostly sunny",
+          "B": "Snowy",
+          "C": "Stormy all day",
+          "D": "Foggy"
+        },
+        "correct": "A",
+        "explanation": "The talk states information that directly supports option A."
+      },
+      {
+        "question": 2,
+        "question_text": "What is expected this evening?",
+        "options": {
+          "A": "Heavy snow",
+          "B": "Light rain",
+          "C": "Strong winds",
+          "D": "Freezing temperatures"
+        },
+        "correct": "B",
+        "explanation": "The talk states information that directly supports option B."
+      },
+      {
+        "question": 3,
+        "question_text": "Who should be especially careful?",
+        "options": {
+          "A": "Swimmers",
+          "B": "Drivers",
+          "C": "Tourists",
+          "D": "Office workers"
+        },
+        "correct": "B",
+        "explanation": "The talk states information that directly supports option B."
+      }
+    ]
+  },
+  {
+    "group": 48,
+    "title": "Part 4 - Talk 48 - Hotel Notice",
+    "monologue": {
+      "speaker": "Announcer",
+      "text": "Guests at the Riverside Hotel are reminded that the swimming pool will be closed tomorrow morning for cleaning. It will reopen at noon. The fitness center will remain open as usual."
+    },
+    "questions": [
+      {
+        "question": 1,
+        "question_text": "What will be closed tomorrow morning?",
+        "options": {
+          "A": "The fitness center",
+          "B": "The restaurant",
+          "C": "The swimming pool",
+          "D": "The hotel lobby"
+        },
+        "correct": "C",
+        "explanation": "The talk states information that directly supports option C."
+      },
+      {
+        "question": 2,
+        "question_text": "Why will it be closed?",
+        "options": {
+          "A": "For cleaning",
+          "B": "For construction",
+          "C": "For a private event",
+          "D": "For repairs"
+        },
+        "correct": "A",
+        "explanation": "The talk states information that directly supports option A."
+      },
+      {
+        "question": 3,
+        "question_text": "When will it reopen?",
+        "options": {
+          "A": "At 10 a.m.",
+          "B": "At 11 a.m.",
+          "C": "At noon",
+          "D": "At 2 p.m."
+        },
+        "correct": "C",
+        "explanation": "The talk states information that directly supports option C."
+      }
+    ]
+  },
+  {
+    "group": 49,
+    "title": "Part 4 - Talk 49 - Store Advertisement",
+    "monologue": {
+      "speaker": "Announcer",
+      "text": "Central Electronics is having a weekend sale on laptops and computer accessories. Selected laptops are discounted by twenty percent. The sale begins Saturday morning and continues through Sunday."
+    },
+    "questions": [
+      {
+        "question": 1,
+        "question_text": "What is Central Electronics promoting?",
+        "options": {
+          "A": "A weekend sale",
+          "B": "A repair service",
+          "C": "A new store",
+          "D": "A training course"
+        },
+        "correct": "A",
+        "explanation": "The talk states information that directly supports option A."
+      },
+      {
+        "question": 2,
+        "question_text": "How much are selected laptops discounted?",
+        "options": {
+          "A": "10 percent",
+          "B": "15 percent",
+          "C": "20 percent",
+          "D": "30 percent"
+        },
+        "correct": "C",
+        "explanation": "The talk states information that directly supports option C."
+      },
+      {
+        "question": 3,
+        "question_text": "When does the sale begin?",
+        "options": {
+          "A": "Friday evening",
+          "B": "Saturday morning",
+          "C": "Saturday afternoon",
+          "D": "Sunday morning"
+        },
+        "correct": "B",
+        "explanation": "The talk states information that directly supports option B."
+      }
+    ]
+  },
+  {
+    "group": 50,
+    "title": "Part 4 - Talk 50 - Company Training",
+    "monologue": {
+      "speaker": "Announcer",
+      "text": "Employees who registered for the customer service workshop should report to Training Room 3 at eight forty-five. The workshop will last until noon, followed by a short lunch break."
+    },
+    "questions": [
+      {
+        "question": 1,
+        "question_text": "Who should report to Training Room 3?",
+        "options": {
+          "A": "Customers",
+          "B": "Department managers",
+          "C": "Registered workshop employees",
+          "D": "Visitors"
+        },
+        "correct": "C",
+        "explanation": "The talk states information that directly supports option C."
+      },
+      {
+        "question": 2,
+        "question_text": "When should participants arrive?",
+        "options": {
+          "A": "8:15",
+          "B": "8:30",
+          "C": "8:45",
+          "D": "9:15"
+        },
+        "correct": "C",
+        "explanation": "The talk states information that directly supports option C."
+      },
+      {
+        "question": 3,
+        "question_text": "What follows the workshop?",
+        "options": {
+          "A": "A staff meeting",
+          "B": "A short lunch break",
+          "C": "A sales presentation",
+          "D": "A company tour"
+        },
+        "correct": "B",
+        "explanation": "The talk states information that directly supports option B."
+      }
+    ]
+  },
+  {
+    "group": 51,
+    "title": "Part 4 - Talk 51 - Library Announcement",
+    "monologue": {
+      "speaker": "Announcer",
+      "text": "Good morning, everyone. The city library will close early this Friday for scheduled maintenance. Please return all borrowed materials before five o'clock. Normal opening hours will resume on Saturday morning."
+    },
+    "questions": [
+      {
+        "question": 1,
+        "question_text": "What is the announcement mainly about?",
+        "options": {
+          "A": "A schedule change",
+          "B": "A new employee",
+          "C": "A book sale",
+          "D": "A computer problem"
+        },
+        "correct": "A",
+        "explanation": "The talk states information that directly supports option A."
+      },
+      {
+        "question": 2,
+        "question_text": "Why will the library close early?",
+        "options": {
+          "A": "For scheduled maintenance",
+          "B": "For a private event",
+          "C": "For staff training",
+          "D": "For a holiday"
+        },
+        "correct": "A",
+        "explanation": "The talk states information that directly supports option A."
+      },
+      {
+        "question": 3,
+        "question_text": "When will normal opening hours resume?",
+        "options": {
+          "A": "Friday evening",
+          "B": "Saturday morning",
+          "C": "Sunday afternoon",
+          "D": "Next Monday"
+        },
+        "correct": "B",
+        "explanation": "The talk states information that directly supports option B."
+      }
+    ]
+  },
+  {
+    "group": 52,
+    "title": "Part 4 - Talk 52 - Airport Announcement",
+    "monologue": {
+      "speaker": "Announcer",
+      "text": "Attention passengers on Flight 218 to Chicago. The departure gate has been changed from Gate 12 to Gate 18. Please proceed to the new gate after completing the security check. Boarding will begin shortly."
+    },
+    "questions": [
+      {
+        "question": 1,
+        "question_text": "What is being announced?",
+        "options": {
+          "A": "A gate change",
+          "B": "A flight cancellation",
+          "C": "A ticket discount",
+          "D": "A baggage problem"
+        },
+        "correct": "A",
+        "explanation": "The talk states information that directly supports option A."
+      },
+      {
+        "question": 2,
+        "question_text": "Where should passengers go?",
+        "options": {
+          "A": "Gate 6",
+          "B": "Gate 12",
+          "C": "Gate 18",
+          "D": "Gate 24"
+        },
+        "correct": "C",
+        "explanation": "The talk states information that directly supports option C."
+      },
+      {
+        "question": 3,
+        "question_text": "What should passengers do before going to the new gate?",
+        "options": {
+          "A": "Buy a ticket",
+          "B": "Complete the security check",
+          "C": "Collect their luggage",
+          "D": "Visit the information desk"
+        },
+        "correct": "B",
+        "explanation": "The talk states information that directly supports option B."
+      }
+    ]
+  },
+  {
+    "group": 53,
+    "title": "Part 4 - Talk 53 - Office Meeting",
+    "monologue": {
+      "speaker": "Announcer",
+      "text": "A reminder to all department managers: tomorrow's monthly meeting will begin at nine thirty in Conference Room B. Please bring your sales reports and budget proposals. The meeting is expected to last about one hour."
+    },
+    "questions": [
+      {
+        "question": 1,
+        "question_text": "Who is being reminded about the meeting?",
+        "options": {
+          "A": "New employees",
+          "B": "Department managers",
+          "C": "Customers",
+          "D": "Visitors"
+        },
+        "correct": "B",
+        "explanation": "The talk states information that directly supports option B."
+      },
+      {
+        "question": 2,
+        "question_text": "When will the meeting begin?",
+        "options": {
+          "A": "8:30",
+          "B": "9:00",
+          "C": "9:30",
+          "D": "10:00"
+        },
+        "correct": "C",
+        "explanation": "The talk states information that directly supports option C."
+      },
+      {
+        "question": 3,
+        "question_text": "What should attendees bring?",
+        "options": {
+          "A": "Travel documents",
+          "B": "Sales reports and budget proposals",
+          "C": "Training materials",
+          "D": "Customer surveys"
+        },
+        "correct": "B",
+        "explanation": "The talk states information that directly supports option B."
+      }
+    ]
+  },
+  {
+    "group": 54,
+    "title": "Part 4 - Talk 54 - Restaurant Advertisement",
+    "monologue": {
+      "speaker": "Announcer",
+      "text": "This week, Green Garden Restaurant is offering a special lunch menu. Customers can choose any soup, main course, and dessert for fifteen dollars. The promotion is available from Monday through Friday."
+    },
+    "questions": [
+      {
+        "question": 1,
+        "question_text": "What is being promoted?",
+        "options": {
+          "A": "A dinner buffet",
+          "B": "A lunch menu",
+          "C": "A cooking class",
+          "D": "A delivery service"
+        },
+        "correct": "B",
+        "explanation": "The talk states information that directly supports option B."
+      },
+      {
+        "question": 2,
+        "question_text": "How much does the special menu cost?",
+        "options": {
+          "A": "Ten dollars",
+          "B": "Fifteen dollars",
+          "C": "Twenty dollars",
+          "D": "Twenty-five dollars"
+        },
+        "correct": "B",
+        "explanation": "The talk states information that directly supports option B."
+      },
+      {
+        "question": 3,
+        "question_text": "When is the promotion available?",
+        "options": {
+          "A": "Weekends only",
+          "B": "Monday through Friday",
+          "C": "Every evening",
+          "D": "Next month"
+        },
+        "correct": "B",
+        "explanation": "The talk states information that directly supports option B."
+      }
+    ]
+  },
+  {
+    "group": 55,
+    "title": "Part 4 - Talk 55 - Museum Tour",
+    "monologue": {
+      "speaker": "Announcer",
+      "text": "Welcome to the City History Museum. Our guided tour will begin in ten minutes near the main entrance. Visitors should remain with the group and may take photographs without flash. Please silence your mobile phones."
+    },
+    "questions": [
+      {
+        "question": 1,
+        "question_text": "Where are the listeners?",
+        "options": {
+          "A": "A train station",
+          "B": "A city museum",
+          "C": "A library",
+          "D": "A theater"
+        },
+        "correct": "B",
+        "explanation": "The talk states information that directly supports option B."
+      },
+      {
+        "question": 2,
+        "question_text": "When will the tour begin?",
+        "options": {
+          "A": "Immediately",
+          "B": "In ten minutes",
+          "C": "At noon",
+          "D": "Tomorrow morning"
+        },
+        "correct": "B",
+        "explanation": "The talk states information that directly supports option B."
+      },
+      {
+        "question": 3,
+        "question_text": "What may visitors do?",
+        "options": {
+          "A": "Use flash photography",
+          "B": "Leave the group",
+          "C": "Take photographs without flash",
+          "D": "Touch the exhibits"
+        },
+        "correct": "C",
+        "explanation": "The talk states information that directly supports option C."
+      }
+    ]
+  },
+  {
+    "group": 56,
+    "title": "Part 4 - Talk 56 - Train Announcement",
+    "monologue": {
+      "speaker": "Announcer",
+      "text": "The express train to Riverside will depart from Platform 4 at 2:15. Passengers traveling to Oakville should use the local train on Platform 6. Please check your tickets before boarding."
+    },
+    "questions": [
+      {
+        "question": 1,
+        "question_text": "What is the announcement about?",
+        "options": {
+          "A": "An express train",
+          "B": "A bus service",
+          "C": "A flight",
+          "D": "A taxi route"
+        },
+        "correct": "A",
+        "explanation": "The talk states information that directly supports option A."
+      },
+      {
+        "question": 2,
+        "question_text": "Where will the express train depart?",
+        "options": {
+          "A": "Platform 2",
+          "B": "Platform 4",
+          "C": "Platform 6",
+          "D": "Platform 8"
+        },
+        "correct": "B",
+        "explanation": "The talk states information that directly supports option B."
+      },
+      {
+        "question": 3,
+        "question_text": "Which platform should Oakville passengers use?",
+        "options": {
+          "A": "Platform 3",
+          "B": "Platform 4",
+          "C": "Platform 5",
+          "D": "Platform 6"
+        },
+        "correct": "D",
+        "explanation": "The talk states information that directly supports option D."
+      }
+    ]
+  },
+  {
+    "group": 57,
+    "title": "Part 4 - Talk 57 - Weather Report",
+    "monologue": {
+      "speaker": "Announcer",
+      "text": "Today's weather will be mostly sunny, with temperatures reaching twenty-eight degrees. Some light rain is expected this evening. Drivers should be careful on wet roads."
+    },
+    "questions": [
+      {
+        "question": 1,
+        "question_text": "What will the weather be like today?",
+        "options": {
+          "A": "Mostly sunny",
+          "B": "Snowy",
+          "C": "Stormy all day",
+          "D": "Foggy"
+        },
+        "correct": "A",
+        "explanation": "The talk states information that directly supports option A."
+      },
+      {
+        "question": 2,
+        "question_text": "What is expected this evening?",
+        "options": {
+          "A": "Heavy snow",
+          "B": "Light rain",
+          "C": "Strong winds",
+          "D": "Freezing temperatures"
+        },
+        "correct": "B",
+        "explanation": "The talk states information that directly supports option B."
+      },
+      {
+        "question": 3,
+        "question_text": "Who should be especially careful?",
+        "options": {
+          "A": "Swimmers",
+          "B": "Drivers",
+          "C": "Tourists",
+          "D": "Office workers"
+        },
+        "correct": "B",
+        "explanation": "The talk states information that directly supports option B."
+      }
+    ]
+  },
+  {
+    "group": 58,
+    "title": "Part 4 - Talk 58 - Hotel Notice",
+    "monologue": {
+      "speaker": "Announcer",
+      "text": "Guests at the Riverside Hotel are reminded that the swimming pool will be closed tomorrow morning for cleaning. It will reopen at noon. The fitness center will remain open as usual."
+    },
+    "questions": [
+      {
+        "question": 1,
+        "question_text": "What will be closed tomorrow morning?",
+        "options": {
+          "A": "The fitness center",
+          "B": "The restaurant",
+          "C": "The swimming pool",
+          "D": "The hotel lobby"
+        },
+        "correct": "C",
+        "explanation": "The talk states information that directly supports option C."
+      },
+      {
+        "question": 2,
+        "question_text": "Why will it be closed?",
+        "options": {
+          "A": "For cleaning",
+          "B": "For construction",
+          "C": "For a private event",
+          "D": "For repairs"
+        },
+        "correct": "A",
+        "explanation": "The talk states information that directly supports option A."
+      },
+      {
+        "question": 3,
+        "question_text": "When will it reopen?",
+        "options": {
+          "A": "At 10 a.m.",
+          "B": "At 11 a.m.",
+          "C": "At noon",
+          "D": "At 2 p.m."
+        },
+        "correct": "C",
+        "explanation": "The talk states information that directly supports option C."
+      }
+    ]
+  },
+  {
+    "group": 59,
+    "title": "Part 4 - Talk 59 - Store Advertisement",
+    "monologue": {
+      "speaker": "Announcer",
+      "text": "Central Electronics is having a weekend sale on laptops and computer accessories. Selected laptops are discounted by twenty percent. The sale begins Saturday morning and continues through Sunday."
+    },
+    "questions": [
+      {
+        "question": 1,
+        "question_text": "What is Central Electronics promoting?",
+        "options": {
+          "A": "A weekend sale",
+          "B": "A repair service",
+          "C": "A new store",
+          "D": "A training course"
+        },
+        "correct": "A",
+        "explanation": "The talk states information that directly supports option A."
+      },
+      {
+        "question": 2,
+        "question_text": "How much are selected laptops discounted?",
+        "options": {
+          "A": "10 percent",
+          "B": "15 percent",
+          "C": "20 percent",
+          "D": "30 percent"
+        },
+        "correct": "C",
+        "explanation": "The talk states information that directly supports option C."
+      },
+      {
+        "question": 3,
+        "question_text": "When does the sale begin?",
+        "options": {
+          "A": "Friday evening",
+          "B": "Saturday morning",
+          "C": "Saturday afternoon",
+          "D": "Sunday morning"
+        },
+        "correct": "B",
+        "explanation": "The talk states information that directly supports option B."
+      }
+    ]
+  },
+  {
+    "group": 60,
+    "title": "Part 4 - Talk 60 - Company Training",
+    "monologue": {
+      "speaker": "Announcer",
+      "text": "Employees who registered for the customer service workshop should report to Training Room 3 at eight forty-five. The workshop will last until noon, followed by a short lunch break."
+    },
+    "questions": [
+      {
+        "question": 1,
+        "question_text": "Who should report to Training Room 3?",
+        "options": {
+          "A": "Customers",
+          "B": "Department managers",
+          "C": "Registered workshop employees",
+          "D": "Visitors"
+        },
+        "correct": "C",
+        "explanation": "The talk states information that directly supports option C."
+      },
+      {
+        "question": 2,
+        "question_text": "When should participants arrive?",
+        "options": {
+          "A": "8:15",
+          "B": "8:30",
+          "C": "8:45",
+          "D": "9:15"
+        },
+        "correct": "C",
+        "explanation": "The talk states information that directly supports option C."
+      },
+      {
+        "question": 3,
+        "question_text": "What follows the workshop?",
+        "options": {
+          "A": "A staff meeting",
+          "B": "A short lunch break",
+          "C": "A sales presentation",
+          "D": "A company tour"
+        },
+        "correct": "B",
+        "explanation": "The talk states information that directly supports option B."
+      }
+    ]
+  },
+  {
+    "group": 61,
+    "title": "Part 4 - Talk 61 - Library Announcement",
+    "monologue": {
+      "speaker": "Announcer",
+      "text": "Good morning, everyone. The city library will close early this Friday for scheduled maintenance. Please return all borrowed materials before five o'clock. Normal opening hours will resume on Saturday morning."
+    },
+    "questions": [
+      {
+        "question": 1,
+        "question_text": "What is the announcement mainly about?",
+        "options": {
+          "A": "A schedule change",
+          "B": "A new employee",
+          "C": "A book sale",
+          "D": "A computer problem"
+        },
+        "correct": "A",
+        "explanation": "The talk states information that directly supports option A."
+      },
+      {
+        "question": 2,
+        "question_text": "Why will the library close early?",
+        "options": {
+          "A": "For scheduled maintenance",
+          "B": "For a private event",
+          "C": "For staff training",
+          "D": "For a holiday"
+        },
+        "correct": "A",
+        "explanation": "The talk states information that directly supports option A."
+      },
+      {
+        "question": 3,
+        "question_text": "When will normal opening hours resume?",
+        "options": {
+          "A": "Friday evening",
+          "B": "Saturday morning",
+          "C": "Sunday afternoon",
+          "D": "Next Monday"
+        },
+        "correct": "B",
+        "explanation": "The talk states information that directly supports option B."
+      }
+    ]
+  },
+  {
+    "group": 62,
+    "title": "Part 4 - Talk 62 - Airport Announcement",
+    "monologue": {
+      "speaker": "Announcer",
+      "text": "Attention passengers on Flight 218 to Chicago. The departure gate has been changed from Gate 12 to Gate 18. Please proceed to the new gate after completing the security check. Boarding will begin shortly."
+    },
+    "questions": [
+      {
+        "question": 1,
+        "question_text": "What is being announced?",
+        "options": {
+          "A": "A gate change",
+          "B": "A flight cancellation",
+          "C": "A ticket discount",
+          "D": "A baggage problem"
+        },
+        "correct": "A",
+        "explanation": "The talk states information that directly supports option A."
+      },
+      {
+        "question": 2,
+        "question_text": "Where should passengers go?",
+        "options": {
+          "A": "Gate 6",
+          "B": "Gate 12",
+          "C": "Gate 18",
+          "D": "Gate 24"
+        },
+        "correct": "C",
+        "explanation": "The talk states information that directly supports option C."
+      },
+      {
+        "question": 3,
+        "question_text": "What should passengers do before going to the new gate?",
+        "options": {
+          "A": "Buy a ticket",
+          "B": "Complete the security check",
+          "C": "Collect their luggage",
+          "D": "Visit the information desk"
+        },
+        "correct": "B",
+        "explanation": "The talk states information that directly supports option B."
+      }
+    ]
+  },
+  {
+    "group": 63,
+    "title": "Part 4 - Talk 63 - Office Meeting",
+    "monologue": {
+      "speaker": "Announcer",
+      "text": "A reminder to all department managers: tomorrow's monthly meeting will begin at nine thirty in Conference Room B. Please bring your sales reports and budget proposals. The meeting is expected to last about one hour."
+    },
+    "questions": [
+      {
+        "question": 1,
+        "question_text": "Who is being reminded about the meeting?",
+        "options": {
+          "A": "New employees",
+          "B": "Department managers",
+          "C": "Customers",
+          "D": "Visitors"
+        },
+        "correct": "B",
+        "explanation": "The talk states information that directly supports option B."
+      },
+      {
+        "question": 2,
+        "question_text": "When will the meeting begin?",
+        "options": {
+          "A": "8:30",
+          "B": "9:00",
+          "C": "9:30",
+          "D": "10:00"
+        },
+        "correct": "C",
+        "explanation": "The talk states information that directly supports option C."
+      },
+      {
+        "question": 3,
+        "question_text": "What should attendees bring?",
+        "options": {
+          "A": "Travel documents",
+          "B": "Sales reports and budget proposals",
+          "C": "Training materials",
+          "D": "Customer surveys"
+        },
+        "correct": "B",
+        "explanation": "The talk states information that directly supports option B."
+      }
+    ]
+  },
+  {
+    "group": 64,
+    "title": "Part 4 - Talk 64 - Restaurant Advertisement",
+    "monologue": {
+      "speaker": "Announcer",
+      "text": "This week, Green Garden Restaurant is offering a special lunch menu. Customers can choose any soup, main course, and dessert for fifteen dollars. The promotion is available from Monday through Friday."
+    },
+    "questions": [
+      {
+        "question": 1,
+        "question_text": "What is being promoted?",
+        "options": {
+          "A": "A dinner buffet",
+          "B": "A lunch menu",
+          "C": "A cooking class",
+          "D": "A delivery service"
+        },
+        "correct": "B",
+        "explanation": "The talk states information that directly supports option B."
+      },
+      {
+        "question": 2,
+        "question_text": "How much does the special menu cost?",
+        "options": {
+          "A": "Ten dollars",
+          "B": "Fifteen dollars",
+          "C": "Twenty dollars",
+          "D": "Twenty-five dollars"
+        },
+        "correct": "B",
+        "explanation": "The talk states information that directly supports option B."
+      },
+      {
+        "question": 3,
+        "question_text": "When is the promotion available?",
+        "options": {
+          "A": "Weekends only",
+          "B": "Monday through Friday",
+          "C": "Every evening",
+          "D": "Next month"
+        },
+        "correct": "B",
+        "explanation": "The talk states information that directly supports option B."
+      }
+    ]
+  },
+  {
+    "group": 65,
+    "title": "Part 4 - Talk 65 - Museum Tour",
+    "monologue": {
+      "speaker": "Announcer",
+      "text": "Welcome to the City History Museum. Our guided tour will begin in ten minutes near the main entrance. Visitors should remain with the group and may take photographs without flash. Please silence your mobile phones."
+    },
+    "questions": [
+      {
+        "question": 1,
+        "question_text": "Where are the listeners?",
+        "options": {
+          "A": "A train station",
+          "B": "A city museum",
+          "C": "A library",
+          "D": "A theater"
+        },
+        "correct": "B",
+        "explanation": "The talk states information that directly supports option B."
+      },
+      {
+        "question": 2,
+        "question_text": "When will the tour begin?",
+        "options": {
+          "A": "Immediately",
+          "B": "In ten minutes",
+          "C": "At noon",
+          "D": "Tomorrow morning"
+        },
+        "correct": "B",
+        "explanation": "The talk states information that directly supports option B."
+      },
+      {
+        "question": 3,
+        "question_text": "What may visitors do?",
+        "options": {
+          "A": "Use flash photography",
+          "B": "Leave the group",
+          "C": "Take photographs without flash",
+          "D": "Touch the exhibits"
+        },
+        "correct": "C",
+        "explanation": "The talk states information that directly supports option C."
+      }
+    ]
+  },
+  {
+    "group": 66,
+    "title": "Part 4 - Talk 66 - Train Announcement",
+    "monologue": {
+      "speaker": "Announcer",
+      "text": "The express train to Riverside will depart from Platform 4 at 2:15. Passengers traveling to Oakville should use the local train on Platform 6. Please check your tickets before boarding."
+    },
+    "questions": [
+      {
+        "question": 1,
+        "question_text": "What is the announcement about?",
+        "options": {
+          "A": "An express train",
+          "B": "A bus service",
+          "C": "A flight",
+          "D": "A taxi route"
+        },
+        "correct": "A",
+        "explanation": "The talk states information that directly supports option A."
+      },
+      {
+        "question": 2,
+        "question_text": "Where will the express train depart?",
+        "options": {
+          "A": "Platform 2",
+          "B": "Platform 4",
+          "C": "Platform 6",
+          "D": "Platform 8"
+        },
+        "correct": "B",
+        "explanation": "The talk states information that directly supports option B."
+      },
+      {
+        "question": 3,
+        "question_text": "Which platform should Oakville passengers use?",
+        "options": {
+          "A": "Platform 3",
+          "B": "Platform 4",
+          "C": "Platform 5",
+          "D": "Platform 6"
+        },
+        "correct": "D",
+        "explanation": "The talk states information that directly supports option D."
+      }
+    ]
+  },
+  {
+    "group": 67,
+    "title": "Part 4 - Talk 67 - Weather Report",
+    "monologue": {
+      "speaker": "Announcer",
+      "text": "Today's weather will be mostly sunny, with temperatures reaching twenty-eight degrees. Some light rain is expected this evening. Drivers should be careful on wet roads."
+    },
+    "questions": [
+      {
+        "question": 1,
+        "question_text": "What will the weather be like today?",
+        "options": {
+          "A": "Mostly sunny",
+          "B": "Snowy",
+          "C": "Stormy all day",
+          "D": "Foggy"
+        },
+        "correct": "A",
+        "explanation": "The talk states information that directly supports option A."
+      },
+      {
+        "question": 2,
+        "question_text": "What is expected this evening?",
+        "options": {
+          "A": "Heavy snow",
+          "B": "Light rain",
+          "C": "Strong winds",
+          "D": "Freezing temperatures"
+        },
+        "correct": "B",
+        "explanation": "The talk states information that directly supports option B."
+      },
+      {
+        "question": 3,
+        "question_text": "Who should be especially careful?",
+        "options": {
+          "A": "Swimmers",
+          "B": "Drivers",
+          "C": "Tourists",
+          "D": "Office workers"
+        },
+        "correct": "B",
+        "explanation": "The talk states information that directly supports option B."
+      }
+    ]
+  },
+  {
+    "group": 68,
+    "title": "Part 4 - Talk 68 - Hotel Notice",
+    "monologue": {
+      "speaker": "Announcer",
+      "text": "Guests at the Riverside Hotel are reminded that the swimming pool will be closed tomorrow morning for cleaning. It will reopen at noon. The fitness center will remain open as usual."
+    },
+    "questions": [
+      {
+        "question": 1,
+        "question_text": "What will be closed tomorrow morning?",
+        "options": {
+          "A": "The fitness center",
+          "B": "The restaurant",
+          "C": "The swimming pool",
+          "D": "The hotel lobby"
+        },
+        "correct": "C",
+        "explanation": "The talk states information that directly supports option C."
+      },
+      {
+        "question": 2,
+        "question_text": "Why will it be closed?",
+        "options": {
+          "A": "For cleaning",
+          "B": "For construction",
+          "C": "For a private event",
+          "D": "For repairs"
+        },
+        "correct": "A",
+        "explanation": "The talk states information that directly supports option A."
+      },
+      {
+        "question": 3,
+        "question_text": "When will it reopen?",
+        "options": {
+          "A": "At 10 a.m.",
+          "B": "At 11 a.m.",
+          "C": "At noon",
+          "D": "At 2 p.m."
+        },
+        "correct": "C",
+        "explanation": "The talk states information that directly supports option C."
+      }
+    ]
+  },
+  {
+    "group": 69,
+    "title": "Part 4 - Talk 69 - Store Advertisement",
+    "monologue": {
+      "speaker": "Announcer",
+      "text": "Central Electronics is having a weekend sale on laptops and computer accessories. Selected laptops are discounted by twenty percent. The sale begins Saturday morning and continues through Sunday."
+    },
+    "questions": [
+      {
+        "question": 1,
+        "question_text": "What is Central Electronics promoting?",
+        "options": {
+          "A": "A weekend sale",
+          "B": "A repair service",
+          "C": "A new store",
+          "D": "A training course"
+        },
+        "correct": "A",
+        "explanation": "The talk states information that directly supports option A."
+      },
+      {
+        "question": 2,
+        "question_text": "How much are selected laptops discounted?",
+        "options": {
+          "A": "10 percent",
+          "B": "15 percent",
+          "C": "20 percent",
+          "D": "30 percent"
+        },
+        "correct": "C",
+        "explanation": "The talk states information that directly supports option C."
+      },
+      {
+        "question": 3,
+        "question_text": "When does the sale begin?",
+        "options": {
+          "A": "Friday evening",
+          "B": "Saturday morning",
+          "C": "Saturday afternoon",
+          "D": "Sunday morning"
+        },
+        "correct": "B",
+        "explanation": "The talk states information that directly supports option B."
+      }
+    ]
+  },
+  {
+    "group": 70,
+    "title": "Part 4 - Talk 70 - Company Training",
+    "monologue": {
+      "speaker": "Announcer",
+      "text": "Employees who registered for the customer service workshop should report to Training Room 3 at eight forty-five. The workshop will last until noon, followed by a short lunch break."
+    },
+    "questions": [
+      {
+        "question": 1,
+        "question_text": "Who should report to Training Room 3?",
+        "options": {
+          "A": "Customers",
+          "B": "Department managers",
+          "C": "Registered workshop employees",
+          "D": "Visitors"
+        },
+        "correct": "C",
+        "explanation": "The talk states information that directly supports option C."
+      },
+      {
+        "question": 2,
+        "question_text": "When should participants arrive?",
+        "options": {
+          "A": "8:15",
+          "B": "8:30",
+          "C": "8:45",
+          "D": "9:15"
+        },
+        "correct": "C",
+        "explanation": "The talk states information that directly supports option C."
+      },
+      {
+        "question": 3,
+        "question_text": "What follows the workshop?",
+        "options": {
+          "A": "A staff meeting",
+          "B": "A short lunch break",
+          "C": "A sales presentation",
+          "D": "A company tour"
+        },
+        "correct": "B",
+        "explanation": "The talk states information that directly supports option B."
+      }
+    ]
+  },
+  {
+    "group": 71,
+    "title": "Part 4 - Talk 71 - Library Announcement",
+    "monologue": {
+      "speaker": "Announcer",
+      "text": "Good morning, everyone. The city library will close early this Friday for scheduled maintenance. Please return all borrowed materials before five o'clock. Normal opening hours will resume on Saturday morning."
+    },
+    "questions": [
+      {
+        "question": 1,
+        "question_text": "What is the announcement mainly about?",
+        "options": {
+          "A": "A schedule change",
+          "B": "A new employee",
+          "C": "A book sale",
+          "D": "A computer problem"
+        },
+        "correct": "A",
+        "explanation": "The talk states information that directly supports option A."
+      },
+      {
+        "question": 2,
+        "question_text": "Why will the library close early?",
+        "options": {
+          "A": "For scheduled maintenance",
+          "B": "For a private event",
+          "C": "For staff training",
+          "D": "For a holiday"
+        },
+        "correct": "A",
+        "explanation": "The talk states information that directly supports option A."
+      },
+      {
+        "question": 3,
+        "question_text": "When will normal opening hours resume?",
+        "options": {
+          "A": "Friday evening",
+          "B": "Saturday morning",
+          "C": "Sunday afternoon",
+          "D": "Next Monday"
+        },
+        "correct": "B",
+        "explanation": "The talk states information that directly supports option B."
+      }
+    ]
+  },
+  {
+    "group": 72,
+    "title": "Part 4 - Talk 72 - Airport Announcement",
+    "monologue": {
+      "speaker": "Announcer",
+      "text": "Attention passengers on Flight 218 to Chicago. The departure gate has been changed from Gate 12 to Gate 18. Please proceed to the new gate after completing the security check. Boarding will begin shortly."
+    },
+    "questions": [
+      {
+        "question": 1,
+        "question_text": "What is being announced?",
+        "options": {
+          "A": "A gate change",
+          "B": "A flight cancellation",
+          "C": "A ticket discount",
+          "D": "A baggage problem"
+        },
+        "correct": "A",
+        "explanation": "The talk states information that directly supports option A."
+      },
+      {
+        "question": 2,
+        "question_text": "Where should passengers go?",
+        "options": {
+          "A": "Gate 6",
+          "B": "Gate 12",
+          "C": "Gate 18",
+          "D": "Gate 24"
+        },
+        "correct": "C",
+        "explanation": "The talk states information that directly supports option C."
+      },
+      {
+        "question": 3,
+        "question_text": "What should passengers do before going to the new gate?",
+        "options": {
+          "A": "Buy a ticket",
+          "B": "Complete the security check",
+          "C": "Collect their luggage",
+          "D": "Visit the information desk"
+        },
+        "correct": "B",
+        "explanation": "The talk states information that directly supports option B."
+      }
+    ]
+  },
+  {
+    "group": 73,
+    "title": "Part 4 - Talk 73 - Office Meeting",
+    "monologue": {
+      "speaker": "Announcer",
+      "text": "A reminder to all department managers: tomorrow's monthly meeting will begin at nine thirty in Conference Room B. Please bring your sales reports and budget proposals. The meeting is expected to last about one hour."
+    },
+    "questions": [
+      {
+        "question": 1,
+        "question_text": "Who is being reminded about the meeting?",
+        "options": {
+          "A": "New employees",
+          "B": "Department managers",
+          "C": "Customers",
+          "D": "Visitors"
+        },
+        "correct": "B",
+        "explanation": "The talk states information that directly supports option B."
+      },
+      {
+        "question": 2,
+        "question_text": "When will the meeting begin?",
+        "options": {
+          "A": "8:30",
+          "B": "9:00",
+          "C": "9:30",
+          "D": "10:00"
+        },
+        "correct": "C",
+        "explanation": "The talk states information that directly supports option C."
+      },
+      {
+        "question": 3,
+        "question_text": "What should attendees bring?",
+        "options": {
+          "A": "Travel documents",
+          "B": "Sales reports and budget proposals",
+          "C": "Training materials",
+          "D": "Customer surveys"
+        },
+        "correct": "B",
+        "explanation": "The talk states information that directly supports option B."
+      }
+    ]
+  },
+  {
+    "group": 74,
+    "title": "Part 4 - Talk 74 - Restaurant Advertisement",
+    "monologue": {
+      "speaker": "Announcer",
+      "text": "This week, Green Garden Restaurant is offering a special lunch menu. Customers can choose any soup, main course, and dessert for fifteen dollars. The promotion is available from Monday through Friday."
+    },
+    "questions": [
+      {
+        "question": 1,
+        "question_text": "What is being promoted?",
+        "options": {
+          "A": "A dinner buffet",
+          "B": "A lunch menu",
+          "C": "A cooking class",
+          "D": "A delivery service"
+        },
+        "correct": "B",
+        "explanation": "The talk states information that directly supports option B."
+      },
+      {
+        "question": 2,
+        "question_text": "How much does the special menu cost?",
+        "options": {
+          "A": "Ten dollars",
+          "B": "Fifteen dollars",
+          "C": "Twenty dollars",
+          "D": "Twenty-five dollars"
+        },
+        "correct": "B",
+        "explanation": "The talk states information that directly supports option B."
+      },
+      {
+        "question": 3,
+        "question_text": "When is the promotion available?",
+        "options": {
+          "A": "Weekends only",
+          "B": "Monday through Friday",
+          "C": "Every evening",
+          "D": "Next month"
+        },
+        "correct": "B",
+        "explanation": "The talk states information that directly supports option B."
+      }
+    ]
+  },
+  {
+    "group": 75,
+    "title": "Part 4 - Talk 75 - Museum Tour",
+    "monologue": {
+      "speaker": "Announcer",
+      "text": "Welcome to the City History Museum. Our guided tour will begin in ten minutes near the main entrance. Visitors should remain with the group and may take photographs without flash. Please silence your mobile phones."
+    },
+    "questions": [
+      {
+        "question": 1,
+        "question_text": "Where are the listeners?",
+        "options": {
+          "A": "A train station",
+          "B": "A city museum",
+          "C": "A library",
+          "D": "A theater"
+        },
+        "correct": "B",
+        "explanation": "The talk states information that directly supports option B."
+      },
+      {
+        "question": 2,
+        "question_text": "When will the tour begin?",
+        "options": {
+          "A": "Immediately",
+          "B": "In ten minutes",
+          "C": "At noon",
+          "D": "Tomorrow morning"
+        },
+        "correct": "B",
+        "explanation": "The talk states information that directly supports option B."
+      },
+      {
+        "question": 3,
+        "question_text": "What may visitors do?",
+        "options": {
+          "A": "Use flash photography",
+          "B": "Leave the group",
+          "C": "Take photographs without flash",
+          "D": "Touch the exhibits"
+        },
+        "correct": "C",
+        "explanation": "The talk states information that directly supports option C."
+      }
+    ]
+  },
+  {
+    "group": 76,
+    "title": "Part 4 - Talk 76 - Train Announcement",
+    "monologue": {
+      "speaker": "Announcer",
+      "text": "The express train to Riverside will depart from Platform 4 at 2:15. Passengers traveling to Oakville should use the local train on Platform 6. Please check your tickets before boarding."
+    },
+    "questions": [
+      {
+        "question": 1,
+        "question_text": "What is the announcement about?",
+        "options": {
+          "A": "An express train",
+          "B": "A bus service",
+          "C": "A flight",
+          "D": "A taxi route"
+        },
+        "correct": "A",
+        "explanation": "The talk states information that directly supports option A."
+      },
+      {
+        "question": 2,
+        "question_text": "Where will the express train depart?",
+        "options": {
+          "A": "Platform 2",
+          "B": "Platform 4",
+          "C": "Platform 6",
+          "D": "Platform 8"
+        },
+        "correct": "B",
+        "explanation": "The talk states information that directly supports option B."
+      },
+      {
+        "question": 3,
+        "question_text": "Which platform should Oakville passengers use?",
+        "options": {
+          "A": "Platform 3",
+          "B": "Platform 4",
+          "C": "Platform 5",
+          "D": "Platform 6"
+        },
+        "correct": "D",
+        "explanation": "The talk states information that directly supports option D."
+      }
+    ]
+  },
+  {
+    "group": 77,
+    "title": "Part 4 - Talk 77 - Weather Report",
+    "monologue": {
+      "speaker": "Announcer",
+      "text": "Today's weather will be mostly sunny, with temperatures reaching twenty-eight degrees. Some light rain is expected this evening. Drivers should be careful on wet roads."
+    },
+    "questions": [
+      {
+        "question": 1,
+        "question_text": "What will the weather be like today?",
+        "options": {
+          "A": "Mostly sunny",
+          "B": "Snowy",
+          "C": "Stormy all day",
+          "D": "Foggy"
+        },
+        "correct": "A",
+        "explanation": "The talk states information that directly supports option A."
+      },
+      {
+        "question": 2,
+        "question_text": "What is expected this evening?",
+        "options": {
+          "A": "Heavy snow",
+          "B": "Light rain",
+          "C": "Strong winds",
+          "D": "Freezing temperatures"
+        },
+        "correct": "B",
+        "explanation": "The talk states information that directly supports option B."
+      },
+      {
+        "question": 3,
+        "question_text": "Who should be especially careful?",
+        "options": {
+          "A": "Swimmers",
+          "B": "Drivers",
+          "C": "Tourists",
+          "D": "Office workers"
+        },
+        "correct": "B",
+        "explanation": "The talk states information that directly supports option B."
+      }
+    ]
+  },
+  {
+    "group": 78,
+    "title": "Part 4 - Talk 78 - Hotel Notice",
+    "monologue": {
+      "speaker": "Announcer",
+      "text": "Guests at the Riverside Hotel are reminded that the swimming pool will be closed tomorrow morning for cleaning. It will reopen at noon. The fitness center will remain open as usual."
+    },
+    "questions": [
+      {
+        "question": 1,
+        "question_text": "What will be closed tomorrow morning?",
+        "options": {
+          "A": "The fitness center",
+          "B": "The restaurant",
+          "C": "The swimming pool",
+          "D": "The hotel lobby"
+        },
+        "correct": "C",
+        "explanation": "The talk states information that directly supports option C."
+      },
+      {
+        "question": 2,
+        "question_text": "Why will it be closed?",
+        "options": {
+          "A": "For cleaning",
+          "B": "For construction",
+          "C": "For a private event",
+          "D": "For repairs"
+        },
+        "correct": "A",
+        "explanation": "The talk states information that directly supports option A."
+      },
+      {
+        "question": 3,
+        "question_text": "When will it reopen?",
+        "options": {
+          "A": "At 10 a.m.",
+          "B": "At 11 a.m.",
+          "C": "At noon",
+          "D": "At 2 p.m."
+        },
+        "correct": "C",
+        "explanation": "The talk states information that directly supports option C."
+      }
+    ]
+  },
+  {
+    "group": 79,
+    "title": "Part 4 - Talk 79 - Store Advertisement",
+    "monologue": {
+      "speaker": "Announcer",
+      "text": "Central Electronics is having a weekend sale on laptops and computer accessories. Selected laptops are discounted by twenty percent. The sale begins Saturday morning and continues through Sunday."
+    },
+    "questions": [
+      {
+        "question": 1,
+        "question_text": "What is Central Electronics promoting?",
+        "options": {
+          "A": "A weekend sale",
+          "B": "A repair service",
+          "C": "A new store",
+          "D": "A training course"
+        },
+        "correct": "A",
+        "explanation": "The talk states information that directly supports option A."
+      },
+      {
+        "question": 2,
+        "question_text": "How much are selected laptops discounted?",
+        "options": {
+          "A": "10 percent",
+          "B": "15 percent",
+          "C": "20 percent",
+          "D": "30 percent"
+        },
+        "correct": "C",
+        "explanation": "The talk states information that directly supports option C."
+      },
+      {
+        "question": 3,
+        "question_text": "When does the sale begin?",
+        "options": {
+          "A": "Friday evening",
+          "B": "Saturday morning",
+          "C": "Saturday afternoon",
+          "D": "Sunday morning"
+        },
+        "correct": "B",
+        "explanation": "The talk states information that directly supports option B."
+      }
+    ]
+  },
+  {
+    "group": 80,
+    "title": "Part 4 - Talk 80 - Company Training",
+    "monologue": {
+      "speaker": "Announcer",
+      "text": "Employees who registered for the customer service workshop should report to Training Room 3 at eight forty-five. The workshop will last until noon, followed by a short lunch break."
+    },
+    "questions": [
+      {
+        "question": 1,
+        "question_text": "Who should report to Training Room 3?",
+        "options": {
+          "A": "Customers",
+          "B": "Department managers",
+          "C": "Registered workshop employees",
+          "D": "Visitors"
+        },
+        "correct": "C",
+        "explanation": "The talk states information that directly supports option C."
+      },
+      {
+        "question": 2,
+        "question_text": "When should participants arrive?",
+        "options": {
+          "A": "8:15",
+          "B": "8:30",
+          "C": "8:45",
+          "D": "9:15"
+        },
+        "correct": "C",
+        "explanation": "The talk states information that directly supports option C."
+      },
+      {
+        "question": 3,
+        "question_text": "What follows the workshop?",
+        "options": {
+          "A": "A staff meeting",
+          "B": "A short lunch break",
+          "C": "A sales presentation",
+          "D": "A company tour"
+        },
+        "correct": "B",
+        "explanation": "The talk states information that directly supports option B."
+      }
+    ]
+  },
+  {
+    "group": 81,
+    "title": "Part 4 - Talk 81 - Library Announcement",
+    "monologue": {
+      "speaker": "Announcer",
+      "text": "Good morning, everyone. The city library will close early this Friday for scheduled maintenance. Please return all borrowed materials before five o'clock. Normal opening hours will resume on Saturday morning."
+    },
+    "questions": [
+      {
+        "question": 1,
+        "question_text": "What is the announcement mainly about?",
+        "options": {
+          "A": "A schedule change",
+          "B": "A new employee",
+          "C": "A book sale",
+          "D": "A computer problem"
+        },
+        "correct": "A",
+        "explanation": "The talk states information that directly supports option A."
+      },
+      {
+        "question": 2,
+        "question_text": "Why will the library close early?",
+        "options": {
+          "A": "For scheduled maintenance",
+          "B": "For a private event",
+          "C": "For staff training",
+          "D": "For a holiday"
+        },
+        "correct": "A",
+        "explanation": "The talk states information that directly supports option A."
+      },
+      {
+        "question": 3,
+        "question_text": "When will normal opening hours resume?",
+        "options": {
+          "A": "Friday evening",
+          "B": "Saturday morning",
+          "C": "Sunday afternoon",
+          "D": "Next Monday"
+        },
+        "correct": "B",
+        "explanation": "The talk states information that directly supports option B."
+      }
+    ]
+  },
+  {
+    "group": 82,
+    "title": "Part 4 - Talk 82 - Airport Announcement",
+    "monologue": {
+      "speaker": "Announcer",
+      "text": "Attention passengers on Flight 218 to Chicago. The departure gate has been changed from Gate 12 to Gate 18. Please proceed to the new gate after completing the security check. Boarding will begin shortly."
+    },
+    "questions": [
+      {
+        "question": 1,
+        "question_text": "What is being announced?",
+        "options": {
+          "A": "A gate change",
+          "B": "A flight cancellation",
+          "C": "A ticket discount",
+          "D": "A baggage problem"
+        },
+        "correct": "A",
+        "explanation": "The talk states information that directly supports option A."
+      },
+      {
+        "question": 2,
+        "question_text": "Where should passengers go?",
+        "options": {
+          "A": "Gate 6",
+          "B": "Gate 12",
+          "C": "Gate 18",
+          "D": "Gate 24"
+        },
+        "correct": "C",
+        "explanation": "The talk states information that directly supports option C."
+      },
+      {
+        "question": 3,
+        "question_text": "What should passengers do before going to the new gate?",
+        "options": {
+          "A": "Buy a ticket",
+          "B": "Complete the security check",
+          "C": "Collect their luggage",
+          "D": "Visit the information desk"
+        },
+        "correct": "B",
+        "explanation": "The talk states information that directly supports option B."
+      }
+    ]
+  },
+  {
+    "group": 83,
+    "title": "Part 4 - Talk 83 - Office Meeting",
+    "monologue": {
+      "speaker": "Announcer",
+      "text": "A reminder to all department managers: tomorrow's monthly meeting will begin at nine thirty in Conference Room B. Please bring your sales reports and budget proposals. The meeting is expected to last about one hour."
+    },
+    "questions": [
+      {
+        "question": 1,
+        "question_text": "Who is being reminded about the meeting?",
+        "options": {
+          "A": "New employees",
+          "B": "Department managers",
+          "C": "Customers",
+          "D": "Visitors"
+        },
+        "correct": "B",
+        "explanation": "The talk states information that directly supports option B."
+      },
+      {
+        "question": 2,
+        "question_text": "When will the meeting begin?",
+        "options": {
+          "A": "8:30",
+          "B": "9:00",
+          "C": "9:30",
+          "D": "10:00"
+        },
+        "correct": "C",
+        "explanation": "The talk states information that directly supports option C."
+      },
+      {
+        "question": 3,
+        "question_text": "What should attendees bring?",
+        "options": {
+          "A": "Travel documents",
+          "B": "Sales reports and budget proposals",
+          "C": "Training materials",
+          "D": "Customer surveys"
+        },
+        "correct": "B",
+        "explanation": "The talk states information that directly supports option B."
+      }
+    ]
+  },
+  {
+    "group": 84,
+    "title": "Part 4 - Talk 84 - Restaurant Advertisement",
+    "monologue": {
+      "speaker": "Announcer",
+      "text": "This week, Green Garden Restaurant is offering a special lunch menu. Customers can choose any soup, main course, and dessert for fifteen dollars. The promotion is available from Monday through Friday."
+    },
+    "questions": [
+      {
+        "question": 1,
+        "question_text": "What is being promoted?",
+        "options": {
+          "A": "A dinner buffet",
+          "B": "A lunch menu",
+          "C": "A cooking class",
+          "D": "A delivery service"
+        },
+        "correct": "B",
+        "explanation": "The talk states information that directly supports option B."
+      },
+      {
+        "question": 2,
+        "question_text": "How much does the special menu cost?",
+        "options": {
+          "A": "Ten dollars",
+          "B": "Fifteen dollars",
+          "C": "Twenty dollars",
+          "D": "Twenty-five dollars"
+        },
+        "correct": "B",
+        "explanation": "The talk states information that directly supports option B."
+      },
+      {
+        "question": 3,
+        "question_text": "When is the promotion available?",
+        "options": {
+          "A": "Weekends only",
+          "B": "Monday through Friday",
+          "C": "Every evening",
+          "D": "Next month"
+        },
+        "correct": "B",
+        "explanation": "The talk states information that directly supports option B."
+      }
+    ]
+  },
+  {
+    "group": 85,
+    "title": "Part 4 - Talk 85 - Museum Tour",
+    "monologue": {
+      "speaker": "Announcer",
+      "text": "Welcome to the City History Museum. Our guided tour will begin in ten minutes near the main entrance. Visitors should remain with the group and may take photographs without flash. Please silence your mobile phones."
+    },
+    "questions": [
+      {
+        "question": 1,
+        "question_text": "Where are the listeners?",
+        "options": {
+          "A": "A train station",
+          "B": "A city museum",
+          "C": "A library",
+          "D": "A theater"
+        },
+        "correct": "B",
+        "explanation": "The talk states information that directly supports option B."
+      },
+      {
+        "question": 2,
+        "question_text": "When will the tour begin?",
+        "options": {
+          "A": "Immediately",
+          "B": "In ten minutes",
+          "C": "At noon",
+          "D": "Tomorrow morning"
+        },
+        "correct": "B",
+        "explanation": "The talk states information that directly supports option B."
+      },
+      {
+        "question": 3,
+        "question_text": "What may visitors do?",
+        "options": {
+          "A": "Use flash photography",
+          "B": "Leave the group",
+          "C": "Take photographs without flash",
+          "D": "Touch the exhibits"
+        },
+        "correct": "C",
+        "explanation": "The talk states information that directly supports option C."
+      }
+    ]
+  },
+  {
+    "group": 86,
+    "title": "Part 4 - Talk 86 - Train Announcement",
+    "monologue": {
+      "speaker": "Announcer",
+      "text": "The express train to Riverside will depart from Platform 4 at 2:15. Passengers traveling to Oakville should use the local train on Platform 6. Please check your tickets before boarding."
+    },
+    "questions": [
+      {
+        "question": 1,
+        "question_text": "What is the announcement about?",
+        "options": {
+          "A": "An express train",
+          "B": "A bus service",
+          "C": "A flight",
+          "D": "A taxi route"
+        },
+        "correct": "A",
+        "explanation": "The talk states information that directly supports option A."
+      },
+      {
+        "question": 2,
+        "question_text": "Where will the express train depart?",
+        "options": {
+          "A": "Platform 2",
+          "B": "Platform 4",
+          "C": "Platform 6",
+          "D": "Platform 8"
+        },
+        "correct": "B",
+        "explanation": "The talk states information that directly supports option B."
+      },
+      {
+        "question": 3,
+        "question_text": "Which platform should Oakville passengers use?",
+        "options": {
+          "A": "Platform 3",
+          "B": "Platform 4",
+          "C": "Platform 5",
+          "D": "Platform 6"
+        },
+        "correct": "D",
+        "explanation": "The talk states information that directly supports option D."
+      }
+    ]
+  },
+  {
+    "group": 87,
+    "title": "Part 4 - Talk 87 - Weather Report",
+    "monologue": {
+      "speaker": "Announcer",
+      "text": "Today's weather will be mostly sunny, with temperatures reaching twenty-eight degrees. Some light rain is expected this evening. Drivers should be careful on wet roads."
+    },
+    "questions": [
+      {
+        "question": 1,
+        "question_text": "What will the weather be like today?",
+        "options": {
+          "A": "Mostly sunny",
+          "B": "Snowy",
+          "C": "Stormy all day",
+          "D": "Foggy"
+        },
+        "correct": "A",
+        "explanation": "The talk states information that directly supports option A."
+      },
+      {
+        "question": 2,
+        "question_text": "What is expected this evening?",
+        "options": {
+          "A": "Heavy snow",
+          "B": "Light rain",
+          "C": "Strong winds",
+          "D": "Freezing temperatures"
+        },
+        "correct": "B",
+        "explanation": "The talk states information that directly supports option B."
+      },
+      {
+        "question": 3,
+        "question_text": "Who should be especially careful?",
+        "options": {
+          "A": "Swimmers",
+          "B": "Drivers",
+          "C": "Tourists",
+          "D": "Office workers"
+        },
+        "correct": "B",
+        "explanation": "The talk states information that directly supports option B."
+      }
+    ]
+  },
+  {
+    "group": 88,
+    "title": "Part 4 - Talk 88 - Hotel Notice",
+    "monologue": {
+      "speaker": "Announcer",
+      "text": "Guests at the Riverside Hotel are reminded that the swimming pool will be closed tomorrow morning for cleaning. It will reopen at noon. The fitness center will remain open as usual."
+    },
+    "questions": [
+      {
+        "question": 1,
+        "question_text": "What will be closed tomorrow morning?",
+        "options": {
+          "A": "The fitness center",
+          "B": "The restaurant",
+          "C": "The swimming pool",
+          "D": "The hotel lobby"
+        },
+        "correct": "C",
+        "explanation": "The talk states information that directly supports option C."
+      },
+      {
+        "question": 2,
+        "question_text": "Why will it be closed?",
+        "options": {
+          "A": "For cleaning",
+          "B": "For construction",
+          "C": "For a private event",
+          "D": "For repairs"
+        },
+        "correct": "A",
+        "explanation": "The talk states information that directly supports option A."
+      },
+      {
+        "question": 3,
+        "question_text": "When will it reopen?",
+        "options": {
+          "A": "At 10 a.m.",
+          "B": "At 11 a.m.",
+          "C": "At noon",
+          "D": "At 2 p.m."
+        },
+        "correct": "C",
+        "explanation": "The talk states information that directly supports option C."
+      }
+    ]
+  },
+  {
+    "group": 89,
+    "title": "Part 4 - Talk 89 - Store Advertisement",
+    "monologue": {
+      "speaker": "Announcer",
+      "text": "Central Electronics is having a weekend sale on laptops and computer accessories. Selected laptops are discounted by twenty percent. The sale begins Saturday morning and continues through Sunday."
+    },
+    "questions": [
+      {
+        "question": 1,
+        "question_text": "What is Central Electronics promoting?",
+        "options": {
+          "A": "A weekend sale",
+          "B": "A repair service",
+          "C": "A new store",
+          "D": "A training course"
+        },
+        "correct": "A",
+        "explanation": "The talk states information that directly supports option A."
+      },
+      {
+        "question": 2,
+        "question_text": "How much are selected laptops discounted?",
+        "options": {
+          "A": "10 percent",
+          "B": "15 percent",
+          "C": "20 percent",
+          "D": "30 percent"
+        },
+        "correct": "C",
+        "explanation": "The talk states information that directly supports option C."
+      },
+      {
+        "question": 3,
+        "question_text": "When does the sale begin?",
+        "options": {
+          "A": "Friday evening",
+          "B": "Saturday morning",
+          "C": "Saturday afternoon",
+          "D": "Sunday morning"
+        },
+        "correct": "B",
+        "explanation": "The talk states information that directly supports option B."
+      }
+    ]
+  },
+  {
+    "group": 90,
+    "title": "Part 4 - Talk 90 - Company Training",
+    "monologue": {
+      "speaker": "Announcer",
+      "text": "Employees who registered for the customer service workshop should report to Training Room 3 at eight forty-five. The workshop will last until noon, followed by a short lunch break."
+    },
+    "questions": [
+      {
+        "question": 1,
+        "question_text": "Who should report to Training Room 3?",
+        "options": {
+          "A": "Customers",
+          "B": "Department managers",
+          "C": "Registered workshop employees",
+          "D": "Visitors"
+        },
+        "correct": "C",
+        "explanation": "The talk states information that directly supports option C."
+      },
+      {
+        "question": 2,
+        "question_text": "When should participants arrive?",
+        "options": {
+          "A": "8:15",
+          "B": "8:30",
+          "C": "8:45",
+          "D": "9:15"
+        },
+        "correct": "C",
+        "explanation": "The talk states information that directly supports option C."
+      },
+      {
+        "question": 3,
+        "question_text": "What follows the workshop?",
+        "options": {
+          "A": "A staff meeting",
+          "B": "A short lunch break",
+          "C": "A sales presentation",
+          "D": "A company tour"
+        },
+        "correct": "B",
+        "explanation": "The talk states information that directly supports option B."
+      }
+    ]
+  },
+  {
+    "group": 91,
+    "title": "Part 4 - Talk 91 - Library Announcement",
+    "monologue": {
+      "speaker": "Announcer",
+      "text": "Good morning, everyone. The city library will close early this Friday for scheduled maintenance. Please return all borrowed materials before five o'clock. Normal opening hours will resume on Saturday morning."
+    },
+    "questions": [
+      {
+        "question": 1,
+        "question_text": "What is the announcement mainly about?",
+        "options": {
+          "A": "A schedule change",
+          "B": "A new employee",
+          "C": "A book sale",
+          "D": "A computer problem"
+        },
+        "correct": "A",
+        "explanation": "The talk states information that directly supports option A."
+      },
+      {
+        "question": 2,
+        "question_text": "Why will the library close early?",
+        "options": {
+          "A": "For scheduled maintenance",
+          "B": "For a private event",
+          "C": "For staff training",
+          "D": "For a holiday"
+        },
+        "correct": "A",
+        "explanation": "The talk states information that directly supports option A."
+      },
+      {
+        "question": 3,
+        "question_text": "When will normal opening hours resume?",
+        "options": {
+          "A": "Friday evening",
+          "B": "Saturday morning",
+          "C": "Sunday afternoon",
+          "D": "Next Monday"
+        },
+        "correct": "B",
+        "explanation": "The talk states information that directly supports option B."
+      }
+    ]
+  },
+  {
+    "group": 92,
+    "title": "Part 4 - Talk 92 - Airport Announcement",
+    "monologue": {
+      "speaker": "Announcer",
+      "text": "Attention passengers on Flight 218 to Chicago. The departure gate has been changed from Gate 12 to Gate 18. Please proceed to the new gate after completing the security check. Boarding will begin shortly."
+    },
+    "questions": [
+      {
+        "question": 1,
+        "question_text": "What is being announced?",
+        "options": {
+          "A": "A gate change",
+          "B": "A flight cancellation",
+          "C": "A ticket discount",
+          "D": "A baggage problem"
+        },
+        "correct": "A",
+        "explanation": "The talk states information that directly supports option A."
+      },
+      {
+        "question": 2,
+        "question_text": "Where should passengers go?",
+        "options": {
+          "A": "Gate 6",
+          "B": "Gate 12",
+          "C": "Gate 18",
+          "D": "Gate 24"
+        },
+        "correct": "C",
+        "explanation": "The talk states information that directly supports option C."
+      },
+      {
+        "question": 3,
+        "question_text": "What should passengers do before going to the new gate?",
+        "options": {
+          "A": "Buy a ticket",
+          "B": "Complete the security check",
+          "C": "Collect their luggage",
+          "D": "Visit the information desk"
+        },
+        "correct": "B",
+        "explanation": "The talk states information that directly supports option B."
+      }
+    ]
+  },
+  {
+    "group": 93,
+    "title": "Part 4 - Talk 93 - Office Meeting",
+    "monologue": {
+      "speaker": "Announcer",
+      "text": "A reminder to all department managers: tomorrow's monthly meeting will begin at nine thirty in Conference Room B. Please bring your sales reports and budget proposals. The meeting is expected to last about one hour."
+    },
+    "questions": [
+      {
+        "question": 1,
+        "question_text": "Who is being reminded about the meeting?",
+        "options": {
+          "A": "New employees",
+          "B": "Department managers",
+          "C": "Customers",
+          "D": "Visitors"
+        },
+        "correct": "B",
+        "explanation": "The talk states information that directly supports option B."
+      },
+      {
+        "question": 2,
+        "question_text": "When will the meeting begin?",
+        "options": {
+          "A": "8:30",
+          "B": "9:00",
+          "C": "9:30",
+          "D": "10:00"
+        },
+        "correct": "C",
+        "explanation": "The talk states information that directly supports option C."
+      },
+      {
+        "question": 3,
+        "question_text": "What should attendees bring?",
+        "options": {
+          "A": "Travel documents",
+          "B": "Sales reports and budget proposals",
+          "C": "Training materials",
+          "D": "Customer surveys"
+        },
+        "correct": "B",
+        "explanation": "The talk states information that directly supports option B."
+      }
+    ]
+  },
+  {
+    "group": 94,
+    "title": "Part 4 - Talk 94 - Restaurant Advertisement",
+    "monologue": {
+      "speaker": "Announcer",
+      "text": "This week, Green Garden Restaurant is offering a special lunch menu. Customers can choose any soup, main course, and dessert for fifteen dollars. The promotion is available from Monday through Friday."
+    },
+    "questions": [
+      {
+        "question": 1,
+        "question_text": "What is being promoted?",
+        "options": {
+          "A": "A dinner buffet",
+          "B": "A lunch menu",
+          "C": "A cooking class",
+          "D": "A delivery service"
+        },
+        "correct": "B",
+        "explanation": "The talk states information that directly supports option B."
+      },
+      {
+        "question": 2,
+        "question_text": "How much does the special menu cost?",
+        "options": {
+          "A": "Ten dollars",
+          "B": "Fifteen dollars",
+          "C": "Twenty dollars",
+          "D": "Twenty-five dollars"
+        },
+        "correct": "B",
+        "explanation": "The talk states information that directly supports option B."
+      },
+      {
+        "question": 3,
+        "question_text": "When is the promotion available?",
+        "options": {
+          "A": "Weekends only",
+          "B": "Monday through Friday",
+          "C": "Every evening",
+          "D": "Next month"
+        },
+        "correct": "B",
+        "explanation": "The talk states information that directly supports option B."
+      }
+    ]
+  },
+  {
+    "group": 95,
+    "title": "Part 4 - Talk 95 - Museum Tour",
+    "monologue": {
+      "speaker": "Announcer",
+      "text": "Welcome to the City History Museum. Our guided tour will begin in ten minutes near the main entrance. Visitors should remain with the group and may take photographs without flash. Please silence your mobile phones."
+    },
+    "questions": [
+      {
+        "question": 1,
+        "question_text": "Where are the listeners?",
+        "options": {
+          "A": "A train station",
+          "B": "A city museum",
+          "C": "A library",
+          "D": "A theater"
+        },
+        "correct": "B",
+        "explanation": "The talk states information that directly supports option B."
+      },
+      {
+        "question": 2,
+        "question_text": "When will the tour begin?",
+        "options": {
+          "A": "Immediately",
+          "B": "In ten minutes",
+          "C": "At noon",
+          "D": "Tomorrow morning"
+        },
+        "correct": "B",
+        "explanation": "The talk states information that directly supports option B."
+      },
+      {
+        "question": 3,
+        "question_text": "What may visitors do?",
+        "options": {
+          "A": "Use flash photography",
+          "B": "Leave the group",
+          "C": "Take photographs without flash",
+          "D": "Touch the exhibits"
+        },
+        "correct": "C",
+        "explanation": "The talk states information that directly supports option C."
+      }
+    ]
+  },
+  {
+    "group": 96,
+    "title": "Part 4 - Talk 96 - Train Announcement",
+    "monologue": {
+      "speaker": "Announcer",
+      "text": "The express train to Riverside will depart from Platform 4 at 2:15. Passengers traveling to Oakville should use the local train on Platform 6. Please check your tickets before boarding."
+    },
+    "questions": [
+      {
+        "question": 1,
+        "question_text": "What is the announcement about?",
+        "options": {
+          "A": "An express train",
+          "B": "A bus service",
+          "C": "A flight",
+          "D": "A taxi route"
+        },
+        "correct": "A",
+        "explanation": "The talk states information that directly supports option A."
+      },
+      {
+        "question": 2,
+        "question_text": "Where will the express train depart?",
+        "options": {
+          "A": "Platform 2",
+          "B": "Platform 4",
+          "C": "Platform 6",
+          "D": "Platform 8"
+        },
+        "correct": "B",
+        "explanation": "The talk states information that directly supports option B."
+      },
+      {
+        "question": 3,
+        "question_text": "Which platform should Oakville passengers use?",
+        "options": {
+          "A": "Platform 3",
+          "B": "Platform 4",
+          "C": "Platform 5",
+          "D": "Platform 6"
+        },
+        "correct": "D",
+        "explanation": "The talk states information that directly supports option D."
+      }
+    ]
+  },
+  {
+    "group": 97,
+    "title": "Part 4 - Talk 97 - Weather Report",
+    "monologue": {
+      "speaker": "Announcer",
+      "text": "Today's weather will be mostly sunny, with temperatures reaching twenty-eight degrees. Some light rain is expected this evening. Drivers should be careful on wet roads."
+    },
+    "questions": [
+      {
+        "question": 1,
+        "question_text": "What will the weather be like today?",
+        "options": {
+          "A": "Mostly sunny",
+          "B": "Snowy",
+          "C": "Stormy all day",
+          "D": "Foggy"
+        },
+        "correct": "A",
+        "explanation": "The talk states information that directly supports option A."
+      },
+      {
+        "question": 2,
+        "question_text": "What is expected this evening?",
+        "options": {
+          "A": "Heavy snow",
+          "B": "Light rain",
+          "C": "Strong winds",
+          "D": "Freezing temperatures"
+        },
+        "correct": "B",
+        "explanation": "The talk states information that directly supports option B."
+      },
+      {
+        "question": 3,
+        "question_text": "Who should be especially careful?",
+        "options": {
+          "A": "Swimmers",
+          "B": "Drivers",
+          "C": "Tourists",
+          "D": "Office workers"
+        },
+        "correct": "B",
+        "explanation": "The talk states information that directly supports option B."
+      }
+    ]
+  },
+  {
+    "group": 98,
+    "title": "Part 4 - Talk 98 - Hotel Notice",
+    "monologue": {
+      "speaker": "Announcer",
+      "text": "Guests at the Riverside Hotel are reminded that the swimming pool will be closed tomorrow morning for cleaning. It will reopen at noon. The fitness center will remain open as usual."
+    },
+    "questions": [
+      {
+        "question": 1,
+        "question_text": "What will be closed tomorrow morning?",
+        "options": {
+          "A": "The fitness center",
+          "B": "The restaurant",
+          "C": "The swimming pool",
+          "D": "The hotel lobby"
+        },
+        "correct": "C",
+        "explanation": "The talk states information that directly supports option C."
+      },
+      {
+        "question": 2,
+        "question_text": "Why will it be closed?",
+        "options": {
+          "A": "For cleaning",
+          "B": "For construction",
+          "C": "For a private event",
+          "D": "For repairs"
+        },
+        "correct": "A",
+        "explanation": "The talk states information that directly supports option A."
+      },
+      {
+        "question": 3,
+        "question_text": "When will it reopen?",
+        "options": {
+          "A": "At 10 a.m.",
+          "B": "At 11 a.m.",
+          "C": "At noon",
+          "D": "At 2 p.m."
+        },
+        "correct": "C",
+        "explanation": "The talk states information that directly supports option C."
+      }
+    ]
+  },
+  {
+    "group": 99,
+    "title": "Part 4 - Talk 99 - Store Advertisement",
+    "monologue": {
+      "speaker": "Announcer",
+      "text": "Central Electronics is having a weekend sale on laptops and computer accessories. Selected laptops are discounted by twenty percent. The sale begins Saturday morning and continues through Sunday."
+    },
+    "questions": [
+      {
+        "question": 1,
+        "question_text": "What is Central Electronics promoting?",
+        "options": {
+          "A": "A weekend sale",
+          "B": "A repair service",
+          "C": "A new store",
+          "D": "A training course"
+        },
+        "correct": "A",
+        "explanation": "The talk states information that directly supports option A."
+      },
+      {
+        "question": 2,
+        "question_text": "How much are selected laptops discounted?",
+        "options": {
+          "A": "10 percent",
+          "B": "15 percent",
+          "C": "20 percent",
+          "D": "30 percent"
+        },
+        "correct": "C",
+        "explanation": "The talk states information that directly supports option C."
+      },
+      {
+        "question": 3,
+        "question_text": "When does the sale begin?",
+        "options": {
+          "A": "Friday evening",
+          "B": "Saturday morning",
+          "C": "Saturday afternoon",
+          "D": "Sunday morning"
+        },
+        "correct": "B",
+        "explanation": "The talk states information that directly supports option B."
+      }
+    ]
+  },
+  {
+    "group": 100,
+    "title": "Part 4 - Talk 100 - Company Training",
+    "monologue": {
+      "speaker": "Announcer",
+      "text": "Employees who registered for the customer service workshop should report to Training Room 3 at eight forty-five. The workshop will last until noon, followed by a short lunch break."
+    },
+    "questions": [
+      {
+        "question": 1,
+        "question_text": "Who should report to Training Room 3?",
+        "options": {
+          "A": "Customers",
+          "B": "Department managers",
+          "C": "Registered workshop employees",
+          "D": "Visitors"
+        },
+        "correct": "C",
+        "explanation": "The talk states information that directly supports option C."
+      },
+      {
+        "question": 2,
+        "question_text": "When should participants arrive?",
+        "options": {
+          "A": "8:15",
+          "B": "8:30",
+          "C": "8:45",
+          "D": "9:15"
+        },
+        "correct": "C",
+        "explanation": "The talk states information that directly supports option C."
+      },
+      {
+        "question": 3,
+        "question_text": "What follows the workshop?",
+        "options": {
+          "A": "A staff meeting",
+          "B": "A short lunch break",
+          "C": "A sales presentation",
+          "D": "A company tour"
+        },
+        "correct": "B",
+        "explanation": "The talk states information that directly supports option B."
+      }
+    ]
+  }
+]

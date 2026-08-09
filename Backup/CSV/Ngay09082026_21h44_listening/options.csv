@@ -1,0 +1,677 @@
+id,question_id,option_label,option_text,display_order
+1,32,A,To request a ticket change,1
+2,32,B,To make a dinner reservation,2
+3,32,C,To order merchandise,3
+4,32,D,To plan a vacation,4
+5,33,A,An event was canceled.,1
+6,33,B,A line is very long.,2
+7,33,C,A payment option is unavailable.,3
+8,33,D,A computer program is not working.,4
+9,34,A,A meal voucher,1
+10,34,B,Some free souvenirs,2
+11,34,C,An increase in price,3
+12,34,D,A refund policy,4
+13,35,A,A job fair,1
+14,35,B,A film screening,2
+15,35,C,A lunch,3
+16,35,D,A conference,4
+17,36,A,To suggest inquiring about a ride,1
+18,36,B,To express surprise at a coworker's choice of vehicle,2
+19,36,C,To explain why a coworker was late,3
+20,36,D,To clarify that a coworker helped him move,4
+21,37,A,Reschedule an event,1
+22,37,B,Talk to another coworker,2
+23,37,C,Request time off,3
+24,37,D,Make a phone call,4
+25,38,A,At a grocery store,1
+26,38,B,At a shipping facility,2
+27,38,C,At a restaurant,3
+28,38,D,At a doctor's office,4
+29,39,A,Fuel prices,1
+30,39,B,Her work hours,2
+31,39,C,A staff shortage,3
+32,39,D,An inventory process,4
+33,40,A,Complete a training program,1
+34,40,B,Order extra equipment,2
+35,40,C,Hire a consultant,3
+36,40,D,Take time to make a decision,4
+37,41,A,Her taxi never arrived.,1
+38,41,B,Her luggage is missing.,2
+39,41,C,Her train was canceled.,3
+40,41,D,Her ticket is lost.,4
+41,42,A,An awards ceremony,1
+42,42,B,A trade show,2
+43,42,C,An art exhibit opening,3
+44,42,D,A building inspection,4
+45,43,A,A partial discount,1
+46,43,B,Vouchers for future travel,2
+47,43,C,A full refund,3
+48,43,D,A better seat,4
+49,44,A,At a distribution center,1
+50,44,B,At a conference center,2
+51,44,C,At a car dealership,3
+52,44,D,At a real estate agency,4
+53,45,A,Confusion about the intended recipients,1
+54,45,B,A delay in message delivery,2
+55,45,C,An incorrectly typed word,3
+56,45,D,Lack of information,4
+57,46,A,Arrange a meeting,1
+58,46,B,Make a phone call,2
+59,46,C,Speak to her employees,3
+60,46,D,Review an invoice,4
+61,47,A,A policy change,1
+62,47,B,A product launch,2
+63,47,C,Some customer feedback,3
+64,47,D,A scheduled maintenance visit,4
+65,48,A,Exploring publicity options,1
+66,48,B,Finding a new vendor,2
+67,48,C,Assembling a sales team,3
+68,48,D,Negotiating a monthly fee,4
+69,49,A,Customers have complained.,1
+70,49,B,Price estimates are high.,2
+71,49,C,Some changes require approval.,3
+72,49,D,A plan may be delayed.,4
+73,50,A,An interview,1
+74,50,B,A food delivery,2
+75,50,C,A special event,3
+76,50,D,An inspection,4
+77,51,A,Some flower arrangements,1
+78,51,B,Some gifts for attendees,2
+79,51,C,Some audio equipment,3
+80,51,D,Some tables and chairs,4
+81,52,A,Review a guest list,1
+82,52,B,Meet with a photographer,2
+83,52,C,Take a break,3
+84,52,D,Taste some food,4
+85,53,A,A bank opening,1
+86,53,B,A contest,2
+87,53,C,A business conference,3
+88,53,D,A company anniversary,4
+89,54,A,He finally fully understands a problem.,1
+90,54,B,The woman should expect a bill in the mail.,2
+91,54,C,The woman's assumption is incorrect.,3
+92,54,D,A schedule needs to be adjusted.,4
+93,55,A,Using an outdoor area,1
+94,55,B,Arranging technical support,2
+95,55,C,Confirming a catering menu,3
+96,55,D,Interviewing some job applicants,4
+97,56,A,Medicine,1
+98,56,B,Music,2
+99,56,C,Publishing,3
+100,56,D,Finance,4
+101,57,A,It is less expensive than similar products.,1
+102,57,B,It makes information more accessible.,2
+103,57,C,It reduces environmental impact.,3
+104,57,D,It comes with customer support.,4
+105,58,A,Contact some service providers,1
+106,58,B,Sign a release form,2
+107,58,C,Check some financial information,3
+108,58,D,Repair some equipment,4
+109,59,A,Proposing a business merger,1
+110,59,B,Relocating a company's headquarters,2
+111,59,C,Developing additional products,3
+112,59,D,Hiring more employees,4
+113,60,A,A profit margin will decrease.,1
+114,60,B,Additional equipment will be needed.,2
+115,60,C,There are not enough job applicants.,3
+116,60,D,There are delays in production.,4
+117,61,A,Contact a facility manager,1
+118,61,B,Adjust a budget,2
+119,61,C,Change a work schedule,3
+120,61,D,Research a product,4
+121,62,A,It offers a chance to see migrating birds.,1
+122,62,B,Water conditions are likely to be favorable.,2
+123,62,C,A guest chef is preparing lunch.,3
+124,62,D,Someone special will be guiding the tour.,4
+125,63,A,At 9 A.M.,1
+126,63,B,At 10 A.M.,2
+127,63,C,At 11 A.M.,3
+128,63,D,At 12 P.M.,4
+129,64,A,Return to her hotel,1
+130,64,B,Visit a café,2
+131,64,C,Call a friend,3
+132,64,D,Store her bags in a locker,4
+133,65,A,A conference session is full.,1
+134,65,B,An elevator is not working.,2
+135,65,C,A workshop has changed locations.,3
+136,65,D,Parking is not free.,4
+137,66,A,Area 1,1
+138,66,B,Area 2,2
+139,66,C,Area 3,3
+140,66,D,Area 4,4
+141,67,A,A workshop is starting soon.,1
+142,67,B,A parking pass is about to expire.,2
+143,67,C,A shuttle is running late.,3
+144,67,D,A friend is waiting outside.,4
+145,68,A,She wants to request a refund.,1
+146,68,B,She is unable to place an order online.,2
+147,68,C,She wants to extend a deadline.,3
+148,68,D,She is unhappy with a product purchased recently.,4
+149,69,A,$169.99,1
+150,69,B,$149.99,2
+151,69,C,$129.99,3
+152,69,D,$179.99,4
+153,70,A,Update a Web site,1
+154,70,B,Search a storage area,2
+155,70,C,Contact another store location,3
+156,70,D,Check an incoming shipment,4
+277,71,A,The quality of its food,1
+278,71,B,The extended hours it is open,2
+279,71,C,The style of its decor,3
+280,71,D,The affordable prices it offers,4
+281,72,A,Go on a tour,1
+282,72,B,Get a free gift,2
+283,72,C,Talk to an actor,3
+284,72,D,Watch some movies,4
+285,73,A,Arrive early,1
+286,73,B,Use public transportation,2
+287,73,C,Order tickets in advance,3
+288,73,D,Purchase a membership,4
+289,74,A,Request shuttle service,1
+290,74,B,Extend a hotel stay,2
+291,74,C,Change a room assignment,3
+292,74,D,Cancel a reservation,4
+293,75,A,To express approval for a room design,1
+294,75,B,To explain why a hotel is successful,2
+295,75,C,To indicate his disbelief,3
+296,75,D,To deny the listener's request,4
+297,76,A,Some warm clothes,1
+298,76,B,Some swimwear,2
+299,76,C,A credit card,3
+300,76,D,A copy of a key,4
+301,77,A,An archaeologist,1
+302,77,B,A marine biologist,2
+303,77,C,A conservation expert,3
+304,77,D,An athletic trainer,4
+305,78,A,Take a water bottle,1
+306,78,B,Consult a site map,2
+307,78,C,Apply sunscreen regularly,3
+308,78,D,Write careful notes,4
+309,79,A,Answer some questions,1
+310,79,B,Demonstrate a process,2
+311,79,C,Introduce a colleague,3
+312,79,D,Take the listeners to lunch,4
+313,80,A,To inspect a factory,1
+314,80,B,To repair a product,2
+315,80,C,To perform in a concert,3
+316,80,D,To attend a workshop,4
+317,81,A,A seating arrangement is wrong.,1
+318,81,B,A company credit card was not charged.,2
+319,81,C,Some meal tickets were not sent.,3
+320,81,D,Her taxi driver is unable to find a hotel.,4
+321,82,A,Send an e-mail,1
+322,82,B,Meet at an office,2
+323,82,C,Confirm a schedule,3
+324,82,D,Look up an account number,4
+325,83,A,Keep a gate closed,1
+326,83,B,Return equipment to a shed,2
+327,83,C,Check a list of supplies,3
+328,83,D,Select a free gift,4
+329,84,A,A garden plot,1
+330,84,B,A volunteer opportunity,2
+331,84,C,A gardening workshop,3
+332,84,D,A farmers market table,4
+333,85,A,By signing up for a newsletter,1
+334,85,B,By joining a membership program,2
+335,85,C,By looking at a Web site,3
+336,85,D,By attending weekly meetings,4
+337,86,A,Financial planning,1
+338,86,B,Digital marketing,2
+339,86,C,Real estate sales,3
+340,86,D,International shipping,4
+341,87,A,It has several local offices.,1
+342,87,B,It offers a money-back guarantee.,2
+343,87,C,Its employees have industry certification.,3
+344,87,D,Its employees work one-on-one with clients.,4
+345,88,A,By sending an e-mail,1
+346,88,B,By calling customer service,2
+347,88,C,By filling out a questionnaire,3
+348,88,D,By sending a text message,4
+349,89,A,Marine biologists,1
+350,89,B,Museum directors,2
+351,89,C,Rare-book librarians,3
+352,89,D,Agricultural engineers,4
+353,90,A,An opportunity is unlikely to occur.,1
+354,90,B,An award is impressive.,2
+355,90,C,A decision will take longer than usual.,3
+356,90,D,A competitor has been very successful.,4
+357,91,A,Additional funds are needed.,1
+358,91,B,Some special training is required.,2
+359,91,C,An application has to be approved.,3
+360,91,D,Some equipment needs to be ordered.,4
+361,92,A,To recognize outstanding achievements,1
+362,92,B,To introduce new products to the public,2
+363,92,C,To announce a manager's retirement,3
+364,92,D,To provide new employees with information,4
+365,93,A,At a banquet hall,1
+366,93,B,At a government building,2
+367,93,C,At a factory,3
+368,93,D,At a construction site,4
+369,94,A,She needs to reschedule a meeting.,1
+370,94,B,She will not be with the listeners in the afternoon.,2
+371,94,C,A customer has just placed a large order.,3
+372,94,D,A marketing campaign will begin soon.,4
+373,95,A,To place an order,1
+374,95,B,To dispute a charge,2
+375,95,C,To arrange a meeting,3
+376,95,D,To check a store's inventory,4
+377,96,A,SG-200,1
+378,96,B,SG-250,2
+379,96,C,XG-300,3
+380,96,D,XG-350,4
+381,97,A,A warranty,1
+382,97,B,A return process,2
+383,97,C,A delivery fee,3
+384,97,D,Product availability,4
+385,98,A,Marketing experts,1
+386,98,B,Product testers,2
+387,98,C,Product designers,3
+388,98,D,Audio engineers,4
+389,99,A,40 percent,1
+390,99,B,50 percent,2
+391,99,C,60 percent,3
+392,99,D,80 percent,4
+393,100,A,A competitor is making a similar product.,1
+394,100,B,A product will be offered for sale soon.,2
+395,100,C,A product will be introduced at a trade show.,3
+396,100,D,The cost of a product's materials will rise soon.,4
+397,101,A,encourage,1
+398,101,B,is encouraging,2
+399,101,C,encouraged,3
+400,101,D,was encouraged,4
+401,102,A,for,1
+402,102,B,about,2
+403,102,C,to,3
+404,102,D,at,4
+405,103,A,his,1
+406,103,B,him,2
+407,103,C,himself,3
+408,103,D,he,4
+409,104,A,allow,1
+410,104,B,manage,2
+411,104,C,succeed,3
+412,104,D,finish,4
+413,105,A,safety,1
+414,105,B,safe,2
+415,105,C,safeness,3
+416,105,D,safely,4
+417,106,A,arranged,1
+418,106,B,ready,2
+419,106,C,available,3
+420,106,D,qualified,4
+421,107,A,Attendance,1
+422,107,B,Attend,2
+423,107,C,Attends,3
+424,107,D,Attended,4
+425,108,A,tightly,1
+426,108,B,occasionally,2
+427,108,C,vaguely,3
+428,108,D,realistically,4
+429,109,A,who,1
+430,109,B,around,2
+431,109,C,that,3
+432,109,D,therefore,4
+433,110,A,however,1
+434,110,B,furthermore,2
+435,110,C,as if,3
+436,110,D,such as,4
+437,111,A,improve,1
+438,111,B,improved,2
+439,111,C,improving,3
+440,111,D,improvement,4
+441,112,A,issue,1
+442,112,B,alert,2
+443,112,C,claim,3
+444,112,D,member,4
+445,113,A,remark,1
+446,113,B,remarked,2
+447,113,C,remarking,3
+448,113,D,remarkable,4
+449,114,A,rarely,1
+450,114,B,honestly,2
+451,114,C,doubtfully,3
+452,114,D,directly,4
+453,115,A,their,1
+454,115,B,they,2
+455,115,C,them,3
+456,115,D,themselves,4
+457,116,A,participate,1
+458,116,B,consider,2
+459,116,C,grant,3
+460,116,D,make,4
+461,117,A,active,1
+462,117,B,actively,2
+463,117,C,activate,3
+464,117,D,activity,4
+465,118,A,renew,1
+466,118,B,consume,2
+467,118,C,identify,3
+468,118,D,resemble,4
+469,119,A,protect,1
+470,119,B,protects,2
+471,119,C,protective,3
+472,119,D,protectively,4
+473,120,A,security,1
+474,120,B,bracket,2
+475,120,C,connector,3
+476,120,D,merger,4
+477,121,A,confide,1
+478,121,B,confidential,2
+479,121,C,confidentially,3
+480,121,D,confidentiality,4
+481,122,A,memories,1
+482,122,B,varieties,2
+483,122,C,trends,3
+484,122,D,rehearsals,4
+485,123,A,inspect,1
+486,123,B,inspected,2
+487,123,C,are inspecting,3
+488,123,D,are inspected,4
+489,124,A,brief,1
+490,124,B,loyal,2
+491,124,C,strict,3
+492,124,D,careful,4
+493,125,A,invest,1
+494,125,B,investing,2
+495,125,C,invested,3
+496,125,D,investments,4
+497,126,A,accessible,1
+498,126,B,formal,2
+499,126,C,reasonable,3
+500,126,D,likely,4
+501,127,A,controlling,1
+502,127,B,consequently,2
+503,127,C,beneath,3
+504,127,D,even though,4
+505,128,A,around,1
+506,128,B,until,2
+507,128,C,despite,3
+508,128,D,past,4
+509,129,A,will equip,1
+510,129,B,to equip,2
+511,129,C,has been equipped,3
+512,129,D,is equipping,4
+513,130,A,Because of,1
+514,130,B,Instead of,2
+515,130,C,Whenever,3
+516,130,D,Although,4
+517,131,A,locate,1
+518,131,B,located,2
+519,131,C,locates,3
+520,131,D,location,4
+521,132,A,The results will be announced later this month.,1
+522,132,B,We are proud to serve our community with excellence.,2
+523,132,C,Pat and Kenny's shop excelled in all four categories.,3
+524,132,D,Please call in advance to schedule an appointment.,4
+525,133,A,I,1
+526,133,B,We,2
+527,133,C,They,3
+528,133,D,He,4
+529,134,A,While,1
+530,134,B,Despite,2
+531,134,C,Even,3
+532,134,D,Yet,4
+533,135,A,economy,1
+534,135,B,economics,2
+535,135,C,economize,3
+536,135,D,economical,4
+537,136,A,below,1
+538,136,B,finally,2
+539,136,C,sometimes,3
+540,136,D,hourly,4
+541,137,A,Come again very soon.,1
+542,137,B,It is warmer in the store.,2
+543,137,C,Do not take it inside.,3
+544,137,D,The tank is prefilled.,4
+545,138,A,model,1
+546,138,B,version,2
+547,138,C,heater,3
+548,138,D,replacement,4
+549,139,A,experience,1
+550,139,B,experienced,2
+551,139,C,experiencing,3
+552,139,D,experiential,4
+553,140,A,either,1
+554,140,B,both,2
+555,140,C,rather,3
+556,140,D,each,4
+557,141,A,Therefore,1
+558,141,B,Regardless,2
+559,141,C,For example,3
+560,141,D,Moreover,4
+561,142,A,We also need to inform you that your payment is five days past due.,1
+562,142,B,We recommend that you purchase all related accessories in our retail store.,2
+563,142,C,"If you get an error message, disconnect from the Internet and try again.",3
+564,142,D,"If you cannot find what you need online, simply call our support number.",4
+565,143,A,enlarged,1
+566,143,B,discontinued,2
+567,143,C,accessible,3
+568,143,D,refreshed,4
+569,144,A,sharing,1
+570,144,B,but,2
+571,144,C,except,3
+572,144,D,as well as,4
+573,145,A,routes,1
+574,145,B,responses,2
+575,145,C,software,3
+576,145,D,careers,4
+577,146,A,People often use credit cards to purchase meals during the flight.,1
+578,146,B,Many people like public transportation because it is inexpensive.,2
+579,146,C,The durable cards are made from recycled materials.,3
+580,146,D,There was a small price increase last month.,4
+581,147,A,It provides materials for students.,1
+582,147,B,It has stores in multiple locations.,2
+583,147,C,It is celebrating an anniversary.,3
+584,147,D,It provides free shipping for online orders.,4
+585,148,A,Box of ten cards,1
+586,148,B,Box of five invitations,2
+587,148,C,Wireless mouse,3
+588,148,D,Desk lamp,4
+589,149,A,To inquire about leasing a vehicle,1
+590,149,B,To inform a customer of required car maintenance,2
+591,149,C,To announce the release of a new car,3
+592,149,D,To register a used car for an extended warranty,4
+593,150,A,It performs the servicing of its company vehicles.,1
+594,150,B,It has a new project beginning March 1.,2
+595,150,C,It provides leased cars to some employees.,3
+596,150,D,It will soon begin a construction project for Toshi Auto Group.,4
+597,151,A,To promote a new line of cookware,1
+598,151,B,To advertise an orchestra concert,2
+599,151,C,To announce a new series of books,3
+600,151,D,To provide a calendar of local events,4
+601,152,A,An awards ceremony,1
+602,152,B,The publication of a life story,2
+603,152,C,The release of a new album,3
+604,152,D,The launch of a celebrity's restaurant,4
+605,153,A,Its record-breaking sales,1
+606,153,B,Its roots in Manchester,2
+607,153,C,Its focus on fiction and poetry,3
+608,153,D,Its broad range of authors,4
+609,154,A,Some new employees are absent.,1
+610,154,B,Some boxes are incorrectly labeled.,2
+611,154,C,A package delivery is delayed.,3
+612,154,D,An access door is malfunctioning.,4
+613,155,A,An electrician has arrived at a work site.,1
+614,155,B,Some equipment is operating smoothly.,2
+615,155,C,Trainees can help with some shipments.,3
+616,155,D,Ms. Sadauskas is well suited for her job.,4
+617,156,A,An image is not displaying clearly.,1
+618,156,B,A projector needs to be set up.,2
+619,156,C,Audio is not functioning properly.,3
+620,156,D,A microphone needs to be repaired.,4
+621,157,A,Visit a client site.,1
+622,157,B,Deliver a product.,2
+623,157,C,Create an online video.,3
+624,157,D,Give a presentation.,4
+625,158,A,2:00 P.M.,1
+626,158,B,2:15 P.M.,2
+627,158,C,2:30 P.M.,3
+628,158,D,3:00 P.M.,4
+629,159,A,Marketing,1
+630,159,B,Finance,2
+631,159,C,Advertising,3
+632,159,D,Executive management,4
+633,160,A,To summarize a previous meeting,1
+634,160,B,To explain a promotional campaign,2
+635,160,C,To provide information about a budget,3
+636,160,D,To review recently approved documents,4
+637,161,A,She accepts Mr. Seidal's offer.,1
+638,161,B,She agrees that Mr. Iverman should attend the meeting at 3:00 P.M.,2
+639,161,C,She is pleased with the proposed budget.,3
+640,161,D,She is happy that a project has been completed.,4
+641,162,A,He informed her of a job opening.,1
+642,162,B,He will require a professional reference.,2
+643,162,C,He would make a good business partner.,3
+644,162,D,He is considering resigning from his position.,4
+645,163,A,transport,1
+646,163,B,communicate,2
+647,163,C,recommend,3
+648,163,D,adapt,4
+649,164,A,She wants a higher salary for her efforts.,1
+650,164,B,She wants to work with a more experienced team.,2
+651,164,C,She wants more opportunities for advancement.,3
+652,164,D,She wants a role that inspires her more.,4
+653,165,A,To request a placement in a particular country,1
+654,165,B,To discuss how she came to acquire strategic industry contacts,2
+655,165,C,To explain how she became aware of certain world issues,3
+656,165,D,To emphasize her experience with people of different backgrounds,4
+717,166,A,Medical supplies,1
+718,166,B,Farming equipment,2
+719,166,C,Cabinets and furniture,3
+720,166,D,Glass laboratory equipment,4
+721,167,A,It reorganized a client's laboratory.,1
+722,167,B,It converted its vehicles to use biofuels.,2
+723,167,C,It expanded staffing at its production facility.,3
+724,167,D,It helped a client organize a trade show.,4
+725,168,A,By e-mail,1
+726,168,B,By phone,2
+727,168,C,By instant message,3
+728,168,D,By an online form,4
+729,169,A,Cook,1
+730,169,B,Cashier,2
+731,169,C,Interior designer,3
+732,169,D,Event planner,4
+733,170,A,Respond to a survey,1
+734,170,B,Arrange for an interview,2
+735,170,C,Submit a recording,3
+736,170,D,Provide references,4
+737,171,A,[1],1
+738,171,B,[2],2
+739,171,C,[3],3
+740,171,D,[4],4
+741,172,A,To promote a technology show,1
+742,172,B,To introduce a product,2
+743,172,C,To interview smartphone users,3
+744,172,D,To announce a recall of a device,4
+745,173,A,£39,1
+746,173,B,£59,2
+747,173,C,£79,3
+748,173,D,£100,4
+749,174,A,The screen size,1
+750,174,B,The camera resolution,2
+751,174,C,The price,3
+752,174,D,The charger,4
+753,175,A,[1],1
+754,175,B,[2],2
+755,175,C,[3],3
+756,175,D,[4],4
+757,176,A,It provides mobile phones to some employees.,1
+758,176,B,Its employees value confidentiality.,2
+759,176,C,It has recently changed its phone system.,3
+760,176,D,It offers technology training to employees.,4
+761,177,A,periodic,1
+762,177,B,orderly,2
+763,177,C,customary,3
+764,177,D,legitimate,4
+765,178,A,In a weekly managers' meeting,1
+766,178,B,In a work order,2
+767,178,C,In a phone call,3
+768,178,D,In a personal voice mail,4
+769,179,A,By agreeing to everything Ms. Xi asked for,1
+770,179,B,By resetting the password on Ms. Xi's phone,2
+771,179,C,By referring the matter to another technician,3
+772,179,D,By proposing to fulfill only part of Ms. Xi's request,4
+773,180,A,Make the needed changes to her voice-mail system,1
+774,180,B,Attend training about the new voice-mail system,2
+775,180,C,Confirm that she wants him to change her voice-mail system,3
+776,180,D,Provide a clear description of the problem with her voice-mail system,4
+777,181,A,He coordinates a game development team.,1
+778,181,B,He is convinced that Titan Adventure is overpriced.,2
+779,181,C,He is a new employee at Rimerko Games.,3
+780,181,D,He will leave on a business trip on October 10.,4
+781,182,A,It is a major competitor of Titan Adventure.,1
+782,182,B,It features an open-world format.,2
+783,182,C,It is the first video game in a series.,3
+784,182,D,It is Rimerko's most challenging game.,4
+785,183,A,She wrote the script for Neptune's Voyage.,1
+786,183,B,She successfully addressed Mr. Merson's concern.,2
+787,183,C,She won an award for game design.,3
+788,183,D,She is a project manager.,4
+789,184,A,It has players act in the role of Neptune.,1
+790,184,B,It uses lighting to show players where to navigate.,2
+791,184,C,It introduces a completely new set of characters.,3
+792,184,D,It lets players explore new features without guidance.,4
+793,185,A,On September 4,1
+794,185,B,On October 10,2
+795,185,C,On April 1,3
+796,185,D,On May 5,4
+797,186,A,The advertising manager at a radio station,1
+798,186,B,The host of a community news program,2
+799,186,C,The music director at Wonder Ridge Radio,3
+800,186,D,The host of a sports radio program,4
+801,187,A,To express praise for the radio station,1
+802,187,B,To ask about job opportunities,2
+803,187,C,To request more sports talk show programming,3
+804,187,D,To inquire about the name of a song,4
+805,188,A,Between 6 A.M. and noon,1
+806,188,B,Between noon and 4 P.M.,2
+807,188,C,Between 4 P.M. and 7 P.M.,3
+808,188,D,Between 7 P.M. and 10 P.M.,4
+809,189,A,A willingness to travel,1
+810,189,B,Familiarity with computers,2
+811,189,C,A degree in communications,3
+812,189,D,Extensive experience in the radio industry,4
+813,190,A,Coffee Break,1
+814,190,B,Afternoon Jazz,2
+815,190,C,Folk Frenzy,3
+816,190,D,Josie's Joint,4
+817,191,A,They can be made only on certain days.,1
+818,191,B,They can be made only online.,2
+819,191,C,They can be filed only by authorized personnel.,3
+820,191,D,They can be filed only after a fee is paid.,4
+821,192,A,To add information to a Web portal,1
+822,192,B,To help his company advise the city,2
+823,192,C,To identify an accounting error,3
+824,192,D,To learn how an agency is structured,4
+825,193,A,Go through a security screening,1
+826,193,B,Get a parking permit,2
+827,193,C,Present some identification,3
+828,193,D,Sign a logbook,4
+829,194,A,An itemized statement of fees,1
+830,194,B,A letter from his company,2
+831,194,C,A phone call from a city official,3
+832,194,D,A password for the Web portal,4
+833,195,A,Room 100,1
+834,195,B,Room 101,2
+835,195,C,Room 102,3
+836,195,D,Room 103,4
+837,196,A,He enjoys his work as a director.,1
+838,196,B,He has been a mentor to many young people.,2
+839,196,C,He is a well-known actor.,3
+840,196,D,He has written many books.,4
+841,197,A,In Sweden,1
+842,197,B,In France,2
+843,197,C,In Italy,3
+844,197,D,In the United Kingdom,4
+845,198,A,To go on a vacation,1
+846,198,B,To interview for a new job,2
+847,198,C,To attend an international film festival,3
+848,198,D,To speak at a conference,4
+849,199,A,To reserve a hotel room,1
+850,199,B,To confirm meeting arrangements,2
+851,199,C,To discuss an idea for a movie,3
+852,199,D,To ask for transportation,4
+853,200,A,He hopes to write for a British news site.,1
+854,200,B,He just hired a new assistant.,2
+855,200,C,He was pleased with Ms. Joshi's review of his book.,3
+856,200,D,He frequently cooks special meals.,4
