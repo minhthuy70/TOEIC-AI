@@ -1,0 +1,6002 @@
+[
+  {
+    "group": 1,
+    "title": "Part 3 - Conversation 01",
+    "dialogue": [
+      {
+        "speaker": "Maya",
+        "text": "Hi Daniel. We need to prepare the printer paper for the office supplies."
+      },
+      {
+        "speaker": "Daniel",
+        "text": "Sure. I can take care of it. How many do we need?"
+      },
+      {
+        "speaker": "Maya",
+        "text": "Let's prepare about 25. They should be ready by this afternoon."
+      },
+      {
+        "speaker": "Daniel",
+        "text": "All right. I'll get them from the storage room and have everything ready."
+      }
+    ],
+    "questions": [
+      {
+        "question": 1,
+        "question_text": "What are the speakers mainly discussing?",
+        "options": {
+          "A": "Preparing printer paper",
+          "B": "Changing the office supplies",
+          "C": "Visiting the copy room",
+          "D": "I'll take care of it this afternoon."
+        },
+        "correct": "A",
+        "explanation": "The speakers are discussing how to prepare printer paper for the office supplies."
+      },
+      {
+        "question": 2,
+        "question_text": "Where will Daniel get the item?",
+        "options": {
+          "A": "The main office",
+          "B": "the storage room",
+          "C": "the copy room",
+          "D": "I'll check the schedule and let you know."
+        },
+        "correct": "B",
+        "explanation": "Daniel says that the item will be obtained from the storage room."
+      },
+      {
+        "question": 3,
+        "question_text": "When should everything be ready?",
+        "options": {
+          "A": "this afternoon",
+          "B": "before lunch",
+          "C": "On Tuesday",
+          "D": "It's available in the main office."
+        },
+        "correct": "A",
+        "explanation": "Maya says the items should be ready by this afternoon."
+      }
+    ]
+  },
+  {
+    "group": 2,
+    "title": "Part 3 - Conversation 02",
+    "dialogue": [
+      {
+        "speaker": "Anna",
+        "text": "Hi Brian. We need to prepare the the sales meeting for the meeting schedule."
+      },
+      {
+        "speaker": "Brian",
+        "text": "Sure. I can take care of it. How many do we need?"
+      },
+      {
+        "speaker": "Anna",
+        "text": "Let's prepare about 30. They should be ready by tomorrow morning."
+      },
+      {
+        "speaker": "Brian",
+        "text": "All right. I'll get them from Room 204 and have everything ready."
+      }
+    ],
+    "questions": [
+      {
+        "question": 1,
+        "question_text": "What are the speakers mainly discussing?",
+        "options": {
+          "A": "Preparing the sales meeting",
+          "B": "Changing the meeting schedule",
+          "C": "Visiting the main conference room",
+          "D": "I'll take care of it this afternoon."
+        },
+        "correct": "A",
+        "explanation": "The speakers are discussing how to prepare the sales meeting for the meeting schedule."
+      },
+      {
+        "question": 2,
+        "question_text": "Where will Brian get the item?",
+        "options": {
+          "A": "The main office",
+          "B": "Room 204",
+          "C": "the main conference room",
+          "D": "I'll check the schedule and let you know."
+        },
+        "correct": "B",
+        "explanation": "Brian says that the item will be obtained from Room 204."
+      },
+      {
+        "question": 3,
+        "question_text": "When should everything be ready?",
+        "options": {
+          "A": "tomorrow morning",
+          "B": "Thursday afternoon",
+          "C": "On Wednesday",
+          "D": "It's available in the main office."
+        },
+        "correct": "A",
+        "explanation": "Anna says the items should be ready by tomorrow morning."
+      }
+    ]
+  },
+  {
+    "group": 3,
+    "title": "Part 3 - Conversation 03",
+    "dialogue": [
+      {
+        "speaker": "Laura",
+        "text": "Hi Kevin. We need to prepare the a hotel room for the business trip."
+      },
+      {
+        "speaker": "Kevin",
+        "text": "Sure. I can take care of it. How many do we need?"
+      },
+      {
+        "speaker": "Laura",
+        "text": "Let's prepare about 35. They should be ready by Friday evening."
+      },
+      {
+        "speaker": "Kevin",
+        "text": "All right. I'll get them from the downtown hotel and have everything ready."
+      }
+    ],
+    "questions": [
+      {
+        "question": 1,
+        "question_text": "What are the speakers mainly discussing?",
+        "options": {
+          "A": "Preparing a hotel room",
+          "B": "Changing the business trip",
+          "C": "Visiting the airport counter",
+          "D": "I'll take care of it this afternoon."
+        },
+        "correct": "A",
+        "explanation": "The speakers are discussing how to prepare a hotel room for the business trip."
+      },
+      {
+        "question": 2,
+        "question_text": "Where will Kevin get the item?",
+        "options": {
+          "A": "The main office",
+          "B": "the downtown hotel",
+          "C": "the airport counter",
+          "D": "I'll check the schedule and let you know."
+        },
+        "correct": "B",
+        "explanation": "Kevin says that the item will be obtained from the downtown hotel."
+      },
+      {
+        "question": 3,
+        "question_text": "When should everything be ready?",
+        "options": {
+          "A": "Friday evening",
+          "B": "Sunday morning",
+          "C": "On Thursday",
+          "D": "It's available in the main office."
+        },
+        "correct": "A",
+        "explanation": "Laura says the items should be ready by Friday evening."
+      }
+    ]
+  },
+  {
+    "group": 4,
+    "title": "Part 3 - Conversation 04",
+    "dialogue": [
+      {
+        "speaker": "Emily",
+        "text": "Hi Mark. We need to prepare the a dinner reservation for the restaurant reservation."
+      },
+      {
+        "speaker": "Mark",
+        "text": "Sure. I can take care of it. How many do we need?"
+      },
+      {
+        "speaker": "Emily",
+        "text": "Let's prepare about 40. They should be ready by seven o'clock."
+      },
+      {
+        "speaker": "Mark",
+        "text": "All right. I'll get them from the Italian restaurant and have everything ready."
+      }
+    ],
+    "questions": [
+      {
+        "question": 1,
+        "question_text": "What are the speakers mainly discussing?",
+        "options": {
+          "A": "Preparing a dinner reservation",
+          "B": "Changing the restaurant reservation",
+          "C": "Visiting the café downstairs",
+          "D": "I'll take care of it this afternoon."
+        },
+        "correct": "A",
+        "explanation": "The speakers are discussing how to prepare a dinner reservation for the restaurant reservation."
+      },
+      {
+        "question": 2,
+        "question_text": "Where will Mark get the item?",
+        "options": {
+          "A": "The main office",
+          "B": "the Italian restaurant",
+          "C": "the café downstairs",
+          "D": "I'll check the schedule and let you know."
+        },
+        "correct": "B",
+        "explanation": "Mark says that the item will be obtained from the Italian restaurant."
+      },
+      {
+        "question": 3,
+        "question_text": "When should everything be ready?",
+        "options": {
+          "A": "seven o'clock",
+          "B": "twelve thirty",
+          "C": "On Friday",
+          "D": "It's available in the main office."
+        },
+        "correct": "A",
+        "explanation": "Emily says the items should be ready by seven o'clock."
+      }
+    ]
+  },
+  {
+    "group": 5,
+    "title": "Part 3 - Conversation 05",
+    "dialogue": [
+      {
+        "speaker": "Sarah",
+        "text": "Hi James. We need to prepare the train tickets for the train travel."
+      },
+      {
+        "speaker": "James",
+        "text": "Sure. I can take care of it. How many do we need?"
+      },
+      {
+        "speaker": "Sarah",
+        "text": "Let's prepare about 45. They should be ready by Saturday morning."
+      },
+      {
+        "speaker": "James",
+        "text": "All right. I'll get them from the station and have everything ready."
+      }
+    ],
+    "questions": [
+      {
+        "question": 1,
+        "question_text": "What are the speakers mainly discussing?",
+        "options": {
+          "A": "Preparing train tickets",
+          "B": "Changing the train travel",
+          "C": "Visiting the ticket office",
+          "D": "I'll take care of it this afternoon."
+        },
+        "correct": "A",
+        "explanation": "The speakers are discussing how to prepare train tickets for the train travel."
+      },
+      {
+        "question": 2,
+        "question_text": "Where will James get the item?",
+        "options": {
+          "A": "The main office",
+          "B": "the station",
+          "C": "the ticket office",
+          "D": "I'll check the schedule and let you know."
+        },
+        "correct": "B",
+        "explanation": "James says that the item will be obtained from the station."
+      },
+      {
+        "question": 3,
+        "question_text": "When should everything be ready?",
+        "options": {
+          "A": "Saturday morning",
+          "B": "Monday evening",
+          "C": "On Monday",
+          "D": "It's available in the main office."
+        },
+        "correct": "A",
+        "explanation": "Sarah says the items should be ready by Saturday morning."
+      }
+    ]
+  },
+  {
+    "group": 6,
+    "title": "Part 3 - Conversation 06",
+    "dialogue": [
+      {
+        "speaker": "Linda",
+        "text": "Hi Robert. We need to prepare the conference registration for the conference."
+      },
+      {
+        "speaker": "Robert",
+        "text": "Sure. I can take care of it. How many do we need?"
+      },
+      {
+        "speaker": "Linda",
+        "text": "Let's prepare about 50. They should be ready by next Monday."
+      },
+      {
+        "speaker": "Robert",
+        "text": "All right. I'll get them from the convention center and have everything ready."
+      }
+    ],
+    "questions": [
+      {
+        "question": 1,
+        "question_text": "What are the speakers mainly discussing?",
+        "options": {
+          "A": "Preparing conference registration",
+          "B": "Changing the conference",
+          "C": "Visiting the registration desk",
+          "D": "I'll take care of it this afternoon."
+        },
+        "correct": "A",
+        "explanation": "The speakers are discussing how to prepare conference registration for the conference."
+      },
+      {
+        "question": 2,
+        "question_text": "Where will Robert get the item?",
+        "options": {
+          "A": "The main office",
+          "B": "the convention center",
+          "C": "the registration desk",
+          "D": "I'll check the schedule and let you know."
+        },
+        "correct": "B",
+        "explanation": "Robert says that the item will be obtained from the convention center."
+      },
+      {
+        "question": 3,
+        "question_text": "When should everything be ready?",
+        "options": {
+          "A": "next Monday",
+          "B": "Tuesday",
+          "C": "On Tuesday",
+          "D": "It's available in the main office."
+        },
+        "correct": "A",
+        "explanation": "Linda says the items should be ready by next Monday."
+      }
+    ]
+  },
+  {
+    "group": 7,
+    "title": "Part 3 - Conversation 07",
+    "dialogue": [
+      {
+        "speaker": "Jessica",
+        "text": "Hi Michael. We need to prepare the a replacement order for the customer order."
+      },
+      {
+        "speaker": "Michael",
+        "text": "Sure. I can take care of it. How many do we need?"
+      },
+      {
+        "speaker": "Jessica",
+        "text": "Let's prepare about 55. They should be ready by next week."
+      },
+      {
+        "speaker": "Michael",
+        "text": "All right. I'll get them from the customer service desk and have everything ready."
+      }
+    ],
+    "questions": [
+      {
+        "question": 1,
+        "question_text": "What are the speakers mainly discussing?",
+        "options": {
+          "A": "Preparing a replacement order",
+          "B": "Changing the customer order",
+          "C": "Visiting the service counter",
+          "D": "I'll take care of it this afternoon."
+        },
+        "correct": "A",
+        "explanation": "The speakers are discussing how to prepare a replacement order for the customer order."
+      },
+      {
+        "question": 2,
+        "question_text": "Where will Michael get the item?",
+        "options": {
+          "A": "The main office",
+          "B": "the customer service desk",
+          "C": "the service counter",
+          "D": "I'll check the schedule and let you know."
+        },
+        "correct": "B",
+        "explanation": "Michael says that the item will be obtained from the customer service desk."
+      },
+      {
+        "question": 3,
+        "question_text": "When should everything be ready?",
+        "options": {
+          "A": "next week",
+          "B": "Wednesday",
+          "C": "On Wednesday",
+          "D": "It's available in the main office."
+        },
+        "correct": "A",
+        "explanation": "Jessica says the items should be ready by next week."
+      }
+    ]
+  },
+  {
+    "group": 8,
+    "title": "Part 3 - Conversation 08",
+    "dialogue": [
+      {
+        "speaker": "Rachel",
+        "text": "Hi David. We need to prepare the the project report for the project deadline."
+      },
+      {
+        "speaker": "David",
+        "text": "Sure. I can take care of it. How many do we need?"
+      },
+      {
+        "speaker": "Rachel",
+        "text": "Let's prepare about 20. They should be ready by Friday."
+      },
+      {
+        "speaker": "David",
+        "text": "All right. I'll get them from the design office and have everything ready."
+      }
+    ],
+    "questions": [
+      {
+        "question": 1,
+        "question_text": "What are the speakers mainly discussing?",
+        "options": {
+          "A": "Preparing the project report",
+          "B": "Changing the project deadline",
+          "C": "Visiting the finance department",
+          "D": "I'll take care of it this afternoon."
+        },
+        "correct": "A",
+        "explanation": "The speakers are discussing how to prepare the project report for the project deadline."
+      },
+      {
+        "question": 2,
+        "question_text": "Where will David get the item?",
+        "options": {
+          "A": "The main office",
+          "B": "the design office",
+          "C": "the finance department",
+          "D": "I'll check the schedule and let you know."
+        },
+        "correct": "B",
+        "explanation": "David says that the item will be obtained from the design office."
+      },
+      {
+        "question": 3,
+        "question_text": "When should everything be ready?",
+        "options": {
+          "A": "Friday",
+          "B": "next Friday",
+          "C": "On Thursday",
+          "D": "It's available in the main office."
+        },
+        "correct": "A",
+        "explanation": "Rachel says the items should be ready by Friday."
+      }
+    ]
+  },
+  {
+    "group": 9,
+    "title": "Part 3 - Conversation 09",
+    "dialogue": [
+      {
+        "speaker": "Olivia",
+        "text": "Hi Thomas. We need to prepare the the office computer for the equipment repair."
+      },
+      {
+        "speaker": "Thomas",
+        "text": "Sure. I can take care of it. How many do we need?"
+      },
+      {
+        "speaker": "Olivia",
+        "text": "Let's prepare about 25. They should be ready by this afternoon."
+      },
+      {
+        "speaker": "Thomas",
+        "text": "All right. I'll get them from the IT department and have everything ready."
+      }
+    ],
+    "questions": [
+      {
+        "question": 1,
+        "question_text": "What are the speakers mainly discussing?",
+        "options": {
+          "A": "Preparing the office computer",
+          "B": "Changing the equipment repair",
+          "C": "Visiting the repair center",
+          "D": "I'll take care of it this afternoon."
+        },
+        "correct": "A",
+        "explanation": "The speakers are discussing how to prepare the office computer for the equipment repair."
+      },
+      {
+        "question": 2,
+        "question_text": "Where will Thomas get the item?",
+        "options": {
+          "A": "The main office",
+          "B": "the IT department",
+          "C": "the repair center",
+          "D": "I'll check the schedule and let you know."
+        },
+        "correct": "B",
+        "explanation": "Thomas says that the item will be obtained from the IT department."
+      },
+      {
+        "question": 3,
+        "question_text": "When should everything be ready?",
+        "options": {
+          "A": "this afternoon",
+          "B": "tomorrow",
+          "C": "On Friday",
+          "D": "It's available in the main office."
+        },
+        "correct": "A",
+        "explanation": "Olivia says the items should be ready by this afternoon."
+      }
+    ]
+  },
+  {
+    "group": 10,
+    "title": "Part 3 - Conversation 10",
+    "dialogue": [
+      {
+        "speaker": "Sophie",
+        "text": "Hi Daniel. We need to prepare the a taxi for the airport plans."
+      },
+      {
+        "speaker": "Daniel",
+        "text": "Sure. I can take care of it. How many do we need?"
+      },
+      {
+        "speaker": "Sophie",
+        "text": "Let's prepare about 30. They should be ready by six thirty."
+      },
+      {
+        "speaker": "Daniel",
+        "text": "All right. I'll get them from the airport and have everything ready."
+      }
+    ],
+    "questions": [
+      {
+        "question": 1,
+        "question_text": "What are the speakers mainly discussing?",
+        "options": {
+          "A": "Preparing a taxi",
+          "B": "Changing the airport plans",
+          "C": "Visiting the hotel entrance",
+          "D": "I'll take care of it this afternoon."
+        },
+        "correct": "A",
+        "explanation": "The speakers are discussing how to prepare a taxi for the airport plans."
+      },
+      {
+        "question": 2,
+        "question_text": "Where will Daniel get the item?",
+        "options": {
+          "A": "The main office",
+          "B": "the airport",
+          "C": "the hotel entrance",
+          "D": "I'll check the schedule and let you know."
+        },
+        "correct": "B",
+        "explanation": "Daniel says that the item will be obtained from the airport."
+      },
+      {
+        "question": 3,
+        "question_text": "When should everything be ready?",
+        "options": {
+          "A": "six thirty",
+          "B": "seven fifteen",
+          "C": "On Monday",
+          "D": "It's available in the main office."
+        },
+        "correct": "A",
+        "explanation": "Sophie says the items should be ready by six thirty."
+      }
+    ]
+  },
+  {
+    "group": 11,
+    "title": "Part 3 - Conversation 11",
+    "dialogue": [
+      {
+        "speaker": "Maya",
+        "text": "Hi Daniel. We need to prepare the printer paper for the office supplies."
+      },
+      {
+        "speaker": "Daniel",
+        "text": "Sure. I can take care of it. How many do we need?"
+      },
+      {
+        "speaker": "Maya",
+        "text": "Let's prepare about 35. They should be ready by this afternoon."
+      },
+      {
+        "speaker": "Daniel",
+        "text": "All right. I'll get them from the storage room and have everything ready."
+      }
+    ],
+    "questions": [
+      {
+        "question": 1,
+        "question_text": "What are the speakers mainly discussing?",
+        "options": {
+          "A": "Preparing printer paper",
+          "B": "Changing the office supplies",
+          "C": "Visiting the copy room",
+          "D": "I'll take care of it this afternoon."
+        },
+        "correct": "A",
+        "explanation": "The speakers are discussing how to prepare printer paper for the office supplies."
+      },
+      {
+        "question": 2,
+        "question_text": "Where will Daniel get the item?",
+        "options": {
+          "A": "The main office",
+          "B": "the storage room",
+          "C": "the copy room",
+          "D": "I'll check the schedule and let you know."
+        },
+        "correct": "B",
+        "explanation": "Daniel says that the item will be obtained from the storage room."
+      },
+      {
+        "question": 3,
+        "question_text": "When should everything be ready?",
+        "options": {
+          "A": "this afternoon",
+          "B": "before lunch",
+          "C": "On Tuesday",
+          "D": "It's available in the main office."
+        },
+        "correct": "A",
+        "explanation": "Maya says the items should be ready by this afternoon."
+      }
+    ]
+  },
+  {
+    "group": 12,
+    "title": "Part 3 - Conversation 12",
+    "dialogue": [
+      {
+        "speaker": "Anna",
+        "text": "Hi Brian. We need to prepare the the sales meeting for the meeting schedule."
+      },
+      {
+        "speaker": "Brian",
+        "text": "Sure. I can take care of it. How many do we need?"
+      },
+      {
+        "speaker": "Anna",
+        "text": "Let's prepare about 40. They should be ready by tomorrow morning."
+      },
+      {
+        "speaker": "Brian",
+        "text": "All right. I'll get them from Room 204 and have everything ready."
+      }
+    ],
+    "questions": [
+      {
+        "question": 1,
+        "question_text": "What are the speakers mainly discussing?",
+        "options": {
+          "A": "Preparing the sales meeting",
+          "B": "Changing the meeting schedule",
+          "C": "Visiting the main conference room",
+          "D": "I'll take care of it this afternoon."
+        },
+        "correct": "A",
+        "explanation": "The speakers are discussing how to prepare the sales meeting for the meeting schedule."
+      },
+      {
+        "question": 2,
+        "question_text": "Where will Brian get the item?",
+        "options": {
+          "A": "The main office",
+          "B": "Room 204",
+          "C": "the main conference room",
+          "D": "I'll check the schedule and let you know."
+        },
+        "correct": "B",
+        "explanation": "Brian says that the item will be obtained from Room 204."
+      },
+      {
+        "question": 3,
+        "question_text": "When should everything be ready?",
+        "options": {
+          "A": "tomorrow morning",
+          "B": "Thursday afternoon",
+          "C": "On Wednesday",
+          "D": "It's available in the main office."
+        },
+        "correct": "A",
+        "explanation": "Anna says the items should be ready by tomorrow morning."
+      }
+    ]
+  },
+  {
+    "group": 13,
+    "title": "Part 3 - Conversation 13",
+    "dialogue": [
+      {
+        "speaker": "Laura",
+        "text": "Hi Kevin. We need to prepare the a hotel room for the business trip."
+      },
+      {
+        "speaker": "Kevin",
+        "text": "Sure. I can take care of it. How many do we need?"
+      },
+      {
+        "speaker": "Laura",
+        "text": "Let's prepare about 45. They should be ready by Friday evening."
+      },
+      {
+        "speaker": "Kevin",
+        "text": "All right. I'll get them from the downtown hotel and have everything ready."
+      }
+    ],
+    "questions": [
+      {
+        "question": 1,
+        "question_text": "What are the speakers mainly discussing?",
+        "options": {
+          "A": "Preparing a hotel room",
+          "B": "Changing the business trip",
+          "C": "Visiting the airport counter",
+          "D": "I'll take care of it this afternoon."
+        },
+        "correct": "A",
+        "explanation": "The speakers are discussing how to prepare a hotel room for the business trip."
+      },
+      {
+        "question": 2,
+        "question_text": "Where will Kevin get the item?",
+        "options": {
+          "A": "The main office",
+          "B": "the downtown hotel",
+          "C": "the airport counter",
+          "D": "I'll check the schedule and let you know."
+        },
+        "correct": "B",
+        "explanation": "Kevin says that the item will be obtained from the downtown hotel."
+      },
+      {
+        "question": 3,
+        "question_text": "When should everything be ready?",
+        "options": {
+          "A": "Friday evening",
+          "B": "Sunday morning",
+          "C": "On Thursday",
+          "D": "It's available in the main office."
+        },
+        "correct": "A",
+        "explanation": "Laura says the items should be ready by Friday evening."
+      }
+    ]
+  },
+  {
+    "group": 14,
+    "title": "Part 3 - Conversation 14",
+    "dialogue": [
+      {
+        "speaker": "Emily",
+        "text": "Hi Mark. We need to prepare the a dinner reservation for the restaurant reservation."
+      },
+      {
+        "speaker": "Mark",
+        "text": "Sure. I can take care of it. How many do we need?"
+      },
+      {
+        "speaker": "Emily",
+        "text": "Let's prepare about 50. They should be ready by seven o'clock."
+      },
+      {
+        "speaker": "Mark",
+        "text": "All right. I'll get them from the Italian restaurant and have everything ready."
+      }
+    ],
+    "questions": [
+      {
+        "question": 1,
+        "question_text": "What are the speakers mainly discussing?",
+        "options": {
+          "A": "Preparing a dinner reservation",
+          "B": "Changing the restaurant reservation",
+          "C": "Visiting the café downstairs",
+          "D": "I'll take care of it this afternoon."
+        },
+        "correct": "A",
+        "explanation": "The speakers are discussing how to prepare a dinner reservation for the restaurant reservation."
+      },
+      {
+        "question": 2,
+        "question_text": "Where will Mark get the item?",
+        "options": {
+          "A": "The main office",
+          "B": "the Italian restaurant",
+          "C": "the café downstairs",
+          "D": "I'll check the schedule and let you know."
+        },
+        "correct": "B",
+        "explanation": "Mark says that the item will be obtained from the Italian restaurant."
+      },
+      {
+        "question": 3,
+        "question_text": "When should everything be ready?",
+        "options": {
+          "A": "seven o'clock",
+          "B": "twelve thirty",
+          "C": "On Friday",
+          "D": "It's available in the main office."
+        },
+        "correct": "A",
+        "explanation": "Emily says the items should be ready by seven o'clock."
+      }
+    ]
+  },
+  {
+    "group": 15,
+    "title": "Part 3 - Conversation 15",
+    "dialogue": [
+      {
+        "speaker": "Sarah",
+        "text": "Hi James. We need to prepare the train tickets for the train travel."
+      },
+      {
+        "speaker": "James",
+        "text": "Sure. I can take care of it. How many do we need?"
+      },
+      {
+        "speaker": "Sarah",
+        "text": "Let's prepare about 55. They should be ready by Saturday morning."
+      },
+      {
+        "speaker": "James",
+        "text": "All right. I'll get them from the station and have everything ready."
+      }
+    ],
+    "questions": [
+      {
+        "question": 1,
+        "question_text": "What are the speakers mainly discussing?",
+        "options": {
+          "A": "Preparing train tickets",
+          "B": "Changing the train travel",
+          "C": "Visiting the ticket office",
+          "D": "I'll take care of it this afternoon."
+        },
+        "correct": "A",
+        "explanation": "The speakers are discussing how to prepare train tickets for the train travel."
+      },
+      {
+        "question": 2,
+        "question_text": "Where will James get the item?",
+        "options": {
+          "A": "The main office",
+          "B": "the station",
+          "C": "the ticket office",
+          "D": "I'll check the schedule and let you know."
+        },
+        "correct": "B",
+        "explanation": "James says that the item will be obtained from the station."
+      },
+      {
+        "question": 3,
+        "question_text": "When should everything be ready?",
+        "options": {
+          "A": "Saturday morning",
+          "B": "Monday evening",
+          "C": "On Monday",
+          "D": "It's available in the main office."
+        },
+        "correct": "A",
+        "explanation": "Sarah says the items should be ready by Saturday morning."
+      }
+    ]
+  },
+  {
+    "group": 16,
+    "title": "Part 3 - Conversation 16",
+    "dialogue": [
+      {
+        "speaker": "Linda",
+        "text": "Hi Robert. We need to prepare the conference registration for the conference."
+      },
+      {
+        "speaker": "Robert",
+        "text": "Sure. I can take care of it. How many do we need?"
+      },
+      {
+        "speaker": "Linda",
+        "text": "Let's prepare about 20. They should be ready by next Monday."
+      },
+      {
+        "speaker": "Robert",
+        "text": "All right. I'll get them from the convention center and have everything ready."
+      }
+    ],
+    "questions": [
+      {
+        "question": 1,
+        "question_text": "What are the speakers mainly discussing?",
+        "options": {
+          "A": "Preparing conference registration",
+          "B": "Changing the conference",
+          "C": "Visiting the registration desk",
+          "D": "I'll take care of it this afternoon."
+        },
+        "correct": "A",
+        "explanation": "The speakers are discussing how to prepare conference registration for the conference."
+      },
+      {
+        "question": 2,
+        "question_text": "Where will Robert get the item?",
+        "options": {
+          "A": "The main office",
+          "B": "the convention center",
+          "C": "the registration desk",
+          "D": "I'll check the schedule and let you know."
+        },
+        "correct": "B",
+        "explanation": "Robert says that the item will be obtained from the convention center."
+      },
+      {
+        "question": 3,
+        "question_text": "When should everything be ready?",
+        "options": {
+          "A": "next Monday",
+          "B": "Tuesday",
+          "C": "On Tuesday",
+          "D": "It's available in the main office."
+        },
+        "correct": "A",
+        "explanation": "Linda says the items should be ready by next Monday."
+      }
+    ]
+  },
+  {
+    "group": 17,
+    "title": "Part 3 - Conversation 17",
+    "dialogue": [
+      {
+        "speaker": "Jessica",
+        "text": "Hi Michael. We need to prepare the a replacement order for the customer order."
+      },
+      {
+        "speaker": "Michael",
+        "text": "Sure. I can take care of it. How many do we need?"
+      },
+      {
+        "speaker": "Jessica",
+        "text": "Let's prepare about 25. They should be ready by next week."
+      },
+      {
+        "speaker": "Michael",
+        "text": "All right. I'll get them from the customer service desk and have everything ready."
+      }
+    ],
+    "questions": [
+      {
+        "question": 1,
+        "question_text": "What are the speakers mainly discussing?",
+        "options": {
+          "A": "Preparing a replacement order",
+          "B": "Changing the customer order",
+          "C": "Visiting the service counter",
+          "D": "I'll take care of it this afternoon."
+        },
+        "correct": "A",
+        "explanation": "The speakers are discussing how to prepare a replacement order for the customer order."
+      },
+      {
+        "question": 2,
+        "question_text": "Where will Michael get the item?",
+        "options": {
+          "A": "The main office",
+          "B": "the customer service desk",
+          "C": "the service counter",
+          "D": "I'll check the schedule and let you know."
+        },
+        "correct": "B",
+        "explanation": "Michael says that the item will be obtained from the customer service desk."
+      },
+      {
+        "question": 3,
+        "question_text": "When should everything be ready?",
+        "options": {
+          "A": "next week",
+          "B": "Wednesday",
+          "C": "On Wednesday",
+          "D": "It's available in the main office."
+        },
+        "correct": "A",
+        "explanation": "Jessica says the items should be ready by next week."
+      }
+    ]
+  },
+  {
+    "group": 18,
+    "title": "Part 3 - Conversation 18",
+    "dialogue": [
+      {
+        "speaker": "Rachel",
+        "text": "Hi David. We need to prepare the the project report for the project deadline."
+      },
+      {
+        "speaker": "David",
+        "text": "Sure. I can take care of it. How many do we need?"
+      },
+      {
+        "speaker": "Rachel",
+        "text": "Let's prepare about 30. They should be ready by Friday."
+      },
+      {
+        "speaker": "David",
+        "text": "All right. I'll get them from the design office and have everything ready."
+      }
+    ],
+    "questions": [
+      {
+        "question": 1,
+        "question_text": "What are the speakers mainly discussing?",
+        "options": {
+          "A": "Preparing the project report",
+          "B": "Changing the project deadline",
+          "C": "Visiting the finance department",
+          "D": "I'll take care of it this afternoon."
+        },
+        "correct": "A",
+        "explanation": "The speakers are discussing how to prepare the project report for the project deadline."
+      },
+      {
+        "question": 2,
+        "question_text": "Where will David get the item?",
+        "options": {
+          "A": "The main office",
+          "B": "the design office",
+          "C": "the finance department",
+          "D": "I'll check the schedule and let you know."
+        },
+        "correct": "B",
+        "explanation": "David says that the item will be obtained from the design office."
+      },
+      {
+        "question": 3,
+        "question_text": "When should everything be ready?",
+        "options": {
+          "A": "Friday",
+          "B": "next Friday",
+          "C": "On Thursday",
+          "D": "It's available in the main office."
+        },
+        "correct": "A",
+        "explanation": "Rachel says the items should be ready by Friday."
+      }
+    ]
+  },
+  {
+    "group": 19,
+    "title": "Part 3 - Conversation 19",
+    "dialogue": [
+      {
+        "speaker": "Olivia",
+        "text": "Hi Thomas. We need to prepare the the office computer for the equipment repair."
+      },
+      {
+        "speaker": "Thomas",
+        "text": "Sure. I can take care of it. How many do we need?"
+      },
+      {
+        "speaker": "Olivia",
+        "text": "Let's prepare about 35. They should be ready by this afternoon."
+      },
+      {
+        "speaker": "Thomas",
+        "text": "All right. I'll get them from the IT department and have everything ready."
+      }
+    ],
+    "questions": [
+      {
+        "question": 1,
+        "question_text": "What are the speakers mainly discussing?",
+        "options": {
+          "A": "Preparing the office computer",
+          "B": "Changing the equipment repair",
+          "C": "Visiting the repair center",
+          "D": "I'll take care of it this afternoon."
+        },
+        "correct": "A",
+        "explanation": "The speakers are discussing how to prepare the office computer for the equipment repair."
+      },
+      {
+        "question": 2,
+        "question_text": "Where will Thomas get the item?",
+        "options": {
+          "A": "The main office",
+          "B": "the IT department",
+          "C": "the repair center",
+          "D": "I'll check the schedule and let you know."
+        },
+        "correct": "B",
+        "explanation": "Thomas says that the item will be obtained from the IT department."
+      },
+      {
+        "question": 3,
+        "question_text": "When should everything be ready?",
+        "options": {
+          "A": "this afternoon",
+          "B": "tomorrow",
+          "C": "On Friday",
+          "D": "It's available in the main office."
+        },
+        "correct": "A",
+        "explanation": "Olivia says the items should be ready by this afternoon."
+      }
+    ]
+  },
+  {
+    "group": 20,
+    "title": "Part 3 - Conversation 20",
+    "dialogue": [
+      {
+        "speaker": "Sophie",
+        "text": "Hi Daniel. We need to prepare the a taxi for the airport plans."
+      },
+      {
+        "speaker": "Daniel",
+        "text": "Sure. I can take care of it. How many do we need?"
+      },
+      {
+        "speaker": "Sophie",
+        "text": "Let's prepare about 40. They should be ready by six thirty."
+      },
+      {
+        "speaker": "Daniel",
+        "text": "All right. I'll get them from the airport and have everything ready."
+      }
+    ],
+    "questions": [
+      {
+        "question": 1,
+        "question_text": "What are the speakers mainly discussing?",
+        "options": {
+          "A": "Preparing a taxi",
+          "B": "Changing the airport plans",
+          "C": "Visiting the hotel entrance",
+          "D": "I'll take care of it this afternoon."
+        },
+        "correct": "A",
+        "explanation": "The speakers are discussing how to prepare a taxi for the airport plans."
+      },
+      {
+        "question": 2,
+        "question_text": "Where will Daniel get the item?",
+        "options": {
+          "A": "The main office",
+          "B": "the airport",
+          "C": "the hotel entrance",
+          "D": "I'll check the schedule and let you know."
+        },
+        "correct": "B",
+        "explanation": "Daniel says that the item will be obtained from the airport."
+      },
+      {
+        "question": 3,
+        "question_text": "When should everything be ready?",
+        "options": {
+          "A": "six thirty",
+          "B": "seven fifteen",
+          "C": "On Monday",
+          "D": "It's available in the main office."
+        },
+        "correct": "A",
+        "explanation": "Sophie says the items should be ready by six thirty."
+      }
+    ]
+  },
+  {
+    "group": 21,
+    "title": "Part 3 - Conversation 21",
+    "dialogue": [
+      {
+        "speaker": "Maya",
+        "text": "Hi Daniel. We need to prepare the printer paper for the office supplies."
+      },
+      {
+        "speaker": "Daniel",
+        "text": "Sure. I can take care of it. How many do we need?"
+      },
+      {
+        "speaker": "Maya",
+        "text": "Let's prepare about 45. They should be ready by this afternoon."
+      },
+      {
+        "speaker": "Daniel",
+        "text": "All right. I'll get them from the storage room and have everything ready."
+      }
+    ],
+    "questions": [
+      {
+        "question": 1,
+        "question_text": "What are the speakers mainly discussing?",
+        "options": {
+          "A": "Preparing printer paper",
+          "B": "Changing the office supplies",
+          "C": "Visiting the copy room",
+          "D": "I'll take care of it this afternoon."
+        },
+        "correct": "A",
+        "explanation": "The speakers are discussing how to prepare printer paper for the office supplies."
+      },
+      {
+        "question": 2,
+        "question_text": "Where will Daniel get the item?",
+        "options": {
+          "A": "The main office",
+          "B": "the storage room",
+          "C": "the copy room",
+          "D": "I'll check the schedule and let you know."
+        },
+        "correct": "B",
+        "explanation": "Daniel says that the item will be obtained from the storage room."
+      },
+      {
+        "question": 3,
+        "question_text": "When should everything be ready?",
+        "options": {
+          "A": "this afternoon",
+          "B": "before lunch",
+          "C": "On Tuesday",
+          "D": "It's available in the main office."
+        },
+        "correct": "A",
+        "explanation": "Maya says the items should be ready by this afternoon."
+      }
+    ]
+  },
+  {
+    "group": 22,
+    "title": "Part 3 - Conversation 22",
+    "dialogue": [
+      {
+        "speaker": "Anna",
+        "text": "Hi Brian. We need to prepare the the sales meeting for the meeting schedule."
+      },
+      {
+        "speaker": "Brian",
+        "text": "Sure. I can take care of it. How many do we need?"
+      },
+      {
+        "speaker": "Anna",
+        "text": "Let's prepare about 50. They should be ready by tomorrow morning."
+      },
+      {
+        "speaker": "Brian",
+        "text": "All right. I'll get them from Room 204 and have everything ready."
+      }
+    ],
+    "questions": [
+      {
+        "question": 1,
+        "question_text": "What are the speakers mainly discussing?",
+        "options": {
+          "A": "Preparing the sales meeting",
+          "B": "Changing the meeting schedule",
+          "C": "Visiting the main conference room",
+          "D": "I'll take care of it this afternoon."
+        },
+        "correct": "A",
+        "explanation": "The speakers are discussing how to prepare the sales meeting for the meeting schedule."
+      },
+      {
+        "question": 2,
+        "question_text": "Where will Brian get the item?",
+        "options": {
+          "A": "The main office",
+          "B": "Room 204",
+          "C": "the main conference room",
+          "D": "I'll check the schedule and let you know."
+        },
+        "correct": "B",
+        "explanation": "Brian says that the item will be obtained from Room 204."
+      },
+      {
+        "question": 3,
+        "question_text": "When should everything be ready?",
+        "options": {
+          "A": "tomorrow morning",
+          "B": "Thursday afternoon",
+          "C": "On Wednesday",
+          "D": "It's available in the main office."
+        },
+        "correct": "A",
+        "explanation": "Anna says the items should be ready by tomorrow morning."
+      }
+    ]
+  },
+  {
+    "group": 23,
+    "title": "Part 3 - Conversation 23",
+    "dialogue": [
+      {
+        "speaker": "Laura",
+        "text": "Hi Kevin. We need to prepare the a hotel room for the business trip."
+      },
+      {
+        "speaker": "Kevin",
+        "text": "Sure. I can take care of it. How many do we need?"
+      },
+      {
+        "speaker": "Laura",
+        "text": "Let's prepare about 55. They should be ready by Friday evening."
+      },
+      {
+        "speaker": "Kevin",
+        "text": "All right. I'll get them from the downtown hotel and have everything ready."
+      }
+    ],
+    "questions": [
+      {
+        "question": 1,
+        "question_text": "What are the speakers mainly discussing?",
+        "options": {
+          "A": "Preparing a hotel room",
+          "B": "Changing the business trip",
+          "C": "Visiting the airport counter",
+          "D": "I'll take care of it this afternoon."
+        },
+        "correct": "A",
+        "explanation": "The speakers are discussing how to prepare a hotel room for the business trip."
+      },
+      {
+        "question": 2,
+        "question_text": "Where will Kevin get the item?",
+        "options": {
+          "A": "The main office",
+          "B": "the downtown hotel",
+          "C": "the airport counter",
+          "D": "I'll check the schedule and let you know."
+        },
+        "correct": "B",
+        "explanation": "Kevin says that the item will be obtained from the downtown hotel."
+      },
+      {
+        "question": 3,
+        "question_text": "When should everything be ready?",
+        "options": {
+          "A": "Friday evening",
+          "B": "Sunday morning",
+          "C": "On Thursday",
+          "D": "It's available in the main office."
+        },
+        "correct": "A",
+        "explanation": "Laura says the items should be ready by Friday evening."
+      }
+    ]
+  },
+  {
+    "group": 24,
+    "title": "Part 3 - Conversation 24",
+    "dialogue": [
+      {
+        "speaker": "Emily",
+        "text": "Hi Mark. We need to prepare the a dinner reservation for the restaurant reservation."
+      },
+      {
+        "speaker": "Mark",
+        "text": "Sure. I can take care of it. How many do we need?"
+      },
+      {
+        "speaker": "Emily",
+        "text": "Let's prepare about 20. They should be ready by seven o'clock."
+      },
+      {
+        "speaker": "Mark",
+        "text": "All right. I'll get them from the Italian restaurant and have everything ready."
+      }
+    ],
+    "questions": [
+      {
+        "question": 1,
+        "question_text": "What are the speakers mainly discussing?",
+        "options": {
+          "A": "Preparing a dinner reservation",
+          "B": "Changing the restaurant reservation",
+          "C": "Visiting the café downstairs",
+          "D": "I'll take care of it this afternoon."
+        },
+        "correct": "A",
+        "explanation": "The speakers are discussing how to prepare a dinner reservation for the restaurant reservation."
+      },
+      {
+        "question": 2,
+        "question_text": "Where will Mark get the item?",
+        "options": {
+          "A": "The main office",
+          "B": "the Italian restaurant",
+          "C": "the café downstairs",
+          "D": "I'll check the schedule and let you know."
+        },
+        "correct": "B",
+        "explanation": "Mark says that the item will be obtained from the Italian restaurant."
+      },
+      {
+        "question": 3,
+        "question_text": "When should everything be ready?",
+        "options": {
+          "A": "seven o'clock",
+          "B": "twelve thirty",
+          "C": "On Friday",
+          "D": "It's available in the main office."
+        },
+        "correct": "A",
+        "explanation": "Emily says the items should be ready by seven o'clock."
+      }
+    ]
+  },
+  {
+    "group": 25,
+    "title": "Part 3 - Conversation 25",
+    "dialogue": [
+      {
+        "speaker": "Sarah",
+        "text": "Hi James. We need to prepare the train tickets for the train travel."
+      },
+      {
+        "speaker": "James",
+        "text": "Sure. I can take care of it. How many do we need?"
+      },
+      {
+        "speaker": "Sarah",
+        "text": "Let's prepare about 25. They should be ready by Saturday morning."
+      },
+      {
+        "speaker": "James",
+        "text": "All right. I'll get them from the station and have everything ready."
+      }
+    ],
+    "questions": [
+      {
+        "question": 1,
+        "question_text": "What are the speakers mainly discussing?",
+        "options": {
+          "A": "Preparing train tickets",
+          "B": "Changing the train travel",
+          "C": "Visiting the ticket office",
+          "D": "I'll take care of it this afternoon."
+        },
+        "correct": "A",
+        "explanation": "The speakers are discussing how to prepare train tickets for the train travel."
+      },
+      {
+        "question": 2,
+        "question_text": "Where will James get the item?",
+        "options": {
+          "A": "The main office",
+          "B": "the station",
+          "C": "the ticket office",
+          "D": "I'll check the schedule and let you know."
+        },
+        "correct": "B",
+        "explanation": "James says that the item will be obtained from the station."
+      },
+      {
+        "question": 3,
+        "question_text": "When should everything be ready?",
+        "options": {
+          "A": "Saturday morning",
+          "B": "Monday evening",
+          "C": "On Monday",
+          "D": "It's available in the main office."
+        },
+        "correct": "A",
+        "explanation": "Sarah says the items should be ready by Saturday morning."
+      }
+    ]
+  },
+  {
+    "group": 26,
+    "title": "Part 3 - Conversation 26",
+    "dialogue": [
+      {
+        "speaker": "Linda",
+        "text": "Hi Robert. We need to prepare the conference registration for the conference."
+      },
+      {
+        "speaker": "Robert",
+        "text": "Sure. I can take care of it. How many do we need?"
+      },
+      {
+        "speaker": "Linda",
+        "text": "Let's prepare about 30. They should be ready by next Monday."
+      },
+      {
+        "speaker": "Robert",
+        "text": "All right. I'll get them from the convention center and have everything ready."
+      }
+    ],
+    "questions": [
+      {
+        "question": 1,
+        "question_text": "What are the speakers mainly discussing?",
+        "options": {
+          "A": "Preparing conference registration",
+          "B": "Changing the conference",
+          "C": "Visiting the registration desk",
+          "D": "I'll take care of it this afternoon."
+        },
+        "correct": "A",
+        "explanation": "The speakers are discussing how to prepare conference registration for the conference."
+      },
+      {
+        "question": 2,
+        "question_text": "Where will Robert get the item?",
+        "options": {
+          "A": "The main office",
+          "B": "the convention center",
+          "C": "the registration desk",
+          "D": "I'll check the schedule and let you know."
+        },
+        "correct": "B",
+        "explanation": "Robert says that the item will be obtained from the convention center."
+      },
+      {
+        "question": 3,
+        "question_text": "When should everything be ready?",
+        "options": {
+          "A": "next Monday",
+          "B": "Tuesday",
+          "C": "On Tuesday",
+          "D": "It's available in the main office."
+        },
+        "correct": "A",
+        "explanation": "Linda says the items should be ready by next Monday."
+      }
+    ]
+  },
+  {
+    "group": 27,
+    "title": "Part 3 - Conversation 27",
+    "dialogue": [
+      {
+        "speaker": "Jessica",
+        "text": "Hi Michael. We need to prepare the a replacement order for the customer order."
+      },
+      {
+        "speaker": "Michael",
+        "text": "Sure. I can take care of it. How many do we need?"
+      },
+      {
+        "speaker": "Jessica",
+        "text": "Let's prepare about 35. They should be ready by next week."
+      },
+      {
+        "speaker": "Michael",
+        "text": "All right. I'll get them from the customer service desk and have everything ready."
+      }
+    ],
+    "questions": [
+      {
+        "question": 1,
+        "question_text": "What are the speakers mainly discussing?",
+        "options": {
+          "A": "Preparing a replacement order",
+          "B": "Changing the customer order",
+          "C": "Visiting the service counter",
+          "D": "I'll take care of it this afternoon."
+        },
+        "correct": "A",
+        "explanation": "The speakers are discussing how to prepare a replacement order for the customer order."
+      },
+      {
+        "question": 2,
+        "question_text": "Where will Michael get the item?",
+        "options": {
+          "A": "The main office",
+          "B": "the customer service desk",
+          "C": "the service counter",
+          "D": "I'll check the schedule and let you know."
+        },
+        "correct": "B",
+        "explanation": "Michael says that the item will be obtained from the customer service desk."
+      },
+      {
+        "question": 3,
+        "question_text": "When should everything be ready?",
+        "options": {
+          "A": "next week",
+          "B": "Wednesday",
+          "C": "On Wednesday",
+          "D": "It's available in the main office."
+        },
+        "correct": "A",
+        "explanation": "Jessica says the items should be ready by next week."
+      }
+    ]
+  },
+  {
+    "group": 28,
+    "title": "Part 3 - Conversation 28",
+    "dialogue": [
+      {
+        "speaker": "Rachel",
+        "text": "Hi David. We need to prepare the the project report for the project deadline."
+      },
+      {
+        "speaker": "David",
+        "text": "Sure. I can take care of it. How many do we need?"
+      },
+      {
+        "speaker": "Rachel",
+        "text": "Let's prepare about 40. They should be ready by Friday."
+      },
+      {
+        "speaker": "David",
+        "text": "All right. I'll get them from the design office and have everything ready."
+      }
+    ],
+    "questions": [
+      {
+        "question": 1,
+        "question_text": "What are the speakers mainly discussing?",
+        "options": {
+          "A": "Preparing the project report",
+          "B": "Changing the project deadline",
+          "C": "Visiting the finance department",
+          "D": "I'll take care of it this afternoon."
+        },
+        "correct": "A",
+        "explanation": "The speakers are discussing how to prepare the project report for the project deadline."
+      },
+      {
+        "question": 2,
+        "question_text": "Where will David get the item?",
+        "options": {
+          "A": "The main office",
+          "B": "the design office",
+          "C": "the finance department",
+          "D": "I'll check the schedule and let you know."
+        },
+        "correct": "B",
+        "explanation": "David says that the item will be obtained from the design office."
+      },
+      {
+        "question": 3,
+        "question_text": "When should everything be ready?",
+        "options": {
+          "A": "Friday",
+          "B": "next Friday",
+          "C": "On Thursday",
+          "D": "It's available in the main office."
+        },
+        "correct": "A",
+        "explanation": "Rachel says the items should be ready by Friday."
+      }
+    ]
+  },
+  {
+    "group": 29,
+    "title": "Part 3 - Conversation 29",
+    "dialogue": [
+      {
+        "speaker": "Olivia",
+        "text": "Hi Thomas. We need to prepare the the office computer for the equipment repair."
+      },
+      {
+        "speaker": "Thomas",
+        "text": "Sure. I can take care of it. How many do we need?"
+      },
+      {
+        "speaker": "Olivia",
+        "text": "Let's prepare about 45. They should be ready by this afternoon."
+      },
+      {
+        "speaker": "Thomas",
+        "text": "All right. I'll get them from the IT department and have everything ready."
+      }
+    ],
+    "questions": [
+      {
+        "question": 1,
+        "question_text": "What are the speakers mainly discussing?",
+        "options": {
+          "A": "Preparing the office computer",
+          "B": "Changing the equipment repair",
+          "C": "Visiting the repair center",
+          "D": "I'll take care of it this afternoon."
+        },
+        "correct": "A",
+        "explanation": "The speakers are discussing how to prepare the office computer for the equipment repair."
+      },
+      {
+        "question": 2,
+        "question_text": "Where will Thomas get the item?",
+        "options": {
+          "A": "The main office",
+          "B": "the IT department",
+          "C": "the repair center",
+          "D": "I'll check the schedule and let you know."
+        },
+        "correct": "B",
+        "explanation": "Thomas says that the item will be obtained from the IT department."
+      },
+      {
+        "question": 3,
+        "question_text": "When should everything be ready?",
+        "options": {
+          "A": "this afternoon",
+          "B": "tomorrow",
+          "C": "On Friday",
+          "D": "It's available in the main office."
+        },
+        "correct": "A",
+        "explanation": "Olivia says the items should be ready by this afternoon."
+      }
+    ]
+  },
+  {
+    "group": 30,
+    "title": "Part 3 - Conversation 30",
+    "dialogue": [
+      {
+        "speaker": "Sophie",
+        "text": "Hi Daniel. We need to prepare the a taxi for the airport plans."
+      },
+      {
+        "speaker": "Daniel",
+        "text": "Sure. I can take care of it. How many do we need?"
+      },
+      {
+        "speaker": "Sophie",
+        "text": "Let's prepare about 50. They should be ready by six thirty."
+      },
+      {
+        "speaker": "Daniel",
+        "text": "All right. I'll get them from the airport and have everything ready."
+      }
+    ],
+    "questions": [
+      {
+        "question": 1,
+        "question_text": "What are the speakers mainly discussing?",
+        "options": {
+          "A": "Preparing a taxi",
+          "B": "Changing the airport plans",
+          "C": "Visiting the hotel entrance",
+          "D": "I'll take care of it this afternoon."
+        },
+        "correct": "A",
+        "explanation": "The speakers are discussing how to prepare a taxi for the airport plans."
+      },
+      {
+        "question": 2,
+        "question_text": "Where will Daniel get the item?",
+        "options": {
+          "A": "The main office",
+          "B": "the airport",
+          "C": "the hotel entrance",
+          "D": "I'll check the schedule and let you know."
+        },
+        "correct": "B",
+        "explanation": "Daniel says that the item will be obtained from the airport."
+      },
+      {
+        "question": 3,
+        "question_text": "When should everything be ready?",
+        "options": {
+          "A": "six thirty",
+          "B": "seven fifteen",
+          "C": "On Monday",
+          "D": "It's available in the main office."
+        },
+        "correct": "A",
+        "explanation": "Sophie says the items should be ready by six thirty."
+      }
+    ]
+  },
+  {
+    "group": 31,
+    "title": "Part 3 - Conversation 31",
+    "dialogue": [
+      {
+        "speaker": "Maya",
+        "text": "Hi Daniel. We need to prepare the printer paper for the office supplies."
+      },
+      {
+        "speaker": "Daniel",
+        "text": "Sure. I can take care of it. How many do we need?"
+      },
+      {
+        "speaker": "Maya",
+        "text": "Let's prepare about 55. They should be ready by this afternoon."
+      },
+      {
+        "speaker": "Daniel",
+        "text": "All right. I'll get them from the storage room and have everything ready."
+      }
+    ],
+    "questions": [
+      {
+        "question": 1,
+        "question_text": "What are the speakers mainly discussing?",
+        "options": {
+          "A": "Preparing printer paper",
+          "B": "Changing the office supplies",
+          "C": "Visiting the copy room",
+          "D": "I'll take care of it this afternoon."
+        },
+        "correct": "A",
+        "explanation": "The speakers are discussing how to prepare printer paper for the office supplies."
+      },
+      {
+        "question": 2,
+        "question_text": "Where will Daniel get the item?",
+        "options": {
+          "A": "The main office",
+          "B": "the storage room",
+          "C": "the copy room",
+          "D": "I'll check the schedule and let you know."
+        },
+        "correct": "B",
+        "explanation": "Daniel says that the item will be obtained from the storage room."
+      },
+      {
+        "question": 3,
+        "question_text": "When should everything be ready?",
+        "options": {
+          "A": "this afternoon",
+          "B": "before lunch",
+          "C": "On Tuesday",
+          "D": "It's available in the main office."
+        },
+        "correct": "A",
+        "explanation": "Maya says the items should be ready by this afternoon."
+      }
+    ]
+  },
+  {
+    "group": 32,
+    "title": "Part 3 - Conversation 32",
+    "dialogue": [
+      {
+        "speaker": "Anna",
+        "text": "Hi Brian. We need to prepare the the sales meeting for the meeting schedule."
+      },
+      {
+        "speaker": "Brian",
+        "text": "Sure. I can take care of it. How many do we need?"
+      },
+      {
+        "speaker": "Anna",
+        "text": "Let's prepare about 20. They should be ready by tomorrow morning."
+      },
+      {
+        "speaker": "Brian",
+        "text": "All right. I'll get them from Room 204 and have everything ready."
+      }
+    ],
+    "questions": [
+      {
+        "question": 1,
+        "question_text": "What are the speakers mainly discussing?",
+        "options": {
+          "A": "Preparing the sales meeting",
+          "B": "Changing the meeting schedule",
+          "C": "Visiting the main conference room",
+          "D": "I'll take care of it this afternoon."
+        },
+        "correct": "A",
+        "explanation": "The speakers are discussing how to prepare the sales meeting for the meeting schedule."
+      },
+      {
+        "question": 2,
+        "question_text": "Where will Brian get the item?",
+        "options": {
+          "A": "The main office",
+          "B": "Room 204",
+          "C": "the main conference room",
+          "D": "I'll check the schedule and let you know."
+        },
+        "correct": "B",
+        "explanation": "Brian says that the item will be obtained from Room 204."
+      },
+      {
+        "question": 3,
+        "question_text": "When should everything be ready?",
+        "options": {
+          "A": "tomorrow morning",
+          "B": "Thursday afternoon",
+          "C": "On Wednesday",
+          "D": "It's available in the main office."
+        },
+        "correct": "A",
+        "explanation": "Anna says the items should be ready by tomorrow morning."
+      }
+    ]
+  },
+  {
+    "group": 33,
+    "title": "Part 3 - Conversation 33",
+    "dialogue": [
+      {
+        "speaker": "Laura",
+        "text": "Hi Kevin. We need to prepare the a hotel room for the business trip."
+      },
+      {
+        "speaker": "Kevin",
+        "text": "Sure. I can take care of it. How many do we need?"
+      },
+      {
+        "speaker": "Laura",
+        "text": "Let's prepare about 25. They should be ready by Friday evening."
+      },
+      {
+        "speaker": "Kevin",
+        "text": "All right. I'll get them from the downtown hotel and have everything ready."
+      }
+    ],
+    "questions": [
+      {
+        "question": 1,
+        "question_text": "What are the speakers mainly discussing?",
+        "options": {
+          "A": "Preparing a hotel room",
+          "B": "Changing the business trip",
+          "C": "Visiting the airport counter",
+          "D": "I'll take care of it this afternoon."
+        },
+        "correct": "A",
+        "explanation": "The speakers are discussing how to prepare a hotel room for the business trip."
+      },
+      {
+        "question": 2,
+        "question_text": "Where will Kevin get the item?",
+        "options": {
+          "A": "The main office",
+          "B": "the downtown hotel",
+          "C": "the airport counter",
+          "D": "I'll check the schedule and let you know."
+        },
+        "correct": "B",
+        "explanation": "Kevin says that the item will be obtained from the downtown hotel."
+      },
+      {
+        "question": 3,
+        "question_text": "When should everything be ready?",
+        "options": {
+          "A": "Friday evening",
+          "B": "Sunday morning",
+          "C": "On Thursday",
+          "D": "It's available in the main office."
+        },
+        "correct": "A",
+        "explanation": "Laura says the items should be ready by Friday evening."
+      }
+    ]
+  },
+  {
+    "group": 34,
+    "title": "Part 3 - Conversation 34",
+    "dialogue": [
+      {
+        "speaker": "Emily",
+        "text": "Hi Mark. We need to prepare the a dinner reservation for the restaurant reservation."
+      },
+      {
+        "speaker": "Mark",
+        "text": "Sure. I can take care of it. How many do we need?"
+      },
+      {
+        "speaker": "Emily",
+        "text": "Let's prepare about 30. They should be ready by seven o'clock."
+      },
+      {
+        "speaker": "Mark",
+        "text": "All right. I'll get them from the Italian restaurant and have everything ready."
+      }
+    ],
+    "questions": [
+      {
+        "question": 1,
+        "question_text": "What are the speakers mainly discussing?",
+        "options": {
+          "A": "Preparing a dinner reservation",
+          "B": "Changing the restaurant reservation",
+          "C": "Visiting the café downstairs",
+          "D": "I'll take care of it this afternoon."
+        },
+        "correct": "A",
+        "explanation": "The speakers are discussing how to prepare a dinner reservation for the restaurant reservation."
+      },
+      {
+        "question": 2,
+        "question_text": "Where will Mark get the item?",
+        "options": {
+          "A": "The main office",
+          "B": "the Italian restaurant",
+          "C": "the café downstairs",
+          "D": "I'll check the schedule and let you know."
+        },
+        "correct": "B",
+        "explanation": "Mark says that the item will be obtained from the Italian restaurant."
+      },
+      {
+        "question": 3,
+        "question_text": "When should everything be ready?",
+        "options": {
+          "A": "seven o'clock",
+          "B": "twelve thirty",
+          "C": "On Friday",
+          "D": "It's available in the main office."
+        },
+        "correct": "A",
+        "explanation": "Emily says the items should be ready by seven o'clock."
+      }
+    ]
+  },
+  {
+    "group": 35,
+    "title": "Part 3 - Conversation 35",
+    "dialogue": [
+      {
+        "speaker": "Sarah",
+        "text": "Hi James. We need to prepare the train tickets for the train travel."
+      },
+      {
+        "speaker": "James",
+        "text": "Sure. I can take care of it. How many do we need?"
+      },
+      {
+        "speaker": "Sarah",
+        "text": "Let's prepare about 35. They should be ready by Saturday morning."
+      },
+      {
+        "speaker": "James",
+        "text": "All right. I'll get them from the station and have everything ready."
+      }
+    ],
+    "questions": [
+      {
+        "question": 1,
+        "question_text": "What are the speakers mainly discussing?",
+        "options": {
+          "A": "Preparing train tickets",
+          "B": "Changing the train travel",
+          "C": "Visiting the ticket office",
+          "D": "I'll take care of it this afternoon."
+        },
+        "correct": "A",
+        "explanation": "The speakers are discussing how to prepare train tickets for the train travel."
+      },
+      {
+        "question": 2,
+        "question_text": "Where will James get the item?",
+        "options": {
+          "A": "The main office",
+          "B": "the station",
+          "C": "the ticket office",
+          "D": "I'll check the schedule and let you know."
+        },
+        "correct": "B",
+        "explanation": "James says that the item will be obtained from the station."
+      },
+      {
+        "question": 3,
+        "question_text": "When should everything be ready?",
+        "options": {
+          "A": "Saturday morning",
+          "B": "Monday evening",
+          "C": "On Monday",
+          "D": "It's available in the main office."
+        },
+        "correct": "A",
+        "explanation": "Sarah says the items should be ready by Saturday morning."
+      }
+    ]
+  },
+  {
+    "group": 36,
+    "title": "Part 3 - Conversation 36",
+    "dialogue": [
+      {
+        "speaker": "Linda",
+        "text": "Hi Robert. We need to prepare the conference registration for the conference."
+      },
+      {
+        "speaker": "Robert",
+        "text": "Sure. I can take care of it. How many do we need?"
+      },
+      {
+        "speaker": "Linda",
+        "text": "Let's prepare about 40. They should be ready by next Monday."
+      },
+      {
+        "speaker": "Robert",
+        "text": "All right. I'll get them from the convention center and have everything ready."
+      }
+    ],
+    "questions": [
+      {
+        "question": 1,
+        "question_text": "What are the speakers mainly discussing?",
+        "options": {
+          "A": "Preparing conference registration",
+          "B": "Changing the conference",
+          "C": "Visiting the registration desk",
+          "D": "I'll take care of it this afternoon."
+        },
+        "correct": "A",
+        "explanation": "The speakers are discussing how to prepare conference registration for the conference."
+      },
+      {
+        "question": 2,
+        "question_text": "Where will Robert get the item?",
+        "options": {
+          "A": "The main office",
+          "B": "the convention center",
+          "C": "the registration desk",
+          "D": "I'll check the schedule and let you know."
+        },
+        "correct": "B",
+        "explanation": "Robert says that the item will be obtained from the convention center."
+      },
+      {
+        "question": 3,
+        "question_text": "When should everything be ready?",
+        "options": {
+          "A": "next Monday",
+          "B": "Tuesday",
+          "C": "On Tuesday",
+          "D": "It's available in the main office."
+        },
+        "correct": "A",
+        "explanation": "Linda says the items should be ready by next Monday."
+      }
+    ]
+  },
+  {
+    "group": 37,
+    "title": "Part 3 - Conversation 37",
+    "dialogue": [
+      {
+        "speaker": "Jessica",
+        "text": "Hi Michael. We need to prepare the a replacement order for the customer order."
+      },
+      {
+        "speaker": "Michael",
+        "text": "Sure. I can take care of it. How many do we need?"
+      },
+      {
+        "speaker": "Jessica",
+        "text": "Let's prepare about 45. They should be ready by next week."
+      },
+      {
+        "speaker": "Michael",
+        "text": "All right. I'll get them from the customer service desk and have everything ready."
+      }
+    ],
+    "questions": [
+      {
+        "question": 1,
+        "question_text": "What are the speakers mainly discussing?",
+        "options": {
+          "A": "Preparing a replacement order",
+          "B": "Changing the customer order",
+          "C": "Visiting the service counter",
+          "D": "I'll take care of it this afternoon."
+        },
+        "correct": "A",
+        "explanation": "The speakers are discussing how to prepare a replacement order for the customer order."
+      },
+      {
+        "question": 2,
+        "question_text": "Where will Michael get the item?",
+        "options": {
+          "A": "The main office",
+          "B": "the customer service desk",
+          "C": "the service counter",
+          "D": "I'll check the schedule and let you know."
+        },
+        "correct": "B",
+        "explanation": "Michael says that the item will be obtained from the customer service desk."
+      },
+      {
+        "question": 3,
+        "question_text": "When should everything be ready?",
+        "options": {
+          "A": "next week",
+          "B": "Wednesday",
+          "C": "On Wednesday",
+          "D": "It's available in the main office."
+        },
+        "correct": "A",
+        "explanation": "Jessica says the items should be ready by next week."
+      }
+    ]
+  },
+  {
+    "group": 38,
+    "title": "Part 3 - Conversation 38",
+    "dialogue": [
+      {
+        "speaker": "Rachel",
+        "text": "Hi David. We need to prepare the the project report for the project deadline."
+      },
+      {
+        "speaker": "David",
+        "text": "Sure. I can take care of it. How many do we need?"
+      },
+      {
+        "speaker": "Rachel",
+        "text": "Let's prepare about 50. They should be ready by Friday."
+      },
+      {
+        "speaker": "David",
+        "text": "All right. I'll get them from the design office and have everything ready."
+      }
+    ],
+    "questions": [
+      {
+        "question": 1,
+        "question_text": "What are the speakers mainly discussing?",
+        "options": {
+          "A": "Preparing the project report",
+          "B": "Changing the project deadline",
+          "C": "Visiting the finance department",
+          "D": "I'll take care of it this afternoon."
+        },
+        "correct": "A",
+        "explanation": "The speakers are discussing how to prepare the project report for the project deadline."
+      },
+      {
+        "question": 2,
+        "question_text": "Where will David get the item?",
+        "options": {
+          "A": "The main office",
+          "B": "the design office",
+          "C": "the finance department",
+          "D": "I'll check the schedule and let you know."
+        },
+        "correct": "B",
+        "explanation": "David says that the item will be obtained from the design office."
+      },
+      {
+        "question": 3,
+        "question_text": "When should everything be ready?",
+        "options": {
+          "A": "Friday",
+          "B": "next Friday",
+          "C": "On Thursday",
+          "D": "It's available in the main office."
+        },
+        "correct": "A",
+        "explanation": "Rachel says the items should be ready by Friday."
+      }
+    ]
+  },
+  {
+    "group": 39,
+    "title": "Part 3 - Conversation 39",
+    "dialogue": [
+      {
+        "speaker": "Olivia",
+        "text": "Hi Thomas. We need to prepare the the office computer for the equipment repair."
+      },
+      {
+        "speaker": "Thomas",
+        "text": "Sure. I can take care of it. How many do we need?"
+      },
+      {
+        "speaker": "Olivia",
+        "text": "Let's prepare about 55. They should be ready by this afternoon."
+      },
+      {
+        "speaker": "Thomas",
+        "text": "All right. I'll get them from the IT department and have everything ready."
+      }
+    ],
+    "questions": [
+      {
+        "question": 1,
+        "question_text": "What are the speakers mainly discussing?",
+        "options": {
+          "A": "Preparing the office computer",
+          "B": "Changing the equipment repair",
+          "C": "Visiting the repair center",
+          "D": "I'll take care of it this afternoon."
+        },
+        "correct": "A",
+        "explanation": "The speakers are discussing how to prepare the office computer for the equipment repair."
+      },
+      {
+        "question": 2,
+        "question_text": "Where will Thomas get the item?",
+        "options": {
+          "A": "The main office",
+          "B": "the IT department",
+          "C": "the repair center",
+          "D": "I'll check the schedule and let you know."
+        },
+        "correct": "B",
+        "explanation": "Thomas says that the item will be obtained from the IT department."
+      },
+      {
+        "question": 3,
+        "question_text": "When should everything be ready?",
+        "options": {
+          "A": "this afternoon",
+          "B": "tomorrow",
+          "C": "On Friday",
+          "D": "It's available in the main office."
+        },
+        "correct": "A",
+        "explanation": "Olivia says the items should be ready by this afternoon."
+      }
+    ]
+  },
+  {
+    "group": 40,
+    "title": "Part 3 - Conversation 40",
+    "dialogue": [
+      {
+        "speaker": "Sophie",
+        "text": "Hi Daniel. We need to prepare the a taxi for the airport plans."
+      },
+      {
+        "speaker": "Daniel",
+        "text": "Sure. I can take care of it. How many do we need?"
+      },
+      {
+        "speaker": "Sophie",
+        "text": "Let's prepare about 20. They should be ready by six thirty."
+      },
+      {
+        "speaker": "Daniel",
+        "text": "All right. I'll get them from the airport and have everything ready."
+      }
+    ],
+    "questions": [
+      {
+        "question": 1,
+        "question_text": "What are the speakers mainly discussing?",
+        "options": {
+          "A": "Preparing a taxi",
+          "B": "Changing the airport plans",
+          "C": "Visiting the hotel entrance",
+          "D": "I'll take care of it this afternoon."
+        },
+        "correct": "A",
+        "explanation": "The speakers are discussing how to prepare a taxi for the airport plans."
+      },
+      {
+        "question": 2,
+        "question_text": "Where will Daniel get the item?",
+        "options": {
+          "A": "The main office",
+          "B": "the airport",
+          "C": "the hotel entrance",
+          "D": "I'll check the schedule and let you know."
+        },
+        "correct": "B",
+        "explanation": "Daniel says that the item will be obtained from the airport."
+      },
+      {
+        "question": 3,
+        "question_text": "When should everything be ready?",
+        "options": {
+          "A": "six thirty",
+          "B": "seven fifteen",
+          "C": "On Monday",
+          "D": "It's available in the main office."
+        },
+        "correct": "A",
+        "explanation": "Sophie says the items should be ready by six thirty."
+      }
+    ]
+  },
+  {
+    "group": 41,
+    "title": "Part 3 - Conversation 41",
+    "dialogue": [
+      {
+        "speaker": "Maya",
+        "text": "Hi Daniel. We need to prepare the printer paper for the office supplies."
+      },
+      {
+        "speaker": "Daniel",
+        "text": "Sure. I can take care of it. How many do we need?"
+      },
+      {
+        "speaker": "Maya",
+        "text": "Let's prepare about 25. They should be ready by this afternoon."
+      },
+      {
+        "speaker": "Daniel",
+        "text": "All right. I'll get them from the storage room and have everything ready."
+      }
+    ],
+    "questions": [
+      {
+        "question": 1,
+        "question_text": "What are the speakers mainly discussing?",
+        "options": {
+          "A": "Preparing printer paper",
+          "B": "Changing the office supplies",
+          "C": "Visiting the copy room",
+          "D": "I'll take care of it this afternoon."
+        },
+        "correct": "A",
+        "explanation": "The speakers are discussing how to prepare printer paper for the office supplies."
+      },
+      {
+        "question": 2,
+        "question_text": "Where will Daniel get the item?",
+        "options": {
+          "A": "The main office",
+          "B": "the storage room",
+          "C": "the copy room",
+          "D": "I'll check the schedule and let you know."
+        },
+        "correct": "B",
+        "explanation": "Daniel says that the item will be obtained from the storage room."
+      },
+      {
+        "question": 3,
+        "question_text": "When should everything be ready?",
+        "options": {
+          "A": "this afternoon",
+          "B": "before lunch",
+          "C": "On Tuesday",
+          "D": "It's available in the main office."
+        },
+        "correct": "A",
+        "explanation": "Maya says the items should be ready by this afternoon."
+      }
+    ]
+  },
+  {
+    "group": 42,
+    "title": "Part 3 - Conversation 42",
+    "dialogue": [
+      {
+        "speaker": "Anna",
+        "text": "Hi Brian. We need to prepare the the sales meeting for the meeting schedule."
+      },
+      {
+        "speaker": "Brian",
+        "text": "Sure. I can take care of it. How many do we need?"
+      },
+      {
+        "speaker": "Anna",
+        "text": "Let's prepare about 30. They should be ready by tomorrow morning."
+      },
+      {
+        "speaker": "Brian",
+        "text": "All right. I'll get them from Room 204 and have everything ready."
+      }
+    ],
+    "questions": [
+      {
+        "question": 1,
+        "question_text": "What are the speakers mainly discussing?",
+        "options": {
+          "A": "Preparing the sales meeting",
+          "B": "Changing the meeting schedule",
+          "C": "Visiting the main conference room",
+          "D": "I'll take care of it this afternoon."
+        },
+        "correct": "A",
+        "explanation": "The speakers are discussing how to prepare the sales meeting for the meeting schedule."
+      },
+      {
+        "question": 2,
+        "question_text": "Where will Brian get the item?",
+        "options": {
+          "A": "The main office",
+          "B": "Room 204",
+          "C": "the main conference room",
+          "D": "I'll check the schedule and let you know."
+        },
+        "correct": "B",
+        "explanation": "Brian says that the item will be obtained from Room 204."
+      },
+      {
+        "question": 3,
+        "question_text": "When should everything be ready?",
+        "options": {
+          "A": "tomorrow morning",
+          "B": "Thursday afternoon",
+          "C": "On Wednesday",
+          "D": "It's available in the main office."
+        },
+        "correct": "A",
+        "explanation": "Anna says the items should be ready by tomorrow morning."
+      }
+    ]
+  },
+  {
+    "group": 43,
+    "title": "Part 3 - Conversation 43",
+    "dialogue": [
+      {
+        "speaker": "Laura",
+        "text": "Hi Kevin. We need to prepare the a hotel room for the business trip."
+      },
+      {
+        "speaker": "Kevin",
+        "text": "Sure. I can take care of it. How many do we need?"
+      },
+      {
+        "speaker": "Laura",
+        "text": "Let's prepare about 35. They should be ready by Friday evening."
+      },
+      {
+        "speaker": "Kevin",
+        "text": "All right. I'll get them from the downtown hotel and have everything ready."
+      }
+    ],
+    "questions": [
+      {
+        "question": 1,
+        "question_text": "What are the speakers mainly discussing?",
+        "options": {
+          "A": "Preparing a hotel room",
+          "B": "Changing the business trip",
+          "C": "Visiting the airport counter",
+          "D": "I'll take care of it this afternoon."
+        },
+        "correct": "A",
+        "explanation": "The speakers are discussing how to prepare a hotel room for the business trip."
+      },
+      {
+        "question": 2,
+        "question_text": "Where will Kevin get the item?",
+        "options": {
+          "A": "The main office",
+          "B": "the downtown hotel",
+          "C": "the airport counter",
+          "D": "I'll check the schedule and let you know."
+        },
+        "correct": "B",
+        "explanation": "Kevin says that the item will be obtained from the downtown hotel."
+      },
+      {
+        "question": 3,
+        "question_text": "When should everything be ready?",
+        "options": {
+          "A": "Friday evening",
+          "B": "Sunday morning",
+          "C": "On Thursday",
+          "D": "It's available in the main office."
+        },
+        "correct": "A",
+        "explanation": "Laura says the items should be ready by Friday evening."
+      }
+    ]
+  },
+  {
+    "group": 44,
+    "title": "Part 3 - Conversation 44",
+    "dialogue": [
+      {
+        "speaker": "Emily",
+        "text": "Hi Mark. We need to prepare the a dinner reservation for the restaurant reservation."
+      },
+      {
+        "speaker": "Mark",
+        "text": "Sure. I can take care of it. How many do we need?"
+      },
+      {
+        "speaker": "Emily",
+        "text": "Let's prepare about 40. They should be ready by seven o'clock."
+      },
+      {
+        "speaker": "Mark",
+        "text": "All right. I'll get them from the Italian restaurant and have everything ready."
+      }
+    ],
+    "questions": [
+      {
+        "question": 1,
+        "question_text": "What are the speakers mainly discussing?",
+        "options": {
+          "A": "Preparing a dinner reservation",
+          "B": "Changing the restaurant reservation",
+          "C": "Visiting the café downstairs",
+          "D": "I'll take care of it this afternoon."
+        },
+        "correct": "A",
+        "explanation": "The speakers are discussing how to prepare a dinner reservation for the restaurant reservation."
+      },
+      {
+        "question": 2,
+        "question_text": "Where will Mark get the item?",
+        "options": {
+          "A": "The main office",
+          "B": "the Italian restaurant",
+          "C": "the café downstairs",
+          "D": "I'll check the schedule and let you know."
+        },
+        "correct": "B",
+        "explanation": "Mark says that the item will be obtained from the Italian restaurant."
+      },
+      {
+        "question": 3,
+        "question_text": "When should everything be ready?",
+        "options": {
+          "A": "seven o'clock",
+          "B": "twelve thirty",
+          "C": "On Friday",
+          "D": "It's available in the main office."
+        },
+        "correct": "A",
+        "explanation": "Emily says the items should be ready by seven o'clock."
+      }
+    ]
+  },
+  {
+    "group": 45,
+    "title": "Part 3 - Conversation 45",
+    "dialogue": [
+      {
+        "speaker": "Sarah",
+        "text": "Hi James. We need to prepare the train tickets for the train travel."
+      },
+      {
+        "speaker": "James",
+        "text": "Sure. I can take care of it. How many do we need?"
+      },
+      {
+        "speaker": "Sarah",
+        "text": "Let's prepare about 45. They should be ready by Saturday morning."
+      },
+      {
+        "speaker": "James",
+        "text": "All right. I'll get them from the station and have everything ready."
+      }
+    ],
+    "questions": [
+      {
+        "question": 1,
+        "question_text": "What are the speakers mainly discussing?",
+        "options": {
+          "A": "Preparing train tickets",
+          "B": "Changing the train travel",
+          "C": "Visiting the ticket office",
+          "D": "I'll take care of it this afternoon."
+        },
+        "correct": "A",
+        "explanation": "The speakers are discussing how to prepare train tickets for the train travel."
+      },
+      {
+        "question": 2,
+        "question_text": "Where will James get the item?",
+        "options": {
+          "A": "The main office",
+          "B": "the station",
+          "C": "the ticket office",
+          "D": "I'll check the schedule and let you know."
+        },
+        "correct": "B",
+        "explanation": "James says that the item will be obtained from the station."
+      },
+      {
+        "question": 3,
+        "question_text": "When should everything be ready?",
+        "options": {
+          "A": "Saturday morning",
+          "B": "Monday evening",
+          "C": "On Monday",
+          "D": "It's available in the main office."
+        },
+        "correct": "A",
+        "explanation": "Sarah says the items should be ready by Saturday morning."
+      }
+    ]
+  },
+  {
+    "group": 46,
+    "title": "Part 3 - Conversation 46",
+    "dialogue": [
+      {
+        "speaker": "Linda",
+        "text": "Hi Robert. We need to prepare the conference registration for the conference."
+      },
+      {
+        "speaker": "Robert",
+        "text": "Sure. I can take care of it. How many do we need?"
+      },
+      {
+        "speaker": "Linda",
+        "text": "Let's prepare about 50. They should be ready by next Monday."
+      },
+      {
+        "speaker": "Robert",
+        "text": "All right. I'll get them from the convention center and have everything ready."
+      }
+    ],
+    "questions": [
+      {
+        "question": 1,
+        "question_text": "What are the speakers mainly discussing?",
+        "options": {
+          "A": "Preparing conference registration",
+          "B": "Changing the conference",
+          "C": "Visiting the registration desk",
+          "D": "I'll take care of it this afternoon."
+        },
+        "correct": "A",
+        "explanation": "The speakers are discussing how to prepare conference registration for the conference."
+      },
+      {
+        "question": 2,
+        "question_text": "Where will Robert get the item?",
+        "options": {
+          "A": "The main office",
+          "B": "the convention center",
+          "C": "the registration desk",
+          "D": "I'll check the schedule and let you know."
+        },
+        "correct": "B",
+        "explanation": "Robert says that the item will be obtained from the convention center."
+      },
+      {
+        "question": 3,
+        "question_text": "When should everything be ready?",
+        "options": {
+          "A": "next Monday",
+          "B": "Tuesday",
+          "C": "On Tuesday",
+          "D": "It's available in the main office."
+        },
+        "correct": "A",
+        "explanation": "Linda says the items should be ready by next Monday."
+      }
+    ]
+  },
+  {
+    "group": 47,
+    "title": "Part 3 - Conversation 47",
+    "dialogue": [
+      {
+        "speaker": "Jessica",
+        "text": "Hi Michael. We need to prepare the a replacement order for the customer order."
+      },
+      {
+        "speaker": "Michael",
+        "text": "Sure. I can take care of it. How many do we need?"
+      },
+      {
+        "speaker": "Jessica",
+        "text": "Let's prepare about 55. They should be ready by next week."
+      },
+      {
+        "speaker": "Michael",
+        "text": "All right. I'll get them from the customer service desk and have everything ready."
+      }
+    ],
+    "questions": [
+      {
+        "question": 1,
+        "question_text": "What are the speakers mainly discussing?",
+        "options": {
+          "A": "Preparing a replacement order",
+          "B": "Changing the customer order",
+          "C": "Visiting the service counter",
+          "D": "I'll take care of it this afternoon."
+        },
+        "correct": "A",
+        "explanation": "The speakers are discussing how to prepare a replacement order for the customer order."
+      },
+      {
+        "question": 2,
+        "question_text": "Where will Michael get the item?",
+        "options": {
+          "A": "The main office",
+          "B": "the customer service desk",
+          "C": "the service counter",
+          "D": "I'll check the schedule and let you know."
+        },
+        "correct": "B",
+        "explanation": "Michael says that the item will be obtained from the customer service desk."
+      },
+      {
+        "question": 3,
+        "question_text": "When should everything be ready?",
+        "options": {
+          "A": "next week",
+          "B": "Wednesday",
+          "C": "On Wednesday",
+          "D": "It's available in the main office."
+        },
+        "correct": "A",
+        "explanation": "Jessica says the items should be ready by next week."
+      }
+    ]
+  },
+  {
+    "group": 48,
+    "title": "Part 3 - Conversation 48",
+    "dialogue": [
+      {
+        "speaker": "Rachel",
+        "text": "Hi David. We need to prepare the the project report for the project deadline."
+      },
+      {
+        "speaker": "David",
+        "text": "Sure. I can take care of it. How many do we need?"
+      },
+      {
+        "speaker": "Rachel",
+        "text": "Let's prepare about 20. They should be ready by Friday."
+      },
+      {
+        "speaker": "David",
+        "text": "All right. I'll get them from the design office and have everything ready."
+      }
+    ],
+    "questions": [
+      {
+        "question": 1,
+        "question_text": "What are the speakers mainly discussing?",
+        "options": {
+          "A": "Preparing the project report",
+          "B": "Changing the project deadline",
+          "C": "Visiting the finance department",
+          "D": "I'll take care of it this afternoon."
+        },
+        "correct": "A",
+        "explanation": "The speakers are discussing how to prepare the project report for the project deadline."
+      },
+      {
+        "question": 2,
+        "question_text": "Where will David get the item?",
+        "options": {
+          "A": "The main office",
+          "B": "the design office",
+          "C": "the finance department",
+          "D": "I'll check the schedule and let you know."
+        },
+        "correct": "B",
+        "explanation": "David says that the item will be obtained from the design office."
+      },
+      {
+        "question": 3,
+        "question_text": "When should everything be ready?",
+        "options": {
+          "A": "Friday",
+          "B": "next Friday",
+          "C": "On Thursday",
+          "D": "It's available in the main office."
+        },
+        "correct": "A",
+        "explanation": "Rachel says the items should be ready by Friday."
+      }
+    ]
+  },
+  {
+    "group": 49,
+    "title": "Part 3 - Conversation 49",
+    "dialogue": [
+      {
+        "speaker": "Olivia",
+        "text": "Hi Thomas. We need to prepare the the office computer for the equipment repair."
+      },
+      {
+        "speaker": "Thomas",
+        "text": "Sure. I can take care of it. How many do we need?"
+      },
+      {
+        "speaker": "Olivia",
+        "text": "Let's prepare about 25. They should be ready by this afternoon."
+      },
+      {
+        "speaker": "Thomas",
+        "text": "All right. I'll get them from the IT department and have everything ready."
+      }
+    ],
+    "questions": [
+      {
+        "question": 1,
+        "question_text": "What are the speakers mainly discussing?",
+        "options": {
+          "A": "Preparing the office computer",
+          "B": "Changing the equipment repair",
+          "C": "Visiting the repair center",
+          "D": "I'll take care of it this afternoon."
+        },
+        "correct": "A",
+        "explanation": "The speakers are discussing how to prepare the office computer for the equipment repair."
+      },
+      {
+        "question": 2,
+        "question_text": "Where will Thomas get the item?",
+        "options": {
+          "A": "The main office",
+          "B": "the IT department",
+          "C": "the repair center",
+          "D": "I'll check the schedule and let you know."
+        },
+        "correct": "B",
+        "explanation": "Thomas says that the item will be obtained from the IT department."
+      },
+      {
+        "question": 3,
+        "question_text": "When should everything be ready?",
+        "options": {
+          "A": "this afternoon",
+          "B": "tomorrow",
+          "C": "On Friday",
+          "D": "It's available in the main office."
+        },
+        "correct": "A",
+        "explanation": "Olivia says the items should be ready by this afternoon."
+      }
+    ]
+  },
+  {
+    "group": 50,
+    "title": "Part 3 - Conversation 50",
+    "dialogue": [
+      {
+        "speaker": "Sophie",
+        "text": "Hi Daniel. We need to prepare the a taxi for the airport plans."
+      },
+      {
+        "speaker": "Daniel",
+        "text": "Sure. I can take care of it. How many do we need?"
+      },
+      {
+        "speaker": "Sophie",
+        "text": "Let's prepare about 30. They should be ready by six thirty."
+      },
+      {
+        "speaker": "Daniel",
+        "text": "All right. I'll get them from the airport and have everything ready."
+      }
+    ],
+    "questions": [
+      {
+        "question": 1,
+        "question_text": "What are the speakers mainly discussing?",
+        "options": {
+          "A": "Preparing a taxi",
+          "B": "Changing the airport plans",
+          "C": "Visiting the hotel entrance",
+          "D": "I'll take care of it this afternoon."
+        },
+        "correct": "A",
+        "explanation": "The speakers are discussing how to prepare a taxi for the airport plans."
+      },
+      {
+        "question": 2,
+        "question_text": "Where will Daniel get the item?",
+        "options": {
+          "A": "The main office",
+          "B": "the airport",
+          "C": "the hotel entrance",
+          "D": "I'll check the schedule and let you know."
+        },
+        "correct": "B",
+        "explanation": "Daniel says that the item will be obtained from the airport."
+      },
+      {
+        "question": 3,
+        "question_text": "When should everything be ready?",
+        "options": {
+          "A": "six thirty",
+          "B": "seven fifteen",
+          "C": "On Monday",
+          "D": "It's available in the main office."
+        },
+        "correct": "A",
+        "explanation": "Sophie says the items should be ready by six thirty."
+      }
+    ]
+  },
+  {
+    "group": 51,
+    "title": "Part 3 - Conversation 51",
+    "dialogue": [
+      {
+        "speaker": "Maya",
+        "text": "Hi Daniel. We need to prepare the printer paper for the office supplies."
+      },
+      {
+        "speaker": "Daniel",
+        "text": "Sure. I can take care of it. How many do we need?"
+      },
+      {
+        "speaker": "Maya",
+        "text": "Let's prepare about 35. They should be ready by this afternoon."
+      },
+      {
+        "speaker": "Daniel",
+        "text": "All right. I'll get them from the storage room and have everything ready."
+      }
+    ],
+    "questions": [
+      {
+        "question": 1,
+        "question_text": "What are the speakers mainly discussing?",
+        "options": {
+          "A": "Preparing printer paper",
+          "B": "Changing the office supplies",
+          "C": "Visiting the copy room",
+          "D": "I'll take care of it this afternoon."
+        },
+        "correct": "A",
+        "explanation": "The speakers are discussing how to prepare printer paper for the office supplies."
+      },
+      {
+        "question": 2,
+        "question_text": "Where will Daniel get the item?",
+        "options": {
+          "A": "The main office",
+          "B": "the storage room",
+          "C": "the copy room",
+          "D": "I'll check the schedule and let you know."
+        },
+        "correct": "B",
+        "explanation": "Daniel says that the item will be obtained from the storage room."
+      },
+      {
+        "question": 3,
+        "question_text": "When should everything be ready?",
+        "options": {
+          "A": "this afternoon",
+          "B": "before lunch",
+          "C": "On Tuesday",
+          "D": "It's available in the main office."
+        },
+        "correct": "A",
+        "explanation": "Maya says the items should be ready by this afternoon."
+      }
+    ]
+  },
+  {
+    "group": 52,
+    "title": "Part 3 - Conversation 52",
+    "dialogue": [
+      {
+        "speaker": "Anna",
+        "text": "Hi Brian. We need to prepare the the sales meeting for the meeting schedule."
+      },
+      {
+        "speaker": "Brian",
+        "text": "Sure. I can take care of it. How many do we need?"
+      },
+      {
+        "speaker": "Anna",
+        "text": "Let's prepare about 40. They should be ready by tomorrow morning."
+      },
+      {
+        "speaker": "Brian",
+        "text": "All right. I'll get them from Room 204 and have everything ready."
+      }
+    ],
+    "questions": [
+      {
+        "question": 1,
+        "question_text": "What are the speakers mainly discussing?",
+        "options": {
+          "A": "Preparing the sales meeting",
+          "B": "Changing the meeting schedule",
+          "C": "Visiting the main conference room",
+          "D": "I'll take care of it this afternoon."
+        },
+        "correct": "A",
+        "explanation": "The speakers are discussing how to prepare the sales meeting for the meeting schedule."
+      },
+      {
+        "question": 2,
+        "question_text": "Where will Brian get the item?",
+        "options": {
+          "A": "The main office",
+          "B": "Room 204",
+          "C": "the main conference room",
+          "D": "I'll check the schedule and let you know."
+        },
+        "correct": "B",
+        "explanation": "Brian says that the item will be obtained from Room 204."
+      },
+      {
+        "question": 3,
+        "question_text": "When should everything be ready?",
+        "options": {
+          "A": "tomorrow morning",
+          "B": "Thursday afternoon",
+          "C": "On Wednesday",
+          "D": "It's available in the main office."
+        },
+        "correct": "A",
+        "explanation": "Anna says the items should be ready by tomorrow morning."
+      }
+    ]
+  },
+  {
+    "group": 53,
+    "title": "Part 3 - Conversation 53",
+    "dialogue": [
+      {
+        "speaker": "Laura",
+        "text": "Hi Kevin. We need to prepare the a hotel room for the business trip."
+      },
+      {
+        "speaker": "Kevin",
+        "text": "Sure. I can take care of it. How many do we need?"
+      },
+      {
+        "speaker": "Laura",
+        "text": "Let's prepare about 45. They should be ready by Friday evening."
+      },
+      {
+        "speaker": "Kevin",
+        "text": "All right. I'll get them from the downtown hotel and have everything ready."
+      }
+    ],
+    "questions": [
+      {
+        "question": 1,
+        "question_text": "What are the speakers mainly discussing?",
+        "options": {
+          "A": "Preparing a hotel room",
+          "B": "Changing the business trip",
+          "C": "Visiting the airport counter",
+          "D": "I'll take care of it this afternoon."
+        },
+        "correct": "A",
+        "explanation": "The speakers are discussing how to prepare a hotel room for the business trip."
+      },
+      {
+        "question": 2,
+        "question_text": "Where will Kevin get the item?",
+        "options": {
+          "A": "The main office",
+          "B": "the downtown hotel",
+          "C": "the airport counter",
+          "D": "I'll check the schedule and let you know."
+        },
+        "correct": "B",
+        "explanation": "Kevin says that the item will be obtained from the downtown hotel."
+      },
+      {
+        "question": 3,
+        "question_text": "When should everything be ready?",
+        "options": {
+          "A": "Friday evening",
+          "B": "Sunday morning",
+          "C": "On Thursday",
+          "D": "It's available in the main office."
+        },
+        "correct": "A",
+        "explanation": "Laura says the items should be ready by Friday evening."
+      }
+    ]
+  },
+  {
+    "group": 54,
+    "title": "Part 3 - Conversation 54",
+    "dialogue": [
+      {
+        "speaker": "Emily",
+        "text": "Hi Mark. We need to prepare the a dinner reservation for the restaurant reservation."
+      },
+      {
+        "speaker": "Mark",
+        "text": "Sure. I can take care of it. How many do we need?"
+      },
+      {
+        "speaker": "Emily",
+        "text": "Let's prepare about 50. They should be ready by seven o'clock."
+      },
+      {
+        "speaker": "Mark",
+        "text": "All right. I'll get them from the Italian restaurant and have everything ready."
+      }
+    ],
+    "questions": [
+      {
+        "question": 1,
+        "question_text": "What are the speakers mainly discussing?",
+        "options": {
+          "A": "Preparing a dinner reservation",
+          "B": "Changing the restaurant reservation",
+          "C": "Visiting the café downstairs",
+          "D": "I'll take care of it this afternoon."
+        },
+        "correct": "A",
+        "explanation": "The speakers are discussing how to prepare a dinner reservation for the restaurant reservation."
+      },
+      {
+        "question": 2,
+        "question_text": "Where will Mark get the item?",
+        "options": {
+          "A": "The main office",
+          "B": "the Italian restaurant",
+          "C": "the café downstairs",
+          "D": "I'll check the schedule and let you know."
+        },
+        "correct": "B",
+        "explanation": "Mark says that the item will be obtained from the Italian restaurant."
+      },
+      {
+        "question": 3,
+        "question_text": "When should everything be ready?",
+        "options": {
+          "A": "seven o'clock",
+          "B": "twelve thirty",
+          "C": "On Friday",
+          "D": "It's available in the main office."
+        },
+        "correct": "A",
+        "explanation": "Emily says the items should be ready by seven o'clock."
+      }
+    ]
+  },
+  {
+    "group": 55,
+    "title": "Part 3 - Conversation 55",
+    "dialogue": [
+      {
+        "speaker": "Sarah",
+        "text": "Hi James. We need to prepare the train tickets for the train travel."
+      },
+      {
+        "speaker": "James",
+        "text": "Sure. I can take care of it. How many do we need?"
+      },
+      {
+        "speaker": "Sarah",
+        "text": "Let's prepare about 55. They should be ready by Saturday morning."
+      },
+      {
+        "speaker": "James",
+        "text": "All right. I'll get them from the station and have everything ready."
+      }
+    ],
+    "questions": [
+      {
+        "question": 1,
+        "question_text": "What are the speakers mainly discussing?",
+        "options": {
+          "A": "Preparing train tickets",
+          "B": "Changing the train travel",
+          "C": "Visiting the ticket office",
+          "D": "I'll take care of it this afternoon."
+        },
+        "correct": "A",
+        "explanation": "The speakers are discussing how to prepare train tickets for the train travel."
+      },
+      {
+        "question": 2,
+        "question_text": "Where will James get the item?",
+        "options": {
+          "A": "The main office",
+          "B": "the station",
+          "C": "the ticket office",
+          "D": "I'll check the schedule and let you know."
+        },
+        "correct": "B",
+        "explanation": "James says that the item will be obtained from the station."
+      },
+      {
+        "question": 3,
+        "question_text": "When should everything be ready?",
+        "options": {
+          "A": "Saturday morning",
+          "B": "Monday evening",
+          "C": "On Monday",
+          "D": "It's available in the main office."
+        },
+        "correct": "A",
+        "explanation": "Sarah says the items should be ready by Saturday morning."
+      }
+    ]
+  },
+  {
+    "group": 56,
+    "title": "Part 3 - Conversation 56",
+    "dialogue": [
+      {
+        "speaker": "Linda",
+        "text": "Hi Robert. We need to prepare the conference registration for the conference."
+      },
+      {
+        "speaker": "Robert",
+        "text": "Sure. I can take care of it. How many do we need?"
+      },
+      {
+        "speaker": "Linda",
+        "text": "Let's prepare about 20. They should be ready by next Monday."
+      },
+      {
+        "speaker": "Robert",
+        "text": "All right. I'll get them from the convention center and have everything ready."
+      }
+    ],
+    "questions": [
+      {
+        "question": 1,
+        "question_text": "What are the speakers mainly discussing?",
+        "options": {
+          "A": "Preparing conference registration",
+          "B": "Changing the conference",
+          "C": "Visiting the registration desk",
+          "D": "I'll take care of it this afternoon."
+        },
+        "correct": "A",
+        "explanation": "The speakers are discussing how to prepare conference registration for the conference."
+      },
+      {
+        "question": 2,
+        "question_text": "Where will Robert get the item?",
+        "options": {
+          "A": "The main office",
+          "B": "the convention center",
+          "C": "the registration desk",
+          "D": "I'll check the schedule and let you know."
+        },
+        "correct": "B",
+        "explanation": "Robert says that the item will be obtained from the convention center."
+      },
+      {
+        "question": 3,
+        "question_text": "When should everything be ready?",
+        "options": {
+          "A": "next Monday",
+          "B": "Tuesday",
+          "C": "On Tuesday",
+          "D": "It's available in the main office."
+        },
+        "correct": "A",
+        "explanation": "Linda says the items should be ready by next Monday."
+      }
+    ]
+  },
+  {
+    "group": 57,
+    "title": "Part 3 - Conversation 57",
+    "dialogue": [
+      {
+        "speaker": "Jessica",
+        "text": "Hi Michael. We need to prepare the a replacement order for the customer order."
+      },
+      {
+        "speaker": "Michael",
+        "text": "Sure. I can take care of it. How many do we need?"
+      },
+      {
+        "speaker": "Jessica",
+        "text": "Let's prepare about 25. They should be ready by next week."
+      },
+      {
+        "speaker": "Michael",
+        "text": "All right. I'll get them from the customer service desk and have everything ready."
+      }
+    ],
+    "questions": [
+      {
+        "question": 1,
+        "question_text": "What are the speakers mainly discussing?",
+        "options": {
+          "A": "Preparing a replacement order",
+          "B": "Changing the customer order",
+          "C": "Visiting the service counter",
+          "D": "I'll take care of it this afternoon."
+        },
+        "correct": "A",
+        "explanation": "The speakers are discussing how to prepare a replacement order for the customer order."
+      },
+      {
+        "question": 2,
+        "question_text": "Where will Michael get the item?",
+        "options": {
+          "A": "The main office",
+          "B": "the customer service desk",
+          "C": "the service counter",
+          "D": "I'll check the schedule and let you know."
+        },
+        "correct": "B",
+        "explanation": "Michael says that the item will be obtained from the customer service desk."
+      },
+      {
+        "question": 3,
+        "question_text": "When should everything be ready?",
+        "options": {
+          "A": "next week",
+          "B": "Wednesday",
+          "C": "On Wednesday",
+          "D": "It's available in the main office."
+        },
+        "correct": "A",
+        "explanation": "Jessica says the items should be ready by next week."
+      }
+    ]
+  },
+  {
+    "group": 58,
+    "title": "Part 3 - Conversation 58",
+    "dialogue": [
+      {
+        "speaker": "Rachel",
+        "text": "Hi David. We need to prepare the the project report for the project deadline."
+      },
+      {
+        "speaker": "David",
+        "text": "Sure. I can take care of it. How many do we need?"
+      },
+      {
+        "speaker": "Rachel",
+        "text": "Let's prepare about 30. They should be ready by Friday."
+      },
+      {
+        "speaker": "David",
+        "text": "All right. I'll get them from the design office and have everything ready."
+      }
+    ],
+    "questions": [
+      {
+        "question": 1,
+        "question_text": "What are the speakers mainly discussing?",
+        "options": {
+          "A": "Preparing the project report",
+          "B": "Changing the project deadline",
+          "C": "Visiting the finance department",
+          "D": "I'll take care of it this afternoon."
+        },
+        "correct": "A",
+        "explanation": "The speakers are discussing how to prepare the project report for the project deadline."
+      },
+      {
+        "question": 2,
+        "question_text": "Where will David get the item?",
+        "options": {
+          "A": "The main office",
+          "B": "the design office",
+          "C": "the finance department",
+          "D": "I'll check the schedule and let you know."
+        },
+        "correct": "B",
+        "explanation": "David says that the item will be obtained from the design office."
+      },
+      {
+        "question": 3,
+        "question_text": "When should everything be ready?",
+        "options": {
+          "A": "Friday",
+          "B": "next Friday",
+          "C": "On Thursday",
+          "D": "It's available in the main office."
+        },
+        "correct": "A",
+        "explanation": "Rachel says the items should be ready by Friday."
+      }
+    ]
+  },
+  {
+    "group": 59,
+    "title": "Part 3 - Conversation 59",
+    "dialogue": [
+      {
+        "speaker": "Olivia",
+        "text": "Hi Thomas. We need to prepare the the office computer for the equipment repair."
+      },
+      {
+        "speaker": "Thomas",
+        "text": "Sure. I can take care of it. How many do we need?"
+      },
+      {
+        "speaker": "Olivia",
+        "text": "Let's prepare about 35. They should be ready by this afternoon."
+      },
+      {
+        "speaker": "Thomas",
+        "text": "All right. I'll get them from the IT department and have everything ready."
+      }
+    ],
+    "questions": [
+      {
+        "question": 1,
+        "question_text": "What are the speakers mainly discussing?",
+        "options": {
+          "A": "Preparing the office computer",
+          "B": "Changing the equipment repair",
+          "C": "Visiting the repair center",
+          "D": "I'll take care of it this afternoon."
+        },
+        "correct": "A",
+        "explanation": "The speakers are discussing how to prepare the office computer for the equipment repair."
+      },
+      {
+        "question": 2,
+        "question_text": "Where will Thomas get the item?",
+        "options": {
+          "A": "The main office",
+          "B": "the IT department",
+          "C": "the repair center",
+          "D": "I'll check the schedule and let you know."
+        },
+        "correct": "B",
+        "explanation": "Thomas says that the item will be obtained from the IT department."
+      },
+      {
+        "question": 3,
+        "question_text": "When should everything be ready?",
+        "options": {
+          "A": "this afternoon",
+          "B": "tomorrow",
+          "C": "On Friday",
+          "D": "It's available in the main office."
+        },
+        "correct": "A",
+        "explanation": "Olivia says the items should be ready by this afternoon."
+      }
+    ]
+  },
+  {
+    "group": 60,
+    "title": "Part 3 - Conversation 60",
+    "dialogue": [
+      {
+        "speaker": "Sophie",
+        "text": "Hi Daniel. We need to prepare the a taxi for the airport plans."
+      },
+      {
+        "speaker": "Daniel",
+        "text": "Sure. I can take care of it. How many do we need?"
+      },
+      {
+        "speaker": "Sophie",
+        "text": "Let's prepare about 40. They should be ready by six thirty."
+      },
+      {
+        "speaker": "Daniel",
+        "text": "All right. I'll get them from the airport and have everything ready."
+      }
+    ],
+    "questions": [
+      {
+        "question": 1,
+        "question_text": "What are the speakers mainly discussing?",
+        "options": {
+          "A": "Preparing a taxi",
+          "B": "Changing the airport plans",
+          "C": "Visiting the hotel entrance",
+          "D": "I'll take care of it this afternoon."
+        },
+        "correct": "A",
+        "explanation": "The speakers are discussing how to prepare a taxi for the airport plans."
+      },
+      {
+        "question": 2,
+        "question_text": "Where will Daniel get the item?",
+        "options": {
+          "A": "The main office",
+          "B": "the airport",
+          "C": "the hotel entrance",
+          "D": "I'll check the schedule and let you know."
+        },
+        "correct": "B",
+        "explanation": "Daniel says that the item will be obtained from the airport."
+      },
+      {
+        "question": 3,
+        "question_text": "When should everything be ready?",
+        "options": {
+          "A": "six thirty",
+          "B": "seven fifteen",
+          "C": "On Monday",
+          "D": "It's available in the main office."
+        },
+        "correct": "A",
+        "explanation": "Sophie says the items should be ready by six thirty."
+      }
+    ]
+  },
+  {
+    "group": 61,
+    "title": "Part 3 - Conversation 61",
+    "dialogue": [
+      {
+        "speaker": "Maya",
+        "text": "Hi Daniel. We need to prepare the printer paper for the office supplies."
+      },
+      {
+        "speaker": "Daniel",
+        "text": "Sure. I can take care of it. How many do we need?"
+      },
+      {
+        "speaker": "Maya",
+        "text": "Let's prepare about 45. They should be ready by this afternoon."
+      },
+      {
+        "speaker": "Daniel",
+        "text": "All right. I'll get them from the storage room and have everything ready."
+      }
+    ],
+    "questions": [
+      {
+        "question": 1,
+        "question_text": "What are the speakers mainly discussing?",
+        "options": {
+          "A": "Preparing printer paper",
+          "B": "Changing the office supplies",
+          "C": "Visiting the copy room",
+          "D": "I'll take care of it this afternoon."
+        },
+        "correct": "A",
+        "explanation": "The speakers are discussing how to prepare printer paper for the office supplies."
+      },
+      {
+        "question": 2,
+        "question_text": "Where will Daniel get the item?",
+        "options": {
+          "A": "The main office",
+          "B": "the storage room",
+          "C": "the copy room",
+          "D": "I'll check the schedule and let you know."
+        },
+        "correct": "B",
+        "explanation": "Daniel says that the item will be obtained from the storage room."
+      },
+      {
+        "question": 3,
+        "question_text": "When should everything be ready?",
+        "options": {
+          "A": "this afternoon",
+          "B": "before lunch",
+          "C": "On Tuesday",
+          "D": "It's available in the main office."
+        },
+        "correct": "A",
+        "explanation": "Maya says the items should be ready by this afternoon."
+      }
+    ]
+  },
+  {
+    "group": 62,
+    "title": "Part 3 - Conversation 62",
+    "dialogue": [
+      {
+        "speaker": "Anna",
+        "text": "Hi Brian. We need to prepare the the sales meeting for the meeting schedule."
+      },
+      {
+        "speaker": "Brian",
+        "text": "Sure. I can take care of it. How many do we need?"
+      },
+      {
+        "speaker": "Anna",
+        "text": "Let's prepare about 50. They should be ready by tomorrow morning."
+      },
+      {
+        "speaker": "Brian",
+        "text": "All right. I'll get them from Room 204 and have everything ready."
+      }
+    ],
+    "questions": [
+      {
+        "question": 1,
+        "question_text": "What are the speakers mainly discussing?",
+        "options": {
+          "A": "Preparing the sales meeting",
+          "B": "Changing the meeting schedule",
+          "C": "Visiting the main conference room",
+          "D": "I'll take care of it this afternoon."
+        },
+        "correct": "A",
+        "explanation": "The speakers are discussing how to prepare the sales meeting for the meeting schedule."
+      },
+      {
+        "question": 2,
+        "question_text": "Where will Brian get the item?",
+        "options": {
+          "A": "The main office",
+          "B": "Room 204",
+          "C": "the main conference room",
+          "D": "I'll check the schedule and let you know."
+        },
+        "correct": "B",
+        "explanation": "Brian says that the item will be obtained from Room 204."
+      },
+      {
+        "question": 3,
+        "question_text": "When should everything be ready?",
+        "options": {
+          "A": "tomorrow morning",
+          "B": "Thursday afternoon",
+          "C": "On Wednesday",
+          "D": "It's available in the main office."
+        },
+        "correct": "A",
+        "explanation": "Anna says the items should be ready by tomorrow morning."
+      }
+    ]
+  },
+  {
+    "group": 63,
+    "title": "Part 3 - Conversation 63",
+    "dialogue": [
+      {
+        "speaker": "Laura",
+        "text": "Hi Kevin. We need to prepare the a hotel room for the business trip."
+      },
+      {
+        "speaker": "Kevin",
+        "text": "Sure. I can take care of it. How many do we need?"
+      },
+      {
+        "speaker": "Laura",
+        "text": "Let's prepare about 55. They should be ready by Friday evening."
+      },
+      {
+        "speaker": "Kevin",
+        "text": "All right. I'll get them from the downtown hotel and have everything ready."
+      }
+    ],
+    "questions": [
+      {
+        "question": 1,
+        "question_text": "What are the speakers mainly discussing?",
+        "options": {
+          "A": "Preparing a hotel room",
+          "B": "Changing the business trip",
+          "C": "Visiting the airport counter",
+          "D": "I'll take care of it this afternoon."
+        },
+        "correct": "A",
+        "explanation": "The speakers are discussing how to prepare a hotel room for the business trip."
+      },
+      {
+        "question": 2,
+        "question_text": "Where will Kevin get the item?",
+        "options": {
+          "A": "The main office",
+          "B": "the downtown hotel",
+          "C": "the airport counter",
+          "D": "I'll check the schedule and let you know."
+        },
+        "correct": "B",
+        "explanation": "Kevin says that the item will be obtained from the downtown hotel."
+      },
+      {
+        "question": 3,
+        "question_text": "When should everything be ready?",
+        "options": {
+          "A": "Friday evening",
+          "B": "Sunday morning",
+          "C": "On Thursday",
+          "D": "It's available in the main office."
+        },
+        "correct": "A",
+        "explanation": "Laura says the items should be ready by Friday evening."
+      }
+    ]
+  },
+  {
+    "group": 64,
+    "title": "Part 3 - Conversation 64",
+    "dialogue": [
+      {
+        "speaker": "Emily",
+        "text": "Hi Mark. We need to prepare the a dinner reservation for the restaurant reservation."
+      },
+      {
+        "speaker": "Mark",
+        "text": "Sure. I can take care of it. How many do we need?"
+      },
+      {
+        "speaker": "Emily",
+        "text": "Let's prepare about 20. They should be ready by seven o'clock."
+      },
+      {
+        "speaker": "Mark",
+        "text": "All right. I'll get them from the Italian restaurant and have everything ready."
+      }
+    ],
+    "questions": [
+      {
+        "question": 1,
+        "question_text": "What are the speakers mainly discussing?",
+        "options": {
+          "A": "Preparing a dinner reservation",
+          "B": "Changing the restaurant reservation",
+          "C": "Visiting the café downstairs",
+          "D": "I'll take care of it this afternoon."
+        },
+        "correct": "A",
+        "explanation": "The speakers are discussing how to prepare a dinner reservation for the restaurant reservation."
+      },
+      {
+        "question": 2,
+        "question_text": "Where will Mark get the item?",
+        "options": {
+          "A": "The main office",
+          "B": "the Italian restaurant",
+          "C": "the café downstairs",
+          "D": "I'll check the schedule and let you know."
+        },
+        "correct": "B",
+        "explanation": "Mark says that the item will be obtained from the Italian restaurant."
+      },
+      {
+        "question": 3,
+        "question_text": "When should everything be ready?",
+        "options": {
+          "A": "seven o'clock",
+          "B": "twelve thirty",
+          "C": "On Friday",
+          "D": "It's available in the main office."
+        },
+        "correct": "A",
+        "explanation": "Emily says the items should be ready by seven o'clock."
+      }
+    ]
+  },
+  {
+    "group": 65,
+    "title": "Part 3 - Conversation 65",
+    "dialogue": [
+      {
+        "speaker": "Sarah",
+        "text": "Hi James. We need to prepare the train tickets for the train travel."
+      },
+      {
+        "speaker": "James",
+        "text": "Sure. I can take care of it. How many do we need?"
+      },
+      {
+        "speaker": "Sarah",
+        "text": "Let's prepare about 25. They should be ready by Saturday morning."
+      },
+      {
+        "speaker": "James",
+        "text": "All right. I'll get them from the station and have everything ready."
+      }
+    ],
+    "questions": [
+      {
+        "question": 1,
+        "question_text": "What are the speakers mainly discussing?",
+        "options": {
+          "A": "Preparing train tickets",
+          "B": "Changing the train travel",
+          "C": "Visiting the ticket office",
+          "D": "I'll take care of it this afternoon."
+        },
+        "correct": "A",
+        "explanation": "The speakers are discussing how to prepare train tickets for the train travel."
+      },
+      {
+        "question": 2,
+        "question_text": "Where will James get the item?",
+        "options": {
+          "A": "The main office",
+          "B": "the station",
+          "C": "the ticket office",
+          "D": "I'll check the schedule and let you know."
+        },
+        "correct": "B",
+        "explanation": "James says that the item will be obtained from the station."
+      },
+      {
+        "question": 3,
+        "question_text": "When should everything be ready?",
+        "options": {
+          "A": "Saturday morning",
+          "B": "Monday evening",
+          "C": "On Monday",
+          "D": "It's available in the main office."
+        },
+        "correct": "A",
+        "explanation": "Sarah says the items should be ready by Saturday morning."
+      }
+    ]
+  },
+  {
+    "group": 66,
+    "title": "Part 3 - Conversation 66",
+    "dialogue": [
+      {
+        "speaker": "Linda",
+        "text": "Hi Robert. We need to prepare the conference registration for the conference."
+      },
+      {
+        "speaker": "Robert",
+        "text": "Sure. I can take care of it. How many do we need?"
+      },
+      {
+        "speaker": "Linda",
+        "text": "Let's prepare about 30. They should be ready by next Monday."
+      },
+      {
+        "speaker": "Robert",
+        "text": "All right. I'll get them from the convention center and have everything ready."
+      }
+    ],
+    "questions": [
+      {
+        "question": 1,
+        "question_text": "What are the speakers mainly discussing?",
+        "options": {
+          "A": "Preparing conference registration",
+          "B": "Changing the conference",
+          "C": "Visiting the registration desk",
+          "D": "I'll take care of it this afternoon."
+        },
+        "correct": "A",
+        "explanation": "The speakers are discussing how to prepare conference registration for the conference."
+      },
+      {
+        "question": 2,
+        "question_text": "Where will Robert get the item?",
+        "options": {
+          "A": "The main office",
+          "B": "the convention center",
+          "C": "the registration desk",
+          "D": "I'll check the schedule and let you know."
+        },
+        "correct": "B",
+        "explanation": "Robert says that the item will be obtained from the convention center."
+      },
+      {
+        "question": 3,
+        "question_text": "When should everything be ready?",
+        "options": {
+          "A": "next Monday",
+          "B": "Tuesday",
+          "C": "On Tuesday",
+          "D": "It's available in the main office."
+        },
+        "correct": "A",
+        "explanation": "Linda says the items should be ready by next Monday."
+      }
+    ]
+  },
+  {
+    "group": 67,
+    "title": "Part 3 - Conversation 67",
+    "dialogue": [
+      {
+        "speaker": "Jessica",
+        "text": "Hi Michael. We need to prepare the a replacement order for the customer order."
+      },
+      {
+        "speaker": "Michael",
+        "text": "Sure. I can take care of it. How many do we need?"
+      },
+      {
+        "speaker": "Jessica",
+        "text": "Let's prepare about 35. They should be ready by next week."
+      },
+      {
+        "speaker": "Michael",
+        "text": "All right. I'll get them from the customer service desk and have everything ready."
+      }
+    ],
+    "questions": [
+      {
+        "question": 1,
+        "question_text": "What are the speakers mainly discussing?",
+        "options": {
+          "A": "Preparing a replacement order",
+          "B": "Changing the customer order",
+          "C": "Visiting the service counter",
+          "D": "I'll take care of it this afternoon."
+        },
+        "correct": "A",
+        "explanation": "The speakers are discussing how to prepare a replacement order for the customer order."
+      },
+      {
+        "question": 2,
+        "question_text": "Where will Michael get the item?",
+        "options": {
+          "A": "The main office",
+          "B": "the customer service desk",
+          "C": "the service counter",
+          "D": "I'll check the schedule and let you know."
+        },
+        "correct": "B",
+        "explanation": "Michael says that the item will be obtained from the customer service desk."
+      },
+      {
+        "question": 3,
+        "question_text": "When should everything be ready?",
+        "options": {
+          "A": "next week",
+          "B": "Wednesday",
+          "C": "On Wednesday",
+          "D": "It's available in the main office."
+        },
+        "correct": "A",
+        "explanation": "Jessica says the items should be ready by next week."
+      }
+    ]
+  },
+  {
+    "group": 68,
+    "title": "Part 3 - Conversation 68",
+    "dialogue": [
+      {
+        "speaker": "Rachel",
+        "text": "Hi David. We need to prepare the the project report for the project deadline."
+      },
+      {
+        "speaker": "David",
+        "text": "Sure. I can take care of it. How many do we need?"
+      },
+      {
+        "speaker": "Rachel",
+        "text": "Let's prepare about 40. They should be ready by Friday."
+      },
+      {
+        "speaker": "David",
+        "text": "All right. I'll get them from the design office and have everything ready."
+      }
+    ],
+    "questions": [
+      {
+        "question": 1,
+        "question_text": "What are the speakers mainly discussing?",
+        "options": {
+          "A": "Preparing the project report",
+          "B": "Changing the project deadline",
+          "C": "Visiting the finance department",
+          "D": "I'll take care of it this afternoon."
+        },
+        "correct": "A",
+        "explanation": "The speakers are discussing how to prepare the project report for the project deadline."
+      },
+      {
+        "question": 2,
+        "question_text": "Where will David get the item?",
+        "options": {
+          "A": "The main office",
+          "B": "the design office",
+          "C": "the finance department",
+          "D": "I'll check the schedule and let you know."
+        },
+        "correct": "B",
+        "explanation": "David says that the item will be obtained from the design office."
+      },
+      {
+        "question": 3,
+        "question_text": "When should everything be ready?",
+        "options": {
+          "A": "Friday",
+          "B": "next Friday",
+          "C": "On Thursday",
+          "D": "It's available in the main office."
+        },
+        "correct": "A",
+        "explanation": "Rachel says the items should be ready by Friday."
+      }
+    ]
+  },
+  {
+    "group": 69,
+    "title": "Part 3 - Conversation 69",
+    "dialogue": [
+      {
+        "speaker": "Olivia",
+        "text": "Hi Thomas. We need to prepare the the office computer for the equipment repair."
+      },
+      {
+        "speaker": "Thomas",
+        "text": "Sure. I can take care of it. How many do we need?"
+      },
+      {
+        "speaker": "Olivia",
+        "text": "Let's prepare about 45. They should be ready by this afternoon."
+      },
+      {
+        "speaker": "Thomas",
+        "text": "All right. I'll get them from the IT department and have everything ready."
+      }
+    ],
+    "questions": [
+      {
+        "question": 1,
+        "question_text": "What are the speakers mainly discussing?",
+        "options": {
+          "A": "Preparing the office computer",
+          "B": "Changing the equipment repair",
+          "C": "Visiting the repair center",
+          "D": "I'll take care of it this afternoon."
+        },
+        "correct": "A",
+        "explanation": "The speakers are discussing how to prepare the office computer for the equipment repair."
+      },
+      {
+        "question": 2,
+        "question_text": "Where will Thomas get the item?",
+        "options": {
+          "A": "The main office",
+          "B": "the IT department",
+          "C": "the repair center",
+          "D": "I'll check the schedule and let you know."
+        },
+        "correct": "B",
+        "explanation": "Thomas says that the item will be obtained from the IT department."
+      },
+      {
+        "question": 3,
+        "question_text": "When should everything be ready?",
+        "options": {
+          "A": "this afternoon",
+          "B": "tomorrow",
+          "C": "On Friday",
+          "D": "It's available in the main office."
+        },
+        "correct": "A",
+        "explanation": "Olivia says the items should be ready by this afternoon."
+      }
+    ]
+  },
+  {
+    "group": 70,
+    "title": "Part 3 - Conversation 70",
+    "dialogue": [
+      {
+        "speaker": "Sophie",
+        "text": "Hi Daniel. We need to prepare the a taxi for the airport plans."
+      },
+      {
+        "speaker": "Daniel",
+        "text": "Sure. I can take care of it. How many do we need?"
+      },
+      {
+        "speaker": "Sophie",
+        "text": "Let's prepare about 50. They should be ready by six thirty."
+      },
+      {
+        "speaker": "Daniel",
+        "text": "All right. I'll get them from the airport and have everything ready."
+      }
+    ],
+    "questions": [
+      {
+        "question": 1,
+        "question_text": "What are the speakers mainly discussing?",
+        "options": {
+          "A": "Preparing a taxi",
+          "B": "Changing the airport plans",
+          "C": "Visiting the hotel entrance",
+          "D": "I'll take care of it this afternoon."
+        },
+        "correct": "A",
+        "explanation": "The speakers are discussing how to prepare a taxi for the airport plans."
+      },
+      {
+        "question": 2,
+        "question_text": "Where will Daniel get the item?",
+        "options": {
+          "A": "The main office",
+          "B": "the airport",
+          "C": "the hotel entrance",
+          "D": "I'll check the schedule and let you know."
+        },
+        "correct": "B",
+        "explanation": "Daniel says that the item will be obtained from the airport."
+      },
+      {
+        "question": 3,
+        "question_text": "When should everything be ready?",
+        "options": {
+          "A": "six thirty",
+          "B": "seven fifteen",
+          "C": "On Monday",
+          "D": "It's available in the main office."
+        },
+        "correct": "A",
+        "explanation": "Sophie says the items should be ready by six thirty."
+      }
+    ]
+  },
+  {
+    "group": 71,
+    "title": "Part 3 - Conversation 71",
+    "dialogue": [
+      {
+        "speaker": "Maya",
+        "text": "Hi Daniel. We need to prepare the printer paper for the office supplies."
+      },
+      {
+        "speaker": "Daniel",
+        "text": "Sure. I can take care of it. How many do we need?"
+      },
+      {
+        "speaker": "Maya",
+        "text": "Let's prepare about 55. They should be ready by this afternoon."
+      },
+      {
+        "speaker": "Daniel",
+        "text": "All right. I'll get them from the storage room and have everything ready."
+      }
+    ],
+    "questions": [
+      {
+        "question": 1,
+        "question_text": "What are the speakers mainly discussing?",
+        "options": {
+          "A": "Preparing printer paper",
+          "B": "Changing the office supplies",
+          "C": "Visiting the copy room",
+          "D": "I'll take care of it this afternoon."
+        },
+        "correct": "A",
+        "explanation": "The speakers are discussing how to prepare printer paper for the office supplies."
+      },
+      {
+        "question": 2,
+        "question_text": "Where will Daniel get the item?",
+        "options": {
+          "A": "The main office",
+          "B": "the storage room",
+          "C": "the copy room",
+          "D": "I'll check the schedule and let you know."
+        },
+        "correct": "B",
+        "explanation": "Daniel says that the item will be obtained from the storage room."
+      },
+      {
+        "question": 3,
+        "question_text": "When should everything be ready?",
+        "options": {
+          "A": "this afternoon",
+          "B": "before lunch",
+          "C": "On Tuesday",
+          "D": "It's available in the main office."
+        },
+        "correct": "A",
+        "explanation": "Maya says the items should be ready by this afternoon."
+      }
+    ]
+  },
+  {
+    "group": 72,
+    "title": "Part 3 - Conversation 72",
+    "dialogue": [
+      {
+        "speaker": "Anna",
+        "text": "Hi Brian. We need to prepare the the sales meeting for the meeting schedule."
+      },
+      {
+        "speaker": "Brian",
+        "text": "Sure. I can take care of it. How many do we need?"
+      },
+      {
+        "speaker": "Anna",
+        "text": "Let's prepare about 20. They should be ready by tomorrow morning."
+      },
+      {
+        "speaker": "Brian",
+        "text": "All right. I'll get them from Room 204 and have everything ready."
+      }
+    ],
+    "questions": [
+      {
+        "question": 1,
+        "question_text": "What are the speakers mainly discussing?",
+        "options": {
+          "A": "Preparing the sales meeting",
+          "B": "Changing the meeting schedule",
+          "C": "Visiting the main conference room",
+          "D": "I'll take care of it this afternoon."
+        },
+        "correct": "A",
+        "explanation": "The speakers are discussing how to prepare the sales meeting for the meeting schedule."
+      },
+      {
+        "question": 2,
+        "question_text": "Where will Brian get the item?",
+        "options": {
+          "A": "The main office",
+          "B": "Room 204",
+          "C": "the main conference room",
+          "D": "I'll check the schedule and let you know."
+        },
+        "correct": "B",
+        "explanation": "Brian says that the item will be obtained from Room 204."
+      },
+      {
+        "question": 3,
+        "question_text": "When should everything be ready?",
+        "options": {
+          "A": "tomorrow morning",
+          "B": "Thursday afternoon",
+          "C": "On Wednesday",
+          "D": "It's available in the main office."
+        },
+        "correct": "A",
+        "explanation": "Anna says the items should be ready by tomorrow morning."
+      }
+    ]
+  },
+  {
+    "group": 73,
+    "title": "Part 3 - Conversation 73",
+    "dialogue": [
+      {
+        "speaker": "Laura",
+        "text": "Hi Kevin. We need to prepare the a hotel room for the business trip."
+      },
+      {
+        "speaker": "Kevin",
+        "text": "Sure. I can take care of it. How many do we need?"
+      },
+      {
+        "speaker": "Laura",
+        "text": "Let's prepare about 25. They should be ready by Friday evening."
+      },
+      {
+        "speaker": "Kevin",
+        "text": "All right. I'll get them from the downtown hotel and have everything ready."
+      }
+    ],
+    "questions": [
+      {
+        "question": 1,
+        "question_text": "What are the speakers mainly discussing?",
+        "options": {
+          "A": "Preparing a hotel room",
+          "B": "Changing the business trip",
+          "C": "Visiting the airport counter",
+          "D": "I'll take care of it this afternoon."
+        },
+        "correct": "A",
+        "explanation": "The speakers are discussing how to prepare a hotel room for the business trip."
+      },
+      {
+        "question": 2,
+        "question_text": "Where will Kevin get the item?",
+        "options": {
+          "A": "The main office",
+          "B": "the downtown hotel",
+          "C": "the airport counter",
+          "D": "I'll check the schedule and let you know."
+        },
+        "correct": "B",
+        "explanation": "Kevin says that the item will be obtained from the downtown hotel."
+      },
+      {
+        "question": 3,
+        "question_text": "When should everything be ready?",
+        "options": {
+          "A": "Friday evening",
+          "B": "Sunday morning",
+          "C": "On Thursday",
+          "D": "It's available in the main office."
+        },
+        "correct": "A",
+        "explanation": "Laura says the items should be ready by Friday evening."
+      }
+    ]
+  },
+  {
+    "group": 74,
+    "title": "Part 3 - Conversation 74",
+    "dialogue": [
+      {
+        "speaker": "Emily",
+        "text": "Hi Mark. We need to prepare the a dinner reservation for the restaurant reservation."
+      },
+      {
+        "speaker": "Mark",
+        "text": "Sure. I can take care of it. How many do we need?"
+      },
+      {
+        "speaker": "Emily",
+        "text": "Let's prepare about 30. They should be ready by seven o'clock."
+      },
+      {
+        "speaker": "Mark",
+        "text": "All right. I'll get them from the Italian restaurant and have everything ready."
+      }
+    ],
+    "questions": [
+      {
+        "question": 1,
+        "question_text": "What are the speakers mainly discussing?",
+        "options": {
+          "A": "Preparing a dinner reservation",
+          "B": "Changing the restaurant reservation",
+          "C": "Visiting the café downstairs",
+          "D": "I'll take care of it this afternoon."
+        },
+        "correct": "A",
+        "explanation": "The speakers are discussing how to prepare a dinner reservation for the restaurant reservation."
+      },
+      {
+        "question": 2,
+        "question_text": "Where will Mark get the item?",
+        "options": {
+          "A": "The main office",
+          "B": "the Italian restaurant",
+          "C": "the café downstairs",
+          "D": "I'll check the schedule and let you know."
+        },
+        "correct": "B",
+        "explanation": "Mark says that the item will be obtained from the Italian restaurant."
+      },
+      {
+        "question": 3,
+        "question_text": "When should everything be ready?",
+        "options": {
+          "A": "seven o'clock",
+          "B": "twelve thirty",
+          "C": "On Friday",
+          "D": "It's available in the main office."
+        },
+        "correct": "A",
+        "explanation": "Emily says the items should be ready by seven o'clock."
+      }
+    ]
+  },
+  {
+    "group": 75,
+    "title": "Part 3 - Conversation 75",
+    "dialogue": [
+      {
+        "speaker": "Sarah",
+        "text": "Hi James. We need to prepare the train tickets for the train travel."
+      },
+      {
+        "speaker": "James",
+        "text": "Sure. I can take care of it. How many do we need?"
+      },
+      {
+        "speaker": "Sarah",
+        "text": "Let's prepare about 35. They should be ready by Saturday morning."
+      },
+      {
+        "speaker": "James",
+        "text": "All right. I'll get them from the station and have everything ready."
+      }
+    ],
+    "questions": [
+      {
+        "question": 1,
+        "question_text": "What are the speakers mainly discussing?",
+        "options": {
+          "A": "Preparing train tickets",
+          "B": "Changing the train travel",
+          "C": "Visiting the ticket office",
+          "D": "I'll take care of it this afternoon."
+        },
+        "correct": "A",
+        "explanation": "The speakers are discussing how to prepare train tickets for the train travel."
+      },
+      {
+        "question": 2,
+        "question_text": "Where will James get the item?",
+        "options": {
+          "A": "The main office",
+          "B": "the station",
+          "C": "the ticket office",
+          "D": "I'll check the schedule and let you know."
+        },
+        "correct": "B",
+        "explanation": "James says that the item will be obtained from the station."
+      },
+      {
+        "question": 3,
+        "question_text": "When should everything be ready?",
+        "options": {
+          "A": "Saturday morning",
+          "B": "Monday evening",
+          "C": "On Monday",
+          "D": "It's available in the main office."
+        },
+        "correct": "A",
+        "explanation": "Sarah says the items should be ready by Saturday morning."
+      }
+    ]
+  },
+  {
+    "group": 76,
+    "title": "Part 3 - Conversation 76",
+    "dialogue": [
+      {
+        "speaker": "Linda",
+        "text": "Hi Robert. We need to prepare the conference registration for the conference."
+      },
+      {
+        "speaker": "Robert",
+        "text": "Sure. I can take care of it. How many do we need?"
+      },
+      {
+        "speaker": "Linda",
+        "text": "Let's prepare about 40. They should be ready by next Monday."
+      },
+      {
+        "speaker": "Robert",
+        "text": "All right. I'll get them from the convention center and have everything ready."
+      }
+    ],
+    "questions": [
+      {
+        "question": 1,
+        "question_text": "What are the speakers mainly discussing?",
+        "options": {
+          "A": "Preparing conference registration",
+          "B": "Changing the conference",
+          "C": "Visiting the registration desk",
+          "D": "I'll take care of it this afternoon."
+        },
+        "correct": "A",
+        "explanation": "The speakers are discussing how to prepare conference registration for the conference."
+      },
+      {
+        "question": 2,
+        "question_text": "Where will Robert get the item?",
+        "options": {
+          "A": "The main office",
+          "B": "the convention center",
+          "C": "the registration desk",
+          "D": "I'll check the schedule and let you know."
+        },
+        "correct": "B",
+        "explanation": "Robert says that the item will be obtained from the convention center."
+      },
+      {
+        "question": 3,
+        "question_text": "When should everything be ready?",
+        "options": {
+          "A": "next Monday",
+          "B": "Tuesday",
+          "C": "On Tuesday",
+          "D": "It's available in the main office."
+        },
+        "correct": "A",
+        "explanation": "Linda says the items should be ready by next Monday."
+      }
+    ]
+  },
+  {
+    "group": 77,
+    "title": "Part 3 - Conversation 77",
+    "dialogue": [
+      {
+        "speaker": "Jessica",
+        "text": "Hi Michael. We need to prepare the a replacement order for the customer order."
+      },
+      {
+        "speaker": "Michael",
+        "text": "Sure. I can take care of it. How many do we need?"
+      },
+      {
+        "speaker": "Jessica",
+        "text": "Let's prepare about 45. They should be ready by next week."
+      },
+      {
+        "speaker": "Michael",
+        "text": "All right. I'll get them from the customer service desk and have everything ready."
+      }
+    ],
+    "questions": [
+      {
+        "question": 1,
+        "question_text": "What are the speakers mainly discussing?",
+        "options": {
+          "A": "Preparing a replacement order",
+          "B": "Changing the customer order",
+          "C": "Visiting the service counter",
+          "D": "I'll take care of it this afternoon."
+        },
+        "correct": "A",
+        "explanation": "The speakers are discussing how to prepare a replacement order for the customer order."
+      },
+      {
+        "question": 2,
+        "question_text": "Where will Michael get the item?",
+        "options": {
+          "A": "The main office",
+          "B": "the customer service desk",
+          "C": "the service counter",
+          "D": "I'll check the schedule and let you know."
+        },
+        "correct": "B",
+        "explanation": "Michael says that the item will be obtained from the customer service desk."
+      },
+      {
+        "question": 3,
+        "question_text": "When should everything be ready?",
+        "options": {
+          "A": "next week",
+          "B": "Wednesday",
+          "C": "On Wednesday",
+          "D": "It's available in the main office."
+        },
+        "correct": "A",
+        "explanation": "Jessica says the items should be ready by next week."
+      }
+    ]
+  },
+  {
+    "group": 78,
+    "title": "Part 3 - Conversation 78",
+    "dialogue": [
+      {
+        "speaker": "Rachel",
+        "text": "Hi David. We need to prepare the the project report for the project deadline."
+      },
+      {
+        "speaker": "David",
+        "text": "Sure. I can take care of it. How many do we need?"
+      },
+      {
+        "speaker": "Rachel",
+        "text": "Let's prepare about 50. They should be ready by Friday."
+      },
+      {
+        "speaker": "David",
+        "text": "All right. I'll get them from the design office and have everything ready."
+      }
+    ],
+    "questions": [
+      {
+        "question": 1,
+        "question_text": "What are the speakers mainly discussing?",
+        "options": {
+          "A": "Preparing the project report",
+          "B": "Changing the project deadline",
+          "C": "Visiting the finance department",
+          "D": "I'll take care of it this afternoon."
+        },
+        "correct": "A",
+        "explanation": "The speakers are discussing how to prepare the project report for the project deadline."
+      },
+      {
+        "question": 2,
+        "question_text": "Where will David get the item?",
+        "options": {
+          "A": "The main office",
+          "B": "the design office",
+          "C": "the finance department",
+          "D": "I'll check the schedule and let you know."
+        },
+        "correct": "B",
+        "explanation": "David says that the item will be obtained from the design office."
+      },
+      {
+        "question": 3,
+        "question_text": "When should everything be ready?",
+        "options": {
+          "A": "Friday",
+          "B": "next Friday",
+          "C": "On Thursday",
+          "D": "It's available in the main office."
+        },
+        "correct": "A",
+        "explanation": "Rachel says the items should be ready by Friday."
+      }
+    ]
+  },
+  {
+    "group": 79,
+    "title": "Part 3 - Conversation 79",
+    "dialogue": [
+      {
+        "speaker": "Olivia",
+        "text": "Hi Thomas. We need to prepare the the office computer for the equipment repair."
+      },
+      {
+        "speaker": "Thomas",
+        "text": "Sure. I can take care of it. How many do we need?"
+      },
+      {
+        "speaker": "Olivia",
+        "text": "Let's prepare about 55. They should be ready by this afternoon."
+      },
+      {
+        "speaker": "Thomas",
+        "text": "All right. I'll get them from the IT department and have everything ready."
+      }
+    ],
+    "questions": [
+      {
+        "question": 1,
+        "question_text": "What are the speakers mainly discussing?",
+        "options": {
+          "A": "Preparing the office computer",
+          "B": "Changing the equipment repair",
+          "C": "Visiting the repair center",
+          "D": "I'll take care of it this afternoon."
+        },
+        "correct": "A",
+        "explanation": "The speakers are discussing how to prepare the office computer for the equipment repair."
+      },
+      {
+        "question": 2,
+        "question_text": "Where will Thomas get the item?",
+        "options": {
+          "A": "The main office",
+          "B": "the IT department",
+          "C": "the repair center",
+          "D": "I'll check the schedule and let you know."
+        },
+        "correct": "B",
+        "explanation": "Thomas says that the item will be obtained from the IT department."
+      },
+      {
+        "question": 3,
+        "question_text": "When should everything be ready?",
+        "options": {
+          "A": "this afternoon",
+          "B": "tomorrow",
+          "C": "On Friday",
+          "D": "It's available in the main office."
+        },
+        "correct": "A",
+        "explanation": "Olivia says the items should be ready by this afternoon."
+      }
+    ]
+  },
+  {
+    "group": 80,
+    "title": "Part 3 - Conversation 80",
+    "dialogue": [
+      {
+        "speaker": "Sophie",
+        "text": "Hi Daniel. We need to prepare the a taxi for the airport plans."
+      },
+      {
+        "speaker": "Daniel",
+        "text": "Sure. I can take care of it. How many do we need?"
+      },
+      {
+        "speaker": "Sophie",
+        "text": "Let's prepare about 20. They should be ready by six thirty."
+      },
+      {
+        "speaker": "Daniel",
+        "text": "All right. I'll get them from the airport and have everything ready."
+      }
+    ],
+    "questions": [
+      {
+        "question": 1,
+        "question_text": "What are the speakers mainly discussing?",
+        "options": {
+          "A": "Preparing a taxi",
+          "B": "Changing the airport plans",
+          "C": "Visiting the hotel entrance",
+          "D": "I'll take care of it this afternoon."
+        },
+        "correct": "A",
+        "explanation": "The speakers are discussing how to prepare a taxi for the airport plans."
+      },
+      {
+        "question": 2,
+        "question_text": "Where will Daniel get the item?",
+        "options": {
+          "A": "The main office",
+          "B": "the airport",
+          "C": "the hotel entrance",
+          "D": "I'll check the schedule and let you know."
+        },
+        "correct": "B",
+        "explanation": "Daniel says that the item will be obtained from the airport."
+      },
+      {
+        "question": 3,
+        "question_text": "When should everything be ready?",
+        "options": {
+          "A": "six thirty",
+          "B": "seven fifteen",
+          "C": "On Monday",
+          "D": "It's available in the main office."
+        },
+        "correct": "A",
+        "explanation": "Sophie says the items should be ready by six thirty."
+      }
+    ]
+  },
+  {
+    "group": 81,
+    "title": "Part 3 - Conversation 81",
+    "dialogue": [
+      {
+        "speaker": "Maya",
+        "text": "Hi Daniel. We need to prepare the printer paper for the office supplies."
+      },
+      {
+        "speaker": "Daniel",
+        "text": "Sure. I can take care of it. How many do we need?"
+      },
+      {
+        "speaker": "Maya",
+        "text": "Let's prepare about 25. They should be ready by this afternoon."
+      },
+      {
+        "speaker": "Daniel",
+        "text": "All right. I'll get them from the storage room and have everything ready."
+      }
+    ],
+    "questions": [
+      {
+        "question": 1,
+        "question_text": "What are the speakers mainly discussing?",
+        "options": {
+          "A": "Preparing printer paper",
+          "B": "Changing the office supplies",
+          "C": "Visiting the copy room",
+          "D": "I'll take care of it this afternoon."
+        },
+        "correct": "A",
+        "explanation": "The speakers are discussing how to prepare printer paper for the office supplies."
+      },
+      {
+        "question": 2,
+        "question_text": "Where will Daniel get the item?",
+        "options": {
+          "A": "The main office",
+          "B": "the storage room",
+          "C": "the copy room",
+          "D": "I'll check the schedule and let you know."
+        },
+        "correct": "B",
+        "explanation": "Daniel says that the item will be obtained from the storage room."
+      },
+      {
+        "question": 3,
+        "question_text": "When should everything be ready?",
+        "options": {
+          "A": "this afternoon",
+          "B": "before lunch",
+          "C": "On Tuesday",
+          "D": "It's available in the main office."
+        },
+        "correct": "A",
+        "explanation": "Maya says the items should be ready by this afternoon."
+      }
+    ]
+  },
+  {
+    "group": 82,
+    "title": "Part 3 - Conversation 82",
+    "dialogue": [
+      {
+        "speaker": "Anna",
+        "text": "Hi Brian. We need to prepare the the sales meeting for the meeting schedule."
+      },
+      {
+        "speaker": "Brian",
+        "text": "Sure. I can take care of it. How many do we need?"
+      },
+      {
+        "speaker": "Anna",
+        "text": "Let's prepare about 30. They should be ready by tomorrow morning."
+      },
+      {
+        "speaker": "Brian",
+        "text": "All right. I'll get them from Room 204 and have everything ready."
+      }
+    ],
+    "questions": [
+      {
+        "question": 1,
+        "question_text": "What are the speakers mainly discussing?",
+        "options": {
+          "A": "Preparing the sales meeting",
+          "B": "Changing the meeting schedule",
+          "C": "Visiting the main conference room",
+          "D": "I'll take care of it this afternoon."
+        },
+        "correct": "A",
+        "explanation": "The speakers are discussing how to prepare the sales meeting for the meeting schedule."
+      },
+      {
+        "question": 2,
+        "question_text": "Where will Brian get the item?",
+        "options": {
+          "A": "The main office",
+          "B": "Room 204",
+          "C": "the main conference room",
+          "D": "I'll check the schedule and let you know."
+        },
+        "correct": "B",
+        "explanation": "Brian says that the item will be obtained from Room 204."
+      },
+      {
+        "question": 3,
+        "question_text": "When should everything be ready?",
+        "options": {
+          "A": "tomorrow morning",
+          "B": "Thursday afternoon",
+          "C": "On Wednesday",
+          "D": "It's available in the main office."
+        },
+        "correct": "A",
+        "explanation": "Anna says the items should be ready by tomorrow morning."
+      }
+    ]
+  },
+  {
+    "group": 83,
+    "title": "Part 3 - Conversation 83",
+    "dialogue": [
+      {
+        "speaker": "Laura",
+        "text": "Hi Kevin. We need to prepare the a hotel room for the business trip."
+      },
+      {
+        "speaker": "Kevin",
+        "text": "Sure. I can take care of it. How many do we need?"
+      },
+      {
+        "speaker": "Laura",
+        "text": "Let's prepare about 35. They should be ready by Friday evening."
+      },
+      {
+        "speaker": "Kevin",
+        "text": "All right. I'll get them from the downtown hotel and have everything ready."
+      }
+    ],
+    "questions": [
+      {
+        "question": 1,
+        "question_text": "What are the speakers mainly discussing?",
+        "options": {
+          "A": "Preparing a hotel room",
+          "B": "Changing the business trip",
+          "C": "Visiting the airport counter",
+          "D": "I'll take care of it this afternoon."
+        },
+        "correct": "A",
+        "explanation": "The speakers are discussing how to prepare a hotel room for the business trip."
+      },
+      {
+        "question": 2,
+        "question_text": "Where will Kevin get the item?",
+        "options": {
+          "A": "The main office",
+          "B": "the downtown hotel",
+          "C": "the airport counter",
+          "D": "I'll check the schedule and let you know."
+        },
+        "correct": "B",
+        "explanation": "Kevin says that the item will be obtained from the downtown hotel."
+      },
+      {
+        "question": 3,
+        "question_text": "When should everything be ready?",
+        "options": {
+          "A": "Friday evening",
+          "B": "Sunday morning",
+          "C": "On Thursday",
+          "D": "It's available in the main office."
+        },
+        "correct": "A",
+        "explanation": "Laura says the items should be ready by Friday evening."
+      }
+    ]
+  },
+  {
+    "group": 84,
+    "title": "Part 3 - Conversation 84",
+    "dialogue": [
+      {
+        "speaker": "Emily",
+        "text": "Hi Mark. We need to prepare the a dinner reservation for the restaurant reservation."
+      },
+      {
+        "speaker": "Mark",
+        "text": "Sure. I can take care of it. How many do we need?"
+      },
+      {
+        "speaker": "Emily",
+        "text": "Let's prepare about 40. They should be ready by seven o'clock."
+      },
+      {
+        "speaker": "Mark",
+        "text": "All right. I'll get them from the Italian restaurant and have everything ready."
+      }
+    ],
+    "questions": [
+      {
+        "question": 1,
+        "question_text": "What are the speakers mainly discussing?",
+        "options": {
+          "A": "Preparing a dinner reservation",
+          "B": "Changing the restaurant reservation",
+          "C": "Visiting the café downstairs",
+          "D": "I'll take care of it this afternoon."
+        },
+        "correct": "A",
+        "explanation": "The speakers are discussing how to prepare a dinner reservation for the restaurant reservation."
+      },
+      {
+        "question": 2,
+        "question_text": "Where will Mark get the item?",
+        "options": {
+          "A": "The main office",
+          "B": "the Italian restaurant",
+          "C": "the café downstairs",
+          "D": "I'll check the schedule and let you know."
+        },
+        "correct": "B",
+        "explanation": "Mark says that the item will be obtained from the Italian restaurant."
+      },
+      {
+        "question": 3,
+        "question_text": "When should everything be ready?",
+        "options": {
+          "A": "seven o'clock",
+          "B": "twelve thirty",
+          "C": "On Friday",
+          "D": "It's available in the main office."
+        },
+        "correct": "A",
+        "explanation": "Emily says the items should be ready by seven o'clock."
+      }
+    ]
+  },
+  {
+    "group": 85,
+    "title": "Part 3 - Conversation 85",
+    "dialogue": [
+      {
+        "speaker": "Sarah",
+        "text": "Hi James. We need to prepare the train tickets for the train travel."
+      },
+      {
+        "speaker": "James",
+        "text": "Sure. I can take care of it. How many do we need?"
+      },
+      {
+        "speaker": "Sarah",
+        "text": "Let's prepare about 45. They should be ready by Saturday morning."
+      },
+      {
+        "speaker": "James",
+        "text": "All right. I'll get them from the station and have everything ready."
+      }
+    ],
+    "questions": [
+      {
+        "question": 1,
+        "question_text": "What are the speakers mainly discussing?",
+        "options": {
+          "A": "Preparing train tickets",
+          "B": "Changing the train travel",
+          "C": "Visiting the ticket office",
+          "D": "I'll take care of it this afternoon."
+        },
+        "correct": "A",
+        "explanation": "The speakers are discussing how to prepare train tickets for the train travel."
+      },
+      {
+        "question": 2,
+        "question_text": "Where will James get the item?",
+        "options": {
+          "A": "The main office",
+          "B": "the station",
+          "C": "the ticket office",
+          "D": "I'll check the schedule and let you know."
+        },
+        "correct": "B",
+        "explanation": "James says that the item will be obtained from the station."
+      },
+      {
+        "question": 3,
+        "question_text": "When should everything be ready?",
+        "options": {
+          "A": "Saturday morning",
+          "B": "Monday evening",
+          "C": "On Monday",
+          "D": "It's available in the main office."
+        },
+        "correct": "A",
+        "explanation": "Sarah says the items should be ready by Saturday morning."
+      }
+    ]
+  },
+  {
+    "group": 86,
+    "title": "Part 3 - Conversation 86",
+    "dialogue": [
+      {
+        "speaker": "Linda",
+        "text": "Hi Robert. We need to prepare the conference registration for the conference."
+      },
+      {
+        "speaker": "Robert",
+        "text": "Sure. I can take care of it. How many do we need?"
+      },
+      {
+        "speaker": "Linda",
+        "text": "Let's prepare about 50. They should be ready by next Monday."
+      },
+      {
+        "speaker": "Robert",
+        "text": "All right. I'll get them from the convention center and have everything ready."
+      }
+    ],
+    "questions": [
+      {
+        "question": 1,
+        "question_text": "What are the speakers mainly discussing?",
+        "options": {
+          "A": "Preparing conference registration",
+          "B": "Changing the conference",
+          "C": "Visiting the registration desk",
+          "D": "I'll take care of it this afternoon."
+        },
+        "correct": "A",
+        "explanation": "The speakers are discussing how to prepare conference registration for the conference."
+      },
+      {
+        "question": 2,
+        "question_text": "Where will Robert get the item?",
+        "options": {
+          "A": "The main office",
+          "B": "the convention center",
+          "C": "the registration desk",
+          "D": "I'll check the schedule and let you know."
+        },
+        "correct": "B",
+        "explanation": "Robert says that the item will be obtained from the convention center."
+      },
+      {
+        "question": 3,
+        "question_text": "When should everything be ready?",
+        "options": {
+          "A": "next Monday",
+          "B": "Tuesday",
+          "C": "On Tuesday",
+          "D": "It's available in the main office."
+        },
+        "correct": "A",
+        "explanation": "Linda says the items should be ready by next Monday."
+      }
+    ]
+  },
+  {
+    "group": 87,
+    "title": "Part 3 - Conversation 87",
+    "dialogue": [
+      {
+        "speaker": "Jessica",
+        "text": "Hi Michael. We need to prepare the a replacement order for the customer order."
+      },
+      {
+        "speaker": "Michael",
+        "text": "Sure. I can take care of it. How many do we need?"
+      },
+      {
+        "speaker": "Jessica",
+        "text": "Let's prepare about 55. They should be ready by next week."
+      },
+      {
+        "speaker": "Michael",
+        "text": "All right. I'll get them from the customer service desk and have everything ready."
+      }
+    ],
+    "questions": [
+      {
+        "question": 1,
+        "question_text": "What are the speakers mainly discussing?",
+        "options": {
+          "A": "Preparing a replacement order",
+          "B": "Changing the customer order",
+          "C": "Visiting the service counter",
+          "D": "I'll take care of it this afternoon."
+        },
+        "correct": "A",
+        "explanation": "The speakers are discussing how to prepare a replacement order for the customer order."
+      },
+      {
+        "question": 2,
+        "question_text": "Where will Michael get the item?",
+        "options": {
+          "A": "The main office",
+          "B": "the customer service desk",
+          "C": "the service counter",
+          "D": "I'll check the schedule and let you know."
+        },
+        "correct": "B",
+        "explanation": "Michael says that the item will be obtained from the customer service desk."
+      },
+      {
+        "question": 3,
+        "question_text": "When should everything be ready?",
+        "options": {
+          "A": "next week",
+          "B": "Wednesday",
+          "C": "On Wednesday",
+          "D": "It's available in the main office."
+        },
+        "correct": "A",
+        "explanation": "Jessica says the items should be ready by next week."
+      }
+    ]
+  },
+  {
+    "group": 88,
+    "title": "Part 3 - Conversation 88",
+    "dialogue": [
+      {
+        "speaker": "Rachel",
+        "text": "Hi David. We need to prepare the the project report for the project deadline."
+      },
+      {
+        "speaker": "David",
+        "text": "Sure. I can take care of it. How many do we need?"
+      },
+      {
+        "speaker": "Rachel",
+        "text": "Let's prepare about 20. They should be ready by Friday."
+      },
+      {
+        "speaker": "David",
+        "text": "All right. I'll get them from the design office and have everything ready."
+      }
+    ],
+    "questions": [
+      {
+        "question": 1,
+        "question_text": "What are the speakers mainly discussing?",
+        "options": {
+          "A": "Preparing the project report",
+          "B": "Changing the project deadline",
+          "C": "Visiting the finance department",
+          "D": "I'll take care of it this afternoon."
+        },
+        "correct": "A",
+        "explanation": "The speakers are discussing how to prepare the project report for the project deadline."
+      },
+      {
+        "question": 2,
+        "question_text": "Where will David get the item?",
+        "options": {
+          "A": "The main office",
+          "B": "the design office",
+          "C": "the finance department",
+          "D": "I'll check the schedule and let you know."
+        },
+        "correct": "B",
+        "explanation": "David says that the item will be obtained from the design office."
+      },
+      {
+        "question": 3,
+        "question_text": "When should everything be ready?",
+        "options": {
+          "A": "Friday",
+          "B": "next Friday",
+          "C": "On Thursday",
+          "D": "It's available in the main office."
+        },
+        "correct": "A",
+        "explanation": "Rachel says the items should be ready by Friday."
+      }
+    ]
+  },
+  {
+    "group": 89,
+    "title": "Part 3 - Conversation 89",
+    "dialogue": [
+      {
+        "speaker": "Olivia",
+        "text": "Hi Thomas. We need to prepare the the office computer for the equipment repair."
+      },
+      {
+        "speaker": "Thomas",
+        "text": "Sure. I can take care of it. How many do we need?"
+      },
+      {
+        "speaker": "Olivia",
+        "text": "Let's prepare about 25. They should be ready by this afternoon."
+      },
+      {
+        "speaker": "Thomas",
+        "text": "All right. I'll get them from the IT department and have everything ready."
+      }
+    ],
+    "questions": [
+      {
+        "question": 1,
+        "question_text": "What are the speakers mainly discussing?",
+        "options": {
+          "A": "Preparing the office computer",
+          "B": "Changing the equipment repair",
+          "C": "Visiting the repair center",
+          "D": "I'll take care of it this afternoon."
+        },
+        "correct": "A",
+        "explanation": "The speakers are discussing how to prepare the office computer for the equipment repair."
+      },
+      {
+        "question": 2,
+        "question_text": "Where will Thomas get the item?",
+        "options": {
+          "A": "The main office",
+          "B": "the IT department",
+          "C": "the repair center",
+          "D": "I'll check the schedule and let you know."
+        },
+        "correct": "B",
+        "explanation": "Thomas says that the item will be obtained from the IT department."
+      },
+      {
+        "question": 3,
+        "question_text": "When should everything be ready?",
+        "options": {
+          "A": "this afternoon",
+          "B": "tomorrow",
+          "C": "On Friday",
+          "D": "It's available in the main office."
+        },
+        "correct": "A",
+        "explanation": "Olivia says the items should be ready by this afternoon."
+      }
+    ]
+  },
+  {
+    "group": 90,
+    "title": "Part 3 - Conversation 90",
+    "dialogue": [
+      {
+        "speaker": "Sophie",
+        "text": "Hi Daniel. We need to prepare the a taxi for the airport plans."
+      },
+      {
+        "speaker": "Daniel",
+        "text": "Sure. I can take care of it. How many do we need?"
+      },
+      {
+        "speaker": "Sophie",
+        "text": "Let's prepare about 30. They should be ready by six thirty."
+      },
+      {
+        "speaker": "Daniel",
+        "text": "All right. I'll get them from the airport and have everything ready."
+      }
+    ],
+    "questions": [
+      {
+        "question": 1,
+        "question_text": "What are the speakers mainly discussing?",
+        "options": {
+          "A": "Preparing a taxi",
+          "B": "Changing the airport plans",
+          "C": "Visiting the hotel entrance",
+          "D": "I'll take care of it this afternoon."
+        },
+        "correct": "A",
+        "explanation": "The speakers are discussing how to prepare a taxi for the airport plans."
+      },
+      {
+        "question": 2,
+        "question_text": "Where will Daniel get the item?",
+        "options": {
+          "A": "The main office",
+          "B": "the airport",
+          "C": "the hotel entrance",
+          "D": "I'll check the schedule and let you know."
+        },
+        "correct": "B",
+        "explanation": "Daniel says that the item will be obtained from the airport."
+      },
+      {
+        "question": 3,
+        "question_text": "When should everything be ready?",
+        "options": {
+          "A": "six thirty",
+          "B": "seven fifteen",
+          "C": "On Monday",
+          "D": "It's available in the main office."
+        },
+        "correct": "A",
+        "explanation": "Sophie says the items should be ready by six thirty."
+      }
+    ]
+  },
+  {
+    "group": 91,
+    "title": "Part 3 - Conversation 91",
+    "dialogue": [
+      {
+        "speaker": "Maya",
+        "text": "Hi Daniel. We need to prepare the printer paper for the office supplies."
+      },
+      {
+        "speaker": "Daniel",
+        "text": "Sure. I can take care of it. How many do we need?"
+      },
+      {
+        "speaker": "Maya",
+        "text": "Let's prepare about 35. They should be ready by this afternoon."
+      },
+      {
+        "speaker": "Daniel",
+        "text": "All right. I'll get them from the storage room and have everything ready."
+      }
+    ],
+    "questions": [
+      {
+        "question": 1,
+        "question_text": "What are the speakers mainly discussing?",
+        "options": {
+          "A": "Preparing printer paper",
+          "B": "Changing the office supplies",
+          "C": "Visiting the copy room",
+          "D": "I'll take care of it this afternoon."
+        },
+        "correct": "A",
+        "explanation": "The speakers are discussing how to prepare printer paper for the office supplies."
+      },
+      {
+        "question": 2,
+        "question_text": "Where will Daniel get the item?",
+        "options": {
+          "A": "The main office",
+          "B": "the storage room",
+          "C": "the copy room",
+          "D": "I'll check the schedule and let you know."
+        },
+        "correct": "B",
+        "explanation": "Daniel says that the item will be obtained from the storage room."
+      },
+      {
+        "question": 3,
+        "question_text": "When should everything be ready?",
+        "options": {
+          "A": "this afternoon",
+          "B": "before lunch",
+          "C": "On Tuesday",
+          "D": "It's available in the main office."
+        },
+        "correct": "A",
+        "explanation": "Maya says the items should be ready by this afternoon."
+      }
+    ]
+  },
+  {
+    "group": 92,
+    "title": "Part 3 - Conversation 92",
+    "dialogue": [
+      {
+        "speaker": "Anna",
+        "text": "Hi Brian. We need to prepare the the sales meeting for the meeting schedule."
+      },
+      {
+        "speaker": "Brian",
+        "text": "Sure. I can take care of it. How many do we need?"
+      },
+      {
+        "speaker": "Anna",
+        "text": "Let's prepare about 40. They should be ready by tomorrow morning."
+      },
+      {
+        "speaker": "Brian",
+        "text": "All right. I'll get them from Room 204 and have everything ready."
+      }
+    ],
+    "questions": [
+      {
+        "question": 1,
+        "question_text": "What are the speakers mainly discussing?",
+        "options": {
+          "A": "Preparing the sales meeting",
+          "B": "Changing the meeting schedule",
+          "C": "Visiting the main conference room",
+          "D": "I'll take care of it this afternoon."
+        },
+        "correct": "A",
+        "explanation": "The speakers are discussing how to prepare the sales meeting for the meeting schedule."
+      },
+      {
+        "question": 2,
+        "question_text": "Where will Brian get the item?",
+        "options": {
+          "A": "The main office",
+          "B": "Room 204",
+          "C": "the main conference room",
+          "D": "I'll check the schedule and let you know."
+        },
+        "correct": "B",
+        "explanation": "Brian says that the item will be obtained from Room 204."
+      },
+      {
+        "question": 3,
+        "question_text": "When should everything be ready?",
+        "options": {
+          "A": "tomorrow morning",
+          "B": "Thursday afternoon",
+          "C": "On Wednesday",
+          "D": "It's available in the main office."
+        },
+        "correct": "A",
+        "explanation": "Anna says the items should be ready by tomorrow morning."
+      }
+    ]
+  },
+  {
+    "group": 93,
+    "title": "Part 3 - Conversation 93",
+    "dialogue": [
+      {
+        "speaker": "Laura",
+        "text": "Hi Kevin. We need to prepare the a hotel room for the business trip."
+      },
+      {
+        "speaker": "Kevin",
+        "text": "Sure. I can take care of it. How many do we need?"
+      },
+      {
+        "speaker": "Laura",
+        "text": "Let's prepare about 45. They should be ready by Friday evening."
+      },
+      {
+        "speaker": "Kevin",
+        "text": "All right. I'll get them from the downtown hotel and have everything ready."
+      }
+    ],
+    "questions": [
+      {
+        "question": 1,
+        "question_text": "What are the speakers mainly discussing?",
+        "options": {
+          "A": "Preparing a hotel room",
+          "B": "Changing the business trip",
+          "C": "Visiting the airport counter",
+          "D": "I'll take care of it this afternoon."
+        },
+        "correct": "A",
+        "explanation": "The speakers are discussing how to prepare a hotel room for the business trip."
+      },
+      {
+        "question": 2,
+        "question_text": "Where will Kevin get the item?",
+        "options": {
+          "A": "The main office",
+          "B": "the downtown hotel",
+          "C": "the airport counter",
+          "D": "I'll check the schedule and let you know."
+        },
+        "correct": "B",
+        "explanation": "Kevin says that the item will be obtained from the downtown hotel."
+      },
+      {
+        "question": 3,
+        "question_text": "When should everything be ready?",
+        "options": {
+          "A": "Friday evening",
+          "B": "Sunday morning",
+          "C": "On Thursday",
+          "D": "It's available in the main office."
+        },
+        "correct": "A",
+        "explanation": "Laura says the items should be ready by Friday evening."
+      }
+    ]
+  },
+  {
+    "group": 94,
+    "title": "Part 3 - Conversation 94",
+    "dialogue": [
+      {
+        "speaker": "Emily",
+        "text": "Hi Mark. We need to prepare the a dinner reservation for the restaurant reservation."
+      },
+      {
+        "speaker": "Mark",
+        "text": "Sure. I can take care of it. How many do we need?"
+      },
+      {
+        "speaker": "Emily",
+        "text": "Let's prepare about 50. They should be ready by seven o'clock."
+      },
+      {
+        "speaker": "Mark",
+        "text": "All right. I'll get them from the Italian restaurant and have everything ready."
+      }
+    ],
+    "questions": [
+      {
+        "question": 1,
+        "question_text": "What are the speakers mainly discussing?",
+        "options": {
+          "A": "Preparing a dinner reservation",
+          "B": "Changing the restaurant reservation",
+          "C": "Visiting the café downstairs",
+          "D": "I'll take care of it this afternoon."
+        },
+        "correct": "A",
+        "explanation": "The speakers are discussing how to prepare a dinner reservation for the restaurant reservation."
+      },
+      {
+        "question": 2,
+        "question_text": "Where will Mark get the item?",
+        "options": {
+          "A": "The main office",
+          "B": "the Italian restaurant",
+          "C": "the café downstairs",
+          "D": "I'll check the schedule and let you know."
+        },
+        "correct": "B",
+        "explanation": "Mark says that the item will be obtained from the Italian restaurant."
+      },
+      {
+        "question": 3,
+        "question_text": "When should everything be ready?",
+        "options": {
+          "A": "seven o'clock",
+          "B": "twelve thirty",
+          "C": "On Friday",
+          "D": "It's available in the main office."
+        },
+        "correct": "A",
+        "explanation": "Emily says the items should be ready by seven o'clock."
+      }
+    ]
+  },
+  {
+    "group": 95,
+    "title": "Part 3 - Conversation 95",
+    "dialogue": [
+      {
+        "speaker": "Sarah",
+        "text": "Hi James. We need to prepare the train tickets for the train travel."
+      },
+      {
+        "speaker": "James",
+        "text": "Sure. I can take care of it. How many do we need?"
+      },
+      {
+        "speaker": "Sarah",
+        "text": "Let's prepare about 55. They should be ready by Saturday morning."
+      },
+      {
+        "speaker": "James",
+        "text": "All right. I'll get them from the station and have everything ready."
+      }
+    ],
+    "questions": [
+      {
+        "question": 1,
+        "question_text": "What are the speakers mainly discussing?",
+        "options": {
+          "A": "Preparing train tickets",
+          "B": "Changing the train travel",
+          "C": "Visiting the ticket office",
+          "D": "I'll take care of it this afternoon."
+        },
+        "correct": "A",
+        "explanation": "The speakers are discussing how to prepare train tickets for the train travel."
+      },
+      {
+        "question": 2,
+        "question_text": "Where will James get the item?",
+        "options": {
+          "A": "The main office",
+          "B": "the station",
+          "C": "the ticket office",
+          "D": "I'll check the schedule and let you know."
+        },
+        "correct": "B",
+        "explanation": "James says that the item will be obtained from the station."
+      },
+      {
+        "question": 3,
+        "question_text": "When should everything be ready?",
+        "options": {
+          "A": "Saturday morning",
+          "B": "Monday evening",
+          "C": "On Monday",
+          "D": "It's available in the main office."
+        },
+        "correct": "A",
+        "explanation": "Sarah says the items should be ready by Saturday morning."
+      }
+    ]
+  },
+  {
+    "group": 96,
+    "title": "Part 3 - Conversation 96",
+    "dialogue": [
+      {
+        "speaker": "Linda",
+        "text": "Hi Robert. We need to prepare the conference registration for the conference."
+      },
+      {
+        "speaker": "Robert",
+        "text": "Sure. I can take care of it. How many do we need?"
+      },
+      {
+        "speaker": "Linda",
+        "text": "Let's prepare about 20. They should be ready by next Monday."
+      },
+      {
+        "speaker": "Robert",
+        "text": "All right. I'll get them from the convention center and have everything ready."
+      }
+    ],
+    "questions": [
+      {
+        "question": 1,
+        "question_text": "What are the speakers mainly discussing?",
+        "options": {
+          "A": "Preparing conference registration",
+          "B": "Changing the conference",
+          "C": "Visiting the registration desk",
+          "D": "I'll take care of it this afternoon."
+        },
+        "correct": "A",
+        "explanation": "The speakers are discussing how to prepare conference registration for the conference."
+      },
+      {
+        "question": 2,
+        "question_text": "Where will Robert get the item?",
+        "options": {
+          "A": "The main office",
+          "B": "the convention center",
+          "C": "the registration desk",
+          "D": "I'll check the schedule and let you know."
+        },
+        "correct": "B",
+        "explanation": "Robert says that the item will be obtained from the convention center."
+      },
+      {
+        "question": 3,
+        "question_text": "When should everything be ready?",
+        "options": {
+          "A": "next Monday",
+          "B": "Tuesday",
+          "C": "On Tuesday",
+          "D": "It's available in the main office."
+        },
+        "correct": "A",
+        "explanation": "Linda says the items should be ready by next Monday."
+      }
+    ]
+  },
+  {
+    "group": 97,
+    "title": "Part 3 - Conversation 97",
+    "dialogue": [
+      {
+        "speaker": "Jessica",
+        "text": "Hi Michael. We need to prepare the a replacement order for the customer order."
+      },
+      {
+        "speaker": "Michael",
+        "text": "Sure. I can take care of it. How many do we need?"
+      },
+      {
+        "speaker": "Jessica",
+        "text": "Let's prepare about 25. They should be ready by next week."
+      },
+      {
+        "speaker": "Michael",
+        "text": "All right. I'll get them from the customer service desk and have everything ready."
+      }
+    ],
+    "questions": [
+      {
+        "question": 1,
+        "question_text": "What are the speakers mainly discussing?",
+        "options": {
+          "A": "Preparing a replacement order",
+          "B": "Changing the customer order",
+          "C": "Visiting the service counter",
+          "D": "I'll take care of it this afternoon."
+        },
+        "correct": "A",
+        "explanation": "The speakers are discussing how to prepare a replacement order for the customer order."
+      },
+      {
+        "question": 2,
+        "question_text": "Where will Michael get the item?",
+        "options": {
+          "A": "The main office",
+          "B": "the customer service desk",
+          "C": "the service counter",
+          "D": "I'll check the schedule and let you know."
+        },
+        "correct": "B",
+        "explanation": "Michael says that the item will be obtained from the customer service desk."
+      },
+      {
+        "question": 3,
+        "question_text": "When should everything be ready?",
+        "options": {
+          "A": "next week",
+          "B": "Wednesday",
+          "C": "On Wednesday",
+          "D": "It's available in the main office."
+        },
+        "correct": "A",
+        "explanation": "Jessica says the items should be ready by next week."
+      }
+    ]
+  },
+  {
+    "group": 98,
+    "title": "Part 3 - Conversation 98",
+    "dialogue": [
+      {
+        "speaker": "Rachel",
+        "text": "Hi David. We need to prepare the the project report for the project deadline."
+      },
+      {
+        "speaker": "David",
+        "text": "Sure. I can take care of it. How many do we need?"
+      },
+      {
+        "speaker": "Rachel",
+        "text": "Let's prepare about 30. They should be ready by Friday."
+      },
+      {
+        "speaker": "David",
+        "text": "All right. I'll get them from the design office and have everything ready."
+      }
+    ],
+    "questions": [
+      {
+        "question": 1,
+        "question_text": "What are the speakers mainly discussing?",
+        "options": {
+          "A": "Preparing the project report",
+          "B": "Changing the project deadline",
+          "C": "Visiting the finance department",
+          "D": "I'll take care of it this afternoon."
+        },
+        "correct": "A",
+        "explanation": "The speakers are discussing how to prepare the project report for the project deadline."
+      },
+      {
+        "question": 2,
+        "question_text": "Where will David get the item?",
+        "options": {
+          "A": "The main office",
+          "B": "the design office",
+          "C": "the finance department",
+          "D": "I'll check the schedule and let you know."
+        },
+        "correct": "B",
+        "explanation": "David says that the item will be obtained from the design office."
+      },
+      {
+        "question": 3,
+        "question_text": "When should everything be ready?",
+        "options": {
+          "A": "Friday",
+          "B": "next Friday",
+          "C": "On Thursday",
+          "D": "It's available in the main office."
+        },
+        "correct": "A",
+        "explanation": "Rachel says the items should be ready by Friday."
+      }
+    ]
+  },
+  {
+    "group": 99,
+    "title": "Part 3 - Conversation 99",
+    "dialogue": [
+      {
+        "speaker": "Olivia",
+        "text": "Hi Thomas. We need to prepare the the office computer for the equipment repair."
+      },
+      {
+        "speaker": "Thomas",
+        "text": "Sure. I can take care of it. How many do we need?"
+      },
+      {
+        "speaker": "Olivia",
+        "text": "Let's prepare about 35. They should be ready by this afternoon."
+      },
+      {
+        "speaker": "Thomas",
+        "text": "All right. I'll get them from the IT department and have everything ready."
+      }
+    ],
+    "questions": [
+      {
+        "question": 1,
+        "question_text": "What are the speakers mainly discussing?",
+        "options": {
+          "A": "Preparing the office computer",
+          "B": "Changing the equipment repair",
+          "C": "Visiting the repair center",
+          "D": "I'll take care of it this afternoon."
+        },
+        "correct": "A",
+        "explanation": "The speakers are discussing how to prepare the office computer for the equipment repair."
+      },
+      {
+        "question": 2,
+        "question_text": "Where will Thomas get the item?",
+        "options": {
+          "A": "The main office",
+          "B": "the IT department",
+          "C": "the repair center",
+          "D": "I'll check the schedule and let you know."
+        },
+        "correct": "B",
+        "explanation": "Thomas says that the item will be obtained from the IT department."
+      },
+      {
+        "question": 3,
+        "question_text": "When should everything be ready?",
+        "options": {
+          "A": "this afternoon",
+          "B": "tomorrow",
+          "C": "On Friday",
+          "D": "It's available in the main office."
+        },
+        "correct": "A",
+        "explanation": "Olivia says the items should be ready by this afternoon."
+      }
+    ]
+  },
+  {
+    "group": 100,
+    "title": "Part 3 - Conversation 100",
+    "dialogue": [
+      {
+        "speaker": "Sophie",
+        "text": "Hi Daniel. We need to prepare the a taxi for the airport plans."
+      },
+      {
+        "speaker": "Daniel",
+        "text": "Sure. I can take care of it. How many do we need?"
+      },
+      {
+        "speaker": "Sophie",
+        "text": "Let's prepare about 40. They should be ready by six thirty."
+      },
+      {
+        "speaker": "Daniel",
+        "text": "All right. I'll get them from the airport and have everything ready."
+      }
+    ],
+    "questions": [
+      {
+        "question": 1,
+        "question_text": "What are the speakers mainly discussing?",
+        "options": {
+          "A": "Preparing a taxi",
+          "B": "Changing the airport plans",
+          "C": "Visiting the hotel entrance",
+          "D": "I'll take care of it this afternoon."
+        },
+        "correct": "A",
+        "explanation": "The speakers are discussing how to prepare a taxi for the airport plans."
+      },
+      {
+        "question": 2,
+        "question_text": "Where will Daniel get the item?",
+        "options": {
+          "A": "The main office",
+          "B": "the airport",
+          "C": "the hotel entrance",
+          "D": "I'll check the schedule and let you know."
+        },
+        "correct": "B",
+        "explanation": "Daniel says that the item will be obtained from the airport."
+      },
+      {
+        "question": 3,
+        "question_text": "When should everything be ready?",
+        "options": {
+          "A": "six thirty",
+          "B": "seven fifteen",
+          "C": "On Monday",
+          "D": "It's available in the main office."
+        },
+        "correct": "A",
+        "explanation": "Sophie says the items should be ready by six thirty."
+      }
+    ]
+  }
+]
