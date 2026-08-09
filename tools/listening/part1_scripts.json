@@ -2,150 +2,150 @@
   {
     "question": 1,
     "options": [
-      "A woman is watering flowers in a garden.",
       "A woman is planting some trees.",
-      "A woman is cleaning a window.",
-      "A woman is picking flowers."
+      "A woman is picking flowers.",
+      "A woman is watering flowers in a garden.",
+      "A woman is cleaning a window."
     ],
-    "correct": "A"
+    "correct": "C"
   },
   {
     "question": 2,
     "options": [
+      "A man is talking on the telephone.",
       "A man is working on his computer in an office.",
       "A man is moving some furniture.",
-      "A man is talking on the telephone.",
       "A man is opening a window."
     ],
-    "correct": "A"
+    "correct": "B"
   },
   {
     "question": 3,
     "options": [
-      "A woman is looking at a departure board.",
       "A woman is waiting for a taxi.",
-      "A woman is carrying a suitcase.",
-      "A woman is buying a train ticket."
+      "A woman is buying a train ticket.",
+      "A woman is looking at a departure board.",
+      "A woman is carrying a suitcase."
     ],
-    "correct": "A"
+    "correct": "C"
   },
   {
     "question": 4,
     "options": [
+      "A customer is driving a vehicle.",
       "A mechanic is explaining something to a customer.",
       "A mechanic is washing a car.",
-      "A customer is driving a vehicle.",
       "A customer is changing a tire."
     ],
-    "correct": "A"
+    "correct": "B"
   },
   {
     "question": 5,
     "options": [
-      "A delivery man is ringing a doorbell.",
       "A delivery man is loading a truck.",
+      "A man is carrying some boxes upstairs.",
       "A man is opening a package.",
-      "A man is carrying some boxes upstairs."
+      "A delivery man is ringing a doorbell."
     ],
-    "correct": "A"
+    "correct": "D"
   },
   {
     "question": 6,
     "options": [
-      "A teacher is giving a lesson to her students.",
-      "A teacher is writing a letter.",
+      "Some students are cleaning the desks.",
       "Some students are leaving the classroom.",
-      "Some students are cleaning the desks."
+      "A teacher is writing a letter.",
+      "A teacher is giving a lesson to her students."
     ],
-    "correct": "A"
+    "correct": "D"
   },
   {
     "question": 7,
     "options": [
+      "A man is arranging products on a shelf.",
       "A man is selecting a product in a store.",
       "A man is paying for his groceries.",
-      "A man is arranging products on a shelf.",
       "A man is carrying a shopping basket."
     ],
-    "correct": "A"
+    "correct": "B"
   },
   {
     "question": 8,
     "options": [
       "Several people are having a meeting.",
       "Several people are eating lunch together.",
-      "Some workers are leaving an office.",
-      "Some people are waiting in a hallway."
+      "Some people are waiting in a hallway.",
+      "Some workers are leaving an office."
     ],
     "correct": "A"
   },
   {
     "question": 9,
     "options": [
-      "A woman is jogging in a park.",
       "A woman is riding a bicycle.",
-      "A woman is walking her dog.",
-      "A woman is sitting on a bench."
+      "A woman is sitting on a bench.",
+      "A woman is jogging in a park.",
+      "A woman is walking her dog."
     ],
-    "correct": "A"
+    "correct": "C"
   },
   {
     "question": 10,
     "options": [
       "Workers are building a structure.",
+      "Workers are cleaning a construction site.",
       "Workers are painting a building.",
-      "Workers are carrying some boxes.",
-      "Workers are cleaning a construction site."
+      "Workers are carrying some boxes."
     ],
     "correct": "A"
   },
   {
     "question": 11,
     "options": [
-      "A man is reading a newspaper at a café.",
       "A man is washing some dishes.",
-      "A man is ordering a meal.",
-      "A man is leaving the café."
+      "A man is reading a newspaper at a café.",
+      "A man is leaving the café.",
+      "A man is ordering a meal."
     ],
-    "correct": "A"
+    "correct": "B"
   },
   {
     "question": 12,
     "options": [
-      "A woman is placing books on a shelf.",
+      "A woman is closing a library door.",
       "A woman is borrowing a book.",
       "A woman is sitting at a desk.",
-      "A woman is closing a library door."
+      "A woman is placing books on a shelf."
     ],
-    "correct": "A"
+    "correct": "D"
   },
   {
     "question": 13,
     "options": [
-      "A man is carrying a suitcase.",
       "A man is repairing a suitcase.",
+      "A man is waiting beside a bus.",
       "A man is opening a car trunk.",
-      "A man is waiting beside a bus."
+      "A man is carrying a suitcase."
     ],
-    "correct": "A"
+    "correct": "D"
   },
   {
     "question": 14,
     "options": [
-      "A woman is arranging flowers in a vase.",
-      "A woman is washing a vase.",
+      "A woman is sweeping the floor.",
       "A woman is buying some furniture.",
-      "A woman is sweeping the floor."
+      "A woman is arranging flowers in a vase.",
+      "A woman is washing a vase."
     ],
-    "correct": "A"
+    "correct": "C"
   },
   {
     "question": 15,
     "options": [
       "A man is writing on a whiteboard.",
       "A man is opening a window.",
-      "A man is carrying a chair.",
-      "A man is cleaning the floor."
+      "A man is cleaning the floor.",
+      "A man is carrying a chair."
     ],
     "correct": "A"
   },
@@ -153,8 +153,8 @@
     "question": 16,
     "options": [
       "Some people are waiting for a bus.",
-      "Some people are getting off a train.",
       "Some people are entering a restaurant.",
+      "Some people are getting off a train.",
       "Some people are carrying bicycles."
     ],
     "correct": "A"
@@ -162,160 +162,160 @@
   {
     "question": 17,
     "options": [
-      "A woman is checking her watch.",
+      "A woman is opening a suitcase.",
       "A woman is repairing a clock.",
       "A woman is writing a report.",
-      "A woman is opening a suitcase."
+      "A woman is checking her watch."
     ],
-    "correct": "A"
+    "correct": "D"
   },
   {
     "question": 18,
     "options": [
-      "A man is pushing a shopping cart.",
-      "A man is stocking a refrigerator.",
       "A man is paying at a restaurant.",
-      "A man is carrying a briefcase."
+      "A man is carrying a briefcase.",
+      "A man is pushing a shopping cart.",
+      "A man is stocking a refrigerator."
     ],
-    "correct": "A"
+    "correct": "C"
   },
   {
     "question": 19,
     "options": [
       "A woman is typing on a keyboard.",
-      "A woman is answering a telephone.",
       "A woman is cleaning a computer screen.",
-      "A woman is moving a desk."
+      "A woman is moving a desk.",
+      "A woman is answering a telephone."
     ],
     "correct": "A"
   },
   {
     "question": 20,
     "options": [
-      "A man is sweeping the sidewalk.",
-      "A man is planting flowers.",
+      "A man is opening a gate.",
       "A man is washing a bicycle.",
-      "A man is opening a gate."
+      "A man is sweeping the sidewalk.",
+      "A man is planting flowers."
     ],
-    "correct": "A"
+    "correct": "C"
   },
   {
     "question": 21,
     "options": [
-      "A woman is hanging a picture on a wall.",
       "A woman is painting a ceiling.",
+      "A woman is hanging a picture on a wall.",
       "A woman is moving a sofa.",
       "A woman is opening a closet."
     ],
-    "correct": "A"
+    "correct": "B"
   },
   {
     "question": 22,
     "options": [
+      "A man is carrying a tray.",
       "A man is pouring coffee into a cup.",
       "A man is washing a coffee machine.",
-      "A man is carrying a tray.",
       "A man is cleaning a table."
     ],
-    "correct": "A"
+    "correct": "B"
   },
   {
     "question": 23,
     "options": [
-      "A woman is walking through a park.",
       "A woman is riding a horse.",
-      "A woman is taking a photograph.",
-      "A woman is watering a lawn."
+      "A woman is walking through a park.",
+      "A woman is watering a lawn.",
+      "A woman is taking a photograph."
     ],
-    "correct": "A"
+    "correct": "B"
   },
   {
     "question": 24,
     "options": [
-      "A man is loading boxes into a van.",
+      "A man is unloading luggage from a train.",
       "A man is driving a bus.",
       "A man is repairing a door.",
-      "A man is unloading luggage from a train."
+      "A man is loading boxes into a van."
     ],
-    "correct": "A"
+    "correct": "D"
   },
   {
     "question": 25,
     "options": [
-      "A woman is looking through a window.",
       "A woman is closing a curtain.",
-      "A woman is washing a window.",
-      "A woman is opening a door."
+      "A woman is looking through a window.",
+      "A woman is opening a door.",
+      "A woman is washing a window."
     ],
-    "correct": "A"
+    "correct": "B"
   },
   {
     "question": 26,
     "options": [
+      "A man is painting a bicycle.",
       "A man is adjusting a bicycle.",
-      "A man is riding a motorcycle.",
       "A man is carrying a bicycle upstairs.",
-      "A man is painting a bicycle."
+      "A man is riding a motorcycle."
     ],
-    "correct": "A"
+    "correct": "B"
   },
   {
     "question": 27,
     "options": [
+      "Some people are walking through a hallway.",
       "Some people are sitting around a conference table.",
       "Some people are standing in an elevator.",
-      "Some people are waiting at a ticket counter.",
-      "Some people are walking through a hallway."
+      "Some people are waiting at a ticket counter."
     ],
-    "correct": "A"
+    "correct": "B"
   },
   {
     "question": 28,
     "options": [
-      "A woman is cutting vegetables.",
       "A woman is washing dishes.",
+      "A woman is cutting vegetables.",
       "A woman is serving a customer.",
       "A woman is opening a refrigerator."
     ],
-    "correct": "A"
+    "correct": "B"
   },
   {
     "question": 29,
     "options": [
-      "A man is taking a photograph.",
-      "A man is repairing a camera.",
       "A man is carrying a suitcase.",
-      "A man is reading a magazine."
+      "A man is reading a magazine.",
+      "A man is repairing a camera.",
+      "A man is taking a photograph."
     ],
-    "correct": "A"
+    "correct": "D"
   },
   {
     "question": 30,
     "options": [
-      "A woman is placing a document in a folder.",
       "A woman is shredding a document.",
-      "A woman is printing a photograph.",
-      "A woman is carrying a box."
+      "A woman is placing a document in a folder.",
+      "A woman is carrying a box.",
+      "A woman is printing a photograph."
     ],
-    "correct": "A"
+    "correct": "B"
   },
   {
     "question": 31,
     "options": [
-      "A man is opening an umbrella.",
-      "A man is closing a window.",
       "A man is carrying a raincoat.",
+      "A man is closing a window.",
+      "A man is opening an umbrella.",
       "A man is washing a car."
     ],
-    "correct": "A"
+    "correct": "C"
   },
   {
     "question": 32,
     "options": [
       "A woman is placing plates on a table.",
-      "A woman is washing a plate.",
       "A woman is carrying a chair.",
-      "A woman is opening a cabinet."
+      "A woman is opening a cabinet.",
+      "A woman is washing a plate."
     ],
     "correct": "A"
   },
@@ -332,292 +332,292 @@
   {
     "question": 34,
     "options": [
-      "A woman is looking at a menu.",
       "A woman is serving food.",
-      "A woman is cleaning a kitchen.",
-      "A woman is paying a bill."
+      "A woman is paying a bill.",
+      "A woman is looking at a menu.",
+      "A woman is cleaning a kitchen."
     ],
-    "correct": "A"
+    "correct": "C"
   },
   {
     "question": 35,
     "options": [
-      "A man is carrying a ladder.",
-      "A man is climbing a ladder.",
       "A man is painting a ladder.",
+      "A man is climbing a ladder.",
+      "A man is carrying a ladder.",
       "A man is repairing a roof."
     ],
-    "correct": "A"
+    "correct": "C"
   },
   {
     "question": 36,
     "options": [
-      "A woman is putting clothes into a suitcase.",
-      "A woman is folding a blanket.",
       "A woman is cleaning a closet.",
-      "A woman is carrying a laundry basket."
+      "A woman is putting clothes into a suitcase.",
+      "A woman is carrying a laundry basket.",
+      "A woman is folding a blanket."
     ],
-    "correct": "A"
+    "correct": "B"
   },
   {
     "question": 37,
     "options": [
       "A man is watering a lawn.",
       "A man is mowing a lawn.",
-      "A man is planting a tree.",
-      "A man is trimming a hedge."
+      "A man is trimming a hedge.",
+      "A man is planting a tree."
     ],
     "correct": "A"
   },
   {
     "question": 38,
     "options": [
-      "A woman is using a vending machine.",
-      "A woman is repairing a machine.",
       "A woman is carrying a box.",
-      "A woman is cleaning a counter."
+      "A woman is repairing a machine.",
+      "A woman is cleaning a counter.",
+      "A woman is using a vending machine."
     ],
-    "correct": "A"
+    "correct": "D"
   },
   {
     "question": 39,
     "options": [
+      "A man is washing a car.",
       "A man is fastening his seat belt.",
       "A man is opening a car door.",
-      "A man is washing a car.",
       "A man is changing a tire."
     ],
-    "correct": "A"
+    "correct": "B"
   },
   {
     "question": 40,
     "options": [
       "A woman is speaking to a receptionist.",
-      "A woman is answering a telephone.",
+      "A woman is opening an envelope.",
       "A woman is sitting in a waiting room.",
-      "A woman is opening an envelope."
+      "A woman is answering a telephone."
     ],
     "correct": "A"
   },
   {
     "question": 41,
     "options": [
+      "A man is cleaning a printer.",
       "A man is carrying a stack of papers.",
       "A man is reading a book.",
-      "A man is cleaning a printer.",
       "A man is opening a cabinet."
     ],
-    "correct": "A"
+    "correct": "B"
   },
   {
     "question": 42,
     "options": [
-      "A woman is walking beside a river.",
+      "A woman is washing her clothes.",
       "A woman is swimming in a river.",
       "A woman is fishing from a boat.",
-      "A woman is washing her clothes."
+      "A woman is walking beside a river."
     ],
-    "correct": "A"
+    "correct": "D"
   },
   {
     "question": 43,
     "options": [
-      "A man is putting groceries into a bag.",
-      "A man is unloading groceries.",
+      "A man is cleaning a shopping cart.",
       "A man is arranging food on a table.",
-      "A man is cleaning a shopping cart."
+      "A man is putting groceries into a bag.",
+      "A man is unloading groceries."
     ],
-    "correct": "A"
+    "correct": "C"
   },
   {
     "question": 44,
     "options": [
-      "A woman is opening a drawer.",
       "A woman is closing a suitcase.",
       "A woman is moving a cabinet.",
-      "A woman is cleaning a mirror."
+      "A woman is cleaning a mirror.",
+      "A woman is opening a drawer."
     ],
-    "correct": "A"
+    "correct": "D"
   },
   {
     "question": 45,
     "options": [
-      "A man is standing beside a parked car.",
+      "A man is repairing a bicycle.",
       "A man is driving a truck.",
       "A man is washing a motorcycle.",
-      "A man is repairing a bicycle."
+      "A man is standing beside a parked car."
     ],
-    "correct": "A"
+    "correct": "D"
   },
   {
     "question": 46,
     "options": [
+      "A woman is opening a refrigerator.",
       "A woman is carrying a tray of food.",
       "A woman is washing a tray.",
-      "A woman is setting up a cash register.",
-      "A woman is opening a refrigerator."
+      "A woman is setting up a cash register."
     ],
-    "correct": "A"
+    "correct": "B"
   },
   {
     "question": 47,
     "options": [
-      "A man is placing a suitcase on a luggage rack.",
-      "A man is carrying a suitcase outdoors.",
+      "A man is repairing a luggage cart.",
       "A man is opening a suitcase.",
-      "A man is repairing a luggage cart."
+      "A man is placing a suitcase on a luggage rack.",
+      "A man is carrying a suitcase outdoors."
     ],
-    "correct": "A"
+    "correct": "C"
   },
   {
     "question": 48,
     "options": [
       "A woman is reading a notice on a wall.",
       "A woman is painting a wall.",
-      "A woman is cleaning a wall.",
-      "A woman is hanging a mirror."
+      "A woman is hanging a mirror.",
+      "A woman is cleaning a wall."
     ],
     "correct": "A"
   },
   {
     "question": 49,
     "options": [
-      "A man is sitting on a park bench.",
       "A man is jogging around the park.",
-      "A man is planting flowers.",
-      "A man is walking a dog."
+      "A man is walking a dog.",
+      "A man is sitting on a park bench.",
+      "A man is planting flowers."
     ],
-    "correct": "A"
+    "correct": "C"
   },
   {
     "question": 50,
     "options": [
       "A woman is using a photocopier.",
+      "A woman is cleaning a desk.",
       "A woman is repairing a printer.",
-      "A woman is carrying a computer.",
-      "A woman is cleaning a desk."
+      "A woman is carrying a computer."
     ],
     "correct": "A"
   },
   {
     "question": 51,
     "options": [
-      "A man is stacking boxes on a shelf.",
-      "A man is opening a package.",
       "A man is carrying a ladder.",
+      "A man is opening a package.",
+      "A man is stacking boxes on a shelf.",
       "A man is sweeping the floor."
     ],
-    "correct": "A"
+    "correct": "C"
   },
   {
     "question": 52,
     "options": [
-      "A woman is holding an umbrella.",
-      "A woman is washing an umbrella.",
       "A woman is putting on a coat.",
-      "A woman is closing a window."
+      "A woman is washing an umbrella.",
+      "A woman is closing a window.",
+      "A woman is holding an umbrella."
     ],
-    "correct": "A"
+    "correct": "D"
   },
   {
     "question": 53,
     "options": [
-      "A man is looking at a map.",
-      "A man is folding a newspaper.",
       "A man is writing a letter.",
-      "A man is reading a menu."
+      "A man is folding a newspaper.",
+      "A man is reading a menu.",
+      "A man is looking at a map."
     ],
-    "correct": "A"
+    "correct": "D"
   },
   {
     "question": 54,
     "options": [
       "A woman is carrying a basket of laundry.",
-      "A woman is folding towels.",
+      "A woman is hanging a picture.",
       "A woman is cleaning a washing machine.",
-      "A woman is hanging a picture."
+      "A woman is folding towels."
     ],
     "correct": "A"
   },
   {
     "question": 55,
     "options": [
-      "A man is opening a cabinet.",
-      "A man is closing a refrigerator.",
+      "A man is carrying a table.",
       "A man is washing a window.",
-      "A man is carrying a table."
+      "A man is opening a cabinet.",
+      "A man is closing a refrigerator."
     ],
-    "correct": "A"
+    "correct": "C"
   },
   {
     "question": 56,
     "options": [
+      "A woman is cleaning a ceiling.",
       "A woman is adjusting a desk lamp.",
       "A woman is replacing a light bulb.",
-      "A woman is cleaning a ceiling.",
       "A woman is moving a bookshelf."
     ],
-    "correct": "A"
+    "correct": "B"
   },
   {
     "question": 57,
     "options": [
+      "A man is cleaning a table.",
       "A man is pouring water into a glass.",
-      "A man is washing a glass.",
       "A man is carrying a bottle.",
-      "A man is cleaning a table."
+      "A man is washing a glass."
     ],
-    "correct": "A"
+    "correct": "B"
   },
   {
     "question": 58,
     "options": [
-      "A woman is checking a train schedule.",
       "A woman is boarding a train.",
       "A woman is carrying a bicycle.",
+      "A woman is checking a train schedule.",
       "A woman is purchasing a newspaper."
     ],
-    "correct": "A"
+    "correct": "C"
   },
   {
     "question": 59,
     "options": [
-      "A man is arranging chairs in a room.",
       "A man is sitting in a chair.",
+      "A man is arranging chairs in a room.",
       "A man is repairing a table.",
       "A man is opening a curtain."
     ],
-    "correct": "A"
+    "correct": "B"
   },
   {
     "question": 60,
     "options": [
-      "A woman is placing a coat on a hanger.",
       "A woman is washing a coat.",
+      "A woman is placing a coat on a hanger.",
       "A woman is folding a blanket.",
       "A woman is carrying a suitcase."
     ],
-    "correct": "A"
+    "correct": "B"
   },
   {
     "question": 61,
     "options": [
-      "A man is cutting a piece of wood.",
-      "A man is carrying a wooden table.",
       "A man is painting a fence.",
-      "A man is opening a toolbox."
+      "A man is carrying a wooden table.",
+      "A man is opening a toolbox.",
+      "A man is cutting a piece of wood."
     ],
-    "correct": "A"
+    "correct": "D"
   },
   {
     "question": 62,
     "options": [
+      "A woman is carrying a printer.",
       "A woman is arranging documents on a desk.",
       "A woman is cleaning a computer.",
-      "A woman is answering the telephone.",
-      "A woman is carrying a printer."
+      "A woman is answering the telephone."
     ],
-    "correct": "A"
+    "correct": "B"
   },
   {
     "question": 63,
@@ -632,20 +632,20 @@
   {
     "question": 64,
     "options": [
-      "A woman is standing beside a bookshelf.",
-      "A woman is moving a bookshelf.",
       "A woman is cleaning the floor.",
-      "A woman is carrying a chair."
+      "A woman is moving a bookshelf.",
+      "A woman is carrying a chair.",
+      "A woman is standing beside a bookshelf."
     ],
-    "correct": "A"
+    "correct": "D"
   },
   {
     "question": 65,
     "options": [
       "A man is opening a gate.",
+      "A man is washing a driveway.",
       "A man is closing a garage door.",
-      "A man is painting a fence.",
-      "A man is washing a driveway."
+      "A man is painting a fence."
     ],
     "correct": "A"
   },
@@ -654,20 +654,20 @@
     "options": [
       "A woman is placing groceries on a counter.",
       "A woman is paying for groceries.",
-      "A woman is pushing a shopping cart.",
-      "A woman is cleaning a refrigerator."
+      "A woman is cleaning a refrigerator.",
+      "A woman is pushing a shopping cart."
     ],
     "correct": "A"
   },
   {
     "question": 67,
     "options": [
-      "A man is tightening a screw.",
       "A man is carrying a toolbox.",
-      "A man is painting a wall.",
-      "A man is opening a drawer."
+      "A man is opening a drawer.",
+      "A man is tightening a screw.",
+      "A man is painting a wall."
     ],
-    "correct": "A"
+    "correct": "C"
   },
   {
     "question": 68,
@@ -682,269 +682,269 @@
   {
     "question": 69,
     "options": [
-      "A man is placing a folder on a desk.",
       "A man is opening a filing cabinet.",
       "A man is carrying a computer.",
-      "A man is cleaning a window."
+      "A man is cleaning a window.",
+      "A man is placing a folder on a desk."
     ],
-    "correct": "A"
+    "correct": "D"
   },
   {
     "question": 70,
     "options": [
-      "A woman is looking into a display case.",
       "A woman is cleaning a display case.",
+      "A woman is arranging clothes.",
       "A woman is carrying a shopping bag.",
-      "A woman is arranging clothes."
+      "A woman is looking into a display case."
     ],
-    "correct": "A"
+    "correct": "D"
   },
   {
     "question": 71,
     "options": [
+      "A man is carrying a sign.",
       "A man is walking through an entrance.",
-      "A man is locking a door.",
       "A man is cleaning an entrance.",
-      "A man is carrying a sign."
+      "A man is locking a door."
     ],
-    "correct": "A"
+    "correct": "B"
   },
   {
     "question": 72,
     "options": [
-      "A woman is writing in a notebook.",
-      "A woman is reading a newspaper.",
+      "A woman is carrying a stack of books.",
       "A woman is closing a notebook.",
-      "A woman is carrying a stack of books."
+      "A woman is writing in a notebook.",
+      "A woman is reading a newspaper."
     ],
-    "correct": "A"
+    "correct": "C"
   },
   {
     "question": 73,
     "options": [
-      "A man is carrying a potted plant.",
-      "A man is watering a garden.",
       "A man is trimming a tree.",
+      "A man is watering a garden.",
+      "A man is carrying a potted plant.",
       "A man is sweeping a porch."
     ],
-    "correct": "A"
+    "correct": "C"
   },
   {
     "question": 74,
     "options": [
+      "A woman is washing a car.",
       "A woman is fastening a seat belt.",
       "A woman is opening a car trunk.",
-      "A woman is washing a car.",
       "A woman is checking a tire."
     ],
-    "correct": "A"
+    "correct": "B"
   },
   {
     "question": 75,
     "options": [
-      "A man is standing near a reception desk.",
       "A man is answering a telephone.",
-      "A man is carrying a suitcase.",
-      "A man is opening an elevator door."
+      "A man is standing near a reception desk.",
+      "A man is opening an elevator door.",
+      "A man is carrying a suitcase."
     ],
-    "correct": "A"
+    "correct": "B"
   },
   {
     "question": 76,
     "options": [
-      "A woman is placing a cup on a table.",
-      "A woman is washing a cup.",
       "A woman is carrying a tray.",
-      "A woman is opening a cabinet."
+      "A woman is opening a cabinet.",
+      "A woman is washing a cup.",
+      "A woman is placing a cup on a table."
     ],
-    "correct": "A"
+    "correct": "D"
   },
   {
     "question": 77,
     "options": [
-      "A man is walking down a staircase.",
-      "A man is cleaning a staircase.",
       "A man is carrying a ladder.",
-      "A man is opening a window."
+      "A man is opening a window.",
+      "A man is walking down a staircase.",
+      "A man is cleaning a staircase."
     ],
-    "correct": "A"
+    "correct": "C"
   },
   {
     "question": 78,
     "options": [
-      "A woman is examining a painting.",
       "A woman is painting a wall.",
-      "A woman is hanging a picture.",
-      "A woman is cleaning a frame."
+      "A woman is cleaning a frame.",
+      "A woman is examining a painting.",
+      "A woman is hanging a picture."
     ],
-    "correct": "A"
+    "correct": "C"
   },
   {
     "question": 79,
     "options": [
-      "A man is placing a package on a counter.",
-      "A man is opening a package.",
       "A man is carrying a parcel outside.",
-      "A man is sealing a box."
+      "A man is placing a package on a counter.",
+      "A man is sealing a box.",
+      "A man is opening a package."
     ],
-    "correct": "A"
+    "correct": "B"
   },
   {
     "question": 80,
     "options": [
-      "A woman is using a tablet computer.",
-      "A woman is charging a telephone.",
       "A woman is carrying a laptop.",
-      "A woman is cleaning a screen."
+      "A woman is using a tablet computer.",
+      "A woman is cleaning a screen.",
+      "A woman is charging a telephone."
     ],
-    "correct": "A"
+    "correct": "B"
   },
   {
     "question": 81,
     "options": [
-      "A man is pushing a lawn mower.",
-      "A man is watering flowers.",
+      "A man is trimming a tree.",
       "A man is planting vegetables.",
-      "A man is trimming a tree."
+      "A man is watering flowers.",
+      "A man is pushing a lawn mower."
     ],
-    "correct": "A"
+    "correct": "D"
   },
   {
     "question": 82,
     "options": [
-      "A woman is standing in front of a mirror.",
       "A woman is cleaning a mirror.",
+      "A woman is standing in front of a mirror.",
       "A woman is hanging a mirror.",
       "A woman is moving a mirror."
     ],
-    "correct": "A"
+    "correct": "B"
   },
   {
     "question": 83,
     "options": [
-      "A man is placing dishes in a cupboard.",
       "A man is washing dishes.",
+      "A man is placing dishes in a cupboard.",
       "A man is carrying a tray.",
       "A man is setting a table."
     ],
-    "correct": "A"
+    "correct": "B"
   },
   {
     "question": 84,
     "options": [
+      "A woman is looking through a shop window.",
       "A woman is walking beside a row of shops.",
-      "A woman is entering a shop.",
       "A woman is carrying shopping bags.",
-      "A woman is looking through a shop window."
+      "A woman is entering a shop."
     ],
-    "correct": "A"
+    "correct": "B"
   },
   {
     "question": 85,
     "options": [
       "A man is checking a document.",
-      "A man is printing a document.",
       "A man is filing a document.",
-      "A man is shredding a document."
+      "A man is shredding a document.",
+      "A man is printing a document."
     ],
     "correct": "A"
   },
   {
     "question": 86,
     "options": [
-      "A woman is carrying a tray.",
-      "A woman is setting a table.",
       "A woman is washing dishes.",
-      "A woman is cleaning a counter."
+      "A woman is cleaning a counter.",
+      "A woman is setting a table.",
+      "A woman is carrying a tray."
     ],
-    "correct": "A"
+    "correct": "D"
   },
   {
     "question": 87,
     "options": [
-      "A man is standing beside a vending machine.",
       "A man is repairing a vending machine.",
       "A man is carrying a beverage.",
+      "A man is standing beside a vending machine.",
       "A man is cleaning a vending machine."
     ],
-    "correct": "A"
+    "correct": "C"
   },
   {
     "question": 88,
     "options": [
-      "A woman is opening a window.",
       "A woman is closing a curtain.",
+      "A woman is opening a window.",
       "A woman is cleaning a window.",
       "A woman is hanging curtains."
     ],
-    "correct": "A"
+    "correct": "B"
   },
   {
     "question": 89,
     "options": [
-      "A man is carrying a stack of chairs.",
-      "A man is sitting in a chair.",
+      "A man is moving a table.",
       "A man is repairing a chair.",
-      "A man is moving a table."
+      "A man is carrying a stack of chairs.",
+      "A man is sitting in a chair."
     ],
-    "correct": "A"
+    "correct": "C"
   },
   {
     "question": 90,
     "options": [
       "A woman is looking at a photograph.",
+      "A woman is printing a photograph.",
       "A woman is taking a photograph.",
-      "A woman is framing a photograph.",
-      "A woman is printing a photograph."
+      "A woman is framing a photograph."
     ],
     "correct": "A"
   },
   {
     "question": 91,
     "options": [
-      "A man is placing a newspaper on a table.",
-      "A man is reading a newspaper.",
       "A man is folding a newspaper.",
-      "A man is selling newspapers."
+      "A man is placing a newspaper on a table.",
+      "A man is selling newspapers.",
+      "A man is reading a newspaper."
     ],
-    "correct": "A"
+    "correct": "B"
   },
   {
     "question": 92,
     "options": [
-      "A woman is putting a book into a bag.",
-      "A woman is taking a book from a shelf.",
       "A woman is reading a book.",
+      "A woman is taking a book from a shelf.",
+      "A woman is putting a book into a bag.",
       "A woman is carrying several books."
     ],
-    "correct": "A"
+    "correct": "C"
   },
   {
     "question": 93,
     "options": [
-      "A man is standing near a parked bicycle.",
+      "A man is carrying a bicycle.",
       "A man is riding a bicycle.",
       "A man is repairing a bicycle.",
-      "A man is carrying a bicycle."
+      "A man is standing near a parked bicycle."
     ],
-    "correct": "A"
+    "correct": "D"
   },
   {
     "question": 94,
     "options": [
+      "A woman is hanging a jacket.",
       "A woman is putting on a jacket.",
-      "A woman is folding a jacket.",
       "A woman is washing a jacket.",
-      "A woman is hanging a jacket."
+      "A woman is folding a jacket."
     ],
-    "correct": "A"
+    "correct": "B"
   },
   {
     "question": 95,
     "options": [
       "A man is placing a box on a shelf.",
-      "A man is opening a box.",
       "A man is carrying a box outside.",
+      "A man is opening a box.",
       "A man is sealing a box."
     ],
     "correct": "A"
@@ -952,51 +952,51 @@
   {
     "question": 96,
     "options": [
-      "A woman is sitting at a desk.",
       "A woman is moving a desk.",
-      "A woman is cleaning a desk.",
-      "A woman is standing beside a desk."
+      "A woman is sitting at a desk.",
+      "A woman is standing beside a desk.",
+      "A woman is cleaning a desk."
     ],
-    "correct": "A"
+    "correct": "B"
   },
   {
     "question": 97,
     "options": [
-      "A man is looking at a street sign.",
-      "A man is installing a street sign.",
+      "A man is carrying a street sign.",
       "A man is cleaning a street sign.",
-      "A man is carrying a street sign."
+      "A man is installing a street sign.",
+      "A man is looking at a street sign."
     ],
-    "correct": "A"
+    "correct": "D"
   },
   {
     "question": 98,
     "options": [
-      "A woman is carrying a shopping bag.",
       "A woman is opening a shopping bag.",
       "A woman is putting groceries into a cart.",
+      "A woman is carrying a shopping bag.",
       "A woman is paying at a checkout counter."
     ],
-    "correct": "A"
+    "correct": "C"
   },
   {
     "question": 99,
     "options": [
-      "A man is closing a laptop computer.",
-      "A man is repairing a computer.",
       "A man is carrying a computer.",
-      "A man is cleaning a computer screen."
+      "A man is cleaning a computer screen.",
+      "A man is closing a laptop computer.",
+      "A man is repairing a computer."
     ],
-    "correct": "A"
+    "correct": "C"
   },
   {
     "question": 100,
     "options": [
-      "A woman is standing beside a table.",
-      "A woman is moving a table.",
       "A woman is cleaning the table.",
-      "A woman is sitting under the table."
+      "A woman is sitting under the table.",
+      "A woman is standing beside a table.",
+      "A woman is moving a table."
     ],
-    "correct": "A"
+    "correct": "C"
   }
 ]
