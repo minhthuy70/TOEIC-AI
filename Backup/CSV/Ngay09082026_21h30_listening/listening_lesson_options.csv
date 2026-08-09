@@ -1,0 +1,1901 @@
+id,question_id,option_label,option_text,is_correct,display_order,created_at
+1,1,A,A woman is planting some trees.,f,1,2026-08-09 17:24:00.807443
+2,1,B,A woman is picking flowers.,f,2,2026-08-09 17:24:00.807443
+3,1,C,A woman is watering flowers in a garden.,t,3,2026-08-09 17:24:00.807443
+4,1,D,A woman is cleaning a window.,f,4,2026-08-09 17:24:00.807443
+5,2,A,A man is talking on the telephone.,f,1,2026-08-09 17:24:00.807443
+6,2,B,A man is working on his computer in an office.,t,2,2026-08-09 17:24:00.807443
+7,2,C,A man is moving some furniture.,f,3,2026-08-09 17:24:00.807443
+8,2,D,A man is opening a window.,f,4,2026-08-09 17:24:00.807443
+9,3,A,A woman is waiting for a taxi.,f,1,2026-08-09 17:24:00.807443
+10,3,B,A woman is buying a train ticket.,f,2,2026-08-09 17:24:00.807443
+11,3,C,A woman is looking at a departure board.,t,3,2026-08-09 17:24:00.807443
+12,3,D,A woman is carrying a suitcase.,f,4,2026-08-09 17:24:00.807443
+13,4,A,A customer is driving a vehicle.,f,1,2026-08-09 17:24:00.807443
+14,4,B,A mechanic is explaining something to a customer.,t,2,2026-08-09 17:24:00.807443
+15,4,C,A mechanic is washing a car.,f,3,2026-08-09 17:24:00.807443
+16,4,D,A customer is changing a tire.,f,4,2026-08-09 17:24:00.807443
+17,5,A,A delivery man is loading a truck.,f,1,2026-08-09 17:24:00.807443
+18,5,B,A man is carrying some boxes upstairs.,f,2,2026-08-09 17:24:00.807443
+19,5,C,A man is opening a package.,f,3,2026-08-09 17:24:00.807443
+20,5,D,A delivery man is ringing a doorbell.,t,4,2026-08-09 17:24:00.807443
+21,6,A,Some students are cleaning the desks.,f,1,2026-08-09 17:24:00.807443
+22,6,B,Some students are leaving the classroom.,f,2,2026-08-09 17:24:00.807443
+23,6,C,A teacher is writing a letter.,f,3,2026-08-09 17:24:00.807443
+24,6,D,A teacher is giving a lesson to her students.,t,4,2026-08-09 17:24:00.807443
+25,7,A,A man is arranging products on a shelf.,f,1,2026-08-09 17:24:00.807443
+26,7,B,A man is selecting a product in a store.,t,2,2026-08-09 17:24:00.807443
+27,7,C,A man is paying for his groceries.,f,3,2026-08-09 17:24:00.807443
+28,7,D,A man is carrying a shopping basket.,f,4,2026-08-09 17:24:00.807443
+29,8,A,Several people are having a meeting.,t,1,2026-08-09 17:24:00.807443
+30,8,B,Several people are eating lunch together.,f,2,2026-08-09 17:24:00.807443
+31,8,C,Some people are waiting in a hallway.,f,3,2026-08-09 17:24:00.807443
+32,8,D,Some workers are leaving an office.,f,4,2026-08-09 17:24:00.807443
+33,9,A,A woman is riding a bicycle.,f,1,2026-08-09 17:24:00.807443
+34,9,B,A woman is sitting on a bench.,f,2,2026-08-09 17:24:00.807443
+35,9,C,A woman is jogging in a park.,t,3,2026-08-09 17:24:00.807443
+36,9,D,A woman is walking her dog.,f,4,2026-08-09 17:24:00.807443
+37,10,A,Workers are building a structure.,t,1,2026-08-09 17:24:00.807443
+38,10,B,Workers are cleaning a construction site.,f,2,2026-08-09 17:24:00.807443
+39,10,C,Workers are painting a building.,f,3,2026-08-09 17:24:00.807443
+40,10,D,Workers are carrying some boxes.,f,4,2026-08-09 17:24:00.807443
+41,11,A,A man is washing some dishes.,f,1,2026-08-09 17:24:00.807443
+42,11,B,A man is reading a newspaper at a café.,t,2,2026-08-09 17:24:00.807443
+43,11,C,A man is leaving the café.,f,3,2026-08-09 17:24:00.807443
+44,11,D,A man is ordering a meal.,f,4,2026-08-09 17:24:00.807443
+45,12,A,A woman is closing a library door.,f,1,2026-08-09 17:24:00.807443
+46,12,B,A woman is borrowing a book.,f,2,2026-08-09 17:24:00.807443
+47,12,C,A woman is sitting at a desk.,f,3,2026-08-09 17:24:00.807443
+48,12,D,A woman is placing books on a shelf.,t,4,2026-08-09 17:24:00.807443
+49,13,A,A man is repairing a suitcase.,f,1,2026-08-09 17:24:00.807443
+50,13,B,A man is waiting beside a bus.,f,2,2026-08-09 17:24:00.807443
+51,13,C,A man is opening a car trunk.,f,3,2026-08-09 17:24:00.807443
+52,13,D,A man is carrying a suitcase.,t,4,2026-08-09 17:24:00.807443
+53,14,A,A woman is sweeping the floor.,f,1,2026-08-09 17:24:00.807443
+54,14,B,A woman is buying some furniture.,f,2,2026-08-09 17:24:00.807443
+55,14,C,A woman is arranging flowers in a vase.,t,3,2026-08-09 17:24:00.807443
+56,14,D,A woman is washing a vase.,f,4,2026-08-09 17:24:00.807443
+57,15,A,A man is writing on a whiteboard.,t,1,2026-08-09 17:24:00.807443
+58,15,B,A man is opening a window.,f,2,2026-08-09 17:24:00.807443
+59,15,C,A man is cleaning the floor.,f,3,2026-08-09 17:24:00.807443
+60,15,D,A man is carrying a chair.,f,4,2026-08-09 17:24:00.807443
+61,16,A,Some people are waiting for a bus.,t,1,2026-08-09 17:24:00.807443
+62,16,B,Some people are entering a restaurant.,f,2,2026-08-09 17:24:00.807443
+63,16,C,Some people are getting off a train.,f,3,2026-08-09 17:24:00.807443
+64,16,D,Some people are carrying bicycles.,f,4,2026-08-09 17:24:00.807443
+65,17,A,A woman is opening a suitcase.,f,1,2026-08-09 17:24:00.807443
+66,17,B,A woman is repairing a clock.,f,2,2026-08-09 17:24:00.807443
+67,17,C,A woman is writing a report.,f,3,2026-08-09 17:24:00.807443
+68,17,D,A woman is checking her watch.,t,4,2026-08-09 17:24:00.807443
+69,18,A,A man is paying at a restaurant.,f,1,2026-08-09 17:24:00.807443
+70,18,B,A man is carrying a briefcase.,f,2,2026-08-09 17:24:00.807443
+71,18,C,A man is pushing a shopping cart.,t,3,2026-08-09 17:24:00.807443
+72,18,D,A man is stocking a refrigerator.,f,4,2026-08-09 17:24:00.807443
+73,19,A,A woman is typing on a keyboard.,t,1,2026-08-09 17:24:00.807443
+74,19,B,A woman is cleaning a computer screen.,f,2,2026-08-09 17:24:00.807443
+75,19,C,A woman is moving a desk.,f,3,2026-08-09 17:24:00.807443
+76,19,D,A woman is answering a telephone.,f,4,2026-08-09 17:24:00.807443
+77,20,A,A man is opening a gate.,f,1,2026-08-09 17:24:00.807443
+78,20,B,A man is washing a bicycle.,f,2,2026-08-09 17:24:00.807443
+79,20,C,A man is sweeping the sidewalk.,t,3,2026-08-09 17:24:00.807443
+80,20,D,A man is planting flowers.,f,4,2026-08-09 17:24:00.807443
+81,21,A,A woman is painting a ceiling.,f,1,2026-08-09 17:24:00.807443
+82,21,B,A woman is hanging a picture on a wall.,t,2,2026-08-09 17:24:00.807443
+83,21,C,A woman is moving a sofa.,f,3,2026-08-09 17:24:00.807443
+84,21,D,A woman is opening a closet.,f,4,2026-08-09 17:24:00.807443
+85,22,A,A man is carrying a tray.,f,1,2026-08-09 17:24:00.807443
+86,22,B,A man is pouring coffee into a cup.,t,2,2026-08-09 17:24:00.807443
+87,22,C,A man is washing a coffee machine.,f,3,2026-08-09 17:24:00.807443
+88,22,D,A man is cleaning a table.,f,4,2026-08-09 17:24:00.807443
+89,23,A,A woman is riding a horse.,f,1,2026-08-09 17:24:00.807443
+90,23,B,A woman is walking through a park.,t,2,2026-08-09 17:24:00.807443
+91,23,C,A woman is watering a lawn.,f,3,2026-08-09 17:24:00.807443
+92,23,D,A woman is taking a photograph.,f,4,2026-08-09 17:24:00.807443
+1790,323,B,before lunch,f,2,2026-08-09 21:13:23.227169
+93,24,A,A man is unloading luggage from a train.,f,1,2026-08-09 17:24:00.807443
+94,24,B,A man is driving a bus.,f,2,2026-08-09 17:24:00.807443
+95,24,C,A man is repairing a door.,f,3,2026-08-09 17:24:00.807443
+96,24,D,A man is loading boxes into a van.,t,4,2026-08-09 17:24:00.807443
+97,25,A,A woman is closing a curtain.,f,1,2026-08-09 17:24:00.807443
+98,25,B,A woman is looking through a window.,t,2,2026-08-09 17:24:00.807443
+99,25,C,A woman is opening a door.,f,3,2026-08-09 17:24:00.807443
+100,25,D,A woman is washing a window.,f,4,2026-08-09 17:24:00.807443
+101,26,A,A man is painting a bicycle.,f,1,2026-08-09 17:24:00.807443
+102,26,B,A man is adjusting a bicycle.,t,2,2026-08-09 17:24:00.807443
+103,26,C,A man is carrying a bicycle upstairs.,f,3,2026-08-09 17:24:00.807443
+104,26,D,A man is riding a motorcycle.,f,4,2026-08-09 17:24:00.807443
+105,27,A,Some people are walking through a hallway.,f,1,2026-08-09 17:24:00.807443
+106,27,B,Some people are sitting around a conference table.,t,2,2026-08-09 17:24:00.807443
+107,27,C,Some people are standing in an elevator.,f,3,2026-08-09 17:24:00.807443
+108,27,D,Some people are waiting at a ticket counter.,f,4,2026-08-09 17:24:00.807443
+109,28,A,A woman is washing dishes.,f,1,2026-08-09 17:24:00.807443
+110,28,B,A woman is cutting vegetables.,t,2,2026-08-09 17:24:00.807443
+111,28,C,A woman is serving a customer.,f,3,2026-08-09 17:24:00.807443
+112,28,D,A woman is opening a refrigerator.,f,4,2026-08-09 17:24:00.807443
+113,29,A,A man is carrying a suitcase.,f,1,2026-08-09 17:24:00.807443
+114,29,B,A man is reading a magazine.,f,2,2026-08-09 17:24:00.807443
+115,29,C,A man is repairing a camera.,f,3,2026-08-09 17:24:00.807443
+116,29,D,A man is taking a photograph.,t,4,2026-08-09 17:24:00.807443
+117,30,A,A woman is shredding a document.,f,1,2026-08-09 17:24:00.807443
+118,30,B,A woman is placing a document in a folder.,t,2,2026-08-09 17:24:00.807443
+119,30,C,A woman is carrying a box.,f,3,2026-08-09 17:24:00.807443
+120,30,D,A woman is printing a photograph.,f,4,2026-08-09 17:24:00.807443
+121,31,A,A man is carrying a raincoat.,f,1,2026-08-09 17:24:00.807443
+122,31,B,A man is closing a window.,f,2,2026-08-09 17:24:00.807443
+123,31,C,A man is opening an umbrella.,t,3,2026-08-09 17:24:00.807443
+124,31,D,A man is washing a car.,f,4,2026-08-09 17:24:00.807443
+125,32,A,A woman is placing plates on a table.,t,1,2026-08-09 17:24:00.807443
+126,32,B,A woman is carrying a chair.,f,2,2026-08-09 17:24:00.807443
+127,32,C,A woman is opening a cabinet.,f,3,2026-08-09 17:24:00.807443
+128,32,D,A woman is washing a plate.,f,4,2026-08-09 17:24:00.807443
+129,33,A,A man is walking along a sidewalk.,t,1,2026-08-09 17:24:00.807443
+130,33,B,A man is waiting for a bus.,f,2,2026-08-09 17:24:00.807443
+131,33,C,A man is repairing a sidewalk.,f,3,2026-08-09 17:24:00.807443
+132,33,D,A man is riding a bicycle.,f,4,2026-08-09 17:24:00.807443
+133,34,A,A woman is serving food.,f,1,2026-08-09 17:24:00.807443
+134,34,B,A woman is paying a bill.,f,2,2026-08-09 17:24:00.807443
+135,34,C,A woman is looking at a menu.,t,3,2026-08-09 17:24:00.807443
+136,34,D,A woman is cleaning a kitchen.,f,4,2026-08-09 17:24:00.807443
+137,35,A,A man is painting a ladder.,f,1,2026-08-09 17:24:00.807443
+138,35,B,A man is climbing a ladder.,f,2,2026-08-09 17:24:00.807443
+139,35,C,A man is carrying a ladder.,t,3,2026-08-09 17:24:00.807443
+140,35,D,A man is repairing a roof.,f,4,2026-08-09 17:24:00.807443
+141,36,A,A woman is cleaning a closet.,f,1,2026-08-09 17:24:00.807443
+142,36,B,A woman is putting clothes into a suitcase.,t,2,2026-08-09 17:24:00.807443
+143,36,C,A woman is carrying a laundry basket.,f,3,2026-08-09 17:24:00.807443
+144,36,D,A woman is folding a blanket.,f,4,2026-08-09 17:24:00.807443
+145,37,A,A man is watering a lawn.,t,1,2026-08-09 17:24:00.807443
+146,37,B,A man is mowing a lawn.,f,2,2026-08-09 17:24:00.807443
+147,37,C,A man is trimming a hedge.,f,3,2026-08-09 17:24:00.807443
+148,37,D,A man is planting a tree.,f,4,2026-08-09 17:24:00.807443
+149,38,A,A woman is carrying a box.,f,1,2026-08-09 17:24:00.807443
+150,38,B,A woman is repairing a machine.,f,2,2026-08-09 17:24:00.807443
+151,38,C,A woman is cleaning a counter.,f,3,2026-08-09 17:24:00.807443
+152,38,D,A woman is using a vending machine.,t,4,2026-08-09 17:24:00.807443
+153,39,A,A man is washing a car.,f,1,2026-08-09 17:24:00.807443
+154,39,B,A man is fastening his seat belt.,t,2,2026-08-09 17:24:00.807443
+155,39,C,A man is opening a car door.,f,3,2026-08-09 17:24:00.807443
+156,39,D,A man is changing a tire.,f,4,2026-08-09 17:24:00.807443
+157,40,A,A woman is speaking to a receptionist.,t,1,2026-08-09 17:24:00.807443
+158,40,B,A woman is opening an envelope.,f,2,2026-08-09 17:24:00.807443
+159,40,C,A woman is sitting in a waiting room.,f,3,2026-08-09 17:24:00.807443
+160,40,D,A woman is answering a telephone.,f,4,2026-08-09 17:24:00.807443
+161,41,A,A man is cleaning a printer.,f,1,2026-08-09 17:24:00.807443
+162,41,B,A man is carrying a stack of papers.,t,2,2026-08-09 17:24:00.807443
+163,41,C,A man is reading a book.,f,3,2026-08-09 17:24:00.807443
+164,41,D,A man is opening a cabinet.,f,4,2026-08-09 17:24:00.807443
+165,42,A,A woman is washing her clothes.,f,1,2026-08-09 17:24:00.807443
+166,42,B,A woman is swimming in a river.,f,2,2026-08-09 17:24:00.807443
+167,42,C,A woman is fishing from a boat.,f,3,2026-08-09 17:24:00.807443
+168,42,D,A woman is walking beside a river.,t,4,2026-08-09 17:24:00.807443
+169,43,A,A man is cleaning a shopping cart.,f,1,2026-08-09 17:24:00.807443
+170,43,B,A man is arranging food on a table.,f,2,2026-08-09 17:24:00.807443
+171,43,C,A man is putting groceries into a bag.,t,3,2026-08-09 17:24:00.807443
+172,43,D,A man is unloading groceries.,f,4,2026-08-09 17:24:00.807443
+173,44,A,A woman is closing a suitcase.,f,1,2026-08-09 17:24:00.807443
+174,44,B,A woman is moving a cabinet.,f,2,2026-08-09 17:24:00.807443
+175,44,C,A woman is cleaning a mirror.,f,3,2026-08-09 17:24:00.807443
+176,44,D,A woman is opening a drawer.,t,4,2026-08-09 17:24:00.807443
+177,45,A,A man is repairing a bicycle.,f,1,2026-08-09 17:24:00.807443
+178,45,B,A man is driving a truck.,f,2,2026-08-09 17:24:00.807443
+179,45,C,A man is washing a motorcycle.,f,3,2026-08-09 17:24:00.807443
+180,45,D,A man is standing beside a parked car.,t,4,2026-08-09 17:24:00.807443
+181,46,A,A woman is opening a refrigerator.,f,1,2026-08-09 17:24:00.807443
+182,46,B,A woman is carrying a tray of food.,t,2,2026-08-09 17:24:00.807443
+183,46,C,A woman is washing a tray.,f,3,2026-08-09 17:24:00.807443
+184,46,D,A woman is setting up a cash register.,f,4,2026-08-09 17:24:00.807443
+185,47,A,A man is repairing a luggage cart.,f,1,2026-08-09 17:24:00.807443
+186,47,B,A man is opening a suitcase.,f,2,2026-08-09 17:24:00.807443
+187,47,C,A man is placing a suitcase on a luggage rack.,t,3,2026-08-09 17:24:00.807443
+188,47,D,A man is carrying a suitcase outdoors.,f,4,2026-08-09 17:24:00.807443
+189,48,A,A woman is reading a notice on a wall.,t,1,2026-08-09 17:24:00.807443
+190,48,B,A woman is painting a wall.,f,2,2026-08-09 17:24:00.807443
+191,48,C,A woman is hanging a mirror.,f,3,2026-08-09 17:24:00.807443
+192,48,D,A woman is cleaning a wall.,f,4,2026-08-09 17:24:00.807443
+193,49,A,A man is jogging around the park.,f,1,2026-08-09 17:24:00.807443
+194,49,B,A man is walking a dog.,f,2,2026-08-09 17:24:00.807443
+195,49,C,A man is sitting on a park bench.,t,3,2026-08-09 17:24:00.807443
+196,49,D,A man is planting flowers.,f,4,2026-08-09 17:24:00.807443
+197,50,A,A woman is using a photocopier.,t,1,2026-08-09 17:24:00.807443
+198,50,B,A woman is cleaning a desk.,f,2,2026-08-09 17:24:00.807443
+199,50,C,A woman is repairing a printer.,f,3,2026-08-09 17:24:00.807443
+200,50,D,A woman is carrying a computer.,f,4,2026-08-09 17:24:00.807443
+201,51,A,A man is carrying a ladder.,f,1,2026-08-09 17:24:00.807443
+202,51,B,A man is opening a package.,f,2,2026-08-09 17:24:00.807443
+203,51,C,A man is stacking boxes on a shelf.,t,3,2026-08-09 17:24:00.807443
+204,51,D,A man is sweeping the floor.,f,4,2026-08-09 17:24:00.807443
+205,52,A,A woman is putting on a coat.,f,1,2026-08-09 17:24:00.807443
+206,52,B,A woman is washing an umbrella.,f,2,2026-08-09 17:24:00.807443
+207,52,C,A woman is closing a window.,f,3,2026-08-09 17:24:00.807443
+208,52,D,A woman is holding an umbrella.,t,4,2026-08-09 17:24:00.807443
+209,53,A,A man is writing a letter.,f,1,2026-08-09 17:24:00.807443
+210,53,B,A man is folding a newspaper.,f,2,2026-08-09 17:24:00.807443
+211,53,C,A man is reading a menu.,f,3,2026-08-09 17:24:00.807443
+212,53,D,A man is looking at a map.,t,4,2026-08-09 17:24:00.807443
+213,54,A,A woman is carrying a basket of laundry.,t,1,2026-08-09 17:24:00.807443
+214,54,B,A woman is hanging a picture.,f,2,2026-08-09 17:24:00.807443
+215,54,C,A woman is cleaning a washing machine.,f,3,2026-08-09 17:24:00.807443
+216,54,D,A woman is folding towels.,f,4,2026-08-09 17:24:00.807443
+217,55,A,A man is carrying a table.,f,1,2026-08-09 17:24:00.807443
+218,55,B,A man is washing a window.,f,2,2026-08-09 17:24:00.807443
+219,55,C,A man is opening a cabinet.,t,3,2026-08-09 17:24:00.807443
+220,55,D,A man is closing a refrigerator.,f,4,2026-08-09 17:24:00.807443
+221,56,A,A woman is cleaning a ceiling.,f,1,2026-08-09 17:24:00.807443
+222,56,B,A woman is adjusting a desk lamp.,t,2,2026-08-09 17:24:00.807443
+223,56,C,A woman is replacing a light bulb.,f,3,2026-08-09 17:24:00.807443
+224,56,D,A woman is moving a bookshelf.,f,4,2026-08-09 17:24:00.807443
+225,57,A,A man is cleaning a table.,f,1,2026-08-09 17:24:00.807443
+226,57,B,A man is pouring water into a glass.,t,2,2026-08-09 17:24:00.807443
+227,57,C,A man is carrying a bottle.,f,3,2026-08-09 17:24:00.807443
+228,57,D,A man is washing a glass.,f,4,2026-08-09 17:24:00.807443
+229,58,A,A woman is boarding a train.,f,1,2026-08-09 17:24:00.807443
+230,58,B,A woman is carrying a bicycle.,f,2,2026-08-09 17:24:00.807443
+231,58,C,A woman is checking a train schedule.,t,3,2026-08-09 17:24:00.807443
+232,58,D,A woman is purchasing a newspaper.,f,4,2026-08-09 17:24:00.807443
+233,59,A,A man is sitting in a chair.,f,1,2026-08-09 17:24:00.807443
+234,59,B,A man is arranging chairs in a room.,t,2,2026-08-09 17:24:00.807443
+235,59,C,A man is repairing a table.,f,3,2026-08-09 17:24:00.807443
+236,59,D,A man is opening a curtain.,f,4,2026-08-09 17:24:00.807443
+237,60,A,A woman is washing a coat.,f,1,2026-08-09 17:24:00.807443
+238,60,B,A woman is placing a coat on a hanger.,t,2,2026-08-09 17:24:00.807443
+239,60,C,A woman is folding a blanket.,f,3,2026-08-09 17:24:00.807443
+240,60,D,A woman is carrying a suitcase.,f,4,2026-08-09 17:24:00.807443
+241,61,A,A man is painting a fence.,f,1,2026-08-09 17:24:00.807443
+242,61,B,A man is carrying a wooden table.,f,2,2026-08-09 17:24:00.807443
+243,61,C,A man is opening a toolbox.,f,3,2026-08-09 17:24:00.807443
+244,61,D,A man is cutting a piece of wood.,t,4,2026-08-09 17:24:00.807443
+245,62,A,A woman is carrying a printer.,f,1,2026-08-09 17:24:00.807443
+246,62,B,A woman is arranging documents on a desk.,t,2,2026-08-09 17:24:00.807443
+247,62,C,A woman is cleaning a computer.,f,3,2026-08-09 17:24:00.807443
+248,62,D,A woman is answering the telephone.,f,4,2026-08-09 17:24:00.807443
+249,63,A,A man is placing a book in a backpack.,t,1,2026-08-09 17:24:00.807443
+250,63,B,A man is reading a newspaper.,f,2,2026-08-09 17:24:00.807443
+251,63,C,A man is carrying a suitcase.,f,3,2026-08-09 17:24:00.807443
+252,63,D,A man is opening a cabinet.,f,4,2026-08-09 17:24:00.807443
+253,64,A,A woman is cleaning the floor.,f,1,2026-08-09 17:24:00.807443
+254,64,B,A woman is moving a bookshelf.,f,2,2026-08-09 17:24:00.807443
+255,64,C,A woman is carrying a chair.,f,3,2026-08-09 17:24:00.807443
+256,64,D,A woman is standing beside a bookshelf.,t,4,2026-08-09 17:24:00.807443
+257,65,A,A man is opening a gate.,t,1,2026-08-09 17:24:00.807443
+258,65,B,A man is washing a driveway.,f,2,2026-08-09 17:24:00.807443
+259,65,C,A man is closing a garage door.,f,3,2026-08-09 17:24:00.807443
+260,65,D,A man is painting a fence.,f,4,2026-08-09 17:24:00.807443
+261,66,A,A woman is placing groceries on a counter.,t,1,2026-08-09 17:24:00.807443
+262,66,B,A woman is paying for groceries.,f,2,2026-08-09 17:24:00.807443
+263,66,C,A woman is cleaning a refrigerator.,f,3,2026-08-09 17:24:00.807443
+264,66,D,A woman is pushing a shopping cart.,f,4,2026-08-09 17:24:00.807443
+265,67,A,A man is carrying a toolbox.,f,1,2026-08-09 17:24:00.807443
+266,67,B,A man is opening a drawer.,f,2,2026-08-09 17:24:00.807443
+267,67,C,A man is tightening a screw.,t,3,2026-08-09 17:24:00.807443
+268,67,D,A man is painting a wall.,f,4,2026-08-09 17:24:00.807443
+269,68,A,A woman is walking along a beach.,t,1,2026-08-09 17:24:00.807443
+270,68,B,A woman is swimming in the ocean.,f,2,2026-08-09 17:24:00.807443
+271,68,C,A woman is carrying a surfboard.,f,3,2026-08-09 17:24:00.807443
+272,68,D,A woman is sitting in a boat.,f,4,2026-08-09 17:24:00.807443
+273,69,A,A man is opening a filing cabinet.,f,1,2026-08-09 17:24:00.807443
+274,69,B,A man is carrying a computer.,f,2,2026-08-09 17:24:00.807443
+275,69,C,A man is cleaning a window.,f,3,2026-08-09 17:24:00.807443
+276,69,D,A man is placing a folder on a desk.,t,4,2026-08-09 17:24:00.807443
+277,70,A,A woman is cleaning a display case.,f,1,2026-08-09 17:24:00.807443
+278,70,B,A woman is arranging clothes.,f,2,2026-08-09 17:24:00.807443
+279,70,C,A woman is carrying a shopping bag.,f,3,2026-08-09 17:24:00.807443
+280,70,D,A woman is looking into a display case.,t,4,2026-08-09 17:24:00.807443
+281,71,A,A man is carrying a sign.,f,1,2026-08-09 17:24:00.807443
+282,71,B,A man is walking through an entrance.,t,2,2026-08-09 17:24:00.807443
+283,71,C,A man is cleaning an entrance.,f,3,2026-08-09 17:24:00.807443
+284,71,D,A man is locking a door.,f,4,2026-08-09 17:24:00.807443
+285,72,A,A woman is carrying a stack of books.,f,1,2026-08-09 17:24:00.807443
+286,72,B,A woman is closing a notebook.,f,2,2026-08-09 17:24:00.807443
+287,72,C,A woman is writing in a notebook.,t,3,2026-08-09 17:24:00.807443
+288,72,D,A woman is reading a newspaper.,f,4,2026-08-09 17:24:00.807443
+289,73,A,A man is trimming a tree.,f,1,2026-08-09 17:24:00.807443
+290,73,B,A man is watering a garden.,f,2,2026-08-09 17:24:00.807443
+291,73,C,A man is carrying a potted plant.,t,3,2026-08-09 17:24:00.807443
+292,73,D,A man is sweeping a porch.,f,4,2026-08-09 17:24:00.807443
+293,74,A,A woman is washing a car.,f,1,2026-08-09 17:24:00.807443
+294,74,B,A woman is fastening a seat belt.,t,2,2026-08-09 17:24:00.807443
+295,74,C,A woman is opening a car trunk.,f,3,2026-08-09 17:24:00.807443
+296,74,D,A woman is checking a tire.,f,4,2026-08-09 17:24:00.807443
+297,75,A,A man is answering a telephone.,f,1,2026-08-09 17:24:00.807443
+298,75,B,A man is standing near a reception desk.,t,2,2026-08-09 17:24:00.807443
+299,75,C,A man is opening an elevator door.,f,3,2026-08-09 17:24:00.807443
+300,75,D,A man is carrying a suitcase.,f,4,2026-08-09 17:24:00.807443
+301,76,A,A woman is carrying a tray.,f,1,2026-08-09 17:24:00.807443
+302,76,B,A woman is opening a cabinet.,f,2,2026-08-09 17:24:00.807443
+303,76,C,A woman is washing a cup.,f,3,2026-08-09 17:24:00.807443
+304,76,D,A woman is placing a cup on a table.,t,4,2026-08-09 17:24:00.807443
+305,77,A,A man is carrying a ladder.,f,1,2026-08-09 17:24:00.807443
+306,77,B,A man is opening a window.,f,2,2026-08-09 17:24:00.807443
+307,77,C,A man is walking down a staircase.,t,3,2026-08-09 17:24:00.807443
+308,77,D,A man is cleaning a staircase.,f,4,2026-08-09 17:24:00.807443
+309,78,A,A woman is painting a wall.,f,1,2026-08-09 17:24:00.807443
+310,78,B,A woman is cleaning a frame.,f,2,2026-08-09 17:24:00.807443
+311,78,C,A woman is examining a painting.,t,3,2026-08-09 17:24:00.807443
+312,78,D,A woman is hanging a picture.,f,4,2026-08-09 17:24:00.807443
+313,79,A,A man is carrying a parcel outside.,f,1,2026-08-09 17:24:00.807443
+314,79,B,A man is placing a package on a counter.,t,2,2026-08-09 17:24:00.807443
+315,79,C,A man is sealing a box.,f,3,2026-08-09 17:24:00.807443
+316,79,D,A man is opening a package.,f,4,2026-08-09 17:24:00.807443
+317,80,A,A woman is carrying a laptop.,f,1,2026-08-09 17:24:00.807443
+318,80,B,A woman is using a tablet computer.,t,2,2026-08-09 17:24:00.807443
+319,80,C,A woman is cleaning a screen.,f,3,2026-08-09 17:24:00.807443
+320,80,D,A woman is charging a telephone.,f,4,2026-08-09 17:24:00.807443
+321,81,A,A man is trimming a tree.,f,1,2026-08-09 17:24:00.807443
+322,81,B,A man is planting vegetables.,f,2,2026-08-09 17:24:00.807443
+323,81,C,A man is watering flowers.,f,3,2026-08-09 17:24:00.807443
+324,81,D,A man is pushing a lawn mower.,t,4,2026-08-09 17:24:00.807443
+325,82,A,A woman is cleaning a mirror.,f,1,2026-08-09 17:24:00.807443
+326,82,B,A woman is standing in front of a mirror.,t,2,2026-08-09 17:24:00.807443
+327,82,C,A woman is hanging a mirror.,f,3,2026-08-09 17:24:00.807443
+328,82,D,A woman is moving a mirror.,f,4,2026-08-09 17:24:00.807443
+329,83,A,A man is washing dishes.,f,1,2026-08-09 17:24:00.807443
+330,83,B,A man is placing dishes in a cupboard.,t,2,2026-08-09 17:24:00.807443
+331,83,C,A man is carrying a tray.,f,3,2026-08-09 17:24:00.807443
+332,83,D,A man is setting a table.,f,4,2026-08-09 17:24:00.807443
+333,84,A,A woman is looking through a shop window.,f,1,2026-08-09 17:24:00.807443
+334,84,B,A woman is walking beside a row of shops.,t,2,2026-08-09 17:24:00.807443
+335,84,C,A woman is carrying shopping bags.,f,3,2026-08-09 17:24:00.807443
+336,84,D,A woman is entering a shop.,f,4,2026-08-09 17:24:00.807443
+337,85,A,A man is checking a document.,t,1,2026-08-09 17:24:00.807443
+338,85,B,A man is filing a document.,f,2,2026-08-09 17:24:00.807443
+339,85,C,A man is shredding a document.,f,3,2026-08-09 17:24:00.807443
+340,85,D,A man is printing a document.,f,4,2026-08-09 17:24:00.807443
+341,86,A,A woman is washing dishes.,f,1,2026-08-09 17:24:00.807443
+342,86,B,A woman is cleaning a counter.,f,2,2026-08-09 17:24:00.807443
+343,86,C,A woman is setting a table.,f,3,2026-08-09 17:24:00.807443
+344,86,D,A woman is carrying a tray.,t,4,2026-08-09 17:24:00.807443
+345,87,A,A man is repairing a vending machine.,f,1,2026-08-09 17:24:00.807443
+346,87,B,A man is carrying a beverage.,f,2,2026-08-09 17:24:00.807443
+347,87,C,A man is standing beside a vending machine.,t,3,2026-08-09 17:24:00.807443
+348,87,D,A man is cleaning a vending machine.,f,4,2026-08-09 17:24:00.807443
+349,88,A,A woman is closing a curtain.,f,1,2026-08-09 17:24:00.807443
+350,88,B,A woman is opening a window.,t,2,2026-08-09 17:24:00.807443
+351,88,C,A woman is cleaning a window.,f,3,2026-08-09 17:24:00.807443
+352,88,D,A woman is hanging curtains.,f,4,2026-08-09 17:24:00.807443
+353,89,A,A man is moving a table.,f,1,2026-08-09 17:24:00.807443
+354,89,B,A man is repairing a chair.,f,2,2026-08-09 17:24:00.807443
+355,89,C,A man is carrying a stack of chairs.,t,3,2026-08-09 17:24:00.807443
+356,89,D,A man is sitting in a chair.,f,4,2026-08-09 17:24:00.807443
+357,90,A,A woman is looking at a photograph.,t,1,2026-08-09 17:24:00.807443
+358,90,B,A woman is printing a photograph.,f,2,2026-08-09 17:24:00.807443
+359,90,C,A woman is taking a photograph.,f,3,2026-08-09 17:24:00.807443
+360,90,D,A woman is framing a photograph.,f,4,2026-08-09 17:24:00.807443
+361,91,A,A man is folding a newspaper.,f,1,2026-08-09 17:24:00.807443
+362,91,B,A man is placing a newspaper on a table.,t,2,2026-08-09 17:24:00.807443
+363,91,C,A man is selling newspapers.,f,3,2026-08-09 17:24:00.807443
+364,91,D,A man is reading a newspaper.,f,4,2026-08-09 17:24:00.807443
+365,92,A,A woman is reading a book.,f,1,2026-08-09 17:24:00.807443
+366,92,B,A woman is taking a book from a shelf.,f,2,2026-08-09 17:24:00.807443
+367,92,C,A woman is putting a book into a bag.,t,3,2026-08-09 17:24:00.807443
+368,92,D,A woman is carrying several books.,f,4,2026-08-09 17:24:00.807443
+369,93,A,A man is carrying a bicycle.,f,1,2026-08-09 17:24:00.807443
+370,93,B,A man is riding a bicycle.,f,2,2026-08-09 17:24:00.807443
+371,93,C,A man is repairing a bicycle.,f,3,2026-08-09 17:24:00.807443
+372,93,D,A man is standing near a parked bicycle.,t,4,2026-08-09 17:24:00.807443
+373,94,A,A woman is hanging a jacket.,f,1,2026-08-09 17:24:00.807443
+374,94,B,A woman is putting on a jacket.,t,2,2026-08-09 17:24:00.807443
+375,94,C,A woman is washing a jacket.,f,3,2026-08-09 17:24:00.807443
+376,94,D,A woman is folding a jacket.,f,4,2026-08-09 17:24:00.807443
+377,95,A,A man is placing a box on a shelf.,t,1,2026-08-09 17:24:00.807443
+378,95,B,A man is carrying a box outside.,f,2,2026-08-09 17:24:00.807443
+379,95,C,A man is opening a box.,f,3,2026-08-09 17:24:00.807443
+380,95,D,A man is sealing a box.,f,4,2026-08-09 17:24:00.807443
+381,96,A,A woman is moving a desk.,f,1,2026-08-09 17:24:00.807443
+382,96,B,A woman is sitting at a desk.,t,2,2026-08-09 17:24:00.807443
+383,96,C,A woman is standing beside a desk.,f,3,2026-08-09 17:24:00.807443
+384,96,D,A woman is cleaning a desk.,f,4,2026-08-09 17:24:00.807443
+385,97,A,A man is carrying a street sign.,f,1,2026-08-09 17:24:00.807443
+386,97,B,A man is cleaning a street sign.,f,2,2026-08-09 17:24:00.807443
+387,97,C,A man is installing a street sign.,f,3,2026-08-09 17:24:00.807443
+388,97,D,A man is looking at a street sign.,t,4,2026-08-09 17:24:00.807443
+389,98,A,A woman is opening a shopping bag.,f,1,2026-08-09 17:24:00.807443
+390,98,B,A woman is putting groceries into a cart.,f,2,2026-08-09 17:24:00.807443
+391,98,C,A woman is carrying a shopping bag.,t,3,2026-08-09 17:24:00.807443
+392,98,D,A woman is paying at a checkout counter.,f,4,2026-08-09 17:24:00.807443
+393,99,A,A man is carrying a computer.,f,1,2026-08-09 17:24:00.807443
+394,99,B,A man is cleaning a computer screen.,f,2,2026-08-09 17:24:00.807443
+395,99,C,A man is closing a laptop computer.,t,3,2026-08-09 17:24:00.807443
+396,99,D,A man is repairing a computer.,f,4,2026-08-09 17:24:00.807443
+397,100,A,A woman is cleaning the table.,f,1,2026-08-09 17:24:00.807443
+398,100,B,A woman is sitting under the table.,f,2,2026-08-09 17:24:00.807443
+399,100,C,A woman is standing beside a table.,t,3,2026-08-09 17:24:00.807443
+400,100,D,A woman is moving a table.,f,4,2026-08-09 17:24:00.807443
+426,109,B,Good idea. I'm getting hungry.,t,2,2026-08-09 20:15:34.476221
+427,109,C,It was delivered at noon.,f,3,2026-08-09 20:15:34.476221
+428,110,A,It prints very quickly.,f,1,2026-08-09 20:15:34.476221
+429,110,B,Last Friday.,f,2,2026-08-09 20:15:34.476221
+430,110,C,At the electronics store.,t,3,2026-08-09 20:15:34.476221
+431,111,A,The office manager did.,t,1,2026-08-09 20:15:34.476221
+432,111,B,They're in the storage room.,f,2,2026-08-09 20:15:34.476221
+433,111,C,We need six more.,f,3,2026-08-09 20:15:34.476221
+434,112,A,At the service center.,f,1,2026-08-09 20:15:34.476221
+435,112,B,Probably two or three days.,t,2,2026-08-09 20:15:34.476221
+436,112,C,The mechanic checked it.,f,3,2026-08-09 20:15:34.476221
+437,113,A,"Yes, the meeting starts soon.",f,1,2026-08-09 20:15:34.476221
+438,113,B,The coffee machine is broken.,f,2,2026-08-09 20:15:34.476221
+439,113,C,"Tea, please.",t,3,2026-08-09 20:15:34.476221
+440,114,A,By Friday afternoon.,t,1,2026-08-09 20:15:34.476221
+441,114,B,The marketing department.,f,2,2026-08-09 20:15:34.476221
+442,114,C,About twenty pages.,f,3,2026-08-09 20:15:34.476221
+443,115,A,I locked the door.,f,1,2026-08-09 20:15:34.476221
+444,115,B,They're on the kitchen counter.,t,2,2026-08-09 20:15:34.476221
+445,115,C,I need them for the car.,f,3,2026-08-09 20:15:34.476221
+446,116,A,At five thirty.,f,1,2026-08-09 20:15:34.476221
+447,116,B,I have a doctor's appointment.,t,2,2026-08-09 20:15:34.476221
+448,116,C,The office is on Main Street.,f,3,2026-08-09 20:15:34.476221
+449,117,A,On the fourth floor.,t,1,2026-08-09 20:15:34.476221
+450,117,B,They increased sales last year.,f,2,2026-08-09 20:15:34.476221
+451,117,C,Around three o'clock.,f,3,2026-08-09 20:15:34.476221
+452,118,A,The restaurant is nearby.,f,1,2026-08-09 20:15:34.476221
+453,118,B,"Yes, for seven o'clock.",t,2,2026-08-09 20:15:34.476221
+454,118,C,She likes Italian food.,f,3,2026-08-09 20:15:34.476221
+455,119,A,I'm going to the gym.,t,1,2026-08-09 20:15:34.476221
+456,119,B,The work ends at five.,f,2,2026-08-09 20:15:34.476221
+457,119,C,In the main office.,f,3,2026-08-09 20:15:34.476221
+458,120,A,My flight was at noon.,f,1,2026-08-09 20:15:34.476221
+459,120,B,It took about thirty minutes.,f,2,2026-08-09 20:15:34.476221
+460,120,C,I took a taxi.,t,3,2026-08-09 20:15:34.476221
+461,121,A,In the conference room.,f,1,2026-08-09 20:15:34.476221
+462,121,B,Next Tuesday morning.,t,2,2026-08-09 20:15:34.476221
+463,121,C,About ten employees.,f,3,2026-08-09 20:15:34.476221
+464,122,A,Of course. How many copies?,t,1,2026-08-09 20:15:34.476221
+465,122,B,The forms are on the table.,f,2,2026-08-09 20:15:34.476221
+466,122,C,I filled them out yesterday.,f,3,2026-08-09 20:15:34.476221
+467,123,A,The supplies arrived yesterday.,f,1,2026-08-09 20:15:34.476221
+468,123,B,The purchasing department.,t,2,2026-08-09 20:15:34.476221
+469,123,C,We need more paper.,f,3,2026-08-09 20:15:34.476221
+470,124,A,It is on the first floor.,f,1,2026-08-09 20:15:34.476221
+471,124,B,We can take the stairs.,f,2,2026-08-09 20:15:34.476221
+472,124,C,It is being repaired.,t,3,2026-08-09 20:15:34.476221
+473,125,A,In the underground garage.,t,1,2026-08-09 20:15:34.476221
+474,125,B,It needs some repairs.,f,2,2026-08-09 20:15:34.476221
+475,125,C,I drove here this morning.,f,3,2026-08-09 20:15:34.476221
+476,126,A,It is on my desk.,f,1,2026-08-09 20:15:34.476221
+477,126,B,I use a laptop.,t,2,2026-08-09 20:15:34.476221
+478,126,C,I bought it last year.,f,3,2026-08-09 20:15:34.476221
+479,127,A,"Yes, it was delivered at nine.",t,1,2026-08-09 20:15:34.476221
+480,127,B,The package is for Mr. Lee.,f,2,2026-08-09 20:15:34.476221
+481,127,C,I ordered it online.,f,3,2026-08-09 20:15:34.476221
+482,128,A,It is in Boston.,f,1,2026-08-09 20:15:34.476221
+483,128,B,Usually once a month.,t,2,2026-08-09 20:15:34.476221
+484,128,C,I visited it yesterday.,f,3,2026-08-09 20:15:34.476221
+485,129,A,The hotel is near the station.,f,1,2026-08-09 20:15:34.476221
+486,129,B,I stayed there last year.,f,2,2026-08-09 20:15:34.476221
+487,129,C,"Yes, for two nights, please.",t,3,2026-08-09 20:15:34.476221
+488,130,A,It stopped working.,t,1,2026-08-09 20:15:34.476221
+489,130,B,The new printer is faster.,f,2,2026-08-09 20:15:34.476221
+490,130,C,It is beside the copier.,f,3,2026-08-09 20:15:34.476221
+491,131,A,It closes at five.,f,1,2026-08-09 20:15:34.476221
+492,131,B,There's one across the street.,t,2,2026-08-09 20:15:34.476221
+493,131,C,I deposited the money yesterday.,f,3,2026-08-09 20:15:34.476221
+494,132,A,About three years ago.,t,1,2026-08-09 20:15:34.476221
+495,132,B,In the accounting department.,f,2,2026-08-09 20:15:34.476221
+496,132,C,I work full-time.,f,3,2026-08-09 20:15:34.476221
+497,133,A,I have plenty of work.,f,1,2026-08-09 20:15:34.476221
+498,133,B,The afternoon meeting was canceled.,t,2,2026-08-09 20:15:34.476221
+499,133,C,At two o'clock.,f,3,2026-08-09 20:15:34.476221
+500,134,A,They are in the reception area.,f,1,2026-08-09 20:15:34.476221
+501,134,B,Mr. Wilson will.,t,2,2026-08-09 20:15:34.476221
+502,134,C,Around lunchtime.,f,3,2026-08-09 20:15:34.476221
+503,135,A,It costs about eighty dollars.,t,1,2026-08-09 20:15:34.476221
+504,135,B,It is very comfortable.,f,2,2026-08-09 20:15:34.476221
+505,135,C,At the furniture store.,f,3,2026-08-09 20:15:34.476221
+506,136,A,The presentation is tomorrow.,f,1,2026-08-09 20:15:34.476221
+507,136,B,"Yes, I finished it this morning.",t,2,2026-08-09 20:15:34.476221
+508,136,C,In the conference room.,f,3,2026-08-09 20:15:34.476221
+509,137,A,At the hotel lobby.,t,1,2026-08-09 20:15:34.476221
+510,137,B,The tour lasts two hours.,f,2,2026-08-09 20:15:34.476221
+511,137,C,We went there last year.,f,3,2026-08-09 20:15:34.476221
+512,138,A,It opened last month.,f,1,2026-08-09 20:15:34.476221
+513,138,B,The restaurant is downtown.,f,2,2026-08-09 20:15:34.476221
+514,138,C,The food was excellent.,t,3,2026-08-09 20:15:34.476221
+515,139,A,"Yes, I can be there.",t,1,2026-08-09 20:15:34.476221
+516,139,B,The training room is upstairs.,f,2,2026-08-09 20:15:34.476221
+517,139,C,It lasts all afternoon.,f,3,2026-08-09 20:15:34.476221
+518,140,A,The technician arrived at noon.,f,1,2026-08-09 20:15:34.476221
+519,140,B,The air conditioner wasn't working.,t,2,2026-08-09 20:15:34.476221
+520,140,C,He works for our company.,f,3,2026-08-09 20:15:34.476221
+521,141,A,The project is very important.,f,1,2026-08-09 20:15:34.476221
+522,141,B,With the design team.,f,2,2026-08-09 20:15:34.476221
+523,141,C,How about tomorrow morning?,t,3,2026-08-09 20:15:34.476221
+524,142,A,"Yes, it's in my briefcase.",t,1,2026-08-09 20:15:34.476221
+525,142,B,The contract is ten pages long.,f,2,2026-08-09 20:15:34.476221
+526,142,C,We signed it last week.,f,3,2026-08-09 20:15:34.476221
+527,143,A,The conference begins at nine.,f,1,2026-08-09 20:15:34.476221
+528,143,B,I'll take the train.,t,2,2026-08-09 20:15:34.476221
+529,143,C,It is at the convention center.,f,3,2026-08-09 20:15:34.476221
+530,144,A,The coat is new.,f,1,2026-08-09 20:15:34.476221
+531,144,B,I bought it downtown.,f,2,2026-08-09 20:15:34.476221
+532,144,C,You can put it over there.,t,3,2026-08-09 20:15:34.476221
+533,145,A,The accounting team did.,t,1,2026-08-09 20:15:34.476221
+534,145,B,There are five reports.,f,2,2026-08-09 20:15:34.476221
+535,145,C,They are due tomorrow.,f,3,2026-08-09 20:15:34.476221
+536,146,A,He usually arrives early.,f,1,2026-08-09 20:15:34.476221
+537,146,B,He is attending a training course.,t,2,2026-08-09 20:15:34.476221
+538,146,C,His office is upstairs.,f,3,2026-08-09 20:15:34.476221
+539,147,A,"Sure, here you are.",t,1,2026-08-09 20:15:34.476221
+540,147,B,I calculated it yesterday.,f,2,2026-08-09 20:15:34.476221
+541,147,C,The calculator is new.,f,3,2026-08-09 20:15:34.476221
+542,148,A,On my mobile phone.,f,1,2026-08-09 20:15:34.476221
+543,148,B,Around six this evening.,t,2,2026-08-09 20:15:34.476221
+544,148,C,I called you yesterday.,f,3,2026-08-09 20:15:34.476221
+545,149,A,Near the main entrance.,t,1,2026-08-09 20:15:34.476221
+546,149,B,The customer called earlier.,f,2,2026-08-09 20:15:34.476221
+547,149,C,They can help with returns.,f,3,2026-08-09 20:15:34.476221
+548,150,A,The room has twenty chairs.,f,1,2026-08-09 20:15:34.476221
+549,150,B,It's on the second floor.,f,2,2026-08-09 20:15:34.476221
+550,150,C,"Yes, for Thursday afternoon.",t,3,2026-08-09 20:15:34.476221
+551,151,A,It went very well.,t,1,2026-08-09 20:15:34.476221
+552,151,B,The interview is tomorrow.,f,2,2026-08-09 20:15:34.476221
+553,151,C,At the downtown office.,f,3,2026-08-09 20:15:34.476221
+554,152,A,The airport is forty minutes away.,f,1,2026-08-09 20:15:34.476221
+555,152,B,Around seven in the morning.,t,2,2026-08-09 20:15:34.476221
+556,152,C,We flew there last month.,f,3,2026-08-09 20:15:34.476221
+557,153,A,It has a convenient location.,t,1,2026-08-09 20:15:34.476221
+558,153,B,I stayed there for three nights.,f,2,2026-08-09 20:15:34.476221
+559,153,C,The hotel is fully booked.,f,3,2026-08-09 20:15:34.476221
+560,154,A,In the main auditorium.,f,1,2026-08-09 20:15:34.476221
+561,154,B,At two o'clock.,f,2,2026-08-09 20:15:34.476221
+562,154,C,Professor Adams is.,t,3,2026-08-09 20:15:34.476221
+563,155,A,Certainly. I'll look at them now.,t,1,2026-08-09 20:15:34.476221
+564,155,B,The numbers are on page five.,f,2,2026-08-09 20:15:34.476221
+565,155,C,We need more numbers.,f,3,2026-08-09 20:15:34.476221
+566,156,A,The restaurant was crowded.,f,1,2026-08-09 20:15:34.476221
+567,156,B,I ordered grilled chicken.,t,2,2026-08-09 20:15:34.476221
+568,156,C,Dinner starts at seven.,f,3,2026-08-09 20:15:34.476221
+569,157,A,At the ticket counter.,t,1,2026-08-09 20:15:34.476221
+570,157,B,The train leaves at ten.,f,2,2026-08-09 20:15:34.476221
+571,157,C,I usually take the bus.,f,3,2026-08-09 20:15:34.476221
+572,158,A,The door is made of glass.,f,1,2026-08-09 20:15:34.476221
+573,158,B,"Yes, I locked it.",t,2,2026-08-09 20:15:34.476221
+574,158,C,I bought a new lock.,f,3,2026-08-09 20:15:34.476221
+575,159,A,The copier is downstairs.,f,1,2026-08-09 20:15:34.476221
+576,159,B,I printed them yesterday.,f,2,2026-08-09 20:15:34.476221
+577,159,C,"Just five, please.",t,3,2026-08-09 20:15:34.476221
+578,160,A,That's a good idea.,t,1,2026-08-09 20:15:34.476221
+579,160,B,The break room is nearby.,f,2,2026-08-09 20:15:34.476221
+580,160,C,It lasted fifteen minutes.,f,3,2026-08-09 20:15:34.476221
+581,161,A,It is next to the bank.,f,1,2026-08-09 20:15:34.476221
+582,161,B,Last Saturday.,t,2,2026-08-09 20:15:34.476221
+583,161,C,The store sells furniture.,f,3,2026-08-09 20:15:34.476221
+584,162,A,The IT technician can.,t,1,2026-08-09 20:15:34.476221
+585,162,B,It's on my desk.,f,2,2026-08-09 20:15:34.476221
+586,162,C,I bought it last year.,f,3,2026-08-09 20:15:34.476221
+587,163,A,Around noon.,f,1,2026-08-09 20:15:34.476221
+588,163,B,At the café across the street.,t,2,2026-08-09 20:15:34.476221
+589,163,C,I ordered a sandwich.,f,3,2026-08-09 20:15:34.476221
+590,164,A,"Yes, I'd love to.",t,1,2026-08-09 20:15:34.476221
+591,164,B,Dinner is at seven.,f,2,2026-08-09 20:15:34.476221
+592,164,C,The restaurant is nearby.,f,3,2026-08-09 20:15:34.476221
+593,165,A,At the fitness center.,f,1,2026-08-09 20:15:34.476221
+594,165,B,Usually three times a week.,t,2,2026-08-09 20:15:34.476221
+595,165,C,I exercised yesterday.,f,3,2026-08-09 20:15:34.476221
+596,166,A,There's a sale at the store.,t,1,2026-08-09 20:15:34.476221
+597,166,B,The store closes at six.,f,2,2026-08-09 20:15:34.476221
+598,166,C,They are standing near the entrance.,f,3,2026-08-09 20:15:34.476221
+599,167,A,The form is two pages long.,f,1,2026-08-09 20:15:34.476221
+600,167,B,At the bottom of the page.,t,2,2026-08-09 20:15:34.476221
+601,167,C,I signed it yesterday.,f,3,2026-08-09 20:15:34.476221
+602,168,A,"Yes, I read it this morning.",t,1,2026-08-09 20:15:34.476221
+603,168,B,The email was very long.,f,2,2026-08-09 20:15:34.476221
+604,168,C,I sent it yesterday.,f,3,2026-08-09 20:15:34.476221
+605,169,A,It starts at nine.,f,1,2026-08-09 20:15:34.476221
+606,169,B,The new marketing plan.,t,2,2026-08-09 20:15:34.476221
+607,169,C,In the conference room.,f,3,2026-08-09 20:15:34.476221
+608,170,A,"Sure, no problem.",t,1,2026-08-09 20:15:34.476221
+609,170,B,The window is very large.,f,2,2026-08-09 20:15:34.476221
+610,170,C,I opened it this morning.,f,3,2026-08-09 20:15:34.476221
+611,171,A,She went to New York.,f,1,2026-08-09 20:15:34.476221
+612,171,B,She should be back tomorrow.,t,2,2026-08-09 20:15:34.476221
+613,171,C,Her office is on the third floor.,f,3,2026-08-09 20:15:34.476221
+614,172,A,The purchasing manager did.,t,1,2026-08-09 20:15:34.476221
+615,172,B,It arrived yesterday.,f,2,2026-08-09 20:15:34.476221
+616,172,C,It cost several thousand dollars.,f,3,2026-08-09 20:15:34.476221
+617,173,A,My phone is almost out of power.,f,1,2026-08-09 20:15:34.476221
+618,173,B,There's an outlet beside the desk.,t,2,2026-08-09 20:15:34.476221
+619,173,C,I bought a new charger.,f,3,2026-08-09 20:15:34.476221
+620,174,A,The product was too expensive.,f,1,2026-08-09 20:15:34.476221
+621,174,B,She bought it online.,f,2,2026-08-09 20:15:34.476221
+622,174,C,It was damaged.,t,3,2026-08-09 20:15:34.476221
+623,175,A,For almost five years.,t,1,2026-08-09 20:15:34.476221
+624,175,B,In the sales department.,f,2,2026-08-09 20:15:34.476221
+625,175,C,I work from Monday to Friday.,f,3,2026-08-09 20:15:34.476221
+626,176,A,The restaurant is full tonight.,f,1,2026-08-09 20:15:34.476221
+627,176,B,"Yes, under the name Lee.",t,2,2026-08-09 20:15:34.476221
+628,176,C,We had dinner there last week.,f,3,2026-08-09 20:15:34.476221
+629,177,A,The presentation starts at ten.,f,1,2026-08-09 20:15:34.476221
+630,177,B,You can use the projector.,f,2,2026-08-09 20:15:34.476221
+631,177,C,Bring a copy of the report.,t,3,2026-08-09 20:15:34.476221
+632,178,A,He's working at the downtown branch.,t,1,2026-08-09 20:15:34.476221
+633,178,B,He started last month.,f,2,2026-08-09 20:15:34.476221
+634,178,C,He usually works on Fridays.,f,3,2026-08-09 20:15:34.476221
+635,179,A,The door is on the left.,f,1,2026-08-09 20:15:34.476221
+636,179,B,Not at all.,t,2,2026-08-09 20:15:34.476221
+637,179,C,I closed it earlier.,f,3,2026-08-09 20:15:34.476221
+638,180,A,From Terminal Two.,f,1,2026-08-09 20:15:34.476221
+639,180,B,It takes about three hours.,f,2,2026-08-09 20:15:34.476221
+640,180,C,At 6:30 this evening.,t,3,2026-08-09 20:15:34.476221
+641,181,A,Ms. Garcia is.,t,1,2026-08-09 20:15:34.476221
+642,181,B,In the main hall.,f,2,2026-08-09 20:15:34.476221
+643,181,C,At ten o'clock.,f,3,2026-08-09 20:15:34.476221
+644,182,A,The office is on the second floor.,f,1,2026-08-09 20:15:34.476221
+645,182,B,Most employees are working from home.,t,2,2026-08-09 20:15:34.476221
+646,182,C,It usually gets busy at noon.,f,3,2026-08-09 20:15:34.476221
+647,183,A,"By email, please.",t,1,2026-08-09 20:15:34.476221
+648,183,B,The documents are ready.,f,2,2026-08-09 20:15:34.476221
+649,183,C,I sent them yesterday.,f,3,2026-08-09 20:15:34.476221
+650,184,A,It copies documents quickly.,f,1,2026-08-09 20:15:34.476221
+651,184,B,There's one next to the reception desk.,t,2,2026-08-09 20:15:34.476221
+652,184,C,I used it this morning.,f,3,2026-08-09 20:15:34.476221
+653,185,A,The proposal is twelve pages.,f,1,2026-08-09 20:15:34.476221
+654,185,B,The manager is in a meeting.,f,2,2026-08-09 20:15:34.476221
+655,185,C,"Yes, she approved it yesterday.",t,3,2026-08-09 20:15:34.476221
+656,186,A,It should be ready this afternoon.,t,1,2026-08-09 20:15:34.476221
+657,186,B,The order is for office supplies.,f,2,2026-08-09 20:15:34.476221
+658,186,C,I ordered it online.,f,3,2026-08-09 20:15:34.476221
+659,187,A,The airport is about twenty miles away.,f,1,2026-08-09 20:15:34.476221
+660,187,B,James said he would.,t,2,2026-08-09 20:15:34.476221
+661,187,C,Our flight leaves at noon.,f,3,2026-08-09 20:15:34.476221
+662,188,A,"Sure, there's a great Italian place nearby.",t,1,2026-08-09 20:15:34.476221
+663,188,B,The restaurant opens at five.,f,2,2026-08-09 20:15:34.476221
+664,188,C,I had lunch there yesterday.,f,3,2026-08-09 20:15:34.476221
+665,189,A,The meeting is in Room 204.,f,1,2026-08-09 20:15:34.476221
+666,189,B,About twenty minutes.,t,2,2026-08-09 20:15:34.476221
+667,189,C,We discussed it yesterday.,f,3,2026-08-09 20:15:34.476221
+668,190,A,I think they're in the top drawer.,t,1,2026-08-09 20:15:34.476221
+669,190,B,The storage room is locked.,f,2,2026-08-09 20:15:34.476221
+670,190,C,I opened the room yesterday.,f,3,2026-08-09 20:15:34.476221
+671,191,A,It's across from the bank.,f,1,2026-08-09 20:15:34.476221
+672,191,B,I need to mail a package.,t,2,2026-08-09 20:15:34.476221
+673,191,C,It closes at five.,f,3,2026-08-09 20:15:34.476221
+674,192,A,"Not yet, we're still looking at venues.",t,1,2026-08-09 20:15:34.476221
+675,192,B,The event is next month.,f,2,2026-08-09 20:15:34.476221
+676,192,C,About two hundred people.,f,3,2026-08-09 20:15:34.476221
+677,193,A,The files are confidential.,f,1,2026-08-09 20:15:34.476221
+678,193,B,I moved them to the archive room.,t,2,2026-08-09 20:15:34.476221
+679,193,C,They were created last year.,f,3,2026-08-09 20:15:34.476221
+680,194,A,It was ordered last week.,f,1,2026-08-09 20:15:34.476221
+1301,201,A,Preparing printer paper,t,1,2026-08-09 21:13:23.227169
+1302,201,B,Changing the office supplies,f,2,2026-08-09 21:13:23.227169
+1303,201,C,Visiting the copy room,f,3,2026-08-09 21:13:23.227169
+1304,201,D,I'll take care of it this afternoon.,f,4,2026-08-09 21:13:23.227169
+1305,202,A,The main office,f,1,2026-08-09 21:13:23.227169
+1306,202,B,the storage room,t,2,2026-08-09 21:13:23.227169
+1307,202,C,the copy room,f,3,2026-08-09 21:13:23.227169
+1308,202,D,I'll check the schedule and let you know.,f,4,2026-08-09 21:13:23.227169
+1309,203,A,this afternoon,t,1,2026-08-09 21:13:23.227169
+1310,203,B,before lunch,f,2,2026-08-09 21:13:23.227169
+1311,203,C,On Tuesday,f,3,2026-08-09 21:13:23.227169
+1312,203,D,It's available in the main office.,f,4,2026-08-09 21:13:23.227169
+1313,204,A,Preparing the sales meeting,t,1,2026-08-09 21:13:23.227169
+1314,204,B,Changing the meeting schedule,f,2,2026-08-09 21:13:23.227169
+1315,204,C,Visiting the main conference room,f,3,2026-08-09 21:13:23.227169
+1316,204,D,I'll take care of it this afternoon.,f,4,2026-08-09 21:13:23.227169
+1317,205,A,The main office,f,1,2026-08-09 21:13:23.227169
+1318,205,B,Room 204,t,2,2026-08-09 21:13:23.227169
+1319,205,C,the main conference room,f,3,2026-08-09 21:13:23.227169
+1320,205,D,I'll check the schedule and let you know.,f,4,2026-08-09 21:13:23.227169
+1321,206,A,tomorrow morning,t,1,2026-08-09 21:13:23.227169
+401,101,A,They arrived this morning.,f,1,2026-08-09 20:15:34.476221
+402,101,B,On Wednesday afternoon.,t,2,2026-08-09 20:15:34.476221
+403,101,C,In the computer room.,f,3,2026-08-09 20:15:34.476221
+404,102,A,Ms. Carter is.,t,1,2026-08-09 20:15:34.476221
+405,102,B,At three o'clock.,f,2,2026-08-09 20:15:34.476221
+406,102,C,In the conference room.,f,3,2026-08-09 20:15:34.476221
+407,103,A,About twenty pages.,f,1,2026-08-09 20:15:34.476221
+408,103,B,Mr. Brown printed them.,f,2,2026-08-09 20:15:34.476221
+409,103,C,On the desk by the window.,t,3,2026-08-09 20:15:34.476221
+410,104,A,Because the manager was ill.,t,1,2026-08-09 20:15:34.476221
+411,104,B,In the main conference room.,f,2,2026-08-09 20:15:34.476221
+412,104,C,It lasted about an hour.,f,3,2026-08-09 20:15:34.476221
+413,105,A,At the convention center.,f,1,2026-08-09 20:15:34.476221
+414,105,B,About fifty people.,t,2,2026-08-09 20:15:34.476221
+415,105,C,Next Monday.,f,3,2026-08-09 20:15:34.476221
+416,106,A,"Yes, I sent it yesterday.",t,1,2026-08-09 20:15:34.476221
+417,106,B,The client is in Chicago.,f,2,2026-08-09 20:15:34.476221
+418,106,C,It was about five hundred dollars.,f,3,2026-08-09 20:15:34.476221
+419,107,A,From platform six.,f,1,2026-08-09 20:15:34.476221
+420,107,B,It takes about two hours.,f,2,2026-08-09 20:15:34.476221
+421,107,C,At 8:45.,t,3,2026-08-09 20:15:34.476221
+422,108,A,"Sure, give me a minute.",t,1,2026-08-09 20:15:34.476221
+423,108,B,The table is made of wood.,f,2,2026-08-09 20:15:34.476221
+424,108,C,It is in the dining room.,f,3,2026-08-09 20:15:34.476221
+1322,206,B,Thursday afternoon,f,2,2026-08-09 21:13:23.227169
+1323,206,C,On Wednesday,f,3,2026-08-09 21:13:23.227169
+1324,206,D,It's available in the main office.,f,4,2026-08-09 21:13:23.227169
+1325,207,A,Preparing a hotel room,t,1,2026-08-09 21:13:23.227169
+1326,207,B,Changing the business trip,f,2,2026-08-09 21:13:23.227169
+1327,207,C,Visiting the airport counter,f,3,2026-08-09 21:13:23.227169
+1328,207,D,I'll take care of it this afternoon.,f,4,2026-08-09 21:13:23.227169
+1329,208,A,The main office,f,1,2026-08-09 21:13:23.227169
+1330,208,B,the downtown hotel,t,2,2026-08-09 21:13:23.227169
+1331,208,C,the airport counter,f,3,2026-08-09 21:13:23.227169
+1332,208,D,I'll check the schedule and let you know.,f,4,2026-08-09 21:13:23.227169
+1333,209,A,Friday evening,t,1,2026-08-09 21:13:23.227169
+1334,209,B,Sunday morning,f,2,2026-08-09 21:13:23.227169
+1335,209,C,On Thursday,f,3,2026-08-09 21:13:23.227169
+1336,209,D,It's available in the main office.,f,4,2026-08-09 21:13:23.227169
+1337,210,A,Preparing a dinner reservation,t,1,2026-08-09 21:13:23.227169
+1338,210,B,Changing the restaurant reservation,f,2,2026-08-09 21:13:23.227169
+1339,210,C,Visiting the café downstairs,f,3,2026-08-09 21:13:23.227169
+1340,210,D,I'll take care of it this afternoon.,f,4,2026-08-09 21:13:23.227169
+1341,211,A,The main office,f,1,2026-08-09 21:13:23.227169
+1342,211,B,the Italian restaurant,t,2,2026-08-09 21:13:23.227169
+1343,211,C,the café downstairs,f,3,2026-08-09 21:13:23.227169
+1344,211,D,I'll check the schedule and let you know.,f,4,2026-08-09 21:13:23.227169
+1345,212,A,seven o'clock,t,1,2026-08-09 21:13:23.227169
+1346,212,B,twelve thirty,f,2,2026-08-09 21:13:23.227169
+1347,212,C,On Friday,f,3,2026-08-09 21:13:23.227169
+1348,212,D,It's available in the main office.,f,4,2026-08-09 21:13:23.227169
+1349,213,A,Preparing train tickets,t,1,2026-08-09 21:13:23.227169
+1350,213,B,Changing the train travel,f,2,2026-08-09 21:13:23.227169
+1351,213,C,Visiting the ticket office,f,3,2026-08-09 21:13:23.227169
+1352,213,D,I'll take care of it this afternoon.,f,4,2026-08-09 21:13:23.227169
+1353,214,A,The main office,f,1,2026-08-09 21:13:23.227169
+1354,214,B,the station,t,2,2026-08-09 21:13:23.227169
+1355,214,C,the ticket office,f,3,2026-08-09 21:13:23.227169
+1356,214,D,I'll check the schedule and let you know.,f,4,2026-08-09 21:13:23.227169
+1357,215,A,Saturday morning,t,1,2026-08-09 21:13:23.227169
+1358,215,B,Monday evening,f,2,2026-08-09 21:13:23.227169
+1359,215,C,On Monday,f,3,2026-08-09 21:13:23.227169
+1360,215,D,It's available in the main office.,f,4,2026-08-09 21:13:23.227169
+1361,216,A,Preparing conference registration,t,1,2026-08-09 21:13:23.227169
+1362,216,B,Changing the conference,f,2,2026-08-09 21:13:23.227169
+1363,216,C,Visiting the registration desk,f,3,2026-08-09 21:13:23.227169
+1364,216,D,I'll take care of it this afternoon.,f,4,2026-08-09 21:13:23.227169
+1365,217,A,The main office,f,1,2026-08-09 21:13:23.227169
+1366,217,B,the convention center,t,2,2026-08-09 21:13:23.227169
+1367,217,C,the registration desk,f,3,2026-08-09 21:13:23.227169
+1368,217,D,I'll check the schedule and let you know.,f,4,2026-08-09 21:13:23.227169
+1369,218,A,next Monday,t,1,2026-08-09 21:13:23.227169
+1370,218,B,Tuesday,f,2,2026-08-09 21:13:23.227169
+1371,218,C,On Tuesday,f,3,2026-08-09 21:13:23.227169
+1372,218,D,It's available in the main office.,f,4,2026-08-09 21:13:23.227169
+1373,219,A,Preparing a replacement order,t,1,2026-08-09 21:13:23.227169
+1374,219,B,Changing the customer order,f,2,2026-08-09 21:13:23.227169
+1375,219,C,Visiting the service counter,f,3,2026-08-09 21:13:23.227169
+1376,219,D,I'll take care of it this afternoon.,f,4,2026-08-09 21:13:23.227169
+1377,220,A,The main office,f,1,2026-08-09 21:13:23.227169
+1378,220,B,the customer service desk,t,2,2026-08-09 21:13:23.227169
+1379,220,C,the service counter,f,3,2026-08-09 21:13:23.227169
+1380,220,D,I'll check the schedule and let you know.,f,4,2026-08-09 21:13:23.227169
+1381,221,A,next week,t,1,2026-08-09 21:13:23.227169
+1382,221,B,Wednesday,f,2,2026-08-09 21:13:23.227169
+1383,221,C,On Wednesday,f,3,2026-08-09 21:13:23.227169
+1384,221,D,It's available in the main office.,f,4,2026-08-09 21:13:23.227169
+1385,222,A,Preparing the project report,t,1,2026-08-09 21:13:23.227169
+1386,222,B,Changing the project deadline,f,2,2026-08-09 21:13:23.227169
+1387,222,C,Visiting the finance department,f,3,2026-08-09 21:13:23.227169
+1388,222,D,I'll take care of it this afternoon.,f,4,2026-08-09 21:13:23.227169
+1389,223,A,The main office,f,1,2026-08-09 21:13:23.227169
+1390,223,B,the design office,t,2,2026-08-09 21:13:23.227169
+1391,223,C,the finance department,f,3,2026-08-09 21:13:23.227169
+1392,223,D,I'll check the schedule and let you know.,f,4,2026-08-09 21:13:23.227169
+1393,224,A,Friday,t,1,2026-08-09 21:13:23.227169
+1394,224,B,next Friday,f,2,2026-08-09 21:13:23.227169
+1395,224,C,On Thursday,f,3,2026-08-09 21:13:23.227169
+1396,224,D,It's available in the main office.,f,4,2026-08-09 21:13:23.227169
+1397,225,A,Preparing the office computer,t,1,2026-08-09 21:13:23.227169
+1398,225,B,Changing the equipment repair,f,2,2026-08-09 21:13:23.227169
+425,109,A,The restaurant is downtown.,f,1,2026-08-09 20:15:34.476221
+1399,225,C,Visiting the repair center,f,3,2026-08-09 21:13:23.227169
+1400,225,D,I'll take care of it this afternoon.,f,4,2026-08-09 21:13:23.227169
+1401,226,A,The main office,f,1,2026-08-09 21:13:23.227169
+1402,226,B,the IT department,t,2,2026-08-09 21:13:23.227169
+1403,226,C,the repair center,f,3,2026-08-09 21:13:23.227169
+1404,226,D,I'll check the schedule and let you know.,f,4,2026-08-09 21:13:23.227169
+1405,227,A,this afternoon,t,1,2026-08-09 21:13:23.227169
+1406,227,B,tomorrow,f,2,2026-08-09 21:13:23.227169
+1407,227,C,On Friday,f,3,2026-08-09 21:13:23.227169
+1408,227,D,It's available in the main office.,f,4,2026-08-09 21:13:23.227169
+1409,228,A,Preparing a taxi,t,1,2026-08-09 21:13:23.227169
+1410,228,B,Changing the airport plans,f,2,2026-08-09 21:13:23.227169
+1411,228,C,Visiting the hotel entrance,f,3,2026-08-09 21:13:23.227169
+1412,228,D,I'll take care of it this afternoon.,f,4,2026-08-09 21:13:23.227169
+1413,229,A,The main office,f,1,2026-08-09 21:13:23.227169
+1414,229,B,the airport,t,2,2026-08-09 21:13:23.227169
+1415,229,C,the hotel entrance,f,3,2026-08-09 21:13:23.227169
+1416,229,D,I'll check the schedule and let you know.,f,4,2026-08-09 21:13:23.227169
+1417,230,A,six thirty,t,1,2026-08-09 21:13:23.227169
+1418,230,B,seven fifteen,f,2,2026-08-09 21:13:23.227169
+1419,230,C,On Monday,f,3,2026-08-09 21:13:23.227169
+1420,230,D,It's available in the main office.,f,4,2026-08-09 21:13:23.227169
+1421,231,A,Preparing printer paper,t,1,2026-08-09 21:13:23.227169
+1422,231,B,Changing the office supplies,f,2,2026-08-09 21:13:23.227169
+1423,231,C,Visiting the copy room,f,3,2026-08-09 21:13:23.227169
+1424,231,D,I'll take care of it this afternoon.,f,4,2026-08-09 21:13:23.227169
+1425,232,A,The main office,f,1,2026-08-09 21:13:23.227169
+1426,232,B,the storage room,t,2,2026-08-09 21:13:23.227169
+1427,232,C,the copy room,f,3,2026-08-09 21:13:23.227169
+1428,232,D,I'll check the schedule and let you know.,f,4,2026-08-09 21:13:23.227169
+1429,233,A,this afternoon,t,1,2026-08-09 21:13:23.227169
+1430,233,B,before lunch,f,2,2026-08-09 21:13:23.227169
+1431,233,C,On Tuesday,f,3,2026-08-09 21:13:23.227169
+1432,233,D,It's available in the main office.,f,4,2026-08-09 21:13:23.227169
+1433,234,A,Preparing the sales meeting,t,1,2026-08-09 21:13:23.227169
+1434,234,B,Changing the meeting schedule,f,2,2026-08-09 21:13:23.227169
+1435,234,C,Visiting the main conference room,f,3,2026-08-09 21:13:23.227169
+1436,234,D,I'll take care of it this afternoon.,f,4,2026-08-09 21:13:23.227169
+1437,235,A,The main office,f,1,2026-08-09 21:13:23.227169
+1438,235,B,Room 204,t,2,2026-08-09 21:13:23.227169
+1439,235,C,the main conference room,f,3,2026-08-09 21:13:23.227169
+1440,235,D,I'll check the schedule and let you know.,f,4,2026-08-09 21:13:23.227169
+1441,236,A,tomorrow morning,t,1,2026-08-09 21:13:23.227169
+1442,236,B,Thursday afternoon,f,2,2026-08-09 21:13:23.227169
+1443,236,C,On Wednesday,f,3,2026-08-09 21:13:23.227169
+1444,236,D,It's available in the main office.,f,4,2026-08-09 21:13:23.227169
+1445,237,A,Preparing a hotel room,t,1,2026-08-09 21:13:23.227169
+1446,237,B,Changing the business trip,f,2,2026-08-09 21:13:23.227169
+1447,237,C,Visiting the airport counter,f,3,2026-08-09 21:13:23.227169
+1448,237,D,I'll take care of it this afternoon.,f,4,2026-08-09 21:13:23.227169
+1449,238,A,The main office,f,1,2026-08-09 21:13:23.227169
+1450,238,B,the downtown hotel,t,2,2026-08-09 21:13:23.227169
+1451,238,C,the airport counter,f,3,2026-08-09 21:13:23.227169
+1452,238,D,I'll check the schedule and let you know.,f,4,2026-08-09 21:13:23.227169
+1453,239,A,Friday evening,t,1,2026-08-09 21:13:23.227169
+1454,239,B,Sunday morning,f,2,2026-08-09 21:13:23.227169
+1455,239,C,On Thursday,f,3,2026-08-09 21:13:23.227169
+1456,239,D,It's available in the main office.,f,4,2026-08-09 21:13:23.227169
+1457,240,A,Preparing a dinner reservation,t,1,2026-08-09 21:13:23.227169
+1458,240,B,Changing the restaurant reservation,f,2,2026-08-09 21:13:23.227169
+1459,240,C,Visiting the café downstairs,f,3,2026-08-09 21:13:23.227169
+1460,240,D,I'll take care of it this afternoon.,f,4,2026-08-09 21:13:23.227169
+1461,241,A,The main office,f,1,2026-08-09 21:13:23.227169
+1462,241,B,the Italian restaurant,t,2,2026-08-09 21:13:23.227169
+1463,241,C,the café downstairs,f,3,2026-08-09 21:13:23.227169
+1464,241,D,I'll check the schedule and let you know.,f,4,2026-08-09 21:13:23.227169
+1465,242,A,seven o'clock,t,1,2026-08-09 21:13:23.227169
+1466,242,B,twelve thirty,f,2,2026-08-09 21:13:23.227169
+1467,242,C,On Friday,f,3,2026-08-09 21:13:23.227169
+1468,242,D,It's available in the main office.,f,4,2026-08-09 21:13:23.227169
+1469,243,A,Preparing train tickets,t,1,2026-08-09 21:13:23.227169
+1470,243,B,Changing the train travel,f,2,2026-08-09 21:13:23.227169
+1471,243,C,Visiting the ticket office,f,3,2026-08-09 21:13:23.227169
+1472,243,D,I'll take care of it this afternoon.,f,4,2026-08-09 21:13:23.227169
+1473,244,A,The main office,f,1,2026-08-09 21:13:23.227169
+1474,244,B,the station,t,2,2026-08-09 21:13:23.227169
+1475,244,C,the ticket office,f,3,2026-08-09 21:13:23.227169
+1476,244,D,I'll check the schedule and let you know.,f,4,2026-08-09 21:13:23.227169
+1477,245,A,Saturday morning,t,1,2026-08-09 21:13:23.227169
+1478,245,B,Monday evening,f,2,2026-08-09 21:13:23.227169
+1479,245,C,On Monday,f,3,2026-08-09 21:13:23.227169
+1480,245,D,It's available in the main office.,f,4,2026-08-09 21:13:23.227169
+1481,246,A,Preparing conference registration,t,1,2026-08-09 21:13:23.227169
+1482,246,B,Changing the conference,f,2,2026-08-09 21:13:23.227169
+1483,246,C,Visiting the registration desk,f,3,2026-08-09 21:13:23.227169
+1484,246,D,I'll take care of it this afternoon.,f,4,2026-08-09 21:13:23.227169
+1485,247,A,The main office,f,1,2026-08-09 21:13:23.227169
+1486,247,B,the convention center,t,2,2026-08-09 21:13:23.227169
+1487,247,C,the registration desk,f,3,2026-08-09 21:13:23.227169
+1488,247,D,I'll check the schedule and let you know.,f,4,2026-08-09 21:13:23.227169
+1489,248,A,next Monday,t,1,2026-08-09 21:13:23.227169
+1490,248,B,Tuesday,f,2,2026-08-09 21:13:23.227169
+1491,248,C,On Tuesday,f,3,2026-08-09 21:13:23.227169
+1492,248,D,It's available in the main office.,f,4,2026-08-09 21:13:23.227169
+1493,249,A,Preparing a replacement order,t,1,2026-08-09 21:13:23.227169
+1494,249,B,Changing the customer order,f,2,2026-08-09 21:13:23.227169
+1495,249,C,Visiting the service counter,f,3,2026-08-09 21:13:23.227169
+1496,249,D,I'll take care of it this afternoon.,f,4,2026-08-09 21:13:23.227169
+1497,250,A,The main office,f,1,2026-08-09 21:13:23.227169
+1498,250,B,the customer service desk,t,2,2026-08-09 21:13:23.227169
+1499,250,C,the service counter,f,3,2026-08-09 21:13:23.227169
+1500,250,D,I'll check the schedule and let you know.,f,4,2026-08-09 21:13:23.227169
+1501,251,A,next week,t,1,2026-08-09 21:13:23.227169
+1502,251,B,Wednesday,f,2,2026-08-09 21:13:23.227169
+1503,251,C,On Wednesday,f,3,2026-08-09 21:13:23.227169
+1504,251,D,It's available in the main office.,f,4,2026-08-09 21:13:23.227169
+1505,252,A,Preparing the project report,t,1,2026-08-09 21:13:23.227169
+1506,252,B,Changing the project deadline,f,2,2026-08-09 21:13:23.227169
+1507,252,C,Visiting the finance department,f,3,2026-08-09 21:13:23.227169
+1508,252,D,I'll take care of it this afternoon.,f,4,2026-08-09 21:13:23.227169
+1509,253,A,The main office,f,1,2026-08-09 21:13:23.227169
+1510,253,B,the design office,t,2,2026-08-09 21:13:23.227169
+1511,253,C,the finance department,f,3,2026-08-09 21:13:23.227169
+1512,253,D,I'll check the schedule and let you know.,f,4,2026-08-09 21:13:23.227169
+1513,254,A,Friday,t,1,2026-08-09 21:13:23.227169
+1514,254,B,next Friday,f,2,2026-08-09 21:13:23.227169
+1515,254,C,On Thursday,f,3,2026-08-09 21:13:23.227169
+1516,254,D,It's available in the main office.,f,4,2026-08-09 21:13:23.227169
+1517,255,A,Preparing the office computer,t,1,2026-08-09 21:13:23.227169
+1518,255,B,Changing the equipment repair,f,2,2026-08-09 21:13:23.227169
+1519,255,C,Visiting the repair center,f,3,2026-08-09 21:13:23.227169
+1520,255,D,I'll take care of it this afternoon.,f,4,2026-08-09 21:13:23.227169
+1521,256,A,The main office,f,1,2026-08-09 21:13:23.227169
+1522,256,B,the IT department,t,2,2026-08-09 21:13:23.227169
+1523,256,C,the repair center,f,3,2026-08-09 21:13:23.227169
+1524,256,D,I'll check the schedule and let you know.,f,4,2026-08-09 21:13:23.227169
+1525,257,A,this afternoon,t,1,2026-08-09 21:13:23.227169
+1526,257,B,tomorrow,f,2,2026-08-09 21:13:23.227169
+1527,257,C,On Friday,f,3,2026-08-09 21:13:23.227169
+1528,257,D,It's available in the main office.,f,4,2026-08-09 21:13:23.227169
+1529,258,A,Preparing a taxi,t,1,2026-08-09 21:13:23.227169
+1530,258,B,Changing the airport plans,f,2,2026-08-09 21:13:23.227169
+1531,258,C,Visiting the hotel entrance,f,3,2026-08-09 21:13:23.227169
+1532,258,D,I'll take care of it this afternoon.,f,4,2026-08-09 21:13:23.227169
+1533,259,A,The main office,f,1,2026-08-09 21:13:23.227169
+1534,259,B,the airport,t,2,2026-08-09 21:13:23.227169
+1535,259,C,the hotel entrance,f,3,2026-08-09 21:13:23.227169
+1536,259,D,I'll check the schedule and let you know.,f,4,2026-08-09 21:13:23.227169
+1537,260,A,six thirty,t,1,2026-08-09 21:13:23.227169
+1538,260,B,seven fifteen,f,2,2026-08-09 21:13:23.227169
+1539,260,C,On Monday,f,3,2026-08-09 21:13:23.227169
+1540,260,D,It's available in the main office.,f,4,2026-08-09 21:13:23.227169
+1541,261,A,Preparing printer paper,t,1,2026-08-09 21:13:23.227169
+1542,261,B,Changing the office supplies,f,2,2026-08-09 21:13:23.227169
+1543,261,C,Visiting the copy room,f,3,2026-08-09 21:13:23.227169
+1544,261,D,I'll take care of it this afternoon.,f,4,2026-08-09 21:13:23.227169
+1545,262,A,The main office,f,1,2026-08-09 21:13:23.227169
+1546,262,B,the storage room,t,2,2026-08-09 21:13:23.227169
+1547,262,C,the copy room,f,3,2026-08-09 21:13:23.227169
+1548,262,D,I'll check the schedule and let you know.,f,4,2026-08-09 21:13:23.227169
+1549,263,A,this afternoon,t,1,2026-08-09 21:13:23.227169
+1550,263,B,before lunch,f,2,2026-08-09 21:13:23.227169
+1551,263,C,On Tuesday,f,3,2026-08-09 21:13:23.227169
+1552,263,D,It's available in the main office.,f,4,2026-08-09 21:13:23.227169
+1553,264,A,Preparing the sales meeting,t,1,2026-08-09 21:13:23.227169
+1554,264,B,Changing the meeting schedule,f,2,2026-08-09 21:13:23.227169
+1555,264,C,Visiting the main conference room,f,3,2026-08-09 21:13:23.227169
+1556,264,D,I'll take care of it this afternoon.,f,4,2026-08-09 21:13:23.227169
+1557,265,A,The main office,f,1,2026-08-09 21:13:23.227169
+1558,265,B,Room 204,t,2,2026-08-09 21:13:23.227169
+1559,265,C,the main conference room,f,3,2026-08-09 21:13:23.227169
+1560,265,D,I'll check the schedule and let you know.,f,4,2026-08-09 21:13:23.227169
+1561,266,A,tomorrow morning,t,1,2026-08-09 21:13:23.227169
+1562,266,B,Thursday afternoon,f,2,2026-08-09 21:13:23.227169
+1563,266,C,On Wednesday,f,3,2026-08-09 21:13:23.227169
+1564,266,D,It's available in the main office.,f,4,2026-08-09 21:13:23.227169
+1565,267,A,Preparing a hotel room,t,1,2026-08-09 21:13:23.227169
+1566,267,B,Changing the business trip,f,2,2026-08-09 21:13:23.227169
+1567,267,C,Visiting the airport counter,f,3,2026-08-09 21:13:23.227169
+1568,267,D,I'll take care of it this afternoon.,f,4,2026-08-09 21:13:23.227169
+1569,268,A,The main office,f,1,2026-08-09 21:13:23.227169
+1570,268,B,the downtown hotel,t,2,2026-08-09 21:13:23.227169
+1571,268,C,the airport counter,f,3,2026-08-09 21:13:23.227169
+1572,268,D,I'll check the schedule and let you know.,f,4,2026-08-09 21:13:23.227169
+1573,269,A,Friday evening,t,1,2026-08-09 21:13:23.227169
+1574,269,B,Sunday morning,f,2,2026-08-09 21:13:23.227169
+1575,269,C,On Thursday,f,3,2026-08-09 21:13:23.227169
+1576,269,D,It's available in the main office.,f,4,2026-08-09 21:13:23.227169
+1577,270,A,Preparing a dinner reservation,t,1,2026-08-09 21:13:23.227169
+1578,270,B,Changing the restaurant reservation,f,2,2026-08-09 21:13:23.227169
+1579,270,C,Visiting the café downstairs,f,3,2026-08-09 21:13:23.227169
+1580,270,D,I'll take care of it this afternoon.,f,4,2026-08-09 21:13:23.227169
+1581,271,A,The main office,f,1,2026-08-09 21:13:23.227169
+1582,271,B,the Italian restaurant,t,2,2026-08-09 21:13:23.227169
+1583,271,C,the café downstairs,f,3,2026-08-09 21:13:23.227169
+1584,271,D,I'll check the schedule and let you know.,f,4,2026-08-09 21:13:23.227169
+1585,272,A,seven o'clock,t,1,2026-08-09 21:13:23.227169
+1586,272,B,twelve thirty,f,2,2026-08-09 21:13:23.227169
+1587,272,C,On Friday,f,3,2026-08-09 21:13:23.227169
+1588,272,D,It's available in the main office.,f,4,2026-08-09 21:13:23.227169
+1589,273,A,Preparing train tickets,t,1,2026-08-09 21:13:23.227169
+1590,273,B,Changing the train travel,f,2,2026-08-09 21:13:23.227169
+1591,273,C,Visiting the ticket office,f,3,2026-08-09 21:13:23.227169
+1592,273,D,I'll take care of it this afternoon.,f,4,2026-08-09 21:13:23.227169
+1593,274,A,The main office,f,1,2026-08-09 21:13:23.227169
+1594,274,B,the station,t,2,2026-08-09 21:13:23.227169
+1595,274,C,the ticket office,f,3,2026-08-09 21:13:23.227169
+1596,274,D,I'll check the schedule and let you know.,f,4,2026-08-09 21:13:23.227169
+1597,275,A,Saturday morning,t,1,2026-08-09 21:13:23.227169
+1598,275,B,Monday evening,f,2,2026-08-09 21:13:23.227169
+1599,275,C,On Monday,f,3,2026-08-09 21:13:23.227169
+1600,275,D,It's available in the main office.,f,4,2026-08-09 21:13:23.227169
+1601,276,A,Preparing conference registration,t,1,2026-08-09 21:13:23.227169
+1602,276,B,Changing the conference,f,2,2026-08-09 21:13:23.227169
+1603,276,C,Visiting the registration desk,f,3,2026-08-09 21:13:23.227169
+1604,276,D,I'll take care of it this afternoon.,f,4,2026-08-09 21:13:23.227169
+1605,277,A,The main office,f,1,2026-08-09 21:13:23.227169
+1606,277,B,the convention center,t,2,2026-08-09 21:13:23.227169
+1607,277,C,the registration desk,f,3,2026-08-09 21:13:23.227169
+1608,277,D,I'll check the schedule and let you know.,f,4,2026-08-09 21:13:23.227169
+1609,278,A,next Monday,t,1,2026-08-09 21:13:23.227169
+1610,278,B,Tuesday,f,2,2026-08-09 21:13:23.227169
+1611,278,C,On Tuesday,f,3,2026-08-09 21:13:23.227169
+1612,278,D,It's available in the main office.,f,4,2026-08-09 21:13:23.227169
+1613,279,A,Preparing a replacement order,t,1,2026-08-09 21:13:23.227169
+1614,279,B,Changing the customer order,f,2,2026-08-09 21:13:23.227169
+1615,279,C,Visiting the service counter,f,3,2026-08-09 21:13:23.227169
+1616,279,D,I'll take care of it this afternoon.,f,4,2026-08-09 21:13:23.227169
+1617,280,A,The main office,f,1,2026-08-09 21:13:23.227169
+1618,280,B,the customer service desk,t,2,2026-08-09 21:13:23.227169
+1619,280,C,the service counter,f,3,2026-08-09 21:13:23.227169
+1620,280,D,I'll check the schedule and let you know.,f,4,2026-08-09 21:13:23.227169
+1621,281,A,next week,t,1,2026-08-09 21:13:23.227169
+1622,281,B,Wednesday,f,2,2026-08-09 21:13:23.227169
+1623,281,C,On Wednesday,f,3,2026-08-09 21:13:23.227169
+1624,281,D,It's available in the main office.,f,4,2026-08-09 21:13:23.227169
+681,194,B,The delivery truck is outside.,f,2,2026-08-09 20:15:34.476221
+682,194,C,It should arrive tomorrow.,t,3,2026-08-09 20:15:34.476221
+683,195,A,The cleaning company comes every evening.,t,1,2026-08-09 20:15:34.476221
+684,195,B,The office is very clean.,f,2,2026-08-09 20:15:34.476221
+685,195,C,We cleaned it yesterday.,f,3,2026-08-09 20:15:34.476221
+686,196,A,The station closes at midnight.,f,1,2026-08-09 20:15:34.476221
+687,196,B,Sure. Go straight for two blocks.,t,2,2026-08-09 20:15:34.476221
+688,196,C,I took the train yesterday.,f,3,2026-08-09 20:15:34.476221
+689,197,A,I need some additional information.,t,1,2026-08-09 20:15:34.476221
+690,197,B,The report is on your desk.,f,2,2026-08-09 20:15:34.476221
+691,197,C,I finished another report yesterday.,f,3,2026-08-09 20:15:34.476221
+692,198,A,The books are due next week.,f,1,2026-08-09 20:15:34.476221
+693,198,B,I borrowed them yesterday.,f,2,2026-08-09 20:15:34.476221
+694,198,C,At the library's front desk.,t,3,2026-08-09 20:15:34.476221
+695,199,A,"Yes, that would be nice.",t,1,2026-08-09 20:15:34.476221
+696,199,B,The window is open.,f,2,2026-08-09 20:15:34.476221
+697,199,C,We sat there yesterday.,f,3,2026-08-09 20:15:34.476221
+698,200,A,It was held at the park.,f,1,2026-08-09 20:15:34.476221
+699,200,B,It was a lot of fun.,t,2,2026-08-09 20:15:34.476221
+700,200,C,The company organized it.,f,3,2026-08-09 20:15:34.476221
+1625,282,A,Preparing the project report,t,1,2026-08-09 21:13:23.227169
+1626,282,B,Changing the project deadline,f,2,2026-08-09 21:13:23.227169
+1627,282,C,Visiting the finance department,f,3,2026-08-09 21:13:23.227169
+1628,282,D,I'll take care of it this afternoon.,f,4,2026-08-09 21:13:23.227169
+1629,283,A,The main office,f,1,2026-08-09 21:13:23.227169
+1630,283,B,the design office,t,2,2026-08-09 21:13:23.227169
+1631,283,C,the finance department,f,3,2026-08-09 21:13:23.227169
+1632,283,D,I'll check the schedule and let you know.,f,4,2026-08-09 21:13:23.227169
+1633,284,A,Friday,t,1,2026-08-09 21:13:23.227169
+1634,284,B,next Friday,f,2,2026-08-09 21:13:23.227169
+1635,284,C,On Thursday,f,3,2026-08-09 21:13:23.227169
+1636,284,D,It's available in the main office.,f,4,2026-08-09 21:13:23.227169
+1637,285,A,Preparing the office computer,t,1,2026-08-09 21:13:23.227169
+1638,285,B,Changing the equipment repair,f,2,2026-08-09 21:13:23.227169
+1639,285,C,Visiting the repair center,f,3,2026-08-09 21:13:23.227169
+1640,285,D,I'll take care of it this afternoon.,f,4,2026-08-09 21:13:23.227169
+1641,286,A,The main office,f,1,2026-08-09 21:13:23.227169
+1642,286,B,the IT department,t,2,2026-08-09 21:13:23.227169
+1643,286,C,the repair center,f,3,2026-08-09 21:13:23.227169
+1644,286,D,I'll check the schedule and let you know.,f,4,2026-08-09 21:13:23.227169
+1645,287,A,this afternoon,t,1,2026-08-09 21:13:23.227169
+1646,287,B,tomorrow,f,2,2026-08-09 21:13:23.227169
+1647,287,C,On Friday,f,3,2026-08-09 21:13:23.227169
+1648,287,D,It's available in the main office.,f,4,2026-08-09 21:13:23.227169
+1649,288,A,Preparing a taxi,t,1,2026-08-09 21:13:23.227169
+1650,288,B,Changing the airport plans,f,2,2026-08-09 21:13:23.227169
+1651,288,C,Visiting the hotel entrance,f,3,2026-08-09 21:13:23.227169
+1652,288,D,I'll take care of it this afternoon.,f,4,2026-08-09 21:13:23.227169
+1653,289,A,The main office,f,1,2026-08-09 21:13:23.227169
+1654,289,B,the airport,t,2,2026-08-09 21:13:23.227169
+1655,289,C,the hotel entrance,f,3,2026-08-09 21:13:23.227169
+1656,289,D,I'll check the schedule and let you know.,f,4,2026-08-09 21:13:23.227169
+1657,290,A,six thirty,t,1,2026-08-09 21:13:23.227169
+1658,290,B,seven fifteen,f,2,2026-08-09 21:13:23.227169
+1659,290,C,On Monday,f,3,2026-08-09 21:13:23.227169
+1660,290,D,It's available in the main office.,f,4,2026-08-09 21:13:23.227169
+1661,291,A,Preparing printer paper,t,1,2026-08-09 21:13:23.227169
+1662,291,B,Changing the office supplies,f,2,2026-08-09 21:13:23.227169
+1663,291,C,Visiting the copy room,f,3,2026-08-09 21:13:23.227169
+1664,291,D,I'll take care of it this afternoon.,f,4,2026-08-09 21:13:23.227169
+1665,292,A,The main office,f,1,2026-08-09 21:13:23.227169
+1666,292,B,the storage room,t,2,2026-08-09 21:13:23.227169
+1667,292,C,the copy room,f,3,2026-08-09 21:13:23.227169
+1668,292,D,I'll check the schedule and let you know.,f,4,2026-08-09 21:13:23.227169
+1669,293,A,this afternoon,t,1,2026-08-09 21:13:23.227169
+1670,293,B,before lunch,f,2,2026-08-09 21:13:23.227169
+1671,293,C,On Tuesday,f,3,2026-08-09 21:13:23.227169
+1672,293,D,It's available in the main office.,f,4,2026-08-09 21:13:23.227169
+1673,294,A,Preparing the sales meeting,t,1,2026-08-09 21:13:23.227169
+1674,294,B,Changing the meeting schedule,f,2,2026-08-09 21:13:23.227169
+1675,294,C,Visiting the main conference room,f,3,2026-08-09 21:13:23.227169
+1676,294,D,I'll take care of it this afternoon.,f,4,2026-08-09 21:13:23.227169
+1677,295,A,The main office,f,1,2026-08-09 21:13:23.227169
+1678,295,B,Room 204,t,2,2026-08-09 21:13:23.227169
+1679,295,C,the main conference room,f,3,2026-08-09 21:13:23.227169
+1680,295,D,I'll check the schedule and let you know.,f,4,2026-08-09 21:13:23.227169
+1681,296,A,tomorrow morning,t,1,2026-08-09 21:13:23.227169
+1682,296,B,Thursday afternoon,f,2,2026-08-09 21:13:23.227169
+1683,296,C,On Wednesday,f,3,2026-08-09 21:13:23.227169
+1684,296,D,It's available in the main office.,f,4,2026-08-09 21:13:23.227169
+1685,297,A,Preparing a hotel room,t,1,2026-08-09 21:13:23.227169
+1686,297,B,Changing the business trip,f,2,2026-08-09 21:13:23.227169
+1687,297,C,Visiting the airport counter,f,3,2026-08-09 21:13:23.227169
+1688,297,D,I'll take care of it this afternoon.,f,4,2026-08-09 21:13:23.227169
+1689,298,A,The main office,f,1,2026-08-09 21:13:23.227169
+1690,298,B,the downtown hotel,t,2,2026-08-09 21:13:23.227169
+1691,298,C,the airport counter,f,3,2026-08-09 21:13:23.227169
+1692,298,D,I'll check the schedule and let you know.,f,4,2026-08-09 21:13:23.227169
+1693,299,A,Friday evening,t,1,2026-08-09 21:13:23.227169
+1694,299,B,Sunday morning,f,2,2026-08-09 21:13:23.227169
+1695,299,C,On Thursday,f,3,2026-08-09 21:13:23.227169
+1696,299,D,It's available in the main office.,f,4,2026-08-09 21:13:23.227169
+1697,300,A,Preparing a dinner reservation,t,1,2026-08-09 21:13:23.227169
+1698,300,B,Changing the restaurant reservation,f,2,2026-08-09 21:13:23.227169
+1699,300,C,Visiting the café downstairs,f,3,2026-08-09 21:13:23.227169
+1700,300,D,I'll take care of it this afternoon.,f,4,2026-08-09 21:13:23.227169
+1701,301,A,The main office,f,1,2026-08-09 21:13:23.227169
+1702,301,B,the Italian restaurant,t,2,2026-08-09 21:13:23.227169
+1703,301,C,the café downstairs,f,3,2026-08-09 21:13:23.227169
+1704,301,D,I'll check the schedule and let you know.,f,4,2026-08-09 21:13:23.227169
+1705,302,A,seven o'clock,t,1,2026-08-09 21:13:23.227169
+1706,302,B,twelve thirty,f,2,2026-08-09 21:13:23.227169
+1707,302,C,On Friday,f,3,2026-08-09 21:13:23.227169
+1708,302,D,It's available in the main office.,f,4,2026-08-09 21:13:23.227169
+1709,303,A,Preparing train tickets,t,1,2026-08-09 21:13:23.227169
+1710,303,B,Changing the train travel,f,2,2026-08-09 21:13:23.227169
+1711,303,C,Visiting the ticket office,f,3,2026-08-09 21:13:23.227169
+1712,303,D,I'll take care of it this afternoon.,f,4,2026-08-09 21:13:23.227169
+1713,304,A,The main office,f,1,2026-08-09 21:13:23.227169
+1714,304,B,the station,t,2,2026-08-09 21:13:23.227169
+1715,304,C,the ticket office,f,3,2026-08-09 21:13:23.227169
+1716,304,D,I'll check the schedule and let you know.,f,4,2026-08-09 21:13:23.227169
+1717,305,A,Saturday morning,t,1,2026-08-09 21:13:23.227169
+1718,305,B,Monday evening,f,2,2026-08-09 21:13:23.227169
+1719,305,C,On Monday,f,3,2026-08-09 21:13:23.227169
+1720,305,D,It's available in the main office.,f,4,2026-08-09 21:13:23.227169
+1721,306,A,Preparing conference registration,t,1,2026-08-09 21:13:23.227169
+1722,306,B,Changing the conference,f,2,2026-08-09 21:13:23.227169
+1723,306,C,Visiting the registration desk,f,3,2026-08-09 21:13:23.227169
+1724,306,D,I'll take care of it this afternoon.,f,4,2026-08-09 21:13:23.227169
+1725,307,A,The main office,f,1,2026-08-09 21:13:23.227169
+1726,307,B,the convention center,t,2,2026-08-09 21:13:23.227169
+1727,307,C,the registration desk,f,3,2026-08-09 21:13:23.227169
+1728,307,D,I'll check the schedule and let you know.,f,4,2026-08-09 21:13:23.227169
+1729,308,A,next Monday,t,1,2026-08-09 21:13:23.227169
+1730,308,B,Tuesday,f,2,2026-08-09 21:13:23.227169
+1731,308,C,On Tuesday,f,3,2026-08-09 21:13:23.227169
+1732,308,D,It's available in the main office.,f,4,2026-08-09 21:13:23.227169
+1733,309,A,Preparing a replacement order,t,1,2026-08-09 21:13:23.227169
+1734,309,B,Changing the customer order,f,2,2026-08-09 21:13:23.227169
+1735,309,C,Visiting the service counter,f,3,2026-08-09 21:13:23.227169
+1736,309,D,I'll take care of it this afternoon.,f,4,2026-08-09 21:13:23.227169
+1737,310,A,The main office,f,1,2026-08-09 21:13:23.227169
+1738,310,B,the customer service desk,t,2,2026-08-09 21:13:23.227169
+1739,310,C,the service counter,f,3,2026-08-09 21:13:23.227169
+1740,310,D,I'll check the schedule and let you know.,f,4,2026-08-09 21:13:23.227169
+1741,311,A,next week,t,1,2026-08-09 21:13:23.227169
+1742,311,B,Wednesday,f,2,2026-08-09 21:13:23.227169
+1743,311,C,On Wednesday,f,3,2026-08-09 21:13:23.227169
+1744,311,D,It's available in the main office.,f,4,2026-08-09 21:13:23.227169
+1745,312,A,Preparing the project report,t,1,2026-08-09 21:13:23.227169
+1746,312,B,Changing the project deadline,f,2,2026-08-09 21:13:23.227169
+1747,312,C,Visiting the finance department,f,3,2026-08-09 21:13:23.227169
+1748,312,D,I'll take care of it this afternoon.,f,4,2026-08-09 21:13:23.227169
+1749,313,A,The main office,f,1,2026-08-09 21:13:23.227169
+1750,313,B,the design office,t,2,2026-08-09 21:13:23.227169
+1751,313,C,the finance department,f,3,2026-08-09 21:13:23.227169
+1752,313,D,I'll check the schedule and let you know.,f,4,2026-08-09 21:13:23.227169
+1753,314,A,Friday,t,1,2026-08-09 21:13:23.227169
+1754,314,B,next Friday,f,2,2026-08-09 21:13:23.227169
+1755,314,C,On Thursday,f,3,2026-08-09 21:13:23.227169
+1756,314,D,It's available in the main office.,f,4,2026-08-09 21:13:23.227169
+1757,315,A,Preparing the office computer,t,1,2026-08-09 21:13:23.227169
+1758,315,B,Changing the equipment repair,f,2,2026-08-09 21:13:23.227169
+1759,315,C,Visiting the repair center,f,3,2026-08-09 21:13:23.227169
+1760,315,D,I'll take care of it this afternoon.,f,4,2026-08-09 21:13:23.227169
+1761,316,A,The main office,f,1,2026-08-09 21:13:23.227169
+1762,316,B,the IT department,t,2,2026-08-09 21:13:23.227169
+1763,316,C,the repair center,f,3,2026-08-09 21:13:23.227169
+1764,316,D,I'll check the schedule and let you know.,f,4,2026-08-09 21:13:23.227169
+1765,317,A,this afternoon,t,1,2026-08-09 21:13:23.227169
+1766,317,B,tomorrow,f,2,2026-08-09 21:13:23.227169
+1767,317,C,On Friday,f,3,2026-08-09 21:13:23.227169
+1768,317,D,It's available in the main office.,f,4,2026-08-09 21:13:23.227169
+1769,318,A,Preparing a taxi,t,1,2026-08-09 21:13:23.227169
+1770,318,B,Changing the airport plans,f,2,2026-08-09 21:13:23.227169
+1771,318,C,Visiting the hotel entrance,f,3,2026-08-09 21:13:23.227169
+1772,318,D,I'll take care of it this afternoon.,f,4,2026-08-09 21:13:23.227169
+1773,319,A,The main office,f,1,2026-08-09 21:13:23.227169
+1774,319,B,the airport,t,2,2026-08-09 21:13:23.227169
+1775,319,C,the hotel entrance,f,3,2026-08-09 21:13:23.227169
+1776,319,D,I'll check the schedule and let you know.,f,4,2026-08-09 21:13:23.227169
+1777,320,A,six thirty,t,1,2026-08-09 21:13:23.227169
+1778,320,B,seven fifteen,f,2,2026-08-09 21:13:23.227169
+1779,320,C,On Monday,f,3,2026-08-09 21:13:23.227169
+1780,320,D,It's available in the main office.,f,4,2026-08-09 21:13:23.227169
+1781,321,A,Preparing printer paper,t,1,2026-08-09 21:13:23.227169
+1782,321,B,Changing the office supplies,f,2,2026-08-09 21:13:23.227169
+1783,321,C,Visiting the copy room,f,3,2026-08-09 21:13:23.227169
+1784,321,D,I'll take care of it this afternoon.,f,4,2026-08-09 21:13:23.227169
+1785,322,A,The main office,f,1,2026-08-09 21:13:23.227169
+1786,322,B,the storage room,t,2,2026-08-09 21:13:23.227169
+1787,322,C,the copy room,f,3,2026-08-09 21:13:23.227169
+1788,322,D,I'll check the schedule and let you know.,f,4,2026-08-09 21:13:23.227169
+1789,323,A,this afternoon,t,1,2026-08-09 21:13:23.227169
+1791,323,C,On Tuesday,f,3,2026-08-09 21:13:23.227169
+1792,323,D,It's available in the main office.,f,4,2026-08-09 21:13:23.227169
+1793,324,A,Preparing the sales meeting,t,1,2026-08-09 21:13:23.227169
+1794,324,B,Changing the meeting schedule,f,2,2026-08-09 21:13:23.227169
+1795,324,C,Visiting the main conference room,f,3,2026-08-09 21:13:23.227169
+1796,324,D,I'll take care of it this afternoon.,f,4,2026-08-09 21:13:23.227169
+1797,325,A,The main office,f,1,2026-08-09 21:13:23.227169
+1798,325,B,Room 204,t,2,2026-08-09 21:13:23.227169
+1799,325,C,the main conference room,f,3,2026-08-09 21:13:23.227169
+1800,325,D,I'll check the schedule and let you know.,f,4,2026-08-09 21:13:23.227169
+1801,326,A,tomorrow morning,t,1,2026-08-09 21:13:23.227169
+1802,326,B,Thursday afternoon,f,2,2026-08-09 21:13:23.227169
+1803,326,C,On Wednesday,f,3,2026-08-09 21:13:23.227169
+1804,326,D,It's available in the main office.,f,4,2026-08-09 21:13:23.227169
+1805,327,A,Preparing a hotel room,t,1,2026-08-09 21:13:23.227169
+1806,327,B,Changing the business trip,f,2,2026-08-09 21:13:23.227169
+1807,327,C,Visiting the airport counter,f,3,2026-08-09 21:13:23.227169
+1808,327,D,I'll take care of it this afternoon.,f,4,2026-08-09 21:13:23.227169
+1809,328,A,The main office,f,1,2026-08-09 21:13:23.227169
+1810,328,B,the downtown hotel,t,2,2026-08-09 21:13:23.227169
+1811,328,C,the airport counter,f,3,2026-08-09 21:13:23.227169
+1812,328,D,I'll check the schedule and let you know.,f,4,2026-08-09 21:13:23.227169
+1813,329,A,Friday evening,t,1,2026-08-09 21:13:23.227169
+1814,329,B,Sunday morning,f,2,2026-08-09 21:13:23.227169
+1815,329,C,On Thursday,f,3,2026-08-09 21:13:23.227169
+1816,329,D,It's available in the main office.,f,4,2026-08-09 21:13:23.227169
+1817,330,A,Preparing a dinner reservation,t,1,2026-08-09 21:13:23.227169
+1818,330,B,Changing the restaurant reservation,f,2,2026-08-09 21:13:23.227169
+1819,330,C,Visiting the café downstairs,f,3,2026-08-09 21:13:23.227169
+1820,330,D,I'll take care of it this afternoon.,f,4,2026-08-09 21:13:23.227169
+1821,331,A,The main office,f,1,2026-08-09 21:13:23.227169
+1822,331,B,the Italian restaurant,t,2,2026-08-09 21:13:23.227169
+1823,331,C,the café downstairs,f,3,2026-08-09 21:13:23.227169
+1824,331,D,I'll check the schedule and let you know.,f,4,2026-08-09 21:13:23.227169
+1825,332,A,seven o'clock,t,1,2026-08-09 21:13:23.227169
+1826,332,B,twelve thirty,f,2,2026-08-09 21:13:23.227169
+1827,332,C,On Friday,f,3,2026-08-09 21:13:23.227169
+1828,332,D,It's available in the main office.,f,4,2026-08-09 21:13:23.227169
+1829,333,A,Preparing train tickets,t,1,2026-08-09 21:13:23.227169
+1830,333,B,Changing the train travel,f,2,2026-08-09 21:13:23.227169
+1831,333,C,Visiting the ticket office,f,3,2026-08-09 21:13:23.227169
+1832,333,D,I'll take care of it this afternoon.,f,4,2026-08-09 21:13:23.227169
+1833,334,A,The main office,f,1,2026-08-09 21:13:23.227169
+1834,334,B,the station,t,2,2026-08-09 21:13:23.227169
+1835,334,C,the ticket office,f,3,2026-08-09 21:13:23.227169
+1836,334,D,I'll check the schedule and let you know.,f,4,2026-08-09 21:13:23.227169
+1837,335,A,Saturday morning,t,1,2026-08-09 21:13:23.227169
+1838,335,B,Monday evening,f,2,2026-08-09 21:13:23.227169
+1839,335,C,On Monday,f,3,2026-08-09 21:13:23.227169
+1840,335,D,It's available in the main office.,f,4,2026-08-09 21:13:23.227169
+1841,336,A,Preparing conference registration,t,1,2026-08-09 21:13:23.227169
+1842,336,B,Changing the conference,f,2,2026-08-09 21:13:23.227169
+1843,336,C,Visiting the registration desk,f,3,2026-08-09 21:13:23.227169
+1844,336,D,I'll take care of it this afternoon.,f,4,2026-08-09 21:13:23.227169
+1845,337,A,The main office,f,1,2026-08-09 21:13:23.227169
+1846,337,B,the convention center,t,2,2026-08-09 21:13:23.227169
+1847,337,C,the registration desk,f,3,2026-08-09 21:13:23.227169
+1848,337,D,I'll check the schedule and let you know.,f,4,2026-08-09 21:13:23.227169
+1849,338,A,next Monday,t,1,2026-08-09 21:13:23.227169
+1850,338,B,Tuesday,f,2,2026-08-09 21:13:23.227169
+1851,338,C,On Tuesday,f,3,2026-08-09 21:13:23.227169
+1852,338,D,It's available in the main office.,f,4,2026-08-09 21:13:23.227169
+1853,339,A,Preparing a replacement order,t,1,2026-08-09 21:13:23.227169
+1854,339,B,Changing the customer order,f,2,2026-08-09 21:13:23.227169
+1855,339,C,Visiting the service counter,f,3,2026-08-09 21:13:23.227169
+1856,339,D,I'll take care of it this afternoon.,f,4,2026-08-09 21:13:23.227169
+1857,340,A,The main office,f,1,2026-08-09 21:13:23.227169
+1858,340,B,the customer service desk,t,2,2026-08-09 21:13:23.227169
+1859,340,C,the service counter,f,3,2026-08-09 21:13:23.227169
+1860,340,D,I'll check the schedule and let you know.,f,4,2026-08-09 21:13:23.227169
+1861,341,A,next week,t,1,2026-08-09 21:13:23.227169
+1862,341,B,Wednesday,f,2,2026-08-09 21:13:23.227169
+1863,341,C,On Wednesday,f,3,2026-08-09 21:13:23.227169
+1864,341,D,It's available in the main office.,f,4,2026-08-09 21:13:23.227169
+1865,342,A,Preparing the project report,t,1,2026-08-09 21:13:23.227169
+1866,342,B,Changing the project deadline,f,2,2026-08-09 21:13:23.227169
+1867,342,C,Visiting the finance department,f,3,2026-08-09 21:13:23.227169
+1868,342,D,I'll take care of it this afternoon.,f,4,2026-08-09 21:13:23.227169
+1869,343,A,The main office,f,1,2026-08-09 21:13:23.227169
+1870,343,B,the design office,t,2,2026-08-09 21:13:23.227169
+1871,343,C,the finance department,f,3,2026-08-09 21:13:23.227169
+1872,343,D,I'll check the schedule and let you know.,f,4,2026-08-09 21:13:23.227169
+1873,344,A,Friday,t,1,2026-08-09 21:13:23.227169
+1874,344,B,next Friday,f,2,2026-08-09 21:13:23.227169
+1875,344,C,On Thursday,f,3,2026-08-09 21:13:23.227169
+1876,344,D,It's available in the main office.,f,4,2026-08-09 21:13:23.227169
+1877,345,A,Preparing the office computer,t,1,2026-08-09 21:13:23.227169
+1878,345,B,Changing the equipment repair,f,2,2026-08-09 21:13:23.227169
+1879,345,C,Visiting the repair center,f,3,2026-08-09 21:13:23.227169
+1880,345,D,I'll take care of it this afternoon.,f,4,2026-08-09 21:13:23.227169
+1881,346,A,The main office,f,1,2026-08-09 21:13:23.227169
+1882,346,B,the IT department,t,2,2026-08-09 21:13:23.227169
+1883,346,C,the repair center,f,3,2026-08-09 21:13:23.227169
+1884,346,D,I'll check the schedule and let you know.,f,4,2026-08-09 21:13:23.227169
+1885,347,A,this afternoon,t,1,2026-08-09 21:13:23.227169
+1886,347,B,tomorrow,f,2,2026-08-09 21:13:23.227169
+1887,347,C,On Friday,f,3,2026-08-09 21:13:23.227169
+1888,347,D,It's available in the main office.,f,4,2026-08-09 21:13:23.227169
+1889,348,A,Preparing a taxi,t,1,2026-08-09 21:13:23.227169
+1890,348,B,Changing the airport plans,f,2,2026-08-09 21:13:23.227169
+1891,348,C,Visiting the hotel entrance,f,3,2026-08-09 21:13:23.227169
+1892,348,D,I'll take care of it this afternoon.,f,4,2026-08-09 21:13:23.227169
+1893,349,A,The main office,f,1,2026-08-09 21:13:23.227169
+1894,349,B,the airport,t,2,2026-08-09 21:13:23.227169
+1895,349,C,the hotel entrance,f,3,2026-08-09 21:13:23.227169
+1896,349,D,I'll check the schedule and let you know.,f,4,2026-08-09 21:13:23.227169
+1897,350,A,six thirty,t,1,2026-08-09 21:13:23.227169
+1898,350,B,seven fifteen,f,2,2026-08-09 21:13:23.227169
+1899,350,C,On Monday,f,3,2026-08-09 21:13:23.227169
+1900,350,D,It's available in the main office.,f,4,2026-08-09 21:13:23.227169
+1901,351,A,Preparing printer paper,t,1,2026-08-09 21:13:23.227169
+1902,351,B,Changing the office supplies,f,2,2026-08-09 21:13:23.227169
+1903,351,C,Visiting the copy room,f,3,2026-08-09 21:13:23.227169
+1904,351,D,I'll take care of it this afternoon.,f,4,2026-08-09 21:13:23.227169
+1905,352,A,The main office,f,1,2026-08-09 21:13:23.227169
+1906,352,B,the storage room,t,2,2026-08-09 21:13:23.227169
+1907,352,C,the copy room,f,3,2026-08-09 21:13:23.227169
+1908,352,D,I'll check the schedule and let you know.,f,4,2026-08-09 21:13:23.227169
+1909,353,A,this afternoon,t,1,2026-08-09 21:13:23.227169
+1910,353,B,before lunch,f,2,2026-08-09 21:13:23.227169
+1911,353,C,On Tuesday,f,3,2026-08-09 21:13:23.227169
+1912,353,D,It's available in the main office.,f,4,2026-08-09 21:13:23.227169
+1913,354,A,Preparing the sales meeting,t,1,2026-08-09 21:13:23.227169
+1914,354,B,Changing the meeting schedule,f,2,2026-08-09 21:13:23.227169
+1915,354,C,Visiting the main conference room,f,3,2026-08-09 21:13:23.227169
+1916,354,D,I'll take care of it this afternoon.,f,4,2026-08-09 21:13:23.227169
+1917,355,A,The main office,f,1,2026-08-09 21:13:23.227169
+1918,355,B,Room 204,t,2,2026-08-09 21:13:23.227169
+1919,355,C,the main conference room,f,3,2026-08-09 21:13:23.227169
+1920,355,D,I'll check the schedule and let you know.,f,4,2026-08-09 21:13:23.227169
+1921,356,A,tomorrow morning,t,1,2026-08-09 21:13:23.227169
+1922,356,B,Thursday afternoon,f,2,2026-08-09 21:13:23.227169
+1923,356,C,On Wednesday,f,3,2026-08-09 21:13:23.227169
+1924,356,D,It's available in the main office.,f,4,2026-08-09 21:13:23.227169
+1925,357,A,Preparing a hotel room,t,1,2026-08-09 21:13:23.227169
+1926,357,B,Changing the business trip,f,2,2026-08-09 21:13:23.227169
+1927,357,C,Visiting the airport counter,f,3,2026-08-09 21:13:23.227169
+1928,357,D,I'll take care of it this afternoon.,f,4,2026-08-09 21:13:23.227169
+1929,358,A,The main office,f,1,2026-08-09 21:13:23.227169
+1930,358,B,the downtown hotel,t,2,2026-08-09 21:13:23.227169
+1931,358,C,the airport counter,f,3,2026-08-09 21:13:23.227169
+1932,358,D,I'll check the schedule and let you know.,f,4,2026-08-09 21:13:23.227169
+1933,359,A,Friday evening,t,1,2026-08-09 21:13:23.227169
+1934,359,B,Sunday morning,f,2,2026-08-09 21:13:23.227169
+1935,359,C,On Thursday,f,3,2026-08-09 21:13:23.227169
+1936,359,D,It's available in the main office.,f,4,2026-08-09 21:13:23.227169
+1937,360,A,Preparing a dinner reservation,t,1,2026-08-09 21:13:23.227169
+1938,360,B,Changing the restaurant reservation,f,2,2026-08-09 21:13:23.227169
+1939,360,C,Visiting the café downstairs,f,3,2026-08-09 21:13:23.227169
+1940,360,D,I'll take care of it this afternoon.,f,4,2026-08-09 21:13:23.227169
+1941,361,A,The main office,f,1,2026-08-09 21:13:23.227169
+1942,361,B,the Italian restaurant,t,2,2026-08-09 21:13:23.227169
+1943,361,C,the café downstairs,f,3,2026-08-09 21:13:23.227169
+1944,361,D,I'll check the schedule and let you know.,f,4,2026-08-09 21:13:23.227169
+1945,362,A,seven o'clock,t,1,2026-08-09 21:13:23.227169
+1946,362,B,twelve thirty,f,2,2026-08-09 21:13:23.227169
+1947,362,C,On Friday,f,3,2026-08-09 21:13:23.227169
+1948,362,D,It's available in the main office.,f,4,2026-08-09 21:13:23.227169
+1949,363,A,Preparing train tickets,t,1,2026-08-09 21:13:23.227169
+1950,363,B,Changing the train travel,f,2,2026-08-09 21:13:23.227169
+1951,363,C,Visiting the ticket office,f,3,2026-08-09 21:13:23.227169
+1952,363,D,I'll take care of it this afternoon.,f,4,2026-08-09 21:13:23.227169
+1953,364,A,The main office,f,1,2026-08-09 21:13:23.227169
+1954,364,B,the station,t,2,2026-08-09 21:13:23.227169
+1955,364,C,the ticket office,f,3,2026-08-09 21:13:23.227169
+1956,364,D,I'll check the schedule and let you know.,f,4,2026-08-09 21:13:23.227169
+1957,365,A,Saturday morning,t,1,2026-08-09 21:13:23.227169
+1958,365,B,Monday evening,f,2,2026-08-09 21:13:23.227169
+1959,365,C,On Monday,f,3,2026-08-09 21:13:23.227169
+1960,365,D,It's available in the main office.,f,4,2026-08-09 21:13:23.227169
+1961,366,A,Preparing conference registration,t,1,2026-08-09 21:13:23.227169
+1962,366,B,Changing the conference,f,2,2026-08-09 21:13:23.227169
+1963,366,C,Visiting the registration desk,f,3,2026-08-09 21:13:23.227169
+1964,366,D,I'll take care of it this afternoon.,f,4,2026-08-09 21:13:23.227169
+1965,367,A,The main office,f,1,2026-08-09 21:13:23.227169
+1966,367,B,the convention center,t,2,2026-08-09 21:13:23.227169
+1967,367,C,the registration desk,f,3,2026-08-09 21:13:23.227169
+1968,367,D,I'll check the schedule and let you know.,f,4,2026-08-09 21:13:23.227169
+1969,368,A,next Monday,t,1,2026-08-09 21:13:23.227169
+1970,368,B,Tuesday,f,2,2026-08-09 21:13:23.227169
+1971,368,C,On Tuesday,f,3,2026-08-09 21:13:23.227169
+1972,368,D,It's available in the main office.,f,4,2026-08-09 21:13:23.227169
+1973,369,A,Preparing a replacement order,t,1,2026-08-09 21:13:23.227169
+1974,369,B,Changing the customer order,f,2,2026-08-09 21:13:23.227169
+1975,369,C,Visiting the service counter,f,3,2026-08-09 21:13:23.227169
+1976,369,D,I'll take care of it this afternoon.,f,4,2026-08-09 21:13:23.227169
+1977,370,A,The main office,f,1,2026-08-09 21:13:23.227169
+1978,370,B,the customer service desk,t,2,2026-08-09 21:13:23.227169
+1979,370,C,the service counter,f,3,2026-08-09 21:13:23.227169
+1980,370,D,I'll check the schedule and let you know.,f,4,2026-08-09 21:13:23.227169
+1981,371,A,next week,t,1,2026-08-09 21:13:23.227169
+1982,371,B,Wednesday,f,2,2026-08-09 21:13:23.227169
+1983,371,C,On Wednesday,f,3,2026-08-09 21:13:23.227169
+1984,371,D,It's available in the main office.,f,4,2026-08-09 21:13:23.227169
+1985,372,A,Preparing the project report,t,1,2026-08-09 21:13:23.227169
+1986,372,B,Changing the project deadline,f,2,2026-08-09 21:13:23.227169
+1987,372,C,Visiting the finance department,f,3,2026-08-09 21:13:23.227169
+1988,372,D,I'll take care of it this afternoon.,f,4,2026-08-09 21:13:23.227169
+1989,373,A,The main office,f,1,2026-08-09 21:13:23.227169
+1990,373,B,the design office,t,2,2026-08-09 21:13:23.227169
+1991,373,C,the finance department,f,3,2026-08-09 21:13:23.227169
+1992,373,D,I'll check the schedule and let you know.,f,4,2026-08-09 21:13:23.227169
+1993,374,A,Friday,t,1,2026-08-09 21:13:23.227169
+1994,374,B,next Friday,f,2,2026-08-09 21:13:23.227169
+1995,374,C,On Thursday,f,3,2026-08-09 21:13:23.227169
+1996,374,D,It's available in the main office.,f,4,2026-08-09 21:13:23.227169
+1997,375,A,Preparing the office computer,t,1,2026-08-09 21:13:23.227169
+1998,375,B,Changing the equipment repair,f,2,2026-08-09 21:13:23.227169
+1999,375,C,Visiting the repair center,f,3,2026-08-09 21:13:23.227169
+2000,375,D,I'll take care of it this afternoon.,f,4,2026-08-09 21:13:23.227169
+2001,376,A,The main office,f,1,2026-08-09 21:13:23.227169
+2002,376,B,the IT department,t,2,2026-08-09 21:13:23.227169
+2003,376,C,the repair center,f,3,2026-08-09 21:13:23.227169
+2004,376,D,I'll check the schedule and let you know.,f,4,2026-08-09 21:13:23.227169
+2005,377,A,this afternoon,t,1,2026-08-09 21:13:23.227169
+2006,377,B,tomorrow,f,2,2026-08-09 21:13:23.227169
+2007,377,C,On Friday,f,3,2026-08-09 21:13:23.227169
+2008,377,D,It's available in the main office.,f,4,2026-08-09 21:13:23.227169
+2009,378,A,Preparing a taxi,t,1,2026-08-09 21:13:23.227169
+2010,378,B,Changing the airport plans,f,2,2026-08-09 21:13:23.227169
+2011,378,C,Visiting the hotel entrance,f,3,2026-08-09 21:13:23.227169
+2012,378,D,I'll take care of it this afternoon.,f,4,2026-08-09 21:13:23.227169
+2013,379,A,The main office,f,1,2026-08-09 21:13:23.227169
+2014,379,B,the airport,t,2,2026-08-09 21:13:23.227169
+2015,379,C,the hotel entrance,f,3,2026-08-09 21:13:23.227169
+2016,379,D,I'll check the schedule and let you know.,f,4,2026-08-09 21:13:23.227169
+2017,380,A,six thirty,t,1,2026-08-09 21:13:23.227169
+2018,380,B,seven fifteen,f,2,2026-08-09 21:13:23.227169
+2019,380,C,On Monday,f,3,2026-08-09 21:13:23.227169
+2020,380,D,It's available in the main office.,f,4,2026-08-09 21:13:23.227169
+2021,381,A,Preparing printer paper,t,1,2026-08-09 21:13:23.227169
+2022,381,B,Changing the office supplies,f,2,2026-08-09 21:13:23.227169
+2023,381,C,Visiting the copy room,f,3,2026-08-09 21:13:23.227169
+2024,381,D,I'll take care of it this afternoon.,f,4,2026-08-09 21:13:23.227169
+2025,382,A,The main office,f,1,2026-08-09 21:13:23.227169
+2026,382,B,the storage room,t,2,2026-08-09 21:13:23.227169
+2027,382,C,the copy room,f,3,2026-08-09 21:13:23.227169
+2028,382,D,I'll check the schedule and let you know.,f,4,2026-08-09 21:13:23.227169
+2029,383,A,this afternoon,t,1,2026-08-09 21:13:23.227169
+2030,383,B,before lunch,f,2,2026-08-09 21:13:23.227169
+2031,383,C,On Tuesday,f,3,2026-08-09 21:13:23.227169
+2032,383,D,It's available in the main office.,f,4,2026-08-09 21:13:23.227169
+2033,384,A,Preparing the sales meeting,t,1,2026-08-09 21:13:23.227169
+2034,384,B,Changing the meeting schedule,f,2,2026-08-09 21:13:23.227169
+2035,384,C,Visiting the main conference room,f,3,2026-08-09 21:13:23.227169
+2036,384,D,I'll take care of it this afternoon.,f,4,2026-08-09 21:13:23.227169
+2037,385,A,The main office,f,1,2026-08-09 21:13:23.227169
+2038,385,B,Room 204,t,2,2026-08-09 21:13:23.227169
+2039,385,C,the main conference room,f,3,2026-08-09 21:13:23.227169
+2040,385,D,I'll check the schedule and let you know.,f,4,2026-08-09 21:13:23.227169
+2041,386,A,tomorrow morning,t,1,2026-08-09 21:13:23.227169
+2042,386,B,Thursday afternoon,f,2,2026-08-09 21:13:23.227169
+2043,386,C,On Wednesday,f,3,2026-08-09 21:13:23.227169
+2044,386,D,It's available in the main office.,f,4,2026-08-09 21:13:23.227169
+2045,387,A,Preparing a hotel room,t,1,2026-08-09 21:13:23.227169
+2046,387,B,Changing the business trip,f,2,2026-08-09 21:13:23.227169
+2047,387,C,Visiting the airport counter,f,3,2026-08-09 21:13:23.227169
+2048,387,D,I'll take care of it this afternoon.,f,4,2026-08-09 21:13:23.227169
+2049,388,A,The main office,f,1,2026-08-09 21:13:23.227169
+2050,388,B,the downtown hotel,t,2,2026-08-09 21:13:23.227169
+2051,388,C,the airport counter,f,3,2026-08-09 21:13:23.227169
+2052,388,D,I'll check the schedule and let you know.,f,4,2026-08-09 21:13:23.227169
+2053,389,A,Friday evening,t,1,2026-08-09 21:13:23.227169
+2054,389,B,Sunday morning,f,2,2026-08-09 21:13:23.227169
+2055,389,C,On Thursday,f,3,2026-08-09 21:13:23.227169
+2056,389,D,It's available in the main office.,f,4,2026-08-09 21:13:23.227169
+2057,390,A,Preparing a dinner reservation,t,1,2026-08-09 21:13:23.227169
+2058,390,B,Changing the restaurant reservation,f,2,2026-08-09 21:13:23.227169
+2059,390,C,Visiting the café downstairs,f,3,2026-08-09 21:13:23.227169
+2060,390,D,I'll take care of it this afternoon.,f,4,2026-08-09 21:13:23.227169
+2061,391,A,The main office,f,1,2026-08-09 21:13:23.227169
+2062,391,B,the Italian restaurant,t,2,2026-08-09 21:13:23.227169
+2063,391,C,the café downstairs,f,3,2026-08-09 21:13:23.227169
+2064,391,D,I'll check the schedule and let you know.,f,4,2026-08-09 21:13:23.227169
+2065,392,A,seven o'clock,t,1,2026-08-09 21:13:23.227169
+2066,392,B,twelve thirty,f,2,2026-08-09 21:13:23.227169
+2067,392,C,On Friday,f,3,2026-08-09 21:13:23.227169
+2068,392,D,It's available in the main office.,f,4,2026-08-09 21:13:23.227169
+2069,393,A,Preparing train tickets,t,1,2026-08-09 21:13:23.227169
+2070,393,B,Changing the train travel,f,2,2026-08-09 21:13:23.227169
+2071,393,C,Visiting the ticket office,f,3,2026-08-09 21:13:23.227169
+2072,393,D,I'll take care of it this afternoon.,f,4,2026-08-09 21:13:23.227169
+2073,394,A,The main office,f,1,2026-08-09 21:13:23.227169
+2074,394,B,the station,t,2,2026-08-09 21:13:23.227169
+2075,394,C,the ticket office,f,3,2026-08-09 21:13:23.227169
+2076,394,D,I'll check the schedule and let you know.,f,4,2026-08-09 21:13:23.227169
+2077,395,A,Saturday morning,t,1,2026-08-09 21:13:23.227169
+2078,395,B,Monday evening,f,2,2026-08-09 21:13:23.227169
+2079,395,C,On Monday,f,3,2026-08-09 21:13:23.227169
+2080,395,D,It's available in the main office.,f,4,2026-08-09 21:13:23.227169
+2081,396,A,Preparing conference registration,t,1,2026-08-09 21:13:23.227169
+2082,396,B,Changing the conference,f,2,2026-08-09 21:13:23.227169
+2083,396,C,Visiting the registration desk,f,3,2026-08-09 21:13:23.227169
+2084,396,D,I'll take care of it this afternoon.,f,4,2026-08-09 21:13:23.227169
+2085,397,A,The main office,f,1,2026-08-09 21:13:23.227169
+2086,397,B,the convention center,t,2,2026-08-09 21:13:23.227169
+2087,397,C,the registration desk,f,3,2026-08-09 21:13:23.227169
+2088,397,D,I'll check the schedule and let you know.,f,4,2026-08-09 21:13:23.227169
+2089,398,A,next Monday,t,1,2026-08-09 21:13:23.227169
+2090,398,B,Tuesday,f,2,2026-08-09 21:13:23.227169
+2091,398,C,On Tuesday,f,3,2026-08-09 21:13:23.227169
+2092,398,D,It's available in the main office.,f,4,2026-08-09 21:13:23.227169
+2093,399,A,Preparing a replacement order,t,1,2026-08-09 21:13:23.227169
+2094,399,B,Changing the customer order,f,2,2026-08-09 21:13:23.227169
+2095,399,C,Visiting the service counter,f,3,2026-08-09 21:13:23.227169
+2096,399,D,I'll take care of it this afternoon.,f,4,2026-08-09 21:13:23.227169
+2097,400,A,The main office,f,1,2026-08-09 21:13:23.227169
+2098,400,B,the customer service desk,t,2,2026-08-09 21:13:23.227169
+2099,400,C,the service counter,f,3,2026-08-09 21:13:23.227169
+2100,400,D,I'll check the schedule and let you know.,f,4,2026-08-09 21:13:23.227169
+2101,401,A,next week,t,1,2026-08-09 21:13:23.227169
+2102,401,B,Wednesday,f,2,2026-08-09 21:13:23.227169
+2103,401,C,On Wednesday,f,3,2026-08-09 21:13:23.227169
+2104,401,D,It's available in the main office.,f,4,2026-08-09 21:13:23.227169
+2105,402,A,Preparing the project report,t,1,2026-08-09 21:13:23.227169
+2106,402,B,Changing the project deadline,f,2,2026-08-09 21:13:23.227169
+2107,402,C,Visiting the finance department,f,3,2026-08-09 21:13:23.227169
+2108,402,D,I'll take care of it this afternoon.,f,4,2026-08-09 21:13:23.227169
+2109,403,A,The main office,f,1,2026-08-09 21:13:23.227169
+2110,403,B,the design office,t,2,2026-08-09 21:13:23.227169
+2111,403,C,the finance department,f,3,2026-08-09 21:13:23.227169
+2112,403,D,I'll check the schedule and let you know.,f,4,2026-08-09 21:13:23.227169
+2113,404,A,Friday,t,1,2026-08-09 21:13:23.227169
+2114,404,B,next Friday,f,2,2026-08-09 21:13:23.227169
+2115,404,C,On Thursday,f,3,2026-08-09 21:13:23.227169
+2116,404,D,It's available in the main office.,f,4,2026-08-09 21:13:23.227169
+2117,405,A,Preparing the office computer,t,1,2026-08-09 21:13:23.227169
+2118,405,B,Changing the equipment repair,f,2,2026-08-09 21:13:23.227169
+2119,405,C,Visiting the repair center,f,3,2026-08-09 21:13:23.227169
+2120,405,D,I'll take care of it this afternoon.,f,4,2026-08-09 21:13:23.227169
+2121,406,A,The main office,f,1,2026-08-09 21:13:23.227169
+2122,406,B,the IT department,t,2,2026-08-09 21:13:23.227169
+2123,406,C,the repair center,f,3,2026-08-09 21:13:23.227169
+2124,406,D,I'll check the schedule and let you know.,f,4,2026-08-09 21:13:23.227169
+2125,407,A,this afternoon,t,1,2026-08-09 21:13:23.227169
+2126,407,B,tomorrow,f,2,2026-08-09 21:13:23.227169
+2127,407,C,On Friday,f,3,2026-08-09 21:13:23.227169
+2128,407,D,It's available in the main office.,f,4,2026-08-09 21:13:23.227169
+2129,408,A,Preparing a taxi,t,1,2026-08-09 21:13:23.227169
+2130,408,B,Changing the airport plans,f,2,2026-08-09 21:13:23.227169
+2131,408,C,Visiting the hotel entrance,f,3,2026-08-09 21:13:23.227169
+2132,408,D,I'll take care of it this afternoon.,f,4,2026-08-09 21:13:23.227169
+2133,409,A,The main office,f,1,2026-08-09 21:13:23.227169
+2134,409,B,the airport,t,2,2026-08-09 21:13:23.227169
+2135,409,C,the hotel entrance,f,3,2026-08-09 21:13:23.227169
+2136,409,D,I'll check the schedule and let you know.,f,4,2026-08-09 21:13:23.227169
+2137,410,A,six thirty,t,1,2026-08-09 21:13:23.227169
+2138,410,B,seven fifteen,f,2,2026-08-09 21:13:23.227169
+2139,410,C,On Monday,f,3,2026-08-09 21:13:23.227169
+2140,410,D,It's available in the main office.,f,4,2026-08-09 21:13:23.227169
+2141,411,A,Preparing printer paper,t,1,2026-08-09 21:13:23.227169
+2142,411,B,Changing the office supplies,f,2,2026-08-09 21:13:23.227169
+2143,411,C,Visiting the copy room,f,3,2026-08-09 21:13:23.227169
+2144,411,D,I'll take care of it this afternoon.,f,4,2026-08-09 21:13:23.227169
+2145,412,A,The main office,f,1,2026-08-09 21:13:23.227169
+2146,412,B,the storage room,t,2,2026-08-09 21:13:23.227169
+2147,412,C,the copy room,f,3,2026-08-09 21:13:23.227169
+2148,412,D,I'll check the schedule and let you know.,f,4,2026-08-09 21:13:23.227169
+2149,413,A,this afternoon,t,1,2026-08-09 21:13:23.227169
+2150,413,B,before lunch,f,2,2026-08-09 21:13:23.227169
+2151,413,C,On Tuesday,f,3,2026-08-09 21:13:23.227169
+2152,413,D,It's available in the main office.,f,4,2026-08-09 21:13:23.227169
+2153,414,A,Preparing the sales meeting,t,1,2026-08-09 21:13:23.227169
+2154,414,B,Changing the meeting schedule,f,2,2026-08-09 21:13:23.227169
+2155,414,C,Visiting the main conference room,f,3,2026-08-09 21:13:23.227169
+2156,414,D,I'll take care of it this afternoon.,f,4,2026-08-09 21:13:23.227169
+2157,415,A,The main office,f,1,2026-08-09 21:13:23.227169
+2158,415,B,Room 204,t,2,2026-08-09 21:13:23.227169
+2159,415,C,the main conference room,f,3,2026-08-09 21:13:23.227169
+2160,415,D,I'll check the schedule and let you know.,f,4,2026-08-09 21:13:23.227169
+2161,416,A,tomorrow morning,t,1,2026-08-09 21:13:23.227169
+2162,416,B,Thursday afternoon,f,2,2026-08-09 21:13:23.227169
+2163,416,C,On Wednesday,f,3,2026-08-09 21:13:23.227169
+2164,416,D,It's available in the main office.,f,4,2026-08-09 21:13:23.227169
+2165,417,A,Preparing a hotel room,t,1,2026-08-09 21:13:23.227169
+2166,417,B,Changing the business trip,f,2,2026-08-09 21:13:23.227169
+2167,417,C,Visiting the airport counter,f,3,2026-08-09 21:13:23.227169
+2168,417,D,I'll take care of it this afternoon.,f,4,2026-08-09 21:13:23.227169
+2169,418,A,The main office,f,1,2026-08-09 21:13:23.227169
+2170,418,B,the downtown hotel,t,2,2026-08-09 21:13:23.227169
+2171,418,C,the airport counter,f,3,2026-08-09 21:13:23.227169
+2172,418,D,I'll check the schedule and let you know.,f,4,2026-08-09 21:13:23.227169
+2173,419,A,Friday evening,t,1,2026-08-09 21:13:23.227169
+2174,419,B,Sunday morning,f,2,2026-08-09 21:13:23.227169
+2175,419,C,On Thursday,f,3,2026-08-09 21:13:23.227169
+2176,419,D,It's available in the main office.,f,4,2026-08-09 21:13:23.227169
+2177,420,A,Preparing a dinner reservation,t,1,2026-08-09 21:13:23.227169
+2178,420,B,Changing the restaurant reservation,f,2,2026-08-09 21:13:23.227169
+2179,420,C,Visiting the café downstairs,f,3,2026-08-09 21:13:23.227169
+2180,420,D,I'll take care of it this afternoon.,f,4,2026-08-09 21:13:23.227169
+2181,421,A,The main office,f,1,2026-08-09 21:13:23.227169
+2182,421,B,the Italian restaurant,t,2,2026-08-09 21:13:23.227169
+2183,421,C,the café downstairs,f,3,2026-08-09 21:13:23.227169
+2184,421,D,I'll check the schedule and let you know.,f,4,2026-08-09 21:13:23.227169
+2185,422,A,seven o'clock,t,1,2026-08-09 21:13:23.227169
+2186,422,B,twelve thirty,f,2,2026-08-09 21:13:23.227169
+2187,422,C,On Friday,f,3,2026-08-09 21:13:23.227169
+2188,422,D,It's available in the main office.,f,4,2026-08-09 21:13:23.227169
+2189,423,A,Preparing train tickets,t,1,2026-08-09 21:13:23.227169
+2190,423,B,Changing the train travel,f,2,2026-08-09 21:13:23.227169
+2191,423,C,Visiting the ticket office,f,3,2026-08-09 21:13:23.227169
+2192,423,D,I'll take care of it this afternoon.,f,4,2026-08-09 21:13:23.227169
+2193,424,A,The main office,f,1,2026-08-09 21:13:23.227169
+2194,424,B,the station,t,2,2026-08-09 21:13:23.227169
+2195,424,C,the ticket office,f,3,2026-08-09 21:13:23.227169
+2196,424,D,I'll check the schedule and let you know.,f,4,2026-08-09 21:13:23.227169
+2197,425,A,Saturday morning,t,1,2026-08-09 21:13:23.227169
+2198,425,B,Monday evening,f,2,2026-08-09 21:13:23.227169
+2199,425,C,On Monday,f,3,2026-08-09 21:13:23.227169
+2200,425,D,It's available in the main office.,f,4,2026-08-09 21:13:23.227169
+2201,426,A,Preparing conference registration,t,1,2026-08-09 21:13:23.227169
+2202,426,B,Changing the conference,f,2,2026-08-09 21:13:23.227169
+2203,426,C,Visiting the registration desk,f,3,2026-08-09 21:13:23.227169
+2204,426,D,I'll take care of it this afternoon.,f,4,2026-08-09 21:13:23.227169
+2205,427,A,The main office,f,1,2026-08-09 21:13:23.227169
+2206,427,B,the convention center,t,2,2026-08-09 21:13:23.227169
+2207,427,C,the registration desk,f,3,2026-08-09 21:13:23.227169
+2208,427,D,I'll check the schedule and let you know.,f,4,2026-08-09 21:13:23.227169
+2209,428,A,next Monday,t,1,2026-08-09 21:13:23.227169
+2210,428,B,Tuesday,f,2,2026-08-09 21:13:23.227169
+2211,428,C,On Tuesday,f,3,2026-08-09 21:13:23.227169
+2212,428,D,It's available in the main office.,f,4,2026-08-09 21:13:23.227169
+2213,429,A,Preparing a replacement order,t,1,2026-08-09 21:13:23.227169
+2214,429,B,Changing the customer order,f,2,2026-08-09 21:13:23.227169
+2215,429,C,Visiting the service counter,f,3,2026-08-09 21:13:23.227169
+2216,429,D,I'll take care of it this afternoon.,f,4,2026-08-09 21:13:23.227169
+2217,430,A,The main office,f,1,2026-08-09 21:13:23.227169
+2218,430,B,the customer service desk,t,2,2026-08-09 21:13:23.227169
+2219,430,C,the service counter,f,3,2026-08-09 21:13:23.227169
+2220,430,D,I'll check the schedule and let you know.,f,4,2026-08-09 21:13:23.227169
+2221,431,A,next week,t,1,2026-08-09 21:13:23.227169
+2222,431,B,Wednesday,f,2,2026-08-09 21:13:23.227169
+2223,431,C,On Wednesday,f,3,2026-08-09 21:13:23.227169
+2224,431,D,It's available in the main office.,f,4,2026-08-09 21:13:23.227169
+2225,432,A,Preparing the project report,t,1,2026-08-09 21:13:23.227169
+2226,432,B,Changing the project deadline,f,2,2026-08-09 21:13:23.227169
+2227,432,C,Visiting the finance department,f,3,2026-08-09 21:13:23.227169
+2228,432,D,I'll take care of it this afternoon.,f,4,2026-08-09 21:13:23.227169
+2229,433,A,The main office,f,1,2026-08-09 21:13:23.227169
+2230,433,B,the design office,t,2,2026-08-09 21:13:23.227169
+2231,433,C,the finance department,f,3,2026-08-09 21:13:23.227169
+2232,433,D,I'll check the schedule and let you know.,f,4,2026-08-09 21:13:23.227169
+2233,434,A,Friday,t,1,2026-08-09 21:13:23.227169
+2234,434,B,next Friday,f,2,2026-08-09 21:13:23.227169
+2235,434,C,On Thursday,f,3,2026-08-09 21:13:23.227169
+2236,434,D,It's available in the main office.,f,4,2026-08-09 21:13:23.227169
+2237,435,A,Preparing the office computer,t,1,2026-08-09 21:13:23.227169
+2238,435,B,Changing the equipment repair,f,2,2026-08-09 21:13:23.227169
+2239,435,C,Visiting the repair center,f,3,2026-08-09 21:13:23.227169
+2240,435,D,I'll take care of it this afternoon.,f,4,2026-08-09 21:13:23.227169
+2241,436,A,The main office,f,1,2026-08-09 21:13:23.227169
+2242,436,B,the IT department,t,2,2026-08-09 21:13:23.227169
+2243,436,C,the repair center,f,3,2026-08-09 21:13:23.227169
+2244,436,D,I'll check the schedule and let you know.,f,4,2026-08-09 21:13:23.227169
+2245,437,A,this afternoon,t,1,2026-08-09 21:13:23.227169
+2246,437,B,tomorrow,f,2,2026-08-09 21:13:23.227169
+2247,437,C,On Friday,f,3,2026-08-09 21:13:23.227169
+2248,437,D,It's available in the main office.,f,4,2026-08-09 21:13:23.227169
+2249,438,A,Preparing a taxi,t,1,2026-08-09 21:13:23.227169
+2250,438,B,Changing the airport plans,f,2,2026-08-09 21:13:23.227169
+2251,438,C,Visiting the hotel entrance,f,3,2026-08-09 21:13:23.227169
+2252,438,D,I'll take care of it this afternoon.,f,4,2026-08-09 21:13:23.227169
+2253,439,A,The main office,f,1,2026-08-09 21:13:23.227169
+2254,439,B,the airport,t,2,2026-08-09 21:13:23.227169
+2255,439,C,the hotel entrance,f,3,2026-08-09 21:13:23.227169
+2256,439,D,I'll check the schedule and let you know.,f,4,2026-08-09 21:13:23.227169
+2257,440,A,six thirty,t,1,2026-08-09 21:13:23.227169
+2258,440,B,seven fifteen,f,2,2026-08-09 21:13:23.227169
+2259,440,C,On Monday,f,3,2026-08-09 21:13:23.227169
+2260,440,D,It's available in the main office.,f,4,2026-08-09 21:13:23.227169
+2261,441,A,Preparing printer paper,t,1,2026-08-09 21:13:23.227169
+2262,441,B,Changing the office supplies,f,2,2026-08-09 21:13:23.227169
+2263,441,C,Visiting the copy room,f,3,2026-08-09 21:13:23.227169
+2264,441,D,I'll take care of it this afternoon.,f,4,2026-08-09 21:13:23.227169
+2265,442,A,The main office,f,1,2026-08-09 21:13:23.227169
+2266,442,B,the storage room,t,2,2026-08-09 21:13:23.227169
+2267,442,C,the copy room,f,3,2026-08-09 21:13:23.227169
+2268,442,D,I'll check the schedule and let you know.,f,4,2026-08-09 21:13:23.227169
+2269,443,A,this afternoon,t,1,2026-08-09 21:13:23.227169
+2270,443,B,before lunch,f,2,2026-08-09 21:13:23.227169
+2271,443,C,On Tuesday,f,3,2026-08-09 21:13:23.227169
+2272,443,D,It's available in the main office.,f,4,2026-08-09 21:13:23.227169
+2273,444,A,Preparing the sales meeting,t,1,2026-08-09 21:13:23.227169
+2274,444,B,Changing the meeting schedule,f,2,2026-08-09 21:13:23.227169
+2275,444,C,Visiting the main conference room,f,3,2026-08-09 21:13:23.227169
+2276,444,D,I'll take care of it this afternoon.,f,4,2026-08-09 21:13:23.227169
+2277,445,A,The main office,f,1,2026-08-09 21:13:23.227169
+2278,445,B,Room 204,t,2,2026-08-09 21:13:23.227169
+2279,445,C,the main conference room,f,3,2026-08-09 21:13:23.227169
+2280,445,D,I'll check the schedule and let you know.,f,4,2026-08-09 21:13:23.227169
+2281,446,A,tomorrow morning,t,1,2026-08-09 21:13:23.227169
+2282,446,B,Thursday afternoon,f,2,2026-08-09 21:13:23.227169
+2283,446,C,On Wednesday,f,3,2026-08-09 21:13:23.227169
+2284,446,D,It's available in the main office.,f,4,2026-08-09 21:13:23.227169
+2285,447,A,Preparing a hotel room,t,1,2026-08-09 21:13:23.227169
+2286,447,B,Changing the business trip,f,2,2026-08-09 21:13:23.227169
+2287,447,C,Visiting the airport counter,f,3,2026-08-09 21:13:23.227169
+2288,447,D,I'll take care of it this afternoon.,f,4,2026-08-09 21:13:23.227169
+2289,448,A,The main office,f,1,2026-08-09 21:13:23.227169
+2290,448,B,the downtown hotel,t,2,2026-08-09 21:13:23.227169
+2291,448,C,the airport counter,f,3,2026-08-09 21:13:23.227169
+2292,448,D,I'll check the schedule and let you know.,f,4,2026-08-09 21:13:23.227169
+2293,449,A,Friday evening,t,1,2026-08-09 21:13:23.227169
+2294,449,B,Sunday morning,f,2,2026-08-09 21:13:23.227169
+2295,449,C,On Thursday,f,3,2026-08-09 21:13:23.227169
+2296,449,D,It's available in the main office.,f,4,2026-08-09 21:13:23.227169
+2297,450,A,Preparing a dinner reservation,t,1,2026-08-09 21:13:23.227169
+2298,450,B,Changing the restaurant reservation,f,2,2026-08-09 21:13:23.227169
+2299,450,C,Visiting the café downstairs,f,3,2026-08-09 21:13:23.227169
+2300,450,D,I'll take care of it this afternoon.,f,4,2026-08-09 21:13:23.227169
+2301,451,A,The main office,f,1,2026-08-09 21:13:23.227169
+2302,451,B,the Italian restaurant,t,2,2026-08-09 21:13:23.227169
+2303,451,C,the café downstairs,f,3,2026-08-09 21:13:23.227169
+2304,451,D,I'll check the schedule and let you know.,f,4,2026-08-09 21:13:23.227169
+2305,452,A,seven o'clock,t,1,2026-08-09 21:13:23.227169
+2306,452,B,twelve thirty,f,2,2026-08-09 21:13:23.227169
+2307,452,C,On Friday,f,3,2026-08-09 21:13:23.227169
+2308,452,D,It's available in the main office.,f,4,2026-08-09 21:13:23.227169
+2309,453,A,Preparing train tickets,t,1,2026-08-09 21:13:23.227169
+2310,453,B,Changing the train travel,f,2,2026-08-09 21:13:23.227169
+2311,453,C,Visiting the ticket office,f,3,2026-08-09 21:13:23.227169
+2312,453,D,I'll take care of it this afternoon.,f,4,2026-08-09 21:13:23.227169
+2313,454,A,The main office,f,1,2026-08-09 21:13:23.227169
+2314,454,B,the station,t,2,2026-08-09 21:13:23.227169
+2315,454,C,the ticket office,f,3,2026-08-09 21:13:23.227169
+2316,454,D,I'll check the schedule and let you know.,f,4,2026-08-09 21:13:23.227169
+2317,455,A,Saturday morning,t,1,2026-08-09 21:13:23.227169
+2318,455,B,Monday evening,f,2,2026-08-09 21:13:23.227169
+2319,455,C,On Monday,f,3,2026-08-09 21:13:23.227169
+2320,455,D,It's available in the main office.,f,4,2026-08-09 21:13:23.227169
+2321,456,A,Preparing conference registration,t,1,2026-08-09 21:13:23.227169
+2322,456,B,Changing the conference,f,2,2026-08-09 21:13:23.227169
+2323,456,C,Visiting the registration desk,f,3,2026-08-09 21:13:23.227169
+2324,456,D,I'll take care of it this afternoon.,f,4,2026-08-09 21:13:23.227169
+2325,457,A,The main office,f,1,2026-08-09 21:13:23.227169
+2326,457,B,the convention center,t,2,2026-08-09 21:13:23.227169
+2327,457,C,the registration desk,f,3,2026-08-09 21:13:23.227169
+2328,457,D,I'll check the schedule and let you know.,f,4,2026-08-09 21:13:23.227169
+2329,458,A,next Monday,t,1,2026-08-09 21:13:23.227169
+2330,458,B,Tuesday,f,2,2026-08-09 21:13:23.227169
+2331,458,C,On Tuesday,f,3,2026-08-09 21:13:23.227169
+2332,458,D,It's available in the main office.,f,4,2026-08-09 21:13:23.227169
+2333,459,A,Preparing a replacement order,t,1,2026-08-09 21:13:23.227169
+2334,459,B,Changing the customer order,f,2,2026-08-09 21:13:23.227169
+2335,459,C,Visiting the service counter,f,3,2026-08-09 21:13:23.227169
+2336,459,D,I'll take care of it this afternoon.,f,4,2026-08-09 21:13:23.227169
+2337,460,A,The main office,f,1,2026-08-09 21:13:23.227169
+2338,460,B,the customer service desk,t,2,2026-08-09 21:13:23.227169
+2339,460,C,the service counter,f,3,2026-08-09 21:13:23.227169
+2340,460,D,I'll check the schedule and let you know.,f,4,2026-08-09 21:13:23.227169
+2341,461,A,next week,t,1,2026-08-09 21:13:23.227169
+2342,461,B,Wednesday,f,2,2026-08-09 21:13:23.227169
+2343,461,C,On Wednesday,f,3,2026-08-09 21:13:23.227169
+2344,461,D,It's available in the main office.,f,4,2026-08-09 21:13:23.227169
+2345,462,A,Preparing the project report,t,1,2026-08-09 21:13:23.227169
+2346,462,B,Changing the project deadline,f,2,2026-08-09 21:13:23.227169
+2347,462,C,Visiting the finance department,f,3,2026-08-09 21:13:23.227169
+2348,462,D,I'll take care of it this afternoon.,f,4,2026-08-09 21:13:23.227169
+2349,463,A,The main office,f,1,2026-08-09 21:13:23.227169
+2350,463,B,the design office,t,2,2026-08-09 21:13:23.227169
+2351,463,C,the finance department,f,3,2026-08-09 21:13:23.227169
+2352,463,D,I'll check the schedule and let you know.,f,4,2026-08-09 21:13:23.227169
+2353,464,A,Friday,t,1,2026-08-09 21:13:23.227169
+2354,464,B,next Friday,f,2,2026-08-09 21:13:23.227169
+2355,464,C,On Thursday,f,3,2026-08-09 21:13:23.227169
+2356,464,D,It's available in the main office.,f,4,2026-08-09 21:13:23.227169
+2357,465,A,Preparing the office computer,t,1,2026-08-09 21:13:23.227169
+2358,465,B,Changing the equipment repair,f,2,2026-08-09 21:13:23.227169
+2359,465,C,Visiting the repair center,f,3,2026-08-09 21:13:23.227169
+2360,465,D,I'll take care of it this afternoon.,f,4,2026-08-09 21:13:23.227169
+2361,466,A,The main office,f,1,2026-08-09 21:13:23.227169
+2362,466,B,the IT department,t,2,2026-08-09 21:13:23.227169
+2363,466,C,the repair center,f,3,2026-08-09 21:13:23.227169
+2364,466,D,I'll check the schedule and let you know.,f,4,2026-08-09 21:13:23.227169
+2365,467,A,this afternoon,t,1,2026-08-09 21:13:23.227169
+2366,467,B,tomorrow,f,2,2026-08-09 21:13:23.227169
+2367,467,C,On Friday,f,3,2026-08-09 21:13:23.227169
+2368,467,D,It's available in the main office.,f,4,2026-08-09 21:13:23.227169
+2369,468,A,Preparing a taxi,t,1,2026-08-09 21:13:23.227169
+2370,468,B,Changing the airport plans,f,2,2026-08-09 21:13:23.227169
+2371,468,C,Visiting the hotel entrance,f,3,2026-08-09 21:13:23.227169
+2372,468,D,I'll take care of it this afternoon.,f,4,2026-08-09 21:13:23.227169
+2373,469,A,The main office,f,1,2026-08-09 21:13:23.227169
+2374,469,B,the airport,t,2,2026-08-09 21:13:23.227169
+2375,469,C,the hotel entrance,f,3,2026-08-09 21:13:23.227169
+2376,469,D,I'll check the schedule and let you know.,f,4,2026-08-09 21:13:23.227169
+2377,470,A,six thirty,t,1,2026-08-09 21:13:23.227169
+2378,470,B,seven fifteen,f,2,2026-08-09 21:13:23.227169
+2379,470,C,On Monday,f,3,2026-08-09 21:13:23.227169
+2380,470,D,It's available in the main office.,f,4,2026-08-09 21:13:23.227169
+2381,471,A,Preparing printer paper,t,1,2026-08-09 21:13:23.227169
+2382,471,B,Changing the office supplies,f,2,2026-08-09 21:13:23.227169
+2383,471,C,Visiting the copy room,f,3,2026-08-09 21:13:23.227169
+2384,471,D,I'll take care of it this afternoon.,f,4,2026-08-09 21:13:23.227169
+2385,472,A,The main office,f,1,2026-08-09 21:13:23.227169
+2386,472,B,the storage room,t,2,2026-08-09 21:13:23.227169
+2387,472,C,the copy room,f,3,2026-08-09 21:13:23.227169
+2388,472,D,I'll check the schedule and let you know.,f,4,2026-08-09 21:13:23.227169
+2389,473,A,this afternoon,t,1,2026-08-09 21:13:23.227169
+2390,473,B,before lunch,f,2,2026-08-09 21:13:23.227169
+2391,473,C,On Tuesday,f,3,2026-08-09 21:13:23.227169
+2392,473,D,It's available in the main office.,f,4,2026-08-09 21:13:23.227169
+2393,474,A,Preparing the sales meeting,t,1,2026-08-09 21:13:23.227169
+2394,474,B,Changing the meeting schedule,f,2,2026-08-09 21:13:23.227169
+2395,474,C,Visiting the main conference room,f,3,2026-08-09 21:13:23.227169
+2396,474,D,I'll take care of it this afternoon.,f,4,2026-08-09 21:13:23.227169
+2397,475,A,The main office,f,1,2026-08-09 21:13:23.227169
+2398,475,B,Room 204,t,2,2026-08-09 21:13:23.227169
+2399,475,C,the main conference room,f,3,2026-08-09 21:13:23.227169
+2400,475,D,I'll check the schedule and let you know.,f,4,2026-08-09 21:13:23.227169
+2401,476,A,tomorrow morning,t,1,2026-08-09 21:13:23.227169
+2402,476,B,Thursday afternoon,f,2,2026-08-09 21:13:23.227169
+2403,476,C,On Wednesday,f,3,2026-08-09 21:13:23.227169
+2404,476,D,It's available in the main office.,f,4,2026-08-09 21:13:23.227169
+2405,477,A,Preparing a hotel room,t,1,2026-08-09 21:13:23.227169
+2406,477,B,Changing the business trip,f,2,2026-08-09 21:13:23.227169
+2407,477,C,Visiting the airport counter,f,3,2026-08-09 21:13:23.227169
+2408,477,D,I'll take care of it this afternoon.,f,4,2026-08-09 21:13:23.227169
+2409,478,A,The main office,f,1,2026-08-09 21:13:23.227169
+2410,478,B,the downtown hotel,t,2,2026-08-09 21:13:23.227169
+2411,478,C,the airport counter,f,3,2026-08-09 21:13:23.227169
+2412,478,D,I'll check the schedule and let you know.,f,4,2026-08-09 21:13:23.227169
+2413,479,A,Friday evening,t,1,2026-08-09 21:13:23.227169
+2414,479,B,Sunday morning,f,2,2026-08-09 21:13:23.227169
+2415,479,C,On Thursday,f,3,2026-08-09 21:13:23.227169
+2416,479,D,It's available in the main office.,f,4,2026-08-09 21:13:23.227169
+2417,480,A,Preparing a dinner reservation,t,1,2026-08-09 21:13:23.227169
+2418,480,B,Changing the restaurant reservation,f,2,2026-08-09 21:13:23.227169
+2419,480,C,Visiting the café downstairs,f,3,2026-08-09 21:13:23.227169
+2420,480,D,I'll take care of it this afternoon.,f,4,2026-08-09 21:13:23.227169
+2421,481,A,The main office,f,1,2026-08-09 21:13:23.227169
+2422,481,B,the Italian restaurant,t,2,2026-08-09 21:13:23.227169
+2423,481,C,the café downstairs,f,3,2026-08-09 21:13:23.227169
+2424,481,D,I'll check the schedule and let you know.,f,4,2026-08-09 21:13:23.227169
+2425,482,A,seven o'clock,t,1,2026-08-09 21:13:23.227169
+2426,482,B,twelve thirty,f,2,2026-08-09 21:13:23.227169
+2427,482,C,On Friday,f,3,2026-08-09 21:13:23.227169
+2428,482,D,It's available in the main office.,f,4,2026-08-09 21:13:23.227169
+2429,483,A,Preparing train tickets,t,1,2026-08-09 21:13:23.227169
+2430,483,B,Changing the train travel,f,2,2026-08-09 21:13:23.227169
+2431,483,C,Visiting the ticket office,f,3,2026-08-09 21:13:23.227169
+2432,483,D,I'll take care of it this afternoon.,f,4,2026-08-09 21:13:23.227169
+2433,484,A,The main office,f,1,2026-08-09 21:13:23.227169
+2434,484,B,the station,t,2,2026-08-09 21:13:23.227169
+2435,484,C,the ticket office,f,3,2026-08-09 21:13:23.227169
+2436,484,D,I'll check the schedule and let you know.,f,4,2026-08-09 21:13:23.227169
+2437,485,A,Saturday morning,t,1,2026-08-09 21:13:23.227169
+2438,485,B,Monday evening,f,2,2026-08-09 21:13:23.227169
+2439,485,C,On Monday,f,3,2026-08-09 21:13:23.227169
+2440,485,D,It's available in the main office.,f,4,2026-08-09 21:13:23.227169
+2441,486,A,Preparing conference registration,t,1,2026-08-09 21:13:23.227169
+2442,486,B,Changing the conference,f,2,2026-08-09 21:13:23.227169
+2443,486,C,Visiting the registration desk,f,3,2026-08-09 21:13:23.227169
+2444,486,D,I'll take care of it this afternoon.,f,4,2026-08-09 21:13:23.227169
+2445,487,A,The main office,f,1,2026-08-09 21:13:23.227169
+2446,487,B,the convention center,t,2,2026-08-09 21:13:23.227169
+2447,487,C,the registration desk,f,3,2026-08-09 21:13:23.227169
+2448,487,D,I'll check the schedule and let you know.,f,4,2026-08-09 21:13:23.227169
+2449,488,A,next Monday,t,1,2026-08-09 21:13:23.227169
+2450,488,B,Tuesday,f,2,2026-08-09 21:13:23.227169
+2451,488,C,On Tuesday,f,3,2026-08-09 21:13:23.227169
+2452,488,D,It's available in the main office.,f,4,2026-08-09 21:13:23.227169
+2453,489,A,Preparing a replacement order,t,1,2026-08-09 21:13:23.227169
+2454,489,B,Changing the customer order,f,2,2026-08-09 21:13:23.227169
+2455,489,C,Visiting the service counter,f,3,2026-08-09 21:13:23.227169
+2456,489,D,I'll take care of it this afternoon.,f,4,2026-08-09 21:13:23.227169
+2457,490,A,The main office,f,1,2026-08-09 21:13:23.227169
+2458,490,B,the customer service desk,t,2,2026-08-09 21:13:23.227169
+2459,490,C,the service counter,f,3,2026-08-09 21:13:23.227169
+2460,490,D,I'll check the schedule and let you know.,f,4,2026-08-09 21:13:23.227169
+2461,491,A,next week,t,1,2026-08-09 21:13:23.227169
+2462,491,B,Wednesday,f,2,2026-08-09 21:13:23.227169
+2463,491,C,On Wednesday,f,3,2026-08-09 21:13:23.227169
+2464,491,D,It's available in the main office.,f,4,2026-08-09 21:13:23.227169
+2465,492,A,Preparing the project report,t,1,2026-08-09 21:13:23.227169
+2466,492,B,Changing the project deadline,f,2,2026-08-09 21:13:23.227169
+2467,492,C,Visiting the finance department,f,3,2026-08-09 21:13:23.227169
+2468,492,D,I'll take care of it this afternoon.,f,4,2026-08-09 21:13:23.227169
+2469,493,A,The main office,f,1,2026-08-09 21:13:23.227169
+2470,493,B,the design office,t,2,2026-08-09 21:13:23.227169
+2471,493,C,the finance department,f,3,2026-08-09 21:13:23.227169
+2472,493,D,I'll check the schedule and let you know.,f,4,2026-08-09 21:13:23.227169
+2473,494,A,Friday,t,1,2026-08-09 21:13:23.227169
+2474,494,B,next Friday,f,2,2026-08-09 21:13:23.227169
+2475,494,C,On Thursday,f,3,2026-08-09 21:13:23.227169
+2476,494,D,It's available in the main office.,f,4,2026-08-09 21:13:23.227169
+2477,495,A,Preparing the office computer,t,1,2026-08-09 21:13:23.227169
+2478,495,B,Changing the equipment repair,f,2,2026-08-09 21:13:23.227169
+2479,495,C,Visiting the repair center,f,3,2026-08-09 21:13:23.227169
+2480,495,D,I'll take care of it this afternoon.,f,4,2026-08-09 21:13:23.227169
+2481,496,A,The main office,f,1,2026-08-09 21:13:23.227169
+2482,496,B,the IT department,t,2,2026-08-09 21:13:23.227169
+2483,496,C,the repair center,f,3,2026-08-09 21:13:23.227169
+2484,496,D,I'll check the schedule and let you know.,f,4,2026-08-09 21:13:23.227169
+2485,497,A,this afternoon,t,1,2026-08-09 21:13:23.227169
+2486,497,B,tomorrow,f,2,2026-08-09 21:13:23.227169
+2487,497,C,On Friday,f,3,2026-08-09 21:13:23.227169
+2488,497,D,It's available in the main office.,f,4,2026-08-09 21:13:23.227169
+2489,498,A,Preparing a taxi,t,1,2026-08-09 21:13:23.227169
+2490,498,B,Changing the airport plans,f,2,2026-08-09 21:13:23.227169
+2491,498,C,Visiting the hotel entrance,f,3,2026-08-09 21:13:23.227169
+2492,498,D,I'll take care of it this afternoon.,f,4,2026-08-09 21:13:23.227169
+2493,499,A,The main office,f,1,2026-08-09 21:13:23.227169
+2494,499,B,the airport,t,2,2026-08-09 21:13:23.227169
+2495,499,C,the hotel entrance,f,3,2026-08-09 21:13:23.227169
+2496,499,D,I'll check the schedule and let you know.,f,4,2026-08-09 21:13:23.227169
+2497,500,A,six thirty,t,1,2026-08-09 21:13:23.227169
+2498,500,B,seven fifteen,f,2,2026-08-09 21:13:23.227169
+2499,500,C,On Monday,f,3,2026-08-09 21:13:23.227169
+2500,500,D,It's available in the main office.,f,4,2026-08-09 21:13:23.227169
