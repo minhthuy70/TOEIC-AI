@@ -4,7 +4,7 @@ import { useState, useEffect, useRef, useCallback } from "react";
 import { useSearchParams, useRouter } from "next/navigation";
 import Link from "next/link";
 import {
-  getListeningDailyGroups,
+  getListeningGroupById,
   submitListeningGroup,
   type ListeningGroup,
   type ListeningQuestion,
@@ -54,10 +54,9 @@ export default function ListeningLearnPage() {
     const loadGroup = async () => {
       try {
         setLoading(true);
-        const data = await getListeningDailyGroups();
-        const found = data.groups.find((g) => g.id === groupId);
-        if (found) {
-          setGroup(found);
+        const result = await getListeningGroupById(groupId);
+        if (result.success && result.group) {
+          setGroup(result.group);
         }
       } catch (error) {
         console.error("Load group error:", error);
@@ -473,13 +472,16 @@ export default function ListeningLearnPage() {
                           }
                         }}
                         disabled={submitted}
-                        className={`text-left px-4 py-2.5 rounded-lg text-[12px] border transition-all ${
+                        className={`text-left flex items-center gap-2 px-4 py-2.5 rounded-lg text-[12px] border transition-all ${
                           answers[q.id] === opt.option_label
                             ? "bg-red-600/15 border-red-600/30 text-white"
                             : "bg-zinc-800/40 border-zinc-700/30 text-zinc-300 hover:border-zinc-600"
                         }`}
                       >
-                        <span className="font-bold text-zinc-500">{opt.option_label}.</span>
+                        <span className="font-bold text-zinc-500 shrink-0">{opt.option_label}.</span>
+                        {(partNumber === 3 || partNumber === 4) && opt.option_text && (
+                          <span>{opt.option_text}</span>
+                        )}
                       </button>
                     ))}
                   </div>

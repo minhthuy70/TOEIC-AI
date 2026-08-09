@@ -9,6 +9,7 @@ import type { GrammarCategory } from "@/types/grammar";
 import {
   getListeningDailyStatus,
   getListeningDailyGroups,
+  getListeningReviewGroups,
   type ListeningDailyStatus,
   type ListeningGroup,
 } from "@/services/listening";
@@ -154,6 +155,7 @@ const [grammarLoading, setGrammarLoading] =
   // ─── Listening state ───
   const [listeningStatus, setListeningStatus] = useState<ListeningDailyStatus | null>(null);
   const [listeningGroups, setListeningGroups] = useState<ListeningGroup[]>([]);
+  const [listeningReviewGroups, setListeningReviewGroups] = useState<ListeningGroup[]>([]);
   const [listeningLoading, setListeningLoading] = useState(false);
 
 const [grammarError, setGrammarError] =
@@ -216,12 +218,14 @@ useEffect(() => {
     const loadListening = async () => {
       try {
         setListeningLoading(true);
-        const [statusData, groupsData] = await Promise.all([
+        const [statusData, groupsData, reviewData] = await Promise.all([
           getListeningDailyStatus(),
           getListeningDailyGroups(),
+          getListeningReviewGroups(),
         ]);
         setListeningStatus(statusData);
         setListeningGroups(groupsData.groups || []);
+        setListeningReviewGroups(reviewData.groups || []);
       } catch (error) {
         console.error("Load listening error:", error);
       } finally {
@@ -699,115 +703,124 @@ useEffect(() => {
                     <p className="text-[11px] text-zinc-600 mt-1">Vui lòng liên hệ admin hoặc kiểm tra data.</p>
                   </div>
                 ) : (
-                  <div className="grid sm:grid-cols-2 gap-3">
-                    {listeningGroups.map((group, idx) => {
-                      const partInfo = LISTENING_PARTS.find(p => p.part === group.part);
-                      const questionCount = group.listening_lesson_questions?.length ?? 0;
-                      return (
-                        <Link
-                          key={group.id}
-                          href={`/dashboard/courses/listening/learn?groupId=${group.id}&part=${group.part}`}
-                          className="relative bg-zinc-800/50 hover:bg-zinc-800/80 border border-zinc-700/40 hover:border-red-600/30 rounded-xl p-4 transition-all group/card hover:shadow-lg hover:shadow-red-600/5"
-                        >
-                          {/* Badge */}
-                          <div className="flex items-center gap-2 mb-2.5">
-                            <span className="text-[10px] font-bold bg-red-600/15 text-red-400 border border-red-600/20 px-2 py-0.5 rounded-md">
-                              Group {idx + 1}
-                            </span>
-                            <span className="text-[10px] text-zinc-600">
-                              Part {group.part}
-                            </span>
-                          </div>
+                  <>
+                    <div className="grid sm:grid-cols-2 gap-3">
+                      {listeningGroups.map((group, idx) => {
+                        const partInfo = LISTENING_PARTS.find(p => p.part === group.part);
+                        const questionCount = group.listening_lesson_questions?.length ?? 0;
+                        return (
+                          <Link
+                            key={group.id}
+                            href={`/dashboard/courses/listening/learn?groupId=${group.id}&part=${group.part}`}
+                            className="relative bg-zinc-800/50 hover:bg-zinc-800/80 border border-zinc-700/40 hover:border-red-600/30 rounded-xl p-4 transition-all group/card hover:shadow-lg hover:shadow-red-600/5"
+                          >
+                            {/* Badge */}
+                            <div className="flex items-center gap-2 mb-2.5">
+                              <span className="text-[10px] font-bold bg-red-600/15 text-red-400 border border-red-600/20 px-2 py-0.5 rounded-md">
+                                Group {idx + 1}
+                              </span>
+                              <span className="text-[10px] text-zinc-600">
+                                Part {group.part}
+                              </span>
+                            </div>
 
-                          {/* Icon + Info */}
-                          <div className="flex items-center gap-3">
-                            <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-blue-600/20 to-blue-500/10 border border-blue-600/20 flex items-center justify-center text-lg shrink-0">
-                              {partInfo?.icon || "🎧"}
+                            {/* Icon + Info */}
+                            <div className="flex items-center gap-3">
+                              <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-blue-600/20 to-blue-500/10 border border-blue-600/20 flex items-center justify-center text-lg shrink-0">
+                                {partInfo?.icon || "🎧"}
+                              </div>
+                              <div className="flex-1 min-w-0">
+                                <p className="text-[13px] text-white font-semibold truncate">
+                                  {partInfo?.label || `Part ${group.part}`}
+                                </p>
+                                <p className="text-[11px] text-zinc-500">
+                                  {[1, 2].includes(group.part)
+                                    ? `1 câu hỏi`
+                                    : `${questionCount} câu hỏi`}
+                                </p>
+                              </div>
+                              <div className="text-zinc-600 group-hover/card:text-red-400 transition-colors text-lg">
+                                ›
+                              </div>
                             </div>
-                            <div className="flex-1 min-w-0">
-                              <p className="text-[13px] text-white font-semibold truncate">
-                                {partInfo?.label || `Part ${group.part}`}
-                              </p>
-                              <p className="text-[11px] text-zinc-500">
-                                {[1, 2].includes(group.part)
-                                  ? `1 câu hỏi`
-                                  : `${questionCount} câu hỏi`}
-                              </p>
-                            </div>
-                            <div className="text-zinc-600 group-hover/card:text-red-400 transition-colors text-lg">
-                              ›
-                            </div>
-                          </div>
 
-                          {/* CTA */}
-                          <div className="mt-3 text-center text-[11px] font-semibold text-red-400 bg-red-600/8 border border-red-600/15 py-1.5 rounded-lg group-hover/card:bg-red-600/15 transition-all">
-                            Bắt đầu học
-                          </div>
-                        </Link>
-                      );
-                    })}
-                  </div>
+                            {/* CTA */}
+                            <div className="mt-3 text-center text-[11px] font-semibold text-red-400 bg-red-600/8 border border-red-600/15 py-1.5 rounded-lg group-hover/card:bg-red-600/15 transition-all">
+                              Bắt đầu học
+                            </div>
+                          </Link>
+                        );
+                      })}
+                    </div>
+
+                    {/* Review section */}
+                    <div className="mt-6 space-y-4">
+                      <div className="flex items-center justify-between mb-2">
+                        <div>
+                          <p className="text-[13px] text-white font-semibold">🔁 Ôn lại Listening</p>
+                          <p className="text-[11px] text-zinc-500 mt-1">
+                            Tách riêng khỏi phần học hôm nay, gồm 4 Part review.
+                          </p>
+                        </div>
+                      </div>
+
+                      <div className="grid sm:grid-cols-2 gap-3">
+                        {[1, 2, 3, 4].map((part) => {
+                          const partInfo = LISTENING_PARTS.find((item) => item.part === part);
+                          const reviewGroup = listeningReviewGroups.find((group) => group.part === part);
+                          const questionCount = reviewGroup?.listening_lesson_questions?.length ?? 0;
+
+                          const cardBody = (
+                            <div className={`relative overflow-hidden bg-zinc-800/50 rounded-2xl p-4 transition-all ${reviewGroup ? 'border border-red-600/20 hover:border-red-500/30 shadow-lg shadow-red-600/10' : 'border border-zinc-700/40'}`}>
+                              <div className="flex items-center gap-3 mb-3">
+                                <div className={`w-11 h-11 rounded-xl flex items-center justify-center text-lg ${part <= 2 ? 'bg-red-600/10 border border-red-600/20 text-red-400' : 'bg-sky-600/10 border border-sky-500/20 text-sky-300'}`}>
+                                  {partInfo?.icon || '🎧'}
+                                </div>
+                                <div className="flex-1 min-w-0">
+                                  <p className="text-[13px] text-white font-semibold truncate">
+                                    {partInfo?.label || `Part ${part}`}
+                                  </p>
+                                  <p className="text-[11px] text-zinc-500 mt-1">
+                                    {partInfo?.desc}
+                                  </p>
+                                </div>
+                                <span className="text-[10px] bg-zinc-900/70 border border-zinc-700/50 text-zinc-400 rounded-full px-2 py-1">
+                                  Part {part}
+                                </span>
+                              </div>
+
+                              <div className="text-[11px] text-zinc-400 mb-4">
+                                {reviewGroup
+                                  ? `Sẵn sàng ôn lại — ${questionCount} câu hỏi`
+                                  : 'Chưa có dữ liệu ôn tập cho phần này'}
+                              </div>
+
+                              <div className="text-center">
+                                <span className={`inline-flex items-center justify-center w-full rounded-xl py-3 text-[12px] font-semibold ${reviewGroup ? 'bg-red-600 text-white' : 'bg-zinc-800 text-zinc-500'}`}>
+                                  {reviewGroup ? 'Ôn lại' : 'Chưa có dữ liệu'}
+                                </span>
+                              </div>
+                            </div>
+                          );
+
+                          return reviewGroup ? (
+                            <Link
+                              key={part}
+                              href={`/dashboard/courses/listening/learn?groupId=${reviewGroup.id}&part=${part}`}
+                              className="block"
+                            >
+                              {cardBody}
+                            </Link>
+                          ) : (
+                            <div key={part}>{cardBody}</div>
+                          );
+                        })}
+                      </div>
+                    </div>
+                  </>
                 )}
               </>
             )}
-          </div>
-
-          {/* ─────── Luyện theo Part ─────── */}
-          <div>
-            <p className="text-sm text-zinc-300 font-medium mb-3">Luyện theo Part</p>
-            <div className="grid sm:grid-cols-2 gap-3">
-              {LISTENING_PARTS.map((part) => {
-                const progress = Math.round((part.done / part.questions) * 100);
-                return (
-                  <div
-                    key={part.part}
-                    className="bg-zinc-900/60 border border-zinc-800/50 hover:border-zinc-700/60 rounded-2xl p-4 cursor-pointer transition-all group"
-                  >
-                    <div className="flex items-center gap-3 mb-3">
-                      <div className="w-10 h-10 rounded-xl bg-blue-600/15 border border-blue-600/20 flex items-center justify-center text-lg">
-                        {part.icon}
-                      </div>
-                      <div>
-                        <p className="text-[13px] text-white font-semibold">Part {part.part}: {part.label}</p>
-                        <p className="text-[11px] text-zinc-500">{part.questions} câu</p>
-                      </div>
-                    </div>
-                    <p className="text-[11px] text-zinc-600 mb-3">{part.desc}</p>
-                    <div className="flex items-center gap-2">
-                      <div className="flex-1 bg-zinc-800 rounded-full h-1.5">
-                        <div
-                          className="bg-gradient-to-r from-blue-600 to-blue-400 h-1.5 rounded-full"
-                          style={{ width: `${progress}%` }}
-                        />
-                      </div>
-                      <span className="text-[10px] text-zinc-500 shrink-0">{progress}%</span>
-                    </div>
-                  </div>
-                );
-              })}
-            </div>
-          </div>
-
-          {/* ─────── Kỹ năng nâng cao ─────── */}
-          <div>
-            <p className="text-sm text-zinc-300 font-medium mb-3">Kỹ năng nâng cao</p>
-            <div className="space-y-2">
-              {LISTENING_SKILLS.map((skill) => (
-                <div
-                  key={skill.label}
-                  className="bg-zinc-900/60 border border-zinc-800/50 hover:border-zinc-700/60 rounded-xl px-4 py-3.5 flex items-center gap-3 cursor-pointer transition-all group"
-                >
-                  <span className="text-xl w-8 text-center">{skill.icon}</span>
-                  <div className="flex-1">
-                    <p className="text-[13px] text-white font-medium">{skill.label}</p>
-                    <p className="text-[11px] text-zinc-500 mt-0.5">{skill.desc}</p>
-                  </div>
-                  <span className="text-xs text-red-400 border border-red-600/20 bg-red-600/8 px-3 py-1 rounded-full group-hover:bg-red-600/15 transition-all">
-                    Bắt đầu
-                  </span>
-                </div>
-              ))}
-            </div>
           </div>
         </div>
       )}

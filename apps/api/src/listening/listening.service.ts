@@ -36,14 +36,14 @@ export class ListeningService {
     // Ngay chan: Part 3, 4
     const partsForToday = isOddDay ? [1, 2] : [3, 4];
 
-    // Count how many groups completed today
-    const completedToday = await this.prisma.user_listening_group_progress.count({
+    // Count how many lessons completed today
+    const completedToday = await this.prisma.user_listening_progress.count({
       where: {
         user_id: userId,
-        learned_at: {
+        completed: true,
+        last_studied: {
           gte: startOfDay,
         },
-        completed: true,
       },
     });
 
@@ -79,16 +79,21 @@ export class ListeningService {
 
       if (!lesson) continue;
 
-      // Find an incomplete group for this lesson
-      const uncompletedGroup = await this.prisma.listening_lesson_groups.findFirst({
+      // Skip if lesson already completed by the user
+      const completedLesson = await this.prisma.user_listening_progress.findFirst({
+        where: {
+          user_id: userId,
+          lesson_id: lesson.id,
+          completed: true,
+        },
+      });
+
+      if (completedLesson) continue;
+
+      // Return the first group for that lesson as today's study group
+      const firstGroup = await this.prisma.listening_lesson_groups.findFirst({
         where: {
           lesson_id: lesson.id,
-          user_listening_group_progress: {
-            none: {
-              user_id: userId,
-              completed: true,
-            },
-          },
         },
         orderBy: {
           display_order: 'asc',
@@ -109,9 +114,9 @@ export class ListeningService {
         },
       });
 
-      if (uncompletedGroup) {
+      if (firstGroup) {
         groups.push({
-          ...uncompletedGroup,
+          ...firstGroup,
           part,
         });
       }
@@ -124,8 +129,172 @@ export class ListeningService {
     };
   }
 
+  async getReviewGroups(userId: number) {
+    const completedGroupProgress = await this.prisma.user_listening_group_progress.findMany({
+      where: {
+        user_id: userId,
+        completed: true,
+      },
+      orderBy: {
+        learned_at: 'desc',
+      },
+      include: {
+        group: {
+          include: {
+            listening_lessons: true,
+            listening_lesson_questions: {
+              orderBy: {
+                display_order: 'asc',
+              },
+              include: {
+                listening_lesson_options: {
+                  orderBy: {
+                    option_label: 'asc',
+                  },
+                },
+              },
+            },
+          },
+        },
+      },
+    });
+
+    const reviewByPart: Record<number, any> = {};
+
+    for (const progress of completedGroupProgress) {
+      const group = progress.group;
+      const part = group?.listening_lessons?.part;
+      if (!group || !part || reviewByPart[part]) continue;
+      reviewByPart[part] = {
+        ...group,
+        part,
+      };
+    }
+
+    if (Object.keys(reviewByPart).length === 0) {
+      const completedLessons = await this.prisma.user_listening_progress.findMany({
+        where: {
+          user_id: userId,
+          completed: true,
+        },
+        orderBy: {
+          last_studied: 'desc',
+        },
+        include: {
+          listening_lessons: {
+            include: {
+              listening_lesson_groups: {
+                orderBy: {
+                  display_order: 'asc',
+                },
+                include: {
+                  listening_lesson_questions: {
+                    orderBy: {
+                      display_order: 'asc',
+                    },
+                    include: {
+                      listening_lesson_options: {
+                        orderBy: {
+                          option_label: 'asc',
+                        },
+                      },
+                    },
+                  },
+                },
+              },
+            },
+          },
+        },
+      });
+
+      for (const progress of completedLessons) {
+        const lesson = progress.listening_lessons;
+        if (!lesson) continue;
+        const part = lesson.part;
+        if (!reviewByPart[part]) {
+          const group = lesson.listening_lesson_groups?.[0];
+          if (!group) continue;
+          reviewByPart[part] = {
+            ...group,
+            part,
+          };
+        }
+      }
+    }
+
+    return {
+      success: true,
+      groups: [1, 2, 3, 4]
+        .map((part) => reviewByPart[part])
+        .filter(Boolean),
+    };
+  }
+
+  async getGroupById(groupId: number) {
+    const group = await this.prisma.listening_lesson_groups.findUnique({
+      where: { id: groupId },
+      include: {
+        listening_lesson_questions: {
+          orderBy: {
+            display_order: 'asc',
+          },
+          include: {
+            listening_lesson_options: {
+              orderBy: {
+                option_label: 'asc',
+              },
+            },
+          },
+        },
+      },
+    });
+
+    return {
+      success: true,
+      group,
+    };
+  }
+
   async submitGroup(userId: number, groupId: number, score: number) {
     const today = new Date();
+
+    const group = await this.prisma.listening_lesson_groups.findUnique({
+      where: { id: groupId },
+    });
+
+    const lessonId = group?.lesson_id;
+
+    if (lessonId) {
+      const existingLessonProgress = await this.prisma.user_listening_progress.findUnique({
+        where: {
+          user_id_lesson_id: {
+            user_id: userId,
+            lesson_id: lessonId,
+          },
+        },
+      });
+
+      await this.prisma.user_listening_progress.upsert({
+        where: {
+          user_id_lesson_id: {
+            user_id: userId,
+            lesson_id: lessonId,
+          },
+        },
+        update: {
+          completed: true,
+          best_score: Math.max(score, existingLessonProgress?.best_score || 0),
+          last_studied: today,
+        },
+        create: {
+          user_id: userId,
+          lesson_id: lessonId,
+          completed: true,
+          best_score: score,
+          last_studied: today,
+        },
+      });
+    }
 
     const existingProgress = await this.prisma.user_listening_group_progress.findUnique({
       where: {

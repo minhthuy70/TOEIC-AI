@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Body, UseGuards, Request } from '@nestjs/common';
+import { Controller, Get, Post, Body, UseGuards, Request, Param } from '@nestjs/common';
 import { ListeningService } from './listening.service';
 import { JwtAuthGuard } from '../auth/jwt-auth.guard';
 
@@ -15,6 +15,16 @@ export class ListeningController {
   @Get('daily-groups')
   async getDailyGroups(@Request() req) {
     return this.listeningService.getDailyGroups(req.user.userId);
+  }
+
+  @Get('review-groups')
+  async getReviewGroups(@Request() req) {
+    return this.listeningService.getReviewGroups(req.user.userId);
+  }
+
+  @Get('group/:id')
+  async getGroupById(@Param('id') id: string) {
+    return this.listeningService.getGroupById(Number(id));
   }
 
   @Post('submit-group')

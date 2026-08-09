@@ -52,6 +52,11 @@ export interface ListeningDailyGroups {
   groups: ListeningGroup[];
 }
 
+export interface ListeningReviewGroups {
+  success: boolean;
+  groups: ListeningGroup[];
+}
+
 export interface ListeningSubmitResult {
   success: boolean;
   message: string;
@@ -67,9 +72,26 @@ export async function getListeningDailyStatus() {
   );
 }
 
+export interface ListeningGroupResponse {
+  success: boolean;
+  group: ListeningGroup | null;
+}
+
 export async function getListeningDailyGroups() {
   return apiFetch<ListeningDailyGroups>(
     "/listening/daily-groups",
+  );
+}
+
+export async function getListeningReviewGroups() {
+  return apiFetch<ListeningReviewGroups>(
+    "/listening/review-groups",
+  );
+}
+
+export async function getListeningGroupById(groupId: number) {
+  return apiFetch<ListeningGroupResponse>(
+    `/listening/group/${groupId}`,
   );
 }
 
