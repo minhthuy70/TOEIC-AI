@@ -50,18 +50,4 @@ export class ListeningController {
   ) {
     return this.listeningService.submitGroup(req.user.userId, groupId, score);
   }
-
-  @Get('group/:id')
-  async getGroupById(@Param('id') id: string) {
-    return this.listeningService.getGroupById(Number(id));
-  }
-
-  @Post('submit-group')
-  async submitGroup(
-    @Request() req,
-    @Body('groupId') groupId: number,
-    @Body('score') score: number,
-  ) {
-    return this.listeningService.submitGroup(req.user.userId, groupId, score);
-  }
 }

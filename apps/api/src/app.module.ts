@@ -7,6 +7,7 @@ import { PlacementTestModule } from "./placement-test/placement-test.module";
 import { VocabularyModule } from "./vocabulary/vocabulary.module";
 import { GrammarModule } from "./grammar/grammar.module";
 import { ListeningModule } from "./listening/listening.module";
+import { ReadingModule } from "./reading/reading.module";
 
 
 import { AuthModule } from "./auth/auth.module";
@@ -33,6 +34,7 @@ import { ProfileModule } from "./profile/profile.module";
     VocabularyModule,
     GrammarModule,
     ListeningModule,
+    ReadingModule,
   ],
 })
 export class AppModule {}

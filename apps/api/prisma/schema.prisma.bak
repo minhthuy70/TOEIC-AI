@@ -8,17 +8,17 @@ datasource db {
 }
 
 model User {
-  id                            Int                             @id @default(autoincrement())
-  fullName                      String
-  email                         String                          @unique
-  password                      String
-  createdAt                     DateTime                        @default(now())
-  profile                       UserProfile?
+  id                      Int                       @id @default(autoincrement())
+  fullName                String
+  email                   String                    @unique
+  password                String
+  createdAt               DateTime                  @default(now())
+  profile                 UserProfile?
   grammarProgress               UserGrammarProgress[]
-  user_listening_group_progress user_listening_group_progress[]
-  user_listening_progress       user_listening_progress[]
-  user_reading_progress         user_reading_progress[]
   vocabularyProgress            UserVocabularyProgress[]
+  user_listening_progress       user_listening_progress[]
+  user_listening_group_progress user_listening_group_progress[]
+  user_reading_progress         user_reading_progress[]
 }
 
 model UserProfile {
@@ -45,37 +45,38 @@ model UserProfile {
 }
 
 model Vocabulary {
-  id                Int                      @id @default(autoincrement())
-  english           String                   @db.VarChar(255)
-  type              String?                  @db.VarChar(50)
+  id                Int       @id @default(autoincrement())
+  english           String    @db.VarChar(255)
+  type              String?   @db.VarChar(50)
   vietnamese        String?
-  pronounce         String?                  @db.VarChar(255)
+  pronounce         String?   @db.VarChar(255)
   explain           String?
   example           String?
-  exampleVietnamese String?                  @map("example_vietnamese")
-  imageUrl          String?                  @map("image_url")
-  audioUrl          String?                  @map("audio_url")
-  topic             String?                  @db.VarChar(255)
-  topicUrl          String?                  @map("topic_url")
-  createdAt         DateTime?                @default(now()) @map("created_at") @db.Timestamp(6)
-  stage             Int                      @default(1) @db.SmallInt
+  exampleVietnamese String?   @map("example_vietnamese")
+  imageUrl          String?   @map("image_url")
+  audioUrl          String?   @map("audio_url")
+  topic             String?   @db.VarChar(255)
+  topicUrl          String?   @map("topic_url")
+  createdAt         DateTime? @default(now()) @map("created_at") @db.Timestamp(6)
+  stage             Int       @default(1) @db.SmallInt
   progresses        UserVocabularyProgress[]
 
   @@map("vocabulary")
 }
 
 model UserVocabularyProgress {
-  id           Int        @id @default(autoincrement())
-  userId       Int        @map("user_id")
-  vocabularyId Int        @map("vocabulary_id")
-  learnedAt    DateTime?  @map("learned_at") @db.Timestamp(6)
-  reviewCount  Int?       @default(0) @map("review_count")
-  nextReview   DateTime?  @map("next_review") @db.Timestamp(6)
-  createdAt    DateTime?  @default(now()) @map("created_at") @db.Timestamp(6)
-  status       String     @default("NEW") @db.VarChar(20)
-  reviewLevel  Int        @default(0) @map("review_level") @db.SmallInt
-  lastReview   DateTime?  @map("last_review") @db.Timestamp(6)
-  updatedAt    DateTime?  @default(now()) @updatedAt @map("updated_at") @db.Timestamp(6)
+  id           Int       @id @default(autoincrement())
+  userId       Int       @map("user_id")
+  vocabularyId Int       @map("vocabulary_id")
+  learnedAt    DateTime? @map("learned_at") @db.Timestamp(6)
+  reviewCount  Int?      @default(0) @map("review_count")
+  nextReview   DateTime? @map("next_review") @db.Timestamp(6)
+  createdAt    DateTime? @default(now()) @map("created_at") @db.Timestamp(6)
+  status       String    @default("NEW") @db.VarChar(20)
+  reviewLevel  Int       @default(0) @map("review_level") @db.SmallInt
+  lastReview   DateTime? @map("last_review") @db.Timestamp(6)
+  updatedAt    DateTime? @default(now()) @updatedAt @map("updated_at") @db.Timestamp(6)
+
   user         User       @relation(fields: [userId], references: [id], onDelete: Cascade, onUpdate: NoAction)
   vocabulary   Vocabulary @relation(fields: [vocabularyId], references: [id], onDelete: Cascade, onUpdate: NoAction)
 
@@ -129,18 +130,18 @@ model UserGrammarProgress {
 }
 
 model listening_lesson_groups {
-  id                            Int                             @id @default(autoincrement())
-  lesson_id                     Int
-  title                         String?                         @db.VarChar(255)
-  audio_url                     String?
-  start_seconds                 Decimal?                        @db.Decimal(10, 2)
-  end_seconds                   Decimal?                        @db.Decimal(10, 2)
-  display_order                 Int?                            @default(0)
-  created_at                    DateTime?                       @default(now()) @db.Timestamp(6)
-  updated_at                    DateTime?                       @default(now()) @db.Timestamp(6)
-  image_url                     String?
-  knowledge                     String?
-  listening_lessons             listening_lessons               @relation(fields: [lesson_id], references: [id], onDelete: Cascade, onUpdate: NoAction, map: "fk_listening_lesson_groups_lesson")
+  id                         Int                          @id @default(autoincrement())
+  lesson_id                  Int
+  title                      String?                      @db.VarChar(255)
+  audio_url                  String?
+  start_seconds              Decimal?                     @db.Decimal(10, 2)
+  end_seconds                Decimal?                     @db.Decimal(10, 2)
+  display_order              Int?                         @default(0)
+  created_at                 DateTime?                    @default(now()) @db.Timestamp(6)
+  updated_at                 DateTime?                    @default(now()) @db.Timestamp(6)
+  image_url                  String?
+  knowledge                  String?
+  listening_lessons          listening_lessons            @relation(fields: [lesson_id], references: [id], onDelete: Cascade, onUpdate: NoAction, map: "fk_listening_lesson_groups_lesson")
   listening_lesson_questions    listening_lesson_questions[]
   user_listening_group_progress user_listening_group_progress[]
 
@@ -166,10 +167,10 @@ model listening_lesson_questions {
   question_number          Int
   question_text            String
   explanation              String?
+  knowledge                String?
   display_order            Int?                       @default(0)
   created_at               DateTime?                  @default(now()) @db.Timestamp(6)
   updated_at               DateTime?                  @default(now()) @db.Timestamp(6)
-  knowledge                String?
   listening_lesson_options listening_lesson_options[]
   listening_lesson_groups  listening_lesson_groups    @relation(fields: [group_id], references: [id], onDelete: Cascade, onUpdate: NoAction, map: "fk_listening_lesson_questions_group")
 
@@ -215,6 +216,7 @@ model question_groups {
   listening_lessons listening_lessons[]
   tests             tests?              @relation(fields: [test_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
   questions         questions[]
+  reading_lessons   reading_lessons[]
 }
 
 model questions {
@@ -233,12 +235,11 @@ model reading_lessons {
   id                    Int                     @id @default(autoincrement())
   title                 String                  @db.VarChar(255)
   part                  Int                     @db.SmallInt
+  question_group_id     Int
   display_order         Int?                    @default(0)
   created_at            DateTime?               @default(now()) @db.Timestamp(6)
   updated_at            DateTime?               @default(now()) @db.Timestamp(6)
-  description           String?
-  difficulty            Int?                    @default(1) @db.SmallInt
-  reading_lesson_groups reading_lesson_groups[]
+  question_groups       question_groups         @relation(fields: [question_group_id], references: [id], onDelete: Cascade, onUpdate: NoAction, map: "fk_reading_question_group")
   user_reading_progress user_reading_progress[]
 }
 
@@ -270,16 +271,16 @@ model user_listening_progress {
 }
 
 model user_listening_group_progress {
-  id         Int                     @id @default(autoincrement())
-  user_id    Int
-  group_id   Int
-  completed  Boolean?                @default(false)
-  score      Int?                    @default(0)
-  learned_at DateTime?               @db.Timestamp(6)
-  created_at DateTime?               @default(now()) @db.Timestamp(6)
-  updated_at DateTime?               @default(now()) @db.Timestamp(6)
-  group      listening_lesson_groups @relation(fields: [group_id], references: [id], onDelete: Cascade, onUpdate: NoAction, map: "fk_user_listening_group")
-  user       User                    @relation(fields: [user_id], references: [id], onDelete: Cascade, onUpdate: NoAction, map: "fk_user_listening_group_user")
+  id           Int                     @id @default(autoincrement())
+  user_id      Int
+  group_id     Int
+  completed    Boolean?                @default(false)
+  score        Int?                    @default(0)
+  learned_at   DateTime?               @db.Timestamp(6)
+  created_at   DateTime?               @default(now()) @db.Timestamp(6)
+  updated_at   DateTime?               @default(now()) @db.Timestamp(6)
+  group        listening_lesson_groups @relation(fields: [group_id], references: [id], onDelete: Cascade, onUpdate: NoAction, map: "fk_user_listening_group")
+  user         User                    @relation(fields: [user_id], references: [id], onDelete: Cascade, onUpdate: NoAction, map: "fk_user_listening_group_user")
 
   @@unique([user_id, group_id], map: "uq_user_listening_group")
 }
@@ -297,56 +298,4 @@ model user_reading_progress {
   User            User            @relation(fields: [user_id], references: [id], onDelete: Cascade, onUpdate: NoAction, map: "fk_reading_user")
 
   @@unique([user_id, lesson_id], map: "uq_user_reading")
-}
-
-model reading_lesson_groups {
-  id                Int                 @id @default(autoincrement())
-  lesson_id         Int
-  part              Int                 @db.SmallInt
-  group_number      Int
-  title             String?             @db.VarChar(255)
-  passage           String?
-  knowledge         String?
-  display_order     Int?                @default(0)
-  created_at        DateTime?           @default(now()) @db.Timestamp(6)
-  updated_at        DateTime?           @default(now()) @db.Timestamp(6)
-  reading_lessons   reading_lessons     @relation(fields: [lesson_id], references: [id], onDelete: Cascade, onUpdate: NoAction, map: "fk_reading_lesson_groups_lesson")
-  reading_questions reading_questions[]
-
-  @@index([lesson_id], map: "idx_reading_lesson_groups_lesson")
-  @@index([display_order], map: "idx_reading_lesson_groups_order")
-  @@index([part], map: "idx_reading_lesson_groups_part")
-}
-
-/// This table contains check constraints and requires additional setup for migrations. Visit https://pris.ly/d/check-constraints for more info.
-model reading_options {
-  id                Int               @id @default(autoincrement())
-  question_id       Int
-  option_key        String            @db.VarChar(1)
-  option_text       String
-  is_correct        Boolean?          @default(false)
-  display_order     Int?              @default(0)
-  created_at        DateTime?         @default(now()) @db.Timestamp(6)
-  reading_questions reading_questions @relation(fields: [question_id], references: [id], onDelete: Cascade, onUpdate: NoAction, map: "fk_reading_options_question")
-
-  @@unique([question_id, option_key], map: "uq_reading_question_option")
-}
-
-model reading_questions {
-  id                    Int                   @id @default(autoincrement())
-  group_id              Int
-  question_number       Int
-  question_text         String
-  question_type         String?               @db.VarChar(50)
-  explanation           String?
-  knowledge             String?
-  correct_answer        String?               @db.VarChar(1)
-  display_order         Int?                  @default(0)
-  created_at            DateTime?             @default(now()) @db.Timestamp(6)
-  updated_at            DateTime?             @default(now()) @db.Timestamp(6)
-  reading_options       reading_options[]
-  reading_lesson_groups reading_lesson_groups @relation(fields: [group_id], references: [id], onDelete: Cascade, onUpdate: NoAction, map: "fk_reading_questions_group")
-
-  @@index([group_id], map: "idx_reading_questions_group")
-  @@index([display_order], map: "idx_reading_questions_order")
 }
