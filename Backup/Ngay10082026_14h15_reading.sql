@@ -2,7 +2,7 @@
 -- PostgreSQL database dump
 --
 
-\restrict QHqxdk41aCOcTzpwM0K8pstW65mczrA7GDRF0MpO5ZhQbG7KXVxDQ3HUSP67JFB
+\restrict lFMf0wxgse8jIJibLkIx0HtZT25jb2ELP8tslxsbaqZ9r9iWh5tvrN7zs7nkK3S
 
 -- Dumped from database version 17.10
 -- Dumped by pg_dump version 17.10
@@ -7569,6 +7569,7 @@ COPY public.reading_lesson_groups (id, lesson_id, part, group_number, title, pas
 126	7	6	26	Part 6 - Text Completion 026	Sự kiện kinh doanh\n\nThe organizer recently sent an update about the conference. The information is intended to help attendees understand the latest arrangements. \n[1] _____ call me _____ you arrive at the office. [2] _____ manager will review the report _____ the meeting begins. [3] _____ must wait _____ the system restarts. [4] _____ the presentation ended, attendees asked questions.\nThe department will provide additional assistance if necessary. Thank you for your cooperation.	Ngữ pháp: Liên từ thời gian	26	2026-08-10 12:43:50.483122	2026-08-10 12:43:50.483122
 127	7	6	27	Part 6 - Text Completion 027	Báo cáo doanh thu\n\nThe finance manager recently sent an update about the report. The information is intended to help department understand the latest arrangements. \n[1] _____ employee _____ submitted the report is on vacation. [2] _____ manager _____ hired me is from Canada. [3] _____ _____ have relevant experience will be considered first. [4] _____ consultant _____ we met yesterday will lead the project.\nThe department will provide additional assistance if necessary. Thank you for your cooperation.	Ngữ pháp: Đại từ quan hệ chỉ người	27	2026-08-10 12:43:50.483122	2026-08-10 12:43:50.483122
 128	7	6	28	Part 6 - Text Completion 028	Đơn hàng trực tuyến\n\nThe customer recently sent an update about the shipment. The information is intended to help warehouse understand the latest arrangements. \n[1] _____ report _____ you sent was helpful. [2] _____ machine _____ was installed yesterday is working well. [3] _____ software _____ we use requires an update. [4] _____ building _____ the company owns is near the station.\nThe department will provide additional assistance if necessary. Thank you for your cooperation.	Ngữ pháp: Đại từ quan hệ chỉ vật	28	2026-08-10 12:43:50.483122	2026-08-10 12:43:50.483122
+201	11	7	1	Part 7 - Single Passage 001	The main office will be renovated from August 18 to August 22. Employees should remove personal items from their desks before August 17. During the renovation, staff will work on the fourth floor. This information was prepared for employees and customers to help them make the appropriate arrangements for variation 1.	Đọc hiểu TOEIC Reading Part 7	1	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
 129	7	6	29	Part 6 - Text Completion 029	Khách sạn\n\nThe hotel manager recently sent an update about the reservation. The information is intended to help guests understand the latest arrangements. \n[1] _____ manager _____ office is on the third floor is away today. [2] _____ contacted a supplier _____ products are environmentally friendly. [3] _____ employee _____ laptop was stolen reported the incident. [4] _____ company _____ headquarters are in Seoul opened a new branch.\nThe department will provide additional assistance if necessary. Thank you for your cooperation.	Ngữ pháp: Đại từ quan hệ sở hữu	29	2026-08-10 12:43:50.483122	2026-08-10 12:43:50.483122
 130	7	6	30	Part 6 - Text Completion 030	Hãng hàng không\n\nThe airline representative recently sent an update about the flight. The information is intended to help passengers understand the latest arrangements. \n[1] _____ meeting is scheduled _____ Monday. [2] _____ office closes _____ 6:00 P.M. [3] _____ company was founded _____ 1998. [4] _____ submit the form _____ Friday.\nThe department will provide additional assistance if necessary. Thank you for your cooperation.	Ngữ pháp: Giới từ thời gian	30	2026-08-10 12:43:50.483122	2026-08-10 12:43:50.483122
 131	7	6	31	Part 6 - Text Completion 031	Cửa hàng bán lẻ\n\nThe store manager recently sent an update about the promotion. The information is intended to help customers understand the latest arrangements. \n[1] _____ meeting room is _____ the second floor. [2] _____ manager is waiting _____ the lobby. [3] _____ leave the package _____ the front desk. [4] _____ office is _____ the bank and the post office.\nThe department will provide additional assistance if necessary. Thank you for your cooperation.	Ngữ pháp: Giới từ nơi chốn	31	2026-08-10 12:43:50.483122	2026-08-10 12:43:50.483122
@@ -7581,6 +7582,7 @@ COPY public.reading_lesson_groups (id, lesson_id, part, group_number, title, pas
 138	7	6	38	Part 6 - Text Completion 038	Vận chuyển\n\nThe shipping manager recently sent an update about the delivery service. The information is intended to help customers understand the latest arrangements. \n[1] _____ the weather was bad, the event continued. [2] _____ the high price, the product sold well. [3] _____ flight departed on time _____ the heavy rain. [4] _____ she was busy, she attended the meeting.\nThe department will provide additional assistance if necessary. Thank you for your cooperation.	Ngữ pháp: Mệnh đề chỉ nhượng bộ	38	2026-08-10 12:43:50.483122	2026-08-10 12:43:50.483122
 139	7	6	39	Part 6 - Text Completion 039	Marketing\n\nThe marketing director recently sent an update about the campaign. The information is intended to help team members understand the latest arrangements. \n[1] _____ meeting was canceled _____ the manager was sick. [2] _____ the road was closed, the delivery was delayed. [3] _____ event was postponed _____ heavy rain. [4] _____ left early _____ the traffic was heavy.\nThe department will provide additional assistance if necessary. Thank you for your cooperation.	Ngữ pháp: Mệnh đề chỉ lý do	39	2026-08-10 12:43:50.483122	2026-08-10 12:43:50.483122
 140	7	6	40	Part 6 - Text Completion 040	Công nghệ\n\nThe IT manager recently sent an update about the software update. The information is intended to help users understand the latest arrangements. \n[1] _____ report was so detailed _____ everyone understood the problem. [2] _____ was such a busy day _____ the staff worked late. [3] _____ system was overloaded; _____, the website became slow. [4] _____ instructions were clear, _____ everyone completed the task correctly.\nThe department will provide additional assistance if necessary. Thank you for your cooperation.	Ngữ pháp: Mệnh đề chỉ kết quả	40	2026-08-10 12:43:50.483122	2026-08-10 12:43:50.483122
+202	11	7	2	Part 7 - Single Passage 002	Greenway Electronics has shipped a customer's order for two wireless keyboards. The package is expected to arrive on Thursday. A tracking number is available in the customer's online account. This information was prepared for employees and customers to help them make the appropriate arrangements for variation 1.	Đọc hiểu TOEIC Reading Part 7	2	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
 141	8	6	41	Part 6 - Text Completion 041	Thông báo cuộc họp\n\nThe manager recently sent an update about the meeting. The information is intended to help employees understand the latest arrangements. \n[1] _____ job requires answering calls, preparing reports, and _____ customers. [2] _____ manager is responsible for hiring staff and _____ training. [3] _____ new system is faster, safer, and more _____. [4] _____ company plans to expand its market and _____ new products.\nThe department will provide additional assistance if necessary. Thank you for your cooperation.	Ngữ pháp: Cấu trúc song song	41	2026-08-10 12:43:50.483122	2026-08-10 12:43:50.483122
 142	8	6	42	Part 6 - Text Completion 042	Email khách hàng\n\nThe customer recently sent an update about the order. The information is intended to help service team understand the latest arrangements. \n[1] _____ manager asked when the shipment _____. [2] _____ tell me where the meeting room _____. [3] _____ asked whether the report _____ ready. [4] _____ you explain how the machine _____?\nThe department will provide additional assistance if necessary. Thank you for your cooperation.	Ngữ pháp: Câu hỏi gián tiếp	42	2026-08-10 12:43:50.483122	2026-08-10 12:43:50.483122
 143	8	6	43	Part 6 - Text Completion 043	Thông báo công ty\n\nThe company recently sent an update about the policy. The information is intended to help employees understand the latest arrangements. \n[1] _____ _____ a meeting at 9:00 tomorrow. [2] _____ _____ several documents on the desk. [3] _____ _____ enough information in the report. [4] _____ _____ two new employees in our department.\nThe department will provide additional assistance if necessary. Thank you for your cooperation.	Ngữ pháp: Cấu trúc there is/there are	43	2026-08-10 12:43:50.483122	2026-08-10 12:43:50.483122
@@ -7619,6 +7621,7 @@ COPY public.reading_lesson_groups (id, lesson_id, part, group_number, title, pas
 176	9	6	76	Part 6 - Text Completion 076	Thư viện\n\nThe librarian recently sent an update about the program. The information is intended to help visitors understand the latest arrangements. \n[1] _____ meeting room is _____ the second floor. [2] _____ manager is waiting _____ the lobby. [3] _____ leave the package _____ the front desk. [4] _____ office is _____ the bank and the post office.\nThe department will provide additional assistance if necessary. Thank you for your cooperation.	Ngữ pháp: Giới từ nơi chốn	76	2026-08-10 12:43:50.483122	2026-08-10 12:43:50.483122
 177	9	6	77	Part 6 - Text Completion 077	Nhà máy\n\nThe factory manager recently sent an update about the production plan. The information is intended to help workers understand the latest arrangements. \n[1] _____ are _____ employees in the training room. [2] _____ do not have _____ information about the incident. [3] _____ is only _____ time left before the meeting. [4] _____ manager received _____ applications this week.\nThe department will provide additional assistance if necessary. Thank you for your cooperation.	Ngữ pháp: Từ hạn định	77	2026-08-10 12:43:50.483122	2026-08-10 12:43:50.483122
 178	9	6	78	Part 6 - Text Completion 078	Vận chuyển\n\nThe shipping manager recently sent an update about the delivery service. The information is intended to help customers understand the latest arrangements. \n[1] _____ company hired two new _____ last month. [2] _____ _____ are waiting outside. [3] _____ need three _____ for the conference room. [4] _____ store has many _____ of this product.\nThe department will provide additional assistance if necessary. Thank you for your cooperation.	Ngữ pháp: Danh từ đếm được	78	2026-08-10 12:43:50.483122	2026-08-10 12:43:50.483122
+203	11	7	3	Part 7 - Single Passage 003	Brighton Consulting is accepting applications for an administrative assistant. Applicants should have at least two years of office experience and be comfortable using spreadsheet software. Applications must be submitted by September 5. This information was prepared for employees and customers to help them make the appropriate arrangements for variation 1.	Đọc hiểu TOEIC Reading Part 7	3	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
 179	9	6	79	Part 6 - Text Completion 079	Marketing\n\nThe marketing director recently sent an update about the campaign. The information is intended to help team members understand the latest arrangements. \n[1] _____ company needs more _____ before making a decision. [2] _____ received useful _____ from the consultant. [3] _____ equipment _____ expensive. [4] _____ is not enough _____ in the storage room.\nThe department will provide additional assistance if necessary. Thank you for your cooperation.	Ngữ pháp: Danh từ không đếm được	79	2026-08-10 12:43:50.483122	2026-08-10 12:43:50.483122
 180	9	6	80	Part 6 - Text Completion 080	Công nghệ\n\nThe IT manager recently sent an update about the software update. The information is intended to help users understand the latest arrangements. \n[1] _____ the weather improves, the company _____ the event outdoors. [2] _____ you submit the form today, we _____ your request tomorrow. [3] _____ the shipment arrives early, customers _____ it sooner. [4] _____ she finishes the report, she _____ it to the manager.\nThe department will provide additional assistance if necessary. Thank you for your cooperation.	Ngữ pháp: Câu điều kiện loại 1	80	2026-08-10 12:43:50.483122	2026-08-10 12:43:50.483122
 181	10	6	81	Part 6 - Text Completion 081	Thông báo cuộc họp\n\nThe manager recently sent an update about the meeting. The information is intended to help employees understand the latest arrangements. \n[1] _____ I _____ more time, I would attend the conference. [2] _____ the company had a larger budget, it _____ more employees. [3] _____ she _____ the manager, she would change the policy. [4] _____ we lived closer, we _____ the office more often.\nThe department will provide additional assistance if necessary. Thank you for your cooperation.	Ngữ pháp: Câu điều kiện loại 2	81	2026-08-10 12:43:50.483122	2026-08-10 12:43:50.483122
@@ -7631,6 +7634,7 @@ COPY public.reading_lesson_groups (id, lesson_id, part, group_number, title, pas
 188	10	6	88	Part 6 - Text Completion 088	Đơn hàng trực tuyến\n\nThe customer recently sent an update about the shipment. The information is intended to help warehouse understand the latest arrangements. \n[1] _____ _____ a meeting at 9:00 tomorrow. [2] _____ _____ several documents on the desk. [3] _____ _____ enough information in the report. [4] _____ _____ two new employees in our department.\nThe department will provide additional assistance if necessary. Thank you for your cooperation.	Ngữ pháp: Cấu trúc there is/there are	88	2026-08-10 12:43:50.483122	2026-08-10 12:43:50.483122
 189	10	6	89	Part 6 - Text Completion 089	Khách sạn\n\nThe hotel manager recently sent an update about the reservation. The information is intended to help guests understand the latest arrangements. \n[1] _____ manager made the employees _____ late. [2] _____ supervisor let us _____ early. [3] _____ new policy made customers _____ more forms. [4] _____ manager let the staff _____ the issue themselves.\nThe department will provide additional assistance if necessary. Thank you for your cooperation.	Ngữ pháp: Cấu trúc make/let	89	2026-08-10 12:43:50.483122	2026-08-10 12:43:50.483122
 190	10	6	90	Part 6 - Text Completion 090	Hãng hàng không\n\nThe airline representative recently sent an update about the flight. The information is intended to help passengers understand the latest arrangements. \n[1] _____ manager had the technician _____ the printer. [2] _____ had the documents _____ before the meeting. [3] _____ customer got the package _____ to a different address. [4] _____ company had the office _____ last weekend.\nThe department will provide additional assistance if necessary. Thank you for your cooperation.	Ngữ pháp: Cấu trúc have/get	90	2026-08-10 12:43:50.483122	2026-08-10 12:43:50.483122
+204	11	7	4	Part 7 - Single Passage 004	A customer-service training session will be held in Room 204 on Tuesday from 9:00 A.M. to noon. Employees should bring their identification cards and complete an online preparation exercise before attending. This information was prepared for employees and customers to help them make the appropriate arrangements for variation 1.	Đọc hiểu TOEIC Reading Part 7	4	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
 191	10	6	91	Part 6 - Text Completion 091	Cửa hàng bán lẻ\n\nThe store manager recently sent an update about the promotion. The information is intended to help customers understand the latest arrangements. \n[1] _____ office _____ at 8:00 A.M. every weekday. [2] _____ _____ their identification cards when they enter the building. [3] _____ manager usually _____ the weekly schedule on Friday. [4] _____ system automatically _____ customers when an order is shipped.\nThe department will provide additional assistance if necessary. Thank you for your cooperation.	Ngữ pháp: Thì hiện tại đơn	91	2026-08-10 12:43:50.483122	2026-08-10 12:43:50.483122
 192	10	6	92	Part 6 - Text Completion 092	Tuyển dụng\n\nThe HR manager recently sent an update about the position. The information is intended to help applicants understand the latest arrangements. \n[1] _____ accounting team _____ the monthly report now. [2] _____ employees _____ in the training room at the moment. [3] _____ technician _____ the printer right now. [4] _____ _____ a new customer database this week.\nThe department will provide additional assistance if necessary. Thank you for your cooperation.	Ngữ pháp: Thì hiện tại tiếp diễn	92	2026-08-10 12:43:50.483122	2026-08-10 12:43:50.483122
 193	10	6	93	Part 6 - Text Completion 093	Bảo trì thiết bị\n\nThe technician recently sent an update about the equipment. The information is intended to help employees understand the latest arrangements. \n[1] _____ manager _____ the contract yesterday. [2] _____ conference _____ at 9:00 A.M. last Monday. [3] _____ company _____ its first branch in 2018. [4] _____ customer _____ the package two days ago.\nThe department will provide additional assistance if necessary. Thank you for your cooperation.	Ngữ pháp: Thì quá khứ đơn	93	2026-08-10 12:43:50.483122	2026-08-10 12:43:50.483122
@@ -7641,106 +7645,102 @@ COPY public.reading_lesson_groups (id, lesson_id, part, group_number, title, pas
 198	10	6	98	Part 6 - Text Completion 098	Vận chuyển\n\nThe shipping manager recently sent an update about the delivery service. The information is intended to help customers understand the latest arrangements. \n[1] _____ invoices _____ by the accounting department. [2] _____ rooms _____ every morning by hotel staff. [3] _____ requests _____ within two business days. [4] _____ equipment _____ regularly by technicians.\nThe department will provide additional assistance if necessary. Thank you for your cooperation.	Ngữ pháp: Câu bị động hiện tại	98	2026-08-10 12:43:50.483122	2026-08-10 12:43:50.483122
 199	10	6	99	Part 6 - Text Completion 099	Marketing\n\nThe marketing director recently sent an update about the campaign. The information is intended to help team members understand the latest arrangements. \n[1] _____ documents _____ yesterday afternoon. [2] _____ meeting room _____ last night. [3] _____ package _____ to the wrong address last week. [4] _____ computers _____ during the maintenance period.\nThe department will provide additional assistance if necessary. Thank you for your cooperation.	Ngữ pháp: Câu bị động quá khứ	99	2026-08-10 12:43:50.483122	2026-08-10 12:43:50.483122
 200	10	6	100	Part 6 - Text Completion 100	Công nghệ\n\nThe IT manager recently sent an update about the software update. The information is intended to help users understand the latest arrangements. \n[1] _____ new office _____ next month. [2] _____ participants _____ an email tomorrow. [3] _____ equipment _____ before the exhibition begins. [4] _____ results _____ on the company website next Friday.\nThe department will provide additional assistance if necessary. Thank you for your cooperation.	Ngữ pháp: Câu bị động tương lai	100	2026-08-10 12:43:50.483122	2026-08-10 12:43:50.483122
-271	11	7	1	Part 7 - Single Passage 001	The main office will be renovated from August 18 to August 22. Employees should remove personal items from their desks before August 17. During the renovation, staff will work on the fourth floor. This information was prepared for employees and customers to help them make the appropriate arrangements for variation 1.	Đọc hiểu TOEIC Reading Part 7	1	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-272	11	7	2	Part 7 - Single Passage 002	Greenway Electronics has shipped a customer's order for two wireless keyboards. The package is expected to arrive on Thursday. A tracking number is available in the customer's online account. This information was prepared for employees and customers to help them make the appropriate arrangements for variation 1.	Đọc hiểu TOEIC Reading Part 7	2	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-273	11	7	3	Part 7 - Single Passage 003	Brighton Consulting is accepting applications for an administrative assistant. Applicants should have at least two years of office experience and be comfortable using spreadsheet software. Applications must be submitted by September 5. This information was prepared for employees and customers to help them make the appropriate arrangements for variation 1.	Đọc hiểu TOEIC Reading Part 7	3	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-274	11	7	4	Part 7 - Single Passage 004	A customer-service training session will be held in Room 204 on Tuesday from 9:00 A.M. to noon. Employees should bring their identification cards and complete an online preparation exercise before attending. This information was prepared for employees and customers to help them make the appropriate arrangements for variation 1.	Đọc hiểu TOEIC Reading Part 7	4	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-275	11	7	5	Part 7 - Single Passage 005	Oak Street Market will offer a 20-percent discount on selected office supplies this weekend. The promotion applies to purchases made in the store only and does not include printer ink. This information was prepared for employees and customers to help them make the appropriate arrangements for variation 1.	Đọc hiểu TOEIC Reading Part 7	5	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-276	11	7	6	Part 7 - Single Passage 006	Harbor Hotel confirmed Ms. Lee's reservation for three nights beginning October 12. Breakfast is included, but airport transportation must be arranged separately. Guests needing a taxi should contact the front desk. This information was prepared for employees and customers to help them make the appropriate arrangements for variation 1.	Đọc hiểu TOEIC Reading Part 7	6	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-277	11	7	7	Part 7 - Single Passage 007	The monthly employee newsletter congratulates Daniel Ruiz for completing ten years with the company. Daniel joined the purchasing department in 2016 and now supervises eight employees. The company will recognize him at Friday's staff meeting. This information was prepared for employees and customers to help them make the appropriate arrangements for variation 1.	Đọc hiểu TOEIC Reading Part 7	7	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-278	11	7	8	Part 7 - Single Passage 008	Beginning Monday, the downtown shuttle will leave the parking lot at 7:30 A.M. instead of 7:45 A.M. The afternoon schedule will remain unchanged. Employees are encouraged to arrive at the parking lot at least five minutes before departure. This information was prepared for employees and customers to help them make the appropriate arrangements for variation 1.	Đọc hiểu TOEIC Reading Part 7	8	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-279	11	7	9	Part 7 - Single Passage 009	The marketing team has extended the deadline for the summer campaign proposal until June 28. The team originally planned to select a proposal on June 24, but several departments requested additional time to review the project requirements. This information was prepared for employees and customers to help them make the appropriate arrangements for variation 1.	Đọc hiểu TOEIC Reading Part 7	9	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-280	11	7	10	Part 7 - Single Passage 010	The main office will be renovated from August 18 to August 22. Employees should remove personal items from their desks before August 17. During the renovation, staff will work on the fourth floor. This information was prepared for employees and customers to help them make the appropriate arrangements for variation 2.	Đọc hiểu TOEIC Reading Part 7	10	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-281	12	7	11	Part 7 - Single Passage 011	Greenway Electronics has shipped a customer's order for two wireless keyboards. The package is expected to arrive on Thursday. A tracking number is available in the customer's online account. This information was prepared for employees and customers to help them make the appropriate arrangements for variation 2.	Đọc hiểu TOEIC Reading Part 7	11	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-282	12	7	12	Part 7 - Single Passage 012	Brighton Consulting is accepting applications for an administrative assistant. Applicants should have at least two years of office experience and be comfortable using spreadsheet software. Applications must be submitted by September 5. This information was prepared for employees and customers to help them make the appropriate arrangements for variation 2.	Đọc hiểu TOEIC Reading Part 7	12	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-283	12	7	13	Part 7 - Single Passage 013	A customer-service training session will be held in Room 204 on Tuesday from 9:00 A.M. to noon. Employees should bring their identification cards and complete an online preparation exercise before attending. This information was prepared for employees and customers to help them make the appropriate arrangements for variation 2.	Đọc hiểu TOEIC Reading Part 7	13	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-284	12	7	14	Part 7 - Single Passage 014	Oak Street Market will offer a 20-percent discount on selected office supplies this weekend. The promotion applies to purchases made in the store only and does not include printer ink. This information was prepared for employees and customers to help them make the appropriate arrangements for variation 2.	Đọc hiểu TOEIC Reading Part 7	14	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-285	12	7	15	Part 7 - Single Passage 015	Harbor Hotel confirmed Ms. Lee's reservation for three nights beginning October 12. Breakfast is included, but airport transportation must be arranged separately. Guests needing a taxi should contact the front desk. This information was prepared for employees and customers to help them make the appropriate arrangements for variation 2.	Đọc hiểu TOEIC Reading Part 7	15	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-286	12	7	16	Part 7 - Single Passage 016	The monthly employee newsletter congratulates Daniel Ruiz for completing ten years with the company. Daniel joined the purchasing department in 2016 and now supervises eight employees. The company will recognize him at Friday's staff meeting. This information was prepared for employees and customers to help them make the appropriate arrangements for variation 2.	Đọc hiểu TOEIC Reading Part 7	16	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-287	12	7	17	Part 7 - Single Passage 017	Beginning Monday, the downtown shuttle will leave the parking lot at 7:30 A.M. instead of 7:45 A.M. The afternoon schedule will remain unchanged. Employees are encouraged to arrive at the parking lot at least five minutes before departure. This information was prepared for employees and customers to help them make the appropriate arrangements for variation 2.	Đọc hiểu TOEIC Reading Part 7	17	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-288	12	7	18	Part 7 - Single Passage 018	The marketing team has extended the deadline for the summer campaign proposal until June 28. The team originally planned to select a proposal on June 24, but several departments requested additional time to review the project requirements. This information was prepared for employees and customers to help them make the appropriate arrangements for variation 2.	Đọc hiểu TOEIC Reading Part 7	18	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-289	12	7	19	Part 7 - Single Passage 019	The main office will be renovated from August 18 to August 22. Employees should remove personal items from their desks before August 17. During the renovation, staff will work on the fourth floor. This information was prepared for employees and customers to help them make the appropriate arrangements for variation 3.	Đọc hiểu TOEIC Reading Part 7	19	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-290	12	7	20	Part 7 - Single Passage 020	Greenway Electronics has shipped a customer's order for two wireless keyboards. The package is expected to arrive on Thursday. A tracking number is available in the customer's online account. This information was prepared for employees and customers to help them make the appropriate arrangements for variation 3.	Đọc hiểu TOEIC Reading Part 7	20	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-291	13	7	21	Part 7 - Single Passage 021	Brighton Consulting is accepting applications for an administrative assistant. Applicants should have at least two years of office experience and be comfortable using spreadsheet software. Applications must be submitted by September 5. This information was prepared for employees and customers to help them make the appropriate arrangements for variation 3.	Đọc hiểu TOEIC Reading Part 7	21	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-292	13	7	22	Part 7 - Single Passage 022	A customer-service training session will be held in Room 204 on Tuesday from 9:00 A.M. to noon. Employees should bring their identification cards and complete an online preparation exercise before attending. This information was prepared for employees and customers to help them make the appropriate arrangements for variation 3.	Đọc hiểu TOEIC Reading Part 7	22	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-293	13	7	23	Part 7 - Single Passage 023	Oak Street Market will offer a 20-percent discount on selected office supplies this weekend. The promotion applies to purchases made in the store only and does not include printer ink. This information was prepared for employees and customers to help them make the appropriate arrangements for variation 3.	Đọc hiểu TOEIC Reading Part 7	23	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-294	13	7	24	Part 7 - Single Passage 024	Harbor Hotel confirmed Ms. Lee's reservation for three nights beginning October 12. Breakfast is included, but airport transportation must be arranged separately. Guests needing a taxi should contact the front desk. This information was prepared for employees and customers to help them make the appropriate arrangements for variation 3.	Đọc hiểu TOEIC Reading Part 7	24	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-295	13	7	25	Part 7 - Single Passage 025	The monthly employee newsletter congratulates Daniel Ruiz for completing ten years with the company. Daniel joined the purchasing department in 2016 and now supervises eight employees. The company will recognize him at Friday's staff meeting. This information was prepared for employees and customers to help them make the appropriate arrangements for variation 3.	Đọc hiểu TOEIC Reading Part 7	25	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-296	13	7	26	Part 7 - Single Passage 026	Beginning Monday, the downtown shuttle will leave the parking lot at 7:30 A.M. instead of 7:45 A.M. The afternoon schedule will remain unchanged. Employees are encouraged to arrive at the parking lot at least five minutes before departure. This information was prepared for employees and customers to help them make the appropriate arrangements for variation 3.	Đọc hiểu TOEIC Reading Part 7	26	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-297	13	7	27	Part 7 - Single Passage 027	The marketing team has extended the deadline for the summer campaign proposal until June 28. The team originally planned to select a proposal on June 24, but several departments requested additional time to review the project requirements. This information was prepared for employees and customers to help them make the appropriate arrangements for variation 3.	Đọc hiểu TOEIC Reading Part 7	27	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-298	13	7	28	Part 7 - Single Passage 028	The main office will be renovated from August 18 to August 22. Employees should remove personal items from their desks before August 17. During the renovation, staff will work on the fourth floor. This information was prepared for employees and customers to help them make the appropriate arrangements for variation 4.	Đọc hiểu TOEIC Reading Part 7	28	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-299	13	7	29	Part 7 - Single Passage 029	Greenway Electronics has shipped a customer's order for two wireless keyboards. The package is expected to arrive on Thursday. A tracking number is available in the customer's online account. This information was prepared for employees and customers to help them make the appropriate arrangements for variation 4.	Đọc hiểu TOEIC Reading Part 7	29	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-300	13	7	30	Part 7 - Single Passage 030	Brighton Consulting is accepting applications for an administrative assistant. Applicants should have at least two years of office experience and be comfortable using spreadsheet software. Applications must be submitted by September 5. This information was prepared for employees and customers to help them make the appropriate arrangements for variation 4.	Đọc hiểu TOEIC Reading Part 7	30	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-301	14	7	31	Part 7 - Single Passage 031	A customer-service training session will be held in Room 204 on Tuesday from 9:00 A.M. to noon. Employees should bring their identification cards and complete an online preparation exercise before attending. This information was prepared for employees and customers to help them make the appropriate arrangements for variation 4.	Đọc hiểu TOEIC Reading Part 7	31	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-302	14	7	32	Part 7 - Single Passage 032	Oak Street Market will offer a 20-percent discount on selected office supplies this weekend. The promotion applies to purchases made in the store only and does not include printer ink. This information was prepared for employees and customers to help them make the appropriate arrangements for variation 4.	Đọc hiểu TOEIC Reading Part 7	32	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-303	14	7	33	Part 7 - Single Passage 033	Harbor Hotel confirmed Ms. Lee's reservation for three nights beginning October 12. Breakfast is included, but airport transportation must be arranged separately. Guests needing a taxi should contact the front desk. This information was prepared for employees and customers to help them make the appropriate arrangements for variation 4.	Đọc hiểu TOEIC Reading Part 7	33	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-304	14	7	34	Part 7 - Single Passage 034	The monthly employee newsletter congratulates Daniel Ruiz for completing ten years with the company. Daniel joined the purchasing department in 2016 and now supervises eight employees. The company will recognize him at Friday's staff meeting. This information was prepared for employees and customers to help them make the appropriate arrangements for variation 4.	Đọc hiểu TOEIC Reading Part 7	34	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-305	14	7	35	Part 7 - Single Passage 035	Beginning Monday, the downtown shuttle will leave the parking lot at 7:30 A.M. instead of 7:45 A.M. The afternoon schedule will remain unchanged. Employees are encouraged to arrive at the parking lot at least five minutes before departure. This information was prepared for employees and customers to help them make the appropriate arrangements for variation 4.	Đọc hiểu TOEIC Reading Part 7	35	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-306	14	7	36	Part 7 - Single Passage 036	The marketing team has extended the deadline for the summer campaign proposal until June 28. The team originally planned to select a proposal on June 24, but several departments requested additional time to review the project requirements. This information was prepared for employees and customers to help them make the appropriate arrangements for variation 4.	Đọc hiểu TOEIC Reading Part 7	36	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-307	14	7	37	Part 7 - Single Passage 037	The main office will be renovated from August 18 to August 22. Employees should remove personal items from their desks before August 17. During the renovation, staff will work on the fourth floor. This information was prepared for employees and customers to help them make the appropriate arrangements for variation 5.	Đọc hiểu TOEIC Reading Part 7	37	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-308	14	7	38	Part 7 - Single Passage 038	Greenway Electronics has shipped a customer's order for two wireless keyboards. The package is expected to arrive on Thursday. A tracking number is available in the customer's online account. This information was prepared for employees and customers to help them make the appropriate arrangements for variation 5.	Đọc hiểu TOEIC Reading Part 7	38	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-309	14	7	39	Part 7 - Single Passage 039	Brighton Consulting is accepting applications for an administrative assistant. Applicants should have at least two years of office experience and be comfortable using spreadsheet software. Applications must be submitted by September 5. This information was prepared for employees and customers to help them make the appropriate arrangements for variation 5.	Đọc hiểu TOEIC Reading Part 7	39	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-310	14	7	40	Part 7 - Single Passage 040	A customer-service training session will be held in Room 204 on Tuesday from 9:00 A.M. to noon. Employees should bring their identification cards and complete an online preparation exercise before attending. This information was prepared for employees and customers to help them make the appropriate arrangements for variation 5.	Đọc hiểu TOEIC Reading Part 7	40	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-311	15	7	41	Part 7 - Single Passage 041	Oak Street Market will offer a 20-percent discount on selected office supplies this weekend. The promotion applies to purchases made in the store only and does not include printer ink. This information was prepared for employees and customers to help them make the appropriate arrangements for variation 5.	Đọc hiểu TOEIC Reading Part 7	41	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-312	15	7	42	Part 7 - Single Passage 042	Harbor Hotel confirmed Ms. Lee's reservation for three nights beginning October 12. Breakfast is included, but airport transportation must be arranged separately. Guests needing a taxi should contact the front desk. This information was prepared for employees and customers to help them make the appropriate arrangements for variation 5.	Đọc hiểu TOEIC Reading Part 7	42	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-313	15	7	43	Part 7 - Single Passage 043	The monthly employee newsletter congratulates Daniel Ruiz for completing ten years with the company. Daniel joined the purchasing department in 2016 and now supervises eight employees. The company will recognize him at Friday's staff meeting. This information was prepared for employees and customers to help them make the appropriate arrangements for variation 5.	Đọc hiểu TOEIC Reading Part 7	43	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-314	15	7	44	Part 7 - Single Passage 044	Beginning Monday, the downtown shuttle will leave the parking lot at 7:30 A.M. instead of 7:45 A.M. The afternoon schedule will remain unchanged. Employees are encouraged to arrive at the parking lot at least five minutes before departure. This information was prepared for employees and customers to help them make the appropriate arrangements for variation 5.	Đọc hiểu TOEIC Reading Part 7	44	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-315	15	7	45	Part 7 - Single Passage 045	The marketing team has extended the deadline for the summer campaign proposal until June 28. The team originally planned to select a proposal on June 24, but several departments requested additional time to review the project requirements. This information was prepared for employees and customers to help them make the appropriate arrangements for variation 5.	Đọc hiểu TOEIC Reading Part 7	45	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-316	15	7	46	Part 7 - Single Passage 046	The main office will be renovated from August 18 to August 22. Employees should remove personal items from their desks before August 17. During the renovation, staff will work on the fourth floor. This information was prepared for employees and customers to help them make the appropriate arrangements for variation 6.	Đọc hiểu TOEIC Reading Part 7	46	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-317	15	7	47	Part 7 - Single Passage 047	Greenway Electronics has shipped a customer's order for two wireless keyboards. The package is expected to arrive on Thursday. A tracking number is available in the customer's online account. This information was prepared for employees and customers to help them make the appropriate arrangements for variation 6.	Đọc hiểu TOEIC Reading Part 7	47	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-318	15	7	48	Part 7 - Single Passage 048	Brighton Consulting is accepting applications for an administrative assistant. Applicants should have at least two years of office experience and be comfortable using spreadsheet software. Applications must be submitted by September 5. This information was prepared for employees and customers to help them make the appropriate arrangements for variation 6.	Đọc hiểu TOEIC Reading Part 7	48	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-319	15	7	49	Part 7 - Single Passage 049	A customer-service training session will be held in Room 204 on Tuesday from 9:00 A.M. to noon. Employees should bring their identification cards and complete an online preparation exercise before attending. This information was prepared for employees and customers to help them make the appropriate arrangements for variation 6.	Đọc hiểu TOEIC Reading Part 7	49	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-320	15	7	50	Part 7 - Single Passage 050	Oak Street Market will offer a 20-percent discount on selected office supplies this weekend. The promotion applies to purchases made in the store only and does not include printer ink. This information was prepared for employees and customers to help them make the appropriate arrangements for variation 6.	Đọc hiểu TOEIC Reading Part 7	50	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-321	11	7	1	Part 7 - Double Passage 001	PASSAGE 1\nA customer asks Northstar Travel to change a business-trip reservation. The agency confirms that the outbound flight can be changed but notes that a fee will apply.\n\nPASSAGE 2\nNorthstar Travel replies that the new flight leaves at 6:40 A.M. on Monday. The customer also asks for a hotel near the airport, and the agency recommends the Airport View Hotel.	Đọc hiểu hai đoạn văn	11	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-322	11	7	2	Part 7 - Double Passage 002	PASSAGE 1\nA factory manager announces that the evening production shift will begin one hour earlier next week because of increased orders.\n\nPASSAGE 2\nThe weekly schedule shows that the evening shift will begin at 3:00 P.M. from Monday through Friday. Employees who cannot follow the new schedule should speak with their supervisors.	Đọc hiểu hai đoạn văn	12	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-323	11	7	3	Part 7 - Double Passage 003	PASSAGE 1\nGreenfield Library announces that its second-floor reading area will close for carpet replacement from September 3 to September 6.\n\nPASSAGE 2\nA separate message says that books can still be borrowed from the first floor. Members may also return materials at the outdoor drop box during the closure.	Đọc hiểu hai đoạn văn	13	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-324	11	7	4	Part 7 - Double Passage 004	PASSAGE 1\nCityFit Center advertises a reduced membership fee for new members who join before the end of the month. The offer includes access to the weight room and swimming pool.\n\nPASSAGE 2\nA customer asks whether weekend classes are included. The center replies that weekend classes require an additional fee, although members receive a discount.	Đọc hiểu hai đoạn văn	14	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-325	11	7	5	Part 7 - Double Passage 005	PASSAGE 1\nThe Metro Business Association announces a free workshop about digital marketing. Registration is required because the conference room has limited seating.\n\nPASSAGE 2\nThe workshop agenda lists sessions on social media advertising, search optimization, and customer analytics. Attendees are asked to bring a laptop for the final exercise.	Đọc hiểu hai đoạn văn	15	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-326	12	7	6	Part 7 - Double Passage 006	PASSAGE 1\nA customer asks Northstar Travel to change a business-trip reservation. The agency confirms that the outbound flight can be changed but notes that a fee will apply.\n\nPASSAGE 2\nNorthstar Travel replies that the new flight leaves at 6:40 A.M. on Monday. The customer also asks for a hotel near the airport, and the agency recommends the Airport View Hotel.	Đọc hiểu hai đoạn văn	16	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-327	12	7	7	Part 7 - Double Passage 007	PASSAGE 1\nA factory manager announces that the evening production shift will begin one hour earlier next week because of increased orders.\n\nPASSAGE 2\nThe weekly schedule shows that the evening shift will begin at 3:00 P.M. from Monday through Friday. Employees who cannot follow the new schedule should speak with their supervisors.	Đọc hiểu hai đoạn văn	17	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-328	12	7	8	Part 7 - Double Passage 008	PASSAGE 1\nGreenfield Library announces that its second-floor reading area will close for carpet replacement from September 3 to September 6.\n\nPASSAGE 2\nA separate message says that books can still be borrowed from the first floor. Members may also return materials at the outdoor drop box during the closure.	Đọc hiểu hai đoạn văn	18	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-329	12	7	9	Part 7 - Double Passage 009	PASSAGE 1\nCityFit Center advertises a reduced membership fee for new members who join before the end of the month. The offer includes access to the weight room and swimming pool.\n\nPASSAGE 2\nA customer asks whether weekend classes are included. The center replies that weekend classes require an additional fee, although members receive a discount.	Đọc hiểu hai đoạn văn	19	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-330	12	7	10	Part 7 - Double Passage 010	PASSAGE 1\nThe Metro Business Association announces a free workshop about digital marketing. Registration is required because the conference room has limited seating.\n\nPASSAGE 2\nThe workshop agenda lists sessions on social media advertising, search optimization, and customer analytics. Attendees are asked to bring a laptop for the final exercise.	Đọc hiểu hai đoạn văn	20	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-331	13	7	11	Part 7 - Double Passage 011	PASSAGE 1\nA customer asks Northstar Travel to change a business-trip reservation. The agency confirms that the outbound flight can be changed but notes that a fee will apply.\n\nPASSAGE 2\nNorthstar Travel replies that the new flight leaves at 6:40 A.M. on Monday. The customer also asks for a hotel near the airport, and the agency recommends the Airport View Hotel.	Đọc hiểu hai đoạn văn	21	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-332	13	7	12	Part 7 - Double Passage 012	PASSAGE 1\nA factory manager announces that the evening production shift will begin one hour earlier next week because of increased orders.\n\nPASSAGE 2\nThe weekly schedule shows that the evening shift will begin at 3:00 P.M. from Monday through Friday. Employees who cannot follow the new schedule should speak with their supervisors.	Đọc hiểu hai đoạn văn	22	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-333	13	7	13	Part 7 - Double Passage 013	PASSAGE 1\nGreenfield Library announces that its second-floor reading area will close for carpet replacement from September 3 to September 6.\n\nPASSAGE 2\nA separate message says that books can still be borrowed from the first floor. Members may also return materials at the outdoor drop box during the closure.	Đọc hiểu hai đoạn văn	23	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-334	13	7	14	Part 7 - Double Passage 014	PASSAGE 1\nCityFit Center advertises a reduced membership fee for new members who join before the end of the month. The offer includes access to the weight room and swimming pool.\n\nPASSAGE 2\nA customer asks whether weekend classes are included. The center replies that weekend classes require an additional fee, although members receive a discount.	Đọc hiểu hai đoạn văn	24	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-335	13	7	15	Part 7 - Double Passage 015	PASSAGE 1\nThe Metro Business Association announces a free workshop about digital marketing. Registration is required because the conference room has limited seating.\n\nPASSAGE 2\nThe workshop agenda lists sessions on social media advertising, search optimization, and customer analytics. Attendees are asked to bring a laptop for the final exercise.	Đọc hiểu hai đoạn văn	25	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-336	14	7	16	Part 7 - Double Passage 016	PASSAGE 1\nA customer asks Northstar Travel to change a business-trip reservation. The agency confirms that the outbound flight can be changed but notes that a fee will apply.\n\nPASSAGE 2\nNorthstar Travel replies that the new flight leaves at 6:40 A.M. on Monday. The customer also asks for a hotel near the airport, and the agency recommends the Airport View Hotel.	Đọc hiểu hai đoạn văn	26	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-337	14	7	17	Part 7 - Double Passage 017	PASSAGE 1\nA factory manager announces that the evening production shift will begin one hour earlier next week because of increased orders.\n\nPASSAGE 2\nThe weekly schedule shows that the evening shift will begin at 3:00 P.M. from Monday through Friday. Employees who cannot follow the new schedule should speak with their supervisors.	Đọc hiểu hai đoạn văn	27	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-338	14	7	18	Part 7 - Double Passage 018	PASSAGE 1\nGreenfield Library announces that its second-floor reading area will close for carpet replacement from September 3 to September 6.\n\nPASSAGE 2\nA separate message says that books can still be borrowed from the first floor. Members may also return materials at the outdoor drop box during the closure.	Đọc hiểu hai đoạn văn	28	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-339	14	7	19	Part 7 - Double Passage 019	PASSAGE 1\nCityFit Center advertises a reduced membership fee for new members who join before the end of the month. The offer includes access to the weight room and swimming pool.\n\nPASSAGE 2\nA customer asks whether weekend classes are included. The center replies that weekend classes require an additional fee, although members receive a discount.	Đọc hiểu hai đoạn văn	29	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-340	14	7	20	Part 7 - Double Passage 020	PASSAGE 1\nThe Metro Business Association announces a free workshop about digital marketing. Registration is required because the conference room has limited seating.\n\nPASSAGE 2\nThe workshop agenda lists sessions on social media advertising, search optimization, and customer analytics. Attendees are asked to bring a laptop for the final exercise.	Đọc hiểu hai đoạn văn	30	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-341	15	7	21	Part 7 - Double Passage 021	PASSAGE 1\nA customer asks Northstar Travel to change a business-trip reservation. The agency confirms that the outbound flight can be changed but notes that a fee will apply.\n\nPASSAGE 2\nNorthstar Travel replies that the new flight leaves at 6:40 A.M. on Monday. The customer also asks for a hotel near the airport, and the agency recommends the Airport View Hotel.	Đọc hiểu hai đoạn văn	31	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-342	15	7	22	Part 7 - Double Passage 022	PASSAGE 1\nA factory manager announces that the evening production shift will begin one hour earlier next week because of increased orders.\n\nPASSAGE 2\nThe weekly schedule shows that the evening shift will begin at 3:00 P.M. from Monday through Friday. Employees who cannot follow the new schedule should speak with their supervisors.	Đọc hiểu hai đoạn văn	32	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-343	15	7	23	Part 7 - Double Passage 023	PASSAGE 1\nGreenfield Library announces that its second-floor reading area will close for carpet replacement from September 3 to September 6.\n\nPASSAGE 2\nA separate message says that books can still be borrowed from the first floor. Members may also return materials at the outdoor drop box during the closure.	Đọc hiểu hai đoạn văn	33	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-344	15	7	24	Part 7 - Double Passage 024	PASSAGE 1\nCityFit Center advertises a reduced membership fee for new members who join before the end of the month. The offer includes access to the weight room and swimming pool.\n\nPASSAGE 2\nA customer asks whether weekend classes are included. The center replies that weekend classes require an additional fee, although members receive a discount.	Đọc hiểu hai đoạn văn	34	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-345	15	7	25	Part 7 - Double Passage 025	PASSAGE 1\nThe Metro Business Association announces a free workshop about digital marketing. Registration is required because the conference room has limited seating.\n\nPASSAGE 2\nThe workshop agenda lists sessions on social media advertising, search optimization, and customer analytics. Attendees are asked to bring a laptop for the final exercise.	Đọc hiểu hai đoạn văn	35	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-346	11	7	1	Part 7 - Triple Passage 001	PASSAGE 1\nLumen Office Solutions announces a software update that will be installed on company computers Friday evening.\n\nPASSAGE 2\nAn internal memo explains that the update adds a shared calendar and improves security. Employees should save their work before leaving Friday.\n\nPASSAGE 3\nA technician reminds staff that computers may restart several times during installation and that support will be available Saturday morning.	Đọc hiểu ba đoạn văn	36	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-347	11	7	2	Part 7 - Triple Passage 002	PASSAGE 1\nHarbor Hotel advertises a conference package that includes meeting-room rental and breakfast for participants.\n\nPASSAGE 2\nA guest review praises the hotel's meeting rooms but notes that parking spaces are limited during large events.\n\nPASSAGE 3\nAn event coordinator asks the hotel to reserve parking spaces for speakers and receives confirmation that ten spaces can be reserved.	Đọc hiểu ba đoạn văn	37	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-348	11	7	3	Part 7 - Triple Passage 003	PASSAGE 1\nCity Transit announces changes to Route 18 because of road construction near Central Avenue.\n\nPASSAGE 2\nA local article explains that buses will use Oak Street as a temporary alternative route until construction is complete.\n\nPASSAGE 3\nA passenger asks which stop is closest to the library, and the transit office recommends the Oak Street stop.	Đọc hiểu ba đoạn văn	38	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-349	11	7	4	Part 7 - Triple Passage 004	PASSAGE 1\nEverbright Systems posts an opening for a customer-support specialist with two years of experience.\n\nPASSAGE 2\nAn applicant states that she has three years of customer-service experience and has used the company's support software.\n\nPASSAGE 3\nAn HR note says that interviews will begin next Monday and that applicants with relevant software experience will receive priority.	Đọc hiểu ba đoạn văn	39	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-350	11	7	5	Part 7 - Triple Passage 005	PASSAGE 1\nProfessional Skills Forum announces a workshop on workplace communication.\n\nPASSAGE 2\nThe agenda includes sessions on email writing, presentations, and handling difficult conversations.\n\nPASSAGE 3\nA participant's feedback says the presentation session was especially useful and suggests adding more practice activities next year.	Đọc hiểu ba đoạn văn	40	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-351	12	7	6	Part 7 - Triple Passage 006	PASSAGE 1\nLumen Office Solutions announces a software update that will be installed on company computers Friday evening.\n\nPASSAGE 2\nAn internal memo explains that the update adds a shared calendar and improves security. Employees should save their work before leaving Friday.\n\nPASSAGE 3\nA technician reminds staff that computers may restart several times during installation and that support will be available Saturday morning.	Đọc hiểu ba đoạn văn	41	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-352	12	7	7	Part 7 - Triple Passage 007	PASSAGE 1\nHarbor Hotel advertises a conference package that includes meeting-room rental and breakfast for participants.\n\nPASSAGE 2\nA guest review praises the hotel's meeting rooms but notes that parking spaces are limited during large events.\n\nPASSAGE 3\nAn event coordinator asks the hotel to reserve parking spaces for speakers and receives confirmation that ten spaces can be reserved.	Đọc hiểu ba đoạn văn	42	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-353	12	7	8	Part 7 - Triple Passage 008	PASSAGE 1\nCity Transit announces changes to Route 18 because of road construction near Central Avenue.\n\nPASSAGE 2\nA local article explains that buses will use Oak Street as a temporary alternative route until construction is complete.\n\nPASSAGE 3\nA passenger asks which stop is closest to the library, and the transit office recommends the Oak Street stop.	Đọc hiểu ba đoạn văn	43	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-354	12	7	9	Part 7 - Triple Passage 009	PASSAGE 1\nEverbright Systems posts an opening for a customer-support specialist with two years of experience.\n\nPASSAGE 2\nAn applicant states that she has three years of customer-service experience and has used the company's support software.\n\nPASSAGE 3\nAn HR note says that interviews will begin next Monday and that applicants with relevant software experience will receive priority.	Đọc hiểu ba đoạn văn	44	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-355	12	7	10	Part 7 - Triple Passage 010	PASSAGE 1\nProfessional Skills Forum announces a workshop on workplace communication.\n\nPASSAGE 2\nThe agenda includes sessions on email writing, presentations, and handling difficult conversations.\n\nPASSAGE 3\nA participant's feedback says the presentation session was especially useful and suggests adding more practice activities next year.	Đọc hiểu ba đoạn văn	45	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-356	13	7	11	Part 7 - Triple Passage 011	PASSAGE 1\nLumen Office Solutions announces a software update that will be installed on company computers Friday evening.\n\nPASSAGE 2\nAn internal memo explains that the update adds a shared calendar and improves security. Employees should save their work before leaving Friday.\n\nPASSAGE 3\nA technician reminds staff that computers may restart several times during installation and that support will be available Saturday morning.	Đọc hiểu ba đoạn văn	46	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-357	13	7	12	Part 7 - Triple Passage 012	PASSAGE 1\nHarbor Hotel advertises a conference package that includes meeting-room rental and breakfast for participants.\n\nPASSAGE 2\nA guest review praises the hotel's meeting rooms but notes that parking spaces are limited during large events.\n\nPASSAGE 3\nAn event coordinator asks the hotel to reserve parking spaces for speakers and receives confirmation that ten spaces can be reserved.	Đọc hiểu ba đoạn văn	47	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-358	13	7	13	Part 7 - Triple Passage 013	PASSAGE 1\nCity Transit announces changes to Route 18 because of road construction near Central Avenue.\n\nPASSAGE 2\nA local article explains that buses will use Oak Street as a temporary alternative route until construction is complete.\n\nPASSAGE 3\nA passenger asks which stop is closest to the library, and the transit office recommends the Oak Street stop.	Đọc hiểu ba đoạn văn	48	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-359	13	7	14	Part 7 - Triple Passage 014	PASSAGE 1\nEverbright Systems posts an opening for a customer-support specialist with two years of experience.\n\nPASSAGE 2\nAn applicant states that she has three years of customer-service experience and has used the company's support software.\n\nPASSAGE 3\nAn HR note says that interviews will begin next Monday and that applicants with relevant software experience will receive priority.	Đọc hiểu ba đoạn văn	49	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-360	13	7	15	Part 7 - Triple Passage 015	PASSAGE 1\nProfessional Skills Forum announces a workshop on workplace communication.\n\nPASSAGE 2\nThe agenda includes sessions on email writing, presentations, and handling difficult conversations.\n\nPASSAGE 3\nA participant's feedback says the presentation session was especially useful and suggests adding more practice activities next year.	Đọc hiểu ba đoạn văn	50	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-361	14	7	16	Part 7 - Triple Passage 016	PASSAGE 1\nLumen Office Solutions announces a software update that will be installed on company computers Friday evening.\n\nPASSAGE 2\nAn internal memo explains that the update adds a shared calendar and improves security. Employees should save their work before leaving Friday.\n\nPASSAGE 3\nA technician reminds staff that computers may restart several times during installation and that support will be available Saturday morning.	Đọc hiểu ba đoạn văn	51	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-362	14	7	17	Part 7 - Triple Passage 017	PASSAGE 1\nHarbor Hotel advertises a conference package that includes meeting-room rental and breakfast for participants.\n\nPASSAGE 2\nA guest review praises the hotel's meeting rooms but notes that parking spaces are limited during large events.\n\nPASSAGE 3\nAn event coordinator asks the hotel to reserve parking spaces for speakers and receives confirmation that ten spaces can be reserved.	Đọc hiểu ba đoạn văn	52	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-363	14	7	18	Part 7 - Triple Passage 018	PASSAGE 1\nCity Transit announces changes to Route 18 because of road construction near Central Avenue.\n\nPASSAGE 2\nA local article explains that buses will use Oak Street as a temporary alternative route until construction is complete.\n\nPASSAGE 3\nA passenger asks which stop is closest to the library, and the transit office recommends the Oak Street stop.	Đọc hiểu ba đoạn văn	53	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-364	14	7	19	Part 7 - Triple Passage 019	PASSAGE 1\nEverbright Systems posts an opening for a customer-support specialist with two years of experience.\n\nPASSAGE 2\nAn applicant states that she has three years of customer-service experience and has used the company's support software.\n\nPASSAGE 3\nAn HR note says that interviews will begin next Monday and that applicants with relevant software experience will receive priority.	Đọc hiểu ba đoạn văn	54	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-365	14	7	20	Part 7 - Triple Passage 020	PASSAGE 1\nProfessional Skills Forum announces a workshop on workplace communication.\n\nPASSAGE 2\nThe agenda includes sessions on email writing, presentations, and handling difficult conversations.\n\nPASSAGE 3\nA participant's feedback says the presentation session was especially useful and suggests adding more practice activities next year.	Đọc hiểu ba đoạn văn	55	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-366	15	7	21	Part 7 - Triple Passage 021	PASSAGE 1\nLumen Office Solutions announces a software update that will be installed on company computers Friday evening.\n\nPASSAGE 2\nAn internal memo explains that the update adds a shared calendar and improves security. Employees should save their work before leaving Friday.\n\nPASSAGE 3\nA technician reminds staff that computers may restart several times during installation and that support will be available Saturday morning.	Đọc hiểu ba đoạn văn	56	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-367	15	7	22	Part 7 - Triple Passage 022	PASSAGE 1\nHarbor Hotel advertises a conference package that includes meeting-room rental and breakfast for participants.\n\nPASSAGE 2\nA guest review praises the hotel's meeting rooms but notes that parking spaces are limited during large events.\n\nPASSAGE 3\nAn event coordinator asks the hotel to reserve parking spaces for speakers and receives confirmation that ten spaces can be reserved.	Đọc hiểu ba đoạn văn	57	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-368	15	7	23	Part 7 - Triple Passage 023	PASSAGE 1\nCity Transit announces changes to Route 18 because of road construction near Central Avenue.\n\nPASSAGE 2\nA local article explains that buses will use Oak Street as a temporary alternative route until construction is complete.\n\nPASSAGE 3\nA passenger asks which stop is closest to the library, and the transit office recommends the Oak Street stop.	Đọc hiểu ba đoạn văn	58	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-369	15	7	24	Part 7 - Triple Passage 024	PASSAGE 1\nEverbright Systems posts an opening for a customer-support specialist with two years of experience.\n\nPASSAGE 2\nAn applicant states that she has three years of customer-service experience and has used the company's support software.\n\nPASSAGE 3\nAn HR note says that interviews will begin next Monday and that applicants with relevant software experience will receive priority.	Đọc hiểu ba đoạn văn	59	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-370	15	7	25	Part 7 - Triple Passage 025	PASSAGE 1\nProfessional Skills Forum announces a workshop on workplace communication.\n\nPASSAGE 2\nThe agenda includes sessions on email writing, presentations, and handling difficult conversations.\n\nPASSAGE 3\nA participant's feedback says the presentation session was especially useful and suggests adding more practice activities next year.	Đọc hiểu ba đoạn văn	60	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
+205	11	7	5	Part 7 - Single Passage 005	Oak Street Market will offer a 20-percent discount on selected office supplies this weekend. The promotion applies to purchases made in the store only and does not include printer ink. This information was prepared for employees and customers to help them make the appropriate arrangements for variation 1.	Đọc hiểu TOEIC Reading Part 7	5	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+206	11	7	6	Part 7 - Single Passage 006	Harbor Hotel confirmed Ms. Lee's reservation for three nights beginning October 12. Breakfast is included, but airport transportation must be arranged separately. Guests needing a taxi should contact the front desk. This information was prepared for employees and customers to help them make the appropriate arrangements for variation 1.	Đọc hiểu TOEIC Reading Part 7	6	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+207	11	7	7	Part 7 - Single Passage 007	The monthly employee newsletter congratulates Daniel Ruiz for completing ten years with the company. Daniel joined the purchasing department in 2016 and now supervises eight employees. The company will recognize him at Friday's staff meeting. This information was prepared for employees and customers to help them make the appropriate arrangements for variation 1.	Đọc hiểu TOEIC Reading Part 7	7	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+208	11	7	8	Part 7 - Single Passage 008	Beginning Monday, the downtown shuttle will leave the parking lot at 7:30 A.M. instead of 7:45 A.M. The afternoon schedule will remain unchanged. Employees are encouraged to arrive at the parking lot at least five minutes before departure. This information was prepared for employees and customers to help them make the appropriate arrangements for variation 1.	Đọc hiểu TOEIC Reading Part 7	8	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+209	11	7	9	Part 7 - Single Passage 009	The marketing team has extended the deadline for the summer campaign proposal until June 28. The team originally planned to select a proposal on June 24, but several departments requested additional time to review the project requirements. This information was prepared for employees and customers to help them make the appropriate arrangements for variation 1.	Đọc hiểu TOEIC Reading Part 7	9	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+210	11	7	10	Part 7 - Single Passage 010	The main office will be renovated from August 18 to August 22. Employees should remove personal items from their desks before August 17. During the renovation, staff will work on the fourth floor. This information was prepared for employees and customers to help them make the appropriate arrangements for variation 2.	Đọc hiểu TOEIC Reading Part 7	10	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+211	12	7	11	Part 7 - Single Passage 011	Greenway Electronics has shipped a customer's order for two wireless keyboards. The package is expected to arrive on Thursday. A tracking number is available in the customer's online account. This information was prepared for employees and customers to help them make the appropriate arrangements for variation 2.	Đọc hiểu TOEIC Reading Part 7	11	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+212	12	7	12	Part 7 - Single Passage 012	Brighton Consulting is accepting applications for an administrative assistant. Applicants should have at least two years of office experience and be comfortable using spreadsheet software. Applications must be submitted by September 5. This information was prepared for employees and customers to help them make the appropriate arrangements for variation 2.	Đọc hiểu TOEIC Reading Part 7	12	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+213	12	7	13	Part 7 - Single Passage 013	A customer-service training session will be held in Room 204 on Tuesday from 9:00 A.M. to noon. Employees should bring their identification cards and complete an online preparation exercise before attending. This information was prepared for employees and customers to help them make the appropriate arrangements for variation 2.	Đọc hiểu TOEIC Reading Part 7	13	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+214	12	7	14	Part 7 - Single Passage 014	Oak Street Market will offer a 20-percent discount on selected office supplies this weekend. The promotion applies to purchases made in the store only and does not include printer ink. This information was prepared for employees and customers to help them make the appropriate arrangements for variation 2.	Đọc hiểu TOEIC Reading Part 7	14	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+215	12	7	15	Part 7 - Single Passage 015	Harbor Hotel confirmed Ms. Lee's reservation for three nights beginning October 12. Breakfast is included, but airport transportation must be arranged separately. Guests needing a taxi should contact the front desk. This information was prepared for employees and customers to help them make the appropriate arrangements for variation 2.	Đọc hiểu TOEIC Reading Part 7	15	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+216	12	7	16	Part 7 - Single Passage 016	The monthly employee newsletter congratulates Daniel Ruiz for completing ten years with the company. Daniel joined the purchasing department in 2016 and now supervises eight employees. The company will recognize him at Friday's staff meeting. This information was prepared for employees and customers to help them make the appropriate arrangements for variation 2.	Đọc hiểu TOEIC Reading Part 7	16	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+217	12	7	17	Part 7 - Single Passage 017	Beginning Monday, the downtown shuttle will leave the parking lot at 7:30 A.M. instead of 7:45 A.M. The afternoon schedule will remain unchanged. Employees are encouraged to arrive at the parking lot at least five minutes before departure. This information was prepared for employees and customers to help them make the appropriate arrangements for variation 2.	Đọc hiểu TOEIC Reading Part 7	17	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+218	12	7	18	Part 7 - Single Passage 018	The marketing team has extended the deadline for the summer campaign proposal until June 28. The team originally planned to select a proposal on June 24, but several departments requested additional time to review the project requirements. This information was prepared for employees and customers to help them make the appropriate arrangements for variation 2.	Đọc hiểu TOEIC Reading Part 7	18	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+219	12	7	19	Part 7 - Single Passage 019	The main office will be renovated from August 18 to August 22. Employees should remove personal items from their desks before August 17. During the renovation, staff will work on the fourth floor. This information was prepared for employees and customers to help them make the appropriate arrangements for variation 3.	Đọc hiểu TOEIC Reading Part 7	19	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+220	12	7	20	Part 7 - Single Passage 020	Greenway Electronics has shipped a customer's order for two wireless keyboards. The package is expected to arrive on Thursday. A tracking number is available in the customer's online account. This information was prepared for employees and customers to help them make the appropriate arrangements for variation 3.	Đọc hiểu TOEIC Reading Part 7	20	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+221	13	7	21	Part 7 - Single Passage 021	Brighton Consulting is accepting applications for an administrative assistant. Applicants should have at least two years of office experience and be comfortable using spreadsheet software. Applications must be submitted by September 5. This information was prepared for employees and customers to help them make the appropriate arrangements for variation 3.	Đọc hiểu TOEIC Reading Part 7	21	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+222	13	7	22	Part 7 - Single Passage 022	A customer-service training session will be held in Room 204 on Tuesday from 9:00 A.M. to noon. Employees should bring their identification cards and complete an online preparation exercise before attending. This information was prepared for employees and customers to help them make the appropriate arrangements for variation 3.	Đọc hiểu TOEIC Reading Part 7	22	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+223	13	7	23	Part 7 - Single Passage 023	Oak Street Market will offer a 20-percent discount on selected office supplies this weekend. The promotion applies to purchases made in the store only and does not include printer ink. This information was prepared for employees and customers to help them make the appropriate arrangements for variation 3.	Đọc hiểu TOEIC Reading Part 7	23	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+224	13	7	24	Part 7 - Single Passage 024	Harbor Hotel confirmed Ms. Lee's reservation for three nights beginning October 12. Breakfast is included, but airport transportation must be arranged separately. Guests needing a taxi should contact the front desk. This information was prepared for employees and customers to help them make the appropriate arrangements for variation 3.	Đọc hiểu TOEIC Reading Part 7	24	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+225	13	7	25	Part 7 - Single Passage 025	The monthly employee newsletter congratulates Daniel Ruiz for completing ten years with the company. Daniel joined the purchasing department in 2016 and now supervises eight employees. The company will recognize him at Friday's staff meeting. This information was prepared for employees and customers to help them make the appropriate arrangements for variation 3.	Đọc hiểu TOEIC Reading Part 7	25	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+226	13	7	26	Part 7 - Single Passage 026	Beginning Monday, the downtown shuttle will leave the parking lot at 7:30 A.M. instead of 7:45 A.M. The afternoon schedule will remain unchanged. Employees are encouraged to arrive at the parking lot at least five minutes before departure. This information was prepared for employees and customers to help them make the appropriate arrangements for variation 3.	Đọc hiểu TOEIC Reading Part 7	26	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+227	13	7	27	Part 7 - Single Passage 027	The marketing team has extended the deadline for the summer campaign proposal until June 28. The team originally planned to select a proposal on June 24, but several departments requested additional time to review the project requirements. This information was prepared for employees and customers to help them make the appropriate arrangements for variation 3.	Đọc hiểu TOEIC Reading Part 7	27	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+228	13	7	28	Part 7 - Single Passage 028	The main office will be renovated from August 18 to August 22. Employees should remove personal items from their desks before August 17. During the renovation, staff will work on the fourth floor. This information was prepared for employees and customers to help them make the appropriate arrangements for variation 4.	Đọc hiểu TOEIC Reading Part 7	28	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+229	13	7	29	Part 7 - Single Passage 029	Greenway Electronics has shipped a customer's order for two wireless keyboards. The package is expected to arrive on Thursday. A tracking number is available in the customer's online account. This information was prepared for employees and customers to help them make the appropriate arrangements for variation 4.	Đọc hiểu TOEIC Reading Part 7	29	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+230	13	7	30	Part 7 - Single Passage 030	Brighton Consulting is accepting applications for an administrative assistant. Applicants should have at least two years of office experience and be comfortable using spreadsheet software. Applications must be submitted by September 5. This information was prepared for employees and customers to help them make the appropriate arrangements for variation 4.	Đọc hiểu TOEIC Reading Part 7	30	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+231	14	7	31	Part 7 - Single Passage 031	A customer-service training session will be held in Room 204 on Tuesday from 9:00 A.M. to noon. Employees should bring their identification cards and complete an online preparation exercise before attending. This information was prepared for employees and customers to help them make the appropriate arrangements for variation 4.	Đọc hiểu TOEIC Reading Part 7	31	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+232	14	7	32	Part 7 - Single Passage 032	Oak Street Market will offer a 20-percent discount on selected office supplies this weekend. The promotion applies to purchases made in the store only and does not include printer ink. This information was prepared for employees and customers to help them make the appropriate arrangements for variation 4.	Đọc hiểu TOEIC Reading Part 7	32	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+233	14	7	33	Part 7 - Single Passage 033	Harbor Hotel confirmed Ms. Lee's reservation for three nights beginning October 12. Breakfast is included, but airport transportation must be arranged separately. Guests needing a taxi should contact the front desk. This information was prepared for employees and customers to help them make the appropriate arrangements for variation 4.	Đọc hiểu TOEIC Reading Part 7	33	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+234	14	7	34	Part 7 - Single Passage 034	The monthly employee newsletter congratulates Daniel Ruiz for completing ten years with the company. Daniel joined the purchasing department in 2016 and now supervises eight employees. The company will recognize him at Friday's staff meeting. This information was prepared for employees and customers to help them make the appropriate arrangements for variation 4.	Đọc hiểu TOEIC Reading Part 7	34	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+235	14	7	35	Part 7 - Single Passage 035	Beginning Monday, the downtown shuttle will leave the parking lot at 7:30 A.M. instead of 7:45 A.M. The afternoon schedule will remain unchanged. Employees are encouraged to arrive at the parking lot at least five minutes before departure. This information was prepared for employees and customers to help them make the appropriate arrangements for variation 4.	Đọc hiểu TOEIC Reading Part 7	35	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+236	14	7	36	Part 7 - Single Passage 036	The marketing team has extended the deadline for the summer campaign proposal until June 28. The team originally planned to select a proposal on June 24, but several departments requested additional time to review the project requirements. This information was prepared for employees and customers to help them make the appropriate arrangements for variation 4.	Đọc hiểu TOEIC Reading Part 7	36	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+237	14	7	37	Part 7 - Single Passage 037	The main office will be renovated from August 18 to August 22. Employees should remove personal items from their desks before August 17. During the renovation, staff will work on the fourth floor. This information was prepared for employees and customers to help them make the appropriate arrangements for variation 5.	Đọc hiểu TOEIC Reading Part 7	37	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+238	14	7	38	Part 7 - Single Passage 038	Greenway Electronics has shipped a customer's order for two wireless keyboards. The package is expected to arrive on Thursday. A tracking number is available in the customer's online account. This information was prepared for employees and customers to help them make the appropriate arrangements for variation 5.	Đọc hiểu TOEIC Reading Part 7	38	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+239	14	7	39	Part 7 - Single Passage 039	Brighton Consulting is accepting applications for an administrative assistant. Applicants should have at least two years of office experience and be comfortable using spreadsheet software. Applications must be submitted by September 5. This information was prepared for employees and customers to help them make the appropriate arrangements for variation 5.	Đọc hiểu TOEIC Reading Part 7	39	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+240	14	7	40	Part 7 - Single Passage 040	A customer-service training session will be held in Room 204 on Tuesday from 9:00 A.M. to noon. Employees should bring their identification cards and complete an online preparation exercise before attending. This information was prepared for employees and customers to help them make the appropriate arrangements for variation 5.	Đọc hiểu TOEIC Reading Part 7	40	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+241	15	7	41	Part 7 - Single Passage 041	Oak Street Market will offer a 20-percent discount on selected office supplies this weekend. The promotion applies to purchases made in the store only and does not include printer ink. This information was prepared for employees and customers to help them make the appropriate arrangements for variation 5.	Đọc hiểu TOEIC Reading Part 7	41	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+242	15	7	42	Part 7 - Single Passage 042	Harbor Hotel confirmed Ms. Lee's reservation for three nights beginning October 12. Breakfast is included, but airport transportation must be arranged separately. Guests needing a taxi should contact the front desk. This information was prepared for employees and customers to help them make the appropriate arrangements for variation 5.	Đọc hiểu TOEIC Reading Part 7	42	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+243	15	7	43	Part 7 - Single Passage 043	The monthly employee newsletter congratulates Daniel Ruiz for completing ten years with the company. Daniel joined the purchasing department in 2016 and now supervises eight employees. The company will recognize him at Friday's staff meeting. This information was prepared for employees and customers to help them make the appropriate arrangements for variation 5.	Đọc hiểu TOEIC Reading Part 7	43	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+244	15	7	44	Part 7 - Single Passage 044	Beginning Monday, the downtown shuttle will leave the parking lot at 7:30 A.M. instead of 7:45 A.M. The afternoon schedule will remain unchanged. Employees are encouraged to arrive at the parking lot at least five minutes before departure. This information was prepared for employees and customers to help them make the appropriate arrangements for variation 5.	Đọc hiểu TOEIC Reading Part 7	44	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+245	15	7	45	Part 7 - Single Passage 045	The marketing team has extended the deadline for the summer campaign proposal until June 28. The team originally planned to select a proposal on June 24, but several departments requested additional time to review the project requirements. This information was prepared for employees and customers to help them make the appropriate arrangements for variation 5.	Đọc hiểu TOEIC Reading Part 7	45	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+246	15	7	46	Part 7 - Single Passage 046	The main office will be renovated from August 18 to August 22. Employees should remove personal items from their desks before August 17. During the renovation, staff will work on the fourth floor. This information was prepared for employees and customers to help them make the appropriate arrangements for variation 6.	Đọc hiểu TOEIC Reading Part 7	46	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+247	15	7	47	Part 7 - Single Passage 047	Greenway Electronics has shipped a customer's order for two wireless keyboards. The package is expected to arrive on Thursday. A tracking number is available in the customer's online account. This information was prepared for employees and customers to help them make the appropriate arrangements for variation 6.	Đọc hiểu TOEIC Reading Part 7	47	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+248	15	7	48	Part 7 - Single Passage 048	Brighton Consulting is accepting applications for an administrative assistant. Applicants should have at least two years of office experience and be comfortable using spreadsheet software. Applications must be submitted by September 5. This information was prepared for employees and customers to help them make the appropriate arrangements for variation 6.	Đọc hiểu TOEIC Reading Part 7	48	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+249	15	7	49	Part 7 - Single Passage 049	A customer-service training session will be held in Room 204 on Tuesday from 9:00 A.M. to noon. Employees should bring their identification cards and complete an online preparation exercise before attending. This information was prepared for employees and customers to help them make the appropriate arrangements for variation 6.	Đọc hiểu TOEIC Reading Part 7	49	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+250	15	7	50	Part 7 - Single Passage 050	Oak Street Market will offer a 20-percent discount on selected office supplies this weekend. The promotion applies to purchases made in the store only and does not include printer ink. This information was prepared for employees and customers to help them make the appropriate arrangements for variation 6.	Đọc hiểu TOEIC Reading Part 7	50	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+251	11	7	1	Part 7 - Double Passage 001	PASSAGE 1\nA customer asks Northstar Travel to change a business-trip reservation. The agency confirms that the outbound flight can be changed but notes that a fee will apply.\n\nPASSAGE 2\nNorthstar Travel replies that the new flight leaves at 6:40 A.M. on Monday. The customer also asks for a hotel near the airport, and the agency recommends the Airport View Hotel.	Đọc hiểu hai đoạn văn	11	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+252	11	7	2	Part 7 - Double Passage 002	PASSAGE 1\nA factory manager announces that the evening production shift will begin one hour earlier next week because of increased orders.\n\nPASSAGE 2\nThe weekly schedule shows that the evening shift will begin at 3:00 P.M. from Monday through Friday. Employees who cannot follow the new schedule should speak with their supervisors.	Đọc hiểu hai đoạn văn	12	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+253	11	7	3	Part 7 - Double Passage 003	PASSAGE 1\nGreenfield Library announces that its second-floor reading area will close for carpet replacement from September 3 to September 6.\n\nPASSAGE 2\nA separate message says that books can still be borrowed from the first floor. Members may also return materials at the outdoor drop box during the closure.	Đọc hiểu hai đoạn văn	13	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+254	11	7	4	Part 7 - Double Passage 004	PASSAGE 1\nCityFit Center advertises a reduced membership fee for new members who join before the end of the month. The offer includes access to the weight room and swimming pool.\n\nPASSAGE 2\nA customer asks whether weekend classes are included. The center replies that weekend classes require an additional fee, although members receive a discount.	Đọc hiểu hai đoạn văn	14	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+255	11	7	5	Part 7 - Double Passage 005	PASSAGE 1\nThe Metro Business Association announces a free workshop about digital marketing. Registration is required because the conference room has limited seating.\n\nPASSAGE 2\nThe workshop agenda lists sessions on social media advertising, search optimization, and customer analytics. Attendees are asked to bring a laptop for the final exercise.	Đọc hiểu hai đoạn văn	15	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+256	12	7	6	Part 7 - Double Passage 006	PASSAGE 1\nA customer asks Northstar Travel to change a business-trip reservation. The agency confirms that the outbound flight can be changed but notes that a fee will apply.\n\nPASSAGE 2\nNorthstar Travel replies that the new flight leaves at 6:40 A.M. on Monday. The customer also asks for a hotel near the airport, and the agency recommends the Airport View Hotel.	Đọc hiểu hai đoạn văn	16	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+257	12	7	7	Part 7 - Double Passage 007	PASSAGE 1\nA factory manager announces that the evening production shift will begin one hour earlier next week because of increased orders.\n\nPASSAGE 2\nThe weekly schedule shows that the evening shift will begin at 3:00 P.M. from Monday through Friday. Employees who cannot follow the new schedule should speak with their supervisors.	Đọc hiểu hai đoạn văn	17	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+258	12	7	8	Part 7 - Double Passage 008	PASSAGE 1\nGreenfield Library announces that its second-floor reading area will close for carpet replacement from September 3 to September 6.\n\nPASSAGE 2\nA separate message says that books can still be borrowed from the first floor. Members may also return materials at the outdoor drop box during the closure.	Đọc hiểu hai đoạn văn	18	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+259	12	7	9	Part 7 - Double Passage 009	PASSAGE 1\nCityFit Center advertises a reduced membership fee for new members who join before the end of the month. The offer includes access to the weight room and swimming pool.\n\nPASSAGE 2\nA customer asks whether weekend classes are included. The center replies that weekend classes require an additional fee, although members receive a discount.	Đọc hiểu hai đoạn văn	19	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+260	12	7	10	Part 7 - Double Passage 010	PASSAGE 1\nThe Metro Business Association announces a free workshop about digital marketing. Registration is required because the conference room has limited seating.\n\nPASSAGE 2\nThe workshop agenda lists sessions on social media advertising, search optimization, and customer analytics. Attendees are asked to bring a laptop for the final exercise.	Đọc hiểu hai đoạn văn	20	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+261	13	7	11	Part 7 - Double Passage 011	PASSAGE 1\nA customer asks Northstar Travel to change a business-trip reservation. The agency confirms that the outbound flight can be changed but notes that a fee will apply.\n\nPASSAGE 2\nNorthstar Travel replies that the new flight leaves at 6:40 A.M. on Monday. The customer also asks for a hotel near the airport, and the agency recommends the Airport View Hotel.	Đọc hiểu hai đoạn văn	21	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+262	13	7	12	Part 7 - Double Passage 012	PASSAGE 1\nA factory manager announces that the evening production shift will begin one hour earlier next week because of increased orders.\n\nPASSAGE 2\nThe weekly schedule shows that the evening shift will begin at 3:00 P.M. from Monday through Friday. Employees who cannot follow the new schedule should speak with their supervisors.	Đọc hiểu hai đoạn văn	22	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+263	13	7	13	Part 7 - Double Passage 013	PASSAGE 1\nGreenfield Library announces that its second-floor reading area will close for carpet replacement from September 3 to September 6.\n\nPASSAGE 2\nA separate message says that books can still be borrowed from the first floor. Members may also return materials at the outdoor drop box during the closure.	Đọc hiểu hai đoạn văn	23	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+264	13	7	14	Part 7 - Double Passage 014	PASSAGE 1\nCityFit Center advertises a reduced membership fee for new members who join before the end of the month. The offer includes access to the weight room and swimming pool.\n\nPASSAGE 2\nA customer asks whether weekend classes are included. The center replies that weekend classes require an additional fee, although members receive a discount.	Đọc hiểu hai đoạn văn	24	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+265	13	7	15	Part 7 - Double Passage 015	PASSAGE 1\nThe Metro Business Association announces a free workshop about digital marketing. Registration is required because the conference room has limited seating.\n\nPASSAGE 2\nThe workshop agenda lists sessions on social media advertising, search optimization, and customer analytics. Attendees are asked to bring a laptop for the final exercise.	Đọc hiểu hai đoạn văn	25	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+266	14	7	16	Part 7 - Double Passage 016	PASSAGE 1\nA customer asks Northstar Travel to change a business-trip reservation. The agency confirms that the outbound flight can be changed but notes that a fee will apply.\n\nPASSAGE 2\nNorthstar Travel replies that the new flight leaves at 6:40 A.M. on Monday. The customer also asks for a hotel near the airport, and the agency recommends the Airport View Hotel.	Đọc hiểu hai đoạn văn	26	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+267	14	7	17	Part 7 - Double Passage 017	PASSAGE 1\nA factory manager announces that the evening production shift will begin one hour earlier next week because of increased orders.\n\nPASSAGE 2\nThe weekly schedule shows that the evening shift will begin at 3:00 P.M. from Monday through Friday. Employees who cannot follow the new schedule should speak with their supervisors.	Đọc hiểu hai đoạn văn	27	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+268	14	7	18	Part 7 - Double Passage 018	PASSAGE 1\nGreenfield Library announces that its second-floor reading area will close for carpet replacement from September 3 to September 6.\n\nPASSAGE 2\nA separate message says that books can still be borrowed from the first floor. Members may also return materials at the outdoor drop box during the closure.	Đọc hiểu hai đoạn văn	28	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+269	14	7	19	Part 7 - Double Passage 019	PASSAGE 1\nCityFit Center advertises a reduced membership fee for new members who join before the end of the month. The offer includes access to the weight room and swimming pool.\n\nPASSAGE 2\nA customer asks whether weekend classes are included. The center replies that weekend classes require an additional fee, although members receive a discount.	Đọc hiểu hai đoạn văn	29	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+270	14	7	20	Part 7 - Double Passage 020	PASSAGE 1\nThe Metro Business Association announces a free workshop about digital marketing. Registration is required because the conference room has limited seating.\n\nPASSAGE 2\nThe workshop agenda lists sessions on social media advertising, search optimization, and customer analytics. Attendees are asked to bring a laptop for the final exercise.	Đọc hiểu hai đoạn văn	30	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+271	15	7	21	Part 7 - Double Passage 021	PASSAGE 1\nA customer asks Northstar Travel to change a business-trip reservation. The agency confirms that the outbound flight can be changed but notes that a fee will apply.\n\nPASSAGE 2\nNorthstar Travel replies that the new flight leaves at 6:40 A.M. on Monday. The customer also asks for a hotel near the airport, and the agency recommends the Airport View Hotel.	Đọc hiểu hai đoạn văn	31	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+272	15	7	22	Part 7 - Double Passage 022	PASSAGE 1\nA factory manager announces that the evening production shift will begin one hour earlier next week because of increased orders.\n\nPASSAGE 2\nThe weekly schedule shows that the evening shift will begin at 3:00 P.M. from Monday through Friday. Employees who cannot follow the new schedule should speak with their supervisors.	Đọc hiểu hai đoạn văn	32	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+273	15	7	23	Part 7 - Double Passage 023	PASSAGE 1\nGreenfield Library announces that its second-floor reading area will close for carpet replacement from September 3 to September 6.\n\nPASSAGE 2\nA separate message says that books can still be borrowed from the first floor. Members may also return materials at the outdoor drop box during the closure.	Đọc hiểu hai đoạn văn	33	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+274	15	7	24	Part 7 - Double Passage 024	PASSAGE 1\nCityFit Center advertises a reduced membership fee for new members who join before the end of the month. The offer includes access to the weight room and swimming pool.\n\nPASSAGE 2\nA customer asks whether weekend classes are included. The center replies that weekend classes require an additional fee, although members receive a discount.	Đọc hiểu hai đoạn văn	34	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+275	15	7	25	Part 7 - Double Passage 025	PASSAGE 1\nThe Metro Business Association announces a free workshop about digital marketing. Registration is required because the conference room has limited seating.\n\nPASSAGE 2\nThe workshop agenda lists sessions on social media advertising, search optimization, and customer analytics. Attendees are asked to bring a laptop for the final exercise.	Đọc hiểu hai đoạn văn	35	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+276	11	7	1	Part 7 - Triple Passage 001	PASSAGE 1\nLumen Office Solutions announces a software update that will be installed on company computers Friday evening.\n\nPASSAGE 2\nAn internal memo explains that the update adds a shared calendar and improves security. Employees should save their work before leaving Friday.\n\nPASSAGE 3\nA technician reminds staff that computers may restart several times during installation and that support will be available Saturday morning.	Đọc hiểu ba đoạn văn	36	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+277	11	7	2	Part 7 - Triple Passage 002	PASSAGE 1\nHarbor Hotel advertises a conference package that includes meeting-room rental and breakfast for participants.\n\nPASSAGE 2\nA guest review praises the hotel's meeting rooms but notes that parking spaces are limited during large events.\n\nPASSAGE 3\nAn event coordinator asks the hotel to reserve parking spaces for speakers and receives confirmation that ten spaces can be reserved.	Đọc hiểu ba đoạn văn	37	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+278	11	7	3	Part 7 - Triple Passage 003	PASSAGE 1\nCity Transit announces changes to Route 18 because of road construction near Central Avenue.\n\nPASSAGE 2\nA local article explains that buses will use Oak Street as a temporary alternative route until construction is complete.\n\nPASSAGE 3\nA passenger asks which stop is closest to the library, and the transit office recommends the Oak Street stop.	Đọc hiểu ba đoạn văn	38	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+279	11	7	4	Part 7 - Triple Passage 004	PASSAGE 1\nEverbright Systems posts an opening for a customer-support specialist with two years of experience.\n\nPASSAGE 2\nAn applicant states that she has three years of customer-service experience and has used the company's support software.\n\nPASSAGE 3\nAn HR note says that interviews will begin next Monday and that applicants with relevant software experience will receive priority.	Đọc hiểu ba đoạn văn	39	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+280	11	7	5	Part 7 - Triple Passage 005	PASSAGE 1\nProfessional Skills Forum announces a workshop on workplace communication.\n\nPASSAGE 2\nThe agenda includes sessions on email writing, presentations, and handling difficult conversations.\n\nPASSAGE 3\nA participant's feedback says the presentation session was especially useful and suggests adding more practice activities next year.	Đọc hiểu ba đoạn văn	40	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+281	12	7	6	Part 7 - Triple Passage 006	PASSAGE 1\nLumen Office Solutions announces a software update that will be installed on company computers Friday evening.\n\nPASSAGE 2\nAn internal memo explains that the update adds a shared calendar and improves security. Employees should save their work before leaving Friday.\n\nPASSAGE 3\nA technician reminds staff that computers may restart several times during installation and that support will be available Saturday morning.	Đọc hiểu ba đoạn văn	41	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+282	12	7	7	Part 7 - Triple Passage 007	PASSAGE 1\nHarbor Hotel advertises a conference package that includes meeting-room rental and breakfast for participants.\n\nPASSAGE 2\nA guest review praises the hotel's meeting rooms but notes that parking spaces are limited during large events.\n\nPASSAGE 3\nAn event coordinator asks the hotel to reserve parking spaces for speakers and receives confirmation that ten spaces can be reserved.	Đọc hiểu ba đoạn văn	42	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+283	12	7	8	Part 7 - Triple Passage 008	PASSAGE 1\nCity Transit announces changes to Route 18 because of road construction near Central Avenue.\n\nPASSAGE 2\nA local article explains that buses will use Oak Street as a temporary alternative route until construction is complete.\n\nPASSAGE 3\nA passenger asks which stop is closest to the library, and the transit office recommends the Oak Street stop.	Đọc hiểu ba đoạn văn	43	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+284	12	7	9	Part 7 - Triple Passage 009	PASSAGE 1\nEverbright Systems posts an opening for a customer-support specialist with two years of experience.\n\nPASSAGE 2\nAn applicant states that she has three years of customer-service experience and has used the company's support software.\n\nPASSAGE 3\nAn HR note says that interviews will begin next Monday and that applicants with relevant software experience will receive priority.	Đọc hiểu ba đoạn văn	44	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+285	12	7	10	Part 7 - Triple Passage 010	PASSAGE 1\nProfessional Skills Forum announces a workshop on workplace communication.\n\nPASSAGE 2\nThe agenda includes sessions on email writing, presentations, and handling difficult conversations.\n\nPASSAGE 3\nA participant's feedback says the presentation session was especially useful and suggests adding more practice activities next year.	Đọc hiểu ba đoạn văn	45	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+286	13	7	11	Part 7 - Triple Passage 011	PASSAGE 1\nLumen Office Solutions announces a software update that will be installed on company computers Friday evening.\n\nPASSAGE 2\nAn internal memo explains that the update adds a shared calendar and improves security. Employees should save their work before leaving Friday.\n\nPASSAGE 3\nA technician reminds staff that computers may restart several times during installation and that support will be available Saturday morning.	Đọc hiểu ba đoạn văn	46	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+287	13	7	12	Part 7 - Triple Passage 012	PASSAGE 1\nHarbor Hotel advertises a conference package that includes meeting-room rental and breakfast for participants.\n\nPASSAGE 2\nA guest review praises the hotel's meeting rooms but notes that parking spaces are limited during large events.\n\nPASSAGE 3\nAn event coordinator asks the hotel to reserve parking spaces for speakers and receives confirmation that ten spaces can be reserved.	Đọc hiểu ba đoạn văn	47	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+288	13	7	13	Part 7 - Triple Passage 013	PASSAGE 1\nCity Transit announces changes to Route 18 because of road construction near Central Avenue.\n\nPASSAGE 2\nA local article explains that buses will use Oak Street as a temporary alternative route until construction is complete.\n\nPASSAGE 3\nA passenger asks which stop is closest to the library, and the transit office recommends the Oak Street stop.	Đọc hiểu ba đoạn văn	48	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+289	13	7	14	Part 7 - Triple Passage 014	PASSAGE 1\nEverbright Systems posts an opening for a customer-support specialist with two years of experience.\n\nPASSAGE 2\nAn applicant states that she has three years of customer-service experience and has used the company's support software.\n\nPASSAGE 3\nAn HR note says that interviews will begin next Monday and that applicants with relevant software experience will receive priority.	Đọc hiểu ba đoạn văn	49	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+290	13	7	15	Part 7 - Triple Passage 015	PASSAGE 1\nProfessional Skills Forum announces a workshop on workplace communication.\n\nPASSAGE 2\nThe agenda includes sessions on email writing, presentations, and handling difficult conversations.\n\nPASSAGE 3\nA participant's feedback says the presentation session was especially useful and suggests adding more practice activities next year.	Đọc hiểu ba đoạn văn	50	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+291	14	7	16	Part 7 - Triple Passage 016	PASSAGE 1\nLumen Office Solutions announces a software update that will be installed on company computers Friday evening.\n\nPASSAGE 2\nAn internal memo explains that the update adds a shared calendar and improves security. Employees should save their work before leaving Friday.\n\nPASSAGE 3\nA technician reminds staff that computers may restart several times during installation and that support will be available Saturday morning.	Đọc hiểu ba đoạn văn	51	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+292	14	7	17	Part 7 - Triple Passage 017	PASSAGE 1\nHarbor Hotel advertises a conference package that includes meeting-room rental and breakfast for participants.\n\nPASSAGE 2\nA guest review praises the hotel's meeting rooms but notes that parking spaces are limited during large events.\n\nPASSAGE 3\nAn event coordinator asks the hotel to reserve parking spaces for speakers and receives confirmation that ten spaces can be reserved.	Đọc hiểu ba đoạn văn	52	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+293	14	7	18	Part 7 - Triple Passage 018	PASSAGE 1\nCity Transit announces changes to Route 18 because of road construction near Central Avenue.\n\nPASSAGE 2\nA local article explains that buses will use Oak Street as a temporary alternative route until construction is complete.\n\nPASSAGE 3\nA passenger asks which stop is closest to the library, and the transit office recommends the Oak Street stop.	Đọc hiểu ba đoạn văn	53	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+294	14	7	19	Part 7 - Triple Passage 019	PASSAGE 1\nEverbright Systems posts an opening for a customer-support specialist with two years of experience.\n\nPASSAGE 2\nAn applicant states that she has three years of customer-service experience and has used the company's support software.\n\nPASSAGE 3\nAn HR note says that interviews will begin next Monday and that applicants with relevant software experience will receive priority.	Đọc hiểu ba đoạn văn	54	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+295	14	7	20	Part 7 - Triple Passage 020	PASSAGE 1\nProfessional Skills Forum announces a workshop on workplace communication.\n\nPASSAGE 2\nThe agenda includes sessions on email writing, presentations, and handling difficult conversations.\n\nPASSAGE 3\nA participant's feedback says the presentation session was especially useful and suggests adding more practice activities next year.	Đọc hiểu ba đoạn văn	55	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+296	15	7	21	Part 7 - Triple Passage 021	PASSAGE 1\nLumen Office Solutions announces a software update that will be installed on company computers Friday evening.\n\nPASSAGE 2\nAn internal memo explains that the update adds a shared calendar and improves security. Employees should save their work before leaving Friday.\n\nPASSAGE 3\nA technician reminds staff that computers may restart several times during installation and that support will be available Saturday morning.	Đọc hiểu ba đoạn văn	56	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+297	15	7	22	Part 7 - Triple Passage 022	PASSAGE 1\nHarbor Hotel advertises a conference package that includes meeting-room rental and breakfast for participants.\n\nPASSAGE 2\nA guest review praises the hotel's meeting rooms but notes that parking spaces are limited during large events.\n\nPASSAGE 3\nAn event coordinator asks the hotel to reserve parking spaces for speakers and receives confirmation that ten spaces can be reserved.	Đọc hiểu ba đoạn văn	57	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+298	15	7	23	Part 7 - Triple Passage 023	PASSAGE 1\nCity Transit announces changes to Route 18 because of road construction near Central Avenue.\n\nPASSAGE 2\nA local article explains that buses will use Oak Street as a temporary alternative route until construction is complete.\n\nPASSAGE 3\nA passenger asks which stop is closest to the library, and the transit office recommends the Oak Street stop.	Đọc hiểu ba đoạn văn	58	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+299	15	7	24	Part 7 - Triple Passage 024	PASSAGE 1\nEverbright Systems posts an opening for a customer-support specialist with two years of experience.\n\nPASSAGE 2\nAn applicant states that she has three years of customer-service experience and has used the company's support software.\n\nPASSAGE 3\nAn HR note says that interviews will begin next Monday and that applicants with relevant software experience will receive priority.	Đọc hiểu ba đoạn văn	59	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+300	15	7	25	Part 7 - Triple Passage 025	PASSAGE 1\nProfessional Skills Forum announces a workshop on workplace communication.\n\nPASSAGE 2\nThe agenda includes sessions on email writing, presentations, and handling difficult conversations.\n\nPASSAGE 3\nA participant's feedback says the presentation session was especially useful and suggests adding more practice activities next year.	Đọc hiểu ba đoạn văn	60	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
 \.
 
 
@@ -9772,1782 +9772,1782 @@ COPY public.reading_options (id, question_id, option_key, option_text, is_correc
 1998	500	B	will be posted	t	2	2026-08-10 12:43:50.483122
 1999	500	C	posted	f	3	2026-08-10 12:43:50.483122
 2000	500	D	are posting	f	4	2026-08-10 12:43:50.483122
-3777	801	A	An office renovation	t	1	2026-08-10 14:08:48.214425
-3778	801	B	A new hiring plan	f	2	2026-08-10 14:08:48.214425
-3779	801	C	A sales campaign	f	3	2026-08-10 14:08:48.214425
-3780	801	D	A training program	f	4	2026-08-10 14:08:48.214425
-3781	802	A	August 17	t	1	2026-08-10 14:08:48.214425
-3782	802	B	August 18	f	2	2026-08-10 14:08:48.214425
-3783	802	C	August 22	f	3	2026-08-10 14:08:48.214425
-3784	802	D	September 17	f	4	2026-08-10 14:08:48.214425
-3785	803	A	On the fourth floor	t	1	2026-08-10 14:08:48.214425
-3786	803	B	At home	f	2	2026-08-10 14:08:48.214425
-3787	803	C	In the lobby	f	3	2026-08-10 14:08:48.214425
-3788	803	D	At another company	f	4	2026-08-10 14:08:48.214425
-3789	804	A	repaired and improved	t	1	2026-08-10 14:08:48.214425
-3790	804	B	closed permanently	f	2	2026-08-10 14:08:48.214425
-3791	804	C	sold quickly	f	3	2026-08-10 14:08:48.214425
-3792	804	D	moved overseas	f	4	2026-08-10 14:08:48.214425
-3793	805	A	To provide an order update	t	1	2026-08-10 14:08:48.214425
-3794	805	B	To cancel an order	f	2	2026-08-10 14:08:48.214425
-3795	805	C	To advertise a product	f	3	2026-08-10 14:08:48.214425
-3796	805	D	To request payment	f	4	2026-08-10 14:08:48.214425
-3797	806	A	Two wireless keyboards	t	1	2026-08-10 14:08:48.214425
-3798	806	B	A computer monitor	f	2	2026-08-10 14:08:48.214425
-3799	806	C	Two printers	f	3	2026-08-10 14:08:48.214425
-3800	806	D	A software license	f	4	2026-08-10 14:08:48.214425
-3801	807	A	Thursday	t	1	2026-08-10 14:08:48.214425
-3802	807	B	Monday	f	2	2026-08-10 14:08:48.214425
-3803	807	C	Friday	f	3	2026-08-10 14:08:48.214425
-3804	807	D	Next month	f	4	2026-08-10 14:08:48.214425
-3805	808	A	Administrative assistant	t	1	2026-08-10 14:08:48.214425
-3806	808	B	Sales manager	f	2	2026-08-10 14:08:48.214425
-3807	808	C	Accountant	f	3	2026-08-10 14:08:48.214425
-3808	808	D	Receptionist	f	4	2026-08-10 14:08:48.214425
-3809	809	A	At least two years of office experience	t	1	2026-08-10 14:08:48.214425
-3810	809	B	Five years of sales experience	f	2	2026-08-10 14:08:48.214425
-3811	809	C	A university degree only	f	3	2026-08-10 14:08:48.214425
-3812	809	D	No previous experience	f	4	2026-08-10 14:08:48.214425
-3813	810	A	September 5	t	1	2026-08-10 14:08:48.214425
-3814	810	B	August 5	f	2	2026-08-10 14:08:48.214425
-3815	810	C	September 15	f	3	2026-08-10 14:08:48.214425
-3816	810	D	October 5	f	4	2026-08-10 14:08:48.214425
-3817	811	A	Using spreadsheet software	t	1	2026-08-10 14:08:48.214425
-3818	811	B	Editing videos	f	2	2026-08-10 14:08:48.214425
-3819	811	C	Programming websites	f	3	2026-08-10 14:08:48.214425
-3820	811	D	Designing buildings	f	4	2026-08-10 14:08:48.214425
-3821	812	A	A training session	t	1	2026-08-10 14:08:48.214425
-3822	812	B	A staff party	f	2	2026-08-10 14:08:48.214425
-3823	812	C	A product launch	f	3	2026-08-10 14:08:48.214425
-3824	812	D	A job interview	f	4	2026-08-10 14:08:48.214425
-3825	813	A	Room 204	t	1	2026-08-10 14:08:48.214425
-3826	813	B	Room 104	f	2	2026-08-10 14:08:48.214425
-3827	813	C	The cafeteria	f	3	2026-08-10 14:08:48.214425
-3828	813	D	The main lobby	f	4	2026-08-10 14:08:48.214425
-3829	814	A	Identification cards	t	1	2026-08-10 14:08:48.214425
-3830	814	B	Laptops only	f	2	2026-08-10 14:08:48.214425
-3831	814	C	Printed contracts	f	3	2026-08-10 14:08:48.214425
-3832	814	D	Travel documents	f	4	2026-08-10 14:08:48.214425
-3833	815	A	Complete an online exercise	t	1	2026-08-10 14:08:48.214425
-3834	815	B	Call the trainer	f	2	2026-08-10 14:08:48.214425
-3835	815	C	Pay a fee	f	3	2026-08-10 14:08:48.214425
-3836	815	D	Leave the building	f	4	2026-08-10 14:08:48.214425
-3837	816	A	A discount on office supplies	t	1	2026-08-10 14:08:48.214425
-3838	816	B	A new store opening	f	2	2026-08-10 14:08:48.214425
-3839	816	C	A delivery service	f	3	2026-08-10 14:08:48.214425
-3840	816	D	A hiring event	f	4	2026-08-10 14:08:48.214425
-3841	817	A	This weekend	t	1	2026-08-10 14:08:48.214425
-3842	817	B	Next month	f	2	2026-08-10 14:08:48.214425
-3843	817	C	Every Monday	f	3	2026-08-10 14:08:48.214425
-3844	817	D	During the holidays	f	4	2026-08-10 14:08:48.214425
-3845	818	A	In the store	t	1	2026-08-10 14:08:48.214425
-3846	818	B	Online only	f	2	2026-08-10 14:08:48.214425
-3847	818	C	At the warehouse	f	3	2026-08-10 14:08:48.214425
-3848	818	D	By telephone	f	4	2026-08-10 14:08:48.214425
-3849	819	A	Printer ink	t	1	2026-08-10 14:08:48.214425
-3850	819	B	Notebooks	f	2	2026-08-10 14:08:48.214425
-3851	819	C	Pens	f	3	2026-08-10 14:08:48.214425
-3852	819	D	Folders	f	4	2026-08-10 14:08:48.214425
-3853	820	A	A hotel reservation	t	1	2026-08-10 14:08:48.214425
-3854	820	B	A flight reservation	f	2	2026-08-10 14:08:48.214425
-3855	820	C	A restaurant booking	f	3	2026-08-10 14:08:48.214425
-3856	820	D	A conference registration	f	4	2026-08-10 14:08:48.214425
-3857	821	A	Three nights	t	1	2026-08-10 14:08:48.214425
-3858	821	B	One night	f	2	2026-08-10 14:08:48.214425
-3859	821	C	Two weeks	f	3	2026-08-10 14:08:48.214425
-3860	821	D	One month	f	4	2026-08-10 14:08:48.214425
-3861	822	A	Breakfast	t	1	2026-08-10 14:08:48.214425
-3862	822	B	Airport transportation	f	2	2026-08-10 14:08:48.214425
-3863	822	C	A rental car	f	3	2026-08-10 14:08:48.214425
-3864	822	D	Lunch	f	4	2026-08-10 14:08:48.214425
-3865	823	A	Contact the front desk	t	1	2026-08-10 14:08:48.214425
-3866	823	B	Call the airline	f	2	2026-08-10 14:08:48.214425
-3867	823	C	Visit the airport	f	3	2026-08-10 14:08:48.214425
-3868	823	D	Email the restaurant	f	4	2026-08-10 14:08:48.214425
-3869	824	A	For completing ten years with the company	t	1	2026-08-10 14:08:48.214425
-3870	824	B	For opening a branch	f	2	2026-08-10 14:08:48.214425
-3871	824	C	For winning a sales contest	f	3	2026-08-10 14:08:48.214425
-3872	824	D	For retiring	f	4	2026-08-10 14:08:48.214425
-3873	825	A	2016	t	1	2026-08-10 14:08:48.214425
-3874	825	B	2018	f	2	2026-08-10 14:08:48.214425
-3875	825	C	2020	f	3	2026-08-10 14:08:48.214425
-3876	825	D	2022	f	4	2026-08-10 14:08:48.214425
-3877	826	A	Eight	t	1	2026-08-10 14:08:48.214425
-3878	826	B	Five	f	2	2026-08-10 14:08:48.214425
-3879	826	C	Ten	f	3	2026-08-10 14:08:48.214425
-3880	826	D	Twelve	f	4	2026-08-10 14:08:48.214425
-3881	827	A	Friday's staff meeting	t	1	2026-08-10 14:08:48.214425
-3882	827	B	Monday's meeting	f	2	2026-08-10 14:08:48.214425
-3883	827	C	A customer event	f	3	2026-08-10 14:08:48.214425
-3884	827	D	A training session	f	4	2026-08-10 14:08:48.214425
-3885	828	A	The morning departure time	t	1	2026-08-10 14:08:48.214425
-3886	828	B	The afternoon route	f	2	2026-08-10 14:08:48.214425
-3887	828	C	The parking fee	f	3	2026-08-10 14:08:48.214425
-3888	828	D	The shuttle location	f	4	2026-08-10 14:08:48.214425
-3889	829	A	7:30 A.M.	t	1	2026-08-10 14:08:48.214425
-3890	829	B	7:45 A.M.	f	2	2026-08-10 14:08:48.214425
-3891	829	C	8:00 A.M.	f	3	2026-08-10 14:08:48.214425
-3892	829	D	8:15 A.M.	f	4	2026-08-10 14:08:48.214425
-3893	830	A	The afternoon schedule	t	1	2026-08-10 14:08:48.214425
-3894	830	B	The morning schedule	f	2	2026-08-10 14:08:48.214425
-3895	830	C	The parking location	f	3	2026-08-10 14:08:48.214425
-3896	830	D	The driver	f	4	2026-08-10 14:08:48.214425
-3897	831	A	Arrive at least five minutes early	t	1	2026-08-10 14:08:48.214425
-3898	831	B	Bring lunch	f	2	2026-08-10 14:08:48.214425
-3899	831	C	Call the driver	f	3	2026-08-10 14:08:48.214425
-3900	831	D	Use another bus	f	4	2026-08-10 14:08:48.214425
-3901	832	A	The proposal deadline	t	1	2026-08-10 14:08:48.214425
-3902	832	B	The campaign budget	f	2	2026-08-10 14:08:48.214425
-3903	832	C	The meeting time	f	3	2026-08-10 14:08:48.214425
-3904	832	D	The hiring period	f	4	2026-08-10 14:08:48.214425
-3905	833	A	Departments needed more review time	t	1	2026-08-10 14:08:48.214425
-3906	833	B	The campaign was canceled	f	2	2026-08-10 14:08:48.214425
-3907	833	C	The manager was absent	f	3	2026-08-10 14:08:48.214425
-3908	833	D	The office was closed	f	4	2026-08-10 14:08:48.214425
-3909	834	A	June 24	t	1	2026-08-10 14:08:48.214425
-3910	834	B	June 28	f	2	2026-08-10 14:08:48.214425
-3911	834	C	July 24	f	3	2026-08-10 14:08:48.214425
-3912	834	D	May 28	f	4	2026-08-10 14:08:48.214425
-3913	835	A	extra	t	1	2026-08-10 14:08:48.214425
-3914	835	B	final	f	2	2026-08-10 14:08:48.214425
-3915	835	C	urgent	f	3	2026-08-10 14:08:48.214425
-3916	835	D	private	f	4	2026-08-10 14:08:48.214425
-3917	836	A	An office renovation	t	1	2026-08-10 14:08:48.214425
-3918	836	B	A new hiring plan	f	2	2026-08-10 14:08:48.214425
-3919	836	C	A sales campaign	f	3	2026-08-10 14:08:48.214425
-3920	836	D	A training program	f	4	2026-08-10 14:08:48.214425
-3921	837	A	August 17	t	1	2026-08-10 14:08:48.214425
-3922	837	B	August 18	f	2	2026-08-10 14:08:48.214425
-3923	837	C	August 22	f	3	2026-08-10 14:08:48.214425
-3924	837	D	September 17	f	4	2026-08-10 14:08:48.214425
-3925	838	A	On the fourth floor	t	1	2026-08-10 14:08:48.214425
-3926	838	B	At home	f	2	2026-08-10 14:08:48.214425
-3927	838	C	In the lobby	f	3	2026-08-10 14:08:48.214425
-3928	838	D	At another company	f	4	2026-08-10 14:08:48.214425
-3929	839	A	repaired and improved	t	1	2026-08-10 14:08:48.214425
-3930	839	B	closed permanently	f	2	2026-08-10 14:08:48.214425
-3931	839	C	sold quickly	f	3	2026-08-10 14:08:48.214425
-3932	839	D	moved overseas	f	4	2026-08-10 14:08:48.214425
-3933	840	A	To provide an order update	t	1	2026-08-10 14:08:48.214425
-3934	840	B	To cancel an order	f	2	2026-08-10 14:08:48.214425
-3935	840	C	To advertise a product	f	3	2026-08-10 14:08:48.214425
-3936	840	D	To request payment	f	4	2026-08-10 14:08:48.214425
-3937	841	A	Two wireless keyboards	t	1	2026-08-10 14:08:48.214425
-3938	841	B	A computer monitor	f	2	2026-08-10 14:08:48.214425
-3939	841	C	Two printers	f	3	2026-08-10 14:08:48.214425
-3940	841	D	A software license	f	4	2026-08-10 14:08:48.214425
-3941	842	A	Thursday	t	1	2026-08-10 14:08:48.214425
-3942	842	B	Monday	f	2	2026-08-10 14:08:48.214425
-3943	842	C	Friday	f	3	2026-08-10 14:08:48.214425
-3944	842	D	Next month	f	4	2026-08-10 14:08:48.214425
-3945	843	A	Administrative assistant	t	1	2026-08-10 14:08:48.214425
-3946	843	B	Sales manager	f	2	2026-08-10 14:08:48.214425
-3947	843	C	Accountant	f	3	2026-08-10 14:08:48.214425
-3948	843	D	Receptionist	f	4	2026-08-10 14:08:48.214425
-3949	844	A	At least two years of office experience	t	1	2026-08-10 14:08:48.214425
-3950	844	B	Five years of sales experience	f	2	2026-08-10 14:08:48.214425
-3951	844	C	A university degree only	f	3	2026-08-10 14:08:48.214425
-3952	844	D	No previous experience	f	4	2026-08-10 14:08:48.214425
-3953	845	A	September 5	t	1	2026-08-10 14:08:48.214425
-3954	845	B	August 5	f	2	2026-08-10 14:08:48.214425
-3955	845	C	September 15	f	3	2026-08-10 14:08:48.214425
-3956	845	D	October 5	f	4	2026-08-10 14:08:48.214425
-3957	846	A	Using spreadsheet software	t	1	2026-08-10 14:08:48.214425
-3958	846	B	Editing videos	f	2	2026-08-10 14:08:48.214425
-3959	846	C	Programming websites	f	3	2026-08-10 14:08:48.214425
-3960	846	D	Designing buildings	f	4	2026-08-10 14:08:48.214425
-3961	847	A	A training session	t	1	2026-08-10 14:08:48.214425
-3962	847	B	A staff party	f	2	2026-08-10 14:08:48.214425
-3963	847	C	A product launch	f	3	2026-08-10 14:08:48.214425
-3964	847	D	A job interview	f	4	2026-08-10 14:08:48.214425
-3965	848	A	Room 204	t	1	2026-08-10 14:08:48.214425
-3966	848	B	Room 104	f	2	2026-08-10 14:08:48.214425
-3967	848	C	The cafeteria	f	3	2026-08-10 14:08:48.214425
-3968	848	D	The main lobby	f	4	2026-08-10 14:08:48.214425
-3969	849	A	Identification cards	t	1	2026-08-10 14:08:48.214425
-3970	849	B	Laptops only	f	2	2026-08-10 14:08:48.214425
-3971	849	C	Printed contracts	f	3	2026-08-10 14:08:48.214425
-3972	849	D	Travel documents	f	4	2026-08-10 14:08:48.214425
-3973	850	A	Complete an online exercise	t	1	2026-08-10 14:08:48.214425
-3974	850	B	Call the trainer	f	2	2026-08-10 14:08:48.214425
-3975	850	C	Pay a fee	f	3	2026-08-10 14:08:48.214425
-3976	850	D	Leave the building	f	4	2026-08-10 14:08:48.214425
-3977	851	A	A discount on office supplies	t	1	2026-08-10 14:08:48.214425
-3978	851	B	A new store opening	f	2	2026-08-10 14:08:48.214425
-3979	851	C	A delivery service	f	3	2026-08-10 14:08:48.214425
-3980	851	D	A hiring event	f	4	2026-08-10 14:08:48.214425
-3981	852	A	This weekend	t	1	2026-08-10 14:08:48.214425
-3982	852	B	Next month	f	2	2026-08-10 14:08:48.214425
-3983	852	C	Every Monday	f	3	2026-08-10 14:08:48.214425
-3984	852	D	During the holidays	f	4	2026-08-10 14:08:48.214425
-3985	853	A	In the store	t	1	2026-08-10 14:08:48.214425
-3986	853	B	Online only	f	2	2026-08-10 14:08:48.214425
-3987	853	C	At the warehouse	f	3	2026-08-10 14:08:48.214425
-3988	853	D	By telephone	f	4	2026-08-10 14:08:48.214425
-3989	854	A	Printer ink	t	1	2026-08-10 14:08:48.214425
-3990	854	B	Notebooks	f	2	2026-08-10 14:08:48.214425
-3991	854	C	Pens	f	3	2026-08-10 14:08:48.214425
-3992	854	D	Folders	f	4	2026-08-10 14:08:48.214425
-3993	855	A	A hotel reservation	t	1	2026-08-10 14:08:48.214425
-3994	855	B	A flight reservation	f	2	2026-08-10 14:08:48.214425
-3995	855	C	A restaurant booking	f	3	2026-08-10 14:08:48.214425
-3996	855	D	A conference registration	f	4	2026-08-10 14:08:48.214425
-3997	856	A	Three nights	t	1	2026-08-10 14:08:48.214425
-3998	856	B	One night	f	2	2026-08-10 14:08:48.214425
-3999	856	C	Two weeks	f	3	2026-08-10 14:08:48.214425
-4000	856	D	One month	f	4	2026-08-10 14:08:48.214425
-4001	857	A	Breakfast	t	1	2026-08-10 14:08:48.214425
-4002	857	B	Airport transportation	f	2	2026-08-10 14:08:48.214425
-4003	857	C	A rental car	f	3	2026-08-10 14:08:48.214425
-4004	857	D	Lunch	f	4	2026-08-10 14:08:48.214425
-4005	858	A	Contact the front desk	t	1	2026-08-10 14:08:48.214425
-4006	858	B	Call the airline	f	2	2026-08-10 14:08:48.214425
-4007	858	C	Visit the airport	f	3	2026-08-10 14:08:48.214425
-4008	858	D	Email the restaurant	f	4	2026-08-10 14:08:48.214425
-4009	859	A	For completing ten years with the company	t	1	2026-08-10 14:08:48.214425
-4010	859	B	For opening a branch	f	2	2026-08-10 14:08:48.214425
-4011	859	C	For winning a sales contest	f	3	2026-08-10 14:08:48.214425
-4012	859	D	For retiring	f	4	2026-08-10 14:08:48.214425
-4013	860	A	2016	t	1	2026-08-10 14:08:48.214425
-4014	860	B	2018	f	2	2026-08-10 14:08:48.214425
-4015	860	C	2020	f	3	2026-08-10 14:08:48.214425
-4016	860	D	2022	f	4	2026-08-10 14:08:48.214425
-4017	861	A	Eight	t	1	2026-08-10 14:08:48.214425
-4018	861	B	Five	f	2	2026-08-10 14:08:48.214425
-4019	861	C	Ten	f	3	2026-08-10 14:08:48.214425
-4020	861	D	Twelve	f	4	2026-08-10 14:08:48.214425
-4021	862	A	Friday's staff meeting	t	1	2026-08-10 14:08:48.214425
-4022	862	B	Monday's meeting	f	2	2026-08-10 14:08:48.214425
-4023	862	C	A customer event	f	3	2026-08-10 14:08:48.214425
-4024	862	D	A training session	f	4	2026-08-10 14:08:48.214425
-4025	863	A	The morning departure time	t	1	2026-08-10 14:08:48.214425
-4026	863	B	The afternoon route	f	2	2026-08-10 14:08:48.214425
-4027	863	C	The parking fee	f	3	2026-08-10 14:08:48.214425
-4028	863	D	The shuttle location	f	4	2026-08-10 14:08:48.214425
-4029	864	A	7:30 A.M.	t	1	2026-08-10 14:08:48.214425
-4030	864	B	7:45 A.M.	f	2	2026-08-10 14:08:48.214425
-4031	864	C	8:00 A.M.	f	3	2026-08-10 14:08:48.214425
-4032	864	D	8:15 A.M.	f	4	2026-08-10 14:08:48.214425
-4033	865	A	The afternoon schedule	t	1	2026-08-10 14:08:48.214425
-4034	865	B	The morning schedule	f	2	2026-08-10 14:08:48.214425
-4035	865	C	The parking location	f	3	2026-08-10 14:08:48.214425
-4036	865	D	The driver	f	4	2026-08-10 14:08:48.214425
-4037	866	A	Arrive at least five minutes early	t	1	2026-08-10 14:08:48.214425
-4038	866	B	Bring lunch	f	2	2026-08-10 14:08:48.214425
-4039	866	C	Call the driver	f	3	2026-08-10 14:08:48.214425
-4040	866	D	Use another bus	f	4	2026-08-10 14:08:48.214425
-4041	867	A	The proposal deadline	t	1	2026-08-10 14:08:48.214425
-4042	867	B	The campaign budget	f	2	2026-08-10 14:08:48.214425
-4043	867	C	The meeting time	f	3	2026-08-10 14:08:48.214425
-4044	867	D	The hiring period	f	4	2026-08-10 14:08:48.214425
-4045	868	A	Departments needed more review time	t	1	2026-08-10 14:08:48.214425
-4046	868	B	The campaign was canceled	f	2	2026-08-10 14:08:48.214425
-4047	868	C	The manager was absent	f	3	2026-08-10 14:08:48.214425
-4048	868	D	The office was closed	f	4	2026-08-10 14:08:48.214425
-4049	869	A	June 24	t	1	2026-08-10 14:08:48.214425
-4050	869	B	June 28	f	2	2026-08-10 14:08:48.214425
-4051	869	C	July 24	f	3	2026-08-10 14:08:48.214425
-4052	869	D	May 28	f	4	2026-08-10 14:08:48.214425
-4053	870	A	extra	t	1	2026-08-10 14:08:48.214425
-4054	870	B	final	f	2	2026-08-10 14:08:48.214425
-4055	870	C	urgent	f	3	2026-08-10 14:08:48.214425
-4056	870	D	private	f	4	2026-08-10 14:08:48.214425
-4057	871	A	An office renovation	t	1	2026-08-10 14:08:48.214425
-4058	871	B	A new hiring plan	f	2	2026-08-10 14:08:48.214425
-4059	871	C	A sales campaign	f	3	2026-08-10 14:08:48.214425
-4060	871	D	A training program	f	4	2026-08-10 14:08:48.214425
-4061	872	A	August 17	t	1	2026-08-10 14:08:48.214425
-4062	872	B	August 18	f	2	2026-08-10 14:08:48.214425
-4063	872	C	August 22	f	3	2026-08-10 14:08:48.214425
-4064	872	D	September 17	f	4	2026-08-10 14:08:48.214425
-4065	873	A	On the fourth floor	t	1	2026-08-10 14:08:48.214425
-4066	873	B	At home	f	2	2026-08-10 14:08:48.214425
-4067	873	C	In the lobby	f	3	2026-08-10 14:08:48.214425
-4068	873	D	At another company	f	4	2026-08-10 14:08:48.214425
-4069	874	A	repaired and improved	t	1	2026-08-10 14:08:48.214425
-4070	874	B	closed permanently	f	2	2026-08-10 14:08:48.214425
-4071	874	C	sold quickly	f	3	2026-08-10 14:08:48.214425
-4072	874	D	moved overseas	f	4	2026-08-10 14:08:48.214425
-4073	875	A	To provide an order update	t	1	2026-08-10 14:08:48.214425
-4074	875	B	To cancel an order	f	2	2026-08-10 14:08:48.214425
-4075	875	C	To advertise a product	f	3	2026-08-10 14:08:48.214425
-4076	875	D	To request payment	f	4	2026-08-10 14:08:48.214425
-4077	876	A	Two wireless keyboards	t	1	2026-08-10 14:08:48.214425
-4078	876	B	A computer monitor	f	2	2026-08-10 14:08:48.214425
-4079	876	C	Two printers	f	3	2026-08-10 14:08:48.214425
-4080	876	D	A software license	f	4	2026-08-10 14:08:48.214425
-4081	877	A	Thursday	t	1	2026-08-10 14:08:48.214425
-4082	877	B	Monday	f	2	2026-08-10 14:08:48.214425
-4083	877	C	Friday	f	3	2026-08-10 14:08:48.214425
-4084	877	D	Next month	f	4	2026-08-10 14:08:48.214425
-4085	878	A	Administrative assistant	t	1	2026-08-10 14:08:48.214425
-4086	878	B	Sales manager	f	2	2026-08-10 14:08:48.214425
-4087	878	C	Accountant	f	3	2026-08-10 14:08:48.214425
-4088	878	D	Receptionist	f	4	2026-08-10 14:08:48.214425
-4089	879	A	At least two years of office experience	t	1	2026-08-10 14:08:48.214425
-4090	879	B	Five years of sales experience	f	2	2026-08-10 14:08:48.214425
-4091	879	C	A university degree only	f	3	2026-08-10 14:08:48.214425
-4092	879	D	No previous experience	f	4	2026-08-10 14:08:48.214425
-4093	880	A	September 5	t	1	2026-08-10 14:08:48.214425
-4094	880	B	August 5	f	2	2026-08-10 14:08:48.214425
-4095	880	C	September 15	f	3	2026-08-10 14:08:48.214425
-4096	880	D	October 5	f	4	2026-08-10 14:08:48.214425
-4097	881	A	Using spreadsheet software	t	1	2026-08-10 14:08:48.214425
-4098	881	B	Editing videos	f	2	2026-08-10 14:08:48.214425
-4099	881	C	Programming websites	f	3	2026-08-10 14:08:48.214425
-4100	881	D	Designing buildings	f	4	2026-08-10 14:08:48.214425
-4101	882	A	A training session	t	1	2026-08-10 14:08:48.214425
-4102	882	B	A staff party	f	2	2026-08-10 14:08:48.214425
-4103	882	C	A product launch	f	3	2026-08-10 14:08:48.214425
-4104	882	D	A job interview	f	4	2026-08-10 14:08:48.214425
-4105	883	A	Room 204	t	1	2026-08-10 14:08:48.214425
-4106	883	B	Room 104	f	2	2026-08-10 14:08:48.214425
-4107	883	C	The cafeteria	f	3	2026-08-10 14:08:48.214425
-4108	883	D	The main lobby	f	4	2026-08-10 14:08:48.214425
-4109	884	A	Identification cards	t	1	2026-08-10 14:08:48.214425
-4110	884	B	Laptops only	f	2	2026-08-10 14:08:48.214425
-4111	884	C	Printed contracts	f	3	2026-08-10 14:08:48.214425
-4112	884	D	Travel documents	f	4	2026-08-10 14:08:48.214425
-4113	885	A	Complete an online exercise	t	1	2026-08-10 14:08:48.214425
-4114	885	B	Call the trainer	f	2	2026-08-10 14:08:48.214425
-4115	885	C	Pay a fee	f	3	2026-08-10 14:08:48.214425
-4116	885	D	Leave the building	f	4	2026-08-10 14:08:48.214425
-4117	886	A	A discount on office supplies	t	1	2026-08-10 14:08:48.214425
-4118	886	B	A new store opening	f	2	2026-08-10 14:08:48.214425
-4119	886	C	A delivery service	f	3	2026-08-10 14:08:48.214425
-4120	886	D	A hiring event	f	4	2026-08-10 14:08:48.214425
-4121	887	A	This weekend	t	1	2026-08-10 14:08:48.214425
-4122	887	B	Next month	f	2	2026-08-10 14:08:48.214425
-4123	887	C	Every Monday	f	3	2026-08-10 14:08:48.214425
-4124	887	D	During the holidays	f	4	2026-08-10 14:08:48.214425
-4125	888	A	In the store	t	1	2026-08-10 14:08:48.214425
-4126	888	B	Online only	f	2	2026-08-10 14:08:48.214425
-4127	888	C	At the warehouse	f	3	2026-08-10 14:08:48.214425
-4128	888	D	By telephone	f	4	2026-08-10 14:08:48.214425
-4129	889	A	Printer ink	t	1	2026-08-10 14:08:48.214425
-4130	889	B	Notebooks	f	2	2026-08-10 14:08:48.214425
-4131	889	C	Pens	f	3	2026-08-10 14:08:48.214425
-4132	889	D	Folders	f	4	2026-08-10 14:08:48.214425
-4133	890	A	A hotel reservation	t	1	2026-08-10 14:08:48.214425
-4134	890	B	A flight reservation	f	2	2026-08-10 14:08:48.214425
-4135	890	C	A restaurant booking	f	3	2026-08-10 14:08:48.214425
-4136	890	D	A conference registration	f	4	2026-08-10 14:08:48.214425
-4137	891	A	Three nights	t	1	2026-08-10 14:08:48.214425
-4138	891	B	One night	f	2	2026-08-10 14:08:48.214425
-4139	891	C	Two weeks	f	3	2026-08-10 14:08:48.214425
-4140	891	D	One month	f	4	2026-08-10 14:08:48.214425
-4141	892	A	Breakfast	t	1	2026-08-10 14:08:48.214425
-4142	892	B	Airport transportation	f	2	2026-08-10 14:08:48.214425
-4143	892	C	A rental car	f	3	2026-08-10 14:08:48.214425
-4144	892	D	Lunch	f	4	2026-08-10 14:08:48.214425
-4145	893	A	Contact the front desk	t	1	2026-08-10 14:08:48.214425
-4146	893	B	Call the airline	f	2	2026-08-10 14:08:48.214425
-4147	893	C	Visit the airport	f	3	2026-08-10 14:08:48.214425
-4148	893	D	Email the restaurant	f	4	2026-08-10 14:08:48.214425
-4149	894	A	For completing ten years with the company	t	1	2026-08-10 14:08:48.214425
-4150	894	B	For opening a branch	f	2	2026-08-10 14:08:48.214425
-4151	894	C	For winning a sales contest	f	3	2026-08-10 14:08:48.214425
-4152	894	D	For retiring	f	4	2026-08-10 14:08:48.214425
-4153	895	A	2016	t	1	2026-08-10 14:08:48.214425
-4154	895	B	2018	f	2	2026-08-10 14:08:48.214425
-4155	895	C	2020	f	3	2026-08-10 14:08:48.214425
-4156	895	D	2022	f	4	2026-08-10 14:08:48.214425
-4157	896	A	Eight	t	1	2026-08-10 14:08:48.214425
-4158	896	B	Five	f	2	2026-08-10 14:08:48.214425
-4159	896	C	Ten	f	3	2026-08-10 14:08:48.214425
-4160	896	D	Twelve	f	4	2026-08-10 14:08:48.214425
-4161	897	A	Friday's staff meeting	t	1	2026-08-10 14:08:48.214425
-4162	897	B	Monday's meeting	f	2	2026-08-10 14:08:48.214425
-4163	897	C	A customer event	f	3	2026-08-10 14:08:48.214425
-4164	897	D	A training session	f	4	2026-08-10 14:08:48.214425
-4165	898	A	The morning departure time	t	1	2026-08-10 14:08:48.214425
-4166	898	B	The afternoon route	f	2	2026-08-10 14:08:48.214425
-4167	898	C	The parking fee	f	3	2026-08-10 14:08:48.214425
-4168	898	D	The shuttle location	f	4	2026-08-10 14:08:48.214425
-4169	899	A	7:30 A.M.	t	1	2026-08-10 14:08:48.214425
-4170	899	B	7:45 A.M.	f	2	2026-08-10 14:08:48.214425
-4171	899	C	8:00 A.M.	f	3	2026-08-10 14:08:48.214425
-4172	899	D	8:15 A.M.	f	4	2026-08-10 14:08:48.214425
-4173	900	A	The afternoon schedule	t	1	2026-08-10 14:08:48.214425
-4174	900	B	The morning schedule	f	2	2026-08-10 14:08:48.214425
-4175	900	C	The parking location	f	3	2026-08-10 14:08:48.214425
-4176	900	D	The driver	f	4	2026-08-10 14:08:48.214425
-4177	901	A	Arrive at least five minutes early	t	1	2026-08-10 14:08:48.214425
-4178	901	B	Bring lunch	f	2	2026-08-10 14:08:48.214425
-4179	901	C	Call the driver	f	3	2026-08-10 14:08:48.214425
-4180	901	D	Use another bus	f	4	2026-08-10 14:08:48.214425
-4181	902	A	The proposal deadline	t	1	2026-08-10 14:08:48.214425
-4182	902	B	The campaign budget	f	2	2026-08-10 14:08:48.214425
-4183	902	C	The meeting time	f	3	2026-08-10 14:08:48.214425
-4184	902	D	The hiring period	f	4	2026-08-10 14:08:48.214425
-4185	903	A	Departments needed more review time	t	1	2026-08-10 14:08:48.214425
-4186	903	B	The campaign was canceled	f	2	2026-08-10 14:08:48.214425
-4187	903	C	The manager was absent	f	3	2026-08-10 14:08:48.214425
-4188	903	D	The office was closed	f	4	2026-08-10 14:08:48.214425
-4189	904	A	June 24	t	1	2026-08-10 14:08:48.214425
-4190	904	B	June 28	f	2	2026-08-10 14:08:48.214425
-4191	904	C	July 24	f	3	2026-08-10 14:08:48.214425
-4192	904	D	May 28	f	4	2026-08-10 14:08:48.214425
-4193	905	A	extra	t	1	2026-08-10 14:08:48.214425
-4194	905	B	final	f	2	2026-08-10 14:08:48.214425
-4195	905	C	urgent	f	3	2026-08-10 14:08:48.214425
-4196	905	D	private	f	4	2026-08-10 14:08:48.214425
-4197	906	A	An office renovation	t	1	2026-08-10 14:08:48.214425
-4198	906	B	A new hiring plan	f	2	2026-08-10 14:08:48.214425
-4199	906	C	A sales campaign	f	3	2026-08-10 14:08:48.214425
-4200	906	D	A training program	f	4	2026-08-10 14:08:48.214425
-4201	907	A	August 17	t	1	2026-08-10 14:08:48.214425
-4202	907	B	August 18	f	2	2026-08-10 14:08:48.214425
-4203	907	C	August 22	f	3	2026-08-10 14:08:48.214425
-4204	907	D	September 17	f	4	2026-08-10 14:08:48.214425
-4205	908	A	On the fourth floor	t	1	2026-08-10 14:08:48.214425
-4206	908	B	At home	f	2	2026-08-10 14:08:48.214425
-4207	908	C	In the lobby	f	3	2026-08-10 14:08:48.214425
-4208	908	D	At another company	f	4	2026-08-10 14:08:48.214425
-4209	909	A	repaired and improved	t	1	2026-08-10 14:08:48.214425
-4210	909	B	closed permanently	f	2	2026-08-10 14:08:48.214425
-4211	909	C	sold quickly	f	3	2026-08-10 14:08:48.214425
-4212	909	D	moved overseas	f	4	2026-08-10 14:08:48.214425
-4213	910	A	To provide an order update	t	1	2026-08-10 14:08:48.214425
-4214	910	B	To cancel an order	f	2	2026-08-10 14:08:48.214425
-4215	910	C	To advertise a product	f	3	2026-08-10 14:08:48.214425
-4216	910	D	To request payment	f	4	2026-08-10 14:08:48.214425
-4217	911	A	Two wireless keyboards	t	1	2026-08-10 14:08:48.214425
-4218	911	B	A computer monitor	f	2	2026-08-10 14:08:48.214425
-4219	911	C	Two printers	f	3	2026-08-10 14:08:48.214425
-4220	911	D	A software license	f	4	2026-08-10 14:08:48.214425
-4221	912	A	Thursday	t	1	2026-08-10 14:08:48.214425
-4222	912	B	Monday	f	2	2026-08-10 14:08:48.214425
-4223	912	C	Friday	f	3	2026-08-10 14:08:48.214425
-4224	912	D	Next month	f	4	2026-08-10 14:08:48.214425
-4225	913	A	Administrative assistant	t	1	2026-08-10 14:08:48.214425
-4226	913	B	Sales manager	f	2	2026-08-10 14:08:48.214425
-4227	913	C	Accountant	f	3	2026-08-10 14:08:48.214425
-4228	913	D	Receptionist	f	4	2026-08-10 14:08:48.214425
-4229	914	A	At least two years of office experience	t	1	2026-08-10 14:08:48.214425
-4230	914	B	Five years of sales experience	f	2	2026-08-10 14:08:48.214425
-4231	914	C	A university degree only	f	3	2026-08-10 14:08:48.214425
-4232	914	D	No previous experience	f	4	2026-08-10 14:08:48.214425
-4233	915	A	September 5	t	1	2026-08-10 14:08:48.214425
-4234	915	B	August 5	f	2	2026-08-10 14:08:48.214425
-4235	915	C	September 15	f	3	2026-08-10 14:08:48.214425
-4236	915	D	October 5	f	4	2026-08-10 14:08:48.214425
-4237	916	A	Using spreadsheet software	t	1	2026-08-10 14:08:48.214425
-4238	916	B	Editing videos	f	2	2026-08-10 14:08:48.214425
-4239	916	C	Programming websites	f	3	2026-08-10 14:08:48.214425
-4240	916	D	Designing buildings	f	4	2026-08-10 14:08:48.214425
-4241	917	A	A training session	t	1	2026-08-10 14:08:48.214425
-4242	917	B	A staff party	f	2	2026-08-10 14:08:48.214425
-4243	917	C	A product launch	f	3	2026-08-10 14:08:48.214425
-4244	917	D	A job interview	f	4	2026-08-10 14:08:48.214425
-4245	918	A	Room 204	t	1	2026-08-10 14:08:48.214425
-4246	918	B	Room 104	f	2	2026-08-10 14:08:48.214425
-4247	918	C	The cafeteria	f	3	2026-08-10 14:08:48.214425
-4248	918	D	The main lobby	f	4	2026-08-10 14:08:48.214425
-4249	919	A	Identification cards	t	1	2026-08-10 14:08:48.214425
-4250	919	B	Laptops only	f	2	2026-08-10 14:08:48.214425
-4251	919	C	Printed contracts	f	3	2026-08-10 14:08:48.214425
-4252	919	D	Travel documents	f	4	2026-08-10 14:08:48.214425
-4253	920	A	Complete an online exercise	t	1	2026-08-10 14:08:48.214425
-4254	920	B	Call the trainer	f	2	2026-08-10 14:08:48.214425
-4255	920	C	Pay a fee	f	3	2026-08-10 14:08:48.214425
-4256	920	D	Leave the building	f	4	2026-08-10 14:08:48.214425
-4257	921	A	A discount on office supplies	t	1	2026-08-10 14:08:48.214425
-4258	921	B	A new store opening	f	2	2026-08-10 14:08:48.214425
-4259	921	C	A delivery service	f	3	2026-08-10 14:08:48.214425
-4260	921	D	A hiring event	f	4	2026-08-10 14:08:48.214425
-4261	922	A	This weekend	t	1	2026-08-10 14:08:48.214425
-4262	922	B	Next month	f	2	2026-08-10 14:08:48.214425
-4263	922	C	Every Monday	f	3	2026-08-10 14:08:48.214425
-4264	922	D	During the holidays	f	4	2026-08-10 14:08:48.214425
-4265	923	A	In the store	t	1	2026-08-10 14:08:48.214425
-4266	923	B	Online only	f	2	2026-08-10 14:08:48.214425
-4267	923	C	At the warehouse	f	3	2026-08-10 14:08:48.214425
-4268	923	D	By telephone	f	4	2026-08-10 14:08:48.214425
-4269	924	A	Printer ink	t	1	2026-08-10 14:08:48.214425
-4270	924	B	Notebooks	f	2	2026-08-10 14:08:48.214425
-4271	924	C	Pens	f	3	2026-08-10 14:08:48.214425
-4272	924	D	Folders	f	4	2026-08-10 14:08:48.214425
-4273	925	A	A hotel reservation	t	1	2026-08-10 14:08:48.214425
-4274	925	B	A flight reservation	f	2	2026-08-10 14:08:48.214425
-4275	925	C	A restaurant booking	f	3	2026-08-10 14:08:48.214425
-4276	925	D	A conference registration	f	4	2026-08-10 14:08:48.214425
-4277	926	A	Three nights	t	1	2026-08-10 14:08:48.214425
-4278	926	B	One night	f	2	2026-08-10 14:08:48.214425
-4279	926	C	Two weeks	f	3	2026-08-10 14:08:48.214425
-4280	926	D	One month	f	4	2026-08-10 14:08:48.214425
-4281	927	A	Breakfast	t	1	2026-08-10 14:08:48.214425
-4282	927	B	Airport transportation	f	2	2026-08-10 14:08:48.214425
-4283	927	C	A rental car	f	3	2026-08-10 14:08:48.214425
-4284	927	D	Lunch	f	4	2026-08-10 14:08:48.214425
-4285	928	A	Contact the front desk	t	1	2026-08-10 14:08:48.214425
-4286	928	B	Call the airline	f	2	2026-08-10 14:08:48.214425
-4287	928	C	Visit the airport	f	3	2026-08-10 14:08:48.214425
-4288	928	D	Email the restaurant	f	4	2026-08-10 14:08:48.214425
-4289	929	A	For completing ten years with the company	t	1	2026-08-10 14:08:48.214425
-4290	929	B	For opening a branch	f	2	2026-08-10 14:08:48.214425
-4291	929	C	For winning a sales contest	f	3	2026-08-10 14:08:48.214425
-4292	929	D	For retiring	f	4	2026-08-10 14:08:48.214425
-4293	930	A	2016	t	1	2026-08-10 14:08:48.214425
-4294	930	B	2018	f	2	2026-08-10 14:08:48.214425
-4295	930	C	2020	f	3	2026-08-10 14:08:48.214425
-4296	930	D	2022	f	4	2026-08-10 14:08:48.214425
-4297	931	A	Eight	t	1	2026-08-10 14:08:48.214425
-4298	931	B	Five	f	2	2026-08-10 14:08:48.214425
-4299	931	C	Ten	f	3	2026-08-10 14:08:48.214425
-4300	931	D	Twelve	f	4	2026-08-10 14:08:48.214425
-4301	932	A	Friday's staff meeting	t	1	2026-08-10 14:08:48.214425
-4302	932	B	Monday's meeting	f	2	2026-08-10 14:08:48.214425
-4303	932	C	A customer event	f	3	2026-08-10 14:08:48.214425
-4304	932	D	A training session	f	4	2026-08-10 14:08:48.214425
-4305	933	A	The morning departure time	t	1	2026-08-10 14:08:48.214425
-4306	933	B	The afternoon route	f	2	2026-08-10 14:08:48.214425
-4307	933	C	The parking fee	f	3	2026-08-10 14:08:48.214425
-4308	933	D	The shuttle location	f	4	2026-08-10 14:08:48.214425
-4309	934	A	7:30 A.M.	t	1	2026-08-10 14:08:48.214425
-4310	934	B	7:45 A.M.	f	2	2026-08-10 14:08:48.214425
-4311	934	C	8:00 A.M.	f	3	2026-08-10 14:08:48.214425
-4312	934	D	8:15 A.M.	f	4	2026-08-10 14:08:48.214425
-4313	935	A	The afternoon schedule	t	1	2026-08-10 14:08:48.214425
-4314	935	B	The morning schedule	f	2	2026-08-10 14:08:48.214425
-4315	935	C	The parking location	f	3	2026-08-10 14:08:48.214425
-4316	935	D	The driver	f	4	2026-08-10 14:08:48.214425
-4317	936	A	Arrive at least five minutes early	t	1	2026-08-10 14:08:48.214425
-4318	936	B	Bring lunch	f	2	2026-08-10 14:08:48.214425
-4319	936	C	Call the driver	f	3	2026-08-10 14:08:48.214425
-4320	936	D	Use another bus	f	4	2026-08-10 14:08:48.214425
-4321	937	A	The proposal deadline	t	1	2026-08-10 14:08:48.214425
-4322	937	B	The campaign budget	f	2	2026-08-10 14:08:48.214425
-4323	937	C	The meeting time	f	3	2026-08-10 14:08:48.214425
-4324	937	D	The hiring period	f	4	2026-08-10 14:08:48.214425
-4325	938	A	Departments needed more review time	t	1	2026-08-10 14:08:48.214425
-4326	938	B	The campaign was canceled	f	2	2026-08-10 14:08:48.214425
-4327	938	C	The manager was absent	f	3	2026-08-10 14:08:48.214425
-4328	938	D	The office was closed	f	4	2026-08-10 14:08:48.214425
-4329	939	A	June 24	t	1	2026-08-10 14:08:48.214425
-4330	939	B	June 28	f	2	2026-08-10 14:08:48.214425
-4331	939	C	July 24	f	3	2026-08-10 14:08:48.214425
-4332	939	D	May 28	f	4	2026-08-10 14:08:48.214425
-4333	940	A	extra	t	1	2026-08-10 14:08:48.214425
-4334	940	B	final	f	2	2026-08-10 14:08:48.214425
-4335	940	C	urgent	f	3	2026-08-10 14:08:48.214425
-4336	940	D	private	f	4	2026-08-10 14:08:48.214425
-4337	941	A	An office renovation	t	1	2026-08-10 14:08:48.214425
-4338	941	B	A new hiring plan	f	2	2026-08-10 14:08:48.214425
-4339	941	C	A sales campaign	f	3	2026-08-10 14:08:48.214425
-4340	941	D	A training program	f	4	2026-08-10 14:08:48.214425
-4341	942	A	August 17	t	1	2026-08-10 14:08:48.214425
-4342	942	B	August 18	f	2	2026-08-10 14:08:48.214425
-4343	942	C	August 22	f	3	2026-08-10 14:08:48.214425
-4344	942	D	September 17	f	4	2026-08-10 14:08:48.214425
-4345	943	A	On the fourth floor	t	1	2026-08-10 14:08:48.214425
-4346	943	B	At home	f	2	2026-08-10 14:08:48.214425
-4347	943	C	In the lobby	f	3	2026-08-10 14:08:48.214425
-4348	943	D	At another company	f	4	2026-08-10 14:08:48.214425
-4349	944	A	repaired and improved	t	1	2026-08-10 14:08:48.214425
-4350	944	B	closed permanently	f	2	2026-08-10 14:08:48.214425
-4351	944	C	sold quickly	f	3	2026-08-10 14:08:48.214425
-4352	944	D	moved overseas	f	4	2026-08-10 14:08:48.214425
-4353	945	A	To provide an order update	t	1	2026-08-10 14:08:48.214425
-4354	945	B	To cancel an order	f	2	2026-08-10 14:08:48.214425
-4355	945	C	To advertise a product	f	3	2026-08-10 14:08:48.214425
-4356	945	D	To request payment	f	4	2026-08-10 14:08:48.214425
-4357	946	A	Two wireless keyboards	t	1	2026-08-10 14:08:48.214425
-4358	946	B	A computer monitor	f	2	2026-08-10 14:08:48.214425
-4359	946	C	Two printers	f	3	2026-08-10 14:08:48.214425
-4360	946	D	A software license	f	4	2026-08-10 14:08:48.214425
-4361	947	A	Thursday	t	1	2026-08-10 14:08:48.214425
-4362	947	B	Monday	f	2	2026-08-10 14:08:48.214425
-4363	947	C	Friday	f	3	2026-08-10 14:08:48.214425
-4364	947	D	Next month	f	4	2026-08-10 14:08:48.214425
-4365	948	A	Administrative assistant	t	1	2026-08-10 14:08:48.214425
-4366	948	B	Sales manager	f	2	2026-08-10 14:08:48.214425
-4367	948	C	Accountant	f	3	2026-08-10 14:08:48.214425
-4368	948	D	Receptionist	f	4	2026-08-10 14:08:48.214425
-4369	949	A	At least two years of office experience	t	1	2026-08-10 14:08:48.214425
-4370	949	B	Five years of sales experience	f	2	2026-08-10 14:08:48.214425
-4371	949	C	A university degree only	f	3	2026-08-10 14:08:48.214425
-4372	949	D	No previous experience	f	4	2026-08-10 14:08:48.214425
-4373	950	A	September 5	t	1	2026-08-10 14:08:48.214425
-4374	950	B	August 5	f	2	2026-08-10 14:08:48.214425
-4375	950	C	September 15	f	3	2026-08-10 14:08:48.214425
-4376	950	D	October 5	f	4	2026-08-10 14:08:48.214425
-4377	951	A	Using spreadsheet software	t	1	2026-08-10 14:08:48.214425
-4378	951	B	Editing videos	f	2	2026-08-10 14:08:48.214425
-4379	951	C	Programming websites	f	3	2026-08-10 14:08:48.214425
-4380	951	D	Designing buildings	f	4	2026-08-10 14:08:48.214425
-4381	952	A	A training session	t	1	2026-08-10 14:08:48.214425
-4382	952	B	A staff party	f	2	2026-08-10 14:08:48.214425
-4383	952	C	A product launch	f	3	2026-08-10 14:08:48.214425
-4384	952	D	A job interview	f	4	2026-08-10 14:08:48.214425
-4385	953	A	Room 204	t	1	2026-08-10 14:08:48.214425
-4386	953	B	Room 104	f	2	2026-08-10 14:08:48.214425
-4387	953	C	The cafeteria	f	3	2026-08-10 14:08:48.214425
-4388	953	D	The main lobby	f	4	2026-08-10 14:08:48.214425
-4389	954	A	Identification cards	t	1	2026-08-10 14:08:48.214425
-4390	954	B	Laptops only	f	2	2026-08-10 14:08:48.214425
-4391	954	C	Printed contracts	f	3	2026-08-10 14:08:48.214425
-4392	954	D	Travel documents	f	4	2026-08-10 14:08:48.214425
-4393	955	A	Complete an online exercise	t	1	2026-08-10 14:08:48.214425
-4394	955	B	Call the trainer	f	2	2026-08-10 14:08:48.214425
-4395	955	C	Pay a fee	f	3	2026-08-10 14:08:48.214425
-4396	955	D	Leave the building	f	4	2026-08-10 14:08:48.214425
-4397	956	A	A discount on office supplies	t	1	2026-08-10 14:08:48.214425
-4398	956	B	A new store opening	f	2	2026-08-10 14:08:48.214425
-4399	956	C	A delivery service	f	3	2026-08-10 14:08:48.214425
-4400	956	D	A hiring event	f	4	2026-08-10 14:08:48.214425
-4401	957	A	This weekend	t	1	2026-08-10 14:08:48.214425
-4402	957	B	Next month	f	2	2026-08-10 14:08:48.214425
-4403	957	C	Every Monday	f	3	2026-08-10 14:08:48.214425
-4404	957	D	During the holidays	f	4	2026-08-10 14:08:48.214425
-4405	958	A	In the store	t	1	2026-08-10 14:08:48.214425
-4406	958	B	Online only	f	2	2026-08-10 14:08:48.214425
-4407	958	C	At the warehouse	f	3	2026-08-10 14:08:48.214425
-4408	958	D	By telephone	f	4	2026-08-10 14:08:48.214425
-4409	959	A	Printer ink	t	1	2026-08-10 14:08:48.214425
-4410	959	B	Notebooks	f	2	2026-08-10 14:08:48.214425
-4411	959	C	Pens	f	3	2026-08-10 14:08:48.214425
-4412	959	D	Folders	f	4	2026-08-10 14:08:48.214425
-4413	960	A	A hotel reservation	t	1	2026-08-10 14:08:48.214425
-4414	960	B	A flight reservation	f	2	2026-08-10 14:08:48.214425
-4415	960	C	A restaurant booking	f	3	2026-08-10 14:08:48.214425
-4416	960	D	A conference registration	f	4	2026-08-10 14:08:48.214425
-4417	961	A	Three nights	t	1	2026-08-10 14:08:48.214425
-4418	961	B	One night	f	2	2026-08-10 14:08:48.214425
-4419	961	C	Two weeks	f	3	2026-08-10 14:08:48.214425
-4420	961	D	One month	f	4	2026-08-10 14:08:48.214425
-4421	962	A	Breakfast	t	1	2026-08-10 14:08:48.214425
-4422	962	B	Airport transportation	f	2	2026-08-10 14:08:48.214425
-4423	962	C	A rental car	f	3	2026-08-10 14:08:48.214425
-4424	962	D	Lunch	f	4	2026-08-10 14:08:48.214425
-4425	963	A	Contact the front desk	t	1	2026-08-10 14:08:48.214425
-4426	963	B	Call the airline	f	2	2026-08-10 14:08:48.214425
-4427	963	C	Visit the airport	f	3	2026-08-10 14:08:48.214425
-4428	963	D	Email the restaurant	f	4	2026-08-10 14:08:48.214425
-4429	964	A	For completing ten years with the company	t	1	2026-08-10 14:08:48.214425
-4430	964	B	For opening a branch	f	2	2026-08-10 14:08:48.214425
-4431	964	C	For winning a sales contest	f	3	2026-08-10 14:08:48.214425
-4432	964	D	For retiring	f	4	2026-08-10 14:08:48.214425
-4433	965	A	2016	t	1	2026-08-10 14:08:48.214425
-4434	965	B	2018	f	2	2026-08-10 14:08:48.214425
-4435	965	C	2020	f	3	2026-08-10 14:08:48.214425
-4436	965	D	2022	f	4	2026-08-10 14:08:48.214425
-4437	966	A	Eight	t	1	2026-08-10 14:08:48.214425
-4438	966	B	Five	f	2	2026-08-10 14:08:48.214425
-4439	966	C	Ten	f	3	2026-08-10 14:08:48.214425
-4440	966	D	Twelve	f	4	2026-08-10 14:08:48.214425
-4441	967	A	Friday's staff meeting	t	1	2026-08-10 14:08:48.214425
-4442	967	B	Monday's meeting	f	2	2026-08-10 14:08:48.214425
-4443	967	C	A customer event	f	3	2026-08-10 14:08:48.214425
-4444	967	D	A training session	f	4	2026-08-10 14:08:48.214425
-4445	968	A	The morning departure time	t	1	2026-08-10 14:08:48.214425
-4446	968	B	The afternoon route	f	2	2026-08-10 14:08:48.214425
-4447	968	C	The parking fee	f	3	2026-08-10 14:08:48.214425
-4448	968	D	The shuttle location	f	4	2026-08-10 14:08:48.214425
-4449	969	A	7:30 A.M.	t	1	2026-08-10 14:08:48.214425
-4450	969	B	7:45 A.M.	f	2	2026-08-10 14:08:48.214425
-4451	969	C	8:00 A.M.	f	3	2026-08-10 14:08:48.214425
-4452	969	D	8:15 A.M.	f	4	2026-08-10 14:08:48.214425
-4453	970	A	The afternoon schedule	t	1	2026-08-10 14:08:48.214425
-4454	970	B	The morning schedule	f	2	2026-08-10 14:08:48.214425
-4455	970	C	The parking location	f	3	2026-08-10 14:08:48.214425
-4456	970	D	The driver	f	4	2026-08-10 14:08:48.214425
-4457	971	A	Arrive at least five minutes early	t	1	2026-08-10 14:08:48.214425
-4458	971	B	Bring lunch	f	2	2026-08-10 14:08:48.214425
-4459	971	C	Call the driver	f	3	2026-08-10 14:08:48.214425
-4460	971	D	Use another bus	f	4	2026-08-10 14:08:48.214425
-4461	972	A	The proposal deadline	t	1	2026-08-10 14:08:48.214425
-4462	972	B	The campaign budget	f	2	2026-08-10 14:08:48.214425
-4463	972	C	The meeting time	f	3	2026-08-10 14:08:48.214425
-4464	972	D	The hiring period	f	4	2026-08-10 14:08:48.214425
-4465	973	A	Departments needed more review time	t	1	2026-08-10 14:08:48.214425
-4466	973	B	The campaign was canceled	f	2	2026-08-10 14:08:48.214425
-4467	973	C	The manager was absent	f	3	2026-08-10 14:08:48.214425
-4468	973	D	The office was closed	f	4	2026-08-10 14:08:48.214425
-4469	974	A	June 24	t	1	2026-08-10 14:08:48.214425
-4470	974	B	June 28	f	2	2026-08-10 14:08:48.214425
-4471	974	C	July 24	f	3	2026-08-10 14:08:48.214425
-4472	974	D	May 28	f	4	2026-08-10 14:08:48.214425
-4473	975	A	extra	t	1	2026-08-10 14:08:48.214425
-4474	975	B	final	f	2	2026-08-10 14:08:48.214425
-4475	975	C	urgent	f	3	2026-08-10 14:08:48.214425
-4476	975	D	private	f	4	2026-08-10 14:08:48.214425
-4477	976	A	An office renovation	t	1	2026-08-10 14:08:48.214425
-4478	976	B	A new hiring plan	f	2	2026-08-10 14:08:48.214425
-4479	976	C	A sales campaign	f	3	2026-08-10 14:08:48.214425
-4480	976	D	A training program	f	4	2026-08-10 14:08:48.214425
-4481	977	A	August 17	t	1	2026-08-10 14:08:48.214425
-4482	977	B	August 18	f	2	2026-08-10 14:08:48.214425
-4483	977	C	August 22	f	3	2026-08-10 14:08:48.214425
-4484	977	D	September 17	f	4	2026-08-10 14:08:48.214425
-4485	978	A	On the fourth floor	t	1	2026-08-10 14:08:48.214425
-4486	978	B	At home	f	2	2026-08-10 14:08:48.214425
-4487	978	C	In the lobby	f	3	2026-08-10 14:08:48.214425
-4488	978	D	At another company	f	4	2026-08-10 14:08:48.214425
-4489	979	A	repaired and improved	t	1	2026-08-10 14:08:48.214425
-4490	979	B	closed permanently	f	2	2026-08-10 14:08:48.214425
-4491	979	C	sold quickly	f	3	2026-08-10 14:08:48.214425
-4492	979	D	moved overseas	f	4	2026-08-10 14:08:48.214425
-4493	980	A	To provide an order update	t	1	2026-08-10 14:08:48.214425
-4494	980	B	To cancel an order	f	2	2026-08-10 14:08:48.214425
-4495	980	C	To advertise a product	f	3	2026-08-10 14:08:48.214425
-4496	980	D	To request payment	f	4	2026-08-10 14:08:48.214425
-4497	981	A	Two wireless keyboards	t	1	2026-08-10 14:08:48.214425
-4498	981	B	A computer monitor	f	2	2026-08-10 14:08:48.214425
-4499	981	C	Two printers	f	3	2026-08-10 14:08:48.214425
-4500	981	D	A software license	f	4	2026-08-10 14:08:48.214425
-4501	982	A	Thursday	t	1	2026-08-10 14:08:48.214425
-4502	982	B	Monday	f	2	2026-08-10 14:08:48.214425
-4503	982	C	Friday	f	3	2026-08-10 14:08:48.214425
-4504	982	D	Next month	f	4	2026-08-10 14:08:48.214425
-4505	983	A	Administrative assistant	t	1	2026-08-10 14:08:48.214425
-4506	983	B	Sales manager	f	2	2026-08-10 14:08:48.214425
-4507	983	C	Accountant	f	3	2026-08-10 14:08:48.214425
-4508	983	D	Receptionist	f	4	2026-08-10 14:08:48.214425
-4509	984	A	At least two years of office experience	t	1	2026-08-10 14:08:48.214425
-4510	984	B	Five years of sales experience	f	2	2026-08-10 14:08:48.214425
-4511	984	C	A university degree only	f	3	2026-08-10 14:08:48.214425
-4512	984	D	No previous experience	f	4	2026-08-10 14:08:48.214425
-4513	985	A	September 5	t	1	2026-08-10 14:08:48.214425
-4514	985	B	August 5	f	2	2026-08-10 14:08:48.214425
-4515	985	C	September 15	f	3	2026-08-10 14:08:48.214425
-4516	985	D	October 5	f	4	2026-08-10 14:08:48.214425
-4517	986	A	Using spreadsheet software	t	1	2026-08-10 14:08:48.214425
-4518	986	B	Editing videos	f	2	2026-08-10 14:08:48.214425
-4519	986	C	Programming websites	f	3	2026-08-10 14:08:48.214425
-4520	986	D	Designing buildings	f	4	2026-08-10 14:08:48.214425
-4521	987	A	A training session	t	1	2026-08-10 14:08:48.214425
-4522	987	B	A staff party	f	2	2026-08-10 14:08:48.214425
-4523	987	C	A product launch	f	3	2026-08-10 14:08:48.214425
-4524	987	D	A job interview	f	4	2026-08-10 14:08:48.214425
-4525	988	A	Room 204	t	1	2026-08-10 14:08:48.214425
-4526	988	B	Room 104	f	2	2026-08-10 14:08:48.214425
-4527	988	C	The cafeteria	f	3	2026-08-10 14:08:48.214425
-4528	988	D	The main lobby	f	4	2026-08-10 14:08:48.214425
-4529	989	A	Identification cards	t	1	2026-08-10 14:08:48.214425
-4530	989	B	Laptops only	f	2	2026-08-10 14:08:48.214425
-4531	989	C	Printed contracts	f	3	2026-08-10 14:08:48.214425
-4532	989	D	Travel documents	f	4	2026-08-10 14:08:48.214425
-4533	990	A	Complete an online exercise	t	1	2026-08-10 14:08:48.214425
-4534	990	B	Call the trainer	f	2	2026-08-10 14:08:48.214425
-4535	990	C	Pay a fee	f	3	2026-08-10 14:08:48.214425
-4536	990	D	Leave the building	f	4	2026-08-10 14:08:48.214425
-4537	991	A	A discount on office supplies	t	1	2026-08-10 14:08:48.214425
-4538	991	B	A new store opening	f	2	2026-08-10 14:08:48.214425
-4539	991	C	A delivery service	f	3	2026-08-10 14:08:48.214425
-4540	991	D	A hiring event	f	4	2026-08-10 14:08:48.214425
-4541	992	A	This weekend	t	1	2026-08-10 14:08:48.214425
-4542	992	B	Next month	f	2	2026-08-10 14:08:48.214425
-4543	992	C	Every Monday	f	3	2026-08-10 14:08:48.214425
-4544	992	D	During the holidays	f	4	2026-08-10 14:08:48.214425
-4545	993	A	In the store	t	1	2026-08-10 14:08:48.214425
-4546	993	B	Online only	f	2	2026-08-10 14:08:48.214425
-4547	993	C	At the warehouse	f	3	2026-08-10 14:08:48.214425
-4548	993	D	By telephone	f	4	2026-08-10 14:08:48.214425
-4549	994	A	Printer ink	t	1	2026-08-10 14:08:48.214425
-4550	994	B	Notebooks	f	2	2026-08-10 14:08:48.214425
-4551	994	C	Pens	f	3	2026-08-10 14:08:48.214425
-4552	994	D	Folders	f	4	2026-08-10 14:08:48.214425
-4553	995	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:08:48.214425
-4554	995	B	Thông tin không được đề cập	f	2	2026-08-10 14:08:48.214425
-4555	995	C	Thông tin trái với bài đọc	f	3	2026-08-10 14:08:48.214425
-4556	995	D	Thông tin thuộc một tình huống khác	f	4	2026-08-10 14:08:48.214425
-4557	996	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:08:48.214425
-4558	996	B	Thông tin không được đề cập	f	2	2026-08-10 14:08:48.214425
-4559	996	C	Thông tin trái với bài đọc	f	3	2026-08-10 14:08:48.214425
-4560	996	D	Thông tin thuộc một tình huống khác	f	4	2026-08-10 14:08:48.214425
-4561	997	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:08:48.214425
-4562	997	B	Thông tin không được đề cập	f	2	2026-08-10 14:08:48.214425
-4563	997	C	Thông tin trái với bài đọc	f	3	2026-08-10 14:08:48.214425
-4564	997	D	Thông tin thuộc một tình huống khác	f	4	2026-08-10 14:08:48.214425
-4565	998	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:08:48.214425
-4566	998	B	Thông tin không được đề cập	f	2	2026-08-10 14:08:48.214425
-4567	998	C	Thông tin trái với bài đọc	f	3	2026-08-10 14:08:48.214425
-4568	998	D	Thông tin thuộc một tình huống khác	f	4	2026-08-10 14:08:48.214425
-4569	999	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:08:48.214425
-4570	999	B	Thông tin không được đề cập	f	2	2026-08-10 14:08:48.214425
-4571	999	C	Thông tin trái với bài đọc	f	3	2026-08-10 14:08:48.214425
-4572	999	D	Thông tin thuộc một tình huống khác	f	4	2026-08-10 14:08:48.214425
-4573	1000	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:08:48.214425
-4574	1000	B	Thông tin không được đề cập	f	2	2026-08-10 14:08:48.214425
-4575	1000	C	Thông tin trái với bài đọc	f	3	2026-08-10 14:08:48.214425
-4576	1000	D	Thông tin thuộc một tình huống khác	f	4	2026-08-10 14:08:48.214425
-4577	1001	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:08:48.214425
-4578	1001	B	Thông tin không được đề cập	f	2	2026-08-10 14:08:48.214425
-4579	1001	C	Thông tin trái với bài đọc	f	3	2026-08-10 14:08:48.214425
-4580	1001	D	Thông tin thuộc một tình huống khác	f	4	2026-08-10 14:08:48.214425
-4581	1002	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:08:48.214425
-4582	1002	B	Thông tin không được đề cập	f	2	2026-08-10 14:08:48.214425
-4583	1002	C	Thông tin trái với bài đọc	f	3	2026-08-10 14:08:48.214425
-4584	1002	D	Thông tin thuộc một tình huống khác	f	4	2026-08-10 14:08:48.214425
-4585	1003	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:08:48.214425
-4586	1003	B	Thông tin không được đề cập	f	2	2026-08-10 14:08:48.214425
-4587	1003	C	Thông tin trái với bài đọc	f	3	2026-08-10 14:08:48.214425
-4588	1003	D	Thông tin thuộc một tình huống khác	f	4	2026-08-10 14:08:48.214425
-4589	1004	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:08:48.214425
-4590	1004	B	Thông tin không được đề cập	f	2	2026-08-10 14:08:48.214425
-4591	1004	C	Thông tin trái với bài đọc	f	3	2026-08-10 14:08:48.214425
-4592	1004	D	Thông tin thuộc một tình huống khác	f	4	2026-08-10 14:08:48.214425
-4593	1005	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:08:48.214425
-4594	1005	B	Thông tin không được đề cập	f	2	2026-08-10 14:08:48.214425
-4595	1005	C	Thông tin trái với bài đọc	f	3	2026-08-10 14:08:48.214425
-4596	1005	D	Thông tin thuộc một tình huống khác	f	4	2026-08-10 14:08:48.214425
-4597	1006	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:08:48.214425
-4598	1006	B	Thông tin không được đề cập	f	2	2026-08-10 14:08:48.214425
-4599	1006	C	Thông tin trái với bài đọc	f	3	2026-08-10 14:08:48.214425
-4600	1006	D	Thông tin thuộc một tình huống khác	f	4	2026-08-10 14:08:48.214425
-4601	1007	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:08:48.214425
-4602	1007	B	Thông tin không được đề cập	f	2	2026-08-10 14:08:48.214425
-4603	1007	C	Thông tin trái với bài đọc	f	3	2026-08-10 14:08:48.214425
-4604	1007	D	Thông tin thuộc một tình huống khác	f	4	2026-08-10 14:08:48.214425
-4605	1008	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:08:48.214425
-4606	1008	B	Thông tin không được đề cập	f	2	2026-08-10 14:08:48.214425
-4607	1008	C	Thông tin trái với bài đọc	f	3	2026-08-10 14:08:48.214425
-4608	1008	D	Thông tin thuộc một tình huống khác	f	4	2026-08-10 14:08:48.214425
-4609	1009	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:08:48.214425
-4610	1009	B	Thông tin không được đề cập	f	2	2026-08-10 14:08:48.214425
-4611	1009	C	Thông tin trái với bài đọc	f	3	2026-08-10 14:08:48.214425
-4612	1009	D	Thông tin thuộc một tình huống khác	f	4	2026-08-10 14:08:48.214425
-4613	1010	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:08:48.214425
-4614	1010	B	Thông tin không được đề cập	f	2	2026-08-10 14:08:48.214425
-4615	1010	C	Thông tin trái với bài đọc	f	3	2026-08-10 14:08:48.214425
-4616	1010	D	Thông tin thuộc một tình huống khác	f	4	2026-08-10 14:08:48.214425
-4617	1011	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:08:48.214425
-4618	1011	B	Thông tin không được đề cập	f	2	2026-08-10 14:08:48.214425
-4619	1011	C	Thông tin trái với bài đọc	f	3	2026-08-10 14:08:48.214425
-4620	1011	D	Thông tin thuộc một tình huống khác	f	4	2026-08-10 14:08:48.214425
-4621	1012	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:08:48.214425
-4622	1012	B	Thông tin không được đề cập	f	2	2026-08-10 14:08:48.214425
-4623	1012	C	Thông tin trái với bài đọc	f	3	2026-08-10 14:08:48.214425
-4624	1012	D	Thông tin thuộc một tình huống khác	f	4	2026-08-10 14:08:48.214425
-4625	1013	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:08:48.214425
-4626	1013	B	Thông tin không được đề cập	f	2	2026-08-10 14:08:48.214425
-4627	1013	C	Thông tin trái với bài đọc	f	3	2026-08-10 14:08:48.214425
-4628	1013	D	Thông tin thuộc một tình huống khác	f	4	2026-08-10 14:08:48.214425
-4629	1014	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:08:48.214425
-4630	1014	B	Thông tin không được đề cập	f	2	2026-08-10 14:08:48.214425
-4631	1014	C	Thông tin trái với bài đọc	f	3	2026-08-10 14:08:48.214425
-4632	1014	D	Thông tin thuộc một tình huống khác	f	4	2026-08-10 14:08:48.214425
-4633	1015	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:08:48.214425
-4634	1015	B	Thông tin không được đề cập	f	2	2026-08-10 14:08:48.214425
-4635	1015	C	Thông tin trái với bài đọc	f	3	2026-08-10 14:08:48.214425
-4636	1015	D	Thông tin thuộc một tình huống khác	f	4	2026-08-10 14:08:48.214425
-4637	1016	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:08:48.214425
-4638	1016	B	Thông tin không được đề cập	f	2	2026-08-10 14:08:48.214425
-4639	1016	C	Thông tin trái với bài đọc	f	3	2026-08-10 14:08:48.214425
-4640	1016	D	Thông tin thuộc một tình huống khác	f	4	2026-08-10 14:08:48.214425
-4641	1017	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:08:48.214425
-4642	1017	B	Thông tin không được đề cập	f	2	2026-08-10 14:08:48.214425
-4643	1017	C	Thông tin trái với bài đọc	f	3	2026-08-10 14:08:48.214425
-4644	1017	D	Thông tin thuộc một tình huống khác	f	4	2026-08-10 14:08:48.214425
-4645	1018	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:08:48.214425
-4646	1018	B	Thông tin không được đề cập	f	2	2026-08-10 14:08:48.214425
-4647	1018	C	Thông tin trái với bài đọc	f	3	2026-08-10 14:08:48.214425
-4648	1018	D	Thông tin thuộc một tình huống khác	f	4	2026-08-10 14:08:48.214425
-4649	1019	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:08:48.214425
-4650	1019	B	Thông tin không được đề cập	f	2	2026-08-10 14:08:48.214425
-4651	1019	C	Thông tin trái với bài đọc	f	3	2026-08-10 14:08:48.214425
-4652	1019	D	Thông tin thuộc một tình huống khác	f	4	2026-08-10 14:08:48.214425
-4653	1020	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:08:48.214425
-4654	1020	B	Thông tin không được đề cập	f	2	2026-08-10 14:08:48.214425
-4655	1020	C	Thông tin trái với bài đọc	f	3	2026-08-10 14:08:48.214425
-4656	1020	D	Thông tin thuộc một tình huống khác	f	4	2026-08-10 14:08:48.214425
-4657	1021	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:08:48.214425
-4658	1021	B	Thông tin không được đề cập	f	2	2026-08-10 14:08:48.214425
-4659	1021	C	Thông tin trái với bài đọc	f	3	2026-08-10 14:08:48.214425
-4660	1021	D	Thông tin thuộc một tình huống khác	f	4	2026-08-10 14:08:48.214425
-4661	1022	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:08:48.214425
-4662	1022	B	Thông tin không được đề cập	f	2	2026-08-10 14:08:48.214425
-4663	1022	C	Thông tin trái với bài đọc	f	3	2026-08-10 14:08:48.214425
-4664	1022	D	Thông tin thuộc một tình huống khác	f	4	2026-08-10 14:08:48.214425
-4665	1023	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:08:48.214425
-4666	1023	B	Thông tin không được đề cập	f	2	2026-08-10 14:08:48.214425
-4667	1023	C	Thông tin trái với bài đọc	f	3	2026-08-10 14:08:48.214425
-4668	1023	D	Thông tin thuộc một tình huống khác	f	4	2026-08-10 14:08:48.214425
-4669	1024	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:08:48.214425
-4670	1024	B	Thông tin không được đề cập	f	2	2026-08-10 14:08:48.214425
-4671	1024	C	Thông tin trái với bài đọc	f	3	2026-08-10 14:08:48.214425
-4672	1024	D	Thông tin thuộc một tình huống khác	f	4	2026-08-10 14:08:48.214425
-4673	1025	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:08:48.214425
-4674	1025	B	Thông tin không được đề cập	f	2	2026-08-10 14:08:48.214425
-4675	1025	C	Thông tin trái với bài đọc	f	3	2026-08-10 14:08:48.214425
-4676	1025	D	Thông tin thuộc một tình huống khác	f	4	2026-08-10 14:08:48.214425
-4677	1026	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:08:48.214425
-4678	1026	B	Thông tin không được đề cập	f	2	2026-08-10 14:08:48.214425
-4679	1026	C	Thông tin trái với bài đọc	f	3	2026-08-10 14:08:48.214425
-4680	1026	D	Thông tin thuộc một tình huống khác	f	4	2026-08-10 14:08:48.214425
-4681	1027	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:08:48.214425
-4682	1027	B	Thông tin không được đề cập	f	2	2026-08-10 14:08:48.214425
-4683	1027	C	Thông tin trái với bài đọc	f	3	2026-08-10 14:08:48.214425
-4684	1027	D	Thông tin thuộc một tình huống khác	f	4	2026-08-10 14:08:48.214425
-4685	1028	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:08:48.214425
-4686	1028	B	Thông tin không được đề cập	f	2	2026-08-10 14:08:48.214425
-4687	1028	C	Thông tin trái với bài đọc	f	3	2026-08-10 14:08:48.214425
-4688	1028	D	Thông tin thuộc một tình huống khác	f	4	2026-08-10 14:08:48.214425
-4689	1029	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:08:48.214425
-4690	1029	B	Thông tin không được đề cập	f	2	2026-08-10 14:08:48.214425
-4691	1029	C	Thông tin trái với bài đọc	f	3	2026-08-10 14:08:48.214425
-4692	1029	D	Thông tin thuộc một tình huống khác	f	4	2026-08-10 14:08:48.214425
-4693	1030	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:08:48.214425
-4694	1030	B	Thông tin không được đề cập	f	2	2026-08-10 14:08:48.214425
-4695	1030	C	Thông tin trái với bài đọc	f	3	2026-08-10 14:08:48.214425
-4696	1030	D	Thông tin thuộc một tình huống khác	f	4	2026-08-10 14:08:48.214425
-4697	1031	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:08:48.214425
-4698	1031	B	Thông tin không được đề cập	f	2	2026-08-10 14:08:48.214425
-4699	1031	C	Thông tin trái với bài đọc	f	3	2026-08-10 14:08:48.214425
-4700	1031	D	Thông tin thuộc một tình huống khác	f	4	2026-08-10 14:08:48.214425
-4701	1032	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:08:48.214425
-4702	1032	B	Thông tin không được đề cập	f	2	2026-08-10 14:08:48.214425
-4703	1032	C	Thông tin trái với bài đọc	f	3	2026-08-10 14:08:48.214425
-4704	1032	D	Thông tin thuộc một tình huống khác	f	4	2026-08-10 14:08:48.214425
-4705	1033	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:08:48.214425
-4706	1033	B	Thông tin không được đề cập	f	2	2026-08-10 14:08:48.214425
-4707	1033	C	Thông tin trái với bài đọc	f	3	2026-08-10 14:08:48.214425
-4708	1033	D	Thông tin thuộc một tình huống khác	f	4	2026-08-10 14:08:48.214425
-4709	1034	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:08:48.214425
-4710	1034	B	Thông tin không được đề cập	f	2	2026-08-10 14:08:48.214425
-4711	1034	C	Thông tin trái với bài đọc	f	3	2026-08-10 14:08:48.214425
-4712	1034	D	Thông tin thuộc một tình huống khác	f	4	2026-08-10 14:08:48.214425
-4713	1035	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:08:48.214425
-4714	1035	B	Thông tin không được đề cập	f	2	2026-08-10 14:08:48.214425
-4715	1035	C	Thông tin trái với bài đọc	f	3	2026-08-10 14:08:48.214425
-4716	1035	D	Thông tin thuộc một tình huống khác	f	4	2026-08-10 14:08:48.214425
-4717	1036	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:08:48.214425
-4718	1036	B	Thông tin không được đề cập	f	2	2026-08-10 14:08:48.214425
-4719	1036	C	Thông tin trái với bài đọc	f	3	2026-08-10 14:08:48.214425
-4720	1036	D	Thông tin thuộc một tình huống khác	f	4	2026-08-10 14:08:48.214425
-4721	1037	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:08:48.214425
-4722	1037	B	Thông tin không được đề cập	f	2	2026-08-10 14:08:48.214425
-4723	1037	C	Thông tin trái với bài đọc	f	3	2026-08-10 14:08:48.214425
-4724	1037	D	Thông tin thuộc một tình huống khác	f	4	2026-08-10 14:08:48.214425
-4725	1038	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:08:48.214425
-4726	1038	B	Thông tin không được đề cập	f	2	2026-08-10 14:08:48.214425
-4727	1038	C	Thông tin trái với bài đọc	f	3	2026-08-10 14:08:48.214425
-4728	1038	D	Thông tin thuộc một tình huống khác	f	4	2026-08-10 14:08:48.214425
-4729	1039	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:08:48.214425
-4730	1039	B	Thông tin không được đề cập	f	2	2026-08-10 14:08:48.214425
-4731	1039	C	Thông tin trái với bài đọc	f	3	2026-08-10 14:08:48.214425
-4732	1039	D	Thông tin thuộc một tình huống khác	f	4	2026-08-10 14:08:48.214425
-4733	1040	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:08:48.214425
-4734	1040	B	Thông tin không được đề cập	f	2	2026-08-10 14:08:48.214425
-4735	1040	C	Thông tin trái với bài đọc	f	3	2026-08-10 14:08:48.214425
-4736	1040	D	Thông tin thuộc một tình huống khác	f	4	2026-08-10 14:08:48.214425
-4737	1041	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:08:48.214425
-4738	1041	B	Thông tin không được đề cập	f	2	2026-08-10 14:08:48.214425
-4739	1041	C	Thông tin trái với bài đọc	f	3	2026-08-10 14:08:48.214425
-4740	1041	D	Thông tin thuộc một tình huống khác	f	4	2026-08-10 14:08:48.214425
-4741	1042	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:08:48.214425
-4742	1042	B	Thông tin không được đề cập	f	2	2026-08-10 14:08:48.214425
-4743	1042	C	Thông tin trái với bài đọc	f	3	2026-08-10 14:08:48.214425
-4744	1042	D	Thông tin thuộc một tình huống khác	f	4	2026-08-10 14:08:48.214425
-4745	1043	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:08:48.214425
-4746	1043	B	Thông tin không được đề cập	f	2	2026-08-10 14:08:48.214425
-4747	1043	C	Thông tin trái với bài đọc	f	3	2026-08-10 14:08:48.214425
-4748	1043	D	Thông tin thuộc một tình huống khác	f	4	2026-08-10 14:08:48.214425
-4749	1044	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:08:48.214425
-4750	1044	B	Thông tin không được đề cập	f	2	2026-08-10 14:08:48.214425
-4751	1044	C	Thông tin trái với bài đọc	f	3	2026-08-10 14:08:48.214425
-4752	1044	D	Thông tin thuộc một tình huống khác	f	4	2026-08-10 14:08:48.214425
-4753	1045	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:08:48.214425
-4754	1045	B	Thông tin không được đề cập	f	2	2026-08-10 14:08:48.214425
-4755	1045	C	Thông tin trái với bài đọc	f	3	2026-08-10 14:08:48.214425
-4756	1045	D	Thông tin thuộc một tình huống khác	f	4	2026-08-10 14:08:48.214425
-4757	1046	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:08:48.214425
-4758	1046	B	Thông tin không được đề cập	f	2	2026-08-10 14:08:48.214425
-4759	1046	C	Thông tin trái với bài đọc	f	3	2026-08-10 14:08:48.214425
-4760	1046	D	Thông tin thuộc một tình huống khác	f	4	2026-08-10 14:08:48.214425
-4761	1047	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:08:48.214425
-4762	1047	B	Thông tin không được đề cập	f	2	2026-08-10 14:08:48.214425
-4763	1047	C	Thông tin trái với bài đọc	f	3	2026-08-10 14:08:48.214425
-4764	1047	D	Thông tin thuộc một tình huống khác	f	4	2026-08-10 14:08:48.214425
-4765	1048	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:08:48.214425
-4766	1048	B	Thông tin không được đề cập	f	2	2026-08-10 14:08:48.214425
-4767	1048	C	Thông tin trái với bài đọc	f	3	2026-08-10 14:08:48.214425
-4768	1048	D	Thông tin thuộc một tình huống khác	f	4	2026-08-10 14:08:48.214425
-4769	1049	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:08:48.214425
-4770	1049	B	Thông tin không được đề cập	f	2	2026-08-10 14:08:48.214425
-4771	1049	C	Thông tin trái với bài đọc	f	3	2026-08-10 14:08:48.214425
-4772	1049	D	Thông tin thuộc một tình huống khác	f	4	2026-08-10 14:08:48.214425
-4773	1050	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:08:48.214425
-4774	1050	B	Thông tin không được đề cập	f	2	2026-08-10 14:08:48.214425
-4775	1050	C	Thông tin trái với bài đọc	f	3	2026-08-10 14:08:48.214425
-4776	1050	D	Thông tin thuộc một tình huống khác	f	4	2026-08-10 14:08:48.214425
-4777	1051	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:08:48.214425
-4778	1051	B	Thông tin không được đề cập	f	2	2026-08-10 14:08:48.214425
-4779	1051	C	Thông tin trái với bài đọc	f	3	2026-08-10 14:08:48.214425
-4780	1051	D	Thông tin thuộc một tình huống khác	f	4	2026-08-10 14:08:48.214425
-4781	1052	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:08:48.214425
-4782	1052	B	Thông tin không được đề cập	f	2	2026-08-10 14:08:48.214425
-4783	1052	C	Thông tin trái với bài đọc	f	3	2026-08-10 14:08:48.214425
-4784	1052	D	Thông tin thuộc một tình huống khác	f	4	2026-08-10 14:08:48.214425
-4785	1053	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:08:48.214425
-4786	1053	B	Thông tin không được đề cập	f	2	2026-08-10 14:08:48.214425
-4787	1053	C	Thông tin trái với bài đọc	f	3	2026-08-10 14:08:48.214425
-4788	1053	D	Thông tin thuộc một tình huống khác	f	4	2026-08-10 14:08:48.214425
-4789	1054	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:08:48.214425
-4790	1054	B	Thông tin không được đề cập	f	2	2026-08-10 14:08:48.214425
-4791	1054	C	Thông tin trái với bài đọc	f	3	2026-08-10 14:08:48.214425
-4792	1054	D	Thông tin thuộc một tình huống khác	f	4	2026-08-10 14:08:48.214425
-4793	1055	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:08:48.214425
-4794	1055	B	Thông tin không được đề cập	f	2	2026-08-10 14:08:48.214425
-4795	1055	C	Thông tin trái với bài đọc	f	3	2026-08-10 14:08:48.214425
-4796	1055	D	Thông tin thuộc một tình huống khác	f	4	2026-08-10 14:08:48.214425
-4797	1056	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:08:48.214425
-4798	1056	B	Thông tin không được đề cập	f	2	2026-08-10 14:08:48.214425
-4799	1056	C	Thông tin trái với bài đọc	f	3	2026-08-10 14:08:48.214425
-4800	1056	D	Thông tin thuộc một tình huống khác	f	4	2026-08-10 14:08:48.214425
-4801	1057	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:08:48.214425
-4802	1057	B	Thông tin không được đề cập	f	2	2026-08-10 14:08:48.214425
-4803	1057	C	Thông tin trái với bài đọc	f	3	2026-08-10 14:08:48.214425
-4804	1057	D	Thông tin thuộc một tình huống khác	f	4	2026-08-10 14:08:48.214425
-4805	1058	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:08:48.214425
-4806	1058	B	Thông tin không được đề cập	f	2	2026-08-10 14:08:48.214425
-4807	1058	C	Thông tin trái với bài đọc	f	3	2026-08-10 14:08:48.214425
-4808	1058	D	Thông tin thuộc một tình huống khác	f	4	2026-08-10 14:08:48.214425
-4809	1059	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:08:48.214425
-4810	1059	B	Thông tin không được đề cập	f	2	2026-08-10 14:08:48.214425
-4811	1059	C	Thông tin trái với bài đọc	f	3	2026-08-10 14:08:48.214425
-4812	1059	D	Thông tin thuộc một tình huống khác	f	4	2026-08-10 14:08:48.214425
-4813	1060	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:08:48.214425
-4814	1060	B	Thông tin không được đề cập	f	2	2026-08-10 14:08:48.214425
-4815	1060	C	Thông tin trái với bài đọc	f	3	2026-08-10 14:08:48.214425
-4816	1060	D	Thông tin thuộc một tình huống khác	f	4	2026-08-10 14:08:48.214425
-4817	1061	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:08:48.214425
-4818	1061	B	Thông tin không được đề cập	f	2	2026-08-10 14:08:48.214425
-4819	1061	C	Thông tin trái với bài đọc	f	3	2026-08-10 14:08:48.214425
-4820	1061	D	Thông tin thuộc một tình huống khác	f	4	2026-08-10 14:08:48.214425
-4821	1062	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:08:48.214425
-4822	1062	B	Thông tin không được đề cập	f	2	2026-08-10 14:08:48.214425
-4823	1062	C	Thông tin trái với bài đọc	f	3	2026-08-10 14:08:48.214425
-4824	1062	D	Thông tin thuộc một tình huống khác	f	4	2026-08-10 14:08:48.214425
-4825	1063	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:08:48.214425
-4826	1063	B	Thông tin không được đề cập	f	2	2026-08-10 14:08:48.214425
-4827	1063	C	Thông tin trái với bài đọc	f	3	2026-08-10 14:08:48.214425
-4828	1063	D	Thông tin thuộc một tình huống khác	f	4	2026-08-10 14:08:48.214425
-4829	1064	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:08:48.214425
-4830	1064	B	Thông tin không được đề cập	f	2	2026-08-10 14:08:48.214425
-4831	1064	C	Thông tin trái với bài đọc	f	3	2026-08-10 14:08:48.214425
-4832	1064	D	Thông tin thuộc một tình huống khác	f	4	2026-08-10 14:08:48.214425
-4833	1065	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:08:48.214425
-4834	1065	B	Thông tin không được đề cập	f	2	2026-08-10 14:08:48.214425
-4835	1065	C	Thông tin trái với bài đọc	f	3	2026-08-10 14:08:48.214425
-4836	1065	D	Thông tin thuộc một tình huống khác	f	4	2026-08-10 14:08:48.214425
-4837	1066	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:08:48.214425
-4838	1066	B	Thông tin không được đề cập	f	2	2026-08-10 14:08:48.214425
-4839	1066	C	Thông tin trái với bài đọc	f	3	2026-08-10 14:08:48.214425
-4840	1066	D	Thông tin thuộc một tình huống khác	f	4	2026-08-10 14:08:48.214425
-4841	1067	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:08:48.214425
-4842	1067	B	Thông tin không được đề cập	f	2	2026-08-10 14:08:48.214425
-4843	1067	C	Thông tin trái với bài đọc	f	3	2026-08-10 14:08:48.214425
-4844	1067	D	Thông tin thuộc một tình huống khác	f	4	2026-08-10 14:08:48.214425
-4845	1068	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:08:48.214425
-4846	1068	B	Thông tin không được đề cập	f	2	2026-08-10 14:08:48.214425
-4847	1068	C	Thông tin trái với bài đọc	f	3	2026-08-10 14:08:48.214425
-4848	1068	D	Thông tin thuộc một tình huống khác	f	4	2026-08-10 14:08:48.214425
-4849	1069	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:08:48.214425
-4850	1069	B	Thông tin không được đề cập	f	2	2026-08-10 14:08:48.214425
-4851	1069	C	Thông tin trái với bài đọc	f	3	2026-08-10 14:08:48.214425
-4852	1069	D	Thông tin thuộc một tình huống khác	f	4	2026-08-10 14:08:48.214425
-4853	1070	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:08:48.214425
-4854	1070	B	Thông tin không được đề cập	f	2	2026-08-10 14:08:48.214425
-4855	1070	C	Thông tin trái với bài đọc	f	3	2026-08-10 14:08:48.214425
-4856	1070	D	Thông tin thuộc một tình huống khác	f	4	2026-08-10 14:08:48.214425
-4857	1071	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:08:48.214425
-4858	1071	B	Thông tin không được đề cập	f	2	2026-08-10 14:08:48.214425
-4859	1071	C	Thông tin trái với bài đọc	f	3	2026-08-10 14:08:48.214425
-4860	1071	D	Thông tin thuộc một tình huống khác	f	4	2026-08-10 14:08:48.214425
-4861	1072	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:08:48.214425
-4862	1072	B	Thông tin không được đề cập	f	2	2026-08-10 14:08:48.214425
-4863	1072	C	Thông tin trái với bài đọc	f	3	2026-08-10 14:08:48.214425
-4864	1072	D	Thông tin thuộc một tình huống khác	f	4	2026-08-10 14:08:48.214425
-4865	1073	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:08:48.214425
-4866	1073	B	Thông tin không được đề cập	f	2	2026-08-10 14:08:48.214425
-4867	1073	C	Thông tin trái với bài đọc	f	3	2026-08-10 14:08:48.214425
-4868	1073	D	Thông tin thuộc một tình huống khác	f	4	2026-08-10 14:08:48.214425
-4869	1074	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:08:48.214425
-4870	1074	B	Thông tin không được đề cập	f	2	2026-08-10 14:08:48.214425
-4871	1074	C	Thông tin trái với bài đọc	f	3	2026-08-10 14:08:48.214425
-4872	1074	D	Thông tin thuộc một tình huống khác	f	4	2026-08-10 14:08:48.214425
-4873	1075	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:08:48.214425
-4874	1075	B	Thông tin không được đề cập	f	2	2026-08-10 14:08:48.214425
-4875	1075	C	Thông tin trái với bài đọc	f	3	2026-08-10 14:08:48.214425
-4876	1075	D	Thông tin thuộc một tình huống khác	f	4	2026-08-10 14:08:48.214425
-4877	1076	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:08:48.214425
-4878	1076	B	Thông tin không được đề cập	f	2	2026-08-10 14:08:48.214425
-4879	1076	C	Thông tin trái với bài đọc	f	3	2026-08-10 14:08:48.214425
-4880	1076	D	Thông tin thuộc một tình huống khác	f	4	2026-08-10 14:08:48.214425
-4881	1077	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:08:48.214425
-4882	1077	B	Thông tin không được đề cập	f	2	2026-08-10 14:08:48.214425
-4883	1077	C	Thông tin trái với bài đọc	f	3	2026-08-10 14:08:48.214425
-4884	1077	D	Thông tin thuộc một tình huống khác	f	4	2026-08-10 14:08:48.214425
-4885	1078	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:08:48.214425
-4886	1078	B	Thông tin không được đề cập	f	2	2026-08-10 14:08:48.214425
-4887	1078	C	Thông tin trái với bài đọc	f	3	2026-08-10 14:08:48.214425
-4888	1078	D	Thông tin thuộc một tình huống khác	f	4	2026-08-10 14:08:48.214425
-4889	1079	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:08:48.214425
-4890	1079	B	Thông tin không được đề cập	f	2	2026-08-10 14:08:48.214425
-4891	1079	C	Thông tin trái với bài đọc	f	3	2026-08-10 14:08:48.214425
-4892	1079	D	Thông tin thuộc một tình huống khác	f	4	2026-08-10 14:08:48.214425
-4893	1080	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:08:48.214425
-4894	1080	B	Thông tin không được đề cập	f	2	2026-08-10 14:08:48.214425
-4895	1080	C	Thông tin trái với bài đọc	f	3	2026-08-10 14:08:48.214425
-4896	1080	D	Thông tin thuộc một tình huống khác	f	4	2026-08-10 14:08:48.214425
-4897	1081	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:08:48.214425
-4898	1081	B	Thông tin không được đề cập	f	2	2026-08-10 14:08:48.214425
-4899	1081	C	Thông tin trái với bài đọc	f	3	2026-08-10 14:08:48.214425
-4900	1081	D	Thông tin thuộc một tình huống khác	f	4	2026-08-10 14:08:48.214425
-4901	1082	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:08:48.214425
-4902	1082	B	Thông tin không được đề cập	f	2	2026-08-10 14:08:48.214425
-4903	1082	C	Thông tin trái với bài đọc	f	3	2026-08-10 14:08:48.214425
-4904	1082	D	Thông tin thuộc một tình huống khác	f	4	2026-08-10 14:08:48.214425
-4905	1083	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:08:48.214425
-4906	1083	B	Thông tin không được đề cập	f	2	2026-08-10 14:08:48.214425
-4907	1083	C	Thông tin trái với bài đọc	f	3	2026-08-10 14:08:48.214425
-4908	1083	D	Thông tin thuộc một tình huống khác	f	4	2026-08-10 14:08:48.214425
-4909	1084	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:08:48.214425
-4910	1084	B	Thông tin không được đề cập	f	2	2026-08-10 14:08:48.214425
-4911	1084	C	Thông tin trái với bài đọc	f	3	2026-08-10 14:08:48.214425
-4912	1084	D	Thông tin thuộc một tình huống khác	f	4	2026-08-10 14:08:48.214425
-4913	1085	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:08:48.214425
-4914	1085	B	Thông tin không được đề cập	f	2	2026-08-10 14:08:48.214425
-4915	1085	C	Thông tin trái với bài đọc	f	3	2026-08-10 14:08:48.214425
-4916	1085	D	Thông tin thuộc một tình huống khác	f	4	2026-08-10 14:08:48.214425
-4917	1086	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:08:48.214425
-4918	1086	B	Thông tin không được đề cập	f	2	2026-08-10 14:08:48.214425
-4919	1086	C	Thông tin trái với bài đọc	f	3	2026-08-10 14:08:48.214425
-4920	1086	D	Thông tin thuộc một tình huống khác	f	4	2026-08-10 14:08:48.214425
-4921	1087	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:08:48.214425
-4922	1087	B	Thông tin không được đề cập	f	2	2026-08-10 14:08:48.214425
-4923	1087	C	Thông tin trái với bài đọc	f	3	2026-08-10 14:08:48.214425
-4924	1087	D	Thông tin thuộc một tình huống khác	f	4	2026-08-10 14:08:48.214425
-4925	1088	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:08:48.214425
-4926	1088	B	Thông tin không được đề cập	f	2	2026-08-10 14:08:48.214425
-4927	1088	C	Thông tin trái với bài đọc	f	3	2026-08-10 14:08:48.214425
-4928	1088	D	Thông tin thuộc một tình huống khác	f	4	2026-08-10 14:08:48.214425
-4929	1089	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:08:48.214425
-4930	1089	B	Thông tin không được đề cập	f	2	2026-08-10 14:08:48.214425
-4931	1089	C	Thông tin trái với bài đọc	f	3	2026-08-10 14:08:48.214425
-4932	1089	D	Thông tin thuộc một tình huống khác	f	4	2026-08-10 14:08:48.214425
-4933	1090	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:08:48.214425
-4934	1090	B	Thông tin không được đề cập	f	2	2026-08-10 14:08:48.214425
-4935	1090	C	Thông tin trái với bài đọc	f	3	2026-08-10 14:08:48.214425
-4936	1090	D	Thông tin thuộc một tình huống khác	f	4	2026-08-10 14:08:48.214425
-4937	1091	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:08:48.214425
-4938	1091	B	Thông tin không được đề cập	f	2	2026-08-10 14:08:48.214425
-4939	1091	C	Thông tin trái với bài đọc	f	3	2026-08-10 14:08:48.214425
-4940	1091	D	Thông tin thuộc một tình huống khác	f	4	2026-08-10 14:08:48.214425
-4941	1092	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:08:48.214425
-4942	1092	B	Thông tin không được đề cập	f	2	2026-08-10 14:08:48.214425
-4943	1092	C	Thông tin trái với bài đọc	f	3	2026-08-10 14:08:48.214425
-4944	1092	D	Thông tin thuộc một tình huống khác	f	4	2026-08-10 14:08:48.214425
-4945	1093	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:08:48.214425
-4946	1093	B	Thông tin không được đề cập	f	2	2026-08-10 14:08:48.214425
-4947	1093	C	Thông tin trái với bài đọc	f	3	2026-08-10 14:08:48.214425
-4948	1093	D	Thông tin thuộc một tình huống khác	f	4	2026-08-10 14:08:48.214425
-4949	1094	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:08:48.214425
-4950	1094	B	Thông tin không được đề cập	f	2	2026-08-10 14:08:48.214425
-4951	1094	C	Thông tin trái với bài đọc	f	3	2026-08-10 14:08:48.214425
-4952	1094	D	Thông tin thuộc một tình huống khác	f	4	2026-08-10 14:08:48.214425
-4953	1095	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:08:48.214425
-4954	1095	B	Thông tin không được đề cập	f	2	2026-08-10 14:08:48.214425
-4955	1095	C	Thông tin trái với bài đọc	f	3	2026-08-10 14:08:48.214425
-4956	1095	D	Thông tin thuộc một tình huống khác	f	4	2026-08-10 14:08:48.214425
-4957	1096	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:08:48.214425
-4958	1096	B	Thông tin không được đề cập	f	2	2026-08-10 14:08:48.214425
-4959	1096	C	Thông tin trái với bài đọc	f	3	2026-08-10 14:08:48.214425
-4960	1096	D	Thông tin thuộc một tình huống khác	f	4	2026-08-10 14:08:48.214425
-4961	1097	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:08:48.214425
-4962	1097	B	Thông tin không được đề cập	f	2	2026-08-10 14:08:48.214425
-4963	1097	C	Thông tin trái với bài đọc	f	3	2026-08-10 14:08:48.214425
-4964	1097	D	Thông tin thuộc một tình huống khác	f	4	2026-08-10 14:08:48.214425
-4965	1098	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:08:48.214425
-4966	1098	B	Thông tin không được đề cập	f	2	2026-08-10 14:08:48.214425
-4967	1098	C	Thông tin trái với bài đọc	f	3	2026-08-10 14:08:48.214425
-4968	1098	D	Thông tin thuộc một tình huống khác	f	4	2026-08-10 14:08:48.214425
-4969	1099	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:08:48.214425
-4970	1099	B	Thông tin không được đề cập	f	2	2026-08-10 14:08:48.214425
-4971	1099	C	Thông tin trái với bài đọc	f	3	2026-08-10 14:08:48.214425
-4972	1099	D	Thông tin thuộc một tình huống khác	f	4	2026-08-10 14:08:48.214425
-4973	1100	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:08:48.214425
-4974	1100	B	Thông tin không được đề cập	f	2	2026-08-10 14:08:48.214425
-4975	1100	C	Thông tin trái với bài đọc	f	3	2026-08-10 14:08:48.214425
-4976	1100	D	Thông tin thuộc một tình huống khác	f	4	2026-08-10 14:08:48.214425
-4977	1101	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:08:48.214425
-4978	1101	B	Thông tin không được đề cập	f	2	2026-08-10 14:08:48.214425
-4979	1101	C	Thông tin trái với bài đọc	f	3	2026-08-10 14:08:48.214425
-4980	1101	D	Thông tin thuộc một tình huống khác	f	4	2026-08-10 14:08:48.214425
-4981	1102	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:08:48.214425
-4982	1102	B	Thông tin không được đề cập	f	2	2026-08-10 14:08:48.214425
-4983	1102	C	Thông tin trái với bài đọc	f	3	2026-08-10 14:08:48.214425
-4984	1102	D	Thông tin thuộc một tình huống khác	f	4	2026-08-10 14:08:48.214425
-4985	1103	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:08:48.214425
-4986	1103	B	Thông tin không được đề cập	f	2	2026-08-10 14:08:48.214425
-4987	1103	C	Thông tin trái với bài đọc	f	3	2026-08-10 14:08:48.214425
-4988	1103	D	Thông tin thuộc một tình huống khác	f	4	2026-08-10 14:08:48.214425
-4989	1104	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:08:48.214425
-4990	1104	B	Thông tin không được đề cập	f	2	2026-08-10 14:08:48.214425
-4991	1104	C	Thông tin trái với bài đọc	f	3	2026-08-10 14:08:48.214425
-4992	1104	D	Thông tin thuộc một tình huống khác	f	4	2026-08-10 14:08:48.214425
-4993	1105	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:08:48.214425
-4994	1105	B	Thông tin không được đề cập	f	2	2026-08-10 14:08:48.214425
-4995	1105	C	Thông tin trái với bài đọc	f	3	2026-08-10 14:08:48.214425
-4996	1105	D	Thông tin thuộc một tình huống khác	f	4	2026-08-10 14:08:48.214425
-4997	1106	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:08:48.214425
-4998	1106	B	Thông tin không được đề cập	f	2	2026-08-10 14:08:48.214425
-4999	1106	C	Thông tin trái với bài đọc	f	3	2026-08-10 14:08:48.214425
-5000	1106	D	Thông tin thuộc một tình huống khác	f	4	2026-08-10 14:08:48.214425
-5001	1107	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:08:48.214425
-5002	1107	B	Thông tin không được đề cập	f	2	2026-08-10 14:08:48.214425
-5003	1107	C	Thông tin trái với bài đọc	f	3	2026-08-10 14:08:48.214425
-5004	1107	D	Thông tin thuộc một tình huống khác	f	4	2026-08-10 14:08:48.214425
-5005	1108	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:08:48.214425
-5006	1108	B	Thông tin không được đề cập	f	2	2026-08-10 14:08:48.214425
-5007	1108	C	Thông tin trái với bài đọc	f	3	2026-08-10 14:08:48.214425
-5008	1108	D	Thông tin thuộc một tình huống khác	f	4	2026-08-10 14:08:48.214425
-5009	1109	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:08:48.214425
-5010	1109	B	Thông tin không được đề cập	f	2	2026-08-10 14:08:48.214425
-5011	1109	C	Thông tin trái với bài đọc	f	3	2026-08-10 14:08:48.214425
-5012	1109	D	Thông tin thuộc một tình huống khác	f	4	2026-08-10 14:08:48.214425
-5013	1110	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:08:48.214425
-5014	1110	B	Thông tin không được đề cập	f	2	2026-08-10 14:08:48.214425
-5015	1110	C	Thông tin trái với bài đọc	f	3	2026-08-10 14:08:48.214425
-5016	1110	D	Thông tin thuộc một tình huống khác	f	4	2026-08-10 14:08:48.214425
-5017	1111	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:08:48.214425
-5018	1111	B	Thông tin không được đề cập	f	2	2026-08-10 14:08:48.214425
-5019	1111	C	Thông tin trái với bài đọc	f	3	2026-08-10 14:08:48.214425
-5020	1111	D	Thông tin thuộc một tình huống khác	f	4	2026-08-10 14:08:48.214425
-5021	1112	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:08:48.214425
-5022	1112	B	Thông tin không được đề cập	f	2	2026-08-10 14:08:48.214425
-5023	1112	C	Thông tin trái với bài đọc	f	3	2026-08-10 14:08:48.214425
-5024	1112	D	Thông tin thuộc một tình huống khác	f	4	2026-08-10 14:08:48.214425
-5025	1113	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:08:48.214425
-5026	1113	B	Thông tin không được đề cập	f	2	2026-08-10 14:08:48.214425
-5027	1113	C	Thông tin trái với bài đọc	f	3	2026-08-10 14:08:48.214425
-5028	1113	D	Thông tin thuộc một tình huống khác	f	4	2026-08-10 14:08:48.214425
-5029	1114	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:08:48.214425
-5030	1114	B	Thông tin không được đề cập	f	2	2026-08-10 14:08:48.214425
-5031	1114	C	Thông tin trái với bài đọc	f	3	2026-08-10 14:08:48.214425
-5032	1114	D	Thông tin thuộc một tình huống khác	f	4	2026-08-10 14:08:48.214425
-5033	1115	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:08:48.214425
-5034	1115	B	Thông tin không được đề cập	f	2	2026-08-10 14:08:48.214425
-5035	1115	C	Thông tin trái với bài đọc	f	3	2026-08-10 14:08:48.214425
-5036	1115	D	Thông tin thuộc một tình huống khác	f	4	2026-08-10 14:08:48.214425
-5037	1116	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:08:48.214425
-5038	1116	B	Thông tin không được đề cập	f	2	2026-08-10 14:08:48.214425
-5039	1116	C	Thông tin trái với bài đọc	f	3	2026-08-10 14:08:48.214425
-5040	1116	D	Thông tin thuộc một tình huống khác	f	4	2026-08-10 14:08:48.214425
-5041	1117	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:08:48.214425
-5042	1117	B	Thông tin không được đề cập	f	2	2026-08-10 14:08:48.214425
-5043	1117	C	Thông tin trái với bài đọc	f	3	2026-08-10 14:08:48.214425
-5044	1117	D	Thông tin thuộc một tình huống khác	f	4	2026-08-10 14:08:48.214425
-5045	1118	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:08:48.214425
-5046	1118	B	Thông tin không được đề cập	f	2	2026-08-10 14:08:48.214425
-5047	1118	C	Thông tin trái với bài đọc	f	3	2026-08-10 14:08:48.214425
-5048	1118	D	Thông tin thuộc một tình huống khác	f	4	2026-08-10 14:08:48.214425
-5049	1119	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:08:48.214425
-5050	1119	B	Thông tin không được đề cập	f	2	2026-08-10 14:08:48.214425
-5051	1119	C	Thông tin trái với bài đọc	f	3	2026-08-10 14:08:48.214425
-5052	1119	D	Thông tin thuộc một tình huống khác	f	4	2026-08-10 14:08:48.214425
-5053	1120	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:08:48.214425
-5054	1120	B	Thông tin không được đề cập	f	2	2026-08-10 14:08:48.214425
-5055	1120	C	Thông tin mâu thuẫn với bài đọc	f	3	2026-08-10 14:08:48.214425
-5056	1120	D	Thông tin thuộc một chủ đề khác	f	4	2026-08-10 14:08:48.214425
-5057	1121	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:08:48.214425
-5058	1121	B	Thông tin không được đề cập	f	2	2026-08-10 14:08:48.214425
-5059	1121	C	Thông tin mâu thuẫn với bài đọc	f	3	2026-08-10 14:08:48.214425
-5060	1121	D	Thông tin thuộc một chủ đề khác	f	4	2026-08-10 14:08:48.214425
-5061	1122	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:08:48.214425
-5062	1122	B	Thông tin không được đề cập	f	2	2026-08-10 14:08:48.214425
-5063	1122	C	Thông tin mâu thuẫn với bài đọc	f	3	2026-08-10 14:08:48.214425
-5064	1122	D	Thông tin thuộc một chủ đề khác	f	4	2026-08-10 14:08:48.214425
-5065	1123	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:08:48.214425
-5066	1123	B	Thông tin không được đề cập	f	2	2026-08-10 14:08:48.214425
-5067	1123	C	Thông tin mâu thuẫn với bài đọc	f	3	2026-08-10 14:08:48.214425
-5068	1123	D	Thông tin thuộc một chủ đề khác	f	4	2026-08-10 14:08:48.214425
-5069	1124	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:08:48.214425
-5070	1124	B	Thông tin không được đề cập	f	2	2026-08-10 14:08:48.214425
-5071	1124	C	Thông tin mâu thuẫn với bài đọc	f	3	2026-08-10 14:08:48.214425
-5072	1124	D	Thông tin thuộc một chủ đề khác	f	4	2026-08-10 14:08:48.214425
-5073	1125	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:08:48.214425
-5074	1125	B	Thông tin không được đề cập	f	2	2026-08-10 14:08:48.214425
-5075	1125	C	Thông tin mâu thuẫn với bài đọc	f	3	2026-08-10 14:08:48.214425
-5076	1125	D	Thông tin thuộc một chủ đề khác	f	4	2026-08-10 14:08:48.214425
-5077	1126	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:08:48.214425
-5078	1126	B	Thông tin không được đề cập	f	2	2026-08-10 14:08:48.214425
-5079	1126	C	Thông tin mâu thuẫn với bài đọc	f	3	2026-08-10 14:08:48.214425
-5080	1126	D	Thông tin thuộc một chủ đề khác	f	4	2026-08-10 14:08:48.214425
-5081	1127	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:08:48.214425
-5082	1127	B	Thông tin không được đề cập	f	2	2026-08-10 14:08:48.214425
-5083	1127	C	Thông tin mâu thuẫn với bài đọc	f	3	2026-08-10 14:08:48.214425
-5084	1127	D	Thông tin thuộc một chủ đề khác	f	4	2026-08-10 14:08:48.214425
-5085	1128	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:08:48.214425
-5086	1128	B	Thông tin không được đề cập	f	2	2026-08-10 14:08:48.214425
-5087	1128	C	Thông tin mâu thuẫn với bài đọc	f	3	2026-08-10 14:08:48.214425
-5088	1128	D	Thông tin thuộc một chủ đề khác	f	4	2026-08-10 14:08:48.214425
-5089	1129	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:08:48.214425
-5090	1129	B	Thông tin không được đề cập	f	2	2026-08-10 14:08:48.214425
-5091	1129	C	Thông tin mâu thuẫn với bài đọc	f	3	2026-08-10 14:08:48.214425
-5092	1129	D	Thông tin thuộc một chủ đề khác	f	4	2026-08-10 14:08:48.214425
-5093	1130	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:08:48.214425
-5094	1130	B	Thông tin không được đề cập	f	2	2026-08-10 14:08:48.214425
-5095	1130	C	Thông tin mâu thuẫn với bài đọc	f	3	2026-08-10 14:08:48.214425
-5096	1130	D	Thông tin thuộc một chủ đề khác	f	4	2026-08-10 14:08:48.214425
-5097	1131	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:08:48.214425
-5098	1131	B	Thông tin không được đề cập	f	2	2026-08-10 14:08:48.214425
-5099	1131	C	Thông tin mâu thuẫn với bài đọc	f	3	2026-08-10 14:08:48.214425
-5100	1131	D	Thông tin thuộc một chủ đề khác	f	4	2026-08-10 14:08:48.214425
-5101	1132	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:08:48.214425
-5102	1132	B	Thông tin không được đề cập	f	2	2026-08-10 14:08:48.214425
-5103	1132	C	Thông tin mâu thuẫn với bài đọc	f	3	2026-08-10 14:08:48.214425
-5104	1132	D	Thông tin thuộc một chủ đề khác	f	4	2026-08-10 14:08:48.214425
-5105	1133	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:08:48.214425
-5106	1133	B	Thông tin không được đề cập	f	2	2026-08-10 14:08:48.214425
-5107	1133	C	Thông tin mâu thuẫn với bài đọc	f	3	2026-08-10 14:08:48.214425
-5108	1133	D	Thông tin thuộc một chủ đề khác	f	4	2026-08-10 14:08:48.214425
-5109	1134	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:08:48.214425
-5110	1134	B	Thông tin không được đề cập	f	2	2026-08-10 14:08:48.214425
-5111	1134	C	Thông tin mâu thuẫn với bài đọc	f	3	2026-08-10 14:08:48.214425
-5112	1134	D	Thông tin thuộc một chủ đề khác	f	4	2026-08-10 14:08:48.214425
-5113	1135	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:08:48.214425
-5114	1135	B	Thông tin không được đề cập	f	2	2026-08-10 14:08:48.214425
-5115	1135	C	Thông tin mâu thuẫn với bài đọc	f	3	2026-08-10 14:08:48.214425
-5116	1135	D	Thông tin thuộc một chủ đề khác	f	4	2026-08-10 14:08:48.214425
-5117	1136	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:08:48.214425
-5118	1136	B	Thông tin không được đề cập	f	2	2026-08-10 14:08:48.214425
-5119	1136	C	Thông tin mâu thuẫn với bài đọc	f	3	2026-08-10 14:08:48.214425
-5120	1136	D	Thông tin thuộc một chủ đề khác	f	4	2026-08-10 14:08:48.214425
-5121	1137	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:08:48.214425
-5122	1137	B	Thông tin không được đề cập	f	2	2026-08-10 14:08:48.214425
-5123	1137	C	Thông tin mâu thuẫn với bài đọc	f	3	2026-08-10 14:08:48.214425
-5124	1137	D	Thông tin thuộc một chủ đề khác	f	4	2026-08-10 14:08:48.214425
-5125	1138	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:08:48.214425
-5126	1138	B	Thông tin không được đề cập	f	2	2026-08-10 14:08:48.214425
-5127	1138	C	Thông tin mâu thuẫn với bài đọc	f	3	2026-08-10 14:08:48.214425
-5128	1138	D	Thông tin thuộc một chủ đề khác	f	4	2026-08-10 14:08:48.214425
-5129	1139	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:08:48.214425
-5130	1139	B	Thông tin không được đề cập	f	2	2026-08-10 14:08:48.214425
-5131	1139	C	Thông tin mâu thuẫn với bài đọc	f	3	2026-08-10 14:08:48.214425
-5132	1139	D	Thông tin thuộc một chủ đề khác	f	4	2026-08-10 14:08:48.214425
-5133	1140	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:08:48.214425
-5134	1140	B	Thông tin không được đề cập	f	2	2026-08-10 14:08:48.214425
-5135	1140	C	Thông tin mâu thuẫn với bài đọc	f	3	2026-08-10 14:08:48.214425
-5136	1140	D	Thông tin thuộc một chủ đề khác	f	4	2026-08-10 14:08:48.214425
-5137	1141	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:08:48.214425
-5138	1141	B	Thông tin không được đề cập	f	2	2026-08-10 14:08:48.214425
-5139	1141	C	Thông tin mâu thuẫn với bài đọc	f	3	2026-08-10 14:08:48.214425
-5140	1141	D	Thông tin thuộc một chủ đề khác	f	4	2026-08-10 14:08:48.214425
-5141	1142	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:08:48.214425
-5142	1142	B	Thông tin không được đề cập	f	2	2026-08-10 14:08:48.214425
-5143	1142	C	Thông tin mâu thuẫn với bài đọc	f	3	2026-08-10 14:08:48.214425
-5144	1142	D	Thông tin thuộc một chủ đề khác	f	4	2026-08-10 14:08:48.214425
-5145	1143	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:08:48.214425
-5146	1143	B	Thông tin không được đề cập	f	2	2026-08-10 14:08:48.214425
-5147	1143	C	Thông tin mâu thuẫn với bài đọc	f	3	2026-08-10 14:08:48.214425
-5148	1143	D	Thông tin thuộc một chủ đề khác	f	4	2026-08-10 14:08:48.214425
-5149	1144	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:08:48.214425
-5150	1144	B	Thông tin không được đề cập	f	2	2026-08-10 14:08:48.214425
-5151	1144	C	Thông tin mâu thuẫn với bài đọc	f	3	2026-08-10 14:08:48.214425
-5152	1144	D	Thông tin thuộc một chủ đề khác	f	4	2026-08-10 14:08:48.214425
-5153	1145	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:08:48.214425
-5154	1145	B	Thông tin không được đề cập	f	2	2026-08-10 14:08:48.214425
-5155	1145	C	Thông tin mâu thuẫn với bài đọc	f	3	2026-08-10 14:08:48.214425
-5156	1145	D	Thông tin thuộc một chủ đề khác	f	4	2026-08-10 14:08:48.214425
-5157	1146	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:08:48.214425
-5158	1146	B	Thông tin không được đề cập	f	2	2026-08-10 14:08:48.214425
-5159	1146	C	Thông tin mâu thuẫn với bài đọc	f	3	2026-08-10 14:08:48.214425
-5160	1146	D	Thông tin thuộc một chủ đề khác	f	4	2026-08-10 14:08:48.214425
-5161	1147	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:08:48.214425
-5162	1147	B	Thông tin không được đề cập	f	2	2026-08-10 14:08:48.214425
-5163	1147	C	Thông tin mâu thuẫn với bài đọc	f	3	2026-08-10 14:08:48.214425
-5164	1147	D	Thông tin thuộc một chủ đề khác	f	4	2026-08-10 14:08:48.214425
-5165	1148	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:08:48.214425
-5166	1148	B	Thông tin không được đề cập	f	2	2026-08-10 14:08:48.214425
-5167	1148	C	Thông tin mâu thuẫn với bài đọc	f	3	2026-08-10 14:08:48.214425
-5168	1148	D	Thông tin thuộc một chủ đề khác	f	4	2026-08-10 14:08:48.214425
-5169	1149	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:08:48.214425
-5170	1149	B	Thông tin không được đề cập	f	2	2026-08-10 14:08:48.214425
-5171	1149	C	Thông tin mâu thuẫn với bài đọc	f	3	2026-08-10 14:08:48.214425
-5172	1149	D	Thông tin thuộc một chủ đề khác	f	4	2026-08-10 14:08:48.214425
-5173	1150	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:08:48.214425
-5174	1150	B	Thông tin không được đề cập	f	2	2026-08-10 14:08:48.214425
-5175	1150	C	Thông tin mâu thuẫn với bài đọc	f	3	2026-08-10 14:08:48.214425
-5176	1150	D	Thông tin thuộc một chủ đề khác	f	4	2026-08-10 14:08:48.214425
-5177	1151	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:08:48.214425
-5178	1151	B	Thông tin không được đề cập	f	2	2026-08-10 14:08:48.214425
-5179	1151	C	Thông tin mâu thuẫn với bài đọc	f	3	2026-08-10 14:08:48.214425
-5180	1151	D	Thông tin thuộc một chủ đề khác	f	4	2026-08-10 14:08:48.214425
-5181	1152	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:08:48.214425
-5182	1152	B	Thông tin không được đề cập	f	2	2026-08-10 14:08:48.214425
-5183	1152	C	Thông tin mâu thuẫn với bài đọc	f	3	2026-08-10 14:08:48.214425
-5184	1152	D	Thông tin thuộc một chủ đề khác	f	4	2026-08-10 14:08:48.214425
-5185	1153	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:08:48.214425
-5186	1153	B	Thông tin không được đề cập	f	2	2026-08-10 14:08:48.214425
-5187	1153	C	Thông tin mâu thuẫn với bài đọc	f	3	2026-08-10 14:08:48.214425
-5188	1153	D	Thông tin thuộc một chủ đề khác	f	4	2026-08-10 14:08:48.214425
-5189	1154	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:08:48.214425
-5190	1154	B	Thông tin không được đề cập	f	2	2026-08-10 14:08:48.214425
-5191	1154	C	Thông tin mâu thuẫn với bài đọc	f	3	2026-08-10 14:08:48.214425
-5192	1154	D	Thông tin thuộc một chủ đề khác	f	4	2026-08-10 14:08:48.214425
-5193	1155	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:08:48.214425
-5194	1155	B	Thông tin không được đề cập	f	2	2026-08-10 14:08:48.214425
-5195	1155	C	Thông tin mâu thuẫn với bài đọc	f	3	2026-08-10 14:08:48.214425
-5196	1155	D	Thông tin thuộc một chủ đề khác	f	4	2026-08-10 14:08:48.214425
-5197	1156	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:08:48.214425
-5198	1156	B	Thông tin không được đề cập	f	2	2026-08-10 14:08:48.214425
-5199	1156	C	Thông tin mâu thuẫn với bài đọc	f	3	2026-08-10 14:08:48.214425
-5200	1156	D	Thông tin thuộc một chủ đề khác	f	4	2026-08-10 14:08:48.214425
-5201	1157	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:08:48.214425
-5202	1157	B	Thông tin không được đề cập	f	2	2026-08-10 14:08:48.214425
-5203	1157	C	Thông tin mâu thuẫn với bài đọc	f	3	2026-08-10 14:08:48.214425
-5204	1157	D	Thông tin thuộc một chủ đề khác	f	4	2026-08-10 14:08:48.214425
-5205	1158	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:08:48.214425
-5206	1158	B	Thông tin không được đề cập	f	2	2026-08-10 14:08:48.214425
-5207	1158	C	Thông tin mâu thuẫn với bài đọc	f	3	2026-08-10 14:08:48.214425
-5208	1158	D	Thông tin thuộc một chủ đề khác	f	4	2026-08-10 14:08:48.214425
-5209	1159	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:08:48.214425
-5210	1159	B	Thông tin không được đề cập	f	2	2026-08-10 14:08:48.214425
-5211	1159	C	Thông tin mâu thuẫn với bài đọc	f	3	2026-08-10 14:08:48.214425
-5212	1159	D	Thông tin thuộc một chủ đề khác	f	4	2026-08-10 14:08:48.214425
-5213	1160	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:08:48.214425
-5214	1160	B	Thông tin không được đề cập	f	2	2026-08-10 14:08:48.214425
-5215	1160	C	Thông tin mâu thuẫn với bài đọc	f	3	2026-08-10 14:08:48.214425
-5216	1160	D	Thông tin thuộc một chủ đề khác	f	4	2026-08-10 14:08:48.214425
-5217	1161	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:08:48.214425
-5218	1161	B	Thông tin không được đề cập	f	2	2026-08-10 14:08:48.214425
-5219	1161	C	Thông tin mâu thuẫn với bài đọc	f	3	2026-08-10 14:08:48.214425
-5220	1161	D	Thông tin thuộc một chủ đề khác	f	4	2026-08-10 14:08:48.214425
-5221	1162	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:08:48.214425
-5222	1162	B	Thông tin không được đề cập	f	2	2026-08-10 14:08:48.214425
-5223	1162	C	Thông tin mâu thuẫn với bài đọc	f	3	2026-08-10 14:08:48.214425
-5224	1162	D	Thông tin thuộc một chủ đề khác	f	4	2026-08-10 14:08:48.214425
-5225	1163	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:08:48.214425
-5226	1163	B	Thông tin không được đề cập	f	2	2026-08-10 14:08:48.214425
-5227	1163	C	Thông tin mâu thuẫn với bài đọc	f	3	2026-08-10 14:08:48.214425
-5228	1163	D	Thông tin thuộc một chủ đề khác	f	4	2026-08-10 14:08:48.214425
-5229	1164	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:08:48.214425
-5230	1164	B	Thông tin không được đề cập	f	2	2026-08-10 14:08:48.214425
-5231	1164	C	Thông tin mâu thuẫn với bài đọc	f	3	2026-08-10 14:08:48.214425
-5232	1164	D	Thông tin thuộc một chủ đề khác	f	4	2026-08-10 14:08:48.214425
-5233	1165	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:08:48.214425
-5234	1165	B	Thông tin không được đề cập	f	2	2026-08-10 14:08:48.214425
-5235	1165	C	Thông tin mâu thuẫn với bài đọc	f	3	2026-08-10 14:08:48.214425
-5236	1165	D	Thông tin thuộc một chủ đề khác	f	4	2026-08-10 14:08:48.214425
-5237	1166	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:08:48.214425
-5238	1166	B	Thông tin không được đề cập	f	2	2026-08-10 14:08:48.214425
-5239	1166	C	Thông tin mâu thuẫn với bài đọc	f	3	2026-08-10 14:08:48.214425
-5240	1166	D	Thông tin thuộc một chủ đề khác	f	4	2026-08-10 14:08:48.214425
-5241	1167	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:08:48.214425
-5242	1167	B	Thông tin không được đề cập	f	2	2026-08-10 14:08:48.214425
-5243	1167	C	Thông tin mâu thuẫn với bài đọc	f	3	2026-08-10 14:08:48.214425
-5244	1167	D	Thông tin thuộc một chủ đề khác	f	4	2026-08-10 14:08:48.214425
-5245	1168	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:08:48.214425
-5246	1168	B	Thông tin không được đề cập	f	2	2026-08-10 14:08:48.214425
-5247	1168	C	Thông tin mâu thuẫn với bài đọc	f	3	2026-08-10 14:08:48.214425
-5248	1168	D	Thông tin thuộc một chủ đề khác	f	4	2026-08-10 14:08:48.214425
-5249	1169	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:08:48.214425
-5250	1169	B	Thông tin không được đề cập	f	2	2026-08-10 14:08:48.214425
-5251	1169	C	Thông tin mâu thuẫn với bài đọc	f	3	2026-08-10 14:08:48.214425
-5252	1169	D	Thông tin thuộc một chủ đề khác	f	4	2026-08-10 14:08:48.214425
-5253	1170	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:08:48.214425
-5254	1170	B	Thông tin không được đề cập	f	2	2026-08-10 14:08:48.214425
-5255	1170	C	Thông tin mâu thuẫn với bài đọc	f	3	2026-08-10 14:08:48.214425
-5256	1170	D	Thông tin thuộc một chủ đề khác	f	4	2026-08-10 14:08:48.214425
-5257	1171	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:08:48.214425
-5258	1171	B	Thông tin không được đề cập	f	2	2026-08-10 14:08:48.214425
-5259	1171	C	Thông tin mâu thuẫn với bài đọc	f	3	2026-08-10 14:08:48.214425
-5260	1171	D	Thông tin thuộc một chủ đề khác	f	4	2026-08-10 14:08:48.214425
-5261	1172	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:08:48.214425
-5262	1172	B	Thông tin không được đề cập	f	2	2026-08-10 14:08:48.214425
-5263	1172	C	Thông tin mâu thuẫn với bài đọc	f	3	2026-08-10 14:08:48.214425
-5264	1172	D	Thông tin thuộc một chủ đề khác	f	4	2026-08-10 14:08:48.214425
-5265	1173	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:08:48.214425
-5266	1173	B	Thông tin không được đề cập	f	2	2026-08-10 14:08:48.214425
-5267	1173	C	Thông tin mâu thuẫn với bài đọc	f	3	2026-08-10 14:08:48.214425
-5268	1173	D	Thông tin thuộc một chủ đề khác	f	4	2026-08-10 14:08:48.214425
-5269	1174	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:08:48.214425
-5270	1174	B	Thông tin không được đề cập	f	2	2026-08-10 14:08:48.214425
-5271	1174	C	Thông tin mâu thuẫn với bài đọc	f	3	2026-08-10 14:08:48.214425
-5272	1174	D	Thông tin thuộc một chủ đề khác	f	4	2026-08-10 14:08:48.214425
-5273	1175	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:08:48.214425
-5274	1175	B	Thông tin không được đề cập	f	2	2026-08-10 14:08:48.214425
-5275	1175	C	Thông tin mâu thuẫn với bài đọc	f	3	2026-08-10 14:08:48.214425
-5276	1175	D	Thông tin thuộc một chủ đề khác	f	4	2026-08-10 14:08:48.214425
-5277	1176	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:08:48.214425
-5278	1176	B	Thông tin không được đề cập	f	2	2026-08-10 14:08:48.214425
-5279	1176	C	Thông tin mâu thuẫn với bài đọc	f	3	2026-08-10 14:08:48.214425
-5280	1176	D	Thông tin thuộc một chủ đề khác	f	4	2026-08-10 14:08:48.214425
-5281	1177	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:08:48.214425
-5282	1177	B	Thông tin không được đề cập	f	2	2026-08-10 14:08:48.214425
-5283	1177	C	Thông tin mâu thuẫn với bài đọc	f	3	2026-08-10 14:08:48.214425
-5284	1177	D	Thông tin thuộc một chủ đề khác	f	4	2026-08-10 14:08:48.214425
-5285	1178	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:08:48.214425
-5286	1178	B	Thông tin không được đề cập	f	2	2026-08-10 14:08:48.214425
-5287	1178	C	Thông tin mâu thuẫn với bài đọc	f	3	2026-08-10 14:08:48.214425
-5288	1178	D	Thông tin thuộc một chủ đề khác	f	4	2026-08-10 14:08:48.214425
-5289	1179	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:08:48.214425
-5290	1179	B	Thông tin không được đề cập	f	2	2026-08-10 14:08:48.214425
-5291	1179	C	Thông tin mâu thuẫn với bài đọc	f	3	2026-08-10 14:08:48.214425
-5292	1179	D	Thông tin thuộc một chủ đề khác	f	4	2026-08-10 14:08:48.214425
-5293	1180	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:08:48.214425
-5294	1180	B	Thông tin không được đề cập	f	2	2026-08-10 14:08:48.214425
-5295	1180	C	Thông tin mâu thuẫn với bài đọc	f	3	2026-08-10 14:08:48.214425
-5296	1180	D	Thông tin thuộc một chủ đề khác	f	4	2026-08-10 14:08:48.214425
-5297	1181	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:08:48.214425
-5298	1181	B	Thông tin không được đề cập	f	2	2026-08-10 14:08:48.214425
-5299	1181	C	Thông tin mâu thuẫn với bài đọc	f	3	2026-08-10 14:08:48.214425
-5300	1181	D	Thông tin thuộc một chủ đề khác	f	4	2026-08-10 14:08:48.214425
-5301	1182	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:08:48.214425
-5302	1182	B	Thông tin không được đề cập	f	2	2026-08-10 14:08:48.214425
-5303	1182	C	Thông tin mâu thuẫn với bài đọc	f	3	2026-08-10 14:08:48.214425
-5304	1182	D	Thông tin thuộc một chủ đề khác	f	4	2026-08-10 14:08:48.214425
-5305	1183	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:08:48.214425
-5306	1183	B	Thông tin không được đề cập	f	2	2026-08-10 14:08:48.214425
-5307	1183	C	Thông tin mâu thuẫn với bài đọc	f	3	2026-08-10 14:08:48.214425
-5308	1183	D	Thông tin thuộc một chủ đề khác	f	4	2026-08-10 14:08:48.214425
-5309	1184	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:08:48.214425
-5310	1184	B	Thông tin không được đề cập	f	2	2026-08-10 14:08:48.214425
-5311	1184	C	Thông tin mâu thuẫn với bài đọc	f	3	2026-08-10 14:08:48.214425
-5312	1184	D	Thông tin thuộc một chủ đề khác	f	4	2026-08-10 14:08:48.214425
-5313	1185	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:08:48.214425
-5314	1185	B	Thông tin không được đề cập	f	2	2026-08-10 14:08:48.214425
-5315	1185	C	Thông tin mâu thuẫn với bài đọc	f	3	2026-08-10 14:08:48.214425
-5316	1185	D	Thông tin thuộc một chủ đề khác	f	4	2026-08-10 14:08:48.214425
-5317	1186	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:08:48.214425
-5318	1186	B	Thông tin không được đề cập	f	2	2026-08-10 14:08:48.214425
-5319	1186	C	Thông tin mâu thuẫn với bài đọc	f	3	2026-08-10 14:08:48.214425
-5320	1186	D	Thông tin thuộc một chủ đề khác	f	4	2026-08-10 14:08:48.214425
-5321	1187	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:08:48.214425
-5322	1187	B	Thông tin không được đề cập	f	2	2026-08-10 14:08:48.214425
-5323	1187	C	Thông tin mâu thuẫn với bài đọc	f	3	2026-08-10 14:08:48.214425
-5324	1187	D	Thông tin thuộc một chủ đề khác	f	4	2026-08-10 14:08:48.214425
-5325	1188	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:08:48.214425
-5326	1188	B	Thông tin không được đề cập	f	2	2026-08-10 14:08:48.214425
-5327	1188	C	Thông tin mâu thuẫn với bài đọc	f	3	2026-08-10 14:08:48.214425
-5328	1188	D	Thông tin thuộc một chủ đề khác	f	4	2026-08-10 14:08:48.214425
-5329	1189	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:08:48.214425
-5330	1189	B	Thông tin không được đề cập	f	2	2026-08-10 14:08:48.214425
-5331	1189	C	Thông tin mâu thuẫn với bài đọc	f	3	2026-08-10 14:08:48.214425
-5332	1189	D	Thông tin thuộc một chủ đề khác	f	4	2026-08-10 14:08:48.214425
-5333	1190	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:08:48.214425
-5334	1190	B	Thông tin không được đề cập	f	2	2026-08-10 14:08:48.214425
-5335	1190	C	Thông tin mâu thuẫn với bài đọc	f	3	2026-08-10 14:08:48.214425
-5336	1190	D	Thông tin thuộc một chủ đề khác	f	4	2026-08-10 14:08:48.214425
-5337	1191	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:08:48.214425
-5338	1191	B	Thông tin không được đề cập	f	2	2026-08-10 14:08:48.214425
-5339	1191	C	Thông tin mâu thuẫn với bài đọc	f	3	2026-08-10 14:08:48.214425
-5340	1191	D	Thông tin thuộc một chủ đề khác	f	4	2026-08-10 14:08:48.214425
-5341	1192	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:08:48.214425
-5342	1192	B	Thông tin không được đề cập	f	2	2026-08-10 14:08:48.214425
-5343	1192	C	Thông tin mâu thuẫn với bài đọc	f	3	2026-08-10 14:08:48.214425
-5344	1192	D	Thông tin thuộc một chủ đề khác	f	4	2026-08-10 14:08:48.214425
-5345	1193	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:08:48.214425
-5346	1193	B	Thông tin không được đề cập	f	2	2026-08-10 14:08:48.214425
-5347	1193	C	Thông tin mâu thuẫn với bài đọc	f	3	2026-08-10 14:08:48.214425
-5348	1193	D	Thông tin thuộc một chủ đề khác	f	4	2026-08-10 14:08:48.214425
-5349	1194	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:08:48.214425
-5350	1194	B	Thông tin không được đề cập	f	2	2026-08-10 14:08:48.214425
-5351	1194	C	Thông tin mâu thuẫn với bài đọc	f	3	2026-08-10 14:08:48.214425
-5352	1194	D	Thông tin thuộc một chủ đề khác	f	4	2026-08-10 14:08:48.214425
-5353	1195	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:08:48.214425
-5354	1195	B	Thông tin không được đề cập	f	2	2026-08-10 14:08:48.214425
-5355	1195	C	Thông tin mâu thuẫn với bài đọc	f	3	2026-08-10 14:08:48.214425
-5356	1195	D	Thông tin thuộc một chủ đề khác	f	4	2026-08-10 14:08:48.214425
-5357	1196	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:08:48.214425
-5358	1196	B	Thông tin không được đề cập	f	2	2026-08-10 14:08:48.214425
-5359	1196	C	Thông tin mâu thuẫn với bài đọc	f	3	2026-08-10 14:08:48.214425
-5360	1196	D	Thông tin thuộc một chủ đề khác	f	4	2026-08-10 14:08:48.214425
-5361	1197	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:08:48.214425
-5362	1197	B	Thông tin không được đề cập	f	2	2026-08-10 14:08:48.214425
-5363	1197	C	Thông tin mâu thuẫn với bài đọc	f	3	2026-08-10 14:08:48.214425
-5364	1197	D	Thông tin thuộc một chủ đề khác	f	4	2026-08-10 14:08:48.214425
-5365	1198	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:08:48.214425
-5366	1198	B	Thông tin không được đề cập	f	2	2026-08-10 14:08:48.214425
-5367	1198	C	Thông tin mâu thuẫn với bài đọc	f	3	2026-08-10 14:08:48.214425
-5368	1198	D	Thông tin thuộc một chủ đề khác	f	4	2026-08-10 14:08:48.214425
-5369	1199	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:08:48.214425
-5370	1199	B	Thông tin không được đề cập	f	2	2026-08-10 14:08:48.214425
-5371	1199	C	Thông tin mâu thuẫn với bài đọc	f	3	2026-08-10 14:08:48.214425
-5372	1199	D	Thông tin thuộc một chủ đề khác	f	4	2026-08-10 14:08:48.214425
-5373	1200	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:08:48.214425
-5374	1200	B	Thông tin không được đề cập	f	2	2026-08-10 14:08:48.214425
-5375	1200	C	Thông tin mâu thuẫn với bài đọc	f	3	2026-08-10 14:08:48.214425
-5376	1200	D	Thông tin thuộc một chủ đề khác	f	4	2026-08-10 14:08:48.214425
-5377	1201	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:08:48.214425
-5378	1201	B	Thông tin không được đề cập	f	2	2026-08-10 14:08:48.214425
-5379	1201	C	Thông tin mâu thuẫn với bài đọc	f	3	2026-08-10 14:08:48.214425
-5380	1201	D	Thông tin thuộc một chủ đề khác	f	4	2026-08-10 14:08:48.214425
-5381	1202	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:08:48.214425
-5382	1202	B	Thông tin không được đề cập	f	2	2026-08-10 14:08:48.214425
-5383	1202	C	Thông tin mâu thuẫn với bài đọc	f	3	2026-08-10 14:08:48.214425
-5384	1202	D	Thông tin thuộc một chủ đề khác	f	4	2026-08-10 14:08:48.214425
-5385	1203	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:08:48.214425
-5386	1203	B	Thông tin không được đề cập	f	2	2026-08-10 14:08:48.214425
-5387	1203	C	Thông tin mâu thuẫn với bài đọc	f	3	2026-08-10 14:08:48.214425
-5388	1203	D	Thông tin thuộc một chủ đề khác	f	4	2026-08-10 14:08:48.214425
-5389	1204	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:08:48.214425
-5390	1204	B	Thông tin không được đề cập	f	2	2026-08-10 14:08:48.214425
-5391	1204	C	Thông tin mâu thuẫn với bài đọc	f	3	2026-08-10 14:08:48.214425
-5392	1204	D	Thông tin thuộc một chủ đề khác	f	4	2026-08-10 14:08:48.214425
-5393	1205	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:08:48.214425
-5394	1205	B	Thông tin không được đề cập	f	2	2026-08-10 14:08:48.214425
-5395	1205	C	Thông tin mâu thuẫn với bài đọc	f	3	2026-08-10 14:08:48.214425
-5396	1205	D	Thông tin thuộc một chủ đề khác	f	4	2026-08-10 14:08:48.214425
-5397	1206	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:08:48.214425
-5398	1206	B	Thông tin không được đề cập	f	2	2026-08-10 14:08:48.214425
-5399	1206	C	Thông tin mâu thuẫn với bài đọc	f	3	2026-08-10 14:08:48.214425
-5400	1206	D	Thông tin thuộc một chủ đề khác	f	4	2026-08-10 14:08:48.214425
-5401	1207	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:08:48.214425
-5402	1207	B	Thông tin không được đề cập	f	2	2026-08-10 14:08:48.214425
-5403	1207	C	Thông tin mâu thuẫn với bài đọc	f	3	2026-08-10 14:08:48.214425
-5404	1207	D	Thông tin thuộc một chủ đề khác	f	4	2026-08-10 14:08:48.214425
-5405	1208	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:08:48.214425
-5406	1208	B	Thông tin không được đề cập	f	2	2026-08-10 14:08:48.214425
-5407	1208	C	Thông tin mâu thuẫn với bài đọc	f	3	2026-08-10 14:08:48.214425
-5408	1208	D	Thông tin thuộc một chủ đề khác	f	4	2026-08-10 14:08:48.214425
-5409	1209	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:08:48.214425
-5410	1209	B	Thông tin không được đề cập	f	2	2026-08-10 14:08:48.214425
-5411	1209	C	Thông tin mâu thuẫn với bài đọc	f	3	2026-08-10 14:08:48.214425
-5412	1209	D	Thông tin thuộc một chủ đề khác	f	4	2026-08-10 14:08:48.214425
-5413	1210	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:08:48.214425
-5414	1210	B	Thông tin không được đề cập	f	2	2026-08-10 14:08:48.214425
-5415	1210	C	Thông tin mâu thuẫn với bài đọc	f	3	2026-08-10 14:08:48.214425
-5416	1210	D	Thông tin thuộc một chủ đề khác	f	4	2026-08-10 14:08:48.214425
-5417	1211	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:08:48.214425
-5418	1211	B	Thông tin không được đề cập	f	2	2026-08-10 14:08:48.214425
-5419	1211	C	Thông tin mâu thuẫn với bài đọc	f	3	2026-08-10 14:08:48.214425
-5420	1211	D	Thông tin thuộc một chủ đề khác	f	4	2026-08-10 14:08:48.214425
-5421	1212	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:08:48.214425
-5422	1212	B	Thông tin không được đề cập	f	2	2026-08-10 14:08:48.214425
-5423	1212	C	Thông tin mâu thuẫn với bài đọc	f	3	2026-08-10 14:08:48.214425
-5424	1212	D	Thông tin thuộc một chủ đề khác	f	4	2026-08-10 14:08:48.214425
-5425	1213	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:08:48.214425
-5426	1213	B	Thông tin không được đề cập	f	2	2026-08-10 14:08:48.214425
-5427	1213	C	Thông tin mâu thuẫn với bài đọc	f	3	2026-08-10 14:08:48.214425
-5428	1213	D	Thông tin thuộc một chủ đề khác	f	4	2026-08-10 14:08:48.214425
-5429	1214	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:08:48.214425
-5430	1214	B	Thông tin không được đề cập	f	2	2026-08-10 14:08:48.214425
-5431	1214	C	Thông tin mâu thuẫn với bài đọc	f	3	2026-08-10 14:08:48.214425
-5432	1214	D	Thông tin thuộc một chủ đề khác	f	4	2026-08-10 14:08:48.214425
-5433	1215	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:08:48.214425
-5434	1215	B	Thông tin không được đề cập	f	2	2026-08-10 14:08:48.214425
-5435	1215	C	Thông tin mâu thuẫn với bài đọc	f	3	2026-08-10 14:08:48.214425
-5436	1215	D	Thông tin thuộc một chủ đề khác	f	4	2026-08-10 14:08:48.214425
-5437	1216	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:08:48.214425
-5438	1216	B	Thông tin không được đề cập	f	2	2026-08-10 14:08:48.214425
-5439	1216	C	Thông tin mâu thuẫn với bài đọc	f	3	2026-08-10 14:08:48.214425
-5440	1216	D	Thông tin thuộc một chủ đề khác	f	4	2026-08-10 14:08:48.214425
-5441	1217	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:08:48.214425
-5442	1217	B	Thông tin không được đề cập	f	2	2026-08-10 14:08:48.214425
-5443	1217	C	Thông tin mâu thuẫn với bài đọc	f	3	2026-08-10 14:08:48.214425
-5444	1217	D	Thông tin thuộc một chủ đề khác	f	4	2026-08-10 14:08:48.214425
-5445	1218	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:08:48.214425
-5446	1218	B	Thông tin không được đề cập	f	2	2026-08-10 14:08:48.214425
-5447	1218	C	Thông tin mâu thuẫn với bài đọc	f	3	2026-08-10 14:08:48.214425
-5448	1218	D	Thông tin thuộc một chủ đề khác	f	4	2026-08-10 14:08:48.214425
-5449	1219	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:08:48.214425
-5450	1219	B	Thông tin không được đề cập	f	2	2026-08-10 14:08:48.214425
-5451	1219	C	Thông tin mâu thuẫn với bài đọc	f	3	2026-08-10 14:08:48.214425
-5452	1219	D	Thông tin thuộc một chủ đề khác	f	4	2026-08-10 14:08:48.214425
-5453	1220	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:08:48.214425
-5454	1220	B	Thông tin không được đề cập	f	2	2026-08-10 14:08:48.214425
-5455	1220	C	Thông tin mâu thuẫn với bài đọc	f	3	2026-08-10 14:08:48.214425
-5456	1220	D	Thông tin thuộc một chủ đề khác	f	4	2026-08-10 14:08:48.214425
-5457	1221	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:08:48.214425
-5458	1221	B	Thông tin không được đề cập	f	2	2026-08-10 14:08:48.214425
-5459	1221	C	Thông tin mâu thuẫn với bài đọc	f	3	2026-08-10 14:08:48.214425
-5460	1221	D	Thông tin thuộc một chủ đề khác	f	4	2026-08-10 14:08:48.214425
-5461	1222	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:08:48.214425
-5462	1222	B	Thông tin không được đề cập	f	2	2026-08-10 14:08:48.214425
-5463	1222	C	Thông tin mâu thuẫn với bài đọc	f	3	2026-08-10 14:08:48.214425
-5464	1222	D	Thông tin thuộc một chủ đề khác	f	4	2026-08-10 14:08:48.214425
-5465	1223	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:08:48.214425
-5466	1223	B	Thông tin không được đề cập	f	2	2026-08-10 14:08:48.214425
-5467	1223	C	Thông tin mâu thuẫn với bài đọc	f	3	2026-08-10 14:08:48.214425
-5468	1223	D	Thông tin thuộc một chủ đề khác	f	4	2026-08-10 14:08:48.214425
-5469	1224	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:08:48.214425
-5470	1224	B	Thông tin không được đề cập	f	2	2026-08-10 14:08:48.214425
-5471	1224	C	Thông tin mâu thuẫn với bài đọc	f	3	2026-08-10 14:08:48.214425
-5472	1224	D	Thông tin thuộc một chủ đề khác	f	4	2026-08-10 14:08:48.214425
-5473	1225	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:08:48.214425
-5474	1225	B	Thông tin không được đề cập	f	2	2026-08-10 14:08:48.214425
-5475	1225	C	Thông tin mâu thuẫn với bài đọc	f	3	2026-08-10 14:08:48.214425
-5476	1225	D	Thông tin thuộc một chủ đề khác	f	4	2026-08-10 14:08:48.214425
-5477	1226	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:08:48.214425
-5478	1226	B	Thông tin không được đề cập	f	2	2026-08-10 14:08:48.214425
-5479	1226	C	Thông tin mâu thuẫn với bài đọc	f	3	2026-08-10 14:08:48.214425
-5480	1226	D	Thông tin thuộc một chủ đề khác	f	4	2026-08-10 14:08:48.214425
-5481	1227	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:08:48.214425
-5482	1227	B	Thông tin không được đề cập	f	2	2026-08-10 14:08:48.214425
-5483	1227	C	Thông tin mâu thuẫn với bài đọc	f	3	2026-08-10 14:08:48.214425
-5484	1227	D	Thông tin thuộc một chủ đề khác	f	4	2026-08-10 14:08:48.214425
-5485	1228	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:08:48.214425
-5486	1228	B	Thông tin không được đề cập	f	2	2026-08-10 14:08:48.214425
-5487	1228	C	Thông tin mâu thuẫn với bài đọc	f	3	2026-08-10 14:08:48.214425
-5488	1228	D	Thông tin thuộc một chủ đề khác	f	4	2026-08-10 14:08:48.214425
-5489	1229	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:08:48.214425
-5490	1229	B	Thông tin không được đề cập	f	2	2026-08-10 14:08:48.214425
-5491	1229	C	Thông tin mâu thuẫn với bài đọc	f	3	2026-08-10 14:08:48.214425
-5492	1229	D	Thông tin thuộc một chủ đề khác	f	4	2026-08-10 14:08:48.214425
-5493	1230	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:08:48.214425
-5494	1230	B	Thông tin không được đề cập	f	2	2026-08-10 14:08:48.214425
-5495	1230	C	Thông tin mâu thuẫn với bài đọc	f	3	2026-08-10 14:08:48.214425
-5496	1230	D	Thông tin thuộc một chủ đề khác	f	4	2026-08-10 14:08:48.214425
-5497	1231	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:08:48.214425
-5498	1231	B	Thông tin không được đề cập	f	2	2026-08-10 14:08:48.214425
-5499	1231	C	Thông tin mâu thuẫn với bài đọc	f	3	2026-08-10 14:08:48.214425
-5500	1231	D	Thông tin thuộc một chủ đề khác	f	4	2026-08-10 14:08:48.214425
-5501	1232	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:08:48.214425
-5502	1232	B	Thông tin không được đề cập	f	2	2026-08-10 14:08:48.214425
-5503	1232	C	Thông tin mâu thuẫn với bài đọc	f	3	2026-08-10 14:08:48.214425
-5504	1232	D	Thông tin thuộc một chủ đề khác	f	4	2026-08-10 14:08:48.214425
-5505	1233	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:08:48.214425
-5506	1233	B	Thông tin không được đề cập	f	2	2026-08-10 14:08:48.214425
-5507	1233	C	Thông tin mâu thuẫn với bài đọc	f	3	2026-08-10 14:08:48.214425
-5508	1233	D	Thông tin thuộc một chủ đề khác	f	4	2026-08-10 14:08:48.214425
-5509	1234	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:08:48.214425
-5510	1234	B	Thông tin không được đề cập	f	2	2026-08-10 14:08:48.214425
-5511	1234	C	Thông tin mâu thuẫn với bài đọc	f	3	2026-08-10 14:08:48.214425
-5512	1234	D	Thông tin thuộc một chủ đề khác	f	4	2026-08-10 14:08:48.214425
-5513	1235	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:08:48.214425
-5514	1235	B	Thông tin không được đề cập	f	2	2026-08-10 14:08:48.214425
-5515	1235	C	Thông tin mâu thuẫn với bài đọc	f	3	2026-08-10 14:08:48.214425
-5516	1235	D	Thông tin thuộc một chủ đề khác	f	4	2026-08-10 14:08:48.214425
-5517	1236	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:08:48.214425
-5518	1236	B	Thông tin không được đề cập	f	2	2026-08-10 14:08:48.214425
-5519	1236	C	Thông tin mâu thuẫn với bài đọc	f	3	2026-08-10 14:08:48.214425
-5520	1236	D	Thông tin thuộc một chủ đề khác	f	4	2026-08-10 14:08:48.214425
-5521	1237	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:08:48.214425
-5522	1237	B	Thông tin không được đề cập	f	2	2026-08-10 14:08:48.214425
-5523	1237	C	Thông tin mâu thuẫn với bài đọc	f	3	2026-08-10 14:08:48.214425
-5524	1237	D	Thông tin thuộc một chủ đề khác	f	4	2026-08-10 14:08:48.214425
-5525	1238	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:08:48.214425
-5526	1238	B	Thông tin không được đề cập	f	2	2026-08-10 14:08:48.214425
-5527	1238	C	Thông tin mâu thuẫn với bài đọc	f	3	2026-08-10 14:08:48.214425
-5528	1238	D	Thông tin thuộc một chủ đề khác	f	4	2026-08-10 14:08:48.214425
-5529	1239	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:08:48.214425
-5530	1239	B	Thông tin không được đề cập	f	2	2026-08-10 14:08:48.214425
-5531	1239	C	Thông tin mâu thuẫn với bài đọc	f	3	2026-08-10 14:08:48.214425
-5532	1239	D	Thông tin thuộc một chủ đề khác	f	4	2026-08-10 14:08:48.214425
-5533	1240	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:08:48.214425
-5534	1240	B	Thông tin không được đề cập	f	2	2026-08-10 14:08:48.214425
-5535	1240	C	Thông tin mâu thuẫn với bài đọc	f	3	2026-08-10 14:08:48.214425
-5536	1240	D	Thông tin thuộc một chủ đề khác	f	4	2026-08-10 14:08:48.214425
-5537	1241	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:08:48.214425
-5538	1241	B	Thông tin không được đề cập	f	2	2026-08-10 14:08:48.214425
-5539	1241	C	Thông tin mâu thuẫn với bài đọc	f	3	2026-08-10 14:08:48.214425
-5540	1241	D	Thông tin thuộc một chủ đề khác	f	4	2026-08-10 14:08:48.214425
-5541	1242	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:08:48.214425
-5542	1242	B	Thông tin không được đề cập	f	2	2026-08-10 14:08:48.214425
-5543	1242	C	Thông tin mâu thuẫn với bài đọc	f	3	2026-08-10 14:08:48.214425
-5544	1242	D	Thông tin thuộc một chủ đề khác	f	4	2026-08-10 14:08:48.214425
-5545	1243	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:08:48.214425
-5546	1243	B	Thông tin không được đề cập	f	2	2026-08-10 14:08:48.214425
-5547	1243	C	Thông tin mâu thuẫn với bài đọc	f	3	2026-08-10 14:08:48.214425
-5548	1243	D	Thông tin thuộc một chủ đề khác	f	4	2026-08-10 14:08:48.214425
-5549	1244	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:08:48.214425
-5550	1244	B	Thông tin không được đề cập	f	2	2026-08-10 14:08:48.214425
-5551	1244	C	Thông tin mâu thuẫn với bài đọc	f	3	2026-08-10 14:08:48.214425
-5552	1244	D	Thông tin thuộc một chủ đề khác	f	4	2026-08-10 14:08:48.214425
+2001	501	A	An office renovation	t	1	2026-08-10 14:18:37.790751
+2002	501	B	A new hiring plan	f	2	2026-08-10 14:18:37.790751
+2003	501	C	A sales campaign	f	3	2026-08-10 14:18:37.790751
+2004	501	D	A training program	f	4	2026-08-10 14:18:37.790751
+2005	502	A	August 17	t	1	2026-08-10 14:18:37.790751
+2006	502	B	August 18	f	2	2026-08-10 14:18:37.790751
+2007	502	C	August 22	f	3	2026-08-10 14:18:37.790751
+2008	502	D	September 17	f	4	2026-08-10 14:18:37.790751
+2009	503	A	On the fourth floor	t	1	2026-08-10 14:18:37.790751
+2010	503	B	At home	f	2	2026-08-10 14:18:37.790751
+2011	503	C	In the lobby	f	3	2026-08-10 14:18:37.790751
+2012	503	D	At another company	f	4	2026-08-10 14:18:37.790751
+2013	504	A	repaired and improved	t	1	2026-08-10 14:18:37.790751
+2014	504	B	closed permanently	f	2	2026-08-10 14:18:37.790751
+2015	504	C	sold quickly	f	3	2026-08-10 14:18:37.790751
+2016	504	D	moved overseas	f	4	2026-08-10 14:18:37.790751
+2017	505	A	To provide an order update	t	1	2026-08-10 14:18:37.790751
+2018	505	B	To cancel an order	f	2	2026-08-10 14:18:37.790751
+2019	505	C	To advertise a product	f	3	2026-08-10 14:18:37.790751
+2020	505	D	To request payment	f	4	2026-08-10 14:18:37.790751
+2021	506	A	Two wireless keyboards	t	1	2026-08-10 14:18:37.790751
+2022	506	B	A computer monitor	f	2	2026-08-10 14:18:37.790751
+2023	506	C	Two printers	f	3	2026-08-10 14:18:37.790751
+2024	506	D	A software license	f	4	2026-08-10 14:18:37.790751
+2025	507	A	Thursday	t	1	2026-08-10 14:18:37.790751
+2026	507	B	Monday	f	2	2026-08-10 14:18:37.790751
+2027	507	C	Friday	f	3	2026-08-10 14:18:37.790751
+2028	507	D	Next month	f	4	2026-08-10 14:18:37.790751
+2029	508	A	Administrative assistant	t	1	2026-08-10 14:18:37.790751
+2030	508	B	Sales manager	f	2	2026-08-10 14:18:37.790751
+2031	508	C	Accountant	f	3	2026-08-10 14:18:37.790751
+2032	508	D	Receptionist	f	4	2026-08-10 14:18:37.790751
+2033	509	A	At least two years of office experience	t	1	2026-08-10 14:18:37.790751
+2034	509	B	Five years of sales experience	f	2	2026-08-10 14:18:37.790751
+2035	509	C	A university degree only	f	3	2026-08-10 14:18:37.790751
+2036	509	D	No previous experience	f	4	2026-08-10 14:18:37.790751
+2037	510	A	September 5	t	1	2026-08-10 14:18:37.790751
+2038	510	B	August 5	f	2	2026-08-10 14:18:37.790751
+2039	510	C	September 15	f	3	2026-08-10 14:18:37.790751
+2040	510	D	October 5	f	4	2026-08-10 14:18:37.790751
+2041	511	A	Using spreadsheet software	t	1	2026-08-10 14:18:37.790751
+2042	511	B	Editing videos	f	2	2026-08-10 14:18:37.790751
+2043	511	C	Programming websites	f	3	2026-08-10 14:18:37.790751
+2044	511	D	Designing buildings	f	4	2026-08-10 14:18:37.790751
+2045	512	A	A training session	t	1	2026-08-10 14:18:37.790751
+2046	512	B	A staff party	f	2	2026-08-10 14:18:37.790751
+2047	512	C	A product launch	f	3	2026-08-10 14:18:37.790751
+2048	512	D	A job interview	f	4	2026-08-10 14:18:37.790751
+2049	513	A	Room 204	t	1	2026-08-10 14:18:37.790751
+2050	513	B	Room 104	f	2	2026-08-10 14:18:37.790751
+2051	513	C	The cafeteria	f	3	2026-08-10 14:18:37.790751
+2052	513	D	The main lobby	f	4	2026-08-10 14:18:37.790751
+2053	514	A	Identification cards	t	1	2026-08-10 14:18:37.790751
+2054	514	B	Laptops only	f	2	2026-08-10 14:18:37.790751
+2055	514	C	Printed contracts	f	3	2026-08-10 14:18:37.790751
+2056	514	D	Travel documents	f	4	2026-08-10 14:18:37.790751
+2057	515	A	Complete an online exercise	t	1	2026-08-10 14:18:37.790751
+2058	515	B	Call the trainer	f	2	2026-08-10 14:18:37.790751
+2059	515	C	Pay a fee	f	3	2026-08-10 14:18:37.790751
+2060	515	D	Leave the building	f	4	2026-08-10 14:18:37.790751
+2061	516	A	A discount on office supplies	t	1	2026-08-10 14:18:37.790751
+2062	516	B	A new store opening	f	2	2026-08-10 14:18:37.790751
+2063	516	C	A delivery service	f	3	2026-08-10 14:18:37.790751
+2064	516	D	A hiring event	f	4	2026-08-10 14:18:37.790751
+2065	517	A	This weekend	t	1	2026-08-10 14:18:37.790751
+2066	517	B	Next month	f	2	2026-08-10 14:18:37.790751
+2067	517	C	Every Monday	f	3	2026-08-10 14:18:37.790751
+2068	517	D	During the holidays	f	4	2026-08-10 14:18:37.790751
+2069	518	A	In the store	t	1	2026-08-10 14:18:37.790751
+2070	518	B	Online only	f	2	2026-08-10 14:18:37.790751
+2071	518	C	At the warehouse	f	3	2026-08-10 14:18:37.790751
+2072	518	D	By telephone	f	4	2026-08-10 14:18:37.790751
+2073	519	A	Printer ink	t	1	2026-08-10 14:18:37.790751
+2074	519	B	Notebooks	f	2	2026-08-10 14:18:37.790751
+2075	519	C	Pens	f	3	2026-08-10 14:18:37.790751
+2076	519	D	Folders	f	4	2026-08-10 14:18:37.790751
+2077	520	A	A hotel reservation	t	1	2026-08-10 14:18:37.790751
+2078	520	B	A flight reservation	f	2	2026-08-10 14:18:37.790751
+2079	520	C	A restaurant booking	f	3	2026-08-10 14:18:37.790751
+2080	520	D	A conference registration	f	4	2026-08-10 14:18:37.790751
+2081	521	A	Three nights	t	1	2026-08-10 14:18:37.790751
+2082	521	B	One night	f	2	2026-08-10 14:18:37.790751
+2083	521	C	Two weeks	f	3	2026-08-10 14:18:37.790751
+2084	521	D	One month	f	4	2026-08-10 14:18:37.790751
+2085	522	A	Breakfast	t	1	2026-08-10 14:18:37.790751
+2086	522	B	Airport transportation	f	2	2026-08-10 14:18:37.790751
+2087	522	C	A rental car	f	3	2026-08-10 14:18:37.790751
+2088	522	D	Lunch	f	4	2026-08-10 14:18:37.790751
+2089	523	A	Contact the front desk	t	1	2026-08-10 14:18:37.790751
+2090	523	B	Call the airline	f	2	2026-08-10 14:18:37.790751
+2091	523	C	Visit the airport	f	3	2026-08-10 14:18:37.790751
+2092	523	D	Email the restaurant	f	4	2026-08-10 14:18:37.790751
+2093	524	A	For completing ten years with the company	t	1	2026-08-10 14:18:37.790751
+2094	524	B	For opening a branch	f	2	2026-08-10 14:18:37.790751
+2095	524	C	For winning a sales contest	f	3	2026-08-10 14:18:37.790751
+2096	524	D	For retiring	f	4	2026-08-10 14:18:37.790751
+2097	525	A	2016	t	1	2026-08-10 14:18:37.790751
+2098	525	B	2018	f	2	2026-08-10 14:18:37.790751
+2099	525	C	2020	f	3	2026-08-10 14:18:37.790751
+2100	525	D	2022	f	4	2026-08-10 14:18:37.790751
+2101	526	A	Eight	t	1	2026-08-10 14:18:37.790751
+2102	526	B	Five	f	2	2026-08-10 14:18:37.790751
+2103	526	C	Ten	f	3	2026-08-10 14:18:37.790751
+2104	526	D	Twelve	f	4	2026-08-10 14:18:37.790751
+2105	527	A	Friday's staff meeting	t	1	2026-08-10 14:18:37.790751
+2106	527	B	Monday's meeting	f	2	2026-08-10 14:18:37.790751
+2107	527	C	A customer event	f	3	2026-08-10 14:18:37.790751
+2108	527	D	A training session	f	4	2026-08-10 14:18:37.790751
+2109	528	A	The morning departure time	t	1	2026-08-10 14:18:37.790751
+2110	528	B	The afternoon route	f	2	2026-08-10 14:18:37.790751
+2111	528	C	The parking fee	f	3	2026-08-10 14:18:37.790751
+2112	528	D	The shuttle location	f	4	2026-08-10 14:18:37.790751
+2113	529	A	7:30 A.M.	t	1	2026-08-10 14:18:37.790751
+2114	529	B	7:45 A.M.	f	2	2026-08-10 14:18:37.790751
+2115	529	C	8:00 A.M.	f	3	2026-08-10 14:18:37.790751
+2116	529	D	8:15 A.M.	f	4	2026-08-10 14:18:37.790751
+2117	530	A	The afternoon schedule	t	1	2026-08-10 14:18:37.790751
+2118	530	B	The morning schedule	f	2	2026-08-10 14:18:37.790751
+2119	530	C	The parking location	f	3	2026-08-10 14:18:37.790751
+2120	530	D	The driver	f	4	2026-08-10 14:18:37.790751
+2121	531	A	Arrive at least five minutes early	t	1	2026-08-10 14:18:37.790751
+2122	531	B	Bring lunch	f	2	2026-08-10 14:18:37.790751
+2123	531	C	Call the driver	f	3	2026-08-10 14:18:37.790751
+2124	531	D	Use another bus	f	4	2026-08-10 14:18:37.790751
+2125	532	A	The proposal deadline	t	1	2026-08-10 14:18:37.790751
+2126	532	B	The campaign budget	f	2	2026-08-10 14:18:37.790751
+2127	532	C	The meeting time	f	3	2026-08-10 14:18:37.790751
+2128	532	D	The hiring period	f	4	2026-08-10 14:18:37.790751
+2129	533	A	Departments needed more review time	t	1	2026-08-10 14:18:37.790751
+2130	533	B	The campaign was canceled	f	2	2026-08-10 14:18:37.790751
+2131	533	C	The manager was absent	f	3	2026-08-10 14:18:37.790751
+2132	533	D	The office was closed	f	4	2026-08-10 14:18:37.790751
+2133	534	A	June 24	t	1	2026-08-10 14:18:37.790751
+2134	534	B	June 28	f	2	2026-08-10 14:18:37.790751
+2135	534	C	July 24	f	3	2026-08-10 14:18:37.790751
+2136	534	D	May 28	f	4	2026-08-10 14:18:37.790751
+2137	535	A	extra	t	1	2026-08-10 14:18:37.790751
+2138	535	B	final	f	2	2026-08-10 14:18:37.790751
+2139	535	C	urgent	f	3	2026-08-10 14:18:37.790751
+2140	535	D	private	f	4	2026-08-10 14:18:37.790751
+2141	536	A	An office renovation	t	1	2026-08-10 14:18:37.790751
+2142	536	B	A new hiring plan	f	2	2026-08-10 14:18:37.790751
+2143	536	C	A sales campaign	f	3	2026-08-10 14:18:37.790751
+2144	536	D	A training program	f	4	2026-08-10 14:18:37.790751
+2145	537	A	August 17	t	1	2026-08-10 14:18:37.790751
+2146	537	B	August 18	f	2	2026-08-10 14:18:37.790751
+2147	537	C	August 22	f	3	2026-08-10 14:18:37.790751
+2148	537	D	September 17	f	4	2026-08-10 14:18:37.790751
+2149	538	A	On the fourth floor	t	1	2026-08-10 14:18:37.790751
+2150	538	B	At home	f	2	2026-08-10 14:18:37.790751
+2151	538	C	In the lobby	f	3	2026-08-10 14:18:37.790751
+2152	538	D	At another company	f	4	2026-08-10 14:18:37.790751
+2153	539	A	repaired and improved	t	1	2026-08-10 14:18:37.790751
+2154	539	B	closed permanently	f	2	2026-08-10 14:18:37.790751
+2155	539	C	sold quickly	f	3	2026-08-10 14:18:37.790751
+2156	539	D	moved overseas	f	4	2026-08-10 14:18:37.790751
+2157	540	A	To provide an order update	t	1	2026-08-10 14:18:37.790751
+2158	540	B	To cancel an order	f	2	2026-08-10 14:18:37.790751
+2159	540	C	To advertise a product	f	3	2026-08-10 14:18:37.790751
+2160	540	D	To request payment	f	4	2026-08-10 14:18:37.790751
+2161	541	A	Two wireless keyboards	t	1	2026-08-10 14:18:37.790751
+2162	541	B	A computer monitor	f	2	2026-08-10 14:18:37.790751
+2163	541	C	Two printers	f	3	2026-08-10 14:18:37.790751
+2164	541	D	A software license	f	4	2026-08-10 14:18:37.790751
+2165	542	A	Thursday	t	1	2026-08-10 14:18:37.790751
+2166	542	B	Monday	f	2	2026-08-10 14:18:37.790751
+2167	542	C	Friday	f	3	2026-08-10 14:18:37.790751
+2168	542	D	Next month	f	4	2026-08-10 14:18:37.790751
+2169	543	A	Administrative assistant	t	1	2026-08-10 14:18:37.790751
+2170	543	B	Sales manager	f	2	2026-08-10 14:18:37.790751
+2171	543	C	Accountant	f	3	2026-08-10 14:18:37.790751
+2172	543	D	Receptionist	f	4	2026-08-10 14:18:37.790751
+2173	544	A	At least two years of office experience	t	1	2026-08-10 14:18:37.790751
+2174	544	B	Five years of sales experience	f	2	2026-08-10 14:18:37.790751
+2175	544	C	A university degree only	f	3	2026-08-10 14:18:37.790751
+2176	544	D	No previous experience	f	4	2026-08-10 14:18:37.790751
+2177	545	A	September 5	t	1	2026-08-10 14:18:37.790751
+2178	545	B	August 5	f	2	2026-08-10 14:18:37.790751
+2179	545	C	September 15	f	3	2026-08-10 14:18:37.790751
+2180	545	D	October 5	f	4	2026-08-10 14:18:37.790751
+2181	546	A	Using spreadsheet software	t	1	2026-08-10 14:18:37.790751
+2182	546	B	Editing videos	f	2	2026-08-10 14:18:37.790751
+2183	546	C	Programming websites	f	3	2026-08-10 14:18:37.790751
+2184	546	D	Designing buildings	f	4	2026-08-10 14:18:37.790751
+2185	547	A	A training session	t	1	2026-08-10 14:18:37.790751
+2186	547	B	A staff party	f	2	2026-08-10 14:18:37.790751
+2187	547	C	A product launch	f	3	2026-08-10 14:18:37.790751
+2188	547	D	A job interview	f	4	2026-08-10 14:18:37.790751
+2189	548	A	Room 204	t	1	2026-08-10 14:18:37.790751
+2190	548	B	Room 104	f	2	2026-08-10 14:18:37.790751
+2191	548	C	The cafeteria	f	3	2026-08-10 14:18:37.790751
+2192	548	D	The main lobby	f	4	2026-08-10 14:18:37.790751
+2193	549	A	Identification cards	t	1	2026-08-10 14:18:37.790751
+2194	549	B	Laptops only	f	2	2026-08-10 14:18:37.790751
+2195	549	C	Printed contracts	f	3	2026-08-10 14:18:37.790751
+2196	549	D	Travel documents	f	4	2026-08-10 14:18:37.790751
+2197	550	A	Complete an online exercise	t	1	2026-08-10 14:18:37.790751
+2198	550	B	Call the trainer	f	2	2026-08-10 14:18:37.790751
+2199	550	C	Pay a fee	f	3	2026-08-10 14:18:37.790751
+2200	550	D	Leave the building	f	4	2026-08-10 14:18:37.790751
+2201	551	A	A discount on office supplies	t	1	2026-08-10 14:18:37.790751
+2202	551	B	A new store opening	f	2	2026-08-10 14:18:37.790751
+2203	551	C	A delivery service	f	3	2026-08-10 14:18:37.790751
+2204	551	D	A hiring event	f	4	2026-08-10 14:18:37.790751
+2205	552	A	This weekend	t	1	2026-08-10 14:18:37.790751
+2206	552	B	Next month	f	2	2026-08-10 14:18:37.790751
+2207	552	C	Every Monday	f	3	2026-08-10 14:18:37.790751
+2208	552	D	During the holidays	f	4	2026-08-10 14:18:37.790751
+2209	553	A	In the store	t	1	2026-08-10 14:18:37.790751
+2210	553	B	Online only	f	2	2026-08-10 14:18:37.790751
+2211	553	C	At the warehouse	f	3	2026-08-10 14:18:37.790751
+2212	553	D	By telephone	f	4	2026-08-10 14:18:37.790751
+2213	554	A	Printer ink	t	1	2026-08-10 14:18:37.790751
+2214	554	B	Notebooks	f	2	2026-08-10 14:18:37.790751
+2215	554	C	Pens	f	3	2026-08-10 14:18:37.790751
+2216	554	D	Folders	f	4	2026-08-10 14:18:37.790751
+2217	555	A	A hotel reservation	t	1	2026-08-10 14:18:37.790751
+2218	555	B	A flight reservation	f	2	2026-08-10 14:18:37.790751
+2219	555	C	A restaurant booking	f	3	2026-08-10 14:18:37.790751
+2220	555	D	A conference registration	f	4	2026-08-10 14:18:37.790751
+2221	556	A	Three nights	t	1	2026-08-10 14:18:37.790751
+2222	556	B	One night	f	2	2026-08-10 14:18:37.790751
+2223	556	C	Two weeks	f	3	2026-08-10 14:18:37.790751
+2224	556	D	One month	f	4	2026-08-10 14:18:37.790751
+2225	557	A	Breakfast	t	1	2026-08-10 14:18:37.790751
+2226	557	B	Airport transportation	f	2	2026-08-10 14:18:37.790751
+2227	557	C	A rental car	f	3	2026-08-10 14:18:37.790751
+2228	557	D	Lunch	f	4	2026-08-10 14:18:37.790751
+2229	558	A	Contact the front desk	t	1	2026-08-10 14:18:37.790751
+2230	558	B	Call the airline	f	2	2026-08-10 14:18:37.790751
+2231	558	C	Visit the airport	f	3	2026-08-10 14:18:37.790751
+2232	558	D	Email the restaurant	f	4	2026-08-10 14:18:37.790751
+2233	559	A	For completing ten years with the company	t	1	2026-08-10 14:18:37.790751
+2234	559	B	For opening a branch	f	2	2026-08-10 14:18:37.790751
+2235	559	C	For winning a sales contest	f	3	2026-08-10 14:18:37.790751
+2236	559	D	For retiring	f	4	2026-08-10 14:18:37.790751
+2237	560	A	2016	t	1	2026-08-10 14:18:37.790751
+2238	560	B	2018	f	2	2026-08-10 14:18:37.790751
+2239	560	C	2020	f	3	2026-08-10 14:18:37.790751
+2240	560	D	2022	f	4	2026-08-10 14:18:37.790751
+2241	561	A	Eight	t	1	2026-08-10 14:18:37.790751
+2242	561	B	Five	f	2	2026-08-10 14:18:37.790751
+2243	561	C	Ten	f	3	2026-08-10 14:18:37.790751
+2244	561	D	Twelve	f	4	2026-08-10 14:18:37.790751
+2245	562	A	Friday's staff meeting	t	1	2026-08-10 14:18:37.790751
+2246	562	B	Monday's meeting	f	2	2026-08-10 14:18:37.790751
+2247	562	C	A customer event	f	3	2026-08-10 14:18:37.790751
+2248	562	D	A training session	f	4	2026-08-10 14:18:37.790751
+2249	563	A	The morning departure time	t	1	2026-08-10 14:18:37.790751
+2250	563	B	The afternoon route	f	2	2026-08-10 14:18:37.790751
+2251	563	C	The parking fee	f	3	2026-08-10 14:18:37.790751
+2252	563	D	The shuttle location	f	4	2026-08-10 14:18:37.790751
+2253	564	A	7:30 A.M.	t	1	2026-08-10 14:18:37.790751
+2254	564	B	7:45 A.M.	f	2	2026-08-10 14:18:37.790751
+2255	564	C	8:00 A.M.	f	3	2026-08-10 14:18:37.790751
+2256	564	D	8:15 A.M.	f	4	2026-08-10 14:18:37.790751
+2257	565	A	The afternoon schedule	t	1	2026-08-10 14:18:37.790751
+2258	565	B	The morning schedule	f	2	2026-08-10 14:18:37.790751
+2259	565	C	The parking location	f	3	2026-08-10 14:18:37.790751
+2260	565	D	The driver	f	4	2026-08-10 14:18:37.790751
+2261	566	A	Arrive at least five minutes early	t	1	2026-08-10 14:18:37.790751
+2262	566	B	Bring lunch	f	2	2026-08-10 14:18:37.790751
+2263	566	C	Call the driver	f	3	2026-08-10 14:18:37.790751
+2264	566	D	Use another bus	f	4	2026-08-10 14:18:37.790751
+2265	567	A	The proposal deadline	t	1	2026-08-10 14:18:37.790751
+2266	567	B	The campaign budget	f	2	2026-08-10 14:18:37.790751
+2267	567	C	The meeting time	f	3	2026-08-10 14:18:37.790751
+2268	567	D	The hiring period	f	4	2026-08-10 14:18:37.790751
+2269	568	A	Departments needed more review time	t	1	2026-08-10 14:18:37.790751
+2270	568	B	The campaign was canceled	f	2	2026-08-10 14:18:37.790751
+2271	568	C	The manager was absent	f	3	2026-08-10 14:18:37.790751
+2272	568	D	The office was closed	f	4	2026-08-10 14:18:37.790751
+2273	569	A	June 24	t	1	2026-08-10 14:18:37.790751
+2274	569	B	June 28	f	2	2026-08-10 14:18:37.790751
+2275	569	C	July 24	f	3	2026-08-10 14:18:37.790751
+2276	569	D	May 28	f	4	2026-08-10 14:18:37.790751
+2277	570	A	extra	t	1	2026-08-10 14:18:37.790751
+2278	570	B	final	f	2	2026-08-10 14:18:37.790751
+2279	570	C	urgent	f	3	2026-08-10 14:18:37.790751
+2280	570	D	private	f	4	2026-08-10 14:18:37.790751
+2281	571	A	An office renovation	t	1	2026-08-10 14:18:37.790751
+2282	571	B	A new hiring plan	f	2	2026-08-10 14:18:37.790751
+2283	571	C	A sales campaign	f	3	2026-08-10 14:18:37.790751
+2284	571	D	A training program	f	4	2026-08-10 14:18:37.790751
+2285	572	A	August 17	t	1	2026-08-10 14:18:37.790751
+2286	572	B	August 18	f	2	2026-08-10 14:18:37.790751
+2287	572	C	August 22	f	3	2026-08-10 14:18:37.790751
+2288	572	D	September 17	f	4	2026-08-10 14:18:37.790751
+2289	573	A	On the fourth floor	t	1	2026-08-10 14:18:37.790751
+2290	573	B	At home	f	2	2026-08-10 14:18:37.790751
+2291	573	C	In the lobby	f	3	2026-08-10 14:18:37.790751
+2292	573	D	At another company	f	4	2026-08-10 14:18:37.790751
+2293	574	A	repaired and improved	t	1	2026-08-10 14:18:37.790751
+2294	574	B	closed permanently	f	2	2026-08-10 14:18:37.790751
+2295	574	C	sold quickly	f	3	2026-08-10 14:18:37.790751
+2296	574	D	moved overseas	f	4	2026-08-10 14:18:37.790751
+2297	575	A	To provide an order update	t	1	2026-08-10 14:18:37.790751
+2298	575	B	To cancel an order	f	2	2026-08-10 14:18:37.790751
+2299	575	C	To advertise a product	f	3	2026-08-10 14:18:37.790751
+2300	575	D	To request payment	f	4	2026-08-10 14:18:37.790751
+2301	576	A	Two wireless keyboards	t	1	2026-08-10 14:18:37.790751
+2302	576	B	A computer monitor	f	2	2026-08-10 14:18:37.790751
+2303	576	C	Two printers	f	3	2026-08-10 14:18:37.790751
+2304	576	D	A software license	f	4	2026-08-10 14:18:37.790751
+2305	577	A	Thursday	t	1	2026-08-10 14:18:37.790751
+2306	577	B	Monday	f	2	2026-08-10 14:18:37.790751
+2307	577	C	Friday	f	3	2026-08-10 14:18:37.790751
+2308	577	D	Next month	f	4	2026-08-10 14:18:37.790751
+2309	578	A	Administrative assistant	t	1	2026-08-10 14:18:37.790751
+2310	578	B	Sales manager	f	2	2026-08-10 14:18:37.790751
+2311	578	C	Accountant	f	3	2026-08-10 14:18:37.790751
+2312	578	D	Receptionist	f	4	2026-08-10 14:18:37.790751
+2313	579	A	At least two years of office experience	t	1	2026-08-10 14:18:37.790751
+2314	579	B	Five years of sales experience	f	2	2026-08-10 14:18:37.790751
+2315	579	C	A university degree only	f	3	2026-08-10 14:18:37.790751
+2316	579	D	No previous experience	f	4	2026-08-10 14:18:37.790751
+2317	580	A	September 5	t	1	2026-08-10 14:18:37.790751
+2318	580	B	August 5	f	2	2026-08-10 14:18:37.790751
+2319	580	C	September 15	f	3	2026-08-10 14:18:37.790751
+2320	580	D	October 5	f	4	2026-08-10 14:18:37.790751
+2321	581	A	Using spreadsheet software	t	1	2026-08-10 14:18:37.790751
+2322	581	B	Editing videos	f	2	2026-08-10 14:18:37.790751
+2323	581	C	Programming websites	f	3	2026-08-10 14:18:37.790751
+2324	581	D	Designing buildings	f	4	2026-08-10 14:18:37.790751
+2325	582	A	A training session	t	1	2026-08-10 14:18:37.790751
+2326	582	B	A staff party	f	2	2026-08-10 14:18:37.790751
+2327	582	C	A product launch	f	3	2026-08-10 14:18:37.790751
+2328	582	D	A job interview	f	4	2026-08-10 14:18:37.790751
+2329	583	A	Room 204	t	1	2026-08-10 14:18:37.790751
+2330	583	B	Room 104	f	2	2026-08-10 14:18:37.790751
+2331	583	C	The cafeteria	f	3	2026-08-10 14:18:37.790751
+2332	583	D	The main lobby	f	4	2026-08-10 14:18:37.790751
+2333	584	A	Identification cards	t	1	2026-08-10 14:18:37.790751
+2334	584	B	Laptops only	f	2	2026-08-10 14:18:37.790751
+2335	584	C	Printed contracts	f	3	2026-08-10 14:18:37.790751
+2336	584	D	Travel documents	f	4	2026-08-10 14:18:37.790751
+2337	585	A	Complete an online exercise	t	1	2026-08-10 14:18:37.790751
+2338	585	B	Call the trainer	f	2	2026-08-10 14:18:37.790751
+2339	585	C	Pay a fee	f	3	2026-08-10 14:18:37.790751
+2340	585	D	Leave the building	f	4	2026-08-10 14:18:37.790751
+2341	586	A	A discount on office supplies	t	1	2026-08-10 14:18:37.790751
+2342	586	B	A new store opening	f	2	2026-08-10 14:18:37.790751
+2343	586	C	A delivery service	f	3	2026-08-10 14:18:37.790751
+2344	586	D	A hiring event	f	4	2026-08-10 14:18:37.790751
+2345	587	A	This weekend	t	1	2026-08-10 14:18:37.790751
+2346	587	B	Next month	f	2	2026-08-10 14:18:37.790751
+2347	587	C	Every Monday	f	3	2026-08-10 14:18:37.790751
+2348	587	D	During the holidays	f	4	2026-08-10 14:18:37.790751
+2349	588	A	In the store	t	1	2026-08-10 14:18:37.790751
+2350	588	B	Online only	f	2	2026-08-10 14:18:37.790751
+2351	588	C	At the warehouse	f	3	2026-08-10 14:18:37.790751
+2352	588	D	By telephone	f	4	2026-08-10 14:18:37.790751
+2353	589	A	Printer ink	t	1	2026-08-10 14:18:37.790751
+2354	589	B	Notebooks	f	2	2026-08-10 14:18:37.790751
+2355	589	C	Pens	f	3	2026-08-10 14:18:37.790751
+2356	589	D	Folders	f	4	2026-08-10 14:18:37.790751
+2357	590	A	A hotel reservation	t	1	2026-08-10 14:18:37.790751
+2358	590	B	A flight reservation	f	2	2026-08-10 14:18:37.790751
+2359	590	C	A restaurant booking	f	3	2026-08-10 14:18:37.790751
+2360	590	D	A conference registration	f	4	2026-08-10 14:18:37.790751
+2361	591	A	Three nights	t	1	2026-08-10 14:18:37.790751
+2362	591	B	One night	f	2	2026-08-10 14:18:37.790751
+2363	591	C	Two weeks	f	3	2026-08-10 14:18:37.790751
+2364	591	D	One month	f	4	2026-08-10 14:18:37.790751
+2365	592	A	Breakfast	t	1	2026-08-10 14:18:37.790751
+2366	592	B	Airport transportation	f	2	2026-08-10 14:18:37.790751
+2367	592	C	A rental car	f	3	2026-08-10 14:18:37.790751
+2368	592	D	Lunch	f	4	2026-08-10 14:18:37.790751
+2369	593	A	Contact the front desk	t	1	2026-08-10 14:18:37.790751
+2370	593	B	Call the airline	f	2	2026-08-10 14:18:37.790751
+2371	593	C	Visit the airport	f	3	2026-08-10 14:18:37.790751
+2372	593	D	Email the restaurant	f	4	2026-08-10 14:18:37.790751
+2373	594	A	For completing ten years with the company	t	1	2026-08-10 14:18:37.790751
+2374	594	B	For opening a branch	f	2	2026-08-10 14:18:37.790751
+2375	594	C	For winning a sales contest	f	3	2026-08-10 14:18:37.790751
+2376	594	D	For retiring	f	4	2026-08-10 14:18:37.790751
+2377	595	A	2016	t	1	2026-08-10 14:18:37.790751
+2378	595	B	2018	f	2	2026-08-10 14:18:37.790751
+2379	595	C	2020	f	3	2026-08-10 14:18:37.790751
+2380	595	D	2022	f	4	2026-08-10 14:18:37.790751
+2381	596	A	Eight	t	1	2026-08-10 14:18:37.790751
+2382	596	B	Five	f	2	2026-08-10 14:18:37.790751
+2383	596	C	Ten	f	3	2026-08-10 14:18:37.790751
+2384	596	D	Twelve	f	4	2026-08-10 14:18:37.790751
+2385	597	A	Friday's staff meeting	t	1	2026-08-10 14:18:37.790751
+2386	597	B	Monday's meeting	f	2	2026-08-10 14:18:37.790751
+2387	597	C	A customer event	f	3	2026-08-10 14:18:37.790751
+2388	597	D	A training session	f	4	2026-08-10 14:18:37.790751
+2389	598	A	The morning departure time	t	1	2026-08-10 14:18:37.790751
+2390	598	B	The afternoon route	f	2	2026-08-10 14:18:37.790751
+2391	598	C	The parking fee	f	3	2026-08-10 14:18:37.790751
+2392	598	D	The shuttle location	f	4	2026-08-10 14:18:37.790751
+2393	599	A	7:30 A.M.	t	1	2026-08-10 14:18:37.790751
+2394	599	B	7:45 A.M.	f	2	2026-08-10 14:18:37.790751
+2395	599	C	8:00 A.M.	f	3	2026-08-10 14:18:37.790751
+2396	599	D	8:15 A.M.	f	4	2026-08-10 14:18:37.790751
+2397	600	A	The afternoon schedule	t	1	2026-08-10 14:18:37.790751
+2398	600	B	The morning schedule	f	2	2026-08-10 14:18:37.790751
+2399	600	C	The parking location	f	3	2026-08-10 14:18:37.790751
+2400	600	D	The driver	f	4	2026-08-10 14:18:37.790751
+2401	601	A	Arrive at least five minutes early	t	1	2026-08-10 14:18:37.790751
+2402	601	B	Bring lunch	f	2	2026-08-10 14:18:37.790751
+2403	601	C	Call the driver	f	3	2026-08-10 14:18:37.790751
+2404	601	D	Use another bus	f	4	2026-08-10 14:18:37.790751
+2405	602	A	The proposal deadline	t	1	2026-08-10 14:18:37.790751
+2406	602	B	The campaign budget	f	2	2026-08-10 14:18:37.790751
+2407	602	C	The meeting time	f	3	2026-08-10 14:18:37.790751
+2408	602	D	The hiring period	f	4	2026-08-10 14:18:37.790751
+2409	603	A	Departments needed more review time	t	1	2026-08-10 14:18:37.790751
+2410	603	B	The campaign was canceled	f	2	2026-08-10 14:18:37.790751
+2411	603	C	The manager was absent	f	3	2026-08-10 14:18:37.790751
+2412	603	D	The office was closed	f	4	2026-08-10 14:18:37.790751
+2413	604	A	June 24	t	1	2026-08-10 14:18:37.790751
+2414	604	B	June 28	f	2	2026-08-10 14:18:37.790751
+2415	604	C	July 24	f	3	2026-08-10 14:18:37.790751
+2416	604	D	May 28	f	4	2026-08-10 14:18:37.790751
+2417	605	A	extra	t	1	2026-08-10 14:18:37.790751
+2418	605	B	final	f	2	2026-08-10 14:18:37.790751
+2419	605	C	urgent	f	3	2026-08-10 14:18:37.790751
+2420	605	D	private	f	4	2026-08-10 14:18:37.790751
+2421	606	A	An office renovation	t	1	2026-08-10 14:18:37.790751
+2422	606	B	A new hiring plan	f	2	2026-08-10 14:18:37.790751
+2423	606	C	A sales campaign	f	3	2026-08-10 14:18:37.790751
+2424	606	D	A training program	f	4	2026-08-10 14:18:37.790751
+2425	607	A	August 17	t	1	2026-08-10 14:18:37.790751
+2426	607	B	August 18	f	2	2026-08-10 14:18:37.790751
+2427	607	C	August 22	f	3	2026-08-10 14:18:37.790751
+2428	607	D	September 17	f	4	2026-08-10 14:18:37.790751
+2429	608	A	On the fourth floor	t	1	2026-08-10 14:18:37.790751
+2430	608	B	At home	f	2	2026-08-10 14:18:37.790751
+2431	608	C	In the lobby	f	3	2026-08-10 14:18:37.790751
+2432	608	D	At another company	f	4	2026-08-10 14:18:37.790751
+2433	609	A	repaired and improved	t	1	2026-08-10 14:18:37.790751
+2434	609	B	closed permanently	f	2	2026-08-10 14:18:37.790751
+2435	609	C	sold quickly	f	3	2026-08-10 14:18:37.790751
+2436	609	D	moved overseas	f	4	2026-08-10 14:18:37.790751
+2437	610	A	To provide an order update	t	1	2026-08-10 14:18:37.790751
+2438	610	B	To cancel an order	f	2	2026-08-10 14:18:37.790751
+2439	610	C	To advertise a product	f	3	2026-08-10 14:18:37.790751
+2440	610	D	To request payment	f	4	2026-08-10 14:18:37.790751
+2441	611	A	Two wireless keyboards	t	1	2026-08-10 14:18:37.790751
+2442	611	B	A computer monitor	f	2	2026-08-10 14:18:37.790751
+2443	611	C	Two printers	f	3	2026-08-10 14:18:37.790751
+2444	611	D	A software license	f	4	2026-08-10 14:18:37.790751
+2445	612	A	Thursday	t	1	2026-08-10 14:18:37.790751
+2446	612	B	Monday	f	2	2026-08-10 14:18:37.790751
+2447	612	C	Friday	f	3	2026-08-10 14:18:37.790751
+2448	612	D	Next month	f	4	2026-08-10 14:18:37.790751
+2449	613	A	Administrative assistant	t	1	2026-08-10 14:18:37.790751
+2450	613	B	Sales manager	f	2	2026-08-10 14:18:37.790751
+2451	613	C	Accountant	f	3	2026-08-10 14:18:37.790751
+2452	613	D	Receptionist	f	4	2026-08-10 14:18:37.790751
+2453	614	A	At least two years of office experience	t	1	2026-08-10 14:18:37.790751
+2454	614	B	Five years of sales experience	f	2	2026-08-10 14:18:37.790751
+2455	614	C	A university degree only	f	3	2026-08-10 14:18:37.790751
+2456	614	D	No previous experience	f	4	2026-08-10 14:18:37.790751
+2457	615	A	September 5	t	1	2026-08-10 14:18:37.790751
+2458	615	B	August 5	f	2	2026-08-10 14:18:37.790751
+2459	615	C	September 15	f	3	2026-08-10 14:18:37.790751
+2460	615	D	October 5	f	4	2026-08-10 14:18:37.790751
+2461	616	A	Using spreadsheet software	t	1	2026-08-10 14:18:37.790751
+2462	616	B	Editing videos	f	2	2026-08-10 14:18:37.790751
+2463	616	C	Programming websites	f	3	2026-08-10 14:18:37.790751
+2464	616	D	Designing buildings	f	4	2026-08-10 14:18:37.790751
+2465	617	A	A training session	t	1	2026-08-10 14:18:37.790751
+2466	617	B	A staff party	f	2	2026-08-10 14:18:37.790751
+2467	617	C	A product launch	f	3	2026-08-10 14:18:37.790751
+2468	617	D	A job interview	f	4	2026-08-10 14:18:37.790751
+2469	618	A	Room 204	t	1	2026-08-10 14:18:37.790751
+2470	618	B	Room 104	f	2	2026-08-10 14:18:37.790751
+2471	618	C	The cafeteria	f	3	2026-08-10 14:18:37.790751
+2472	618	D	The main lobby	f	4	2026-08-10 14:18:37.790751
+2473	619	A	Identification cards	t	1	2026-08-10 14:18:37.790751
+2474	619	B	Laptops only	f	2	2026-08-10 14:18:37.790751
+2475	619	C	Printed contracts	f	3	2026-08-10 14:18:37.790751
+2476	619	D	Travel documents	f	4	2026-08-10 14:18:37.790751
+2477	620	A	Complete an online exercise	t	1	2026-08-10 14:18:37.790751
+2478	620	B	Call the trainer	f	2	2026-08-10 14:18:37.790751
+2479	620	C	Pay a fee	f	3	2026-08-10 14:18:37.790751
+2480	620	D	Leave the building	f	4	2026-08-10 14:18:37.790751
+2481	621	A	A discount on office supplies	t	1	2026-08-10 14:18:37.790751
+2482	621	B	A new store opening	f	2	2026-08-10 14:18:37.790751
+2483	621	C	A delivery service	f	3	2026-08-10 14:18:37.790751
+2484	621	D	A hiring event	f	4	2026-08-10 14:18:37.790751
+2485	622	A	This weekend	t	1	2026-08-10 14:18:37.790751
+2486	622	B	Next month	f	2	2026-08-10 14:18:37.790751
+2487	622	C	Every Monday	f	3	2026-08-10 14:18:37.790751
+2488	622	D	During the holidays	f	4	2026-08-10 14:18:37.790751
+2489	623	A	In the store	t	1	2026-08-10 14:18:37.790751
+2490	623	B	Online only	f	2	2026-08-10 14:18:37.790751
+2491	623	C	At the warehouse	f	3	2026-08-10 14:18:37.790751
+2492	623	D	By telephone	f	4	2026-08-10 14:18:37.790751
+2493	624	A	Printer ink	t	1	2026-08-10 14:18:37.790751
+2494	624	B	Notebooks	f	2	2026-08-10 14:18:37.790751
+2495	624	C	Pens	f	3	2026-08-10 14:18:37.790751
+2496	624	D	Folders	f	4	2026-08-10 14:18:37.790751
+2497	625	A	A hotel reservation	t	1	2026-08-10 14:18:37.790751
+2498	625	B	A flight reservation	f	2	2026-08-10 14:18:37.790751
+2499	625	C	A restaurant booking	f	3	2026-08-10 14:18:37.790751
+2500	625	D	A conference registration	f	4	2026-08-10 14:18:37.790751
+2501	626	A	Three nights	t	1	2026-08-10 14:18:37.790751
+2502	626	B	One night	f	2	2026-08-10 14:18:37.790751
+2503	626	C	Two weeks	f	3	2026-08-10 14:18:37.790751
+2504	626	D	One month	f	4	2026-08-10 14:18:37.790751
+2505	627	A	Breakfast	t	1	2026-08-10 14:18:37.790751
+2506	627	B	Airport transportation	f	2	2026-08-10 14:18:37.790751
+2507	627	C	A rental car	f	3	2026-08-10 14:18:37.790751
+2508	627	D	Lunch	f	4	2026-08-10 14:18:37.790751
+2509	628	A	Contact the front desk	t	1	2026-08-10 14:18:37.790751
+2510	628	B	Call the airline	f	2	2026-08-10 14:18:37.790751
+2511	628	C	Visit the airport	f	3	2026-08-10 14:18:37.790751
+2512	628	D	Email the restaurant	f	4	2026-08-10 14:18:37.790751
+2513	629	A	For completing ten years with the company	t	1	2026-08-10 14:18:37.790751
+2514	629	B	For opening a branch	f	2	2026-08-10 14:18:37.790751
+2515	629	C	For winning a sales contest	f	3	2026-08-10 14:18:37.790751
+2516	629	D	For retiring	f	4	2026-08-10 14:18:37.790751
+2517	630	A	2016	t	1	2026-08-10 14:18:37.790751
+2518	630	B	2018	f	2	2026-08-10 14:18:37.790751
+2519	630	C	2020	f	3	2026-08-10 14:18:37.790751
+2520	630	D	2022	f	4	2026-08-10 14:18:37.790751
+2521	631	A	Eight	t	1	2026-08-10 14:18:37.790751
+2522	631	B	Five	f	2	2026-08-10 14:18:37.790751
+2523	631	C	Ten	f	3	2026-08-10 14:18:37.790751
+2524	631	D	Twelve	f	4	2026-08-10 14:18:37.790751
+2525	632	A	Friday's staff meeting	t	1	2026-08-10 14:18:37.790751
+2526	632	B	Monday's meeting	f	2	2026-08-10 14:18:37.790751
+2527	632	C	A customer event	f	3	2026-08-10 14:18:37.790751
+2528	632	D	A training session	f	4	2026-08-10 14:18:37.790751
+2529	633	A	The morning departure time	t	1	2026-08-10 14:18:37.790751
+2530	633	B	The afternoon route	f	2	2026-08-10 14:18:37.790751
+2531	633	C	The parking fee	f	3	2026-08-10 14:18:37.790751
+2532	633	D	The shuttle location	f	4	2026-08-10 14:18:37.790751
+2533	634	A	7:30 A.M.	t	1	2026-08-10 14:18:37.790751
+2534	634	B	7:45 A.M.	f	2	2026-08-10 14:18:37.790751
+2535	634	C	8:00 A.M.	f	3	2026-08-10 14:18:37.790751
+2536	634	D	8:15 A.M.	f	4	2026-08-10 14:18:37.790751
+2537	635	A	The afternoon schedule	t	1	2026-08-10 14:18:37.790751
+2538	635	B	The morning schedule	f	2	2026-08-10 14:18:37.790751
+2539	635	C	The parking location	f	3	2026-08-10 14:18:37.790751
+2540	635	D	The driver	f	4	2026-08-10 14:18:37.790751
+2541	636	A	Arrive at least five minutes early	t	1	2026-08-10 14:18:37.790751
+2542	636	B	Bring lunch	f	2	2026-08-10 14:18:37.790751
+2543	636	C	Call the driver	f	3	2026-08-10 14:18:37.790751
+2544	636	D	Use another bus	f	4	2026-08-10 14:18:37.790751
+2545	637	A	The proposal deadline	t	1	2026-08-10 14:18:37.790751
+2546	637	B	The campaign budget	f	2	2026-08-10 14:18:37.790751
+2547	637	C	The meeting time	f	3	2026-08-10 14:18:37.790751
+2548	637	D	The hiring period	f	4	2026-08-10 14:18:37.790751
+2549	638	A	Departments needed more review time	t	1	2026-08-10 14:18:37.790751
+2550	638	B	The campaign was canceled	f	2	2026-08-10 14:18:37.790751
+2551	638	C	The manager was absent	f	3	2026-08-10 14:18:37.790751
+2552	638	D	The office was closed	f	4	2026-08-10 14:18:37.790751
+2553	639	A	June 24	t	1	2026-08-10 14:18:37.790751
+2554	639	B	June 28	f	2	2026-08-10 14:18:37.790751
+2555	639	C	July 24	f	3	2026-08-10 14:18:37.790751
+2556	639	D	May 28	f	4	2026-08-10 14:18:37.790751
+2557	640	A	extra	t	1	2026-08-10 14:18:37.790751
+2558	640	B	final	f	2	2026-08-10 14:18:37.790751
+2559	640	C	urgent	f	3	2026-08-10 14:18:37.790751
+2560	640	D	private	f	4	2026-08-10 14:18:37.790751
+2561	641	A	An office renovation	t	1	2026-08-10 14:18:37.790751
+2562	641	B	A new hiring plan	f	2	2026-08-10 14:18:37.790751
+2563	641	C	A sales campaign	f	3	2026-08-10 14:18:37.790751
+2564	641	D	A training program	f	4	2026-08-10 14:18:37.790751
+2565	642	A	August 17	t	1	2026-08-10 14:18:37.790751
+2566	642	B	August 18	f	2	2026-08-10 14:18:37.790751
+2567	642	C	August 22	f	3	2026-08-10 14:18:37.790751
+2568	642	D	September 17	f	4	2026-08-10 14:18:37.790751
+2569	643	A	On the fourth floor	t	1	2026-08-10 14:18:37.790751
+2570	643	B	At home	f	2	2026-08-10 14:18:37.790751
+2571	643	C	In the lobby	f	3	2026-08-10 14:18:37.790751
+2572	643	D	At another company	f	4	2026-08-10 14:18:37.790751
+2573	644	A	repaired and improved	t	1	2026-08-10 14:18:37.790751
+2574	644	B	closed permanently	f	2	2026-08-10 14:18:37.790751
+2575	644	C	sold quickly	f	3	2026-08-10 14:18:37.790751
+2576	644	D	moved overseas	f	4	2026-08-10 14:18:37.790751
+2577	645	A	To provide an order update	t	1	2026-08-10 14:18:37.790751
+2578	645	B	To cancel an order	f	2	2026-08-10 14:18:37.790751
+2579	645	C	To advertise a product	f	3	2026-08-10 14:18:37.790751
+2580	645	D	To request payment	f	4	2026-08-10 14:18:37.790751
+2581	646	A	Two wireless keyboards	t	1	2026-08-10 14:18:37.790751
+2582	646	B	A computer monitor	f	2	2026-08-10 14:18:37.790751
+2583	646	C	Two printers	f	3	2026-08-10 14:18:37.790751
+2584	646	D	A software license	f	4	2026-08-10 14:18:37.790751
+2585	647	A	Thursday	t	1	2026-08-10 14:18:37.790751
+2586	647	B	Monday	f	2	2026-08-10 14:18:37.790751
+2587	647	C	Friday	f	3	2026-08-10 14:18:37.790751
+2588	647	D	Next month	f	4	2026-08-10 14:18:37.790751
+2589	648	A	Administrative assistant	t	1	2026-08-10 14:18:37.790751
+2590	648	B	Sales manager	f	2	2026-08-10 14:18:37.790751
+2591	648	C	Accountant	f	3	2026-08-10 14:18:37.790751
+2592	648	D	Receptionist	f	4	2026-08-10 14:18:37.790751
+2593	649	A	At least two years of office experience	t	1	2026-08-10 14:18:37.790751
+2594	649	B	Five years of sales experience	f	2	2026-08-10 14:18:37.790751
+2595	649	C	A university degree only	f	3	2026-08-10 14:18:37.790751
+2596	649	D	No previous experience	f	4	2026-08-10 14:18:37.790751
+2597	650	A	September 5	t	1	2026-08-10 14:18:37.790751
+2598	650	B	August 5	f	2	2026-08-10 14:18:37.790751
+2599	650	C	September 15	f	3	2026-08-10 14:18:37.790751
+2600	650	D	October 5	f	4	2026-08-10 14:18:37.790751
+2601	651	A	Using spreadsheet software	t	1	2026-08-10 14:18:37.790751
+2602	651	B	Editing videos	f	2	2026-08-10 14:18:37.790751
+2603	651	C	Programming websites	f	3	2026-08-10 14:18:37.790751
+2604	651	D	Designing buildings	f	4	2026-08-10 14:18:37.790751
+2605	652	A	A training session	t	1	2026-08-10 14:18:37.790751
+2606	652	B	A staff party	f	2	2026-08-10 14:18:37.790751
+2607	652	C	A product launch	f	3	2026-08-10 14:18:37.790751
+2608	652	D	A job interview	f	4	2026-08-10 14:18:37.790751
+2609	653	A	Room 204	t	1	2026-08-10 14:18:37.790751
+2610	653	B	Room 104	f	2	2026-08-10 14:18:37.790751
+2611	653	C	The cafeteria	f	3	2026-08-10 14:18:37.790751
+2612	653	D	The main lobby	f	4	2026-08-10 14:18:37.790751
+2613	654	A	Identification cards	t	1	2026-08-10 14:18:37.790751
+2614	654	B	Laptops only	f	2	2026-08-10 14:18:37.790751
+2615	654	C	Printed contracts	f	3	2026-08-10 14:18:37.790751
+2616	654	D	Travel documents	f	4	2026-08-10 14:18:37.790751
+2617	655	A	Complete an online exercise	t	1	2026-08-10 14:18:37.790751
+2618	655	B	Call the trainer	f	2	2026-08-10 14:18:37.790751
+2619	655	C	Pay a fee	f	3	2026-08-10 14:18:37.790751
+2620	655	D	Leave the building	f	4	2026-08-10 14:18:37.790751
+2621	656	A	A discount on office supplies	t	1	2026-08-10 14:18:37.790751
+2622	656	B	A new store opening	f	2	2026-08-10 14:18:37.790751
+2623	656	C	A delivery service	f	3	2026-08-10 14:18:37.790751
+2624	656	D	A hiring event	f	4	2026-08-10 14:18:37.790751
+2625	657	A	This weekend	t	1	2026-08-10 14:18:37.790751
+2626	657	B	Next month	f	2	2026-08-10 14:18:37.790751
+2627	657	C	Every Monday	f	3	2026-08-10 14:18:37.790751
+2628	657	D	During the holidays	f	4	2026-08-10 14:18:37.790751
+2629	658	A	In the store	t	1	2026-08-10 14:18:37.790751
+2630	658	B	Online only	f	2	2026-08-10 14:18:37.790751
+2631	658	C	At the warehouse	f	3	2026-08-10 14:18:37.790751
+2632	658	D	By telephone	f	4	2026-08-10 14:18:37.790751
+2633	659	A	Printer ink	t	1	2026-08-10 14:18:37.790751
+2634	659	B	Notebooks	f	2	2026-08-10 14:18:37.790751
+2635	659	C	Pens	f	3	2026-08-10 14:18:37.790751
+2636	659	D	Folders	f	4	2026-08-10 14:18:37.790751
+2637	660	A	A hotel reservation	t	1	2026-08-10 14:18:37.790751
+2638	660	B	A flight reservation	f	2	2026-08-10 14:18:37.790751
+2639	660	C	A restaurant booking	f	3	2026-08-10 14:18:37.790751
+2640	660	D	A conference registration	f	4	2026-08-10 14:18:37.790751
+2641	661	A	Three nights	t	1	2026-08-10 14:18:37.790751
+2642	661	B	One night	f	2	2026-08-10 14:18:37.790751
+2643	661	C	Two weeks	f	3	2026-08-10 14:18:37.790751
+2644	661	D	One month	f	4	2026-08-10 14:18:37.790751
+2645	662	A	Breakfast	t	1	2026-08-10 14:18:37.790751
+2646	662	B	Airport transportation	f	2	2026-08-10 14:18:37.790751
+2647	662	C	A rental car	f	3	2026-08-10 14:18:37.790751
+2648	662	D	Lunch	f	4	2026-08-10 14:18:37.790751
+2649	663	A	Contact the front desk	t	1	2026-08-10 14:18:37.790751
+2650	663	B	Call the airline	f	2	2026-08-10 14:18:37.790751
+2651	663	C	Visit the airport	f	3	2026-08-10 14:18:37.790751
+2652	663	D	Email the restaurant	f	4	2026-08-10 14:18:37.790751
+2653	664	A	For completing ten years with the company	t	1	2026-08-10 14:18:37.790751
+2654	664	B	For opening a branch	f	2	2026-08-10 14:18:37.790751
+2655	664	C	For winning a sales contest	f	3	2026-08-10 14:18:37.790751
+2656	664	D	For retiring	f	4	2026-08-10 14:18:37.790751
+2657	665	A	2016	t	1	2026-08-10 14:18:37.790751
+2658	665	B	2018	f	2	2026-08-10 14:18:37.790751
+2659	665	C	2020	f	3	2026-08-10 14:18:37.790751
+2660	665	D	2022	f	4	2026-08-10 14:18:37.790751
+2661	666	A	Eight	t	1	2026-08-10 14:18:37.790751
+2662	666	B	Five	f	2	2026-08-10 14:18:37.790751
+2663	666	C	Ten	f	3	2026-08-10 14:18:37.790751
+2664	666	D	Twelve	f	4	2026-08-10 14:18:37.790751
+2665	667	A	Friday's staff meeting	t	1	2026-08-10 14:18:37.790751
+2666	667	B	Monday's meeting	f	2	2026-08-10 14:18:37.790751
+2667	667	C	A customer event	f	3	2026-08-10 14:18:37.790751
+2668	667	D	A training session	f	4	2026-08-10 14:18:37.790751
+2669	668	A	The morning departure time	t	1	2026-08-10 14:18:37.790751
+2670	668	B	The afternoon route	f	2	2026-08-10 14:18:37.790751
+2671	668	C	The parking fee	f	3	2026-08-10 14:18:37.790751
+2672	668	D	The shuttle location	f	4	2026-08-10 14:18:37.790751
+2673	669	A	7:30 A.M.	t	1	2026-08-10 14:18:37.790751
+2674	669	B	7:45 A.M.	f	2	2026-08-10 14:18:37.790751
+2675	669	C	8:00 A.M.	f	3	2026-08-10 14:18:37.790751
+2676	669	D	8:15 A.M.	f	4	2026-08-10 14:18:37.790751
+2677	670	A	The afternoon schedule	t	1	2026-08-10 14:18:37.790751
+2678	670	B	The morning schedule	f	2	2026-08-10 14:18:37.790751
+2679	670	C	The parking location	f	3	2026-08-10 14:18:37.790751
+2680	670	D	The driver	f	4	2026-08-10 14:18:37.790751
+2681	671	A	Arrive at least five minutes early	t	1	2026-08-10 14:18:37.790751
+2682	671	B	Bring lunch	f	2	2026-08-10 14:18:37.790751
+2683	671	C	Call the driver	f	3	2026-08-10 14:18:37.790751
+2684	671	D	Use another bus	f	4	2026-08-10 14:18:37.790751
+2685	672	A	The proposal deadline	t	1	2026-08-10 14:18:37.790751
+2686	672	B	The campaign budget	f	2	2026-08-10 14:18:37.790751
+2687	672	C	The meeting time	f	3	2026-08-10 14:18:37.790751
+2688	672	D	The hiring period	f	4	2026-08-10 14:18:37.790751
+2689	673	A	Departments needed more review time	t	1	2026-08-10 14:18:37.790751
+2690	673	B	The campaign was canceled	f	2	2026-08-10 14:18:37.790751
+2691	673	C	The manager was absent	f	3	2026-08-10 14:18:37.790751
+2692	673	D	The office was closed	f	4	2026-08-10 14:18:37.790751
+2693	674	A	June 24	t	1	2026-08-10 14:18:37.790751
+2694	674	B	June 28	f	2	2026-08-10 14:18:37.790751
+2695	674	C	July 24	f	3	2026-08-10 14:18:37.790751
+2696	674	D	May 28	f	4	2026-08-10 14:18:37.790751
+2697	675	A	extra	t	1	2026-08-10 14:18:37.790751
+2698	675	B	final	f	2	2026-08-10 14:18:37.790751
+2699	675	C	urgent	f	3	2026-08-10 14:18:37.790751
+2700	675	D	private	f	4	2026-08-10 14:18:37.790751
+2701	676	A	An office renovation	t	1	2026-08-10 14:18:37.790751
+2702	676	B	A new hiring plan	f	2	2026-08-10 14:18:37.790751
+2703	676	C	A sales campaign	f	3	2026-08-10 14:18:37.790751
+2704	676	D	A training program	f	4	2026-08-10 14:18:37.790751
+2705	677	A	August 17	t	1	2026-08-10 14:18:37.790751
+2706	677	B	August 18	f	2	2026-08-10 14:18:37.790751
+2707	677	C	August 22	f	3	2026-08-10 14:18:37.790751
+2708	677	D	September 17	f	4	2026-08-10 14:18:37.790751
+2709	678	A	On the fourth floor	t	1	2026-08-10 14:18:37.790751
+2710	678	B	At home	f	2	2026-08-10 14:18:37.790751
+2711	678	C	In the lobby	f	3	2026-08-10 14:18:37.790751
+2712	678	D	At another company	f	4	2026-08-10 14:18:37.790751
+2713	679	A	repaired and improved	t	1	2026-08-10 14:18:37.790751
+2714	679	B	closed permanently	f	2	2026-08-10 14:18:37.790751
+2715	679	C	sold quickly	f	3	2026-08-10 14:18:37.790751
+2716	679	D	moved overseas	f	4	2026-08-10 14:18:37.790751
+2717	680	A	To provide an order update	t	1	2026-08-10 14:18:37.790751
+2718	680	B	To cancel an order	f	2	2026-08-10 14:18:37.790751
+2719	680	C	To advertise a product	f	3	2026-08-10 14:18:37.790751
+2720	680	D	To request payment	f	4	2026-08-10 14:18:37.790751
+2721	681	A	Two wireless keyboards	t	1	2026-08-10 14:18:37.790751
+2722	681	B	A computer monitor	f	2	2026-08-10 14:18:37.790751
+2723	681	C	Two printers	f	3	2026-08-10 14:18:37.790751
+2724	681	D	A software license	f	4	2026-08-10 14:18:37.790751
+2725	682	A	Thursday	t	1	2026-08-10 14:18:37.790751
+2726	682	B	Monday	f	2	2026-08-10 14:18:37.790751
+2727	682	C	Friday	f	3	2026-08-10 14:18:37.790751
+2728	682	D	Next month	f	4	2026-08-10 14:18:37.790751
+2729	683	A	Administrative assistant	t	1	2026-08-10 14:18:37.790751
+2730	683	B	Sales manager	f	2	2026-08-10 14:18:37.790751
+2731	683	C	Accountant	f	3	2026-08-10 14:18:37.790751
+2732	683	D	Receptionist	f	4	2026-08-10 14:18:37.790751
+2733	684	A	At least two years of office experience	t	1	2026-08-10 14:18:37.790751
+2734	684	B	Five years of sales experience	f	2	2026-08-10 14:18:37.790751
+2735	684	C	A university degree only	f	3	2026-08-10 14:18:37.790751
+2736	684	D	No previous experience	f	4	2026-08-10 14:18:37.790751
+2737	685	A	September 5	t	1	2026-08-10 14:18:37.790751
+2738	685	B	August 5	f	2	2026-08-10 14:18:37.790751
+2739	685	C	September 15	f	3	2026-08-10 14:18:37.790751
+2740	685	D	October 5	f	4	2026-08-10 14:18:37.790751
+2741	686	A	Using spreadsheet software	t	1	2026-08-10 14:18:37.790751
+2742	686	B	Editing videos	f	2	2026-08-10 14:18:37.790751
+2743	686	C	Programming websites	f	3	2026-08-10 14:18:37.790751
+2744	686	D	Designing buildings	f	4	2026-08-10 14:18:37.790751
+2745	687	A	A training session	t	1	2026-08-10 14:18:37.790751
+2746	687	B	A staff party	f	2	2026-08-10 14:18:37.790751
+2747	687	C	A product launch	f	3	2026-08-10 14:18:37.790751
+2748	687	D	A job interview	f	4	2026-08-10 14:18:37.790751
+2749	688	A	Room 204	t	1	2026-08-10 14:18:37.790751
+2750	688	B	Room 104	f	2	2026-08-10 14:18:37.790751
+2751	688	C	The cafeteria	f	3	2026-08-10 14:18:37.790751
+2752	688	D	The main lobby	f	4	2026-08-10 14:18:37.790751
+2753	689	A	Identification cards	t	1	2026-08-10 14:18:37.790751
+2754	689	B	Laptops only	f	2	2026-08-10 14:18:37.790751
+2755	689	C	Printed contracts	f	3	2026-08-10 14:18:37.790751
+2756	689	D	Travel documents	f	4	2026-08-10 14:18:37.790751
+2757	690	A	Complete an online exercise	t	1	2026-08-10 14:18:37.790751
+2758	690	B	Call the trainer	f	2	2026-08-10 14:18:37.790751
+2759	690	C	Pay a fee	f	3	2026-08-10 14:18:37.790751
+2760	690	D	Leave the building	f	4	2026-08-10 14:18:37.790751
+2761	691	A	A discount on office supplies	t	1	2026-08-10 14:18:37.790751
+2762	691	B	A new store opening	f	2	2026-08-10 14:18:37.790751
+2763	691	C	A delivery service	f	3	2026-08-10 14:18:37.790751
+2764	691	D	A hiring event	f	4	2026-08-10 14:18:37.790751
+2765	692	A	This weekend	t	1	2026-08-10 14:18:37.790751
+2766	692	B	Next month	f	2	2026-08-10 14:18:37.790751
+2767	692	C	Every Monday	f	3	2026-08-10 14:18:37.790751
+2768	692	D	During the holidays	f	4	2026-08-10 14:18:37.790751
+2769	693	A	In the store	t	1	2026-08-10 14:18:37.790751
+2770	693	B	Online only	f	2	2026-08-10 14:18:37.790751
+2771	693	C	At the warehouse	f	3	2026-08-10 14:18:37.790751
+2772	693	D	By telephone	f	4	2026-08-10 14:18:37.790751
+2773	694	A	Printer ink	t	1	2026-08-10 14:18:37.790751
+2774	694	B	Notebooks	f	2	2026-08-10 14:18:37.790751
+2775	694	C	Pens	f	3	2026-08-10 14:18:37.790751
+2776	694	D	Folders	f	4	2026-08-10 14:18:37.790751
+2777	695	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:18:37.790751
+2778	695	B	Thông tin không được đề cập	f	2	2026-08-10 14:18:37.790751
+2779	695	C	Thông tin trái với bài đọc	f	3	2026-08-10 14:18:37.790751
+2780	695	D	Thông tin thuộc một tình huống khác	f	4	2026-08-10 14:18:37.790751
+2781	696	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:18:37.790751
+2782	696	B	Thông tin không được đề cập	f	2	2026-08-10 14:18:37.790751
+2783	696	C	Thông tin trái với bài đọc	f	3	2026-08-10 14:18:37.790751
+2784	696	D	Thông tin thuộc một tình huống khác	f	4	2026-08-10 14:18:37.790751
+2785	697	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:18:37.790751
+2786	697	B	Thông tin không được đề cập	f	2	2026-08-10 14:18:37.790751
+2787	697	C	Thông tin trái với bài đọc	f	3	2026-08-10 14:18:37.790751
+2788	697	D	Thông tin thuộc một tình huống khác	f	4	2026-08-10 14:18:37.790751
+2789	698	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:18:37.790751
+2790	698	B	Thông tin không được đề cập	f	2	2026-08-10 14:18:37.790751
+2791	698	C	Thông tin trái với bài đọc	f	3	2026-08-10 14:18:37.790751
+2792	698	D	Thông tin thuộc một tình huống khác	f	4	2026-08-10 14:18:37.790751
+2793	699	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:18:37.790751
+2794	699	B	Thông tin không được đề cập	f	2	2026-08-10 14:18:37.790751
+2795	699	C	Thông tin trái với bài đọc	f	3	2026-08-10 14:18:37.790751
+2796	699	D	Thông tin thuộc một tình huống khác	f	4	2026-08-10 14:18:37.790751
+2797	700	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:18:37.790751
+2798	700	B	Thông tin không được đề cập	f	2	2026-08-10 14:18:37.790751
+2799	700	C	Thông tin trái với bài đọc	f	3	2026-08-10 14:18:37.790751
+2800	700	D	Thông tin thuộc một tình huống khác	f	4	2026-08-10 14:18:37.790751
+2801	701	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:18:37.790751
+2802	701	B	Thông tin không được đề cập	f	2	2026-08-10 14:18:37.790751
+2803	701	C	Thông tin trái với bài đọc	f	3	2026-08-10 14:18:37.790751
+2804	701	D	Thông tin thuộc một tình huống khác	f	4	2026-08-10 14:18:37.790751
+2805	702	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:18:37.790751
+2806	702	B	Thông tin không được đề cập	f	2	2026-08-10 14:18:37.790751
+2807	702	C	Thông tin trái với bài đọc	f	3	2026-08-10 14:18:37.790751
+2808	702	D	Thông tin thuộc một tình huống khác	f	4	2026-08-10 14:18:37.790751
+2809	703	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:18:37.790751
+2810	703	B	Thông tin không được đề cập	f	2	2026-08-10 14:18:37.790751
+2811	703	C	Thông tin trái với bài đọc	f	3	2026-08-10 14:18:37.790751
+2812	703	D	Thông tin thuộc một tình huống khác	f	4	2026-08-10 14:18:37.790751
+2813	704	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:18:37.790751
+2814	704	B	Thông tin không được đề cập	f	2	2026-08-10 14:18:37.790751
+2815	704	C	Thông tin trái với bài đọc	f	3	2026-08-10 14:18:37.790751
+2816	704	D	Thông tin thuộc một tình huống khác	f	4	2026-08-10 14:18:37.790751
+2817	705	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:18:37.790751
+2818	705	B	Thông tin không được đề cập	f	2	2026-08-10 14:18:37.790751
+2819	705	C	Thông tin trái với bài đọc	f	3	2026-08-10 14:18:37.790751
+2820	705	D	Thông tin thuộc một tình huống khác	f	4	2026-08-10 14:18:37.790751
+2821	706	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:18:37.790751
+2822	706	B	Thông tin không được đề cập	f	2	2026-08-10 14:18:37.790751
+2823	706	C	Thông tin trái với bài đọc	f	3	2026-08-10 14:18:37.790751
+2824	706	D	Thông tin thuộc một tình huống khác	f	4	2026-08-10 14:18:37.790751
+2825	707	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:18:37.790751
+2826	707	B	Thông tin không được đề cập	f	2	2026-08-10 14:18:37.790751
+2827	707	C	Thông tin trái với bài đọc	f	3	2026-08-10 14:18:37.790751
+2828	707	D	Thông tin thuộc một tình huống khác	f	4	2026-08-10 14:18:37.790751
+2829	708	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:18:37.790751
+2830	708	B	Thông tin không được đề cập	f	2	2026-08-10 14:18:37.790751
+2831	708	C	Thông tin trái với bài đọc	f	3	2026-08-10 14:18:37.790751
+2832	708	D	Thông tin thuộc một tình huống khác	f	4	2026-08-10 14:18:37.790751
+2833	709	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:18:37.790751
+2834	709	B	Thông tin không được đề cập	f	2	2026-08-10 14:18:37.790751
+2835	709	C	Thông tin trái với bài đọc	f	3	2026-08-10 14:18:37.790751
+2836	709	D	Thông tin thuộc một tình huống khác	f	4	2026-08-10 14:18:37.790751
+2837	710	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:18:37.790751
+2838	710	B	Thông tin không được đề cập	f	2	2026-08-10 14:18:37.790751
+2839	710	C	Thông tin trái với bài đọc	f	3	2026-08-10 14:18:37.790751
+2840	710	D	Thông tin thuộc một tình huống khác	f	4	2026-08-10 14:18:37.790751
+2841	711	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:18:37.790751
+2842	711	B	Thông tin không được đề cập	f	2	2026-08-10 14:18:37.790751
+2843	711	C	Thông tin trái với bài đọc	f	3	2026-08-10 14:18:37.790751
+2844	711	D	Thông tin thuộc một tình huống khác	f	4	2026-08-10 14:18:37.790751
+2845	712	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:18:37.790751
+2846	712	B	Thông tin không được đề cập	f	2	2026-08-10 14:18:37.790751
+2847	712	C	Thông tin trái với bài đọc	f	3	2026-08-10 14:18:37.790751
+2848	712	D	Thông tin thuộc một tình huống khác	f	4	2026-08-10 14:18:37.790751
+2849	713	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:18:37.790751
+2850	713	B	Thông tin không được đề cập	f	2	2026-08-10 14:18:37.790751
+2851	713	C	Thông tin trái với bài đọc	f	3	2026-08-10 14:18:37.790751
+2852	713	D	Thông tin thuộc một tình huống khác	f	4	2026-08-10 14:18:37.790751
+2853	714	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:18:37.790751
+2854	714	B	Thông tin không được đề cập	f	2	2026-08-10 14:18:37.790751
+2855	714	C	Thông tin trái với bài đọc	f	3	2026-08-10 14:18:37.790751
+2856	714	D	Thông tin thuộc một tình huống khác	f	4	2026-08-10 14:18:37.790751
+2857	715	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:18:37.790751
+2858	715	B	Thông tin không được đề cập	f	2	2026-08-10 14:18:37.790751
+2859	715	C	Thông tin trái với bài đọc	f	3	2026-08-10 14:18:37.790751
+2860	715	D	Thông tin thuộc một tình huống khác	f	4	2026-08-10 14:18:37.790751
+2861	716	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:18:37.790751
+2862	716	B	Thông tin không được đề cập	f	2	2026-08-10 14:18:37.790751
+2863	716	C	Thông tin trái với bài đọc	f	3	2026-08-10 14:18:37.790751
+2864	716	D	Thông tin thuộc một tình huống khác	f	4	2026-08-10 14:18:37.790751
+2865	717	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:18:37.790751
+2866	717	B	Thông tin không được đề cập	f	2	2026-08-10 14:18:37.790751
+2867	717	C	Thông tin trái với bài đọc	f	3	2026-08-10 14:18:37.790751
+2868	717	D	Thông tin thuộc một tình huống khác	f	4	2026-08-10 14:18:37.790751
+2869	718	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:18:37.790751
+2870	718	B	Thông tin không được đề cập	f	2	2026-08-10 14:18:37.790751
+2871	718	C	Thông tin trái với bài đọc	f	3	2026-08-10 14:18:37.790751
+2872	718	D	Thông tin thuộc một tình huống khác	f	4	2026-08-10 14:18:37.790751
+2873	719	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:18:37.790751
+2874	719	B	Thông tin không được đề cập	f	2	2026-08-10 14:18:37.790751
+2875	719	C	Thông tin trái với bài đọc	f	3	2026-08-10 14:18:37.790751
+2876	719	D	Thông tin thuộc một tình huống khác	f	4	2026-08-10 14:18:37.790751
+2877	720	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:18:37.790751
+2878	720	B	Thông tin không được đề cập	f	2	2026-08-10 14:18:37.790751
+2879	720	C	Thông tin trái với bài đọc	f	3	2026-08-10 14:18:37.790751
+2880	720	D	Thông tin thuộc một tình huống khác	f	4	2026-08-10 14:18:37.790751
+2881	721	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:18:37.790751
+2882	721	B	Thông tin không được đề cập	f	2	2026-08-10 14:18:37.790751
+2883	721	C	Thông tin trái với bài đọc	f	3	2026-08-10 14:18:37.790751
+2884	721	D	Thông tin thuộc một tình huống khác	f	4	2026-08-10 14:18:37.790751
+2885	722	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:18:37.790751
+2886	722	B	Thông tin không được đề cập	f	2	2026-08-10 14:18:37.790751
+2887	722	C	Thông tin trái với bài đọc	f	3	2026-08-10 14:18:37.790751
+2888	722	D	Thông tin thuộc một tình huống khác	f	4	2026-08-10 14:18:37.790751
+2889	723	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:18:37.790751
+2890	723	B	Thông tin không được đề cập	f	2	2026-08-10 14:18:37.790751
+2891	723	C	Thông tin trái với bài đọc	f	3	2026-08-10 14:18:37.790751
+2892	723	D	Thông tin thuộc một tình huống khác	f	4	2026-08-10 14:18:37.790751
+2893	724	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:18:37.790751
+2894	724	B	Thông tin không được đề cập	f	2	2026-08-10 14:18:37.790751
+2895	724	C	Thông tin trái với bài đọc	f	3	2026-08-10 14:18:37.790751
+2896	724	D	Thông tin thuộc một tình huống khác	f	4	2026-08-10 14:18:37.790751
+2897	725	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:18:37.790751
+2898	725	B	Thông tin không được đề cập	f	2	2026-08-10 14:18:37.790751
+2899	725	C	Thông tin trái với bài đọc	f	3	2026-08-10 14:18:37.790751
+2900	725	D	Thông tin thuộc một tình huống khác	f	4	2026-08-10 14:18:37.790751
+2901	726	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:18:37.790751
+2902	726	B	Thông tin không được đề cập	f	2	2026-08-10 14:18:37.790751
+2903	726	C	Thông tin trái với bài đọc	f	3	2026-08-10 14:18:37.790751
+2904	726	D	Thông tin thuộc một tình huống khác	f	4	2026-08-10 14:18:37.790751
+2905	727	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:18:37.790751
+2906	727	B	Thông tin không được đề cập	f	2	2026-08-10 14:18:37.790751
+2907	727	C	Thông tin trái với bài đọc	f	3	2026-08-10 14:18:37.790751
+2908	727	D	Thông tin thuộc một tình huống khác	f	4	2026-08-10 14:18:37.790751
+2909	728	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:18:37.790751
+2910	728	B	Thông tin không được đề cập	f	2	2026-08-10 14:18:37.790751
+2911	728	C	Thông tin trái với bài đọc	f	3	2026-08-10 14:18:37.790751
+2912	728	D	Thông tin thuộc một tình huống khác	f	4	2026-08-10 14:18:37.790751
+2913	729	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:18:37.790751
+2914	729	B	Thông tin không được đề cập	f	2	2026-08-10 14:18:37.790751
+2915	729	C	Thông tin trái với bài đọc	f	3	2026-08-10 14:18:37.790751
+2916	729	D	Thông tin thuộc một tình huống khác	f	4	2026-08-10 14:18:37.790751
+2917	730	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:18:37.790751
+2918	730	B	Thông tin không được đề cập	f	2	2026-08-10 14:18:37.790751
+2919	730	C	Thông tin trái với bài đọc	f	3	2026-08-10 14:18:37.790751
+2920	730	D	Thông tin thuộc một tình huống khác	f	4	2026-08-10 14:18:37.790751
+2921	731	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:18:37.790751
+2922	731	B	Thông tin không được đề cập	f	2	2026-08-10 14:18:37.790751
+2923	731	C	Thông tin trái với bài đọc	f	3	2026-08-10 14:18:37.790751
+2924	731	D	Thông tin thuộc một tình huống khác	f	4	2026-08-10 14:18:37.790751
+2925	732	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:18:37.790751
+2926	732	B	Thông tin không được đề cập	f	2	2026-08-10 14:18:37.790751
+2927	732	C	Thông tin trái với bài đọc	f	3	2026-08-10 14:18:37.790751
+2928	732	D	Thông tin thuộc một tình huống khác	f	4	2026-08-10 14:18:37.790751
+2929	733	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:18:37.790751
+2930	733	B	Thông tin không được đề cập	f	2	2026-08-10 14:18:37.790751
+2931	733	C	Thông tin trái với bài đọc	f	3	2026-08-10 14:18:37.790751
+2932	733	D	Thông tin thuộc một tình huống khác	f	4	2026-08-10 14:18:37.790751
+2933	734	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:18:37.790751
+2934	734	B	Thông tin không được đề cập	f	2	2026-08-10 14:18:37.790751
+2935	734	C	Thông tin trái với bài đọc	f	3	2026-08-10 14:18:37.790751
+2936	734	D	Thông tin thuộc một tình huống khác	f	4	2026-08-10 14:18:37.790751
+2937	735	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:18:37.790751
+2938	735	B	Thông tin không được đề cập	f	2	2026-08-10 14:18:37.790751
+2939	735	C	Thông tin trái với bài đọc	f	3	2026-08-10 14:18:37.790751
+2940	735	D	Thông tin thuộc một tình huống khác	f	4	2026-08-10 14:18:37.790751
+2941	736	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:18:37.790751
+2942	736	B	Thông tin không được đề cập	f	2	2026-08-10 14:18:37.790751
+2943	736	C	Thông tin trái với bài đọc	f	3	2026-08-10 14:18:37.790751
+2944	736	D	Thông tin thuộc một tình huống khác	f	4	2026-08-10 14:18:37.790751
+2945	737	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:18:37.790751
+2946	737	B	Thông tin không được đề cập	f	2	2026-08-10 14:18:37.790751
+2947	737	C	Thông tin trái với bài đọc	f	3	2026-08-10 14:18:37.790751
+2948	737	D	Thông tin thuộc một tình huống khác	f	4	2026-08-10 14:18:37.790751
+2949	738	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:18:37.790751
+2950	738	B	Thông tin không được đề cập	f	2	2026-08-10 14:18:37.790751
+2951	738	C	Thông tin trái với bài đọc	f	3	2026-08-10 14:18:37.790751
+2952	738	D	Thông tin thuộc một tình huống khác	f	4	2026-08-10 14:18:37.790751
+2953	739	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:18:37.790751
+2954	739	B	Thông tin không được đề cập	f	2	2026-08-10 14:18:37.790751
+2955	739	C	Thông tin trái với bài đọc	f	3	2026-08-10 14:18:37.790751
+2956	739	D	Thông tin thuộc một tình huống khác	f	4	2026-08-10 14:18:37.790751
+2957	740	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:18:37.790751
+2958	740	B	Thông tin không được đề cập	f	2	2026-08-10 14:18:37.790751
+2959	740	C	Thông tin trái với bài đọc	f	3	2026-08-10 14:18:37.790751
+2960	740	D	Thông tin thuộc một tình huống khác	f	4	2026-08-10 14:18:37.790751
+2961	741	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:18:37.790751
+2962	741	B	Thông tin không được đề cập	f	2	2026-08-10 14:18:37.790751
+2963	741	C	Thông tin trái với bài đọc	f	3	2026-08-10 14:18:37.790751
+2964	741	D	Thông tin thuộc một tình huống khác	f	4	2026-08-10 14:18:37.790751
+2965	742	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:18:37.790751
+2966	742	B	Thông tin không được đề cập	f	2	2026-08-10 14:18:37.790751
+2967	742	C	Thông tin trái với bài đọc	f	3	2026-08-10 14:18:37.790751
+2968	742	D	Thông tin thuộc một tình huống khác	f	4	2026-08-10 14:18:37.790751
+2969	743	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:18:37.790751
+2970	743	B	Thông tin không được đề cập	f	2	2026-08-10 14:18:37.790751
+2971	743	C	Thông tin trái với bài đọc	f	3	2026-08-10 14:18:37.790751
+2972	743	D	Thông tin thuộc một tình huống khác	f	4	2026-08-10 14:18:37.790751
+2973	744	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:18:37.790751
+2974	744	B	Thông tin không được đề cập	f	2	2026-08-10 14:18:37.790751
+2975	744	C	Thông tin trái với bài đọc	f	3	2026-08-10 14:18:37.790751
+2976	744	D	Thông tin thuộc một tình huống khác	f	4	2026-08-10 14:18:37.790751
+2977	745	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:18:37.790751
+2978	745	B	Thông tin không được đề cập	f	2	2026-08-10 14:18:37.790751
+2979	745	C	Thông tin trái với bài đọc	f	3	2026-08-10 14:18:37.790751
+2980	745	D	Thông tin thuộc một tình huống khác	f	4	2026-08-10 14:18:37.790751
+2981	746	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:18:37.790751
+2982	746	B	Thông tin không được đề cập	f	2	2026-08-10 14:18:37.790751
+2983	746	C	Thông tin trái với bài đọc	f	3	2026-08-10 14:18:37.790751
+2984	746	D	Thông tin thuộc một tình huống khác	f	4	2026-08-10 14:18:37.790751
+2985	747	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:18:37.790751
+2986	747	B	Thông tin không được đề cập	f	2	2026-08-10 14:18:37.790751
+2987	747	C	Thông tin trái với bài đọc	f	3	2026-08-10 14:18:37.790751
+2988	747	D	Thông tin thuộc một tình huống khác	f	4	2026-08-10 14:18:37.790751
+2989	748	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:18:37.790751
+2990	748	B	Thông tin không được đề cập	f	2	2026-08-10 14:18:37.790751
+2991	748	C	Thông tin trái với bài đọc	f	3	2026-08-10 14:18:37.790751
+2992	748	D	Thông tin thuộc một tình huống khác	f	4	2026-08-10 14:18:37.790751
+2993	749	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:18:37.790751
+2994	749	B	Thông tin không được đề cập	f	2	2026-08-10 14:18:37.790751
+2995	749	C	Thông tin trái với bài đọc	f	3	2026-08-10 14:18:37.790751
+2996	749	D	Thông tin thuộc một tình huống khác	f	4	2026-08-10 14:18:37.790751
+2997	750	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:18:37.790751
+2998	750	B	Thông tin không được đề cập	f	2	2026-08-10 14:18:37.790751
+2999	750	C	Thông tin trái với bài đọc	f	3	2026-08-10 14:18:37.790751
+3000	750	D	Thông tin thuộc một tình huống khác	f	4	2026-08-10 14:18:37.790751
+3001	751	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:18:37.790751
+3002	751	B	Thông tin không được đề cập	f	2	2026-08-10 14:18:37.790751
+3003	751	C	Thông tin trái với bài đọc	f	3	2026-08-10 14:18:37.790751
+3004	751	D	Thông tin thuộc một tình huống khác	f	4	2026-08-10 14:18:37.790751
+3005	752	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:18:37.790751
+3006	752	B	Thông tin không được đề cập	f	2	2026-08-10 14:18:37.790751
+3007	752	C	Thông tin trái với bài đọc	f	3	2026-08-10 14:18:37.790751
+3008	752	D	Thông tin thuộc một tình huống khác	f	4	2026-08-10 14:18:37.790751
+3009	753	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:18:37.790751
+3010	753	B	Thông tin không được đề cập	f	2	2026-08-10 14:18:37.790751
+3011	753	C	Thông tin trái với bài đọc	f	3	2026-08-10 14:18:37.790751
+3012	753	D	Thông tin thuộc một tình huống khác	f	4	2026-08-10 14:18:37.790751
+3013	754	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:18:37.790751
+3014	754	B	Thông tin không được đề cập	f	2	2026-08-10 14:18:37.790751
+3015	754	C	Thông tin trái với bài đọc	f	3	2026-08-10 14:18:37.790751
+3016	754	D	Thông tin thuộc một tình huống khác	f	4	2026-08-10 14:18:37.790751
+3017	755	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:18:37.790751
+3018	755	B	Thông tin không được đề cập	f	2	2026-08-10 14:18:37.790751
+3019	755	C	Thông tin trái với bài đọc	f	3	2026-08-10 14:18:37.790751
+3020	755	D	Thông tin thuộc một tình huống khác	f	4	2026-08-10 14:18:37.790751
+3021	756	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:18:37.790751
+3022	756	B	Thông tin không được đề cập	f	2	2026-08-10 14:18:37.790751
+3023	756	C	Thông tin trái với bài đọc	f	3	2026-08-10 14:18:37.790751
+3024	756	D	Thông tin thuộc một tình huống khác	f	4	2026-08-10 14:18:37.790751
+3025	757	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:18:37.790751
+3026	757	B	Thông tin không được đề cập	f	2	2026-08-10 14:18:37.790751
+3027	757	C	Thông tin trái với bài đọc	f	3	2026-08-10 14:18:37.790751
+3028	757	D	Thông tin thuộc một tình huống khác	f	4	2026-08-10 14:18:37.790751
+3029	758	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:18:37.790751
+3030	758	B	Thông tin không được đề cập	f	2	2026-08-10 14:18:37.790751
+3031	758	C	Thông tin trái với bài đọc	f	3	2026-08-10 14:18:37.790751
+3032	758	D	Thông tin thuộc một tình huống khác	f	4	2026-08-10 14:18:37.790751
+3033	759	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:18:37.790751
+3034	759	B	Thông tin không được đề cập	f	2	2026-08-10 14:18:37.790751
+3035	759	C	Thông tin trái với bài đọc	f	3	2026-08-10 14:18:37.790751
+3036	759	D	Thông tin thuộc một tình huống khác	f	4	2026-08-10 14:18:37.790751
+3037	760	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:18:37.790751
+3038	760	B	Thông tin không được đề cập	f	2	2026-08-10 14:18:37.790751
+3039	760	C	Thông tin trái với bài đọc	f	3	2026-08-10 14:18:37.790751
+3040	760	D	Thông tin thuộc một tình huống khác	f	4	2026-08-10 14:18:37.790751
+3041	761	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:18:37.790751
+3042	761	B	Thông tin không được đề cập	f	2	2026-08-10 14:18:37.790751
+3043	761	C	Thông tin trái với bài đọc	f	3	2026-08-10 14:18:37.790751
+3044	761	D	Thông tin thuộc một tình huống khác	f	4	2026-08-10 14:18:37.790751
+3045	762	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:18:37.790751
+3046	762	B	Thông tin không được đề cập	f	2	2026-08-10 14:18:37.790751
+3047	762	C	Thông tin trái với bài đọc	f	3	2026-08-10 14:18:37.790751
+3048	762	D	Thông tin thuộc một tình huống khác	f	4	2026-08-10 14:18:37.790751
+3049	763	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:18:37.790751
+3050	763	B	Thông tin không được đề cập	f	2	2026-08-10 14:18:37.790751
+3051	763	C	Thông tin trái với bài đọc	f	3	2026-08-10 14:18:37.790751
+3052	763	D	Thông tin thuộc một tình huống khác	f	4	2026-08-10 14:18:37.790751
+3053	764	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:18:37.790751
+3054	764	B	Thông tin không được đề cập	f	2	2026-08-10 14:18:37.790751
+3055	764	C	Thông tin trái với bài đọc	f	3	2026-08-10 14:18:37.790751
+3056	764	D	Thông tin thuộc một tình huống khác	f	4	2026-08-10 14:18:37.790751
+3057	765	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:18:37.790751
+3058	765	B	Thông tin không được đề cập	f	2	2026-08-10 14:18:37.790751
+3059	765	C	Thông tin trái với bài đọc	f	3	2026-08-10 14:18:37.790751
+3060	765	D	Thông tin thuộc một tình huống khác	f	4	2026-08-10 14:18:37.790751
+3061	766	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:18:37.790751
+3062	766	B	Thông tin không được đề cập	f	2	2026-08-10 14:18:37.790751
+3063	766	C	Thông tin trái với bài đọc	f	3	2026-08-10 14:18:37.790751
+3064	766	D	Thông tin thuộc một tình huống khác	f	4	2026-08-10 14:18:37.790751
+3065	767	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:18:37.790751
+3066	767	B	Thông tin không được đề cập	f	2	2026-08-10 14:18:37.790751
+3067	767	C	Thông tin trái với bài đọc	f	3	2026-08-10 14:18:37.790751
+3068	767	D	Thông tin thuộc một tình huống khác	f	4	2026-08-10 14:18:37.790751
+3069	768	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:18:37.790751
+3070	768	B	Thông tin không được đề cập	f	2	2026-08-10 14:18:37.790751
+3071	768	C	Thông tin trái với bài đọc	f	3	2026-08-10 14:18:37.790751
+3072	768	D	Thông tin thuộc một tình huống khác	f	4	2026-08-10 14:18:37.790751
+3073	769	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:18:37.790751
+3074	769	B	Thông tin không được đề cập	f	2	2026-08-10 14:18:37.790751
+3075	769	C	Thông tin trái với bài đọc	f	3	2026-08-10 14:18:37.790751
+3076	769	D	Thông tin thuộc một tình huống khác	f	4	2026-08-10 14:18:37.790751
+3077	770	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:18:37.790751
+3078	770	B	Thông tin không được đề cập	f	2	2026-08-10 14:18:37.790751
+3079	770	C	Thông tin trái với bài đọc	f	3	2026-08-10 14:18:37.790751
+3080	770	D	Thông tin thuộc một tình huống khác	f	4	2026-08-10 14:18:37.790751
+3081	771	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:18:37.790751
+3082	771	B	Thông tin không được đề cập	f	2	2026-08-10 14:18:37.790751
+3083	771	C	Thông tin trái với bài đọc	f	3	2026-08-10 14:18:37.790751
+3084	771	D	Thông tin thuộc một tình huống khác	f	4	2026-08-10 14:18:37.790751
+3085	772	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:18:37.790751
+3086	772	B	Thông tin không được đề cập	f	2	2026-08-10 14:18:37.790751
+3087	772	C	Thông tin trái với bài đọc	f	3	2026-08-10 14:18:37.790751
+3088	772	D	Thông tin thuộc một tình huống khác	f	4	2026-08-10 14:18:37.790751
+3089	773	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:18:37.790751
+3090	773	B	Thông tin không được đề cập	f	2	2026-08-10 14:18:37.790751
+3091	773	C	Thông tin trái với bài đọc	f	3	2026-08-10 14:18:37.790751
+3092	773	D	Thông tin thuộc một tình huống khác	f	4	2026-08-10 14:18:37.790751
+3093	774	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:18:37.790751
+3094	774	B	Thông tin không được đề cập	f	2	2026-08-10 14:18:37.790751
+3095	774	C	Thông tin trái với bài đọc	f	3	2026-08-10 14:18:37.790751
+3096	774	D	Thông tin thuộc một tình huống khác	f	4	2026-08-10 14:18:37.790751
+3097	775	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:18:37.790751
+3098	775	B	Thông tin không được đề cập	f	2	2026-08-10 14:18:37.790751
+3099	775	C	Thông tin trái với bài đọc	f	3	2026-08-10 14:18:37.790751
+3100	775	D	Thông tin thuộc một tình huống khác	f	4	2026-08-10 14:18:37.790751
+3101	776	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:18:37.790751
+3102	776	B	Thông tin không được đề cập	f	2	2026-08-10 14:18:37.790751
+3103	776	C	Thông tin trái với bài đọc	f	3	2026-08-10 14:18:37.790751
+3104	776	D	Thông tin thuộc một tình huống khác	f	4	2026-08-10 14:18:37.790751
+3105	777	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:18:37.790751
+3106	777	B	Thông tin không được đề cập	f	2	2026-08-10 14:18:37.790751
+3107	777	C	Thông tin trái với bài đọc	f	3	2026-08-10 14:18:37.790751
+3108	777	D	Thông tin thuộc một tình huống khác	f	4	2026-08-10 14:18:37.790751
+3109	778	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:18:37.790751
+3110	778	B	Thông tin không được đề cập	f	2	2026-08-10 14:18:37.790751
+3111	778	C	Thông tin trái với bài đọc	f	3	2026-08-10 14:18:37.790751
+3112	778	D	Thông tin thuộc một tình huống khác	f	4	2026-08-10 14:18:37.790751
+3113	779	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:18:37.790751
+3114	779	B	Thông tin không được đề cập	f	2	2026-08-10 14:18:37.790751
+3115	779	C	Thông tin trái với bài đọc	f	3	2026-08-10 14:18:37.790751
+3116	779	D	Thông tin thuộc một tình huống khác	f	4	2026-08-10 14:18:37.790751
+3117	780	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:18:37.790751
+3118	780	B	Thông tin không được đề cập	f	2	2026-08-10 14:18:37.790751
+3119	780	C	Thông tin trái với bài đọc	f	3	2026-08-10 14:18:37.790751
+3120	780	D	Thông tin thuộc một tình huống khác	f	4	2026-08-10 14:18:37.790751
+3121	781	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:18:37.790751
+3122	781	B	Thông tin không được đề cập	f	2	2026-08-10 14:18:37.790751
+3123	781	C	Thông tin trái với bài đọc	f	3	2026-08-10 14:18:37.790751
+3124	781	D	Thông tin thuộc một tình huống khác	f	4	2026-08-10 14:18:37.790751
+3125	782	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:18:37.790751
+3126	782	B	Thông tin không được đề cập	f	2	2026-08-10 14:18:37.790751
+3127	782	C	Thông tin trái với bài đọc	f	3	2026-08-10 14:18:37.790751
+3128	782	D	Thông tin thuộc một tình huống khác	f	4	2026-08-10 14:18:37.790751
+3129	783	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:18:37.790751
+3130	783	B	Thông tin không được đề cập	f	2	2026-08-10 14:18:37.790751
+3131	783	C	Thông tin trái với bài đọc	f	3	2026-08-10 14:18:37.790751
+3132	783	D	Thông tin thuộc một tình huống khác	f	4	2026-08-10 14:18:37.790751
+3133	784	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:18:37.790751
+3134	784	B	Thông tin không được đề cập	f	2	2026-08-10 14:18:37.790751
+3135	784	C	Thông tin trái với bài đọc	f	3	2026-08-10 14:18:37.790751
+3136	784	D	Thông tin thuộc một tình huống khác	f	4	2026-08-10 14:18:37.790751
+3137	785	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:18:37.790751
+3138	785	B	Thông tin không được đề cập	f	2	2026-08-10 14:18:37.790751
+3139	785	C	Thông tin trái với bài đọc	f	3	2026-08-10 14:18:37.790751
+3140	785	D	Thông tin thuộc một tình huống khác	f	4	2026-08-10 14:18:37.790751
+3141	786	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:18:37.790751
+3142	786	B	Thông tin không được đề cập	f	2	2026-08-10 14:18:37.790751
+3143	786	C	Thông tin trái với bài đọc	f	3	2026-08-10 14:18:37.790751
+3144	786	D	Thông tin thuộc một tình huống khác	f	4	2026-08-10 14:18:37.790751
+3145	787	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:18:37.790751
+3146	787	B	Thông tin không được đề cập	f	2	2026-08-10 14:18:37.790751
+3147	787	C	Thông tin trái với bài đọc	f	3	2026-08-10 14:18:37.790751
+3148	787	D	Thông tin thuộc một tình huống khác	f	4	2026-08-10 14:18:37.790751
+3149	788	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:18:37.790751
+3150	788	B	Thông tin không được đề cập	f	2	2026-08-10 14:18:37.790751
+3151	788	C	Thông tin trái với bài đọc	f	3	2026-08-10 14:18:37.790751
+3152	788	D	Thông tin thuộc một tình huống khác	f	4	2026-08-10 14:18:37.790751
+3153	789	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:18:37.790751
+3154	789	B	Thông tin không được đề cập	f	2	2026-08-10 14:18:37.790751
+3155	789	C	Thông tin trái với bài đọc	f	3	2026-08-10 14:18:37.790751
+3156	789	D	Thông tin thuộc một tình huống khác	f	4	2026-08-10 14:18:37.790751
+3157	790	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:18:37.790751
+3158	790	B	Thông tin không được đề cập	f	2	2026-08-10 14:18:37.790751
+3159	790	C	Thông tin trái với bài đọc	f	3	2026-08-10 14:18:37.790751
+3160	790	D	Thông tin thuộc một tình huống khác	f	4	2026-08-10 14:18:37.790751
+3161	791	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:18:37.790751
+3162	791	B	Thông tin không được đề cập	f	2	2026-08-10 14:18:37.790751
+3163	791	C	Thông tin trái với bài đọc	f	3	2026-08-10 14:18:37.790751
+3164	791	D	Thông tin thuộc một tình huống khác	f	4	2026-08-10 14:18:37.790751
+3165	792	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:18:37.790751
+3166	792	B	Thông tin không được đề cập	f	2	2026-08-10 14:18:37.790751
+3167	792	C	Thông tin trái với bài đọc	f	3	2026-08-10 14:18:37.790751
+3168	792	D	Thông tin thuộc một tình huống khác	f	4	2026-08-10 14:18:37.790751
+3169	793	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:18:37.790751
+3170	793	B	Thông tin không được đề cập	f	2	2026-08-10 14:18:37.790751
+3171	793	C	Thông tin trái với bài đọc	f	3	2026-08-10 14:18:37.790751
+3172	793	D	Thông tin thuộc một tình huống khác	f	4	2026-08-10 14:18:37.790751
+3173	794	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:18:37.790751
+3174	794	B	Thông tin không được đề cập	f	2	2026-08-10 14:18:37.790751
+3175	794	C	Thông tin trái với bài đọc	f	3	2026-08-10 14:18:37.790751
+3176	794	D	Thông tin thuộc một tình huống khác	f	4	2026-08-10 14:18:37.790751
+3177	795	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:18:37.790751
+3178	795	B	Thông tin không được đề cập	f	2	2026-08-10 14:18:37.790751
+3179	795	C	Thông tin trái với bài đọc	f	3	2026-08-10 14:18:37.790751
+3180	795	D	Thông tin thuộc một tình huống khác	f	4	2026-08-10 14:18:37.790751
+3181	796	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:18:37.790751
+3182	796	B	Thông tin không được đề cập	f	2	2026-08-10 14:18:37.790751
+3183	796	C	Thông tin trái với bài đọc	f	3	2026-08-10 14:18:37.790751
+3184	796	D	Thông tin thuộc một tình huống khác	f	4	2026-08-10 14:18:37.790751
+3185	797	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:18:37.790751
+3186	797	B	Thông tin không được đề cập	f	2	2026-08-10 14:18:37.790751
+3187	797	C	Thông tin trái với bài đọc	f	3	2026-08-10 14:18:37.790751
+3188	797	D	Thông tin thuộc một tình huống khác	f	4	2026-08-10 14:18:37.790751
+3189	798	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:18:37.790751
+3190	798	B	Thông tin không được đề cập	f	2	2026-08-10 14:18:37.790751
+3191	798	C	Thông tin trái với bài đọc	f	3	2026-08-10 14:18:37.790751
+3192	798	D	Thông tin thuộc một tình huống khác	f	4	2026-08-10 14:18:37.790751
+3193	799	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:18:37.790751
+3194	799	B	Thông tin không được đề cập	f	2	2026-08-10 14:18:37.790751
+3195	799	C	Thông tin trái với bài đọc	f	3	2026-08-10 14:18:37.790751
+3196	799	D	Thông tin thuộc một tình huống khác	f	4	2026-08-10 14:18:37.790751
+3197	800	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:18:37.790751
+3198	800	B	Thông tin không được đề cập	f	2	2026-08-10 14:18:37.790751
+3199	800	C	Thông tin trái với bài đọc	f	3	2026-08-10 14:18:37.790751
+3200	800	D	Thông tin thuộc một tình huống khác	f	4	2026-08-10 14:18:37.790751
+3201	801	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:18:37.790751
+3202	801	B	Thông tin không được đề cập	f	2	2026-08-10 14:18:37.790751
+3203	801	C	Thông tin trái với bài đọc	f	3	2026-08-10 14:18:37.790751
+3204	801	D	Thông tin thuộc một tình huống khác	f	4	2026-08-10 14:18:37.790751
+3205	802	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:18:37.790751
+3206	802	B	Thông tin không được đề cập	f	2	2026-08-10 14:18:37.790751
+3207	802	C	Thông tin trái với bài đọc	f	3	2026-08-10 14:18:37.790751
+3208	802	D	Thông tin thuộc một tình huống khác	f	4	2026-08-10 14:18:37.790751
+3209	803	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:18:37.790751
+3210	803	B	Thông tin không được đề cập	f	2	2026-08-10 14:18:37.790751
+3211	803	C	Thông tin trái với bài đọc	f	3	2026-08-10 14:18:37.790751
+3212	803	D	Thông tin thuộc một tình huống khác	f	4	2026-08-10 14:18:37.790751
+3213	804	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:18:37.790751
+3214	804	B	Thông tin không được đề cập	f	2	2026-08-10 14:18:37.790751
+3215	804	C	Thông tin trái với bài đọc	f	3	2026-08-10 14:18:37.790751
+3216	804	D	Thông tin thuộc một tình huống khác	f	4	2026-08-10 14:18:37.790751
+3217	805	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:18:37.790751
+3218	805	B	Thông tin không được đề cập	f	2	2026-08-10 14:18:37.790751
+3219	805	C	Thông tin trái với bài đọc	f	3	2026-08-10 14:18:37.790751
+3220	805	D	Thông tin thuộc một tình huống khác	f	4	2026-08-10 14:18:37.790751
+3221	806	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:18:37.790751
+3222	806	B	Thông tin không được đề cập	f	2	2026-08-10 14:18:37.790751
+3223	806	C	Thông tin trái với bài đọc	f	3	2026-08-10 14:18:37.790751
+3224	806	D	Thông tin thuộc một tình huống khác	f	4	2026-08-10 14:18:37.790751
+3225	807	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:18:37.790751
+3226	807	B	Thông tin không được đề cập	f	2	2026-08-10 14:18:37.790751
+3227	807	C	Thông tin trái với bài đọc	f	3	2026-08-10 14:18:37.790751
+3228	807	D	Thông tin thuộc một tình huống khác	f	4	2026-08-10 14:18:37.790751
+3229	808	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:18:37.790751
+3230	808	B	Thông tin không được đề cập	f	2	2026-08-10 14:18:37.790751
+3231	808	C	Thông tin trái với bài đọc	f	3	2026-08-10 14:18:37.790751
+3232	808	D	Thông tin thuộc một tình huống khác	f	4	2026-08-10 14:18:37.790751
+3233	809	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:18:37.790751
+3234	809	B	Thông tin không được đề cập	f	2	2026-08-10 14:18:37.790751
+3235	809	C	Thông tin trái với bài đọc	f	3	2026-08-10 14:18:37.790751
+3236	809	D	Thông tin thuộc một tình huống khác	f	4	2026-08-10 14:18:37.790751
+3237	810	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:18:37.790751
+3238	810	B	Thông tin không được đề cập	f	2	2026-08-10 14:18:37.790751
+3239	810	C	Thông tin trái với bài đọc	f	3	2026-08-10 14:18:37.790751
+3240	810	D	Thông tin thuộc một tình huống khác	f	4	2026-08-10 14:18:37.790751
+3241	811	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:18:37.790751
+3242	811	B	Thông tin không được đề cập	f	2	2026-08-10 14:18:37.790751
+3243	811	C	Thông tin trái với bài đọc	f	3	2026-08-10 14:18:37.790751
+3244	811	D	Thông tin thuộc một tình huống khác	f	4	2026-08-10 14:18:37.790751
+3245	812	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:18:37.790751
+3246	812	B	Thông tin không được đề cập	f	2	2026-08-10 14:18:37.790751
+3247	812	C	Thông tin trái với bài đọc	f	3	2026-08-10 14:18:37.790751
+3248	812	D	Thông tin thuộc một tình huống khác	f	4	2026-08-10 14:18:37.790751
+3249	813	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:18:37.790751
+3250	813	B	Thông tin không được đề cập	f	2	2026-08-10 14:18:37.790751
+3251	813	C	Thông tin trái với bài đọc	f	3	2026-08-10 14:18:37.790751
+3252	813	D	Thông tin thuộc một tình huống khác	f	4	2026-08-10 14:18:37.790751
+3253	814	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:18:37.790751
+3254	814	B	Thông tin không được đề cập	f	2	2026-08-10 14:18:37.790751
+3255	814	C	Thông tin trái với bài đọc	f	3	2026-08-10 14:18:37.790751
+3256	814	D	Thông tin thuộc một tình huống khác	f	4	2026-08-10 14:18:37.790751
+3257	815	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:18:37.790751
+3258	815	B	Thông tin không được đề cập	f	2	2026-08-10 14:18:37.790751
+3259	815	C	Thông tin trái với bài đọc	f	3	2026-08-10 14:18:37.790751
+3260	815	D	Thông tin thuộc một tình huống khác	f	4	2026-08-10 14:18:37.790751
+3261	816	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:18:37.790751
+3262	816	B	Thông tin không được đề cập	f	2	2026-08-10 14:18:37.790751
+3263	816	C	Thông tin trái với bài đọc	f	3	2026-08-10 14:18:37.790751
+3264	816	D	Thông tin thuộc một tình huống khác	f	4	2026-08-10 14:18:37.790751
+3265	817	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:18:37.790751
+3266	817	B	Thông tin không được đề cập	f	2	2026-08-10 14:18:37.790751
+3267	817	C	Thông tin trái với bài đọc	f	3	2026-08-10 14:18:37.790751
+3268	817	D	Thông tin thuộc một tình huống khác	f	4	2026-08-10 14:18:37.790751
+3269	818	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:18:37.790751
+3270	818	B	Thông tin không được đề cập	f	2	2026-08-10 14:18:37.790751
+3271	818	C	Thông tin trái với bài đọc	f	3	2026-08-10 14:18:37.790751
+3272	818	D	Thông tin thuộc một tình huống khác	f	4	2026-08-10 14:18:37.790751
+3273	819	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:18:37.790751
+3274	819	B	Thông tin không được đề cập	f	2	2026-08-10 14:18:37.790751
+3275	819	C	Thông tin trái với bài đọc	f	3	2026-08-10 14:18:37.790751
+3276	819	D	Thông tin thuộc một tình huống khác	f	4	2026-08-10 14:18:37.790751
+3277	820	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:18:37.790751
+3278	820	B	Thông tin không được đề cập	f	2	2026-08-10 14:18:37.790751
+3279	820	C	Thông tin mâu thuẫn với bài đọc	f	3	2026-08-10 14:18:37.790751
+3280	820	D	Thông tin thuộc một chủ đề khác	f	4	2026-08-10 14:18:37.790751
+3281	821	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:18:37.790751
+3282	821	B	Thông tin không được đề cập	f	2	2026-08-10 14:18:37.790751
+3283	821	C	Thông tin mâu thuẫn với bài đọc	f	3	2026-08-10 14:18:37.790751
+3284	821	D	Thông tin thuộc một chủ đề khác	f	4	2026-08-10 14:18:37.790751
+3285	822	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:18:37.790751
+3286	822	B	Thông tin không được đề cập	f	2	2026-08-10 14:18:37.790751
+3287	822	C	Thông tin mâu thuẫn với bài đọc	f	3	2026-08-10 14:18:37.790751
+3288	822	D	Thông tin thuộc một chủ đề khác	f	4	2026-08-10 14:18:37.790751
+3289	823	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:18:37.790751
+3290	823	B	Thông tin không được đề cập	f	2	2026-08-10 14:18:37.790751
+3291	823	C	Thông tin mâu thuẫn với bài đọc	f	3	2026-08-10 14:18:37.790751
+3292	823	D	Thông tin thuộc một chủ đề khác	f	4	2026-08-10 14:18:37.790751
+3293	824	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:18:37.790751
+3294	824	B	Thông tin không được đề cập	f	2	2026-08-10 14:18:37.790751
+3295	824	C	Thông tin mâu thuẫn với bài đọc	f	3	2026-08-10 14:18:37.790751
+3296	824	D	Thông tin thuộc một chủ đề khác	f	4	2026-08-10 14:18:37.790751
+3297	825	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:18:37.790751
+3298	825	B	Thông tin không được đề cập	f	2	2026-08-10 14:18:37.790751
+3299	825	C	Thông tin mâu thuẫn với bài đọc	f	3	2026-08-10 14:18:37.790751
+3300	825	D	Thông tin thuộc một chủ đề khác	f	4	2026-08-10 14:18:37.790751
+3301	826	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:18:37.790751
+3302	826	B	Thông tin không được đề cập	f	2	2026-08-10 14:18:37.790751
+3303	826	C	Thông tin mâu thuẫn với bài đọc	f	3	2026-08-10 14:18:37.790751
+3304	826	D	Thông tin thuộc một chủ đề khác	f	4	2026-08-10 14:18:37.790751
+3305	827	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:18:37.790751
+3306	827	B	Thông tin không được đề cập	f	2	2026-08-10 14:18:37.790751
+3307	827	C	Thông tin mâu thuẫn với bài đọc	f	3	2026-08-10 14:18:37.790751
+3308	827	D	Thông tin thuộc một chủ đề khác	f	4	2026-08-10 14:18:37.790751
+3309	828	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:18:37.790751
+3310	828	B	Thông tin không được đề cập	f	2	2026-08-10 14:18:37.790751
+3311	828	C	Thông tin mâu thuẫn với bài đọc	f	3	2026-08-10 14:18:37.790751
+3312	828	D	Thông tin thuộc một chủ đề khác	f	4	2026-08-10 14:18:37.790751
+3313	829	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:18:37.790751
+3314	829	B	Thông tin không được đề cập	f	2	2026-08-10 14:18:37.790751
+3315	829	C	Thông tin mâu thuẫn với bài đọc	f	3	2026-08-10 14:18:37.790751
+3316	829	D	Thông tin thuộc một chủ đề khác	f	4	2026-08-10 14:18:37.790751
+3317	830	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:18:37.790751
+3318	830	B	Thông tin không được đề cập	f	2	2026-08-10 14:18:37.790751
+3319	830	C	Thông tin mâu thuẫn với bài đọc	f	3	2026-08-10 14:18:37.790751
+3320	830	D	Thông tin thuộc một chủ đề khác	f	4	2026-08-10 14:18:37.790751
+3321	831	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:18:37.790751
+3322	831	B	Thông tin không được đề cập	f	2	2026-08-10 14:18:37.790751
+3323	831	C	Thông tin mâu thuẫn với bài đọc	f	3	2026-08-10 14:18:37.790751
+3324	831	D	Thông tin thuộc một chủ đề khác	f	4	2026-08-10 14:18:37.790751
+3325	832	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:18:37.790751
+3326	832	B	Thông tin không được đề cập	f	2	2026-08-10 14:18:37.790751
+3327	832	C	Thông tin mâu thuẫn với bài đọc	f	3	2026-08-10 14:18:37.790751
+3328	832	D	Thông tin thuộc một chủ đề khác	f	4	2026-08-10 14:18:37.790751
+3329	833	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:18:37.790751
+3330	833	B	Thông tin không được đề cập	f	2	2026-08-10 14:18:37.790751
+3331	833	C	Thông tin mâu thuẫn với bài đọc	f	3	2026-08-10 14:18:37.790751
+3332	833	D	Thông tin thuộc một chủ đề khác	f	4	2026-08-10 14:18:37.790751
+3333	834	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:18:37.790751
+3334	834	B	Thông tin không được đề cập	f	2	2026-08-10 14:18:37.790751
+3335	834	C	Thông tin mâu thuẫn với bài đọc	f	3	2026-08-10 14:18:37.790751
+3336	834	D	Thông tin thuộc một chủ đề khác	f	4	2026-08-10 14:18:37.790751
+3337	835	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:18:37.790751
+3338	835	B	Thông tin không được đề cập	f	2	2026-08-10 14:18:37.790751
+3339	835	C	Thông tin mâu thuẫn với bài đọc	f	3	2026-08-10 14:18:37.790751
+3340	835	D	Thông tin thuộc một chủ đề khác	f	4	2026-08-10 14:18:37.790751
+3341	836	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:18:37.790751
+3342	836	B	Thông tin không được đề cập	f	2	2026-08-10 14:18:37.790751
+3343	836	C	Thông tin mâu thuẫn với bài đọc	f	3	2026-08-10 14:18:37.790751
+3344	836	D	Thông tin thuộc một chủ đề khác	f	4	2026-08-10 14:18:37.790751
+3345	837	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:18:37.790751
+3346	837	B	Thông tin không được đề cập	f	2	2026-08-10 14:18:37.790751
+3347	837	C	Thông tin mâu thuẫn với bài đọc	f	3	2026-08-10 14:18:37.790751
+3348	837	D	Thông tin thuộc một chủ đề khác	f	4	2026-08-10 14:18:37.790751
+3349	838	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:18:37.790751
+3350	838	B	Thông tin không được đề cập	f	2	2026-08-10 14:18:37.790751
+3351	838	C	Thông tin mâu thuẫn với bài đọc	f	3	2026-08-10 14:18:37.790751
+3352	838	D	Thông tin thuộc một chủ đề khác	f	4	2026-08-10 14:18:37.790751
+3353	839	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:18:37.790751
+3354	839	B	Thông tin không được đề cập	f	2	2026-08-10 14:18:37.790751
+3355	839	C	Thông tin mâu thuẫn với bài đọc	f	3	2026-08-10 14:18:37.790751
+3356	839	D	Thông tin thuộc một chủ đề khác	f	4	2026-08-10 14:18:37.790751
+3357	840	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:18:37.790751
+3358	840	B	Thông tin không được đề cập	f	2	2026-08-10 14:18:37.790751
+3359	840	C	Thông tin mâu thuẫn với bài đọc	f	3	2026-08-10 14:18:37.790751
+3360	840	D	Thông tin thuộc một chủ đề khác	f	4	2026-08-10 14:18:37.790751
+3361	841	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:18:37.790751
+3362	841	B	Thông tin không được đề cập	f	2	2026-08-10 14:18:37.790751
+3363	841	C	Thông tin mâu thuẫn với bài đọc	f	3	2026-08-10 14:18:37.790751
+3364	841	D	Thông tin thuộc một chủ đề khác	f	4	2026-08-10 14:18:37.790751
+3365	842	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:18:37.790751
+3366	842	B	Thông tin không được đề cập	f	2	2026-08-10 14:18:37.790751
+3367	842	C	Thông tin mâu thuẫn với bài đọc	f	3	2026-08-10 14:18:37.790751
+3368	842	D	Thông tin thuộc một chủ đề khác	f	4	2026-08-10 14:18:37.790751
+3369	843	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:18:37.790751
+3370	843	B	Thông tin không được đề cập	f	2	2026-08-10 14:18:37.790751
+3371	843	C	Thông tin mâu thuẫn với bài đọc	f	3	2026-08-10 14:18:37.790751
+3372	843	D	Thông tin thuộc một chủ đề khác	f	4	2026-08-10 14:18:37.790751
+3373	844	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:18:37.790751
+3374	844	B	Thông tin không được đề cập	f	2	2026-08-10 14:18:37.790751
+3375	844	C	Thông tin mâu thuẫn với bài đọc	f	3	2026-08-10 14:18:37.790751
+3376	844	D	Thông tin thuộc một chủ đề khác	f	4	2026-08-10 14:18:37.790751
+3377	845	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:18:37.790751
+3378	845	B	Thông tin không được đề cập	f	2	2026-08-10 14:18:37.790751
+3379	845	C	Thông tin mâu thuẫn với bài đọc	f	3	2026-08-10 14:18:37.790751
+3380	845	D	Thông tin thuộc một chủ đề khác	f	4	2026-08-10 14:18:37.790751
+3381	846	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:18:37.790751
+3382	846	B	Thông tin không được đề cập	f	2	2026-08-10 14:18:37.790751
+3383	846	C	Thông tin mâu thuẫn với bài đọc	f	3	2026-08-10 14:18:37.790751
+3384	846	D	Thông tin thuộc một chủ đề khác	f	4	2026-08-10 14:18:37.790751
+3385	847	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:18:37.790751
+3386	847	B	Thông tin không được đề cập	f	2	2026-08-10 14:18:37.790751
+3387	847	C	Thông tin mâu thuẫn với bài đọc	f	3	2026-08-10 14:18:37.790751
+3388	847	D	Thông tin thuộc một chủ đề khác	f	4	2026-08-10 14:18:37.790751
+3389	848	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:18:37.790751
+3390	848	B	Thông tin không được đề cập	f	2	2026-08-10 14:18:37.790751
+3391	848	C	Thông tin mâu thuẫn với bài đọc	f	3	2026-08-10 14:18:37.790751
+3392	848	D	Thông tin thuộc một chủ đề khác	f	4	2026-08-10 14:18:37.790751
+3393	849	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:18:37.790751
+3394	849	B	Thông tin không được đề cập	f	2	2026-08-10 14:18:37.790751
+3395	849	C	Thông tin mâu thuẫn với bài đọc	f	3	2026-08-10 14:18:37.790751
+3396	849	D	Thông tin thuộc một chủ đề khác	f	4	2026-08-10 14:18:37.790751
+3397	850	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:18:37.790751
+3398	850	B	Thông tin không được đề cập	f	2	2026-08-10 14:18:37.790751
+3399	850	C	Thông tin mâu thuẫn với bài đọc	f	3	2026-08-10 14:18:37.790751
+3400	850	D	Thông tin thuộc một chủ đề khác	f	4	2026-08-10 14:18:37.790751
+3401	851	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:18:37.790751
+3402	851	B	Thông tin không được đề cập	f	2	2026-08-10 14:18:37.790751
+3403	851	C	Thông tin mâu thuẫn với bài đọc	f	3	2026-08-10 14:18:37.790751
+3404	851	D	Thông tin thuộc một chủ đề khác	f	4	2026-08-10 14:18:37.790751
+3405	852	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:18:37.790751
+3406	852	B	Thông tin không được đề cập	f	2	2026-08-10 14:18:37.790751
+3407	852	C	Thông tin mâu thuẫn với bài đọc	f	3	2026-08-10 14:18:37.790751
+3408	852	D	Thông tin thuộc một chủ đề khác	f	4	2026-08-10 14:18:37.790751
+3409	853	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:18:37.790751
+3410	853	B	Thông tin không được đề cập	f	2	2026-08-10 14:18:37.790751
+3411	853	C	Thông tin mâu thuẫn với bài đọc	f	3	2026-08-10 14:18:37.790751
+3412	853	D	Thông tin thuộc một chủ đề khác	f	4	2026-08-10 14:18:37.790751
+3413	854	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:18:37.790751
+3414	854	B	Thông tin không được đề cập	f	2	2026-08-10 14:18:37.790751
+3415	854	C	Thông tin mâu thuẫn với bài đọc	f	3	2026-08-10 14:18:37.790751
+3416	854	D	Thông tin thuộc một chủ đề khác	f	4	2026-08-10 14:18:37.790751
+3417	855	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:18:37.790751
+3418	855	B	Thông tin không được đề cập	f	2	2026-08-10 14:18:37.790751
+3419	855	C	Thông tin mâu thuẫn với bài đọc	f	3	2026-08-10 14:18:37.790751
+3420	855	D	Thông tin thuộc một chủ đề khác	f	4	2026-08-10 14:18:37.790751
+3421	856	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:18:37.790751
+3422	856	B	Thông tin không được đề cập	f	2	2026-08-10 14:18:37.790751
+3423	856	C	Thông tin mâu thuẫn với bài đọc	f	3	2026-08-10 14:18:37.790751
+3424	856	D	Thông tin thuộc một chủ đề khác	f	4	2026-08-10 14:18:37.790751
+3425	857	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:18:37.790751
+3426	857	B	Thông tin không được đề cập	f	2	2026-08-10 14:18:37.790751
+3427	857	C	Thông tin mâu thuẫn với bài đọc	f	3	2026-08-10 14:18:37.790751
+3428	857	D	Thông tin thuộc một chủ đề khác	f	4	2026-08-10 14:18:37.790751
+3429	858	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:18:37.790751
+3430	858	B	Thông tin không được đề cập	f	2	2026-08-10 14:18:37.790751
+3431	858	C	Thông tin mâu thuẫn với bài đọc	f	3	2026-08-10 14:18:37.790751
+3432	858	D	Thông tin thuộc một chủ đề khác	f	4	2026-08-10 14:18:37.790751
+3433	859	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:18:37.790751
+3434	859	B	Thông tin không được đề cập	f	2	2026-08-10 14:18:37.790751
+3435	859	C	Thông tin mâu thuẫn với bài đọc	f	3	2026-08-10 14:18:37.790751
+3436	859	D	Thông tin thuộc một chủ đề khác	f	4	2026-08-10 14:18:37.790751
+3437	860	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:18:37.790751
+3438	860	B	Thông tin không được đề cập	f	2	2026-08-10 14:18:37.790751
+3439	860	C	Thông tin mâu thuẫn với bài đọc	f	3	2026-08-10 14:18:37.790751
+3440	860	D	Thông tin thuộc một chủ đề khác	f	4	2026-08-10 14:18:37.790751
+3441	861	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:18:37.790751
+3442	861	B	Thông tin không được đề cập	f	2	2026-08-10 14:18:37.790751
+3443	861	C	Thông tin mâu thuẫn với bài đọc	f	3	2026-08-10 14:18:37.790751
+3444	861	D	Thông tin thuộc một chủ đề khác	f	4	2026-08-10 14:18:37.790751
+3445	862	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:18:37.790751
+3446	862	B	Thông tin không được đề cập	f	2	2026-08-10 14:18:37.790751
+3447	862	C	Thông tin mâu thuẫn với bài đọc	f	3	2026-08-10 14:18:37.790751
+3448	862	D	Thông tin thuộc một chủ đề khác	f	4	2026-08-10 14:18:37.790751
+3449	863	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:18:37.790751
+3450	863	B	Thông tin không được đề cập	f	2	2026-08-10 14:18:37.790751
+3451	863	C	Thông tin mâu thuẫn với bài đọc	f	3	2026-08-10 14:18:37.790751
+3452	863	D	Thông tin thuộc một chủ đề khác	f	4	2026-08-10 14:18:37.790751
+3453	864	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:18:37.790751
+3454	864	B	Thông tin không được đề cập	f	2	2026-08-10 14:18:37.790751
+3455	864	C	Thông tin mâu thuẫn với bài đọc	f	3	2026-08-10 14:18:37.790751
+3456	864	D	Thông tin thuộc một chủ đề khác	f	4	2026-08-10 14:18:37.790751
+3457	865	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:18:37.790751
+3458	865	B	Thông tin không được đề cập	f	2	2026-08-10 14:18:37.790751
+3459	865	C	Thông tin mâu thuẫn với bài đọc	f	3	2026-08-10 14:18:37.790751
+3460	865	D	Thông tin thuộc một chủ đề khác	f	4	2026-08-10 14:18:37.790751
+3461	866	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:18:37.790751
+3462	866	B	Thông tin không được đề cập	f	2	2026-08-10 14:18:37.790751
+3463	866	C	Thông tin mâu thuẫn với bài đọc	f	3	2026-08-10 14:18:37.790751
+3464	866	D	Thông tin thuộc một chủ đề khác	f	4	2026-08-10 14:18:37.790751
+3465	867	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:18:37.790751
+3466	867	B	Thông tin không được đề cập	f	2	2026-08-10 14:18:37.790751
+3467	867	C	Thông tin mâu thuẫn với bài đọc	f	3	2026-08-10 14:18:37.790751
+3468	867	D	Thông tin thuộc một chủ đề khác	f	4	2026-08-10 14:18:37.790751
+3469	868	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:18:37.790751
+3470	868	B	Thông tin không được đề cập	f	2	2026-08-10 14:18:37.790751
+3471	868	C	Thông tin mâu thuẫn với bài đọc	f	3	2026-08-10 14:18:37.790751
+3472	868	D	Thông tin thuộc một chủ đề khác	f	4	2026-08-10 14:18:37.790751
+3473	869	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:18:37.790751
+3474	869	B	Thông tin không được đề cập	f	2	2026-08-10 14:18:37.790751
+3475	869	C	Thông tin mâu thuẫn với bài đọc	f	3	2026-08-10 14:18:37.790751
+3476	869	D	Thông tin thuộc một chủ đề khác	f	4	2026-08-10 14:18:37.790751
+3477	870	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:18:37.790751
+3478	870	B	Thông tin không được đề cập	f	2	2026-08-10 14:18:37.790751
+3479	870	C	Thông tin mâu thuẫn với bài đọc	f	3	2026-08-10 14:18:37.790751
+3480	870	D	Thông tin thuộc một chủ đề khác	f	4	2026-08-10 14:18:37.790751
+3481	871	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:18:37.790751
+3482	871	B	Thông tin không được đề cập	f	2	2026-08-10 14:18:37.790751
+3483	871	C	Thông tin mâu thuẫn với bài đọc	f	3	2026-08-10 14:18:37.790751
+3484	871	D	Thông tin thuộc một chủ đề khác	f	4	2026-08-10 14:18:37.790751
+3485	872	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:18:37.790751
+3486	872	B	Thông tin không được đề cập	f	2	2026-08-10 14:18:37.790751
+3487	872	C	Thông tin mâu thuẫn với bài đọc	f	3	2026-08-10 14:18:37.790751
+3488	872	D	Thông tin thuộc một chủ đề khác	f	4	2026-08-10 14:18:37.790751
+3489	873	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:18:37.790751
+3490	873	B	Thông tin không được đề cập	f	2	2026-08-10 14:18:37.790751
+3491	873	C	Thông tin mâu thuẫn với bài đọc	f	3	2026-08-10 14:18:37.790751
+3492	873	D	Thông tin thuộc một chủ đề khác	f	4	2026-08-10 14:18:37.790751
+3493	874	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:18:37.790751
+3494	874	B	Thông tin không được đề cập	f	2	2026-08-10 14:18:37.790751
+3495	874	C	Thông tin mâu thuẫn với bài đọc	f	3	2026-08-10 14:18:37.790751
+3496	874	D	Thông tin thuộc một chủ đề khác	f	4	2026-08-10 14:18:37.790751
+3497	875	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:18:37.790751
+3498	875	B	Thông tin không được đề cập	f	2	2026-08-10 14:18:37.790751
+3499	875	C	Thông tin mâu thuẫn với bài đọc	f	3	2026-08-10 14:18:37.790751
+3500	875	D	Thông tin thuộc một chủ đề khác	f	4	2026-08-10 14:18:37.790751
+3501	876	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:18:37.790751
+3502	876	B	Thông tin không được đề cập	f	2	2026-08-10 14:18:37.790751
+3503	876	C	Thông tin mâu thuẫn với bài đọc	f	3	2026-08-10 14:18:37.790751
+3504	876	D	Thông tin thuộc một chủ đề khác	f	4	2026-08-10 14:18:37.790751
+3505	877	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:18:37.790751
+3506	877	B	Thông tin không được đề cập	f	2	2026-08-10 14:18:37.790751
+3507	877	C	Thông tin mâu thuẫn với bài đọc	f	3	2026-08-10 14:18:37.790751
+3508	877	D	Thông tin thuộc một chủ đề khác	f	4	2026-08-10 14:18:37.790751
+3509	878	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:18:37.790751
+3510	878	B	Thông tin không được đề cập	f	2	2026-08-10 14:18:37.790751
+3511	878	C	Thông tin mâu thuẫn với bài đọc	f	3	2026-08-10 14:18:37.790751
+3512	878	D	Thông tin thuộc một chủ đề khác	f	4	2026-08-10 14:18:37.790751
+3513	879	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:18:37.790751
+3514	879	B	Thông tin không được đề cập	f	2	2026-08-10 14:18:37.790751
+3515	879	C	Thông tin mâu thuẫn với bài đọc	f	3	2026-08-10 14:18:37.790751
+3516	879	D	Thông tin thuộc một chủ đề khác	f	4	2026-08-10 14:18:37.790751
+3517	880	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:18:37.790751
+3518	880	B	Thông tin không được đề cập	f	2	2026-08-10 14:18:37.790751
+3519	880	C	Thông tin mâu thuẫn với bài đọc	f	3	2026-08-10 14:18:37.790751
+3520	880	D	Thông tin thuộc một chủ đề khác	f	4	2026-08-10 14:18:37.790751
+3521	881	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:18:37.790751
+3522	881	B	Thông tin không được đề cập	f	2	2026-08-10 14:18:37.790751
+3523	881	C	Thông tin mâu thuẫn với bài đọc	f	3	2026-08-10 14:18:37.790751
+3524	881	D	Thông tin thuộc một chủ đề khác	f	4	2026-08-10 14:18:37.790751
+3525	882	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:18:37.790751
+3526	882	B	Thông tin không được đề cập	f	2	2026-08-10 14:18:37.790751
+3527	882	C	Thông tin mâu thuẫn với bài đọc	f	3	2026-08-10 14:18:37.790751
+3528	882	D	Thông tin thuộc một chủ đề khác	f	4	2026-08-10 14:18:37.790751
+3529	883	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:18:37.790751
+3530	883	B	Thông tin không được đề cập	f	2	2026-08-10 14:18:37.790751
+3531	883	C	Thông tin mâu thuẫn với bài đọc	f	3	2026-08-10 14:18:37.790751
+3532	883	D	Thông tin thuộc một chủ đề khác	f	4	2026-08-10 14:18:37.790751
+3533	884	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:18:37.790751
+3534	884	B	Thông tin không được đề cập	f	2	2026-08-10 14:18:37.790751
+3535	884	C	Thông tin mâu thuẫn với bài đọc	f	3	2026-08-10 14:18:37.790751
+3536	884	D	Thông tin thuộc một chủ đề khác	f	4	2026-08-10 14:18:37.790751
+3537	885	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:18:37.790751
+3538	885	B	Thông tin không được đề cập	f	2	2026-08-10 14:18:37.790751
+3539	885	C	Thông tin mâu thuẫn với bài đọc	f	3	2026-08-10 14:18:37.790751
+3540	885	D	Thông tin thuộc một chủ đề khác	f	4	2026-08-10 14:18:37.790751
+3541	886	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:18:37.790751
+3542	886	B	Thông tin không được đề cập	f	2	2026-08-10 14:18:37.790751
+3543	886	C	Thông tin mâu thuẫn với bài đọc	f	3	2026-08-10 14:18:37.790751
+3544	886	D	Thông tin thuộc một chủ đề khác	f	4	2026-08-10 14:18:37.790751
+3545	887	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:18:37.790751
+3546	887	B	Thông tin không được đề cập	f	2	2026-08-10 14:18:37.790751
+3547	887	C	Thông tin mâu thuẫn với bài đọc	f	3	2026-08-10 14:18:37.790751
+3548	887	D	Thông tin thuộc một chủ đề khác	f	4	2026-08-10 14:18:37.790751
+3549	888	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:18:37.790751
+3550	888	B	Thông tin không được đề cập	f	2	2026-08-10 14:18:37.790751
+3551	888	C	Thông tin mâu thuẫn với bài đọc	f	3	2026-08-10 14:18:37.790751
+3552	888	D	Thông tin thuộc một chủ đề khác	f	4	2026-08-10 14:18:37.790751
+3553	889	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:18:37.790751
+3554	889	B	Thông tin không được đề cập	f	2	2026-08-10 14:18:37.790751
+3555	889	C	Thông tin mâu thuẫn với bài đọc	f	3	2026-08-10 14:18:37.790751
+3556	889	D	Thông tin thuộc một chủ đề khác	f	4	2026-08-10 14:18:37.790751
+3557	890	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:18:37.790751
+3558	890	B	Thông tin không được đề cập	f	2	2026-08-10 14:18:37.790751
+3559	890	C	Thông tin mâu thuẫn với bài đọc	f	3	2026-08-10 14:18:37.790751
+3560	890	D	Thông tin thuộc một chủ đề khác	f	4	2026-08-10 14:18:37.790751
+3561	891	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:18:37.790751
+3562	891	B	Thông tin không được đề cập	f	2	2026-08-10 14:18:37.790751
+3563	891	C	Thông tin mâu thuẫn với bài đọc	f	3	2026-08-10 14:18:37.790751
+3564	891	D	Thông tin thuộc một chủ đề khác	f	4	2026-08-10 14:18:37.790751
+3565	892	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:18:37.790751
+3566	892	B	Thông tin không được đề cập	f	2	2026-08-10 14:18:37.790751
+3567	892	C	Thông tin mâu thuẫn với bài đọc	f	3	2026-08-10 14:18:37.790751
+3568	892	D	Thông tin thuộc một chủ đề khác	f	4	2026-08-10 14:18:37.790751
+3569	893	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:18:37.790751
+3570	893	B	Thông tin không được đề cập	f	2	2026-08-10 14:18:37.790751
+3571	893	C	Thông tin mâu thuẫn với bài đọc	f	3	2026-08-10 14:18:37.790751
+3572	893	D	Thông tin thuộc một chủ đề khác	f	4	2026-08-10 14:18:37.790751
+3573	894	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:18:37.790751
+3574	894	B	Thông tin không được đề cập	f	2	2026-08-10 14:18:37.790751
+3575	894	C	Thông tin mâu thuẫn với bài đọc	f	3	2026-08-10 14:18:37.790751
+3576	894	D	Thông tin thuộc một chủ đề khác	f	4	2026-08-10 14:18:37.790751
+3577	895	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:18:37.790751
+3578	895	B	Thông tin không được đề cập	f	2	2026-08-10 14:18:37.790751
+3579	895	C	Thông tin mâu thuẫn với bài đọc	f	3	2026-08-10 14:18:37.790751
+3580	895	D	Thông tin thuộc một chủ đề khác	f	4	2026-08-10 14:18:37.790751
+3581	896	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:18:37.790751
+3582	896	B	Thông tin không được đề cập	f	2	2026-08-10 14:18:37.790751
+3583	896	C	Thông tin mâu thuẫn với bài đọc	f	3	2026-08-10 14:18:37.790751
+3584	896	D	Thông tin thuộc một chủ đề khác	f	4	2026-08-10 14:18:37.790751
+3585	897	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:18:37.790751
+3586	897	B	Thông tin không được đề cập	f	2	2026-08-10 14:18:37.790751
+3587	897	C	Thông tin mâu thuẫn với bài đọc	f	3	2026-08-10 14:18:37.790751
+3588	897	D	Thông tin thuộc một chủ đề khác	f	4	2026-08-10 14:18:37.790751
+3589	898	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:18:37.790751
+3590	898	B	Thông tin không được đề cập	f	2	2026-08-10 14:18:37.790751
+3591	898	C	Thông tin mâu thuẫn với bài đọc	f	3	2026-08-10 14:18:37.790751
+3592	898	D	Thông tin thuộc một chủ đề khác	f	4	2026-08-10 14:18:37.790751
+3593	899	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:18:37.790751
+3594	899	B	Thông tin không được đề cập	f	2	2026-08-10 14:18:37.790751
+3595	899	C	Thông tin mâu thuẫn với bài đọc	f	3	2026-08-10 14:18:37.790751
+3596	899	D	Thông tin thuộc một chủ đề khác	f	4	2026-08-10 14:18:37.790751
+3597	900	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:18:37.790751
+3598	900	B	Thông tin không được đề cập	f	2	2026-08-10 14:18:37.790751
+3599	900	C	Thông tin mâu thuẫn với bài đọc	f	3	2026-08-10 14:18:37.790751
+3600	900	D	Thông tin thuộc một chủ đề khác	f	4	2026-08-10 14:18:37.790751
+3601	901	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:18:37.790751
+3602	901	B	Thông tin không được đề cập	f	2	2026-08-10 14:18:37.790751
+3603	901	C	Thông tin mâu thuẫn với bài đọc	f	3	2026-08-10 14:18:37.790751
+3604	901	D	Thông tin thuộc một chủ đề khác	f	4	2026-08-10 14:18:37.790751
+3605	902	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:18:37.790751
+3606	902	B	Thông tin không được đề cập	f	2	2026-08-10 14:18:37.790751
+3607	902	C	Thông tin mâu thuẫn với bài đọc	f	3	2026-08-10 14:18:37.790751
+3608	902	D	Thông tin thuộc một chủ đề khác	f	4	2026-08-10 14:18:37.790751
+3609	903	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:18:37.790751
+3610	903	B	Thông tin không được đề cập	f	2	2026-08-10 14:18:37.790751
+3611	903	C	Thông tin mâu thuẫn với bài đọc	f	3	2026-08-10 14:18:37.790751
+3612	903	D	Thông tin thuộc một chủ đề khác	f	4	2026-08-10 14:18:37.790751
+3613	904	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:18:37.790751
+3614	904	B	Thông tin không được đề cập	f	2	2026-08-10 14:18:37.790751
+3615	904	C	Thông tin mâu thuẫn với bài đọc	f	3	2026-08-10 14:18:37.790751
+3616	904	D	Thông tin thuộc một chủ đề khác	f	4	2026-08-10 14:18:37.790751
+3617	905	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:18:37.790751
+3618	905	B	Thông tin không được đề cập	f	2	2026-08-10 14:18:37.790751
+3619	905	C	Thông tin mâu thuẫn với bài đọc	f	3	2026-08-10 14:18:37.790751
+3620	905	D	Thông tin thuộc một chủ đề khác	f	4	2026-08-10 14:18:37.790751
+3621	906	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:18:37.790751
+3622	906	B	Thông tin không được đề cập	f	2	2026-08-10 14:18:37.790751
+3623	906	C	Thông tin mâu thuẫn với bài đọc	f	3	2026-08-10 14:18:37.790751
+3624	906	D	Thông tin thuộc một chủ đề khác	f	4	2026-08-10 14:18:37.790751
+3625	907	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:18:37.790751
+3626	907	B	Thông tin không được đề cập	f	2	2026-08-10 14:18:37.790751
+3627	907	C	Thông tin mâu thuẫn với bài đọc	f	3	2026-08-10 14:18:37.790751
+3628	907	D	Thông tin thuộc một chủ đề khác	f	4	2026-08-10 14:18:37.790751
+3629	908	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:18:37.790751
+3630	908	B	Thông tin không được đề cập	f	2	2026-08-10 14:18:37.790751
+3631	908	C	Thông tin mâu thuẫn với bài đọc	f	3	2026-08-10 14:18:37.790751
+3632	908	D	Thông tin thuộc một chủ đề khác	f	4	2026-08-10 14:18:37.790751
+3633	909	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:18:37.790751
+3634	909	B	Thông tin không được đề cập	f	2	2026-08-10 14:18:37.790751
+3635	909	C	Thông tin mâu thuẫn với bài đọc	f	3	2026-08-10 14:18:37.790751
+3636	909	D	Thông tin thuộc một chủ đề khác	f	4	2026-08-10 14:18:37.790751
+3637	910	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:18:37.790751
+3638	910	B	Thông tin không được đề cập	f	2	2026-08-10 14:18:37.790751
+3639	910	C	Thông tin mâu thuẫn với bài đọc	f	3	2026-08-10 14:18:37.790751
+3640	910	D	Thông tin thuộc một chủ đề khác	f	4	2026-08-10 14:18:37.790751
+3641	911	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:18:37.790751
+3642	911	B	Thông tin không được đề cập	f	2	2026-08-10 14:18:37.790751
+3643	911	C	Thông tin mâu thuẫn với bài đọc	f	3	2026-08-10 14:18:37.790751
+3644	911	D	Thông tin thuộc một chủ đề khác	f	4	2026-08-10 14:18:37.790751
+3645	912	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:18:37.790751
+3646	912	B	Thông tin không được đề cập	f	2	2026-08-10 14:18:37.790751
+3647	912	C	Thông tin mâu thuẫn với bài đọc	f	3	2026-08-10 14:18:37.790751
+3648	912	D	Thông tin thuộc một chủ đề khác	f	4	2026-08-10 14:18:37.790751
+3649	913	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:18:37.790751
+3650	913	B	Thông tin không được đề cập	f	2	2026-08-10 14:18:37.790751
+3651	913	C	Thông tin mâu thuẫn với bài đọc	f	3	2026-08-10 14:18:37.790751
+3652	913	D	Thông tin thuộc một chủ đề khác	f	4	2026-08-10 14:18:37.790751
+3653	914	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:18:37.790751
+3654	914	B	Thông tin không được đề cập	f	2	2026-08-10 14:18:37.790751
+3655	914	C	Thông tin mâu thuẫn với bài đọc	f	3	2026-08-10 14:18:37.790751
+3656	914	D	Thông tin thuộc một chủ đề khác	f	4	2026-08-10 14:18:37.790751
+3657	915	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:18:37.790751
+3658	915	B	Thông tin không được đề cập	f	2	2026-08-10 14:18:37.790751
+3659	915	C	Thông tin mâu thuẫn với bài đọc	f	3	2026-08-10 14:18:37.790751
+3660	915	D	Thông tin thuộc một chủ đề khác	f	4	2026-08-10 14:18:37.790751
+3661	916	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:18:37.790751
+3662	916	B	Thông tin không được đề cập	f	2	2026-08-10 14:18:37.790751
+3663	916	C	Thông tin mâu thuẫn với bài đọc	f	3	2026-08-10 14:18:37.790751
+3664	916	D	Thông tin thuộc một chủ đề khác	f	4	2026-08-10 14:18:37.790751
+3665	917	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:18:37.790751
+3666	917	B	Thông tin không được đề cập	f	2	2026-08-10 14:18:37.790751
+3667	917	C	Thông tin mâu thuẫn với bài đọc	f	3	2026-08-10 14:18:37.790751
+3668	917	D	Thông tin thuộc một chủ đề khác	f	4	2026-08-10 14:18:37.790751
+3669	918	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:18:37.790751
+3670	918	B	Thông tin không được đề cập	f	2	2026-08-10 14:18:37.790751
+3671	918	C	Thông tin mâu thuẫn với bài đọc	f	3	2026-08-10 14:18:37.790751
+3672	918	D	Thông tin thuộc một chủ đề khác	f	4	2026-08-10 14:18:37.790751
+3673	919	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:18:37.790751
+3674	919	B	Thông tin không được đề cập	f	2	2026-08-10 14:18:37.790751
+3675	919	C	Thông tin mâu thuẫn với bài đọc	f	3	2026-08-10 14:18:37.790751
+3676	919	D	Thông tin thuộc một chủ đề khác	f	4	2026-08-10 14:18:37.790751
+3677	920	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:18:37.790751
+3678	920	B	Thông tin không được đề cập	f	2	2026-08-10 14:18:37.790751
+3679	920	C	Thông tin mâu thuẫn với bài đọc	f	3	2026-08-10 14:18:37.790751
+3680	920	D	Thông tin thuộc một chủ đề khác	f	4	2026-08-10 14:18:37.790751
+3681	921	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:18:37.790751
+3682	921	B	Thông tin không được đề cập	f	2	2026-08-10 14:18:37.790751
+3683	921	C	Thông tin mâu thuẫn với bài đọc	f	3	2026-08-10 14:18:37.790751
+3684	921	D	Thông tin thuộc một chủ đề khác	f	4	2026-08-10 14:18:37.790751
+3685	922	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:18:37.790751
+3686	922	B	Thông tin không được đề cập	f	2	2026-08-10 14:18:37.790751
+3687	922	C	Thông tin mâu thuẫn với bài đọc	f	3	2026-08-10 14:18:37.790751
+3688	922	D	Thông tin thuộc một chủ đề khác	f	4	2026-08-10 14:18:37.790751
+3689	923	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:18:37.790751
+3690	923	B	Thông tin không được đề cập	f	2	2026-08-10 14:18:37.790751
+3691	923	C	Thông tin mâu thuẫn với bài đọc	f	3	2026-08-10 14:18:37.790751
+3692	923	D	Thông tin thuộc một chủ đề khác	f	4	2026-08-10 14:18:37.790751
+3693	924	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:18:37.790751
+3694	924	B	Thông tin không được đề cập	f	2	2026-08-10 14:18:37.790751
+3695	924	C	Thông tin mâu thuẫn với bài đọc	f	3	2026-08-10 14:18:37.790751
+3696	924	D	Thông tin thuộc một chủ đề khác	f	4	2026-08-10 14:18:37.790751
+3697	925	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:18:37.790751
+3698	925	B	Thông tin không được đề cập	f	2	2026-08-10 14:18:37.790751
+3699	925	C	Thông tin mâu thuẫn với bài đọc	f	3	2026-08-10 14:18:37.790751
+3700	925	D	Thông tin thuộc một chủ đề khác	f	4	2026-08-10 14:18:37.790751
+3701	926	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:18:37.790751
+3702	926	B	Thông tin không được đề cập	f	2	2026-08-10 14:18:37.790751
+3703	926	C	Thông tin mâu thuẫn với bài đọc	f	3	2026-08-10 14:18:37.790751
+3704	926	D	Thông tin thuộc một chủ đề khác	f	4	2026-08-10 14:18:37.790751
+3705	927	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:18:37.790751
+3706	927	B	Thông tin không được đề cập	f	2	2026-08-10 14:18:37.790751
+3707	927	C	Thông tin mâu thuẫn với bài đọc	f	3	2026-08-10 14:18:37.790751
+3708	927	D	Thông tin thuộc một chủ đề khác	f	4	2026-08-10 14:18:37.790751
+3709	928	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:18:37.790751
+3710	928	B	Thông tin không được đề cập	f	2	2026-08-10 14:18:37.790751
+3711	928	C	Thông tin mâu thuẫn với bài đọc	f	3	2026-08-10 14:18:37.790751
+3712	928	D	Thông tin thuộc một chủ đề khác	f	4	2026-08-10 14:18:37.790751
+3713	929	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:18:37.790751
+3714	929	B	Thông tin không được đề cập	f	2	2026-08-10 14:18:37.790751
+3715	929	C	Thông tin mâu thuẫn với bài đọc	f	3	2026-08-10 14:18:37.790751
+3716	929	D	Thông tin thuộc một chủ đề khác	f	4	2026-08-10 14:18:37.790751
+3717	930	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:18:37.790751
+3718	930	B	Thông tin không được đề cập	f	2	2026-08-10 14:18:37.790751
+3719	930	C	Thông tin mâu thuẫn với bài đọc	f	3	2026-08-10 14:18:37.790751
+3720	930	D	Thông tin thuộc một chủ đề khác	f	4	2026-08-10 14:18:37.790751
+3721	931	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:18:37.790751
+3722	931	B	Thông tin không được đề cập	f	2	2026-08-10 14:18:37.790751
+3723	931	C	Thông tin mâu thuẫn với bài đọc	f	3	2026-08-10 14:18:37.790751
+3724	931	D	Thông tin thuộc một chủ đề khác	f	4	2026-08-10 14:18:37.790751
+3725	932	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:18:37.790751
+3726	932	B	Thông tin không được đề cập	f	2	2026-08-10 14:18:37.790751
+3727	932	C	Thông tin mâu thuẫn với bài đọc	f	3	2026-08-10 14:18:37.790751
+3728	932	D	Thông tin thuộc một chủ đề khác	f	4	2026-08-10 14:18:37.790751
+3729	933	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:18:37.790751
+3730	933	B	Thông tin không được đề cập	f	2	2026-08-10 14:18:37.790751
+3731	933	C	Thông tin mâu thuẫn với bài đọc	f	3	2026-08-10 14:18:37.790751
+3732	933	D	Thông tin thuộc một chủ đề khác	f	4	2026-08-10 14:18:37.790751
+3733	934	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:18:37.790751
+3734	934	B	Thông tin không được đề cập	f	2	2026-08-10 14:18:37.790751
+3735	934	C	Thông tin mâu thuẫn với bài đọc	f	3	2026-08-10 14:18:37.790751
+3736	934	D	Thông tin thuộc một chủ đề khác	f	4	2026-08-10 14:18:37.790751
+3737	935	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:18:37.790751
+3738	935	B	Thông tin không được đề cập	f	2	2026-08-10 14:18:37.790751
+3739	935	C	Thông tin mâu thuẫn với bài đọc	f	3	2026-08-10 14:18:37.790751
+3740	935	D	Thông tin thuộc một chủ đề khác	f	4	2026-08-10 14:18:37.790751
+3741	936	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:18:37.790751
+3742	936	B	Thông tin không được đề cập	f	2	2026-08-10 14:18:37.790751
+3743	936	C	Thông tin mâu thuẫn với bài đọc	f	3	2026-08-10 14:18:37.790751
+3744	936	D	Thông tin thuộc một chủ đề khác	f	4	2026-08-10 14:18:37.790751
+3745	937	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:18:37.790751
+3746	937	B	Thông tin không được đề cập	f	2	2026-08-10 14:18:37.790751
+3747	937	C	Thông tin mâu thuẫn với bài đọc	f	3	2026-08-10 14:18:37.790751
+3748	937	D	Thông tin thuộc một chủ đề khác	f	4	2026-08-10 14:18:37.790751
+3749	938	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:18:37.790751
+3750	938	B	Thông tin không được đề cập	f	2	2026-08-10 14:18:37.790751
+3751	938	C	Thông tin mâu thuẫn với bài đọc	f	3	2026-08-10 14:18:37.790751
+3752	938	D	Thông tin thuộc một chủ đề khác	f	4	2026-08-10 14:18:37.790751
+3753	939	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:18:37.790751
+3754	939	B	Thông tin không được đề cập	f	2	2026-08-10 14:18:37.790751
+3755	939	C	Thông tin mâu thuẫn với bài đọc	f	3	2026-08-10 14:18:37.790751
+3756	939	D	Thông tin thuộc một chủ đề khác	f	4	2026-08-10 14:18:37.790751
+3757	940	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:18:37.790751
+3758	940	B	Thông tin không được đề cập	f	2	2026-08-10 14:18:37.790751
+3759	940	C	Thông tin mâu thuẫn với bài đọc	f	3	2026-08-10 14:18:37.790751
+3760	940	D	Thông tin thuộc một chủ đề khác	f	4	2026-08-10 14:18:37.790751
+3761	941	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:18:37.790751
+3762	941	B	Thông tin không được đề cập	f	2	2026-08-10 14:18:37.790751
+3763	941	C	Thông tin mâu thuẫn với bài đọc	f	3	2026-08-10 14:18:37.790751
+3764	941	D	Thông tin thuộc một chủ đề khác	f	4	2026-08-10 14:18:37.790751
+3765	942	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:18:37.790751
+3766	942	B	Thông tin không được đề cập	f	2	2026-08-10 14:18:37.790751
+3767	942	C	Thông tin mâu thuẫn với bài đọc	f	3	2026-08-10 14:18:37.790751
+3768	942	D	Thông tin thuộc một chủ đề khác	f	4	2026-08-10 14:18:37.790751
+3769	943	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:18:37.790751
+3770	943	B	Thông tin không được đề cập	f	2	2026-08-10 14:18:37.790751
+3771	943	C	Thông tin mâu thuẫn với bài đọc	f	3	2026-08-10 14:18:37.790751
+3772	943	D	Thông tin thuộc một chủ đề khác	f	4	2026-08-10 14:18:37.790751
+3773	944	A	Thông tin phù hợp với nội dung bài đọc	t	1	2026-08-10 14:18:37.790751
+3774	944	B	Thông tin không được đề cập	f	2	2026-08-10 14:18:37.790751
+3775	944	C	Thông tin mâu thuẫn với bài đọc	f	3	2026-08-10 14:18:37.790751
+3776	944	D	Thông tin thuộc một chủ đề khác	f	4	2026-08-10 14:18:37.790751
 \.
 
 
@@ -12003,6 +12003,7 @@ COPY public.reading_questions (id, group_id, question_number, question_text, que
 445	187	1	The manager asked when the shipment _____.	grammar	Trong câu hỏi gián tiếp về quá khứ, will thường lùi thành would.	Câu hỏi gián tiếp: Từ để hỏi trong câu hỏi gián tiếp	A	1	2026-08-10 12:43:50.483122	2026-08-10 12:43:50.483122
 446	187	2	Please tell me where the meeting room _____.	grammar	Câu hỏi gián tiếp dùng trật tự câu khẳng định; is located phù hợp với ngữ cảnh.	Câu hỏi gián tiếp: Từ để hỏi trong câu hỏi gián tiếp	C	2	2026-08-10 12:43:50.483122	2026-08-10 12:43:50.483122
 447	187	3	She asked whether the report _____ ready.	grammar	Động từ lùi thì theo ngữ cảnh quá khứ: was.	Câu hỏi gián tiếp: Từ để hỏi trong câu hỏi gián tiếp	B	3	2026-08-10 12:43:50.483122	2026-08-10 12:43:50.483122
+501	201	1	What is the notice mainly about?	main_idea	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Ý chính	A	1	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
 448	187	4	Could you explain how the machine _____?	grammar	Câu hỏi gián tiếp dùng trật tự khẳng định; how the machine works.	Câu hỏi gián tiếp: Từ để hỏi trong câu hỏi gián tiếp	D	4	2026-08-10 12:43:50.483122	2026-08-10 12:43:50.483122
 449	188	1	There _____ a meeting at 9:00 tomorrow.	grammar	A meeting là danh từ số ít nên dùng there is.	Cấu trúc there is/there are: There is/there are phù hợp với danh từ	A	1	2026-08-10 12:43:50.483122	2026-08-10 12:43:50.483122
 450	188	2	There _____ several documents on the desk.	grammar	Several documents là số nhiều nên dùng there are.	Cấu trúc there is/there are: There is/there are phù hợp với danh từ	C	2	2026-08-10 12:43:50.483122	2026-08-10 12:43:50.483122
@@ -12056,450 +12057,449 @@ COPY public.reading_questions (id, group_id, question_number, question_text, que
 498	200	2	All participants _____ an email tomorrow.	grammar	Participants nhận email; dùng bị động tương lai.	Câu bị động tương lai: Will be + quá khứ phân từ	A	2	2026-08-10 12:43:50.483122	2026-08-10 12:43:50.483122
 499	200	3	The equipment _____ before the exhibition begins.	grammar	Equipment được kiểm tra trong tương lai.	Câu bị động tương lai: Will be + quá khứ phân từ	C	3	2026-08-10 12:43:50.483122	2026-08-10 12:43:50.483122
 500	200	4	The results _____ on the company website next Friday.	grammar	Results được đăng; next Friday yêu cầu tương lai.	Câu bị động tương lai: Will be + quá khứ phân từ	B	4	2026-08-10 12:43:50.483122	2026-08-10 12:43:50.483122
-878	291	1	What position is available?	main_idea	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Ý chính	A	1	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-879	291	2	What experience is required?	detail	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Thông tin chi tiết	A	2	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-880	291	3	What is the application deadline?	detail	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Thông tin chi tiết	A	3	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-881	291	4	What software skill is mentioned?	detail	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Thông tin chi tiết	A	4	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-882	292	1	What is the announcement about?	main_idea	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Ý chính	A	1	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-883	292	2	Where will the session be held?	detail	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Thông tin chi tiết	A	2	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-884	292	3	What should employees bring?	detail	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Thông tin chi tiết	A	3	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-885	292	4	What should employees do before attending?	detail	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Thông tin chi tiết	A	4	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-886	293	1	What is being announced?	main_idea	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Ý chính	A	1	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-887	293	2	When is the promotion available?	detail	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Thông tin chi tiết	A	2	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-888	293	3	Where must purchases be made?	detail	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Thông tin chi tiết	A	3	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-889	293	4	Which product is excluded?	detail	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Thông tin chi tiết	A	4	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-890	294	1	What has been confirmed?	main_idea	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Ý chính	A	1	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-891	294	2	How long will Ms. Lee stay?	detail	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Thông tin chi tiết	A	2	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-892	294	3	What is included?	detail	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Thông tin chi tiết	A	3	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-893	294	4	What should guests do if they need a taxi?	detail	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Thông tin chi tiết	A	4	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-894	295	1	Why is Daniel Ruiz mentioned?	main_idea	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Ý chính	A	1	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-895	295	2	When did he join the company?	detail	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Thông tin chi tiết	A	2	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-896	295	3	How many employees does he supervise?	detail	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Thông tin chi tiết	A	3	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-897	295	4	When will he be recognized?	detail	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Thông tin chi tiết	A	4	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-898	296	1	What change is announced?	main_idea	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Ý chính	A	1	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-899	296	2	When will the morning shuttle leave?	detail	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Thông tin chi tiết	A	2	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-900	296	3	What will remain unchanged?	detail	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Thông tin chi tiết	A	3	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-901	296	4	What are employees encouraged to do?	detail	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Thông tin chi tiết	A	4	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-902	297	1	What has been extended?	main_idea	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Ý chính	A	1	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-903	297	2	Why was the deadline changed?	detail	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Thông tin chi tiết	A	2	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-904	297	3	What was the original selection date?	detail	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Thông tin chi tiết	A	3	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-905	297	4	The word “additional” is closest in meaning to _____.	vocabulary	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Từ đồng nghĩa	A	4	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-906	298	1	What is the notice mainly about?	main_idea	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Ý chính	A	1	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-907	298	2	When should employees remove their personal items?	detail	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Thông tin chi tiết	A	2	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-908	298	3	Where will staff work during the renovation?	detail	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Thông tin chi tiết	A	3	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-909	298	4	The word “renovated” is closest in meaning to _____.	vocabulary	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Từ đồng nghĩa	A	4	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-910	299	1	Why was the message sent?	main_idea	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Ý chính	A	1	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-911	299	2	What did the customer order?	detail	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Thông tin chi tiết	A	2	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-912	299	3	When is the package expected to arrive?	detail	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Thông tin chi tiết	A	3	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-913	300	1	What position is available?	main_idea	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Ý chính	A	1	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-914	300	2	What experience is required?	detail	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Thông tin chi tiết	A	2	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-915	300	3	What is the application deadline?	detail	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Thông tin chi tiết	A	3	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-916	300	4	What software skill is mentioned?	detail	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Thông tin chi tiết	A	4	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-917	301	1	What is the announcement about?	main_idea	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Ý chính	A	1	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-918	301	2	Where will the session be held?	detail	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Thông tin chi tiết	A	2	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-919	301	3	What should employees bring?	detail	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Thông tin chi tiết	A	3	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-920	301	4	What should employees do before attending?	detail	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Thông tin chi tiết	A	4	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-921	302	1	What is being announced?	main_idea	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Ý chính	A	1	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-922	302	2	When is the promotion available?	detail	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Thông tin chi tiết	A	2	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-923	302	3	Where must purchases be made?	detail	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Thông tin chi tiết	A	3	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-924	302	4	Which product is excluded?	detail	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Thông tin chi tiết	A	4	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-925	303	1	What has been confirmed?	main_idea	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Ý chính	A	1	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-926	303	2	How long will Ms. Lee stay?	detail	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Thông tin chi tiết	A	2	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-927	303	3	What is included?	detail	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Thông tin chi tiết	A	3	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-928	303	4	What should guests do if they need a taxi?	detail	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Thông tin chi tiết	A	4	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-929	304	1	Why is Daniel Ruiz mentioned?	main_idea	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Ý chính	A	1	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-930	304	2	When did he join the company?	detail	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Thông tin chi tiết	A	2	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-931	304	3	How many employees does he supervise?	detail	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Thông tin chi tiết	A	3	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-932	304	4	When will he be recognized?	detail	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Thông tin chi tiết	A	4	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-933	305	1	What change is announced?	main_idea	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Ý chính	A	1	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-934	305	2	When will the morning shuttle leave?	detail	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Thông tin chi tiết	A	2	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-935	305	3	What will remain unchanged?	detail	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Thông tin chi tiết	A	3	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-936	305	4	What are employees encouraged to do?	detail	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Thông tin chi tiết	A	4	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-937	306	1	What has been extended?	main_idea	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Ý chính	A	1	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-938	306	2	Why was the deadline changed?	detail	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Thông tin chi tiết	A	2	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-939	306	3	What was the original selection date?	detail	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Thông tin chi tiết	A	3	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-940	306	4	The word “additional” is closest in meaning to _____.	vocabulary	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Từ đồng nghĩa	A	4	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-941	307	1	What is the notice mainly about?	main_idea	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Ý chính	A	1	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-942	307	2	When should employees remove their personal items?	detail	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Thông tin chi tiết	A	2	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-943	307	3	Where will staff work during the renovation?	detail	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Thông tin chi tiết	A	3	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-944	307	4	The word “renovated” is closest in meaning to _____.	vocabulary	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Từ đồng nghĩa	A	4	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-945	308	1	Why was the message sent?	main_idea	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Ý chính	A	1	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-946	308	2	What did the customer order?	detail	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Thông tin chi tiết	A	2	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-947	308	3	When is the package expected to arrive?	detail	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Thông tin chi tiết	A	3	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-948	309	1	What position is available?	main_idea	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Ý chính	A	1	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-949	309	2	What experience is required?	detail	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Thông tin chi tiết	A	2	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-950	309	3	What is the application deadline?	detail	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Thông tin chi tiết	A	3	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-951	309	4	What software skill is mentioned?	detail	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Thông tin chi tiết	A	4	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-952	310	1	What is the announcement about?	main_idea	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Ý chính	A	1	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-953	310	2	Where will the session be held?	detail	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Thông tin chi tiết	A	2	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-801	271	1	What is the notice mainly about?	main_idea	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Ý chính	A	1	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-802	271	2	When should employees remove their personal items?	detail	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Thông tin chi tiết	A	2	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-803	271	3	Where will staff work during the renovation?	detail	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Thông tin chi tiết	A	3	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-804	271	4	The word “renovated” is closest in meaning to _____.	vocabulary	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Từ đồng nghĩa	A	4	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-805	272	1	Why was the message sent?	main_idea	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Ý chính	A	1	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-806	272	2	What did the customer order?	detail	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Thông tin chi tiết	A	2	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-807	272	3	When is the package expected to arrive?	detail	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Thông tin chi tiết	A	3	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-808	273	1	What position is available?	main_idea	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Ý chính	A	1	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-809	273	2	What experience is required?	detail	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Thông tin chi tiết	A	2	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-810	273	3	What is the application deadline?	detail	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Thông tin chi tiết	A	3	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-811	273	4	What software skill is mentioned?	detail	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Thông tin chi tiết	A	4	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-812	274	1	What is the announcement about?	main_idea	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Ý chính	A	1	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-813	274	2	Where will the session be held?	detail	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Thông tin chi tiết	A	2	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-814	274	3	What should employees bring?	detail	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Thông tin chi tiết	A	3	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-815	274	4	What should employees do before attending?	detail	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Thông tin chi tiết	A	4	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-816	275	1	What is being announced?	main_idea	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Ý chính	A	1	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-817	275	2	When is the promotion available?	detail	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Thông tin chi tiết	A	2	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-818	275	3	Where must purchases be made?	detail	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Thông tin chi tiết	A	3	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-819	275	4	Which product is excluded?	detail	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Thông tin chi tiết	A	4	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-820	276	1	What has been confirmed?	main_idea	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Ý chính	A	1	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-821	276	2	How long will Ms. Lee stay?	detail	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Thông tin chi tiết	A	2	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-822	276	3	What is included?	detail	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Thông tin chi tiết	A	3	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-823	276	4	What should guests do if they need a taxi?	detail	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Thông tin chi tiết	A	4	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-824	277	1	Why is Daniel Ruiz mentioned?	main_idea	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Ý chính	A	1	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-825	277	2	When did he join the company?	detail	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Thông tin chi tiết	A	2	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-826	277	3	How many employees does he supervise?	detail	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Thông tin chi tiết	A	3	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-827	277	4	When will he be recognized?	detail	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Thông tin chi tiết	A	4	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-828	278	1	What change is announced?	main_idea	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Ý chính	A	1	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-829	278	2	When will the morning shuttle leave?	detail	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Thông tin chi tiết	A	2	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-830	278	3	What will remain unchanged?	detail	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Thông tin chi tiết	A	3	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-831	278	4	What are employees encouraged to do?	detail	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Thông tin chi tiết	A	4	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-832	279	1	What has been extended?	main_idea	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Ý chính	A	1	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-833	279	2	Why was the deadline changed?	detail	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Thông tin chi tiết	A	2	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-834	279	3	What was the original selection date?	detail	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Thông tin chi tiết	A	3	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-835	279	4	The word “additional” is closest in meaning to _____.	vocabulary	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Từ đồng nghĩa	A	4	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-836	280	1	What is the notice mainly about?	main_idea	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Ý chính	A	1	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-837	280	2	When should employees remove their personal items?	detail	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Thông tin chi tiết	A	2	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-838	280	3	Where will staff work during the renovation?	detail	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Thông tin chi tiết	A	3	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-839	280	4	The word “renovated” is closest in meaning to _____.	vocabulary	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Từ đồng nghĩa	A	4	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-840	281	1	Why was the message sent?	main_idea	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Ý chính	A	1	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-841	281	2	What did the customer order?	detail	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Thông tin chi tiết	A	2	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-842	281	3	When is the package expected to arrive?	detail	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Thông tin chi tiết	A	3	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-843	282	1	What position is available?	main_idea	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Ý chính	A	1	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-844	282	2	What experience is required?	detail	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Thông tin chi tiết	A	2	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-845	282	3	What is the application deadline?	detail	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Thông tin chi tiết	A	3	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-846	282	4	What software skill is mentioned?	detail	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Thông tin chi tiết	A	4	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-847	283	1	What is the announcement about?	main_idea	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Ý chính	A	1	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-848	283	2	Where will the session be held?	detail	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Thông tin chi tiết	A	2	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-849	283	3	What should employees bring?	detail	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Thông tin chi tiết	A	3	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-850	283	4	What should employees do before attending?	detail	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Thông tin chi tiết	A	4	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-851	284	1	What is being announced?	main_idea	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Ý chính	A	1	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-852	284	2	When is the promotion available?	detail	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Thông tin chi tiết	A	2	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-853	284	3	Where must purchases be made?	detail	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Thông tin chi tiết	A	3	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-854	284	4	Which product is excluded?	detail	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Thông tin chi tiết	A	4	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-855	285	1	What has been confirmed?	main_idea	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Ý chính	A	1	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-856	285	2	How long will Ms. Lee stay?	detail	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Thông tin chi tiết	A	2	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-857	285	3	What is included?	detail	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Thông tin chi tiết	A	3	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-858	285	4	What should guests do if they need a taxi?	detail	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Thông tin chi tiết	A	4	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-859	286	1	Why is Daniel Ruiz mentioned?	main_idea	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Ý chính	A	1	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-860	286	2	When did he join the company?	detail	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Thông tin chi tiết	A	2	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-861	286	3	How many employees does he supervise?	detail	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Thông tin chi tiết	A	3	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-862	286	4	When will he be recognized?	detail	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Thông tin chi tiết	A	4	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-863	287	1	What change is announced?	main_idea	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Ý chính	A	1	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-864	287	2	When will the morning shuttle leave?	detail	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Thông tin chi tiết	A	2	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-865	287	3	What will remain unchanged?	detail	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Thông tin chi tiết	A	3	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-866	287	4	What are employees encouraged to do?	detail	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Thông tin chi tiết	A	4	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-867	288	1	What has been extended?	main_idea	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Ý chính	A	1	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-868	288	2	Why was the deadline changed?	detail	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Thông tin chi tiết	A	2	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-869	288	3	What was the original selection date?	detail	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Thông tin chi tiết	A	3	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-870	288	4	The word “additional” is closest in meaning to _____.	vocabulary	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Từ đồng nghĩa	A	4	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-871	289	1	What is the notice mainly about?	main_idea	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Ý chính	A	1	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-872	289	2	When should employees remove their personal items?	detail	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Thông tin chi tiết	A	2	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-873	289	3	Where will staff work during the renovation?	detail	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Thông tin chi tiết	A	3	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-874	289	4	The word “renovated” is closest in meaning to _____.	vocabulary	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Từ đồng nghĩa	A	4	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-875	290	1	Why was the message sent?	main_idea	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Ý chính	A	1	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-876	290	2	What did the customer order?	detail	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Thông tin chi tiết	A	2	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-877	290	3	When is the package expected to arrive?	detail	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Thông tin chi tiết	A	3	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-954	310	3	What should employees bring?	detail	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Thông tin chi tiết	A	3	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-955	310	4	What should employees do before attending?	detail	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Thông tin chi tiết	A	4	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-956	311	1	What is being announced?	main_idea	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Ý chính	A	1	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-957	311	2	When is the promotion available?	detail	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Thông tin chi tiết	A	2	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-958	311	3	Where must purchases be made?	detail	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Thông tin chi tiết	A	3	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-959	311	4	Which product is excluded?	detail	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Thông tin chi tiết	A	4	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-960	312	1	What has been confirmed?	main_idea	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Ý chính	A	1	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-961	312	2	How long will Ms. Lee stay?	detail	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Thông tin chi tiết	A	2	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-962	312	3	What is included?	detail	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Thông tin chi tiết	A	3	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-963	312	4	What should guests do if they need a taxi?	detail	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Thông tin chi tiết	A	4	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-964	313	1	Why is Daniel Ruiz mentioned?	main_idea	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Ý chính	A	1	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-965	313	2	When did he join the company?	detail	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Thông tin chi tiết	A	2	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-966	313	3	How many employees does he supervise?	detail	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Thông tin chi tiết	A	3	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-967	313	4	When will he be recognized?	detail	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Thông tin chi tiết	A	4	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-968	314	1	What change is announced?	main_idea	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Ý chính	A	1	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-969	314	2	When will the morning shuttle leave?	detail	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Thông tin chi tiết	A	2	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-970	314	3	What will remain unchanged?	detail	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Thông tin chi tiết	A	3	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-971	314	4	What are employees encouraged to do?	detail	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Thông tin chi tiết	A	4	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-972	315	1	What has been extended?	main_idea	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Ý chính	A	1	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-973	315	2	Why was the deadline changed?	detail	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Thông tin chi tiết	A	2	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-974	315	3	What was the original selection date?	detail	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Thông tin chi tiết	A	3	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-975	315	4	The word “additional” is closest in meaning to _____.	vocabulary	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Từ đồng nghĩa	A	4	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-976	316	1	What is the notice mainly about?	main_idea	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Ý chính	A	1	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-977	316	2	When should employees remove their personal items?	detail	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Thông tin chi tiết	A	2	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-978	316	3	Where will staff work during the renovation?	detail	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Thông tin chi tiết	A	3	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-979	316	4	The word “renovated” is closest in meaning to _____.	vocabulary	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Từ đồng nghĩa	A	4	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-980	317	1	Why was the message sent?	main_idea	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Ý chính	A	1	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-981	317	2	What did the customer order?	detail	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Thông tin chi tiết	A	2	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-982	317	3	When is the package expected to arrive?	detail	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Thông tin chi tiết	A	3	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-983	318	1	What position is available?	main_idea	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Ý chính	A	1	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-984	318	2	What experience is required?	detail	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Thông tin chi tiết	A	2	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-985	318	3	What is the application deadline?	detail	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Thông tin chi tiết	A	3	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-986	318	4	What software skill is mentioned?	detail	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Thông tin chi tiết	A	4	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-987	319	1	What is the announcement about?	main_idea	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Ý chính	A	1	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-988	319	2	Where will the session be held?	detail	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Thông tin chi tiết	A	2	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-989	319	3	What should employees bring?	detail	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Thông tin chi tiết	A	3	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-990	319	4	What should employees do before attending?	detail	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Thông tin chi tiết	A	4	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-991	320	1	What is being announced?	main_idea	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Ý chính	A	1	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-992	320	2	When is the promotion available?	detail	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Thông tin chi tiết	A	2	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-993	320	3	Where must purchases be made?	detail	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Thông tin chi tiết	A	3	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-994	320	4	Which product is excluded?	detail	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Thông tin chi tiết	A	4	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-995	321	1	What is the main purpose of the first passage?	main_idea	Cần đối chiếu nội dung của hai đoạn văn; phương án A phù hợp với thông tin được nêu.	Ý chính	A	1	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-996	321	2	According to the second passage, what specific information is provided?	detail	Cần đối chiếu nội dung của hai đoạn văn; phương án A phù hợp với thông tin được nêu.	Thông tin chi tiết	A	2	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-997	321	3	Why did the person or organization in the first passage take action?	inference	Cần đối chiếu nội dung của hai đoạn văn; phương án A phù hợp với thông tin được nêu.	Suy luận	A	3	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-998	321	4	What can be inferred from both passages?	inference	Cần đối chiếu nội dung của hai đoạn văn; phương án A phù hợp với thông tin được nêu.	Suy luận	A	4	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-999	321	5	Which statement is supported by the two passages?	detail	Cần đối chiếu nội dung của hai đoạn văn; phương án A phù hợp với thông tin được nêu.	Thông tin chi tiết	A	5	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-1000	322	1	What is the main purpose of the first passage?	main_idea	Cần đối chiếu nội dung của hai đoạn văn; phương án A phù hợp với thông tin được nêu.	Ý chính	A	1	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-1001	322	2	According to the second passage, what specific information is provided?	detail	Cần đối chiếu nội dung của hai đoạn văn; phương án A phù hợp với thông tin được nêu.	Thông tin chi tiết	A	2	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-1002	322	3	Why did the person or organization in the first passage take action?	inference	Cần đối chiếu nội dung của hai đoạn văn; phương án A phù hợp với thông tin được nêu.	Suy luận	A	3	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-1003	322	4	What can be inferred from both passages?	inference	Cần đối chiếu nội dung của hai đoạn văn; phương án A phù hợp với thông tin được nêu.	Suy luận	A	4	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-1004	322	5	Which statement is supported by the two passages?	detail	Cần đối chiếu nội dung của hai đoạn văn; phương án A phù hợp với thông tin được nêu.	Thông tin chi tiết	A	5	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-1005	323	1	What is the main purpose of the first passage?	main_idea	Cần đối chiếu nội dung của hai đoạn văn; phương án A phù hợp với thông tin được nêu.	Ý chính	A	1	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-1006	323	2	According to the second passage, what specific information is provided?	detail	Cần đối chiếu nội dung của hai đoạn văn; phương án A phù hợp với thông tin được nêu.	Thông tin chi tiết	A	2	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-1007	323	3	Why did the person or organization in the first passage take action?	inference	Cần đối chiếu nội dung của hai đoạn văn; phương án A phù hợp với thông tin được nêu.	Suy luận	A	3	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-1008	323	4	What can be inferred from both passages?	inference	Cần đối chiếu nội dung của hai đoạn văn; phương án A phù hợp với thông tin được nêu.	Suy luận	A	4	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-1009	323	5	Which statement is supported by the two passages?	detail	Cần đối chiếu nội dung của hai đoạn văn; phương án A phù hợp với thông tin được nêu.	Thông tin chi tiết	A	5	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-1010	324	1	What is the main purpose of the first passage?	main_idea	Cần đối chiếu nội dung của hai đoạn văn; phương án A phù hợp với thông tin được nêu.	Ý chính	A	1	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-1011	324	2	According to the second passage, what specific information is provided?	detail	Cần đối chiếu nội dung của hai đoạn văn; phương án A phù hợp với thông tin được nêu.	Thông tin chi tiết	A	2	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-1012	324	3	Why did the person or organization in the first passage take action?	inference	Cần đối chiếu nội dung của hai đoạn văn; phương án A phù hợp với thông tin được nêu.	Suy luận	A	3	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-1013	324	4	What can be inferred from both passages?	inference	Cần đối chiếu nội dung của hai đoạn văn; phương án A phù hợp với thông tin được nêu.	Suy luận	A	4	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-1014	324	5	Which statement is supported by the two passages?	detail	Cần đối chiếu nội dung của hai đoạn văn; phương án A phù hợp với thông tin được nêu.	Thông tin chi tiết	A	5	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-1015	325	1	What is the main purpose of the first passage?	main_idea	Cần đối chiếu nội dung của hai đoạn văn; phương án A phù hợp với thông tin được nêu.	Ý chính	A	1	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-1016	325	2	According to the second passage, what specific information is provided?	detail	Cần đối chiếu nội dung của hai đoạn văn; phương án A phù hợp với thông tin được nêu.	Thông tin chi tiết	A	2	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-1017	325	3	Why did the person or organization in the first passage take action?	inference	Cần đối chiếu nội dung của hai đoạn văn; phương án A phù hợp với thông tin được nêu.	Suy luận	A	3	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-1018	325	4	What can be inferred from both passages?	inference	Cần đối chiếu nội dung của hai đoạn văn; phương án A phù hợp với thông tin được nêu.	Suy luận	A	4	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-1019	325	5	Which statement is supported by the two passages?	detail	Cần đối chiếu nội dung của hai đoạn văn; phương án A phù hợp với thông tin được nêu.	Thông tin chi tiết	A	5	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-1020	326	1	What is the main purpose of the first passage?	main_idea	Cần đối chiếu nội dung của hai đoạn văn; phương án A phù hợp với thông tin được nêu.	Ý chính	A	1	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-1021	326	2	According to the second passage, what specific information is provided?	detail	Cần đối chiếu nội dung của hai đoạn văn; phương án A phù hợp với thông tin được nêu.	Thông tin chi tiết	A	2	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-1022	326	3	Why did the person or organization in the first passage take action?	inference	Cần đối chiếu nội dung của hai đoạn văn; phương án A phù hợp với thông tin được nêu.	Suy luận	A	3	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-1023	326	4	What can be inferred from both passages?	inference	Cần đối chiếu nội dung của hai đoạn văn; phương án A phù hợp với thông tin được nêu.	Suy luận	A	4	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-1024	326	5	Which statement is supported by the two passages?	detail	Cần đối chiếu nội dung của hai đoạn văn; phương án A phù hợp với thông tin được nêu.	Thông tin chi tiết	A	5	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-1025	327	1	What is the main purpose of the first passage?	main_idea	Cần đối chiếu nội dung của hai đoạn văn; phương án A phù hợp với thông tin được nêu.	Ý chính	A	1	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-1026	327	2	According to the second passage, what specific information is provided?	detail	Cần đối chiếu nội dung của hai đoạn văn; phương án A phù hợp với thông tin được nêu.	Thông tin chi tiết	A	2	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-1027	327	3	Why did the person or organization in the first passage take action?	inference	Cần đối chiếu nội dung của hai đoạn văn; phương án A phù hợp với thông tin được nêu.	Suy luận	A	3	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-1028	327	4	What can be inferred from both passages?	inference	Cần đối chiếu nội dung của hai đoạn văn; phương án A phù hợp với thông tin được nêu.	Suy luận	A	4	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-1029	327	5	Which statement is supported by the two passages?	detail	Cần đối chiếu nội dung của hai đoạn văn; phương án A phù hợp với thông tin được nêu.	Thông tin chi tiết	A	5	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-1030	328	1	What is the main purpose of the first passage?	main_idea	Cần đối chiếu nội dung của hai đoạn văn; phương án A phù hợp với thông tin được nêu.	Ý chính	A	1	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-1031	328	2	According to the second passage, what specific information is provided?	detail	Cần đối chiếu nội dung của hai đoạn văn; phương án A phù hợp với thông tin được nêu.	Thông tin chi tiết	A	2	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-1032	328	3	Why did the person or organization in the first passage take action?	inference	Cần đối chiếu nội dung của hai đoạn văn; phương án A phù hợp với thông tin được nêu.	Suy luận	A	3	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-1033	328	4	What can be inferred from both passages?	inference	Cần đối chiếu nội dung của hai đoạn văn; phương án A phù hợp với thông tin được nêu.	Suy luận	A	4	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-1034	328	5	Which statement is supported by the two passages?	detail	Cần đối chiếu nội dung của hai đoạn văn; phương án A phù hợp với thông tin được nêu.	Thông tin chi tiết	A	5	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-1035	329	1	What is the main purpose of the first passage?	main_idea	Cần đối chiếu nội dung của hai đoạn văn; phương án A phù hợp với thông tin được nêu.	Ý chính	A	1	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-1036	329	2	According to the second passage, what specific information is provided?	detail	Cần đối chiếu nội dung của hai đoạn văn; phương án A phù hợp với thông tin được nêu.	Thông tin chi tiết	A	2	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-1037	329	3	Why did the person or organization in the first passage take action?	inference	Cần đối chiếu nội dung của hai đoạn văn; phương án A phù hợp với thông tin được nêu.	Suy luận	A	3	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-1038	329	4	What can be inferred from both passages?	inference	Cần đối chiếu nội dung của hai đoạn văn; phương án A phù hợp với thông tin được nêu.	Suy luận	A	4	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-1039	329	5	Which statement is supported by the two passages?	detail	Cần đối chiếu nội dung của hai đoạn văn; phương án A phù hợp với thông tin được nêu.	Thông tin chi tiết	A	5	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-1040	330	1	What is the main purpose of the first passage?	main_idea	Cần đối chiếu nội dung của hai đoạn văn; phương án A phù hợp với thông tin được nêu.	Ý chính	A	1	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-1041	330	2	According to the second passage, what specific information is provided?	detail	Cần đối chiếu nội dung của hai đoạn văn; phương án A phù hợp với thông tin được nêu.	Thông tin chi tiết	A	2	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-1042	330	3	Why did the person or organization in the first passage take action?	inference	Cần đối chiếu nội dung của hai đoạn văn; phương án A phù hợp với thông tin được nêu.	Suy luận	A	3	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-1043	330	4	What can be inferred from both passages?	inference	Cần đối chiếu nội dung của hai đoạn văn; phương án A phù hợp với thông tin được nêu.	Suy luận	A	4	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-1044	330	5	Which statement is supported by the two passages?	detail	Cần đối chiếu nội dung của hai đoạn văn; phương án A phù hợp với thông tin được nêu.	Thông tin chi tiết	A	5	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-1045	331	1	What is the main purpose of the first passage?	main_idea	Cần đối chiếu nội dung của hai đoạn văn; phương án A phù hợp với thông tin được nêu.	Ý chính	A	1	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-1046	331	2	According to the second passage, what specific information is provided?	detail	Cần đối chiếu nội dung của hai đoạn văn; phương án A phù hợp với thông tin được nêu.	Thông tin chi tiết	A	2	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-1047	331	3	Why did the person or organization in the first passage take action?	inference	Cần đối chiếu nội dung của hai đoạn văn; phương án A phù hợp với thông tin được nêu.	Suy luận	A	3	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-1048	331	4	What can be inferred from both passages?	inference	Cần đối chiếu nội dung của hai đoạn văn; phương án A phù hợp với thông tin được nêu.	Suy luận	A	4	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-1049	331	5	Which statement is supported by the two passages?	detail	Cần đối chiếu nội dung của hai đoạn văn; phương án A phù hợp với thông tin được nêu.	Thông tin chi tiết	A	5	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-1050	332	1	What is the main purpose of the first passage?	main_idea	Cần đối chiếu nội dung của hai đoạn văn; phương án A phù hợp với thông tin được nêu.	Ý chính	A	1	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-1051	332	2	According to the second passage, what specific information is provided?	detail	Cần đối chiếu nội dung của hai đoạn văn; phương án A phù hợp với thông tin được nêu.	Thông tin chi tiết	A	2	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-1052	332	3	Why did the person or organization in the first passage take action?	inference	Cần đối chiếu nội dung của hai đoạn văn; phương án A phù hợp với thông tin được nêu.	Suy luận	A	3	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-1053	332	4	What can be inferred from both passages?	inference	Cần đối chiếu nội dung của hai đoạn văn; phương án A phù hợp với thông tin được nêu.	Suy luận	A	4	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-1054	332	5	Which statement is supported by the two passages?	detail	Cần đối chiếu nội dung của hai đoạn văn; phương án A phù hợp với thông tin được nêu.	Thông tin chi tiết	A	5	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-1055	333	1	What is the main purpose of the first passage?	main_idea	Cần đối chiếu nội dung của hai đoạn văn; phương án A phù hợp với thông tin được nêu.	Ý chính	A	1	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-1056	333	2	According to the second passage, what specific information is provided?	detail	Cần đối chiếu nội dung của hai đoạn văn; phương án A phù hợp với thông tin được nêu.	Thông tin chi tiết	A	2	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-1057	333	3	Why did the person or organization in the first passage take action?	inference	Cần đối chiếu nội dung của hai đoạn văn; phương án A phù hợp với thông tin được nêu.	Suy luận	A	3	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-1058	333	4	What can be inferred from both passages?	inference	Cần đối chiếu nội dung của hai đoạn văn; phương án A phù hợp với thông tin được nêu.	Suy luận	A	4	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-1059	333	5	Which statement is supported by the two passages?	detail	Cần đối chiếu nội dung của hai đoạn văn; phương án A phù hợp với thông tin được nêu.	Thông tin chi tiết	A	5	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-1060	334	1	What is the main purpose of the first passage?	main_idea	Cần đối chiếu nội dung của hai đoạn văn; phương án A phù hợp với thông tin được nêu.	Ý chính	A	1	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-1061	334	2	According to the second passage, what specific information is provided?	detail	Cần đối chiếu nội dung của hai đoạn văn; phương án A phù hợp với thông tin được nêu.	Thông tin chi tiết	A	2	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-1062	334	3	Why did the person or organization in the first passage take action?	inference	Cần đối chiếu nội dung của hai đoạn văn; phương án A phù hợp với thông tin được nêu.	Suy luận	A	3	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-1063	334	4	What can be inferred from both passages?	inference	Cần đối chiếu nội dung của hai đoạn văn; phương án A phù hợp với thông tin được nêu.	Suy luận	A	4	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-1064	334	5	Which statement is supported by the two passages?	detail	Cần đối chiếu nội dung của hai đoạn văn; phương án A phù hợp với thông tin được nêu.	Thông tin chi tiết	A	5	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-1065	335	1	What is the main purpose of the first passage?	main_idea	Cần đối chiếu nội dung của hai đoạn văn; phương án A phù hợp với thông tin được nêu.	Ý chính	A	1	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-1066	335	2	According to the second passage, what specific information is provided?	detail	Cần đối chiếu nội dung của hai đoạn văn; phương án A phù hợp với thông tin được nêu.	Thông tin chi tiết	A	2	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-1067	335	3	Why did the person or organization in the first passage take action?	inference	Cần đối chiếu nội dung của hai đoạn văn; phương án A phù hợp với thông tin được nêu.	Suy luận	A	3	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-1068	335	4	What can be inferred from both passages?	inference	Cần đối chiếu nội dung của hai đoạn văn; phương án A phù hợp với thông tin được nêu.	Suy luận	A	4	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-1069	335	5	Which statement is supported by the two passages?	detail	Cần đối chiếu nội dung của hai đoạn văn; phương án A phù hợp với thông tin được nêu.	Thông tin chi tiết	A	5	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-1070	336	1	What is the main purpose of the first passage?	main_idea	Cần đối chiếu nội dung của hai đoạn văn; phương án A phù hợp với thông tin được nêu.	Ý chính	A	1	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-1071	336	2	According to the second passage, what specific information is provided?	detail	Cần đối chiếu nội dung của hai đoạn văn; phương án A phù hợp với thông tin được nêu.	Thông tin chi tiết	A	2	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-1072	336	3	Why did the person or organization in the first passage take action?	inference	Cần đối chiếu nội dung của hai đoạn văn; phương án A phù hợp với thông tin được nêu.	Suy luận	A	3	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-1073	336	4	What can be inferred from both passages?	inference	Cần đối chiếu nội dung của hai đoạn văn; phương án A phù hợp với thông tin được nêu.	Suy luận	A	4	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-1074	336	5	Which statement is supported by the two passages?	detail	Cần đối chiếu nội dung của hai đoạn văn; phương án A phù hợp với thông tin được nêu.	Thông tin chi tiết	A	5	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-1075	337	1	What is the main purpose of the first passage?	main_idea	Cần đối chiếu nội dung của hai đoạn văn; phương án A phù hợp với thông tin được nêu.	Ý chính	A	1	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-1076	337	2	According to the second passage, what specific information is provided?	detail	Cần đối chiếu nội dung của hai đoạn văn; phương án A phù hợp với thông tin được nêu.	Thông tin chi tiết	A	2	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-1077	337	3	Why did the person or organization in the first passage take action?	inference	Cần đối chiếu nội dung của hai đoạn văn; phương án A phù hợp với thông tin được nêu.	Suy luận	A	3	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-1078	337	4	What can be inferred from both passages?	inference	Cần đối chiếu nội dung của hai đoạn văn; phương án A phù hợp với thông tin được nêu.	Suy luận	A	4	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-1079	337	5	Which statement is supported by the two passages?	detail	Cần đối chiếu nội dung của hai đoạn văn; phương án A phù hợp với thông tin được nêu.	Thông tin chi tiết	A	5	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-1080	338	1	What is the main purpose of the first passage?	main_idea	Cần đối chiếu nội dung của hai đoạn văn; phương án A phù hợp với thông tin được nêu.	Ý chính	A	1	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-1081	338	2	According to the second passage, what specific information is provided?	detail	Cần đối chiếu nội dung của hai đoạn văn; phương án A phù hợp với thông tin được nêu.	Thông tin chi tiết	A	2	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-1082	338	3	Why did the person or organization in the first passage take action?	inference	Cần đối chiếu nội dung của hai đoạn văn; phương án A phù hợp với thông tin được nêu.	Suy luận	A	3	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-1083	338	4	What can be inferred from both passages?	inference	Cần đối chiếu nội dung của hai đoạn văn; phương án A phù hợp với thông tin được nêu.	Suy luận	A	4	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-1084	338	5	Which statement is supported by the two passages?	detail	Cần đối chiếu nội dung của hai đoạn văn; phương án A phù hợp với thông tin được nêu.	Thông tin chi tiết	A	5	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-1085	339	1	What is the main purpose of the first passage?	main_idea	Cần đối chiếu nội dung của hai đoạn văn; phương án A phù hợp với thông tin được nêu.	Ý chính	A	1	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-1086	339	2	According to the second passage, what specific information is provided?	detail	Cần đối chiếu nội dung của hai đoạn văn; phương án A phù hợp với thông tin được nêu.	Thông tin chi tiết	A	2	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-1087	339	3	Why did the person or organization in the first passage take action?	inference	Cần đối chiếu nội dung của hai đoạn văn; phương án A phù hợp với thông tin được nêu.	Suy luận	A	3	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-1088	339	4	What can be inferred from both passages?	inference	Cần đối chiếu nội dung của hai đoạn văn; phương án A phù hợp với thông tin được nêu.	Suy luận	A	4	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-1089	339	5	Which statement is supported by the two passages?	detail	Cần đối chiếu nội dung của hai đoạn văn; phương án A phù hợp với thông tin được nêu.	Thông tin chi tiết	A	5	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-1090	340	1	What is the main purpose of the first passage?	main_idea	Cần đối chiếu nội dung của hai đoạn văn; phương án A phù hợp với thông tin được nêu.	Ý chính	A	1	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-1091	340	2	According to the second passage, what specific information is provided?	detail	Cần đối chiếu nội dung của hai đoạn văn; phương án A phù hợp với thông tin được nêu.	Thông tin chi tiết	A	2	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-1092	340	3	Why did the person or organization in the first passage take action?	inference	Cần đối chiếu nội dung của hai đoạn văn; phương án A phù hợp với thông tin được nêu.	Suy luận	A	3	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-1093	340	4	What can be inferred from both passages?	inference	Cần đối chiếu nội dung của hai đoạn văn; phương án A phù hợp với thông tin được nêu.	Suy luận	A	4	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-1094	340	5	Which statement is supported by the two passages?	detail	Cần đối chiếu nội dung của hai đoạn văn; phương án A phù hợp với thông tin được nêu.	Thông tin chi tiết	A	5	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-1095	341	1	What is the main purpose of the first passage?	main_idea	Cần đối chiếu nội dung của hai đoạn văn; phương án A phù hợp với thông tin được nêu.	Ý chính	A	1	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-1096	341	2	According to the second passage, what specific information is provided?	detail	Cần đối chiếu nội dung của hai đoạn văn; phương án A phù hợp với thông tin được nêu.	Thông tin chi tiết	A	2	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-1097	341	3	Why did the person or organization in the first passage take action?	inference	Cần đối chiếu nội dung của hai đoạn văn; phương án A phù hợp với thông tin được nêu.	Suy luận	A	3	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-1098	341	4	What can be inferred from both passages?	inference	Cần đối chiếu nội dung của hai đoạn văn; phương án A phù hợp với thông tin được nêu.	Suy luận	A	4	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-1099	341	5	Which statement is supported by the two passages?	detail	Cần đối chiếu nội dung của hai đoạn văn; phương án A phù hợp với thông tin được nêu.	Thông tin chi tiết	A	5	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-1100	342	1	What is the main purpose of the first passage?	main_idea	Cần đối chiếu nội dung của hai đoạn văn; phương án A phù hợp với thông tin được nêu.	Ý chính	A	1	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-1101	342	2	According to the second passage, what specific information is provided?	detail	Cần đối chiếu nội dung của hai đoạn văn; phương án A phù hợp với thông tin được nêu.	Thông tin chi tiết	A	2	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-1102	342	3	Why did the person or organization in the first passage take action?	inference	Cần đối chiếu nội dung của hai đoạn văn; phương án A phù hợp với thông tin được nêu.	Suy luận	A	3	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-1103	342	4	What can be inferred from both passages?	inference	Cần đối chiếu nội dung của hai đoạn văn; phương án A phù hợp với thông tin được nêu.	Suy luận	A	4	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-1104	342	5	Which statement is supported by the two passages?	detail	Cần đối chiếu nội dung của hai đoạn văn; phương án A phù hợp với thông tin được nêu.	Thông tin chi tiết	A	5	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-1105	343	1	What is the main purpose of the first passage?	main_idea	Cần đối chiếu nội dung của hai đoạn văn; phương án A phù hợp với thông tin được nêu.	Ý chính	A	1	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-1106	343	2	According to the second passage, what specific information is provided?	detail	Cần đối chiếu nội dung của hai đoạn văn; phương án A phù hợp với thông tin được nêu.	Thông tin chi tiết	A	2	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-1107	343	3	Why did the person or organization in the first passage take action?	inference	Cần đối chiếu nội dung của hai đoạn văn; phương án A phù hợp với thông tin được nêu.	Suy luận	A	3	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-1108	343	4	What can be inferred from both passages?	inference	Cần đối chiếu nội dung của hai đoạn văn; phương án A phù hợp với thông tin được nêu.	Suy luận	A	4	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-1109	343	5	Which statement is supported by the two passages?	detail	Cần đối chiếu nội dung của hai đoạn văn; phương án A phù hợp với thông tin được nêu.	Thông tin chi tiết	A	5	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-1110	344	1	What is the main purpose of the first passage?	main_idea	Cần đối chiếu nội dung của hai đoạn văn; phương án A phù hợp với thông tin được nêu.	Ý chính	A	1	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-1111	344	2	According to the second passage, what specific information is provided?	detail	Cần đối chiếu nội dung của hai đoạn văn; phương án A phù hợp với thông tin được nêu.	Thông tin chi tiết	A	2	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-1112	344	3	Why did the person or organization in the first passage take action?	inference	Cần đối chiếu nội dung của hai đoạn văn; phương án A phù hợp với thông tin được nêu.	Suy luận	A	3	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-1113	344	4	What can be inferred from both passages?	inference	Cần đối chiếu nội dung của hai đoạn văn; phương án A phù hợp với thông tin được nêu.	Suy luận	A	4	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-1114	344	5	Which statement is supported by the two passages?	detail	Cần đối chiếu nội dung của hai đoạn văn; phương án A phù hợp với thông tin được nêu.	Thông tin chi tiết	A	5	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-1115	345	1	What is the main purpose of the first passage?	main_idea	Cần đối chiếu nội dung của hai đoạn văn; phương án A phù hợp với thông tin được nêu.	Ý chính	A	1	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-1116	345	2	According to the second passage, what specific information is provided?	detail	Cần đối chiếu nội dung của hai đoạn văn; phương án A phù hợp với thông tin được nêu.	Thông tin chi tiết	A	2	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-1117	345	3	Why did the person or organization in the first passage take action?	inference	Cần đối chiếu nội dung của hai đoạn văn; phương án A phù hợp với thông tin được nêu.	Suy luận	A	3	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-1118	345	4	What can be inferred from both passages?	inference	Cần đối chiếu nội dung của hai đoạn văn; phương án A phù hợp với thông tin được nêu.	Suy luận	A	4	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-1119	345	5	Which statement is supported by the two passages?	detail	Cần đối chiếu nội dung của hai đoạn văn; phương án A phù hợp với thông tin được nêu.	Thông tin chi tiết	A	5	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-1120	346	1	What is the main purpose of the first passage?	main_idea	Đáp án được xác định bằng cách đối chiếu các thông tin liên quan trong ba đoạn văn.	Ý chính	A	1	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-1121	346	2	According to the second passage, what detail is mentioned?	detail	Đáp án được xác định bằng cách đối chiếu các thông tin liên quan trong ba đoạn văn.	Thông tin chi tiết	A	2	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-1122	346	3	What does the third passage indicate?	detail	Đáp án được xác định bằng cách đối chiếu các thông tin liên quan trong ba đoạn văn.	Thông tin chi tiết	A	3	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-1123	346	4	What can be inferred from all three passages?	inference	Đáp án được xác định bằng cách đối chiếu các thông tin liên quan trong ba đoạn văn.	Suy luận	A	4	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-1124	346	5	Which statement is supported by the passages?	detail	Đáp án được xác định bằng cách đối chiếu các thông tin liên quan trong ba đoạn văn.	Thông tin chi tiết	A	5	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-1125	347	1	What is the main purpose of the first passage?	main_idea	Đáp án được xác định bằng cách đối chiếu các thông tin liên quan trong ba đoạn văn.	Ý chính	A	1	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-1126	347	2	According to the second passage, what detail is mentioned?	detail	Đáp án được xác định bằng cách đối chiếu các thông tin liên quan trong ba đoạn văn.	Thông tin chi tiết	A	2	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-1127	347	3	What does the third passage indicate?	detail	Đáp án được xác định bằng cách đối chiếu các thông tin liên quan trong ba đoạn văn.	Thông tin chi tiết	A	3	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-1128	347	4	What can be inferred from all three passages?	inference	Đáp án được xác định bằng cách đối chiếu các thông tin liên quan trong ba đoạn văn.	Suy luận	A	4	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-1129	347	5	Which statement is supported by the passages?	detail	Đáp án được xác định bằng cách đối chiếu các thông tin liên quan trong ba đoạn văn.	Thông tin chi tiết	A	5	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-1130	348	1	What is the main purpose of the first passage?	main_idea	Đáp án được xác định bằng cách đối chiếu các thông tin liên quan trong ba đoạn văn.	Ý chính	A	1	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-1131	348	2	According to the second passage, what detail is mentioned?	detail	Đáp án được xác định bằng cách đối chiếu các thông tin liên quan trong ba đoạn văn.	Thông tin chi tiết	A	2	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-1132	348	3	What does the third passage indicate?	detail	Đáp án được xác định bằng cách đối chiếu các thông tin liên quan trong ba đoạn văn.	Thông tin chi tiết	A	3	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-1133	348	4	What can be inferred from all three passages?	inference	Đáp án được xác định bằng cách đối chiếu các thông tin liên quan trong ba đoạn văn.	Suy luận	A	4	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-1134	348	5	Which statement is supported by the passages?	detail	Đáp án được xác định bằng cách đối chiếu các thông tin liên quan trong ba đoạn văn.	Thông tin chi tiết	A	5	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-1135	349	1	What is the main purpose of the first passage?	main_idea	Đáp án được xác định bằng cách đối chiếu các thông tin liên quan trong ba đoạn văn.	Ý chính	A	1	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-1136	349	2	According to the second passage, what detail is mentioned?	detail	Đáp án được xác định bằng cách đối chiếu các thông tin liên quan trong ba đoạn văn.	Thông tin chi tiết	A	2	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-1137	349	3	What does the third passage indicate?	detail	Đáp án được xác định bằng cách đối chiếu các thông tin liên quan trong ba đoạn văn.	Thông tin chi tiết	A	3	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-1138	349	4	What can be inferred from all three passages?	inference	Đáp án được xác định bằng cách đối chiếu các thông tin liên quan trong ba đoạn văn.	Suy luận	A	4	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-1139	349	5	Which statement is supported by the passages?	detail	Đáp án được xác định bằng cách đối chiếu các thông tin liên quan trong ba đoạn văn.	Thông tin chi tiết	A	5	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-1140	350	1	What is the main purpose of the first passage?	main_idea	Đáp án được xác định bằng cách đối chiếu các thông tin liên quan trong ba đoạn văn.	Ý chính	A	1	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-1141	350	2	According to the second passage, what detail is mentioned?	detail	Đáp án được xác định bằng cách đối chiếu các thông tin liên quan trong ba đoạn văn.	Thông tin chi tiết	A	2	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-1142	350	3	What does the third passage indicate?	detail	Đáp án được xác định bằng cách đối chiếu các thông tin liên quan trong ba đoạn văn.	Thông tin chi tiết	A	3	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-1143	350	4	What can be inferred from all three passages?	inference	Đáp án được xác định bằng cách đối chiếu các thông tin liên quan trong ba đoạn văn.	Suy luận	A	4	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-1144	350	5	Which statement is supported by the passages?	detail	Đáp án được xác định bằng cách đối chiếu các thông tin liên quan trong ba đoạn văn.	Thông tin chi tiết	A	5	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-1145	351	1	What is the main purpose of the first passage?	main_idea	Đáp án được xác định bằng cách đối chiếu các thông tin liên quan trong ba đoạn văn.	Ý chính	A	1	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-1146	351	2	According to the second passage, what detail is mentioned?	detail	Đáp án được xác định bằng cách đối chiếu các thông tin liên quan trong ba đoạn văn.	Thông tin chi tiết	A	2	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-1147	351	3	What does the third passage indicate?	detail	Đáp án được xác định bằng cách đối chiếu các thông tin liên quan trong ba đoạn văn.	Thông tin chi tiết	A	3	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-1148	351	4	What can be inferred from all three passages?	inference	Đáp án được xác định bằng cách đối chiếu các thông tin liên quan trong ba đoạn văn.	Suy luận	A	4	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-1149	351	5	Which statement is supported by the passages?	detail	Đáp án được xác định bằng cách đối chiếu các thông tin liên quan trong ba đoạn văn.	Thông tin chi tiết	A	5	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-1150	352	1	What is the main purpose of the first passage?	main_idea	Đáp án được xác định bằng cách đối chiếu các thông tin liên quan trong ba đoạn văn.	Ý chính	A	1	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-1151	352	2	According to the second passage, what detail is mentioned?	detail	Đáp án được xác định bằng cách đối chiếu các thông tin liên quan trong ba đoạn văn.	Thông tin chi tiết	A	2	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-1152	352	3	What does the third passage indicate?	detail	Đáp án được xác định bằng cách đối chiếu các thông tin liên quan trong ba đoạn văn.	Thông tin chi tiết	A	3	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-1153	352	4	What can be inferred from all three passages?	inference	Đáp án được xác định bằng cách đối chiếu các thông tin liên quan trong ba đoạn văn.	Suy luận	A	4	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-1154	352	5	Which statement is supported by the passages?	detail	Đáp án được xác định bằng cách đối chiếu các thông tin liên quan trong ba đoạn văn.	Thông tin chi tiết	A	5	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-1155	353	1	What is the main purpose of the first passage?	main_idea	Đáp án được xác định bằng cách đối chiếu các thông tin liên quan trong ba đoạn văn.	Ý chính	A	1	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-1156	353	2	According to the second passage, what detail is mentioned?	detail	Đáp án được xác định bằng cách đối chiếu các thông tin liên quan trong ba đoạn văn.	Thông tin chi tiết	A	2	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-1157	353	3	What does the third passage indicate?	detail	Đáp án được xác định bằng cách đối chiếu các thông tin liên quan trong ba đoạn văn.	Thông tin chi tiết	A	3	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-1158	353	4	What can be inferred from all three passages?	inference	Đáp án được xác định bằng cách đối chiếu các thông tin liên quan trong ba đoạn văn.	Suy luận	A	4	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-1159	353	5	Which statement is supported by the passages?	detail	Đáp án được xác định bằng cách đối chiếu các thông tin liên quan trong ba đoạn văn.	Thông tin chi tiết	A	5	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-1160	354	1	What is the main purpose of the first passage?	main_idea	Đáp án được xác định bằng cách đối chiếu các thông tin liên quan trong ba đoạn văn.	Ý chính	A	1	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-1161	354	2	According to the second passage, what detail is mentioned?	detail	Đáp án được xác định bằng cách đối chiếu các thông tin liên quan trong ba đoạn văn.	Thông tin chi tiết	A	2	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-1162	354	3	What does the third passage indicate?	detail	Đáp án được xác định bằng cách đối chiếu các thông tin liên quan trong ba đoạn văn.	Thông tin chi tiết	A	3	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-1163	354	4	What can be inferred from all three passages?	inference	Đáp án được xác định bằng cách đối chiếu các thông tin liên quan trong ba đoạn văn.	Suy luận	A	4	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-1164	354	5	Which statement is supported by the passages?	detail	Đáp án được xác định bằng cách đối chiếu các thông tin liên quan trong ba đoạn văn.	Thông tin chi tiết	A	5	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-1165	355	1	What is the main purpose of the first passage?	main_idea	Đáp án được xác định bằng cách đối chiếu các thông tin liên quan trong ba đoạn văn.	Ý chính	A	1	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-1166	355	2	According to the second passage, what detail is mentioned?	detail	Đáp án được xác định bằng cách đối chiếu các thông tin liên quan trong ba đoạn văn.	Thông tin chi tiết	A	2	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-1167	355	3	What does the third passage indicate?	detail	Đáp án được xác định bằng cách đối chiếu các thông tin liên quan trong ba đoạn văn.	Thông tin chi tiết	A	3	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-1168	355	4	What can be inferred from all three passages?	inference	Đáp án được xác định bằng cách đối chiếu các thông tin liên quan trong ba đoạn văn.	Suy luận	A	4	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-1169	355	5	Which statement is supported by the passages?	detail	Đáp án được xác định bằng cách đối chiếu các thông tin liên quan trong ba đoạn văn.	Thông tin chi tiết	A	5	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-1170	356	1	What is the main purpose of the first passage?	main_idea	Đáp án được xác định bằng cách đối chiếu các thông tin liên quan trong ba đoạn văn.	Ý chính	A	1	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-1171	356	2	According to the second passage, what detail is mentioned?	detail	Đáp án được xác định bằng cách đối chiếu các thông tin liên quan trong ba đoạn văn.	Thông tin chi tiết	A	2	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-1172	356	3	What does the third passage indicate?	detail	Đáp án được xác định bằng cách đối chiếu các thông tin liên quan trong ba đoạn văn.	Thông tin chi tiết	A	3	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-1173	356	4	What can be inferred from all three passages?	inference	Đáp án được xác định bằng cách đối chiếu các thông tin liên quan trong ba đoạn văn.	Suy luận	A	4	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-1174	356	5	Which statement is supported by the passages?	detail	Đáp án được xác định bằng cách đối chiếu các thông tin liên quan trong ba đoạn văn.	Thông tin chi tiết	A	5	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-1175	357	1	What is the main purpose of the first passage?	main_idea	Đáp án được xác định bằng cách đối chiếu các thông tin liên quan trong ba đoạn văn.	Ý chính	A	1	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-1176	357	2	According to the second passage, what detail is mentioned?	detail	Đáp án được xác định bằng cách đối chiếu các thông tin liên quan trong ba đoạn văn.	Thông tin chi tiết	A	2	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-1177	357	3	What does the third passage indicate?	detail	Đáp án được xác định bằng cách đối chiếu các thông tin liên quan trong ba đoạn văn.	Thông tin chi tiết	A	3	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-1178	357	4	What can be inferred from all three passages?	inference	Đáp án được xác định bằng cách đối chiếu các thông tin liên quan trong ba đoạn văn.	Suy luận	A	4	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-1179	357	5	Which statement is supported by the passages?	detail	Đáp án được xác định bằng cách đối chiếu các thông tin liên quan trong ba đoạn văn.	Thông tin chi tiết	A	5	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-1180	358	1	What is the main purpose of the first passage?	main_idea	Đáp án được xác định bằng cách đối chiếu các thông tin liên quan trong ba đoạn văn.	Ý chính	A	1	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-1181	358	2	According to the second passage, what detail is mentioned?	detail	Đáp án được xác định bằng cách đối chiếu các thông tin liên quan trong ba đoạn văn.	Thông tin chi tiết	A	2	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-1182	358	3	What does the third passage indicate?	detail	Đáp án được xác định bằng cách đối chiếu các thông tin liên quan trong ba đoạn văn.	Thông tin chi tiết	A	3	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-1183	358	4	What can be inferred from all three passages?	inference	Đáp án được xác định bằng cách đối chiếu các thông tin liên quan trong ba đoạn văn.	Suy luận	A	4	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-1184	358	5	Which statement is supported by the passages?	detail	Đáp án được xác định bằng cách đối chiếu các thông tin liên quan trong ba đoạn văn.	Thông tin chi tiết	A	5	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-1185	359	1	What is the main purpose of the first passage?	main_idea	Đáp án được xác định bằng cách đối chiếu các thông tin liên quan trong ba đoạn văn.	Ý chính	A	1	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-1186	359	2	According to the second passage, what detail is mentioned?	detail	Đáp án được xác định bằng cách đối chiếu các thông tin liên quan trong ba đoạn văn.	Thông tin chi tiết	A	2	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-1187	359	3	What does the third passage indicate?	detail	Đáp án được xác định bằng cách đối chiếu các thông tin liên quan trong ba đoạn văn.	Thông tin chi tiết	A	3	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-1188	359	4	What can be inferred from all three passages?	inference	Đáp án được xác định bằng cách đối chiếu các thông tin liên quan trong ba đoạn văn.	Suy luận	A	4	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-1189	359	5	Which statement is supported by the passages?	detail	Đáp án được xác định bằng cách đối chiếu các thông tin liên quan trong ba đoạn văn.	Thông tin chi tiết	A	5	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-1190	360	1	What is the main purpose of the first passage?	main_idea	Đáp án được xác định bằng cách đối chiếu các thông tin liên quan trong ba đoạn văn.	Ý chính	A	1	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-1191	360	2	According to the second passage, what detail is mentioned?	detail	Đáp án được xác định bằng cách đối chiếu các thông tin liên quan trong ba đoạn văn.	Thông tin chi tiết	A	2	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-1192	360	3	What does the third passage indicate?	detail	Đáp án được xác định bằng cách đối chiếu các thông tin liên quan trong ba đoạn văn.	Thông tin chi tiết	A	3	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-1193	360	4	What can be inferred from all three passages?	inference	Đáp án được xác định bằng cách đối chiếu các thông tin liên quan trong ba đoạn văn.	Suy luận	A	4	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-1194	360	5	Which statement is supported by the passages?	detail	Đáp án được xác định bằng cách đối chiếu các thông tin liên quan trong ba đoạn văn.	Thông tin chi tiết	A	5	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-1195	361	1	What is the main purpose of the first passage?	main_idea	Đáp án được xác định bằng cách đối chiếu các thông tin liên quan trong ba đoạn văn.	Ý chính	A	1	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-1196	361	2	According to the second passage, what detail is mentioned?	detail	Đáp án được xác định bằng cách đối chiếu các thông tin liên quan trong ba đoạn văn.	Thông tin chi tiết	A	2	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-1197	361	3	What does the third passage indicate?	detail	Đáp án được xác định bằng cách đối chiếu các thông tin liên quan trong ba đoạn văn.	Thông tin chi tiết	A	3	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-1198	361	4	What can be inferred from all three passages?	inference	Đáp án được xác định bằng cách đối chiếu các thông tin liên quan trong ba đoạn văn.	Suy luận	A	4	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-1199	361	5	Which statement is supported by the passages?	detail	Đáp án được xác định bằng cách đối chiếu các thông tin liên quan trong ba đoạn văn.	Thông tin chi tiết	A	5	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-1200	362	1	What is the main purpose of the first passage?	main_idea	Đáp án được xác định bằng cách đối chiếu các thông tin liên quan trong ba đoạn văn.	Ý chính	A	1	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-1201	362	2	According to the second passage, what detail is mentioned?	detail	Đáp án được xác định bằng cách đối chiếu các thông tin liên quan trong ba đoạn văn.	Thông tin chi tiết	A	2	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-1202	362	3	What does the third passage indicate?	detail	Đáp án được xác định bằng cách đối chiếu các thông tin liên quan trong ba đoạn văn.	Thông tin chi tiết	A	3	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-1203	362	4	What can be inferred from all three passages?	inference	Đáp án được xác định bằng cách đối chiếu các thông tin liên quan trong ba đoạn văn.	Suy luận	A	4	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-1204	362	5	Which statement is supported by the passages?	detail	Đáp án được xác định bằng cách đối chiếu các thông tin liên quan trong ba đoạn văn.	Thông tin chi tiết	A	5	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-1205	363	1	What is the main purpose of the first passage?	main_idea	Đáp án được xác định bằng cách đối chiếu các thông tin liên quan trong ba đoạn văn.	Ý chính	A	1	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-1206	363	2	According to the second passage, what detail is mentioned?	detail	Đáp án được xác định bằng cách đối chiếu các thông tin liên quan trong ba đoạn văn.	Thông tin chi tiết	A	2	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-1207	363	3	What does the third passage indicate?	detail	Đáp án được xác định bằng cách đối chiếu các thông tin liên quan trong ba đoạn văn.	Thông tin chi tiết	A	3	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-1208	363	4	What can be inferred from all three passages?	inference	Đáp án được xác định bằng cách đối chiếu các thông tin liên quan trong ba đoạn văn.	Suy luận	A	4	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-1209	363	5	Which statement is supported by the passages?	detail	Đáp án được xác định bằng cách đối chiếu các thông tin liên quan trong ba đoạn văn.	Thông tin chi tiết	A	5	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-1210	364	1	What is the main purpose of the first passage?	main_idea	Đáp án được xác định bằng cách đối chiếu các thông tin liên quan trong ba đoạn văn.	Ý chính	A	1	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-1211	364	2	According to the second passage, what detail is mentioned?	detail	Đáp án được xác định bằng cách đối chiếu các thông tin liên quan trong ba đoạn văn.	Thông tin chi tiết	A	2	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-1212	364	3	What does the third passage indicate?	detail	Đáp án được xác định bằng cách đối chiếu các thông tin liên quan trong ba đoạn văn.	Thông tin chi tiết	A	3	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-1213	364	4	What can be inferred from all three passages?	inference	Đáp án được xác định bằng cách đối chiếu các thông tin liên quan trong ba đoạn văn.	Suy luận	A	4	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-1214	364	5	Which statement is supported by the passages?	detail	Đáp án được xác định bằng cách đối chiếu các thông tin liên quan trong ba đoạn văn.	Thông tin chi tiết	A	5	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-1215	365	1	What is the main purpose of the first passage?	main_idea	Đáp án được xác định bằng cách đối chiếu các thông tin liên quan trong ba đoạn văn.	Ý chính	A	1	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-1216	365	2	According to the second passage, what detail is mentioned?	detail	Đáp án được xác định bằng cách đối chiếu các thông tin liên quan trong ba đoạn văn.	Thông tin chi tiết	A	2	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-1217	365	3	What does the third passage indicate?	detail	Đáp án được xác định bằng cách đối chiếu các thông tin liên quan trong ba đoạn văn.	Thông tin chi tiết	A	3	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-1218	365	4	What can be inferred from all three passages?	inference	Đáp án được xác định bằng cách đối chiếu các thông tin liên quan trong ba đoạn văn.	Suy luận	A	4	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-1219	365	5	Which statement is supported by the passages?	detail	Đáp án được xác định bằng cách đối chiếu các thông tin liên quan trong ba đoạn văn.	Thông tin chi tiết	A	5	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-1220	366	1	What is the main purpose of the first passage?	main_idea	Đáp án được xác định bằng cách đối chiếu các thông tin liên quan trong ba đoạn văn.	Ý chính	A	1	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-1221	366	2	According to the second passage, what detail is mentioned?	detail	Đáp án được xác định bằng cách đối chiếu các thông tin liên quan trong ba đoạn văn.	Thông tin chi tiết	A	2	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-1222	366	3	What does the third passage indicate?	detail	Đáp án được xác định bằng cách đối chiếu các thông tin liên quan trong ba đoạn văn.	Thông tin chi tiết	A	3	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-1223	366	4	What can be inferred from all three passages?	inference	Đáp án được xác định bằng cách đối chiếu các thông tin liên quan trong ba đoạn văn.	Suy luận	A	4	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-1224	366	5	Which statement is supported by the passages?	detail	Đáp án được xác định bằng cách đối chiếu các thông tin liên quan trong ba đoạn văn.	Thông tin chi tiết	A	5	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-1225	367	1	What is the main purpose of the first passage?	main_idea	Đáp án được xác định bằng cách đối chiếu các thông tin liên quan trong ba đoạn văn.	Ý chính	A	1	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-1226	367	2	According to the second passage, what detail is mentioned?	detail	Đáp án được xác định bằng cách đối chiếu các thông tin liên quan trong ba đoạn văn.	Thông tin chi tiết	A	2	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-1227	367	3	What does the third passage indicate?	detail	Đáp án được xác định bằng cách đối chiếu các thông tin liên quan trong ba đoạn văn.	Thông tin chi tiết	A	3	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-1228	367	4	What can be inferred from all three passages?	inference	Đáp án được xác định bằng cách đối chiếu các thông tin liên quan trong ba đoạn văn.	Suy luận	A	4	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-1229	367	5	Which statement is supported by the passages?	detail	Đáp án được xác định bằng cách đối chiếu các thông tin liên quan trong ba đoạn văn.	Thông tin chi tiết	A	5	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-1230	368	1	What is the main purpose of the first passage?	main_idea	Đáp án được xác định bằng cách đối chiếu các thông tin liên quan trong ba đoạn văn.	Ý chính	A	1	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-1231	368	2	According to the second passage, what detail is mentioned?	detail	Đáp án được xác định bằng cách đối chiếu các thông tin liên quan trong ba đoạn văn.	Thông tin chi tiết	A	2	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-1232	368	3	What does the third passage indicate?	detail	Đáp án được xác định bằng cách đối chiếu các thông tin liên quan trong ba đoạn văn.	Thông tin chi tiết	A	3	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-1233	368	4	What can be inferred from all three passages?	inference	Đáp án được xác định bằng cách đối chiếu các thông tin liên quan trong ba đoạn văn.	Suy luận	A	4	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-1234	368	5	Which statement is supported by the passages?	detail	Đáp án được xác định bằng cách đối chiếu các thông tin liên quan trong ba đoạn văn.	Thông tin chi tiết	A	5	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-1235	369	1	What is the main purpose of the first passage?	main_idea	Đáp án được xác định bằng cách đối chiếu các thông tin liên quan trong ba đoạn văn.	Ý chính	A	1	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-1236	369	2	According to the second passage, what detail is mentioned?	detail	Đáp án được xác định bằng cách đối chiếu các thông tin liên quan trong ba đoạn văn.	Thông tin chi tiết	A	2	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-1237	369	3	What does the third passage indicate?	detail	Đáp án được xác định bằng cách đối chiếu các thông tin liên quan trong ba đoạn văn.	Thông tin chi tiết	A	3	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-1238	369	4	What can be inferred from all three passages?	inference	Đáp án được xác định bằng cách đối chiếu các thông tin liên quan trong ba đoạn văn.	Suy luận	A	4	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-1239	369	5	Which statement is supported by the passages?	detail	Đáp án được xác định bằng cách đối chiếu các thông tin liên quan trong ba đoạn văn.	Thông tin chi tiết	A	5	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-1240	370	1	What is the main purpose of the first passage?	main_idea	Đáp án được xác định bằng cách đối chiếu các thông tin liên quan trong ba đoạn văn.	Ý chính	A	1	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-1241	370	2	According to the second passage, what detail is mentioned?	detail	Đáp án được xác định bằng cách đối chiếu các thông tin liên quan trong ba đoạn văn.	Thông tin chi tiết	A	2	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-1242	370	3	What does the third passage indicate?	detail	Đáp án được xác định bằng cách đối chiếu các thông tin liên quan trong ba đoạn văn.	Thông tin chi tiết	A	3	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-1243	370	4	What can be inferred from all three passages?	inference	Đáp án được xác định bằng cách đối chiếu các thông tin liên quan trong ba đoạn văn.	Suy luận	A	4	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
-1244	370	5	Which statement is supported by the passages?	detail	Đáp án được xác định bằng cách đối chiếu các thông tin liên quan trong ba đoạn văn.	Thông tin chi tiết	A	5	2026-08-10 14:08:48.214425	2026-08-10 14:08:48.214425
+502	201	2	When should employees remove their personal items?	detail	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Thông tin chi tiết	A	2	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+503	201	3	Where will staff work during the renovation?	detail	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Thông tin chi tiết	A	3	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+504	201	4	The word “renovated” is closest in meaning to _____.	vocabulary	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Từ đồng nghĩa	A	4	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+505	202	1	Why was the message sent?	main_idea	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Ý chính	A	1	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+506	202	2	What did the customer order?	detail	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Thông tin chi tiết	A	2	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+507	202	3	When is the package expected to arrive?	detail	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Thông tin chi tiết	A	3	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+508	203	1	What position is available?	main_idea	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Ý chính	A	1	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+509	203	2	What experience is required?	detail	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Thông tin chi tiết	A	2	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+510	203	3	What is the application deadline?	detail	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Thông tin chi tiết	A	3	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+511	203	4	What software skill is mentioned?	detail	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Thông tin chi tiết	A	4	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+512	204	1	What is the announcement about?	main_idea	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Ý chính	A	1	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+513	204	2	Where will the session be held?	detail	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Thông tin chi tiết	A	2	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+514	204	3	What should employees bring?	detail	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Thông tin chi tiết	A	3	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+515	204	4	What should employees do before attending?	detail	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Thông tin chi tiết	A	4	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+516	205	1	What is being announced?	main_idea	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Ý chính	A	1	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+517	205	2	When is the promotion available?	detail	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Thông tin chi tiết	A	2	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+518	205	3	Where must purchases be made?	detail	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Thông tin chi tiết	A	3	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+519	205	4	Which product is excluded?	detail	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Thông tin chi tiết	A	4	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+520	206	1	What has been confirmed?	main_idea	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Ý chính	A	1	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+521	206	2	How long will Ms. Lee stay?	detail	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Thông tin chi tiết	A	2	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+522	206	3	What is included?	detail	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Thông tin chi tiết	A	3	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+523	206	4	What should guests do if they need a taxi?	detail	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Thông tin chi tiết	A	4	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+524	207	1	Why is Daniel Ruiz mentioned?	main_idea	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Ý chính	A	1	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+525	207	2	When did he join the company?	detail	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Thông tin chi tiết	A	2	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+526	207	3	How many employees does he supervise?	detail	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Thông tin chi tiết	A	3	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+527	207	4	When will he be recognized?	detail	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Thông tin chi tiết	A	4	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+528	208	1	What change is announced?	main_idea	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Ý chính	A	1	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+529	208	2	When will the morning shuttle leave?	detail	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Thông tin chi tiết	A	2	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+530	208	3	What will remain unchanged?	detail	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Thông tin chi tiết	A	3	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+531	208	4	What are employees encouraged to do?	detail	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Thông tin chi tiết	A	4	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+532	209	1	What has been extended?	main_idea	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Ý chính	A	1	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+533	209	2	Why was the deadline changed?	detail	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Thông tin chi tiết	A	2	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+534	209	3	What was the original selection date?	detail	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Thông tin chi tiết	A	3	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+535	209	4	The word “additional” is closest in meaning to _____.	vocabulary	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Từ đồng nghĩa	A	4	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+536	210	1	What is the notice mainly about?	main_idea	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Ý chính	A	1	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+537	210	2	When should employees remove their personal items?	detail	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Thông tin chi tiết	A	2	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+538	210	3	Where will staff work during the renovation?	detail	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Thông tin chi tiết	A	3	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+539	210	4	The word “renovated” is closest in meaning to _____.	vocabulary	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Từ đồng nghĩa	A	4	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+540	211	1	Why was the message sent?	main_idea	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Ý chính	A	1	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+541	211	2	What did the customer order?	detail	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Thông tin chi tiết	A	2	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+542	211	3	When is the package expected to arrive?	detail	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Thông tin chi tiết	A	3	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+543	212	1	What position is available?	main_idea	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Ý chính	A	1	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+544	212	2	What experience is required?	detail	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Thông tin chi tiết	A	2	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+545	212	3	What is the application deadline?	detail	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Thông tin chi tiết	A	3	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+546	212	4	What software skill is mentioned?	detail	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Thông tin chi tiết	A	4	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+547	213	1	What is the announcement about?	main_idea	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Ý chính	A	1	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+548	213	2	Where will the session be held?	detail	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Thông tin chi tiết	A	2	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+549	213	3	What should employees bring?	detail	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Thông tin chi tiết	A	3	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+550	213	4	What should employees do before attending?	detail	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Thông tin chi tiết	A	4	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+551	214	1	What is being announced?	main_idea	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Ý chính	A	1	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+552	214	2	When is the promotion available?	detail	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Thông tin chi tiết	A	2	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+553	214	3	Where must purchases be made?	detail	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Thông tin chi tiết	A	3	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+554	214	4	Which product is excluded?	detail	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Thông tin chi tiết	A	4	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+555	215	1	What has been confirmed?	main_idea	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Ý chính	A	1	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+556	215	2	How long will Ms. Lee stay?	detail	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Thông tin chi tiết	A	2	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+557	215	3	What is included?	detail	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Thông tin chi tiết	A	3	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+558	215	4	What should guests do if they need a taxi?	detail	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Thông tin chi tiết	A	4	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+559	216	1	Why is Daniel Ruiz mentioned?	main_idea	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Ý chính	A	1	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+560	216	2	When did he join the company?	detail	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Thông tin chi tiết	A	2	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+561	216	3	How many employees does he supervise?	detail	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Thông tin chi tiết	A	3	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+562	216	4	When will he be recognized?	detail	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Thông tin chi tiết	A	4	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+563	217	1	What change is announced?	main_idea	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Ý chính	A	1	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+564	217	2	When will the morning shuttle leave?	detail	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Thông tin chi tiết	A	2	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+565	217	3	What will remain unchanged?	detail	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Thông tin chi tiết	A	3	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+566	217	4	What are employees encouraged to do?	detail	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Thông tin chi tiết	A	4	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+567	218	1	What has been extended?	main_idea	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Ý chính	A	1	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+568	218	2	Why was the deadline changed?	detail	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Thông tin chi tiết	A	2	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+569	218	3	What was the original selection date?	detail	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Thông tin chi tiết	A	3	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+570	218	4	The word “additional” is closest in meaning to _____.	vocabulary	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Từ đồng nghĩa	A	4	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+571	219	1	What is the notice mainly about?	main_idea	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Ý chính	A	1	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+572	219	2	When should employees remove their personal items?	detail	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Thông tin chi tiết	A	2	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+573	219	3	Where will staff work during the renovation?	detail	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Thông tin chi tiết	A	3	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+574	219	4	The word “renovated” is closest in meaning to _____.	vocabulary	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Từ đồng nghĩa	A	4	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+575	220	1	Why was the message sent?	main_idea	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Ý chính	A	1	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+576	220	2	What did the customer order?	detail	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Thông tin chi tiết	A	2	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+577	220	3	When is the package expected to arrive?	detail	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Thông tin chi tiết	A	3	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+578	221	1	What position is available?	main_idea	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Ý chính	A	1	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+579	221	2	What experience is required?	detail	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Thông tin chi tiết	A	2	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+580	221	3	What is the application deadline?	detail	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Thông tin chi tiết	A	3	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+581	221	4	What software skill is mentioned?	detail	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Thông tin chi tiết	A	4	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+582	222	1	What is the announcement about?	main_idea	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Ý chính	A	1	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+583	222	2	Where will the session be held?	detail	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Thông tin chi tiết	A	2	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+584	222	3	What should employees bring?	detail	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Thông tin chi tiết	A	3	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+585	222	4	What should employees do before attending?	detail	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Thông tin chi tiết	A	4	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+586	223	1	What is being announced?	main_idea	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Ý chính	A	1	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+587	223	2	When is the promotion available?	detail	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Thông tin chi tiết	A	2	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+588	223	3	Where must purchases be made?	detail	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Thông tin chi tiết	A	3	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+589	223	4	Which product is excluded?	detail	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Thông tin chi tiết	A	4	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+590	224	1	What has been confirmed?	main_idea	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Ý chính	A	1	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+591	224	2	How long will Ms. Lee stay?	detail	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Thông tin chi tiết	A	2	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+592	224	3	What is included?	detail	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Thông tin chi tiết	A	3	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+593	224	4	What should guests do if they need a taxi?	detail	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Thông tin chi tiết	A	4	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+594	225	1	Why is Daniel Ruiz mentioned?	main_idea	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Ý chính	A	1	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+595	225	2	When did he join the company?	detail	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Thông tin chi tiết	A	2	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+596	225	3	How many employees does he supervise?	detail	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Thông tin chi tiết	A	3	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+597	225	4	When will he be recognized?	detail	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Thông tin chi tiết	A	4	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+598	226	1	What change is announced?	main_idea	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Ý chính	A	1	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+599	226	2	When will the morning shuttle leave?	detail	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Thông tin chi tiết	A	2	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+600	226	3	What will remain unchanged?	detail	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Thông tin chi tiết	A	3	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+601	226	4	What are employees encouraged to do?	detail	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Thông tin chi tiết	A	4	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+602	227	1	What has been extended?	main_idea	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Ý chính	A	1	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+603	227	2	Why was the deadline changed?	detail	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Thông tin chi tiết	A	2	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+604	227	3	What was the original selection date?	detail	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Thông tin chi tiết	A	3	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+605	227	4	The word “additional” is closest in meaning to _____.	vocabulary	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Từ đồng nghĩa	A	4	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+606	228	1	What is the notice mainly about?	main_idea	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Ý chính	A	1	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+607	228	2	When should employees remove their personal items?	detail	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Thông tin chi tiết	A	2	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+608	228	3	Where will staff work during the renovation?	detail	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Thông tin chi tiết	A	3	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+609	228	4	The word “renovated” is closest in meaning to _____.	vocabulary	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Từ đồng nghĩa	A	4	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+610	229	1	Why was the message sent?	main_idea	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Ý chính	A	1	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+611	229	2	What did the customer order?	detail	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Thông tin chi tiết	A	2	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+612	229	3	When is the package expected to arrive?	detail	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Thông tin chi tiết	A	3	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+613	230	1	What position is available?	main_idea	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Ý chính	A	1	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+614	230	2	What experience is required?	detail	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Thông tin chi tiết	A	2	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+615	230	3	What is the application deadline?	detail	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Thông tin chi tiết	A	3	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+616	230	4	What software skill is mentioned?	detail	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Thông tin chi tiết	A	4	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+617	231	1	What is the announcement about?	main_idea	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Ý chính	A	1	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+618	231	2	Where will the session be held?	detail	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Thông tin chi tiết	A	2	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+619	231	3	What should employees bring?	detail	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Thông tin chi tiết	A	3	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+620	231	4	What should employees do before attending?	detail	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Thông tin chi tiết	A	4	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+621	232	1	What is being announced?	main_idea	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Ý chính	A	1	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+622	232	2	When is the promotion available?	detail	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Thông tin chi tiết	A	2	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+623	232	3	Where must purchases be made?	detail	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Thông tin chi tiết	A	3	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+624	232	4	Which product is excluded?	detail	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Thông tin chi tiết	A	4	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+625	233	1	What has been confirmed?	main_idea	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Ý chính	A	1	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+626	233	2	How long will Ms. Lee stay?	detail	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Thông tin chi tiết	A	2	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+627	233	3	What is included?	detail	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Thông tin chi tiết	A	3	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+628	233	4	What should guests do if they need a taxi?	detail	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Thông tin chi tiết	A	4	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+629	234	1	Why is Daniel Ruiz mentioned?	main_idea	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Ý chính	A	1	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+630	234	2	When did he join the company?	detail	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Thông tin chi tiết	A	2	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+631	234	3	How many employees does he supervise?	detail	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Thông tin chi tiết	A	3	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+632	234	4	When will he be recognized?	detail	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Thông tin chi tiết	A	4	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+633	235	1	What change is announced?	main_idea	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Ý chính	A	1	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+634	235	2	When will the morning shuttle leave?	detail	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Thông tin chi tiết	A	2	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+635	235	3	What will remain unchanged?	detail	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Thông tin chi tiết	A	3	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+636	235	4	What are employees encouraged to do?	detail	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Thông tin chi tiết	A	4	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+637	236	1	What has been extended?	main_idea	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Ý chính	A	1	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+638	236	2	Why was the deadline changed?	detail	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Thông tin chi tiết	A	2	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+639	236	3	What was the original selection date?	detail	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Thông tin chi tiết	A	3	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+640	236	4	The word “additional” is closest in meaning to _____.	vocabulary	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Từ đồng nghĩa	A	4	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+641	237	1	What is the notice mainly about?	main_idea	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Ý chính	A	1	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+642	237	2	When should employees remove their personal items?	detail	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Thông tin chi tiết	A	2	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+643	237	3	Where will staff work during the renovation?	detail	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Thông tin chi tiết	A	3	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+644	237	4	The word “renovated” is closest in meaning to _____.	vocabulary	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Từ đồng nghĩa	A	4	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+645	238	1	Why was the message sent?	main_idea	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Ý chính	A	1	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+646	238	2	What did the customer order?	detail	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Thông tin chi tiết	A	2	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+647	238	3	When is the package expected to arrive?	detail	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Thông tin chi tiết	A	3	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+648	239	1	What position is available?	main_idea	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Ý chính	A	1	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+649	239	2	What experience is required?	detail	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Thông tin chi tiết	A	2	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+650	239	3	What is the application deadline?	detail	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Thông tin chi tiết	A	3	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+651	239	4	What software skill is mentioned?	detail	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Thông tin chi tiết	A	4	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+652	240	1	What is the announcement about?	main_idea	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Ý chính	A	1	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+653	240	2	Where will the session be held?	detail	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Thông tin chi tiết	A	2	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+654	240	3	What should employees bring?	detail	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Thông tin chi tiết	A	3	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+655	240	4	What should employees do before attending?	detail	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Thông tin chi tiết	A	4	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+656	241	1	What is being announced?	main_idea	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Ý chính	A	1	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+657	241	2	When is the promotion available?	detail	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Thông tin chi tiết	A	2	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+658	241	3	Where must purchases be made?	detail	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Thông tin chi tiết	A	3	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+659	241	4	Which product is excluded?	detail	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Thông tin chi tiết	A	4	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+660	242	1	What has been confirmed?	main_idea	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Ý chính	A	1	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+661	242	2	How long will Ms. Lee stay?	detail	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Thông tin chi tiết	A	2	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+662	242	3	What is included?	detail	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Thông tin chi tiết	A	3	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+663	242	4	What should guests do if they need a taxi?	detail	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Thông tin chi tiết	A	4	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+664	243	1	Why is Daniel Ruiz mentioned?	main_idea	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Ý chính	A	1	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+665	243	2	When did he join the company?	detail	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Thông tin chi tiết	A	2	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+666	243	3	How many employees does he supervise?	detail	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Thông tin chi tiết	A	3	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+667	243	4	When will he be recognized?	detail	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Thông tin chi tiết	A	4	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+668	244	1	What change is announced?	main_idea	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Ý chính	A	1	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+669	244	2	When will the morning shuttle leave?	detail	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Thông tin chi tiết	A	2	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+670	244	3	What will remain unchanged?	detail	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Thông tin chi tiết	A	3	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+671	244	4	What are employees encouraged to do?	detail	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Thông tin chi tiết	A	4	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+672	245	1	What has been extended?	main_idea	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Ý chính	A	1	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+673	245	2	Why was the deadline changed?	detail	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Thông tin chi tiết	A	2	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+674	245	3	What was the original selection date?	detail	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Thông tin chi tiết	A	3	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+675	245	4	The word “additional” is closest in meaning to _____.	vocabulary	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Từ đồng nghĩa	A	4	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+676	246	1	What is the notice mainly about?	main_idea	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Ý chính	A	1	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+677	246	2	When should employees remove their personal items?	detail	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Thông tin chi tiết	A	2	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+678	246	3	Where will staff work during the renovation?	detail	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Thông tin chi tiết	A	3	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+679	246	4	The word “renovated” is closest in meaning to _____.	vocabulary	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Từ đồng nghĩa	A	4	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+680	247	1	Why was the message sent?	main_idea	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Ý chính	A	1	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+681	247	2	What did the customer order?	detail	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Thông tin chi tiết	A	2	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+682	247	3	When is the package expected to arrive?	detail	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Thông tin chi tiết	A	3	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+683	248	1	What position is available?	main_idea	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Ý chính	A	1	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+684	248	2	What experience is required?	detail	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Thông tin chi tiết	A	2	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+685	248	3	What is the application deadline?	detail	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Thông tin chi tiết	A	3	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+686	248	4	What software skill is mentioned?	detail	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Thông tin chi tiết	A	4	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+687	249	1	What is the announcement about?	main_idea	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Ý chính	A	1	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+688	249	2	Where will the session be held?	detail	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Thông tin chi tiết	A	2	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+689	249	3	What should employees bring?	detail	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Thông tin chi tiết	A	3	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+690	249	4	What should employees do before attending?	detail	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Thông tin chi tiết	A	4	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+691	250	1	What is being announced?	main_idea	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Ý chính	A	1	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+692	250	2	When is the promotion available?	detail	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Thông tin chi tiết	A	2	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+693	250	3	Where must purchases be made?	detail	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Thông tin chi tiết	A	3	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+694	250	4	Which product is excluded?	detail	Thông tin trong đoạn văn cho phép xác định trực tiếp đáp án này.	Thông tin chi tiết	A	4	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+695	251	1	What is the main purpose of the first passage?	main_idea	Cần đối chiếu nội dung của hai đoạn văn; phương án A phù hợp với thông tin được nêu.	Ý chính	A	1	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+696	251	2	According to the second passage, what specific information is provided?	detail	Cần đối chiếu nội dung của hai đoạn văn; phương án A phù hợp với thông tin được nêu.	Thông tin chi tiết	A	2	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+697	251	3	Why did the person or organization in the first passage take action?	inference	Cần đối chiếu nội dung của hai đoạn văn; phương án A phù hợp với thông tin được nêu.	Suy luận	A	3	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+698	251	4	What can be inferred from both passages?	inference	Cần đối chiếu nội dung của hai đoạn văn; phương án A phù hợp với thông tin được nêu.	Suy luận	A	4	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+699	251	5	Which statement is supported by the two passages?	detail	Cần đối chiếu nội dung của hai đoạn văn; phương án A phù hợp với thông tin được nêu.	Thông tin chi tiết	A	5	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+700	252	1	What is the main purpose of the first passage?	main_idea	Cần đối chiếu nội dung của hai đoạn văn; phương án A phù hợp với thông tin được nêu.	Ý chính	A	1	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+701	252	2	According to the second passage, what specific information is provided?	detail	Cần đối chiếu nội dung của hai đoạn văn; phương án A phù hợp với thông tin được nêu.	Thông tin chi tiết	A	2	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+702	252	3	Why did the person or organization in the first passage take action?	inference	Cần đối chiếu nội dung của hai đoạn văn; phương án A phù hợp với thông tin được nêu.	Suy luận	A	3	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+703	252	4	What can be inferred from both passages?	inference	Cần đối chiếu nội dung của hai đoạn văn; phương án A phù hợp với thông tin được nêu.	Suy luận	A	4	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+704	252	5	Which statement is supported by the two passages?	detail	Cần đối chiếu nội dung của hai đoạn văn; phương án A phù hợp với thông tin được nêu.	Thông tin chi tiết	A	5	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+705	253	1	What is the main purpose of the first passage?	main_idea	Cần đối chiếu nội dung của hai đoạn văn; phương án A phù hợp với thông tin được nêu.	Ý chính	A	1	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+706	253	2	According to the second passage, what specific information is provided?	detail	Cần đối chiếu nội dung của hai đoạn văn; phương án A phù hợp với thông tin được nêu.	Thông tin chi tiết	A	2	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+707	253	3	Why did the person or organization in the first passage take action?	inference	Cần đối chiếu nội dung của hai đoạn văn; phương án A phù hợp với thông tin được nêu.	Suy luận	A	3	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+708	253	4	What can be inferred from both passages?	inference	Cần đối chiếu nội dung của hai đoạn văn; phương án A phù hợp với thông tin được nêu.	Suy luận	A	4	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+709	253	5	Which statement is supported by the two passages?	detail	Cần đối chiếu nội dung của hai đoạn văn; phương án A phù hợp với thông tin được nêu.	Thông tin chi tiết	A	5	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+710	254	1	What is the main purpose of the first passage?	main_idea	Cần đối chiếu nội dung của hai đoạn văn; phương án A phù hợp với thông tin được nêu.	Ý chính	A	1	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+711	254	2	According to the second passage, what specific information is provided?	detail	Cần đối chiếu nội dung của hai đoạn văn; phương án A phù hợp với thông tin được nêu.	Thông tin chi tiết	A	2	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+712	254	3	Why did the person or organization in the first passage take action?	inference	Cần đối chiếu nội dung của hai đoạn văn; phương án A phù hợp với thông tin được nêu.	Suy luận	A	3	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+713	254	4	What can be inferred from both passages?	inference	Cần đối chiếu nội dung của hai đoạn văn; phương án A phù hợp với thông tin được nêu.	Suy luận	A	4	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+714	254	5	Which statement is supported by the two passages?	detail	Cần đối chiếu nội dung của hai đoạn văn; phương án A phù hợp với thông tin được nêu.	Thông tin chi tiết	A	5	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+715	255	1	What is the main purpose of the first passage?	main_idea	Cần đối chiếu nội dung của hai đoạn văn; phương án A phù hợp với thông tin được nêu.	Ý chính	A	1	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+716	255	2	According to the second passage, what specific information is provided?	detail	Cần đối chiếu nội dung của hai đoạn văn; phương án A phù hợp với thông tin được nêu.	Thông tin chi tiết	A	2	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+717	255	3	Why did the person or organization in the first passage take action?	inference	Cần đối chiếu nội dung của hai đoạn văn; phương án A phù hợp với thông tin được nêu.	Suy luận	A	3	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+718	255	4	What can be inferred from both passages?	inference	Cần đối chiếu nội dung của hai đoạn văn; phương án A phù hợp với thông tin được nêu.	Suy luận	A	4	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+719	255	5	Which statement is supported by the two passages?	detail	Cần đối chiếu nội dung của hai đoạn văn; phương án A phù hợp với thông tin được nêu.	Thông tin chi tiết	A	5	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+720	256	1	What is the main purpose of the first passage?	main_idea	Cần đối chiếu nội dung của hai đoạn văn; phương án A phù hợp với thông tin được nêu.	Ý chính	A	1	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+721	256	2	According to the second passage, what specific information is provided?	detail	Cần đối chiếu nội dung của hai đoạn văn; phương án A phù hợp với thông tin được nêu.	Thông tin chi tiết	A	2	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+722	256	3	Why did the person or organization in the first passage take action?	inference	Cần đối chiếu nội dung của hai đoạn văn; phương án A phù hợp với thông tin được nêu.	Suy luận	A	3	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+723	256	4	What can be inferred from both passages?	inference	Cần đối chiếu nội dung của hai đoạn văn; phương án A phù hợp với thông tin được nêu.	Suy luận	A	4	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+724	256	5	Which statement is supported by the two passages?	detail	Cần đối chiếu nội dung của hai đoạn văn; phương án A phù hợp với thông tin được nêu.	Thông tin chi tiết	A	5	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+725	257	1	What is the main purpose of the first passage?	main_idea	Cần đối chiếu nội dung của hai đoạn văn; phương án A phù hợp với thông tin được nêu.	Ý chính	A	1	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+726	257	2	According to the second passage, what specific information is provided?	detail	Cần đối chiếu nội dung của hai đoạn văn; phương án A phù hợp với thông tin được nêu.	Thông tin chi tiết	A	2	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+727	257	3	Why did the person or organization in the first passage take action?	inference	Cần đối chiếu nội dung của hai đoạn văn; phương án A phù hợp với thông tin được nêu.	Suy luận	A	3	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+728	257	4	What can be inferred from both passages?	inference	Cần đối chiếu nội dung của hai đoạn văn; phương án A phù hợp với thông tin được nêu.	Suy luận	A	4	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+729	257	5	Which statement is supported by the two passages?	detail	Cần đối chiếu nội dung của hai đoạn văn; phương án A phù hợp với thông tin được nêu.	Thông tin chi tiết	A	5	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+730	258	1	What is the main purpose of the first passage?	main_idea	Cần đối chiếu nội dung của hai đoạn văn; phương án A phù hợp với thông tin được nêu.	Ý chính	A	1	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+731	258	2	According to the second passage, what specific information is provided?	detail	Cần đối chiếu nội dung của hai đoạn văn; phương án A phù hợp với thông tin được nêu.	Thông tin chi tiết	A	2	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+732	258	3	Why did the person or organization in the first passage take action?	inference	Cần đối chiếu nội dung của hai đoạn văn; phương án A phù hợp với thông tin được nêu.	Suy luận	A	3	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+733	258	4	What can be inferred from both passages?	inference	Cần đối chiếu nội dung của hai đoạn văn; phương án A phù hợp với thông tin được nêu.	Suy luận	A	4	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+734	258	5	Which statement is supported by the two passages?	detail	Cần đối chiếu nội dung của hai đoạn văn; phương án A phù hợp với thông tin được nêu.	Thông tin chi tiết	A	5	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+735	259	1	What is the main purpose of the first passage?	main_idea	Cần đối chiếu nội dung của hai đoạn văn; phương án A phù hợp với thông tin được nêu.	Ý chính	A	1	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+736	259	2	According to the second passage, what specific information is provided?	detail	Cần đối chiếu nội dung của hai đoạn văn; phương án A phù hợp với thông tin được nêu.	Thông tin chi tiết	A	2	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+737	259	3	Why did the person or organization in the first passage take action?	inference	Cần đối chiếu nội dung của hai đoạn văn; phương án A phù hợp với thông tin được nêu.	Suy luận	A	3	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+738	259	4	What can be inferred from both passages?	inference	Cần đối chiếu nội dung của hai đoạn văn; phương án A phù hợp với thông tin được nêu.	Suy luận	A	4	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+739	259	5	Which statement is supported by the two passages?	detail	Cần đối chiếu nội dung của hai đoạn văn; phương án A phù hợp với thông tin được nêu.	Thông tin chi tiết	A	5	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+740	260	1	What is the main purpose of the first passage?	main_idea	Cần đối chiếu nội dung của hai đoạn văn; phương án A phù hợp với thông tin được nêu.	Ý chính	A	1	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+741	260	2	According to the second passage, what specific information is provided?	detail	Cần đối chiếu nội dung của hai đoạn văn; phương án A phù hợp với thông tin được nêu.	Thông tin chi tiết	A	2	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+742	260	3	Why did the person or organization in the first passage take action?	inference	Cần đối chiếu nội dung của hai đoạn văn; phương án A phù hợp với thông tin được nêu.	Suy luận	A	3	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+743	260	4	What can be inferred from both passages?	inference	Cần đối chiếu nội dung của hai đoạn văn; phương án A phù hợp với thông tin được nêu.	Suy luận	A	4	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+744	260	5	Which statement is supported by the two passages?	detail	Cần đối chiếu nội dung của hai đoạn văn; phương án A phù hợp với thông tin được nêu.	Thông tin chi tiết	A	5	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+745	261	1	What is the main purpose of the first passage?	main_idea	Cần đối chiếu nội dung của hai đoạn văn; phương án A phù hợp với thông tin được nêu.	Ý chính	A	1	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+746	261	2	According to the second passage, what specific information is provided?	detail	Cần đối chiếu nội dung của hai đoạn văn; phương án A phù hợp với thông tin được nêu.	Thông tin chi tiết	A	2	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+747	261	3	Why did the person or organization in the first passage take action?	inference	Cần đối chiếu nội dung của hai đoạn văn; phương án A phù hợp với thông tin được nêu.	Suy luận	A	3	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+748	261	4	What can be inferred from both passages?	inference	Cần đối chiếu nội dung của hai đoạn văn; phương án A phù hợp với thông tin được nêu.	Suy luận	A	4	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+749	261	5	Which statement is supported by the two passages?	detail	Cần đối chiếu nội dung của hai đoạn văn; phương án A phù hợp với thông tin được nêu.	Thông tin chi tiết	A	5	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+750	262	1	What is the main purpose of the first passage?	main_idea	Cần đối chiếu nội dung của hai đoạn văn; phương án A phù hợp với thông tin được nêu.	Ý chính	A	1	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+751	262	2	According to the second passage, what specific information is provided?	detail	Cần đối chiếu nội dung của hai đoạn văn; phương án A phù hợp với thông tin được nêu.	Thông tin chi tiết	A	2	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+752	262	3	Why did the person or organization in the first passage take action?	inference	Cần đối chiếu nội dung của hai đoạn văn; phương án A phù hợp với thông tin được nêu.	Suy luận	A	3	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+753	262	4	What can be inferred from both passages?	inference	Cần đối chiếu nội dung của hai đoạn văn; phương án A phù hợp với thông tin được nêu.	Suy luận	A	4	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+754	262	5	Which statement is supported by the two passages?	detail	Cần đối chiếu nội dung của hai đoạn văn; phương án A phù hợp với thông tin được nêu.	Thông tin chi tiết	A	5	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+755	263	1	What is the main purpose of the first passage?	main_idea	Cần đối chiếu nội dung của hai đoạn văn; phương án A phù hợp với thông tin được nêu.	Ý chính	A	1	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+756	263	2	According to the second passage, what specific information is provided?	detail	Cần đối chiếu nội dung của hai đoạn văn; phương án A phù hợp với thông tin được nêu.	Thông tin chi tiết	A	2	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+757	263	3	Why did the person or organization in the first passage take action?	inference	Cần đối chiếu nội dung của hai đoạn văn; phương án A phù hợp với thông tin được nêu.	Suy luận	A	3	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+758	263	4	What can be inferred from both passages?	inference	Cần đối chiếu nội dung của hai đoạn văn; phương án A phù hợp với thông tin được nêu.	Suy luận	A	4	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+759	263	5	Which statement is supported by the two passages?	detail	Cần đối chiếu nội dung của hai đoạn văn; phương án A phù hợp với thông tin được nêu.	Thông tin chi tiết	A	5	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+760	264	1	What is the main purpose of the first passage?	main_idea	Cần đối chiếu nội dung của hai đoạn văn; phương án A phù hợp với thông tin được nêu.	Ý chính	A	1	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+761	264	2	According to the second passage, what specific information is provided?	detail	Cần đối chiếu nội dung của hai đoạn văn; phương án A phù hợp với thông tin được nêu.	Thông tin chi tiết	A	2	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+762	264	3	Why did the person or organization in the first passage take action?	inference	Cần đối chiếu nội dung của hai đoạn văn; phương án A phù hợp với thông tin được nêu.	Suy luận	A	3	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+763	264	4	What can be inferred from both passages?	inference	Cần đối chiếu nội dung của hai đoạn văn; phương án A phù hợp với thông tin được nêu.	Suy luận	A	4	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+764	264	5	Which statement is supported by the two passages?	detail	Cần đối chiếu nội dung của hai đoạn văn; phương án A phù hợp với thông tin được nêu.	Thông tin chi tiết	A	5	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+765	265	1	What is the main purpose of the first passage?	main_idea	Cần đối chiếu nội dung của hai đoạn văn; phương án A phù hợp với thông tin được nêu.	Ý chính	A	1	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+766	265	2	According to the second passage, what specific information is provided?	detail	Cần đối chiếu nội dung của hai đoạn văn; phương án A phù hợp với thông tin được nêu.	Thông tin chi tiết	A	2	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+767	265	3	Why did the person or organization in the first passage take action?	inference	Cần đối chiếu nội dung của hai đoạn văn; phương án A phù hợp với thông tin được nêu.	Suy luận	A	3	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+768	265	4	What can be inferred from both passages?	inference	Cần đối chiếu nội dung của hai đoạn văn; phương án A phù hợp với thông tin được nêu.	Suy luận	A	4	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+769	265	5	Which statement is supported by the two passages?	detail	Cần đối chiếu nội dung của hai đoạn văn; phương án A phù hợp với thông tin được nêu.	Thông tin chi tiết	A	5	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+770	266	1	What is the main purpose of the first passage?	main_idea	Cần đối chiếu nội dung của hai đoạn văn; phương án A phù hợp với thông tin được nêu.	Ý chính	A	1	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+771	266	2	According to the second passage, what specific information is provided?	detail	Cần đối chiếu nội dung của hai đoạn văn; phương án A phù hợp với thông tin được nêu.	Thông tin chi tiết	A	2	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+772	266	3	Why did the person or organization in the first passage take action?	inference	Cần đối chiếu nội dung của hai đoạn văn; phương án A phù hợp với thông tin được nêu.	Suy luận	A	3	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+773	266	4	What can be inferred from both passages?	inference	Cần đối chiếu nội dung của hai đoạn văn; phương án A phù hợp với thông tin được nêu.	Suy luận	A	4	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+774	266	5	Which statement is supported by the two passages?	detail	Cần đối chiếu nội dung của hai đoạn văn; phương án A phù hợp với thông tin được nêu.	Thông tin chi tiết	A	5	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+775	267	1	What is the main purpose of the first passage?	main_idea	Cần đối chiếu nội dung của hai đoạn văn; phương án A phù hợp với thông tin được nêu.	Ý chính	A	1	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+776	267	2	According to the second passage, what specific information is provided?	detail	Cần đối chiếu nội dung của hai đoạn văn; phương án A phù hợp với thông tin được nêu.	Thông tin chi tiết	A	2	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+777	267	3	Why did the person or organization in the first passage take action?	inference	Cần đối chiếu nội dung của hai đoạn văn; phương án A phù hợp với thông tin được nêu.	Suy luận	A	3	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+778	267	4	What can be inferred from both passages?	inference	Cần đối chiếu nội dung của hai đoạn văn; phương án A phù hợp với thông tin được nêu.	Suy luận	A	4	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+779	267	5	Which statement is supported by the two passages?	detail	Cần đối chiếu nội dung của hai đoạn văn; phương án A phù hợp với thông tin được nêu.	Thông tin chi tiết	A	5	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+780	268	1	What is the main purpose of the first passage?	main_idea	Cần đối chiếu nội dung của hai đoạn văn; phương án A phù hợp với thông tin được nêu.	Ý chính	A	1	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+781	268	2	According to the second passage, what specific information is provided?	detail	Cần đối chiếu nội dung của hai đoạn văn; phương án A phù hợp với thông tin được nêu.	Thông tin chi tiết	A	2	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+782	268	3	Why did the person or organization in the first passage take action?	inference	Cần đối chiếu nội dung của hai đoạn văn; phương án A phù hợp với thông tin được nêu.	Suy luận	A	3	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+783	268	4	What can be inferred from both passages?	inference	Cần đối chiếu nội dung của hai đoạn văn; phương án A phù hợp với thông tin được nêu.	Suy luận	A	4	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+784	268	5	Which statement is supported by the two passages?	detail	Cần đối chiếu nội dung của hai đoạn văn; phương án A phù hợp với thông tin được nêu.	Thông tin chi tiết	A	5	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+785	269	1	What is the main purpose of the first passage?	main_idea	Cần đối chiếu nội dung của hai đoạn văn; phương án A phù hợp với thông tin được nêu.	Ý chính	A	1	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+786	269	2	According to the second passage, what specific information is provided?	detail	Cần đối chiếu nội dung của hai đoạn văn; phương án A phù hợp với thông tin được nêu.	Thông tin chi tiết	A	2	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+787	269	3	Why did the person or organization in the first passage take action?	inference	Cần đối chiếu nội dung của hai đoạn văn; phương án A phù hợp với thông tin được nêu.	Suy luận	A	3	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+788	269	4	What can be inferred from both passages?	inference	Cần đối chiếu nội dung của hai đoạn văn; phương án A phù hợp với thông tin được nêu.	Suy luận	A	4	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+789	269	5	Which statement is supported by the two passages?	detail	Cần đối chiếu nội dung của hai đoạn văn; phương án A phù hợp với thông tin được nêu.	Thông tin chi tiết	A	5	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+790	270	1	What is the main purpose of the first passage?	main_idea	Cần đối chiếu nội dung của hai đoạn văn; phương án A phù hợp với thông tin được nêu.	Ý chính	A	1	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+791	270	2	According to the second passage, what specific information is provided?	detail	Cần đối chiếu nội dung của hai đoạn văn; phương án A phù hợp với thông tin được nêu.	Thông tin chi tiết	A	2	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+792	270	3	Why did the person or organization in the first passage take action?	inference	Cần đối chiếu nội dung của hai đoạn văn; phương án A phù hợp với thông tin được nêu.	Suy luận	A	3	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+793	270	4	What can be inferred from both passages?	inference	Cần đối chiếu nội dung của hai đoạn văn; phương án A phù hợp với thông tin được nêu.	Suy luận	A	4	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+794	270	5	Which statement is supported by the two passages?	detail	Cần đối chiếu nội dung của hai đoạn văn; phương án A phù hợp với thông tin được nêu.	Thông tin chi tiết	A	5	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+795	271	1	What is the main purpose of the first passage?	main_idea	Cần đối chiếu nội dung của hai đoạn văn; phương án A phù hợp với thông tin được nêu.	Ý chính	A	1	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+796	271	2	According to the second passage, what specific information is provided?	detail	Cần đối chiếu nội dung của hai đoạn văn; phương án A phù hợp với thông tin được nêu.	Thông tin chi tiết	A	2	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+797	271	3	Why did the person or organization in the first passage take action?	inference	Cần đối chiếu nội dung của hai đoạn văn; phương án A phù hợp với thông tin được nêu.	Suy luận	A	3	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+798	271	4	What can be inferred from both passages?	inference	Cần đối chiếu nội dung của hai đoạn văn; phương án A phù hợp với thông tin được nêu.	Suy luận	A	4	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+799	271	5	Which statement is supported by the two passages?	detail	Cần đối chiếu nội dung của hai đoạn văn; phương án A phù hợp với thông tin được nêu.	Thông tin chi tiết	A	5	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+800	272	1	What is the main purpose of the first passage?	main_idea	Cần đối chiếu nội dung của hai đoạn văn; phương án A phù hợp với thông tin được nêu.	Ý chính	A	1	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+801	272	2	According to the second passage, what specific information is provided?	detail	Cần đối chiếu nội dung của hai đoạn văn; phương án A phù hợp với thông tin được nêu.	Thông tin chi tiết	A	2	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+802	272	3	Why did the person or organization in the first passage take action?	inference	Cần đối chiếu nội dung của hai đoạn văn; phương án A phù hợp với thông tin được nêu.	Suy luận	A	3	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+803	272	4	What can be inferred from both passages?	inference	Cần đối chiếu nội dung của hai đoạn văn; phương án A phù hợp với thông tin được nêu.	Suy luận	A	4	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+804	272	5	Which statement is supported by the two passages?	detail	Cần đối chiếu nội dung của hai đoạn văn; phương án A phù hợp với thông tin được nêu.	Thông tin chi tiết	A	5	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+805	273	1	What is the main purpose of the first passage?	main_idea	Cần đối chiếu nội dung của hai đoạn văn; phương án A phù hợp với thông tin được nêu.	Ý chính	A	1	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+806	273	2	According to the second passage, what specific information is provided?	detail	Cần đối chiếu nội dung của hai đoạn văn; phương án A phù hợp với thông tin được nêu.	Thông tin chi tiết	A	2	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+807	273	3	Why did the person or organization in the first passage take action?	inference	Cần đối chiếu nội dung của hai đoạn văn; phương án A phù hợp với thông tin được nêu.	Suy luận	A	3	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+808	273	4	What can be inferred from both passages?	inference	Cần đối chiếu nội dung của hai đoạn văn; phương án A phù hợp với thông tin được nêu.	Suy luận	A	4	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+809	273	5	Which statement is supported by the two passages?	detail	Cần đối chiếu nội dung của hai đoạn văn; phương án A phù hợp với thông tin được nêu.	Thông tin chi tiết	A	5	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+810	274	1	What is the main purpose of the first passage?	main_idea	Cần đối chiếu nội dung của hai đoạn văn; phương án A phù hợp với thông tin được nêu.	Ý chính	A	1	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+811	274	2	According to the second passage, what specific information is provided?	detail	Cần đối chiếu nội dung của hai đoạn văn; phương án A phù hợp với thông tin được nêu.	Thông tin chi tiết	A	2	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+812	274	3	Why did the person or organization in the first passage take action?	inference	Cần đối chiếu nội dung của hai đoạn văn; phương án A phù hợp với thông tin được nêu.	Suy luận	A	3	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+813	274	4	What can be inferred from both passages?	inference	Cần đối chiếu nội dung của hai đoạn văn; phương án A phù hợp với thông tin được nêu.	Suy luận	A	4	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+814	274	5	Which statement is supported by the two passages?	detail	Cần đối chiếu nội dung của hai đoạn văn; phương án A phù hợp với thông tin được nêu.	Thông tin chi tiết	A	5	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+815	275	1	What is the main purpose of the first passage?	main_idea	Cần đối chiếu nội dung của hai đoạn văn; phương án A phù hợp với thông tin được nêu.	Ý chính	A	1	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+816	275	2	According to the second passage, what specific information is provided?	detail	Cần đối chiếu nội dung của hai đoạn văn; phương án A phù hợp với thông tin được nêu.	Thông tin chi tiết	A	2	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+817	275	3	Why did the person or organization in the first passage take action?	inference	Cần đối chiếu nội dung của hai đoạn văn; phương án A phù hợp với thông tin được nêu.	Suy luận	A	3	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+818	275	4	What can be inferred from both passages?	inference	Cần đối chiếu nội dung của hai đoạn văn; phương án A phù hợp với thông tin được nêu.	Suy luận	A	4	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+819	275	5	Which statement is supported by the two passages?	detail	Cần đối chiếu nội dung của hai đoạn văn; phương án A phù hợp với thông tin được nêu.	Thông tin chi tiết	A	5	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+820	276	1	What is the main purpose of the first passage?	main_idea	Đáp án được xác định bằng cách đối chiếu các thông tin liên quan trong ba đoạn văn.	Ý chính	A	1	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+821	276	2	According to the second passage, what detail is mentioned?	detail	Đáp án được xác định bằng cách đối chiếu các thông tin liên quan trong ba đoạn văn.	Thông tin chi tiết	A	2	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+822	276	3	What does the third passage indicate?	detail	Đáp án được xác định bằng cách đối chiếu các thông tin liên quan trong ba đoạn văn.	Thông tin chi tiết	A	3	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+823	276	4	What can be inferred from all three passages?	inference	Đáp án được xác định bằng cách đối chiếu các thông tin liên quan trong ba đoạn văn.	Suy luận	A	4	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+824	276	5	Which statement is supported by the passages?	detail	Đáp án được xác định bằng cách đối chiếu các thông tin liên quan trong ba đoạn văn.	Thông tin chi tiết	A	5	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+825	277	1	What is the main purpose of the first passage?	main_idea	Đáp án được xác định bằng cách đối chiếu các thông tin liên quan trong ba đoạn văn.	Ý chính	A	1	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+826	277	2	According to the second passage, what detail is mentioned?	detail	Đáp án được xác định bằng cách đối chiếu các thông tin liên quan trong ba đoạn văn.	Thông tin chi tiết	A	2	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+827	277	3	What does the third passage indicate?	detail	Đáp án được xác định bằng cách đối chiếu các thông tin liên quan trong ba đoạn văn.	Thông tin chi tiết	A	3	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+828	277	4	What can be inferred from all three passages?	inference	Đáp án được xác định bằng cách đối chiếu các thông tin liên quan trong ba đoạn văn.	Suy luận	A	4	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+829	277	5	Which statement is supported by the passages?	detail	Đáp án được xác định bằng cách đối chiếu các thông tin liên quan trong ba đoạn văn.	Thông tin chi tiết	A	5	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+830	278	1	What is the main purpose of the first passage?	main_idea	Đáp án được xác định bằng cách đối chiếu các thông tin liên quan trong ba đoạn văn.	Ý chính	A	1	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+831	278	2	According to the second passage, what detail is mentioned?	detail	Đáp án được xác định bằng cách đối chiếu các thông tin liên quan trong ba đoạn văn.	Thông tin chi tiết	A	2	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+832	278	3	What does the third passage indicate?	detail	Đáp án được xác định bằng cách đối chiếu các thông tin liên quan trong ba đoạn văn.	Thông tin chi tiết	A	3	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+833	278	4	What can be inferred from all three passages?	inference	Đáp án được xác định bằng cách đối chiếu các thông tin liên quan trong ba đoạn văn.	Suy luận	A	4	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+834	278	5	Which statement is supported by the passages?	detail	Đáp án được xác định bằng cách đối chiếu các thông tin liên quan trong ba đoạn văn.	Thông tin chi tiết	A	5	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+835	279	1	What is the main purpose of the first passage?	main_idea	Đáp án được xác định bằng cách đối chiếu các thông tin liên quan trong ba đoạn văn.	Ý chính	A	1	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+836	279	2	According to the second passage, what detail is mentioned?	detail	Đáp án được xác định bằng cách đối chiếu các thông tin liên quan trong ba đoạn văn.	Thông tin chi tiết	A	2	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+837	279	3	What does the third passage indicate?	detail	Đáp án được xác định bằng cách đối chiếu các thông tin liên quan trong ba đoạn văn.	Thông tin chi tiết	A	3	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+838	279	4	What can be inferred from all three passages?	inference	Đáp án được xác định bằng cách đối chiếu các thông tin liên quan trong ba đoạn văn.	Suy luận	A	4	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+839	279	5	Which statement is supported by the passages?	detail	Đáp án được xác định bằng cách đối chiếu các thông tin liên quan trong ba đoạn văn.	Thông tin chi tiết	A	5	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+840	280	1	What is the main purpose of the first passage?	main_idea	Đáp án được xác định bằng cách đối chiếu các thông tin liên quan trong ba đoạn văn.	Ý chính	A	1	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+841	280	2	According to the second passage, what detail is mentioned?	detail	Đáp án được xác định bằng cách đối chiếu các thông tin liên quan trong ba đoạn văn.	Thông tin chi tiết	A	2	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+842	280	3	What does the third passage indicate?	detail	Đáp án được xác định bằng cách đối chiếu các thông tin liên quan trong ba đoạn văn.	Thông tin chi tiết	A	3	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+843	280	4	What can be inferred from all three passages?	inference	Đáp án được xác định bằng cách đối chiếu các thông tin liên quan trong ba đoạn văn.	Suy luận	A	4	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+844	280	5	Which statement is supported by the passages?	detail	Đáp án được xác định bằng cách đối chiếu các thông tin liên quan trong ba đoạn văn.	Thông tin chi tiết	A	5	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+845	281	1	What is the main purpose of the first passage?	main_idea	Đáp án được xác định bằng cách đối chiếu các thông tin liên quan trong ba đoạn văn.	Ý chính	A	1	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+846	281	2	According to the second passage, what detail is mentioned?	detail	Đáp án được xác định bằng cách đối chiếu các thông tin liên quan trong ba đoạn văn.	Thông tin chi tiết	A	2	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+847	281	3	What does the third passage indicate?	detail	Đáp án được xác định bằng cách đối chiếu các thông tin liên quan trong ba đoạn văn.	Thông tin chi tiết	A	3	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+848	281	4	What can be inferred from all three passages?	inference	Đáp án được xác định bằng cách đối chiếu các thông tin liên quan trong ba đoạn văn.	Suy luận	A	4	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+849	281	5	Which statement is supported by the passages?	detail	Đáp án được xác định bằng cách đối chiếu các thông tin liên quan trong ba đoạn văn.	Thông tin chi tiết	A	5	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+850	282	1	What is the main purpose of the first passage?	main_idea	Đáp án được xác định bằng cách đối chiếu các thông tin liên quan trong ba đoạn văn.	Ý chính	A	1	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+851	282	2	According to the second passage, what detail is mentioned?	detail	Đáp án được xác định bằng cách đối chiếu các thông tin liên quan trong ba đoạn văn.	Thông tin chi tiết	A	2	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+852	282	3	What does the third passage indicate?	detail	Đáp án được xác định bằng cách đối chiếu các thông tin liên quan trong ba đoạn văn.	Thông tin chi tiết	A	3	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+853	282	4	What can be inferred from all three passages?	inference	Đáp án được xác định bằng cách đối chiếu các thông tin liên quan trong ba đoạn văn.	Suy luận	A	4	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+854	282	5	Which statement is supported by the passages?	detail	Đáp án được xác định bằng cách đối chiếu các thông tin liên quan trong ba đoạn văn.	Thông tin chi tiết	A	5	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+855	283	1	What is the main purpose of the first passage?	main_idea	Đáp án được xác định bằng cách đối chiếu các thông tin liên quan trong ba đoạn văn.	Ý chính	A	1	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+856	283	2	According to the second passage, what detail is mentioned?	detail	Đáp án được xác định bằng cách đối chiếu các thông tin liên quan trong ba đoạn văn.	Thông tin chi tiết	A	2	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+857	283	3	What does the third passage indicate?	detail	Đáp án được xác định bằng cách đối chiếu các thông tin liên quan trong ba đoạn văn.	Thông tin chi tiết	A	3	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+858	283	4	What can be inferred from all three passages?	inference	Đáp án được xác định bằng cách đối chiếu các thông tin liên quan trong ba đoạn văn.	Suy luận	A	4	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+859	283	5	Which statement is supported by the passages?	detail	Đáp án được xác định bằng cách đối chiếu các thông tin liên quan trong ba đoạn văn.	Thông tin chi tiết	A	5	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+860	284	1	What is the main purpose of the first passage?	main_idea	Đáp án được xác định bằng cách đối chiếu các thông tin liên quan trong ba đoạn văn.	Ý chính	A	1	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+861	284	2	According to the second passage, what detail is mentioned?	detail	Đáp án được xác định bằng cách đối chiếu các thông tin liên quan trong ba đoạn văn.	Thông tin chi tiết	A	2	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+862	284	3	What does the third passage indicate?	detail	Đáp án được xác định bằng cách đối chiếu các thông tin liên quan trong ba đoạn văn.	Thông tin chi tiết	A	3	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+863	284	4	What can be inferred from all three passages?	inference	Đáp án được xác định bằng cách đối chiếu các thông tin liên quan trong ba đoạn văn.	Suy luận	A	4	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+864	284	5	Which statement is supported by the passages?	detail	Đáp án được xác định bằng cách đối chiếu các thông tin liên quan trong ba đoạn văn.	Thông tin chi tiết	A	5	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+865	285	1	What is the main purpose of the first passage?	main_idea	Đáp án được xác định bằng cách đối chiếu các thông tin liên quan trong ba đoạn văn.	Ý chính	A	1	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+866	285	2	According to the second passage, what detail is mentioned?	detail	Đáp án được xác định bằng cách đối chiếu các thông tin liên quan trong ba đoạn văn.	Thông tin chi tiết	A	2	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+867	285	3	What does the third passage indicate?	detail	Đáp án được xác định bằng cách đối chiếu các thông tin liên quan trong ba đoạn văn.	Thông tin chi tiết	A	3	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+868	285	4	What can be inferred from all three passages?	inference	Đáp án được xác định bằng cách đối chiếu các thông tin liên quan trong ba đoạn văn.	Suy luận	A	4	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+869	285	5	Which statement is supported by the passages?	detail	Đáp án được xác định bằng cách đối chiếu các thông tin liên quan trong ba đoạn văn.	Thông tin chi tiết	A	5	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+870	286	1	What is the main purpose of the first passage?	main_idea	Đáp án được xác định bằng cách đối chiếu các thông tin liên quan trong ba đoạn văn.	Ý chính	A	1	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+871	286	2	According to the second passage, what detail is mentioned?	detail	Đáp án được xác định bằng cách đối chiếu các thông tin liên quan trong ba đoạn văn.	Thông tin chi tiết	A	2	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+872	286	3	What does the third passage indicate?	detail	Đáp án được xác định bằng cách đối chiếu các thông tin liên quan trong ba đoạn văn.	Thông tin chi tiết	A	3	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+873	286	4	What can be inferred from all three passages?	inference	Đáp án được xác định bằng cách đối chiếu các thông tin liên quan trong ba đoạn văn.	Suy luận	A	4	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+874	286	5	Which statement is supported by the passages?	detail	Đáp án được xác định bằng cách đối chiếu các thông tin liên quan trong ba đoạn văn.	Thông tin chi tiết	A	5	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+875	287	1	What is the main purpose of the first passage?	main_idea	Đáp án được xác định bằng cách đối chiếu các thông tin liên quan trong ba đoạn văn.	Ý chính	A	1	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+876	287	2	According to the second passage, what detail is mentioned?	detail	Đáp án được xác định bằng cách đối chiếu các thông tin liên quan trong ba đoạn văn.	Thông tin chi tiết	A	2	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+877	287	3	What does the third passage indicate?	detail	Đáp án được xác định bằng cách đối chiếu các thông tin liên quan trong ba đoạn văn.	Thông tin chi tiết	A	3	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+878	287	4	What can be inferred from all three passages?	inference	Đáp án được xác định bằng cách đối chiếu các thông tin liên quan trong ba đoạn văn.	Suy luận	A	4	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+879	287	5	Which statement is supported by the passages?	detail	Đáp án được xác định bằng cách đối chiếu các thông tin liên quan trong ba đoạn văn.	Thông tin chi tiết	A	5	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+880	288	1	What is the main purpose of the first passage?	main_idea	Đáp án được xác định bằng cách đối chiếu các thông tin liên quan trong ba đoạn văn.	Ý chính	A	1	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+881	288	2	According to the second passage, what detail is mentioned?	detail	Đáp án được xác định bằng cách đối chiếu các thông tin liên quan trong ba đoạn văn.	Thông tin chi tiết	A	2	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+882	288	3	What does the third passage indicate?	detail	Đáp án được xác định bằng cách đối chiếu các thông tin liên quan trong ba đoạn văn.	Thông tin chi tiết	A	3	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+883	288	4	What can be inferred from all three passages?	inference	Đáp án được xác định bằng cách đối chiếu các thông tin liên quan trong ba đoạn văn.	Suy luận	A	4	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+884	288	5	Which statement is supported by the passages?	detail	Đáp án được xác định bằng cách đối chiếu các thông tin liên quan trong ba đoạn văn.	Thông tin chi tiết	A	5	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+885	289	1	What is the main purpose of the first passage?	main_idea	Đáp án được xác định bằng cách đối chiếu các thông tin liên quan trong ba đoạn văn.	Ý chính	A	1	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+886	289	2	According to the second passage, what detail is mentioned?	detail	Đáp án được xác định bằng cách đối chiếu các thông tin liên quan trong ba đoạn văn.	Thông tin chi tiết	A	2	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+887	289	3	What does the third passage indicate?	detail	Đáp án được xác định bằng cách đối chiếu các thông tin liên quan trong ba đoạn văn.	Thông tin chi tiết	A	3	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+888	289	4	What can be inferred from all three passages?	inference	Đáp án được xác định bằng cách đối chiếu các thông tin liên quan trong ba đoạn văn.	Suy luận	A	4	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+889	289	5	Which statement is supported by the passages?	detail	Đáp án được xác định bằng cách đối chiếu các thông tin liên quan trong ba đoạn văn.	Thông tin chi tiết	A	5	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+890	290	1	What is the main purpose of the first passage?	main_idea	Đáp án được xác định bằng cách đối chiếu các thông tin liên quan trong ba đoạn văn.	Ý chính	A	1	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+891	290	2	According to the second passage, what detail is mentioned?	detail	Đáp án được xác định bằng cách đối chiếu các thông tin liên quan trong ba đoạn văn.	Thông tin chi tiết	A	2	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+892	290	3	What does the third passage indicate?	detail	Đáp án được xác định bằng cách đối chiếu các thông tin liên quan trong ba đoạn văn.	Thông tin chi tiết	A	3	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+893	290	4	What can be inferred from all three passages?	inference	Đáp án được xác định bằng cách đối chiếu các thông tin liên quan trong ba đoạn văn.	Suy luận	A	4	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+894	290	5	Which statement is supported by the passages?	detail	Đáp án được xác định bằng cách đối chiếu các thông tin liên quan trong ba đoạn văn.	Thông tin chi tiết	A	5	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+895	291	1	What is the main purpose of the first passage?	main_idea	Đáp án được xác định bằng cách đối chiếu các thông tin liên quan trong ba đoạn văn.	Ý chính	A	1	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+896	291	2	According to the second passage, what detail is mentioned?	detail	Đáp án được xác định bằng cách đối chiếu các thông tin liên quan trong ba đoạn văn.	Thông tin chi tiết	A	2	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+897	291	3	What does the third passage indicate?	detail	Đáp án được xác định bằng cách đối chiếu các thông tin liên quan trong ba đoạn văn.	Thông tin chi tiết	A	3	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+898	291	4	What can be inferred from all three passages?	inference	Đáp án được xác định bằng cách đối chiếu các thông tin liên quan trong ba đoạn văn.	Suy luận	A	4	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+899	291	5	Which statement is supported by the passages?	detail	Đáp án được xác định bằng cách đối chiếu các thông tin liên quan trong ba đoạn văn.	Thông tin chi tiết	A	5	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+900	292	1	What is the main purpose of the first passage?	main_idea	Đáp án được xác định bằng cách đối chiếu các thông tin liên quan trong ba đoạn văn.	Ý chính	A	1	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+901	292	2	According to the second passage, what detail is mentioned?	detail	Đáp án được xác định bằng cách đối chiếu các thông tin liên quan trong ba đoạn văn.	Thông tin chi tiết	A	2	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+902	292	3	What does the third passage indicate?	detail	Đáp án được xác định bằng cách đối chiếu các thông tin liên quan trong ba đoạn văn.	Thông tin chi tiết	A	3	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+903	292	4	What can be inferred from all three passages?	inference	Đáp án được xác định bằng cách đối chiếu các thông tin liên quan trong ba đoạn văn.	Suy luận	A	4	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+904	292	5	Which statement is supported by the passages?	detail	Đáp án được xác định bằng cách đối chiếu các thông tin liên quan trong ba đoạn văn.	Thông tin chi tiết	A	5	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+905	293	1	What is the main purpose of the first passage?	main_idea	Đáp án được xác định bằng cách đối chiếu các thông tin liên quan trong ba đoạn văn.	Ý chính	A	1	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+906	293	2	According to the second passage, what detail is mentioned?	detail	Đáp án được xác định bằng cách đối chiếu các thông tin liên quan trong ba đoạn văn.	Thông tin chi tiết	A	2	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+907	293	3	What does the third passage indicate?	detail	Đáp án được xác định bằng cách đối chiếu các thông tin liên quan trong ba đoạn văn.	Thông tin chi tiết	A	3	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+908	293	4	What can be inferred from all three passages?	inference	Đáp án được xác định bằng cách đối chiếu các thông tin liên quan trong ba đoạn văn.	Suy luận	A	4	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+909	293	5	Which statement is supported by the passages?	detail	Đáp án được xác định bằng cách đối chiếu các thông tin liên quan trong ba đoạn văn.	Thông tin chi tiết	A	5	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+910	294	1	What is the main purpose of the first passage?	main_idea	Đáp án được xác định bằng cách đối chiếu các thông tin liên quan trong ba đoạn văn.	Ý chính	A	1	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+911	294	2	According to the second passage, what detail is mentioned?	detail	Đáp án được xác định bằng cách đối chiếu các thông tin liên quan trong ba đoạn văn.	Thông tin chi tiết	A	2	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+912	294	3	What does the third passage indicate?	detail	Đáp án được xác định bằng cách đối chiếu các thông tin liên quan trong ba đoạn văn.	Thông tin chi tiết	A	3	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+913	294	4	What can be inferred from all three passages?	inference	Đáp án được xác định bằng cách đối chiếu các thông tin liên quan trong ba đoạn văn.	Suy luận	A	4	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+914	294	5	Which statement is supported by the passages?	detail	Đáp án được xác định bằng cách đối chiếu các thông tin liên quan trong ba đoạn văn.	Thông tin chi tiết	A	5	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+915	295	1	What is the main purpose of the first passage?	main_idea	Đáp án được xác định bằng cách đối chiếu các thông tin liên quan trong ba đoạn văn.	Ý chính	A	1	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+916	295	2	According to the second passage, what detail is mentioned?	detail	Đáp án được xác định bằng cách đối chiếu các thông tin liên quan trong ba đoạn văn.	Thông tin chi tiết	A	2	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+917	295	3	What does the third passage indicate?	detail	Đáp án được xác định bằng cách đối chiếu các thông tin liên quan trong ba đoạn văn.	Thông tin chi tiết	A	3	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+918	295	4	What can be inferred from all three passages?	inference	Đáp án được xác định bằng cách đối chiếu các thông tin liên quan trong ba đoạn văn.	Suy luận	A	4	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+919	295	5	Which statement is supported by the passages?	detail	Đáp án được xác định bằng cách đối chiếu các thông tin liên quan trong ba đoạn văn.	Thông tin chi tiết	A	5	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+920	296	1	What is the main purpose of the first passage?	main_idea	Đáp án được xác định bằng cách đối chiếu các thông tin liên quan trong ba đoạn văn.	Ý chính	A	1	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+921	296	2	According to the second passage, what detail is mentioned?	detail	Đáp án được xác định bằng cách đối chiếu các thông tin liên quan trong ba đoạn văn.	Thông tin chi tiết	A	2	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+922	296	3	What does the third passage indicate?	detail	Đáp án được xác định bằng cách đối chiếu các thông tin liên quan trong ba đoạn văn.	Thông tin chi tiết	A	3	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+923	296	4	What can be inferred from all three passages?	inference	Đáp án được xác định bằng cách đối chiếu các thông tin liên quan trong ba đoạn văn.	Suy luận	A	4	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+924	296	5	Which statement is supported by the passages?	detail	Đáp án được xác định bằng cách đối chiếu các thông tin liên quan trong ba đoạn văn.	Thông tin chi tiết	A	5	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+925	297	1	What is the main purpose of the first passage?	main_idea	Đáp án được xác định bằng cách đối chiếu các thông tin liên quan trong ba đoạn văn.	Ý chính	A	1	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+926	297	2	According to the second passage, what detail is mentioned?	detail	Đáp án được xác định bằng cách đối chiếu các thông tin liên quan trong ba đoạn văn.	Thông tin chi tiết	A	2	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+927	297	3	What does the third passage indicate?	detail	Đáp án được xác định bằng cách đối chiếu các thông tin liên quan trong ba đoạn văn.	Thông tin chi tiết	A	3	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+928	297	4	What can be inferred from all three passages?	inference	Đáp án được xác định bằng cách đối chiếu các thông tin liên quan trong ba đoạn văn.	Suy luận	A	4	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+929	297	5	Which statement is supported by the passages?	detail	Đáp án được xác định bằng cách đối chiếu các thông tin liên quan trong ba đoạn văn.	Thông tin chi tiết	A	5	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+930	298	1	What is the main purpose of the first passage?	main_idea	Đáp án được xác định bằng cách đối chiếu các thông tin liên quan trong ba đoạn văn.	Ý chính	A	1	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+931	298	2	According to the second passage, what detail is mentioned?	detail	Đáp án được xác định bằng cách đối chiếu các thông tin liên quan trong ba đoạn văn.	Thông tin chi tiết	A	2	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+932	298	3	What does the third passage indicate?	detail	Đáp án được xác định bằng cách đối chiếu các thông tin liên quan trong ba đoạn văn.	Thông tin chi tiết	A	3	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+933	298	4	What can be inferred from all three passages?	inference	Đáp án được xác định bằng cách đối chiếu các thông tin liên quan trong ba đoạn văn.	Suy luận	A	4	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+934	298	5	Which statement is supported by the passages?	detail	Đáp án được xác định bằng cách đối chiếu các thông tin liên quan trong ba đoạn văn.	Thông tin chi tiết	A	5	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+935	299	1	What is the main purpose of the first passage?	main_idea	Đáp án được xác định bằng cách đối chiếu các thông tin liên quan trong ba đoạn văn.	Ý chính	A	1	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+936	299	2	According to the second passage, what detail is mentioned?	detail	Đáp án được xác định bằng cách đối chiếu các thông tin liên quan trong ba đoạn văn.	Thông tin chi tiết	A	2	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+937	299	3	What does the third passage indicate?	detail	Đáp án được xác định bằng cách đối chiếu các thông tin liên quan trong ba đoạn văn.	Thông tin chi tiết	A	3	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+938	299	4	What can be inferred from all three passages?	inference	Đáp án được xác định bằng cách đối chiếu các thông tin liên quan trong ba đoạn văn.	Suy luận	A	4	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+939	299	5	Which statement is supported by the passages?	detail	Đáp án được xác định bằng cách đối chiếu các thông tin liên quan trong ba đoạn văn.	Thông tin chi tiết	A	5	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+940	300	1	What is the main purpose of the first passage?	main_idea	Đáp án được xác định bằng cách đối chiếu các thông tin liên quan trong ba đoạn văn.	Ý chính	A	1	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+941	300	2	According to the second passage, what detail is mentioned?	detail	Đáp án được xác định bằng cách đối chiếu các thông tin liên quan trong ba đoạn văn.	Thông tin chi tiết	A	2	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+942	300	3	What does the third passage indicate?	detail	Đáp án được xác định bằng cách đối chiếu các thông tin liên quan trong ba đoạn văn.	Thông tin chi tiết	A	3	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+943	300	4	What can be inferred from all three passages?	inference	Đáp án được xác định bằng cách đối chiếu các thông tin liên quan trong ba đoạn văn.	Suy luận	A	4	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
+944	300	5	Which statement is supported by the passages?	detail	Đáp án được xác định bằng cách đối chiếu các thông tin liên quan trong ba đoạn văn.	Thông tin chi tiết	A	5	2026-08-10 14:18:37.790751	2026-08-10 14:18:37.790751
 \.
 
 
@@ -13613,7 +13613,7 @@ SELECT pg_catalog.setval('public.questions_id_seq', 200, true);
 -- Name: reading_lesson_groups_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.reading_lesson_groups_id_seq', 370, true);
+SELECT pg_catalog.setval('public.reading_lesson_groups_id_seq', 300, true);
 
 
 --
@@ -13627,14 +13627,14 @@ SELECT pg_catalog.setval('public.reading_lessons_id_seq', 15, true);
 -- Name: reading_options_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.reading_options_id_seq', 5552, true);
+SELECT pg_catalog.setval('public.reading_options_id_seq', 3776, true);
 
 
 --
 -- Name: reading_questions_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.reading_questions_id_seq', 1244, true);
+SELECT pg_catalog.setval('public.reading_questions_id_seq', 944, true);
 
 
 --
@@ -14182,5 +14182,5 @@ REVOKE USAGE ON SCHEMA public FROM PUBLIC;
 -- PostgreSQL database dump complete
 --
 
-\unrestrict QHqxdk41aCOcTzpwM0K8pstW65mczrA7GDRF0MpO5ZhQbG7KXVxDQ3HUSP67JFB
+\unrestrict lFMf0wxgse8jIJibLkIx0HtZT25jb2ELP8tslxsbaqZ9r9iWh5tvrN7zs7nkK3S
 
