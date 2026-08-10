@@ -711,7 +711,7 @@ useEffect(() => {
                         return (
                           <Link
                             key={group.id}
-                            href={`/dashboard/courses/listening/learn?groupId=${group.id}&part=${group.part}`}
+                            href={`/dashboard/courses/listening/review`}
                             className="relative bg-zinc-800/50 hover:bg-zinc-800/80 border border-zinc-700/40 hover:border-red-600/30 rounded-xl p-4 transition-all group/card hover:shadow-lg hover:shadow-red-600/5"
                           >
                             {/* Badge */}
@@ -755,13 +755,19 @@ useEffect(() => {
 
                     {/* Review section */}
                     <div className="mt-6 space-y-4">
-                      <div className="flex items-center justify-between mb-2">
+                      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between mb-2 gap-3">
                         <div>
                           <p className="text-[13px] text-white font-semibold">🔁 Ôn lại Listening</p>
                           <p className="text-[11px] text-zinc-500 mt-1">
-                            Tách riêng khỏi phần học hôm nay, gồm 4 Part review.
+                            Tách riêng khỏi phần học hôm nay, gồm 4 Part review và ôn tập bài đã học.
                           </p>
                         </div>
+                        <Link
+                          href="/dashboard/courses/listening/review"
+                          className="inline-flex items-center justify-center rounded-full border border-red-600/20 bg-red-600/10 px-4 py-2 text-[11px] font-semibold text-red-300 hover:bg-red-600/15 transition"
+                        >
+                          Đi tới ôn tập bài đã học
+                        </Link>
                       </div>
 
                       <div className="grid sm:grid-cols-2 gap-3">
@@ -806,7 +812,7 @@ useEffect(() => {
                           return reviewGroup ? (
                             <Link
                               key={part}
-                              href={`/dashboard/courses/listening/learn?groupId=${reviewGroup.id}&part=${part}`}
+                              href={`/dashboard/courses/listening/review`}
                               className="block"
                             >
                               {cardBody}

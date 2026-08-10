@@ -230,6 +230,133 @@ export class ListeningService {
     };
   }
 
+  async getCompletedLessons(userId: number) {
+    const completedLessons = await this.prisma.user_listening_progress.findMany({
+      where: {
+        user_id: userId,
+        completed: true,
+      },
+      orderBy: {
+        last_studied: 'desc',
+      },
+      include: {
+        listening_lessons: {
+          include: {
+            listening_lesson_groups: {
+              include: {
+                listening_lesson_questions: true,
+              },
+            },
+          },
+        },
+      },
+    });
+
+    const lessons = completedLessons
+      .map((progress) => {
+        const lesson = progress.listening_lessons;
+        if (!lesson) return null;
+
+        const totalQuestions = lesson.listening_lesson_groups.reduce(
+          (sum, group) => sum + (group.listening_lesson_questions?.length ?? 0),
+          0,
+        );
+
+        return {
+          id: lesson.id,
+          title: lesson.title,
+          part: lesson.part,
+          totalGroups: lesson.listening_lesson_groups.length,
+          totalQuestions,
+          lastStudied: progress.last_studied,
+        };
+      })
+      .filter(Boolean);
+
+    return {
+      success: true,
+      lessons,
+    };
+  }
+
+  async getLessonReview(userId: number, lessonId: number) {
+    const lesson = await this.prisma.listening_lessons.findUnique({
+      where: { id: lessonId },
+      include: {
+        listening_lesson_groups: {
+          orderBy: {
+            display_order: 'asc',
+          },
+          include: {
+            listening_lesson_questions: {
+              orderBy: {
+                display_order: 'asc',
+              },
+              include: {
+                listening_lesson_options: {
+                  orderBy: {
+                    option_label: 'asc',
+                  },
+                },
+              },
+            },
+          },
+        },
+      },
+    });
+
+    return {
+      success: true,
+      lesson,
+    };
+  }
+
+  async getAllLessonReview(userId: number) {
+    const completedLessons = await this.prisma.user_listening_progress.findMany({
+      where: {
+        user_id: userId,
+        completed: true,
+      },
+      orderBy: {
+        last_studied: 'desc',
+      },
+      include: {
+        listening_lessons: {
+          include: {
+            listening_lesson_groups: {
+              orderBy: {
+                display_order: 'asc',
+              },
+              include: {
+                listening_lesson_questions: {
+                  orderBy: {
+                    display_order: 'asc',
+                  },
+                  include: {
+                    listening_lesson_options: {
+                      orderBy: {
+                        option_label: 'asc',
+                      },
+                    },
+                  },
+                },
+              },
+            },
+          },
+        },
+      },
+    });
+
+    const lessons = completedLessons
+      .map((progress) => progress.listening_lessons)
+      .filter(Boolean);
+
+    return {
+      success: true,
+      lessons,
+    };
+  }
+
   async getGroupById(groupId: number) {
     const group = await this.prisma.listening_lesson_groups.findUnique({
       where: { id: groupId },

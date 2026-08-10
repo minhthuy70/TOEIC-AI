@@ -1,0 +1,1902 @@
+[
+  {
+    "group": 1,
+    "title": "Part 5 - Incomplete Sentence 001",
+    "knowledge": "Từ loại: Danh từ đứng sau mạo từ",
+    "question": {
+      "question_number": 1,
+      "question_text": "The company needs to hire an additional _____ to manage its growing customer base.",
+      "question_type": "grammar",
+      "knowledge": "Danh từ đứng sau mạo từ",
+      "correct_answer": "A",
+      "explanation": "After 'an additional', a singular countable noun is needed. 'Manager' fits the sentence.",
+      "options": {
+        "A": "manager",
+        "B": "managing",
+        "C": "manageable",
+        "D": "managed"
+      }
+    }
+  },
+  {
+    "group": 2,
+    "title": "Part 5 - Incomplete Sentence 002",
+    "knowledge": "Từ loại: Tính từ đứng trước danh từ",
+    "question": {
+      "question_number": 2,
+      "question_text": "The marketing team developed a _____ strategy to increase online sales.",
+      "question_type": "grammar",
+      "knowledge": "Tính từ đứng trước danh từ",
+      "correct_answer": "B",
+      "explanation": "A noun is needed after the article and before 'strategy'. 'Successful' is the correct adjective.",
+      "options": {
+        "A": "strategically",
+        "B": "successful",
+        "C": "success",
+        "D": "succeed"
+      }
+    }
+  },
+  {
+    "group": 3,
+    "title": "Part 5 - Incomplete Sentence 003",
+    "knowledge": "Từ loại: Trạng từ bổ nghĩa cho động từ",
+    "question": {
+      "question_number": 3,
+      "question_text": "The technician repaired the machine _____ and returned it to the production line.",
+      "question_type": "grammar",
+      "knowledge": "Trạng từ bổ nghĩa cho động từ",
+      "correct_answer": "C",
+      "explanation": "The adverb 'carefully' modifies the verb 'repaired'.",
+      "options": {
+        "A": "careful",
+        "B": "care",
+        "C": "carefully",
+        "D": "carefulness"
+      }
+    }
+  },
+  {
+    "group": 4,
+    "title": "Part 5 - Incomplete Sentence 004",
+    "knowledge": "Từ loại: Danh từ đứng sau tính từ sở hữu",
+    "question": {
+      "question_number": 4,
+      "question_text": "The director praised the employees for their _____ to the project.",
+      "question_type": "grammar",
+      "knowledge": "Danh từ đứng sau từ hạn định sở hữu",
+      "correct_answer": "D",
+      "explanation": "After 'their', a noun is required. 'Dedication' is the correct noun.",
+      "options": {
+        "A": "dedicate",
+        "B": "dedicated",
+        "C": "dedicating",
+        "D": "dedication"
+      }
+    }
+  },
+  {
+    "group": 5,
+    "title": "Part 5 - Incomplete Sentence 005",
+    "knowledge": "Từ loại: Tính từ đứng sau động từ liên kết (linking verb)",
+    "question": {
+      "question_number": 5,
+      "question_text": "The new software system is extremely _____ to use.",
+      "question_type": "grammar",
+      "knowledge": "Tính từ đứng sau động từ liên kết (linking verb)",
+      "correct_answer": "A",
+      "explanation": "The linking verb 'is' is followed by an adjective. 'Convenient' is correct.",
+      "options": {
+        "A": "convenient",
+        "B": "convenience",
+        "C": "conveniently",
+        "D": "convenience"
+      }
+    }
+  },
+  {
+    "group": 6,
+    "title": "Part 5 - Incomplete Sentence 006",
+    "knowledge": "Từ loại: Trạng từ đứng trước tính từ",
+    "question": {
+      "question_number": 6,
+      "question_text": "The instructions were _____ clear to all participants.",
+      "question_type": "grammar",
+      "knowledge": "Trạng từ bổ nghĩa cho tính từ",
+      "correct_answer": "B",
+      "explanation": "The adverb 'completely' modifies the adjective 'clear'.",
+      "options": {
+        "A": "complete",
+        "B": "completely",
+        "C": "completion",
+        "D": "completeness"
+      }
+    }
+  },
+  {
+    "group": 7,
+    "title": "Part 5 - Incomplete Sentence 007",
+    "knowledge": "Từ loại: Danh từ làm chủ ngữ",
+    "question": {
+      "question_number": 7,
+      "question_text": "_____ of the new policy will begin next Monday.",
+      "question_type": "grammar",
+      "knowledge": "Danh từ làm chủ ngữ",
+      "correct_answer": "C",
+      "explanation": "A noun is needed as the subject of the sentence. 'Implementation' is correct.",
+      "options": {
+        "A": "Implement",
+        "B": "Implemented",
+        "C": "Implementation",
+        "D": "Implementing"
+      }
+    }
+  },
+  {
+    "group": 8,
+    "title": "Part 5 - Incomplete Sentence 008",
+    "knowledge": "Từ loại: Tính từ đứng sau động từ to be",
+    "question": {
+      "question_number": 8,
+      "question_text": "The documents submitted by the applicant were _____.",
+      "question_type": "grammar",
+      "knowledge": "Tính từ làm bổ ngữ cho chủ ngữ",
+      "correct_answer": "D",
+      "explanation": "After 'were', an adjective is needed to describe the documents. 'Accurate' is correct.",
+      "options": {
+        "A": "accuracy",
+        "B": "accurately",
+        "C": "accurate",
+        "D": "accurate"
+      }
+    }
+  },
+  {
+    "group": 9,
+    "title": "Part 5 - Incomplete Sentence 009",
+    "knowledge": "Từ loại: Danh từ đứng sau giới từ",
+    "question": {
+      "question_number": 9,
+      "question_text": "The manager is responsible for the _____ of all company records.",
+      "question_type": "grammar",
+      "knowledge": "Danh từ đứng sau giới từ",
+      "correct_answer": "A",
+      "explanation": "After 'for the', a noun is needed. 'Maintenance' fits the sentence.",
+      "options": {
+        "A": "maintenance",
+        "B": "maintain",
+        "C": "maintained",
+        "D": "maintaining"
+      }
+    }
+  },
+  {
+    "group": 10,
+    "title": "Part 5 - Incomplete Sentence 010",
+    "knowledge": "Từ loại: Trạng từ bổ nghĩa cho tính từ",
+    "question": {
+      "question_number": 10,
+      "question_text": "The new policy is _____ different from the previous one.",
+      "question_type": "grammar",
+      "knowledge": "Trạng từ bổ nghĩa cho tính từ",
+      "correct_answer": "B",
+      "explanation": "The adverb 'significantly' modifies the adjective 'different'.",
+      "options": {
+        "A": "significant",
+        "B": "significantly",
+        "C": "significance",
+        "D": "signify"
+      }
+    }
+  },
+  {
+    "group": 11,
+    "title": "Part 5 - Incomplete Sentence 011",
+    "knowledge": "Sự hòa hợp giữa chủ ngữ và động từ",
+    "question": {
+      "question_number": 11,
+      "question_text": "The list of available products _____ updated every Friday.",
+      "question_type": "grammar",
+      "knowledge": "Chủ ngữ số ít đi kèm cụm giới từ",
+      "correct_answer": "A",
+      "explanation": "The main subject is singular 'list', so the singular verb 'is' is required.",
+      "options": {
+        "A": "is",
+        "B": "are",
+        "C": "be",
+        "D": "have"
+      }
+    }
+  },
+  {
+    "group": 12,
+    "title": "Part 5 - Incomplete Sentence 012",
+    "knowledge": "Sự hòa hợp giữa chủ ngữ và động từ",
+    "question": {
+      "question_number": 12,
+      "question_text": "The employees in the accounting department _____ required to attend the meeting.",
+      "question_type": "grammar",
+      "knowledge": "Chủ ngữ số nhiều",
+      "correct_answer": "B",
+      "explanation": "The subject 'employees' is plural, so 'are' is correct.",
+      "options": {
+        "A": "is",
+        "B": "are",
+        "C": "was",
+        "D": "has"
+      }
+    }
+  },
+  {
+    "group": 13,
+    "title": "Part 5 - Incomplete Sentence 013",
+    "knowledge": "Sự hòa hợp giữa chủ ngữ và động từ",
+    "question": {
+      "question_number": 13,
+      "question_text": "Each of the applicants _____ required to submit two references.",
+      "question_type": "grammar",
+      "knowledge": "Each + động từ số ít",
+      "correct_answer": "C",
+      "explanation": "'Each' takes a singular verb, so 'is' is correct.",
+      "options": {
+        "A": "are",
+        "B": "were",
+        "C": "is",
+        "D": "have"
+      }
+    }
+  },
+  {
+    "group": 14,
+    "title": "Part 5 - Incomplete Sentence 014",
+    "knowledge": "Sự hòa hợp giữa chủ ngữ và động từ",
+    "question": {
+      "question_number": 14,
+      "question_text": "Neither the manager nor the assistants _____ available this afternoon.",
+      "question_type": "grammar",
+      "knowledge": "Sự hòa hợp với cấu trúc Neither...nor",
+      "correct_answer": "D",
+      "explanation": "With 'neither...nor', the verb agrees with the nearer subject, 'assistants', which is plural.",
+      "options": {
+        "A": "is",
+        "B": "was",
+        "C": "has",
+        "D": "are"
+      }
+    }
+  },
+  {
+    "group": 15,
+    "title": "Part 5 - Incomplete Sentence 015",
+    "knowledge": "Sự hòa hợp giữa chủ ngữ và động từ",
+    "question": {
+      "question_number": 15,
+      "question_text": "The information about the new products _____ available on the website.",
+      "question_type": "grammar",
+      "knowledge": "Danh từ không đếm được",
+      "correct_answer": "A",
+      "explanation": "'Information' is uncountable and takes a singular verb.",
+      "options": {
+        "A": "is",
+        "B": "are",
+        "C": "were",
+        "D": "have"
+      }
+    }
+  },
+  {
+    "group": 16,
+    "title": "Part 5 - Incomplete Sentence 016",
+    "knowledge": "Sự hòa hợp giữa chủ ngữ và động từ",
+    "question": {
+      "question_number": 16,
+      "question_text": "A number of customers _____ complained about the delayed delivery.",
+      "question_type": "grammar",
+      "knowledge": "A number of + danh từ số nhiều",
+      "correct_answer": "B",
+      "explanation": "'A number of' is followed by a plural noun and plural verb.",
+      "options": {
+        "A": "has",
+        "B": "have",
+        "C": "is",
+        "D": "was"
+      }
+    }
+  },
+  {
+    "group": 17,
+    "title": "Part 5 - Incomplete Sentence 017",
+    "knowledge": "Sự hòa hợp giữa chủ ngữ và động từ",
+    "question": {
+      "question_number": 17,
+      "question_text": "The number of online orders _____ increased significantly this month.",
+      "question_type": "grammar",
+      "knowledge": "The number of + danh từ số nhiều",
+      "correct_answer": "C",
+      "explanation": "'The number' is singular, so 'has' is correct.",
+      "options": {
+        "A": "have",
+        "B": "were",
+        "C": "has",
+        "D": "are"
+      }
+    }
+  },
+  {
+    "group": 18,
+    "title": "Part 5 - Incomplete Sentence 018",
+    "knowledge": "Sự hòa hợp giữa chủ ngữ và động từ",
+    "question": {
+      "question_number": 18,
+      "question_text": "Every employee _____ a company identification card.",
+      "question_type": "grammar",
+      "knowledge": "Every + danh từ số ít",
+      "correct_answer": "D",
+      "explanation": "'Every employee' is singular, so 'has' is correct.",
+      "options": {
+        "A": "have",
+        "B": "having",
+        "C": "are",
+        "D": "has"
+      }
+    }
+  },
+  {
+    "group": 19,
+    "title": "Part 5 - Incomplete Sentence 019",
+    "knowledge": "Sự hòa hợp giữa chủ ngữ và động từ",
+    "question": {
+      "question_number": 19,
+      "question_text": "The equipment in the training room _____ regularly inspected.",
+      "question_type": "grammar",
+      "knowledge": "Danh từ không đếm được",
+      "correct_answer": "A",
+      "explanation": "'Equipment' is uncountable and takes a singular verb.",
+      "options": {
+        "A": "is",
+        "B": "are",
+        "C": "have",
+        "D": "were"
+      }
+    }
+  },
+  {
+    "group": 20,
+    "title": "Part 5 - Incomplete Sentence 020",
+    "knowledge": "Sự hòa hợp giữa chủ ngữ và động từ",
+    "question": {
+      "question_number": 20,
+      "question_text": "The sales manager, along with two assistants, _____ attending the conference.",
+      "question_type": "grammar",
+      "knowledge": "Chủ ngữ chính đi kèm cụm từ chen giữa",
+      "correct_answer": "B",
+      "explanation": "The main subject is singular 'manager'; 'along with' does not change the number of the subject.",
+      "options": {
+        "A": "are",
+        "B": "is",
+        "C": "were",
+        "D": "have"
+      }
+    }
+  },
+  {
+    "group": 21,
+    "title": "Part 5 - Incomplete Sentence 021",
+    "knowledge": "Thì: Hiện tại hoàn thành",
+    "question": {
+      "question_number": 21,
+      "question_text": "The company _____ three new branches since January.",
+      "question_type": "grammar",
+      "knowledge": "Thì hiện tại hoàn thành đi với 'since'",
+      "correct_answer": "C",
+      "explanation": "'Since January' indicates an action continuing from the past to the present, so present perfect is needed.",
+      "options": {
+        "A": "opens",
+        "B": "opened",
+        "C": "has opened",
+        "D": "is opening"
+      }
+    }
+  },
+  {
+    "group": 22,
+    "title": "Part 5 - Incomplete Sentence 022",
+    "knowledge": "Thì: Quá khứ đơn",
+    "question": {
+      "question_number": 22,
+      "question_text": "The manager _____ the report yesterday afternoon.",
+      "question_type": "grammar",
+      "knowledge": "Thì quá khứ đơn với mốc thời gian đã kết thúc",
+      "correct_answer": "D",
+      "explanation": "'Yesterday afternoon' refers to a finished past time, so the past simple is correct.",
+      "options": {
+        "A": "has completed",
+        "B": "completes",
+        "C": "is completing",
+        "D": "completed"
+      }
+    }
+  },
+  {
+    "group": 23,
+    "title": "Part 5 - Incomplete Sentence 023",
+    "knowledge": "Thì: Tương lai",
+    "question": {
+      "question_number": 23,
+      "question_text": "The new employees _____ their orientation session next Monday.",
+      "question_type": "grammar",
+      "knowledge": "Thì tương lai với một sự kiện đã được lên lịch",
+      "correct_answer": "A",
+      "explanation": "'Next Monday' refers to the future, so 'will attend' is appropriate.",
+      "options": {
+        "A": "will attend",
+        "B": "attended",
+        "C": "have attended",
+        "D": "attending"
+      }
+    }
+  },
+  {
+    "group": 24,
+    "title": "Part 5 - Incomplete Sentence 024",
+    "knowledge": "Thì: Hiện tại tiếp diễn",
+    "question": {
+      "question_number": 24,
+      "question_text": "The accounting department _____ the annual budget this week.",
+      "question_type": "grammar",
+      "knowledge": "Thì hiện tại tiếp diễn diễn tả hành động tạm thời ở hiện tại",
+      "correct_answer": "B",
+      "explanation": "'This week' describes an activity in progress around the present time.",
+      "options": {
+        "A": "prepares",
+        "B": "is preparing",
+        "C": "prepared",
+        "D": "has prepared"
+      }
+    }
+  },
+  {
+    "group": 25,
+    "title": "Part 5 - Incomplete Sentence 025",
+    "knowledge": "Thì: Quá khứ hoàn thành",
+    "question": {
+      "question_number": 25,
+      "question_text": "By the time the meeting started, the director _____ the proposal.",
+      "question_type": "grammar",
+      "knowledge": "Thì quá khứ hoàn thành xảy ra trước một sự kiện quá khứ khác",
+      "correct_answer": "C",
+      "explanation": "The review happened before the meeting started, so past perfect is required.",
+      "options": {
+        "A": "reviews",
+        "B": "has reviewed",
+        "C": "had reviewed",
+        "D": "was reviewing"
+      }
+    }
+  },
+  {
+    "group": 26,
+    "title": "Part 5 - Incomplete Sentence 026",
+    "knowledge": "Thì: Hiện tại hoàn thành tiếp diễn",
+    "question": {
+      "question_number": 26,
+      "question_text": "The engineers _____ on the project for six months.",
+      "question_type": "grammar",
+      "knowledge": "Thì hiện tại hoàn thành tiếp diễn đi với 'for'",
+      "correct_answer": "D",
+      "explanation": "'For six months' describes an activity that began in the past and continues now.",
+      "options": {
+        "A": "work",
+        "B": "worked",
+        "C": "are working",
+        "D": "have been working"
+      }
+    }
+  },
+  {
+    "group": 27,
+    "title": "Part 5 - Incomplete Sentence 027",
+    "knowledge": "Thì: Quá khứ tiếp diễn",
+    "question": {
+      "question_number": 27,
+      "question_text": "While the assistant _____ the documents, the phone rang.",
+      "question_type": "grammar",
+      "knowledge": "Thì quá khứ tiếp diễn diễn tả hành động đang xảy ra thì bị xen vào",
+      "correct_answer": "A",
+      "explanation": "The longer action was in progress when the phone rang, so past continuous is correct.",
+      "options": {
+        "A": "was organizing",
+        "B": "organized",
+        "C": "has organized",
+        "D": "organizes"
+      }
+    }
+  },
+  {
+    "group": 28,
+    "title": "Part 5 - Incomplete Sentence 028",
+    "knowledge": "Thì: Tương lai hoàn thành",
+    "question": {
+      "question_number": 28,
+      "question_text": "By the end of this year, the company _____ its new headquarters.",
+      "question_type": "grammar",
+      "knowledge": "Thì tương lai hoàn thành đi với cấu trúc by + mốc thời gian trong tương lai",
+      "correct_answer": "B",
+      "explanation": "'By the end of this year' indicates an action completed before a future deadline.",
+      "options": {
+        "A": "completes",
+        "B": "will have completed",
+        "C": "completed",
+        "D": "has completed"
+      }
+    }
+  },
+  {
+    "group": 29,
+    "title": "Part 5 - Incomplete Sentence 029",
+    "knowledge": "Thì: Hiện tại đơn",
+    "question": {
+      "question_number": 29,
+      "question_text": "The store _____ at 9:00 a.m. every weekday.",
+      "question_type": "grammar",
+      "knowledge": "Thì hiện tại đơn diễn tả lịch trình thường xuyên",
+      "correct_answer": "C",
+      "explanation": "A regular schedule is expressed with the present simple.",
+      "options": {
+        "A": "is opening",
+        "B": "opened",
+        "C": "opens",
+        "D": "has opened"
+      }
+    }
+  },
+  {
+    "group": 30,
+    "title": "Part 5 - Incomplete Sentence 030",
+    "knowledge": "Thì: Quá khứ hoàn thành",
+    "question": {
+      "question_number": 30,
+      "question_text": "The train had already left when we _____ at the station.",
+      "question_type": "grammar",
+      "knowledge": "Thì quá khứ đơn đứng sau 'when' trong chuỗi hành động quá khứ",
+      "correct_answer": "D",
+      "explanation": "The arrival happened after the train left, so the past simple 'arrived' is correct.",
+      "options": {
+        "A": "arrive",
+        "B": "have arrived",
+        "C": "were arriving",
+        "D": "arrived"
+      }
+    }
+  },
+  {
+    "group": 31,
+    "title": "Part 5 - Incomplete Sentence 031",
+    "knowledge": "Giới từ: Thời gian",
+    "question": {
+      "question_number": 31,
+      "question_text": "The conference will begin _____ 9:30 a.m.",
+      "question_type": "grammar",
+      "knowledge": "Giới từ dùng với mốc giờ cụ thể",
+      "correct_answer": "A",
+      "explanation": "Use 'at' with a specific clock time.",
+      "options": {
+        "A": "at",
+        "B": "on",
+        "C": "in",
+        "D": "by"
+      }
+    }
+  },
+  {
+    "group": 32,
+    "title": "Part 5 - Incomplete Sentence 032",
+    "knowledge": "Giới từ: Ngày",
+    "question": {
+      "question_number": 32,
+      "question_text": "The office will be closed _____ Monday.",
+      "question_type": "grammar",
+      "knowledge": "Giới từ dùng với thứ/ngày",
+      "correct_answer": "B",
+      "explanation": "Use 'on' with days and dates.",
+      "options": {
+        "A": "at",
+        "B": "on",
+        "C": "in",
+        "D": "for"
+      }
+    }
+  },
+  {
+    "group": 33,
+    "title": "Part 5 - Incomplete Sentence 033",
+    "knowledge": "Giới từ: Tháng/Năm",
+    "question": {
+      "question_number": 33,
+      "question_text": "The company was founded _____ 1998.",
+      "question_type": "grammar",
+      "knowledge": "Giới từ dùng với năm",
+      "correct_answer": "C",
+      "explanation": "Use 'in' with years and months.",
+      "options": {
+        "A": "at",
+        "B": "on",
+        "C": "in",
+        "D": "by"
+      }
+    }
+  },
+  {
+    "group": 34,
+    "title": "Part 5 - Incomplete Sentence 034",
+    "knowledge": "Giới từ: Khoảng thời gian",
+    "question": {
+      "question_number": 34,
+      "question_text": "The manager has worked here _____ ten years.",
+      "question_type": "grammar",
+      "knowledge": "For + khoảng thời gian",
+      "correct_answer": "D",
+      "explanation": "'For' is used with a period of duration.",
+      "options": {
+        "A": "since",
+        "B": "during",
+        "C": "from",
+        "D": "for"
+      }
+    }
+  },
+  {
+    "group": 35,
+    "title": "Part 5 - Incomplete Sentence 035",
+    "knowledge": "Giới từ: Mốc thời gian bắt đầu",
+    "question": {
+      "question_number": 35,
+      "question_text": "Ms. Lee has been the department head _____ 2022.",
+      "question_type": "grammar",
+      "knowledge": "Since + mốc thời gian bắt đầu",
+      "correct_answer": "A",
+      "explanation": "'Since' is used with a specific starting point.",
+      "options": {
+        "A": "since",
+        "B": "for",
+        "C": "during",
+        "D": "until"
+      }
+    }
+  },
+  {
+    "group": 36,
+    "title": "Part 5 - Incomplete Sentence 036",
+    "knowledge": "Giới từ: Địa điểm",
+    "question": {
+      "question_number": 36,
+      "question_text": "The meeting will take place _____ the main conference room.",
+      "question_type": "grammar",
+      "knowledge": "Giới từ chỉ vị trí trong một không gian khép kín",
+      "correct_answer": "B",
+      "explanation": "Use 'in' for an enclosed room or area.",
+      "options": {
+        "A": "at",
+        "B": "in",
+        "C": "on",
+        "D": "to"
+      }
+    }
+  },
+  {
+    "group": 37,
+    "title": "Part 5 - Incomplete Sentence 037",
+    "knowledge": "Giới từ: Phương hướng/Điểm đến",
+    "question": {
+      "question_number": 37,
+      "question_text": "Please send the completed form _____ the human resources department.",
+      "question_type": "grammar",
+      "knowledge": "Giới từ chỉ điểm đến",
+      "correct_answer": "C",
+      "explanation": "'To' indicates the destination or recipient.",
+      "options": {
+        "A": "at",
+        "B": "on",
+        "C": "to",
+        "D": "for"
+      }
+    }
+  },
+  {
+    "group": 38,
+    "title": "Part 5 - Incomplete Sentence 038",
+    "knowledge": "Giới từ: Nguyên nhân",
+    "question": {
+      "question_number": 38,
+      "question_text": "The flight was delayed _____ heavy rain.",
+      "question_type": "grammar",
+      "knowledge": "Because of + danh từ/cụm danh từ",
+      "correct_answer": "D",
+      "explanation": "'Because of' is followed by a noun phrase such as 'heavy rain'.",
+      "options": {
+        "A": "because",
+        "B": "although",
+        "C": "despite",
+        "D": "because of"
+      }
+    }
+  },
+  {
+    "group": 39,
+    "title": "Part 5 - Incomplete Sentence 039",
+    "knowledge": "Giới từ: Tác nhân",
+    "question": {
+      "question_number": 39,
+      "question_text": "The new software was developed _____ an experienced engineering team.",
+      "question_type": "grammar",
+      "knowledge": "By + tác nhân trong câu bị động",
+      "correct_answer": "A",
+      "explanation": "In passive voice, 'by' introduces the person or group performing the action.",
+      "options": {
+        "A": "by",
+        "B": "with",
+        "C": "from",
+        "D": "at"
+      }
+    }
+  },
+  {
+    "group": 40,
+    "title": "Part 5 - Incomplete Sentence 040",
+    "knowledge": "Giới từ: Mục đích",
+    "question": {
+      "question_number": 40,
+      "question_text": "The company purchased new computers _____ the design department.",
+      "question_type": "grammar",
+      "knowledge": "For + mục đích sử dụng hoặc đối tượng nhận",
+      "correct_answer": "B",
+      "explanation": "'For' indicates the intended department or purpose.",
+      "options": {
+        "A": "at",
+        "B": "for",
+        "C": "by",
+        "D": "since"
+      }
+    }
+  },
+  {
+    "group": 41,
+    "title": "Part 5 - Incomplete Sentence 041",
+    "knowledge": "Liên từ: Tương phản",
+    "question": {
+      "question_number": 41,
+      "question_text": "_____ the product is expensive, many customers consider it a good investment.",
+      "question_type": "grammar",
+      "knowledge": "Although + mệnh đề",
+      "correct_answer": "C",
+      "explanation": "'Although' introduces a contrasting clause.",
+      "options": {
+        "A": "Because",
+        "B": "Unless",
+        "C": "Although",
+        "D": "So"
+      }
+    }
+  },
+  {
+    "group": 42,
+    "title": "Part 5 - Incomplete Sentence 042",
+    "knowledge": "Liên từ: Lý do",
+    "question": {
+      "question_number": 42,
+      "question_text": "The meeting was postponed _____ the manager was ill.",
+      "question_type": "grammar",
+      "knowledge": "Because + mệnh đề",
+      "correct_answer": "D",
+      "explanation": "'Because' is followed by a complete clause.",
+      "options": {
+        "A": "despite",
+        "B": "during",
+        "C": "unless",
+        "D": "because"
+      }
+    }
+  },
+  {
+    "group": 43,
+    "title": "Part 5 - Incomplete Sentence 043",
+    "knowledge": "Liên từ: Điều kiện",
+    "question": {
+      "question_number": 43,
+      "question_text": "_____ you submit the form today, your application can be processed tomorrow.",
+      "question_type": "grammar",
+      "knowledge": "If + điều kiện",
+      "correct_answer": "A",
+      "explanation": "'If' introduces the condition necessary for the result.",
+      "options": {
+        "A": "If",
+        "B": "Although",
+        "C": "Because",
+        "D": "While"
+      }
+    }
+  },
+  {
+    "group": 44,
+    "title": "Part 5 - Incomplete Sentence 044",
+    "knowledge": "Liên từ: Thời gian",
+    "question": {
+      "question_number": 44,
+      "question_text": "Please wait here _____ the technician arrives.",
+      "question_type": "grammar",
+      "knowledge": "Until + mệnh đề chỉ thời gian",
+      "correct_answer": "B",
+      "explanation": "'Until' means up to the time when the technician arrives.",
+      "options": {
+        "A": "because",
+        "B": "until",
+        "C": "despite",
+        "D": "unless"
+      }
+    }
+  },
+  {
+    "group": 45,
+    "title": "Part 5 - Incomplete Sentence 045",
+    "knowledge": "Liên từ: Bổ sung",
+    "question": {
+      "question_number": 45,
+      "question_text": "The hotel offers free breakfast _____ complimentary airport transportation.",
+      "question_type": "grammar",
+      "knowledge": "And dùng để bổ sung thông tin",
+      "correct_answer": "C",
+      "explanation": "'And' connects two similar services.",
+      "options": {
+        "A": "but",
+        "B": "or",
+        "C": "and",
+        "D": "so"
+      }
+    }
+  },
+  {
+    "group": 46,
+    "title": "Part 5 - Incomplete Sentence 046",
+    "knowledge": "Liên từ: Lựa chọn thay thế",
+    "question": {
+      "question_number": 46,
+      "question_text": "You can pay by credit card _____ by bank transfer.",
+      "question_type": "grammar",
+      "knowledge": "Or dùng cho các lựa chọn thay thế",
+      "correct_answer": "D",
+      "explanation": "'Or' presents alternative payment methods.",
+      "options": {
+        "A": "and",
+        "B": "but",
+        "C": "so",
+        "D": "or"
+      }
+    }
+  },
+  {
+    "group": 47,
+    "title": "Part 5 - Incomplete Sentence 047",
+    "knowledge": "Liên từ: Kết quả",
+    "question": {
+      "question_number": 47,
+      "question_text": "The road was closed, _____ the delivery arrived late.",
+      "question_type": "grammar",
+      "knowledge": "So dùng để chỉ kết quả",
+      "correct_answer": "A",
+      "explanation": "'So' connects the cause with its result.",
+      "options": {
+        "A": "so",
+        "B": "although",
+        "C": "because",
+        "D": "unless"
+      }
+    }
+  },
+  {
+    "group": 48,
+    "title": "Part 5 - Incomplete Sentence 048",
+    "knowledge": "Liên từ: Tương phản",
+    "question": {
+      "question_number": 48,
+      "question_text": "The restaurant was crowded, _____ we found a table quickly.",
+      "question_type": "grammar",
+      "knowledge": "But dùng để chỉ sự tương phản",
+      "correct_answer": "B",
+      "explanation": "'But' introduces a contrasting result.",
+      "options": {
+        "A": "and",
+        "B": "but",
+        "C": "because",
+        "D": "so"
+      }
+    }
+  },
+  {
+    "group": 49,
+    "title": "Part 5 - Incomplete Sentence 049",
+    "knowledge": "Liên từ: Điều kiện",
+    "question": {
+      "question_number": 49,
+      "question_text": "The order will not be shipped _____ payment is confirmed.",
+      "question_type": "grammar",
+      "knowledge": "Unless + điều kiện phủ định",
+      "correct_answer": "C",
+      "explanation": "'Unless' means 'if not' and expresses the condition for shipping.",
+      "options": {
+        "A": "because",
+        "B": "although",
+        "C": "unless",
+        "D": "while"
+      }
+    }
+  },
+  {
+    "group": 50,
+    "title": "Part 5 - Incomplete Sentence 050",
+    "knowledge": "Liên từ: Hành động diễn ra đồng thời",
+    "question": {
+      "question_number": 50,
+      "question_text": "The receptionist answered calls _____ checking the appointment schedule.",
+      "question_type": "grammar",
+      "knowledge": "While + hoạt động diễn ra đồng thời",
+      "correct_answer": "D",
+      "explanation": "'While' can introduce an activity happening at the same time.",
+      "options": {
+        "A": "because",
+        "B": "although",
+        "C": "unless",
+        "D": "while"
+      }
+    }
+  },
+  {
+    "group": 51,
+    "title": "Part 5 - Incomplete Sentence 051",
+    "knowledge": "Đại từ quan hệ",
+    "question": {
+      "question_number": 51,
+      "question_text": "The employee _____ prepared the report received an award.",
+      "question_type": "grammar",
+      "knowledge": "Who dùng cho người",
+      "correct_answer": "A",
+      "explanation": "'Who' is used as a relative pronoun for people.",
+      "options": {
+        "A": "who",
+        "B": "which",
+        "C": "where",
+        "D": "when"
+      }
+    }
+  },
+  {
+    "group": 52,
+    "title": "Part 5 - Incomplete Sentence 052",
+    "knowledge": "Đại từ quan hệ",
+    "question": {
+      "question_number": 52,
+      "question_text": "The software _____ we purchased last month has improved productivity.",
+      "question_type": "grammar",
+      "knowledge": "Which dùng cho vật",
+      "correct_answer": "B",
+      "explanation": "'Which' is used to refer to a thing or product.",
+      "options": {
+        "A": "who",
+        "B": "which",
+        "C": "where",
+        "D": "when"
+      }
+    }
+  },
+  {
+    "group": 53,
+    "title": "Part 5 - Incomplete Sentence 053",
+    "knowledge": "Trạng từ quan hệ",
+    "question": {
+      "question_number": 53,
+      "question_text": "The office _____ the interview will be held is on the third floor.",
+      "question_type": "grammar",
+      "knowledge": "Where dùng cho nơi chốn",
+      "correct_answer": "C",
+      "explanation": "'Where' refers to a place.",
+      "options": {
+        "A": "who",
+        "B": "which",
+        "C": "where",
+        "D": "when"
+      }
+    }
+  },
+  {
+    "group": 54,
+    "title": "Part 5 - Incomplete Sentence 054",
+    "knowledge": "Trạng từ quan hệ",
+    "question": {
+      "question_number": 54,
+      "question_text": "I remember the day _____ we opened the new branch.",
+      "question_type": "grammar",
+      "knowledge": "When dùng cho thời gian",
+      "correct_answer": "D",
+      "explanation": "'When' refers to a time or day.",
+      "options": {
+        "A": "who",
+        "B": "which",
+        "C": "where",
+        "D": "when"
+      }
+    }
+  },
+  {
+    "group": 55,
+    "title": "Part 5 - Incomplete Sentence 055",
+    "knowledge": "Đại từ quan hệ",
+    "question": {
+      "question_number": 55,
+      "question_text": "The applicant _____ resume was selected will be contacted today.",
+      "question_type": "grammar",
+      "knowledge": "Whose chỉ sự sở hữu",
+      "correct_answer": "A",
+      "explanation": "'Whose' indicates possession: the resume belongs to the applicant.",
+      "options": {
+        "A": "whose",
+        "B": "who",
+        "C": "which",
+        "D": "where"
+      }
+    }
+  },
+  {
+    "group": 56,
+    "title": "Part 5 - Incomplete Sentence 056",
+    "knowledge": "Đại từ quan hệ",
+    "question": {
+      "question_number": 56,
+      "question_text": "The machine _____ was installed yesterday is already operating.",
+      "question_type": "grammar",
+      "knowledge": "Which làm chủ ngữ trong mệnh đề quan hệ",
+      "correct_answer": "B",
+      "explanation": "'Which' is used for a machine and acts as the subject of the relative clause.",
+      "options": {
+        "A": "who",
+        "B": "which",
+        "C": "whom",
+        "D": "whose"
+      }
+    }
+  },
+  {
+    "group": 57,
+    "title": "Part 5 - Incomplete Sentence 057",
+    "knowledge": "Đại từ quan hệ",
+    "question": {
+      "question_number": 57,
+      "question_text": "The consultant _____ we hired has extensive experience.",
+      "question_type": "grammar",
+      "knowledge": "Whom làm tân ngữ trong mệnh đề quan hệ",
+      "correct_answer": "C",
+      "explanation": "'Whom' can be used as the object of 'hired' when referring to a person.",
+      "options": {
+        "A": "whose",
+        "B": "which",
+        "C": "whom",
+        "D": "where"
+      }
+    }
+  },
+  {
+    "group": 58,
+    "title": "Part 5 - Incomplete Sentence 058",
+    "knowledge": "Mệnh đề quan hệ",
+    "question": {
+      "question_number": 58,
+      "question_text": "The documents _____ on the desk belong to the finance department.",
+      "question_type": "grammar",
+      "knowledge": "Rút gọn mệnh đề quan hệ dạng quá khứ phân từ (bị động)",
+      "correct_answer": "D",
+      "explanation": "'Placed on the desk' is a reduced passive relative clause.",
+      "options": {
+        "A": "place",
+        "B": "placing",
+        "C": "places",
+        "D": "placed"
+      }
+    }
+  },
+  {
+    "group": 59,
+    "title": "Part 5 - Incomplete Sentence 059",
+    "knowledge": "Thể bị động",
+    "question": {
+      "question_number": 59,
+      "question_text": "The invoices _____ by the accounting department every Friday.",
+      "question_type": "grammar",
+      "knowledge": "Bị động ở thì hiện tại đơn",
+      "correct_answer": "A",
+      "explanation": "The invoices receive the action, so passive voice is required. The regular schedule requires present simple.",
+      "options": {
+        "A": "are processed",
+        "B": "process",
+        "C": "processed",
+        "D": "are processing"
+      }
+    }
+  },
+  {
+    "group": 60,
+    "title": "Part 5 - Incomplete Sentence 060",
+    "knowledge": "Thể bị động",
+    "question": {
+      "question_number": 60,
+      "question_text": "The new policy _____ to all employees last week.",
+      "question_type": "grammar",
+      "knowledge": "Bị động ở thì quá khứ đơn",
+      "correct_answer": "B",
+      "explanation": "'Last week' requires past simple, and the policy receives the action.",
+      "options": {
+        "A": "announces",
+        "B": "was announced",
+        "C": "has announced",
+        "D": "is announcing"
+      }
+    }
+  },
+  {
+    "group": 61,
+    "title": "Part 5 - Incomplete Sentence 061",
+    "knowledge": "Thể bị động",
+    "question": {
+      "question_number": 61,
+      "question_text": "The equipment _____ before it was delivered to the customer.",
+      "question_type": "grammar",
+      "knowledge": "Bị động ở thì quá khứ hoàn thành",
+      "correct_answer": "C",
+      "explanation": "The inspection occurred before another past event, so past perfect passive is appropriate.",
+      "options": {
+        "A": "inspected",
+        "B": "has inspected",
+        "C": "had been inspected",
+        "D": "was inspecting"
+      }
+    }
+  },
+  {
+    "group": 62,
+    "title": "Part 5 - Incomplete Sentence 062",
+    "knowledge": "Thể bị động",
+    "question": {
+      "question_number": 62,
+      "question_text": "All applications must _____ by Friday.",
+      "question_type": "grammar",
+      "knowledge": "Động từ khuyết thiếu + be + quá khứ phân từ",
+      "correct_answer": "D",
+      "explanation": "After a modal, passive voice uses 'be + past participle'.",
+      "options": {
+        "A": "submit",
+        "B": "submitting",
+        "C": "submitted",
+        "D": "be submitted"
+      }
+    }
+  },
+  {
+    "group": 63,
+    "title": "Part 5 - Incomplete Sentence 063",
+    "knowledge": "Thể bị động",
+    "question": {
+      "question_number": 63,
+      "question_text": "The meeting room is _____ every morning.",
+      "question_type": "grammar",
+      "knowledge": "Bị động ở thì hiện tại đơn",
+      "correct_answer": "A",
+      "explanation": "The room receives the action, so 'is cleaned' is correct.",
+      "options": {
+        "A": "cleaned",
+        "B": "cleaning",
+        "C": "clean",
+        "D": "cleans"
+      }
+    }
+  },
+  {
+    "group": 64,
+    "title": "Part 5 - Incomplete Sentence 064",
+    "knowledge": "Thể bị động",
+    "question": {
+      "question_number": 64,
+      "question_text": "The contract will _____ tomorrow.",
+      "question_type": "grammar",
+      "knowledge": "Bị động ở thì tương lai",
+      "correct_answer": "B",
+      "explanation": "After 'will', passive voice is formed with 'be + past participle'.",
+      "options": {
+        "A": "sign",
+        "B": "be signed",
+        "C": "signed",
+        "D": "signing"
+      }
+    }
+  },
+  {
+    "group": 65,
+    "title": "Part 5 - Incomplete Sentence 065",
+    "knowledge": "Thể bị động",
+    "question": {
+      "question_number": 65,
+      "question_text": "The damaged products _____ to the supplier for inspection.",
+      "question_type": "grammar",
+      "knowledge": "Bị động ở thì quá khứ đơn",
+      "correct_answer": "C",
+      "explanation": "The products received the action in the past, so 'were returned' is correct.",
+      "options": {
+        "A": "return",
+        "B": "are returned",
+        "C": "were returned",
+        "D": "returning"
+      }
+    }
+  },
+  {
+    "group": 66,
+    "title": "Part 5 - Incomplete Sentence 066",
+    "knowledge": "Thể bị động",
+    "question": {
+      "question_number": 66,
+      "question_text": "A final decision has _____ by the board.",
+      "question_type": "grammar",
+      "knowledge": "Bị động ở thì hiện tại hoàn thành",
+      "correct_answer": "D",
+      "explanation": "Present perfect passive uses 'has/have been + past participle'.",
+      "options": {
+        "A": "make",
+        "B": "made",
+        "C": "making",
+        "D": "been made"
+      }
+    }
+  },
+  {
+    "group": 67,
+    "title": "Part 5 - Incomplete Sentence 067",
+    "knowledge": "Động từ nguyên mẫu (Infinitive)",
+    "question": {
+      "question_number": 67,
+      "question_text": "The manager asked the assistant _____ the documents immediately.",
+      "question_type": "grammar",
+      "knowledge": "Cấu trúc Ask + tân ngữ + to-infinitive",
+      "correct_answer": "A",
+      "explanation": "'Ask someone to do something' requires a to-infinitive.",
+      "options": {
+        "A": "to print",
+        "B": "printing",
+        "C": "printed",
+        "D": "print"
+      }
+    }
+  },
+  {
+    "group": 68,
+    "title": "Part 5 - Incomplete Sentence 068",
+    "knowledge": "Động từ nguyên mẫu (Infinitive)",
+    "question": {
+      "question_number": 68,
+      "question_text": "The company plans _____ a new branch next year.",
+      "question_type": "grammar",
+      "knowledge": "Cấu trúc Plan + to-infinitive",
+      "correct_answer": "B",
+      "explanation": "'Plan' is followed by a to-infinitive.",
+      "options": {
+        "A": "opening",
+        "B": "to open",
+        "C": "opened",
+        "D": "open"
+      }
+    }
+  },
+  {
+    "group": 69,
+    "title": "Part 5 - Incomplete Sentence 069",
+    "knowledge": "Danh động từ (Gerund)",
+    "question": {
+      "question_number": 69,
+      "question_text": "The employees enjoy _____ in the new training program.",
+      "question_type": "grammar",
+      "knowledge": "Cấu trúc Enjoy + danh động từ",
+      "correct_answer": "C",
+      "explanation": "'Enjoy' is followed by a gerund (-ing form).",
+      "options": {
+        "A": "participate",
+        "B": "to participate",
+        "C": "participating",
+        "D": "participated"
+      }
+    }
+  },
+  {
+    "group": 70,
+    "title": "Part 5 - Incomplete Sentence 070",
+    "knowledge": "Danh động từ (Gerund)",
+    "question": {
+      "question_number": 70,
+      "question_text": "Please avoid _____ confidential information in public areas.",
+      "question_type": "grammar",
+      "knowledge": "Cấu trúc Avoid + danh động từ",
+      "correct_answer": "D",
+      "explanation": "'Avoid' is followed by a gerund.",
+      "options": {
+        "A": "discuss",
+        "B": "to discuss",
+        "C": "discussed",
+        "D": "discussing"
+      }
+    }
+  },
+  {
+    "group": 71,
+    "title": "Part 5 - Incomplete Sentence 071",
+    "knowledge": "Động từ nguyên mẫu (Infinitive)",
+    "question": {
+      "question_number": 71,
+      "question_text": "The supervisor reminded everyone _____ their identification badges.",
+      "question_type": "grammar",
+      "knowledge": "Cấu trúc Remind + tân ngữ + to-infinitive",
+      "correct_answer": "A",
+      "explanation": "'Remind someone to do something' requires a to-infinitive.",
+      "options": {
+        "A": "to wear",
+        "B": "wearing",
+        "C": "worn",
+        "D": "wear"
+      }
+    }
+  },
+  {
+    "group": 72,
+    "title": "Part 5 - Incomplete Sentence 072",
+    "knowledge": "Danh động từ (Gerund)",
+    "question": {
+      "question_number": 72,
+      "question_text": "We are interested in _____ our services to international clients.",
+      "question_type": "grammar",
+      "knowledge": "Giới từ + danh động từ",
+      "correct_answer": "B",
+      "explanation": "After the preposition 'in', a gerund is required.",
+      "options": {
+        "A": "expand",
+        "B": "expanding",
+        "C": "to expand",
+        "D": "expanded"
+      }
+    }
+  },
+  {
+    "group": 73,
+    "title": "Part 5 - Incomplete Sentence 073",
+    "knowledge": "Động từ nguyên mẫu (Infinitive)",
+    "question": {
+      "question_number": 73,
+      "question_text": "The customer called to _____ about the delayed shipment.",
+      "question_type": "grammar",
+      "knowledge": "To-infinitive chỉ mục đích",
+      "correct_answer": "C",
+      "explanation": "'To complain' expresses the purpose of the call.",
+      "options": {
+        "A": "complaining",
+        "B": "complained",
+        "C": "complain",
+        "D": "complaint"
+      }
+    }
+  },
+  {
+    "group": 74,
+    "title": "Part 5 - Incomplete Sentence 074",
+    "knowledge": "Danh động từ (Gerund)",
+    "question": {
+      "question_number": 74,
+      "question_text": "_____ regular backups can prevent data loss.",
+      "question_type": "grammar",
+      "knowledge": "Danh động từ làm chủ ngữ trong câu",
+      "correct_answer": "D",
+      "explanation": "'Making regular backups' functions as the subject of the sentence.",
+      "options": {
+        "A": "Make",
+        "B": "Made",
+        "C": "To make",
+        "D": "Making"
+      }
+    }
+  },
+  {
+    "group": 75,
+    "title": "Part 5 - Incomplete Sentence 075",
+    "knowledge": "Động từ khuyết thiếu (Modal verb)",
+    "question": {
+      "question_number": 75,
+      "question_text": "Employees _____ wear their identification badges while on company premises.",
+      "question_type": "grammar",
+      "knowledge": "Must chỉ sự bắt buộc",
+      "correct_answer": "A",
+      "explanation": "'Must' expresses a strong requirement or obligation.",
+      "options": {
+        "A": "must",
+        "B": "might",
+        "C": "would",
+        "D": "could"
+      }
+    }
+  },
+  {
+    "group": 76,
+    "title": "Part 5 - Incomplete Sentence 076",
+    "knowledge": "Động từ khuyết thiếu (Modal verb)",
+    "question": {
+      "question_number": 76,
+      "question_text": "You _____ contact the supplier if the shipment does not arrive today.",
+      "question_type": "grammar",
+      "knowledge": "Should dùng để đưa ra lời khuyên",
+      "correct_answer": "B",
+      "explanation": "'Should' is used to give advice or a recommendation.",
+      "options": {
+        "A": "must not",
+        "B": "should",
+        "C": "cannot",
+        "D": "would"
+      }
+    }
+  },
+  {
+    "group": 77,
+    "title": "Part 5 - Incomplete Sentence 077",
+    "knowledge": "Động từ khuyết thiếu (Modal verb)",
+    "question": {
+      "question_number": 77,
+      "question_text": "The package _____ arrive by noon if there are no delays.",
+      "question_type": "grammar",
+      "knowledge": "May chỉ khả năng có thể xảy ra",
+      "correct_answer": "C",
+      "explanation": "'May' expresses possibility.",
+      "options": {
+        "A": "must",
+        "B": "should not",
+        "C": "may",
+        "D": "has to"
+      }
+    }
+  },
+  {
+    "group": 78,
+    "title": "Part 5 - Incomplete Sentence 078",
+    "knowledge": "Động từ khuyết thiếu (Modal verb)",
+    "question": {
+      "question_number": 78,
+      "question_text": "Visitors _____ enter the laboratory without permission.",
+      "question_type": "grammar",
+      "knowledge": "Must not chỉ sự cấm đoán",
+      "correct_answer": "D",
+      "explanation": "'Must not' expresses prohibition.",
+      "options": {
+        "A": "could",
+        "B": "would",
+        "C": "might",
+        "D": "must not"
+      }
+    }
+  },
+  {
+    "group": 79,
+    "title": "Part 5 - Incomplete Sentence 079",
+    "knowledge": "Động từ khuyết thiếu (Modal verb)",
+    "question": {
+      "question_number": 79,
+      "question_text": "The manager _____ be in her office; her car is outside.",
+      "question_type": "grammar",
+      "knowledge": "Might chỉ khả năng xảy ra",
+      "correct_answer": "A",
+      "explanation": "'Might' indicates a possible situation based on evidence.",
+      "options": {
+        "A": "might",
+        "B": "must not",
+        "C": "cannot",
+        "D": "should not"
+      }
+    }
+  },
+  {
+    "group": 80,
+    "title": "Part 5 - Incomplete Sentence 080",
+    "knowledge": "Động từ khuyết thiếu (Modal verb)",
+    "question": {
+      "question_number": 80,
+      "question_text": "All employees _____ submit their expense reports by Friday.",
+      "question_type": "grammar",
+      "knowledge": "Have to chỉ nghĩa vụ/sự bắt buộc",
+      "correct_answer": "B",
+      "explanation": "'Have to' expresses an external requirement or obligation.",
+      "options": {
+        "A": "might",
+        "B": "have to",
+        "C": "could",
+        "D": "would"
+      }
+    }
+  },
+  {
+    "group": 81,
+    "title": "Part 5 - Incomplete Sentence 081",
+    "knowledge": "Động từ khuyết thiếu (Modal verb)",
+    "question": {
+      "question_number": 81,
+      "question_text": "_____ you please send me the updated schedule?",
+      "question_type": "grammar",
+      "knowledge": "Could dùng cho yêu cầu lịch sự",
+      "correct_answer": "C",
+      "explanation": "'Could you please...' is a common polite request.",
+      "options": {
+        "A": "Must",
+        "B": "Should",
+        "C": "Could",
+        "D": "May not"
+      }
+    }
+  },
+  {
+    "group": 82,
+    "title": "Part 5 - Incomplete Sentence 082",
+    "knowledge": "So sánh hơn",
+    "question": {
+      "question_number": 82,
+      "question_text": "This year's sales figures are _____ than last year's.",
+      "question_type": "grammar",
+      "knowledge": "Tính từ so sánh hơn",
+      "correct_answer": "D",
+      "explanation": "The phrase 'than last year's' requires a comparative adjective.",
+      "options": {
+        "A": "high",
+        "B": "highest",
+        "C": "highly",
+        "D": "higher"
+      }
+    }
+  },
+  {
+    "group": 83,
+    "title": "Part 5 - Incomplete Sentence 083",
+    "knowledge": "So sánh nhất",
+    "question": {
+      "question_number": 83,
+      "question_text": "This is the _____ product in our current catalog.",
+      "question_type": "grammar",
+      "knowledge": "Tính từ so sánh nhất",
+      "correct_answer": "A",
+      "explanation": "'The' plus a comparison among all products requires the superlative form.",
+      "options": {
+        "A": "most popular",
+        "B": "more popular",
+        "C": "popular",
+        "D": "popularity"
+      }
+    }
+  },
+  {
+    "group": 84,
+    "title": "Part 5 - Incomplete Sentence 084",
+    "knowledge": "So sánh hơn",
+    "question": {
+      "question_number": 84,
+      "question_text": "The new printer operates _____ than the old model.",
+      "question_type": "grammar",
+      "knowledge": "Trạng từ so sánh hơn",
+      "correct_answer": "B",
+      "explanation": "The verb 'operates' needs an adverb, and 'than' requires the comparative form.",
+      "options": {
+        "A": "more efficiently",
+        "B": "most efficiently",
+        "C": "efficient",
+        "D": "efficiency"
+      }
+    }
+  },
+  {
+    "group": 85,
+    "title": "Part 5 - Incomplete Sentence 085",
+    "knowledge": "Cấu trúc so sánh bằng As...as",
+    "question": {
+      "question_number": 85,
+      "question_text": "The new office is not _____ large as the previous one.",
+      "question_type": "grammar",
+      "knowledge": "Cấu trúc As + tính từ + as",
+      "correct_answer": "C",
+      "explanation": "The standard comparison is 'not as + adjective + as'.",
+      "options": {
+        "A": "more",
+        "B": "most",
+        "C": "as",
+        "D": "very"
+      }
+    }
+  },
+  {
+    "group": 86,
+    "title": "Part 5 - Incomplete Sentence 086",
+    "knowledge": "So sánh hơn",
+    "question": {
+      "question_number": 86,
+      "question_text": "The updated software is _____ reliable than the previous version.",
+      "question_type": "grammar",
+      "knowledge": "Tính từ so sánh hơn đi với than",
+      "correct_answer": "D",
+      "explanation": "'More reliable than' is the correct comparative structure.",
+      "options": {
+        "A": "most",
+        "B": "very",
+        "C": "reliability",
+        "D": "more"
+      }
+    }
+  },
+  {
+    "group": 87,
+    "title": "Part 5 - Incomplete Sentence 087",
+    "knowledge": "Mạo từ",
+    "question": {
+      "question_number": 87,
+      "question_text": "Ms. Brown is _____ experienced manager with over ten years in the industry.",
+      "question_type": "grammar",
+      "knowledge": "Mạo từ không xác định đứng trước từ bắt đầu bằng nguyên âm",
+      "correct_answer": "A",
+      "explanation": "'Experienced' begins with a vowel sound, so 'an' is required.",
+      "options": {
+        "A": "an",
+        "B": "a",
+        "C": "the",
+        "D": "no article"
+      }
+    }
+  },
+  {
+    "group": 88,
+    "title": "Part 5 - Incomplete Sentence 088",
+    "knowledge": "Mạo từ",
+    "question": {
+      "question_number": 88,
+      "question_text": "Please send the invoice to _____ customer listed on the order form.",
+      "question_type": "grammar",
+      "knowledge": "Mạo từ xác định dùng cho danh từ cụ thể",
+      "correct_answer": "B",
+      "explanation": "The customer is specific and identified by the order form, so 'the' is correct.",
+      "options": {
+        "A": "a",
+        "B": "the",
+        "C": "an",
+        "D": "no article"
+      }
+    }
+  },
+  {
+    "group": 89,
+    "title": "Part 5 - Incomplete Sentence 089",
+    "knowledge": "Mạo từ",
+    "question": {
+      "question_number": 89,
+      "question_text": "We need to purchase _____ new printer for the office.",
+      "question_type": "grammar",
+      "knowledge": "Mạo từ không xác định dùng cho một đối tượng chung chung",
+      "correct_answer": "C",
+      "explanation": "'Printer' is a singular countable noun introduced for the first time, so 'a' is correct.",
+      "options": {
+        "A": "the",
+        "B": "an",
+        "C": "a",
+        "D": "no article"
+      }
+    }
+  },
+  {
+    "group": 90,
+    "title": "Part 5 - Incomplete Sentence 090",
+    "knowledge": "Mạo từ",
+    "question": {
+      "question_number": 90,
+      "question_text": "The company provides _____ information about its products on its website.",
+      "question_type": "grammar",
+      "knowledge": "Không dùng mạo từ với danh từ không đếm được mang nghĩa chung",
+      "correct_answer": "D",
+      "explanation": "'Information' is uncountable and is used generally here, so no article is needed.",
+      "options": {
+        "A": "a",
+        "B": "an",
+        "C": "the",
+        "D": "no article"
+      }
+    }
+  },
+  {
+    "group": 91,
+    "title": "Part 5 - Incomplete Sentence 091",
+    "knowledge": "Đại từ",
+    "question": {
+      "question_number": 91,
+      "question_text": "The manager asked Sarah and _____ to prepare the presentation.",
+      "question_type": "grammar",
+      "knowledge": "Đại từ làm tân ngữ",
+      "correct_answer": "A",
+      "explanation": "The pronoun is the object of 'asked', so the object form 'me' is correct.",
+      "options": {
+        "A": "me",
+        "B": "I",
+        "C": "my",
+        "D": "mine"
+      }
+    }
+  },
+  {
+    "group": 92,
+    "title": "Part 5 - Incomplete Sentence 092",
+    "knowledge": "Đại từ",
+    "question": {
+      "question_number": 92,
+      "question_text": "The company introduced a new policy to ensure that all employees protect _____.",
+      "question_type": "grammar",
+      "knowledge": "Đại từ phản thân",
+      "correct_answer": "B",
+      "explanation": "The plural subject 'all employees' requires the reflexive pronoun 'themselves'.",
+      "options": {
+        "A": "them",
+        "B": "themselves",
+        "C": "their",
+        "D": "they"
+      }
+    }
+  },
+  {
+    "group": 93,
+    "title": "Part 5 - Incomplete Sentence 093",
+    "knowledge": "Từ chỉ sự sở hữu",
+    "question": {
+      "question_number": 93,
+      "question_text": "The marketing department presented _____ proposal to the director.",
+      "question_type": "grammar",
+      "knowledge": "Tính từ sở hữu",
+      "correct_answer": "C",
+      "explanation": "'Department' is singular, so the possessive adjective 'its' is required.",
+      "options": {
+        "A": "they",
+        "B": "them",
+        "C": "its",
+        "D": "it"
+      }
+    }
+  },
+  {
+    "group": 94,
+    "title": "Part 5 - Incomplete Sentence 094",
+    "knowledge": "Đại từ",
+    "question": {
+      "question_number": 94,
+      "question_text": "The two managers agreed that the final decision should be _____.",
+      "question_type": "grammar",
+      "knowledge": "Đại từ sở hữu",
+      "correct_answer": "D",
+      "explanation": "'Theirs' is a possessive pronoun and can stand alone after 'be'.",
+      "options": {
+        "A": "their",
+        "B": "them",
+        "C": "they",
+        "D": "theirs"
+      }
+    }
+  },
+  {
+    "group": 95,
+    "title": "Part 5 - Incomplete Sentence 095",
+    "knowledge": "Câu điều kiện",
+    "question": {
+      "question_number": 95,
+      "question_text": "If the weather improves, the outdoor event _____ as planned.",
+      "question_type": "grammar",
+      "knowledge": "Câu điều kiện loại 1",
+      "correct_answer": "A",
+      "explanation": "In the first conditional, the if-clause uses present simple and the result uses 'will + verb'.",
+      "options": {
+        "A": "will take place",
+        "B": "took place",
+        "C": "would take place",
+        "D": "has taken place"
+      }
+    }
+  },
+  {
+    "group": 96,
+    "title": "Part 5 - Incomplete Sentence 096",
+    "knowledge": "Câu điều kiện",
+    "question": {
+      "question_number": 96,
+      "question_text": "If I _____ more time, I would review the entire report.",
+      "question_type": "grammar",
+      "knowledge": "Câu điều kiện loại 2",
+      "correct_answer": "B",
+      "explanation": "The second conditional uses past simple in the if-clause and 'would' in the result clause.",
+      "options": {
+        "A": "have",
+        "B": "had",
+        "C": "will have",
+        "D": "am having"
+      }
+    }
+  },
+  {
+    "group": 97,
+    "title": "Part 5 - Incomplete Sentence 097",
+    "knowledge": "Câu điều kiện",
+    "question": {
+      "question_number": 97,
+      "question_text": "If the technician had arrived earlier, we _____ the problem sooner.",
+      "question_type": "grammar",
+      "knowledge": "Câu điều kiện loại 3",
+      "correct_answer": "C",
+      "explanation": "The third conditional describes an unreal past condition and uses 'would have + past participle'.",
+      "options": {
+        "A": "solve",
+        "B": "would solve",
+        "C": "would have solved",
+        "D": "will solve"
+      }
+    }
+  },
+  {
+    "group": 98,
+    "title": "Part 5 - Incomplete Sentence 098",
+    "knowledge": "Câu điều kiện",
+    "question": {
+      "question_number": 98,
+      "question_text": "Unless the payment _____ received today, the order will be canceled.",
+      "question_type": "grammar",
+      "knowledge": "Câu điều kiện loại 1 với 'unless'",
+      "correct_answer": "D",
+      "explanation": "After 'unless', use the present simple for a real future condition. Passive form is 'is received'.",
+      "options": {
+        "A": "will be",
+        "B": "was",
+        "C": "would be",
+        "D": "is"
+      }
+    }
+  },
+  {
+    "group": 99,
+    "title": "Part 5 - Incomplete Sentence 099",
+    "knowledge": "Danh từ đếm được / không đếm được",
+    "question": {
+      "question_number": 99,
+      "question_text": "The company received several _____ from customers about the service.",
+      "question_type": "grammar",
+      "knowledge": "Danh từ đếm được số nhiều",
+      "correct_answer": "A",
+      "explanation": "'Several' must be followed by a plural countable noun.",
+      "options": {
+        "A": "complaints",
+        "B": "complaint",
+        "C": "complaining",
+        "D": "complain"
+      }
+    }
+  },
+  {
+    "group": 100,
+    "title": "Part 5 - Incomplete Sentence 100",
+    "knowledge": "Danh từ đếm được / không đếm được",
+    "question": {
+      "question_number": 100,
+      "question_text": "We need some _____ before making a final decision.",
+      "question_type": "grammar",
+      "knowledge": "Danh từ không đếm được",
+      "correct_answer": "B",
+      "explanation": "'Advice' is uncountable and does not take a plural '-s'.",
+      "options": {
+        "A": "advices",
+        "B": "advice",
+        "C": "advising",
+        "D": "advisor"
+      }
+    }
+  }
+]

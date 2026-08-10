@@ -1,0 +1,101 @@
+id,lesson_id,part,group_number,title,passage,knowledge,display_order,created_at,updated_at
+1,1,5,1,Part 5 - Incomplete Sentence 001,,Từ loại: Danh từ đứng sau mạo từ,1,2026-08-10 11:31:21.892622,2026-08-10 11:31:21.892622
+2,1,5,2,Part 5 - Incomplete Sentence 002,,Từ loại: Tính từ đứng trước danh từ,2,2026-08-10 11:31:21.892622,2026-08-10 11:31:21.892622
+3,1,5,3,Part 5 - Incomplete Sentence 003,,Từ loại: Trạng từ bổ nghĩa cho động từ,3,2026-08-10 11:31:21.892622,2026-08-10 11:31:21.892622
+4,1,5,4,Part 5 - Incomplete Sentence 004,,Từ loại: Danh từ đứng sau tính từ sở hữu,4,2026-08-10 11:31:21.892622,2026-08-10 11:31:21.892622
+5,1,5,5,Part 5 - Incomplete Sentence 005,,Từ loại: Tính từ đứng sau động từ liên kết (linking verb),5,2026-08-10 11:31:21.892622,2026-08-10 11:31:21.892622
+6,1,5,6,Part 5 - Incomplete Sentence 006,,Từ loại: Trạng từ đứng trước tính từ,6,2026-08-10 11:31:21.892622,2026-08-10 11:31:21.892622
+7,1,5,7,Part 5 - Incomplete Sentence 007,,Từ loại: Danh từ làm chủ ngữ,7,2026-08-10 11:31:21.892622,2026-08-10 11:31:21.892622
+8,1,5,8,Part 5 - Incomplete Sentence 008,,Từ loại: Tính từ đứng sau động từ to be,8,2026-08-10 11:31:21.892622,2026-08-10 11:31:21.892622
+9,1,5,9,Part 5 - Incomplete Sentence 009,,Từ loại: Danh từ đứng sau giới từ,9,2026-08-10 11:31:21.892622,2026-08-10 11:31:21.892622
+10,1,5,10,Part 5 - Incomplete Sentence 010,,Từ loại: Trạng từ bổ nghĩa cho tính từ,10,2026-08-10 11:31:21.892622,2026-08-10 11:31:21.892622
+11,1,5,11,Part 5 - Incomplete Sentence 011,,Sự hòa hợp giữa chủ ngữ và động từ,11,2026-08-10 11:31:21.892622,2026-08-10 11:31:21.892622
+12,1,5,12,Part 5 - Incomplete Sentence 012,,Sự hòa hợp giữa chủ ngữ và động từ,12,2026-08-10 11:31:21.892622,2026-08-10 11:31:21.892622
+13,1,5,13,Part 5 - Incomplete Sentence 013,,Sự hòa hợp giữa chủ ngữ và động từ,13,2026-08-10 11:31:21.892622,2026-08-10 11:31:21.892622
+14,1,5,14,Part 5 - Incomplete Sentence 014,,Sự hòa hợp giữa chủ ngữ và động từ,14,2026-08-10 11:31:21.892622,2026-08-10 11:31:21.892622
+15,1,5,15,Part 5 - Incomplete Sentence 015,,Sự hòa hợp giữa chủ ngữ và động từ,15,2026-08-10 11:31:21.892622,2026-08-10 11:31:21.892622
+16,1,5,16,Part 5 - Incomplete Sentence 016,,Sự hòa hợp giữa chủ ngữ và động từ,16,2026-08-10 11:31:21.892622,2026-08-10 11:31:21.892622
+17,1,5,17,Part 5 - Incomplete Sentence 017,,Sự hòa hợp giữa chủ ngữ và động từ,17,2026-08-10 11:31:21.892622,2026-08-10 11:31:21.892622
+18,1,5,18,Part 5 - Incomplete Sentence 018,,Sự hòa hợp giữa chủ ngữ và động từ,18,2026-08-10 11:31:21.892622,2026-08-10 11:31:21.892622
+19,1,5,19,Part 5 - Incomplete Sentence 019,,Sự hòa hợp giữa chủ ngữ và động từ,19,2026-08-10 11:31:21.892622,2026-08-10 11:31:21.892622
+20,1,5,20,Part 5 - Incomplete Sentence 020,,Sự hòa hợp giữa chủ ngữ và động từ,20,2026-08-10 11:31:21.892622,2026-08-10 11:31:21.892622
+21,2,5,21,Part 5 - Incomplete Sentence 021,,Thì: Hiện tại hoàn thành,21,2026-08-10 11:31:21.892622,2026-08-10 11:31:21.892622
+22,2,5,22,Part 5 - Incomplete Sentence 022,,Thì: Quá khứ đơn,22,2026-08-10 11:31:21.892622,2026-08-10 11:31:21.892622
+23,2,5,23,Part 5 - Incomplete Sentence 023,,Thì: Tương lai,23,2026-08-10 11:31:21.892622,2026-08-10 11:31:21.892622
+24,2,5,24,Part 5 - Incomplete Sentence 024,,Thì: Hiện tại tiếp diễn,24,2026-08-10 11:31:21.892622,2026-08-10 11:31:21.892622
+25,2,5,25,Part 5 - Incomplete Sentence 025,,Thì: Quá khứ hoàn thành,25,2026-08-10 11:31:21.892622,2026-08-10 11:31:21.892622
+26,2,5,26,Part 5 - Incomplete Sentence 026,,Thì: Hiện tại hoàn thành tiếp diễn,26,2026-08-10 11:31:21.892622,2026-08-10 11:31:21.892622
+27,2,5,27,Part 5 - Incomplete Sentence 027,,Thì: Quá khứ tiếp diễn,27,2026-08-10 11:31:21.892622,2026-08-10 11:31:21.892622
+28,2,5,28,Part 5 - Incomplete Sentence 028,,Thì: Tương lai hoàn thành,28,2026-08-10 11:31:21.892622,2026-08-10 11:31:21.892622
+29,2,5,29,Part 5 - Incomplete Sentence 029,,Thì: Hiện tại đơn,29,2026-08-10 11:31:21.892622,2026-08-10 11:31:21.892622
+30,2,5,30,Part 5 - Incomplete Sentence 030,,Thì: Quá khứ hoàn thành,30,2026-08-10 11:31:21.892622,2026-08-10 11:31:21.892622
+31,2,5,31,Part 5 - Incomplete Sentence 031,,Giới từ: Thời gian,31,2026-08-10 11:31:21.892622,2026-08-10 11:31:21.892622
+32,2,5,32,Part 5 - Incomplete Sentence 032,,Giới từ: Ngày,32,2026-08-10 11:31:21.892622,2026-08-10 11:31:21.892622
+33,2,5,33,Part 5 - Incomplete Sentence 033,,Giới từ: Tháng/Năm,33,2026-08-10 11:31:21.892622,2026-08-10 11:31:21.892622
+34,2,5,34,Part 5 - Incomplete Sentence 034,,Giới từ: Khoảng thời gian,34,2026-08-10 11:31:21.892622,2026-08-10 11:31:21.892622
+35,2,5,35,Part 5 - Incomplete Sentence 035,,Giới từ: Mốc thời gian bắt đầu,35,2026-08-10 11:31:21.892622,2026-08-10 11:31:21.892622
+36,2,5,36,Part 5 - Incomplete Sentence 036,,Giới từ: Địa điểm,36,2026-08-10 11:31:21.892622,2026-08-10 11:31:21.892622
+37,2,5,37,Part 5 - Incomplete Sentence 037,,Giới từ: Phương hướng/Điểm đến,37,2026-08-10 11:31:21.892622,2026-08-10 11:31:21.892622
+38,2,5,38,Part 5 - Incomplete Sentence 038,,Giới từ: Nguyên nhân,38,2026-08-10 11:31:21.892622,2026-08-10 11:31:21.892622
+39,2,5,39,Part 5 - Incomplete Sentence 039,,Giới từ: Tác nhân,39,2026-08-10 11:31:21.892622,2026-08-10 11:31:21.892622
+40,2,5,40,Part 5 - Incomplete Sentence 040,,Giới từ: Mục đích,40,2026-08-10 11:31:21.892622,2026-08-10 11:31:21.892622
+41,3,5,41,Part 5 - Incomplete Sentence 041,,Liên từ: Tương phản,41,2026-08-10 11:31:21.892622,2026-08-10 11:31:21.892622
+42,3,5,42,Part 5 - Incomplete Sentence 042,,Liên từ: Lý do,42,2026-08-10 11:31:21.892622,2026-08-10 11:31:21.892622
+43,3,5,43,Part 5 - Incomplete Sentence 043,,Liên từ: Điều kiện,43,2026-08-10 11:31:21.892622,2026-08-10 11:31:21.892622
+44,3,5,44,Part 5 - Incomplete Sentence 044,,Liên từ: Thời gian,44,2026-08-10 11:31:21.892622,2026-08-10 11:31:21.892622
+45,3,5,45,Part 5 - Incomplete Sentence 045,,Liên từ: Bổ sung,45,2026-08-10 11:31:21.892622,2026-08-10 11:31:21.892622
+46,3,5,46,Part 5 - Incomplete Sentence 046,,Liên từ: Lựa chọn thay thế,46,2026-08-10 11:31:21.892622,2026-08-10 11:31:21.892622
+47,3,5,47,Part 5 - Incomplete Sentence 047,,Liên từ: Kết quả,47,2026-08-10 11:31:21.892622,2026-08-10 11:31:21.892622
+48,3,5,48,Part 5 - Incomplete Sentence 048,,Liên từ: Tương phản,48,2026-08-10 11:31:21.892622,2026-08-10 11:31:21.892622
+49,3,5,49,Part 5 - Incomplete Sentence 049,,Liên từ: Điều kiện,49,2026-08-10 11:31:21.892622,2026-08-10 11:31:21.892622
+50,3,5,50,Part 5 - Incomplete Sentence 050,,Liên từ: Hành động diễn ra đồng thời,50,2026-08-10 11:31:21.892622,2026-08-10 11:31:21.892622
+51,3,5,51,Part 5 - Incomplete Sentence 051,,Đại từ quan hệ,51,2026-08-10 11:31:21.892622,2026-08-10 11:31:21.892622
+52,3,5,52,Part 5 - Incomplete Sentence 052,,Đại từ quan hệ,52,2026-08-10 11:31:21.892622,2026-08-10 11:31:21.892622
+53,3,5,53,Part 5 - Incomplete Sentence 053,,Trạng từ quan hệ,53,2026-08-10 11:31:21.892622,2026-08-10 11:31:21.892622
+54,3,5,54,Part 5 - Incomplete Sentence 054,,Trạng từ quan hệ,54,2026-08-10 11:31:21.892622,2026-08-10 11:31:21.892622
+55,3,5,55,Part 5 - Incomplete Sentence 055,,Đại từ quan hệ,55,2026-08-10 11:31:21.892622,2026-08-10 11:31:21.892622
+56,3,5,56,Part 5 - Incomplete Sentence 056,,Đại từ quan hệ,56,2026-08-10 11:31:21.892622,2026-08-10 11:31:21.892622
+57,3,5,57,Part 5 - Incomplete Sentence 057,,Đại từ quan hệ,57,2026-08-10 11:31:21.892622,2026-08-10 11:31:21.892622
+58,3,5,58,Part 5 - Incomplete Sentence 058,,Mệnh đề quan hệ,58,2026-08-10 11:31:21.892622,2026-08-10 11:31:21.892622
+59,3,5,59,Part 5 - Incomplete Sentence 059,,Thể bị động,59,2026-08-10 11:31:21.892622,2026-08-10 11:31:21.892622
+60,3,5,60,Part 5 - Incomplete Sentence 060,,Thể bị động,60,2026-08-10 11:31:21.892622,2026-08-10 11:31:21.892622
+61,4,5,61,Part 5 - Incomplete Sentence 061,,Thể bị động,61,2026-08-10 11:31:21.892622,2026-08-10 11:31:21.892622
+62,4,5,62,Part 5 - Incomplete Sentence 062,,Thể bị động,62,2026-08-10 11:31:21.892622,2026-08-10 11:31:21.892622
+63,4,5,63,Part 5 - Incomplete Sentence 063,,Thể bị động,63,2026-08-10 11:31:21.892622,2026-08-10 11:31:21.892622
+64,4,5,64,Part 5 - Incomplete Sentence 064,,Thể bị động,64,2026-08-10 11:31:21.892622,2026-08-10 11:31:21.892622
+65,4,5,65,Part 5 - Incomplete Sentence 065,,Thể bị động,65,2026-08-10 11:31:21.892622,2026-08-10 11:31:21.892622
+66,4,5,66,Part 5 - Incomplete Sentence 066,,Thể bị động,66,2026-08-10 11:31:21.892622,2026-08-10 11:31:21.892622
+67,4,5,67,Part 5 - Incomplete Sentence 067,,Động từ nguyên mẫu (Infinitive),67,2026-08-10 11:31:21.892622,2026-08-10 11:31:21.892622
+68,4,5,68,Part 5 - Incomplete Sentence 068,,Động từ nguyên mẫu (Infinitive),68,2026-08-10 11:31:21.892622,2026-08-10 11:31:21.892622
+69,4,5,69,Part 5 - Incomplete Sentence 069,,Danh động từ (Gerund),69,2026-08-10 11:31:21.892622,2026-08-10 11:31:21.892622
+70,4,5,70,Part 5 - Incomplete Sentence 070,,Danh động từ (Gerund),70,2026-08-10 11:31:21.892622,2026-08-10 11:31:21.892622
+71,4,5,71,Part 5 - Incomplete Sentence 071,,Động từ nguyên mẫu (Infinitive),71,2026-08-10 11:31:21.892622,2026-08-10 11:31:21.892622
+72,4,5,72,Part 5 - Incomplete Sentence 072,,Danh động từ (Gerund),72,2026-08-10 11:31:21.892622,2026-08-10 11:31:21.892622
+73,4,5,73,Part 5 - Incomplete Sentence 073,,Động từ nguyên mẫu (Infinitive),73,2026-08-10 11:31:21.892622,2026-08-10 11:31:21.892622
+74,4,5,74,Part 5 - Incomplete Sentence 074,,Danh động từ (Gerund),74,2026-08-10 11:31:21.892622,2026-08-10 11:31:21.892622
+75,4,5,75,Part 5 - Incomplete Sentence 075,,Động từ khuyết thiếu (Modal verb),75,2026-08-10 11:31:21.892622,2026-08-10 11:31:21.892622
+76,4,5,76,Part 5 - Incomplete Sentence 076,,Động từ khuyết thiếu (Modal verb),76,2026-08-10 11:31:21.892622,2026-08-10 11:31:21.892622
+77,4,5,77,Part 5 - Incomplete Sentence 077,,Động từ khuyết thiếu (Modal verb),77,2026-08-10 11:31:21.892622,2026-08-10 11:31:21.892622
+78,4,5,78,Part 5 - Incomplete Sentence 078,,Động từ khuyết thiếu (Modal verb),78,2026-08-10 11:31:21.892622,2026-08-10 11:31:21.892622
+79,4,5,79,Part 5 - Incomplete Sentence 079,,Động từ khuyết thiếu (Modal verb),79,2026-08-10 11:31:21.892622,2026-08-10 11:31:21.892622
+80,4,5,80,Part 5 - Incomplete Sentence 080,,Động từ khuyết thiếu (Modal verb),80,2026-08-10 11:31:21.892622,2026-08-10 11:31:21.892622
+81,5,5,81,Part 5 - Incomplete Sentence 081,,Động từ khuyết thiếu (Modal verb),81,2026-08-10 11:31:21.892622,2026-08-10 11:31:21.892622
+82,5,5,82,Part 5 - Incomplete Sentence 082,,So sánh hơn,82,2026-08-10 11:31:21.892622,2026-08-10 11:31:21.892622
+83,5,5,83,Part 5 - Incomplete Sentence 083,,So sánh nhất,83,2026-08-10 11:31:21.892622,2026-08-10 11:31:21.892622
+84,5,5,84,Part 5 - Incomplete Sentence 084,,So sánh hơn,84,2026-08-10 11:31:21.892622,2026-08-10 11:31:21.892622
+85,5,5,85,Part 5 - Incomplete Sentence 085,,Cấu trúc so sánh bằng As...as,85,2026-08-10 11:31:21.892622,2026-08-10 11:31:21.892622
+86,5,5,86,Part 5 - Incomplete Sentence 086,,So sánh hơn,86,2026-08-10 11:31:21.892622,2026-08-10 11:31:21.892622
+87,5,5,87,Part 5 - Incomplete Sentence 087,,Mạo từ,87,2026-08-10 11:31:21.892622,2026-08-10 11:31:21.892622
+88,5,5,88,Part 5 - Incomplete Sentence 088,,Mạo từ,88,2026-08-10 11:31:21.892622,2026-08-10 11:31:21.892622
+89,5,5,89,Part 5 - Incomplete Sentence 089,,Mạo từ,89,2026-08-10 11:31:21.892622,2026-08-10 11:31:21.892622
+90,5,5,90,Part 5 - Incomplete Sentence 090,,Mạo từ,90,2026-08-10 11:31:21.892622,2026-08-10 11:31:21.892622
+91,5,5,91,Part 5 - Incomplete Sentence 091,,Đại từ,91,2026-08-10 11:31:21.892622,2026-08-10 11:31:21.892622
+92,5,5,92,Part 5 - Incomplete Sentence 092,,Đại từ,92,2026-08-10 11:31:21.892622,2026-08-10 11:31:21.892622
+93,5,5,93,Part 5 - Incomplete Sentence 093,,Từ chỉ sự sở hữu,93,2026-08-10 11:31:21.892622,2026-08-10 11:31:21.892622
+94,5,5,94,Part 5 - Incomplete Sentence 094,,Đại từ,94,2026-08-10 11:31:21.892622,2026-08-10 11:31:21.892622
+95,5,5,95,Part 5 - Incomplete Sentence 095,,Câu điều kiện,95,2026-08-10 11:31:21.892622,2026-08-10 11:31:21.892622
+96,5,5,96,Part 5 - Incomplete Sentence 096,,Câu điều kiện,96,2026-08-10 11:31:21.892622,2026-08-10 11:31:21.892622
+97,5,5,97,Part 5 - Incomplete Sentence 097,,Câu điều kiện,97,2026-08-10 11:31:21.892622,2026-08-10 11:31:21.892622
+98,5,5,98,Part 5 - Incomplete Sentence 098,,Câu điều kiện,98,2026-08-10 11:31:21.892622,2026-08-10 11:31:21.892622
+99,5,5,99,Part 5 - Incomplete Sentence 099,,Danh từ đếm được / không đếm được,99,2026-08-10 11:31:21.892622,2026-08-10 11:31:21.892622
+100,5,5,100,Part 5 - Incomplete Sentence 100,,Danh từ đếm được / không đếm được,100,2026-08-10 11:31:21.892622,2026-08-10 11:31:21.892622

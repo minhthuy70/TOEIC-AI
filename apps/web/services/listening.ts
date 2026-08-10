@@ -95,6 +95,74 @@ export async function getListeningGroupById(groupId: number) {
   );
 }
 
+export interface ListeningLessonSummary {
+  id: number;
+  title: string;
+  part: number;
+  totalGroups: number;
+  totalQuestions: number;
+  lastStudied: string | null;
+}
+
+export interface ListeningCompletedLessonsResponse {
+  success: boolean;
+  lessons: ListeningLessonSummary[];
+}
+
+export interface ListeningLessonReviewResponse {
+  success: boolean;
+  lesson: {
+    id: number;
+    title: string;
+    part: number;
+    listening_lesson_groups: Array<{
+      id: number;
+      lesson_id: number;
+      title: string | null;
+      audio_url: string | null;
+      display_order: number;
+      knowledge: string | null;
+      listening_lesson_questions: ListeningQuestion[];
+    }>;
+  } | null;
+}
+
+export interface ListeningAllLessonsReviewResponse {
+  success: boolean;
+  lessons: Array<{
+    id: number;
+    title: string;
+    part: number;
+    listening_lesson_groups: Array<{
+      id: number;
+      lesson_id: number;
+      title: string | null;
+      audio_url: string | null;
+      display_order: number;
+      knowledge: string | null;
+      listening_lesson_questions: ListeningQuestion[];
+    }>;
+  }>;
+}
+
+export async function getListeningCompletedLessons() {
+  return apiFetch<ListeningCompletedLessonsResponse>(
+    "/listening/completed-lessons",
+  );
+}
+
+export async function getListeningLessonReview(lessonId: number) {
+  return apiFetch<ListeningLessonReviewResponse>(
+    `/listening/review/lesson/${lessonId}`,
+  );
+}
+
+export async function getListeningAllLessonReview() {
+  return apiFetch<ListeningAllLessonsReviewResponse>(
+    `/listening/review/all`,
+  );
+}
+
 export async function submitListeningGroup(
   groupId: number,
   score: number,
