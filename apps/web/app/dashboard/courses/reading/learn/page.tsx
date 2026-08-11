@@ -749,6 +749,20 @@ function PassageCard({
           </div>
         </div>
       )}
+
+      {question.groupKnowledge && (
+  <div className="px-5 pb-5">
+    <div className="rounded-2xl border border-red-500/20 bg-red-950/10 p-5">
+      <p className="text-xs font-semibold uppercase tracking-[0.16em] text-red-400">
+        Kiến thức cần nắm
+      </p>
+
+      <p className="mt-2 whitespace-pre-wrap text-sm leading-7 text-zinc-300">
+        {question.groupKnowledge}
+      </p>
+    </div>
+  </div>
+)}
     </div>
   );
 }
