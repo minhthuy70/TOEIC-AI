@@ -1,0 +1,32 @@
+{
+  "part_1": {
+    "avg_question_words": 0,
+    "avg_option_words": 0
+  },
+  "part_2": {
+    "avg_question_words": 0,
+    "avg_option_words": 0
+  },
+  "part_3": {
+    "avg_question_words": 8,
+    "avg_option_words": 4
+  },
+  "part_4": {
+    "avg_question_words": 9,
+    "avg_option_words": 4
+  },
+  "part_5": {
+    "avg_question_words": 15,
+    "avg_option_words": 1
+  },
+  "part_6": {
+    "avg_question_words": 7,
+    "avg_option_words": 3,
+    "avg_passage_words": 120
+  },
+  "part_7": {
+    "avg_question_words": 10,
+    "avg_option_words": 5,
+    "avg_passage_words": 220
+  }
+}

@@ -1,0 +1,55 @@
+{
+  "part_1": {
+    "total_questions": 60,
+    "total_question_words": 0,
+    "total_option_words": 1704,
+    "avg_question_words": 0.0,
+    "avg_option_words": 7.1
+  },
+  "part_2": {
+    "total_questions": 250,
+    "total_question_words": 0,
+    "total_option_words": 4762,
+    "avg_question_words": 0.0,
+    "avg_option_words": 4.762
+  },
+  "part_3": {
+    "total_questions": 390,
+    "total_question_words": 2316,
+    "total_option_words": 10140,
+    "avg_question_words": 5.938461538461539,
+    "avg_option_words": 6.5
+  },
+  "part_4": {
+    "total_questions": 300,
+    "total_question_words": 1910,
+    "total_option_words": 7032,
+    "avg_question_words": 6.366666666666666,
+    "avg_option_words": 5.86
+  },
+  "part_5": {
+    "total_questions": 300,
+    "total_question_words": 2419,
+    "total_option_words": 1241,
+    "avg_question_words": 8.063333333333333,
+    "avg_option_words": 1.0341666666666667
+  },
+  "part_6": {
+    "total_questions": 160,
+    "total_question_words": 1120,
+    "total_option_words": 640,
+    "total_passage_words": 2890,
+    "avg_question_words": 7.0,
+    "avg_option_words": 1.0,
+    "avg_passage_words": 72.25
+  },
+  "part_7": {
+    "total_questions": 540,
+    "total_question_words": 3410,
+    "total_option_words": 13500,
+    "total_passage_words": 12590,
+    "avg_question_words": 6.314814814814815,
+    "avg_option_words": 6.25,
+    "avg_passage_words": 93.25925925925925
+  }
+}

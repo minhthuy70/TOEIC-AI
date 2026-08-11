@@ -212,6 +212,7 @@ model question_groups {
   group_type        String?             @db.VarChar(30)
   audio_start_time  Int?
   audio_end_time    Int?
+  knowledge         String?
   listening_lessons listening_lessons[]
   tests             tests?              @relation(fields: [test_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
   questions         questions[]
