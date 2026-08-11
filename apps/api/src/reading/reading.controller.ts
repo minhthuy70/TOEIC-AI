@@ -1,6 +1,16 @@
-import { Controller, Get, Post, Body, UseGuards, Request, Param } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Post,
+  Body,
+  UseGuards,
+  Request,
+  Param,
+  Query,
+} from '@nestjs/common';
 import { ReadingService } from './reading.service';
 import { JwtAuthGuard } from '../auth/jwt-auth.guard';
+
 
 @Controller('reading')
 @UseGuards(JwtAuthGuard)
@@ -28,16 +38,28 @@ export class ReadingController {
   }
 
   @Get('lesson/:id')
-  async getLessonById(@Param('id') id: string) {
-    return this.readingService.getLessonById(Number(id));
-  }
+async getLessonById(
+  @Param('id') id: string,
+  @Query('groupId') groupId?: string,
+) {
+  return this.readingService.getLessonById(
+    Number(id),
+    groupId ? Number(groupId) : undefined,
+  );
+}
 
   @Post('submit-lesson')
-  async submitLesson(
-    @Request() req,
-    @Body('lessonId') lessonId: number,
-    @Body('score') score: number,
-  ) {
-    return this.readingService.submitLesson(req.user.userId, lessonId, score);
-  }
+async submitLesson(
+  @Request() req,
+  @Body('lessonId') lessonId: number,
+  @Body('groupId') groupId: number,
+  @Body('score') score: number,
+) {
+  return this.readingService.submitLesson(
+    req.user.userId,
+    lessonId,
+    groupId,
+    score,
+  );
+}
 }

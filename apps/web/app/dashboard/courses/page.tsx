@@ -749,7 +749,7 @@ useEffect(() => {
                         return (
                           <Link
                             key={group.id}
-                            href={`/dashboard/courses/listening/review`}
+                            href={`/dashboard/courses/listening/learn?groupId=${group.id}&part=${group.part}`}
                             className="relative bg-zinc-800/50 hover:bg-zinc-800/80 border border-zinc-700/40 hover:border-red-600/30 rounded-xl p-4 transition-all group/card hover:shadow-lg hover:shadow-red-600/5"
                           >
                             {/* Badge */}
@@ -940,7 +940,7 @@ useEffect(() => {
                         return (
                           <Link
                             key={lesson.id}
-                            href={`/dashboard/courses/reading/review`}
+                            href={`/dashboard/courses/reading/learn?lesson=${lesson.id}&group=${lesson.groupId}`}
                             className="relative bg-zinc-800/50 hover:bg-zinc-800/80 border border-zinc-700/40 hover:border-red-600/30 rounded-xl p-4 transition-all group/card hover:shadow-lg hover:shadow-red-600/5"
                           >
                             {/* Badge */}

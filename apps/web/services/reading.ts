@@ -9,25 +9,42 @@ export interface ReadingDailyStatus {
   dailyGoal: number;
 }
 
+export interface ReadingOption {
+  id: number;
+  option_key: string;
+  option_text: string;
+  is_correct?: boolean;
+}
+
+export interface ReadingQuestion {
+  id: number;
+  question_number: number;
+  question_text: string;
+  explanation?: string | null;
+  knowledge?: string | null;
+  reading_options: ReadingOption[];
+}
+
+export interface ReadingLessonGroup {
+  id: number;
+  passage?: string | null;
+  image_url?: string | null;
+  title?: string | null;
+  knowledge?: string | null;
+  display_order?: number;
+  reading_questions: ReadingQuestion[];
+}
+
 export interface ReadingLesson {
   id: number;
   title: string;
   part: number;
-  reading_lesson_groups: {
-    id: number;
-    passage?: string;
-    image_url?: string;
-    reading_questions: {
-      id: number;
-      question_number: number;
-      question_text: string;
-      reading_options: {
-        id: number;
-        option_key: string;
-        option_text: string;
-      }[];
-    }[];
-  }[];
+  display_order?: number;
+
+  groupId?: number;
+  groupNumber?: number;
+
+  reading_lesson_groups: ReadingLessonGroup[];
 }
 
 export interface ReadingDailyLessonsResponse {
@@ -55,25 +72,67 @@ export interface ReadingCompletedLessonsResponse {
   lessons: ReadingLessonSummary[];
 }
 
-export const getReadingDailyStatus = async (): Promise<ReadingDailyStatus> => {
-  return apiFetch<ReadingDailyStatus>('/reading/daily-status');
-};
+export const getReadingDailyStatus =
+  async (): Promise<ReadingDailyStatus> => {
+    return apiFetch<ReadingDailyStatus>(
+      "/reading/daily-status",
+    );
+  };
 
-export const getReadingDailyLessons = async (): Promise<ReadingDailyLessonsResponse> => {
-  return apiFetch<ReadingDailyLessonsResponse>('/reading/daily-lessons');
-};
+export const getReadingDailyLessons =
+  async (): Promise<ReadingDailyLessonsResponse> => {
+    return apiFetch<ReadingDailyLessonsResponse>(
+      "/reading/daily-lessons",
+    );
+  };
 
-export const getReadingReviewLessons = async (): Promise<ReadingReviewLessonsResponse> => {
-  return apiFetch<ReadingReviewLessonsResponse>('/reading/review-lessons');
-};
+export const getReadingReviewLessons =
+  async (): Promise<ReadingReviewLessonsResponse> => {
+    return apiFetch<ReadingReviewLessonsResponse>(
+      "/reading/review-lessons",
+    );
+  };
 
-export const getReadingLessonById = async (id: number): Promise<{ success: boolean; lesson: ReadingLesson }> => {
-  return apiFetch<{ success: boolean; lesson: ReadingLesson }>(`/reading/lesson/${id}`);
-};
+export const getReadingCompletedLessons =
+  async (): Promise<ReadingCompletedLessonsResponse> => {
+    return apiFetch<ReadingCompletedLessonsResponse>(
+      "/reading/completed-lessons",
+    );
+  };
 
-export const submitReadingLesson = async (lessonId: number, score: number): Promise<{ success: boolean }> => {
-  return apiFetch<{ success: boolean }>('/reading/submit-lesson', {
+export const getReadingLessonById =
+  async (
+    id: number,
+    groupId?: number,
+  ): Promise<{
+    success: boolean;
+    lesson: ReadingLesson | null;
+  }> => {
+    const query = groupId
+      ? `?groupId=${groupId}`
+      : "";
+
+    return apiFetch<{
+      success: boolean;
+      lesson: ReadingLesson | null;
+    }>(
+      `/reading/lesson/${id}${query}`,
+    );
+  };
+
+export const submitReadingLesson = async (
+  lessonId: number,
+  groupId: number,
+  score: number,
+): Promise<{ success: boolean }> => {
+  return apiFetch<{
+    success: boolean;
+  }>("/reading/submit-lesson", {
     method: "POST",
-    body: JSON.stringify({ lessonId, score }),
+    body: JSON.stringify({
+      lessonId,
+      groupId,
+      score,
+    }),
   });
 };
