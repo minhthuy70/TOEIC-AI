@@ -241,6 +241,7 @@ const groupId = Number(groupIdParam);
       try {
         await submitReadingLesson(
           lesson.id,
+          groupId,
           calculatedScore,
         );
       } catch (submitError) {

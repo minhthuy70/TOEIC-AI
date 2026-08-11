@@ -295,6 +295,44 @@ export class ReadingService {
 ) {
   const today = new Date();
 
+  // =========================================================
+  // 1. Kiểm tra GROUP có tồn tại không
+  // =========================================================
+
+  const group =
+    await this.prisma.reading_lesson_groups.findUnique({
+      where: {
+        id: groupId,
+      },
+      select: {
+        id: true,
+        lesson_id: true,
+      },
+    });
+
+  if (!group) {
+    return {
+      success: false,
+      message: `Không tìm thấy Reading group với id = ${groupId}`,
+    };
+  }
+
+  // =========================================================
+  // 2. Kiểm tra group có đúng lesson không
+  // =========================================================
+
+  if (group.lesson_id !== lessonId) {
+    return {
+      success: false,
+      message:
+        "Reading group không thuộc Reading lesson đã chọn.",
+    };
+  }
+
+  // =========================================================
+  // 3. Tìm progress của user cho GROUP này
+  // =========================================================
+
   const existingProgress =
     await this.prisma.user_reading_progress.findUnique({
       where: {
@@ -305,6 +343,10 @@ export class ReadingService {
       },
     });
 
+  // =========================================================
+  // 4. Đã có progress -> UPDATE
+  // =========================================================
+
   if (existingProgress) {
     await this.prisma.user_reading_progress.update({
       where: {
@@ -312,24 +354,41 @@ export class ReadingService {
       },
       data: {
         completed: true,
+
         best_score: Math.max(
           score,
           existingProgress.best_score || 0,
         ),
+
         last_studied: today,
-        updated_at: today,
       },
     });
-  } else {
+  }
+
+  // =========================================================
+  // 5. Chưa có progress -> CREATE
+  // =========================================================
+
+  else {
     await this.prisma.user_reading_progress.create({
       data: {
         user_id: userId,
-        lesson_id: lessonId,
-        group_id: groupId,
+
+        // Quan trọng:
+        // dùng lesson_id của GROUP trong database
+        lesson_id: group.lesson_id,
+
+        // group_id chắc chắn tồn tại vì đã kiểm tra ở trên
+        group_id: group.id,
+
         completed: true,
+
         best_score: score,
+
         last_studied: today,
+
         created_at: today,
+
         updated_at: today,
       },
     });
@@ -338,6 +397,9 @@ export class ReadingService {
   return {
     success: true,
     message: "Reading group submitted successfully",
+    groupId: group.id,
+    lessonId: group.lesson_id,
+    score,
   };
 }
 }

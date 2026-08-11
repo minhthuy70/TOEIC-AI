@@ -919,140 +919,205 @@ useEffect(() => {
                 </div>
 
                 {/* Today's lessons */}
-                {(readingStatus?.completedToday ?? 0) >= (readingStatus?.dailyGoal ?? 2) ? (
-                  <div className="bg-emerald-950/30 border border-emerald-600/20 rounded-xl p-4 text-center">
-                    <p className="text-emerald-400 font-semibold flex items-center justify-center gap-2">
-                      <span className="text-lg">✅</span> Đã hoàn thành Reading hôm nay!
-                    </p>
-                    <p className="text-[11px] text-zinc-500 mt-1">Quay lại ngày mai để học bài tiếp theo.</p>
-                  </div>
-                ) : readingLessons.length === 0 ? (
-                  <div className="bg-zinc-800/40 border border-zinc-700/30 rounded-xl p-4 text-center">
-                    <p className="text-zinc-400 text-sm">Chưa có dữ liệu bài học cho chặng hiện tại.</p>
-                    <p className="text-[11px] text-zinc-600 mt-1">Vui lòng liên hệ admin hoặc kiểm tra data.</p>
-                  </div>
-                ) : (
-                  <>
-                    <div className="grid sm:grid-cols-2 gap-3">
-                      {readingLessons.map((lesson, idx) => {
-                        const partInfo = READING_PARTS.find(p => p.part === lesson.part);
-                        const questionCount = lesson.reading_lesson_groups?.reduce((sum, group) => sum + (group.reading_questions?.length ?? 0), 0) ?? 0;
-                        return (
-                          <Link
-                            key={lesson.id}
-                            href={`/dashboard/courses/reading/learn?lesson=${lesson.id}&group=${lesson.groupId}`}
-                            className="relative bg-zinc-800/50 hover:bg-zinc-800/80 border border-zinc-700/40 hover:border-red-600/30 rounded-xl p-4 transition-all group/card hover:shadow-lg hover:shadow-red-600/5"
-                          >
-                            {/* Badge */}
-                            <div className="flex items-center gap-2 mb-2.5">
-                              <span className="text-[10px] font-bold bg-red-600/15 text-red-400 border border-red-600/20 px-2 py-0.5 rounded-md">
-                                Bài {idx + 1}
-                              </span>
-                              <span className="text-[10px] text-zinc-600">
-                                Part {lesson.part}
-                              </span>
-                            </div>
+                {/* Today's lessons */}
+{(readingStatus?.completedToday ?? 0) >=
+(readingStatus?.dailyGoal ?? 2) ? (
+  <div className="bg-emerald-950/30 border border-emerald-600/20 rounded-xl p-4 text-center">
+    <p className="text-emerald-400 font-semibold flex items-center justify-center gap-2">
+      <span className="text-lg">✅</span>
+      Đã hoàn thành Reading hôm nay!
+    </p>
 
-                            {/* Icon + Info */}
-                            <div className="flex items-center gap-3">
-                              <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-green-600/20 to-green-500/10 border border-green-600/20 flex items-center justify-center text-lg shrink-0">
-                                {partInfo?.icon || "📄"}
-                              </div>
-                              <div className="flex-1 min-w-0">
-                                <p className="text-[13px] text-white font-semibold truncate">
-                                  {partInfo?.label || `Part ${lesson.part}`}
-                                </p>
-                                <p className="text-[11px] text-zinc-500">
-                                  {`${questionCount} câu hỏi`}
-                                </p>
-                              </div>
-                              <div className="text-zinc-600 group-hover/card:text-red-400 transition-colors text-lg">
-                                ›
-                              </div>
-                            </div>
+    <p className="text-[11px] text-zinc-500 mt-1">
+      Quay lại ngày mai để học bài tiếp theo.
+    </p>
+  </div>
+) : readingLessons.length === 0 ? (
+  <div className="bg-zinc-800/40 border border-zinc-700/30 rounded-xl p-4 text-center">
+    <p className="text-zinc-400 text-sm">
+      Chưa có dữ liệu bài học cho chặng hiện tại.
+    </p>
 
-                            {/* CTA */}
-                            <div className="mt-3 text-center text-[11px] font-semibold text-red-400 bg-red-600/8 border border-red-600/15 py-1.5 rounded-lg group-hover/card:bg-red-600/15 transition-all">
-                              Bắt đầu học
-                            </div>
-                          </Link>
-                        );
-                      })}
-                    </div>
+    <p className="text-[11px] text-zinc-600 mt-1">
+      Vui lòng liên hệ admin hoặc kiểm tra data.
+    </p>
+  </div>
+) : (
+  <div className="grid sm:grid-cols-2 gap-3">
+    {readingLessons.map((lesson, idx) => {
+      const partInfo = READING_PARTS.find(
+        (p) => p.part === lesson.part
+      );
 
-                    {/* Review section */}
-                    <div className="mt-6 space-y-4">
-                      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between mb-2 gap-3">
-                        <div>
-                          <p className="text-[13px] text-white font-semibold">🔁 Ôn lại Reading</p>
-                          <p className="text-[11px] text-zinc-500 mt-1">
-                            Tách riêng khỏi phần học hôm nay, gồm 3 Part review và ôn tập bài đã học.
-                          </p>
-                        </div>
-                        <Link
-                          href="/dashboard/courses/reading/review"
-                          className="inline-flex items-center justify-center rounded-full border border-red-600/20 bg-red-600/10 px-4 py-2 text-[11px] font-semibold text-red-300 hover:bg-red-600/15 transition"
-                        >
-                          Đi tới ôn tập bài đã học
-                        </Link>
-                      </div>
+      const questionCount =
+        lesson.reading_lesson_groups?.reduce(
+          (sum, group) =>
+            sum +
+            (group.reading_questions?.length ?? 0),
+          0
+        ) ?? 0;
 
-                      <div className="grid sm:grid-cols-3 gap-3">
-                        {[5, 6, 7].map((part) => {
-                          const partInfo = READING_PARTS.find((item) => item.part === part);
-                          const reviewLesson = readingReviewLessons.find((lesson) => lesson.part === part);
-                          const questionCount = reviewLesson?.reading_lesson_groups?.reduce((sum, group) => sum + (group.reading_questions?.length ?? 0), 0) ?? 0;
+      return (
+        <Link
+          key={lesson.id}
+          href={`/dashboard/courses/reading/learn?lesson=${lesson.id}&group=${lesson.groupId}`}
+          className="relative bg-zinc-800/50 hover:bg-zinc-800/80 border border-zinc-700/40 hover:border-red-600/30 rounded-xl p-4 transition-all group/card hover:shadow-lg hover:shadow-red-600/5"
+        >
+          <div className="flex items-center gap-2 mb-2.5">
+            <span className="text-[10px] font-bold bg-red-600/15 text-red-400 border border-red-600/20 px-2 py-0.5 rounded-md">
+              Bài {idx + 1}
+            </span>
 
-                          const cardBody = (
-                            <div className={`relative overflow-hidden bg-zinc-800/50 rounded-2xl p-4 transition-all h-full flex flex-col ${reviewLesson ? 'border border-red-600/20 hover:border-red-500/30 shadow-lg shadow-red-600/10' : 'border border-zinc-700/40'}`}>
-                              <div className="flex items-center gap-3 mb-3">
-                                <div className={`w-11 h-11 rounded-xl flex items-center justify-center text-lg ${part === 5 ? 'bg-green-600/10 border border-green-600/20 text-green-400' : 'bg-emerald-600/10 border border-emerald-500/20 text-emerald-300'}`}>
-                                  {partInfo?.icon || '📄'}
-                                </div>
-                                <div className="flex-1 min-w-0">
-                                  <p className="text-[13px] text-white font-semibold truncate">
-                                    {partInfo?.label || `Part ${part}`}
-                                  </p>
-                                </div>
-                                <span className="text-[10px] bg-zinc-900/70 border border-zinc-700/50 text-zinc-400 rounded-full px-2 py-1 shrink-0">
-                                  Part {part}
-                                </span>
-                              </div>
+            <span className="text-[10px] text-zinc-600">
+              Part {lesson.part}
+            </span>
+          </div>
 
-                              <p className="text-[11px] text-zinc-500 mb-3 flex-1">
-                                {partInfo?.desc}
-                              </p>
+          <div className="flex items-center gap-3">
+            <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-green-600/20 to-green-500/10 border border-green-600/20 flex items-center justify-center text-lg shrink-0">
+              {partInfo?.icon || "📄"}
+            </div>
 
-                              <div className="text-[11px] text-zinc-400 mb-4">
-                                {reviewLesson
-                                  ? `Sẵn sàng ôn lại — ${questionCount} câu`
-                                  : 'Chưa có dữ liệu ôn tập'}
-                              </div>
+            <div className="flex-1 min-w-0">
+              <p className="text-[13px] text-white font-semibold truncate">
+                {partInfo?.label || `Part ${lesson.part}`}
+              </p>
 
-                              <div className="text-center mt-auto">
-                                <span className={`inline-flex items-center justify-center w-full rounded-xl py-3 text-[12px] font-semibold ${reviewLesson ? 'bg-red-600 text-white' : 'bg-zinc-800 text-zinc-500'}`}>
-                                  {reviewLesson ? 'Ôn lại' : 'Chưa có dữ liệu'}
-                                </span>
-                              </div>
-                            </div>
-                          );
+              <p className="text-[11px] text-zinc-500">
+                {questionCount} câu hỏi
+              </p>
+            </div>
 
-                          return reviewLesson ? (
-                            <Link
-                              key={part}
-                              href={`/dashboard/courses/reading/review`}
-                              className="block h-full"
-                            >
-                              {cardBody}
-                            </Link>
-                          ) : (
-                            <div key={part} className="h-full">{cardBody}</div>
-                          );
-                        })}
-                      </div>
-                    </div>
-                  </>
-                )}
+            <div className="text-zinc-600 group-hover/card:text-red-400 transition-colors text-lg">
+              ›
+            </div>
+          </div>
+
+          <div className="mt-3 text-center text-[11px] font-semibold text-red-400 bg-red-600/8 border border-red-600/15 py-1.5 rounded-lg group-hover/card:bg-red-600/15 transition-all">
+            Bắt đầu học
+          </div>
+        </Link>
+      );
+    })}
+  </div>
+)}
+
+{/* ================================================== */}
+{/* REVIEW READING - LUÔN HIỂN THỊ */}
+{/* ================================================== */}
+
+<div className="mt-6 space-y-4">
+  <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between mb-2 gap-3">
+    <div>
+      <p className="text-[13px] text-white font-semibold">
+        🔁 Ôn lại Reading
+      </p>
+
+      <p className="text-[11px] text-zinc-500 mt-1">
+        Tách riêng khỏi phần học hôm nay, gồm 3 Part
+        review và ôn tập bài đã học.
+      </p>
+    </div>
+
+    <Link
+      href="/dashboard/courses/reading/review"
+      className="inline-flex items-center justify-center rounded-full border border-red-600/20 bg-red-600/10 px-4 py-2 text-[11px] font-semibold text-red-300 hover:bg-red-600/15 transition"
+    >
+      Đi tới ôn tập bài đã học
+    </Link>
+  </div>
+
+  <div className="grid sm:grid-cols-3 gap-3">
+    {[5, 6, 7].map((part) => {
+      const partInfo = READING_PARTS.find(
+        (item) => item.part === part
+      );
+
+      const reviewLesson =
+        readingReviewLessons.find(
+          (lesson) => lesson.part === part
+        );
+
+      const questionCount =
+        reviewLesson?.reading_lesson_groups?.reduce(
+          (sum, group) =>
+            sum +
+            (group.reading_questions?.length ?? 0),
+          0
+        ) ?? 0;
+
+      const cardBody = (
+        <div
+          className={`relative overflow-hidden bg-zinc-800/50 rounded-2xl p-4 transition-all h-full flex flex-col ${
+            reviewLesson
+              ? "border border-red-600/20 hover:border-red-500/30 shadow-lg shadow-red-600/10"
+              : "border border-zinc-700/40"
+          }`}
+        >
+          <div className="flex items-center gap-3 mb-3">
+            <div
+              className={`w-11 h-11 rounded-xl flex items-center justify-center text-lg ${
+                part === 5
+                  ? "bg-green-600/10 border border-green-600/20 text-green-400"
+                  : "bg-emerald-600/10 border border-emerald-500/20 text-emerald-300"
+              }`}
+            >
+              {partInfo?.icon || "📄"}
+            </div>
+
+            <div className="flex-1 min-w-0">
+              <p className="text-[13px] text-white font-semibold truncate">
+                {partInfo?.label || `Part ${part}`}
+              </p>
+            </div>
+
+            <span className="text-[10px] bg-zinc-900/70 border border-zinc-700/50 text-zinc-400 rounded-full px-2 py-1 shrink-0">
+              Part {part}
+            </span>
+          </div>
+
+          <p className="text-[11px] text-zinc-500 mb-3 flex-1">
+            {partInfo?.desc}
+          </p>
+
+          <div className="text-[11px] text-zinc-400 mb-4">
+            {reviewLesson
+              ? `Sẵn sàng ôn lại — ${questionCount} câu`
+              : "Chưa có dữ liệu ôn tập"}
+          </div>
+
+          <div className="text-center mt-auto">
+            <span
+              className={`inline-flex items-center justify-center w-full rounded-xl py-3 text-[12px] font-semibold ${
+                reviewLesson
+                  ? "bg-red-600 text-white"
+                  : "bg-zinc-800 text-zinc-500"
+              }`}
+            >
+              {reviewLesson
+                ? "Ôn lại"
+                : "Chưa có dữ liệu"}
+            </span>
+          </div>
+        </div>
+      );
+
+      return reviewLesson ? (
+        <Link
+          key={part}
+          href="/dashboard/courses/reading/review"
+          className="block h-full"
+        >
+          {cardBody}
+        </Link>
+      ) : (
+        <div key={part} className="h-full">
+          {cardBody}
+        </div>
+      );
+    })}
+  </div>
+</div>
               </>
             )}
           </div>
