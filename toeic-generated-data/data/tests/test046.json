@@ -5789,6 +5789,12 @@
               "option_text": "$379",
               "is_correct": false,
               "display_order": 3
+            },
+            {
+              "option_label": "D",
+              "option_text": "To promote a new product",
+              "is_correct": false,
+              "display_order": 4
             }
           ]
         },
@@ -7385,6 +7391,12 @@
               "option_text": "$379",
               "is_correct": false,
               "display_order": 3
+            },
+            {
+              "option_label": "D",
+              "option_text": "To promote a new product",
+              "is_correct": false,
+              "display_order": 4
             }
           ]
         },

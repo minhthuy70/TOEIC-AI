@@ -5891,6 +5891,12 @@
               "display_order": 2
             },
             {
+              "option_label": "C",
+              "option_text": "To promote a new product",
+              "is_correct": false,
+              "display_order": 3
+            },
+            {
               "option_label": "D",
               "option_text": "$649",
               "is_correct": true,
