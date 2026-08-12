@@ -2395,32 +2395,32 @@ async updateListeningGroup(
           },
 
           data: {
-            ...(body.title !== undefined && {
-              title:
-                body.title.trim() || null,
-            }),
+  ...(body.title !== undefined && {
+    title:
+      body.title?.trim() || null,
+  }),
 
-            ...(body.audioUrl !== undefined && {
-              audio_url:
-                body.audioUrl.trim() || null,
-            }),
+  ...(body.audioUrl !== undefined && {
+    audio_url:
+      body.audioUrl?.trim() || null,
+  }),
 
-            ...(body.imageUrl !== undefined && {
-              image_url:
-                body.imageUrl.trim() || null,
-            }),
+  ...(body.imageUrl !== undefined && {
+    image_url:
+      body.imageUrl?.trim() || null,
+  }),
 
-            ...(body.knowledge !== undefined && {
-              knowledge:
-                body.knowledge.trim() || null,
-            }),
+  ...(body.knowledge !== undefined && {
+    knowledge:
+      body.knowledge?.trim() || null,
+  }),
 
-            ...(body.displayOrder !== undefined && {
-              display_order: Number(
-                body.displayOrder,
-              ),
-            }),
-          },
+  ...(body.displayOrder !== undefined && {
+    display_order: Number(
+      body.displayOrder,
+    ),
+  }),
+},
         });
 
         // ==================================================
@@ -2445,7 +2445,8 @@ async updateListeningGroup(
             body.questions
               .filter(
                 (question) =>
-                  question.id !== undefined,
+                  question.id !== undefined &&
+question.id !== null,
               )
               .map(
                 (question) =>
@@ -2493,7 +2494,8 @@ async updateListeningGroup(
               body.questions[questionIndex];
 
             const questionId =
-              question.id !== undefined
+              question.id !== undefined &&
+question.id !== null
                 ? Number(question.id)
                 : null;
 
@@ -2622,7 +2624,8 @@ async updateListeningGroup(
               question.options
                 .filter(
                   (option) =>
-                    option.id !== undefined,
+                    option.id !== undefined &&
+        option.id !== null,
                 )
                 .map(
                   (option) =>
@@ -2673,7 +2676,8 @@ async updateListeningGroup(
                 ];
 
               const optionId =
-                option.id !== undefined
+                option.id !== undefined &&
+        option.id !== null
                   ? Number(option.id)
                   : null;
 
