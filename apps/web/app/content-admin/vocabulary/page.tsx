@@ -281,9 +281,57 @@ async function handleSaveVocabulary() {
   setShowForm(true);
 }
 
-  function deleteVocabulary(id: number) {
-    alert(`Chức năng xóa từ vựng #${id} sẽ làm tiếp`);
+  async function deleteVocabulary(id: number) {
+  const item = items.find(
+    (item) => item.id === id,
+  );
+
+  const confirmed = window.confirm(
+    `Bạn có chắc muốn xóa từ vựng "${
+      item?.english || `#${id}`
+    }"?\n\nDữ liệu tiến độ học của người dùng đối với từ này cũng sẽ bị xóa.`,
+  );
+
+  if (!confirmed) {
+    return;
   }
+
+  try {
+    const token =
+      localStorage.getItem("accessToken");
+
+    const res = await fetch(
+      `${API_URL}/admin/vocabulary/${id}`,
+      {
+        method: "DELETE",
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      },
+    );
+
+    const data = await res.json();
+
+    if (!res.ok) {
+      throw new Error(
+        data?.message ||
+          "Không thể xóa từ vựng",
+      );
+    }
+
+    alert("Xóa từ vựng thành công");
+
+    await loadVocabulary(page);
+  } catch (error) {
+    console.error(error);
+
+    alert(
+      error instanceof Error
+        ? error.message
+        : "Không thể xóa từ vựng",
+    );
+  }
+}
   
   function updateForm(
   field: keyof VocabularyForm,

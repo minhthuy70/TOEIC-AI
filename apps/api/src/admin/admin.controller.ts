@@ -1,6 +1,7 @@
 import {
   Body,
   Controller,
+  Delete,
   Get,
   Patch,
   Param,
@@ -337,6 +338,61 @@ async updateVocabulary(
     success: true,
     message: "Cập nhật từ vựng thành công",
     item: vocabulary,
+  };
+}
+
+@Delete("vocabulary/:id")
+@Roles(
+  UserRole.SUPER_ADMIN,
+  UserRole.CONTENT_ADMIN,
+)
+async deleteVocabulary(
+  @Param("id") id: string,
+) {
+  const vocabularyId = Number(id);
+
+  if (
+    !Number.isInteger(vocabularyId) ||
+    vocabularyId <= 0
+  ) {
+    throw new NotFoundException(
+      "ID từ vựng không hợp lệ",
+    );
+  }
+
+  const existing =
+    await this.prisma.vocabulary.findUnique({
+      where: {
+        id: vocabularyId,
+      },
+    });
+
+  if (!existing) {
+    throw new NotFoundException(
+      "Không tìm thấy từ vựng",
+    );
+  }
+
+  await this.prisma.$transaction(async (tx) => {
+    // Xóa tiến độ học của người dùng trước
+    await tx.userVocabularyProgress.deleteMany({
+      where: {
+        vocabularyId: vocabularyId,
+      },
+    });
+
+    // Sau đó mới xóa từ vựng
+    await tx.vocabulary.delete({
+      where: {
+        id: vocabularyId,
+      },
+    });
+  });
+
+  return {
+    success: true,
+    message: "Xóa từ vựng thành công",
+    id: vocabularyId,
   };
 }
 }
