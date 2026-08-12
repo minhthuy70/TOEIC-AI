@@ -42,63 +42,93 @@ export default function VocabularyAdminPage() {
 
   const limit = 10;
 
-  async function loadVocabulary(currentPage = page) {
-    try {
-      setLoading(true);
+  async function loadVocabulary(
+  currentPage = page,
+  currentSearch = search,
+  currentStage = stage,
+  currentTopic = topic,
+) {
+  try {
+    setLoading(true);
 
-      const params = new URLSearchParams();
+    const params = new URLSearchParams();
 
-      params.set("page", String(currentPage));
-      params.set("limit", String(limit));
+    params.set("page", String(currentPage));
+    params.set("limit", String(limit));
 
-      if (search.trim()) {
-        params.set("search", search.trim());
-      }
+    if (currentSearch.trim()) {
+      params.set(
+        "search",
+        currentSearch.trim(),
+      );
+    }
 
-      if (stage) {
-        params.set("stage", stage);
-      }
+    if (currentStage) {
+      params.set(
+        "stage",
+        currentStage,
+      );
+    }
 
-      if (topic) {
-        params.set("topic", topic);
-      }
+    if (currentTopic.trim()) {
+      params.set(
+        "topic",
+        currentTopic.trim(),
+      );
+    }
 
-      const token = localStorage.getItem("accessToken");
-
-      const res = await fetch(
-        `${API_URL}/admin/vocabulary?${params.toString()}`,
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        }
+    const token =
+      localStorage.getItem(
+        "accessToken",
       );
 
-      if (!res.ok) {
-        throw new Error("Không thể tải danh sách từ vựng");
-      }
+    const res = await fetch(
+      `${API_URL}/admin/vocabulary?${params.toString()}`,
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      },
+    );
 
-      const data: VocabularyResponse = await res.json();
-
-      setItems(data.items);
-      setTotal(data.total);
-      setTotalPages(data.totalPages);
-    } catch (error) {
-      console.error(error);
-      alert("Không thể tải dữ liệu từ vựng");
-    } finally {
-      setLoading(false);
+    if (!res.ok) {
+      throw new Error(
+        "Không thể tải danh sách từ vựng",
+      );
     }
+
+    const data: VocabularyResponse =
+      await res.json();
+
+    setItems(data.items);
+    setTotal(data.total);
+    setPage(data.page);
+    setTotalPages(data.totalPages);
+  } catch (error) {
+    console.error(error);
+
+    alert(
+      "Không thể tải dữ liệu từ vựng",
+    );
+  } finally {
+    setLoading(false);
   }
+}
 
   useEffect(() => {
     loadVocabulary(1);
   }, []);
 
   function handleSearch() {
-    setPage(1);
-    loadVocabulary(1);
-  }
+  setPage(1);
+
+  loadVocabulary(
+    1,
+    search,
+    stage,
+    topic,
+  );
+}
 
   function handleReset() {
     setSearch("");
@@ -220,13 +250,18 @@ export default function VocabularyAdminPage() {
             <select
               value={stage}
               onChange={(e) => {
-                setStage(e.target.value);
-                setPage(1);
+  const newStage = e.target.value;
 
-                setTimeout(() => {
-                  loadVocabulary(1);
-                }, 0);
-              }}
+  setStage(newStage);
+  setPage(1);
+
+  loadVocabulary(
+    1,
+    search,
+    newStage,
+    topic,
+  );
+}}
               className="w-full bg-zinc-800 border border-zinc-700 rounded-xl px-4 py-3 outline-none focus:border-red-500"
             >
               <option value="">Tất cả chặng</option>

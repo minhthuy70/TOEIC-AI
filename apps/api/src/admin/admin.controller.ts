@@ -134,6 +134,7 @@ async getVocabulary(
   @Query("limit") limit = "10",
   @Query("search") search = "",
   @Query("stage") stage?: string,
+  @Query("topic") topic?: string,
 ) {
   const pageNumber = Math.max(Number(page), 1);
   const limitNumber = Math.min(
@@ -164,8 +165,19 @@ async getVocabulary(
   }
 
   if (stage) {
-    where.stage = Number(stage);
+  const stageNumber = Number(stage);
+
+  if (Number.isInteger(stageNumber) && stageNumber >= 1) {
+    where.stage = stageNumber;
   }
+}
+
+if (topic?.trim()) {
+  where.topic = {
+    contains: topic.trim(),
+    mode: "insensitive",
+  };
+}
 
   const [items, total] =
     await Promise.all([
