@@ -1,6 +1,9 @@
 import {
   Controller,
   Get,
+  Patch,
+  Param,
+  Body,
   UseGuards,
 } from "@nestjs/common";
 
@@ -69,6 +72,7 @@ async getUsers() {
       fullName: true,
       email: true,
       createdAt: true,
+      role: true,
       profile: {
         select: {
           currentScore: true,
@@ -80,5 +84,46 @@ async getUsers() {
       id: "asc",
     },
   });
+}
+@Patch("users/:id/role")
+@Roles(UserRole.SUPER_ADMIN)
+async updateUserRole(
+  @Param("id") id: string,
+  @Body() body: { role: UserRole },
+) {
+  const userId = Number(id);
+
+  const user = await this.prisma.user.findUnique({
+    where: {
+      id: userId,
+    },
+  });
+
+  if (!user) {
+    return {
+      message: "Không tìm thấy người dùng",
+    };
+  }
+
+  const updatedUser =
+    await this.prisma.user.update({
+      where: {
+        id: userId,
+      },
+      data: {
+        role: body.role,
+      },
+      select: {
+        id: true,
+        fullName: true,
+        email: true,
+        role: true,
+      },
+    });
+
+  return {
+    message: "Cập nhật quyền thành công",
+    user: updatedUser,
+  };
 }
 }
