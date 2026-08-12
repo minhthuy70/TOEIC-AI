@@ -1,0 +1,272 @@
+"use client";
+
+import {
+  useEffect,
+  useState,
+} from "react";
+
+import {
+  usePathname,
+  useRouter,
+} from "next/navigation";
+
+import Link from "next/link";
+
+type UserRole =
+  | "USER"
+  | "CONTENT_ADMIN"
+  | "SUPER_ADMIN";
+
+type User = {
+  id: number;
+  fullName: string;
+  email: string;
+  role: UserRole;
+};
+
+export default function AdminLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
+  const router = useRouter();
+  const pathname = usePathname();
+
+  const [user, setUser] =
+    useState<User | null>(null);
+
+  useEffect(() => {
+    const storedUser =
+      localStorage.getItem("user");
+
+    if (!storedUser) {
+      router.replace("/login");
+      return;
+    }
+
+    try {
+      const parsedUser =
+        JSON.parse(storedUser);
+
+      if (
+        parsedUser.role !== "SUPER_ADMIN" &&
+        parsedUser.role !== "CONTENT_ADMIN"
+      ) {
+        router.replace("/dashboard");
+        return;
+      }
+
+      setUser(parsedUser);
+    } catch {
+      localStorage.removeItem("user");
+      router.replace("/login");
+    }
+  }, [router]);
+
+  if (!user) {
+    return (
+      <div className="min-h-screen bg-black flex items-center justify-center text-white">
+        Đang tải...
+      </div>
+    );
+  }
+
+  const isSuperAdmin =
+    user.role === "SUPER_ADMIN";
+
+  return (
+    <div className="min-h-screen bg-zinc-950 text-white flex">
+      {/* SIDEBAR */}
+      <aside className="w-64 h-screen bg-zinc-900 border-r border-zinc-800 fixed left-0 top-0 flex flex-col">
+        <div className="p-6 border-b border-zinc-800">
+          <div className="flex items-center gap-3">
+            <div className="w-10 h-10 rounded-xl bg-red-600 flex items-center justify-center font-bold text-xl">
+              B
+            </div>
+
+            <div>
+              <h1 className="font-bold text-lg">
+                BELLA
+              </h1>
+
+              <p className="text-xs text-zinc-500">
+                ADMIN
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <nav className="admin-sidebar-scroll p-4 space-y-2 flex-1 overflow-y-auto pb-4">
+          <AdminLink
+            href="/admin"
+            active={pathname === "/admin"}
+            icon="📊"
+          >
+            Dashboard
+          </AdminLink>
+
+          {isSuperAdmin && (
+            <AdminLink
+              href="/admin/users"
+              active={pathname.startsWith(
+                "/admin/users"
+              )}
+              icon="👥"
+            >
+              Người dùng
+            </AdminLink>
+          )}
+
+          <div className="pt-5 pb-2 px-3">
+            <p className="text-xs font-semibold text-zinc-500 uppercase">
+              Nội dung
+            </p>
+          </div>
+
+          <AdminLink
+            href="/admin/vocabulary"
+            active={pathname.startsWith(
+              "/admin/vocabulary"
+            )}
+            icon="📚"
+          >
+            Từ vựng
+          </AdminLink>
+
+          <AdminLink
+            href="/admin/grammar"
+            active={pathname.startsWith(
+              "/admin/grammar"
+            )}
+            icon="📖"
+          >
+            Ngữ pháp
+          </AdminLink>
+
+          <AdminLink
+            href="/admin/listening"
+            active={pathname.startsWith(
+              "/admin/listening"
+            )}
+            icon="🎧"
+          >
+            Listening
+          </AdminLink>
+
+          <AdminLink
+            href="/admin/reading"
+            active={pathname.startsWith(
+              "/admin/reading"
+            )}
+            icon="📕"
+          >
+            Reading
+          </AdminLink>
+
+          <AdminLink
+            href="/admin/tests"
+            active={pathname.startsWith(
+              "/admin/tests"
+            )}
+            icon="📝"
+          >
+            Đề thi
+          </AdminLink>
+
+          {isSuperAdmin && (
+            <>
+              <div className="pt-5 pb-2 px-3">
+                <p className="text-xs font-semibold text-zinc-500 uppercase">
+                  Hệ thống
+                </p>
+              </div>
+
+              <AdminLink
+                href="/admin/settings"
+                active={pathname.startsWith(
+                  "/admin/settings"
+                )}
+                icon="⚙️"
+              >
+                Cài đặt
+              </AdminLink>
+            </>
+          )}
+        </nav>
+
+        {/* USER */}
+        <div className="bottom-0 left-0 right-0 p-4 border-t border-zinc-800">
+          <div className="bg-zinc-800 rounded-xl p-3">
+            <p className="font-semibold text-sm truncate">
+              {user.fullName}
+            </p>
+
+            <p className="text-xs text-zinc-500 truncate">
+              {user.email}
+            </p>
+
+            <div className="mt-2">
+              <span
+                className={`text-xs px-2 py-1 rounded-md ${
+                  isSuperAdmin
+                    ? "bg-red-600/20 text-red-400"
+                    : "bg-blue-600/20 text-blue-400"
+                }`}
+              >
+                {user.role}
+              </span>
+            </div>
+          </div>
+
+          <button
+            onClick={() => {
+              localStorage.removeItem(
+                "accessToken"
+              );
+              localStorage.removeItem("user");
+
+              router.push("/login");
+            }}
+            className="w-full mt-3 py-2 rounded-lg text-sm text-zinc-400 hover:text-white hover:bg-zinc-800 transition"
+          >
+            Đăng xuất
+          </button>
+        </div>
+      </aside>
+
+      {/* MAIN */}
+      <main className="ml-64 flex-1 min-h-screen">
+        {children}
+      </main>
+    </div>
+  );
+}
+
+function AdminLink({
+  href,
+  active,
+  icon,
+  children,
+}: {
+  href: string;
+  active: boolean;
+  icon: string;
+  children: React.ReactNode;
+}) {
+  return (
+    <Link
+      href={href}
+      className={`flex items-center gap-3 px-3 py-3 rounded-xl transition ${
+        active
+          ? "bg-red-600 text-white"
+          : "text-zinc-400 hover:bg-zinc-800 hover:text-white"
+      }`}
+    >
+      <span>{icon}</span>
+
+      <span className="font-medium">
+        {children}
+      </span>
+    </Link>
+  );
+}

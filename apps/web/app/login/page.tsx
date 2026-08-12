@@ -37,11 +37,16 @@ if (data.accessToken) {
     JSON.stringify(data.user)
   );
 
-  if (!data.user.firstLoginCompleted) {
-    router.push("/onboarding");
-  } else {
-    router.push("/dashboard");
-  }
+  if (
+  data.user.role === "SUPER_ADMIN" ||
+  data.user.role === "CONTENT_ADMIN"
+) {
+  router.push("/admin");
+} else if (!data.user.firstLoginCompleted) {
+  router.push("/onboarding");
+} else {
+  router.push("/dashboard");
+}
 } else {
   alert(data.message || "Đăng nhập thất bại");
 }
