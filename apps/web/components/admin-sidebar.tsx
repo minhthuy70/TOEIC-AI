@@ -1,5 +1,7 @@
+
 "use client";
 
+import { useState } from "react";
 import { usePathname, useRouter } from "next/navigation";
 import Link from "next/link";
 
@@ -24,6 +26,10 @@ export default function AdminSidebar({
   const pathname = usePathname();
 
   const isSuperAdmin = user.role === "SUPER_ADMIN";
+
+  const [grammarOpen, setGrammarOpen] = useState(
+  pathname.startsWith("/content-admin/grammar")
+);
 
   return (
     <aside className="w-64 h-screen bg-zinc-900 border-r border-zinc-800 fixed left-0 top-0 flex flex-col">
@@ -82,13 +88,57 @@ export default function AdminSidebar({
           Từ vựng
         </AdminLink>
 
-        <AdminLink
-          href="/admin/grammar"
-          active={pathname.startsWith("/admin/grammar")}
-          icon="📖"
-        >
-          Ngữ pháp
-        </AdminLink>
+        {/* NGỮ PHÁP */}
+<div>
+  <button
+    type="button"
+    onClick={() => setGrammarOpen((prev) => !prev)}
+    className={`w-full flex items-center justify-between gap-3 px-3 py-3 rounded-xl transition ${
+      pathname.startsWith("/content-admin/grammar")
+        ? "bg-red-600 text-white"
+        : "text-zinc-400 hover:bg-zinc-800 hover:text-white"
+    }`}
+  >
+    <div className="flex items-center gap-3">
+      <span>📖</span>
+
+      <span className="font-medium">
+        Ngữ pháp
+      </span>
+    </div>
+
+  </button>
+
+  {grammarOpen && (
+    <div className="ml-5 mt-1 space-y-1 border-l border-zinc-800 pl-3">
+      <Link
+        href="/content-admin/grammar/categories"
+        className={`block px-3 py-2 rounded-lg text-sm transition ${
+          pathname.startsWith(
+            "/content-admin/grammar/categories"
+          )
+            ? "bg-zinc-800 text-white"
+            : "text-zinc-500 hover:bg-zinc-800 hover:text-white"
+        }`}
+      >
+        📂 Danh mục
+      </Link>
+
+      <Link
+        href="/content-admin/grammar/lessons"
+        className={`block px-3 py-2 rounded-lg text-sm transition ${
+          pathname.startsWith(
+            "/content-admin/grammar/lessons"
+          )
+            ? "bg-zinc-800 text-white"
+            : "text-zinc-500 hover:bg-zinc-800 hover:text-white"
+        }`}
+      >
+        📚 Bài học
+      </Link>
+    </div>
+  )}
+</div>
 
         <AdminLink
           href="/admin/listening"
