@@ -149,8 +149,8 @@ export default function AdminSidebar({
         </AdminLink>
 
         <AdminLink
-          href="/admin/reading"
-          active={pathname.startsWith("/admin/reading")}
+          href="/content-admin/reading"
+          active={pathname.startsWith("/content-admin/reading")}
           icon="📕"
         >
           Reading

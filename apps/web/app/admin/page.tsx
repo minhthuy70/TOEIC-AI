@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Link from "next/link";
 
 type User = {
   fullName: string;
@@ -90,29 +91,37 @@ export default function AdminPage() {
         </h2>
 
         <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-5">
-          <ModuleCard
-            icon="📚"
-            title="Từ vựng"
-            description="Quản lý kho từ vựng TOEIC"
-          />
+          <Link href="/content-admin/vocabulary">
+            <ModuleCard
+              icon="📚"
+              title="Từ vựng"
+              description="Quản lý kho từ vựng TOEIC"
+            />
+          </Link>
 
-          <ModuleCard
-            icon="📖"
-            title="Ngữ pháp"
-            description="Quản lý danh mục và bài học"
-          />
+          <Link href="/content-admin/grammar/categories">
+            <ModuleCard
+              icon="📖"
+              title="Ngữ pháp"
+              description="Quản lý danh mục và bài học"
+            />
+          </Link>
 
-          <ModuleCard
-            icon="🎧"
-            title="Listening"
-            description="Quản lý bài nghe và câu hỏi"
-          />
+          <Link href="/content-admin/listening">
+            <ModuleCard
+              icon="🎧"
+              title="Listening"
+              description="Quản lý bài nghe và câu hỏi"
+            />
+          </Link>
 
-          <ModuleCard
-            icon="📕"
-            title="Reading"
-            description="Quản lý bài đọc và câu hỏi"
-          />
+          <Link href="/content-admin/reading">
+            <ModuleCard
+              icon="📕"
+              title="Reading"
+              description="Quản lý bài đọc và câu hỏi"
+            />
+          </Link>
 
           <ModuleCard
             icon="📝"
@@ -161,7 +170,7 @@ function ModuleCard({
   description: string;
 }) {
   return (
-    <div className="bg-zinc-900 border border-zinc-800 rounded-2xl p-6 hover:border-zinc-700 transition cursor-pointer">
+    <div className="bg-zinc-900 border border-zinc-800 rounded-2xl p-6 hover:border-zinc-700 transition">
       <div className="text-3xl">
         {icon}
       </div>

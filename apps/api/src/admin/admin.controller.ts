@@ -2883,5 +2883,1444 @@ async deleteListeningGroup(
   };
 }
 
+// ======================================================
+// READING LESSONS
+// ======================================================
+
+@Get("reading/lessons")
+@Roles(
+  UserRole.SUPER_ADMIN,
+  UserRole.CONTENT_ADMIN,
+)
+async getReadingLessons(
+  @Query("page") page = "1",
+  @Query("limit") limit = "10",
+  @Query("search") search = "",
+  @Query("part") part?: string,
+  @Query("stage") stage?: string,
+) {
+  const pageNumber = Math.max(Number(page), 1);
+
+  const limitNumber = Math.min(
+    Math.max(Number(limit), 1),
+    100,
+  );
+
+  const skip =
+    (pageNumber - 1) * limitNumber;
+
+  const where: any = {};
+
+  // Tìm kiếm theo title
+  if (search.trim()) {
+    where.title = {
+      contains: search.trim(),
+      mode: "insensitive",
+    };
+  }
+
+  // Lọc Part (Reading: Part 5-7)
+  if (part) {
+    const partNumber = Number(part);
+
+    if (
+      Number.isInteger(partNumber) &&
+      partNumber >= 5 &&
+      partNumber <= 7
+    ) {
+      where.part = partNumber;
+    }
+  }
+
+  // Lọc Stage (Difficulty)
+  if (stage) {
+    const stageNumber = Number(stage);
+
+    if (
+      Number.isInteger(stageNumber) &&
+      stageNumber >= 1 &&
+      stageNumber <= 5
+    ) {
+      where.difficulty = stageNumber;
+    }
+  }
+
+  const [items, total] =
+    await Promise.all([
+      this.prisma.reading_lessons.findMany({
+        where,
+        skip,
+        take: limitNumber,
+
+        orderBy: [
+          {
+            part: "asc",
+          },
+          {
+            difficulty: "asc",
+          },
+          {
+            display_order: "asc",
+          },
+          {
+            id: "asc",
+          },
+        ],
+
+        select: {
+          id: true,
+          title: true,
+          part: true,
+          display_order: true,
+          created_at: true,
+          updated_at: true,
+          description: true,
+          difficulty: true,
+
+          _count: {
+            select: {
+              reading_lesson_groups: true,
+              user_reading_progress: true,
+            },
+          },
+        },
+      }),
+
+      this.prisma.reading_lessons.count({
+        where,
+      }),
+    ]);
+
+  return {
+    items,
+    total,
+    page: pageNumber,
+    limit: limitNumber,
+    totalPages: Math.ceil(
+      total / limitNumber,
+    ),
+  };
+}
+
+@Get("reading/lessons/:id")
+@Roles(
+  UserRole.SUPER_ADMIN,
+  UserRole.CONTENT_ADMIN,
+)
+async getReadingLesson(
+  @Param("id") id: string,
+) {
+  const lessonId = Number(id);
+
+  if (
+    !Number.isInteger(lessonId) ||
+    lessonId <= 0
+  ) {
+    throw new BadRequestException(
+      "ID bài Reading không hợp lệ",
+    );
+  }
+
+  const lesson =
+    await this.prisma.reading_lessons.findUnique({
+      where: {
+        id: lessonId,
+      },
+
+      select: {
+        id: true,
+        title: true,
+        part: true,
+        display_order: true,
+        created_at: true,
+        updated_at: true,
+        description: true,
+        difficulty: true,
+
+        reading_lesson_groups: {
+          orderBy: [
+            {
+              display_order: "asc",
+            },
+            {
+              id: "asc",
+            },
+          ],
+
+          select: {
+            id: true,
+            lesson_id: true,
+            title: true,
+            passage: true,
+            knowledge: true,
+            display_order: true,
+
+            _count: {
+              select: {
+                reading_questions: true,
+                user_reading_progress: true,
+              },
+            },
+          },
+        },
+
+        _count: {
+          select: {
+            reading_lesson_groups: true,
+            user_reading_progress: true,
+          },
+        },
+      },
+    });
+
+  if (!lesson) {
+    throw new NotFoundException(
+      "Không tìm thấy bài Reading",
+    );
+  }
+
+  return lesson;
+}
+
+@Post("reading/lessons")
+@Roles(
+  UserRole.SUPER_ADMIN,
+  UserRole.CONTENT_ADMIN,
+)
+async createReadingLesson(
+  @Body()
+  body: {
+    title: string;
+    part: number;
+    stage: number;
+    displayOrder?: number;
+    description?: string;
+  },
+) {
+  if (!body.title?.trim()) {
+    throw new BadRequestException(
+      "Tiêu đề bài Reading không được để trống",
+    );
+  }
+
+  const part = Number(body.part);
+
+  if (
+    !Number.isInteger(part) ||
+    part < 5 ||
+    part > 7
+  ) {
+    throw new BadRequestException(
+      "Part phải từ 5 đến 7",
+    );
+  }
+
+  const stage = Number(body.stage);
+
+  if (
+    !Number.isInteger(stage) ||
+    stage < 1 ||
+    stage > 5
+  ) {
+    throw new BadRequestException(
+      "Stage phải từ 1 đến 5",
+    );
+  }
+
+  const displayOrder =
+    body.displayOrder !== undefined
+      ? Number(body.displayOrder)
+      : 0;
+
+  if (
+    !Number.isInteger(displayOrder) ||
+    displayOrder < 0
+  ) {
+    throw new BadRequestException(
+      "Display order không hợp lệ",
+    );
+  }
+
+  const lesson =
+    await this.prisma.reading_lessons.create({
+      data: {
+        title: body.title.trim(),
+        part,
+        display_order: displayOrder,
+        description: body.description?.trim() || null,
+        difficulty: stage,
+      },
+
+      select: {
+        id: true,
+        title: true,
+        part: true,
+        display_order: true,
+        description: true,
+        difficulty: true,
+        created_at: true,
+        updated_at: true,
+      },
+    });
+
+  return {
+    success: true,
+    message:
+      "Thêm bài Reading thành công",
+    item: lesson,
+  };
+}
+
+@Patch("reading/lessons/:id")
+@Roles(
+  UserRole.SUPER_ADMIN,
+  UserRole.CONTENT_ADMIN,
+)
+async updateReadingLesson(
+  @Param("id") id: string,
+  @Body()
+  body: {
+    title: string;
+    part: number;
+    stage: number;
+    displayOrder?: number;
+    description?: string;
+  },
+) {
+  const lessonId = Number(id);
+
+  if (
+    !Number.isInteger(lessonId) ||
+    lessonId <= 0
+  ) {
+    throw new BadRequestException(
+      "ID bài Reading không hợp lệ",
+    );
+  }
+
+  const existing =
+    await this.prisma.reading_lessons.findUnique({
+      where: {
+        id: lessonId,
+      },
+    });
+
+  if (!existing) {
+    throw new NotFoundException(
+      "Không tìm thấy bài Reading",
+    );
+  }
+
+  if (!body.title?.trim()) {
+    throw new BadRequestException(
+      "Tiêu đề bài Reading không được để trống",
+    );
+  }
+
+  const part = Number(body.part);
+
+  if (
+    !Number.isInteger(part) ||
+    part < 5 ||
+    part > 7
+  ) {
+    throw new BadRequestException(
+      "Part phải từ 5 đến 7",
+    );
+  }
+
+  const stage = Number(body.stage);
+
+  if (
+    !Number.isInteger(stage) ||
+    stage < 1 ||
+    stage > 5
+  ) {
+    throw new BadRequestException(
+      "Stage phải từ 1 đến 5",
+    );
+  }
+
+  const displayOrder =
+    body.displayOrder !== undefined
+      ? Number(body.displayOrder)
+      : 0;
+
+  if (
+    !Number.isInteger(displayOrder) ||
+    displayOrder < 0
+  ) {
+    throw new BadRequestException(
+      "Display order không hợp lệ",
+    );
+  }
+
+  const lesson =
+    await this.prisma.reading_lessons.update({
+      where: {
+        id: lessonId,
+      },
+
+      data: {
+        title: body.title.trim(),
+        part,
+        display_order: displayOrder,
+        description: body.description?.trim() || null,
+        difficulty: stage,
+      },
+
+      select: {
+        id: true,
+        title: true,
+        part: true,
+        display_order: true,
+        description: true,
+        difficulty: true,
+        created_at: true,
+        updated_at: true,
+      },
+    });
+
+  return {
+    success: true,
+    message:
+      "Cập nhật bài Reading thành công",
+    item: lesson,
+  };
+}
+
+@Delete("reading/lessons/:id")
+@Roles(
+  UserRole.SUPER_ADMIN,
+  UserRole.CONTENT_ADMIN,
+)
+async deleteReadingLesson(
+  @Param("id") id: string,
+) {
+  const lessonId = Number(id);
+
+  if (
+    !Number.isInteger(lessonId) ||
+    lessonId <= 0
+  ) {
+    throw new BadRequestException(
+      "ID bài Reading không hợp lệ",
+    );
+  }
+
+  const lesson =
+    await this.prisma.reading_lessons.findUnique({
+      where: {
+        id: lessonId,
+      },
+
+      include: {
+        _count: {
+          select: {
+            reading_lesson_groups: true,
+            user_reading_progress: true,
+          },
+        },
+      },
+    });
+
+  if (!lesson) {
+    throw new NotFoundException(
+      "Không tìm thấy bài Reading",
+    );
+  }
+
+  await this.prisma.$transaction(
+    async (tx) => {
+      // Xóa progress của người dùng
+      await tx.user_reading_progress.deleteMany({
+        where: {
+          lesson_id: lessonId,
+        },
+      });
+
+      // Xóa lesson.
+      // Group → Question → Option
+      // sẽ cascade theo FK.
+      await tx.reading_lessons.delete({
+        where: {
+          id: lessonId,
+        },
+      });
+    },
+  );
+
+  return {
+    success: true,
+    message:
+      "Xóa bài Reading thành công",
+    id: lessonId,
+  };
+}
+
+// ======================================================
+// READING GROUPS
+// ======================================================
+
+@Get("reading/lessons/:lessonId/groups")
+@Roles(
+  UserRole.SUPER_ADMIN,
+  UserRole.CONTENT_ADMIN,
+)
+async getReadingGroups(
+  @Param("lessonId") lessonId: string,
+) {
+  const lessonIdNumber = Number(lessonId);
+
+  if (
+    !Number.isInteger(lessonIdNumber) ||
+    lessonIdNumber <= 0
+  ) {
+    throw new BadRequestException(
+      "ID bài Reading không hợp lệ",
+    );
+  }
+
+  const lesson =
+    await this.prisma.reading_lessons.findUnique({
+      where: {
+        id: lessonIdNumber,
+      },
+    });
+
+  if (!lesson) {
+    throw new NotFoundException(
+      "Không tìm thấy bài Reading",
+    );
+  }
+
+  return this.prisma.reading_lesson_groups.findMany({
+    where: {
+      lesson_id: lessonIdNumber,
+    },
+    orderBy: [
+      {
+        display_order: "asc",
+      },
+      {
+        id: "asc",
+      },
+    ],
+    select: {
+      id: true,
+      lesson_id: true,
+      title: true,
+      passage: true,
+      knowledge: true,
+      display_order: true,
+      created_at: true,
+      updated_at: true,
+
+      reading_questions: {
+        orderBy: [
+          {
+            question_number: "asc",
+          },
+          {
+            display_order: "asc",
+          },
+        ],
+        select: {
+          id: true,
+          group_id: true,
+          question_number: true,
+          question_text: true,
+          explanation: true,
+          knowledge: true,
+          display_order: true,
+
+          reading_options: {
+            orderBy: {
+              display_order: "asc",
+            },
+            select: {
+              id: true,
+              question_id: true,
+              option_key: true,
+              option_text: true,
+              is_correct: true,
+              display_order: true,
+            },
+          },
+        },
+      },
+
+      _count: {
+        select: {
+          reading_questions: true,
+          user_reading_progress: true,
+        },
+      },
+    },
+  });
+}
+
+@Get("reading/groups/:id")
+@Roles(
+  UserRole.SUPER_ADMIN,
+  UserRole.CONTENT_ADMIN,
+)
+async getReadingGroup(
+  @Param("id") id: string,
+) {
+  const groupId = Number(id);
+
+  if (
+    !Number.isInteger(groupId) ||
+    groupId <= 0
+  ) {
+    throw new BadRequestException(
+      "ID Group không hợp lệ",
+    );
+  }
+
+  const group =
+    await this.prisma.reading_lesson_groups.findUnique({
+      where: {
+        id: groupId,
+      },
+      select: {
+        id: true,
+        lesson_id: true,
+        title: true,
+        passage: true,
+        knowledge: true,
+        display_order: true,
+        created_at: true,
+        updated_at: true,
+
+        reading_questions: {
+          orderBy: {
+            question_number: "asc",
+          },
+          select: {
+            id: true,
+            group_id: true,
+            question_number: true,
+            question_text: true,
+            explanation: true,
+            knowledge: true,
+            display_order: true,
+
+            reading_options: {
+              orderBy: {
+                display_order: "asc",
+              },
+              select: {
+                id: true,
+                question_id: true,
+                option_key: true,
+                option_text: true,
+                is_correct: true,
+                display_order: true,
+              },
+            },
+          },
+        },
+      },
+    });
+
+  if (!group) {
+    throw new NotFoundException(
+      "Không tìm thấy Group Reading",
+    );
+  }
+
+  return group;
+}
+
+@Post("reading/lessons/:lessonId/groups")
+@Roles(
+  UserRole.SUPER_ADMIN,
+  UserRole.CONTENT_ADMIN,
+)
+async createReadingGroup(
+  @Param("lessonId") lessonId: string,
+  @Body()
+  body: {
+    title?: string;
+    passage?: string;
+    imageUrl?: string;
+    knowledge?: string;
+    displayOrder?: number;
+
+    questions: {
+      questionNumber: number;
+      questionText: string;
+      explanation?: string;
+      knowledge?: string;
+      displayOrder?: number;
+
+      options: {
+        optionKey: string;
+        optionText: string;
+        isCorrect: boolean;
+        displayOrder?: number;
+      }[];
+    }[];
+  },
+) {
+  const lessonIdNumber = Number(lessonId);
+
+  if (
+    !Number.isInteger(lessonIdNumber) ||
+    lessonIdNumber <= 0
+  ) {
+    throw new BadRequestException(
+      "ID bài Reading không hợp lệ",
+    );
+  }
+
+  const lesson =
+    await this.prisma.reading_lessons.findUnique({
+      where: {
+        id: lessonIdNumber,
+      },
+    });
+
+  if (!lesson) {
+    throw new NotFoundException(
+      "Không tìm thấy bài Reading",
+    );
+  }
+
+  if (
+    !Array.isArray(body.questions) ||
+    body.questions.length < 1 ||
+    body.questions.length > 10
+  ) {
+    throw new BadRequestException(
+      "Mỗi Group phải có từ 1 đến 10 câu hỏi",
+    );
+  }
+
+  for (const [index, question] of body.questions.entries()) {
+    if (!question.questionText?.trim()) {
+      throw new BadRequestException(
+        `Câu hỏi ${index + 1} không được để trống`,
+      );
+    }
+
+    if (
+      !Array.isArray(question.options) ||
+      question.options.length !== 4
+    ) {
+      throw new BadRequestException(
+        `Câu hỏi ${index + 1} phải có đúng 4 đáp án`,
+      );
+    }
+
+    const keys = question.options.map(
+      (option) => option.optionKey,
+    );
+
+    const expectedKeys = ["A", "B", "C", "D"];
+
+    if (
+      keys.some(
+        (key, i) =>
+          key.toUpperCase() !== expectedKeys[i],
+      )
+    ) {
+      throw new BadRequestException(
+        `Câu hỏi ${index + 1} phải có đáp án A, B, C, D`,
+      );
+    }
+
+    const correctCount =
+      question.options.filter(
+        (option) => option.isCorrect === true,
+      ).length;
+
+    if (correctCount !== 1) {
+      throw new BadRequestException(
+        `Câu hỏi ${index + 1} phải có đúng 1 đáp án đúng`,
+      );
+    }
+
+    for (const option of question.options) {
+      if (!option.optionText?.trim()) {
+        throw new BadRequestException(
+          `Đáp án ${option.optionKey} của câu ${index + 1} không được để trống`,
+        );
+      }
+    }
+  }
+
+  const displayOrder =
+    body.displayOrder !== undefined
+      ? Number(body.displayOrder)
+      : 0;
+
+  if (
+    !Number.isInteger(displayOrder) ||
+    displayOrder < 0
+  ) {
+    throw new BadRequestException(
+      "Display order không hợp lệ",
+    );
+  }
+
+  const group =
+    await this.prisma.$transaction(async (tx) => {
+      const newGroup =
+        await tx.reading_lesson_groups.create({
+          data: {
+            lesson_id: lessonIdNumber,
+            part: lesson.part,
+            group_number: 1,
+            title: body.title?.trim() || null,
+            passage: body.passage?.trim() || null,
+
+            knowledge:
+              body.knowledge?.trim() || null,
+
+            display_order: displayOrder,
+          },
+        });
+
+      for (let i = 0; i < body.questions.length; i++) {
+        const question = body.questions[i];
+
+        const newQuestion =
+          await tx.reading_questions.create({
+            data: {
+              group_id: newGroup.id,
+
+              question_number:
+                question.questionNumber ||
+                i + 1,
+
+              question_text:
+                question.questionText.trim(),
+
+              explanation:
+                question.explanation?.trim() ||
+                null,
+
+              knowledge:
+                question.knowledge?.trim() ||
+                null,
+
+              display_order:
+                question.displayOrder !== undefined
+                  ? Number(question.displayOrder)
+                  : i + 1,
+            },
+          });
+
+        for (
+          let j = 0;
+          j < question.options.length;
+          j++
+        ) {
+          const option = question.options[j];
+
+          await tx.reading_options.create({
+            data: {
+              question_id: newQuestion.id,
+
+              option_key:
+                option.optionKey
+                  .trim()
+                  .toUpperCase(),
+
+              option_text:
+                option.optionText.trim(),
+
+              is_correct:
+                option.isCorrect === true,
+
+              display_order:
+                option.displayOrder !== undefined
+                  ? Number(option.displayOrder)
+                  : j + 1,
+            },
+          });
+        }
+      }
+
+      return newGroup;
+    });
+
+  return {
+    success: true,
+    message: "Thêm Group Reading thành công",
+    item: group,
+  };
+}
+
+@Patch("reading/groups/:id")
+@Roles(
+  UserRole.SUPER_ADMIN,
+  UserRole.CONTENT_ADMIN,
+)
+async updateReadingGroup(
+  @Param("id") id: string,
+  @Body()
+  body: {
+    title?: string;
+    passage?: string;
+    imageUrl?: string;
+    knowledge?: string;
+    displayOrder?: number;
+
+    questions?: {
+      id?: number;
+      questionNumber: number;
+      questionText: string;
+      explanation?: string;
+      knowledge?: string;
+      displayOrder?: number;
+
+      options: {
+        id?: number;
+        optionKey: string;
+        optionText: string;
+        isCorrect: boolean;
+        displayOrder?: number;
+      }[];
+    }[];
+  },
+) {
+  const groupId = Number(id);
+
+  if (
+    !Number.isInteger(groupId) ||
+    groupId <= 0
+  ) {
+    throw new BadRequestException(
+      "ID group không hợp lệ",
+    );
+  }
+
+  const existingGroup =
+    await this.prisma.reading_lesson_groups.findUnique({
+      where: {
+        id: groupId,
+      },
+      include: {
+        reading_questions: {
+          include: {
+            reading_options: true,
+          },
+        },
+      },
+    });
+
+  if (!existingGroup) {
+    throw new NotFoundException(
+      "Không tìm thấy group Reading",
+    );
+  }
+
+  if (
+    body.questions !== undefined &&
+    body.questions.length > 10
+  ) {
+    throw new BadRequestException(
+      "Một group tối đa 10 câu hỏi",
+    );
+  }
+
+  if (body.questions !== undefined) {
+    for (const question of body.questions) {
+      if (
+        !Number.isInteger(
+          Number(question.questionNumber),
+        ) ||
+        Number(question.questionNumber) <= 0
+      ) {
+        throw new BadRequestException(
+          "Question number không hợp lệ",
+        );
+      }
+
+      if (!question.questionText?.trim()) {
+        throw new BadRequestException(
+          `Câu ${question.questionNumber} không được để trống`,
+        );
+      }
+
+      if (
+        !Array.isArray(question.options) ||
+        question.options.length === 0
+      ) {
+        throw new BadRequestException(
+          `Câu ${question.questionNumber} phải có ít nhất 1 đáp án`,
+        );
+      }
+
+      const keys =
+        question.options.map((option) =>
+          option.optionKey
+            ?.trim()
+            .toUpperCase(),
+        );
+
+      const uniqueKeys =
+        new Set(keys);
+
+      if (
+        uniqueKeys.size !==
+        keys.length
+      ) {
+        throw new BadRequestException(
+          `Câu ${question.questionNumber} có option bị trùng`,
+        );
+      }
+
+      const correctCount =
+        question.options.filter(
+          (option) => option.isCorrect === true,
+        ).length;
+
+      if (correctCount !== 1) {
+        throw new BadRequestException(
+          `Câu ${question.questionNumber} phải có đúng 1 đáp án đúng`,
+        );
+      }
+
+      for (const option of question.options) {
+        const key =
+          option.optionKey
+            ?.trim()
+            .toUpperCase();
+
+        if (!key) {
+          throw new BadRequestException(
+            `Câu ${question.questionNumber} có option không hợp lệ`,
+          );
+        }
+
+        if (!["A", "B", "C", "D"].includes(key)) {
+          throw new BadRequestException(
+            `Option ${key} không hợp lệ. Chỉ được A, B, C hoặc D`,
+          );
+        }
+
+        if (!option.optionText?.trim()) {
+          throw new BadRequestException(
+            `Option ${key} của câu ${question.questionNumber} không được để trống`,
+          );
+        }
+      }
+    }
+  }
+
+  const updatedGroup =
+    await this.prisma.$transaction(
+      async (tx) => {
+        await tx.reading_lesson_groups.update({
+          where: {
+            id: groupId,
+          },
+
+          data: {
+  ...(body.title !== undefined && {
+    title:
+      body.title?.trim() || null,
+  }),
+
+  ...(body.passage !== undefined && {
+    passage:
+      body.passage?.trim() || null,
+  }),
+
+  ...(body.knowledge !== undefined && {
+    knowledge:
+      body.knowledge?.trim() || null,
+  }),
+
+  ...(body.displayOrder !== undefined && {
+    display_order: Number(
+      body.displayOrder,
+    ),
+  }),
+},
+        });
+
+        if (body.questions !== undefined) {
+          const existingQuestionIds =
+            existingGroup.reading_questions.map(
+              (question) => question.id,
+            );
+
+          const incomingQuestionIds =
+            body.questions
+              .filter(
+                (question) =>
+                  question.id !== undefined &&
+question.id !== null,
+              )
+              .map(
+                (question) =>
+                  Number(question.id),
+              );
+
+          const questionIdsToDelete =
+            existingQuestionIds.filter(
+              (existingId) =>
+                !incomingQuestionIds.includes(
+                  existingId,
+                ),
+            );
+
+          if (
+            questionIdsToDelete.length > 0
+          ) {
+            await tx.reading_questions.deleteMany(
+              {
+                where: {
+                  id: {
+                    in: questionIdsToDelete,
+                  },
+                  group_id: groupId,
+                },
+              },
+            );
+          }
+
+          for (
+            let questionIndex = 0;
+            questionIndex <
+            body.questions.length;
+            questionIndex++
+          ) {
+            const question =
+              body.questions[questionIndex];
+
+            const questionId =
+              question.id !== undefined &&
+question.id !== null
+                ? Number(question.id)
+                : null;
+
+            if (questionId !== null) {
+              const existingQuestion =
+                await tx.reading_questions.findFirst(
+                  {
+                    where: {
+                      id: questionId,
+                      group_id: groupId,
+                    },
+                  },
+                );
+
+              if (!existingQuestion) {
+                throw new BadRequestException(
+                  `Question ID ${questionId} không thuộc group ${groupId}`,
+                );
+              }
+
+              await tx.reading_questions.update(
+                {
+                  where: {
+                    id: questionId,
+                  },
+
+                  data: {
+                    question_number:
+                      Number(
+                        question.questionNumber,
+                      ),
+
+                    question_text:
+                      question.questionText.trim(),
+
+                    explanation:
+                      question.explanation?.trim() ||
+                      null,
+
+                    knowledge:
+                      question.knowledge?.trim() ||
+                      null,
+
+                    display_order:
+                      question.displayOrder ??
+                      questionIndex,
+                  },
+                },
+              );
+            } else {
+              const createdQuestion =
+                await tx.reading_questions.create(
+                  {
+                    data: {
+                      group_id: groupId,
+
+                      question_number:
+                        Number(
+                          question.questionNumber,
+                        ),
+
+                      question_text:
+                        question.questionText.trim(),
+
+                      explanation:
+                        question.explanation?.trim() ||
+                        null,
+
+                      knowledge:
+                        question.knowledge?.trim() ||
+                        null,
+
+                      display_order:
+                        question.displayOrder ??
+                        questionIndex,
+                    },
+                  },
+                );
+
+              question.id =
+                createdQuestion.id;
+            }
+
+            const finalQuestionId =
+              Number(question.id);
+
+            const existingOptions =
+              await tx.reading_options.findMany(
+                {
+                  where: {
+                    question_id:
+                      finalQuestionId,
+                  },
+                },
+              );
+
+            const existingOptionIds =
+              existingOptions.map(
+                (option) => option.id,
+              );
+
+            const incomingOptionIds =
+              question.options
+                .filter(
+                  (option) =>
+                    option.id !== undefined &&
+        option.id !== null,
+                )
+                .map(
+                  (option) =>
+                    Number(option.id),
+                );
+
+            const optionIdsToDelete =
+              existingOptionIds.filter(
+                (existingId) =>
+                  !incomingOptionIds.includes(
+                    existingId,
+                  ),
+            );
+
+            if (
+              optionIdsToDelete.length > 0
+            ) {
+              await tx.reading_options.deleteMany(
+                {
+                  where: {
+                    id: {
+                      in: optionIdsToDelete,
+                    },
+                    question_id:
+                      finalQuestionId,
+                  },
+                },
+              );
+            }
+
+            for (
+              let optionIndex = 0;
+              optionIndex <
+              question.options.length;
+              optionIndex++
+            ) {
+              const option =
+                question.options[
+                  optionIndex
+                ];
+
+              const optionId =
+                option.id !== undefined &&
+        option.id !== null
+                  ? Number(option.id)
+                  : null;
+
+              if (optionId !== null) {
+                const existingOption =
+                  await tx.reading_options.findFirst(
+                    {
+                      where: {
+                        id: optionId,
+                        question_id:
+                          finalQuestionId,
+                      },
+                    },
+                  );
+
+                if (!existingOption) {
+                  throw new BadRequestException(
+                    `Option ID ${optionId} không thuộc question ${finalQuestionId}`,
+                  );
+                }
+
+                await tx.reading_options.update(
+                  {
+                    where: {
+                      id: optionId,
+                    },
+
+                    data: {
+                      option_key:
+                        option.optionKey
+                          .trim()
+                          .toUpperCase(),
+
+                      option_text:
+                        option.optionText.trim(),
+
+                      is_correct:
+                        Boolean(
+                          option.isCorrect,
+                        ),
+
+                      display_order:
+                        option.displayOrder ??
+                        optionIndex,
+                    },
+                  },
+                );
+              } else {
+                await tx.reading_options.create(
+                  {
+                    data: {
+                      question_id:
+                        finalQuestionId,
+
+                      option_key:
+                        option.optionKey
+                          .trim()
+                          .toUpperCase(),
+
+                      option_text:
+                        option.optionText.trim(),
+
+                      is_correct:
+                        Boolean(
+                          option.isCorrect,
+                        ),
+
+                      display_order:
+                        option.displayOrder ??
+                        optionIndex,
+                    },
+                  },
+                );
+              }
+            }
+          }
+        }
+
+        return tx.reading_lesson_groups.findUnique({
+          where: {
+            id: groupId,
+          },
+
+          include: {
+            reading_questions: {
+              orderBy: {
+                display_order: "asc",
+              },
+
+              include: {
+                reading_options: {
+                  orderBy: {
+                    display_order: "asc",
+                  },
+                },
+              },
+            },
+          },
+        });
+      },
+    );
+
+  return {
+    success: true,
+    message:
+      "Cập nhật group Reading thành công",
+    item: updatedGroup,
+  };
+}
+
+@Delete("reading/groups/:id")
+@Roles(
+  UserRole.SUPER_ADMIN,
+  UserRole.CONTENT_ADMIN,
+)
+async deleteReadingGroup(
+  @Param("id") id: string,
+) {
+  const groupId = Number(id);
+
+  if (
+    !Number.isInteger(groupId) ||
+    groupId <= 0
+  ) {
+    throw new BadRequestException(
+      "ID group không hợp lệ",
+    );
+  }
+
+  const group =
+    await this.prisma.reading_lesson_groups.findUnique({
+      where: {
+        id: groupId,
+      },
+      include: {
+        _count: {
+          select: {
+            reading_questions: true,
+            user_reading_progress: true,
+          },
+        },
+      },
+    });
+
+  if (!group) {
+    throw new NotFoundException(
+      "Không tìm thấy group Reading",
+    );
+  }
+
+  await this.prisma.$transaction(
+    async (tx) => {
+      await tx.user_reading_progress.deleteMany({
+        where: {
+          group_id: groupId,
+        },
+      });
+
+      await tx.reading_lesson_groups.delete({
+        where: {
+          id: groupId,
+        },
+      });
+    },
+  );
+
+  return {
+    success: true,
+    message: "Xóa group Reading thành công",
+    id: groupId,
+  };
+}
+
 
 }
