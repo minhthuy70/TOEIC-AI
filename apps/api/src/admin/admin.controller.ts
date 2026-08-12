@@ -1,11 +1,13 @@
 import {
+  Body,
   Controller,
   Get,
   Patch,
   Param,
-  Body,
+  Post,
   Query,
   UseGuards,
+  NotFoundException,
 } from "@nestjs/common";
 
 import { PrismaService } from "../prisma/prisma.service";
@@ -218,6 +220,123 @@ if (topic?.trim()) {
     totalPages: Math.ceil(
       total / limitNumber,
     ),
+  };
+}
+
+@Post("vocabulary")
+@Roles(
+  UserRole.SUPER_ADMIN,
+  UserRole.CONTENT_ADMIN,
+)
+async createVocabulary(
+  @Body()
+  body: {
+    english: string;
+    type?: string;
+    vietnamese?: string;
+    pronounce?: string;
+    explain?: string;
+    example?: string;
+    exampleVietnamese?: string;
+    imageUrl?: string;
+    audioUrl?: string;
+    topic?: string;
+    stage: number;
+  },
+) {
+  const vocabulary = await this.prisma.vocabulary.create({
+    data: {
+      english: body.english.trim(),
+      type: body.type?.trim() || null,
+      vietnamese: body.vietnamese?.trim() || null,
+      pronounce: body.pronounce?.trim() || null,
+      explain: body.explain?.trim() || null,
+      example: body.example?.trim() || null,
+      exampleVietnamese:
+        body.exampleVietnamese?.trim() || null,
+      imageUrl: body.imageUrl?.trim() || null,
+      audioUrl: body.audioUrl?.trim() || null,
+      topic: body.topic?.trim() || null,
+      stage: Number(body.stage),
+    },
+  });
+
+  return {
+    success: true,
+    message: "Thêm từ vựng thành công",
+    item: vocabulary,
+  };
+}
+
+@Patch("vocabulary/:id")
+@Roles(
+  UserRole.SUPER_ADMIN,
+  UserRole.CONTENT_ADMIN,
+)
+async updateVocabulary(
+  @Param("id") id: string,
+  @Body()
+  body: {
+    english: string;
+    type?: string;
+    vietnamese?: string;
+    pronounce?: string;
+    explain?: string;
+    example?: string;
+    exampleVietnamese?: string;
+    imageUrl?: string;
+    audioUrl?: string;
+    topic?: string;
+    stage: number;
+  },
+) {
+  const vocabularyId = Number(id);
+
+  const existing =
+    await this.prisma.vocabulary.findUnique({
+      where: {
+        id: vocabularyId,
+      },
+    });
+
+  if (!existing) {
+    throw new NotFoundException(
+      "Không tìm thấy từ vựng",
+    );
+  }
+
+  const vocabulary =
+    await this.prisma.vocabulary.update({
+      where: {
+        id: vocabularyId,
+      },
+      data: {
+        english: body.english.trim(),
+        type: body.type?.trim() || null,
+        vietnamese:
+          body.vietnamese?.trim() || null,
+        pronounce:
+          body.pronounce?.trim() || null,
+        explain:
+          body.explain?.trim() || null,
+        example:
+          body.example?.trim() || null,
+        exampleVietnamese:
+          body.exampleVietnamese?.trim() || null,
+        imageUrl:
+          body.imageUrl?.trim() || null,
+        audioUrl:
+          body.audioUrl?.trim() || null,
+        topic:
+          body.topic?.trim() || null,
+        stage: Number(body.stage),
+      },
+    });
+
+  return {
+    success: true,
+    message: "Cập nhật từ vựng thành công",
+    item: vocabulary,
   };
 }
 }

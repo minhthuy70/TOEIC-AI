@@ -18,6 +18,21 @@ type Vocabulary = {
   createdAt: string;
 };
 
+type VocabularyForm = {
+  english: string;
+  type: string;
+  vietnamese: string;
+  pronounce: string;
+  explain: string;
+  example: string;
+  exampleVietnamese: string;
+  imageUrl: string;
+  audioUrl: string;
+  topic: string;
+  stage: number;
+};
+
+
 type VocabularyResponse = {
   items: Vocabulary[];
   total: number;
@@ -25,7 +40,19 @@ type VocabularyResponse = {
   limit: number;
   totalPages: number;
 };
-
+const EMPTY_FORM: VocabularyForm = {
+  english: "",
+  type: "",
+  vietnamese: "",
+  pronounce: "",
+  explain: "",
+  example: "",
+  exampleVietnamese: "",
+  imageUrl: "",
+  audioUrl: "",
+  topic: "",
+  stage: 1,
+};
 const API_URL = "http://localhost:3001";
 
 export default function VocabularyAdminPage() {
@@ -35,7 +62,18 @@ export default function VocabularyAdminPage() {
   const [search, setSearch] = useState("");
   const [stage, setStage] = useState("");
   const [topic, setTopic] = useState("");
+const [showForm, setShowForm] = useState(false);
 
+const [formMode, setFormMode] =
+  useState<"create" | "edit">("create");
+
+const [editingId, setEditingId] =
+  useState<number | null>(null);
+
+const [form, setForm] =
+  useState<VocabularyForm>(EMPTY_FORM);
+
+const [saving, setSaving] = useState(false);
   const [page, setPage] = useState(1);
   const [total, setTotal] = useState(0);
   const [totalPages, setTotalPages] = useState(0);
@@ -114,6 +152,79 @@ export default function VocabularyAdminPage() {
     setLoading(false);
   }
 }
+async function handleSaveVocabulary() {
+  if (!form.english.trim()) {
+    alert("Vui lòng nhập từ tiếng Anh");
+    return;
+  }
+
+  if (!form.vietnamese.trim()) {
+    alert("Vui lòng nhập nghĩa tiếng Việt");
+    return;
+  }
+
+  if (!form.stage) {
+    alert("Vui lòng chọn chặng");
+    return;
+  }
+
+  try {
+    setSaving(true);
+
+    const token =
+      localStorage.getItem("accessToken");
+
+    const url =
+      formMode === "create"
+        ? `${API_URL}/admin/vocabulary`
+        : `${API_URL}/admin/vocabulary/${editingId}`;
+
+    const method =
+      formMode === "create"
+        ? "POST"
+        : "PATCH";
+
+    const res = await fetch(url, {
+      method,
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+      body: JSON.stringify(form),
+    });
+
+    const data = await res.json();
+
+    if (!res.ok) {
+      throw new Error(
+        data?.message ||
+          "Không thể lưu từ vựng",
+      );
+    }
+
+    alert(
+      formMode === "create"
+        ? "Thêm từ vựng thành công"
+        : "Cập nhật từ vựng thành công",
+    );
+
+    setShowForm(false);
+    setForm({ ...EMPTY_FORM });
+    setEditingId(null);
+
+    await loadVocabulary(page);
+  } catch (error) {
+    console.error(error);
+
+    alert(
+      error instanceof Error
+        ? error.message
+        : "Không thể lưu từ vựng",
+    );
+  } finally {
+    setSaving(false);
+  }
+}
 
   useEffect(() => {
     loadVocabulary(1);
@@ -148,13 +259,47 @@ export default function VocabularyAdminPage() {
     loadVocabulary(newPage);
   }
 
-  function editVocabulary(id: number) {
-    alert(`Chức năng sửa từ vựng #${id} sẽ làm tiếp`);
-  }
+  function editVocabulary(item: Vocabulary) {
+  setFormMode("edit");
+  setEditingId(item.id);
+
+  setForm({
+    english: item.english || "",
+    type: item.type || "",
+    vietnamese: item.vietnamese || "",
+    pronounce: item.pronounce || "",
+    explain: item.explain || "",
+    example: item.example || "",
+    exampleVietnamese:
+      item.exampleVietnamese || "",
+    imageUrl: item.imageUrl || "",
+    audioUrl: item.audioUrl || "",
+    topic: item.topic || "",
+    stage: item.stage || 1,
+  });
+
+  setShowForm(true);
+}
 
   function deleteVocabulary(id: number) {
     alert(`Chức năng xóa từ vựng #${id} sẽ làm tiếp`);
   }
+  
+  function updateForm(
+  field: keyof VocabularyForm,
+  value: string | number,
+) {
+  setForm((prev) => ({
+    ...prev,
+    [field]: value,
+  }));
+}
+function openCreateForm() {
+  setFormMode("create");
+  setEditingId(null);
+  setForm({ ...EMPTY_FORM });
+  setShowForm(true);
+}
 
   return (
     <div className="min-h-screen bg-zinc-950 text-white p-6 md:p-8">
@@ -172,13 +317,11 @@ export default function VocabularyAdminPage() {
           </div>
 
           <button
-            onClick={() =>
-              alert("Chức năng thêm từ vựng sẽ làm tiếp")
-            }
-            className="bg-red-600 hover:bg-red-700 px-5 py-3 rounded-xl font-semibold transition"
-          >
-            + Thêm từ vựng
-          </button>
+  onClick={openCreateForm}
+  className="bg-red-600 hover:bg-red-700 px-5 py-3 rounded-xl font-semibold transition"
+>
+  + Thêm từ vựng
+</button>
         </div>
       </div>
 
@@ -309,7 +452,322 @@ export default function VocabularyAdminPage() {
           </button>
         </div>
       </div>
+{showForm && (
+  <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 p-4">
+    <div className="w-full max-w-4xl max-h-[90vh] overflow-y-auto bg-zinc-900 border border-zinc-800 rounded-2xl shadow-2xl">
+      
+      {/* Header */}
+      <div className="sticky top-0 z-10 bg-zinc-900 border-b border-zinc-800 px-6 py-4 flex items-center justify-between">
+        <div>
+          <h2 className="text-xl font-bold">
+            {formMode === "create"
+              ? "Thêm từ vựng"
+              : `Sửa từ vựng #${editingId}`}
+          </h2>
 
+          <p className="text-sm text-zinc-500 mt-1">
+            {formMode === "create"
+              ? "Thêm một từ vựng mới vào hệ thống"
+              : "Cập nhật thông tin từ vựng"}
+          </p>
+        </div>
+
+        <button
+          type="button"
+          onClick={() => setShowForm(false)}
+          className="w-9 h-9 rounded-lg bg-zinc-800 hover:bg-zinc-700 text-zinc-400 hover:text-white"
+        >
+          ✕
+        </button>
+      </div>
+
+      {/* Form */}
+      <div className="p-6 space-y-5">
+
+        {/* English + Type */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          
+          <div>
+            <label className="block text-sm text-zinc-400 mb-2">
+              English <span className="text-red-500">*</span>
+            </label>
+
+            <input
+              value={form.english}
+              onChange={(e) =>
+                updateForm(
+                  "english",
+                  e.target.value,
+                )
+              }
+              placeholder="Ví dụ: benefit"
+              className="w-full bg-zinc-800 border border-zinc-700 rounded-xl px-4 py-3 outline-none focus:border-red-500"
+            />
+          </div>
+
+          <div>
+            <label className="block text-sm text-zinc-400 mb-2">
+              Type
+            </label>
+
+            <select
+              value={form.type}
+              onChange={(e) =>
+                updateForm(
+                  "type",
+                  e.target.value,
+                )
+              }
+              className="w-full bg-zinc-800 border border-zinc-700 rounded-xl px-4 py-3 outline-none focus:border-red-500"
+            >
+              <option value="">Chọn loại từ</option>
+              <option value="Noun">Noun</option>
+              <option value="Verb">Verb</option>
+              <option value="Adjective">
+                Adjective
+              </option>
+              <option value="Adverb">Adverb</option>
+              <option value="Preposition">
+                Preposition
+              </option>
+              <option value="Conjunction">
+                Conjunction
+              </option>
+              <option value="Pronoun">
+                Pronoun
+              </option>
+              <option value="Phrase">Phrase</option>
+              <option value="Other">Other</option>
+            </select>
+          </div>
+        </div>
+
+        {/* Vietnamese */}
+        <div>
+          <label className="block text-sm text-zinc-400 mb-2">
+            Vietnamese
+          </label>
+
+          <input
+            value={form.vietnamese}
+            onChange={(e) =>
+              updateForm(
+                "vietnamese",
+                e.target.value,
+              )
+            }
+            placeholder="Ví dụ: Lợi ích"
+            className="w-full bg-zinc-800 border border-zinc-700 rounded-xl px-4 py-3 outline-none focus:border-red-500"
+          />
+        </div>
+
+        {/* Pronounce */}
+        <div>
+          <label className="block text-sm text-zinc-400 mb-2">
+            Pronounce
+          </label>
+
+          <input
+            value={form.pronounce}
+            onChange={(e) =>
+              updateForm(
+                "pronounce",
+                e.target.value,
+              )
+            }
+            placeholder="Ví dụ: /ˈbenɪfɪt/"
+            className="w-full bg-zinc-800 border border-zinc-700 rounded-xl px-4 py-3 outline-none focus:border-red-500"
+          />
+        </div>
+
+        {/* Explain */}
+        <div>
+          <label className="block text-sm text-zinc-400 mb-2">
+            Explain
+          </label>
+
+          <textarea
+            value={form.explain}
+            onChange={(e) =>
+              updateForm(
+                "explain",
+                e.target.value,
+              )
+            }
+            rows={3}
+            placeholder="Giải thích chi tiết..."
+            className="w-full bg-zinc-800 border border-zinc-700 rounded-xl px-4 py-3 outline-none focus:border-red-500 resize-none"
+          />
+        </div>
+
+        {/* Example */}
+        <div>
+          <label className="block text-sm text-zinc-400 mb-2">
+            Example
+          </label>
+
+          <textarea
+            value={form.example}
+            onChange={(e) =>
+              updateForm(
+                "example",
+                e.target.value,
+              )
+            }
+            rows={3}
+            placeholder="Ví dụ câu tiếng Anh..."
+            className="w-full bg-zinc-800 border border-zinc-700 rounded-xl px-4 py-3 outline-none focus:border-red-500 resize-none"
+          />
+        </div>
+
+        {/* Example Vietnamese */}
+        <div>
+          <label className="block text-sm text-zinc-400 mb-2">
+            Example Vietnamese
+          </label>
+
+          <textarea
+            value={form.exampleVietnamese}
+            onChange={(e) =>
+              updateForm(
+                "exampleVietnamese",
+                e.target.value,
+              )
+            }
+            rows={3}
+            placeholder="Dịch nghĩa câu ví dụ..."
+            className="w-full bg-zinc-800 border border-zinc-700 rounded-xl px-4 py-3 outline-none focus:border-red-500 resize-none"
+          />
+        </div>
+
+        {/* Image + Audio */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          
+          <div>
+            <label className="block text-sm text-zinc-400 mb-2">
+              Image URL
+            </label>
+
+            <input
+              value={form.imageUrl}
+              onChange={(e) =>
+                updateForm(
+                  "imageUrl",
+                  e.target.value,
+                )
+              }
+              placeholder="https://..."
+              className="w-full bg-zinc-800 border border-zinc-700 rounded-xl px-4 py-3 outline-none focus:border-red-500"
+            />
+          </div>
+
+          <div>
+            <label className="block text-sm text-zinc-400 mb-2">
+              Audio URL
+            </label>
+
+            <input
+              value={form.audioUrl}
+              onChange={(e) =>
+                updateForm(
+                  "audioUrl",
+                  e.target.value,
+                )
+              }
+              placeholder="https://..."
+              className="w-full bg-zinc-800 border border-zinc-700 rounded-xl px-4 py-3 outline-none focus:border-red-500"
+            />
+          </div>
+        </div>
+
+        {/* Topic + Stage */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          
+          <div>
+            <label className="block text-sm text-zinc-400 mb-2">
+              Topic
+            </label>
+
+            <input
+              value={form.topic}
+              onChange={(e) =>
+                updateForm(
+                  "topic",
+                  e.target.value,
+                )
+              }
+              placeholder="Ví dụ: Health"
+              className="w-full bg-zinc-800 border border-zinc-700 rounded-xl px-4 py-3 outline-none focus:border-red-500"
+            />
+          </div>
+
+          <div>
+            <label className="block text-sm text-zinc-400 mb-2">
+              Stage <span className="text-red-500">*</span>
+            </label>
+
+            <select
+              value={form.stage}
+              onChange={(e) =>
+                updateForm(
+                  "stage",
+                  Number(e.target.value),
+                )
+              }
+              className="w-full bg-zinc-800 border border-zinc-700 rounded-xl px-4 py-3 outline-none focus:border-red-500"
+            >
+              <option value={1}>
+                Stage 1
+              </option>
+
+              <option value={2}>
+                Stage 2
+              </option>
+
+              <option value={3}>
+                Stage 3
+              </option>
+
+              <option value={4}>
+                Stage 4
+              </option>
+
+              <option value={5}>
+                Stage 5
+              </option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      {/* Footer */}
+      <div className="sticky bottom-0 bg-zinc-900 border-t border-zinc-800 px-6 py-4 flex justify-end gap-3">
+        
+        <button
+          type="button"
+          onClick={() => setShowForm(false)}
+          disabled={saving}
+          className="px-5 py-2.5 rounded-xl bg-zinc-800 hover:bg-zinc-700 disabled:opacity-50"
+        >
+          Hủy
+        </button>
+
+        <button
+          type="button"
+          onClick={handleSaveVocabulary}
+          disabled={saving}
+          className="px-5 py-2.5 rounded-xl bg-red-600 hover:bg-red-700 disabled:opacity-50 font-semibold"
+        >
+          {saving
+            ? "Đang lưu..."
+            : formMode === "create"
+              ? "Thêm từ vựng"
+              : "Lưu thay đổi"}
+        </button>
+      </div>
+    </div>
+  </div>
+)}
       {/* Table */}
       <div className="bg-zinc-900 border border-zinc-800 rounded-2xl overflow-hidden">
         <div className="overflow-x-auto">
@@ -395,7 +853,7 @@ export default function VocabularyAdminPage() {
                       <div className="flex justify-end gap-2">
                         <button
                           onClick={() =>
-                            editVocabulary(item.id)
+                            editVocabulary(item)
                           }
                           className="px-3 py-2 rounded-lg bg-zinc-800 hover:bg-zinc-700 text-sm"
                         >
