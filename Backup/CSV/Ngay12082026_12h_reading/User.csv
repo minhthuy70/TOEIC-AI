@@ -1,0 +1,5 @@
+id,fullName,email,password,createdAt,role
+1,user1,user1@gmail.com,$2b$10$wQblVvUA0v.4gJ9ejghpPenYmfIaFVNgdyr1U./i6HZ4Qa7qXR53u,2026-07-24 06:16:24.669,USER
+2,Nguyen Minh Thuy,TUVUNG1@gmail.com,$2b$10$C93MfC22.2.N/jjt08ygJOGUP8o927PBYzexx9.0KsGhSOUb4O8hW,2026-07-24 16:26:45.552,USER
+3,TAI KHAON SUPER ADMIN,Superadmin123@gmail.com,$2b$10$zD1B.rs/jqhWh0n6aeOokOqdmH76ehzkAHq2FReQ/NivqZdZC.AtW,2026-08-12 04:49:25.237,SUPER_ADMIN
+4,TAI KHOAN CONTENT ADMIN,Contentadmin123@gmail.com,$2b$10$govbb5TgambvL98kqZvEYeTMK0Rl4UNlg77WZHBHIqUZz4X8TvJSC,2026-08-12 04:51:30.442,CONTENT_ADMIN

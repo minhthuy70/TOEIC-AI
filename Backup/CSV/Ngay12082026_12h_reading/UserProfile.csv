@@ -1,0 +1,5 @@
+id,currentScore,targetScore,examDate,dailyStudyTime,firstLoginCompleted,userId,createdAt,updatedAt,avatar,phone,birthday,gender,address,bio,studyNotification,srsNotification,autoPronunciation,darkMode
+1,100,648,2030-10-11 00:00:00,120,t,1,2026-07-24 06:16:24.669,2026-07-24 06:16:55.605,,,,,,,t,t,f,t
+3,450,950,,120,t,2,2026-07-24 16:26:45.552,2026-08-01 07:46:46.647,,0901234567,,Nam,TP.HCM,Đang học TOEIC cùng BELLA,t,t,f,f
+12,,,,,f,3,2026-08-12 04:49:25.237,2026-08-12 04:49:25.237,,,,,,,t,t,f,t
+13,,,,,f,4,2026-08-12 04:51:30.442,2026-08-12 04:51:30.442,,,,,,,t,t,f,t

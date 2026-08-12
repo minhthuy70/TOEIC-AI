@@ -3,11 +3,8 @@ import { JwtService } from "@nestjs/jwt";
 import { PrismaService } from "../prisma/prisma.service";
 import * as bcrypt from "bcryptjs";
 
-
-
 @Injectable()
 export class AuthService {
-
   constructor(
     private readonly prisma: PrismaService,
     private readonly jwtService: JwtService,
@@ -24,7 +21,7 @@ export class AuthService {
 
     if (user) {
       return {
-        message: 'Email đã tồn tại',
+        message: "Email đã tồn tại",
       };
     }
 
@@ -53,6 +50,7 @@ export class AuthService {
     return {
       id: newUser.id,
       email: newUser.email,
+      role: newUser.role,
       firstLoginCompleted:
         newUser.profile?.firstLoginCompleted,
     };
@@ -72,7 +70,7 @@ export class AuthService {
 
     if (!user) {
       return {
-        message: 'Không tìm thấy tài khoản',
+        message: "Không tìm thấy tài khoản",
       };
     }
 
@@ -83,26 +81,29 @@ export class AuthService {
 
     if (!match) {
       return {
-        message: 'Sai mật khẩu',
+        message: "Sai mật khẩu",
       };
     }
 
-   const payload = {
-  sub: user.id,
-  email: user.email,
-};
+    const payload = {
+      sub: user.id,
+      email: user.email,
+      role: user.role,
+    };
 
-const accessToken = this.jwtService.sign(payload);
+    const accessToken =
+      this.jwtService.sign(payload);
 
-return {
-  accessToken,
-  user: {
-    id: user.id,
-    fullName: user.fullName,
-    email: user.email,
-    firstLoginCompleted:
-      user.profile?.firstLoginCompleted,
-  },
-};
+    return {
+      accessToken,
+      user: {
+        id: user.id,
+        fullName: user.fullName,
+        email: user.email,
+        role: user.role,
+        firstLoginCompleted:
+          user.profile?.firstLoginCompleted,
+      },
+    };
   }
 }

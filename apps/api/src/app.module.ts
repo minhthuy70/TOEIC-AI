@@ -12,6 +12,7 @@ import { ReadingModule } from "./reading/reading.module";
 
 import { AuthModule } from "./auth/auth.module";
 import { ProfileModule } from "./profile/profile.module";
+import { AdminModule } from "./admin/admin.module";
 
 @Module({
   imports: [
@@ -35,6 +36,7 @@ import { ProfileModule } from "./profile/profile.module";
     GrammarModule,
     ListeningModule,
     ReadingModule,
+    AdminModule,
   ],
 })
 export class AppModule {}
