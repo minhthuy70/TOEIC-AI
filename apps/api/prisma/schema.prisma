@@ -7,11 +7,18 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+enum UserRole {
+  USER
+  CONTENT_ADMIN
+  SUPER_ADMIN
+}
+
 model User {
   id                            Int                             @id @default(autoincrement())
   fullName                      String
   email                         String                          @unique
   password                      String
+  role                          UserRole                        @default(USER)
   createdAt                     DateTime                        @default(now())
   profile                       UserProfile?
   grammarProgress               UserGrammarProgress[]
