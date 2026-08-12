@@ -141,8 +141,8 @@ export default function AdminSidebar({
 </div>
 
         <AdminLink
-          href="/admin/listening"
-          active={pathname.startsWith("/admin/listening")}
+          href="/content-admin/listening"
+          active={pathname.startsWith("/content-admin/listening")}
           icon="🎧"
         >
           Listening
