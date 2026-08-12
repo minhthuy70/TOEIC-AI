@@ -9,6 +9,7 @@ import {
   Query,
   UseGuards,
   NotFoundException,
+  BadRequestException,
   ConflictException,
 } from "@nestjs/common";
 
@@ -684,6 +685,565 @@ async deleteGrammarCategory(
     success: true,
     message: "Xóa danh mục ngữ pháp thành công",
     id: categoryId,
+  };
+}
+
+// ======================================================
+// GRAMMAR LESSON
+// ======================================================
+
+@Get("grammar/lessons")
+@Roles(
+  UserRole.SUPER_ADMIN,
+  UserRole.CONTENT_ADMIN,
+)
+async getGrammarLessons(
+  @Query("page") page = "1",
+  @Query("limit") limit = "10",
+  @Query("search") search = "",
+  @Query("categoryId") categoryId?: string,
+) {
+  const pageNumber = Math.max(Number(page), 1);
+
+  const limitNumber = Math.min(
+    Math.max(Number(limit), 1),
+    100,
+  );
+
+  const skip =
+    (pageNumber - 1) * limitNumber;
+
+  const where: any = {};
+
+  // Search theo title hoặc content
+  if (search.trim()) {
+    where.OR = [
+      {
+        title: {
+          contains: search.trim(),
+          mode: "insensitive",
+        },
+      },
+      {
+        content: {
+          contains: search.trim(),
+          mode: "insensitive",
+        },
+      },
+    ];
+  }
+
+  // Filter theo category
+  if (categoryId) {
+    const categoryIdNumber = Number(categoryId);
+
+    if (
+      Number.isInteger(categoryIdNumber) &&
+      categoryIdNumber > 0
+    ) {
+      where.categoryId = categoryIdNumber;
+    }
+  }
+
+  const [items, total] =
+    await Promise.all([
+      this.prisma.grammarLesson.findMany({
+        where,
+        skip,
+        take: limitNumber,
+
+        orderBy: [
+          {
+            categoryId: "asc",
+          },
+          {
+            displayOrder: "asc",
+          },
+          {
+            id: "asc",
+          },
+        ],
+
+        select: {
+          id: true,
+          categoryId: true,
+          title: true,
+          content: true,
+          displayOrder: true,
+          testId: true,
+          createdAt: true,
+          updatedAt: true,
+
+          category: {
+            select: {
+              id: true,
+              name: true,
+              stage: true,
+            },
+          },
+
+          tests: {
+            select: {
+              id: true,
+              title: true,
+            },
+          },
+
+          _count: {
+            select: {
+              progresses: true,
+            },
+          },
+        },
+      }),
+
+      this.prisma.grammarLesson.count({
+        where,
+      }),
+    ]);
+
+  return {
+    items,
+    total,
+    page: pageNumber,
+    limit: limitNumber,
+    totalPages: Math.ceil(
+      total / limitNumber,
+    ),
+  };
+}
+
+
+@Get("grammar/lessons/:id")
+@Roles(
+  UserRole.SUPER_ADMIN,
+  UserRole.CONTENT_ADMIN,
+)
+async getGrammarLesson(
+  @Param("id") id: string,
+) {
+  const lessonId = Number(id);
+
+  if (
+    !Number.isInteger(lessonId) ||
+    lessonId <= 0
+  ) {
+    throw new BadRequestException(
+      "ID bài học không hợp lệ",
+    );
+  }
+
+  const lesson =
+    await this.prisma.grammarLesson.findUnique({
+      where: {
+        id: lessonId,
+      },
+
+      select: {
+        id: true,
+        categoryId: true,
+        title: true,
+        content: true,
+        displayOrder: true,
+        testId: true,
+        createdAt: true,
+        updatedAt: true,
+
+        category: {
+          select: {
+            id: true,
+            name: true,
+            description: true,
+            stage: true,
+          },
+        },
+
+        tests: {
+          select: {
+            id: true,
+            title: true,
+          },
+        },
+
+        _count: {
+          select: {
+            progresses: true,
+          },
+        },
+      },
+    });
+
+  if (!lesson) {
+    throw new NotFoundException(
+      "Không tìm thấy bài học ngữ pháp",
+    );
+  }
+
+  return lesson;
+}
+
+
+@Post("grammar/lessons")
+@Roles(
+  UserRole.SUPER_ADMIN,
+  UserRole.CONTENT_ADMIN,
+)
+async createGrammarLesson(
+  @Body()
+  body: {
+    categoryId: number;
+    title: string;
+    content?: string;
+    displayOrder?: number;
+    testId?: number | null;
+  },
+) {
+  if (!body.title?.trim()) {
+    throw new BadRequestException(
+      "Tiêu đề bài học không được để trống",
+    );
+  }
+
+  const categoryId = Number(body.categoryId);
+
+  if (
+    !Number.isInteger(categoryId) ||
+    categoryId <= 0
+  ) {
+    throw new BadRequestException(
+      "Category ID không hợp lệ",
+    );
+  }
+
+  // Kiểm tra category tồn tại
+  const category =
+    await this.prisma.grammarCategory.findUnique({
+      where: {
+        id: categoryId,
+      },
+    });
+
+  if (!category) {
+    throw new NotFoundException(
+      "Không tìm thấy danh mục ngữ pháp",
+    );
+  }
+
+  // Test là optional
+  let testId: number | null = null;
+
+  if (
+    body.testId !== undefined &&
+    body.testId !== null
+  ) {
+    testId = Number(body.testId);
+
+    if (
+      !Number.isInteger(testId) ||
+      testId <= 0
+    ) {
+      throw new BadRequestException(
+        "Test ID không hợp lệ",
+      );
+    }
+
+    const test =
+      await this.prisma.tests.findUnique({
+        where: {
+          id: testId,
+        },
+      });
+
+    if (!test) {
+      throw new NotFoundException(
+        "Không tìm thấy đề thi",
+      );
+    }
+  }
+
+  const displayOrder =
+    body.displayOrder !== undefined
+      ? Number(body.displayOrder)
+      : 0;
+
+  if (
+    !Number.isInteger(displayOrder) ||
+    displayOrder < 0
+  ) {
+    throw new BadRequestException(
+      "Display order không hợp lệ",
+    );
+  }
+
+  const lesson =
+    await this.prisma.grammarLesson.create({
+      data: {
+        categoryId,
+
+        title: body.title.trim(),
+
+        content:
+          body.content?.trim() || null,
+
+        displayOrder,
+
+        testId,
+      },
+
+      select: {
+        id: true,
+        categoryId: true,
+        title: true,
+        content: true,
+        displayOrder: true,
+        testId: true,
+        createdAt: true,
+        updatedAt: true,
+
+        category: {
+          select: {
+            id: true,
+            name: true,
+            stage: true,
+          },
+        },
+      },
+    });
+
+  return {
+    success: true,
+    message: "Thêm bài học ngữ pháp thành công",
+    item: lesson,
+  };
+}
+
+
+@Patch("grammar/lessons/:id")
+@Roles(
+  UserRole.SUPER_ADMIN,
+  UserRole.CONTENT_ADMIN,
+)
+async updateGrammarLesson(
+  @Param("id") id: string,
+  @Body()
+  body: {
+    categoryId: number;
+    title: string;
+    content?: string;
+    displayOrder?: number;
+    testId?: number | null;
+  },
+) {
+  const lessonId = Number(id);
+
+  if (
+    !Number.isInteger(lessonId) ||
+    lessonId <= 0
+  ) {
+    throw new BadRequestException(
+      "ID bài học không hợp lệ",
+    );
+  }
+
+  const existing =
+    await this.prisma.grammarLesson.findUnique({
+      where: {
+        id: lessonId,
+      },
+    });
+
+  if (!existing) {
+    throw new NotFoundException(
+      "Không tìm thấy bài học ngữ pháp",
+    );
+  }
+
+  if (!body.title?.trim()) {
+    throw new BadRequestException(
+      "Tiêu đề bài học không được để trống",
+    );
+  }
+
+  const categoryId = Number(body.categoryId);
+
+  if (
+    !Number.isInteger(categoryId) ||
+    categoryId <= 0
+  ) {
+    throw new BadRequestException(
+      "Category ID không hợp lệ",
+    );
+  }
+
+  // Kiểm tra category mới
+  const category =
+    await this.prisma.grammarCategory.findUnique({
+      where: {
+        id: categoryId,
+      },
+    });
+
+  if (!category) {
+    throw new NotFoundException(
+      "Không tìm thấy danh mục ngữ pháp",
+    );
+  }
+
+  // Kiểm tra test nếu có
+  let testId: number | null = null;
+
+  if (
+    body.testId !== undefined &&
+    body.testId !== null 
+  ) {
+    testId = Number(body.testId);
+
+    if (
+      !Number.isInteger(testId) ||
+      testId <= 0
+    ) {
+      throw new BadRequestException(
+        "Test ID không hợp lệ",
+      );
+    }
+
+    const test =
+      await this.prisma.tests.findUnique({
+        where: {
+          id: testId,
+        },
+      });
+
+    if (!test) {
+      throw new NotFoundException(
+        "Không tìm thấy đề thi",
+      );
+    }
+  }
+
+  const displayOrder =
+    body.displayOrder !== undefined
+      ? Number(body.displayOrder)
+      : 0;
+
+  if (
+    !Number.isInteger(displayOrder) ||
+    displayOrder < 0
+  ) {
+    throw new BadRequestException(
+      "Display order không hợp lệ",
+    );
+  }
+
+  const lesson =
+    await this.prisma.grammarLesson.update({
+      where: {
+        id: lessonId,
+      },
+
+      data: {
+        categoryId,
+
+        title: body.title.trim(),
+
+        content:
+          body.content?.trim() || null,
+
+        displayOrder,
+
+        testId,
+      },
+
+      select: {
+        id: true,
+        categoryId: true,
+        title: true,
+        content: true,
+        displayOrder: true,
+        testId: true,
+        createdAt: true,
+        updatedAt: true,
+
+        category: {
+          select: {
+            id: true,
+            name: true,
+            stage: true,
+          },
+        },
+      },
+    });
+
+  return {
+    success: true,
+    message: "Cập nhật bài học ngữ pháp thành công",
+    item: lesson,
+  };
+}
+
+
+@Delete("grammar/lessons/:id")
+@Roles(
+  UserRole.SUPER_ADMIN,
+  UserRole.CONTENT_ADMIN,
+)
+async deleteGrammarLesson(
+  @Param("id") id: string,
+) {
+  const lessonId = Number(id);
+
+  if (
+    !Number.isInteger(lessonId) ||
+    lessonId <= 0
+  ) {
+    throw new BadRequestException(
+      "ID bài học không hợp lệ",
+    );
+  }
+
+  const lesson =
+    await this.prisma.grammarLesson.findUnique({
+      where: {
+        id: lessonId,
+      },
+
+      include: {
+        _count: {
+          select: {
+            progresses: true,
+          },
+        },
+      },
+    });
+
+  if (!lesson) {
+    throw new NotFoundException(
+      "Không tìm thấy bài học ngữ pháp",
+    );
+  }
+
+  await this.prisma.$transaction(
+    async (tx) => {
+      // Xóa tiến độ học của người dùng trước
+      await tx.userGrammarProgress.deleteMany({
+        where: {
+          lessonId,
+        },
+      });
+
+      // Sau đó xóa lesson
+      await tx.grammarLesson.delete({
+        where: {
+          id: lessonId,
+        },
+      });
+    },
+  );
+
+  return {
+    success: true,
+    message: "Xóa bài học ngữ pháp thành công",
+    id: lessonId,
   };
 }
 }
