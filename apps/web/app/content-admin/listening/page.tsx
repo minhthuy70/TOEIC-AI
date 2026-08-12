@@ -465,7 +465,7 @@ export default function ListeningAdminPage() {
                     </td>
 
                     <td className="px-5 py-4 text-zinc-300">
-                      {lesson._count?.groups ?? 0}
+                      {lesson._count?.listening_lesson_groups ?? 0}
                     </td>
 
                     <td className="px-5 py-4">
