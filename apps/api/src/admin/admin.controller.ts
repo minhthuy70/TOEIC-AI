@@ -9,6 +9,7 @@ import {
   Query,
   UseGuards,
   NotFoundException,
+  ConflictException,
 } from "@nestjs/common";
 
 import { PrismaService } from "../prisma/prisma.service";
@@ -393,6 +394,296 @@ async deleteVocabulary(
     success: true,
     message: "Xóa từ vựng thành công",
     id: vocabularyId,
+  };
+}
+
+@Get("grammar/categories")
+@Roles(
+  UserRole.SUPER_ADMIN,
+  UserRole.CONTENT_ADMIN,
+)
+async getGrammarCategories(
+  @Query("page") page = "1",
+  @Query("limit") limit = "10",
+  @Query("search") search = "",
+  @Query("stage") stage?: string,
+) {
+  const pageNumber = Math.max(Number(page), 1);
+
+  const limitNumber = Math.min(
+    Math.max(Number(limit), 1),
+    100,
+  );
+
+  const skip =
+    (pageNumber - 1) * limitNumber;
+
+  const where: any = {};
+
+  if (search.trim()) {
+    where.OR = [
+      {
+        name: {
+          contains: search.trim(),
+          mode: "insensitive",
+        },
+      },
+      {
+        description: {
+          contains: search.trim(),
+          mode: "insensitive",
+        },
+      },
+    ];
+  }
+
+  if (stage) {
+    const stageNumber = Number(stage);
+
+    if (
+      Number.isInteger(stageNumber) &&
+      stageNumber >= 1 &&
+      stageNumber <= 5
+    ) {
+      where.stage = stageNumber;
+    }
+  }
+
+  const [items, total] =
+    await Promise.all([
+      this.prisma.grammarCategory.findMany({
+        where,
+        skip,
+        take: limitNumber,
+
+        orderBy: [
+          {
+            stage: "asc",
+          },
+          {
+            displayOrder: "asc",
+          },
+          {
+            id: "asc",
+          },
+        ],
+
+        select: {
+          id: true,
+          name: true,
+          description: true,
+          displayOrder: true,
+          stage: true,
+          createdAt: true,
+          updatedAt: true,
+
+          _count: {
+            select: {
+              lessons: true,
+            },
+          },
+        },
+      }),
+
+      this.prisma.grammarCategory.count({
+        where,
+      }),
+    ]);
+
+  return {
+    items,
+    total,
+    page: pageNumber,
+    limit: limitNumber,
+    totalPages: Math.ceil(
+      total / limitNumber,
+    ),
+  };
+}
+
+@Post("grammar/categories")
+@Roles(
+  UserRole.SUPER_ADMIN,
+  UserRole.CONTENT_ADMIN,
+)
+async createGrammarCategory(
+  @Body()
+  body: {
+    name: string;
+    description?: string;
+    displayOrder?: number;
+    stage: number;
+  },
+) {
+  if (!body.name?.trim()) {
+    throw new Error(
+      "Tên danh mục không được để trống",
+    );
+  }
+
+  const stage = Number(body.stage);
+
+  if (
+    !Number.isInteger(stage) ||
+    stage < 1 ||
+    stage > 5
+  ) {
+    throw new Error(
+      "Stage phải từ 1 đến 5",
+    );
+  }
+
+  const category =
+    await this.prisma.grammarCategory.create({
+      data: {
+        name: body.name.trim(),
+
+        description:
+          body.description?.trim() || null,
+
+        displayOrder:
+          body.displayOrder !== undefined
+            ? Number(body.displayOrder)
+            : 0,
+
+        stage,
+      },
+    });
+
+  return {
+    success: true,
+    message: "Thêm danh mục ngữ pháp thành công",
+    item: category,
+  };
+}
+
+@Patch("grammar/categories/:id")
+@Roles(
+  UserRole.SUPER_ADMIN,
+  UserRole.CONTENT_ADMIN,
+)
+async updateGrammarCategory(
+  @Param("id") id: string,
+  @Body()
+  body: {
+    name: string;
+    description?: string;
+    displayOrder?: number;
+    stage: number;
+  },
+) {
+  const categoryId = Number(id);
+
+  const existing =
+    await this.prisma.grammarCategory.findUnique({
+      where: {
+        id: categoryId,
+      },
+    });
+
+  if (!existing) {
+    throw new NotFoundException(
+      "Không tìm thấy danh mục ngữ pháp",
+    );
+  }
+
+  const stage = Number(body.stage);
+
+  if (
+    !Number.isInteger(stage) ||
+    stage < 1 ||
+    stage > 5
+  ) {
+    throw new Error(
+      "Stage phải từ 1 đến 5",
+    );
+  }
+
+  const category =
+    await this.prisma.grammarCategory.update({
+      where: {
+        id: categoryId,
+      },
+
+      data: {
+        name: body.name.trim(),
+
+        description:
+          body.description?.trim() || null,
+
+        displayOrder:
+          body.displayOrder !== undefined
+            ? Number(body.displayOrder)
+            : 0,
+
+        stage,
+      },
+    });
+
+  return {
+    success: true,
+    message:
+      "Cập nhật danh mục ngữ pháp thành công",
+    item: category,
+  };
+}
+
+@Delete("grammar/categories/:id")
+@Roles(
+  UserRole.SUPER_ADMIN,
+  UserRole.CONTENT_ADMIN,
+)
+async deleteGrammarCategory(
+  @Param("id") id: string,
+) {
+  const categoryId = Number(id);
+
+  if (
+    !Number.isInteger(categoryId) ||
+    categoryId <= 0
+  ) {
+    throw new NotFoundException(
+      "ID danh mục không hợp lệ",
+    );
+  }
+
+  const category =
+    await this.prisma.grammarCategory.findUnique({
+      where: {
+        id: categoryId,
+      },
+      include: {
+        _count: {
+          select: {
+            lessons: true,
+          },
+        },
+      },
+    });
+
+  if (!category) {
+    throw new NotFoundException(
+      "Không tìm thấy danh mục ngữ pháp",
+    );
+  }
+
+  // Không cho xóa category nếu vẫn còn lesson
+  if (category._count.lessons > 0) {
+  throw new ConflictException(
+    `Không thể xóa danh mục vì đang có ${category._count.lessons} bài học`,
+  );
+}
+
+  await this.prisma.grammarCategory.delete({
+    where: {
+      id: categoryId,
+    },
+  });
+
+  return {
+    success: true,
+    message: "Xóa danh mục ngữ pháp thành công",
+    id: categoryId,
   };
 }
 }
