@@ -4,6 +4,7 @@ import {
   Patch,
   Param,
   Body,
+  Query,
   UseGuards,
 } from "@nestjs/common";
 
@@ -124,6 +125,87 @@ async updateUserRole(
   return {
     message: "Cập nhật quyền thành công",
     user: updatedUser,
+  };
+}
+@Get("vocabulary")
+@Roles(UserRole.SUPER_ADMIN, UserRole.CONTENT_ADMIN)
+async getVocabulary(
+  @Query("page") page = "1",
+  @Query("limit") limit = "10",
+  @Query("search") search = "",
+  @Query("stage") stage?: string,
+) {
+  const pageNumber = Math.max(Number(page), 1);
+  const limitNumber = Math.min(
+    Math.max(Number(limit), 1),
+    100,
+  );
+
+  const skip =
+    (pageNumber - 1) * limitNumber;
+
+  const where: any = {};
+
+  if (search.trim()) {
+    where.OR = [
+      {
+        english: {
+          contains: search.trim(),
+          mode: "insensitive",
+        },
+      },
+      {
+        vietnamese: {
+          contains: search.trim(),
+          mode: "insensitive",
+        },
+      },
+    ];
+  }
+
+  if (stage) {
+    where.stage = Number(stage);
+  }
+
+  const [items, total] =
+    await Promise.all([
+      this.prisma.vocabulary.findMany({
+        where,
+        skip,
+        take: limitNumber,
+        orderBy: {
+          id: "asc",
+        },
+        select: {
+          id: true,
+          english: true,
+          type: true,
+          vietnamese: true,
+          pronounce: true,
+          explain: true,
+          example: true,
+          exampleVietnamese: true,
+          imageUrl: true,
+          audioUrl: true,
+          topic: true,
+          stage: true,
+          createdAt: true,
+        },
+      }),
+
+      this.prisma.vocabulary.count({
+        where,
+      }),
+    ]);
+
+  return {
+    items,
+    total,
+    page: pageNumber,
+    limit: limitNumber,
+    totalPages: Math.ceil(
+      total / limitNumber,
+    ),
   };
 }
 }
