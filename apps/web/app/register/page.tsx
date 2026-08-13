@@ -57,7 +57,7 @@ export default function RegisterPage() {
         </h1>
 
         <p className="text-center text-zinc-400 mt-2 mb-8">
-          Tạo tài khoản TOEIC AI
+          Tạo tài khoản TOEIC
         </p>
 
         {/* Họ tên */}

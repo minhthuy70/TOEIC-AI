@@ -87,7 +87,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
             </div>
             <div>
               <h1 className="text-lg font-bold text-white tracking-wide">BELLA</h1>
-              <p className="text-[10px] text-zinc-500 uppercase tracking-[0.2em]">AI TOEIC Platform</p>
+              <p className="text-[10px] text-zinc-500 uppercase tracking-[0.2em]">TOEIC Platform</p>
             </div>
           </div>
         </div>

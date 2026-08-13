@@ -49,7 +49,7 @@ return ( <div className="min-h-screen bg-black flex items-center justify-center 
     </div>
 
     <p className="text-gray-600 text-xs mt-6">
-      BELLA AI • TOEIC Learning System
+      BELLA • TOEIC Learning System
     </p>
 
   </div>

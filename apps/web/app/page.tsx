@@ -15,7 +15,7 @@ export default function Home() {
         </h1>
 
         <p className="text-gray-400 mt-2">
-          AI TOEIC Learning Platform
+          TOEIC Learning Platform
         </p>
 
         <div className="flex gap-4 justify-center mt-8">

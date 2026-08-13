@@ -34,7 +34,7 @@ const VOCAB_MODES = [
   { id: "flashcard", label: "Flashcard", icon: "🃏", desc: "Lật thẻ học từ mới", color: "from-violet-600 to-violet-500" },
   { id: "matching", label: "Ghép cặp", icon: "🔗", desc: "Ghép từ với nghĩa tương ứng", color: "from-blue-600 to-blue-500" },
   { id: "fill", label: "Điền từ", icon: "✏️", desc: "Điền từ vào câu văn", color: "from-green-600 to-green-500" },
-  { id: "srs", label: "SRS Review", icon: "🧠", desc: "Ôn tập theo lịch trình thông minh", color: "from-red-600 to-red-500" },
+  { id: "srs", label: "SRS Review", icon: "🧠", desc: "Ôn tập theo lịch trình cá nhân hóa", color: "from-red-600 to-red-500" },
 ];
 
 const GRAMMAR_MODES = [

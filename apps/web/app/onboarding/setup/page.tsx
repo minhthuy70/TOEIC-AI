@@ -84,7 +84,7 @@ export default function SetupPage() {
           </h1>
 
           <p className="text-gray-400 mt-2 text-sm">
-            Thiết lập mục tiêu TOEIC cá nhân hóa của bạn
+            Thiết lập mục tiêu TOEIC của bạn
           </p>
         </div>
 
