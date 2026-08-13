@@ -1,27 +1,46 @@
 #!/usr/bin/env python3
+
 """
 TOEIC Database Import Script
 
 Import TOEIC test JSON files into PostgreSQL using Prisma.
 
-Usage:
-    python scripts/import_to_database.py --test 1
-    python scripts/import_to_database.py --from 1 --to 100
+IMPORTANT:
+The Prisma schema uses snake_case model names:
 
-Features:
-    - Windows compatible: uses npx.cmd
-    - Linux/macOS compatible: uses npx
-    - Uses Prisma from apps/api
-    - Automatically runs Prisma generate
-    - Checks @prisma/client
-    - Upserts tests
-    - Upserts question groups
-    - Upserts questions
-    - Upserts options
-    - Keeps image_url / audio_url
-    - Deterministic IDs
-    - Safe to re-run
-    - Continues importing remaining tests if one test fails
+    tests
+    question_groups
+    questions
+    options
+
+Therefore the generated JavaScript MUST use:
+
+    prisma.tests
+    prisma.question_groups
+    prisma.questions
+    prisma.options
+
+ID RULE:
+    tests            -> MAX(id) + 1
+    question_groups  -> MAX(id) + 1
+    questions        -> MAX(id) + 1
+    options          -> MAX(id) + 1
+
+The IDs inside the JSON are NEVER used.
+
+Example:
+
+    tests max id            = 1
+    question_groups max id  = 103
+    questions max id        = 200
+    options max id          = 676
+
+Then the next imported test will use:
+
+    test id       = 2
+    first group   = 104
+    first question= 201
+    first option  = 677
 """
 
 import argparse
@@ -37,24 +56,17 @@ from typing import Dict, List, Optional
 # PATH CONFIGURATION
 # ============================================================
 
-# Current:
-# toeic-ai/toeic-generated-data/scripts/import_to_database.py
-#
-# BASE_DIR:
-# toeic-ai/toeic-generated-data
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-# toeic-ai/toeic-generated-data/data/tests
 DATA_DIR = BASE_DIR / "data" / "tests"
 
-# toeic-ai/apps/api
 API_DIR = BASE_DIR.parent / "apps" / "api"
 
-# Try to find Prisma schema
-SCHEMA_CANDIDATES = [
-    API_DIR / "prisma" / "schema.prisma",
-    API_DIR / "prisma" / "schema" / "schema.prisma",
-]
+SCHEMA_FILE = API_DIR / "prisma" / "schema.prisma"
+
+NPM_COMMAND = "npm.cmd" if os.name == "nt" else "npm"
+
+NPX_COMMAND = "npx.cmd" if os.name == "nt" else "npx"
 
 
 # ============================================================
@@ -64,18 +76,16 @@ SCHEMA_CANDIDATES = [
 class DatabaseImporter:
 
     def __init__(self):
+
         self.imported_tests = 0
+
         self.imported_groups = 0
+
         self.imported_questions = 0
+
         self.imported_options = 0
 
         self.failed_tests: List[str] = []
-
-        # Windows requires npx.cmd
-        self.npx_command = "npx.cmd" if os.name == "nt" else "npx"
-
-        # node is normally node.exe on Windows but "node" works
-        self.node_command = "node"
 
     # ========================================================
     # RUN COMMAND
@@ -87,13 +97,6 @@ class DatabaseImporter:
         cwd: Path,
         timeout: int = 60
     ):
-        """
-        Run a command safely.
-
-        Important:
-        Windows uses npx.cmd instead of npx when
-        subprocess.run(..., shell=False).
-        """
 
         return subprocess.run(
             command,
@@ -112,148 +115,121 @@ class DatabaseImporter:
 
     def check_project(self) -> bool:
 
-        print()
-        print("=" * 70)
+        print("\n" + "=" * 70)
         print("CHECKING PROJECT")
         print("=" * 70)
 
         print(f"Project root : {BASE_DIR}")
         print(f"Data dir     : {DATA_DIR}")
         print(f"API dir      : {API_DIR}")
-
-        # ----------------------------------------------------
-        # BASE DIR
-        # ----------------------------------------------------
+        print(f"Schema       : {SCHEMA_FILE}")
 
         if not BASE_DIR.exists():
-            print()
-            print(f"[ERROR] BASE_DIR not found:")
-            print(BASE_DIR)
-            return False
 
-        # ----------------------------------------------------
-        # DATA DIR
-        # ----------------------------------------------------
+            print(
+                "[ERROR] BASE_DIR not found:\n"
+                f"{BASE_DIR}"
+            )
+
+            return False
 
         if not DATA_DIR.exists():
-            print()
-            print("[ERROR] Data directory not found:")
-            print(DATA_DIR)
-            return False
 
-        # ----------------------------------------------------
-        # API DIR
-        # ----------------------------------------------------
+            print(
+                "[ERROR] Data directory not found:\n"
+                f"{DATA_DIR}"
+            )
+
+            return False
 
         if not API_DIR.exists():
-            print()
-            print("[ERROR] API directory not found:")
-            print(API_DIR)
+
+            print(
+                "[ERROR] API directory not found:\n"
+                f"{API_DIR}"
+            )
+
             return False
 
-        # ----------------------------------------------------
-        # package.json
-        # ----------------------------------------------------
+        if not SCHEMA_FILE.exists():
+
+            print(
+                "[ERROR] Prisma schema not found:\n"
+                f"{SCHEMA_FILE}"
+            )
+
+            return False
 
         package_json = API_DIR / "package.json"
 
         if not package_json.exists():
-            print()
-            print("[WARNING] package.json not found:")
-            print(package_json)
 
-        # ----------------------------------------------------
-        # schema.prisma
-        # ----------------------------------------------------
-
-        schema = self.find_schema()
-
-        if schema:
-            print(f"Schema        : {schema}")
-        else:
-            print()
-            print("[WARNING] schema.prisma was not found automatically.")
+            print(
+                "[WARNING] package.json not found in:\n"
+                f"{API_DIR}"
+            )
 
         return True
 
     # ========================================================
-    # FIND PRISMA SCHEMA
+    # CHECK NODE / NPM / NPX
     # ========================================================
 
-    def find_schema(self) -> Optional[Path]:
+    def check_node_tools(self) -> bool:
 
-        for candidate in SCHEMA_CANDIDATES:
-
-            if candidate.exists():
-                return candidate
-
-        # Recursive fallback
-        try:
-            schemas = list(
-                API_DIR.rglob("schema.prisma")
-            )
-
-            if schemas:
-                return schemas[0]
-
-        except Exception:
-            pass
-
-        return None
-
-    # ========================================================
-    # CHECK NODE
-    # ========================================================
-
-    def check_node(self) -> bool:
-
-        print()
-        print("=" * 70)
+        print("\n" + "=" * 70)
         print("CHECKING NODE.JS / NPM / NPX")
         print("=" * 70)
 
         commands = [
-            ([self.node_command, "--version"], "Node.js"),
-            (["npm.cmd" if os.name == "nt" else "npm", "--version"], "npm"),
-            ([self.npx_command, "--version"], "npx"),
+
+            (
+                "Node.js",
+                ["node", "--version"]
+            ),
+
+            (
+                "npm",
+                [NPM_COMMAND, "--version"]
+            ),
+
+            (
+                "npx",
+                [NPX_COMMAND, "--version"]
+            ),
+
         ]
 
-        for command, name in commands:
+        for name, command in commands:
 
             try:
 
                 result = self.run_command(
                     command,
-                    BASE_DIR,
-                    timeout=20
+                    API_DIR,
+                    timeout=30
                 )
 
-                if result.returncode == 0:
-
-                    version = (
-                        result.stdout.strip()
-                        or result.stderr.strip()
-                    )
+                if result.returncode != 0:
 
                     print(
-                        f"[OK] {name}: {version}"
+                        f"[ERROR] {name} check failed."
                     )
 
-                else:
-
-                    print(
-                        f"[ERROR] {name} failed."
-                    )
-
-                    if result.stderr:
-                        print(result.stderr)
+                    print(result.stderr)
 
                     return False
+
+                print(
+                    f"[OK] {name}: "
+                    f"{result.stdout.strip()}"
+                )
 
             except FileNotFoundError:
 
                 print(
-                    f"[ERROR] {name} executable was not found."
+                    f"[ERROR] {name} executable "
+                    "was not found."
                 )
 
                 return False
@@ -261,7 +237,8 @@ class DatabaseImporter:
             except Exception as e:
 
                 print(
-                    f"[ERROR] Failed checking {name}: {e}"
+                    f"[ERROR] Failed checking "
+                    f"{name}: {e}"
                 )
 
                 return False
@@ -274,29 +251,29 @@ class DatabaseImporter:
 
     def check_prisma_cli(self) -> bool:
 
-        print()
-        print("=" * 70)
+        print("\n" + "=" * 70)
         print("CHECKING PRISMA CLI")
         print("=" * 70)
 
-        print(
-            f"Running: {self.npx_command} prisma --version"
-        )
-
-        print(
-            f"Working directory: {API_DIR}"
-        )
-
         try:
+
+            print(
+                f"Running: "
+                f"{NPX_COMMAND} prisma --version"
+            )
+
+            print(
+                f"Working directory: {API_DIR}"
+            )
 
             result = self.run_command(
                 [
-                    self.npx_command,
+                    NPX_COMMAND,
                     "prisma",
                     "--version"
                 ],
                 API_DIR,
-                timeout=60
+                timeout=30
             )
 
             if result.returncode == 0:
@@ -305,8 +282,7 @@ class DatabaseImporter:
                     "[OK] Prisma CLI is available."
                 )
 
-                if result.stdout:
-                    print(result.stdout.strip())
+                print(result.stdout.strip())
 
                 return True
 
@@ -314,41 +290,18 @@ class DatabaseImporter:
                 "[ERROR] Prisma CLI command failed."
             )
 
-            if result.stdout:
-                print("STDOUT:")
-                print(result.stdout)
+            print("STDOUT:")
+            print(result.stdout)
 
-            if result.stderr:
-                print("STDERR:")
-                print(result.stderr)
+            print("STDERR:")
+            print(result.stderr)
 
             return False
 
         except FileNotFoundError:
 
             print(
-                f"[ERROR] `{self.npx_command}` was not found."
-            )
-
-            print()
-            print(
-                "But Node.js should be installed."
-            )
-
-            print(
-                "Try in PowerShell:"
-            )
-
-            print(
-                "  node --version"
-            )
-
-            print(
-                "  npm --version"
-            )
-
-            print(
-                "  npx --version"
+                f"[ERROR] `{NPX_COMMAND}` was not found."
             )
 
             return False
@@ -375,41 +328,32 @@ class DatabaseImporter:
 
     def generate_prisma_client(self) -> bool:
 
-        print()
-        print("=" * 70)
+        print("\n" + "=" * 70)
         print("GENERATING PRISMA CLIENT")
         print("=" * 70)
 
-        schema = self.find_schema()
-
-        command = [
-            self.npx_command,
-            "prisma",
-            "generate"
-        ]
-
-        if schema:
-
-            command.extend([
-                "--schema",
-                str(schema)
-            ])
-
-            print(
-                f"Schema: {schema}"
-            )
-
-        print(
-            "Running:",
-            " ".join(command)
-        )
-
         try:
 
+            print(
+                f"Schema: {SCHEMA_FILE}"
+            )
+
+            print(
+                f"Running: "
+                f"{NPX_COMMAND} prisma generate "
+                f"--schema {SCHEMA_FILE}"
+            )
+
             result = self.run_command(
-                command,
+                [
+                    NPX_COMMAND,
+                    "prisma",
+                    "generate",
+                    "--schema",
+                    str(SCHEMA_FILE),
+                ],
                 API_DIR,
-                timeout=300
+                timeout=180
             )
 
             if result.stdout:
@@ -431,15 +375,6 @@ class DatabaseImporter:
             )
 
             return True
-
-        except FileNotFoundError:
-
-            print()
-            print(
-                f"[ERROR] `{self.npx_command}` was not found."
-            )
-
-            return False
 
         except subprocess.TimeoutExpired:
 
@@ -463,8 +398,7 @@ class DatabaseImporter:
 
     def check_prisma_client(self) -> bool:
 
-        print()
-        print("=" * 70)
+        print("\n" + "=" * 70)
         print("CHECKING @PRISMA/CLIENT")
         print("=" * 70)
 
@@ -472,29 +406,35 @@ class DatabaseImporter:
 
             result = self.run_command(
                 [
-                    self.node_command,
+                    "node",
                     "-e",
                     (
                         "const p=require('@prisma/client'); "
                         "console.log('PrismaClient:', "
                         "!!p.PrismaClient);"
-                    )
+                    ),
                 ],
                 API_DIR,
                 timeout=30
             )
 
             if result.stdout:
-                print(result.stdout.strip())
+                print(result.stdout)
 
             if result.returncode != 0:
 
                 print(
-                    "[ERROR] @prisma/client cannot be loaded."
+                    "[ERROR] @prisma/client "
+                    "cannot be loaded."
                 )
 
                 if result.stderr:
                     print(result.stderr)
+
+                print()
+                print("Try:")
+                print("npm install")
+                print("npx prisma generate")
 
                 return False
 
@@ -504,18 +444,11 @@ class DatabaseImporter:
 
             return True
 
-        except FileNotFoundError:
-
-            print(
-                "[ERROR] Node.js executable not found."
-            )
-
-            return False
-
         except Exception as e:
 
             print(
-                f"[ERROR] Failed to check @prisma/client: {e}"
+                "[ERROR] Failed to check "
+                f"@prisma/client: {e}"
             )
 
             return False
@@ -536,12 +469,10 @@ class DatabaseImporter:
 
         if not json_file.exists():
 
-            print()
             print(
-                "[ERROR] JSON file not found:"
+                "[ERROR] JSON file not found:\n"
+                f"{json_file}"
             )
-
-            print(json_file)
 
             return None
 
@@ -557,19 +488,17 @@ class DatabaseImporter:
 
         except json.JSONDecodeError as e:
 
-            print()
             print(
-                "[ERROR] Invalid JSON:"
+                "[ERROR] Invalid JSON:\n"
+                f"{json_file}"
             )
 
-            print(json_file)
             print(e)
 
             return None
 
         except Exception as e:
 
-            print()
             print(
                 "[ERROR] Failed to read JSON:"
             )
@@ -636,9 +565,7 @@ class DatabaseImporter:
 
         try:
 
-            return str(
-                int(value)
-            )
+            return str(int(value))
 
         except (
             ValueError,
@@ -673,9 +600,15 @@ class DatabaseImporter:
         question_groups: List[Dict]
     ) -> str:
 
+        # ----------------------------------------------------
+        # HEADER
+        # ----------------------------------------------------
+
         script_lines = [
 
             "const { PrismaClient } = require('@prisma/client');",
+
+            "",
 
             "const prisma = new PrismaClient();",
 
@@ -687,10 +620,79 @@ class DatabaseImporter:
 
             "",
 
+            "  // ==================================================",
+            "  // GET CURRENT MAX IDS",
+            "  // ==================================================",
+
+            "",
+
+            "  const maxTest = await prisma.tests.aggregate({",
+            "    _max: { id: true }",
+            "  });",
+
+            "",
+
+            "  const maxGroup = await prisma.question_groups.aggregate({",
+            "    _max: { id: true }",
+            "  });",
+
+            "",
+
+            "  const maxQuestion = await prisma.questions.aggregate({",
+            "    _max: { id: true }",
+            "  });",
+
+            "",
+
+            "  const maxOption = await prisma.options.aggregate({",
+            "    _max: { id: true }",
+            "  });",
+
+            "",
+
+            "  // ==================================================",
+            "  // NEXT IDS",
+            "  // ==================================================",
+
+            "",
+
+            "  let nextTestId = (maxTest._max.id || 0) + 1;",
+
+            "  let nextGroupId = (maxGroup._max.id || 0) + 1;",
+
+            "  let nextQuestionId = (maxQuestion._max.id || 0) + 1;",
+
+            "  let nextOptionId = (maxOption._max.id || 0) + 1;",
+
+            "",
+
+            "  console.log('Current max IDs:');",
+
+            "  console.log('  tests           :', maxTest._max.id);",
+
+            "  console.log('  question_groups :', maxGroup._max.id);",
+
+            "  console.log('  questions       :', maxQuestion._max.id);",
+
+            "  console.log('  options         :', maxOption._max.id);",
+
+            "",
+
+            "  console.log('Next IDs:');",
+
+            "  console.log('  tests           :', nextTestId);",
+
+            "  console.log('  question_groups :', nextGroupId);",
+
+            "  console.log('  questions       :', nextQuestionId);",
+
+            "  console.log('  options         :', nextOptionId);",
+
+            "",
         ]
 
         # ====================================================
-        # TEST
+        # TEST INFORMATION
         # ====================================================
 
         test_title = test_info.get(
@@ -718,50 +720,50 @@ class DatabaseImporter:
             True
         )
 
+        # ====================================================
+        # TEST
+        # ====================================================
+
         script_lines.extend([
 
+            "  // ==================================================",
             "  // TEST",
+            "  // ==================================================",
 
-            "  const test = await prisma.tests.upsert({",
+            "",
 
-            f"    where: {{ id: {test_num} }},",
+            "  const currentTestId = nextTestId++;",
 
-            "    update: {",
+            "",
 
-            f"      title: {self.format_nullable_string(test_title)},",
+            "  const test = await prisma.tests.create({",
 
-            f"      duration: {self.format_nullable_int(test_duration)},",
+            "    data: {",
 
-            f"      total_questions: {self.format_nullable_int(test_total_questions)},",
-
-            f"      description: {self.format_nullable_string(test_description)},",
-
-            f"      is_active: {self.format_boolean(test_is_active)}",
-
-            "    },",
-
-            "    create: {",
-
-            f"      id: {test_num},",
+            "      id: currentTestId,",
 
             f"      title: {self.format_nullable_string(test_title)},",
 
             f"      duration: {self.format_nullable_int(test_duration)},",
 
-            f"      total_questions: {self.format_nullable_int(test_total_questions)},",
+            f"      total_questions: "
+            f"{self.format_nullable_int(test_total_questions)},",
 
-            f"      description: {self.format_nullable_string(test_description)},",
+            f"      description: "
+            f"{self.format_nullable_string(test_description)},",
 
-            f"      is_active: {self.format_boolean(test_is_active)}",
+            f"      is_active: "
+            f"{self.format_boolean(test_is_active)}",
 
             "    }",
 
             "  });",
 
+            "",
+
             "  console.log('Test:', test.id);",
 
             "",
-
         ])
 
         # ====================================================
@@ -774,11 +776,44 @@ class DatabaseImporter:
 
             group_counter += 1
 
-            # Deterministic group ID
-            group_id = (
-                test_num * 1000
-                + group_counter
+            # ------------------------------------------------
+            # CREATE UNIQUE GROUP ID
+            #
+            # IMPORTANT:
+            # Do NOT use const currentGroupId here.
+            #
+            # We use a unique variable name for every generated
+            # group so there is NO duplicate declaration.
+            # ------------------------------------------------
+
+            group_variable = (
+                f"group_{group_counter}"
             )
+
+            group_id_variable = (
+                f"groupId_{group_counter}"
+            )
+
+            script_lines.extend([
+
+                "",
+
+                "  // ==================================================",
+
+                f"  // QUESTION GROUP {group_counter}",
+
+                "  // ==================================================",
+
+                "",
+
+                f"  const {group_id_variable} = "
+                "nextGroupId++;",
+
+            ])
+
+            # ------------------------------------------------
+            # GROUP DATA
+            # ------------------------------------------------
 
             part = group.get("part")
 
@@ -821,51 +856,16 @@ class DatabaseImporter:
 
             script_lines.extend([
 
-                f"  // QUESTION GROUP {group_counter}",
+                "",
 
-                f"  const group{group_counter} = "
-                f"await prisma.questionGroups.upsert({{",
+                f"  const {group_variable} = "
+                "await prisma.question_groups.create({",
 
-                f"    where: {{ id: {group_id} }},",
+                "    data: {",
 
-                "    update: {",
+                f"      id: {group_id_variable},",
 
-                f"      part: {self.format_nullable_int(part)},",
-
-                f"      group_type: "
-                f"{self.format_nullable_string(group_type)},",
-
-                f"      title: "
-                f"{self.format_nullable_string(title)},",
-
-                f"      passage: "
-                f"{self.format_nullable_string(passage)},",
-
-                f"      image_url: "
-                f"{self.format_nullable_string(image_url)},",
-
-                f"      audio_url: "
-                f"{self.format_nullable_string(audio_url)},",
-
-                f"      display_order: "
-                f"{self.format_nullable_int(display_order)},",
-
-                f"      audio_start_time: "
-                f"{self.format_nullable_int(audio_start_time)},",
-
-                f"      audio_end_time: "
-                f"{self.format_nullable_int(audio_end_time)},",
-
-                f"      knowledge: "
-                f"{self.format_nullable_string(knowledge)}",
-
-                "    },",
-
-                "    create: {",
-
-                f"      id: {group_id},",
-
-                f"      test_id: {test_num},",
+                "      test_id: currentTestId,",
 
                 f"      part: "
                 f"{self.format_nullable_int(part)},",
@@ -901,12 +901,17 @@ class DatabaseImporter:
 
                 "  });",
 
-                f"  console.log("
-                f"'Group {group_counter}:', "
-                f"group{group_counter}.id);",
-
                 "",
 
+                "  console.log(",
+
+                f"    'Group {group_counter}:',",
+
+                f"    {group_variable}.id",
+
+                "  );",
+
+                "",
             ])
 
             # =================================================
@@ -922,12 +927,37 @@ class DatabaseImporter:
                 questions
             ):
 
-                # Deterministic question ID
-                question_id = (
-                    group_id * 100
-                    + question_counter
-                    + 1
+                # ------------------------------------------------
+                # UNIQUE VARIABLE NAMES
+                # ------------------------------------------------
+
+                question_variable = (
+                    f"question_{group_counter}_"
+                    f"{question_counter + 1}"
                 )
+
+                question_id_variable = (
+                    f"questionId_{group_counter}_"
+                    f"{question_counter + 1}"
+                )
+
+                script_lines.extend([
+
+                    "",
+
+                    f"  // Question "
+                    f"{question_counter + 1}",
+
+                    "",
+
+                    f"  const {question_id_variable} = "
+                    "nextQuestionId++;",
+
+                ])
+
+                # ------------------------------------------------
+                # QUESTION DATA
+                # ------------------------------------------------
 
                 question_number = question.get(
                     "question_number"
@@ -950,46 +980,18 @@ class DatabaseImporter:
                     question_counter + 1
                 )
 
-                var_name = (
-                    f"question_"
-                    f"{group_counter}_"
-                    f"{question_counter}"
-                )
-
                 script_lines.extend([
 
-                    f"  // QUESTION "
-                    f"{question_counter + 1}",
+                    "",
 
-                    f"  const {var_name} = "
-                    f"await prisma.questions.upsert({{",
+                    f"  const {question_variable} = "
+                    "await prisma.questions.create({",
 
-                    f"    where: {{ id: {question_id} }},",
+                    "    data: {",
 
-                    "    update: {",
+                    f"      id: {question_id_variable},",
 
-                    f"      question_number: "
-                    f"{self.format_nullable_int(question_number)},",
-
-                    f"      question_text: "
-                    f"{self.format_nullable_string(question_text)},",
-
-                    f"      correct_answer: "
-                    f"{self.format_nullable_string(correct_answer)},",
-
-                    f"      explanation: "
-                    f"{self.format_nullable_string(explanation)},",
-
-                    f"      display_order: "
-                    f"{self.format_nullable_int(q_display_order)}",
-
-                    "    },",
-
-                    "    create: {",
-
-                    f"      id: {question_id},",
-
-                    f"      group_id: {group_id},",
+                    f"      group_id: {group_id_variable},",
 
                     f"      question_number: "
                     f"{self.format_nullable_int(question_number)},",
@@ -1010,12 +1012,18 @@ class DatabaseImporter:
 
                     "  });",
 
-                    f"  console.log("
-                    f"'Question {question_counter + 1}:', "
-                    f"{var_name}.id);",
-
                     "",
 
+                    "  console.log(",
+
+                    f"    'Question "
+                    f"{question_counter + 1}:',",
+
+                    f"    {question_variable}.id",
+
+                    "  );",
+
+                    "",
                 ])
 
                 # =============================================
@@ -1031,12 +1039,39 @@ class DatabaseImporter:
                     options
                 ):
 
-                    # Deterministic option ID
-                    option_id = (
-                        question_id * 10
-                        + option_counter
-                        + 1
+                    # -----------------------------------------
+                    # UNIQUE VARIABLE NAME
+                    # -----------------------------------------
+
+                    option_variable = (
+                        f"option_"
+                        f"{group_counter}_"
+                        f"{question_counter + 1}_"
+                        f"{option_counter + 1}"
                     )
+
+                    option_id_variable = (
+                        f"optionId_"
+                        f"{group_counter}_"
+                        f"{question_counter + 1}_"
+                        f"{option_counter + 1}"
+                    )
+
+                    script_lines.extend([
+
+                        "",
+
+                        f"  // Option "
+                        f"{option_counter + 1}",
+
+                        "",
+
+                        f"  const {option_id_variable} = "
+                        "nextOptionId++;",
+
+                        "",
+
+                    ])
 
                     option_label = option.get(
                         "option_label"
@@ -1046,11 +1081,6 @@ class DatabaseImporter:
                         "option_text"
                     )
 
-                    is_correct = option.get(
-                        "is_correct",
-                        False
-                    )
-
                     o_display_order = option.get(
                         "display_order",
                         option_counter + 1
@@ -1058,43 +1088,21 @@ class DatabaseImporter:
 
                     script_lines.extend([
 
-                        f"  // OPTION "
-                        f"{option_counter + 1}",
+                        f"  const {option_variable} = "
+                        "await prisma.options.create({",
 
-                        "  await prisma.options.upsert({",
+                        "    data: {",
 
-                        f"    where: {{ id: {option_id} }},",
+                        f"      id: {option_id_variable},",
 
-                        "    update: {",
-
-                        f"      option_label: "
-                        f"{self.format_nullable_string(option_label)},",
-
-                        f"      option_text: "
-                        f"{self.format_nullable_string(option_text)},",
-
-                        f"      is_correct: "
-                        f"{self.format_boolean(is_correct)},",
-
-                        f"      display_order: "
-                        f"{self.format_nullable_int(o_display_order)}",
-
-                        "    },",
-
-                        "    create: {",
-
-                        f"      id: {option_id},",
-
-                        f"      question_id: {question_id},",
+                        f"      question_id: "
+                        f"{question_id_variable},",
 
                         f"      option_label: "
                         f"{self.format_nullable_string(option_label)},",
 
                         f"      option_text: "
                         f"{self.format_nullable_string(option_text)},",
-
-                        f"      is_correct: "
-                        f"{self.format_boolean(is_correct)},",
 
                         f"      display_order: "
                         f"{self.format_nullable_int(o_display_order)}",
@@ -1169,13 +1177,15 @@ class DatabaseImporter:
                 f.write(script)
 
             print()
+
             print(
-                f"[RUN] node {seed_file.name}"
+                f"[RUN] node "
+                f"{seed_file.name}"
             )
 
             result = self.run_command(
                 [
-                    self.node_command,
+                    "node",
                     str(seed_file)
                 ],
                 API_DIR,
@@ -1190,50 +1200,37 @@ class DatabaseImporter:
 
             if result.returncode == 0:
 
-                print()
                 print(
-                    f"[SUCCESS] "
-                    f"test{test_num:03d} "
-                    f"database import completed."
+                    f"[SUCCESS] test"
+                    f"{test_num:03d} "
+                    "database import completed."
                 )
 
                 return True
 
-            print()
             print(
-                f"[ERROR] "
-                f"test{test_num:03d} "
-                f"database import failed."
-            )
-
-            return False
-
-        except FileNotFoundError:
-
-            print()
-            print(
-                "[ERROR] Node.js was not found."
+                f"[ERROR] test"
+                f"{test_num:03d} "
+                "database import failed."
             )
 
             return False
 
         except subprocess.TimeoutExpired:
 
-            print()
             print(
-                f"[ERROR] "
-                f"test{test_num:03d} "
-                f"import timed out."
+                f"[ERROR] test"
+                f"{test_num:03d} "
+                "import timed out."
             )
 
             return False
 
         except Exception as e:
 
-            print()
             print(
-                f"[ERROR] "
-                f"Failed to execute seed script: {e}"
+                "[ERROR] Failed to execute "
+                f"seed script: {e}"
             )
 
             return False
@@ -1249,11 +1246,11 @@ class DatabaseImporter:
                 except Exception as e:
 
                     print(
-                        "[WARNING] "
-                        "Could not delete temporary file:"
+                        "[WARNING] Could not delete "
+                        "temporary file: "
+                        f"{seed_file}"
                     )
 
-                    print(seed_file)
                     print(e)
 
     # ========================================================
@@ -1265,11 +1262,15 @@ class DatabaseImporter:
         test_num: int
     ) -> bool:
 
-        print()
+        print("\n")
+
         print("=" * 70)
+
         print(
-            f"IMPORTING TEST {test_num:03d}"
+            f"IMPORTING TEST "
+            f"{test_num:03d}"
         )
+
         print("=" * 70)
 
         data = self.load_test_json(
@@ -1297,22 +1298,27 @@ class DatabaseImporter:
         if not test_info:
 
             print(
-                "[ERROR] "
-                "JSON does not contain test information."
+                "[ERROR] JSON does not contain "
+                "test information."
             )
 
             self.failed_tests.append(
                 f"test{test_num:03d} - "
-                f"No test information"
+                "No test information"
             )
 
             return False
 
-        # ====================================================
-        # COUNT
-        # ====================================================
+        if not question_groups:
+
+            print(
+                "[WARNING] "
+                f"test{test_num:03d} "
+                "has no question groups."
+            )
 
         question_count = 0
+
         option_count = 0
 
         for group in question_groups:
@@ -1336,7 +1342,9 @@ class DatabaseImporter:
                 )
 
         print()
+
         print("JSON CONTENT:")
+
         print(
             f"  Test            : "
             f"test{test_num:03d}"
@@ -1357,20 +1365,25 @@ class DatabaseImporter:
             f"{option_count}"
         )
 
-        # ====================================================
-        # MEDIA
-        # ====================================================
+        image_count = sum(
 
-        image_count = 0
-        audio_count = 0
+            1
 
-        for group in question_groups:
+            for group in question_groups
 
-            if group.get("image_url"):
-                image_count += 1
+            if group.get("image_url")
 
-            if group.get("audio_url"):
-                audio_count += 1
+        )
+
+        audio_count = sum(
+
+            1
+
+            for group in question_groups
+
+            if group.get("audio_url")
+
+        )
 
         print(
             f"  Image URLs      : "
@@ -1382,9 +1395,9 @@ class DatabaseImporter:
             f"{audio_count}"
         )
 
-        # ====================================================
-        # CREATE SEED
-        # ====================================================
+        # ----------------------------------------------------
+        # CREATE JS SEED
+        # ----------------------------------------------------
 
         seed_script = self.create_seed_script(
             test_num,
@@ -1392,9 +1405,9 @@ class DatabaseImporter:
             question_groups
         )
 
-        # ====================================================
+        # ----------------------------------------------------
         # EXECUTE
-        # ====================================================
+        # ----------------------------------------------------
 
         success = self.execute_seed_script(
             seed_script,
@@ -1405,14 +1418,10 @@ class DatabaseImporter:
 
             self.failed_tests.append(
                 f"test{test_num:03d} - "
-                f"Database import failed"
+                "Database import failed"
             )
 
             return False
-
-        # ====================================================
-        # STATISTICS
-        # ====================================================
 
         self.imported_tests += 1
 
@@ -1436,9 +1445,14 @@ class DatabaseImporter:
 
     def print_summary(self):
 
-        print()
+        print("\n")
+
         print("=" * 70)
-        print("DATABASE IMPORT SUMMARY")
+
+        print(
+            "DATABASE IMPORT SUMMARY"
+        )
+
         print("=" * 70)
 
         print(
@@ -1464,6 +1478,7 @@ class DatabaseImporter:
         if self.failed_tests:
 
             print()
+
             print(
                 f"FAILED TESTS "
                 f"({len(self.failed_tests)}):"
@@ -1478,9 +1493,11 @@ class DatabaseImporter:
         else:
 
             print()
+
             print(
                 "[SUCCESS] "
-                "All requested tests imported successfully."
+                "All requested tests "
+                "imported successfully."
             )
 
 
@@ -1491,32 +1508,60 @@ class DatabaseImporter:
 def main():
 
     parser = argparse.ArgumentParser(
+
         description=(
+
             "Import TOEIC test JSON files "
             "into PostgreSQL using Prisma."
+
         )
+
     )
 
     parser.add_argument(
+
         "--from",
+
         dest="start_test",
+
         type=int,
+
         default=1,
-        help="Start test number. Default: 1"
+
+        help=(
+            "Start test number. "
+            "Default: 1"
+        )
+
     )
 
     parser.add_argument(
+
         "--to",
+
         dest="end_test",
+
         type=int,
+
         default=100,
-        help="End test number. Default: 100"
+
+        help=(
+            "End test number. "
+            "Default: 100"
+        )
+
     )
 
     parser.add_argument(
+
         "--test",
+
         type=int,
-        help="Import only one test."
+
+        help=(
+            "Import only one test."
+        )
+
     )
 
     args = parser.parse_args()
@@ -1528,29 +1573,34 @@ def main():
     # ========================================================
 
     if not importer.check_project():
+
         sys.exit(1)
 
     # ========================================================
-    # CHECK NODE
+    # CHECK NODE TOOLS
     # ========================================================
 
-    if not importer.check_node():
+    if not importer.check_node_tools():
+
         sys.exit(1)
 
     # ========================================================
-    # CHECK PRISMA
+    # CHECK PRISMA CLI
     # ========================================================
 
     if not importer.check_prisma_cli():
 
         print()
+
         print(
-            "[ERROR] Prisma CLI is not available."
+            "[ERROR] Prisma CLI "
+            "is not available."
         )
 
         print()
+
         print(
-            "Run manually from apps/api:"
+            "Run from apps/api:"
         )
 
         print(
@@ -1566,22 +1616,10 @@ def main():
     if not importer.generate_prisma_client():
 
         print()
-        print(
-            "[ERROR] "
-            "Could not generate Prisma Client."
-        )
-
-        print()
-        print(
-            "Try manually:"
-        )
 
         print(
-            "  cd apps/api"
-        )
-
-        print(
-            "  npx prisma generate"
+            "[ERROR] Could not generate "
+            "Prisma Client."
         )
 
         sys.exit(1)
@@ -1593,12 +1631,14 @@ def main():
     if not importer.check_prisma_client():
 
         print()
+
         print(
-            "[ERROR] "
-            "@prisma/client is not available."
+            "[ERROR] @prisma/client "
+            "is not available."
         )
 
         print()
+
         print(
             "From apps/api run:"
         )
@@ -1622,8 +1662,8 @@ def main():
         if args.test < 1:
 
             print(
-                "[ERROR] "
-                "Test number must be >= 1."
+                "[ERROR] Test number "
+                "must be >= 1."
             )
 
             sys.exit(1)
@@ -1637,8 +1677,8 @@ def main():
         if args.start_test < 1:
 
             print(
-                "[ERROR] "
-                "--from must be >= 1."
+                "[ERROR] --from "
+                "must be >= 1."
             )
 
             sys.exit(1)
@@ -1646,17 +1686,22 @@ def main():
         if args.end_test < args.start_test:
 
             print(
-                "[ERROR] "
-                "--to must be >= --from."
+                "[ERROR] --to "
+                "must be >= --from."
             )
 
             sys.exit(1)
 
         test_range = list(
+
             range(
+
                 args.start_test,
+
                 args.end_test + 1
+
             )
+
         )
 
     # ========================================================
@@ -1664,8 +1709,13 @@ def main():
     # ========================================================
 
     print()
+
     print("=" * 70)
-    print("TOEIC DATABASE IMPORT")
+
+    print(
+        "TOEIC DATABASE IMPORT"
+    )
+
     print("=" * 70)
 
     if len(test_range) == 1:
@@ -1685,18 +1735,18 @@ def main():
         )
 
     print(
-        f"Data directory   : "
+        f"Data directory    : "
         f"{DATA_DIR}"
     )
 
     print(
-        f"API directory    : "
+        f"API directory     : "
         f"{API_DIR}"
     )
 
     print(
-        f"npx command      : "
-        f"{importer.npx_command}"
+        f"npx command       : "
+        f"{NPX_COMMAND}"
     )
 
     print()
@@ -1717,11 +1767,8 @@ def main():
 
     importer.print_summary()
 
-    # ========================================================
-    # EXIT
-    # ========================================================
-
     if importer.failed_tests:
+
         sys.exit(1)
 
     sys.exit(0)
@@ -1732,4 +1779,5 @@ def main():
 # ============================================================
 
 if __name__ == "__main__":
+
     main()
