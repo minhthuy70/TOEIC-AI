@@ -1,0 +1,976 @@
+id,lesson_id,part,group_number,title,passage,knowledge,display_order,created_at,updated_at
+7,1,5,7,Part 5 - Incomplete Sentence 007,,"💡 Mẹo về đại từ: Xác định danh từ mà đại từ thay thế và kiểm tra số ít, số nhiều trước khi chọn đáp án.",7,2026-08-10 11:31:21.892622,2026-08-10 11:31:21.892622
+8,1,5,8,Part 5 - Incomplete Sentence 008,,"💡 Mẹo về tính từ sở hữu: my, your, his, her, its, our, their luôn đứng trước danh từ.",8,2026-08-10 11:31:21.892622,2026-08-10 11:31:21.892622
+1,1,5,1,Part 5 - Incomplete Sentence 001,,"💡 Mẹo nhận biết danh từ: Sau a, an, the hoặc tính từ sở hữu như my, your, his thường cần một danh từ.",1,2026-08-10 11:31:21.892622,2026-08-10 11:31:21.892622
+2,1,5,2,Part 5 - Incomplete Sentence 002,,"💡 Mẹo nhận biết tính từ: Tính từ thường đứng trước danh từ để mô tả danh từ hoặc đứng sau các linking verbs như be, become, seem.",2,2026-08-10 11:31:21.892622,2026-08-10 11:31:21.892622
+3,1,5,3,Part 5 - Incomplete Sentence 003,,"💡 Mẹo nhận biết trạng từ: Trạng từ thường bổ nghĩa cho động từ, tính từ hoặc một trạng từ khác. Nhiều trạng từ có đuôi -ly.",3,2026-08-10 11:31:21.892622,2026-08-10 11:31:21.892622
+4,1,5,4,Part 5 - Incomplete Sentence 004,,"💡 Mẹo nhận biết động từ: Hãy tìm chủ ngữ trước. Nếu câu chưa có động từ chính, chỗ trống rất có thể cần một động từ.",4,2026-08-10 11:31:21.892622,2026-08-10 11:31:21.892622
+5,1,5,5,Part 5 - Incomplete Sentence 005,,💡 Mẹo về chủ ngữ và động từ: Xác định chủ ngữ chính trước khi chia động từ. Đừng để các cụm chen giữa làm bạn nhầm chủ ngữ.,5,2026-08-10 11:31:21.892622,2026-08-10 11:31:21.892622
+6,1,5,6,Part 5 - Incomplete Sentence 006,,"💡 Mẹo về danh từ số ít và số nhiều: Kiểm tra từ hạn định như a, an, many, several, each, every để xác định dạng danh từ cần chọn.",6,2026-08-10 11:31:21.892622,2026-08-10 11:31:21.892622
+9,1,5,9,Part 5 - Incomplete Sentence 009,,"💡 Mẹo về đại từ quan hệ: who thường dùng cho người, which cho vật/sự việc và whose thể hiện quan hệ sở hữu.",9,2026-08-10 11:31:21.892622,2026-08-10 11:31:21.892622
+10,1,5,10,Part 5 - Incomplete Sentence 010,,"💡 Mẹo về mạo từ: a/an dùng cho danh từ đếm được số ít chưa xác định, còn the thường dùng khi người nghe đã biết đối tượng.",10,2026-08-10 11:31:21.892622,2026-08-10 11:31:21.892622
+11,1,5,11,Part 5 - Incomplete Sentence 011,,"💡 Mẹo phân biệt a và an: Chọn theo âm đầu khi phát âm, không chỉ dựa vào chữ cái. Ví dụ an hour nhưng a university.",11,2026-08-10 11:31:21.892622,2026-08-10 11:31:21.892622
+12,1,5,12,Part 5 - Incomplete Sentence 012,,"💡 Mẹo về giới từ thời gian: at thường dùng với giờ, on với ngày/ngày cụ thể và in với tháng, năm hoặc khoảng thời gian dài.",12,2026-08-10 11:31:21.892622,2026-08-10 11:31:21.892622
+13,1,5,13,Part 5 - Incomplete Sentence 013,,"💡 Mẹo về giới từ địa điểm: at thường chỉ một điểm, in chỉ không gian/khu vực và on thường dùng với bề mặt.",13,2026-08-10 11:31:21.892622,2026-08-10 11:31:21.892622
+14,1,5,14,Part 5 - Incomplete Sentence 014,,"💡 Mẹo học giới từ: Hãy học theo cụm cố định như interested in, responsible for, depend on và participate in.",14,2026-08-10 11:31:21.892622,2026-08-10 11:31:21.892622
+15,1,5,15,Part 5 - Incomplete Sentence 015,,"💡 Mẹo về thì hiện tại đơn: Chú ý các dấu hiệu như every day, usually, often, always, sometimes.",15,2026-08-10 11:31:21.892622,2026-08-10 11:31:21.892622
+16,1,5,16,Part 5 - Incomplete Sentence 016,,"💡 Mẹo về thì hiện tại tiếp diễn: Chú ý now, currently, at the moment hoặc hành động đang xảy ra tại thời điểm nói.",16,2026-08-10 11:31:21.892622,2026-08-10 11:31:21.892622
+17,1,5,17,Part 5 - Incomplete Sentence 017,,"💡 Mẹo về quá khứ đơn: yesterday, last week, last year, ago thường là dấu hiệu quan trọng.",17,2026-08-10 11:31:21.892622,2026-08-10 11:31:21.892622
+18,1,5,18,Part 5 - Incomplete Sentence 018,,"💡 Mẹo về hiện tại hoàn thành: Chú ý since, for, already, yet, ever, never và recently.",18,2026-08-10 11:31:21.892622,2026-08-10 11:31:21.892622
+19,1,5,19,Part 5 - Incomplete Sentence 019,,"💡 Mẹo phân biệt since và for: since đi với một mốc thời gian, còn for đi với một khoảng thời gian.",19,2026-08-10 11:31:21.892622,2026-08-10 11:31:21.892622
+20,1,5,20,Part 5 - Incomplete Sentence 020,,"💡 Mẹo về thì tương lai: will thường diễn tả quyết định, dự đoán hoặc hành động trong tương lai.",20,2026-08-10 11:31:21.892622,2026-08-10 11:31:21.892622
+21,2,5,21,Part 5 - Incomplete Sentence 021,,💡 Mẹo phân biệt will và be going to: be going to thường dùng cho kế hoạch hoặc dự định đã có từ trước.,21,2026-08-10 11:31:21.892622,2026-08-10 11:31:21.892622
+22,2,5,22,Part 5 - Incomplete Sentence 022,,"💡 Mẹo về modal verbs: Sau can, could, may, might, must, should và will luôn dùng động từ nguyên mẫu.",22,2026-08-10 11:31:21.892622,2026-08-10 11:31:21.892622
+23,2,5,23,Part 5 - Incomplete Sentence 023,,"💡 Mẹo về động từ nguyên mẫu: Sau to thường dùng động từ nguyên mẫu như to work, to study, to improve.",23,2026-08-10 11:31:21.892622,2026-08-10 11:31:21.892622
+24,2,5,24,Part 5 - Incomplete Sentence 024,,"💡 Mẹo về gerund: Sau các động từ như enjoy, avoid, finish, consider thường dùng V-ing.",24,2026-08-10 11:31:21.892622,2026-08-10 11:31:21.892622
+25,2,5,25,Part 5 - Incomplete Sentence 025,,💡 Mẹo phân biệt to V và V-ing: Học theo động từ đi trước vì mỗi động từ có thể yêu cầu cấu trúc khác nhau.,25,2026-08-10 11:31:21.892622,2026-08-10 11:31:21.892622
+26,2,5,26,Part 5 - Incomplete Sentence 026,,"💡 Mẹo về bị động: Nếu chủ ngữ là đối tượng nhận hành động, hãy kiểm tra cấu trúc be + V3/ed.",26,2026-08-10 11:31:21.892622,2026-08-10 11:31:21.892622
+27,2,5,27,Part 5 - Incomplete Sentence 027,,💡 Mẹo nhận biết câu bị động: Các cụm by + người/vật thực hiện hành động thường là dấu hiệu hỗ trợ.,27,2026-08-10 11:31:21.892622,2026-08-10 11:31:21.892622
+28,2,5,28,Part 5 - Incomplete Sentence 028,,"💡 Mẹo về so sánh hơn: Tính từ ngắn thường dùng -er, còn tính từ dài thường dùng more.",28,2026-08-10 11:31:21.892622,2026-08-10 11:31:21.892622
+29,2,5,29,Part 5 - Incomplete Sentence 029,,💡 Mẹo về so sánh nhất: Chú ý the + -est hoặc the most + adjective.,29,2026-08-10 11:31:21.892622,2026-08-10 11:31:21.892622
+30,2,5,30,Part 5 - Incomplete Sentence 030,,"💡 Mẹo về so sánh: Khi thấy than, khả năng cao câu đang sử dụng cấu trúc so sánh hơn.",30,2026-08-10 11:31:21.892622,2026-08-10 11:31:21.892622
+31,2,5,31,Part 5 - Incomplete Sentence 031,,"💡 Mẹo về liên từ: and bổ sung, but thể hiện tương phản, because chỉ nguyên nhân và so chỉ kết quả.",31,2026-08-10 11:31:21.892622,2026-08-10 11:31:21.892622
+32,2,5,32,Part 5 - Incomplete Sentence 032,,💡 Mẹo về although: although thường nối hai ý tương phản và không đi cùng but trong cùng một cấu trúc.,32,2026-08-10 11:31:21.892622,2026-08-10 11:31:21.892622
+33,2,5,33,Part 5 - Incomplete Sentence 033,,"💡 Mẹo về because và because of: because đi với mệnh đề, còn because of đi với danh từ hoặc cụm danh từ.",33,2026-08-10 11:31:21.892622,2026-08-10 11:31:21.892622
+34,2,5,34,Part 5 - Incomplete Sentence 034,,"💡 Mẹo về despite và although: despite đi với danh từ/V-ing, còn although đi với một mệnh đề.",34,2026-08-10 11:31:21.892622,2026-08-10 11:31:21.892622
+35,2,5,35,Part 5 - Incomplete Sentence 035,,💡 Mẹo về therefore: therefore thường dùng để thể hiện kết quả hoặc kết luận.,35,2026-08-10 11:31:21.892622,2026-08-10 11:31:21.892622
+36,2,5,36,Part 5 - Incomplete Sentence 036,,"💡 Mẹo về so và such: so thường đứng trước tính từ/trạng từ, such thường đứng trước danh từ hoặc cụm danh từ.",36,2026-08-10 11:31:21.892622,2026-08-10 11:31:21.892622
+37,2,5,37,Part 5 - Incomplete Sentence 037,,"💡 Mẹo về too và enough: too mang nghĩa quá mức, enough mang nghĩa đủ để thực hiện hành động.",37,2026-08-10 11:31:21.892622,2026-08-10 11:31:21.892622
+38,2,5,38,Part 5 - Incomplete Sentence 038,,💡 Mẹo về too...to: cấu trúc này thường diễn tả một điều quá mức khiến hành động không thể xảy ra.,38,2026-08-10 11:31:21.892622,2026-08-10 11:31:21.892622
+39,2,5,39,Part 5 - Incomplete Sentence 039,,"💡 Mẹo về enough to: đủ... để làm gì, thường dùng adjective/adverb + enough + to V.",39,2026-08-10 11:31:21.892622,2026-08-10 11:31:21.892622
+40,2,5,40,Part 5 - Incomplete Sentence 040,,"💡 Mẹo về từ chỉ số lượng: many dùng với danh từ đếm được số nhiều, much dùng với danh từ không đếm được.",40,2026-08-10 11:31:21.892622,2026-08-10 11:31:21.892622
+41,3,5,41,Part 5 - Incomplete Sentence 041,,"💡 Mẹo phân biệt few và little: few dùng với danh từ đếm được, little dùng với danh từ không đếm được.",41,2026-08-10 11:31:21.892622,2026-08-10 11:31:21.892622
+42,3,5,42,Part 5 - Incomplete Sentence 042,,"💡 Mẹo phân biệt few và a few: few mang nghĩa rất ít, còn a few mang nghĩa có một vài.",42,2026-08-10 11:31:21.892622,2026-08-10 11:31:21.892622
+43,3,5,43,Part 5 - Incomplete Sentence 043,,"💡 Mẹo phân biệt little và a little: little mang nghĩa gần như không có, còn a little mang nghĩa có một ít.",43,2026-08-10 11:31:21.892622,2026-08-10 11:31:21.892622
+44,3,5,44,Part 5 - Incomplete Sentence 044,,💡 Mẹo về each và every: cả hai thường đi với danh từ số ít và động từ số ít.,44,2026-08-10 11:31:21.892622,2026-08-10 11:31:21.892622
+45,3,5,45,Part 5 - Incomplete Sentence 045,,💡 Mẹo về both: both dùng cho hai đối tượng và thường đi với danh từ số nhiều.,45,2026-08-10 11:31:21.892622,2026-08-10 11:31:21.892622
+46,3,5,46,Part 5 - Incomplete Sentence 046,,"💡 Mẹo về either và neither: either nói về một trong hai, neither nói về không cái nào trong hai.",46,2026-08-10 11:31:21.892622,2026-08-10 11:31:21.892622
+47,3,5,47,Part 5 - Incomplete Sentence 047,,💡 Mẹo về either...or: động từ thường hòa hợp với chủ ngữ gần nó.,47,2026-08-10 11:31:21.892622,2026-08-10 11:31:21.892622
+48,3,5,48,Part 5 - Incomplete Sentence 048,,💡 Mẹo về neither...nor: hãy kiểm tra chủ ngữ gần động từ để chia động từ phù hợp.,48,2026-08-10 11:31:21.892622,2026-08-10 11:31:21.892622
+49,3,5,49,Part 5 - Incomplete Sentence 049,,"💡 Mẹo về all và every: all có thể đi với danh từ số nhiều hoặc không đếm được, every đi với danh từ số ít.",49,2026-08-10 11:31:21.892622,2026-08-10 11:31:21.892622
+50,3,5,50,Part 5 - Incomplete Sentence 050,,"💡 Mẹo về another và other: another thường đi với danh từ số ít, other thường đi với danh từ số nhiều hoặc không đếm được.",50,2026-08-10 11:31:21.892622,2026-08-10 11:31:21.892622
+51,3,5,51,Part 5 - Incomplete Sentence 051,,💡 Mẹo về the other: dùng khi nói đến đối tượng còn lại trong hai đối tượng.,51,2026-08-10 11:31:21.892622,2026-08-10 11:31:21.892622
+52,3,5,52,Part 5 - Incomplete Sentence 052,,💡 Mẹo về another: có thể hiểu là one more hoặc một cái khác trong cùng nhóm.,52,2026-08-10 11:31:21.892622,2026-08-10 11:31:21.892622
+53,3,5,53,Part 5 - Incomplete Sentence 053,,"💡 Mẹo về từ loại: Nếu đáp án có cùng gốc từ nhưng khác hậu tố, hãy xác định vị trí chỗ trống trước khi xét nghĩa.",53,2026-08-10 11:31:21.892622,2026-08-10 11:31:21.892622
+54,3,5,54,Part 5 - Incomplete Sentence 054,,"💡 Mẹo hậu tố danh từ: -tion, -ment, -ness, -ity thường là dấu hiệu của danh từ.",54,2026-08-10 11:31:21.892622,2026-08-10 11:31:21.892622
+55,3,5,55,Part 5 - Incomplete Sentence 055,,"💡 Mẹo hậu tố tính từ: -ful, -less, -ous, -ive, -able thường là dấu hiệu của tính từ.",55,2026-08-10 11:31:21.892622,2026-08-10 11:31:21.892622
+56,3,5,56,Part 5 - Incomplete Sentence 056,,"💡 Mẹo hậu tố trạng từ: -ly là dấu hiệu phổ biến của trạng từ, nhưng cần kiểm tra ngữ cảnh vì không phải từ nào kết thúc bằng -ly cũng là trạng từ.",56,2026-08-10 11:31:21.892622,2026-08-10 11:31:21.892622
+57,3,5,57,Part 5 - Incomplete Sentence 057,,"💡 Mẹo hậu tố động từ: -ize, -ify, -en thường xuất hiện trong nhiều động từ.",57,2026-08-10 11:31:21.892622,2026-08-10 11:31:21.892622
+58,3,5,58,Part 5 - Incomplete Sentence 058,,"💡 Mẹo collocation: Khi hai đáp án đều đúng nghĩa, hãy kiểm tra từ nào thường đi cùng từ xung quanh hơn.",58,2026-08-10 11:31:21.892622,2026-08-10 11:31:21.892622
+59,3,5,59,Part 5 - Incomplete Sentence 059,,💡 Mẹo học từ vựng TOEIC: Đừng học từ đơn lẻ. Hãy ghi nhớ cả cụm từ và cách dùng trong câu.,59,2026-08-10 11:31:21.892622,2026-08-10 11:31:21.892622
+60,3,5,60,Part 5 - Incomplete Sentence 060,,💡 Mẹo về phrasal verbs: Nghĩa của cụm động từ có thể khác hoàn toàn nghĩa của từng từ riêng lẻ.,60,2026-08-10 11:31:21.892622,2026-08-10 11:31:21.892622
+61,4,5,61,Part 5 - Incomplete Sentence 061,,"💡 Mẹo về trạng từ chỉ tần suất: usually, often, always thường đứng trước động từ thường nhưng sau động từ to be.",61,2026-08-10 11:31:21.892622,2026-08-10 11:31:21.892622
+62,4,5,62,Part 5 - Incomplete Sentence 062,,"💡 Mẹo về trạng từ chỉ mức độ: very, quite, extremely thường đứng trước tính từ hoặc trạng từ cần bổ nghĩa.",62,2026-08-10 11:31:21.892622,2026-08-10 11:31:21.892622
+63,4,5,63,Part 5 - Incomplete Sentence 063,,"💡 Mẹo về linking verbs: Sau be, seem, become, feel, look, appear thường dùng tính từ để mô tả chủ ngữ.",63,2026-08-10 11:31:21.892622,2026-08-10 11:31:21.892622
+64,4,5,64,Part 5 - Incomplete Sentence 064,,"💡 Mẹo về look: look + adjective khi mô tả trạng thái, không dùng trạng từ trong cấu trúc này.",64,2026-08-10 11:31:21.892622,2026-08-10 11:31:21.892622
+65,4,5,65,Part 5 - Incomplete Sentence 065,,💡 Mẹo về feel: feel + adjective thường dùng để mô tả cảm giác hoặc trạng thái.,65,2026-08-10 11:31:21.892622,2026-08-10 11:31:21.892622
+66,4,5,66,Part 5 - Incomplete Sentence 066,,💡 Mẹo về make: make + object + adjective thường diễn tả làm cho ai/cái gì trở nên như thế nào.,66,2026-08-10 11:31:21.892622,2026-08-10 11:31:21.892622
+67,4,5,67,Part 5 - Incomplete Sentence 067,,💡 Mẹo về let: let + object + V nguyên mẫu.,67,2026-08-10 11:31:21.892622,2026-08-10 11:31:21.892622
+68,4,5,68,Part 5 - Incomplete Sentence 068,,💡 Mẹo về have: have + object + V3 có thể dùng để diễn tả nhờ ai làm việc gì.,68,2026-08-10 11:31:21.892622,2026-08-10 11:31:21.892622
+69,4,5,69,Part 5 - Incomplete Sentence 069,,💡 Mẹo về câu điều kiện: Xác định loại điều kiện trước khi chia động từ ở hai mệnh đề.,69,2026-08-10 11:31:21.892622,2026-08-10 11:31:21.892622
+70,4,5,70,Part 5 - Incomplete Sentence 070,,"💡 Mẹo câu điều kiện loại 1: If + hiện tại đơn, mệnh đề chính thường dùng will + V.",70,2026-08-10 11:31:21.892622,2026-08-10 11:31:21.892622
+71,4,5,71,Part 5 - Incomplete Sentence 071,,"💡 Mẹo câu điều kiện loại 2: If + quá khứ đơn, mệnh đề chính thường dùng would + V.",71,2026-08-10 11:31:21.892622,2026-08-10 11:31:21.892622
+72,4,5,72,Part 5 - Incomplete Sentence 072,,"💡 Mẹo câu điều kiện loại 3: If + had + V3, mệnh đề chính thường dùng would have + V3.",72,2026-08-10 11:31:21.892622,2026-08-10 11:31:21.892622
+73,4,5,73,Part 5 - Incomplete Sentence 073,,💡 Mẹo câu ước: wish ở hiện tại thường đi với quá khứ đơn để diễn tả điều trái với hiện tại.,73,2026-08-10 11:31:21.892622,2026-08-10 11:31:21.892622
+74,4,5,74,Part 5 - Incomplete Sentence 074,,💡 Mẹo câu ước quá khứ: wish + had + V3 thường diễn tả sự tiếc nuối về một việc đã xảy ra.,74,2026-08-10 11:31:21.892622,2026-08-10 11:31:21.892622
+75,4,5,75,Part 5 - Incomplete Sentence 075,,"💡 Mẹo về reported speech: Khi động từ tường thuật ở quá khứ, thì trong lời nói thường được lùi một bậc.",75,2026-08-10 11:31:21.892622,2026-08-10 11:31:21.892622
+76,4,5,76,Part 5 - Incomplete Sentence 076,,"💡 Mẹo về câu hỏi gián tiếp: Sau các cấu trúc như Could you tell me..., dùng trật tự câu khẳng định thay vì đảo trợ động từ.",76,2026-08-10 11:31:21.892622,2026-08-10 11:31:21.892622
+77,4,5,77,Part 5 - Incomplete Sentence 077,,💡 Mẹo về dấu hiệu thời gian: Đừng chỉ nhìn một từ. Hãy xét toàn bộ câu và ngữ cảnh để chọn thì.,77,2026-08-10 11:31:21.892622,2026-08-10 11:31:21.892622
+78,4,5,78,Part 5 - Incomplete Sentence 078,,"💡 Mẹo về chủ ngữ giả: Trong cấu trúc It is + adjective + to V, it không phải chủ ngữ mang nghĩa thực.",78,2026-08-10 11:31:21.892622,2026-08-10 11:31:21.892622
+79,4,5,79,Part 5 - Incomplete Sentence 079,,💡 Mẹo về there is/there are: Động từ be phải phù hợp với danh từ đứng sau.,79,2026-08-10 11:31:21.892622,2026-08-10 11:31:21.892622
+80,4,5,80,Part 5 - Incomplete Sentence 080,,"💡 Mẹo về danh từ không đếm được: information, advice, equipment, furniture thường không dùng ở dạng số nhiều.",80,2026-08-10 11:31:21.892622,2026-08-10 11:31:21.892622
+81,5,5,81,Part 5 - Incomplete Sentence 081,,💡 Mẹo về money: money là danh từ không đếm được nên không dùng moneys trong cách dùng thông thường.,81,2026-08-10 11:31:21.892622,2026-08-10 11:31:21.892622
+82,5,5,82,Part 5 - Incomplete Sentence 082,,💡 Mẹo về news: news kết thúc bằng s nhưng được xem là danh từ số ít.,82,2026-08-10 11:31:21.892622,2026-08-10 11:31:21.892622
+83,5,5,83,Part 5 - Incomplete Sentence 083,,💡 Mẹo về people: people thường là danh từ số nhiều và đi với động từ số nhiều.,83,2026-08-10 11:31:21.892622,2026-08-10 11:31:21.892622
+84,5,5,84,Part 5 - Incomplete Sentence 084,,"💡 Mẹo về staff: staff có thể được dùng như danh từ tập thể, hãy xét ngữ cảnh để chọn động từ phù hợp.",84,2026-08-10 11:31:21.892622,2026-08-10 11:31:21.892622
+85,5,5,85,Part 5 - Incomplete Sentence 085,,💡 Mẹo về danh từ ghép: Xác định từ chính trong cụm danh từ để hiểu ý nghĩa và số của cụm.,85,2026-08-10 11:31:21.892622,2026-08-10 11:31:21.892622
+86,5,5,86,Part 5 - Incomplete Sentence 086,,"💡 Mẹo về possessive: Với người, sở hữu cách có thể dùng apostrophe + s hoặc apostrophe tùy số ít/số nhiều.",86,2026-08-10 11:31:21.892622,2026-08-10 11:31:21.892622
+87,5,5,87,Part 5 - Incomplete Sentence 087,,💡 Mẹo về dấu phẩy: Cẩn thận với các cụm chen giữa chủ ngữ và động từ vì chúng có thể khiến bạn chọn sai dạng động từ.,87,2026-08-10 11:31:21.892622,2026-08-10 11:31:21.892622
+88,5,5,88,Part 5 - Incomplete Sentence 088,,"💡 Mẹo loại trừ: Nếu chưa biết đáp án, hãy loại các lựa chọn sai rõ ràng về từ loại hoặc cấu trúc trước.",88,2026-08-10 11:31:21.892622,2026-08-10 11:31:21.892622
+89,5,5,89,Part 5 - Incomplete Sentence 089,,"💡 Mẹo làm Part 5: Xác định từ loại trước, sau đó mới xét nghĩa. Đây là cách nhanh để xử lý nhiều câu.",89,2026-08-10 11:31:21.892622,2026-08-10 11:31:21.892622
+90,5,5,90,Part 5 - Incomplete Sentence 090,,"💡 Mẹo làm Part 5: Nếu câu hỏi kiểm tra ngữ pháp, không cần dịch toàn bộ câu. Tập trung vào cấu trúc quanh chỗ trống.",90,2026-08-10 11:31:21.892622,2026-08-10 11:31:21.892622
+91,5,5,91,Part 5 - Incomplete Sentence 091,,"💡 Mẹo làm Part 5: Nếu bốn đáp án khác nhau về từ vựng nhưng cùng từ loại, hãy đọc toàn bộ câu để xác định nghĩa.",91,2026-08-10 11:31:21.892622,2026-08-10 11:31:21.892622
+92,5,5,92,Part 5 - Incomplete Sentence 092,,💡 Mẹo làm Part 5: Đáp án đúng phải vừa đúng ngữ pháp vừa phù hợp với collocation.,92,2026-08-10 11:31:21.892622,2026-08-10 11:31:21.892622
+93,5,5,93,Part 5 - Incomplete Sentence 093,,"💡 Mẹo làm nhanh: Ưu tiên các câu nhận biết cấu trúc rõ ràng trước, sau đó quay lại câu từ vựng khó.",93,2026-08-10 11:31:21.892622,2026-08-10 11:31:21.892622
+94,5,5,94,Part 5 - Incomplete Sentence 094,,"💡 Mẹo kiểm tra động từ: Sau modal verb không thêm -s, -ed hoặc -ing nếu không có cấu trúc đặc biệt.",94,2026-08-10 11:31:21.892622,2026-08-10 11:31:21.892622
+95,5,5,95,Part 5 - Incomplete Sentence 095,,"💡 Mẹo kiểm tra adjective/adverb: Nếu chỗ trống mô tả cách một hành động diễn ra, khả năng cao cần trạng từ.",95,2026-08-10 11:31:21.892622,2026-08-10 11:31:21.892622
+96,5,5,96,Part 5 - Incomplete Sentence 096,,"💡 Mẹo kiểm tra noun: Nếu chỗ trống đóng vai trò chủ ngữ hoặc tân ngữ, hãy kiểm tra khả năng cần danh từ.",96,2026-08-10 11:31:21.892622,2026-08-10 11:31:21.892622
+97,5,5,97,Part 5 - Incomplete Sentence 097,,"💡 Mẹo kiểm tra preposition: Sau giới từ thường là danh từ, đại từ hoặc V-ing.",97,2026-08-10 11:31:21.892622,2026-08-10 11:31:21.892622
+98,5,5,98,Part 5 - Incomplete Sentence 098,,💡 Mẹo kiểm tra conjunction: Sau liên từ phụ thuộc thường cần một mệnh đề hoàn chỉnh.,98,2026-08-10 11:31:21.892622,2026-08-10 11:31:21.892622
+99,5,5,99,Part 5 - Incomplete Sentence 099,,"💡 Mẹo cuối Part 5: Khi phân vân giữa hai đáp án, hãy đọc lại cả câu với từng đáp án và chọn câu tự nhiên nhất.",99,2026-08-10 11:31:21.892622,2026-08-10 11:31:21.892622
+100,5,5,100,Part 5 - Incomplete Sentence 100,,💡 Mẹo tổng hợp Part 5: Xác định từ loại → kiểm tra cấu trúc → kiểm tra thì/sự hòa hợp → cuối cùng mới xét nghĩa.,100,2026-08-10 11:31:21.892622,2026-08-10 11:31:21.892622
+101,6,6,1,Part 6 - Text Completion 001,"Thông báo cuộc họp
+
+The manager recently sent an update about the meeting. The information is intended to help employees understand the latest arrangements. 
+[1] _____ office _____ at 8:00 A.M. every weekday. [2] _____ _____ their identification cards when they enter the building. [3] _____ manager usually _____ the weekly schedule on Friday. [4] _____ system automatically _____ customers when an order is shipped.
+The department will provide additional assistance if necessary. Thank you for your cooperation.",💡 Mẹo Part 6: Đọc tiêu đề hoặc câu đầu để xác định chủ đề trước khi làm từng câu.,1,2026-08-10 12:43:50.483122,2026-08-10 12:43:50.483122
+102,6,6,2,Part 6 - Text Completion 002,"Email khách hàng
+
+The customer recently sent an update about the order. The information is intended to help service team understand the latest arrangements. 
+[1] _____ accounting team _____ the monthly report now. [2] _____ employees _____ in the training room at the moment. [3] _____ technician _____ the printer right now. [4] _____ _____ a new customer database this week.
+The department will provide additional assistance if necessary. Thank you for your cooperation.",💡 Mẹo Part 6: Đọc câu trước và câu sau chỗ trống để xác định từ loại cần điền.,2,2026-08-10 12:43:50.483122,2026-08-10 12:43:50.483122
+202,11,7,2,Part 7 - Single Passage 002,Greenway Electronics has shipped a customer's order for two wireless keyboards. The package is expected to arrive on Thursday. A tracking number is available in the customer's online account. This information was prepared for employees and customers to help them make the appropriate arrangements for variation 1.,"💡 Mẹo tìm ngày tháng: Khi câu hỏi hỏi thời gian, hãy quét nhanh các con số, ngày và tháng trong passage.",2,2026-08-10 14:18:37.790751,2026-08-10 14:18:37.790751
+103,6,6,3,Part 6 - Text Completion 003,"Thông báo công ty
+
+The company recently sent an update about the policy. The information is intended to help employees understand the latest arrangements. 
+[1] _____ manager _____ the contract yesterday. [2] _____ conference _____ at 9:00 A.M. last Monday. [3] _____ company _____ its first branch in 2018. [4] _____ customer _____ the package two days ago.
+The department will provide additional assistance if necessary. Thank you for your cooperation.",💡 Mẹo từ loại: Xác định vị trí ngữ pháp trước khi so sánh nghĩa của bốn đáp án.,3,2026-08-10 12:43:50.483122,2026-08-10 12:43:50.483122
+104,6,6,4,Part 6 - Text Completion 004,"Lịch đào tạo
+
+The trainer recently sent an update about the training session. The information is intended to help participants understand the latest arrangements. 
+[1] _____ company _____ three new branches since January. [2] _____ _____ the requested documents already. [3] _____ manager _____ the report several times this week. [4] _____ team _____ the project successfully so far.
+The department will provide additional assistance if necessary. Thank you for your cooperation.","💡 Mẹo liên từ: Kiểm tra quan hệ giữa hai câu là nguyên nhân, kết quả, tương phản hay bổ sung.",4,2026-08-10 12:43:50.483122,2026-08-10 12:43:50.483122
+105,6,6,5,Part 6 - Text Completion 005,"Dự án văn phòng
+
+The project manager recently sent an update about the project. The information is intended to help staff understand the latest arrangements. 
+[1] _____ engineers _____ the system since early morning. [2] _____ _____ for the company for five years. [3] _____ team _____ on the proposal all afternoon. [4] _____ _____ the road since Monday.
+The department will provide additional assistance if necessary. Thank you for your cooperation.","💡 Mẹo đại từ: Tìm danh từ mà it, they, this, these hoặc those đang thay thế.",5,2026-08-10 12:43:50.483122,2026-08-10 12:43:50.483122
+106,6,6,6,Part 6 - Text Completion 006,"Sự kiện kinh doanh
+
+The organizer recently sent an update about the conference. The information is intended to help attendees understand the latest arrangements. 
+[1] _____ the time the meeting started, the manager _____ the documents. [2] _____ we arrived, the train _____ already left. [3] _____ company _____ the problem before the customers complained. [4] _____ realized that she _____ the wrong file.
+The department will provide additional assistance if necessary. Thank you for your cooperation.",💡 Mẹo về reference: Đại từ phải phù hợp cả số ít/số nhiều và ý nghĩa với danh từ được thay thế.,6,2026-08-10 12:43:50.483122,2026-08-10 12:43:50.483122
+107,6,6,7,Part 6 - Text Completion 007,"Báo cáo doanh thu
+
+The finance manager recently sent an update about the report. The information is intended to help department understand the latest arrangements. 
+[1] _____ manager _____ the results tomorrow. [2] _____ company _____ the new policy next month. [3] _____ _____ you when the order arrives. [4] _____ meeting _____ at 2:00 P.M. tomorrow.
+The department will provide additional assistance if necessary. Thank you for your cooperation.",💡 Mẹo chọn câu: Đọc cả đoạn để xem câu cần chèn có nối logic với câu trước và câu sau hay không.,7,2026-08-10 12:43:50.483122,2026-08-10 12:43:50.483122
+108,6,6,8,Part 6 - Text Completion 008,"Đơn hàng trực tuyến
+
+The customer recently sent an update about the shipment. The information is intended to help warehouse understand the latest arrangements. 
+[1] _____ invoices _____ by the accounting department. [2] _____ rooms _____ every morning by hotel staff. [3] _____ requests _____ within two business days. [4] _____ equipment _____ regularly by technicians.
+The department will provide additional assistance if necessary. Thank you for your cooperation.","💡 Mẹo câu chèn: Chú ý các từ như however, therefore, for example, also, first, finally để xác định vị trí.",8,2026-08-10 12:43:50.483122,2026-08-10 12:43:50.483122
+109,6,6,9,Part 6 - Text Completion 009,"Khách sạn
+
+The hotel manager recently sent an update about the reservation. The information is intended to help guests understand the latest arrangements. 
+[1] _____ documents _____ yesterday afternoon. [2] _____ meeting room _____ last night. [3] _____ package _____ to the wrong address last week. [4] _____ computers _____ during the maintenance period.
+The department will provide additional assistance if necessary. Thank you for your cooperation.",💡 Mẹo về thì: Xem toàn bộ đoạn văn để xác định mốc thời gian thay vì chỉ nhìn câu có chỗ trống.,9,2026-08-10 12:43:50.483122,2026-08-10 12:43:50.483122
+110,6,6,10,Part 6 - Text Completion 010,"Hãng hàng không
+
+The airline representative recently sent an update about the flight. The information is intended to help passengers understand the latest arrangements. 
+[1] _____ new office _____ next month. [2] _____ participants _____ an email tomorrow. [3] _____ equipment _____ before the exhibition begins. [4] _____ results _____ on the company website next Friday.
+The department will provide additional assistance if necessary. Thank you for your cooperation.",💡 Mẹo về nhất quán thì: Các câu trong cùng một đoạn thường có mạch thời gian rõ ràng.,10,2026-08-10 12:43:50.483122,2026-08-10 12:43:50.483122
+111,6,6,11,Part 6 - Text Completion 011,"Cửa hàng bán lẻ
+
+The store manager recently sent an update about the promotion. The information is intended to help customers understand the latest arrangements. 
+[1] _____ list of applicants _____ on the manager's desk. [2] _____ employee _____ a security badge. [3] _____ employees in the sales department _____ a meeting every Monday. [4] _____ the manager nor the assistants _____ available today.
+The department will provide additional assistance if necessary. Thank you for your cooperation.","💡 Mẹo từ nối: however thường báo hiệu sự tương phản, therefore báo hiệu kết quả.",11,2026-08-10 12:43:50.483122,2026-08-10 12:43:50.483122
+112,6,6,12,Part 6 - Text Completion 012,"Tuyển dụng
+
+The HR manager recently sent an update about the position. The information is intended to help applicants understand the latest arrangements. 
+[1] _____ _____ wear protective equipment in the laboratory. [2] _____ _____ enter this area without permission. [3] _____ _____ contact the service center if you need assistance. [4] _____ manager _____ arrive late because of the traffic.
+The department will provide additional assistance if necessary. Thank you for your cooperation.",💡 Mẹo because: because + mệnh đề để đưa ra nguyên nhân.,12,2026-08-10 12:43:50.483122,2026-08-10 12:43:50.483122
+113,6,6,13,Part 6 - Text Completion 013,"Bảo trì thiết bị
+
+The technician recently sent an update about the equipment. The information is intended to help employees understand the latest arrangements. 
+[1] _____ company plans _____ a new branch next year. [2] _____ are required _____ the form before Friday. [3] _____ manager decided _____ the meeting. [4] _____ hope _____ the project on time.
+The department will provide additional assistance if necessary. Thank you for your cooperation.","💡 Mẹo because of: because of + danh từ/cụm danh từ, không đi trực tiếp với một mệnh đề.",13,2026-08-10 12:43:50.483122,2026-08-10 12:43:50.483122
+246,15,7,46,Part 7 - Single Passage 046,"The main office will be renovated from August 18 to August 22. Employees should remove personal items from their desks before August 17. During the renovation, staff will work on the fourth floor. This information was prepared for employees and customers to help them make the appropriate arrangements for variation 6.","💡 Mẹo về sản phẩm: Tìm đặc điểm, lợi ích, giá và đối tượng sử dụng.",46,2026-08-10 14:18:37.790751,2026-08-10 14:18:37.790751
+114,6,6,14,Part 6 - Text Completion 014,"Lịch làm việc
+
+The supervisor recently sent an update about the schedule. The information is intended to help workers understand the latest arrangements. 
+[1] _____ you for _____ us about the problem. [2] _____ company is interested in _____ the new software. [3] _____ are responsible for _____ the equipment. [4] _____ _____ the building, visitors must register.
+The department will provide additional assistance if necessary. Thank you for your cooperation.","💡 Mẹo despite: despite + danh từ hoặc V-ing, không dùng trực tiếp với một mệnh đề.",14,2026-08-10 12:43:50.483122,2026-08-10 12:43:50.483122
+115,6,6,15,Part 6 - Text Completion 015,"Hội thảo
+
+The organizer recently sent an update about the workshop. The information is intended to help students understand the latest arrangements. 
+[1] _____ regular exercise can improve productivity. [2] _____ customer feedback is important for the company. [3] _____ the equipment regularly reduces repair costs. [4] _____ with coworkers helps build a positive workplace.
+The department will provide additional assistance if necessary. Thank you for your cooperation.",💡 Mẹo although: although + mệnh đề hoàn chỉnh để diễn tả sự tương phản.,15,2026-08-10 12:43:50.483122,2026-08-10 12:43:50.483122
+116,6,6,16,Part 6 - Text Completion 016,"Thư viện
+
+The librarian recently sent an update about the program. The information is intended to help visitors understand the latest arrangements. 
+[1] _____ manager asked employees _____ the report. [2] _____ supervisor encouraged staff _____ early. [3] _____ company allows employees _____ remotely twice a week. [4] _____ director reminded us _____ the deadline.
+The department will provide additional assistance if necessary. Thank you for your cooperation.","💡 Mẹo Part 6: Nếu bốn đáp án là từ nối, hãy đọc cả hai câu chứ không chỉ câu chứa chỗ trống.",16,2026-08-10 12:43:50.483122,2026-08-10 12:43:50.483122
+117,6,6,17,Part 6 - Text Completion 017,"Nhà máy
+
+The factory manager recently sent an update about the production plan. The information is intended to help workers understand the latest arrangements. 
+[1] _____ company hired _____ experienced accountant. [2] _____ need _____ new printer for the office. [3] _____ send me _____ copy of the contract. [4] _____ manager reviewed _____ report we submitted yesterday.
+The department will provide additional assistance if necessary. Thank you for your cooperation.","💡 Mẹo từ vựng: Nếu các đáp án cùng từ loại, hãy tìm collocation và ngữ cảnh.",17,2026-08-10 12:43:50.483122,2026-08-10 12:43:50.483122
+118,6,6,18,Part 6 - Text Completion 018,"Vận chuyển
+
+The shipping manager recently sent an update about the delivery service. The information is intended to help customers understand the latest arrangements. 
+[1] _____ company introduced a _____ policy. [2] _____ received _____ information from the supplier. [3] _____ manager gave a _____ explanation. [4] _____ hotel offers _____ rooms for business travelers.
+The department will provide additional assistance if necessary. Thank you for your cooperation.",💡 Mẹo paraphrase: Đáp án có thể không xuất hiện nguyên văn trong đoạn nhưng phải giữ nguyên ý nghĩa.,18,2026-08-10 12:43:50.483122,2026-08-10 12:43:50.483122
+119,6,6,19,Part 6 - Text Completion 019,"Marketing
+
+The marketing director recently sent an update about the campaign. The information is intended to help team members understand the latest arrangements. 
+[1] _____ assistant completed the task _____ . [2] _____ speak _____ during the presentation. [3] _____ technician installed the software _____ . [4] _____ manager explained the procedure _____ .
+The department will provide additional assistance if necessary. Thank you for your cooperation.","💡 Mẹo đọc nhanh: Không cần dịch từng từ. Hãy xác định chủ đề, quan hệ giữa câu và thông tin quan trọng.",19,2026-08-10 12:43:50.483122,2026-08-10 12:43:50.483122
+120,6,6,20,Part 6 - Text Completion 020,"Công nghệ
+
+The IT manager recently sent an update about the software update. The information is intended to help users understand the latest arrangements. 
+[1] _____ model is _____ than the previous one. [2] _____ new office is _____ than the old one. [3] _____ orders are processed _____ than phone orders. [4] _____ route is _____ than the highway.
+The department will provide additional assistance if necessary. Thank you for your cooperation.",💡 Mẹo xác định chủ đề: Câu mở đầu thường cung cấp thông tin tổng quát nhất về đoạn.,20,2026-08-10 12:43:50.483122,2026-08-10 12:43:50.483122
+121,7,6,21,Part 6 - Text Completion 021,"Thông báo cuộc họp
+
+The manager recently sent an update about the meeting. The information is intended to help employees understand the latest arrangements. 
+[1] _____ is the _____ branch in the region. [2] _____ is the _____ employee in the department. [3] _____ machine operates the _____ efficiently. [4] _____ was the _____ meeting of the year.
+The department will provide additional assistance if necessary. Thank you for your cooperation.",💡 Mẹo câu kết: Câu cuối đoạn thường chứa kết luận hoặc hành động tiếp theo.,21,2026-08-10 12:43:50.483122,2026-08-10 12:43:50.483122
+122,7,6,22,Part 6 - Text Completion 022,"Email khách hàng
+
+The customer recently sent an update about the order. The information is intended to help service team understand the latest arrangements. 
+[1] _____ flight was delayed _____ bad weather. [2] _____ the road was closed, the delivery arrived late. [3] _____ event was canceled _____ there were not enough participants. [4] _____ postponed the meeting _____ the manager was unavailable.
+The department will provide additional assistance if necessary. Thank you for your cooperation.","💡 Mẹo về timeline: Các từ yesterday, today, tomorrow, next week, last month giúp xác định trình tự thời gian.",22,2026-08-10 12:43:50.483122,2026-08-10 12:43:50.483122
+123,7,6,23,Part 6 - Text Completion 023,"Thông báo công ty
+
+The company recently sent an update about the policy. The information is intended to help employees understand the latest arrangements. 
+[1] _____ store was closed; _____, customers could not enter. [2] _____ system was overloaded. _____, the response time increased. [3] _____ shipment was delayed, _____ the customer received it late. [4] _____ company reduced costs and _____ increased its profit.
+The department will provide additional assistance if necessary. Thank you for your cooperation.","💡 Mẹo về trình tự: first, then, next, after that, finally là dấu hiệu quan trọng để xác định thứ tự sự việc.",23,2026-08-10 12:43:50.483122,2026-08-10 12:43:50.483122
+124,7,6,24,Part 6 - Text Completion 024,"Lịch đào tạo
+
+The trainer recently sent an update about the training session. The information is intended to help participants understand the latest arrangements. 
+[1] _____ the product is expensive, many customers buy it. [2] _____ hotel is small; _____, it offers excellent service. [3] _____ the delay, the meeting continued as planned. [4] _____ product is popular, _____ it is relatively expensive.
+The department will provide additional assistance if necessary. Thank you for your cooperation.","💡 Mẹo về nguyên nhân: because, since, due to, as a result of thường liên quan đến quan hệ nguyên nhân.",24,2026-08-10 12:43:50.483122,2026-08-10 12:43:50.483122
+125,7,6,25,Part 6 - Text Completion 025,"Dự án văn phòng
+
+The project manager recently sent an update about the project. The information is intended to help staff understand the latest arrangements. 
+[1] _____ you need assistance, please contact the front desk. [2] _____ company will refund the fee _____ the customer provides proof of payment. [3] _____ the weather improves, the event will be held outdoors. [4] _____ cannot enter the laboratory _____ you wear protective clothing.
+The department will provide additional assistance if necessary. Thank you for your cooperation.","💡 Mẹo về kết quả: therefore, thus, consequently, as a result thường dẫn đến kết quả hoặc kết luận.",25,2026-08-10 12:43:50.483122,2026-08-10 12:43:50.483122
+126,7,6,26,Part 6 - Text Completion 026,"Sự kiện kinh doanh
+
+The organizer recently sent an update about the conference. The information is intended to help attendees understand the latest arrangements. 
+[1] _____ call me _____ you arrive at the office. [2] _____ manager will review the report _____ the meeting begins. [3] _____ must wait _____ the system restarts. [4] _____ the presentation ended, attendees asked questions.
+The department will provide additional assistance if necessary. Thank you for your cooperation.","💡 Mẹo về ví dụ: for example, for instance và such as thường đưa ra ví dụ minh họa.",26,2026-08-10 12:43:50.483122,2026-08-10 12:43:50.483122
+127,7,6,27,Part 6 - Text Completion 027,"Báo cáo doanh thu
+
+The finance manager recently sent an update about the report. The information is intended to help department understand the latest arrangements. 
+[1] _____ employee _____ submitted the report is on vacation. [2] _____ manager _____ hired me is from Canada. [3] _____ _____ have relevant experience will be considered first. [4] _____ consultant _____ we met yesterday will lead the project.
+The department will provide additional assistance if necessary. Thank you for your cooperation.","💡 Mẹo về bổ sung: also, moreover, furthermore, in addition thường bổ sung thông tin.",27,2026-08-10 12:43:50.483122,2026-08-10 12:43:50.483122
+128,7,6,28,Part 6 - Text Completion 028,"Đơn hàng trực tuyến
+
+The customer recently sent an update about the shipment. The information is intended to help warehouse understand the latest arrangements. 
+[1] _____ report _____ you sent was helpful. [2] _____ machine _____ was installed yesterday is working well. [3] _____ software _____ we use requires an update. [4] _____ building _____ the company owns is near the station.
+The department will provide additional assistance if necessary. Thank you for your cooperation.","💡 Mẹo về tương phản: however, but, although, nevertheless thường báo hiệu sự đối lập.",28,2026-08-10 12:43:50.483122,2026-08-10 12:43:50.483122
+129,7,6,29,Part 6 - Text Completion 029,"Khách sạn
+
+The hotel manager recently sent an update about the reservation. The information is intended to help guests understand the latest arrangements. 
+[1] _____ manager _____ office is on the third floor is away today. [2] _____ contacted a supplier _____ products are environmentally friendly. [3] _____ employee _____ laptop was stolen reported the incident. [4] _____ company _____ headquarters are in Seoul opened a new branch.
+The department will provide additional assistance if necessary. Thank you for your cooperation.","💡 Mẹo về lựa chọn từ: Nếu câu nói về người, hãy kiểm tra danh từ chỉ người; nếu nói về vật/sự việc, kiểm tra danh từ tương ứng.",29,2026-08-10 12:43:50.483122,2026-08-10 12:43:50.483122
+130,7,6,30,Part 6 - Text Completion 030,"Hãng hàng không
+
+The airline representative recently sent an update about the flight. The information is intended to help passengers understand the latest arrangements. 
+[1] _____ meeting is scheduled _____ Monday. [2] _____ office closes _____ 6:00 P.M. [3] _____ company was founded _____ 1998. [4] _____ submit the form _____ Friday.
+The department will provide additional assistance if necessary. Thank you for your cooperation.","💡 Mẹo kiểm tra đại từ quan hệ: who cho người, which cho vật/sự việc, whose cho sở hữu.",30,2026-08-10 12:43:50.483122,2026-08-10 12:43:50.483122
+131,7,6,31,Part 6 - Text Completion 031,"Cửa hàng bán lẻ
+
+The store manager recently sent an update about the promotion. The information is intended to help customers understand the latest arrangements. 
+[1] _____ meeting room is _____ the second floor. [2] _____ manager is waiting _____ the lobby. [3] _____ leave the package _____ the front desk. [4] _____ office is _____ the bank and the post office.
+The department will provide additional assistance if necessary. Thank you for your cooperation.",💡 Mẹo về relative clause: Đọc danh từ đứng trước đại từ quan hệ để xác định loại đại từ cần dùng.,31,2026-08-10 12:43:50.483122,2026-08-10 12:43:50.483122
+132,7,6,32,Part 6 - Text Completion 032,"Tuyển dụng
+
+The HR manager recently sent an update about the position. The information is intended to help applicants understand the latest arrangements. 
+[1] _____ are _____ employees in the training room. [2] _____ do not have _____ information about the incident. [3] _____ is only _____ time left before the meeting. [4] _____ manager received _____ applications this week.
+The department will provide additional assistance if necessary. Thank you for your cooperation.",💡 Mẹo về passive voice: Kiểm tra xem chủ ngữ có nhận hành động hay không.,32,2026-08-10 12:43:50.483122,2026-08-10 12:43:50.483122
+133,7,6,33,Part 6 - Text Completion 033,"Bảo trì thiết bị
+
+The technician recently sent an update about the equipment. The information is intended to help employees understand the latest arrangements. 
+[1] _____ company hired two new _____ last month. [2] _____ _____ are waiting outside. [3] _____ need three _____ for the conference room. [4] _____ store has many _____ of this product.
+The department will provide additional assistance if necessary. Thank you for your cooperation.","💡 Mẹo về modal: Sau can, should, must, may và will dùng động từ nguyên mẫu.",33,2026-08-10 12:43:50.483122,2026-08-10 12:43:50.483122
+134,7,6,34,Part 6 - Text Completion 034,"Lịch làm việc
+
+The supervisor recently sent an update about the schedule. The information is intended to help workers understand the latest arrangements. 
+[1] _____ company needs more _____ before making a decision. [2] _____ received useful _____ from the consultant. [3] _____ equipment _____ expensive. [4] _____ is not enough _____ in the storage room.
+The department will provide additional assistance if necessary. Thank you for your cooperation.","💡 Mẹo về infinitive: Sau các động từ như plan, decide, hope, want thường gặp to + V.",34,2026-08-10 12:43:50.483122,2026-08-10 12:43:50.483122
+135,7,6,35,Part 6 - Text Completion 035,"Hội thảo
+
+The organizer recently sent an update about the workshop. The information is intended to help students understand the latest arrangements. 
+[1] _____ the weather improves, the company _____ the event outdoors. [2] _____ you submit the form today, we _____ your request tomorrow. [3] _____ the shipment arrives early, customers _____ it sooner. [4] _____ she finishes the report, she _____ it to the manager.
+The department will provide additional assistance if necessary. Thank you for your cooperation.","💡 Mẹo về gerund: Sau enjoy, avoid, finish, consider thường dùng V-ing.",35,2026-08-10 12:43:50.483122,2026-08-10 12:43:50.483122
+136,7,6,36,Part 6 - Text Completion 036,"Thư viện
+
+The librarian recently sent an update about the program. The information is intended to help visitors understand the latest arrangements. 
+[1] _____ I _____ more time, I would attend the conference. [2] _____ the company had a larger budget, it _____ more employees. [3] _____ she _____ the manager, she would change the policy. [4] _____ we lived closer, we _____ the office more often.
+The department will provide additional assistance if necessary. Thank you for your cooperation.",💡 Mẹo về collocation: Hãy kiểm tra cả cụm thay vì chỉ chọn từ có nghĩa gần nhất.,36,2026-08-10 12:43:50.483122,2026-08-10 12:43:50.483122
+137,7,6,37,Part 6 - Text Completion 037,"Nhà máy
+
+The factory manager recently sent an update about the production plan. The information is intended to help workers understand the latest arrangements. 
+[1] _____ company launched the website _____ attract more customers. [2] _____ attended the workshop _____ improve their communication skills. [3] _____ manager sent an email _____ everyone would receive the update. [4] _____ company installed new lights _____ reduce energy consumption.
+The department will provide additional assistance if necessary. Thank you for your cooperation.","💡 Mẹo về phrasal verb: Ghi nhớ cả cụm như carry out, look into, put off, set up.",37,2026-08-10 12:43:50.483122,2026-08-10 12:43:50.483122
+138,7,6,38,Part 6 - Text Completion 038,"Vận chuyển
+
+The shipping manager recently sent an update about the delivery service. The information is intended to help customers understand the latest arrangements. 
+[1] _____ the weather was bad, the event continued. [2] _____ the high price, the product sold well. [3] _____ flight departed on time _____ the heavy rain. [4] _____ she was busy, she attended the meeting.
+The department will provide additional assistance if necessary. Thank you for your cooperation.","💡 Mẹo về văn phong email: Chú ý các cụm mở đầu, yêu cầu, thông báo và kết thúc để hiểu mục đích đoạn văn.",38,2026-08-10 12:43:50.483122,2026-08-10 12:43:50.483122
+139,7,6,39,Part 6 - Text Completion 039,"Marketing
+
+The marketing director recently sent an update about the campaign. The information is intended to help team members understand the latest arrangements. 
+[1] _____ meeting was canceled _____ the manager was sick. [2] _____ the road was closed, the delivery was delayed. [3] _____ event was postponed _____ heavy rain. [4] _____ left early _____ the traffic was heavy.
+The department will provide additional assistance if necessary. Thank you for your cooperation.","💡 Mẹo về thông báo: Tìm đối tượng, thời gian, địa điểm và hành động cần thực hiện.",39,2026-08-10 12:43:50.483122,2026-08-10 12:43:50.483122
+140,7,6,40,Part 6 - Text Completion 040,"Công nghệ
+
+The IT manager recently sent an update about the software update. The information is intended to help users understand the latest arrangements. 
+[1] _____ report was so detailed _____ everyone understood the problem. [2] _____ was such a busy day _____ the staff worked late. [3] _____ system was overloaded; _____, the website became slow. [4] _____ instructions were clear, _____ everyone completed the task correctly.
+The department will provide additional assistance if necessary. Thank you for your cooperation.","💡 Mẹo về quảng cáo: Chú ý sản phẩm, giá, ưu đãi, điều kiện và thông tin liên hệ.",40,2026-08-10 12:43:50.483122,2026-08-10 12:43:50.483122
+141,8,6,41,Part 6 - Text Completion 041,"Thông báo cuộc họp
+
+The manager recently sent an update about the meeting. The information is intended to help employees understand the latest arrangements. 
+[1] _____ job requires answering calls, preparing reports, and _____ customers. [2] _____ manager is responsible for hiring staff and _____ training. [3] _____ new system is faster, safer, and more _____. [4] _____ company plans to expand its market and _____ new products.
+The department will provide additional assistance if necessary. Thank you for your cooperation.","💡 Mẹo về memo: Xác định người gửi, người nhận, chủ đề và hành động cần thực hiện.",41,2026-08-10 12:43:50.483122,2026-08-10 12:43:50.483122
+142,8,6,42,Part 6 - Text Completion 042,"Email khách hàng
+
+The customer recently sent an update about the order. The information is intended to help service team understand the latest arrangements. 
+[1] _____ manager asked when the shipment _____. [2] _____ tell me where the meeting room _____. [3] _____ asked whether the report _____ ready. [4] _____ you explain how the machine _____?
+The department will provide additional assistance if necessary. Thank you for your cooperation.",💡 Mẹo về article: Đọc tiêu đề và câu đầu đoạn để hiểu chủ đề trước khi đi vào chi tiết.,42,2026-08-10 12:43:50.483122,2026-08-10 12:43:50.483122
+143,8,6,43,Part 6 - Text Completion 043,"Thông báo công ty
+
+The company recently sent an update about the policy. The information is intended to help employees understand the latest arrangements. 
+[1] _____ _____ a meeting at 9:00 tomorrow. [2] _____ _____ several documents on the desk. [3] _____ _____ enough information in the report. [4] _____ _____ two new employees in our department.
+The department will provide additional assistance if necessary. Thank you for your cooperation.","💡 Mẹo về lịch trình: Tập trung vào ngày, giờ, địa điểm và tên sự kiện.",43,2026-08-10 12:43:50.483122,2026-08-10 12:43:50.483122
+144,8,6,44,Part 6 - Text Completion 044,"Lịch đào tạo
+
+The trainer recently sent an update about the training session. The information is intended to help participants understand the latest arrangements. 
+[1] _____ manager made the employees _____ late. [2] _____ supervisor let us _____ early. [3] _____ new policy made customers _____ more forms. [4] _____ manager let the staff _____ the issue themselves.
+The department will provide additional assistance if necessary. Thank you for your cooperation.",💡 Mẹo về form: Kiểm tra ngữ cảnh xung quanh chỗ trống để xác định thông tin cần điền.,44,2026-08-10 12:43:50.483122,2026-08-10 12:43:50.483122
+145,8,6,45,Part 6 - Text Completion 045,"Dự án văn phòng
+
+The project manager recently sent an update about the project. The information is intended to help staff understand the latest arrangements. 
+[1] _____ manager had the technician _____ the printer. [2] _____ had the documents _____ before the meeting. [3] _____ customer got the package _____ to a different address. [4] _____ company had the office _____ last weekend.
+The department will provide additional assistance if necessary. Thank you for your cooperation.",💡 Mẹo về từ nối trong văn bản: Hãy xem câu trước và câu sau cùng lúc để tránh chọn từ nối chỉ đúng một phía.,45,2026-08-10 12:43:50.483122,2026-08-10 12:43:50.483122
+146,8,6,46,Part 6 - Text Completion 046,"Sự kiện kinh doanh
+
+The organizer recently sent an update about the conference. The information is intended to help attendees understand the latest arrangements. 
+[1] _____ office _____ at 8:00 A.M. every weekday. [2] _____ _____ their identification cards when they enter the building. [3] _____ manager usually _____ the weekly schedule on Friday. [4] _____ system automatically _____ customers when an order is shipped.
+The department will provide additional assistance if necessary. Thank you for your cooperation.","💡 Mẹo kiểm tra logic: Sau khi chọn đáp án, đọc lại cả đoạn để xem ý tưởng có liên kết tự nhiên hay không.",46,2026-08-10 12:43:50.483122,2026-08-10 12:43:50.483122
+147,8,6,47,Part 6 - Text Completion 047,"Báo cáo doanh thu
+
+The finance manager recently sent an update about the report. The information is intended to help department understand the latest arrangements. 
+[1] _____ accounting team _____ the monthly report now. [2] _____ employees _____ in the training room at the moment. [3] _____ technician _____ the printer right now. [4] _____ _____ a new customer database this week.
+The department will provide additional assistance if necessary. Thank you for your cooperation.","💡 Mẹo loại trừ: Loại đáp án sai từ loại trước, sau đó loại đáp án sai nghĩa.",47,2026-08-10 12:43:50.483122,2026-08-10 12:43:50.483122
+148,8,6,48,Part 6 - Text Completion 048,"Đơn hàng trực tuyến
+
+The customer recently sent an update about the shipment. The information is intended to help warehouse understand the latest arrangements. 
+[1] _____ manager _____ the contract yesterday. [2] _____ conference _____ at 9:00 A.M. last Monday. [3] _____ company _____ its first branch in 2018. [4] _____ customer _____ the package two days ago.
+The department will provide additional assistance if necessary. Thank you for your cooperation.",💡 Mẹo Part 6: Không nên dành quá nhiều thời gian cho một câu. Đánh dấu và quay lại nếu cần.,48,2026-08-10 12:43:50.483122,2026-08-10 12:43:50.483122
+149,8,6,49,Part 6 - Text Completion 049,"Khách sạn
+
+The hotel manager recently sent an update about the reservation. The information is intended to help guests understand the latest arrangements. 
+[1] _____ company _____ three new branches since January. [2] _____ _____ the requested documents already. [3] _____ manager _____ the report several times this week. [4] _____ team _____ the project successfully so far.
+The department will provide additional assistance if necessary. Thank you for your cooperation.","💡 Mẹo Part 6: Với câu hỏi chọn cả câu, hãy kiểm tra câu đó có nối tự nhiên với toàn bộ đoạn hay không.",49,2026-08-10 12:43:50.483122,2026-08-10 12:43:50.483122
+150,8,6,50,Part 6 - Text Completion 050,"Hãng hàng không
+
+The airline representative recently sent an update about the flight. The information is intended to help passengers understand the latest arrangements. 
+[1] _____ engineers _____ the system since early morning. [2] _____ _____ for the company for five years. [3] _____ team _____ on the proposal all afternoon. [4] _____ _____ the road since Monday.
+The department will provide additional assistance if necessary. Thank you for your cooperation.","💡 Mẹo về từ tham chiếu: Các từ this, that, these, those có thể tham chiếu đến cả một ý tưởng chứ không chỉ một danh từ.",50,2026-08-10 12:43:50.483122,2026-08-10 12:43:50.483122
+151,8,6,51,Part 6 - Text Completion 051,"Cửa hàng bán lẻ
+
+The store manager recently sent an update about the promotion. The information is intended to help customers understand the latest arrangements. 
+[1] _____ the time the meeting started, the manager _____ the documents. [2] _____ we arrived, the train _____ already left. [3] _____ company _____ the problem before the customers complained. [4] _____ realized that she _____ the wrong file.
+The department will provide additional assistance if necessary. Thank you for your cooperation.","💡 Mẹo nhận biết câu kết luận: Các cụm in conclusion, overall, finally có thể báo hiệu kết luận.",51,2026-08-10 12:43:50.483122,2026-08-10 12:43:50.483122
+152,8,6,52,Part 6 - Text Completion 052,"Tuyển dụng
+
+The HR manager recently sent an update about the position. The information is intended to help applicants understand the latest arrangements. 
+[1] _____ manager _____ the results tomorrow. [2] _____ company _____ the new policy next month. [3] _____ _____ you when the order arrives. [4] _____ meeting _____ at 2:00 P.M. tomorrow.
+The department will provide additional assistance if necessary. Thank you for your cooperation.","💡 Mẹo nhận biết ví dụ: Khi câu sau giải thích hoặc minh họa câu trước, có thể cần for example hoặc for instance.",52,2026-08-10 12:43:50.483122,2026-08-10 12:43:50.483122
+153,8,6,53,Part 6 - Text Completion 053,"Bảo trì thiết bị
+
+The technician recently sent an update about the equipment. The information is intended to help employees understand the latest arrangements. 
+[1] _____ invoices _____ by the accounting department. [2] _____ rooms _____ every morning by hotel staff. [3] _____ requests _____ within two business days. [4] _____ equipment _____ regularly by technicians.
+The department will provide additional assistance if necessary. Thank you for your cooperation.","💡 Mẹo xác định chủ đề: Nếu nhiều câu cùng nhắc đến một đối tượng, đó thường là chủ đề chính của đoạn.",53,2026-08-10 12:43:50.483122,2026-08-10 12:43:50.483122
+154,8,6,54,Part 6 - Text Completion 054,"Lịch làm việc
+
+The supervisor recently sent an update about the schedule. The information is intended to help workers understand the latest arrangements. 
+[1] _____ documents _____ yesterday afternoon. [2] _____ meeting room _____ last night. [3] _____ package _____ to the wrong address last week. [4] _____ computers _____ during the maintenance period.
+The department will provide additional assistance if necessary. Thank you for your cooperation.","💡 Mẹo xác định mục đích: Hãy hỏi ""Người viết muốn thông báo, yêu cầu, giải thích hay thuyết phục?""",54,2026-08-10 12:43:50.483122,2026-08-10 12:43:50.483122
+155,8,6,55,Part 6 - Text Completion 055,"Hội thảo
+
+The organizer recently sent an update about the workshop. The information is intended to help students understand the latest arrangements. 
+[1] _____ new office _____ next month. [2] _____ participants _____ an email tomorrow. [3] _____ equipment _____ before the exhibition begins. [4] _____ results _____ on the company website next Friday.
+The department will provide additional assistance if necessary. Thank you for your cooperation.","💡 Mẹo đọc email: Đọc câu đầu và câu cuối trước để nắm nhanh mục đích, sau đó quay lại chi tiết.",55,2026-08-10 12:43:50.483122,2026-08-10 12:43:50.483122
+156,8,6,56,Part 6 - Text Completion 056,"Thư viện
+
+The librarian recently sent an update about the program. The information is intended to help visitors understand the latest arrangements. 
+[1] _____ list of applicants _____ on the manager's desk. [2] _____ employee _____ a security badge. [3] _____ employees in the sales department _____ a meeting every Monday. [4] _____ the manager nor the assistants _____ available today.
+The department will provide additional assistance if necessary. Thank you for your cooperation.","💡 Mẹo đọc thông báo: Các thông tin có ngày tháng, giờ và địa điểm thường rất quan trọng.",56,2026-08-10 12:43:50.483122,2026-08-10 12:43:50.483122
+157,8,6,57,Part 6 - Text Completion 057,"Nhà máy
+
+The factory manager recently sent an update about the production plan. The information is intended to help workers understand the latest arrangements. 
+[1] _____ _____ wear protective equipment in the laboratory. [2] _____ _____ enter this area without permission. [3] _____ _____ contact the service center if you need assistance. [4] _____ manager _____ arrive late because of the traffic.
+The department will provide additional assistance if necessary. Thank you for your cooperation.","💡 Mẹo từ vựng: Nếu không biết một từ, hãy dùng các từ xung quanh để đoán nghĩa.",57,2026-08-10 12:43:50.483122,2026-08-10 12:43:50.483122
+158,8,6,58,Part 6 - Text Completion 058,"Vận chuyển
+
+The shipping manager recently sent an update about the delivery service. The information is intended to help customers understand the latest arrangements. 
+[1] _____ company plans _____ a new branch next year. [2] _____ are required _____ the form before Friday. [3] _____ manager decided _____ the meeting. [4] _____ hope _____ the project on time.
+The department will provide additional assistance if necessary. Thank you for your cooperation.","💡 Mẹo đoán nghĩa: Xem từ trước/sau, loại từ và thái độ của câu để loại trừ nghĩa không phù hợp.",58,2026-08-10 12:43:50.483122,2026-08-10 12:43:50.483122
+159,8,6,59,Part 6 - Text Completion 059,"Marketing
+
+The marketing director recently sent an update about the campaign. The information is intended to help team members understand the latest arrangements. 
+[1] _____ you for _____ us about the problem. [2] _____ company is interested in _____ the new software. [3] _____ are responsible for _____ the equipment. [4] _____ _____ the building, visitors must register.
+The department will provide additional assistance if necessary. Thank you for your cooperation.",💡 Mẹo kiểm tra đáp án: Đáp án đúng phải phù hợp với ngữ pháp của câu và logic của toàn đoạn.,59,2026-08-10 12:43:50.483122,2026-08-10 12:43:50.483122
+160,8,6,60,Part 6 - Text Completion 060,"Công nghệ
+
+The IT manager recently sent an update about the software update. The information is intended to help users understand the latest arrangements. 
+[1] _____ regular exercise can improve productivity. [2] _____ customer feedback is important for the company. [3] _____ the equipment regularly reduces repair costs. [4] _____ with coworkers helps build a positive workplace.
+The department will provide additional assistance if necessary. Thank you for your cooperation.",💡 Mẹo quản lý thời gian: Part 6 nên được làm nhanh hơn Part 7 vì đoạn văn ngắn hơn và nhiều câu kiểm tra cấu trúc.,60,2026-08-10 12:43:50.483122,2026-08-10 12:43:50.483122
+161,9,6,61,Part 6 - Text Completion 061,"Thông báo cuộc họp
+
+The manager recently sent an update about the meeting. The information is intended to help employees understand the latest arrangements. 
+[1] _____ manager asked employees _____ the report. [2] _____ supervisor encouraged staff _____ early. [3] _____ company allows employees _____ remotely twice a week. [4] _____ director reminded us _____ the deadline.
+The department will provide additional assistance if necessary. Thank you for your cooperation.","💡 Mẹo Part 6: Nếu câu hỏi kiểm tra từ loại, đừng để nội dung dài của đoạn làm bạn mất tập trung.",61,2026-08-10 12:43:50.483122,2026-08-10 12:43:50.483122
+162,9,6,62,Part 6 - Text Completion 062,"Email khách hàng
+
+The customer recently sent an update about the order. The information is intended to help service team understand the latest arrangements. 
+[1] _____ company hired _____ experienced accountant. [2] _____ need _____ new printer for the office. [3] _____ send me _____ copy of the contract. [4] _____ manager reviewed _____ report we submitted yesterday.
+The department will provide additional assistance if necessary. Thank you for your cooperation.","💡 Mẹo Part 6: Nếu câu hỏi kiểm tra từ nối, hãy xác định quan hệ logic trước khi nhìn đáp án.",62,2026-08-10 12:43:50.483122,2026-08-10 12:43:50.483122
+163,9,6,63,Part 6 - Text Completion 063,"Thông báo công ty
+
+The company recently sent an update about the policy. The information is intended to help employees understand the latest arrangements. 
+[1] _____ company introduced a _____ policy. [2] _____ received _____ information from the supplier. [3] _____ manager gave a _____ explanation. [4] _____ hotel offers _____ rooms for business travelers.
+The department will provide additional assistance if necessary. Thank you for your cooperation.","💡 Mẹo Part 6: Nếu câu hỏi kiểm tra từ vựng, hãy tìm collocation và ngữ cảnh.",63,2026-08-10 12:43:50.483122,2026-08-10 12:43:50.483122
+164,9,6,64,Part 6 - Text Completion 064,"Lịch đào tạo
+
+The trainer recently sent an update about the training session. The information is intended to help participants understand the latest arrangements. 
+[1] _____ assistant completed the task _____ . [2] _____ speak _____ during the presentation. [3] _____ technician installed the software _____ . [4] _____ manager explained the procedure _____ .
+The department will provide additional assistance if necessary. Thank you for your cooperation.","💡 Mẹo Part 6: Nếu câu hỏi yêu cầu câu hoàn chỉnh, hãy đọc toàn bộ đoạn trước khi quyết định.",64,2026-08-10 12:43:50.483122,2026-08-10 12:43:50.483122
+165,9,6,65,Part 6 - Text Completion 065,"Dự án văn phòng
+
+The project manager recently sent an update about the project. The information is intended to help staff understand the latest arrangements. 
+[1] _____ model is _____ than the previous one. [2] _____ new office is _____ than the old one. [3] _____ orders are processed _____ than phone orders. [4] _____ route is _____ than the highway.
+The department will provide additional assistance if necessary. Thank you for your cooperation.",💡 Mẹo: Các câu hỏi trong một đoạn thường liên kết với nhau. Đáp án của câu trước có thể giúp hiểu câu sau.,65,2026-08-10 12:43:50.483122,2026-08-10 12:43:50.483122
+166,9,6,66,Part 6 - Text Completion 066,"Sự kiện kinh doanh
+
+The organizer recently sent an update about the conference. The information is intended to help attendees understand the latest arrangements. 
+[1] _____ is the _____ branch in the region. [2] _____ is the _____ employee in the department. [3] _____ machine operates the _____ efficiently. [4] _____ was the _____ meeting of the year.
+The department will provide additional assistance if necessary. Thank you for your cooperation.",💡 Mẹo: Đừng thay đổi đáp án nếu chưa tìm thấy lý do rõ ràng từ ngữ cảnh.,66,2026-08-10 12:43:50.483122,2026-08-10 12:43:50.483122
+167,9,6,67,Part 6 - Text Completion 067,"Báo cáo doanh thu
+
+The finance manager recently sent an update about the report. The information is intended to help department understand the latest arrangements. 
+[1] _____ flight was delayed _____ bad weather. [2] _____ the road was closed, the delivery arrived late. [3] _____ event was canceled _____ there were not enough participants. [4] _____ postponed the meeting _____ the manager was unavailable.
+The department will provide additional assistance if necessary. Thank you for your cooperation.","💡 Mẹo: Khi hai đáp án đều có vẻ đúng, hãy kiểm tra collocation và cấu trúc ngữ pháp.",67,2026-08-10 12:43:50.483122,2026-08-10 12:43:50.483122
+168,9,6,68,Part 6 - Text Completion 068,"Đơn hàng trực tuyến
+
+The customer recently sent an update about the shipment. The information is intended to help warehouse understand the latest arrangements. 
+[1] _____ store was closed; _____, customers could not enter. [2] _____ system was overloaded. _____, the response time increased. [3] _____ shipment was delayed, _____ the customer received it late. [4] _____ company reduced costs and _____ increased its profit.
+The department will provide additional assistance if necessary. Thank you for your cooperation.",💡 Mẹo: Cẩn thận với đáp án đúng nghĩa nhưng sai dạng từ.,68,2026-08-10 12:43:50.483122,2026-08-10 12:43:50.483122
+169,9,6,69,Part 6 - Text Completion 069,"Khách sạn
+
+The hotel manager recently sent an update about the reservation. The information is intended to help guests understand the latest arrangements. 
+[1] _____ the product is expensive, many customers buy it. [2] _____ hotel is small; _____, it offers excellent service. [3] _____ the delay, the meeting continued as planned. [4] _____ product is popular, _____ it is relatively expensive.
+The department will provide additional assistance if necessary. Thank you for your cooperation.",💡 Mẹo: Cẩn thận với đáp án đúng ngữ pháp nhưng không phù hợp với ý nghĩa đoạn văn.,69,2026-08-10 12:43:50.483122,2026-08-10 12:43:50.483122
+170,9,6,70,Part 6 - Text Completion 070,"Hãng hàng không
+
+The airline representative recently sent an update about the flight. The information is intended to help passengers understand the latest arrangements. 
+[1] _____ you need assistance, please contact the front desk. [2] _____ company will refund the fee _____ the customer provides proof of payment. [3] _____ the weather improves, the event will be held outdoors. [4] _____ cannot enter the laboratory _____ you wear protective clothing.
+The department will provide additional assistance if necessary. Thank you for your cooperation.",💡 Mẹo: Câu trước và câu sau chỗ trống là hai manh mối quan trọng nhất trong Part 6.,70,2026-08-10 12:43:50.483122,2026-08-10 12:43:50.483122
+171,9,6,71,Part 6 - Text Completion 071,"Cửa hàng bán lẻ
+
+The store manager recently sent an update about the promotion. The information is intended to help customers understand the latest arrangements. 
+[1] _____ call me _____ you arrive at the office. [2] _____ manager will review the report _____ the meeting begins. [3] _____ must wait _____ the system restarts. [4] _____ the presentation ended, attendees asked questions.
+The department will provide additional assistance if necessary. Thank you for your cooperation.",💡 Mẹo: Tìm các từ lặp lại hoặc từ đồng nghĩa giữa các câu để nhận biết sự liên kết.,71,2026-08-10 12:43:50.483122,2026-08-10 12:43:50.483122
+172,9,6,72,Part 6 - Text Completion 072,"Tuyển dụng
+
+The HR manager recently sent an update about the position. The information is intended to help applicants understand the latest arrangements. 
+[1] _____ employee _____ submitted the report is on vacation. [2] _____ manager _____ hired me is from Canada. [3] _____ _____ have relevant experience will be considered first. [4] _____ consultant _____ we met yesterday will lead the project.
+The department will provide additional assistance if necessary. Thank you for your cooperation.",💡 Mẹo: Các đại từ thường tạo liên kết giữa câu trước và câu sau.,72,2026-08-10 12:43:50.483122,2026-08-10 12:43:50.483122
+173,9,6,73,Part 6 - Text Completion 073,"Bảo trì thiết bị
+
+The technician recently sent an update about the equipment. The information is intended to help employees understand the latest arrangements. 
+[1] _____ report _____ you sent was helpful. [2] _____ machine _____ was installed yesterday is working well. [3] _____ software _____ we use requires an update. [4] _____ building _____ the company owns is near the station.
+The department will provide additional assistance if necessary. Thank you for your cooperation.",💡 Mẹo: Các từ nối giúp nhận biết hướng phát triển của đoạn văn.,73,2026-08-10 12:43:50.483122,2026-08-10 12:43:50.483122
+174,9,6,74,Part 6 - Text Completion 074,"Lịch làm việc
+
+The supervisor recently sent an update about the schedule. The information is intended to help workers understand the latest arrangements. 
+[1] _____ manager _____ office is on the third floor is away today. [2] _____ contacted a supplier _____ products are environmentally friendly. [3] _____ employee _____ laptop was stolen reported the incident. [4] _____ company _____ headquarters are in Seoul opened a new branch.
+The department will provide additional assistance if necessary. Thank you for your cooperation.","💡 Mẹo: Khi đoạn văn nói về một quy trình, hãy chú ý thứ tự các bước.",74,2026-08-10 12:43:50.483122,2026-08-10 12:43:50.483122
+175,9,6,75,Part 6 - Text Completion 075,"Hội thảo
+
+The organizer recently sent an update about the workshop. The information is intended to help students understand the latest arrangements. 
+[1] _____ meeting is scheduled _____ Monday. [2] _____ office closes _____ 6:00 P.M. [3] _____ company was founded _____ 1998. [4] _____ submit the form _____ Friday.
+The department will provide additional assistance if necessary. Thank you for your cooperation.","💡 Mẹo: Khi đoạn văn nói về sự kiện, hãy ghi nhớ ai, làm gì, khi nào và ở đâu.",75,2026-08-10 12:43:50.483122,2026-08-10 12:43:50.483122
+176,9,6,76,Part 6 - Text Completion 076,"Thư viện
+
+The librarian recently sent an update about the program. The information is intended to help visitors understand the latest arrangements. 
+[1] _____ meeting room is _____ the second floor. [2] _____ manager is waiting _____ the lobby. [3] _____ leave the package _____ the front desk. [4] _____ office is _____ the bank and the post office.
+The department will provide additional assistance if necessary. Thank you for your cooperation.","💡 Mẹo: Khi đoạn văn nói về sản phẩm, chú ý đặc điểm, giá, lợi ích và điều kiện.",76,2026-08-10 12:43:50.483122,2026-08-10 12:43:50.483122
+177,9,6,77,Part 6 - Text Completion 077,"Nhà máy
+
+The factory manager recently sent an update about the production plan. The information is intended to help workers understand the latest arrangements. 
+[1] _____ are _____ employees in the training room. [2] _____ do not have _____ information about the incident. [3] _____ is only _____ time left before the meeting. [4] _____ manager received _____ applications this week.
+The department will provide additional assistance if necessary. Thank you for your cooperation.","💡 Mẹo: Khi đoạn văn nói về công việc, chú ý vị trí, nhiệm vụ, thời gian và yêu cầu.",77,2026-08-10 12:43:50.483122,2026-08-10 12:43:50.483122
+178,9,6,78,Part 6 - Text Completion 078,"Vận chuyển
+
+The shipping manager recently sent an update about the delivery service. The information is intended to help customers understand the latest arrangements. 
+[1] _____ company hired two new _____ last month. [2] _____ _____ are waiting outside. [3] _____ need three _____ for the conference room. [4] _____ store has many _____ of this product.
+The department will provide additional assistance if necessary. Thank you for your cooperation.","💡 Mẹo: Khi đoạn văn nói về cuộc họp, chú ý thời gian, địa điểm, người tham gia và mục đích.",78,2026-08-10 12:43:50.483122,2026-08-10 12:43:50.483122
+179,9,6,79,Part 6 - Text Completion 079,"Marketing
+
+The marketing director recently sent an update about the campaign. The information is intended to help team members understand the latest arrangements. 
+[1] _____ company needs more _____ before making a decision. [2] _____ received useful _____ from the consultant. [3] _____ equipment _____ expensive. [4] _____ is not enough _____ in the storage room.
+The department will provide additional assistance if necessary. Thank you for your cooperation.","💡 Mẹo: Khi đoạn văn nói về dịch vụ, chú ý cách sử dụng, giá và điều kiện.",79,2026-08-10 12:43:50.483122,2026-08-10 12:43:50.483122
+247,15,7,47,Part 7 - Single Passage 047,Greenway Electronics has shipped a customer's order for two wireless keyboards. The package is expected to arrive on Thursday. A tracking number is available in the customer's online account. This information was prepared for employees and customers to help them make the appropriate arrangements for variation 6.,"💡 Mẹo về dịch vụ: Chú ý cách sử dụng, giá, thời gian và điều kiện cung cấp.",47,2026-08-10 14:18:37.790751,2026-08-10 14:18:37.790751
+180,9,6,80,Part 6 - Text Completion 080,"Công nghệ
+
+The IT manager recently sent an update about the software update. The information is intended to help users understand the latest arrangements. 
+[1] _____ the weather improves, the company _____ the event outdoors. [2] _____ you submit the form today, we _____ your request tomorrow. [3] _____ the shipment arrives early, customers _____ it sooner. [4] _____ she finishes the report, she _____ it to the manager.
+The department will provide additional assistance if necessary. Thank you for your cooperation.","💡 Mẹo: Khi đoạn văn nói về thay đổi, chú ý thông tin trước và sau thay đổi.",80,2026-08-10 12:43:50.483122,2026-08-10 12:43:50.483122
+181,10,6,81,Part 6 - Text Completion 081,"Thông báo cuộc họp
+
+The manager recently sent an update about the meeting. The information is intended to help employees understand the latest arrangements. 
+[1] _____ I _____ more time, I would attend the conference. [2] _____ the company had a larger budget, it _____ more employees. [3] _____ she _____ the manager, she would change the policy. [4] _____ we lived closer, we _____ the office more often.
+The department will provide additional assistance if necessary. Thank you for your cooperation.","💡 Mẹo: Khi đoạn văn nói về kế hoạch, chú ý các từ plan, intend, schedule và expect.",81,2026-08-10 12:43:50.483122,2026-08-10 12:43:50.483122
+182,10,6,82,Part 6 - Text Completion 082,"Email khách hàng
+
+The customer recently sent an update about the order. The information is intended to help service team understand the latest arrangements. 
+[1] _____ company launched the website _____ attract more customers. [2] _____ attended the workshop _____ improve their communication skills. [3] _____ manager sent an email _____ everyone would receive the update. [4] _____ company installed new lights _____ reduce energy consumption.
+The department will provide additional assistance if necessary. Thank you for your cooperation.","💡 Mẹo: Khi đoạn văn nói về yêu cầu, chú ý must, need to, required và requested.",82,2026-08-10 12:43:50.483122,2026-08-10 12:43:50.483122
+183,10,6,83,Part 6 - Text Completion 083,"Thông báo công ty
+
+The company recently sent an update about the policy. The information is intended to help employees understand the latest arrangements. 
+[1] _____ the weather was bad, the event continued. [2] _____ the high price, the product sold well. [3] _____ flight departed on time _____ the heavy rain. [4] _____ she was busy, she attended the meeting.
+The department will provide additional assistance if necessary. Thank you for your cooperation.","💡 Mẹo: Khi đoạn văn nói về lời mời, chú ý thời gian, địa điểm và cách xác nhận tham dự.",83,2026-08-10 12:43:50.483122,2026-08-10 12:43:50.483122
+184,10,6,84,Part 6 - Text Completion 084,"Lịch đào tạo
+
+The trainer recently sent an update about the training session. The information is intended to help participants understand the latest arrangements. 
+[1] _____ meeting was canceled _____ the manager was sick. [2] _____ the road was closed, the delivery was delayed. [3] _____ event was postponed _____ heavy rain. [4] _____ left early _____ the traffic was heavy.
+The department will provide additional assistance if necessary. Thank you for your cooperation.","💡 Mẹo: Khi đoạn văn nói về khiếu nại, xác định vấn đề, nguyên nhân và giải pháp được đề xuất.",84,2026-08-10 12:43:50.483122,2026-08-10 12:43:50.483122
+185,10,6,85,Part 6 - Text Completion 085,"Dự án văn phòng
+
+The project manager recently sent an update about the project. The information is intended to help staff understand the latest arrangements. 
+[1] _____ report was so detailed _____ everyone understood the problem. [2] _____ was such a busy day _____ the staff worked late. [3] _____ system was overloaded; _____, the website became slow. [4] _____ instructions were clear, _____ everyone completed the task correctly.
+The department will provide additional assistance if necessary. Thank you for your cooperation.","💡 Mẹo: Khi đoạn văn nói về tuyển dụng, chú ý qualifications, experience, responsibilities và application.",85,2026-08-10 12:43:50.483122,2026-08-10 12:43:50.483122
+186,10,6,86,Part 6 - Text Completion 086,"Sự kiện kinh doanh
+
+The organizer recently sent an update about the conference. The information is intended to help attendees understand the latest arrangements. 
+[1] _____ job requires answering calls, preparing reports, and _____ customers. [2] _____ manager is responsible for hiring staff and _____ training. [3] _____ new system is faster, safer, and more _____. [4] _____ company plans to expand its market and _____ new products.
+The department will provide additional assistance if necessary. Thank you for your cooperation.","💡 Mẹo: Khi đoạn văn nói về du lịch, chú ý departure, arrival, reservation, destination và schedule.",86,2026-08-10 12:43:50.483122,2026-08-10 12:43:50.483122
+187,10,6,87,Part 6 - Text Completion 087,"Báo cáo doanh thu
+
+The finance manager recently sent an update about the report. The information is intended to help department understand the latest arrangements. 
+[1] _____ manager asked when the shipment _____. [2] _____ tell me where the meeting room _____. [3] _____ asked whether the report _____ ready. [4] _____ you explain how the machine _____?
+The department will provide additional assistance if necessary. Thank you for your cooperation.","💡 Mẹo: Khi đoạn văn nói về mua bán, chú ý price, discount, order, payment và delivery.",87,2026-08-10 12:43:50.483122,2026-08-10 12:43:50.483122
+188,10,6,88,Part 6 - Text Completion 088,"Đơn hàng trực tuyến
+
+The customer recently sent an update about the shipment. The information is intended to help warehouse understand the latest arrangements. 
+[1] _____ _____ a meeting at 9:00 tomorrow. [2] _____ _____ several documents on the desk. [3] _____ _____ enough information in the report. [4] _____ _____ two new employees in our department.
+The department will provide additional assistance if necessary. Thank you for your cooperation.","💡 Mẹo: Khi đoạn văn nói về cuộc hẹn, chú ý ngày, giờ và địa điểm.",88,2026-08-10 12:43:50.483122,2026-08-10 12:43:50.483122
+189,10,6,89,Part 6 - Text Completion 089,"Khách sạn
+
+The hotel manager recently sent an update about the reservation. The information is intended to help guests understand the latest arrangements. 
+[1] _____ manager made the employees _____ late. [2] _____ supervisor let us _____ early. [3] _____ new policy made customers _____ more forms. [4] _____ manager let the staff _____ the issue themselves.
+The department will provide additional assistance if necessary. Thank you for your cooperation.","💡 Mẹo: Khi đoạn văn nói về thay đổi lịch, chú ý thời gian cũ và thời gian mới.",89,2026-08-10 12:43:50.483122,2026-08-10 12:43:50.483122
+190,10,6,90,Part 6 - Text Completion 090,"Hãng hàng không
+
+The airline representative recently sent an update about the flight. The information is intended to help passengers understand the latest arrangements. 
+[1] _____ manager had the technician _____ the printer. [2] _____ had the documents _____ before the meeting. [3] _____ customer got the package _____ to a different address. [4] _____ company had the office _____ last weekend.
+The department will provide additional assistance if necessary. Thank you for your cooperation.","💡 Mẹo: Khi đoạn văn nói về hướng dẫn, chú ý các động từ chỉ hành động và thứ tự thực hiện.",90,2026-08-10 12:43:50.483122,2026-08-10 12:43:50.483122
+191,10,6,91,Part 6 - Text Completion 091,"Cửa hàng bán lẻ
+
+The store manager recently sent an update about the promotion. The information is intended to help customers understand the latest arrangements. 
+[1] _____ office _____ at 8:00 A.M. every weekday. [2] _____ _____ their identification cards when they enter the building. [3] _____ manager usually _____ the weekly schedule on Friday. [4] _____ system automatically _____ customers when an order is shipped.
+The department will provide additional assistance if necessary. Thank you for your cooperation.","💡 Mẹo: Khi làm câu cuối cùng của đoạn, hãy đọc lại toàn bộ ngữ cảnh nếu câu hỏi liên quan đến mục đích hoặc kết luận.",91,2026-08-10 12:43:50.483122,2026-08-10 12:43:50.483122
+192,10,6,92,Part 6 - Text Completion 092,"Tuyển dụng
+
+The HR manager recently sent an update about the position. The information is intended to help applicants understand the latest arrangements. 
+[1] _____ accounting team _____ the monthly report now. [2] _____ employees _____ in the training room at the moment. [3] _____ technician _____ the printer right now. [4] _____ _____ a new customer database this week.
+The department will provide additional assistance if necessary. Thank you for your cooperation.",💡 Mẹo: Không dịch từng câu sang tiếng Việt nếu không cần thiết. Hãy xử lý trực tiếp thông tin và cấu trúc tiếng Anh.,92,2026-08-10 12:43:50.483122,2026-08-10 12:43:50.483122
+193,10,6,93,Part 6 - Text Completion 093,"Bảo trì thiết bị
+
+The technician recently sent an update about the equipment. The information is intended to help employees understand the latest arrangements. 
+[1] _____ manager _____ the contract yesterday. [2] _____ conference _____ at 9:00 A.M. last Monday. [3] _____ company _____ its first branch in 2018. [4] _____ customer _____ the package two days ago.
+The department will provide additional assistance if necessary. Thank you for your cooperation.","💡 Mẹo: Gạch chân từ khóa trong đầu như tên người, địa điểm, số liệu và thời gian để tìm thông tin nhanh.",93,2026-08-10 12:43:50.483122,2026-08-10 12:43:50.483122
+194,10,6,94,Part 6 - Text Completion 094,"Lịch làm việc
+
+The supervisor recently sent an update about the schedule. The information is intended to help workers understand the latest arrangements. 
+[1] _____ company _____ three new branches since January. [2] _____ _____ the requested documents already. [3] _____ manager _____ the report several times this week. [4] _____ team _____ the project successfully so far.
+The department will provide additional assistance if necessary. Thank you for your cooperation.","💡 Mẹo: Nếu đáp án chứa thông tin không được đề cập trong đoạn, loại ngay nếu câu hỏi yêu cầu thông tin dựa trên passage.",94,2026-08-10 12:43:50.483122,2026-08-10 12:43:50.483122
+195,10,6,95,Part 6 - Text Completion 095,"Hội thảo
+
+The organizer recently sent an update about the workshop. The information is intended to help students understand the latest arrangements. 
+[1] _____ engineers _____ the system since early morning. [2] _____ _____ for the company for five years. [3] _____ team _____ on the proposal all afternoon. [4] _____ _____ the road since Monday.
+The department will provide additional assistance if necessary. Thank you for your cooperation.","💡 Mẹo: Với câu hỏi suy luận, chọn đáp án có căn cứ rõ nhất từ nội dung thay vì đáp án nghe hợp lý theo kiến thức bên ngoài.",95,2026-08-10 12:43:50.483122,2026-08-10 12:43:50.483122
+196,10,6,96,Part 6 - Text Completion 096,"Thư viện
+
+The librarian recently sent an update about the program. The information is intended to help visitors understand the latest arrangements. 
+[1] _____ the time the meeting started, the manager _____ the documents. [2] _____ we arrived, the train _____ already left. [3] _____ company _____ the problem before the customers complained. [4] _____ realized that she _____ the wrong file.
+The department will provide additional assistance if necessary. Thank you for your cooperation.",💡 Mẹo: Luôn kiểm tra đáp án trong ngữ cảnh toàn đoạn trước khi chốt.,96,2026-08-10 12:43:50.483122,2026-08-10 12:43:50.483122
+197,10,6,97,Part 6 - Text Completion 097,"Nhà máy
+
+The factory manager recently sent an update about the production plan. The information is intended to help workers understand the latest arrangements. 
+[1] _____ manager _____ the results tomorrow. [2] _____ company _____ the new policy next month. [3] _____ _____ you when the order arrives. [4] _____ meeting _____ at 2:00 P.M. tomorrow.
+The department will provide additional assistance if necessary. Thank you for your cooperation.",💡 Mẹo: Đọc nhanh nhưng phải giữ mạch ý. Hiểu quan hệ giữa các câu quan trọng hơn việc hiểu từng từ.,97,2026-08-10 12:43:50.483122,2026-08-10 12:43:50.483122
+198,10,6,98,Part 6 - Text Completion 098,"Vận chuyển
+
+The shipping manager recently sent an update about the delivery service. The information is intended to help customers understand the latest arrangements. 
+[1] _____ invoices _____ by the accounting department. [2] _____ rooms _____ every morning by hotel staff. [3] _____ requests _____ within two business days. [4] _____ equipment _____ regularly by technicians.
+The department will provide additional assistance if necessary. Thank you for your cooperation.","💡 Mẹo: Ưu tiên câu hỏi ngữ pháp và từ loại trước, sau đó xử lý câu hỏi cần hiểu toàn đoạn.",98,2026-08-10 12:43:50.483122,2026-08-10 12:43:50.483122
+199,10,6,99,Part 6 - Text Completion 099,"Marketing
+
+The marketing director recently sent an update about the campaign. The information is intended to help team members understand the latest arrangements. 
+[1] _____ documents _____ yesterday afternoon. [2] _____ meeting room _____ last night. [3] _____ package _____ to the wrong address last week. [4] _____ computers _____ during the maintenance period.
+The department will provide additional assistance if necessary. Thank you for your cooperation.",💡 Mẹo tổng hợp Part 6: Từ loại → ngữ pháp → từ nối → ngữ cảnh → kiểm tra toàn đoạn.,99,2026-08-10 12:43:50.483122,2026-08-10 12:43:50.483122
+200,10,6,100,Part 6 - Text Completion 100,"Công nghệ
+
+The IT manager recently sent an update about the software update. The information is intended to help users understand the latest arrangements. 
+[1] _____ new office _____ next month. [2] _____ participants _____ an email tomorrow. [3] _____ equipment _____ before the exhibition begins. [4] _____ results _____ on the company website next Friday.
+The department will provide additional assistance if necessary. Thank you for your cooperation.","💡 Mẹo tổng hợp Part 6: Đọc toàn đoạn để hiểu chủ đề, sau đó dùng câu trước/sau chỗ trống để chọn đáp án chính xác.",100,2026-08-10 12:43:50.483122,2026-08-10 12:43:50.483122
+201,11,7,1,Part 7 - Single Passage 001,"The main office will be renovated from August 18 to August 22. Employees should remove personal items from their desks before August 17. During the renovation, staff will work on the fourth floor. This information was prepared for employees and customers to help them make the appropriate arrangements for variation 1.",💡 Mẹo Part 7: Đọc câu hỏi trước rồi mới quay lại passage tìm thông tin.,1,2026-08-10 14:18:37.790751,2026-08-10 14:18:37.790751
+203,11,7,3,Part 7 - Single Passage 003,Brighton Consulting is accepting applications for an administrative assistant. Applicants should have at least two years of office experience and be comfortable using spreadsheet software. Applications must be submitted by September 5. This information was prepared for employees and customers to help them make the appropriate arrangements for variation 1.,"💡 Mẹo tìm giờ: Chú ý các dạng như 9:00 AM, at noon, in the afternoon hoặc shortly after.",3,2026-08-10 14:18:37.790751,2026-08-10 14:18:37.790751
+204,11,7,4,Part 7 - Single Passage 004,A customer-service training session will be held in Room 204 on Tuesday from 9:00 A.M. to noon. Employees should bring their identification cards and complete an online preparation exercise before attending. This information was prepared for employees and customers to help them make the appropriate arrangements for variation 1.,"💡 Mẹo tìm địa điểm: Tìm các từ như office, branch, store, station, building và location.",4,2026-08-10 14:18:37.790751,2026-08-10 14:18:37.790751
+205,11,7,5,Part 7 - Single Passage 005,Oak Street Market will offer a 20-percent discount on selected office supplies this weekend. The promotion applies to purchases made in the store only and does not include printer ink. This information was prepared for employees and customers to help them make the appropriate arrangements for variation 1.,"💡 Mẹo tìm người: Tìm tên riêng, chức vụ và các đại từ liên quan đến người được hỏi.",5,2026-08-10 14:18:37.790751,2026-08-10 14:18:37.790751
+206,11,7,6,Part 7 - Single Passage 006,"Harbor Hotel confirmed Ms. Lee's reservation for three nights beginning October 12. Breakfast is included, but airport transportation must be arranged separately. Guests needing a taxi should contact the front desk. This information was prepared for employees and customers to help them make the appropriate arrangements for variation 1.","💡 Mẹo xác định người gửi: Kiểm tra tên, chức vụ và chữ ký ở cuối email hoặc thông báo.",6,2026-08-10 14:18:37.790751,2026-08-10 14:18:37.790751
+207,11,7,7,Part 7 - Single Passage 007,The monthly employee newsletter congratulates Daniel Ruiz for completing ten years with the company. Daniel joined the purchasing department in 2016 and now supervises eight employees. The company will recognize him at Friday's staff meeting. This information was prepared for employees and customers to help them make the appropriate arrangements for variation 1.,"💡 Mẹo xác định người nhận: Chú ý dòng To, Dear, For và các đại từ you/your.",7,2026-08-10 14:18:37.790751,2026-08-10 14:18:37.790751
+208,11,7,8,Part 7 - Single Passage 008,"Beginning Monday, the downtown shuttle will leave the parking lot at 7:30 A.M. instead of 7:45 A.M. The afternoon schedule will remain unchanged. Employees are encouraged to arrive at the parking lot at least five minutes before departure. This information was prepared for employees and customers to help them make the appropriate arrangements for variation 1.",💡 Mẹo xác định mục đích: Đọc câu mở đầu và câu kết của văn bản để hiểu mục đích chính.,8,2026-08-10 14:18:37.790751,2026-08-10 14:18:37.790751
+209,11,7,9,Part 7 - Single Passage 009,"The marketing team has extended the deadline for the summer campaign proposal until June 28. The team originally planned to select a proposal on June 24, but several departments requested additional time to review the project requirements. This information was prepared for employees and customers to help them make the appropriate arrangements for variation 1.","💡 Mẹo câu hỏi purpose: Hỏi ""Tại sao văn bản này được viết?"" thay vì chỉ tìm một câu chứa đáp án.",9,2026-08-10 14:18:37.790751,2026-08-10 14:18:37.790751
+210,11,7,10,Part 7 - Single Passage 010,"The main office will be renovated from August 18 to August 22. Employees should remove personal items from their desks before August 17. During the renovation, staff will work on the fourth floor. This information was prepared for employees and customers to help them make the appropriate arrangements for variation 2.",💡 Mẹo câu hỏi NOT: Kiểm tra từng đáp án với passage và tìm lựa chọn không được đề cập hoặc trái với thông tin.,10,2026-08-10 14:18:37.790751,2026-08-10 14:18:37.790751
+211,12,7,11,Part 7 - Single Passage 011,Greenway Electronics has shipped a customer's order for two wireless keyboards. The package is expected to arrive on Thursday. A tracking number is available in the customer's online account. This information was prepared for employees and customers to help them make the appropriate arrangements for variation 2.,💡 Mẹo câu hỏi EXCEPT: Cách làm tương tự NOT. Tìm ba đáp án có bằng chứng trong passage và loại chúng.,11,2026-08-10 14:18:37.790751,2026-08-10 14:18:37.790751
+212,12,7,12,Part 7 - Single Passage 012,Brighton Consulting is accepting applications for an administrative assistant. Applicants should have at least two years of office experience and be comfortable using spreadsheet software. Applications must be submitted by September 5. This information was prepared for employees and customers to help them make the appropriate arrangements for variation 2.,💡 Mẹo từ đồng nghĩa: TOEIC thường dùng paraphrase. Đừng chỉ tìm từ giống hệt trong passage.,12,2026-08-10 14:18:37.790751,2026-08-10 14:18:37.790751
+213,12,7,13,Part 7 - Single Passage 013,A customer-service training session will be held in Room 204 on Tuesday from 9:00 A.M. to noon. Employees should bring their identification cards and complete an online preparation exercise before attending. This information was prepared for employees and customers to help them make the appropriate arrangements for variation 2.,💡 Mẹo paraphrase: Hai câu có thể dùng từ hoàn toàn khác nhau nhưng vẫn có cùng ý nghĩa.,13,2026-08-10 14:18:37.790751,2026-08-10 14:18:37.790751
+214,12,7,14,Part 7 - Single Passage 014,Oak Street Market will offer a 20-percent discount on selected office supplies this weekend. The promotion applies to purchases made in the store only and does not include printer ink. This information was prepared for employees and customers to help them make the appropriate arrangements for variation 2.,💡 Mẹo câu hỏi Who: Tìm tên hoặc chức vụ của người thực hiện hành động được hỏi.,14,2026-08-10 14:18:37.790751,2026-08-10 14:18:37.790751
+215,12,7,15,Part 7 - Single Passage 015,"Harbor Hotel confirmed Ms. Lee's reservation for three nights beginning October 12. Breakfast is included, but airport transportation must be arranged separately. Guests needing a taxi should contact the front desk. This information was prepared for employees and customers to help them make the appropriate arrangements for variation 2.","💡 Mẹo câu hỏi When: Tìm ngày, giờ hoặc mốc thời gian liên quan trực tiếp đến hành động.",15,2026-08-10 14:18:37.790751,2026-08-10 14:18:37.790751
+216,12,7,16,Part 7 - Single Passage 016,The monthly employee newsletter congratulates Daniel Ruiz for completing ten years with the company. Daniel joined the purchasing department in 2016 and now supervises eight employees. The company will recognize him at Friday's staff meeting. This information was prepared for employees and customers to help them make the appropriate arrangements for variation 2.,💡 Mẹo câu hỏi Where: Tìm địa điểm cụ thể thay vì chọn địa điểm chỉ xuất hiện trong passage.,16,2026-08-10 14:18:37.790751,2026-08-10 14:18:37.790751
+217,12,7,17,Part 7 - Single Passage 017,"Beginning Monday, the downtown shuttle will leave the parking lot at 7:30 A.M. instead of 7:45 A.M. The afternoon schedule will remain unchanged. Employees are encouraged to arrive at the parking lot at least five minutes before departure. This information was prepared for employees and customers to help them make the appropriate arrangements for variation 2.",💡 Mẹo câu hỏi What: Xác định chính xác đối tượng hoặc hành động mà câu hỏi đang yêu cầu.,17,2026-08-10 14:18:37.790751,2026-08-10 14:18:37.790751
+218,12,7,18,Part 7 - Single Passage 018,"The marketing team has extended the deadline for the summer campaign proposal until June 28. The team originally planned to select a proposal on June 24, but several departments requested additional time to review the project requirements. This information was prepared for employees and customers to help them make the appropriate arrangements for variation 2.","💡 Mẹo câu hỏi Why: Tìm nguyên nhân, mục đích hoặc lý do được nêu trong passage.",18,2026-08-10 14:18:37.790751,2026-08-10 14:18:37.790751
+219,12,7,19,Part 7 - Single Passage 019,"The main office will be renovated from August 18 to August 22. Employees should remove personal items from their desks before August 17. During the renovation, staff will work on the fourth floor. This information was prepared for employees and customers to help them make the appropriate arrangements for variation 3.","💡 Mẹo câu hỏi How: Tìm cách thức, phương pháp hoặc quy trình được mô tả.",19,2026-08-10 14:18:37.790751,2026-08-10 14:18:37.790751
+220,12,7,20,Part 7 - Single Passage 020,Greenway Electronics has shipped a customer's order for two wireless keyboards. The package is expected to arrive on Thursday. A tracking number is available in the customer's online account. This information was prepared for employees and customers to help them make the appropriate arrangements for variation 3.,💡 Mẹo câu hỏi What is indicated: Chỉ chọn thông tin có thể suy ra hoặc được hỗ trợ bởi passage.,20,2026-08-10 14:18:37.790751,2026-08-10 14:18:37.790751
+221,13,7,21,Part 7 - Single Passage 021,Brighton Consulting is accepting applications for an administrative assistant. Applicants should have at least two years of office experience and be comfortable using spreadsheet software. Applications must be submitted by September 5. This information was prepared for employees and customers to help them make the appropriate arrangements for variation 3.,"💡 Mẹo câu hỏi What is suggested: Suy luận từ các chi tiết có sẵn, không dùng kiến thức bên ngoài.",21,2026-08-10 14:18:37.790751,2026-08-10 14:18:37.790751
+222,13,7,22,Part 7 - Single Passage 022,A customer-service training session will be held in Room 204 on Tuesday from 9:00 A.M. to noon. Employees should bring their identification cards and complete an online preparation exercise before attending. This information was prepared for employees and customers to help them make the appropriate arrangements for variation 3.,"💡 Mẹo câu hỏi What will happen next: Chú ý các từ will, plan, intend, expect, schedule và next.",22,2026-08-10 14:18:37.790751,2026-08-10 14:18:37.790751
+223,13,7,23,Part 7 - Single Passage 023,Oak Street Market will offer a 20-percent discount on selected office supplies this weekend. The promotion applies to purchases made in the store only and does not include printer ink. This information was prepared for employees and customers to help them make the appropriate arrangements for variation 3.,💡 Mẹo câu hỏi What is mentioned: Tìm thông tin được nói trực tiếp trong passage.,23,2026-08-10 14:18:37.790751,2026-08-10 14:18:37.790751
+224,13,7,24,Part 7 - Single Passage 024,"Harbor Hotel confirmed Ms. Lee's reservation for three nights beginning October 12. Breakfast is included, but airport transportation must be arranged separately. Guests needing a taxi should contact the front desk. This information was prepared for employees and customers to help them make the appropriate arrangements for variation 3.","💡 Mẹo đọc email: Xác định người gửi, người nhận, mục đích và hành động cần thực hiện.",24,2026-08-10 14:18:37.790751,2026-08-10 14:18:37.790751
+225,13,7,25,Part 7 - Single Passage 025,The monthly employee newsletter congratulates Daniel Ruiz for completing ten years with the company. Daniel joined the purchasing department in 2016 and now supervises eight employees. The company will recognize him at Friday's staff meeting. This information was prepared for employees and customers to help them make the appropriate arrangements for variation 3.,"💡 Mẹo đọc memo: Chú ý người nhận, chủ đề và những thay đổi hoặc yêu cầu được đề cập.",25,2026-08-10 14:18:37.790751,2026-08-10 14:18:37.790751
+226,13,7,26,Part 7 - Single Passage 026,"Beginning Monday, the downtown shuttle will leave the parking lot at 7:30 A.M. instead of 7:45 A.M. The afternoon schedule will remain unchanged. Employees are encouraged to arrive at the parking lot at least five minutes before departure. This information was prepared for employees and customers to help them make the appropriate arrangements for variation 3.","💡 Mẹo đọc thông báo: Tập trung vào thời gian, địa điểm, đối tượng và hành động.",26,2026-08-10 14:18:37.790751,2026-08-10 14:18:37.790751
+227,13,7,27,Part 7 - Single Passage 027,"The marketing team has extended the deadline for the summer campaign proposal until June 28. The team originally planned to select a proposal on June 24, but several departments requested additional time to review the project requirements. This information was prepared for employees and customers to help them make the appropriate arrangements for variation 3.","💡 Mẹo đọc quảng cáo: Tìm sản phẩm/dịch vụ, giá, ưu đãi và điều kiện.",27,2026-08-10 14:18:37.790751,2026-08-10 14:18:37.790751
+228,13,7,28,Part 7 - Single Passage 028,"The main office will be renovated from August 18 to August 22. Employees should remove personal items from their desks before August 17. During the renovation, staff will work on the fourth floor. This information was prepared for employees and customers to help them make the appropriate arrangements for variation 4.",💡 Mẹo đọc bài báo: Đọc tiêu đề và câu đầu để xác định chủ đề trước.,28,2026-08-10 14:18:37.790751,2026-08-10 14:18:37.790751
+229,13,7,29,Part 7 - Single Passage 029,Greenway Electronics has shipped a customer's order for two wireless keyboards. The package is expected to arrive on Thursday. A tracking number is available in the customer's online account. This information was prepared for employees and customers to help them make the appropriate arrangements for variation 4.,"💡 Mẹo đọc thư: Chú ý mục đích viết thư, người gửi, người nhận và yêu cầu chính.",29,2026-08-10 14:18:37.790751,2026-08-10 14:18:37.790751
+230,13,7,30,Part 7 - Single Passage 030,Brighton Consulting is accepting applications for an administrative assistant. Applicants should have at least two years of office experience and be comfortable using spreadsheet software. Applications must be submitted by September 5. This information was prepared for employees and customers to help them make the appropriate arrangements for variation 4.,"💡 Mẹo đọc lịch trình: Đối chiếu trực tiếp ngày, giờ và sự kiện thay vì đọc từng ô.",30,2026-08-10 14:18:37.790751,2026-08-10 14:18:37.790751
+231,14,7,31,Part 7 - Single Passage 031,A customer-service training session will be held in Room 204 on Tuesday from 9:00 A.M. to noon. Employees should bring their identification cards and complete an online preparation exercise before attending. This information was prepared for employees and customers to help them make the appropriate arrangements for variation 4.,💡 Mẹo đọc bảng: Xác định hàng/cột liên quan đến câu hỏi trước khi tìm dữ liệu.,31,2026-08-10 14:18:37.790751,2026-08-10 14:18:37.790751
+232,14,7,32,Part 7 - Single Passage 032,Oak Street Market will offer a 20-percent discount on selected office supplies this weekend. The promotion applies to purchases made in the store only and does not include printer ink. This information was prepared for employees and customers to help them make the appropriate arrangements for variation 4.,"💡 Mẹo đọc form: Chú ý tên, địa chỉ, số điện thoại, ngày tháng và các trường thông tin.",32,2026-08-10 14:18:37.790751,2026-08-10 14:18:37.790751
+233,14,7,33,Part 7 - Single Passage 033,"Harbor Hotel confirmed Ms. Lee's reservation for three nights beginning October 12. Breakfast is included, but airport transportation must be arranged separately. Guests needing a taxi should contact the front desk. This information was prepared for employees and customers to help them make the appropriate arrangements for variation 4.","💡 Mẹo tìm số liệu: Với câu hỏi về giá hoặc số lượng, hãy tìm con số rồi đọc ngữ cảnh xung quanh.",33,2026-08-10 14:18:37.790751,2026-08-10 14:18:37.790751
+234,14,7,34,Part 7 - Single Passage 034,The monthly employee newsletter congratulates Daniel Ruiz for completing ten years with the company. Daniel joined the purchasing department in 2016 and now supervises eight employees. The company will recognize him at Friday's staff meeting. This information was prepared for employees and customers to help them make the appropriate arrangements for variation 4.,"💡 Mẹo về giá: Phân biệt original price, sale price, discount và final price.",34,2026-08-10 14:18:37.790751,2026-08-10 14:18:37.790751
+235,14,7,35,Part 7 - Single Passage 035,"Beginning Monday, the downtown shuttle will leave the parking lot at 7:30 A.M. instead of 7:45 A.M. The afternoon schedule will remain unchanged. Employees are encouraged to arrive at the parking lot at least five minutes before departure. This information was prepared for employees and customers to help them make the appropriate arrangements for variation 4.","💡 Mẹo về giảm giá: Chú ý các từ discount, off, sale, promotion và special offer.",35,2026-08-10 14:18:37.790751,2026-08-10 14:18:37.790751
+236,14,7,36,Part 7 - Single Passage 036,"The marketing team has extended the deadline for the summer campaign proposal until June 28. The team originally planned to select a proposal on June 24, but several departments requested additional time to review the project requirements. This information was prepared for employees and customers to help them make the appropriate arrangements for variation 4.","💡 Mẹo về thanh toán: Chú ý payment, fee, charge, cost, refund và invoice.",36,2026-08-10 14:18:37.790751,2026-08-10 14:18:37.790751
+237,14,7,37,Part 7 - Single Passage 037,"The main office will be renovated from August 18 to August 22. Employees should remove personal items from their desks before August 17. During the renovation, staff will work on the fourth floor. This information was prepared for employees and customers to help them make the appropriate arrangements for variation 5.","💡 Mẹo về giao hàng: Chú ý delivery, shipping, arrival, order và package.",37,2026-08-10 14:18:37.790751,2026-08-10 14:18:37.790751
+238,14,7,38,Part 7 - Single Passage 038,Greenway Electronics has shipped a customer's order for two wireless keyboards. The package is expected to arrive on Thursday. A tracking number is available in the customer's online account. This information was prepared for employees and customers to help them make the appropriate arrangements for variation 5.,"💡 Mẹo về đặt chỗ: Chú ý reservation, booking, availability, confirmation và cancellation.",38,2026-08-10 14:18:37.790751,2026-08-10 14:18:37.790751
+239,14,7,39,Part 7 - Single Passage 039,Brighton Consulting is accepting applications for an administrative assistant. Applicants should have at least two years of office experience and be comfortable using spreadsheet software. Applications must be submitted by September 5. This information was prepared for employees and customers to help them make the appropriate arrangements for variation 5.,"💡 Mẹo về hủy lịch: Tìm các từ cancel, cancellation, postpone, reschedule và refund.",39,2026-08-10 14:18:37.790751,2026-08-10 14:18:37.790751
+240,14,7,40,Part 7 - Single Passage 040,A customer-service training session will be held in Room 204 on Tuesday from 9:00 A.M. to noon. Employees should bring their identification cards and complete an online preparation exercise before attending. This information was prepared for employees and customers to help them make the appropriate arrangements for variation 5.,💡 Mẹo về thay đổi lịch: So sánh thời gian cũ và thời gian mới.,40,2026-08-10 14:18:37.790751,2026-08-10 14:18:37.790751
+241,15,7,41,Part 7 - Single Passage 041,Oak Street Market will offer a 20-percent discount on selected office supplies this weekend. The promotion applies to purchases made in the store only and does not include printer ink. This information was prepared for employees and customers to help them make the appropriate arrangements for variation 5.,"💡 Mẹo về cuộc họp: Xác định thời gian, địa điểm, người tham gia và agenda.",41,2026-08-10 14:18:37.790751,2026-08-10 14:18:37.790751
+242,15,7,42,Part 7 - Single Passage 042,"Harbor Hotel confirmed Ms. Lee's reservation for three nights beginning October 12. Breakfast is included, but airport transportation must be arranged separately. Guests needing a taxi should contact the front desk. This information was prepared for employees and customers to help them make the appropriate arrangements for variation 5.","💡 Mẹo về sự kiện: Chú ý event name, date, location, registration và admission.",42,2026-08-10 14:18:37.790751,2026-08-10 14:18:37.790751
+243,15,7,43,Part 7 - Single Passage 043,The monthly employee newsletter congratulates Daniel Ruiz for completing ten years with the company. Daniel joined the purchasing department in 2016 and now supervises eight employees. The company will recognize him at Friday's staff meeting. This information was prepared for employees and customers to help them make the appropriate arrangements for variation 5.,"💡 Mẹo về tuyển dụng: Tập trung vào position, qualifications, experience, responsibilities và application.",43,2026-08-10 14:18:37.790751,2026-08-10 14:18:37.790751
+244,15,7,44,Part 7 - Single Passage 044,"Beginning Monday, the downtown shuttle will leave the parking lot at 7:30 A.M. instead of 7:45 A.M. The afternoon schedule will remain unchanged. Employees are encouraged to arrive at the parking lot at least five minutes before departure. This information was prepared for employees and customers to help them make the appropriate arrangements for variation 5.","💡 Mẹo về công việc: Chú ý nhiệm vụ, thời gian làm việc, địa điểm và yêu cầu.",44,2026-08-10 14:18:37.790751,2026-08-10 14:18:37.790751
+245,15,7,45,Part 7 - Single Passage 045,"The marketing team has extended the deadline for the summer campaign proposal until June 28. The team originally planned to select a proposal on June 24, but several departments requested additional time to review the project requirements. This information was prepared for employees and customers to help them make the appropriate arrangements for variation 5.","💡 Mẹo về công ty: Chú ý tên công ty, bộ phận, nhân viên và hoạt động kinh doanh.",45,2026-08-10 14:18:37.790751,2026-08-10 14:18:37.790751
+248,15,7,48,Part 7 - Single Passage 048,Brighton Consulting is accepting applications for an administrative assistant. Applicants should have at least two years of office experience and be comfortable using spreadsheet software. Applications must be submitted by September 5. This information was prepared for employees and customers to help them make the appropriate arrangements for variation 6.,"💡 Mẹo về khách hàng: Tìm thông tin liên quan đến nhu cầu, yêu cầu hoặc vấn đề của khách hàng.",48,2026-08-10 14:18:37.790751,2026-08-10 14:18:37.790751
+249,15,7,49,Part 7 - Single Passage 049,A customer-service training session will be held in Room 204 on Tuesday from 9:00 A.M. to noon. Employees should bring their identification cards and complete an online preparation exercise before attending. This information was prepared for employees and customers to help them make the appropriate arrangements for variation 6.,"💡 Mẹo về khiếu nại: Xác định vấn đề, nguyên nhân và giải pháp được đề xuất.",49,2026-08-10 14:18:37.790751,2026-08-10 14:18:37.790751
+250,15,7,50,Part 7 - Single Passage 050,Oak Street Market will offer a 20-percent discount on selected office supplies this weekend. The promotion applies to purchases made in the store only and does not include printer ink. This information was prepared for employees and customers to help them make the appropriate arrangements for variation 6.,"💡 Mẹo về giải pháp: Tìm các cụm như will provide, can offer, recommend, suggest và propose.",50,2026-08-10 14:18:37.790751,2026-08-10 14:18:37.790751
+251,11,7,1,Part 7 - Double Passage 001,"PASSAGE 1
+A customer asks Northstar Travel to change a business-trip reservation. The agency confirms that the outbound flight can be changed but notes that a fee will apply.
+
+PASSAGE 2
+Northstar Travel replies that the new flight leaves at 6:40 A.M. on Monday. The customer also asks for a hotel near the airport, and the agency recommends the Airport View Hotel.",💡 Mẹo câu hỏi suy luận: Chọn đáp án có thể được suy ra từ nhiều chi tiết trong passage.,11,2026-08-10 14:18:37.790751,2026-08-10 14:18:37.790751
+252,11,7,2,Part 7 - Double Passage 002,"PASSAGE 1
+A factory manager announces that the evening production shift will begin one hour earlier next week because of increased orders.
+
+PASSAGE 2
+The weekly schedule shows that the evening shift will begin at 3:00 P.M. from Monday through Friday. Employees who cannot follow the new schedule should speak with their supervisors.",💡 Mẹo câu hỏi từ vựng: Đọc câu chứa từ và các câu xung quanh để đoán nghĩa trong ngữ cảnh.,12,2026-08-10 14:18:37.790751,2026-08-10 14:18:37.790751
+253,11,7,3,Part 7 - Double Passage 003,"PASSAGE 1
+Greenfield Library announces that its second-floor reading area will close for carpet replacement from September 3 to September 6.
+
+PASSAGE 2
+A separate message says that books can still be borrowed from the first floor. Members may also return materials at the outdoor drop box during the closure.",💡 Mẹo đoán nghĩa: Xác định từ loại trước rồi xét ý nghĩa của câu.,13,2026-08-10 14:18:37.790751,2026-08-10 14:18:37.790751
+254,11,7,4,Part 7 - Double Passage 004,"PASSAGE 1
+CityFit Center advertises a reduced membership fee for new members who join before the end of the month. The offer includes access to the weight room and swimming pool.
+
+PASSAGE 2
+A customer asks whether weekend classes are included. The center replies that weekend classes require an additional fee, although members receive a discount.",💡 Mẹo từ đồng nghĩa: Đáp án đúng có thể sử dụng cách diễn đạt khác nhưng cùng ý với passage.,14,2026-08-10 14:18:37.790751,2026-08-10 14:18:37.790751
+255,11,7,5,Part 7 - Double Passage 005,"PASSAGE 1
+The Metro Business Association announces a free workshop about digital marketing. Registration is required because the conference room has limited seating.
+
+PASSAGE 2
+The workshop agenda lists sessions on social media advertising, search optimization, and customer analytics. Attendees are asked to bring a laptop for the final exercise.","💡 Mẹo loại trừ: Nếu đáp án thêm thông tin không có căn cứ trong passage, hãy cẩn thận loại nó.",15,2026-08-10 14:18:37.790751,2026-08-10 14:18:37.790751
+256,12,7,6,Part 7 - Double Passage 006,"PASSAGE 1
+A customer asks Northstar Travel to change a business-trip reservation. The agency confirms that the outbound flight can be changed but notes that a fee will apply.
+
+PASSAGE 2
+Northstar Travel replies that the new flight leaves at 6:40 A.M. on Monday. The customer also asks for a hotel near the airport, and the agency recommends the Airport View Hotel.",💡 Mẹo: Đừng chọn đáp án chỉ vì nó chứa đúng từ xuất hiện trong passage. Hãy kiểm tra ý nghĩa toàn câu.,16,2026-08-10 14:18:37.790751,2026-08-10 14:18:37.790751
+257,12,7,7,Part 7 - Double Passage 007,"PASSAGE 1
+A factory manager announces that the evening production shift will begin one hour earlier next week because of increased orders.
+
+PASSAGE 2
+The weekly schedule shows that the evening shift will begin at 3:00 P.M. from Monday through Friday. Employees who cannot follow the new schedule should speak with their supervisors.",💡 Mẹo: Một đáp án có thể đúng một phần nhưng vẫn sai nếu không trả lời đầy đủ câu hỏi.,17,2026-08-10 14:18:37.790751,2026-08-10 14:18:37.790751
+258,12,7,8,Part 7 - Double Passage 008,"PASSAGE 1
+Greenfield Library announces that its second-floor reading area will close for carpet replacement from September 3 to September 6.
+
+PASSAGE 2
+A separate message says that books can still be borrowed from the first floor. Members may also return materials at the outdoor drop box during the closure.","💡 Mẹo: Với câu hỏi về người, kiểm tra chính xác người nào thực hiện hành động.",18,2026-08-10 14:18:37.790751,2026-08-10 14:18:37.790751
+259,12,7,9,Part 7 - Double Passage 009,"PASSAGE 1
+CityFit Center advertises a reduced membership fee for new members who join before the end of the month. The offer includes access to the weight room and swimming pool.
+
+PASSAGE 2
+A customer asks whether weekend classes are included. The center replies that weekend classes require an additional fee, although members receive a discount.","💡 Mẹo: Với câu hỏi về thời gian, kiểm tra xem thời gian đó liên quan đến sự kiện nào.",19,2026-08-10 14:18:37.790751,2026-08-10 14:18:37.790751
+260,12,7,10,Part 7 - Double Passage 010,"PASSAGE 1
+The Metro Business Association announces a free workshop about digital marketing. Registration is required because the conference room has limited seating.
+
+PASSAGE 2
+The workshop agenda lists sessions on social media advertising, search optimization, and customer analytics. Attendees are asked to bring a laptop for the final exercise.","💡 Mẹo: Với câu hỏi về địa điểm, đừng nhầm địa điểm được nhắc đến với địa điểm diễn ra hành động.",20,2026-08-10 14:18:37.790751,2026-08-10 14:18:37.790751
+261,13,7,11,Part 7 - Double Passage 011,"PASSAGE 1
+A customer asks Northstar Travel to change a business-trip reservation. The agency confirms that the outbound flight can be changed but notes that a fee will apply.
+
+PASSAGE 2
+Northstar Travel replies that the new flight leaves at 6:40 A.M. on Monday. The customer also asks for a hotel near the airport, and the agency recommends the Airport View Hotel.",💡 Mẹo Multiple Passages: Xác định passage nào chứa thông tin cần tìm trước.,21,2026-08-10 14:18:37.790751,2026-08-10 14:18:37.790751
+262,13,7,12,Part 7 - Double Passage 012,"PASSAGE 1
+A factory manager announces that the evening production shift will begin one hour earlier next week because of increased orders.
+
+PASSAGE 2
+The weekly schedule shows that the evening shift will begin at 3:00 P.M. from Monday through Friday. Employees who cannot follow the new schedule should speak with their supervisors.","💡 Mẹo Multiple Passages: Với câu hỏi yêu cầu kết hợp hai văn bản, ghi chú tên người, công ty, ngày và số liệu.",22,2026-08-10 14:18:37.790751,2026-08-10 14:18:37.790751
+263,13,7,13,Part 7 - Double Passage 013,"PASSAGE 1
+Greenfield Library announces that its second-floor reading area will close for carpet replacement from September 3 to September 6.
+
+PASSAGE 2
+A separate message says that books can still be borrowed from the first floor. Members may also return materials at the outdoor drop box during the closure.",💡 Mẹo Multiple Passages: Không nhất thiết phải đọc toàn bộ hai passage trước khi xem câu hỏi.,23,2026-08-10 14:18:37.790751,2026-08-10 14:18:37.790751
+264,13,7,14,Part 7 - Double Passage 014,"PASSAGE 1
+CityFit Center advertises a reduced membership fee for new members who join before the end of the month. The offer includes access to the weight room and swimming pool.
+
+PASSAGE 2
+A customer asks whether weekend classes are included. The center replies that weekend classes require an additional fee, although members receive a discount.",💡 Mẹo Multiple Passages: Xác định từ khóa trong câu hỏi rồi tìm passage liên quan.,24,2026-08-10 14:18:37.790751,2026-08-10 14:18:37.790751
+265,13,7,15,Part 7 - Double Passage 015,"PASSAGE 1
+The Metro Business Association announces a free workshop about digital marketing. Registration is required because the conference room has limited seating.
+
+PASSAGE 2
+The workshop agenda lists sessions on social media advertising, search optimization, and customer analytics. Attendees are asked to bring a laptop for the final exercise.",💡 Mẹo câu hỏi liên kết: So sánh thông tin giữa hai văn bản thay vì chỉ tìm đáp án trong một văn bản.,25,2026-08-10 14:18:37.790751,2026-08-10 14:18:37.790751
+266,14,7,16,Part 7 - Double Passage 016,"PASSAGE 1
+A customer asks Northstar Travel to change a business-trip reservation. The agency confirms that the outbound flight can be changed but notes that a fee will apply.
+
+PASSAGE 2
+Northstar Travel replies that the new flight leaves at 6:40 A.M. on Monday. The customer also asks for a hotel near the airport, and the agency recommends the Airport View Hotel.","💡 Mẹo: Khi thấy tên riêng, hãy ghi nhớ người đó liên quan đến công ty hoặc sự kiện nào.",26,2026-08-10 14:18:37.790751,2026-08-10 14:18:37.790751
+267,14,7,17,Part 7 - Double Passage 017,"PASSAGE 1
+A factory manager announces that the evening production shift will begin one hour earlier next week because of increased orders.
+
+PASSAGE 2
+The weekly schedule shows that the evening shift will begin at 3:00 P.M. from Monday through Friday. Employees who cannot follow the new schedule should speak with their supervisors.","💡 Mẹo: Khi thấy số liệu, kiểm tra đơn vị đi kèm như dollars, percent, people, days.",27,2026-08-10 14:18:37.790751,2026-08-10 14:18:37.790751
+268,14,7,18,Part 7 - Double Passage 018,"PASSAGE 1
+Greenfield Library announces that its second-floor reading area will close for carpet replacement from September 3 to September 6.
+
+PASSAGE 2
+A separate message says that books can still be borrowed from the first floor. Members may also return materials at the outdoor drop box during the closure.","💡 Mẹo: Khi thấy ngày tháng, chú ý các cách diễn đạt tương đương như the following day hoặc next week.",28,2026-08-10 14:18:37.790751,2026-08-10 14:18:37.790751
+269,14,7,19,Part 7 - Double Passage 019,"PASSAGE 1
+CityFit Center advertises a reduced membership fee for new members who join before the end of the month. The offer includes access to the weight room and swimming pool.
+
+PASSAGE 2
+A customer asks whether weekend classes are included. The center replies that weekend classes require an additional fee, although members receive a discount.","💡 Mẹo: Khi thấy địa điểm, kiểm tra cả cách viết tắt và tên đầy đủ nếu có.",29,2026-08-10 14:18:37.790751,2026-08-10 14:18:37.790751
+270,14,7,20,Part 7 - Double Passage 020,"PASSAGE 1
+The Metro Business Association announces a free workshop about digital marketing. Registration is required because the conference room has limited seating.
+
+PASSAGE 2
+The workshop agenda lists sessions on social media advertising, search optimization, and customer analytics. Attendees are asked to bring a laptop for the final exercise.","💡 Mẹo: Khi thấy tên công ty, hãy xác định công ty đó đóng vai trò gì trong passage.",30,2026-08-10 14:18:37.790751,2026-08-10 14:18:37.790751
+271,15,7,21,Part 7 - Double Passage 021,"PASSAGE 1
+A customer asks Northstar Travel to change a business-trip reservation. The agency confirms that the outbound flight can be changed but notes that a fee will apply.
+
+PASSAGE 2
+Northstar Travel replies that the new flight leaves at 6:40 A.M. on Monday. The customer also asks for a hotel near the airport, and the agency recommends the Airport View Hotel.","💡 Mẹo: Với câu hỏi hành động tiếp theo, tìm kế hoạch hoặc yêu cầu ở phần cuối passage.",31,2026-08-10 14:18:37.790751,2026-08-10 14:18:37.790751
+272,15,7,22,Part 7 - Double Passage 022,"PASSAGE 1
+A factory manager announces that the evening production shift will begin one hour earlier next week because of increased orders.
+
+PASSAGE 2
+The weekly schedule shows that the evening shift will begin at 3:00 P.M. from Monday through Friday. Employees who cannot follow the new schedule should speak with their supervisors.","💡 Mẹo: Với câu hỏi mục đích, đừng nhầm mục đích chính với một chi tiết phụ.",32,2026-08-10 14:18:37.790751,2026-08-10 14:18:37.790751
+273,15,7,23,Part 7 - Double Passage 023,"PASSAGE 1
+Greenfield Library announces that its second-floor reading area will close for carpet replacement from September 3 to September 6.
+
+PASSAGE 2
+A separate message says that books can still be borrowed from the first floor. Members may also return materials at the outdoor drop box during the closure.","💡 Mẹo: Với câu hỏi NOT/EXCEPT, hãy đánh dấu bằng chứng cho từng đáp án để tránh nhầm.",33,2026-08-10 14:18:37.790751,2026-08-10 14:18:37.790751
+274,15,7,24,Part 7 - Double Passage 024,"PASSAGE 1
+CityFit Center advertises a reduced membership fee for new members who join before the end of the month. The offer includes access to the weight room and swimming pool.
+
+PASSAGE 2
+A customer asks whether weekend classes are included. The center replies that weekend classes require an additional fee, although members receive a discount.","💡 Mẹo: Với câu hỏi suy luận, ưu tiên đáp án được hỗ trợ bởi nhiều chi tiết.",34,2026-08-10 14:18:37.790751,2026-08-10 14:18:37.790751
+275,15,7,25,Part 7 - Double Passage 025,"PASSAGE 1
+The Metro Business Association announces a free workshop about digital marketing. Registration is required because the conference room has limited seating.
+
+PASSAGE 2
+The workshop agenda lists sessions on social media advertising, search optimization, and customer analytics. Attendees are asked to bring a laptop for the final exercise.","💡 Mẹo: Với câu hỏi từ vựng, không nhất thiết phải biết nghĩa chính xác nếu có thể suy ra từ ngữ cảnh.",35,2026-08-10 14:18:37.790751,2026-08-10 14:18:37.790751
+276,11,7,1,Part 7 - Triple Passage 001,"PASSAGE 1
+Lumen Office Solutions announces a software update that will be installed on company computers Friday evening.
+
+PASSAGE 2
+An internal memo explains that the update adds a shared calendar and improves security. Employees should save their work before leaving Friday.
+
+PASSAGE 3
+A technician reminds staff that computers may restart several times during installation and that support will be available Saturday morning.",💡 Mẹo: Đọc câu hỏi và xác định loại thông tin cần tìm trước khi scan passage.,36,2026-08-10 14:18:37.790751,2026-08-10 14:18:37.790751
+277,11,7,2,Part 7 - Triple Passage 002,"PASSAGE 1
+Harbor Hotel advertises a conference package that includes meeting-room rental and breakfast for participants.
+
+PASSAGE 2
+A guest review praises the hotel's meeting rooms but notes that parking spaces are limited during large events.
+
+PASSAGE 3
+An event coordinator asks the hotel to reserve parking spaces for speakers and receives confirmation that ten spaces can be reserved.","💡 Mẹo scan: Tên riêng, số, ngày, giờ và địa điểm là những từ khóa dễ tìm nhất.",37,2026-08-10 14:18:37.790751,2026-08-10 14:18:37.790751
+278,11,7,3,Part 7 - Triple Passage 003,"PASSAGE 1
+City Transit announces changes to Route 18 because of road construction near Central Avenue.
+
+PASSAGE 2
+A local article explains that buses will use Oak Street as a temporary alternative route until construction is complete.
+
+PASSAGE 3
+A passenger asks which stop is closest to the library, and the transit office recommends the Oak Street stop.",💡 Mẹo skimming: Đọc nhanh tiêu đề và câu đầu để hiểu chủ đề trước khi tìm chi tiết.,38,2026-08-10 14:18:37.790751,2026-08-10 14:18:37.790751
+279,11,7,4,Part 7 - Triple Passage 004,"PASSAGE 1
+Everbright Systems posts an opening for a customer-support specialist with two years of experience.
+
+PASSAGE 2
+An applicant states that she has three years of customer-service experience and has used the company's support software.
+
+PASSAGE 3
+An HR note says that interviews will begin next Monday and that applicants with relevant software experience will receive priority.",💡 Mẹo: Không đọc passage theo kiểu dịch từng chữ. Hãy đọc để tìm thông tin cần thiết.,39,2026-08-10 14:18:37.790751,2026-08-10 14:18:37.790751
+280,11,7,5,Part 7 - Triple Passage 005,"PASSAGE 1
+Professional Skills Forum announces a workshop on workplace communication.
+
+PASSAGE 2
+The agenda includes sessions on email writing, presentations, and handling difficult conversations.
+
+PASSAGE 3
+A participant's feedback says the presentation session was especially useful and suggests adding more practice activities next year.","💡 Mẹo: Nếu câu hỏi yêu cầu chi tiết cụ thể, hãy quay lại đúng đoạn chứa từ khóa thay vì đọc lại toàn bài.",40,2026-08-10 14:18:37.790751,2026-08-10 14:18:37.790751
+281,12,7,6,Part 7 - Triple Passage 006,"PASSAGE 1
+Lumen Office Solutions announces a software update that will be installed on company computers Friday evening.
+
+PASSAGE 2
+An internal memo explains that the update adds a shared calendar and improves security. Employees should save their work before leaving Friday.
+
+PASSAGE 3
+A technician reminds staff that computers may restart several times during installation and that support will be available Saturday morning.","💡 Mẹo: Nếu câu hỏi hỏi ""Who"", hãy tìm danh từ chỉ người hoặc chức vụ.",41,2026-08-10 14:18:37.790751,2026-08-10 14:18:37.790751
+282,12,7,7,Part 7 - Triple Passage 007,"PASSAGE 1
+Harbor Hotel advertises a conference package that includes meeting-room rental and breakfast for participants.
+
+PASSAGE 2
+A guest review praises the hotel's meeting rooms but notes that parking spaces are limited during large events.
+
+PASSAGE 3
+An event coordinator asks the hotel to reserve parking spaces for speakers and receives confirmation that ten spaces can be reserved.","💡 Mẹo: Nếu câu hỏi hỏi ""When"", hãy tìm mốc thời gian.",42,2026-08-10 14:18:37.790751,2026-08-10 14:18:37.790751
+283,12,7,8,Part 7 - Triple Passage 008,"PASSAGE 1
+City Transit announces changes to Route 18 because of road construction near Central Avenue.
+
+PASSAGE 2
+A local article explains that buses will use Oak Street as a temporary alternative route until construction is complete.
+
+PASSAGE 3
+A passenger asks which stop is closest to the library, and the transit office recommends the Oak Street stop.","💡 Mẹo: Nếu câu hỏi hỏi ""Where"", hãy tìm địa điểm.",43,2026-08-10 14:18:37.790751,2026-08-10 14:18:37.790751
+284,12,7,9,Part 7 - Triple Passage 009,"PASSAGE 1
+Everbright Systems posts an opening for a customer-support specialist with two years of experience.
+
+PASSAGE 2
+An applicant states that she has three years of customer-service experience and has used the company's support software.
+
+PASSAGE 3
+An HR note says that interviews will begin next Monday and that applicants with relevant software experience will receive priority.","💡 Mẹo: Nếu câu hỏi hỏi ""Why"", hãy tìm nguyên nhân hoặc mục đích.",44,2026-08-10 14:18:37.790751,2026-08-10 14:18:37.790751
+285,12,7,10,Part 7 - Triple Passage 010,"PASSAGE 1
+Professional Skills Forum announces a workshop on workplace communication.
+
+PASSAGE 2
+The agenda includes sessions on email writing, presentations, and handling difficult conversations.
+
+PASSAGE 3
+A participant's feedback says the presentation session was especially useful and suggests adding more practice activities next year.","💡 Mẹo: Nếu câu hỏi hỏi ""How"", hãy tìm phương pháp hoặc cách thức.",45,2026-08-10 14:18:37.790751,2026-08-10 14:18:37.790751
+286,13,7,11,Part 7 - Triple Passage 011,"PASSAGE 1
+Lumen Office Solutions announces a software update that will be installed on company computers Friday evening.
+
+PASSAGE 2
+An internal memo explains that the update adds a shared calendar and improves security. Employees should save their work before leaving Friday.
+
+PASSAGE 3
+A technician reminds staff that computers may restart several times during installation and that support will be available Saturday morning.","💡 Mẹo: Nếu câu hỏi hỏi ""What"", hãy xác định chính xác đối tượng được đề cập.",46,2026-08-10 14:18:37.790751,2026-08-10 14:18:37.790751
+287,13,7,12,Part 7 - Triple Passage 012,"PASSAGE 1
+Harbor Hotel advertises a conference package that includes meeting-room rental and breakfast for participants.
+
+PASSAGE 2
+A guest review praises the hotel's meeting rooms but notes that parking spaces are limited during large events.
+
+PASSAGE 3
+An event coordinator asks the hotel to reserve parking spaces for speakers and receives confirmation that ten spaces can be reserved.","💡 Mẹo: Nếu câu hỏi hỏi ""What is indicated"", hãy tìm thông tin được hỗ trợ bởi passage.",47,2026-08-10 14:18:37.790751,2026-08-10 14:18:37.790751
+288,13,7,13,Part 7 - Triple Passage 013,"PASSAGE 1
+City Transit announces changes to Route 18 because of road construction near Central Avenue.
+
+PASSAGE 2
+A local article explains that buses will use Oak Street as a temporary alternative route until construction is complete.
+
+PASSAGE 3
+A passenger asks which stop is closest to the library, and the transit office recommends the Oak Street stop.","💡 Mẹo: Nếu câu hỏi hỏi ""What is suggested"", hãy suy luận từ thông tin đã cho.",48,2026-08-10 14:18:37.790751,2026-08-10 14:18:37.790751
+289,13,7,14,Part 7 - Triple Passage 014,"PASSAGE 1
+Everbright Systems posts an opening for a customer-support specialist with two years of experience.
+
+PASSAGE 2
+An applicant states that she has three years of customer-service experience and has used the company's support software.
+
+PASSAGE 3
+An HR note says that interviews will begin next Monday and that applicants with relevant software experience will receive priority.","💡 Mẹo: Nếu câu hỏi hỏi ""What will happen next"", hãy tìm kế hoạch hoặc hành động tương lai.",49,2026-08-10 14:18:37.790751,2026-08-10 14:18:37.790751
+290,13,7,15,Part 7 - Triple Passage 015,"PASSAGE 1
+Professional Skills Forum announces a workshop on workplace communication.
+
+PASSAGE 2
+The agenda includes sessions on email writing, presentations, and handling difficult conversations.
+
+PASSAGE 3
+A participant's feedback says the presentation session was especially useful and suggests adding more practice activities next year.","💡 Mẹo: Với câu hỏi về cảm xúc/thái độ, chú ý các từ thể hiện đánh giá, mức độ hài lòng hoặc không hài lòng.",50,2026-08-10 14:18:37.790751,2026-08-10 14:18:37.790751
+291,14,7,16,Part 7 - Triple Passage 016,"PASSAGE 1
+Lumen Office Solutions announces a software update that will be installed on company computers Friday evening.
+
+PASSAGE 2
+An internal memo explains that the update adds a shared calendar and improves security. Employees should save their work before leaving Friday.
+
+PASSAGE 3
+A technician reminds staff that computers may restart several times during installation and that support will be available Saturday morning.","💡 Mẹo: Với câu hỏi về mục đích của người viết, hãy xem toàn bộ văn bản chứ không chỉ một câu.",51,2026-08-10 14:18:37.790751,2026-08-10 14:18:37.790751
+292,14,7,17,Part 7 - Triple Passage 017,"PASSAGE 1
+Harbor Hotel advertises a conference package that includes meeting-room rental and breakfast for participants.
+
+PASSAGE 2
+A guest review praises the hotel's meeting rooms but notes that parking spaces are limited during large events.
+
+PASSAGE 3
+An event coordinator asks the hotel to reserve parking spaces for speakers and receives confirmation that ten spaces can be reserved.","💡 Mẹo: Với câu hỏi về đối tượng, xác định ai là người được hưởng lợi hoặc chịu tác động.",52,2026-08-10 14:18:37.790751,2026-08-10 14:18:37.790751
+293,14,7,18,Part 7 - Triple Passage 018,"PASSAGE 1
+City Transit announces changes to Route 18 because of road construction near Central Avenue.
+
+PASSAGE 2
+A local article explains that buses will use Oak Street as a temporary alternative route until construction is complete.
+
+PASSAGE 3
+A passenger asks which stop is closest to the library, and the transit office recommends the Oak Street stop.","💡 Mẹo: Với câu hỏi về thay đổi, tìm thông tin trước và sau khi thay đổi.",53,2026-08-10 14:18:37.790751,2026-08-10 14:18:37.790751
+294,14,7,19,Part 7 - Triple Passage 019,"PASSAGE 1
+Everbright Systems posts an opening for a customer-support specialist with two years of experience.
+
+PASSAGE 2
+An applicant states that she has three years of customer-service experience and has used the company's support software.
+
+PASSAGE 3
+An HR note says that interviews will begin next Monday and that applicants with relevant software experience will receive priority.","💡 Mẹo: Với câu hỏi về nguyên nhân, tìm các từ because, due to, since, as a result of.",54,2026-08-10 14:18:37.790751,2026-08-10 14:18:37.790751
+295,14,7,20,Part 7 - Triple Passage 020,"PASSAGE 1
+Professional Skills Forum announces a workshop on workplace communication.
+
+PASSAGE 2
+The agenda includes sessions on email writing, presentations, and handling difficult conversations.
+
+PASSAGE 3
+A participant's feedback says the presentation session was especially useful and suggests adding more practice activities next year.","💡 Mẹo: Với câu hỏi về kết quả, tìm therefore, as a result, consequently và các hành động sau đó.",55,2026-08-10 14:18:37.790751,2026-08-10 14:18:37.790751
+296,15,7,21,Part 7 - Triple Passage 021,"PASSAGE 1
+Lumen Office Solutions announces a software update that will be installed on company computers Friday evening.
+
+PASSAGE 2
+An internal memo explains that the update adds a shared calendar and improves security. Employees should save their work before leaving Friday.
+
+PASSAGE 3
+A technician reminds staff that computers may restart several times during installation and that support will be available Saturday morning.","💡 Mẹo: Với câu hỏi về kế hoạch, chú ý plan, intend, expect, schedule và will.",56,2026-08-10 14:18:37.790751,2026-08-10 14:18:37.790751
+297,15,7,22,Part 7 - Triple Passage 022,"PASSAGE 1
+Harbor Hotel advertises a conference package that includes meeting-room rental and breakfast for participants.
+
+PASSAGE 2
+A guest review praises the hotel's meeting rooms but notes that parking spaces are limited during large events.
+
+PASSAGE 3
+An event coordinator asks the hotel to reserve parking spaces for speakers and receives confirmation that ten spaces can be reserved.","💡 Mẹo: Với câu hỏi về yêu cầu, chú ý must, need to, required, requested và should.",57,2026-08-10 14:18:37.790751,2026-08-10 14:18:37.790751
+298,15,7,23,Part 7 - Triple Passage 023,"PASSAGE 1
+City Transit announces changes to Route 18 because of road construction near Central Avenue.
+
+PASSAGE 2
+A local article explains that buses will use Oak Street as a temporary alternative route until construction is complete.
+
+PASSAGE 3
+A passenger asks which stop is closest to the library, and the transit office recommends the Oak Street stop.","💡 Mẹo: Với câu hỏi khó, loại trừ đáp án sai rõ ràng trước rồi mới so sánh các đáp án còn lại.",58,2026-08-10 14:18:37.790751,2026-08-10 14:18:37.790751
+299,15,7,24,Part 7 - Triple Passage 024,"PASSAGE 1
+Everbright Systems posts an opening for a customer-support specialist with two years of experience.
+
+PASSAGE 2
+An applicant states that she has three years of customer-service experience and has used the company's support software.
+
+PASSAGE 3
+An HR note says that interviews will begin next Monday and that applicants with relevant software experience will receive priority.",💡 Mẹo quản lý thời gian Part 7: Không mắc kẹt quá lâu ở một câu. Đánh dấu và quay lại nếu còn thời gian.,59,2026-08-10 14:18:37.790751,2026-08-10 14:18:37.790751
+300,15,7,25,Part 7 - Triple Passage 025,"PASSAGE 1
+Professional Skills Forum announces a workshop on workplace communication.
+
+PASSAGE 2
+The agenda includes sessions on email writing, presentations, and handling difficult conversations.
+
+PASSAGE 3
+A participant's feedback says the presentation session was especially useful and suggests adding more practice activities next year.",💡 Mẹo tổng hợp Part 7: Đọc câu hỏi → xác định từ khóa → scan passage → tìm paraphrase → kiểm tra ngữ cảnh → chọn đáp án.,60,2026-08-10 14:18:37.790751,2026-08-10 14:18:37.790751
