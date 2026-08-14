@@ -68,7 +68,7 @@ type GroupForm = {
   audioUrl: string;
   imageUrl: string;
   knowledge: string;
-  displayOrder: string;
+  displayOrder: number;
   questions: FormQuestion[];
 };
 
@@ -100,7 +100,7 @@ const createEmptyForm = (): GroupForm => ({
   audioUrl: "",
   imageUrl: "",
   knowledge: "",
-  displayOrder: "0",
+  displayOrder: 0,
   questions: [createEmptyQuestion(1)],
 });
 
@@ -401,9 +401,7 @@ const [sortFilter, setSortFilter] = useState<
       knowledge:
         fullGroup.knowledge || "",
 
-      displayOrder: String(
-        fullGroup.display_order ?? 0,
-      ),
+      displayOrder: fullGroup.display_order ?? 0,
 
       questions: formQuestions,
     });

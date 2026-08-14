@@ -36,14 +36,21 @@ export interface ListeningQuestion {
 export interface ListeningGroup {
   id: number;
   lesson_id: number;
+
   title: string | null;
+
   audio_url: string | null;
   image_url: string | null;
+
   start_seconds: number | null;
   end_seconds: number | null;
+
   display_order: number;
+
   knowledge: string | null;
+
   part: number;
+
   listening_lesson_questions: ListeningQuestion[];
 }
 
@@ -63,106 +70,148 @@ export interface ListeningSubmitResult {
 }
 
 // ===========================================
-// API Calls
+// Lesson summary
 // ===========================================
 
-export async function getListeningDailyStatus() {
-  return apiFetch<ListeningDailyStatus>(
-    "/listening/daily-status",
-  );
+export interface ListeningLessonSummary {
+  id: number;
+  title: string;
+  part: number;
+
+  totalGroups: number;
+  totalQuestions: number;
+
+  lastStudied: string | null;
 }
+
+// ===========================================
+// Lesson review
+// ===========================================
+
+export interface ListeningLessonReview {
+  id: number;
+  title: string;
+  part: number;
+
+  listening_lesson_groups: ListeningGroup[];
+}
+
+export interface ListeningLessonReviewResponse {
+  success: boolean;
+  lesson: ListeningLessonReview | null;
+}
+
+// ===========================================
+// All lessons review
+// ===========================================
+
+export interface ListeningAllLessonsReview {
+  id: number;
+  title: string;
+  part: number;
+
+  listening_lesson_groups: ListeningGroup[];
+}
+
+export interface ListeningAllLessonsReviewResponse {
+  success: boolean;
+  lessons: ListeningAllLessonsReview[];
+}
+
+// ===========================================
+// Group response
+// ===========================================
 
 export interface ListeningGroupResponse {
   success: boolean;
   group: ListeningGroup | null;
 }
 
-export async function getListeningDailyGroups() {
-  return apiFetch<ListeningDailyGroups>(
-    "/listening/daily-groups",
-  );
-}
-
-export async function getListeningReviewGroups() {
-  return apiFetch<ListeningReviewGroups>(
-    "/listening/review-groups",
-  );
-}
-
-export async function getListeningGroupById(groupId: number) {
-  return apiFetch<ListeningGroupResponse>(
-    `/listening/group/${groupId}`,
-  );
-}
-
-export interface ListeningLessonSummary {
-  id: number;
-  title: string;
-  part: number;
-  totalGroups: number;
-  totalQuestions: number;
-  lastStudied: string | null;
-}
+// ===========================================
+// Completed lessons response
+// ===========================================
 
 export interface ListeningCompletedLessonsResponse {
   success: boolean;
   lessons: ListeningLessonSummary[];
 }
 
-export interface ListeningLessonReviewResponse {
-  success: boolean;
-  lesson: {
-    id: number;
-    title: string;
-    part: number;
-    listening_lesson_groups: Array<{
-      id: number;
-      lesson_id: number;
-      title: string | null;
-      audio_url: string | null;
-      display_order: number;
-      knowledge: string | null;
-      listening_lesson_questions: ListeningQuestion[];
-    }>;
-  } | null;
+// ===========================================
+// API Calls
+// ===========================================
+
+/**
+ * Lấy trạng thái Listening hôm nay
+ */
+export async function getListeningDailyStatus() {
+  return apiFetch<ListeningDailyStatus>(
+    "/listening/daily-status",
+  );
 }
 
-export interface ListeningAllLessonsReviewResponse {
-  success: boolean;
-  lessons: Array<{
-    id: number;
-    title: string;
-    part: number;
-    listening_lesson_groups: Array<{
-      id: number;
-      lesson_id: number;
-      title: string | null;
-      audio_url: string | null;
-      display_order: number;
-      knowledge: string | null;
-      listening_lesson_questions: ListeningQuestion[];
-    }>;
-  }>;
+/**
+ * Lấy các group Listening dành cho hôm nay
+ */
+export async function getListeningDailyGroups() {
+  return apiFetch<ListeningDailyGroups>(
+    "/listening/daily-groups",
+  );
 }
 
+/**
+ * Lấy các group mà user đã học
+ *
+ * Đây là API chính dùng cho trang Ôn tập.
+ */
+export async function getListeningReviewGroups() {
+  return apiFetch<ListeningReviewGroups>(
+    "/listening/review-groups",
+  );
+}
+
+/**
+ * Lấy một group Listening theo ID
+ */
+export async function getListeningGroupById(
+  groupId: number,
+) {
+  return apiFetch<ListeningGroupResponse>(
+    `/listening/group/${groupId}`,
+  );
+}
+
+/**
+ * Lấy danh sách các lesson đã hoàn thành
+ */
 export async function getListeningCompletedLessons() {
   return apiFetch<ListeningCompletedLessonsResponse>(
     "/listening/completed-lessons",
   );
 }
 
-export async function getListeningLessonReview(lessonId: number) {
+/**
+ * Lấy review của một lesson
+ */
+export async function getListeningLessonReview(
+  lessonId: number,
+) {
   return apiFetch<ListeningLessonReviewResponse>(
     `/listening/review/lesson/${lessonId}`,
   );
 }
 
+/**
+ * Lấy review của toàn bộ lesson
+ */
 export async function getListeningAllLessonReview() {
   return apiFetch<ListeningAllLessonsReviewResponse>(
-    `/listening/review/all`,
+    "/listening/review/all",
   );
 }
 
+/**
+ * Submit kết quả một group Listening
+ */
 export async function submitListeningGroup(
   groupId: number,
   score: number,
@@ -171,7 +220,10 @@ export async function submitListeningGroup(
     "/listening/submit-group",
     {
       method: "POST",
-      body: JSON.stringify({ groupId, score }),
+      body: JSON.stringify({
+        groupId,
+        score,
+      }),
     },
   );
 }

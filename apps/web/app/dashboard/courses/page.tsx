@@ -848,16 +848,16 @@ useEffect(() => {
                           );
 
                           return reviewGroup ? (
-                            <Link
-                              key={part}
-                              href={`/dashboard/courses/listening/review`}
-                              className="block"
-                            >
-                              {cardBody}
-                            </Link>
-                          ) : (
-                            <div key={part}>{cardBody}</div>
-                          );
+  <Link
+    key={part}
+    href={`/dashboard/courses/listening/review?part=${part}`}
+    className="block"
+  >
+    {cardBody}
+  </Link>
+) : (
+  <div key={part}>{cardBody}</div>
+);
                         })}
                       </div>
                     </div>

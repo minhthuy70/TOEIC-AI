@@ -13,7 +13,7 @@ type ListeningLesson = {
   createdAt: string;
   updatedAt: string;
   _count?: {
-    groups: number;
+    listening_lesson_groups: number;
   };
 };
 
@@ -21,7 +21,7 @@ type LessonForm = {
   title: string;
   part: string;
   stage: string;
-  displayOrder: string;
+  displayOrder: number;
 };
 
 const API_URL = "http://localhost:3001";
@@ -30,7 +30,7 @@ const emptyForm: LessonForm = {
   title: "",
   part: "1",
   stage: "1",
-  displayOrder: "0",
+  displayOrder: 0,
 };
 
 export default function ListeningAdminPage() {
@@ -128,9 +128,7 @@ export default function ListeningAdminPage() {
       title: lesson.title,
       part: String(lesson.part),
       stage: String(lesson.stage),
-      displayOrder: String(
-        lesson.displayOrder ?? 0,
-      ),
+      displayOrder: lesson.displayOrder ?? 0,
     });
 
     setShowModal(true);
