@@ -1,7 +1,8 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { getTests, createTest, updateTest, deleteTest, getTest, type Test, type TestForm } from "@/services/admin";
+import { useRouter } from "next/navigation";
+import { getTests, createTest, updateTest, deleteTest, type Test, type TestForm } from "@/services/admin";
 
 const EMPTY_FORM: TestForm = {
   title: "",
@@ -12,6 +13,7 @@ const EMPTY_FORM: TestForm = {
 };
 
 export default function TestsAdminPage() {
+  const router = useRouter();
   const [items, setItems] = useState<Test[]>([]);
   const [loading, setLoading] = useState(true);
   const [search, setSearch] = useState("");
@@ -23,9 +25,6 @@ export default function TestsAdminPage() {
   const [page, setPage] = useState(1);
   const [total, setTotal] = useState(0);
   const [totalPages, setTotalPages] = useState(0);
-  const [viewingTest, setViewingTest] = useState<Test | null>(null);
-  const [showViewModal, setShowViewModal] = useState(false);
-  const [expandedGroups, setExpandedGroups] = useState<Set<number>>(new Set());
 
   const limit = 10;
 
@@ -154,46 +153,12 @@ export default function TestsAdminPage() {
     setShowForm(true);
   }
 
-  async function viewTestDetails(id: number) {
-    try {
-      const testDetails = await getTest(id);
-      setViewingTest(testDetails);
-      setExpandedGroups(new Set()); // Reset expanded groups
-      setShowViewModal(true);
-    } catch (error) {
-      console.error(error);
-      alert("Không thể tải chi tiết đề thi");
-    }
-  }
-
-  function toggleGroup(groupId: number) {
-    setExpandedGroups((prev) => {
-      const newSet = new Set(prev);
-      if (newSet.has(groupId)) {
-        newSet.delete(groupId);
-      } else {
-        newSet.add(groupId);
-      }
-      return newSet;
-    });
+  function viewTestDetails(id: number) {
+    router.push(`/admin/tests/${id}/question-groups`);
   }
 
   function formatDate(date: string) {
     return new Date(date).toLocaleDateString("vi-VN");
-  }
-
-  function getPartLabel(part: number | null) {
-    if (!part) return "—";
-    const partLabels: Record<number, string> = {
-      1: "Part 1 - Photographs",
-      2: "Part 2 - Question-Response",
-      3: "Part 3 - Conversations",
-      4: "Part 4 - Talks",
-      5: "Part 5 - Incomplete Sentences",
-      6: "Part 6 - Text Completion",
-      7: "Part 7 - Reading Comprehension",
-    };
-    return partLabels[part] || `Part ${part}`;
   }
 
   return (
@@ -367,7 +332,7 @@ export default function TestsAdminPage() {
                           onClick={() => viewTestDetails(item.id)}
                           className="px-3 py-1.5 rounded-lg bg-green-600/10 text-green-400 border border-green-600/30 hover:bg-green-600/20 transition text-sm"
                         >
-                          Xem
+                          Quản lý
                         </button>
 
                         <button
@@ -552,300 +517,6 @@ export default function TestsAdminPage() {
                 className="px-5 py-2.5 rounded-xl bg-red-600 hover:bg-red-700 transition disabled:opacity-50"
               >
                 {saving ? "Đang lưu..." : formMode === "create" ? "Thêm đề thi" : "Cập nhật"}
-              </button>
-            </div>
-          </div>
-        </div>
-      )}
-
-      {/* View Details Modal */}
-      {showViewModal && viewingTest && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 p-4">
-          <div className="w-full max-w-6xl max-h-[90vh] overflow-y-auto bg-zinc-900 border border-zinc-800 rounded-2xl shadow-2xl">
-            {/* Header */}
-            <div className="sticky top-0 z-10 bg-zinc-900 border-b border-zinc-800 px-6 py-4 flex items-center justify-between">
-              <div>
-                <h2 className="text-xl font-bold">
-                  Chi tiết đề thi: {viewingTest.title || `#${viewingTest.id}`}
-                </h2>
-
-                <p className="text-sm text-zinc-500 mt-1">
-                  {viewingTest.description || "Không có mô tả"}
-                </p>
-              </div>
-
-              <button
-                type="button"
-                onClick={() => setShowViewModal(false)}
-                className="w-9 h-9 rounded-lg bg-zinc-800 hover:bg-zinc-700 text-zinc-400 hover:text-white"
-              >
-                ✕
-              </button>
-            </div>
-
-            {/* Test Info */}
-            <div className="p-6 border-b border-zinc-800">
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-                <div className="bg-zinc-800 rounded-xl p-4">
-                  <p className="text-xs text-zinc-500">Thời lượng</p>
-                  <p className="text-lg font-bold mt-1">{viewingTest.duration ? `${viewingTest.duration} phút` : "—"}</p>
-                </div>
-
-                <div className="bg-zinc-800 rounded-xl p-4">
-                  <p className="text-xs text-zinc-500">Tổng câu hỏi</p>
-                  <p className="text-lg font-bold mt-1">{viewingTest.total_questions || "—"}</p>
-                </div>
-
-                <div className="bg-zinc-800 rounded-xl p-4">
-                  <p className="text-xs text-zinc-500">Số nhóm câu hỏi</p>
-                  <p className="text-lg font-bold mt-1">{viewingTest.question_groups?.length || 0}</p>
-                </div>
-
-                <div className="bg-zinc-800 rounded-xl p-4">
-                  <p className="text-xs text-zinc-500">Trạng thái</p>
-                  <p className="text-lg font-bold mt-1">
-                    {viewingTest.is_active ? (
-                      <span className="text-green-400">Hoạt động</span>
-                    ) : (
-                      <span className="text-zinc-400">Không hoạt động</span>
-                    )}
-                  </p>
-                </div>
-              </div>
-            </div>
-
-            {/* Question Groups */}
-            <div className="p-6">
-              <h3 className="text-lg font-bold mb-4">Nhóm câu hỏi ({viewingTest.question_groups?.length || 0})</h3>
-
-              {viewingTest.question_groups && viewingTest.question_groups.length > 0 ? (
-                <div className="space-y-4">
-                  {viewingTest.question_groups.map((group) => (
-                    <div key={group.id} className="bg-zinc-800 border border-zinc-700 rounded-xl overflow-hidden">
-                      {/* Group Header */}
-                      <div
-                        className="p-4 cursor-pointer hover:bg-zinc-700/50 transition"
-                        onClick={() => toggleGroup(group.id)}
-                      >
-                        <div className="flex items-center justify-between">
-                          <div className="flex items-center gap-3">
-                            <span className="text-zinc-400">
-                              {expandedGroups.has(group.id) ? "▼" : "▶"}
-                            </span>
-
-                            <div>
-                              <span className="font-semibold text-white">
-                                {getPartLabel(group.part)}
-                              </span>
-
-                              {group.title && (
-                                <span className="text-zinc-400 ml-2">- {group.title}</span>
-                              )}
-                            </div>
-                          </div>
-
-                          <div className="flex items-center gap-4 text-sm text-zinc-400">
-                            <span>{group.questions?.length || 0} câu hỏi</span>
-
-                            {group.group_type && (
-                              <span className="px-2 py-1 bg-zinc-700 rounded text-xs">
-                                {group.group_type}
-                              </span>
-                            )}
-                          </div>
-                        </div>
-
-                        {/* Group Metadata */}
-                        {expandedGroups.has(group.id) && (
-                          <div className="mt-3 pt-3 border-t border-zinc-700 grid grid-cols-2 md:grid-cols-4 gap-3 text-sm">
-                            {group.display_order !== null && (
-                              <div>
-                                <span className="text-zinc-500">Thứ tự:</span>
-                                <span className="text-zinc-300 ml-1">{group.display_order}</span>
-                              </div>
-                            )}
-
-                            {group.audio_start_time !== null && (
-                              <div>
-                                <span className="text-zinc-500">Bắt đầu audio:</span>
-                                <span className="text-zinc-300 ml-1">{group.audio_start_time}s</span>
-                              </div>
-                            )}
-
-                            {group.audio_end_time !== null && (
-                              <div>
-                                <span className="text-zinc-500">Kết thúc audio:</span>
-                                <span className="text-zinc-300 ml-1">{group.audio_end_time}s</span>
-                              </div>
-                            )}
-
-                            {group.knowledge && (
-                              <div>
-                                <span className="text-zinc-500">Kiến thức:</span>
-                                <span className="text-zinc-300 ml-1">{group.knowledge}</span>
-                              </div>
-                            )}
-                          </div>
-                        )}
-                      </div>
-
-                      {/* Expanded Content */}
-                      {expandedGroups.has(group.id) && (
-                        <div className="border-t border-zinc-700 p-4">
-                          {/* Passage/Content */}
-                          {group.passage && (
-                            <div className="mb-4 p-3 bg-zinc-900 rounded-lg">
-                              <p className="text-xs text-zinc-500 mb-2">Đoạn văn/bài đọc:</p>
-                              <p className="text-sm text-zinc-300 whitespace-pre-wrap">{group.passage}</p>
-                            </div>
-                          )}
-
-                          {/* Media */}
-                          {(group.image_url || group.audio_url) && (
-                            <div className="mb-4 flex gap-3">
-                              {group.image_url && (
-                                <div className="flex-1">
-                                  <p className="text-xs text-zinc-500 mb-2">Hình ảnh:</p>
-                                  <img
-                                    src={group.image_url}
-                                    alt="Group image"
-                                    className="w-full max-h-48 object-cover rounded-lg"
-                                  />
-                                </div>
-                              )}
-
-                              {group.audio_url && (
-                                <div className="flex-1">
-                                  <p className="text-xs text-zinc-500 mb-2">Audio:</p>
-                                  <audio
-                                    src={group.audio_url}
-                                    controls
-                                    className="w-full"
-                                  />
-                                </div>
-                              )}
-                            </div>
-                          )}
-
-                          {/* Questions */}
-                          {group.questions && group.questions.length > 0 && (
-                            <div className="space-y-3">
-                              <p className="text-sm font-semibold text-zinc-400">
-                                Câu hỏi ({group.questions.length})
-                              </p>
-
-                              {group.questions.map((question) => (
-                                <div
-                                  key={question.id}
-                                  className="bg-zinc-900 border border-zinc-700 rounded-lg p-4"
-                                >
-                                  {/* Question Header */}
-                                  <div className="flex items-start justify-between mb-3">
-                                    <div className="flex items-start gap-2">
-                                      <span className="text-red-400 font-semibold">
-                                        Câu {question.question_number || "?"}
-                                      </span>
-
-                                      <span className="text-sm text-zinc-300 flex-1">
-                                        {question.question_text || "Không có nội dung câu hỏi"}
-                                      </span>
-                                    </div>
-
-                                    {question.correct_answer && (
-                                      <span className="px-2 py-1 bg-green-600/20 text-green-400 rounded text-xs">
-                                        Đáp án: {question.correct_answer}
-                                      </span>
-                                    )}
-                                  </div>
-
-                                  {/* Options */}
-                                  {question.options && question.options.length > 0 && (
-                                    <div className="mt-3 space-y-2">
-                                      <p className="text-xs text-zinc-500">Đáp án chọn:</p>
-
-                                      {question.options
-                                        .sort((a, b) => (a.display_order || 0) - (b.display_order || 0))
-                                        .map((option) => (
-                                          <div
-                                            key={option.id}
-                                            className={`flex items-center gap-2 p-2 rounded border ${
-                                              option.is_correct
-                                                ? "bg-green-600/10 border-green-600/30"
-                                                : "bg-zinc-800 border-zinc-700"
-                                            }`}
-                                          >
-                                            <span className="font-semibold text-zinc-400 w-6">
-                                              {option.option_label || "?"}
-                                            </span>
-
-                                            <span className="text-sm text-zinc-300 flex-1">
-                                              {option.option_text || "—"}
-                                            </span>
-
-                                            {option.is_correct && (
-                                              <span className="text-green-400 text-xs">✓ Đúng</span>
-                                            )}
-                                          </div>
-                                        ))}
-                                    </div>
-                                  )}
-
-                                  {/* Explanation */}
-                                  {question.explanation && (
-                                    <div className="mt-3 p-2 bg-blue-600/10 border border-blue-600/30 rounded">
-                                      <p className="text-xs text-blue-400 mb-1">Giải thích:</p>
-                                      <p className="text-sm text-zinc-300">{question.explanation}</p>
-                                    </div>
-                                  )}
-                                </div>
-                              ))}
-                            </div>
-                          )}
-
-                          {/* No Questions */}
-                          {(!group.questions || group.questions.length === 0) && (
-                            <div className="text-center py-8 text-zinc-500">
-                              Chưa có câu hỏi trong nhóm này
-                            </div>
-                          )}
-                        </div>
-                      )}
-                    </div>
-                  ))}
-                </div>
-              ) : (
-                <div className="text-center py-12 text-zinc-500">
-                  Chưa có nhóm câu hỏi nào cho đề thi này
-                </div>
-              )}
-
-              {/* Grammar Lessons */}
-              {viewingTest.grammar_lessons && viewingTest.grammar_lessons.length > 0 && (
-                <div className="mt-6 pt-6 border-t border-zinc-800">
-                  <h3 className="text-lg font-bold mb-4">Bài học ngữ pháp liên quan ({viewingTest.grammar_lessons.length})</h3>
-
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-                    {viewingTest.grammar_lessons.map((lesson) => (
-                      <div
-                        key={lesson.id}
-                        className="bg-zinc-800 border border-zinc-700 rounded-lg p-3 flex items-center gap-3"
-                      >
-                        <span className="text-zinc-400">📖</span>
-                        <span className="text-sm text-zinc-300">{lesson.title}</span>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              )}
-            </div>
-
-            {/* Footer */}
-            <div className="sticky bottom-0 bg-zinc-900 border-t border-zinc-800 px-6 py-4 flex justify-end">
-              <button
-                onClick={() => setShowViewModal(false)}
-                className="px-5 py-2.5 rounded-xl bg-zinc-800 hover:bg-zinc-700 transition"
-              >
-                Đóng
               </button>
             </div>
           </div>
