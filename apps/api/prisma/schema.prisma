@@ -20,6 +20,8 @@ model User {
   user_listening_progress       user_listening_progress[]
   user_reading_progress         user_reading_progress[]
   vocabularyProgress            UserVocabularyProgress[]
+  practice_sessions             practice_sessions[]
+  mock_test_attempts            mock_test_attempts[]
 }
 
 model UserProfile {
@@ -245,15 +247,16 @@ model reading_lessons {
 }
 
 model tests {
-  id              Int               @id @default(autoincrement())
-  title           String?           @db.VarChar(100)
-  duration        Int?
-  total_questions Int?
-  created_at      DateTime?         @default(now()) @db.Timestamp(6)
-  description     String?
-  is_active       Boolean?          @default(true)
-  grammar_lessons GrammarLesson[]
-  question_groups question_groups[]
+  id                Int               @id @default(autoincrement())
+  title             String?           @db.VarChar(100)
+  duration          Int?
+  total_questions   Int?
+  created_at        DateTime?         @default(now()) @db.Timestamp(6)
+  description       String?
+  is_active         Boolean?          @default(true)
+  grammar_lessons   GrammarLesson[]
+  question_groups   question_groups[]
+  mock_test_attempts mock_test_attempts[]
 }
 
 model user_listening_progress {
@@ -357,6 +360,45 @@ model reading_questions {
 
   @@index([group_id], map: "idx_reading_questions_group")
   @@index([display_order], map: "idx_reading_questions_order")
+}
+
+model practice_sessions {
+  id              Int       @id @default(autoincrement())
+  user_id         Int       @map("user_id")
+  part            Int
+  question_count  Int       @map("question_count")
+  correct_count   Int       @map("correct_count")
+  score           Int
+  started_at      DateTime  @map("started_at") @db.Timestamp(6)
+  completed_at    DateTime? @map("completed_at") @db.Timestamp(6)
+  question_ids    Int[]
+  answers         Json?
+  created_at      DateTime  @default(now()) @map("created_at") @db.Timestamp(6)
+  
+  user            User      @relation(fields: [user_id], references: [id], onDelete: Cascade)
+  
+  @@map("practice_sessions")
+}
+
+model mock_test_attempts {
+  id                Int       @id @default(autoincrement())
+  user_id           Int       @map("user_id")
+  test_id           Int       @map("test_id")
+  listening_score   Int?      @map("listening_score")
+  reading_score     Int?      @map("reading_score")
+  total_score       Int?      @map("total_score")
+  listening_correct Int?      @map("listening_correct")
+  reading_correct   Int?      @map("reading_correct")
+  total_correct     Int?      @map("total_correct")
+  started_at        DateTime  @map("started_at") @db.Timestamp(6)
+  submitted_at      DateTime? @map("submitted_at") @db.Timestamp(6)
+  answers           Json?
+  created_at        DateTime  @default(now()) @map("created_at") @db.Timestamp(6)
+  
+  user              User      @relation(fields: [user_id], references: [id], onDelete: Cascade)
+  test              tests     @relation(fields: [test_id], references: [id], onDelete: Cascade)
+  
+  @@map("mock_test_attempts")
 }
 
 enum UserRole {

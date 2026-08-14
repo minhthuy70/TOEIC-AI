@@ -55,7 +55,7 @@ interface GrammarLesson {
   title: string;
 }
 
-interface Test {
+export interface Test {
   id: number;
   title: string | null;
   description: string | null;
@@ -79,7 +79,7 @@ interface TestsResponse {
   totalPages: number;
 }
 
-interface TestForm {
+export interface TestForm {
   title: string;
   description: string;
   duration: number;

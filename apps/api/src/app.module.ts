@@ -8,6 +8,8 @@ import { VocabularyModule } from "./vocabulary/vocabulary.module";
 import { GrammarModule } from "./grammar/grammar.module";
 import { ListeningModule } from "./listening/listening.module";
 import { ReadingModule } from "./reading/reading.module";
+import { PracticeModule } from "./practice/practice.module";
+import { MockTestModule } from "./mock-test/mock-test.module";
 
 
 import { AuthModule } from "./auth/auth.module";
@@ -36,6 +38,8 @@ import { AdminModule } from "./admin/admin.module";
     GrammarModule,
     ListeningModule,
     ReadingModule,
+    PracticeModule,
+    MockTestModule,
     AdminModule,
   ],
 })
