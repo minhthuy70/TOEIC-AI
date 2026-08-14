@@ -1511,6 +1511,422 @@ async deleteTest(@Param("id") id: string) {
   };
 }
 
+// ======================================================
+// QUESTION GROUPS MANAGEMENT
+// ======================================================
+
+@Get("tests/:testId/question-groups")
+@Roles(
+  UserRole.SUPER_ADMIN,
+  UserRole.CONTENT_ADMIN,
+)
+async getQuestionGroups(
+  @Param("testId") testId: string,
+  @Query("page") page = "1",
+  @Query("limit") limit = "10",
+) {
+  const testIdNum = Number(testId);
+
+  if (!Number.isInteger(testIdNum) || testIdNum <= 0) {
+    throw new BadRequestException("ID đề thi không hợp lệ");
+  }
+
+  const pageNumber = Math.max(Number(page), 1);
+  const limitNumber = Math.min(Math.max(Number(limit), 1), 100);
+  const skip = (pageNumber - 1) * limitNumber;
+
+  const [items, total] = await Promise.all([
+    this.prisma.question_groups.findMany({
+      where: { test_id: testIdNum },
+      skip,
+      take: limitNumber,
+      orderBy: { display_order: "asc" },
+      include: {
+        _count: {
+          select: { questions: true },
+        },
+      },
+    }),
+    this.prisma.question_groups.count({
+      where: { test_id: testIdNum },
+    }),
+  ]);
+
+  return {
+    items,
+    total,
+    page: pageNumber,
+    limit: limitNumber,
+    totalPages: Math.ceil(total / limitNumber),
+  };
+}
+
+@Post("tests/:testId/question-groups")
+@Roles(
+  UserRole.SUPER_ADMIN,
+  UserRole.CONTENT_ADMIN,
+)
+async createQuestionGroup(
+  @Param("testId") testId: string,
+  @Body()
+  body: {
+    part?: number;
+    title?: string;
+    passage?: string;
+    image_url?: string;
+    audio_url?: string;
+    display_order?: number;
+    group_type?: string;
+    audio_start_time?: number;
+    audio_end_time?: number;
+    knowledge?: string;
+  },
+) {
+  const testIdNum = Number(testId);
+
+  if (!Number.isInteger(testIdNum) || testIdNum <= 0) {
+    throw new BadRequestException("ID đề thi không hợp lệ");
+  }
+
+  const test = await this.prisma.tests.findUnique({
+    where: { id: testIdNum },
+  });
+
+  if (!test) {
+    throw new NotFoundException("Không tìm thấy đề thi");
+  }
+
+  const questionGroup = await this.prisma.question_groups.create({
+    data: {
+      test_id: testIdNum,
+      part: body.part ? Number(body.part) : null,
+      title: body.title?.trim() || null,
+      passage: body.passage?.trim() || null,
+      image_url: body.image_url?.trim() || null,
+      audio_url: body.audio_url?.trim() || null,
+      display_order: body.display_order !== undefined ? Number(body.display_order) : 0,
+      group_type: body.group_type?.trim() || null,
+      audio_start_time: body.audio_start_time ? Number(body.audio_start_time) : null,
+      audio_end_time: body.audio_end_time ? Number(body.audio_end_time) : null,
+      knowledge: body.knowledge?.trim() || null,
+    },
+  });
+
+  return {
+    success: true,
+    message: "Thêm nhóm câu hỏi thành công",
+    item: questionGroup,
+  };
+}
+
+@Patch("question-groups/:groupId")
+@Roles(
+  UserRole.SUPER_ADMIN,
+  UserRole.CONTENT_ADMIN,
+)
+async updateQuestionGroup(
+  @Param("groupId") groupId: string,
+  @Body()
+  body: {
+    part?: number;
+    title?: string;
+    passage?: string;
+    image_url?: string;
+    audio_url?: string;
+    display_order?: number;
+    group_type?: string;
+    audio_start_time?: number;
+    audio_end_time?: number;
+    knowledge?: string;
+  },
+) {
+  const groupIdNum = Number(groupId);
+
+  if (!Number.isInteger(groupIdNum) || groupIdNum <= 0) {
+    throw new BadRequestException("ID nhóm câu hỏi không hợp lệ");
+  }
+
+  const existing = await this.prisma.question_groups.findUnique({
+    where: { id: groupIdNum },
+  });
+
+  if (!existing) {
+    throw new NotFoundException("Không tìm thấy nhóm câu hỏi");
+  }
+
+  const questionGroup = await this.prisma.question_groups.update({
+    where: { id: groupIdNum },
+    data: {
+      part: body.part !== undefined ? Number(body.part) : existing.part,
+      title: body.title !== undefined ? body.title.trim() : existing.title,
+      passage: body.passage !== undefined ? body.passage.trim() : existing.passage,
+      image_url: body.image_url !== undefined ? body.image_url.trim() : existing.image_url,
+      audio_url: body.audio_url !== undefined ? body.audio_url.trim() : existing.audio_url,
+      display_order: body.display_order !== undefined ? Number(body.display_order) : existing.display_order,
+      group_type: body.group_type !== undefined ? body.group_type.trim() : existing.group_type,
+      audio_start_time: body.audio_start_time !== undefined ? Number(body.audio_start_time) : existing.audio_start_time,
+      audio_end_time: body.audio_end_time !== undefined ? Number(body.audio_end_time) : existing.audio_end_time,
+      knowledge: body.knowledge !== undefined ? body.knowledge.trim() : existing.knowledge,
+    },
+  });
+
+  return {
+    success: true,
+    message: "Cập nhật nhóm câu hỏi thành công",
+    item: questionGroup,
+  };
+}
+
+@Delete("question-groups/:groupId")
+@Roles(
+  UserRole.SUPER_ADMIN,
+  UserRole.CONTENT_ADMIN,
+)
+async deleteQuestionGroup(@Param("groupId") groupId: string) {
+  const groupIdNum = Number(groupId);
+
+  if (!Number.isInteger(groupIdNum) || groupIdNum <= 0) {
+    throw new BadRequestException("ID nhóm câu hỏi không hợp lệ");
+  }
+
+  const existing = await this.prisma.question_groups.findUnique({
+    where: { id: groupIdNum },
+    include: {
+      _count: {
+        select: { questions: true },
+      },
+    },
+  });
+
+  if (!existing) {
+    throw new NotFoundException("Không tìm thấy nhóm câu hỏi");
+  }
+
+  if (existing._count.questions > 0) {
+    throw new ConflictException(
+      `Không thể xóa nhóm câu hỏi vì đang có ${existing._count.questions} câu hỏi`
+    );
+  }
+
+  await this.prisma.question_groups.delete({
+    where: { id: groupIdNum },
+  });
+
+  return {
+    success: true,
+    message: "Xóa nhóm câu hỏi thành công",
+    id: groupIdNum,
+  };
+}
+
+// ======================================================
+// QUESTIONS MANAGEMENT
+// ======================================================
+
+@Get("question-groups/:groupId/questions")
+@Roles(
+  UserRole.SUPER_ADMIN,
+  UserRole.CONTENT_ADMIN,
+)
+async getQuestions(
+  @Param("groupId") groupId: string,
+  @Query("page") page = "1",
+  @Query("limit") limit = "10",
+) {
+  const groupIdNum = Number(groupId);
+
+  if (!Number.isInteger(groupIdNum) || groupIdNum <= 0) {
+    throw new BadRequestException("ID nhóm câu hỏi không hợp lệ");
+  }
+
+  const pageNumber = Math.max(Number(page), 1);
+  const limitNumber = Math.min(Math.max(Number(limit), 1), 100);
+  const skip = (pageNumber - 1) * limitNumber;
+
+  const [items, total] = await Promise.all([
+    this.prisma.questions.findMany({
+      where: { group_id: groupIdNum },
+      skip,
+      take: limitNumber,
+      orderBy: { display_order: "asc" },
+      include: {
+        options: {
+          orderBy: { display_order: "asc" },
+        },
+      },
+    }),
+    this.prisma.questions.count({
+      where: { group_id: groupIdNum },
+    }),
+  ]);
+
+  return {
+    items,
+    total,
+    page: pageNumber,
+    limit: limitNumber,
+    totalPages: Math.ceil(total / limitNumber),
+  };
+}
+
+@Post("question-groups/:groupId/questions")
+@Roles(
+  UserRole.SUPER_ADMIN,
+  UserRole.CONTENT_ADMIN,
+)
+async createQuestion(
+  @Param("groupId") groupId: string,
+  @Body()
+  body: {
+    question_number?: number;
+    question_text?: string;
+    correct_answer?: string;
+    explanation?: string;
+    display_order?: number;
+    options?: Array<{
+      option_label?: string;
+      option_text?: string;
+      is_correct?: boolean;
+      display_order?: number;
+    }>;
+  },
+) {
+  const groupIdNum = Number(groupId);
+
+  if (!Number.isInteger(groupIdNum) || groupIdNum <= 0) {
+    throw new BadRequestException("ID nhóm câu hỏi không hợp lệ");
+  }
+
+  const group = await this.prisma.question_groups.findUnique({
+    where: { id: groupIdNum },
+  });
+
+  if (!group) {
+    throw new NotFoundException("Không tìm thấy nhóm câu hỏi");
+  }
+
+  const question = await this.prisma.$transaction(async (tx) => {
+    const newQuestion = await tx.questions.create({
+      data: {
+        group_id: groupIdNum,
+        question_number: body.question_number ? Number(body.question_number) : null,
+        question_text: body.question_text?.trim() || null,
+        correct_answer: body.correct_answer?.trim() || null,
+        explanation: body.explanation?.trim() || null,
+        display_order: body.display_order !== undefined ? Number(body.display_order) : 0,
+      },
+    });
+
+    // Create options if provided
+    if (body.options && body.options.length > 0) {
+      await tx.options.createMany({
+        data: body.options.map((option) => ({
+          question_id: newQuestion.id,
+          option_label: option.option_label?.trim() || null,
+          option_text: option.option_text?.trim() || null,
+          is_correct: option.is_correct !== undefined ? option.is_correct : false,
+          display_order: option.display_order !== undefined ? Number(option.display_order) : 0,
+        })),
+      });
+    }
+
+    return newQuestion;
+  });
+
+  return {
+    success: true,
+    message: "Thêm câu hỏi thành công",
+    item: question,
+  };
+}
+
+@Patch("questions/:questionId")
+@Roles(
+  UserRole.SUPER_ADMIN,
+  UserRole.CONTENT_ADMIN,
+)
+async updateQuestion(
+  @Param("questionId") questionId: string,
+  @Body()
+  body: {
+    question_number?: number;
+    question_text?: string;
+    correct_answer?: string;
+    explanation?: string;
+    display_order?: number;
+  },
+) {
+  const questionIdNum = Number(questionId);
+
+  if (!Number.isInteger(questionIdNum) || questionIdNum <= 0) {
+    throw new BadRequestException("ID câu hỏi không hợp lệ");
+  }
+
+  const existing = await this.prisma.questions.findUnique({
+    where: { id: questionIdNum },
+  });
+
+  if (!existing) {
+    throw new NotFoundException("Không tìm thấy câu hỏi");
+  }
+
+  const question = await this.prisma.questions.update({
+    where: { id: questionIdNum },
+    data: {
+      question_number: body.question_number !== undefined ? Number(body.question_number) : existing.question_number,
+      question_text: body.question_text !== undefined ? body.question_text.trim() : existing.question_text,
+      correct_answer: body.correct_answer !== undefined ? body.correct_answer.trim() : existing.correct_answer,
+      explanation: body.explanation !== undefined ? body.explanation.trim() : existing.explanation,
+      display_order: body.display_order !== undefined ? Number(body.display_order) : existing.display_order,
+    },
+  });
+
+  return {
+    success: true,
+    message: "Cập nhật câu hỏi thành công",
+    item: question,
+  };
+}
+
+@Delete("questions/:questionId")
+@Roles(
+  UserRole.SUPER_ADMIN,
+  UserRole.CONTENT_ADMIN,
+)
+async deleteQuestion(@Param("questionId") questionId: string) {
+  const questionIdNum = Number(questionId);
+
+  if (!Number.isInteger(questionIdNum) || questionIdNum <= 0) {
+    throw new BadRequestException("ID câu hỏi không hợp lệ");
+  }
+
+  const existing = await this.prisma.questions.findUnique({
+    where: { id: questionIdNum },
+  });
+
+  if (!existing) {
+    throw new NotFoundException("Không tìm thấy câu hỏi");
+  }
+
+  await this.prisma.$transaction(async (tx) => {
+    // Delete options first
+    await tx.options.deleteMany({
+      where: { question_id: questionIdNum },
+    });
+
+    // Then delete the question
+    await tx.questions.delete({
+      where: { id: questionIdNum },
+    });
+  });
+
+  return {
+    success: true,
+    message: "Xóa câu hỏi thành công",
+    id: questionIdNum,
+  };
+}
+
 @Get("listening/lessons")
 @Roles(
   UserRole.SUPER_ADMIN,
