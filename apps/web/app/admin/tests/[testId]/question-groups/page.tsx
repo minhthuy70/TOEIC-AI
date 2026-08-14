@@ -521,8 +521,12 @@ export default function QuestionGroupsPage() {
 
                   <input
                     type="number"
+                    min="0"
                     value={form.display_order || 0}
-                    onChange={(e) => updateForm("display_order", Number(e.target.value))}
+                    onChange={(e) => {
+                      const value = Number(e.target.value);
+                      updateForm("display_order", Math.max(0, value));
+                    }}
                     placeholder="0"
                     className="w-full bg-zinc-800 border border-zinc-700 rounded-xl px-4 py-3 outline-none focus:border-red-500"
                   />
@@ -582,8 +586,9 @@ export default function QuestionGroupsPage() {
 
                   <input
                     type="number"
+                    min="0"
                     value={form.audio_start_time || ""}
-                    onChange={(e) => updateForm("audio_start_time", e.target.value ? Number(e.target.value) : undefined)}
+                    onChange={(e) => updateForm("audio_start_time", e.target.value ? Math.max(0, Number(e.target.value)) : undefined)}
                     placeholder="0"
                     className="w-full bg-zinc-800 border border-zinc-700 rounded-xl px-4 py-3 outline-none focus:border-red-500"
                   />
@@ -596,8 +601,9 @@ export default function QuestionGroupsPage() {
 
                   <input
                     type="number"
+                    min="0"
                     value={form.audio_end_time || ""}
-                    onChange={(e) => updateForm("audio_end_time", e.target.value ? Number(e.target.value) : undefined)}
+                    onChange={(e) => updateForm("audio_end_time", e.target.value ? Math.max(0, Number(e.target.value)) : undefined)}
                     placeholder="0"
                     className="w-full bg-zinc-800 border border-zinc-700 rounded-xl px-4 py-3 outline-none focus:border-red-500"
                   />

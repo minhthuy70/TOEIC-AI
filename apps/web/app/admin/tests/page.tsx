@@ -462,8 +462,9 @@ export default function TestsAdminPage() {
 
                   <input
                     type="number"
+                    min="1"
                     value={form.duration}
-                    onChange={(e) => updateForm("duration", Number(e.target.value))}
+                    onChange={(e) => updateForm("duration", Math.max(1, Number(e.target.value)))}
                     placeholder="120"
                     className="w-full bg-zinc-800 border border-zinc-700 rounded-xl px-4 py-3 outline-none focus:border-red-500"
                   />
@@ -476,8 +477,9 @@ export default function TestsAdminPage() {
 
                   <input
                     type="number"
+                    min="1"
                     value={form.total_questions}
-                    onChange={(e) => updateForm("total_questions", Number(e.target.value))}
+                    onChange={(e) => updateForm("total_questions", Math.max(1, Number(e.target.value)))}
                     placeholder="100"
                     className="w-full bg-zinc-800 border border-zinc-700 rounded-xl px-4 py-3 outline-none focus:border-red-500"
                   />

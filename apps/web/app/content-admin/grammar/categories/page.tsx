@@ -827,9 +827,7 @@ export default function GrammarCategoriesPage() {
                     onChange={(e) =>
                       updateForm(
                         "displayOrder",
-                        Number(
-                          e.target.value,
-                        ),
+                        Math.max(0, Number(e.target.value)),
                       )
                     }
                     className="w-full bg-zinc-800 border border-zinc-700 rounded-xl px-4 py-3 outline-none focus:border-red-500"
