@@ -1,8 +1,19 @@
 "use client";
 
-import { Suspense, useEffect, useMemo, useState } from "react";
-import { useRouter, useSearchParams } from "next/navigation";
+import {
+  Suspense,
+  useEffect,
+  useMemo,
+  useState,
+} from "react";
+
+import {
+  useRouter,
+  useSearchParams,
+} from "next/navigation";
+
 import Link from "next/link";
+
 import {
   getReadingLessonById,
   submitReadingLesson,
@@ -10,267 +21,381 @@ import {
   type ReadingQuestion,
 } from "@/services/reading";
 
+type LearnQuestion = ReadingQuestion & {
+  groupId: number;
+  groupTitle: string;
+  passage?: string | null;
+  imageUrl?: string | null;
+  groupKnowledge?: string | null;
+};
+
 function ReadingLearnContent() {
   const router = useRouter();
-  const searchParams = useSearchParams();
 
-  const lessonIdParam = searchParams.get("lesson");
-const groupIdParam = searchParams.get("group");
+  const searchParams =
+    useSearchParams();
 
-const lessonId = Number(lessonIdParam);
-const groupId = Number(groupIdParam);
+  // =========================================================
+  // URL PARAMS
+  // =========================================================
 
-  const [lesson, setLesson] = useState<ReadingLesson | null>(null);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState("");
+  const lessonIdParam =
+    searchParams.get("lesson");
 
-  const [answers, setAnswers] = useState<Record<number, string>>({});
-  const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
+  const groupIdParam =
+    searchParams.get("group");
 
-  const [submitted, setSubmitted] = useState(false);
-  const [submitting, setSubmitting] = useState(false);
-  const [score, setScore] = useState(0);
-  const [correctCount, setCorrectCount] = useState(0);
+  const lessonId =
+    Number(lessonIdParam);
 
-  /**
-   * Flatten toàn bộ câu hỏi từ các group
-   * để dễ xử lý next / previous / progress.
-   */
-  const flattenedQuestions = useMemo(() => {
-    if (!lesson) return [];
+  const groupId =
+    Number(groupIdParam);
 
-    return lesson.reading_lesson_groups.flatMap((group) =>
-      group.reading_questions.map((question) => ({
-        ...question,
-        groupId: group.id,
-        groupTitle:
-          group.title ||
-          `Đoạn ${group.display_order ?? group.id}`,
-        passage: group.passage,
-        imageUrl: group.image_url,
-        groupKnowledge: group.knowledge,
-      })),
+  // =========================================================
+  // STATE
+  // =========================================================
+
+  const [lesson, setLesson] =
+    useState<ReadingLesson | null>(
+      null,
     );
-  }, [lesson]);
 
-  const currentQuestion = flattenedQuestions[currentQuestionIndex];
+  const [loading, setLoading] =
+    useState(true);
 
-  const answeredCount = useMemo(() => {
-    return flattenedQuestions.filter(
-      (question) => answers[question.id],
-    ).length;
-  }, [answers, flattenedQuestions]);
+  const [error, setError] =
+    useState("");
 
-  const totalQuestions = flattenedQuestions.length;
+  const [answers, setAnswers] =
+    useState<
+      Record<number, string>
+    >({});
+
+  const [
+    currentQuestionIndex,
+    setCurrentQuestionIndex,
+  ] = useState(0);
+
+  const [submitted, setSubmitted] =
+    useState(false);
+
+  const [submitting, setSubmitting] =
+    useState(false);
+
+  const [score, setScore] =
+    useState(0);
+
+  const [correctCount, setCorrectCount] =
+    useState(0);
+
+  // =========================================================
+  // FLATTEN QUESTIONS
+  // =========================================================
+  //
+  // Backend đã chỉ trả 1 GROUP.
+  //
+  // Nhưng vẫn flatten để UI xử lý câu hỏi.
+  // =========================================================
+
+  const flattenedQuestions =
+    useMemo<LearnQuestion[]>(() => {
+      if (!lesson) {
+        return [];
+      }
+
+      return (
+        lesson.reading_lesson_groups?.flatMap(
+          (group) =>
+            (
+              group.reading_questions ||
+              []
+            ).map(
+              (question) => ({
+                ...question,
+
+                groupId:
+                  group.id,
+
+                groupTitle:
+                  group.title ||
+                  `Group ${group.id}`,
+
+                passage:
+                  group.passage,
+
+                imageUrl: null,
+
+                groupKnowledge:
+                  group.knowledge,
+              }),
+            ),
+        ) ?? []
+      );
+    }, [lesson]);
+
+  // =========================================================
+  // CURRENT QUESTION
+  // =========================================================
+
+  const currentQuestion =
+    flattenedQuestions[
+      currentQuestionIndex
+    ] ?? null;
+
+  // =========================================================
+  // ANSWERED COUNT
+  // =========================================================
+
+  const answeredCount =
+    useMemo(() => {
+      return flattenedQuestions.filter(
+        (question) =>
+          Boolean(
+            answers[question.id],
+          ),
+      ).length;
+    }, [
+      answers,
+      flattenedQuestions,
+    ]);
+
+  // =========================================================
+  // TOTAL QUESTIONS
+  // =========================================================
+
+  const totalQuestions =
+    flattenedQuestions.length;
+
+  // =========================================================
+  // PROGRESS
+  // =========================================================
 
   const progressPercent =
     totalQuestions > 0
-      ? Math.round((answeredCount / totalQuestions) * 100)
+      ? Math.round(
+          (answeredCount /
+            totalQuestions) *
+            100,
+        )
       : 0;
 
-  /**
-   * Load lesson
-   */
+  // =========================================================
+  // LOAD EXACT GROUP
+  // =========================================================
+
   useEffect(() => {
-  const loadLesson = async () => {
-    if (
-      !lessonIdParam ||
-      !Number.isInteger(lessonId) ||
-      lessonId <= 0
-    ) {
-      setError("Lesson ID không hợp lệ.");
-      setLoading(false);
-      return;
-    }
+    let cancelled = false;
 
-    if (
-      !groupIdParam ||
-      !Number.isInteger(groupId) ||
-      groupId <= 0
-    ) {
-      setError("Group ID không hợp lệ.");
-      setLoading(false);
-      return;
-    }
+    const loadLesson =
+      async () => {
+        // ---------------------------------------------------
+        // VALIDATE LESSON
+        // ---------------------------------------------------
 
-    try {
-      setLoading(true);
-      setError("");
+        if (
+          !lessonIdParam ||
+          !Number.isInteger(
+            lessonId,
+          ) ||
+          lessonId <= 0
+        ) {
+          setError(
+            "Lesson ID không hợp lệ.",
+          );
 
-      const res = await getReadingLessonById(lessonId);
+          setLoading(false);
 
-      if (!res.success || !res.lesson) {
-        setError("Không tìm thấy bài Reading này.");
-        return;
-      }
+          return;
+        }
 
-      // ============================================
-      // CHỈ LẤY 1 GROUP ĐƯỢC CHỌN
-      // ============================================
-      const selectedGroup =
-        res.lesson.reading_lesson_groups.find(
-          (group) => group.id === groupId,
-        );
+        // ---------------------------------------------------
+        // VALIDATE GROUP
+        // ---------------------------------------------------
 
-      if (!selectedGroup) {
-        setError(
-          `Không tìm thấy group ${groupId} trong bài Reading này.`,
-        );
-        return;
-      }
+        if (
+          !groupIdParam ||
+          !Number.isInteger(
+            groupId,
+          ) ||
+          groupId <= 0
+        ) {
+          setError(
+            "Group ID không hợp lệ.",
+          );
 
-      // Chỉ giữ lại đúng 1 group
-      const filteredLesson = {
-        ...res.lesson,
-        reading_lesson_groups: [selectedGroup],
+          setLoading(false);
+
+          return;
+        }
+
+        try {
+          setLoading(true);
+          setError("");
+
+          /**
+           * QUAN TRỌNG:
+           *
+           * Truyền groupId trực tiếp cho API.
+           *
+           * Backend sẽ chỉ trả đúng GROUP này.
+           */
+          const res =
+            await getReadingLessonById(
+              lessonId,
+              groupId,
+            );
+
+          if (cancelled) {
+            return;
+          }
+
+          if (
+            !res.success ||
+            !res.lesson
+          ) {
+            setError(
+              "Không tìm thấy bài Reading.",
+            );
+
+            return;
+          }
+
+          const groups =
+            res.lesson
+              .reading_lesson_groups ||
+            [];
+
+          /**
+           * Safety check phía frontend.
+           *
+           * Dù backend đã lọc,
+           * frontend vẫn kiểm tra group.
+           */
+          const selectedGroup =
+            groups.find(
+              (group) =>
+                group.id ===
+                groupId,
+            );
+
+          if (!selectedGroup) {
+            setError(
+              `Không tìm thấy group ${groupId} trong lesson ${lessonId}.`,
+            );
+
+            return;
+          }
+
+          /**
+           * Giữ DUY NHẤT 1 GROUP.
+           */
+          const filteredLesson = {
+            ...res.lesson,
+
+            reading_lesson_groups: [
+              selectedGroup,
+            ],
+          };
+
+          setLesson(
+            filteredLesson,
+          );
+
+          setAnswers({});
+          setCurrentQuestionIndex(0);
+          setSubmitted(false);
+          setCorrectCount(0);
+          setScore(0);
+        } catch (err) {
+          console.error(
+            "Không thể tải Reading group:",
+            err,
+          );
+
+          if (!cancelled) {
+            setError(
+              "Không thể tải bài Reading. Vui lòng kiểm tra kết nối với server.",
+            );
+          }
+        } finally {
+          if (!cancelled) {
+            setLoading(false);
+          }
+        }
       };
 
-      setLesson(filteredLesson);
-    } catch (err) {
-      console.error("Không thể tải bài Reading:", err);
+    loadLesson();
 
-      setError(
-        "Không thể tải bài Reading. Vui lòng kiểm tra kết nối với server.",
-      );
-    } finally {
-      setLoading(false);
-    }
-  };
+    return () => {
+      cancelled = true;
+    };
+  }, [
+    lessonIdParam,
+    groupIdParam,
+    lessonId,
+    groupId,
+  ]);
 
-  loadLesson();
-}, [
-  lessonIdParam,
-  lessonId,
-  groupIdParam,
-  groupId,
-]);
+  // =========================================================
+  // SELECT ANSWER
+  // =========================================================
 
-  /**
-   * Chọn đáp án
-   */
   const handleSelectAnswer = (
     questionId: number,
     optionKey: string,
   ) => {
-    if (submitted) return;
-
-    setAnswers((prev) => ({
-      ...prev,
-      [questionId]: optionKey,
-    }));
-  };
-
-  /**
-   * Câu trước
-   */
-  const handlePrevious = () => {
-    if (currentQuestionIndex <= 0) return;
-
-    setCurrentQuestionIndex((prev) => prev - 1);
-
-    window.scrollTo({
-      top: 0,
-      behavior: "smooth",
-    });
-  };
-
-  /**
-   * Câu tiếp theo
-   */
-  const handleNext = () => {
-    if (currentQuestionIndex >= totalQuestions - 1) return;
-
-    setCurrentQuestionIndex((prev) => prev + 1);
-
-    window.scrollTo({
-      top: 0,
-      behavior: "smooth",
-    });
-  };
-
-  /**
-   * Chuyển trực tiếp tới câu hỏi
-   */
-  const handleGoToQuestion = (index: number) => {
-    setCurrentQuestionIndex(index);
-
-    window.scrollTo({
-      top: 0,
-      behavior: "smooth",
-    });
-  };
-
-  /**
-   * Nộp bài
-   */
-  const handleSubmit = async () => {
-    if (!lesson || totalQuestions === 0) return;
-
-    if (answeredCount < totalQuestions) {
+    if (submitted) {
       return;
     }
 
-    try {
-      setSubmitting(true);
+    setAnswers(
+      (prev) => ({
+        ...prev,
 
-      let correct = 0;
+        [questionId]:
+          optionKey,
+      }),
+    );
+  };
 
-      flattenedQuestions.forEach((question) => {
-        const selected = answers[question.id];
+  // =========================================================
+  // PREVIOUS
+  // =========================================================
 
-        const correctOption = question.reading_options.find(
-          (option) => option.is_correct === true,
-        );
-
-        if (
-          correctOption &&
-          selected === correctOption.option_key
-        ) {
-          correct++;
-        }
-      });
-
-      const calculatedScore = Math.round(
-        (correct / totalQuestions) * 100,
-      );
-
-      setCorrectCount(correct);
-      setScore(calculatedScore);
-      setSubmitted(true);
-
-      try {
-        await submitReadingLesson(
-          lesson.id,
-          groupId,
-          calculatedScore,
-        );
-      } catch (submitError) {
-        console.error(
-          "Không thể lưu tiến độ Reading:",
-          submitError,
-        );
+  const handlePrevious =
+    () => {
+      if (
+        currentQuestionIndex <=
+        0
+      ) {
+        return;
       }
+
+      setCurrentQuestionIndex(
+        (prev) => prev - 1,
+      );
 
       window.scrollTo({
         top: 0,
         behavior: "smooth",
       });
-    } catch (err) {
-      console.error("Không thể chấm bài:", err);
-    } finally {
-      setSubmitting(false);
-    }
-  };
+    };
 
-  /**
-   * Làm lại bài
-   */
-  const handleRetry = () => {
-    setAnswers({});
-    setCurrentQuestionIndex(0);
-    setSubmitted(false);
-    setCorrectCount(0);
-    setScore(0);
+  // =========================================================
+  // NEXT
+  // =========================================================
+
+  const handleNext = () => {
+    if (
+      currentQuestionIndex >=
+      totalQuestions - 1
+    ) {
+      return;
+    }
+
+    setCurrentQuestionIndex(
+      (prev) => prev + 1,
+    );
 
     window.scrollTo({
       top: 0,
@@ -278,9 +403,172 @@ const groupId = Number(groupIdParam);
     });
   };
 
-  /**
-   * Loading
-   */
+  // =========================================================
+  // GO QUESTION
+  // =========================================================
+
+  const handleGoToQuestion = (
+    index: number,
+  ) => {
+    setCurrentQuestionIndex(
+      index,
+    );
+
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  };
+
+  // =========================================================
+  // SUBMIT
+  // =========================================================
+
+  const handleSubmit =
+    async () => {
+      if (
+        !lesson ||
+        !currentQuestion
+      ) {
+        return;
+      }
+
+      if (
+        totalQuestions === 0
+      ) {
+        return;
+      }
+
+      /**
+       * Không cho submit nếu chưa
+       * trả lời đủ toàn bộ GROUP.
+       */
+      if (
+        answeredCount <
+        totalQuestions
+      ) {
+        return;
+      }
+
+      try {
+        setSubmitting(true);
+        setError("");
+
+        let correct = 0;
+
+        for (
+          const question of
+            flattenedQuestions
+        ) {
+          const selected =
+            answers[
+              question.id
+            ];
+
+          const correctOption =
+            question.reading_options.find(
+              (option) =>
+                option.is_correct ===
+                true,
+            );
+
+          if (
+            correctOption &&
+            selected ===
+              correctOption.option_key
+          ) {
+            correct++;
+          }
+        }
+
+        const calculatedScore =
+          Math.round(
+            (correct /
+              totalQuestions) *
+              100,
+          );
+
+        setCorrectCount(
+          correct,
+        );
+
+        setScore(
+          calculatedScore,
+        );
+
+        /**
+         * QUAN TRỌNG:
+         *
+         * Gửi:
+         *   lesson.id
+         *   groupId
+         *   score
+         *
+         * Backend cần groupId để lưu
+         * progress theo GROUP.
+         */
+        await submitReadingLesson(
+          lesson.id,
+          groupId,
+          calculatedScore,
+        );
+
+        setSubmitted(true);
+
+        window.scrollTo({
+          top: 0,
+          behavior: "smooth",
+        });
+      } catch (err) {
+        console.error(
+          "Không thể submit Reading:",
+          err,
+        );
+
+        setError(
+          err instanceof Error
+            ? err.message
+            : "Không thể lưu kết quả Reading.",
+        );
+      } finally {
+        setSubmitting(false);
+      }
+    };
+
+  // =========================================================
+  // RESTART
+  // =========================================================
+
+  const handleRestart =
+    () => {
+      setAnswers({});
+      setCurrentQuestionIndex(
+        0,
+      );
+      setSubmitted(false);
+      setSubmitting(false);
+      setScore(0);
+      setCorrectCount(0);
+
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth",
+      });
+    };
+
+  // =========================================================
+  // CURRENT GROUP
+  // =========================================================
+
+  const currentGroup =
+    lesson
+      ?.reading_lesson_groups?.[0] ??
+    null;
+
+  // =========================================================
+  // LOADING
+  // =========================================================
+
   if (loading) {
     return (
       <div className="min-h-[70vh] flex items-center justify-center">
@@ -295,63 +583,32 @@ const groupId = Number(groupIdParam);
     );
   }
 
-  /**
-   * Error
-   */
-  if (error || !lesson) {
+  // =========================================================
+  // ERROR
+  // =========================================================
+
+  if (
+    error &&
+    !lesson
+  ) {
     return (
-      <div className="max-w-3xl mx-auto py-10">
+      <div className="max-w-4xl mx-auto py-16 px-4">
         <div className="rounded-3xl border border-red-500/20 bg-red-950/20 p-8 text-center">
-          <div className="text-4xl mb-4">⚠️</div>
-
-          <h1 className="text-xl font-bold text-white">
-            Không thể mở bài Reading
-          </h1>
-
-          <p className="mt-2 text-sm text-zinc-400">
-            {error || "Không tìm thấy bài học."}
-          </p>
-
-          <div className="mt-6 flex justify-center gap-3">
-            <button
-              onClick={() => router.back()}
-              className="rounded-2xl border border-zinc-700 bg-zinc-900 px-5 py-3 text-sm font-semibold text-zinc-200 hover:bg-zinc-800 transition"
-            >
-              ← Quay lại
-            </button>
-
-            <Link
-              href="/dashboard/courses"
-              className="rounded-2xl bg-red-600 px-5 py-3 text-sm font-semibold text-white hover:bg-red-700 transition"
-            >
-              Về Học tập
-            </Link>
+          <div className="text-4xl mb-4">
+            ⚠️
           </div>
-        </div>
-      </div>
-    );
-  }
 
-  /**
-   * Không có câu hỏi
-   */
-  if (totalQuestions === 0) {
-    return (
-      <div className="max-w-3xl mx-auto py-10">
-        <div className="rounded-3xl border border-zinc-800 bg-zinc-900/70 p-8 text-center">
-          <div className="text-4xl mb-4">📖</div>
-
-          <h1 className="text-xl font-bold text-white">
-            Bài học chưa có câu hỏi
+          <h1 className="text-lg font-bold text-white">
+            Không thể tải bài Reading
           </h1>
 
-          <p className="mt-2 text-sm text-zinc-500">
-            Bài Reading này hiện chưa có dữ liệu câu hỏi.
+          <p className="text-sm text-red-300 mt-3">
+            {error}
           </p>
 
           <Link
             href="/dashboard/courses"
-            className="inline-flex mt-6 rounded-2xl bg-red-600 px-5 py-3 text-sm font-semibold text-white hover:bg-red-700 transition"
+            className="inline-flex mt-6 rounded-xl bg-red-600 px-5 py-3 text-sm font-semibold text-white hover:bg-red-700 transition"
           >
             ← Quay lại Học tập
           </Link>
@@ -360,594 +617,562 @@ const groupId = Number(groupIdParam);
     );
   }
 
-  /**
-   * Kết quả sau khi nộp
-   */
+  // =========================================================
+  // NO QUESTIONS
+  // =========================================================
+
+  if (
+    !lesson ||
+    !currentGroup ||
+    totalQuestions === 0
+  ) {
+    return (
+      <div className="max-w-4xl mx-auto py-16 px-4">
+        <div className="rounded-3xl border border-zinc-800 bg-zinc-900/60 p-10 text-center">
+          <div className="text-5xl mb-5">
+            📖
+          </div>
+
+          <h1 className="text-xl font-bold text-white">
+            Group chưa có câu hỏi
+          </h1>
+
+          <p className="text-sm text-zinc-500 mt-2">
+            Group này hiện chưa có câu hỏi Reading.
+          </p>
+
+          <Link
+            href="/dashboard/courses"
+            className="inline-flex mt-6 rounded-xl bg-red-600 px-5 py-3 text-sm font-semibold text-white hover:bg-red-700 transition"
+          >
+            ← Quay lại Học tập
+          </Link>
+        </div>
+      </div>
+    );
+  }
+
+  // =========================================================
+  // RESULT
+  // =========================================================
+
   if (submitted) {
     return (
-      <div className="max-w-5xl mx-auto space-y-6">
-        {/* Header */}
-        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
-          <div>
-            <p className="text-xs uppercase tracking-[0.18em] text-red-400 font-semibold">
-              Reading
-            </p>
-
-            <h1 className="mt-1 text-2xl font-bold text-white">
-              {lesson.title}
-            </h1>
-
-            <p className="mt-1 text-sm text-zinc-500">
-              Part {lesson.part} · Kết quả bài học
-            </p>
-          </div>
-
+      <div className="max-w-5xl mx-auto space-y-5 pb-12 px-4">
+        <div>
           <Link
             href="/dashboard/courses"
-            className="text-xs font-semibold text-zinc-400 hover:text-white transition"
+            className="inline-flex items-center gap-2 text-xs font-medium text-zinc-500 hover:text-white transition mb-5"
           >
             ← Quay lại Học tập
           </Link>
         </div>
 
-        {/* Result */}
-        <div className="rounded-3xl border border-zinc-800 bg-zinc-900/70 p-6">
-          <div className="grid md:grid-cols-3 gap-4">
-            <div className="rounded-2xl border border-zinc-800 bg-zinc-950/70 p-5 text-center">
-              <p className="text-xs text-zinc-500">
-                Điểm
+        <div className="rounded-3xl border border-zinc-800 bg-zinc-900/60 overflow-hidden">
+          <div className="max-w-xl mx-auto p-10 text-center">
+            <div className="mx-auto h-20 w-20 rounded-full bg-emerald-600/10 border border-emerald-500/20 flex items-center justify-center text-4xl">
+              🎉
+            </div>
+
+            <p className="text-[11px] uppercase tracking-[0.25em] text-zinc-600 mt-6">
+              Hoàn thành GROUP
+            </p>
+
+            <h1 className="text-2xl font-bold text-white mt-2">
+              {currentGroup.title ||
+                `Group ${currentGroup.id}`}
+            </h1>
+
+            <p className="text-sm text-zinc-500 mt-2">
+              Part {lesson.part}
+            </p>
+
+            <div className="mt-8">
+              <p className="text-5xl font-black text-emerald-400">
+                {correctCount}/
+                {totalQuestions}
               </p>
 
-              <p className="mt-2 text-4xl font-bold text-white">
-                {score}
+              <p className="text-sm text-zinc-500 mt-2">
+                câu trả lời đúng
               </p>
 
-              <p className="text-xs text-zinc-500 mt-1">
-                / 100
+              <p className="text-2xl font-bold text-white mt-4">
+                {score}%
               </p>
             </div>
 
-            <div className="rounded-2xl border border-zinc-800 bg-zinc-950/70 p-5 text-center">
-              <p className="text-xs text-zinc-500">
-                Câu đúng
-              </p>
+            <div className="flex flex-col sm:flex-row gap-3 justify-center mt-8">
+              <button
+                onClick={
+                  handleRestart
+                }
+                className="rounded-xl bg-red-600 px-6 py-3 text-sm font-semibold text-white hover:bg-red-700 transition"
+              >
+                🔄 Làm lại
+              </button>
 
-              <p className="mt-2 text-4xl font-bold text-emerald-400">
-                {correctCount}
-              </p>
+              <Link
+                href="/dashboard/courses/reading/review"
+                className="rounded-xl border border-zinc-700 bg-zinc-950 px-6 py-3 text-sm font-semibold text-zinc-300 hover:text-white transition"
+              >
+                🔁 Ôn tập
+              </Link>
 
-              <p className="text-xs text-zinc-500 mt-1">
-                / {totalQuestions}
-              </p>
+              <Link
+                href="/dashboard/courses"
+                className="rounded-xl border border-zinc-700 bg-zinc-950 px-6 py-3 text-sm font-semibold text-zinc-300 hover:text-white transition"
+              >
+                ← Học tập
+              </Link>
             </div>
-
-            <div className="rounded-2xl border border-zinc-800 bg-zinc-950/70 p-5 text-center">
-              <p className="text-xs text-zinc-500">
-                Tỷ lệ đúng
-              </p>
-
-              <p className="mt-2 text-4xl font-bold text-red-400">
-                {Math.round(
-                  (correctCount / totalQuestions) * 100,
-                )}
-                %
-              </p>
-            </div>
-          </div>
-
-          <div className="mt-5 rounded-2xl border border-zinc-800 bg-zinc-950/50 p-4">
-            <div className="flex items-center justify-between mb-2">
-              <span className="text-sm text-zinc-400">
-                Kết quả
-              </span>
-
-              <span className="text-sm font-semibold text-white">
-                {score}/100
-              </span>
-            </div>
-
-            <div className="h-2 rounded-full bg-zinc-800 overflow-hidden">
-              <div
-                className="h-full rounded-full bg-red-600 transition-all"
-                style={{
-                  width: `${score}%`,
-                }}
-              />
-            </div>
-          </div>
-
-          <div className="mt-5 flex flex-col sm:flex-row gap-3 justify-center">
-            <button
-              onClick={handleRetry}
-              className="rounded-2xl bg-red-600 px-6 py-3 text-sm font-semibold text-white hover:bg-red-700 transition"
-            >
-              🔄 Làm lại
-            </button>
-
-            <Link
-              href="/dashboard/courses/reading/review"
-              className="rounded-2xl border border-zinc-700 bg-zinc-950 px-6 py-3 text-sm font-semibold text-zinc-200 hover:bg-zinc-900 transition text-center"
-            >
-              🔁 Ôn tập
-            </Link>
-
-            <Link
-              href="/dashboard/courses"
-              className="rounded-2xl border border-zinc-700 bg-zinc-950 px-6 py-3 text-sm font-semibold text-zinc-200 hover:bg-zinc-900 transition text-center"
-            >
-              ← Học tập
-            </Link>
           </div>
         </div>
 
-        {/* Review all questions */}
-        <div className="space-y-5">
-          <div>
-            <h2 className="text-lg font-bold text-white">
-              Xem lại bài làm
-            </h2>
+        {/* REVIEW QUESTIONS */}
+        <div className="space-y-4">
+          {flattenedQuestions.map(
+            (question, index) => {
+              const selected =
+                answers[
+                  question.id
+                ];
 
-            <p className="text-xs text-zinc-500 mt-1">
-              Kiểm tra đáp án, giải thích và kiến thức cần nắm.
-            </p>
-          </div>
+              const correctOption =
+                question.reading_options.find(
+                  (option) =>
+                    option.is_correct,
+                );
 
-          {flattenedQuestions.map((question, index) => {
-            const selected = answers[question.id];
+              const isCorrect =
+                selected ===
+                correctOption?.option_key;
 
-            const correctOption =
-              question.reading_options.find(
-                (option) => option.is_correct === true,
+              return (
+                <div
+                  key={
+                    question.id
+                  }
+                  className="rounded-3xl border border-zinc-800 bg-zinc-900/60 p-6"
+                >
+                  <div className="flex items-center justify-between gap-3 mb-4">
+                    <span className="rounded-full bg-red-600/10 border border-red-600/20 px-3 py-1 text-[10px] font-semibold text-red-300">
+                      Câu {index + 1}
+                    </span>
+
+                    <span
+                      className={`rounded-full px-3 py-1 text-[10px] font-semibold ${
+                        isCorrect
+                          ? "bg-emerald-600/10 text-emerald-300"
+                          : "bg-red-600/10 text-red-300"
+                      }`}
+                    >
+                      {isCorrect
+                        ? "✓ Đúng"
+                        : "✕ Sai"}
+                    </span>
+                  </div>
+
+                  <h2 className="text-lg font-bold text-white leading-7">
+                    {
+                      question.question_text
+                    }
+                  </h2>
+
+                  <div className="mt-5 space-y-2">
+                    {question.reading_options.map(
+                      (option) => {
+                        const selectedOption =
+                          selected ===
+                          option.option_key;
+
+                        return (
+                          <div
+                            key={
+                              option.id
+                            }
+                            className={`rounded-xl border px-4 py-3 ${
+                              option.is_correct
+                                ? "border-emerald-500/30 bg-emerald-500/10"
+                                : selectedOption
+                                  ? "border-red-500/30 bg-red-500/10"
+                                  : "border-zinc-800 bg-zinc-950/50"
+                            }`}
+                          >
+                            <span className="font-bold mr-2">
+                              {
+                                option.option_key
+                              }
+                              .
+                            </span>
+
+                            <span className="text-sm text-zinc-300">
+                              {
+                                option.option_text
+                              }
+                            </span>
+                          </div>
+                        );
+                      },
+                    )}
+                  </div>
+
+                  {question.explanation && (
+                    <div className="mt-5 rounded-2xl border border-zinc-800 bg-zinc-950/60 p-4">
+                      <p className="text-[10px] font-bold uppercase tracking-[0.15em] text-zinc-500">
+                        Giải thích
+                      </p>
+
+                      <p className="text-sm leading-6 text-zinc-300 mt-2 whitespace-pre-line">
+                        {
+                          question.explanation
+                        }
+                      </p>
+                    </div>
+                  )}
+
+                  {question.knowledge && (
+                    <div className="mt-3 rounded-2xl border border-zinc-800 bg-zinc-950/60 p-4">
+                      <p className="text-[10px] font-bold uppercase tracking-[0.15em] text-zinc-500">
+                        Kiến thức cần nhớ
+                      </p>
+
+                      <p className="text-sm leading-6 text-zinc-300 mt-2 whitespace-pre-line">
+                        {
+                          question.knowledge
+                        }
+                      </p>
+                    </div>
+                  )}
+                </div>
               );
-
-            const isCorrect =
-              selected === correctOption?.option_key;
-
-            return (
-              <QuestionCard
-                key={question.id}
-                question={question}
-                index={index}
-                selected={selected}
-                correctOption={correctOption}
-                isCorrect={isCorrect}
-                submitted
-                onSelectAnswer={handleSelectAnswer}
-              />
-            );
-          })}
+            },
+          )}
         </div>
       </div>
     );
   }
 
-  /**
-   * Màn hình làm bài
-   */
-  return (
-    <div className="max-w-6xl mx-auto space-y-5 pb-10">
-      {/* Header */}
-      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
-        <div>
-          <div className="flex items-center gap-2">
-            <span className="rounded-full bg-red-600/10 border border-red-500/20 px-3 py-1 text-[11px] font-semibold text-red-300">
-              READING
-            </span>
+  // =========================================================
+  // CURRENT QUESTION
+  // =========================================================
 
-            <span className="rounded-full bg-zinc-900 border border-zinc-800 px-3 py-1 text-[11px] text-zinc-400">
-              Part {lesson.part}
-            </span>
-          </div>
-
-          <h1 className="mt-3 text-2xl font-bold text-white">
-            {lesson.title}
-          </h1>
-
-          <p className="mt-1 text-sm text-zinc-500">
-            Bài {lesson.display_order ?? lesson.id} ·{" "}
-            {totalQuestions} câu hỏi
-          </p>
-        </div>
-
-        <Link
-          href="/dashboard/courses"
-          className="text-xs font-semibold text-zinc-400 hover:text-white transition"
-        >
-          ← Quay lại Học tập
-        </Link>
-      </div>
-
-      {/* Progress */}
-      <div className="rounded-3xl border border-zinc-800 bg-zinc-900/70 p-4">
-        <div className="flex items-center justify-between gap-4 mb-3">
-          <div>
-            <p className="text-sm font-semibold text-white">
-              Tiến độ bài học
-            </p>
-
-            <p className="text-xs text-zinc-500 mt-1">
-              Đã trả lời {answeredCount}/{totalQuestions} câu
-            </p>
-          </div>
-
-          <span className="text-sm font-bold text-red-400">
-            {progressPercent}%
-          </span>
-        </div>
-
-        <div className="h-2 rounded-full bg-zinc-800 overflow-hidden">
-          <div
-            className="h-full rounded-full bg-red-600 transition-all duration-300"
-            style={{
-              width: `${progressPercent}%`,
-            }}
-          />
-        </div>
-      </div>
-
-      {/* Question navigation */}
-      <div className="rounded-3xl border border-zinc-800 bg-zinc-900/70 p-4">
-        <div className="flex items-center justify-between mb-3">
-          <p className="text-xs font-semibold uppercase tracking-[0.16em] text-zinc-400">
-            Danh sách câu hỏi
-          </p>
-
-          <p className="text-xs text-zinc-500">
-            Câu {currentQuestionIndex + 1}/{totalQuestions}
-          </p>
-        </div>
-
-        <div className="flex flex-wrap gap-2">
-          {flattenedQuestions.map((question, index) => {
-            const answered = Boolean(answers[question.id]);
-            const active =
-              index === currentQuestionIndex;
-
-            return (
-              <button
-                key={question.id}
-                onClick={() => handleGoToQuestion(index)}
-                className={`h-9 min-w-9 rounded-xl px-3 text-xs font-semibold transition ${
-                  active
-                    ? "bg-red-600 text-white"
-                    : answered
-                      ? "bg-emerald-600/15 border border-emerald-500/20 text-emerald-300"
-                      : "bg-zinc-950 border border-zinc-800 text-zinc-400 hover:border-zinc-700 hover:text-white"
-                }`}
-              >
-                {index + 1}
-              </button>
-            );
-          })}
-        </div>
-      </div>
-
-      {currentQuestion && (
-        <>
-          {/* Passage */}
-          <PassageCard
-            question={currentQuestion}
-          />
-
-          {/* Question */}
-          <QuestionCard
-            question={currentQuestion}
-            index={currentQuestionIndex}
-            selected={answers[currentQuestion.id]}
-            submitted={false}
-            onSelectAnswer={handleSelectAnswer}
-          />
-
-          {/* Navigation */}
-          <div className="rounded-3xl border border-zinc-800 bg-zinc-900/70 p-5">
-            <div className="flex flex-col sm:flex-row items-center justify-between gap-3">
-              <button
-                onClick={handlePrevious}
-                disabled={currentQuestionIndex === 0}
-                className={`w-full sm:w-auto rounded-2xl px-5 py-3 text-sm font-semibold transition ${
-                  currentQuestionIndex === 0
-                    ? "bg-zinc-900 text-zinc-600 border border-zinc-800 cursor-not-allowed"
-                    : "bg-zinc-950 text-zinc-200 border border-zinc-700 hover:bg-zinc-800"
-                }`}
-              >
-                ← Câu trước
-              </button>
-
-              {currentQuestionIndex <
-              totalQuestions - 1 ? (
-                <button
-                  onClick={handleNext}
-                  className="w-full sm:w-auto rounded-2xl bg-red-600 px-6 py-3 text-sm font-semibold text-white hover:bg-red-700 transition"
-                >
-                  Câu tiếp theo →
-                </button>
-              ) : (
-                <button
-                  onClick={handleSubmit}
-                  disabled={
-                    answeredCount < totalQuestions ||
-                    submitting
-                  }
-                  className={`w-full sm:w-auto rounded-2xl px-6 py-3 text-sm font-semibold transition ${
-                    answeredCount < totalQuestions ||
-                    submitting
-                      ? "bg-zinc-800 text-zinc-500 border border-zinc-700 cursor-not-allowed"
-                      : "bg-emerald-600 text-white hover:bg-emerald-700"
-                  }`}
-                >
-                  {submitting
-                    ? "Đang chấm..."
-                    : "✓ Hoàn thành"}
-                </button>
-              )}
-            </div>
-
-            {answeredCount < totalQuestions && (
-              <p className="mt-3 text-center text-xs text-zinc-500">
-                Bạn cần trả lời đủ{" "}
-                {totalQuestions - answeredCount} câu còn lại
-                trước khi hoàn thành.
-              </p>
-            )}
-          </div>
-        </>
-      )}
-    </div>
-  );
-}
-
-/**
- * Passage
- */
-function PassageCard({
-  question,
-}: {
-  question: ReadingQuestion & {
-    passage?: string | null;
-    imageUrl?: string | null;
-    groupTitle?: string;
-    groupKnowledge?: string | null;
-  };
-}) {
-  if (
-    !question.passage &&
-    !question.imageUrl &&
-    !question.groupTitle
-  ) {
+  if (!currentQuestion) {
     return null;
   }
 
-  return (
-    <div className="rounded-3xl border border-zinc-800 bg-zinc-900/70 overflow-hidden">
-      <div className="px-5 py-4 border-b border-zinc-800">
-        <p className="text-xs font-semibold uppercase tracking-[0.16em] text-red-400">
-          Reading passage
-        </p>
+  const correctOption =
+    currentQuestion.reading_options.find(
+      (option) =>
+        option.is_correct,
+    );
 
-        {question.groupTitle && (
-          <h2 className="mt-1 text-lg font-bold text-white">
-            {question.groupTitle}
-          </h2>
-        )}
+  const selectedAnswer =
+    answers[
+      currentQuestion.id
+    ];
+
+  // =========================================================
+  // MAIN LEARN UI
+  // =========================================================
+
+  return (
+    <div className="max-w-5xl mx-auto space-y-5 pb-12 px-4">
+      {/* HEADER */}
+      <div>
+        <Link
+          href="/dashboard/courses"
+          className="inline-flex items-center gap-2 text-xs font-medium text-zinc-500 hover:text-white transition mb-5"
+        >
+          ← Quay lại Học tập
+        </Link>
+
+        <div className="rounded-3xl border border-zinc-800 bg-zinc-900/60 p-5">
+          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+            <div>
+              <p className="text-[10px] uppercase tracking-[0.2em] text-zinc-600">
+                Part {lesson.part}
+              </p>
+
+              <h1 className="text-xl font-bold text-white mt-1">
+                {currentGroup.title ||
+                  `Group ${currentGroup.id}`}
+              </h1>
+
+              <p className="text-xs text-zinc-500 mt-1">
+                Group{" "}
+                {currentGroup.id}
+                {" · "}
+                {totalQuestions} câu hỏi
+              </p>
+            </div>
+
+            <div className="text-right">
+              <p className="text-sm font-bold text-white">
+                Câu{" "}
+                {currentQuestionIndex +
+                  1}{" "}
+                /{" "}
+                {totalQuestions}
+              </p>
+
+              <p className="text-[10px] text-zinc-600 mt-1">
+                Đã trả lời{" "}
+                {answeredCount}
+              </p>
+            </div>
+          </div>
+
+          <div className="mt-5 h-2 rounded-full bg-zinc-800 overflow-hidden">
+            <div
+              className="h-full rounded-full bg-red-600 transition-all duration-300"
+              style={{
+                width: `${progressPercent}%`,
+              }}
+            />
+          </div>
+        </div>
       </div>
 
-      {question.imageUrl && (
-        <div className="px-5 pt-5">
-          <img
-            src={question.imageUrl}
-            alt={question.groupTitle || "Reading passage"}
-            className="max-h-96 w-full object-contain rounded-2xl border border-zinc-800 bg-zinc-950"
-          />
+      {/* ERROR */}
+      {error && (
+        <div className="rounded-2xl border border-red-500/20 bg-red-950/20 px-4 py-3">
+          <p className="text-sm text-red-300">
+            {error}
+          </p>
         </div>
       )}
 
-      {question.passage && (
-        <div className="p-5">
-          <div className="rounded-2xl border border-zinc-800 bg-zinc-950/70 p-5">
-            <p className="whitespace-pre-wrap text-sm leading-7 text-zinc-300">
-              {question.passage}
+      {/* PASSAGE */}
+      {currentQuestion.passage && (
+        <div className="rounded-3xl border border-zinc-800 bg-zinc-900/60 overflow-hidden">
+          <div className="px-6 py-4 border-b border-zinc-800">
+            <p className="text-xs font-semibold text-white">
+              📄 Đoạn văn
             </p>
+          </div>
+
+          <div className="p-6">
+            <div className="rounded-2xl border border-zinc-800 bg-zinc-950/60 p-6">
+              <p className="text-sm sm:text-base leading-7 text-zinc-300 whitespace-pre-line">
+                {
+                  currentQuestion.passage
+                }
+              </p>
+            </div>
           </div>
         </div>
       )}
 
-      {question.groupKnowledge && (
-  <div className="px-5 pb-5">
-    <div className="rounded-2xl border border-red-500/20 bg-red-950/10 p-5">
-      <p className="text-xs font-semibold uppercase tracking-[0.16em] text-red-400">
-        Kiến thức cần nắm
-      </p>
-
-      <p className="mt-2 whitespace-pre-wrap text-sm leading-7 text-zinc-300">
-        {question.groupKnowledge}
-      </p>
-    </div>
-  </div>
-)}
-    </div>
-  );
-}
-
-/**
- * Question card
- */
-function QuestionCard({
-  question,
-  index,
-  selected,
-  correctOption,
-  isCorrect,
-  submitted,
-  onSelectAnswer,
-}: {
-  question: ReadingQuestion & {
-    groupTitle?: string;
-    groupKnowledge?: string | null;
-    passage?: string | null;
-    imageUrl?: string | null;
-  };
-  index: number;
-  selected?: string;
-  correctOption?: {
-    id: number;
-    option_key: string;
-    option_text: string;
-    is_correct?: boolean;
-  };
-  isCorrect?: boolean;
-  submitted: boolean;
-  onSelectAnswer: (
-    questionId: number,
-    optionKey: string,
-  ) => void;
-}) {
-  return (
-    <div className="rounded-3xl border border-zinc-800 bg-zinc-900/70 p-5">
-      {/* Question header */}
-      <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3">
-        <div>
-          <p className="text-xs font-semibold text-red-400">
-            CÂU {index + 1}
-          </p>
-
-          <h2 className="mt-2 text-base sm:text-lg font-semibold leading-7 text-white">
-            {question.question_text}
-          </h2>
-        </div>
-
-        {submitted && (
-          <span
-            className={`shrink-0 rounded-full px-3 py-1 text-[11px] font-semibold border ${
-              isCorrect
-                ? "bg-emerald-600/10 border-emerald-500/20 text-emerald-300"
-                : "bg-red-600/10 border-red-500/20 text-red-300"
-            }`}
-          >
-            {isCorrect ? "✓ Đúng" : "✕ Sai"}
-          </span>
-        )}
-      </div>
-
-      {/* Options */}
-      <div className="mt-5 grid gap-3">
-        {question.reading_options.map((option) => {
-          const isSelected =
-            selected === option.option_key;
-
-          let optionClass =
-            "bg-zinc-950/80 border-zinc-800 text-zinc-300 hover:border-zinc-700 hover:bg-zinc-900";
-
-          if (!submitted && isSelected) {
-            optionClass =
-              "bg-red-600/15 border-red-500/40 text-white";
-          }
-
-          if (submitted) {
-            if (option.is_correct) {
-              optionClass =
-                "bg-emerald-600/10 border-emerald-500/30 text-emerald-200";
-            } else if (isSelected) {
-              optionClass =
-                "bg-red-600/10 border-red-500/30 text-red-200";
-            } else {
-              optionClass =
-                "bg-zinc-950/80 border-zinc-800 text-zinc-400";
-            }
-          }
-
-          return (
-            <button
-              key={option.id}
-              type="button"
-              disabled={submitted}
-              onClick={() =>
-                onSelectAnswer(
-                  question.id,
-                  option.option_key,
+      {/* IMAGE */}
+      {currentQuestion.imageUrl && (
+        <div className="rounded-3xl border border-zinc-800 bg-zinc-900/60 p-5">
+          <div className="rounded-2xl border border-zinc-800 bg-zinc-950/60 p-4 flex justify-center">
+            <img
+              src={
+                currentQuestion.imageUrl.startsWith(
+                  "http",
                 )
+                  ? currentQuestion.imageUrl
+                  : `http://localhost:3001${currentQuestion.imageUrl}`
               }
-              className={`w-full rounded-2xl border px-4 py-4 text-left transition ${optionClass} ${
-                submitted
-                  ? "cursor-default"
-                  : "cursor-pointer"
-              }`}
-            >
-              <div className="flex items-start gap-3">
-                <span
-                  className={`flex h-7 w-7 shrink-0 items-center justify-center rounded-lg text-xs font-bold ${
-                    isSelected
-                      ? "bg-red-600 text-white"
-                      : option.is_correct && submitted
-                        ? "bg-emerald-600 text-white"
-                        : "bg-zinc-800 text-zinc-300"
-                  }`}
-                >
-                  {option.option_key}
-                </span>
-
-                <span className="pt-1 text-sm leading-6">
-                  {option.option_text}
-                </span>
-              </div>
-            </button>
-          );
-        })}
-      </div>
-
-      {/* Explanation */}
-      {submitted && (
-        <div className="mt-5 space-y-3">
-          {correctOption && (
-            <div className="rounded-2xl border border-emerald-500/20 bg-emerald-950/20 p-4">
-              <p className="text-xs font-semibold uppercase tracking-[0.12em] text-emerald-400">
-                Đáp án đúng
-              </p>
-
-              <p className="mt-2 text-sm text-emerald-100">
-                <span className="font-bold">
-                  {correctOption.option_key}.
-                </span>{" "}
-                {correctOption.option_text}
-              </p>
-            </div>
-          )}
-
-          {question.explanation && (
-            <div className="rounded-2xl border border-zinc-800 bg-zinc-950/70 p-4">
-              <p className="text-xs font-semibold uppercase tracking-[0.12em] text-white">
-                Giải thích
-              </p>
-
-              <p className="mt-2 whitespace-pre-wrap text-sm leading-6 text-zinc-400">
-                {question.explanation}
-              </p>
-            </div>
-          )}
-
-          {(question.knowledge ||
-            question.groupKnowledge) && (
-            <div className="rounded-2xl border border-zinc-800 bg-zinc-950/70 p-4">
-              <p className="text-xs font-semibold uppercase tracking-[0.12em] text-white">
-                Kiến thức cần nắm
-              </p>
-
-              <p className="mt-2 whitespace-pre-wrap text-sm leading-6 text-zinc-400">
-                {question.knowledge ||
-                  question.groupKnowledge}
-              </p>
-            </div>
-          )}
+              alt="Reading reference"
+              className="max-h-[420px] max-w-full object-contain rounded-xl"
+            />
+          </div>
         </div>
       )}
+
+      {/* QUESTION */}
+      <div className="rounded-3xl border border-zinc-800 bg-zinc-900/60 p-6">
+        <span className="inline-flex rounded-full bg-red-600/10 border border-red-600/20 px-3 py-1 text-[10px] font-semibold text-red-300">
+          Câu{" "}
+          {currentQuestionIndex +
+            1}
+        </span>
+
+        <h2 className="text-xl sm:text-2xl font-bold leading-relaxed text-white mt-5">
+          {
+            currentQuestion.question_text
+          }
+        </h2>
+
+        <p className="text-[10px] uppercase tracking-[0.15em] text-zinc-600 mt-3 mb-5">
+          Chọn đáp án đúng
+        </p>
+
+        <div className="space-y-3">
+          {currentQuestion.reading_options.map(
+            (option) => {
+              const isSelected =
+                selectedAnswer ===
+                option.option_key;
+
+              let className =
+                "border-zinc-800 bg-zinc-950/60 text-zinc-300 hover:border-zinc-700";
+
+              if (isSelected) {
+                className =
+                  "border-red-600/50 bg-red-600/10 text-white";
+              }
+
+              return (
+                <button
+                  key={
+                    option.id
+                  }
+                  type="button"
+                  disabled={
+                    submitting
+                  }
+                  onClick={() =>
+                    handleSelectAnswer(
+                      currentQuestion.id,
+                      option.option_key,
+                    )
+                  }
+                  className={`w-full rounded-2xl border px-4 py-4 text-left transition ${className}`}
+                >
+                  <div className="flex items-center gap-4">
+                    <span
+                      className={`h-10 w-10 shrink-0 rounded-xl flex items-center justify-center text-sm font-bold ${
+                        isSelected
+                          ? "bg-red-600 text-white"
+                          : "bg-zinc-800 text-zinc-400"
+                      }`}
+                    >
+                      {
+                        option.option_key
+                      }
+                    </span>
+
+                    <span className="text-sm leading-6">
+                      {
+                        option.option_text
+                      }
+                    </span>
+                  </div>
+                </button>
+              );
+            },
+          )}
+        </div>
+
+        {/* NAVIGATION */}
+        <div className="flex flex-col sm:flex-row gap-3 mt-7">
+          <button
+            type="button"
+            disabled={
+              currentQuestionIndex ===
+              0
+            }
+            onClick={
+              handlePrevious
+            }
+            className="rounded-xl border border-zinc-700 bg-zinc-950 px-5 py-3 text-sm font-semibold text-zinc-300 hover:text-white disabled:opacity-30 disabled:cursor-not-allowed transition"
+          >
+            ← Câu trước
+          </button>
+
+          {currentQuestionIndex <
+          totalQuestions - 1 ? (
+            <button
+              type="button"
+              disabled={
+                !selectedAnswer
+              }
+              onClick={
+                handleNext
+              }
+              className={`sm:ml-auto rounded-xl px-6 py-3 text-sm font-semibold transition ${
+                selectedAnswer
+                  ? "bg-red-600 text-white hover:bg-red-700"
+                  : "bg-zinc-800 text-zinc-600 cursor-not-allowed"
+              }`}
+            >
+              Câu tiếp theo →
+            </button>
+          ) : (
+            <button
+              type="button"
+              disabled={
+                answeredCount <
+                  totalQuestions ||
+                submitting
+              }
+              onClick={
+                handleSubmit
+              }
+              className={`sm:ml-auto rounded-xl px-6 py-3 text-sm font-semibold transition ${
+                answeredCount >=
+                  totalQuestions &&
+                !submitting
+                  ? "bg-red-600 text-white hover:bg-red-700"
+                  : "bg-zinc-800 text-zinc-600 cursor-not-allowed"
+              }`}
+            >
+              {submitting
+                ? "Đang lưu..."
+                : "Nộp GROUP →"}
+            </button>
+          )}
+        </div>
+      </div>
+
+      {/* QUESTION NAVIGATOR */}
+      <div className="rounded-3xl border border-zinc-800 bg-zinc-900/40 p-5">
+        <p className="text-xs font-semibold text-zinc-300 mb-3">
+          Danh sách câu hỏi
+        </p>
+
+        <div className="flex flex-wrap gap-2">
+          {flattenedQuestions.map(
+            (question, index) => {
+              const answered =
+                Boolean(
+                  answers[
+                    question.id
+                  ],
+                );
+
+              const active =
+                index ===
+                currentQuestionIndex;
+
+              return (
+                <button
+                  key={
+                    question.id
+                  }
+                  type="button"
+                  onClick={() =>
+                    handleGoToQuestion(
+                      index,
+                    )
+                  }
+                  className={`h-9 w-9 rounded-lg text-xs font-semibold transition ${
+                    active
+                      ? "bg-red-600 text-white"
+                      : answered
+                        ? "bg-emerald-600/20 text-emerald-300 border border-emerald-500/20"
+                        : "bg-zinc-800 text-zinc-400 hover:text-white"
+                  }`}
+                >
+                  {index + 1}
+                </button>
+              );
+            },
+          )}
+        </div>
+      </div>
     </div>
   );
 }
 
-/**
- * Suspense wrapper
- *
- * Next.js cần Suspense khi page sử dụng useSearchParams().
- */
+// =========================================================
+// SUSPENSE WRAPPER
+// =========================================================
+
 export default function ReadingLearnPage() {
   return (
     <Suspense
