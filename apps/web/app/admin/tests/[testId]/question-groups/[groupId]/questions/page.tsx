@@ -16,7 +16,7 @@ import {
 } from "@/services/admin";
 
 const EMPTY_OPTION = {
-  option_label: "",
+  option_label: "A",
   option_text: "",
   is_correct: false,
   display_order: 0,
@@ -28,7 +28,7 @@ const EMPTY_FORM: QuestionForm = {
   correct_answer: "",
   explanation: "",
   display_order: 0,
-  options: [EMPTY_OPTION],
+  options: [{ ...EMPTY_OPTION }],
 };
 
 export default function QuestionsPage() {
@@ -123,16 +123,23 @@ export default function QuestionsPage() {
     try {
       setSaving(true);
 
+      // Ensure correct_answer is synced with the selected option
+      const correctOption = form.options.find((opt) => opt.is_correct);
+      const formData = {
+        ...form,
+        correct_answer: correctOption?.option_label || form.correct_answer,
+      };
+
       if (formMode === "create") {
-        await createQuestion(groupId, form);
+        await createQuestion(groupId, formData);
         alert("Thêm câu hỏi thành công");
       } else {
-        await updateQuestion(editingId!, form);
+        await updateQuestion(editingId!, formData);
         alert("Cập nhật câu hỏi thành công");
       }
 
       setShowForm(false);
-      setForm({ ...EMPTY_FORM, options: [EMPTY_OPTION] });
+      setForm({ ...EMPTY_FORM, options: [{ ...EMPTY_OPTION }] });
       setEditingId(null);
 
       await loadQuestions(page);
@@ -165,10 +172,14 @@ export default function QuestionsPage() {
     setFormMode("edit");
     setEditingId(item.id);
 
+    // Find the correct answer from options
+    const correctOption = item.options?.find((opt) => opt.is_correct);
+    const correctAnswer = correctOption?.option_label || item.correct_answer || "";
+
     setForm({
       question_number: item.question_number || undefined,
       question_text: item.question_text || "",
-      correct_answer: item.correct_answer || "",
+      correct_answer: correctAnswer,
       explanation: item.explanation || "",
       display_order: item.display_order || undefined,
       options: item.options?.map((opt) => ({
@@ -220,7 +231,15 @@ export default function QuestionsPage() {
   }
 
   function addOption() {
-    const newOptions = [...(form.options || []), { ...EMPTY_OPTION, display_order: (form.options?.length || 0) }];
+    const currentLength = form.options?.length || 0;
+    const labels = ["A", "B", "C", "D", "E", "F", "G", "H"];
+    const nextLabel = labels[currentLength] || String.fromCharCode(65 + currentLength); // A=65, B=66, etc.
+    
+    const newOptions = [...(form.options || []), { 
+      ...EMPTY_OPTION, 
+      option_label: nextLabel,
+      display_order: currentLength 
+    }];
     updateForm("options", newOptions);
   }
 
@@ -232,7 +251,7 @@ export default function QuestionsPage() {
   function openCreateForm() {
     setFormMode("create");
     setEditingId(null);
-    setForm({ ...EMPTY_FORM, options: [EMPTY_OPTION] });
+    setForm({ ...EMPTY_FORM, options: [{ ...EMPTY_OPTION }] });
     setShowForm(true);
   }
 
@@ -533,8 +552,12 @@ export default function QuestionsPage() {
 
                   <input
                     type="number"
+                    min="1"
                     value={form.question_number || 1}
-                    onChange={(e) => updateForm("question_number", Number(e.target.value))}
+                    onChange={(e) => {
+                      const value = Number(e.target.value);
+                      updateForm("question_number", Math.max(1, value));
+                    }}
                     placeholder="1"
                     className="w-full bg-zinc-800 border border-zinc-700 rounded-xl px-4 py-3 outline-none focus:border-red-500"
                   />
@@ -547,8 +570,12 @@ export default function QuestionsPage() {
 
                   <input
                     type="number"
+                    min="0"
                     value={form.display_order || 0}
-                    onChange={(e) => updateForm("display_order", Number(e.target.value))}
+                    onChange={(e) => {
+                      const value = Number(e.target.value);
+                      updateForm("display_order", Math.max(0, value));
+                    }}
                     placeholder="0"
                     className="w-full bg-zinc-800 border border-zinc-700 rounded-xl px-4 py-3 outline-none focus:border-red-500"
                   />
@@ -620,32 +647,52 @@ export default function QuestionsPage() {
                   {form.options?.map((option, index) => (
                     <div key={index} className="bg-zinc-800 border border-zinc-700 rounded-xl p-4">
                       <div className="flex items-start gap-4">
-                        {/* Option Label & Correct */}
+                        {/* Option Label & Correct Selection */}
                         <div className="flex flex-col gap-2">
                           <div>
                             <label className="block text-xs text-zinc-500 mb-1">Label</label>
                             <input
                               value={option.option_label}
-                              onChange={(e) => updateOption(index, "option_label", e.target.value.toUpperCase())}
+                              onChange={(e) => {
+                                updateOption(index, "option_label", e.target.value.toUpperCase());
+                                // Auto-update correct_answer when this option is selected
+                                if (option.is_correct) {
+                                  updateForm("correct_answer", e.target.value.toUpperCase());
+                                }
+                              }}
                               placeholder="A"
                               maxLength={1}
                               className="w-16 bg-zinc-900 border border-zinc-600 rounded-lg px-3 py-2 outline-none focus:border-red-500 uppercase text-center"
                             />
                           </div>
 
-                          <div className="flex items-center gap-2">
-                            <input
-                              type="checkbox"
-                              id={`correct-${index}`}
-                              checked={option.is_correct}
-                              onChange={(e) => updateOption(index, "is_correct", e.target.checked)}
-                              className="w-5 h-5 rounded bg-zinc-900 border-zinc-600 text-red-600 focus:ring-red-500"
-                            />
-
-                            <label htmlFor={`correct-${index}`} className="text-xs text-zinc-400">
-                              Đúng
-                            </label>
-                          </div>
+                          {/* Styled selection button like listening section */}
+                          <button
+                            type="button"
+                            onClick={() => {
+                              // Toggle this option as correct
+                              const newOptions = form.options?.map((opt, i) => ({
+                                ...opt,
+                                is_correct: i === index,
+                              })) || [];
+                              
+                              updateForm("options", newOptions);
+                              
+                              // Update correct_answer field
+                              updateForm("correct_answer", option.option_label || "");
+                            }}
+                            className={`w-16 h-10 rounded-lg border-2 flex items-center justify-center transition-all ${
+                              option.is_correct
+                                ? "bg-red-600/20 border-red-500 text-red-400"
+                                : "bg-zinc-900 border-zinc-600 text-zinc-400 hover:border-zinc-500"
+                            }`}
+                          >
+                            {option.is_correct ? "✓" : "○"}
+                          </button>
+                          
+                          <span className="text-xs text-zinc-500 text-center">
+                            {option.is_correct ? "Đúng" : "Chọn"}
+                          </span>
                         </div>
 
                         {/* Option Text */}
@@ -666,8 +713,12 @@ export default function QuestionsPage() {
                             <label className="block text-xs text-zinc-500 mb-1">Thứ tự</label>
                             <input
                               type="number"
+                              min="0"
                               value={option.display_order}
-                              onChange={(e) => updateOption(index, "display_order", Number(e.target.value))}
+                              onChange={(e) => {
+                                const value = Number(e.target.value);
+                                updateOption(index, "display_order", Math.max(0, value));
+                              }}
                               placeholder="0"
                               className="w-16 bg-zinc-900 border border-zinc-600 rounded-lg px-3 py-2 outline-none focus:border-red-500 text-center"
                             />
