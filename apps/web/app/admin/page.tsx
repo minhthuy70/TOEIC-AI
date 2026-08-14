@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
+import { getAdminStats } from "@/services/admin";
 
 type User = {
   fullName: string;
@@ -9,9 +10,19 @@ type User = {
   role: string;
 };
 
+type AdminStats = {
+  users: number;
+  vocabulary: number;
+  grammarLessons: number;
+  tests: number;
+};
+
 export default function AdminPage() {
   const [user, setUser] =
     useState<User | null>(null);
+  const [stats, setStats] =
+    useState<AdminStats | null>(null);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const storedUser =
@@ -20,6 +31,20 @@ export default function AdminPage() {
     if (storedUser) {
       setUser(JSON.parse(storedUser));
     }
+
+    // Fetch admin statistics
+    const fetchStats = async () => {
+      try {
+        const data = await getAdminStats();
+        setStats(data);
+      } catch (error) {
+        console.error("Failed to fetch admin stats:", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchStats();
   }, []);
 
   return (
@@ -62,25 +87,25 @@ export default function AdminPage() {
         <StatCard
           icon="👥"
           title="Người dùng"
-          value="--"
+          value={loading ? "--" : stats?.users.toString() || "0"}
         />
 
         <StatCard
           icon="📚"
           title="Từ vựng"
-          value="--"
+          value={loading ? "--" : stats?.vocabulary.toString() || "0"}
         />
 
         <StatCard
           icon="📖"
           title="Bài ngữ pháp"
-          value="--"
+          value={loading ? "--" : stats?.grammarLessons.toString() || "0"}
         />
 
         <StatCard
           icon="📝"
           title="Đề thi"
-          value="--"
+          value={loading ? "--" : stats?.tests.toString() || "0"}
         />
       </div>
 
