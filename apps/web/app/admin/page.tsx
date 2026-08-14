@@ -148,11 +148,13 @@ export default function AdminPage() {
             />
           </Link>
 
-          <ModuleCard
-            icon="📝"
-            title="Đề thi"
-            description="Quản lý đề và bộ câu hỏi"
-          />
+          <Link href="/admin/tests">
+            <ModuleCard
+              icon="📝"
+              title="Đề thi"
+              description="Quản lý đề và bộ câu hỏi"
+            />
+          </Link>
         </div>
       </div>
     </div>

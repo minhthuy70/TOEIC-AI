@@ -1247,6 +1247,270 @@ async deleteGrammarLesson(
   };
 }
 
+// ======================================================
+// TESTS MANAGEMENT
+// ======================================================
+
+@Get("tests")
+@Roles(
+  UserRole.SUPER_ADMIN,
+  UserRole.CONTENT_ADMIN,
+)
+async getTests(
+  @Query("page") page = "1",
+  @Query("limit") limit = "10",
+  @Query("search") search = "",
+) {
+  const pageNumber = Math.max(Number(page), 1);
+  const limitNumber = Math.min(
+    Math.max(Number(limit), 1),
+    100,
+  );
+
+  const skip = (pageNumber - 1) * limitNumber;
+
+  const where: any = {};
+
+  if (search.trim()) {
+    where.OR = [
+      {
+        title: {
+          contains: search.trim(),
+          mode: "insensitive",
+        },
+      },
+      {
+        description: {
+          contains: search.trim(),
+          mode: "insensitive",
+        },
+      },
+    ];
+  }
+
+  const [items, total] = await Promise.all([
+    this.prisma.tests.findMany({
+      where,
+      skip,
+      take: limitNumber,
+      orderBy: {
+        id: "asc",
+      },
+      select: {
+        id: true,
+        title: true,
+        description: true,
+        duration: true,
+        total_questions: true,
+        is_active: true,
+        created_at: true,
+        _count: {
+          select: {
+            question_groups: true,
+            grammar_lessons: true,
+          },
+        },
+      },
+    }),
+
+    this.prisma.tests.count({
+      where,
+    }),
+  ]);
+
+  return {
+    items,
+    total,
+    page: pageNumber,
+    limit: limitNumber,
+    totalPages: Math.ceil(total / limitNumber),
+  };
+}
+
+@Get("tests/:id")
+@Roles(
+  UserRole.SUPER_ADMIN,
+  UserRole.CONTENT_ADMIN,
+)
+async getTest(@Param("id") id: string) {
+  const testId = Number(id);
+
+  if (!Number.isInteger(testId) || testId <= 0) {
+    throw new BadRequestException("ID đề thi không hợp lệ");
+  }
+
+  const test = await this.prisma.tests.findUnique({
+    where: {
+      id: testId,
+    },
+    include: {
+      question_groups: {
+        include: {
+          questions: {
+            include: {
+              options: true,
+            },
+          },
+        },
+      },
+      grammar_lessons: {
+        select: {
+          id: true,
+          title: true,
+        },
+      },
+    },
+  });
+
+  if (!test) {
+    throw new NotFoundException("Không tìm thấy đề thi");
+  }
+
+  return test;
+}
+
+@Post("tests")
+@Roles(
+  UserRole.SUPER_ADMIN,
+  UserRole.CONTENT_ADMIN,
+)
+async createTest(
+  @Body()
+  body: {
+    title: string;
+    description?: string;
+    duration?: number;
+    total_questions?: number;
+    is_active?: boolean;
+  },
+) {
+  if (!body.title?.trim()) {
+    throw new BadRequestException("Tiêu đề đề thi không được để trống");
+  }
+
+  const test = await this.prisma.tests.create({
+    data: {
+      title: body.title.trim(),
+      description: body.description?.trim() || null,
+      duration: body.duration ? Number(body.duration) : null,
+      total_questions: body.total_questions ? Number(body.total_questions) : null,
+      is_active: body.is_active !== undefined ? body.is_active : true,
+    },
+  });
+
+  return {
+    success: true,
+    message: "Thêm đề thi thành công",
+    item: test,
+  };
+}
+
+@Patch("tests/:id")
+@Roles(
+  UserRole.SUPER_ADMIN,
+  UserRole.CONTENT_ADMIN,
+)
+async updateTest(
+  @Param("id") id: string,
+  @Body()
+  body: {
+    title: string;
+    description?: string;
+    duration?: number;
+    total_questions?: number;
+    is_active?: boolean;
+  },
+) {
+  const testId = Number(id);
+
+  if (!Number.isInteger(testId) || testId <= 0) {
+    throw new BadRequestException("ID đề thi không hợp lệ");
+  }
+
+  const existing = await this.prisma.tests.findUnique({
+    where: {
+      id: testId,
+    },
+  });
+
+  if (!existing) {
+    throw new NotFoundException("Không tìm thấy đề thi");
+  }
+
+  if (!body.title?.trim()) {
+    throw new BadRequestException("Tiêu đề đề thi không được để trống");
+  }
+
+  const test = await this.prisma.tests.update({
+    where: {
+      id: testId,
+    },
+    data: {
+      title: body.title.trim(),
+      description: body.description?.trim() || null,
+      duration: body.duration ? Number(body.duration) : null,
+      total_questions: body.total_questions ? Number(body.total_questions) : null,
+      is_active: body.is_active !== undefined ? body.is_active : existing.is_active,
+    },
+  });
+
+  return {
+    success: true,
+    message: "Cập nhật đề thi thành công",
+    item: test,
+  };
+}
+
+@Delete("tests/:id")
+@Roles(
+  UserRole.SUPER_ADMIN,
+  UserRole.CONTENT_ADMIN,
+)
+async deleteTest(@Param("id") id: string) {
+  const testId = Number(id);
+
+  if (!Number.isInteger(testId) || testId <= 0) {
+    throw new BadRequestException("ID đề thi không hợp lệ");
+  }
+
+  const existing = await this.prisma.tests.findUnique({
+    where: {
+      id: testId,
+    },
+    include: {
+      _count: {
+        select: {
+          question_groups: true,
+          grammar_lessons: true,
+        },
+      },
+    },
+  });
+
+  if (!existing) {
+    throw new NotFoundException("Không tìm thấy đề thi");
+  }
+
+  // Check if test is being used
+  if (existing._count.question_groups > 0 || existing._count.grammar_lessons > 0) {
+    throw new ConflictException(
+      `Không thể xóa đề thi vì đang có ${existing._count.question_groups} nhóm câu hỏi và ${existing._count.grammar_lessons} bài học ngữ pháp liên quan`,
+    );
+  }
+
+  await this.prisma.tests.delete({
+    where: {
+      id: testId,
+    },
+  });
+
+  return {
+    success: true,
+    message: "Xóa đề thi thành công",
+    id: testId,
+  };
+}
+
 @Get("listening/lessons")
 @Roles(
   UserRole.SUPER_ADMIN,
