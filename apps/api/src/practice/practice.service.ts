@@ -1,276 +1,710 @@
-import { Injectable, NotFoundException, BadRequestException } from '@nestjs/common';
-import { PrismaService } from '../prisma/prisma.service';
+import {
+  BadRequestException,
+  Injectable,
+  NotFoundException,
+} from "@nestjs/common";
+
+import { PrismaService } from "../prisma/prisma.service";
+
+import { SubmitPracticeDto } from "./dto/submit-practice.dto";
 
 @Injectable()
 export class PracticeService {
-  constructor(private readonly prisma: PrismaService) {}
+  constructor(
+    private readonly prisma: PrismaService,
+  ) {}
 
-  /**
-   * Lấy câu hỏi cho luyện tập theo Part
-   * - Giữ nguyên quan hệ question_group cho Part 3, 4, 7
-   * - Có thể random theo request
-   */
-  async getPracticeQuestions(userId: number, part: number, questionCount?: number, random: boolean = false) {
-    if (part < 1 || part > 7) {
-      throw new BadRequestException('Part phải từ 1 đến 7');
+  // ============================================================
+  // CẤU HÌNH SỐ CÂU CHO TỪNG PART
+  // ============================================================
+
+  private readonly PRACTICE_CONFIG = {
+    1: {
+      type: "question",
+      count: 6,
+    },
+
+    2: {
+      type: "question",
+      count: 15,
+    },
+
+    3: {
+      type: "group",
+      count: 3,
+    },
+
+    4: {
+      type: "group",
+      count: 3,
+    },
+
+    5: {
+      type: "question",
+      count: 20,
+    },
+
+    6: {
+      type: "group",
+      count: 2,
+    },
+
+    7: {
+      type: "group",
+      count: 3,
+    },
+  } as const;
+
+  // ============================================================
+  // RANDOM ARRAY
+  // ============================================================
+
+  private shuffle<T>(array: T[]): T[] {
+    const result = [...array];
+
+    for (let i = result.length - 1; i > 0; i--) {
+      const j = Math.floor(
+        Math.random() * (i + 1),
+      );
+
+      [result[i], result[j]] = [
+        result[j],
+        result[i],
+      ];
     }
 
-    const validQuestionCount = questionCount ? Math.min(Math.max(questionCount, 1), 50) : 10;
+    return result;
+  }
 
-    // Lấy question groups theo part
-    const questionGroups = await this.prisma.question_groups.findMany({
+  // ============================================================
+  // LẤY TEST NGẪU NHIÊN
+  // ============================================================
+
+  private async getRandomTest() {
+    const tests = await this.prisma.tests.findMany({
       where: {
-        part,
-        test_id: { not: null }, // Chỉ lấy từ full test
+        is_active: true,
       },
-      include: {
-        questions: {
-          include: {
-            options: {
-              orderBy: { display_order: 'asc' },
-            },
-          },
-          orderBy: { display_order: 'asc' },
+
+      select: {
+        id: true,
+        title: true,
+      },
+
+      orderBy: {
+        id: "asc",
+      },
+    });
+
+    if (tests.length === 0) {
+      throw new NotFoundException(
+        "Không tìm thấy test đang hoạt động.",
+      );
+    }
+
+    const randomIndex = Math.floor(
+      Math.random() * tests.length,
+    );
+
+    return tests[randomIndex];
+  }
+
+  // ============================================================
+  // BẮT ĐẦU LUYỆN
+  // ============================================================
+
+  async startPractice(
+    userId: number,
+    part: number,
+  ) {
+    // ----------------------------------------------------------
+    // Kiểm tra part
+    // ----------------------------------------------------------
+
+    if (
+      !Number.isInteger(part) ||
+      part < 1 ||
+      part > 7
+    ) {
+      throw new BadRequestException(
+        "Part phải nằm trong khoảng từ 1 đến 7.",
+      );
+    }
+
+    const config =
+      this.PRACTICE_CONFIG[
+        part as keyof typeof this.PRACTICE_CONFIG
+      ];
+
+    // ----------------------------------------------------------
+    // Chọn test ngẫu nhiên
+    // ----------------------------------------------------------
+
+    const test = await this.getRandomTest();
+
+    // ----------------------------------------------------------
+    // Lấy toàn bộ group của part
+    // ----------------------------------------------------------
+
+    const groups =
+      await this.prisma.question_groups.findMany({
+        where: {
+          test_id: test.id,
+          part,
         },
-      },
-      orderBy: { display_order: 'asc' },
-    });
 
-    if (questionGroups.length === 0) {
-      throw new NotFoundException(`Không tìm thấy câu hỏi Part ${part}`);
+        include: {
+          questions: {
+            include: {
+              options: {
+                select: {
+                  id: true,
+                  option_label: true,
+                  option_text: true,
+                  display_order: true,
+                },
+
+                orderBy: {
+                  display_order: "asc",
+                },
+              },
+            },
+
+            orderBy: [
+              {
+                question_number: "asc",
+              },
+              {
+                display_order: "asc",
+              },
+            ],
+          },
+        },
+
+        orderBy: [
+          {
+            display_order: "asc",
+          },
+          {
+            id: "asc",
+          },
+        ],
+      });
+
+    if (groups.length === 0) {
+      throw new NotFoundException(
+        `Test "${test.title}" không có dữ liệu Part ${part}.`,
+      );
     }
 
-    // Tính toán số lượng question groups cần lấy
-    let selectedGroups = questionGroups;
+    // ----------------------------------------------------------
+    // Chỉ giữ những group có câu hỏi
+    // ----------------------------------------------------------
 
-    if (random) {
-      // Random groups nhưng giữ nguyên câu hỏi trong mỗi group
-      selectedGroups = this.shuffleArray([...questionGroups]);
+    const validGroups = groups.filter(
+      (group) => group.questions.length > 0,
+    );
+
+    if (validGroups.length === 0) {
+      throw new NotFoundException(
+        `Part ${part} không có câu hỏi.`,
+      );
     }
 
-    // Lấy câu hỏi từ các groups đã chọn
-    let allQuestions: any[] = [];
-    for (const group of selectedGroups) {
-      allQuestions = allQuestions.concat(group.questions);
+    // ----------------------------------------------------------
+    // Chọn group hoặc question
+    // ----------------------------------------------------------
+
+    let selectedGroups =
+      validGroups;
+
+    if (config.type === "group") {
+      selectedGroups = this.shuffle(
+        validGroups,
+      ).slice(0, config.count);
     }
 
-    // Nếu cần random câu hỏi (chỉ áp dụng cho Part 1, 2, 5, 6)
-    if (random && [1, 2, 5, 6].includes(part)) {
-      allQuestions = this.shuffleArray(allQuestions);
+    // ----------------------------------------------------------
+    // PART 1, 2, 5
+    //
+    // Random từng câu nhưng vẫn giữ group gốc.
+    // ----------------------------------------------------------
+
+    if (config.type === "question") {
+      const allQuestions =
+        validGroups.flatMap(
+          (group) =>
+            group.questions.map(
+              (question) => ({
+                group,
+                question,
+              }),
+            ),
+        );
+
+      const selectedQuestions =
+        this.shuffle(
+          allQuestions,
+        ).slice(0, config.count);
+
+      // Gom lại theo group gốc
+      const groupMap = new Map<
+        number,
+        {
+          group: (typeof validGroups)[number];
+          questions: (typeof validGroups)[number]["questions"];
+        }
+      >();
+
+      for (const item of selectedQuestions) {
+        const groupId =
+          item.group.id;
+
+        if (!groupMap.has(groupId)) {
+          groupMap.set(groupId, {
+            group: item.group,
+            questions: [],
+          });
+        }
+
+        groupMap
+          .get(groupId)!
+          .questions.push(
+            item.question,
+          );
+      }
+
+      selectedGroups = Array.from(
+        groupMap.values(),
+      ).map((item) => ({
+        ...item.group,
+        questions: item.questions,
+      }));
     }
 
-    // Giới hạn số lượng câu hỏi
-    const selectedQuestions = allQuestions.slice(0, validQuestionCount);
+    // ----------------------------------------------------------
+    // Lấy question IDs
+    // ----------------------------------------------------------
 
-    // Tạo practice session
-    const session = await this.prisma.practice_sessions.create({
-      data: {
-        user_id: userId,
-        part,
-        question_count: selectedQuestions.length,
-        correct_count: 0,
-        score: 0,
-        started_at: new Date(),
-        question_ids: selectedQuestions.map(q => q.id),
-        answers: {},
-      },
-    });
+    const questionIds =
+      selectedGroups.flatMap(
+        (group) =>
+          group.questions.map(
+            (question) =>
+              question.id,
+          ),
+      );
+
+    if (questionIds.length === 0) {
+      throw new NotFoundException(
+        "Không tìm thấy câu hỏi để luyện.",
+      );
+    }
+
+    // ----------------------------------------------------------
+    // Tạo session
+    // ----------------------------------------------------------
+
+    const session =
+      await this.prisma.practice_sessions.create({
+        data: {
+          user_id: userId,
+
+          part,
+
+          question_count:
+            questionIds.length,
+
+          correct_count: 0,
+
+          score: 0,
+
+          started_at: new Date(),
+
+          question_ids:
+            questionIds,
+
+          answers: [],
+        },
+      });
+
+    // ----------------------------------------------------------
+    // Không trả correct_answer xuống frontend
+    // ----------------------------------------------------------
+
+    const safeGroups =
+      selectedGroups.map(
+        (group) => ({
+          id: group.id,
+
+          title: group.title,
+
+          passage: group.passage,
+
+          image_url:
+            group.image_url,
+
+          audio_url:
+            group.audio_url,
+
+          group_type:
+            group.group_type,
+
+          audio_start_time:
+            group.audio_start_time,
+
+          audio_end_time:
+            group.audio_end_time,
+
+          knowledge:
+            group.knowledge,
+
+          questions:
+            group.questions.map(
+              (question) => ({
+                id: question.id,
+
+                question_number:
+                  question.question_number,
+
+                question_text:
+                  question.question_text,
+
+                explanation:
+                  question.explanation,
+
+                options:
+                  question.options.map(
+                    (option) => ({
+                      id: option.id,
+
+                      option_label:
+                        option.option_label,
+
+                      option_text:
+                        option.option_text,
+                    }),
+                  ),
+              }),
+            ),
+        }),
+      );
+
+    // ----------------------------------------------------------
+    // Response
+    // ----------------------------------------------------------
 
     return {
       sessionId: session.id,
+
+      testId: test.id,
+
+      testTitle: test.title,
+
       part,
-      questionCount: selectedQuestions.length,
-      questions: selectedQuestions.map(q => ({
-        id: q.id,
-        question_number: q.question_number,
-        question_text: q.question_text,
-        group_id: q.group_id,
-        options: q.options.map(opt => ({
-          id: opt.id,
-          option_label: opt.option_label,
-          option_text: opt.option_text,
-        })),
-        // Không trả về correct_answer cho người dùng
-      })),
+
+      questionCount:
+        questionIds.length,
+
+      groups: safeGroups,
     };
   }
 
-  /**
-   * Nộp bài luyện tập
-   */
-  async submitPractice(userId: number, sessionId: number, answers: Record<number, string>) {
-    const session = await this.prisma.practice_sessions.findUnique({
-      where: { id: sessionId },
-    });
+  // ============================================================
+  // NỘP BÀI
+  // ============================================================
+
+  async submitPractice(
+    userId: number,
+    dto: SubmitPracticeDto,
+  ) {
+    // ----------------------------------------------------------
+    // Kiểm tra session
+    // ----------------------------------------------------------
+
+    const session =
+      await this.prisma.practice_sessions.findFirst({
+        where: {
+          id: dto.sessionId,
+
+          user_id: userId,
+        },
+      });
 
     if (!session) {
-      throw new NotFoundException('Không tìm thấy session luyện tập');
+      throw new NotFoundException(
+        "Không tìm thấy lượt luyện tập.",
+      );
     }
 
-    if (session.user_id !== userId) {
-      throw new BadRequestException('Bạn không có quyền nộp bài này');
-    }
+    // ----------------------------------------------------------
+    // Không cho nộp lại
+    // ----------------------------------------------------------
 
     if (session.completed_at) {
-      throw new BadRequestException('Bài này đã được nộp rồi');
+      throw new BadRequestException(
+        "Lượt luyện tập này đã được nộp.",
+      );
     }
 
-    // Lấy đáp án đúng
-    const questions = await this.prisma.questions.findMany({
-      where: {
-        id: { in: session.question_ids },
-      },
-      select: {
-        id: true,
-        correct_answer: true,
-      },
-    });
+    // ----------------------------------------------------------
+    // Lấy question IDs của session
+    // ----------------------------------------------------------
 
-    // Tính điểm
-    let correctCount = 0;
-    const questionAnswers: Record<number, { userAnswer: string; correctAnswer: string; isCorrect: boolean }> = {};
+    const questionIds =
+      session.question_ids;
 
-    for (const question of questions) {
-      const userAnswer = answers[question.id];
-      const isCorrect = userAnswer?.toUpperCase() === question.correct_answer?.toUpperCase();
-      
-      if (isCorrect) {
-        correctCount++;
-      }
-
-      questionAnswers[question.id] = {
-        userAnswer: userAnswer || '',
-        correctAnswer: question.correct_answer || '',
-        isCorrect,
-      };
+    if (
+      !Array.isArray(questionIds) ||
+      questionIds.length === 0
+    ) {
+      throw new BadRequestException(
+        "Session không có câu hỏi.",
+      );
     }
 
-    const score = Math.round((correctCount / session.question_count) * 100);
+    // ----------------------------------------------------------
+    // Lấy câu hỏi
+    // ----------------------------------------------------------
 
-    // Cập nhật session
-    const updatedSession = await this.prisma.practice_sessions.update({
-      where: { id: sessionId },
-      data: {
-        correct_count: correctCount,
-        score,
-        completed_at: new Date(),
-        answers: questionAnswers,
-      },
-    });
-
-    return {
-      sessionId: updatedSession.id,
-      part: updatedSession.part,
-      questionCount: updatedSession.question_count,
-      correctCount,
-      score,
-      completedAt: updatedSession.completed_at,
-      answers: questionAnswers,
-    };
-  }
-
-  /**
-   * Lấy lịch sử luyện tập
-   */
-  async getPracticeHistory(userId: number, part?: number) {
-    const where: any = { user_id: userId };
-    if (part) {
-      where.part = part;
-    }
-
-    const sessions = await this.prisma.practice_sessions.findMany({
-      where,
-      orderBy: { created_at: 'desc' },
-      take: 50,
-    });
-
-    return sessions.map(session => ({
-      id: session.id,
-      part: session.part,
-      questionCount: session.question_count,
-      correctCount: session.correct_count,
-      score: session.score,
-      startedAt: session.started_at,
-      completedAt: session.completed_at,
-    }));
-  }
-
-  /**
-   * Lấy chi tiết một session luyện tập
-   */
-  async getPracticeSession(userId: number, sessionId: number) {
-    const session = await this.prisma.practice_sessions.findUnique({
-      where: { id: sessionId },
-    });
-
-    if (!session) {
-      throw new NotFoundException('Không tìm thấy session luyện tập');
-    }
-
-    if (session.user_id !== userId) {
-      throw new BadRequestException('Bạn không có quyền xem session này');
-    }
-
-    // Lấy chi tiết câu hỏi và đáp án
-    const questions = await this.prisma.questions.findMany({
-      where: {
-        id: { in: session.question_ids },
-      },
-      include: {
-        options: {
-          orderBy: { display_order: 'asc' },
-        },
-        question_groups: {
-          select: {
-            id: true,
-            part: true,
-            title: true,
-            passage: true,
-            audio_url: true,
-            image_url: true,
+    const questions =
+      await this.prisma.questions.findMany({
+        where: {
+          id: {
+            in: questionIds,
           },
         },
-      },
-      orderBy: { display_order: 'asc' },
-    });
+
+        include: {
+          options: {
+            select: {
+              id: true,
+              option_label: true,
+              option_text: true,
+            },
+          },
+        },
+      });
+
+    // ----------------------------------------------------------
+    // Kiểm tra đủ câu
+    // ----------------------------------------------------------
+
+    if (
+      questions.length !==
+      questionIds.length
+    ) {
+      throw new BadRequestException(
+        "Một số câu hỏi không còn tồn tại.",
+      );
+    }
+
+    // ----------------------------------------------------------
+    // Chấm bài
+    // ----------------------------------------------------------
+
+    let correctCount = 0;
+
+    const resultAnswers =
+      questionIds.map(
+        (questionId) => {
+          const question =
+            questions.find(
+              (item) =>
+                item.id ===
+                questionId,
+            );
+
+          const submitted =
+            dto.answers.find(
+              (answer) =>
+                answer.questionId ===
+                questionId,
+            );
+
+          const selectedOption =
+            submitted
+              ? question?.options.find(
+                  (option) =>
+                    option.id ===
+                    submitted.optionId,
+                )
+              : undefined;
+
+          const correctAnswer =
+            (
+              question?.correct_answer ??
+              ""
+            )
+              .trim()
+              .toUpperCase();
+
+          const selectedAnswer =
+            (
+              selectedOption
+                ?.option_label ?? ""
+            )
+              .trim()
+              .toUpperCase();
+
+          const isCorrect =
+            Boolean(
+              selectedAnswer &&
+                correctAnswer &&
+                selectedAnswer ===
+                  correctAnswer,
+            );
+
+          if (isCorrect) {
+            correctCount++;
+          }
+
+          return {
+            questionId,
+
+            optionId:
+              submitted
+                ?.optionId ?? null,
+
+            optionLabel:
+              selectedOption
+                ?.option_label ??
+              null,
+
+            isCorrect,
+          };
+        },
+      );
+
+    // ----------------------------------------------------------
+    // Tính %
+    // ----------------------------------------------------------
+
+    const totalCount =
+      questionIds.length;
+
+    const score = Math.round(
+      (correctCount /
+        totalCount) *
+        100,
+    );
+
+    // ----------------------------------------------------------
+    // Update session
+    // ----------------------------------------------------------
+
+    const updatedSession =
+      await this.prisma.practice_sessions.update({
+        where: {
+          id: session.id,
+        },
+
+        data: {
+          correct_count:
+            correctCount,
+
+          score,
+
+          completed_at:
+            new Date(),
+
+          answers:
+            resultAnswers,
+        },
+      });
+
+    // ----------------------------------------------------------
+    // Trả kết quả
+    // ----------------------------------------------------------
 
     return {
-      session: {
-        id: session.id,
-        part: session.part,
-        questionCount: session.question_count,
-        correctCount: session.correct_count,
-        score: session.score,
-        startedAt: session.started_at,
-        completedAt: session.completed_at,
-      },
-      questions: questions.map(q => ({
-        id: q.id,
-        question_number: q.question_number,
-        question_text: q.question_text,
-        group: q.question_groups,
-        options: q.options.map(opt => ({
-          id: opt.id,
-          option_label: opt.option_label,
-          option_text: opt.option_text,
-        })),
-        explanation: q.explanation,
-        // Thêm thông tin đáp án từ session.answers
-        userAnswer: (session.answers as any)?.[q.id]?.userAnswer,
-        correctAnswer: (session.answers as any)?.[q.id]?.correctAnswer,
-        isCorrect: (session.answers as any)?.[q.id]?.isCorrect,
-      })),
+      sessionId:
+        updatedSession.id,
+
+      part:
+        updatedSession.part,
+
+      total:
+        totalCount,
+
+      correct:
+        correctCount,
+
+      wrong:
+        totalCount -
+        correctCount,
+
+      score,
+
+      answers:
+        resultAnswers,
     };
   }
 
-  /**
-   * Shuffle array (Fisher-Yates)
-   */
-  private shuffleArray<T>(array: T[]): T[] {
-    for (let i = array.length - 1; i > 0; i--) {
-      const j = Math.floor(Math.random() * (i + 1));
-      [array[i], array[j]] = [array[j], array[i]];
+  // ============================================================
+  // LỊCH SỬ
+  // ============================================================
+
+  async getHistory(
+    userId: number,
+  ) {
+    const sessions =
+      await this.prisma.practice_sessions.findMany({
+        where: {
+          user_id: userId,
+        },
+
+        orderBy: {
+          created_at: "desc",
+        },
+
+        take: 50,
+
+        select: {
+          id: true,
+
+          part: true,
+
+          question_count: true,
+
+          correct_count: true,
+
+          score: true,
+
+          started_at: true,
+
+          completed_at: true,
+
+          created_at: true,
+        },
+      });
+
+    return sessions;
+  }
+
+  // ============================================================
+  // CHI TIẾT LỊCH SỬ
+  // ============================================================
+
+  async getHistoryDetail(
+    userId: number,
+    sessionId: number,
+  ) {
+    const session =
+      await this.prisma.practice_sessions.findFirst({
+        where: {
+          id: sessionId,
+
+          user_id: userId,
+        },
+      });
+
+    if (!session) {
+      throw new NotFoundException(
+        "Không tìm thấy lịch sử luyện tập.",
+      );
     }
-    return array;
+
+    return session;
   }
 }

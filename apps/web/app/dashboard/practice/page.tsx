@@ -1,211 +1,498 @@
 "use client";
 
-import { useState } from "react";
-import { practiceService, PracticeHistoryItem } from "../../../services/practice/practiceService";
+import Link from "next/link";
+import { useEffect, useState } from "react";
 
-const TABS = [
-  { id: "part", label: "Luyện theo Part", icon: "🎯" },
-  { id: "history", label: "Lịch sử", icon: "�" },
-];
+import {
+  getPracticeHistory,
+  type PracticeHistoryItem,
+} from "@/services/practice";
 
-const PARTS = [
-  { part: 1, label: "Photographs", icon: "🖼️", section: "Listening", color: "from-blue-600 to-blue-500", desc: "Chọn ảnh phù hợp với âm thanh nghe được" },
-  { part: 2, label: "Question-Response", icon: "💬", section: "Listening", color: "from-cyan-600 to-cyan-500", desc: "Chọn câu trả lời phù hợp nhất cho câu hỏi" },
-  { part: 3, label: "Conversations", icon: "🗣️", section: "Listening", color: "from-indigo-600 to-indigo-500", desc: "Nghe hội thoại và trả lời câu hỏi" },
-  { part: 4, label: "Talks", icon: "🎙️", section: "Listening", color: "from-violet-600 to-violet-500", desc: "Nghe bài nói đơn và trả lời câu hỏi" },
-  { part: 5, label: "Incomplete Sentences", icon: "✏️", section: "Reading", color: "from-green-600 to-green-500", desc: "Điền từ thích hợp vào chỗ trống" },
-  { part: 6, label: "Text Completion", icon: "📝", section: "Reading", color: "from-emerald-600 to-emerald-500", desc: "Điền từ/câu vào đoạn văn có chỗ trống" },
-  { part: 7, label: "Reading Comprehension", icon: "📖", section: "Reading", color: "from-teal-600 to-teal-500", desc: "Đọc hiểu đơn, kép và ba đoạn văn" },
+type PracticeTab =
+  | "practice"
+  | "history";
+
+type PartItem = {
+  part: number;
+  title: string;
+  description: string;
+  section: "listening" | "reading";
+  icon: string;
+};
+
+const PARTS: PartItem[] = [
+  {
+    part: 1,
+    title: "Part 1: Photographs",
+    description:
+      "Chọn ảnh phù hợp với âm thanh nghe được",
+    section: "listening",
+    icon: "🖼️",
+  },
+
+  {
+    part: 2,
+    title: "Part 2: Question-Response",
+    description:
+      "Chọn câu trả lời phù hợp nhất cho câu hỏi",
+    section: "listening",
+    icon: "💬",
+  },
+
+  {
+    part: 3,
+    title: "Part 3: Conversations",
+    description:
+      "Nghe hội thoại và trả lời câu hỏi",
+    section: "listening",
+    icon: "👥",
+  },
+
+  {
+    part: 4,
+    title: "Part 4: Talks",
+    description:
+      "Nghe bài nói đơn và trả lời câu hỏi",
+    section: "listening",
+    icon: "🎙️",
+  },
+
+  {
+    part: 5,
+    title: "Part 5: Incomplete Sentences",
+    description:
+      "Điền từ thích hợp vào chỗ trống",
+    section: "reading",
+    icon: "✏️",
+  },
+
+  {
+    part: 6,
+    title: "Part 6: Text Completion",
+    description:
+      "Điền từ/câu vào đoạn văn có chỗ trống",
+    section: "reading",
+    icon: "📄",
+  },
+
+  {
+    part: 7,
+    title: "Part 7: Reading Comprehension",
+    description:
+      "Đọc hiểu đơn, kép và ba đoạn văn",
+    section: "reading",
+    icon: "📖",
+  },
 ];
 
 export default function PracticePage() {
-  const [activeTab, setActiveTab] = useState("part");
-  const [selectedPart, setSelectedPart] = useState<number | null>(null);
-  const [history, setHistory] = useState<PracticeHistoryItem[]>([]);
-  const [loading, setLoading] = useState(false);
+  const [activeTab, setActiveTab] =
+    useState<PracticeTab>("practice");
 
-  const handleStartPractice = async (part: number, random: boolean = false) => {
-    try {
-      setLoading(true);
-      const session = await practiceService.startPractice(part, 10, random);
-      // Navigate to practice session page (to be implemented)
-      console.log("Started practice:", session);
-      alert(`Bắt đầu luyện Part ${part} với ${session.questionCount} câu hỏi`);
-    } catch (error) {
-      console.error("Failed to start practice:", error);
-      alert("Không thể bắt đầu luyện tập. Vui lòng thử lại.");
-    } finally {
-      setLoading(false);
-    }
-  };
+  const [
+    history,
+    setHistory,
+  ] = useState<PracticeHistoryItem[]>([]);
 
-  const loadHistory = async () => {
-    try {
-      setLoading(true);
-      const historyData = await practiceService.getHistory();
-      setHistory(historyData);
-    } catch (error) {
-      console.error("Failed to load history:", error);
-    } finally {
-      setLoading(false);
-    }
-  };
+  const [
+    loadingHistory,
+    setLoadingHistory,
+  ] = useState(false);
 
-  // Load history when switching to history tab
-  const handleTabChange = (tabId: string) => {
-    setActiveTab(tabId);
-    if (tabId === "history") {
-      loadHistory();
+  const [
+    historyError,
+    setHistoryError,
+  ] = useState("");
+
+  // ==========================================================
+  // LOAD HISTORY
+  // ==========================================================
+
+  useEffect(() => {
+    if (activeTab !== "history") {
+      return;
     }
-  };
+
+    let cancelled = false;
+
+    async function loadHistory() {
+      try {
+        setLoadingHistory(true);
+        setHistoryError("");
+
+        const data =
+          await getPracticeHistory();
+
+        if (!cancelled) {
+          setHistory(data);
+        }
+      } catch (error) {
+        if (!cancelled) {
+          setHistoryError(
+            error instanceof Error
+              ? error.message
+              : "Không thể tải lịch sử.",
+          );
+        }
+      } finally {
+        if (!cancelled) {
+          setLoadingHistory(false);
+        }
+      }
+    }
+
+    loadHistory();
+
+    return () => {
+      cancelled = true;
+    };
+  }, [activeTab]);
+
+  const listeningParts =
+    PARTS.filter(
+      (item) =>
+        item.section ===
+        "listening",
+    );
+
+  const readingParts =
+    PARTS.filter(
+      (item) =>
+        item.section ===
+        "reading",
+    );
 
   return (
-    <div className="space-y-6 max-w-5xl mx-auto">
-      {/* Header */}
-      <div>
-        <h1 className="text-2xl font-bold text-white">✍️ Luyện tập</h1>
-        <p className="text-zinc-400 text-sm mt-1">Luyện từng Part · Theo dõi tiến độ</p>
+    <div className="min-h-screen bg-[#09090b] text-white">
+      {/* ======================================================
+          HEADER
+      ====================================================== */}
+
+      <div className="border-b border-white/5">
+        <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-6">
+          <div>
+            <h1 className="text-xl font-bold">
+              Luyện tập
+            </h1>
+
+            <p className="text-sm text-zinc-500">
+              Luyện từng Part · Theo dõi tiến độ
+            </p>
+          </div>
+        </div>
       </div>
 
-      {/* Tabs */}
-      <div className="flex gap-1 bg-zinc-900/60 border border-zinc-800/50 rounded-2xl p-1.5 overflow-x-auto">
-        {TABS.map((tab) => (
+      {/* ======================================================
+          CONTENT
+      ====================================================== */}
+
+      <main className="mx-auto max-w-7xl px-6 py-10">
+        {/* TITLE */}
+
+        <div className="mb-8">
+          <div className="flex items-center gap-3">
+            <span className="text-3xl">
+              ✍️
+            </span>
+
+            <h2 className="text-3xl font-bold">
+              Luyện tập
+            </h2>
+          </div>
+
+          <p className="mt-2 text-zinc-400">
+            Luyện từng Part · Theo dõi tiến độ
+          </p>
+        </div>
+
+        {/* ==================================================
+            TABS
+        ================================================== */}
+
+        <div className="mb-10 flex rounded-2xl border border-white/5 bg-[#121214] p-1">
           <button
-            key={tab.id}
-            onClick={() => handleTabChange(tab.id)}
-            className={`flex-1 min-w-max flex items-center justify-center gap-2 py-2.5 px-3 rounded-xl text-[13px] font-medium transition-all duration-200 ${
-              activeTab === tab.id
-                ? "bg-red-600 text-white shadow-lg shadow-red-600/20"
-                : "text-zinc-400 hover:text-white hover:bg-zinc-800/60"
+            type="button"
+            onClick={() =>
+              setActiveTab("practice")
+            }
+            className={`flex-1 rounded-xl px-5 py-3 text-sm font-medium transition ${
+              activeTab === "practice"
+                ? "bg-red-600 text-white"
+                : "text-zinc-400 hover:bg-white/5 hover:text-white"
             }`}
           >
-            <span>{tab.icon}</span>
-            <span className="hidden sm:inline">{tab.label}</span>
+            🎯 Luyện theo Part
           </button>
-        ))}
+
+          <button
+            type="button"
+            onClick={() =>
+              setActiveTab("history")
+            }
+            className={`flex-1 rounded-xl px-5 py-3 text-sm font-medium transition ${
+              activeTab === "history"
+                ? "bg-red-600 text-white"
+                : "text-zinc-400 hover:bg-white/5 hover:text-white"
+            }`}
+          >
+            🕘 Lịch sử
+          </button>
+        </div>
+
+        {/* ==================================================
+            PRACTICE TAB
+        ================================================== */}
+
+        {activeTab ===
+          "practice" && (
+          <>
+            {/* LISTENING */}
+
+            <SectionTitle
+              color="blue"
+              title="SECTION A — LISTENING"
+            />
+
+            <div className="grid gap-4 md:grid-cols-2">
+              {listeningParts.map(
+                (part) => (
+                  <PartCard
+                    key={part.part}
+                    part={part}
+                  />
+                ),
+              )}
+            </div>
+
+            {/* READING */}
+
+            <div className="mt-8">
+              <SectionTitle
+                color="green"
+                title="SECTION B — READING"
+              />
+            </div>
+
+            <div className="grid gap-4 md:grid-cols-3">
+              {readingParts.map(
+                (part) => (
+                  <PartCard
+                    key={part.part}
+                    part={part}
+                  />
+                ),
+              )}
+            </div>
+          </>
+        )}
+
+        {/* ==================================================
+            HISTORY TAB
+        ================================================== */}
+
+        {activeTab ===
+          "history" && (
+          <HistoryTab
+            history={history}
+            loading={loadingHistory}
+            error={historyError}
+          />
+        )}
+      </main>
+    </div>
+  );
+}
+
+// ============================================================
+// SECTION TITLE
+// ============================================================
+
+function SectionTitle({
+  title,
+  color,
+}: {
+  title: string;
+  color: "blue" | "green";
+}) {
+  return (
+    <div className="mb-4 flex items-center gap-3">
+      <span
+        className={`h-2 w-2 rounded-full ${
+          color === "blue"
+            ? "bg-blue-500"
+            : "bg-green-500"
+        }`}
+      />
+
+      <h3 className="text-xs font-semibold tracking-[0.18em] text-zinc-500">
+        {title}
+      </h3>
+    </div>
+  );
+}
+
+// ============================================================
+// PART CARD
+// ============================================================
+
+function PartCard({
+  part,
+}: {
+  part: PartItem;
+}) {
+  return (
+    <div className="rounded-2xl border border-white/5 bg-[#121214] p-5 transition hover:border-white/10 hover:bg-[#151517]">
+      <div className="flex items-start gap-4">
+        {/* ICON */}
+
+        <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-blue-600 text-2xl">
+          {part.icon}
+        </div>
+
+        {/* TEXT */}
+
+        <div className="min-w-0 flex-1">
+          <h3 className="font-semibold">
+            {part.title}
+          </h3>
+
+          <p className="mt-1 text-sm text-zinc-500">
+            {part.description}
+          </p>
+        </div>
       </div>
 
-      {/* ── Part Practice ── */}
-      {activeTab === "part" && (
-        <div className="space-y-4">
-          {/* Listening */}
-          <div>
-            <p className="text-[11px] text-zinc-500 uppercase tracking-widest font-semibold mb-3 flex items-center gap-2">
-              <span className="w-2 h-2 bg-blue-500 rounded-full" /> Section A — Listening
-            </p>
-            <div className="grid sm:grid-cols-2 gap-3">
-              {PARTS.filter(p => p.section === "Listening").map((part) => (
-                <div key={part.part} className="bg-zinc-900/60 border border-zinc-800/50 hover:border-zinc-700/60 rounded-2xl p-4 transition-all group">
-                  <div className="flex items-start gap-3">
-                    <div className={`w-10 h-10 rounded-xl bg-gradient-to-br ${part.color} flex items-center justify-center text-lg shrink-0 shadow-sm group-hover:scale-105 transition-transform`}>
-                      {part.icon}
-                    </div>
-                    <div className="flex-1">
-                      <p className="text-[13px] text-white font-semibold">Part {part.part}: {part.label}</p>
-                      <p className="text-[11px] text-zinc-500 mt-1 leading-relaxed">{part.desc}</p>
-                    </div>
-                  </div>
-                  <div className="mt-4 flex gap-2">
-                    <button 
-                      onClick={() => handleStartPractice(part.part, true)}
-                      disabled={loading}
-                      className="flex-1 text-center text-[11px] text-zinc-400 hover:text-white py-2 rounded-lg border border-zinc-800 hover:border-zinc-700 transition-all disabled:opacity-50"
-                    >
-                      {loading ? "Đang tải..." : "Luyện ngẫu nhiên"}
-                    </button>
-                    <button 
-                      onClick={() => handleStartPractice(part.part, false)}
-                      disabled={loading}
-                      className={`flex-1 text-center text-[11px] text-white py-2 rounded-lg bg-gradient-to-r ${part.color} hover:opacity-90 transition-all shadow-sm disabled:opacity-50`}
-                    >
-                      {loading ? "Đang tải..." : "Bắt đầu →"}
-                    </button>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
+      {/* BUTTONS */}
 
-          {/* Reading */}
-          <div>
-            <p className="text-[11px] text-zinc-500 uppercase tracking-widest font-semibold mb-3 flex items-center gap-2">
-              <span className="w-2 h-2 bg-green-500 rounded-full" /> Section B — Reading
-            </p>
-            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-3">
-              {PARTS.filter(p => p.section === "Reading").map((part) => (
-                <div key={part.part} className="bg-zinc-900/60 border border-zinc-800/50 hover:border-zinc-700/60 rounded-2xl p-4 transition-all group">
-                  <div className="flex items-start gap-3">
-                    <div className={`w-10 h-10 rounded-xl bg-gradient-to-br ${part.color} flex items-center justify-center text-lg shrink-0 shadow-sm group-hover:scale-105 transition-transform`}>
-                      {part.icon}
-                    </div>
-                    <div>
-                      <p className="text-[13px] text-white font-semibold">Part {part.part}: {part.label}</p>
-                      <p className="text-[11px] text-zinc-500 mt-1 leading-relaxed">{part.desc}</p>
-                    </div>
-                  </div>
-                  <button 
-                    onClick={() => handleStartPractice(part.part, false)}
-                    disabled={loading}
-                    className={`mt-4 w-full text-center text-[11px] text-white py-2 rounded-lg bg-gradient-to-r ${part.color} hover:opacity-90 transition-all shadow-sm disabled:opacity-50`}
-                  >
-                    {loading ? "Đang tải..." : "Luyện tập →"}
-                  </button>
-                </div>
-              ))}
-            </div>
-          </div>
+      <div className="mt-5 flex gap-2">
+        <button
+          type="button"
+          className="flex-1 rounded-xl border border-white/10 px-4 py-3 text-sm text-zinc-300 transition hover:bg-white/5 hover:text-white"
+          onClick={() => {
+            window.location.href =
+              `/dashboard/practice/part/${part.part}`;
+          }}
+        >
+          Luyện ngẫu nhiên
+        </button>
+
+        <Link
+          href={`/dashboard/practice/part/${part.part}`}
+          className="flex flex-1 items-center justify-center rounded-xl bg-red-600 px-4 py-3 text-sm font-medium transition hover:bg-red-500"
+        >
+          Bắt đầu →
+        </Link>
+      </div>
+    </div>
+  );
+}
+
+// ============================================================
+// HISTORY
+// ============================================================
+
+function HistoryTab({
+  history,
+  loading,
+  error,
+}: {
+  history: PracticeHistoryItem[];
+  loading: boolean;
+  error: string;
+}) {
+  if (loading) {
+    return (
+      <div className="rounded-2xl border border-white/5 bg-[#121214] p-10 text-center text-zinc-500">
+        Đang tải lịch sử...
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="rounded-2xl border border-red-500/20 bg-red-500/5 p-6 text-red-400">
+        {error}
+      </div>
+    );
+  }
+
+  if (history.length === 0) {
+    return (
+      <div className="rounded-2xl border border-white/5 bg-[#121214] p-10 text-center">
+        <div className="text-4xl">
+          📝
         </div>
-      )}
 
-      {/* ── History ── */}
-      {activeTab === "history" && (
-        <div className="space-y-3">
-          <p className="text-sm text-zinc-300 font-medium">Lịch sử luyện tập</p>
-          {loading ? (
-            <div className="text-center py-8">
-              <p className="text-zinc-500">Đang tải lịch sử...</p>
+        <h3 className="mt-4 font-semibold">
+          Chưa có lịch sử luyện tập
+        </h3>
+
+        <p className="mt-2 text-sm text-zinc-500">
+          Hãy chọn một Part và bắt đầu luyện.
+        </p>
+      </div>
+    );
+  }
+
+  return (
+    <div className="space-y-3">
+      {history.map(
+        (item) => (
+          <div
+            key={item.id}
+            className="flex items-center justify-between rounded-2xl border border-white/5 bg-[#121214] p-5"
+          >
+            <div>
+              <h3 className="font-semibold">
+                Part {item.part}
+              </h3>
+
+              <p className="mt-1 text-sm text-zinc-500">
+                {item.question_count} câu ·{" "}
+                {item.correct_count} đúng
+              </p>
+
+              <p className="mt-1 text-xs text-zinc-600">
+                {formatDate(
+                  item.created_at,
+                )}
+              </p>
             </div>
-          ) : history.length === 0 ? (
-            <div className="bg-zinc-900/30 border border-zinc-800/30 rounded-2xl p-8 text-center">
-              <span className="text-4xl block mb-3">📋</span>
-              <p className="text-zinc-400 text-sm">Chưa có lịch sử luyện tập</p>
-            </div>
-          ) : (
-            history.map((item) => (
-              <div key={item.id} className="bg-zinc-900/60 border border-zinc-800/50 hover:border-zinc-700/60 rounded-2xl p-4 transition-all cursor-pointer">
-                <div className="flex items-start gap-3">
-                  <div className="flex-1">
-                    <div className="flex items-center gap-2 flex-wrap">
-                      <p className="text-[13px] text-white font-semibold">Part {item.part}</p>
-                      <span className="text-[9px] bg-zinc-800 text-zinc-400 border border-zinc-700 px-2 py-0.5 rounded-full">
-                        {item.questionCount} câu
-                      </span>
-                    </div>
-                    <p className="text-[11px] text-zinc-500 mt-0.5">
-                      {new Date(item.startedAt).toLocaleDateString('vi-VN')} · {item.completedAt ? 'Hoàn thành' : 'Đang làm'}
-                    </p>
-                  </div>
-                  <div className="text-right shrink-0">
-                    <p className="text-lg font-bold text-white">{item.score}%</p>
-                    <p className="text-[10px] text-zinc-600">{item.correctCount}/{item.questionCount} đúng</p>
-                  </div>
-                </div>
-                <div className="mt-3 flex items-center gap-3">
-                  <div className="flex-1 bg-zinc-800 rounded-full h-1.5">
-                    <div
-                      className="bg-gradient-to-r from-red-600 to-red-400 h-1.5 rounded-full"
-                      style={{ width: `${item.score}%` }}
-                    />
-                  </div>
-                  <button className="text-[10px] text-red-400 hover:text-red-300 border border-red-600/20 bg-red-600/8 px-2 py-1 rounded-lg shrink-0 transition-all">
-                    Xem chi tiết
-                  </button>
-                </div>
+
+            <div className="text-right">
+              <div className="text-2xl font-bold">
+                {item.score}%
               </div>
-            ))
-          )}
-        </div>
+
+              <div className="text-xs text-zinc-500">
+                {item.completed_at
+                  ? "Đã hoàn thành"
+                  : "Chưa hoàn thành"}
+              </div>
+            </div>
+          </div>
+        ),
       )}
     </div>
   );
+}
+
+// ============================================================
+// FORMAT DATE
+// ============================================================
+
+function formatDate(
+  value: string,
+) {
+  try {
+    return new Intl.DateTimeFormat(
+      "vi-VN",
+      {
+        dateStyle: "short",
+        timeStyle: "short",
+      },
+    ).format(new Date(value));
+  } catch {
+    return value;
+  }
 }

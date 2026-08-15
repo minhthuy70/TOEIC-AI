@@ -1,92 +1,137 @@
 import {
+  BadRequestException,
+  Body,
   Controller,
   Get,
-  Post,
-  Body,
   Param,
-  Query,
+  ParseIntPipe,
+  Post,
+  Req,
+  UnauthorizedException,
   UseGuards,
-  Request,
-} from '@nestjs/common';
-import { PracticeService } from './practice.service';
-import { JwtAuthGuard } from '../auth/jwt-auth.guard';
+} from "@nestjs/common";
 
-@Controller('practice')
+import { PracticeService } from "./practice.service";
+import { SubmitPracticeDto } from "./dto/submit-practice.dto";
+import { JwtAuthGuard } from "../auth/jwt-auth.guard";
+
+@Controller("practice")
 @UseGuards(JwtAuthGuard)
 export class PracticeController {
-  constructor(private readonly practiceService: PracticeService) {}
+  constructor(
+    private readonly practiceService: PracticeService,
+  ) {}
 
-  /**
-   * Bắt đầu luyện tập - lấy câu hỏi theo Part
-   */
-  @Post('start')
+  // ============================================================
+  // LẤY USER ID CỦA NGƯỜI ĐANG ĐĂNG NHẬP
+  //
+  // JwtStrategy hiện tại của project trả về:
+  //
+  // {
+  //   userId: payload.sub,
+  //   email: payload.email,
+  //   role: payload.role
+  // }
+  //
+  // Vì vậy phần Luyện tập phải dùng req.user.userId
+  // ============================================================
+
+  private getUserId(req: any): number {
+    const userId = Number(req?.user?.userId);
+
+    if (
+      !Number.isInteger(userId) ||
+      userId <= 0
+    ) {
+      throw new UnauthorizedException(
+        "Không xác định được người dùng đăng nhập",
+      );
+    }
+
+    return userId;
+  }
+
+  // ============================================================
+  // START PRACTICE
+  //
+  // GET /practice/start/:part
+  //
+  // Ví dụ:
+  // GET /practice/start/1
+  // GET /practice/start/2
+  // ...
+  // GET /practice/start/7
+  // ============================================================
+
+  @Get("start/:part")
   async startPractice(
-    @Request() req,
-    @Body() body: { part: number; questionCount?: number; random?: boolean },
+    @Param("part", ParseIntPipe) part: number,
+    @Req() req: any,
   ) {
-    const userId = req.user.userId;
-    const { part, questionCount, random } = body;
+    if (part < 1 || part > 7) {
+      throw new BadRequestException(
+        "Part phải nằm trong khoảng từ 1 đến 7",
+      );
+    }
 
-    return this.practiceService.getPracticeQuestions(userId, part, questionCount, random);
+    const userId = this.getUserId(req);
+
+    return this.practiceService.startPractice(
+      userId,
+      part,
+    );
   }
 
-  /**
-   * Nộp bài luyện tập
-   */
-  @Post('submit')
+  // ============================================================
+  // SUBMIT PRACTICE
+  //
+  // POST /practice/submit
+  // ============================================================
+
+  @Post("submit")
   async submitPractice(
-    @Request() req,
-    @Body() body: { sessionId: number; answers: Record<number, string> },
+    @Body() dto: SubmitPracticeDto,
+    @Req() req: any,
   ) {
-    const userId = req.user.userId;
-    const { sessionId, answers } = body;
+    const userId = this.getUserId(req);
 
-    return this.practiceService.submitPractice(userId, sessionId, answers);
+    return this.practiceService.submitPractice(
+      userId,
+      dto,
+    );
   }
 
-  /**
-   * Lấy lịch sử luyện tập
-   */
-  @Get('history')
-  async getHistory(
-    @Request() req,
-    @Query('part') part?: string,
-  ) {
-    const userId = req.user.userId;
-    const partNumber = part ? Number(part) : undefined;
+  // ============================================================
+  // HISTORY
+  //
+  // GET /practice/history
+  // ============================================================
 
-    return this.practiceService.getPracticeHistory(userId, partNumber);
+  @Get("history")
+  async getHistory(@Req() req: any) {
+    const userId = this.getUserId(req);
+
+    return this.practiceService.getHistory(
+      userId,
+    );
   }
 
-  /**
-   * Lấy chi tiết một session luyện tập
-   */
-  @Get('session/:sessionId')
-  async getSession(
-    @Request() req,
-    @Param('sessionId') sessionId: string,
+  // ============================================================
+  // HISTORY DETAIL
+  //
+  // GET /practice/history/:id
+  // ============================================================
+
+  @Get("history/:id")
+  async getHistoryDetail(
+    @Param("id", ParseIntPipe) sessionId: number,
+    @Req() req: any,
   ) {
-    const userId = req.user.userId;
-    const sessionIdNumber = Number(sessionId);
+    const userId = this.getUserId(req);
 
-    return this.practiceService.getPracticeSession(userId, sessionIdNumber);
-  }
-
-  /**
-   * Lấy danh sách câu hỏi cho một Part (không tạo session)
-   */
-  @Get('questions')
-  async getQuestions(
-    @Request() req,
-    @Query('part') part: string,
-    @Query('questionCount') questionCount?: string,
-    @Query('random') random?: string,
-  ) {
-    const userId = req.user.userId;
-    const partNumber = Number(part);
-    const questionCountNumber = questionCount ? Number(questionCount) : undefined;
-    const isRandom = random === 'true';
-
-    return this.practiceService.getPracticeQuestions(userId, partNumber, questionCountNumber, isRandom);
+    return this.practiceService.getHistoryDetail(
+      userId,
+      sessionId,
+    );
   }
 }
