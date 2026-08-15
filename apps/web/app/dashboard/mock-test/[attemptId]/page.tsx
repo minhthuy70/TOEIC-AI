@@ -1161,9 +1161,7 @@ router.push(
                 }}
               />
 
-              <p className="mt-2 break-all text-xs text-zinc-600">
-                {audioUrl}
-              </p>
+             
             </div>
           )}
 
