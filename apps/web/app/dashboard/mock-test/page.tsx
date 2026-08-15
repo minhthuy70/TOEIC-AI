@@ -1,234 +1,543 @@
 "use client";
 
-import { useState, useEffect } from "react";
-import { mockTestService, MockTest, MockTestHistoryItem } from "../../../services/mock-test/mockTestService";
+import {
+  useEffect,
+  useMemo,
+  useState,
+} from "react";
 
-const TABS = [
-  { id: "full", label: "Full TOEIC Test", icon: "📝" },
-  { id: "history", label: "Lịch sử thi", icon: "📊" },
-];
+import { useRouter } from "next/navigation";
+
+import {
+  getMockTestHistory,
+  getMockTests,
+  startMockTest,
+  type MockTest,
+  type MockTestHistoryItem,
+} from "@/services/mock-test";
 
 export default function MockTestPage() {
-  const [activeTab, setActiveTab] = useState("full");
-  const [availableTests, setAvailableTests] = useState<MockTest[]>([]);
-  const [history, setHistory] = useState<MockTestHistoryItem[]>([]);
-  const [loading, setLoading] = useState(false);
+  const router = useRouter();
 
-  const loadAvailableTests = async () => {
-    try {
-      setLoading(true);
-      const tests = await mockTestService.getAvailableTests();
-      setAvailableTests(tests);
-    } catch (error) {
-      console.error("Failed to load available tests:", error);
-    } finally {
-      setLoading(false);
-    }
-  };
+  const [tab, setTab] =
+    useState<"tests" | "history">(
+      "tests",
+    );
 
-  const loadHistory = async () => {
-    try {
-      setLoading(true);
-      const historyData = await mockTestService.getHistory();
-      setHistory(historyData);
-    } catch (error) {
-      console.error("Failed to load history:", error);
-    } finally {
-      setLoading(false);
-    }
-  };
+  const [tests, setTests] =
+    useState<MockTest[]>([]);
 
-  const handleStartFullTest = async (testId: number) => {
-    try {
-      setLoading(true);
-      const attempt = await mockTestService.startFullTest(testId);
-      console.log("Started full test:", attempt);
-      alert(`Bắt đầu full test: ${attempt.title}`);
-      // Navigate to test taking page (to be implemented)
-    } catch (error) {
-      console.error("Failed to start full test:", error);
-      alert("Không thể bắt đầu bài thi. Vui lòng thử lại.");
-    } finally {
-      setLoading(false);
-    }
-  };
+  const [
+    history,
+    setHistory,
+  ] =
+    useState<
+      MockTestHistoryItem[]
+    >([]);
 
-  const handleTabChange = (tabId: string) => {
-    setActiveTab(tabId);
-    if (tabId === "full") {
-      loadAvailableTests();
-    } else if (tabId === "history") {
-      loadHistory();
-    }
-  };
+  const [loading, setLoading] =
+    useState(true);
+
+  const [
+    startingTestId,
+    setStartingTestId,
+  ] = useState<number | null>(
+    null,
+  );
+
+  const [error, setError] =
+    useState("");
+
+  // ==========================================================
+  // LOAD
+  // ==========================================================
 
   useEffect(() => {
-    loadAvailableTests();
+    loadData();
   }, []);
 
-  const avgScore = history.length > 0
-    ? Math.round(history.reduce((sum, h) => sum + (h.totalScore || 0), 0) / history.length)
-    : 0;
+  async function loadData() {
+    try {
+      setLoading(true);
+      setError("");
 
-  const bestScore = history.length > 0
-    ? Math.max(...history.map(h => h.totalScore || 0))
-    : 0;
+      const [
+        testsData,
+        historyData,
+      ] = await Promise.all([
+        getMockTests(),
+        getMockTestHistory(),
+      ]);
+
+      setTests(testsData);
+      setHistory(historyData);
+    } catch (error) {
+      setError(
+        error instanceof Error
+          ? error.message
+          : "Không thể tải dữ liệu thi thử.",
+      );
+    } finally {
+      setLoading(false);
+    }
+  }
+
+  // ==========================================================
+  // START TEST
+  // ==========================================================
+
+  async function handleStartTest(
+    testId: number,
+  ) {
+    if (startingTestId) {
+      return;
+    }
+
+    try {
+      setStartingTestId(testId);
+      setError("");
+
+      const result =
+        await startMockTest(
+          testId,
+        );
+
+      router.push(
+        `/dashboard/mock-test/${result.attemptId}`,
+      );
+    } catch (error) {
+      setError(
+        error instanceof Error
+          ? error.message
+          : "Không thể bắt đầu bài thi.",
+      );
+    } finally {
+      setStartingTestId(null);
+    }
+  }
+
+  // ==========================================================
+  // STATISTICS
+  // ==========================================================
+
+  const stats = useMemo(() => {
+    const completed =
+      history.filter(
+        (item) =>
+          item.submittedAt !== null,
+      );
+
+    if (
+      completed.length === 0
+    ) {
+      return {
+        count: 0,
+        average: 0,
+        highest: 0,
+      };
+    }
+
+    const scores =
+      completed
+        .map(
+          (item) =>
+            item.totalScore ?? 0,
+        )
+        .filter(
+          (score) =>
+            score > 0,
+        );
+
+    const average =
+      scores.length > 0
+        ? Math.round(
+            scores.reduce(
+              (sum, score) =>
+                sum + score,
+              0,
+            ) /
+              scores.length,
+          )
+        : 0;
+
+    const highest =
+      scores.length > 0
+        ? Math.max(
+            ...scores,
+          )
+        : 0;
+
+    return {
+      count:
+        completed.length,
+
+      average,
+
+      highest,
+    };
+  }, [history]);
+
+  // ==========================================================
+  // LOADING
+  // ==========================================================
+
+  if (loading) {
+    return (
+      <div className="flex min-h-screen items-center justify-center bg-[#09090b] text-zinc-400">
+        Đang tải dữ liệu thi thử...
+      </div>
+    );
+  }
+
+  // ==========================================================
+  // PAGE
+  // ==========================================================
 
   return (
-    <div className="space-y-6 max-w-5xl mx-auto">
-      {/* Header */}
-      <div>
-        <h1 className="text-2xl font-bold text-white">📝 Thi thử</h1>
-        <p className="text-zinc-400 text-sm mt-1">Full TOEIC Test · Lịch sử thi</p>
-      </div>
+    <div className="min-h-screen bg-[#09090b] text-white">
+      <main className="mx-auto max-w-6xl px-6 py-8">
+        {/* ================================================== */}
+        {/* HEADER */}
+        {/* ================================================== */}
 
-      {/* Stats */}
-      <div className="grid grid-cols-3 gap-3">
-        <div className="bg-zinc-900/60 border border-zinc-800/50 rounded-xl p-4 text-center">
-          <p className="text-2xl font-bold text-red-400">{history.length}</p>
-          <p className="text-[11px] text-zinc-500 mt-1">Lần thi</p>
-        </div>
-        <div className="bg-zinc-900/60 border border-zinc-800/50 rounded-xl p-4 text-center">
-          <p className="text-2xl font-bold text-yellow-400">{avgScore}</p>
-          <p className="text-[11px] text-zinc-500 mt-1">Điểm trung bình</p>
-        </div>
-        <div className="bg-zinc-900/60 border border-zinc-800/50 rounded-xl p-4 text-center">
-          <p className="text-2xl font-bold text-green-400">{bestScore}</p>
-          <p className="text-[11px] text-zinc-500 mt-1">Điểm cao nhất</p>
-        </div>
-      </div>
+        <div className="mb-8">
+          <div className="flex items-center gap-3">
+            <span className="text-3xl">
+              📋
+            </span>
 
-      {/* Tabs */}
-      <div className="flex gap-1 bg-zinc-900/60 border border-zinc-800/50 rounded-2xl p-1.5 overflow-x-auto">
-        {TABS.map((tab) => (
-          <button
-            key={tab.id}
-            onClick={() => handleTabChange(tab.id)}
-            className={`flex-1 min-w-max flex items-center justify-center gap-2 py-2.5 px-3 rounded-xl text-[13px] font-medium transition-all duration-200 ${
-              activeTab === tab.id
-                ? "bg-red-600 text-white shadow-lg shadow-red-600/20"
-                : "text-zinc-400 hover:text-white hover:bg-zinc-800/60"
-            }`}
-          >
-            <span>{tab.icon}</span>
-            <span className="hidden sm:inline">{tab.label}</span>
-          </button>
-        ))}
-      </div>
-
-      {/* ── Full Test ── */}
-      {activeTab === "full" && (
-        <div className="space-y-3">
-          <div className="bg-red-600/8 border border-red-600/15 rounded-2xl p-4 flex items-start gap-3">
-            <span className="text-xl">⚠️</span>
             <div>
-              <p className="text-[13px] text-red-300 font-semibold">Bài thi TOEIC đầy đủ</p>
-              <p className="text-[11px] text-zinc-500 mt-0.5">200 câu · 120 phút · Sát với đề thi thật · Có kết quả và đáp án chi tiết sau khi thi</p>
+              <h1 className="text-3xl font-bold">
+                Thi thử
+              </h1>
+
+              <p className="mt-1 text-sm text-zinc-500">
+                Full TOEIC Test · Lịch sử thi
+              </p>
             </div>
           </div>
-          {loading ? (
-            <div className="text-center py-8">
-              <p className="text-zinc-500">Đang tải danh sách đề thi...</p>
-            </div>
-          ) : availableTests.length === 0 ? (
-            <div className="bg-zinc-900/30 border border-zinc-800/30 rounded-2xl p-8 text-center">
-              <span className="text-4xl block mb-3">📋</span>
-              <p className="text-zinc-400 text-sm">Chưa có đề thi nào</p>
-            </div>
-          ) : (
-            <div className="space-y-3">
-              {availableTests.map((test) => (
-                <div
-                  key={test.id}
-                  className="bg-zinc-900/60 border border-zinc-800/50 hover:border-zinc-700/60 rounded-2xl p-5 flex items-center gap-4 transition-all cursor-pointer"
-                >
-                  <span className="text-2xl">📝</span>
-                  <div className="flex-1">
-                    <p className="text-[14px] text-white font-semibold">{test.title}</p>
-                    {test.description && (
-                      <p className="text-[11px] text-zinc-500 mt-0.5">{test.description}</p>
-                    )}
-                    <div className="flex items-center gap-3 mt-1">
-                      <span className="text-[11px] text-zinc-500">{test.totalQuestions} câu</span>
-                      <span className="text-zinc-700">·</span>
-                      <span className="text-[11px] text-zinc-500">⏱ {test.duration} phút</span>
-                      <span className="text-zinc-700">·</span>
-                      <span className="text-[11px] text-zinc-500">{new Date(test.createdAt).toLocaleDateString('vi-VN')}</span>
-                    </div>
-                  </div>
-                  <button 
-                    onClick={() => handleStartFullTest(test.id)}
-                    disabled={loading}
-                    className="text-[12px] font-semibold text-white bg-red-600 hover:bg-red-700 px-4 py-2 rounded-xl transition-all shadow-sm shadow-red-600/20 shrink-0 disabled:opacity-50"
-                  >
-                    {loading ? "Đang tải..." : "Thi ngay →"}
-                  </button>
-                </div>
-              ))}
-            </div>
-          )}
         </div>
-      )}
 
-      {/* ── History ── */}
-      {activeTab === "history" && (
-        <div className="space-y-3">
-          <p className="text-sm text-zinc-300 font-medium">Lịch sử {history.length} lần thi gần nhất</p>
-          {loading ? (
-            <div className="text-center py-8">
-              <p className="text-zinc-500">Đang tải lịch sử...</p>
-            </div>
-          ) : history.length === 0 ? (
-            <div className="bg-zinc-900/30 border border-zinc-800/30 rounded-2xl p-8 text-center">
-              <span className="text-4xl block mb-3">📋</span>
-              <p className="text-zinc-400 text-sm">Chưa có lịch sử thi</p>
-            </div>
-          ) : (
-            history.map((record) => {
-              const accuracy = record.totalCorrect && record.totalQuestions 
-                ? Math.round((record.totalCorrect / 200) * 100) 
-                : 0;
-              return (
-                <div key={record.id} className="bg-zinc-900/60 border border-zinc-800/50 hover:border-zinc-700/60 rounded-2xl p-4 transition-all cursor-pointer">
-                  <div className="flex items-start gap-3">
-                    <div className="flex-1">
-                      <div className="flex items-center gap-2 flex-wrap">
-                        <p className="text-[13px] text-white font-semibold">{record.testTitle}</p>
-                        <span className="text-[9px] bg-zinc-800 text-zinc-400 border border-zinc-700 px-2 py-0.5 rounded-full">
-                          Full Test
-                        </span>
-                      </div>
-                      <p className="text-[11px] text-zinc-500 mt-0.5">
-                        {new Date(record.startedAt).toLocaleDateString('vi-VN')} · {record.isCompleted ? 'Hoàn thành' : 'Đang làm'}
-                      </p>
-                    </div>
-                    <div className="text-right shrink-0">
-                      <p className="text-lg font-bold text-white">{record.totalScore || "—"}</p>
-                      <p className="text-[10px] text-zinc-600">điểm</p>
-                    </div>
-                  </div>
-                  {record.isCompleted && (
-                    <div className="mt-3 flex items-center gap-3">
-                      <div className="flex-1 bg-zinc-800 rounded-full h-1.5">
-                        <div
-                          className="bg-gradient-to-r from-red-600 to-red-400 h-1.5 rounded-full"
-                          style={{ width: `${accuracy}%` }}
-                        />
-                      </div>
-                      <span className="text-[11px] text-zinc-500 shrink-0 font-medium">
-                        {record.totalCorrect || 0}/200 đúng · {accuracy}%
-                      </span>
-                      <button className="text-[10px] text-red-400 hover:text-red-300 border border-red-600/20 bg-red-600/8 px-2 py-1 rounded-lg shrink-0 transition-all">
-                        Xem chi tiết
-                      </button>
-                    </div>
-                  )}
-                </div>
-              );
-            })
-          )}
+        {/* ================================================== */}
+        {/* ERROR */}
+        {/* ================================================== */}
+
+        {error && (
+          <div className="mb-6 rounded-2xl border border-red-500/20 bg-red-500/5 p-4 text-sm text-red-400">
+            {error}
+          </div>
+        )}
+
+        {/* ================================================== */}
+        {/* STATISTICS */}
+        {/* ================================================== */}
+
+        <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
+          <StatCard
+            value={stats.count}
+            label="Lần thi"
+            className="text-red-400"
+          />
+
+          <StatCard
+            value={stats.average}
+            label="Điểm trung bình"
+            className="text-yellow-400"
+          />
+
+          <StatCard
+            value={stats.highest}
+            label="Điểm cao nhất"
+            className="text-green-400"
+          />
         </div>
-      )}
+
+        {/* ================================================== */}
+        {/* TABS */}
+        {/* ================================================== */}
+
+        <div className="mt-6 grid grid-cols-2 rounded-2xl border border-white/5 bg-[#121214] p-1">
+          <button
+            type="button"
+            onClick={() =>
+              setTab("tests")
+            }
+            className={`rounded-xl px-5 py-3 text-sm font-medium transition ${
+              tab === "tests"
+                ? "bg-red-600 text-white"
+                : "text-zinc-400 hover:text-white"
+            }`}
+          >
+            📄 Full TOEIC Test
+          </button>
+
+          <button
+            type="button"
+            onClick={() =>
+              setTab("history")
+            }
+            className={`rounded-xl px-5 py-3 text-sm font-medium transition ${
+              tab === "history"
+                ? "bg-red-600 text-white"
+                : "text-zinc-400 hover:text-white"
+            }`}
+          >
+            📊 Lịch sử thi
+          </button>
+        </div>
+
+        {/* ================================================== */}
+        {/* TEST LIST */}
+        {/* ================================================== */}
+
+        {tab === "tests" && (
+          <>
+            <div className="mt-6 rounded-2xl border border-red-500/20 bg-red-500/5 p-5">
+              <div className="flex gap-4">
+                <div className="text-2xl">
+                  ⚠️
+                </div>
+
+                <div>
+                  <h2 className="font-semibold text-red-300">
+                    Bài thi TOEIC đầy đủ
+                  </h2>
+
+                  <p className="mt-1 text-sm text-zinc-400">
+                    200 câu · 120 phút ·
+                    Sát với đề thi thật ·
+                    Có kết quả và đáp án chi
+                    tiết sau khi thi
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div className="mt-6 space-y-4">
+              {tests.length === 0 ? (
+                <div className="rounded-2xl border border-white/5 bg-[#121214] p-12 text-center">
+                  <div className="text-5xl">
+                    📋
+                  </div>
+
+                  <p className="mt-4 text-zinc-400">
+                    Chưa có đề thi nào.
+                  </p>
+                </div>
+              ) : (
+                tests.map(
+                  (test) => (
+                    <div
+                      key={test.id}
+                      className="rounded-2xl border border-white/5 bg-[#121214] p-6 transition hover:border-white/10"
+                    >
+                      <div className="flex flex-col justify-between gap-5 md:flex-row md:items-center">
+                        <div>
+                          <div className="flex items-center gap-3">
+                            <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-red-600/10 text-lg font-bold text-red-400">
+                              {test.id}
+                            </div>
+
+                            <div>
+                              <h3 className="text-lg font-semibold">
+                                {test.title ??
+                                  `TOEIC Full Test ${test.id}`}
+                              </h3>
+
+                              <p className="mt-1 text-sm text-zinc-500">
+                                {test.description ??
+                                  "Full TOEIC Test"}
+                              </p>
+                            </div>
+                          </div>
+
+                          <div className="mt-4 flex flex-wrap gap-3 text-xs text-zinc-500">
+                            <span className="rounded-lg bg-white/5 px-3 py-1.5">
+                              📝{" "}
+                              {test.total_questions ??
+                                200}{" "}
+                              câu
+                            </span>
+
+                            <span className="rounded-lg bg-white/5 px-3 py-1.5">
+                              ⏱{" "}
+                              {test.duration ??
+                                120}{" "}
+                              phút
+                            </span>
+
+                            <span className="rounded-lg bg-white/5 px-3 py-1.5">
+                              🎧 Listening
+                            </span>
+
+                            <span className="rounded-lg bg-white/5 px-3 py-1.5">
+                              📖 Reading
+                            </span>
+                          </div>
+                        </div>
+
+                        <button
+                          type="button"
+                          disabled={
+                            startingTestId ===
+                            test.id
+                          }
+                          onClick={() =>
+                            handleStartTest(
+                              test.id,
+                            )
+                          }
+                          className="rounded-xl bg-red-600 px-6 py-3 text-sm font-semibold transition hover:bg-red-500 disabled:cursor-not-allowed disabled:opacity-50"
+                        >
+                          {startingTestId ===
+                          test.id
+                            ? "Đang chuẩn bị..."
+                            : "Bắt đầu thi →"}
+                        </button>
+                      </div>
+                    </div>
+                  ),
+                )
+              )}
+            </div>
+          </>
+        )}
+
+        {/* ================================================== */}
+        {/* HISTORY */}
+        {/* ================================================== */}
+
+        {tab === "history" && (
+          <div className="mt-6 space-y-4">
+            {history.length === 0 ? (
+              <div className="rounded-2xl border border-white/5 bg-[#121214] p-12 text-center">
+                <div className="text-5xl">
+                  📋
+                </div>
+
+                <p className="mt-4 text-zinc-400">
+                  Bạn chưa có lần thi nào.
+                </p>
+
+                <button
+                  type="button"
+                  onClick={() =>
+                    setTab("tests")
+                  }
+                  className="mt-5 rounded-xl bg-red-600 px-5 py-3 text-sm font-medium"
+                >
+                  Thi thử ngay
+                </button>
+              </div>
+            ) : (
+              history.map(
+                (item) => (
+                  <HistoryCard
+                    key={item.id}
+                    item={item}
+                    onView={() =>
+                      router.push(
+                        `/dashboard/mock-test/result/${item.id}`,
+                      )
+                    }
+                  />
+                ),
+              )
+            )}
+          </div>
+        )}
+      </main>
+    </div>
+  );
+}
+
+// ============================================================
+// STAT CARD
+// ============================================================
+
+function StatCard({
+  value,
+  label,
+  className,
+}: {
+  value: number;
+  label: string;
+  className: string;
+}) {
+  return (
+    <div className="rounded-2xl border border-white/5 bg-[#121214] p-6 text-center">
+      <div
+        className={`text-3xl font-black ${className}`}
+      >
+        {value}
+      </div>
+
+      <p className="mt-2 text-sm text-zinc-500">
+        {label}
+      </p>
+    </div>
+  );
+}
+
+// ============================================================
+// HISTORY CARD
+// ============================================================
+
+function HistoryCard({
+  item,
+  onView,
+}: {
+  item: MockTestHistoryItem;
+  onView: () => void;
+}) {
+  const date =
+    new Date(
+      item.createdAt,
+    ).toLocaleString(
+      "vi-VN",
+    );
+
+  return (
+    <div className="rounded-2xl border border-white/5 bg-[#121214] p-6">
+      <div className="flex flex-col justify-between gap-5 md:flex-row md:items-center">
+        <div>
+          <h3 className="font-semibold">
+            {item.testTitle}
+          </h3>
+
+          <p className="mt-1 text-sm text-zinc-500">
+            {date}
+          </p>
+
+          <div className="mt-4 flex flex-wrap gap-3 text-sm">
+            <span className="rounded-lg bg-white/5 px-3 py-2 text-zinc-400">
+              Đúng:{" "}
+              <strong className="text-white">
+                {item.totalCorrect ??
+                  0}
+                /
+                {item.totalQuestions}
+              </strong>
+            </span>
+
+            <span className="rounded-lg bg-white/5 px-3 py-2 text-zinc-400">
+              Điểm:{" "}
+              <strong className="text-green-400">
+                {item.totalScore ??
+                  0}
+              </strong>
+            </span>
+          </div>
+        </div>
+
+        <button
+          type="button"
+          onClick={onView}
+          className="rounded-xl border border-white/10 px-5 py-3 text-sm font-medium text-zinc-300 hover:bg-white/5 hover:text-white"
+        >
+          Xem kết quả
+        </button>
+      </div>
     </div>
   );
 }

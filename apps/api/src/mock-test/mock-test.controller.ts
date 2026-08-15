@@ -1,90 +1,223 @@
 import {
+  BadRequestException,
+  Body,
   Controller,
   Get,
-  Post,
-  Body,
   Param,
+  ParseIntPipe,
+  Post,
+  Req,
   UseGuards,
-  Request,
-} from '@nestjs/common';
-import { MockTestService } from './mock-test.service';
-import { JwtAuthGuard } from '../auth/jwt-auth.guard';
+} from "@nestjs/common";
 
-@Controller('mock-test')
-@UseGuards(JwtAuthGuard)
+import { AuthGuard } from "@nestjs/passport";
+
+import { MockTestService } from "./mock-test.service";
+
+@Controller("mock-test")
+@UseGuards(AuthGuard("jwt"))
 export class MockTestController {
-  constructor(private readonly mockTestService: MockTestService) {}
+  constructor(
+    private readonly mockTestService: MockTestService,
+  ) {}
 
-  /**
-   * Lấy danh sách full test có sẵn
-   */
-  @Get('tests')
-  async getAvailableTests() {
-    return this.mockTestService.getAvailableTests();
+  // ==========================================================
+  // LẤY USER ID
+  // ==========================================================
+
+  private getUserId(req: any): number {
+    const userId =
+      Number(req?.user?.userId);
+
+    if (
+      !Number.isInteger(userId) ||
+      userId <= 0
+    ) {
+      throw new BadRequestException(
+        "Không xác định được người dùng đăng nhập.",
+      );
+    }
+
+    return userId;
   }
 
-  /**
-   * Bắt đầu full test
-   */
-  @Post('start')
-  async startFullTest(
-    @Request() req,
-    @Body() body: { testId: number },
+  // ==========================================================
+  // DANH SÁCH ĐỀ
+  // GET /mock-test/tests
+  // ==========================================================
+
+  @Get("tests")
+  async getTests() {
+    return this.mockTestService.getTests();
+  }
+
+  // ==========================================================
+  // BẮT ĐẦU THI
+  // POST /mock-test/start
+  // ==========================================================
+
+  @Post("start")
+  async startTest(
+    @Req() req: any,
+
+    @Body()
+    body: {
+      testId: number;
+    },
   ) {
-    const userId = req.user.userId;
-    const { testId } = body;
+    const userId =
+      this.getUserId(req);
 
-    return this.mockTestService.startFullTest(userId, testId);
+    const testId =
+      Number(body?.testId);
+
+    if (
+      !Number.isInteger(testId) ||
+      testId <= 0
+    ) {
+      throw new BadRequestException(
+        "testId không hợp lệ.",
+      );
+    }
+
+    return this.mockTestService.startTest(
+      userId,
+      testId,
+    );
   }
 
-  /**
-   * Nộp bài full test
-   */
-  @Post('submit')
-  async submitFullTest(
-    @Request() req,
-    @Body() body: { attemptId: number; answers: Record<number, string> },
+  // ==========================================================
+  // NỘP BÀI
+  // POST /mock-test/submit
+  // ==========================================================
+
+  @Post("submit")
+  async submitTest(
+    @Req() req: any,
+
+    @Body()
+    body: {
+      attemptId: number;
+
+      answers: Array<{
+        questionId: number;
+        optionId: number;
+      }>;
+    },
   ) {
-    const userId = req.user.userId;
-    const { attemptId, answers } = body;
+    const userId =
+      this.getUserId(req);
 
-    return this.mockTestService.submitFullTest(userId, attemptId, answers);
+    const attemptId =
+      Number(body?.attemptId);
+
+    if (
+      !Number.isInteger(attemptId) ||
+      attemptId <= 0
+    ) {
+      throw new BadRequestException(
+        "attemptId không hợp lệ.",
+      );
+    }
+
+    const answers =
+      Array.isArray(
+        body?.answers,
+      )
+        ? body.answers
+        : [];
+
+    return this.mockTestService.submitTest(
+      userId,
+      attemptId,
+      answers,
+    );
   }
 
-  /**
-   * Lấy lịch sử thi thử
-   */
-  @Get('history')
-  async getHistory(@Request() req) {
-    const userId = req.user.userId;
-    return this.mockTestService.getTestHistory(userId);
+  // ==========================================================
+  // LỊCH SỬ
+  // GET /mock-test/history
+  // ==========================================================
+
+  @Get("history")
+  async getHistory(
+    @Req() req: any,
+  ) {
+    const userId =
+      this.getUserId(req);
+
+    return this.mockTestService.getHistory(
+      userId,
+    );
   }
 
-  /**
-   * Lấy chi tiết một lần thi
-   */
-  @Get('attempt/:attemptId')
+  // ==========================================================
+  // KẾT QUẢ CHI TIẾT
+  //
+  // GET /mock-test/result/:attemptId
+  //
+  // API NÀY TRẢ ĐÁP ÁN ĐÚNG
+  // CHỈ SAU KHI BÀI ĐÃ NỘP
+  // ==========================================================
+
+  @Get("result/:attemptId")
+  async getResult(
+    @Req() req: any,
+
+    @Param(
+      "attemptId",
+      ParseIntPipe,
+    )
+    attemptId: number,
+  ) {
+    const userId =
+      this.getUserId(req);
+
+    return this.mockTestService.getResult(
+      userId,
+      attemptId,
+    );
+  }
+
+  // ==========================================================
+  // CHI TIẾT ATTEMPT
+  // GET /mock-test/attempt/:attemptId
+  // ==========================================================
+
+  @Get("attempt/:attemptId")
   async getAttempt(
-    @Request() req,
-    @Param('attemptId') attemptId: string,
-  ) {
-    const userId = req.user.userId;
-    const attemptIdNumber = Number(attemptId);
+    @Req() req: any,
 
-    return this.mockTestService.getTestAttempt(userId, attemptIdNumber);
+    @Param(
+      "attemptId",
+      ParseIntPipe,
+    )
+    attemptId: number,
+  ) {
+    const userId =
+      this.getUserId(req);
+
+    return this.mockTestService.getAttempt(
+      userId,
+      attemptId,
+    );
   }
 
-  /**
-   * Lấy chi tiết một full test (không tạo attempt)
-   */
-  @Get('test/:testId')
-  async getTest(
-    @Request() req,
-    @Param('testId') testId: string,
-  ) {
-    const userId = req.user.userId;
-    const testIdNumber = Number(testId);
+  // ==========================================================
+  // THÔNG TIN TEST
+  // GET /mock-test/test/:testId
+  // ==========================================================
 
-    return this.mockTestService.startFullTest(userId, testIdNumber);
+  @Get("test/:testId")
+  async getTest(
+    @Param(
+      "testId",
+      ParseIntPipe,
+    )
+    testId: number,
+  ) {
+    return this.mockTestService.getTest(
+      testId,
+    );
   }
 }
