@@ -90,6 +90,15 @@ if (data.accessToken) {
           className="w-full p-4 rounded-xl bg-zinc-800 text-white border border-zinc-700 mb-6 focus:outline-none focus:border-red-500"
         />
 
+        <div className="flex justify-end mb-6">
+          <a
+            href="/forgot-password"
+            className="text-sm text-red-500 hover:text-red-400 transition"
+          >
+            Quên mật khẩu?
+          </a>
+        </div>
+
         <button
           onClick={login}
           className="w-full bg-red-600 hover:bg-red-700 transition text-white font-bold py-4 rounded-xl"

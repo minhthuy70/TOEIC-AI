@@ -50,4 +50,26 @@ constructor(
 getMe(@Req() req: any) {
   return req.user;
 }
+
+  @Post('forgot-password')
+  forgotPassword(
+    @Body()
+    body: {
+      email: string;
+    },
+  ) {
+    return this.authService.forgotPassword(body.email);
+  }
+
+  @Post('reset-password')
+  resetPassword(
+    @Body()
+    body: {
+      token: string;
+      email: string;
+      newPassword: string;
+    },
+  ) {
+    return this.authService.resetPassword(body.token, body.email, body.newPassword);
+  }
 }
