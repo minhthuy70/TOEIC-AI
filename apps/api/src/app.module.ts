@@ -15,6 +15,7 @@ import { MockTestModule } from "./mock-test/mock-test.module";
 import { AuthModule } from "./auth/auth.module";
 import { ProfileModule } from "./profile/profile.module";
 import { AdminModule } from "./admin/admin.module";
+import { DashboardModule } from "./dashboard/dashboard.module";
 
 @Module({
   imports: [
@@ -41,6 +42,7 @@ import { AdminModule } from "./admin/admin.module";
     PracticeModule,
     MockTestModule,
     AdminModule,
+    DashboardModule,
   ],
 })
 export class AppModule {}

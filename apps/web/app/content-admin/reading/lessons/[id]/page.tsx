@@ -1047,7 +1047,7 @@ export default function ReadingLessonGroupsPage() {
                         onChange={(e) =>
                           setForm({
                             ...form,
-                            displayOrder: Math.max(0, Number(e.target.value)),
+                            displayOrder: String(Math.max(0, Number(e.target.value))),
                           })
                         }
                         className="w-full bg-zinc-800 border border-zinc-700 rounded-xl px-4 py-3 outline-none focus:border-red-500"

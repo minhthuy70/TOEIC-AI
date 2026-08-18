@@ -23,7 +23,7 @@ interface Option {
   display_order: number | null;
 }
 
-interface Question {
+export interface Question {
   id: number;
   group_id: number | null;
   question_number: number | null;
@@ -34,7 +34,7 @@ interface Question {
   options: Option[];
 }
 
-interface QuestionGroup {
+export interface QuestionGroup {
   id: number;
   test_id: number | null;
   part: number | null;
@@ -48,6 +48,7 @@ interface QuestionGroup {
   audio_end_time: number | null;
   knowledge: string | null;
   questions: Question[];
+  _count?: { questions?: number };
 }
 
 interface GrammarLesson {
@@ -134,7 +135,7 @@ export async function deleteTest(id: number) {
 // QUESTION GROUPS MANAGEMENT
 // ======================================================
 
-interface QuestionGroupForm {
+export interface QuestionGroupForm {
   part?: number;
   title?: string;
   passage?: string;
@@ -142,8 +143,8 @@ interface QuestionGroupForm {
   audio_url?: string;
   display_order?: number;
   group_type?: string;
-  audio_start_time?: number;
-  audio_end_time?: number;
+  audio_start_time?: number | null;
+  audio_end_time?: number | null;
   knowledge?: string;
 }
 
@@ -196,7 +197,7 @@ export async function deleteQuestionGroup(groupId: number) {
 // QUESTIONS MANAGEMENT
 // ======================================================
 
-interface QuestionForm {
+export interface QuestionForm {
   question_number?: number;
   question_text?: string;
   correct_answer?: string;

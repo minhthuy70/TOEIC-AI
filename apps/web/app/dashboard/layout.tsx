@@ -7,7 +7,6 @@ import Link from "next/link";
 /* ───────── Navigation Items ───────── */
 const NAV_MAIN = [
   { label: "Tổng quan", icon: "🏠", href: "/dashboard" },
-  { label: "Lộ trình học", icon: "🗺️", href: "/dashboard/roadmap" },
   { label: "Học tập", icon: "📚", href: "/dashboard/courses" },
   { label: "Luyện tập", icon: "✍️", href: "/dashboard/practice" },
   { label: "Thi thử", icon: "📝", href: "/dashboard/mock-test" },

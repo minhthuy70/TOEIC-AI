@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useRef, useCallback } from "react";
+import { useState, useEffect, useRef, useCallback, Suspense } from "react";
 import { useSearchParams, useRouter } from "next/navigation";
 import Link from "next/link";
 import {
@@ -28,7 +28,7 @@ const PART_LABELS: Record<number, string> = {
   4: "Part 4: Talks",
 };
 
-export default function ListeningLearnPage() {
+function ListeningLearnContent() {
   const searchParams = useSearchParams();
   const router = useRouter();
   const groupId = Number(searchParams.get("groupId"));
@@ -631,5 +631,13 @@ export default function ListeningLearnPage() {
         )}
       </div>
     </div>
+  );
+}
+
+export default function ListeningLearnPage() {
+  return (
+    <Suspense fallback={<div className="min-h-screen bg-[#0a0a0f] flex items-center justify-center"><div className="text-zinc-400">Đang tải...</div></div>}>
+      <ListeningLearnContent />
+    </Suspense>
   );
 }

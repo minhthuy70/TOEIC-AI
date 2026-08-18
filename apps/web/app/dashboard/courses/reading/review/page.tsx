@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useState, Suspense } from "react";
 
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
@@ -41,7 +41,7 @@ type ReviewQuestion = ReadingQuestion & {
   groupKnowledge?: string | null;
 };
 
-export default function ReadingReviewPage() {
+function ReadingReviewContent() {
   const searchParams = useSearchParams();
 
   // =========================================================
@@ -1667,5 +1667,13 @@ export default function ReadingReviewPage() {
           </div>
         )}
     </div>
+  );
+}
+
+export default function ReadingReviewPage() {
+  return (
+    <Suspense fallback={<div className="min-h-screen bg-[#0a0a0f] flex items-center justify-center"><div className="text-zinc-400">Đang tải...</div></div>}>
+      <ReadingReviewContent />
+    </Suspense>
   );
 }

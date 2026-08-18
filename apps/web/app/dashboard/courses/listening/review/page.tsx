@@ -5,6 +5,7 @@ import {
   useMemo,
   useRef,
   useState,
+  Suspense,
 } from "react";
 
 import Link from "next/link";
@@ -38,7 +39,7 @@ const QUESTION_LIMITS = [5, 10, 15, 20];
 
 const VALID_PARTS = [1, 2, 3, 4];
 
-export default function ListeningReviewPage() {
+function ListeningReviewContent() {
   const searchParams = useSearchParams();
 
   // =========================================================
@@ -1758,5 +1759,13 @@ export default function ListeningReviewPage() {
         )}
 
     </div>
+  );
+}
+
+export default function ListeningReviewPage() {
+  return (
+    <Suspense fallback={<div className="min-h-screen bg-[#0a0a0f] flex items-center justify-center"><div className="text-zinc-400">Đang tải...</div></div>}>
+      <ListeningReviewContent />
+    </Suspense>
   );
 }
