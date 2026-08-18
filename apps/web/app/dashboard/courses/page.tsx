@@ -2,8 +2,8 @@
 
 import { useState, useEffect, useCallback } from "react";
 import Link from "next/link";
-import { getSrs } from "@/services/vocabulary";
-import type { SrsResponse } from "@/types/vocabulary";
+import { getSrs, getTopics } from "@/services/vocabulary";
+import type { SrsResponse, Topic } from "@/types/vocabulary";
 import { getGrammarCategories } from "@/services/grammar";
 import type { GrammarCategory } from "@/types/grammar";
 import {
@@ -28,16 +28,7 @@ const TABS = [
   { id: "reading", label: "Reading", icon: "📄" },
 ];
 
-const VOCAB_TOPICS = [
-  { id: 1, label: "Office & Workplace", icon: "🏢", words: 120, done: 85, color: "from-blue-600 to-blue-500" },
-  { id: 2, label: "Travel & Transportation", icon: "✈️", words: 95, done: 40, color: "from-cyan-600 to-cyan-500" },
-  { id: 3, label: "Banking & Finance", icon: "🏦", words: 110, done: 20, color: "from-green-600 to-green-500" },
-  { id: 4, label: "Marketing & Sales", icon: "📊", words: 100, done: 0, color: "from-purple-600 to-purple-500" },
-  { id: 5, label: "Human Resources (HR)", icon: "👥", words: 90, done: 0, color: "from-pink-600 to-pink-500" },
-  { id: 6, label: "Shipping & Logistics", icon: "🚢", words: 85, done: 0, color: "from-orange-600 to-orange-500" },
-  { id: 7, label: "Meetings & Conferences", icon: "🤝", words: 75, done: 0, color: "from-yellow-600 to-yellow-500" },
-  { id: 8, label: "Technology & IT", icon: "💻", words: 105, done: 0, color: "from-indigo-600 to-indigo-500" },
-];
+
 
 const LISTENING_PARTS = [
   { part: 1, label: "Photographs", icon: "🖼️", questions: 6, desc: "Nghe và chọn ảnh phù hợp", done: 4 },
@@ -152,6 +143,8 @@ export default function CoursesPage() {
   const [srsStatus, setSrsStatus] = useState<SrsResponse | null>(null);
   const [srsLoading, setSrsLoading] = useState(true);
   const [countdown, setCountdown] = useState("");
+  const [vocabTopics, setVocabTopics] = useState<Topic[]>([]);
+  const [vocabTopicsLoading, setVocabTopicsLoading] = useState(true);
   const [grammarTopics, setGrammarTopics] = useState<
   GrammarCategory[]
 >([]);
@@ -174,20 +167,25 @@ const [grammarLoading, setGrammarLoading] =
 const [grammarError, setGrammarError] =
   useState<string | null>(null);
 
-  const loadSrs = useCallback(async () => {
+  const loadSrsAndTopics = useCallback(async () => {
     try {
-      const data = await getSrs();
-      if (data.success) setSrsStatus(data);
+      const [srsData, topicsData] = await Promise.all([
+        getSrs(),
+        getTopics(),
+      ]);
+      if (srsData.success) setSrsStatus(srsData);
+      setVocabTopics(topicsData);
     } catch (err) {
       console.error(err);
     } finally {
       setSrsLoading(false);
+      setVocabTopicsLoading(false);
     }
   }, []);
 
   useEffect(() => {
-    loadSrs();
-  }, [loadSrs]);
+    loadSrsAndTopics();
+  }, [loadSrsAndTopics]);
 useEffect(() => {
   if (activeTab !== "grammar") return;
 
@@ -498,12 +496,20 @@ useEffect(() => {
             <div className="flex items-center justify-between mb-3">
               <p className="text-sm text-zinc-300 font-medium">Chủ đề từ vựng</p>
               <span className="text-xs text-zinc-500 bg-zinc-900/60 border border-zinc-800/50 px-3 py-1 rounded-full">
-                {VOCAB_TOPICS.filter(t => t.done > 0).length}/{VOCAB_TOPICS.length} chủ đề đang học
+                {vocabTopicsLoading ? "..." : `${vocabTopics.filter(t => t.done > 0).length}/${vocabTopics.length} chủ đề đang học`}
               </span>
             </div>
-            <div className="grid sm:grid-cols-2 lg:grid-cols-2 gap-3">
-              {VOCAB_TOPICS.map((topic) => {
-                const progress = Math.round((topic.done / topic.words) * 100);
+            
+            {vocabTopicsLoading ? (
+              <div className="grid sm:grid-cols-2 lg:grid-cols-2 gap-3">
+                {[1, 2, 3, 4].map((i) => (
+                  <div key={i} className="h-32 bg-zinc-900/60 border border-zinc-800/50 rounded-2xl animate-pulse" />
+                ))}
+              </div>
+            ) : (
+              <div className="grid sm:grid-cols-2 lg:grid-cols-2 gap-3">
+                {vocabTopics.map((topic) => {
+                  const progress = topic.words > 0 ? Math.round((topic.done / topic.words) * 100) : 0;
                 return (
                   <div
                     key={topic.id}
@@ -550,6 +556,7 @@ useEffect(() => {
                 );
               })}
             </div>
+            )}
           </div>
         </div>
       )}

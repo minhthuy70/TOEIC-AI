@@ -37,9 +37,12 @@ export interface DashboardResponse {
 // ===========================================
 
 export interface Topic {
-  topic: string;
-
-  totalWords: number;
+  id: number;
+  label: string;
+  icon: string;
+  words: number;
+  done: number;
+  color: string;
 }
 
 // ===========================================

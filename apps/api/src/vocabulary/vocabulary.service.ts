@@ -209,23 +209,70 @@ export class VocabularyService {
   // TOPICS
   // =====================================================
 
-  async getTopics() {
-    const result = await this.prisma.vocabulary.groupBy({
+  async getTopics(userId: number) {
+    // Lấy tất cả từ vựng group theo topic để đếm tổng số từ
+    const allTopics = await this.prisma.vocabulary.groupBy({
       by: ['topic'],
-
       _count: {
         id: true,
       },
-
       orderBy: {
         topic: 'asc',
       },
     });
 
-    return result.map((item) => ({
-      topic: item.topic,
-      totalWords: item._count.id,
-    }));
+    // Lấy tiến độ học của user
+    const userProgress = await this.prisma.userVocabularyProgress.findMany({
+      where: {
+        userId,
+        status: { not: 'NEW' }, // Đã học
+      },
+      select: {
+        vocabulary: {
+          select: {
+            topic: true
+          }
+        }
+      }
+    });
+
+    // Đếm số từ đã học theo từng topic
+    const progressMap: Record<string, number> = {};
+    for (const p of userProgress) {
+      const topic = p.vocabulary?.topic;
+      if (topic) {
+        progressMap[topic] = (progressMap[topic] || 0) + 1;
+      }
+    }
+
+    return allTopics.map((item, index) => {
+      const topicName = item.topic || "Khác";
+      const words = item._count.id;
+      const done = progressMap[item.topic] || 0;
+      
+      // Auto-assign colors and icons dynamically
+      const colors = [
+        "from-blue-600 to-blue-500",
+        "from-cyan-600 to-cyan-500",
+        "from-green-600 to-green-500",
+        "from-purple-600 to-purple-500",
+        "from-pink-600 to-pink-500",
+        "from-orange-600 to-orange-500",
+        "from-yellow-600 to-yellow-500",
+        "from-indigo-600 to-indigo-500",
+      ];
+      
+      const icons = ["🏢", "✈️", "🏦", "📊", "👥", "🚢", "🤝", "💻", "📚", "🛒", "🏥", "🏭", "🏠", "🎨", "🎬", "🎵"];
+
+      return {
+        id: index + 1,
+        label: topicName,
+        icon: icons[index % icons.length],
+        words,
+        done,
+        color: colors[index % colors.length],
+      };
+    });
   }
 
   // =====================================================

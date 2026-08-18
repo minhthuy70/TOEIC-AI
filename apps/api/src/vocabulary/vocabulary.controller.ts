@@ -63,8 +63,8 @@ srs(
   // =====================================================
 
   @Get('topics')
-  topics() {
-    return this.vocabularyService.getTopics();
+  topics(@Request() req) {
+    return this.vocabularyService.getTopics(req.user.userId);
   }
 
   // =====================================================
