@@ -248,7 +248,7 @@ export class VocabularyService {
     return allTopics.map((item, index) => {
       const topicName = item.topic || "Khác";
       const words = item._count.id;
-      const done = progressMap[item.topic] || 0;
+      const done = item.topic ? (progressMap[item.topic] || 0) : 0;
       
       // Auto-assign colors and icons dynamically
       const colors = [
