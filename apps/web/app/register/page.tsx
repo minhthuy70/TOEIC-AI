@@ -9,8 +9,29 @@ export default function RegisterPage() {
   const [fullName, setFullName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
+  const [error, setError] = useState("");
 
   async function register() {
+    setError("");
+
+    if (!fullName.trim()) {
+      setError("Vui lòng nhập họ và tên");
+      return;
+    }
+    if (!email.trim()) {
+      setError("Vui lòng nhập email");
+      return;
+    }
+    if (password.length < 6) {
+      setError("Mật khẩu phải có ít nhất 6 ký tự");
+      return;
+    }
+    if (password !== confirmPassword) {
+      setError("Mật khẩu xác nhận không khớp");
+      return;
+    }
+
     const res = await fetch(
       "http://localhost:3001/auth/register",
       {
@@ -29,14 +50,9 @@ export default function RegisterPage() {
     const data = await res.json();
 
     if (data.id) {
-      localStorage.setItem(
-        "user",
-        JSON.stringify(data)
-      );
-
       router.push("/login");
     } else {
-      alert(data.message);
+      setError(data.message || "Đăng ký thất bại");
     }
   }
 
@@ -60,14 +76,19 @@ export default function RegisterPage() {
           Tạo tài khoản TOEIC
         </p>
 
+        {/* Error message */}
+        {error && (
+          <div className="w-full p-3 rounded-xl bg-red-600/20 border border-red-600/40 text-red-400 text-sm mb-4">
+            {error}
+          </div>
+        )}
+
         {/* Họ tên */}
         <input
           type="text"
           placeholder="Họ và tên"
           value={fullName}
-          onChange={(e) =>
-            setFullName(e.target.value)
-          }
+          onChange={(e) => setFullName(e.target.value)}
           className="w-full p-4 rounded-xl bg-zinc-800 text-white border border-zinc-700 mb-4 focus:outline-none focus:border-red-500"
         />
 
@@ -76,9 +97,7 @@ export default function RegisterPage() {
           type="email"
           placeholder="Email"
           value={email}
-          onChange={(e) =>
-            setEmail(e.target.value)
-          }
+          onChange={(e) => setEmail(e.target.value)}
           className="w-full p-4 rounded-xl bg-zinc-800 text-white border border-zinc-700 mb-4 focus:outline-none focus:border-red-500"
         />
 
@@ -87,10 +106,24 @@ export default function RegisterPage() {
           type="password"
           placeholder="Mật khẩu"
           value={password}
-          onChange={(e) =>
-            setPassword(e.target.value)
-          }
-          className="w-full p-4 rounded-xl bg-zinc-800 text-white border border-zinc-700 mb-6 focus:outline-none focus:border-red-500"
+          onChange={(e) => setPassword(e.target.value)}
+          className="w-full p-4 rounded-xl bg-zinc-800 text-white border border-zinc-700 mb-4 focus:outline-none focus:border-red-500"
+        />
+
+        {/* Confirm Password */}
+        <input
+          type="password"
+          placeholder="Xác nhận mật khẩu"
+          value={confirmPassword}
+          onChange={(e) => setConfirmPassword(e.target.value)}
+          onKeyDown={(e) => e.key === "Enter" && register()}
+          className={`w-full p-4 rounded-xl bg-zinc-800 text-white border mb-6 focus:outline-none transition ${
+            confirmPassword && confirmPassword !== password
+              ? "border-red-500"
+              : confirmPassword && confirmPassword === password
+              ? "border-green-500"
+              : "border-zinc-700 focus:border-red-500"
+          }`}
         />
 
         {/* Button */}
@@ -103,10 +136,7 @@ export default function RegisterPage() {
 
         <p className="text-center text-zinc-400 mt-6">
           Đã có tài khoản?
-          <a
-            href="/login"
-            className="text-red-500 ml-2"
-          >
+          <a href="/login" className="text-red-500 ml-2">
             Đăng nhập
           </a>
         </p>

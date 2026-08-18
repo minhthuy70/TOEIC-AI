@@ -20,9 +20,20 @@ export class PlacementTestController {
   @Get()
   async getPlacementTest() {
     try {
-      const groups: any[] = await prisma.$queryRaw`SELECT * FROM public.question_groups ORDER BY id ASC`;
-      const questions: any[] = await prisma.$queryRaw`SELECT * FROM public.questions ORDER BY id ASC`;
-      const options: any[] = await prisma.$queryRaw`SELECT * FROM public.options ORDER BY display_order ASC, id ASC`;
+      const groups: any[] = await prisma.$queryRaw`SELECT * FROM public.question_groups WHERE test_id = 1 ORDER BY id ASC`;
+      const questions: any[] = await prisma.$queryRaw`
+        SELECT q.* FROM public.questions q
+        JOIN public.question_groups g ON q.group_id = g.id
+        WHERE g.test_id = 1
+        ORDER BY q.id ASC
+      `;
+      const options: any[] = await prisma.$queryRaw`
+        SELECT o.* FROM public.options o
+        JOIN public.questions q ON o.question_id = q.id
+        JOIN public.question_groups g ON q.group_id = g.id
+        WHERE g.test_id = 1
+        ORDER BY o.display_order ASC, o.id ASC
+      `;
 
       if (questions && questions.length > 0) {
         const groupMap = new Map();
