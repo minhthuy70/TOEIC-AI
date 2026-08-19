@@ -129,6 +129,10 @@ export default function PlacementTestPage() {
     testData?.parts.reduce((s, p) => s + p.questions.length, 0) ?? 0;
   const totalAnswered = Object.keys(answers).length;
 
+  // Check if it's the last question of the last part
+  const isLastPart = testData ? currentPartIndex === testData.parts.length - 1 : false;
+  const isLastQuestion = currentPart ? currentQuestionIndex === currentPart.questions.length - 1 : false;
+
   /* ── Helpers ── */
   const formatTime = (sec: number) => {
     const m = Math.floor(sec / 60);
@@ -672,7 +676,7 @@ export default function PlacementTestPage() {
 
         {/* ─── Main Content ─── */}
         <main ref={mainRef} className="flex-1 overflow-y-auto">
-          <div className="max-w-4xl mx-auto px-4 py-6 lg:px-8">
+          <div className="max-w-4xl mx-auto px-4 py-6 pb-32 lg:px-8">
             {/* Part has no questions */}
             {!currentPart || currentPart.questions.length === 0 ? (
               <div className="flex flex-col items-center justify-center min-h-[60vh]">
@@ -766,7 +770,7 @@ export default function PlacementTestPage() {
                       {/* Image for Question */}
                       {currentQuestion.image && (
                         <div className="mb-6 flex justify-center">
-                          <div className="relative rounded-xl overflow-hidden border border-zinc-700 shadow-2xl max-w-lg w-full bg-zinc-900 min-h-[160px] flex items-center justify-center">
+                          <div className="relative rounded-xl overflow-hidden border border-zinc-700 shadow-2xl max-w-lg w-full bg-zinc-900 min-h-40 flex items-center justify-center">
                             <img
                               src={
                                 currentQuestion.image.startsWith("http")
@@ -848,27 +852,41 @@ export default function PlacementTestPage() {
                         ← Câu trước
                       </button>
 
-                      <div className="flex gap-1.5">
-                        {currentPart.questions.map((_, idx) => (
-                          <button
-                            key={idx}
-                            onClick={() => goToQuestion(currentPartIndex, idx)}
-                            className={`w-2.5 h-2.5 rounded-full transition-all ${idx === currentQuestionIndex
-                              ? "bg-red-500 scale-125"
-                              : answers[`p${currentPart.partNumber}-q${currentPart.questions[idx].questionNumber}`]
-                                ? "bg-red-600/50"
-                                : "bg-zinc-700"
-                              }`}
-                          />
-                        ))}
+                      <div className="flex gap-1.5 overflow-x-auto max-w-[200px] sm:max-w-[300px] scrollbar-hide" style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
+                        {currentPart.questions
+                          .slice(Math.max(0, currentQuestionIndex - 4), currentQuestionIndex + 6)
+                          .map((_, offsetIdx) => {
+                            const actualIdx = Math.max(0, currentQuestionIndex - 4) + offsetIdx;
+                            return (
+                              <button
+                                key={actualIdx}
+                                onClick={() => goToQuestion(currentPartIndex, actualIdx)}
+                                className={`w-2.5 h-2.5 rounded-full transition-all shrink-0 ${actualIdx === currentQuestionIndex
+                                  ? "bg-red-500 scale-125"
+                                  : answers[`p${currentPart.partNumber}-q${currentPart.questions[actualIdx].questionNumber}`]
+                                    ? "bg-red-600/50"
+                                    : "bg-zinc-700"
+                                  }`}
+                              />
+                            );
+                          })}
                       </div>
 
-                      <button
-                        onClick={goNext}
-                        className="flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium text-gray-400 hover:text-white hover:bg-zinc-800 transition-all"
-                      >
-                        Câu sau →
-                      </button>
+                      {isLastPart && isLastQuestion ? (
+                        <button
+                          onClick={handleSubmit}
+                          className="flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium bg-red-600 hover:bg-red-700 text-white transition-all"
+                        >
+                          Nộp bài
+                        </button>
+                      ) : (
+                        <button
+                          onClick={goNext}
+                          className="flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium text-gray-400 hover:text-white hover:bg-zinc-800 transition-all"
+                        >
+                          Câu sau →
+                        </button>
+                      )}
                     </div>
                   </div>
                 )}

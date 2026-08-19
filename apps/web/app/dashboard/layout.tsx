@@ -36,10 +36,43 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
   } | null>(null);
 
   useEffect(() => {
-    const stored = localStorage.getItem("user");
-    if (!stored) { router.push("/login"); return; }
-    try { setUser(JSON.parse(stored)); }
-    catch { router.push("/login"); }
+    const loadUserData = async () => {
+      const stored = localStorage.getItem("user");
+      if (!stored) { router.push("/login"); return; }
+      
+      try { 
+        const parsedUser = JSON.parse(stored);
+        
+        // Always fetch fresh profile data to ensure scores are up to date
+        const token = localStorage.getItem("accessToken");
+        if (token) {
+          try {
+            const res = await fetch("http://localhost:3001/profile/me", {
+              headers: { Authorization: `Bearer ${token}` }
+            });
+            if (res.ok) {
+              const profile = await res.json();
+              const updatedUser = {
+                ...parsedUser,
+                currentScore: profile.currentScore ?? parsedUser.currentScore,
+                targetScore: profile.targetScore ?? parsedUser.targetScore,
+              };
+              setUser(updatedUser);
+              localStorage.setItem("user", JSON.stringify(updatedUser));
+              return;
+            }
+          } catch (err) {
+            console.error("Failed to fetch profile:", err);
+          }
+        }
+        
+        // Fallback to localStorage if API fails
+        setUser(parsedUser);
+      }
+      catch { router.push("/login"); }
+    };
+    
+    loadUserData();
   }, [router]);
 
   const currentStage = (() => {

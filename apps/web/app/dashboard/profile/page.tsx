@@ -250,6 +250,15 @@ await profileRes.json();
 
 setUser(profile);
 
+// Update localStorage with currentScore and targetScore
+const localStorageUser = JSON.parse(localStorage.getItem("user") || "{}");
+const updatedUser = {
+  ...localStorageUser,
+  currentScore: profile.currentScore,
+  targetScore: profile.targetScore,
+};
+localStorage.setItem("user", JSON.stringify(updatedUser));
+
 
 showSaved(
 "Đã cập nhật mục tiêu TOEIC!"

@@ -68,6 +68,14 @@ export default function SetupPage() {
       return;
     }
 
+    // Update localStorage with currentScore and targetScore
+    const updatedUser = {
+      ...user,
+      currentScore: cScore,
+      targetScore: tScore,
+    };
+    localStorage.setItem("user", JSON.stringify(updatedUser));
+
     window.location.href = "/dashboard";
   }
 
