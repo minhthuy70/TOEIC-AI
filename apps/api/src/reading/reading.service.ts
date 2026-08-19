@@ -941,10 +941,20 @@ export class ReadingService {
       new Date();
 
     // -------------------------------------------------------
-    // FIND EXISTING GROUP PROGRESS
+    // UPSERT PROGRESS - LOGIC THỦ CÔNG
+    // -------------------------------------------------------
+    //
+    // Database có 2 unique constraints:
+    // - (user_id, lesson_id)
+    // - (user_id, group_id)
+    //
+    // Không thể dùng upsert trực tiếp vì có thể conflict.
+    // Dùng logic thủ công: ưu tiên update theo group_id,
+    // nếu không có thì tạo mới.
     // -------------------------------------------------------
 
-    const existingProgress =
+    // 1. Thử tìm theo (user_id, group_id) trước
+    const existingByGroup =
       await this.prisma.user_reading_progress.findUnique({
         where: {
           user_id_group_id: {
@@ -954,72 +964,84 @@ export class ReadingService {
         },
       });
 
-    // -------------------------------------------------------
-    // UPDATE
-    // -------------------------------------------------------
-
-    if (existingProgress) {
+    if (existingByGroup) {
+      // Update record đã tồn tại theo group
       await this.prisma.user_reading_progress.update({
         where: {
-          id: existingProgress.id,
+          id: existingByGroup.id,
         },
 
         data: {
           completed: true,
 
           best_score: Math.max(
-            Number(
-              existingProgress.best_score ??
-                0,
-            ),
+            Number(existingByGroup.best_score ?? 0),
             score,
           ),
 
-          last_studied:
-            today,
+          last_studied: today,
 
-          updated_at:
-            today,
+          updated_at: today,
 
-          /**
-           * Đảm bảo lesson_id luôn
-           * đúng với group.
-           */
-          lesson_id:
-            group.lesson_id,
+          lesson_id: lessonId,
         },
       });
-    }
+    } else {
+      // 2. Nếu không có theo group, kiểm tra theo lesson_id
+      const existingByLesson =
+        await this.prisma.user_reading_progress.findUnique({
+          where: {
+            user_id_lesson_id: {
+              user_id: userId,
+              lesson_id: lessonId,
+            },
+          },
+        });
 
-    // -------------------------------------------------------
-    // CREATE
-    // -------------------------------------------------------
+      if (existingByLesson) {
+        // Update record theo lesson_id, thay đổi group_id
+        await this.prisma.user_reading_progress.update({
+          where: {
+            id: existingByLesson.id,
+          },
 
-    else {
-      await this.prisma.user_reading_progress.create({
-        data: {
-          user_id: userId,
+          data: {
+            completed: true,
 
-          lesson_id:
-            group.lesson_id,
+            best_score: Math.max(
+              Number(existingByLesson.best_score ?? 0),
+              score,
+            ),
 
-          group_id:
-            group.id,
+            last_studied: today,
 
-          completed: true,
+            updated_at: today,
 
-          best_score: score,
+            group_id: groupId,
+          },
+        });
+      } else {
+        // 3. Nếu không có cả hai, tạo mới
+        await this.prisma.user_reading_progress.create({
+          data: {
+            user_id: userId,
 
-          last_studied:
-            today,
+            lesson_id: lessonId,
 
-          created_at:
-            today,
+            group_id: groupId,
 
-          updated_at:
-            today,
-        },
-      });
+            completed: true,
+
+            best_score: score,
+
+            last_studied: today,
+
+            created_at: today,
+
+            updated_at: today,
+          },
+        });
+      }
     }
 
     // -------------------------------------------------------

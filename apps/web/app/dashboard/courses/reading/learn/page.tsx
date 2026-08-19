@@ -507,11 +507,19 @@ function ReadingLearnContent() {
          * Backend cần groupId để lưu
          * progress theo GROUP.
          */
-        await submitReadingLesson(
+        console.log("Submitting reading lesson:", {
+          lessonId: lesson.id,
+          groupId,
+          score: calculatedScore,
+        });
+
+        const submitResult = await submitReadingLesson(
           lesson.id,
           groupId,
           calculatedScore,
         );
+
+        console.log("Submit result:", submitResult);
 
         setSubmitted(true);
 
@@ -525,11 +533,12 @@ function ReadingLearnContent() {
           err,
         );
 
-        setError(
-          err instanceof Error
-            ? err.message
-            : "Không thể lưu kết quả Reading.",
-        );
+        const errorMessage = err instanceof Error
+          ? err.message
+          : "Không thể lưu kết quả Reading.";
+
+        console.error("Error message:", errorMessage);
+        setError(errorMessage);
       } finally {
         setSubmitting(false);
       }
@@ -1113,7 +1122,7 @@ function ReadingLearnContent() {
             >
               {submitting
                 ? "Đang lưu..."
-                : "Nộp GROUP →"}
+                : "Nộp →"}
             </button>
           )}
         </div>

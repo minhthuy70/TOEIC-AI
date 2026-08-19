@@ -46,6 +46,11 @@ export async function apiFetch<T>(
   }
 
   if (!response.ok) {
+    console.error("API Error details:", {
+      status: response.status,
+      statusText: response.statusText,
+      data,
+    });
     throw new Error(data.message || "API Error");
   }
 
