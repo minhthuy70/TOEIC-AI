@@ -266,10 +266,28 @@ export default function DashboardPage() {
               <div className="bg-orange-500 h-2 rounded-full transition-all" style={{ width: `${daily.progress}%` }}></div>
             </div>
             
-            {daily.tasksCompleted === 0 ? (
-              <p className="text-sm text-zinc-400 mt-4 text-center italic py-2">Bạn chưa bắt đầu học hôm nay. Hãy bắt đầu bài học để xây dựng tiến độ!</p>
+            {daily.tasks && daily.tasks.length > 0 ? (
+              <div className="space-y-3 mt-4">
+                {daily.tasks.map((task: any) => (
+                  <div key={task.id} className="flex items-center gap-3 bg-zinc-800/40 p-3 rounded-xl border border-zinc-700/30">
+                    <div className={`w-6 h-6 rounded-full flex items-center justify-center shrink-0 ${task.isCompleted ? 'bg-green-500/20 text-green-500' : 'bg-zinc-700 text-zinc-500'}`}>
+                      {task.isCompleted ? '✓' : '○'}
+                    </div>
+                    <div className="flex-1 min-w-0">
+                      <p className={`text-sm font-medium ${task.isCompleted ? 'text-zinc-400 line-through' : 'text-zinc-200'}`}>{task.title}</p>
+                    </div>
+                    <div className="text-xs font-semibold text-zinc-400">
+                      {task.completed} / {task.goal}
+                    </div>
+                  </div>
+                ))}
+              </div>
             ) : (
-              <p className="text-sm text-zinc-400 mt-4 text-center italic py-2">Bạn đang làm rất tốt, hãy tiếp tục duy trì nhé!</p>
+              daily.tasksCompleted === 0 ? (
+                <p className="text-sm text-zinc-400 mt-4 text-center italic py-2">Bạn chưa bắt đầu học hôm nay. Hãy bắt đầu bài học để xây dựng tiến độ!</p>
+              ) : (
+                <p className="text-sm text-zinc-400 mt-4 text-center italic py-2">Bạn đang làm rất tốt, hãy tiếp tục duy trì nhé!</p>
+              )
             )}
           </div>
           

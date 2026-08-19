@@ -86,27 +86,108 @@ export class DashboardService {
     });
 
     // 7. Hoạt động hôm nay (Today Tasks)
-    const learnedVocabToday = await this.prisma.userVocabularyProgress.count({
+    const endOfToday = new Date(today);
+    endOfToday.setHours(23, 59, 59, 999);
+
+    const vocabLearnedToday = await this.prisma.userVocabularyProgress.count({
       where: { userId, status: { not: "NEW" }, learnedAt: { gte: today } },
     });
+    
+    const vocabReviewedToday = await this.prisma.userVocabularyProgress.count({
+      where: { userId, status: { not: "NEW" }, lastReview: { gte: today } },
+    });
+    const vocabToReviewToday = await this.prisma.userVocabularyProgress.count({
+      where: { userId, status: { not: "NEW" }, nextReview: { lte: endOfToday } },
+    });
+    const vocabReviewGoal = vocabReviewedToday + vocabToReviewToday;
+
     const completedGrammarToday = await this.prisma.userGrammarProgress.count({
       where: { userId, completed: true, lastStudied: { gte: today } },
     });
+    
     const completedListeningToday = await this.prisma.user_listening_progress.count({
       where: { user_id: userId, completed: true, last_studied: { gte: today } },
     });
+    
     const completedReadingToday = await this.prisma.user_reading_progress.count({
       where: { user_id: userId, completed: true, last_studied: { gte: today } },
     });
+    
     const practiceToday = await this.prisma.practice_sessions.count({
       where: { user_id: userId, created_at: { gte: today } },
     });
+    
     const mockTestToday = await this.prisma.mock_test_attempts.count({
       where: { user_id: userId, created_at: { gte: today } },
     });
 
-    const tasksCompletedToday = learnedVocabToday + completedGrammarToday + completedListeningToday + completedReadingToday + practiceToday + mockTestToday;
-    const dailyStudyGoal = 5;
+    const dayOfWeek = today.getDay();
+    const isPracticeDay = dayOfWeek === 3 || dayOfWeek === 0;
+    
+    const tomorrow = new Date(today);
+    tomorrow.setDate(tomorrow.getDate() + 1);
+    const isLastDayOfMonth = tomorrow.getDate() === 1;
+
+    const dailyTasks = [
+      {
+        id: "vocab_learn",
+        title: "Học 20 từ mới",
+        goal: 20,
+        completed: vocabLearnedToday,
+        isCompleted: vocabLearnedToday >= 20
+      },
+      {
+        id: "vocab_review",
+        title: "Ôn tập tất cả từ cũ",
+        goal: vocabReviewGoal,
+        completed: vocabReviewedToday,
+        isCompleted: vocabReviewGoal === 0 ? true : vocabReviewedToday >= vocabReviewGoal
+      },
+      {
+        id: "grammar",
+        title: "Học 1 bài ngữ pháp",
+        goal: 1,
+        completed: completedGrammarToday,
+        isCompleted: completedGrammarToday >= 1
+      },
+      {
+        id: "listening",
+        title: "Luyện 2 bài nghe",
+        goal: 2,
+        completed: completedListeningToday,
+        isCompleted: completedListeningToday >= 2
+      },
+      {
+        id: "reading",
+        title: "Luyện 2 bài đọc",
+        goal: 2,
+        completed: completedReadingToday,
+        isCompleted: completedReadingToday >= 2
+      }
+    ];
+
+    if (isPracticeDay) {
+      dailyTasks.push({
+        id: "practice",
+        title: "Luyện 1 part bài tập",
+        goal: 1,
+        completed: practiceToday,
+        isCompleted: practiceToday >= 1
+      });
+    }
+
+    if (isLastDayOfMonth) {
+      dailyTasks.push({
+        id: "mock_test",
+        title: "Làm 1 bài thi thử",
+        goal: 1,
+        completed: mockTestToday,
+        isCompleted: mockTestToday >= 1
+      });
+    }
+
+    const tasksCompletedToday = dailyTasks.filter(t => t.isCompleted).length;
+    const dailyStudyGoal = dailyTasks.length;
     const dailyStudyProgress = Math.min(Math.round((tasksCompletedToday / dailyStudyGoal) * 100), 100);
 
     // 8. Điểm số
@@ -188,7 +269,8 @@ export class DashboardService {
         tasksCompleted: tasksCompletedToday,
         taskGoal: dailyStudyGoal,
         progress: dailyStudyProgress,
-        studyTimeGoal: dailyStudyTime
+        studyTimeGoal: dailyStudyTime,
+        tasks: dailyTasks
       },
       recentActivities: recentActivities.slice(0, 5)
     };
