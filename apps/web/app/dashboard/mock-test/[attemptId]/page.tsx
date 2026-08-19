@@ -75,6 +75,11 @@ export default function MockTestAttemptPage() {
     setResult,
   ] = useState<any>(null);
 
+  const [
+    selectedPart,
+    setSelectedPart,
+  ] = useState<number | "all">("all");
+
   // ==========================================================
   // LOAD ATTEMPT
   // ==========================================================
@@ -302,8 +307,78 @@ export default function MockTestAttemptPage() {
       );
     }, [practice]);
 
+  // Group questions by part
+  const questionsByPart =
+    useMemo(() => {
+      const grouped: Record<
+        number,
+        typeof questions
+      > = {};
+
+      for (
+        const question of questions
+      ) {
+        const part = question.part;
+
+        if (!grouped[part]) {
+          grouped[part] = [];
+        }
+
+        grouped[part].push(
+          question,
+        );
+      }
+
+      return grouped;
+    }, [questions]);
+
+  // Get available parts
+  const availableParts =
+    useMemo(() => {
+      return Object.keys(
+        questionsByPart,
+      )
+        .map(Number)
+        .sort((a, b) => a - b);
+    }, [questionsByPart]);
+
+  // Filter questions by selected part
+  const filteredQuestions =
+    useMemo(() => {
+      if (
+        selectedPart === "all"
+      ) {
+        return questions;
+      }
+
+      return (
+        questionsByPart[
+          selectedPart
+        ] ?? []
+      );
+    }, [questions, questionsByPart, selectedPart]);
+
+  // Adjust current index when part changes
+  useEffect(() => {
+    if (
+      selectedPart === "all"
+    ) {
+      setCurrentIndex(0);
+      return;
+    }
+
+    const partQuestions =
+      questionsByPart[
+        selectedPart
+      ] ?? [];
+
+    if (partQuestions.length > 0) {
+      setCurrentIndex(0);
+    }
+  }, [selectedPart, questionsByPart]);
+
   const currentQuestion =
-    questions[currentIndex];
+    filteredQuestions[currentIndex];
 
   // ==========================================================
   // SELECT OPTION
@@ -759,7 +834,7 @@ export default function MockTestAttemptPage() {
 
     if (!auto) {
       const unanswered =
-        questions.filter(
+        filteredQuestions.filter(
           (question) =>
             !answers[
               question.id
@@ -913,7 +988,7 @@ router.push(
 
   const progress =
     ((currentIndex + 1) /
-      questions.length) *
+      filteredQuestions.length) *
     100;
 
   const part =
@@ -982,6 +1057,11 @@ router.push(
   );
 
   console.log(
+    "AUDIO URL (original):",
+    currentQuestion.audioUrl,
+  );
+
+  console.log(
     "======================================",
   );
 
@@ -1010,7 +1090,7 @@ router.push(
 
             <p className="font-bold">
               {currentIndex + 1} /{" "}
-              {questions.length}
+              {filteredQuestions.length}
             </p>
           </div>
 
@@ -1172,7 +1252,8 @@ router.push(
         <div className="rounded-2xl border border-white/5 bg-[#121214] p-6">
           <div className="mb-7 flex items-start gap-4">
             <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-red-600 font-bold">
-              {currentIndex + 1}
+              {currentQuestion.questionNumber ||
+                currentIndex + 1}
             </div>
 
             <h2 className="pt-1 text-lg font-semibold leading-7">
@@ -1268,13 +1349,14 @@ router.push(
             }{" "}
             /{" "}
             {
-              questions.length
+              filteredQuestions.length
             }{" "}
             câu đã chọn
           </div>
 
           {currentIndex <
-          questions.length - 1 ? (
+          filteredQuestions.length -
+            1 ? (
             <button
               type="button"
               onClick={() =>
@@ -1310,12 +1392,53 @@ router.push(
         {/* ================================================== */}
 
         <div className="mt-8 rounded-2xl border border-white/5 bg-[#121214] p-5">
+          {/* PART FILTER TABS */}
+          <div className="mb-4 flex flex-wrap gap-2">
+            <button
+              type="button"
+              onClick={() =>
+                setSelectedPart("all")
+              }
+              className={`rounded-lg px-3 py-1.5 text-xs font-medium transition ${
+                selectedPart === "all"
+                  ? "bg-red-600 text-white"
+                  : "bg-white/5 text-zinc-400 hover:bg-white/10"
+              }`}
+            >
+              Tất cả
+            </button>
+
+            {availableParts.map(
+              (part) => (
+                <button
+                  key={part}
+                  type="button"
+                  onClick={() =>
+                    setSelectedPart(
+                      part,
+                    )
+                  }
+                  className={`rounded-lg px-3 py-1.5 text-xs font-medium transition ${
+                    selectedPart ===
+                    part
+                      ? "bg-red-600 text-white"
+                      : "bg-white/5 text-zinc-400 hover:bg-white/10"
+                  }`}
+                >
+                  Part {part}
+                </button>
+              ),
+            )}
+          </div>
+
           <p className="mb-4 text-sm font-semibold">
             Danh sách câu
+            {selectedPart !== "all" &&
+              ` (Part ${selectedPart})`}
           </p>
 
           <div className="flex flex-wrap gap-2">
-            {questions.map(
+            {filteredQuestions.map(
               (
                 question,
                 index,
@@ -1347,7 +1470,8 @@ router.push(
                         : "bg-white/5 text-zinc-500"
                     }`}
                   >
-                    {index + 1}
+                    {question.questionNumber ||
+                      index + 1}
                   </button>
                 );
               },
