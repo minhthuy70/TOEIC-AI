@@ -557,66 +557,32 @@ export default function GrammarLessonPage() {
       </div>
 
       {/* ==================================================
-          Score / Progress
+          Last studied
       ================================================== */}
 
-      <div className="grid sm:grid-cols-2 gap-3">
+      <div className="bg-zinc-900/60 border border-zinc-800/50 rounded-2xl p-4">
 
-        {/* Score */}
+        <div className="flex items-center gap-3">
 
-        <div className="bg-zinc-900/60 border border-zinc-800/50 rounded-2xl p-4">
-
-          <div className="flex items-center gap-3">
-
-            <div className="w-10 h-10 rounded-xl bg-blue-600/10 border border-blue-600/15 flex items-center justify-center">
-              🎯
-            </div>
-
-            <div>
-
-              <p className="text-[11px] text-zinc-500">
-                Điểm bài học
-              </p>
-
-              <p className="text-lg font-bold text-white mt-0.5">
-                {lesson.progress.score > 0
-                  ? `${lesson.progress.score} điểm`
-                  : "Chưa có điểm"}
-              </p>
-
-            </div>
-
+          <div className="w-10 h-10 rounded-xl bg-purple-600/10 border border-purple-600/15 flex items-center justify-center">
+            🕐
           </div>
 
-        </div>
+          <div>
 
-        {/* Last studied */}
+            <p className="text-[11px] text-zinc-500">
+              Lần học gần nhất
+            </p>
 
-        <div className="bg-zinc-900/60 border border-zinc-800/50 rounded-2xl p-4">
+            <p className="text-sm font-semibold text-white mt-1">
 
-          <div className="flex items-center gap-3">
+              {lesson.progress.lastStudied
+                ? new Date(
+                    lesson.progress.lastStudied
+                  ).toLocaleString("vi-VN")
+                : "Chưa học"}
 
-            <div className="w-10 h-10 rounded-xl bg-purple-600/10 border border-purple-600/15 flex items-center justify-center">
-              🕐
-            </div>
-
-            <div>
-
-              <p className="text-[11px] text-zinc-500">
-                Lần học gần nhất
-              </p>
-
-              <p className="text-sm font-semibold text-white mt-1">
-
-                {lesson.progress.lastStudied
-                  ? new Date(
-                      lesson.progress.lastStudied
-                    ).toLocaleString("vi-VN")
-                  : "Chưa học"}
-
-              </p>
-
-            </div>
+            </p>
 
           </div>
 
