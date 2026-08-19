@@ -165,24 +165,6 @@ export default function PracticePage() {
   return (
     <div className="min-h-screen bg-[#09090b] text-white">
       {/* ======================================================
-          HEADER
-      ====================================================== */}
-
-      <div className="border-b border-white/5">
-        <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-6">
-          <div>
-            <h1 className="text-xl font-bold">
-              Luyện tập
-            </h1>
-
-            <p className="text-sm text-zinc-500">
-              Luyện từng Part · Theo dõi tiến độ
-            </p>
-          </div>
-        </div>
-      </div>
-
-      {/* ======================================================
           CONTENT
       ====================================================== */}
 
