@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import { useParams } from "next/navigation";
 
-import { getGrammarLesson } from "@/services/grammar";
+import { getGrammarLesson, completeGrammarLesson } from "@/services/grammar";
 import type { GrammarLessonDetail } from "@/types/grammar";
 
 // ======================================================
@@ -237,6 +237,8 @@ export default function GrammarLessonPage() {
   const [error, setError] =
     useState<string | null>(null);
 
+  const [completing, setCompleting] = useState(false);
+
   // ====================================================
   // Load lesson
   // ====================================================
@@ -283,6 +285,29 @@ export default function GrammarLessonPage() {
 
     loadLesson();
   }, [lessonId]);
+
+  // ====================================================
+  // Handle complete lesson
+  // ====================================================
+
+  const handleComplete = async () => {
+    if (!lessonId || completing) return;
+
+    try {
+      setCompleting(true);
+
+      await completeGrammarLesson(lessonId, 0);
+
+      // Reload lesson data to update progress
+      const data = await getGrammarLesson(lessonId);
+      setLesson(data);
+    } catch (err) {
+      console.error("Complete lesson error:", err);
+      alert("Không thể đánh dấu hoàn thành bài học.");
+    } finally {
+      setCompleting(false);
+    }
+  };
 
   // ====================================================
   // Loading
@@ -615,9 +640,11 @@ export default function GrammarLessonPage() {
         {!lesson.progress.completed && (
           <button
             type="button"
-            className="inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl bg-gradient-to-r from-red-600 to-red-500 hover:from-red-500 hover:to-red-400 text-sm font-semibold text-white shadow-lg shadow-red-600/20 transition-all hover:scale-[1.01]"
+            onClick={handleComplete}
+            disabled={completing}
+            className="inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl bg-gradient-to-r from-red-600 to-red-500 hover:from-red-500 hover:to-red-400 text-sm font-semibold text-white shadow-lg shadow-red-600/20 transition-all hover:scale-[1.01] disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100"
           >
-            ✓ Đánh dấu hoàn thành
+            {completing ? "Đang xử lý..." : "✓ Đánh dấu hoàn thành"}
           </button>
         )}
 

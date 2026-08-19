@@ -39,3 +39,20 @@ export async function getGrammarLesson(
     `/grammar/lessons/${id}`,
   );
 }
+
+// ===========================================
+// Complete Grammar Lesson
+// ===========================================
+
+export async function completeGrammarLesson(
+  id: number,
+  score: number = 0,
+) {
+  return apiFetch(
+    `/grammar/lessons/${id}/complete`,
+    {
+      method: "POST",
+      body: JSON.stringify({ score }),
+    },
+  );
+}
