@@ -93,10 +93,10 @@ export default function VocabularyFilter({
             onChange={(e) => setSelectedTopic(e.target.value)}
             className="w-full text-xs text-white bg-zinc-950 border border-zinc-800 focus:border-red-500/50 rounded-xl px-3 py-2.5 outline-none transition cursor-pointer"
           >
-            <option value="">Tất cả chủ đề</option>
+            <option key="all-topics" value="">Tất cả chủ đề</option>
             {topics.map((t) => (
-              <option key={t.topic} value={t.topic}>
-                {t.topic} ({t.totalWords} từ)
+              <option key={t.id} value={t.label}>
+                {t.label} ({t.words} từ)
               </option>
             ))}
           </select>
