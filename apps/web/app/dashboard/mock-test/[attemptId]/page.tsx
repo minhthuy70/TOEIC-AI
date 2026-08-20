@@ -80,6 +80,11 @@ export default function MockTestAttemptPage() {
     setSelectedPart,
   ] = useState<number | "all">("all");
 
+  const [
+    audioError,
+    setAudioError,
+  ] = useState(false);
+
   // ==========================================================
   // LOAD ATTEMPT
   // ==========================================================
@@ -376,6 +381,11 @@ export default function MockTestAttemptPage() {
       setCurrentIndex(0);
     }
   }, [selectedPart, questionsByPart]);
+
+  // Reset audio error when question changes
+  useEffect(() => {
+    setAudioError(false);
+  }, [currentIndex]);
 
   const currentQuestion =
     filteredQuestions[currentIndex];
@@ -1062,6 +1072,18 @@ router.push(
   );
 
   console.log(
+    "EXPECTED AUDIO PATTERN:",
+    `part${part}`,
+  );
+
+  console.log(
+    "AUDIO CONTAINS CORRECT PART:",
+    audioUrl?.includes(
+      `part${part}`,
+    ),
+  );
+
+  console.log(
     "======================================",
   );
 
@@ -1217,31 +1239,40 @@ router.push(
                 🎧 Audio
               </p>
 
-              <audio
-                controls
-                preload="metadata"
-                className="w-full"
-                src={audioUrl}
-                onLoadedMetadata={() => {
-                  console.log(
-                    "✓ AUDIO LOADED:",
-                    audioUrl,
-                  );
-                }}
-                onError={(event) => {
-                  console.error(
-                    "✗ AUDIO LOAD ERROR:",
-                    audioUrl,
-                  );
+              {audioError ? (
+                <div className="rounded-xl border border-red-500/20 bg-red-500/5 p-4 text-sm text-red-400">
+                  <p>⚠️ Không thể tải file audio</p>
+                  <p className="mt-1 text-xs text-zinc-500">
+                    URL: {audioUrl}
+                  </p>
+                </div>
+              ) : (
+                <audio
+                  controls
+                  preload="metadata"
+                  className="w-full"
+                  src={audioUrl}
+                  onLoadedMetadata={() => {
+                    console.log(
+                      "✓ AUDIO LOADED:",
+                      audioUrl,
+                    );
+                    setAudioError(false);
+                  }}
+                  onError={(event) => {
+                    console.error(
+                      "✗ AUDIO LOAD ERROR:",
+                      audioUrl,
+                    );
 
-                  console.error(
-                    "AUDIO ELEMENT:",
-                    event.currentTarget,
-                  );
-                }}
-              />
-
-             
+                    console.error(
+                      "AUDIO ELEMENT:",
+                      event.currentTarget,
+                    );
+                    setAudioError(true);
+                  }}
+                />
+              )}
             </div>
           )}
 
