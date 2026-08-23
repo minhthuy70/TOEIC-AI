@@ -16,9 +16,19 @@ export default function LoginPage() {
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [rememberMe, setRememberMe] = useState(false);
   const [error, setError] = useState("");
   const [googleLoading, setGoogleLoading] = useState(false);
   const [facebookLoading, setFacebookLoading] = useState(false);
+
+  // Load saved email on mount
+  useEffect(() => {
+    const savedEmail = localStorage.getItem("rememberedEmail");
+    if (savedEmail) {
+      setEmail(savedEmail);
+      setRememberMe(true);
+    }
+  }, []);
 
   // Load Google Identity Services script
   useEffect(() => {
@@ -65,7 +75,7 @@ export default function LoginPage() {
       const res = await fetch("http://localhost:3001/auth/google", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ idToken: response.credential }),
+        body: JSON.stringify({ idToken: response.credential, rememberMe }),
       });
 
       const data = await res.json();
@@ -73,6 +83,13 @@ export default function LoginPage() {
       if (data.accessToken) {
         localStorage.setItem("accessToken", data.accessToken);
         localStorage.setItem("user", JSON.stringify(data.user));
+
+        // Save or remove email based on rememberMe
+        if (rememberMe) {
+          localStorage.setItem("rememberedEmail", email);
+        } else {
+          localStorage.removeItem("rememberedEmail");
+        }
 
         if (
           data.user.role === "SUPER_ADMIN" ||
@@ -156,7 +173,7 @@ export default function LoginPage() {
       const res = await fetch("http://localhost:3001/auth/facebook", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ accessToken }),
+        body: JSON.stringify({ accessToken, rememberMe }),
       });
 
       const data = await res.json();
@@ -164,6 +181,13 @@ export default function LoginPage() {
       if (data.accessToken) {
         localStorage.setItem("accessToken", data.accessToken);
         localStorage.setItem("user", JSON.stringify(data.user));
+
+        // Save or remove email based on rememberMe
+        if (rememberMe) {
+          localStorage.setItem("rememberedEmail", data.user.email);
+        } else {
+          localStorage.removeItem("rememberedEmail");
+        }
 
         if (
           data.user.role === "SUPER_ADMIN" ||
@@ -197,6 +221,7 @@ export default function LoginPage() {
         body: JSON.stringify({
           email,
           password,
+          rememberMe,
         }),
       }
     );
@@ -214,6 +239,13 @@ export default function LoginPage() {
         "user",
         JSON.stringify(data.user)
       );
+
+      // Save or remove email based on rememberMe
+      if (rememberMe) {
+        localStorage.setItem("rememberedEmail", email);
+      } else {
+        localStorage.removeItem("rememberedEmail");
+      }
 
       if (
         data.user.role === "SUPER_ADMIN" ||
@@ -325,7 +357,25 @@ export default function LoginPage() {
           className="w-full p-4 rounded-xl bg-zinc-800 text-white border border-zinc-700 mb-4 focus:outline-none focus:border-red-500"
         />
 
-        <div className="flex justify-end mb-6">
+        <div className="flex justify-between items-center mb-6">
+          <label className="flex items-center gap-2 cursor-pointer group">
+            <div className="relative flex items-center justify-center w-5 h-5 rounded border border-zinc-600 bg-zinc-800 group-hover:border-red-500 transition-colors">
+              <input
+                type="checkbox"
+                checked={rememberMe}
+                onChange={(e) => setRememberMe(e.target.checked)}
+                className="absolute opacity-0 cursor-pointer w-full h-full"
+              />
+              {rememberMe && (
+                <svg className="w-3.5 h-3.5 text-red-500 pointer-events-none" viewBox="0 0 14 14" fill="none">
+                  <path d="M2.5 7.5L5.5 10.5L11.5 3.5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                </svg>
+              )}
+            </div>
+            <span className="text-zinc-400 text-sm group-hover:text-zinc-300 transition-colors">
+              Ghi nhớ đăng nhập
+            </span>
+          </label>
           <a
             href="/forgot-password"
             className="text-sm text-red-500 hover:text-red-400 transition"

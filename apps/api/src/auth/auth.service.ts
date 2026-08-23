@@ -91,6 +91,7 @@ export class AuthService {
   async login(
     email: string,
     password: string,
+    rememberMe: boolean = false,
   ) {
     const user = await this.prisma.user.findUnique({
       where: { email },
@@ -138,8 +139,9 @@ export class AuthService {
       role: user.role,
     };
 
-    const accessToken =
-      this.jwtService.sign(payload);
+    // Nếu rememberMe = true, token có hiệu lực 30 ngày, ngược lại 1 ngày
+    const expiresIn = rememberMe ? '30d' : '1d';
+    const accessToken = this.jwtService.sign(payload, { expiresIn });
 
     return {
       accessToken,
@@ -155,7 +157,7 @@ export class AuthService {
     };
   }
 
-  async googleLogin(idToken: string) {
+  async googleLogin(idToken: string, rememberMe: boolean = false) {
     // Verify Google idToken qua Google tokeninfo API
     const googleRes = await fetch(
       `https://oauth2.googleapis.com/tokeninfo?id_token=${idToken}`,
@@ -228,7 +230,9 @@ export class AuthService {
       role: user.role,
     };
 
-    const accessToken = this.jwtService.sign(payload);
+    // Nếu rememberMe = true, token có hiệu lực 30 ngày, ngược lại 1 ngày
+    const expiresIn = rememberMe ? '30d' : '1d';
+    const accessToken = this.jwtService.sign(payload, { expiresIn });
 
     return {
       accessToken,
@@ -243,7 +247,7 @@ export class AuthService {
     };
   }
 
-  async facebookLogin(accessToken: string) {
+  async facebookLogin(accessToken: string, rememberMe: boolean = false) {
     const fbRes = await fetch(
       `https://graph.facebook.com/me?fields=id,name,email,picture.type(large)&access_token=${accessToken}`
     );
@@ -305,7 +309,9 @@ export class AuthService {
       role: user.role,
     };
 
-    const jwtToken = this.jwtService.sign(payload);
+    // Nếu rememberMe = true, token có hiệu lực 30 ngày, ngược lại 1 ngày
+    const expiresIn = rememberMe ? '30d' : '1d';
+    const jwtToken = this.jwtService.sign(payload, { expiresIn });
 
     return {
       accessToken: jwtToken,

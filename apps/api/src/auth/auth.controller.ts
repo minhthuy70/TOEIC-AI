@@ -38,11 +38,13 @@ constructor(
     body: {
       email: string;
       password: string;
+      rememberMe?: boolean;
     },
   ) {
     return this.authService.login(
       body.email,
       body.password,
+      body.rememberMe || false,
     );
   }
 
@@ -51,9 +53,10 @@ constructor(
     @Body()
     body: {
       idToken: string;
+      rememberMe?: boolean;
     },
   ) {
-    return this.authService.googleLogin(body.idToken);
+    return this.authService.googleLogin(body.idToken, body.rememberMe || false);
   }
 
   @Post('facebook')
@@ -61,9 +64,10 @@ constructor(
     @Body()
     body: {
       accessToken: string;
+      rememberMe?: boolean;
     },
   ) {
-    return this.authService.facebookLogin(body.accessToken);
+    return this.authService.facebookLogin(body.accessToken, body.rememberMe || false);
   }
 
   @Post('verify-email')
