@@ -19,6 +19,10 @@ export default function LoginPage() {
   const [showPassword, setShowPassword] = useState(false);
   const [rememberMe, setRememberMe] = useState(false);
   const [error, setError] = useState("");
+  const [remainingAttempts, setRemainingAttempts] = useState<number | null>(null);
+  const [isLocked, setIsLocked] = useState(false);
+  const [lockedUntil, setLockedUntil] = useState<Date | null>(null);
+  const [lockCount, setLockCount] = useState(0);
   const [googleLoading, setGoogleLoading] = useState(false);
   const [facebookLoading, setFacebookLoading] = useState(false);
 
@@ -30,6 +34,24 @@ export default function LoginPage() {
       setRememberMe(true);
     }
   }, []);
+
+  // Countdown timer for lock
+  useEffect(() => {
+    if (isLocked && lockedUntil) {
+      const interval = setInterval(() => {
+        const now = Date.now();
+        if (lockedUntil.getTime() <= now) {
+          setIsLocked(false);
+          setLockedUntil(null);
+          setRemainingAttempts(null);
+          setLockCount(0);
+          setError("");
+        }
+      }, 1000);
+
+      return () => clearInterval(interval);
+    }
+  }, [isLocked, lockedUntil]);
 
   // Load Google Identity Services script
   useEffect(() => {
@@ -212,6 +234,11 @@ export default function LoginPage() {
 
   async function login() {
     setError("");
+    setRemainingAttempts(null);
+    setIsLocked(false);
+    setLockedUntil(null);
+    setLockCount(0);
+
     const res = await fetch(
       "http://localhost:3001/auth/login",
       {
@@ -260,6 +287,16 @@ export default function LoginPage() {
       }
     } else {
       setError(data.message || "Đăng nhập thất bại");
+
+      // Handle remaining attempts and lock status
+      if (data.remainingAttempts !== undefined) {
+        setRemainingAttempts(data.remainingAttempts);
+      }
+      if (data.locked) {
+        setIsLocked(true);
+        setLockedUntil(data.lockedUntil ? new Date(data.lockedUntil) : null);
+        setLockCount(data.lockCount || 1);
+      }
     }
   }
 
@@ -283,8 +320,38 @@ export default function LoginPage() {
 
         {/* Error message */}
         {error && (
-          <div className="w-full p-3 rounded-xl bg-red-600/20 border border-red-600/40 text-red-400 text-sm mb-4">
+          <div className={`w-full p-3 rounded-xl border text-sm mb-4 ${
+            isLocked
+              ? "bg-orange-600/20 border-orange-600/40 text-orange-400"
+              : "bg-red-600/20 border-red-600/40 text-red-400"
+          }`}>
             {error}
+          </div>
+        )}
+
+        {/* Remaining attempts indicator */}
+        {remainingAttempts !== null && remainingAttempts > 0 && !isLocked && (
+          <div className="w-full p-3 rounded-xl bg-yellow-600/20 border border-yellow-600/40 text-yellow-400 text-sm mb-4">
+            Số lần thử còn lại: {remainingAttempts}/5
+          </div>
+        )}
+
+        {/* Lock countdown */}
+        {isLocked && lockedUntil && (
+          <div className="w-full p-3 rounded-xl bg-orange-600/20 border border-orange-600/40 text-orange-400 text-sm mb-4">
+            <div className="font-semibold mb-1">
+              Tài khoản bị khóa lần thứ {lockCount}
+            </div>
+            <div>
+              Mở khóa sau: {Math.ceil((lockedUntil.getTime() - Date.now()) / 60000)} phút
+            </div>
+            <div className="text-xs mt-1 opacity-75">
+              {lockCount === 1 && "Lần vi phạm đầu tiên"}
+              {lockCount === 2 && "Thời gian khóa tăng lên 30 phút"}
+              {lockCount === 3 && "Thời gian khóa tăng lên 1 giờ"}
+              {lockCount === 4 && "Thời gian khóa tăng lên 2 giờ"}
+              {lockCount >= 5 && "Thời gian khóa tối đa 4 giờ"}
+            </div>
           </div>
         )}
 
@@ -406,9 +473,14 @@ export default function LoginPage() {
 
         <button
           onClick={login}
-          className="w-full bg-red-600 hover:bg-red-700 transition text-white font-bold py-4 rounded-xl"
+          disabled={isLocked}
+          className={`w-full transition text-white font-bold py-4 rounded-xl ${
+            isLocked
+              ? "bg-gray-600 cursor-not-allowed"
+              : "bg-red-600 hover:bg-red-700"
+          }`}
         >
-          Đăng nhập
+          {isLocked ? "Tài khoản bị khóa" : "Đăng nhập"}
         </button>
 
         <p className="text-center text-zinc-400 mt-6">

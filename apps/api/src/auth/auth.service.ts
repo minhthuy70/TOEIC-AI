@@ -4,12 +4,87 @@ import { PrismaService } from "../prisma/prisma.service";
 import * as bcrypt from "bcryptjs";
 import * as nodemailer from "nodemailer";
 
+// Login attempt tracking (in-memory)
+const loginAttempts = new Map<string, { count: number; lockedUntil: number; lockCount: number }>();
+const MAX_ATTEMPTS = 5;
+const BASE_LOCK_TIME = 15 * 60 * 1000; // 15 minutes base
+
 @Injectable()
 export class AuthService {
   constructor(
     private readonly prisma: PrismaService,
     private readonly jwtService: JwtService,
   ) {}
+
+  private calculateLockTime(lockCount: number): number {
+    // Progressive lock times:
+    // Lock 1: 15 minutes
+    // Lock 2: 30 minutes
+    // Lock 3: 1 hour
+    // Lock 4: 2 hours
+    // Lock 5+: 4 hours (max)
+    const lockTimes = [
+      BASE_LOCK_TIME,                    // 15 minutes
+      BASE_LOCK_TIME * 2,                 // 30 minutes
+      BASE_LOCK_TIME * 4,                 // 1 hour
+      BASE_LOCK_TIME * 8,                 // 2 hours
+      BASE_LOCK_TIME * 16,                // 4 hours (max)
+    ];
+
+    const index = Math.min(lockCount, lockTimes.length - 1);
+    return lockTimes[index];
+  }
+
+  private checkLoginAttempts(email: string): { allowed: boolean; remainingAttempts?: number; lockedUntil?: Date; lockCount?: number } {
+    const attempts = loginAttempts.get(email);
+
+    if (!attempts) {
+      return { allowed: true, remainingAttempts: MAX_ATTEMPTS, lockCount: 0 };
+    }
+
+    // Check if account is locked
+    if (attempts.lockedUntil > Date.now()) {
+      return {
+        allowed: false,
+        lockedUntil: new Date(attempts.lockedUntil),
+        lockCount: attempts.lockCount,
+      };
+    }
+
+    // Reset count if lock time has passed but keep lockCount for progressive locking
+    if (attempts.lockedUntil > 0 && attempts.lockedUntil <= Date.now()) {
+      attempts.count = 0;
+      attempts.lockedUntil = 0;
+      loginAttempts.set(email, attempts);
+      return { allowed: true, remainingAttempts: MAX_ATTEMPTS, lockCount: attempts.lockCount };
+    }
+
+    const remainingAttempts = MAX_ATTEMPTS - attempts.count;
+    return { allowed: true, remainingAttempts, lockCount: attempts.lockCount };
+  }
+
+  private recordFailedAttempt(email: string): void {
+    const attempts = loginAttempts.get(email) || { count: 0, lockedUntil: 0, lockCount: 0 };
+    attempts.count++;
+
+    // Lock account after max attempts
+    if (attempts.count >= MAX_ATTEMPTS) {
+      attempts.lockCount = (attempts.lockCount || 0) + 1;
+      attempts.lockedUntil = Date.now() + this.calculateLockTime(attempts.lockCount);
+    }
+
+    loginAttempts.set(email, attempts);
+  }
+
+  private resetLoginAttempts(email: string): void {
+    // Keep lockCount for progressive locking but reset current attempts
+    const attempts = loginAttempts.get(email);
+    if (attempts) {
+      attempts.count = 0;
+      attempts.lockedUntil = 0;
+      loginAttempts.set(email, attempts);
+    }
+  }
 
   async register(
     fullName: string,
@@ -93,6 +168,19 @@ export class AuthService {
     password: string,
     rememberMe: boolean = false,
   ) {
+    // Check login attempts
+    const attemptCheck = this.checkLoginAttempts(email);
+    if (!attemptCheck.allowed) {
+      const lockTimeMinutes = Math.ceil((attemptCheck.lockedUntil!.getTime() - Date.now()) / 60000);
+      const lockCount = attemptCheck.lockCount || 1;
+      return {
+        message: `Tài khoản đã bị khóa lần thứ ${lockCount} do đăng nhập sai quá nhiều lần. Vui lòng thử lại sau ${lockTimeMinutes} phút.`,
+        locked: true,
+        lockedUntil: attemptCheck.lockedUntil,
+        lockCount,
+      };
+    }
+
     const user = await this.prisma.user.findUnique({
       where: { email },
 
@@ -102,8 +190,11 @@ export class AuthService {
     });
 
     if (!user) {
+      this.recordFailedAttempt(email);
+      const remainingAttempts = this.checkLoginAttempts(email).remainingAttempts;
       return {
-        message: "Không tìm thấy tài khoản",
+        message: `Không tìm thấy tài khoản. Số lần thử còn lại: ${remainingAttempts}`,
+        remainingAttempts,
       };
     }
 
@@ -128,10 +219,18 @@ export class AuthService {
     );
 
     if (!match) {
+      this.recordFailedAttempt(email);
+      const remainingAttempts = this.checkLoginAttempts(email).remainingAttempts;
       return {
-        message: "Sai mật khẩu",
+        message: remainingAttempts > 0
+          ? `Sai mật khẩu. Số lần thử còn lại: ${remainingAttempts}`
+          : "Tài khoản đã bị khóa tạm thời do đăng nhập sai quá nhiều lần. Vui lòng thử lại sau 15 phút.",
+        remainingAttempts,
       };
     }
+
+    // Reset login attempts on successful login
+    this.resetLoginAttempts(email);
 
     const payload = {
       sub: user.id,
