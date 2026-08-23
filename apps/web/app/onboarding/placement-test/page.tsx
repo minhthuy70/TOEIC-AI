@@ -219,7 +219,7 @@ export default function PlacementTestPage() {
   );
 
   const goNext = () => {
-    if (!testData || !currentPart) return;
+    if (!testData || !currentPart || !currentQuestion) return;
     
     const questionsToNavigate = showOnlyMarked
       ? currentPart.questions.filter((q) => markedQuestions.has(`p${currentPart.partNumber}-q${q.questionNumber}`))
@@ -251,7 +251,7 @@ export default function PlacementTestPage() {
   };
 
   const goPrev = () => {
-    if (!testData || !currentPart) return;
+    if (!testData || !currentPart || !currentQuestion) return;
     
     const questionsToNavigate = showOnlyMarked
       ? currentPart.questions.filter((q) => markedQuestions.has(`p${currentPart.partNumber}-q${q.questionNumber}`))
@@ -569,21 +569,19 @@ export default function PlacementTestPage() {
         )}
 
         <div className="min-h-screen bg-black flex items-center justify-center px-4">
-    return (
-      <div className="min-h-screen bg-black flex items-center justify-center px-4">
-        <div className="w-full max-w-2xl">
-          {/* Header */}
-          <div className="text-center mb-8">
-            <div className="w-16 h-16 rounded-full bg-red-600 flex items-center justify-center mx-auto shadow-lg shadow-red-600/30">
-              <span className="text-2xl font-bold text-white">B</span>
+          <div className="w-full max-w-2xl">
+            {/* Header */}
+            <div className="text-center mb-8">
+              <div className="w-16 h-16 rounded-full bg-red-600 flex items-center justify-center mx-auto shadow-lg shadow-red-600/30">
+                <span className="text-2xl font-bold text-white">B</span>
+              </div>
+              <h1 className="text-3xl font-bold text-red-500 mt-4">
+                Bài Test Xếp Trình Độ
+              </h1>
+              <p className="text-gray-400 mt-2">
+                Đánh giá trình độ TOEIC hiện tại của bạn
+              </p>
             </div>
-            <h1 className="text-3xl font-bold text-red-500 mt-4">
-              Bài Test Xếp Trình Độ
-            </h1>
-            <p className="text-gray-400 mt-2">
-              Đánh giá trình độ TOEIC hiện tại của bạn
-            </p>
-          </div>
 
           {/* Cooldown Warning */}
           {cooldownInfo && !cooldownInfo.canRetake && (
@@ -891,7 +889,7 @@ export default function PlacementTestPage() {
             <button
               onClick={() => {
                 const estimatedScore = calculateScore().estimatedScore;
-                router.push(`/onboarding/setup?score=${estimatedScore}`);
+                router.push(`/onboarding/stage-assignment?score=${estimatedScore}`);
               }}
               className="flex-1 bg-red-600 hover:bg-red-700 text-white py-3.5 rounded-xl font-semibold transition-all shadow-lg shadow-red-600/25"
             >

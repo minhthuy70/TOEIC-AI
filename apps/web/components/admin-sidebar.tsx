@@ -173,6 +173,16 @@ export default function AdminSidebar({
             </div>
 
             <AdminLink
+              href="/admin/stage-requests"
+              active={pathname.startsWith(
+                "/admin/stage-requests"
+              )}
+              icon="🎯"
+            >
+              Yêu cầu chặng
+            </AdminLink>
+
+            <AdminLink
               href="/admin/settings"
               active={pathname.startsWith(
                 "/admin/settings"

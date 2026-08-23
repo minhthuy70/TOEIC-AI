@@ -3,6 +3,8 @@
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 
+const API = process.env.NEXT_PUBLIC_API_URL || "http://localhost:3001";
+
 const TABS = [
   { id: "info", label: "Thông tin cá nhân", icon: "👤" },
   { id: "goal", label: "Mục tiêu TOEIC", icon: "🎯" },
@@ -706,6 +708,43 @@ const handleDeleteAccount = async () => {
     if (score >= 300) return { id: 2, label: "Chặng 2 – Củng cố" };
     return { id: 1, label: "Chặng 1 – Nền tảng" };
   })();
+
+  const [showStageRequestModal, setShowStageRequestModal] = useState(false);
+  const [requestedStage, setRequestedStage] = useState<number>(currentStage.id);
+  const [requestReason, setRequestReason] = useState("");
+
+  const handleRequestStageChange = async () => {
+    const token = localStorage.getItem("accessToken");
+    if (!token) {
+      alert("Bạn cần đăng nhập để tiếp tục");
+      return;
+    }
+
+    try {
+      const response = await fetch(`${API}/profile/request-stage-change`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify({
+          requestedStage,
+          reason: requestReason,
+        }),
+      });
+
+      if (response.ok) {
+        alert("Đã gửi yêu cầu thay đổi chặng. Yêu cầu sẽ được xem xét trong 24h.");
+        setShowStageRequestModal(false);
+        setRequestReason("");
+      } else {
+        alert("Có lỗi xảy ra. Vui lòng thử lại.");
+      }
+    } catch (error) {
+      console.error("Error requesting stage change:", error);
+      alert("Có lỗi xảy ra. Vui lòng thử lại.");
+    }
+  };
   const SETTINGS = [
   {
     label: "Thông báo học tập",
@@ -744,9 +783,9 @@ const handleDeleteAccount = async () => {
       <div className="bg-zinc-900/60 border border-zinc-800/50 rounded-2xl p-5 flex items-center gap-4">
         <div className="relative shrink-0">
           <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-red-600 to-red-500 flex items-center justify-center text-2xl font-bold text-white shadow-lg shadow-red-600/20 overflow-hidden">
-            {avatarPreview || user?.avatarUrl || user?.avatar ? (
+            {avatarPreview || user?.avatar ? (
               <img
-                src={avatarPreview || `http://localhost:3001${user?.avatarUrl || user?.avatar || ""}`}
+                src={avatarPreview || `http://localhost:3001${user?.avatar || ""}`}
                 alt="Avatar"
                 className="w-full h-full object-cover"
               />
@@ -779,6 +818,12 @@ const handleDeleteAccount = async () => {
             <span className="text-[11px] text-zinc-500">
               Mục tiêu: <span className="text-green-400 font-semibold">{user?.targetScore ?? "—"}</span>
             </span>
+            <button
+              onClick={() => setShowStageRequestModal(true)}
+              className="text-[11px] text-blue-400 hover:text-blue-300 underline"
+            >
+              Yêu cầu thay đổi chặng
+            </button>
           </div>
         </div>
       </div>
@@ -1381,7 +1426,7 @@ className="w-full bg-zinc-800/60 border border-zinc-700/60 text-white rounded-xl
             <p className="text-sm text-zinc-400 mb-4">
               Hành động này sẽ xóa vĩnh viễn tài khoản và tất cả dữ liệu liên quan. Hành động này không thể hoàn tác.
             </p>
-            {user?.password && (
+            {(
               <div className="mb-4">
                 <label className="text-xs text-zinc-500 uppercase tracking-wider font-medium block mb-2">
                   Nhập mật khẩu để xác nhận
@@ -1407,7 +1452,7 @@ className="w-full bg-zinc-800/60 border border-zinc-700/60 text-white rounded-xl
               </button>
               <button
                 onClick={handleDeleteAccount}
-                disabled={isDeleting || (user?.password && !deletePassword)}
+                disabled={isDeleting || !deletePassword}
                 className="flex-1 bg-red-600 hover:bg-red-700 disabled:bg-gray-600 text-white py-3 rounded-xl text-sm font-medium transition-colors"
               >
                 {isDeleting ? "Đang xóa..." : "Xóa tài khoản"}
@@ -1438,6 +1483,55 @@ className="w-full bg-zinc-800/60 border border-zinc-700/60 text-white rounded-xl
                 className="flex-1 bg-purple-600 hover:bg-purple-700 disabled:bg-gray-600 text-white py-3 rounded-xl text-sm font-medium transition-colors"
               >
                 {isLoggingOutAll ? "Đang xử lý..." : "Đăng xuất tất cả"}
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Stage Request Modal */}
+      {showStageRequestModal && (
+        <div className="fixed inset-0 bg-black/80 backdrop-blur-sm flex items-center justify-center z-50 p-4">
+          <div className="bg-zinc-900 border border-zinc-800 rounded-2xl p-6 max-w-md w-full">
+            <h3 className="text-lg font-bold text-white mb-2">Yêu cầu thay đổi chặng</h3>
+            <p className="text-sm text-zinc-400 mb-4">
+              Vui lòng chọn chặng bạn muốn và giải thích lý do thay đổi. Yêu cầu sẽ được xem xét trong 24h.
+            </p>
+            <div className="mb-4">
+              <label className="text-gray-400 text-sm mb-2 block">Chặng mong muốn</label>
+              <select
+                value={requestedStage}
+                onChange={(e) => setRequestedStage(parseInt(e.target.value))}
+                className="w-full bg-black border border-zinc-800 rounded-xl px-4 py-3 text-white"
+              >
+                {[1, 2, 3, 4, 5].map((stage) => (
+                  <option key={stage} value={stage}>
+                    Chặng {stage} {stage === 1 ? "(0-299)" : stage === 2 ? "(300-499)" : stage === 3 ? "(500-649)" : stage === 4 ? "(650-799)" : "(800-990)"}
+                  </option>
+                ))}
+              </select>
+            </div>
+            <div className="mb-4">
+              <label className="text-gray-400 text-sm mb-2 block">Lý do thay đổi</label>
+              <textarea
+                value={requestReason}
+                onChange={(e) => setRequestReason(e.target.value)}
+                placeholder="Giải thích lý do bạn muốn thay đổi chặng..."
+                className="w-full bg-black border border-zinc-800 rounded-xl px-4 py-3 text-white min-h-[100px]"
+              />
+            </div>
+            <div className="flex gap-3">
+              <button
+                onClick={() => setShowStageRequestModal(false)}
+                className="flex-1 border border-zinc-700 text-gray-400 hover:text-white hover:border-zinc-500 py-3 rounded-xl font-semibold transition-all"
+              >
+                Hủy
+              </button>
+              <button
+                onClick={handleRequestStageChange}
+                className="flex-1 bg-red-600 hover:bg-red-700 text-white py-3 rounded-xl font-semibold transition-all"
+              >
+                Gửi yêu cầu
               </button>
             </div>
           </div>

@@ -13,6 +13,13 @@ export class DashboardService {
     return 1;
   }
 
+  private calculateEstimatedCompletionTime(currentScore: number, targetScore: number, dailyStudyTime: number): number {
+    const scoreDiff = targetScore - currentScore;
+    const pointsPerDay = dailyStudyTime * 0.5; // Estimate: 0.5 points per study minute
+    const daysNeeded = Math.ceil(scoreDiff / pointsPerDay);
+    return daysNeeded;
+  }
+
   async getOverview(userId: number) {
     // 1. Lấy thông tin user và profile
     const user = await this.prisma.user.findUnique({
@@ -28,6 +35,7 @@ export class DashboardService {
     const targetScore = user.profile.targetScore ?? 600;
     const stage = this.getStage(currentScore);
     const dailyStudyTime = user.profile.dailyStudyTime ?? 30;
+    const estimatedDays = this.calculateEstimatedCompletionTime(currentScore, targetScore, dailyStudyTime);
 
     const today = new Date();
     today.setHours(0, 0, 0, 0);
@@ -247,7 +255,8 @@ export class DashboardService {
         target: targetScore,
         remaining: remainingScore,
         progress: scoreProgress,
-        stage: stage
+        stage: stage,
+        estimatedDays: estimatedDays,
       },
       progress: {
         overall: overallProgress,

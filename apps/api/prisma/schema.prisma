@@ -37,6 +37,8 @@ model User {
   vocabularyProgress            UserVocabularyProgress[]
   practice_sessions             practice_sessions[]
   mock_test_attempts            mock_test_attempts[]
+  stageChangeRequests       StageChangeRequest[] @relation("requestedBy")
+  reviewedStageRequests     StageChangeRequest[] @relation("reviewedBy")
 }
 
 model UserSession {
@@ -81,6 +83,8 @@ model UserProfile {
   motivationLevel     Int?      @default(5)
   learningStyle       String?   @db.VarChar(20)
   lastPlacementTestAt DateTime?
+  currentStage        Int?      @default(1)
+  stageAcceptedAt     DateTime?
   user                User      @relation(fields: [userId], references: [id])
 }
 
@@ -443,6 +447,25 @@ enum UserRole {
   USER
   CONTENT_ADMIN
   SUPER_ADMIN
+}
+
+model StageChangeRequest {
+  id                  Int       @id @default(autoincrement())
+  userId              Int
+  currentStage        Int
+  requestedStage      Int
+  reason              String?   @db.Text
+  status              String    @default("PENDING") @db.VarChar(20)
+  requestedAt         DateTime  @default(now())
+  reviewedAt          DateTime?
+  reviewedBy          Int?
+  adminComment        String?   @db.Text
+  user                User      @relation("requestedBy", fields: [userId], references: [id], onDelete: Cascade)
+  admin               User?     @relation("reviewedBy", fields: [reviewedBy], references: [id])
+
+  @@index([userId])
+  @@index([status])
+  @@map("stage_change_requests")
 }
 
 model SystemSetting {

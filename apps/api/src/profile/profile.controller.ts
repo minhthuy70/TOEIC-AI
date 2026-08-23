@@ -93,7 +93,7 @@ changePassword(
 )
 uploadAvatar(
   @Req() req: any,
-  @UploadedFile() file: Express.Multer.File,
+  @UploadedFile() file: any,
 ) {
   return this.profileService.uploadAvatar(
     req.user.userId,
@@ -123,5 +123,35 @@ savePlacementTestResult(@Req() req: any, @Body() body: { score: number }) {
 @Get("placement-test-cooldown")
 getPlacementTestCooldown(@Req() req: any) {
   return this.profileService.getPlacementTestCooldown(req.user.userId);
+}
+
+@UseGuards(JwtAuthGuard)
+@Post("accept-stage")
+acceptStage(@Req() req: any, @Body() body: { stage: number }) {
+  return this.profileService.acceptStageAssignment(req.user.userId, body.stage);
+}
+
+@UseGuards(JwtAuthGuard)
+@Post("request-stage-change")
+requestStageChange(@Req() req: any, @Body() body: { requestedStage: number; reason?: string }) {
+  return this.profileService.requestStageChange(req.user.userId, body.requestedStage, body.reason);
+}
+
+@UseGuards(JwtAuthGuard)
+@Get("stage-change-requests")
+getStageChangeRequests(@Req() req: any) {
+  return this.profileService.getStageChangeRequests();
+}
+
+@UseGuards(JwtAuthGuard)
+@Post("review-stage-change")
+reviewStageChange(@Req() req: any, @Body() body: { requestId: number; status: 'APPROVED' | 'REJECTED'; comment?: string }) {
+  return this.profileService.reviewStageChangeRequest(body.requestId, body.status, req.user.userId, body.comment);
+}
+
+@UseGuards(JwtAuthGuard)
+@Post("apply-stage-change")
+applyStageChange(@Req() req: any, @Body() body: { requestId: number }) {
+  return this.profileService.applyStageChange(body.requestId);
 }
 }

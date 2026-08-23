@@ -89,6 +89,107 @@ export class ProfileService {
       lastTestDate: profile.lastPlacementTestAt,
     };
   }
+
+  async acceptStageAssignment(userId: number, stage: number) {
+    return this.prisma.userProfile.update({
+      where: { userId },
+      data: {
+        currentStage: stage,
+        stageAcceptedAt: new Date(),
+      },
+    });
+  }
+
+  async requestStageChange(userId: number, requestedStage: number, reason?: string) {
+    const profile = await this.prisma.userProfile.findUnique({
+      where: { userId },
+    });
+
+    if (!profile) {
+      throw new Error("Không tìm thấy profile người dùng");
+    }
+
+    const currentStage = profile.currentStage || 1;
+
+    return this.prisma.stageChangeRequest.create({
+      data: {
+        userId,
+        currentStage,
+        requestedStage,
+        reason,
+      },
+    });
+  }
+
+  async getStageChangeRequests(status?: string) {
+    const where = status ? { status } : {};
+    return this.prisma.stageChangeRequest.findMany({
+      where,
+      include: {
+        user: {
+          select: {
+            id: true,
+            fullName: true,
+            email: true,
+          },
+        },
+      },
+      orderBy: {
+        requestedAt: 'desc',
+      },
+    });
+  }
+
+  async reviewStageChangeRequest(requestId: number, status: 'APPROVED' | 'REJECTED', adminId: number, comment?: string) {
+    return this.prisma.stageChangeRequest.update({
+      where: { id: requestId },
+      data: {
+        status,
+        reviewedAt: new Date(),
+        reviewedBy: adminId,
+        adminComment: comment,
+      },
+    });
+  }
+
+  async applyStageChange(requestId: number) {
+    const request = await this.prisma.stageChangeRequest.findUnique({
+      where: { id: requestId },
+      include: { user: true },
+    });
+
+    if (!request) {
+      throw new Error("Không tìm thấy yêu cầu thay đổi chặng");
+    }
+
+    if (request.status !== 'APPROVED') {
+      throw new Error("Yêu cầu chưa được phê duyệt");
+    }
+
+    // Update user's stage
+    await this.prisma.userProfile.update({
+      where: { userId: request.userId },
+      data: {
+        currentStage: request.requestedStage,
+        stageAcceptedAt: new Date(),
+      },
+    });
+
+    // Mark request as applied
+    await this.prisma.stageChangeRequest.update({
+      where: { id: requestId },
+      data: { status: 'APPLIED' },
+    });
+
+    return { success: true, message: "Đã áp dụng thay đổi chặng thành công" };
+  }
+
+  calculateEstimatedCompletionTime(currentScore: number, targetScore: number, dailyStudyTime: number): number {
+    const scoreDiff = targetScore - currentScore;
+    const pointsPerDay = dailyStudyTime * 0.5; // Estimate: 0.5 points per study minute
+    const daysNeeded = Math.ceil(scoreDiff / pointsPerDay);
+    return daysNeeded;
+  }
   async getProfile(userId: number) {
   const user = await this.prisma.user.findUnique({
     where: {
@@ -127,6 +228,8 @@ export class ProfileService {
     motivationLevel: user.profile?.motivationLevel,
     learningStyle: user.profile?.learningStyle,
     lastPlacementTestAt: user.profile?.lastPlacementTestAt,
+    currentStage: user.profile?.currentStage,
+    stageAcceptedAt: user.profile?.stageAcceptedAt,
 
     studyNotification: user.profile?.studyNotification,
 srsNotification: user.profile?.srsNotification,
@@ -334,7 +437,7 @@ async changePassword(
 
 }
 
-async uploadAvatar(userId: number, file: Express.Multer.File) {
+async uploadAvatar(userId: number, file: any) {
   if (!file) {
     throw new BadRequestException("Không có file được tải lên");
   }

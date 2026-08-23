@@ -223,38 +223,6 @@ export class AuthService {
     }
   }
 
-  private generateDeviceId(): string {
-    // Generate a device ID based on browser fingerprint
-    // In production, you might use a more sophisticated fingerprinting library
-    if (typeof window !== 'undefined') {
-      const fingerprint = [
-        navigator.userAgent,
-        navigator.language,
-        screen.width + 'x' + screen.height,
-        new Date().getTimezoneOffset(),
-      ].join('|');
-      return this.hashString(fingerprint);
-    }
-    return 'unknown-device';
-  }
-
-  private getUserAgent(): string {
-    if (typeof window !== 'undefined') {
-      return navigator.userAgent;
-    }
-    return 'unknown';
-  }
-
-  private hashString(str: string): string {
-    let hash = 0;
-    for (let i = 0; i < str.length; i++) {
-      const char = str.charCodeAt(i);
-      hash = ((hash << 5) - hash) + char;
-      hash = hash & hash; // Convert to 32bit integer
-    }
-    return hash.toString(16);
-  }
-
   async requestUnlock(email: string): Promise<{ success: boolean; message: string }> {
     const user = await this.prisma.user.findUnique({ where: { email } });
 
@@ -507,7 +475,8 @@ export class AuthService {
 
     if (!user) {
       this.recordFailedAttempt(email);
-      const remainingAttempts = this.checkLoginAttempts(email).remainingAttempts;
+      const checkResult = await this.checkLoginAttempts(email);
+      const remainingAttempts = checkResult.remainingAttempts || 0;
       return {
         message: `Không tìm thấy tài khoản. Số lần thử còn lại: ${remainingAttempts}`,
         remainingAttempts,
@@ -522,7 +491,7 @@ export class AuthService {
       };
     }
 
-    const user = await this.prisma.user.findUnique({
+    const foundUser = await this.prisma.user.findUnique({
       where: { email },
 
       include: {
@@ -530,9 +499,10 @@ export class AuthService {
       },
     });
 
-    if (!user) {
+    if (!foundUser) {
       this.recordFailedAttempt(email);
-      const remainingAttempts = this.checkLoginAttempts(email).remainingAttempts;
+      const checkResult = await this.checkLoginAttempts(email);
+      const remainingAttempts = checkResult.remainingAttempts || 0;
       return {
         message: `Không tìm thấy tài khoản. Số lần thử còn lại: ${remainingAttempts}`,
         remainingAttempts,
@@ -540,7 +510,7 @@ export class AuthService {
     }
 
     // Check if account is deactivated
-    if (!user.isActive) {
+    if (!foundUser.isActive) {
       return {
         message: "Tài khoản đã bị vô hiệu hóa. Vui lòng liên hệ hỗ trợ để kích hoạt lại.",
         deactivated: true,
@@ -556,7 +526,7 @@ export class AuthService {
     }
 
     // OAuth user không có password
-    if (!user.password) {
+    if (!foundUser.password) {
       return {
         message: "Tài khoản này đăng nhập bằng mạng xã hội (Google/Facebook). Vui lòng dùng nút đăng nhập tương ứng.",
       };
@@ -564,12 +534,13 @@ export class AuthService {
 
     const match = await bcrypt.compare(
       password,
-      user.password,
+      foundUser.password,
     );
 
     if (!match) {
       this.recordFailedAttempt(email);
-      const remainingAttempts = this.checkLoginAttempts(email).remainingAttempts;
+      const checkResult = await this.checkLoginAttempts(email);
+      const remainingAttempts = checkResult.remainingAttempts || 0;
       return {
         message: remainingAttempts > 0
           ? `Sai mật khẩu. Số lần thử còn lại: ${remainingAttempts}`
@@ -583,14 +554,14 @@ export class AuthService {
 
     // Update last login time
     await this.prisma.user.update({
-      where: { id: user.id },
+      where: { id: foundUser.id },
       data: { lastLoginAt: new Date() },
     });
 
     const payload = {
-      sub: user.id,
-      email: user.email,
-      role: user.role,
+      sub: foundUser.id,
+      email: foundUser.email,
+      role: foundUser.role,
     };
 
     // Nếu rememberMe = true, token có hiệu lực 30 ngày, ngược lại 1 ngày
@@ -603,7 +574,7 @@ export class AuthService {
 
     await this.prisma.userSession.create({
       data: {
-        userId: user.id,
+        userId: foundUser.id,
         token: accessToken,
         deviceInfo: deviceId,
         userAgent: userAgent || 'unknown',
@@ -615,18 +586,18 @@ export class AuthService {
     return {
       accessToken,
       user: {
-        id: user.id,
-        fullName: user.fullName,
-        email: user.email,
-        role: user.role,
-        avatarUrl: user.avatarUrl,
+        id: foundUser.id,
+        fullName: foundUser.fullName,
+        email: foundUser.email,
+        role: foundUser.role,
+        avatarUrl: foundUser.avatarUrl,
         firstLoginCompleted:
-          user.profile?.firstLoginCompleted,
+          foundUser.profile?.firstLoginCompleted,
       },
     };
   }
 
-  async googleLogin(idToken: string, rememberMe: boolean = false, userAgent?: string, acceptLanguage?: string) {
+  async googleLogin(idToken: string, rememberMe: boolean = false, userAgentParam?: string, acceptLanguageParam?: string) {
     // Verify Google idToken qua Google tokeninfo API
     const googleRes = await fetch(
       `https://oauth2.googleapis.com/tokeninfo?id_token=${idToken}`,
@@ -718,8 +689,7 @@ export class AuthService {
     const accessToken = this.jwtService.sign(payload, { expiresIn });
 
     // Create session record
-    const deviceId = this.generateDeviceId();
-    const userAgent = this.getUserAgent();
+    const deviceId = this.generateDeviceId(userAgentParam || 'unknown', acceptLanguageParam || 'unknown');
     const expiresAt = new Date(Date.now() + (rememberMe ? 30 * 24 * 60 * 60 * 1000 : 24 * 60 * 60 * 1000));
 
     await this.prisma.userSession.create({
@@ -727,7 +697,7 @@ export class AuthService {
         userId: user.id,
         token: accessToken,
         deviceInfo: deviceId,
-        userAgent,
+        userAgent: userAgentParam || 'unknown',
         ipAddress: 'IP_PLACEHOLDER',
         expiresAt,
       },

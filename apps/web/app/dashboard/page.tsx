@@ -140,7 +140,7 @@ export default function DashboardPage() {
         <div className="space-y-6">
           
           {/* Stats Row */}
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 lg:gap-4">
+          <div className="grid grid-cols-2 sm:grid-cols-5 gap-3 lg:gap-4">
             <div className="bg-zinc-900/60 border border-zinc-800/50 rounded-2xl p-4 text-center">
               <span className="text-[10px] text-zinc-500 uppercase tracking-wider font-medium block mb-2">Điểm hiện tại</span>
               <p className="text-2xl font-bold text-white">{score.current || "—"}</p>
@@ -156,6 +156,10 @@ export default function DashboardPage() {
             <div className="bg-zinc-900/60 border border-zinc-800/50 rounded-2xl p-4 text-center">
               <span className="text-[10px] text-zinc-500 uppercase tracking-wider font-medium block mb-2">Chặng học</span>
               <p className="text-2xl font-bold text-orange-400">{score.stage}</p>
+            </div>
+            <div className="bg-zinc-900/60 border border-zinc-800/50 rounded-2xl p-4 text-center">
+              <span className="text-[10px] text-zinc-500 uppercase tracking-wider font-medium block mb-2">Ước tính</span>
+              <p className="text-2xl font-bold text-green-400">{score.estimatedDays || "—"} ngày</p>
             </div>
           </div>
 
