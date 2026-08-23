@@ -31,12 +31,17 @@ export class AuthService {
       10,
     );
 
+    const verificationCode = Math.floor(100000 + Math.random() * 900000).toString();
+    const verificationCodeExpiresAt = new Date(Date.now() + 15 * 60 * 1000); // 15 mins
+
     const newUser = await this.prisma.user.create({
       data: {
         fullName,
         email,
         password: hashedPassword,
-
+        isEmailVerified: false,
+        verificationCode,
+        verificationCodeExpiresAt,
         profile: {
           create: {
             firstLoginCompleted: false,
@@ -48,12 +53,38 @@ export class AuthService {
       },
     });
 
+    // Send email
+    const transporter = nodemailer.createTransport({
+      service: process.env.SMTP_SERVICE || 'gmail',
+      auth: {
+        user: process.env.EMAIL_USER,
+        pass: process.env.EMAIL_PASS
+      }
+    });
+
+    try {
+      await transporter.sendMail({
+        from: '"Bella AI Support" <support@bella-ai.com>',
+        to: newUser.email,
+        subject: 'Mã xác thực tài khoản của bạn',
+        html: `
+          <h3>Chào ${newUser.fullName},</h3>
+          <p>Mã xác thực tài khoản (OTP) của bạn là: <strong>${verificationCode}</strong></p>
+          <p>Mã này có hiệu lực trong vòng 15 phút.</p>
+        `
+      });
+      console.log('====================================');
+      console.log('OTP CODE (Dành cho Dev):', verificationCode);
+      console.log('====================================');
+    } catch (error) {
+      console.error('Lỗi gửi mail (có thể do chưa cấu hình SMTP):', error);
+      console.log('OTP CODE FALLBACK:', verificationCode);
+    }
+
     return {
-      id: newUser.id,
+      message: "Đăng ký thành công. Vui lòng kiểm tra email để lấy mã xác thực.",
+      requiresVerification: true,
       email: newUser.email,
-      role: newUser.role,
-      firstLoginCompleted:
-        newUser.profile?.firstLoginCompleted,
     };
   }
 
@@ -72,6 +103,21 @@ export class AuthService {
     if (!user) {
       return {
         message: "Không tìm thấy tài khoản",
+      };
+    }
+
+    if (!user.isEmailVerified) {
+      return {
+        message: "Vui lòng xác thực email của bạn.",
+        requiresVerification: true,
+        email: user.email,
+      };
+    }
+
+    // OAuth user không có password
+    if (!user.password) {
+      return {
+        message: "Tài khoản này đăng nhập bằng mạng xã hội (Google/Facebook). Vui lòng dùng nút đăng nhập tương ứng.",
       };
     }
 
@@ -102,17 +148,189 @@ export class AuthService {
         fullName: user.fullName,
         email: user.email,
         role: user.role,
+        avatarUrl: user.avatarUrl,
         firstLoginCompleted:
           user.profile?.firstLoginCompleted,
       },
     };
   }
 
+  async googleLogin(idToken: string) {
+    // Verify Google idToken qua Google tokeninfo API
+    const googleRes = await fetch(
+      `https://oauth2.googleapis.com/tokeninfo?id_token=${idToken}`,
+    );
+
+    if (!googleRes.ok) {
+      return { message: "Google token không hợp lệ" };
+    }
+
+    const googleData = await googleRes.json();
+
+    // Kiểm tra client_id khớp (bảo mật)
+    const clientId = process.env.GOOGLE_CLIENT_ID;
+    if (clientId && googleData.aud !== clientId) {
+      return { message: "Google token không hợp lệ" };
+    }
+
+    const { sub: googleId, email, name, picture } = googleData;
+
+    if (!email) {
+      return { message: "Không lấy được email từ Google" };
+    }
+
+    // Tìm user theo googleId hoặc email
+    let user = await this.prisma.user.findFirst({
+      where: {
+        OR: [
+          { googleId },
+          { email },
+        ],
+      },
+      include: { profile: true },
+    });
+
+    if (user) {
+      // Liên kết googleId nếu user đăng ký email trước đó
+      if (!user.googleId) {
+        user = await this.prisma.user.update({
+          where: { id: user.id },
+          data: {
+            googleId,
+            avatarUrl: picture || user.avatarUrl,
+          },
+          include: { profile: true },
+        });
+      }
+    } else {
+      // Tạo user mới từ Google
+      user = await this.prisma.user.create({
+        data: {
+          fullName: name || email.split("@")[0],
+          email,
+          googleId,
+          avatarUrl: picture,
+          isEmailVerified: true,
+          // password để null - OAuth user
+          profile: {
+            create: {
+              firstLoginCompleted: false,
+            },
+          },
+        },
+        include: { profile: true },
+      });
+    }
+
+    const payload = {
+      sub: user.id,
+      email: user.email,
+      role: user.role,
+    };
+
+    const accessToken = this.jwtService.sign(payload);
+
+    return {
+      accessToken,
+      user: {
+        id: user.id,
+        fullName: user.fullName,
+        email: user.email,
+        role: user.role,
+        avatarUrl: user.avatarUrl,
+        firstLoginCompleted: user.profile?.firstLoginCompleted,
+      },
+    };
+  }
+
+  async facebookLogin(accessToken: string) {
+    const fbRes = await fetch(
+      `https://graph.facebook.com/me?fields=id,name,email,picture.type(large)&access_token=${accessToken}`
+    );
+
+    if (!fbRes.ok) {
+      return { message: "Facebook token không hợp lệ" };
+    }
+
+    const fbData = await fbRes.json();
+    const { id: facebookId, name, email: fbEmail, picture } = fbData;
+    
+    // Facebook có thể không trả về email nếu user đăng ký bằng sđt
+    const email = fbEmail || `fb_${facebookId}@facebook-placeholder.com`;
+
+    let user = await this.prisma.user.findFirst({
+      where: {
+        OR: [
+          { facebookId },
+          { email },
+        ],
+      },
+      include: { profile: true },
+    });
+
+    const avatarUrl = picture?.data?.url || null;
+
+    if (user) {
+      if (!user.facebookId) {
+        user = await this.prisma.user.update({
+          where: { id: user.id },
+          data: {
+            facebookId,
+            avatarUrl: avatarUrl || user.avatarUrl,
+          },
+          include: { profile: true },
+        });
+      }
+    } else {
+      user = await this.prisma.user.create({
+        data: {
+          fullName: name || "Người dùng Facebook",
+          email,
+          facebookId,
+          avatarUrl,
+          isEmailVerified: true,
+          profile: {
+            create: {
+              firstLoginCompleted: false,
+            },
+          },
+        },
+        include: { profile: true },
+      });
+    }
+
+    const payload = {
+      sub: user.id,
+      email: user.email,
+      role: user.role,
+    };
+
+    const jwtToken = this.jwtService.sign(payload);
+
+    return {
+      accessToken: jwtToken,
+      user: {
+        id: user.id,
+        fullName: user.fullName,
+        email: user.email,
+        role: user.role,
+        avatarUrl: user.avatarUrl,
+        firstLoginCompleted: user.profile?.firstLoginCompleted,
+      },
+    };
+  }
+
+
   async forgotPassword(email: string) {
     const user = await this.prisma.user.findUnique({ where: { email } });
     if (!user) {
       // Luôn trả về cùng một thông báo để tránh lộ lọt email
       return { message: "Nếu email tồn tại trong hệ thống, bạn sẽ nhận được link đặt lại mật khẩu.", success: true };
+    }
+
+    // OAuth user không có password
+    if (!user.password) {
+      return { message: "Tài khoản này đăng nhập bằng mạng xã hội, không cần đặt lại mật khẩu.", success: false };
     }
 
     const secret = "BELLA_SECRET_KEY" + user.password;
@@ -160,6 +378,10 @@ export class AuthService {
       return { message: "Token không hợp lệ hoặc đã hết hạn", success: false };
     }
 
+    if (!user.password) {
+      return { message: "Tài khoản mạng xã hội không thể đặt lại mật khẩu", success: false };
+    }
+
     const secret = "BELLA_SECRET_KEY" + user.password;
     try {
       this.jwtService.verify(token, { secret });
@@ -174,5 +396,114 @@ export class AuthService {
     });
 
     return { message: "Đặt lại mật khẩu thành công", success: true };
+  }
+
+  async verifyEmail(email: string, code: string) {
+    const user = await this.prisma.user.findUnique({
+      where: { email },
+      include: { profile: true },
+    });
+
+    if (!user) {
+      return { message: "Không tìm thấy tài khoản", success: false };
+    }
+
+    if (user.isEmailVerified) {
+      return { message: "Email đã được xác thực trước đó", success: false };
+    }
+
+    if (user.verificationCode !== code) {
+      return { message: "Mã xác thực không hợp lệ", success: false };
+    }
+
+    if (!user.verificationCodeExpiresAt || user.verificationCodeExpiresAt < new Date()) {
+      return { message: "Mã xác thực đã hết hạn", success: false };
+    }
+
+    // Xác thực thành công
+    await this.prisma.user.update({
+      where: { id: user.id },
+      data: {
+        isEmailVerified: true,
+        verificationCode: null,
+        verificationCodeExpiresAt: null,
+      },
+    });
+
+    const payload = {
+      sub: user.id,
+      email: user.email,
+      role: user.role,
+    };
+
+    const accessToken = this.jwtService.sign(payload);
+
+    return {
+      success: true,
+      accessToken,
+      user: {
+        id: user.id,
+        fullName: user.fullName,
+        email: user.email,
+        role: user.role,
+        avatarUrl: user.avatarUrl,
+        firstLoginCompleted: user.profile?.firstLoginCompleted,
+      },
+    };
+  }
+
+  async resendVerificationCode(email: string) {
+    const user = await this.prisma.user.findUnique({
+      where: { email },
+    });
+
+    if (!user) {
+      return { message: "Không tìm thấy tài khoản", success: false };
+    }
+
+    if (user.isEmailVerified) {
+      return { message: "Email đã được xác thực trước đó", success: false };
+    }
+
+    const verificationCode = Math.floor(100000 + Math.random() * 900000).toString();
+    const verificationCodeExpiresAt = new Date(Date.now() + 15 * 60 * 1000); // 15 mins
+
+    await this.prisma.user.update({
+      where: { id: user.id },
+      data: {
+        verificationCode,
+        verificationCodeExpiresAt,
+      },
+    });
+
+    // Send email
+    const transporter = nodemailer.createTransport({
+      service: process.env.SMTP_SERVICE || 'gmail',
+      auth: {
+        user: process.env.EMAIL_USER,
+        pass: process.env.EMAIL_PASS
+      }
+    });
+
+    try {
+      await transporter.sendMail({
+        from: '"Bella AI Support" <support@bella-ai.com>',
+        to: user.email,
+        subject: 'Mã xác thực tài khoản của bạn (Gửi lại)',
+        html: `
+          <h3>Chào ${user.fullName},</h3>
+          <p>Mã xác thực tài khoản (OTP) mới của bạn là: <strong>${verificationCode}</strong></p>
+          <p>Mã này có hiệu lực trong vòng 15 phút.</p>
+        `
+      });
+      console.log('====================================');
+      console.log('OTP CODE RESEND (Dành cho Dev):', verificationCode);
+      console.log('====================================');
+    } catch (error) {
+      console.error('Lỗi gửi mail (có thể do chưa cấu hình SMTP):', error);
+      console.log('OTP CODE FALLBACK:', verificationCode);
+    }
+
+    return { success: true, message: "Đã gửi lại mã xác thực thành công." };
   }
 }

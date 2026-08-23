@@ -226,6 +226,12 @@ async changePassword(
 
   }
 
+  if (!user.password) {
+    throw new BadRequestException(
+      "Tài khoản này đăng nhập bằng Google, không thể đổi mật khẩu"
+    );
+  }
+
   const match =
     await bcrypt.compare(
       data.oldPassword,

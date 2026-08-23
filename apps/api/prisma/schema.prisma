@@ -11,7 +11,13 @@ model User {
   id                            Int                             @id @default(autoincrement())
   fullName                      String
   email                         String                          @unique
-  password                      String
+  isEmailVerified               Boolean                         @default(false)
+  verificationCode              String?
+  verificationCodeExpiresAt     DateTime?
+  password                      String?
+  googleId                      String?                         @unique
+  facebookId                    String?                         @unique
+  avatarUrl                     String?
   createdAt                     DateTime                        @default(now())
   role                          UserRole                        @default(USER)
   profile                       UserProfile?
@@ -199,6 +205,7 @@ model options {
   question_id   Int?
   option_label  String?    @db.Char(1)
   option_text   String?
+  is_correct    Boolean?   @default(false)
   display_order Int?
   questions     questions? @relation(fields: [question_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
 }

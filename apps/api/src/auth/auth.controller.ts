@@ -45,11 +45,53 @@ constructor(
       body.password,
     );
   }
+
+  @Post('google')
+  googleLogin(
+    @Body()
+    body: {
+      idToken: string;
+    },
+  ) {
+    return this.authService.googleLogin(body.idToken);
+  }
+
+  @Post('facebook')
+  facebookLogin(
+    @Body()
+    body: {
+      accessToken: string;
+    },
+  ) {
+    return this.authService.facebookLogin(body.accessToken);
+  }
+
+  @Post('verify-email')
+  verifyEmail(
+    @Body()
+    body: {
+      email: string;
+      code: string;
+    },
+  ) {
+    return this.authService.verifyEmail(body.email, body.code);
+  }
+
+  @Post('resend-verification')
+  resendVerification(
+    @Body()
+    body: {
+      email: string;
+    },
+  ) {
+    return this.authService.resendVerificationCode(body.email);
+  }
+
   @UseGuards(JwtAuthGuard)
-@Get("me")
-getMe(@Req() req: any) {
-  return req.user;
-}
+  @Get("me")
+  getMe(@Req() req: any) {
+    return req.user;
+  }
 
   @Post('forgot-password')
   forgotPassword(
