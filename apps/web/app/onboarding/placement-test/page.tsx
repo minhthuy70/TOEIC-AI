@@ -64,6 +64,7 @@ export default function PlacementTestPage() {
   const [currentPartIndex, setCurrentPartIndex] = useState(0);
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [answers, setAnswers] = useState<Record<string, string>>({});
+  const [showInstructions, setShowInstructions] = useState(false);
 
   // ── Timer
   const [timeLeft, setTimeLeft] = useState(0);
@@ -142,10 +143,16 @@ export default function PlacementTestPage() {
 
   const startTest = () => {
     if (!testData) return;
+    setShowInstructions(true);
+  };
+
+  const confirmStartTest = () => {
+    if (!testData) return;
     const totalMinutes =
       testData.testInfo.listeningTime + testData.testInfo.readingTime;
     setTimeLeft(totalMinutes * 60);
     setStarted(true);
+    setShowInstructions(false);
   };
 
   const selectAnswer = (option: string) => {
@@ -296,6 +303,140 @@ export default function PlacementTestPage() {
   /* ────────────────────────────────────── */
   if (!started) {
     return (
+      <>
+        {/* Instructions Modal */}
+        {showInstructions && (
+          <div className="fixed inset-0 bg-black/80 backdrop-blur-sm flex items-center justify-center z-50 p-4">
+            <div className="bg-zinc-900 border border-red-600/30 rounded-2xl p-6 max-w-2xl w-full max-h-[90vh] overflow-y-auto">
+              <div className="flex items-center justify-between mb-6">
+                <h2 className="text-2xl font-bold text-white flex items-center gap-2">
+                  <span className="w-10 h-10 bg-red-600/20 rounded-xl flex items-center justify-center text-red-400">📋</span>
+                  Hướng dẫn làm bài test
+                </h2>
+                <button
+                  onClick={() => setShowInstructions(false)}
+                  className="text-gray-400 hover:text-white transition-colors"
+                >
+                  <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+                  </svg>
+                </button>
+              </div>
+
+              <div className="space-y-6">
+                {/* Test Overview */}
+                <div className="bg-black/30 rounded-xl p-4 border border-zinc-800">
+                  <h3 className="text-lg font-semibold text-white mb-3">Thông tin bài test</h3>
+                  <div className="grid grid-cols-2 gap-4 text-sm">
+                    <div>
+                      <p className="text-gray-500">Tổng câu hỏi</p>
+                      <p className="text-white font-semibold">200 câu</p>
+                    </div>
+                    <div>
+                      <p className="text-gray-500">Thời gian</p>
+                      <p className="text-white font-semibold">120 phút</p>
+                    </div>
+                    <div>
+                      <p className="text-gray-500">Listening</p>
+                      <p className="text-red-400 font-semibold">100 câu (45 phút)</p>
+                    </div>
+                    <div>
+                      <p className="text-gray-500">Reading</p>
+                      <p className="text-red-400 font-semibold">100 câu (75 phút)</p>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Section A - Listening */}
+                <div className="bg-blue-600/10 rounded-xl p-4 border border-blue-600/20">
+                  <h3 className="text-lg font-semibold text-blue-400 mb-3 flex items-center gap-2">
+                    <span>🎧</span> Section A - Listening
+                  </h3>
+                  <ul className="space-y-2 text-sm text-gray-300">
+                    <li className="flex items-start gap-2">
+                      <span className="text-blue-400 mt-1">•</span>
+                      <span><strong>Part 1:</strong> Mô tả hình ảnh (6 câu) - Chọn câu miêu tả đúng nhất</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <span className="text-blue-400 mt-1">•</span>
+                      <span><strong>Part 2:</strong> Hỏi - Đáp (25 câu) - Chọn câu trả lời phù hợp</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <span className="text-blue-400 mt-1">•</span>
+                      <span><strong>Part 3:</strong> Đoạn hội thoại (39 câu) - Nghe hội thoại và trả lời câu hỏi</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <span className="text-blue-400 mt-1">•</span>
+                      <span><strong>Part 4:</strong> Bài nói chuyện ngắn (30 câu) - Nghe thông báo/bài phát biểu</span>
+                    </li>
+                  </ul>
+                  <div className="mt-3 p-3 bg-blue-600/10 rounded-lg border border-blue-600/20">
+                    <p className="text-xs text-blue-300">
+                      ⚠️ Lưu ý: Audio chỉ phát một lần. Hãy tập trung nghe kỹ trước khi chọn đáp án.
+                    </p>
+                  </div>
+                </div>
+
+                {/* Section B - Reading */}
+                <div className="bg-green-600/10 rounded-xl p-4 border border-green-600/20">
+                  <h3 className="text-lg font-semibold text-green-400 mb-3 flex items-center gap-2">
+                    <span>📖</span> Section B - Reading
+                  </h3>
+                  <ul className="space-y-2 text-sm text-gray-300">
+                    <li className="flex items-start gap-2">
+                      <span className="text-green-400 mt-1">•</span>
+                      <span><strong>Part 5:</strong> Hoàn thành câu (30 câu) - Chọn từ/cụm từ phù hợp</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <span className="text-green-400 mt-1">•</span>
+                      <span><strong>Part 6:</strong> Hoàn thành đoạn văn (16 câu) - Điền từ vào chỗ trống</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <span className="text-green-400 mt-1">•</span>
+                      <span><strong>Part 7:</strong> Đọc hiểu (54 câu) - Đọc hiểu đoạn văn và trả lời câu hỏi</span>
+                    </li>
+                  </ul>
+                </div>
+
+                {/* Important Notes */}
+                <div className="bg-yellow-600/10 rounded-xl p-4 border border-yellow-600/20">
+                  <h3 className="text-lg font-semibold text-yellow-400 mb-3 flex items-center gap-2">
+                    <span>⚠️</span> Lưu ý quan trọng
+                  </h3>
+                  <ul className="space-y-2 text-sm text-gray-300">
+                    <li className="flex items-start gap-2">
+                      <span className="text-yellow-400 mt-1">•</span>
+                      <span>Bài test sẽ tự động nộp khi hết thời gian</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <span className="text-yellow-400 mt-1">•</span>
+                      <span>Có thể điều hướng giữa các câu hỏi bất cứ lúc nào</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <span className="text-yellow-400 mt-1">•</span>
+                      <span>Đáp án có thể thay đổi trước khi nộp bài</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <span className="text-yellow-400 mt-1">•</span>
+                      <span>Kết quả sẽ hiển thị ngay sau khi nộp bài</span>
+                    </li>
+                  </ul>
+                </div>
+
+                {/* Action Button */}
+                <button
+                  onClick={confirmStartTest}
+                  className="w-full bg-red-600 hover:bg-red-700 text-white py-3 rounded-xl font-semibold transition-all"
+                >
+                  Tôi đã hiểu, bắt đầu làm bài
+                </button>
+              </div>
+            </div>
+          </div>
+        )}
+
+        <div className="min-h-screen bg-black flex items-center justify-center px-4">
+    return (
       <div className="min-h-screen bg-black flex items-center justify-center px-4">
         <div className="w-full max-w-2xl">
           {/* Header */}
@@ -425,6 +566,12 @@ export default function PlacementTestPage() {
               ← Quay lại
             </button>
             <button
+              onClick={() => setShowInstructions(true)}
+              className="flex-1 bg-zinc-800 hover:bg-zinc-700 text-white py-3.5 rounded-xl font-semibold transition-all"
+            >
+              📋 Xem hướng dẫn
+            </button>
+            <button
               onClick={startTest}
               className="flex-1 bg-red-600 hover:bg-red-700 text-white py-3.5 rounded-xl font-semibold transition-all shadow-lg shadow-red-600/25 hover:shadow-red-600/40 active:scale-[0.98]"
             >
@@ -433,6 +580,7 @@ export default function PlacementTestPage() {
           </div>
         </div>
       </div>
+      </>
     );
   }
 
