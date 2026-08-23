@@ -16,6 +16,7 @@ export default function LoginPage() {
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
   const [rememberMe, setRememberMe] = useState(false);
   const [error, setError] = useState("");
   const [googleLoading, setGoogleLoading] = useState(false);
@@ -346,16 +347,35 @@ export default function LoginPage() {
           className="w-full p-4 rounded-xl bg-zinc-800 text-white border border-zinc-700 mb-4 focus:outline-none focus:border-red-500"
         />
 
-        <input
-          type="password"
-          placeholder="Mật khẩu"
-          value={password}
-          onChange={(e) =>
-            setPassword(e.target.value)
-          }
-          onKeyDown={(e) => e.key === "Enter" && login()}
-          className="w-full p-4 rounded-xl bg-zinc-800 text-white border border-zinc-700 mb-4 focus:outline-none focus:border-red-500"
-        />
+        <div className="relative mb-4">
+          <input
+            type={showPassword ? "text" : "password"}
+            placeholder="Mật khẩu"
+            value={password}
+            onChange={(e) =>
+              setPassword(e.target.value)
+            }
+            onKeyDown={(e) => e.key === "Enter" && login()}
+            className="w-full p-4 pr-12 rounded-xl bg-zinc-800 text-white border border-zinc-700 focus:outline-none focus:border-red-500"
+          />
+          <button
+            type="button"
+            onClick={() => setShowPassword(!showPassword)}
+            className="absolute right-4 top-1/2 -translate-y-1/2 text-zinc-400 hover:text-red-500 transition-colors"
+          >
+            {showPassword ? (
+              <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                <path d="M17.94 17.94A10.07 10.07 0 0112 20c-7 0-11-8-11-8a18.45 18.45 0 015.06-5.94M9.9 4.24A9.12 9.12 0 0112 4c7 0 11 8 11 8a18.5 18.5 0 01-2.16 3.19m-6.72-1.07a3 3 0 11-4.24-4.24" strokeLinecap="round" strokeLinejoin="round"/>
+                <path d="M1 1l22 22" strokeLinecap="round" strokeLinejoin="round"/>
+              </svg>
+            ) : (
+              <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" strokeLinecap="round" strokeLinejoin="round"/>
+                <circle cx="12" cy="12" r="3" strokeLinecap="round" strokeLinejoin="round"/>
+              </svg>
+            )}
+          </button>
+        </div>
 
         <div className="flex justify-between items-center mb-6">
           <label className="flex items-center gap-2 cursor-pointer group">
