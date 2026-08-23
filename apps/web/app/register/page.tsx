@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 
 declare global {
   interface Window {
@@ -18,8 +19,7 @@ export default function RegisterPage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
-  const [agreeTerms, setAgreeTerms] = useState(false);
-  const [agreePrivacy, setAgreePrivacy] = useState(false);
+  const [agreeAll, setAgreeAll] = useState(false);
   const [error, setError] = useState("");
   const [googleLoading, setGoogleLoading] = useState(false);
   const [facebookLoading, setFacebookLoading] = useState(false);
@@ -218,12 +218,8 @@ export default function RegisterPage() {
       setError("Mật khẩu xác nhận không khớp");
       return;
     }
-    if (!agreeTerms) {
-      setError("Vui lòng đồng ý với Điều khoản sử dụng");
-      return;
-    }
-    if (!agreePrivacy) {
-      setError("Vui lòng đồng ý với Chính sách bảo mật");
+    if (!agreeAll) {
+      setError("Vui lòng đồng ý với Điều khoản sử dụng và Chính sách bảo mật");
       return;
     }
 
@@ -395,43 +391,23 @@ export default function RegisterPage() {
           }`}
         />
 
-        {/* Terms and Conditions Checkbox */}
-        <label className="flex items-center gap-3 mb-4 cursor-pointer group">
-          <div className="relative flex items-center justify-center w-5 h-5 rounded border border-zinc-600 bg-zinc-800 group-hover:border-red-500 transition-colors">
-            <input
-              type="checkbox"
-              checked={agreeTerms}
-              onChange={(e) => setAgreeTerms(e.target.checked)}
-              className="absolute opacity-0 cursor-pointer w-full h-full"
-            />
-            {agreeTerms && (
-              <svg className="w-3.5 h-3.5 text-red-500 pointer-events-none" viewBox="0 0 14 14" fill="none">
-                <path d="M2.5 7.5L5.5 10.5L11.5 3.5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-              </svg>
-            )}
-          </div>
-          <span className="text-zinc-400 text-sm group-hover:text-zinc-300 transition-colors">
-            Tôi đồng ý với <a href="/terms" target="_blank" className="text-red-500 hover:underline">Điều khoản sử dụng</a>
-          </span>
-        </label>
-
-        {/* Privacy Policy Checkbox */}
+        {/* Terms and Privacy Checkbox */}
         <label className="flex items-center gap-3 mb-6 cursor-pointer group">
           <div className="relative flex items-center justify-center w-5 h-5 rounded border border-zinc-600 bg-zinc-800 group-hover:border-red-500 transition-colors">
             <input
               type="checkbox"
-              checked={agreePrivacy}
-              onChange={(e) => setAgreePrivacy(e.target.checked)}
+              checked={agreeAll}
+              onChange={(e) => setAgreeAll(e.target.checked)}
               className="absolute opacity-0 cursor-pointer w-full h-full"
             />
-            {agreePrivacy && (
+            {agreeAll && (
               <svg className="w-3.5 h-3.5 text-red-500 pointer-events-none" viewBox="0 0 14 14" fill="none">
                 <path d="M2.5 7.5L5.5 10.5L11.5 3.5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
               </svg>
             )}
           </div>
           <span className="text-zinc-400 text-sm group-hover:text-zinc-300 transition-colors">
-            Tôi đồng ý với <a href="/privacy" target="_blank" className="text-red-500 hover:underline">Chính sách bảo mật</a>
+            Tôi đồng ý với <Link href="/terms" className="text-red-500 hover:underline">Điều khoản sử dụng</Link> và <Link href="/privacy" className="text-red-500 hover:underline">Chính sách bảo mật</Link>
           </span>
         </label>
 

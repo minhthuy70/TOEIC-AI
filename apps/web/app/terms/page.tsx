@@ -1,7 +1,19 @@
+import Link from "next/link";
+
 export default function TermsPage() {
   return (
     <div className="min-h-screen bg-black text-white p-8 md:p-16">
       <div className="max-w-4xl mx-auto bg-zinc-900 rounded-3xl p-8 md:p-12 border border-zinc-800 shadow-2xl">
+        {/* Back Button */}
+        <Link
+          href="/register"
+          className="inline-flex items-center gap-2 text-zinc-400 hover:text-red-500 transition-colors mb-6"
+        >
+          <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+            <path d="M19 12H5M12 19l-7-7 7-7" strokeLinecap="round" strokeLinejoin="round"/>
+          </svg>
+          Quay lại đăng ký
+        </Link>
         <h1 className="text-3xl md:text-4xl font-bold mb-8 text-red-500 text-center">ĐIỀU KHOẢN SỬ DỤNG</h1>
         
         <div className="space-y-6 text-zinc-300 leading-relaxed">
