@@ -11,6 +11,7 @@ type User = {
   email: string;
   role: Role;
   createdAt: string;
+  lastLoginAt: string | null;
   isLocked: boolean;
   isPermanentlyLocked: boolean;
   lockedUntil: string | null;
@@ -379,6 +380,10 @@ export default function AdminUsersPage() {
                     </th>
 
                     <th className="px-6 py-4 text-sm font-semibold text-zinc-400">
+                      Đăng nhập gần nhất
+                    </th>
+
+                    <th className="px-6 py-4 text-sm font-semibold text-zinc-400">
                       Ngày tạo
                     </th>
                   </tr>
@@ -530,6 +535,13 @@ export default function AdminUsersPage() {
                                 Hoạt động
                               </span>
                             )}
+                          </td>
+
+                          {/* Last Login */}
+                          <td className="px-6 py-5 text-zinc-400">
+                            {user.lastLoginAt
+                              ? new Date(user.lastLoginAt).toLocaleDateString('vi-VN')
+                              : 'Chưa đăng nhập'}
                           </td>
 
                           {/* Created */}

@@ -68,6 +68,8 @@ export class ProfileService {
     gender: user.profile?.gender,
     address: user.profile?.address,
     bio: user.profile?.bio,
+    createdAt: user.createdAt,
+    lastLoginAt: user.lastLoginAt,
 
     currentScore: user.profile?.currentScore,
     targetScore: user.profile?.targetScore,

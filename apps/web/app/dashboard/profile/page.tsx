@@ -28,6 +28,8 @@ birthday?: string;
 gender?: string;
 address?: string;
 bio?: string;
+createdAt?: string;
+lastLoginAt?: string;
 
 currentScore?: number;
 targetScore?: number;
@@ -749,6 +751,23 @@ const handleDeleteAccount = async () => {
       {activeTab === "info" && (
         <div className="bg-zinc-900/60 border border-zinc-800/50 rounded-2xl p-6 space-y-4">
           <h3 className="text-sm font-semibold text-white">Thông tin cá nhân</h3>
+
+          {/* Account Info */}
+          <div className="bg-black/30 border border-zinc-800/40 rounded-xl p-4 space-y-2">
+            <div className="flex justify-between items-center">
+              <span className="text-[11px] text-zinc-500">Ngày tạo tài khoản</span>
+              <span className="text-[11px] text-zinc-300">
+                {user?.createdAt ? new Date(user.createdAt).toLocaleDateString('vi-VN') : '—'}
+              </span>
+            </div>
+            <div className="flex justify-between items-center">
+              <span className="text-[11px] text-zinc-500">Đăng nhập gần nhất</span>
+              <span className="text-[11px] text-zinc-300">
+                {user?.lastLoginAt ? new Date(user.lastLoginAt).toLocaleString('vi-VN') : 'Chưa đăng nhập'}
+              </span>
+            </div>
+          </div>
+
           <div>
             <label className="text-[11px] text-zinc-500 uppercase tracking-wider font-medium block mb-2">Họ và tên</label>
             <input

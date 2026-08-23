@@ -19,6 +19,7 @@ model User {
   facebookId                    String?                         @unique
   avatarUrl                     String?
   createdAt                     DateTime                        @default(now())
+  lastLoginAt                   DateTime?
   role                          UserRole                        @default(USER)
   isActive                      Boolean                         @default(true)
   deactivatedAt                 DateTime?

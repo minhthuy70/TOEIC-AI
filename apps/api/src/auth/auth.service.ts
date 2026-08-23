@@ -547,6 +547,12 @@ export class AuthService {
     // Reset login attempts on successful login
     this.resetLoginAttempts(email);
 
+    // Update last login time
+    await this.prisma.user.update({
+      where: { id: user.id },
+      data: { lastLoginAt: new Date() },
+    });
+
     const payload = {
       sub: user.id,
       email: user.email,
@@ -652,6 +658,12 @@ export class AuthService {
       role: user.role,
     };
 
+    // Update last login time
+    await this.prisma.user.update({
+      where: { id: user.id },
+      data: { lastLoginAt: new Date() },
+    });
+
     // Nếu rememberMe = true, token có hiệu lực 30 ngày, ngược lại 1 ngày
     const expiresIn = rememberMe ? '30d' : '1d';
     const accessToken = this.jwtService.sign(payload, { expiresIn });
@@ -738,6 +750,12 @@ export class AuthService {
       email: user.email,
       role: user.role,
     };
+
+    // Update last login time
+    await this.prisma.user.update({
+      where: { id: user.id },
+      data: { lastLoginAt: new Date() },
+    });
 
     // Nếu rememberMe = true, token có hiệu lực 30 ngày, ngược lại 1 ngày
     const expiresIn = rememberMe ? '30d' : '1d';
