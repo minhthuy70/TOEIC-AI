@@ -1070,6 +1070,32 @@ export class AuthService {
     };
   }
 
+  async revokeSession(sessionId: number, userId: number): Promise<{ success: boolean; message: string }> {
+    // Verify the session belongs to the user
+    const session = await this.prisma.userSession.findFirst({
+      where: {
+        id: sessionId,
+        userId,
+      },
+    });
+
+    if (!session) {
+      return {
+        success: false,
+        message: "Không tìm thấy phiên đăng nhập",
+      };
+    }
+
+    await this.prisma.userSession.delete({
+      where: { id: sessionId },
+    });
+
+    return {
+      success: true,
+      message: "Đã hủy phiên đăng nhập thành công",
+    };
+  }
+
   async getActiveSessions(userId: number, userAgent?: string, acceptLanguage?: string): Promise<any[]> {
     const sessions = await this.prisma.userSession.findMany({
       where: {

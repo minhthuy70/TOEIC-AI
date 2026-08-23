@@ -167,4 +167,16 @@ constructor(
 
     return this.authService.getActiveSessions(req.user.id, userAgent, acceptLanguage);
   }
+
+  @UseGuards(JwtAuthGuard)
+  @Post('revoke-session')
+  revokeSession(
+    @Body()
+    body: {
+      sessionId: number;
+    },
+    @Req() req: any,
+  ) {
+    return this.authService.revokeSession(body.sessionId, req.user.id);
+  }
 }

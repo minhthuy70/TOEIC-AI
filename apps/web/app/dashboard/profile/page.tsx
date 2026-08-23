@@ -664,6 +664,40 @@ const handleDeleteAccount = async () => {
     }
   };
 
+  const handleRevokeSession = async (sessionId: number) => {
+    const token = localStorage.getItem("accessToken");
+    if (!token) {
+      router.push("/login");
+      return;
+    }
+
+    try {
+      const res = await fetch("http://localhost:3001/auth/revoke-session", {
+        method: "POST",
+        headers: {
+          Authorization: `Bearer ${token}`,
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ sessionId }),
+      });
+
+      const data = await res.json();
+
+      if (!res.ok) {
+        throw new Error(data.message || "Hủy phiên thất bại");
+      }
+
+      // Reload sessions
+      loadSessions();
+      showSaved("Đã hủy phiên đăng nhập");
+    } catch (error) {
+      setSaveMsg(error instanceof Error ? error.message : "Hủy phiên thất bại");
+      setTimeout(() => setSaveMsg(""), 3000);
+    }
+  };
+
+
+
   const currentStage = (() => {
     const score = user?.currentScore ?? 0;
     if (score >= 800) return { id: 5, label: "Chặng 5 – Hoàn thiện" };
@@ -1214,7 +1248,18 @@ className="w-full bg-zinc-800/60 border border-zinc-700/60 text-white rounded-xl
                           <p className="text-[10px] text-zinc-600 mt-0.5">
                             Đăng nhập: {session.createdAt ? new Date(session.createdAt).toLocaleString('vi-VN') : '—'}
                           </p>
+                          <p className="text-[10px] text-zinc-600 mt-0.5">
+                            Hết hạn: {session.expiresAt ? new Date(session.expiresAt).toLocaleString('vi-VN') : '—'}
+                          </p>
                         </div>
+                        {!session.isCurrent && (
+                          <button
+                            onClick={() => handleRevokeSession(session.id)}
+                            className="ml-3 px-3 py-1.5 bg-red-600/10 hover:bg-red-600/20 text-red-400 rounded-lg text-[10px] font-medium transition-colors"
+                          >
+                            Hủy
+                          </button>
+                        )}
                       </div>
                     ))
                   )}

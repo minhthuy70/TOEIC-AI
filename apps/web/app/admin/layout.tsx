@@ -13,6 +13,7 @@ import {
 import Link from "next/link";
 import AdminSidebar from "@/components/admin-sidebar";
 import { useAutoLogout } from "../../hooks/useAutoLogout";
+import { useSessionWarning } from "../../hooks/useSessionWarning";
 
 type UserRole =
   | "USER"
@@ -39,6 +40,9 @@ export default function AdminLayout({
 
   // Auto logout after inactivity
   const { showWarning, timeRemaining, handleStayLoggedIn, handleLogoutNow } = useAutoLogout();
+
+  // Session expiration warning
+  const { sessionWarning, dismissWarning } = useSessionWarning();
 
   useEffect(() => {
     const storedUser =
@@ -124,6 +128,35 @@ export default function AdminLayout({
                 className="flex-1 bg-zinc-700 hover:bg-zinc-600 text-white py-3 rounded-xl text-sm font-medium transition-colors"
               >
                 Tiếp tục sử dụng
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Session Expiration Warning */}
+      {sessionWarning?.show && (
+        <div className="fixed top-4 right-4 z-50 animate-in slide-in-from-right">
+          <div className="bg-orange-600/95 border border-orange-500/30 rounded-xl p-4 shadow-xl shadow-orange-600/20 max-w-sm">
+            <div className="flex items-start gap-3">
+              <div className="w-8 h-8 rounded-lg bg-orange-500/20 flex items-center justify-center shrink-0">
+                <svg className="w-4 h-4 text-orange-200" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+              </div>
+              <div className="flex-1">
+                <h4 className="text-sm font-semibold text-white mb-1">Phiên đăng nhập sắp hết hạn</h4>
+                <p className="text-xs text-orange-100">
+                  Phiên đăng nhập của bạn sẽ hết hạn sau {sessionWarning.minutesLeft} phút. Hãy lưu công việc của bạn.
+                </p>
+              </div>
+              <button
+                onClick={dismissWarning}
+                className="text-orange-200 hover:text-white transition-colors"
+              >
+                <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+                </svg>
               </button>
             </div>
           </div>
