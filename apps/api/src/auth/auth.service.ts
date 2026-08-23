@@ -480,6 +480,39 @@ export class AuthService {
       };
     }
 
+    // Check if account is deactivated
+    if (!user.isActive) {
+      return {
+        message: "Tài khoản đã bị vô hiệu hóa. Vui lòng liên hệ hỗ trợ để kích hoạt lại.",
+        deactivated: true,
+      };
+    }
+
+    const user = await this.prisma.user.findUnique({
+      where: { email },
+
+      include: {
+        profile: true,
+      },
+    });
+
+    if (!user) {
+      this.recordFailedAttempt(email);
+      const remainingAttempts = this.checkLoginAttempts(email).remainingAttempts;
+      return {
+        message: `Không tìm thấy tài khoản. Số lần thử còn lại: ${remainingAttempts}`,
+        remainingAttempts,
+      };
+    }
+
+    // Check if account is deactivated
+    if (!user.isActive) {
+      return {
+        message: "Tài khoản đã bị vô hiệu hóa. Vui lòng liên hệ hỗ trợ để kích hoạt lại.",
+        deactivated: true,
+      };
+    }
+
     if (!user.isEmailVerified) {
       return {
         message: "Vui lòng xác thực email của bạn.",
@@ -574,6 +607,14 @@ export class AuthService {
     });
 
     if (user) {
+      // Check if account is deactivated
+      if (!user.isActive) {
+        return {
+          message: "Tài khoản đã bị vô hiệu hóa. Vui lòng liên hệ hỗ trợ để kích hoạt lại.",
+          deactivated: true,
+        };
+      }
+
       // Liên kết googleId nếu user đăng ký email trước đó
       if (!user.googleId) {
         user = await this.prisma.user.update({
@@ -656,6 +697,14 @@ export class AuthService {
     const avatarUrl = picture?.data?.url || null;
 
     if (user) {
+      // Check if account is deactivated
+      if (!user.isActive) {
+        return {
+          message: "Tài khoản đã bị vô hiệu hóa. Vui lòng liên hệ hỗ trợ để kích hoạt lại.",
+          deactivated: true,
+        };
+      }
+
       if (!user.facebookId) {
         user = await this.prisma.user.update({
           where: { id: user.id },

@@ -305,4 +305,64 @@ async uploadAvatar(userId: number, file: Express.Multer.File) {
     avatarUrl,
   };
 }
+
+async deactivateAccount(userId: number) {
+  const user = await this.prisma.user.findUnique({
+    where: { id: userId },
+  });
+
+  if (!user) {
+    throw new BadRequestException("Không tìm thấy người dùng");
+  }
+
+  if (!user.isActive) {
+    throw new BadRequestException("Tài khoản đã bị vô hiệu hóa");
+  }
+
+  await this.prisma.user.update({
+    where: { id: userId },
+    data: {
+      isActive: false,
+      deactivatedAt: new Date(),
+    },
+  });
+
+  return {
+    message: "Tài khoản đã được vô hiệu hóa thành công",
+  };
+}
+
+async deleteAccount(userId: number, password?: string) {
+  const user = await this.prisma.user.findUnique({
+    where: { id: userId },
+  });
+
+  if (!user) {
+    throw new BadRequestException("Không tìm thấy người dùng");
+  }
+
+  // If user has password, verify it before deletion
+  if (user.password) {
+    if (!password) {
+      throw new BadRequestException("Vui lòng nhập mật khẩu để xác nhận xóa tài khoản");
+    }
+
+    const match = await bcrypt.compare(password, user.password);
+    if (!match) {
+      throw new UnauthorizedException("Mật khẩu không đúng");
+    }
+  }
+
+  // For OAuth users, we'll just delete them without password verification
+  // as they don't have a password
+
+  // Delete user (cascade will handle related records)
+  await this.prisma.user.delete({
+    where: { id: userId },
+  });
+
+  return {
+    message: "Tài khoản đã được xóa thành công",
+  };
+}
 }

@@ -20,6 +20,8 @@ model User {
   avatarUrl                     String?
   createdAt                     DateTime                        @default(now())
   role                          UserRole                        @default(USER)
+  isActive                      Boolean                         @default(true)
+  deactivatedAt                 DateTime?
   isLocked                      Boolean                         @default(false)
   lockedUntil                   DateTime?
   isPermanentlyLocked           Boolean                         @default(false)

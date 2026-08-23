@@ -95,4 +95,16 @@ uploadAvatar(
     file,
   );
 }
+
+@UseGuards(JwtAuthGuard)
+@Post("deactivate-account")
+deactivateAccount(@Req() req: any) {
+  return this.profileService.deactivateAccount(req.user.userId);
+}
+
+@UseGuards(JwtAuthGuard)
+@Post("delete-account")
+deleteAccount(@Req() req: any, @Body() body: { password?: string }) {
+  return this.profileService.deleteAccount(req.user.userId, body.password);
+}
 }

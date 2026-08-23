@@ -8,6 +8,7 @@ const TABS = [
   { id: "goal", label: "Mục tiêu TOEIC", icon: "🎯" },
   { id: "password", label: "Đổi mật khẩu", icon: "🔒" },
   { id: "settings", label: "Cài đặt", icon: "⚙️" },
+  { id: "account", label: "Quản lý tài khoản", icon: "🔐" },
 ];
 
 const TARGET_OPTIONS = [400, 500, 600, 700, 750, 800, 850, 900, 950, 990];
@@ -50,6 +51,11 @@ const [bio, setBio] = useState("");
 const [avatarFile, setAvatarFile] = useState<File | null>(null);
 const [avatarPreview, setAvatarPreview] = useState<string>("");
 const [uploadingAvatar, setUploadingAvatar] = useState(false);
+const [showDeleteModal, setShowDeleteModal] = useState(false);
+const [showDeactivateModal, setShowDeactivateModal] = useState(false);
+const [deletePassword, setDeletePassword] = useState("");
+const [isDeleting, setIsDeleting] = useState(false);
+const [isDeactivating, setIsDeactivating] = useState(false);
 
   const [oldPassword, setOldPassword] = useState("");
   const [newPassword, setNewPassword] = useState("");
@@ -507,6 +513,83 @@ const uploadAvatar = async () => {
     setTimeout(() => setSaveMsg(""), 3000);
   } finally {
     setUploadingAvatar(false);
+  }
+};
+
+const handleDeactivateAccount = async () => {
+  const token = localStorage.getItem("accessToken");
+  if (!token) {
+    router.push("/login");
+    return;
+  }
+
+  setIsDeactivating(true);
+  setSaveMsg("");
+
+  try {
+    const res = await fetch("http://localhost:3001/profile/deactivate-account", {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+
+    const data = await res.json();
+
+    if (!res.ok) {
+      throw new Error(data.message || "Vô hiệu hóa thất bại");
+    }
+
+    // Clear local storage and redirect to login
+    localStorage.removeItem("user");
+    localStorage.removeItem("accessToken");
+    router.push("/login");
+  } catch (error) {
+    setSaveMsg(error instanceof Error ? error.message : "Vô hiệu hóa thất bại");
+    setTimeout(() => setSaveMsg(""), 3000);
+  } finally {
+    setIsDeactivating(false);
+    setShowDeactivateModal(false);
+  }
+};
+
+const handleDeleteAccount = async () => {
+  const token = localStorage.getItem("accessToken");
+  if (!token) {
+    router.push("/login");
+    return;
+  }
+
+  setIsDeleting(true);
+  setSaveMsg("");
+
+  try {
+    const res = await fetch("http://localhost:3001/profile/delete-account", {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${token}`,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ password: deletePassword }),
+    });
+
+    const data = await res.json();
+
+    if (!res.ok) {
+      throw new Error(data.message || "Xóa tài khoản thất bại");
+    }
+
+    // Clear local storage and redirect to login
+    localStorage.removeItem("user");
+    localStorage.removeItem("accessToken");
+    router.push("/login");
+  } catch (error) {
+    setSaveMsg(error instanceof Error ? error.message : "Xóa tài khoản thất bại");
+    setTimeout(() => setSaveMsg(""), 3000);
+  } finally {
+    setIsDeleting(false);
+    setShowDeleteModal(false);
+    setDeletePassword("");
   }
 };
   const handleLogout = () => {
@@ -985,9 +1068,60 @@ className="w-full bg-zinc-800/60 border border-zinc-700/60 text-white rounded-xl
 >
   Lưu cài đặt
 </button>
-          {/* Danger zone */}
-          <div className="bg-red-600/5 border border-red-600/15 rounded-2xl p-5">
-            <h3 className="text-sm font-semibold text-red-400 mb-4">Vùng nguy hiểm</h3>
+        </div>
+      )}
+
+      {/* ── Account Management ── */}
+      {activeTab === "account" && (
+        <div className="space-y-4">
+          <div className="bg-zinc-900/60 border border-zinc-800/50 rounded-2xl p-6 space-y-4">
+            <h3 className="text-sm font-semibold text-white">Quản lý tài khoản</h3>
+
+            {/* Deactivate Account */}
+            <div className="bg-orange-600/5 border border-orange-600/15 rounded-xl p-4">
+              <div className="flex items-start gap-3">
+                <div className="w-10 h-10 rounded-lg bg-orange-600/10 flex items-center justify-center shrink-0">
+                  <svg className="w-5 h-5 text-orange-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M18.364 18.364A9 9 0 005.636 5.636m12.728 0A9 9 0 015.636 5.636m12.728 12.728A9 9 0 015.636 5.636m0 12.728A9 9 0 0018.364 5.636M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+                  </svg>
+                </div>
+                <div className="flex-1">
+                  <h4 className="text-sm font-semibold text-white mb-1">Vô hiệu hóa tài khoản</h4>
+                  <p className="text-xs text-zinc-400 mb-3">Tạm thời vô hiệu hóa tài khoản. Bạn có thể kích hoạt lại bằng cách liên hệ hỗ trợ.</p>
+                  <button
+                    onClick={() => setShowDeactivateModal(true)}
+                    className="bg-orange-600 hover:bg-orange-700 text-white px-4 py-2 rounded-lg text-xs font-medium transition-colors"
+                  >
+                    Vô hiệu hóa
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            {/* Delete Account */}
+            <div className="bg-red-600/5 border border-red-600/15 rounded-xl p-4">
+              <div className="flex items-start gap-3">
+                <div className="w-10 h-10 rounded-lg bg-red-600/10 flex items-center justify-center shrink-0">
+                  <svg className="w-5 h-5 text-red-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+                  </svg>
+                </div>
+                <div className="flex-1">
+                  <h4 className="text-sm font-semibold text-white mb-1">Xóa tài khoản</h4>
+                  <p className="text-xs text-zinc-400 mb-3">Xóa vĩnh viễn tài khoản và tất cả dữ liệu liên quan. Hành động này không thể hoàn tác.</p>
+                  <button
+                    onClick={() => setShowDeleteModal(true)}
+                    className="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-lg text-xs font-medium transition-colors"
+                  >
+                    Xóa tài khoản
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Logout */}
+          <div className="bg-zinc-900/60 border border-zinc-800/50 rounded-2xl p-5">
             <button
               onClick={handleLogout}
               className="w-full flex items-center justify-center gap-2 py-3 rounded-xl border border-red-600/25 text-red-400 hover:bg-red-600/10 transition-all text-[13px] font-medium"
@@ -997,6 +1131,77 @@ className="w-full bg-zinc-800/60 border border-zinc-700/60 text-white rounded-xl
               </svg>
               Đăng xuất
             </button>
+          </div>
+        </div>
+      )}
+
+      {/* Deactivate Modal */}
+      {showDeactivateModal && (
+        <div className="fixed inset-0 bg-black/70 flex items-center justify-center z-50 p-4">
+          <div className="bg-zinc-900 border border-zinc-800 rounded-2xl p-6 max-w-md w-full">
+            <h3 className="text-lg font-bold text-white mb-2">Vô hiệu hóa tài khoản</h3>
+            <p className="text-sm text-zinc-400 mb-6">
+              Bạn có chắc muốn vô hiệu hóa tài khoản? Tài khoản sẽ bị khóa và bạn không thể đăng nhập cho đến khi liên hệ hỗ trợ để kích hoạt lại.
+            </p>
+            <div className="flex gap-3">
+              <button
+                onClick={() => setShowDeactivateModal(false)}
+                className="flex-1 bg-zinc-700 hover:bg-zinc-600 text-white py-3 rounded-xl text-sm font-medium transition-colors"
+              >
+                Hủy
+              </button>
+              <button
+                onClick={handleDeactivateAccount}
+                disabled={isDeactivating}
+                className="flex-1 bg-orange-600 hover:bg-orange-700 disabled:bg-gray-600 text-white py-3 rounded-xl text-sm font-medium transition-colors"
+              >
+                {isDeactivating ? "Đang xử lý..." : "Vô hiệu hóa"}
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Delete Modal */}
+      {showDeleteModal && (
+        <div className="fixed inset-0 bg-black/70 flex items-center justify-center z-50 p-4">
+          <div className="bg-zinc-900 border border-zinc-800 rounded-2xl p-6 max-w-md w-full">
+            <h3 className="text-lg font-bold text-white mb-2">Xóa tài khoản</h3>
+            <p className="text-sm text-zinc-400 mb-4">
+              Hành động này sẽ xóa vĩnh viễn tài khoản và tất cả dữ liệu liên quan. Hành động này không thể hoàn tác.
+            </p>
+            {user?.password && (
+              <div className="mb-4">
+                <label className="text-xs text-zinc-500 uppercase tracking-wider font-medium block mb-2">
+                  Nhập mật khẩu để xác nhận
+                </label>
+                <input
+                  type="password"
+                  value={deletePassword}
+                  onChange={(e) => setDeletePassword(e.target.value)}
+                  placeholder="Mật khẩu"
+                  className="w-full bg-zinc-800 border border-zinc-700 text-white rounded-xl px-4 py-3 text-sm outline-none focus:border-red-500"
+                />
+              </div>
+            )}
+            <div className="flex gap-3">
+              <button
+                onClick={() => {
+                  setShowDeleteModal(false);
+                  setDeletePassword("");
+                }}
+                className="flex-1 bg-zinc-700 hover:bg-zinc-600 text-white py-3 rounded-xl text-sm font-medium transition-colors"
+              >
+                Hủy
+              </button>
+              <button
+                onClick={handleDeleteAccount}
+                disabled={isDeleting || (user?.password && !deletePassword)}
+                className="flex-1 bg-red-600 hover:bg-red-700 disabled:bg-gray-600 text-white py-3 rounded-xl text-sm font-medium transition-colors"
+              >
+                {isDeleting ? "Đang xóa..." : "Xóa tài khoản"}
+              </button>
+            </div>
           </div>
         </div>
       )}
