@@ -57,6 +57,7 @@ export default function PlacementTestPage() {
   const [testData, setTestData] = useState<TestData | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
+  const [cooldownInfo, setCooldownInfo] = useState<{ canRetake: boolean; cooldownDays: number } | null>(null);
 
   // ── Test state
   const [started, setStarted] = useState(false);
@@ -65,6 +66,9 @@ export default function PlacementTestPage() {
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [answers, setAnswers] = useState<Record<string, string>>({});
   const [showInstructions, setShowInstructions] = useState(false);
+  const [markedQuestions, setMarkedQuestions] = useState<Set<string>>(new Set());
+  const [showOnlyMarked, setShowOnlyMarked] = useState(false);
+  const [showSubmitConfirm, setShowSubmitConfirm] = useState(false);
 
   // ── Timer
   const [timeLeft, setTimeLeft] = useState(0);
@@ -89,6 +93,18 @@ export default function PlacementTestPage() {
 
   /* ── Fetch data ── */
   useEffect(() => {
+    const token = localStorage.getItem("accessToken");
+    
+    // Check cooldown
+    if (token) {
+      fetch(`${API}/profile/placement-test-cooldown`, {
+        headers: { Authorization: `Bearer ${token}` },
+      })
+        .then((r) => r.json())
+        .then((data) => setCooldownInfo(data))
+        .catch(() => setCooldownInfo(null));
+    }
+
     fetch(`${API}/placement-test`)
       .then((r) => r.json())
       .then((d: TestData) => {
@@ -108,8 +124,11 @@ export default function PlacementTestPage() {
       setTimeLeft((t) => {
         if (t <= 1) {
           clearInterval(timerRef.current!);
-          // Auto-submit when time expires
-          handleSubmit();
+          // Auto-submit when time expires (skip confirmation)
+          setSubmitted(true);
+          if (audioRef.current) {
+            audioRef.current.pause();
+          }
           return 0;
         }
         return t - 1;
@@ -131,6 +150,7 @@ export default function PlacementTestPage() {
   const totalAvailableQuestions =
     testData?.parts.reduce((s, p) => s + p.questions.length, 0) ?? 0;
   const totalAnswered = Object.keys(answers).length;
+  const totalMarked = markedQuestions.size;
 
   // Check if it's the last question of the last part
   const isLastPart = testData ? currentPartIndex === testData.parts.length - 1 : false;
@@ -145,11 +165,19 @@ export default function PlacementTestPage() {
 
   const startTest = () => {
     if (!testData) return;
+    if (cooldownInfo && !cooldownInfo.canRetake) {
+      alert(`Bạn cần đợi ${cooldownInfo.cooldownDays} ngày nữa trước khi có thể làm lại bài test.`);
+      return;
+    }
     setShowInstructions(true);
   };
 
   const confirmStartTest = () => {
     if (!testData) return;
+    if (cooldownInfo && !cooldownInfo.canRetake) {
+      alert(`Bạn cần đợi ${cooldownInfo.cooldownDays} ngày nữa trước khi có thể làm lại bài test.`);
+      return;
+    }
     const totalMinutes =
       testData.testInfo.listeningTime + testData.testInfo.readingTime;
     setTimeLeft(totalMinutes * 60);
@@ -162,6 +190,19 @@ export default function PlacementTestPage() {
     setAnswers((prev) => ({ ...prev, [questionKey]: option }));
   };
 
+  const toggleMarkQuestion = () => {
+    if (submitted) return;
+    setMarkedQuestions((prev) => {
+      const newSet = new Set(prev);
+      if (newSet.has(questionKey)) {
+        newSet.delete(questionKey);
+      } else {
+        newSet.add(questionKey);
+      }
+      return newSet;
+    });
+  };
+
   /* ── Navigation ── */
   const goToQuestion = useCallback(
     (partIdx: number, qIdx: number) => {
@@ -172,20 +213,37 @@ export default function PlacementTestPage() {
       setCurrentPartIndex(partIdx);
       setCurrentQuestionIndex(qIdx);
       setSidebarOpen(false);
+      setShowOnlyMarked(false); // Reset filter when navigating directly
     },
     [testData]
   );
 
   const goNext = () => {
     if (!testData || !currentPart) return;
-    if (currentQuestionIndex < currentPart.questions.length - 1) {
-      setCurrentQuestionIndex((i) => i + 1);
+    
+    const questionsToNavigate = showOnlyMarked
+      ? currentPart.questions.filter((q) => markedQuestions.has(`p${currentPart.partNumber}-q${q.questionNumber}`))
+      : currentPart.questions;
+    
+    const currentQNum = currentQuestion.questionNumber;
+    const currentIdxInFiltered = questionsToNavigate.findIndex((q) => q.questionNumber === currentQNum);
+    
+    if (currentIdxInFiltered < questionsToNavigate.length - 1) {
+      const nextQ = questionsToNavigate[currentIdxInFiltered + 1];
+      const actualIdx = currentPart.questions.findIndex((q) => q.questionNumber === nextQ.questionNumber);
+      setCurrentQuestionIndex(actualIdx);
     } else {
       // Move to next part with questions
       for (let i = currentPartIndex + 1; i < testData.parts.length; i++) {
-        if (testData.parts[i].questions.length > 0) {
+        const partQuestions = showOnlyMarked
+          ? testData.parts[i].questions.filter((q) => markedQuestions.has(`p${testData.parts[i].partNumber}-q${q.questionNumber}`))
+          : testData.parts[i].questions;
+        
+        if (partQuestions.length > 0) {
           setCurrentPartIndex(i);
-          setCurrentQuestionIndex(0);
+          const firstQ = partQuestions[0];
+          const actualIdx = testData.parts[i].questions.findIndex((q) => q.questionNumber === firstQ.questionNumber);
+          setCurrentQuestionIndex(actualIdx);
           return;
         }
       }
@@ -194,14 +252,30 @@ export default function PlacementTestPage() {
 
   const goPrev = () => {
     if (!testData || !currentPart) return;
-    if (currentQuestionIndex > 0) {
-      setCurrentQuestionIndex((i) => i - 1);
+    
+    const questionsToNavigate = showOnlyMarked
+      ? currentPart.questions.filter((q) => markedQuestions.has(`p${currentPart.partNumber}-q${q.questionNumber}`))
+      : currentPart.questions;
+    
+    const currentQNum = currentQuestion.questionNumber;
+    const currentIdxInFiltered = questionsToNavigate.findIndex((q) => q.questionNumber === currentQNum);
+    
+    if (currentIdxInFiltered > 0) {
+      const prevQ = questionsToNavigate[currentIdxInFiltered - 1];
+      const actualIdx = currentPart.questions.findIndex((q) => q.questionNumber === prevQ.questionNumber);
+      setCurrentQuestionIndex(actualIdx);
     } else {
       // Move to prev part with questions
       for (let i = currentPartIndex - 1; i >= 0; i--) {
-        if (testData.parts[i].questions.length > 0) {
+        const partQuestions = showOnlyMarked
+          ? testData.parts[i].questions.filter((q) => markedQuestions.has(`p${testData.parts[i].partNumber}-q${q.questionNumber}`))
+          : testData.parts[i].questions;
+        
+        if (partQuestions.length > 0) {
           setCurrentPartIndex(i);
-          setCurrentQuestionIndex(testData.parts[i].questions.length - 1);
+          const lastQ = partQuestions[partQuestions.length - 1];
+          const actualIdx = testData.parts[i].questions.findIndex((q) => q.questionNumber === lastQ.questionNumber);
+          setCurrentQuestionIndex(actualIdx);
           return;
         }
       }
@@ -210,31 +284,73 @@ export default function PlacementTestPage() {
 
   const goToPart = (partIdx: number) => {
     if (!testData) return;
-    setCurrentPartIndex(partIdx);
-    setCurrentQuestionIndex(0);
+    const part = testData.parts[partIdx];
+    
+    if (showOnlyMarked) {
+      const markedQuestionsInPart = part.questions.filter((q) => 
+        markedQuestions.has(`p${part.partNumber}-q${q.questionNumber}`)
+      );
+      if (markedQuestionsInPart.length > 0) {
+        const firstMarkedQ = markedQuestionsInPart[0];
+        const actualIdx = part.questions.findIndex((q) => q.questionNumber === firstMarkedQ.questionNumber);
+        setCurrentPartIndex(partIdx);
+        setCurrentQuestionIndex(actualIdx);
+      } else {
+        // If no marked questions in this part, show all and go to first question
+        setShowOnlyMarked(false);
+        setCurrentPartIndex(partIdx);
+        setCurrentQuestionIndex(0);
+      }
+    } else {
+      setCurrentPartIndex(partIdx);
+      setCurrentQuestionIndex(0);
+    }
+    
     setSidebarOpen(false);
   };
 
   /* ── Submit ── */
   const handleSubmit = () => {
     if (submitted) return;
+    setShowSubmitConfirm(true);
+  };
+
+  const confirmSubmit = () => {
+    if (submitted) return;
     setSubmitted(true);
     if (timerRef.current) clearInterval(timerRef.current);
     if (audioRef.current) {
       audioRef.current.pause();
     }
+    setShowSubmitConfirm(false);
+
+    // Save placement test result
+    const score = calculateScore();
+    const token = localStorage.getItem("accessToken");
+    if (token) {
+      fetch(`${API}/profile/save-placement-test-result`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify({ score: score.estimatedScore }),
+      }).catch((err) => console.error("Failed to save placement test result:", err));
+    }
   };
 
   /* ── Calculate score ── */
   const calculateScore = () => {
-    if (!testData) return { correct: 0, total: 0, listening: 0, reading: 0, estimatedScore: 0 };
+    if (!testData) return { correct: 0, total: 0, listening: 0, reading: 0, estimatedScore: 0, partScores: [] };
 
     let listeningCorrect = 0;
     let readingCorrect = 0;
     let listeningTotal = 0;
     let readingTotal = 0;
+    const partScores: any[] = [];
 
     testData.parts.forEach((part) => {
+      let partCorrect = 0;
       part.questions.forEach((q) => {
         const key = `p${part.partNumber}-q${q.questionNumber}`;
         const userAns = answers[key];
@@ -245,6 +361,8 @@ export default function PlacementTestPage() {
             q.options.indexOf(userAns) >= 0 &&
             String.fromCharCode(65 + q.options.indexOf(userAns)) === q.correctAnswer);
 
+        if (isCorrect) partCorrect++;
+
         if (part.section === "listening") {
           listeningTotal++;
           if (isCorrect) listeningCorrect++;
@@ -252,6 +370,19 @@ export default function PlacementTestPage() {
           readingTotal++;
           if (isCorrect) readingCorrect++;
         }
+      });
+
+      const partScore = part.questions.length > 0
+        ? Math.round((partCorrect / part.questions.length) * 100)
+        : 0;
+      partScores.push({
+        partNumber: part.partNumber,
+        title: part.title,
+        titleVi: part.titleVi,
+        section: part.section,
+        correct: partCorrect,
+        total: part.questions.length,
+        score: partScore,
       });
     });
 
@@ -267,7 +398,7 @@ export default function PlacementTestPage() {
       : 0;
     const estimatedScore = listeningScore + readingScore;
 
-    return { correct, total, listening: listeningScore, reading: readingScore, estimatedScore };
+    return { correct, total, listening: listeningScore, reading: readingScore, estimatedScore, partScores };
   };
 
   /* ────────────────────────────────────── */
@@ -454,6 +585,21 @@ export default function PlacementTestPage() {
             </p>
           </div>
 
+          {/* Cooldown Warning */}
+          {cooldownInfo && !cooldownInfo.canRetake && (
+            <div className="bg-yellow-600/10 border border-yellow-600/20 rounded-2xl p-4 mb-6">
+              <div className="flex items-center gap-3">
+                <span className="text-2xl">⏰</span>
+                <div>
+                  <p className="text-yellow-400 font-semibold">Cooldown còn lại</p>
+                  <p className="text-gray-400 text-sm">
+                    Bạn cần đợi {cooldownInfo.cooldownDays} ngày nữa trước khi có thể làm lại bài test.
+                  </p>
+                </div>
+              </div>
+            </div>
+          )}
+
           {/* Test Info Card */}
           <div className="bg-zinc-900/80 backdrop-blur border border-red-600/20 rounded-2xl p-6 mb-6">
             <h2 className="text-lg font-semibold text-white mb-4 flex items-center gap-2">
@@ -593,18 +739,22 @@ export default function PlacementTestPage() {
     const score = calculateScore();
 
     const getLevel = (s: number) => {
-      if (s >= 905) return { level: "Advanced", color: "text-green-400", bg: "bg-green-500/20" };
-      if (s >= 785) return { level: "Upper Intermediate", color: "text-blue-400", bg: "bg-blue-500/20" };
-      if (s >= 605) return { level: "Intermediate", color: "text-yellow-400", bg: "bg-yellow-500/20" };
-      if (s >= 405) return { level: "Pre-Intermediate", color: "text-orange-400", bg: "bg-orange-500/20" };
-      return { level: "Beginner", color: "text-red-400", bg: "bg-red-500/20" };
+      if (s >= 905) return { level: "Advanced", color: "text-green-400", bg: "bg-green-500/20", stage: 5 };
+      if (s >= 785) return { level: "Upper Intermediate", color: "text-blue-400", bg: "bg-blue-500/20", stage: 4 };
+      if (s >= 605) return { level: "Intermediate", color: "text-yellow-400", bg: "bg-yellow-500/20", stage: 3 };
+      if (s >= 405) return { level: "Pre-Intermediate", color: "text-orange-400", bg: "bg-orange-500/20", stage: 2 };
+      return { level: "Beginner", color: "text-red-400", bg: "bg-red-500/20", stage: 1 };
     };
 
     const level = getLevel(score.estimatedScore);
 
+    // Identify weaknesses
+    const weakParts = score.partScores.filter((p: any) => p.score < 60);
+    const strongestParts = score.partScores.filter((p: any) => p.score >= 70);
+
     return (
-      <div className="min-h-screen bg-black flex items-center justify-center px-4">
-        <div className="w-full max-w-lg">
+      <div className="min-h-screen bg-black flex items-center justify-center px-4 py-8">
+        <div className="w-full max-w-2xl">
           {/* Header */}
           <div className="text-center mb-8">
             <div className="w-20 h-20 rounded-full bg-red-600 flex items-center justify-center mx-auto shadow-lg shadow-red-600/30 mb-4">
@@ -625,10 +775,11 @@ export default function PlacementTestPage() {
             {/* Level Badge */}
             <div className={`${level.bg} rounded-xl p-3 text-center mb-6`}>
               <p className={`${level.color} font-semibold text-lg`}>📊 {level.level}</p>
+              <p className="text-xs text-gray-400 mt-1">Chặng đề xuất: {level.stage}</p>
             </div>
 
             {/* Score Breakdown */}
-            <div className="grid grid-cols-2 gap-3">
+            <div className="grid grid-cols-2 gap-3 mb-4">
               <div className="bg-black/50 rounded-xl p-4 border border-zinc-800 text-center">
                 <p className="text-gray-500 text-xs uppercase tracking-wider">Listening</p>
                 <p className="text-3xl font-bold text-red-400 mt-1">{score.listening}</p>
@@ -642,8 +793,8 @@ export default function PlacementTestPage() {
             </div>
 
             {/* Stats */}
-            <div className="mt-4 bg-black/50 rounded-xl p-4 border border-zinc-800">
-              <div className="flex justify-between text-sm">
+            <div className="bg-black/50 rounded-xl p-4 border border-zinc-800">
+              <div className="flex justify-between text-sm mb-2">
                 <span className="text-gray-400">Số câu đúng</span>
                 <span className="text-white font-semibold">{score.correct} / {score.total}</span>
               </div>
@@ -655,6 +806,85 @@ export default function PlacementTestPage() {
               </div>
             </div>
           </div>
+
+          {/* Performance Analysis */}
+          <div className="bg-zinc-900/80 backdrop-blur border border-zinc-800 rounded-2xl p-6 mb-4">
+            <h3 className="text-lg font-semibold text-white mb-4 flex items-center gap-2">
+              <span className="w-8 h-8 bg-blue-600/20 rounded-lg flex items-center justify-center text-blue-400">📈</span>
+              Phân tích hiệu suất theo Part
+            </h3>
+            <div className="space-y-3">
+              {score.partScores.map((part: any) => (
+                <div key={part.partNumber} className="bg-black/30 rounded-xl p-4 border border-zinc-800">
+                  <div className="flex items-center justify-between mb-2">
+                    <div className="flex items-center gap-2">
+                      <span className="text-lg">{PART_ICONS[part.partNumber]}</span>
+                      <div>
+                        <p className="text-white text-sm font-medium">Part {part.partNumber}: {part.title}</p>
+                        <p className="text-gray-500 text-xs">{part.titleVi}</p>
+                      </div>
+                    </div>
+                    <div className="text-right">
+                      <p className={`text-lg font-bold ${part.score >= 70 ? 'text-green-400' : part.score >= 50 ? 'text-yellow-400' : 'text-red-400'}`}>
+                        {part.score}%
+                      </p>
+                      <p className="text-gray-500 text-xs">{part.correct}/{part.total}</p>
+                    </div>
+                  </div>
+                  <div className="w-full bg-zinc-800 rounded-full h-2">
+                    <div
+                      className={`h-2 rounded-full transition-all ${
+                        part.score >= 70 ? 'bg-green-500' : part.score >= 50 ? 'bg-yellow-500' : 'bg-red-500'
+                      }`}
+                      style={{ width: `${part.score}%` }}
+                    />
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Weakness Identification */}
+          {weakParts.length > 0 && (
+            <div className="bg-red-600/10 border border-red-600/20 rounded-2xl p-6 mb-4">
+              <h3 className="text-lg font-semibold text-white mb-4 flex items-center gap-2">
+                <span className="w-8 h-8 bg-red-600/20 rounded-lg flex items-center justify-center text-red-400">⚠️</span>
+                Điểm yếu cần cải thiện
+              </h3>
+              <div className="space-y-2">
+                {weakParts.map((part: any) => (
+                  <div key={part.partNumber} className="flex items-center gap-3 bg-black/30 rounded-lg p-3 border border-red-600/20">
+                    <span className="text-lg">{PART_ICONS[part.partNumber]}</span>
+                    <div className="flex-1">
+                      <p className="text-white text-sm font-medium">Part {part.partNumber}: {part.titleVi}</p>
+                      <p className="text-red-400 text-xs">Điểm: {part.score}%</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
+
+          {/* Strengths */}
+          {strongestParts.length > 0 && (
+            <div className="bg-green-600/10 border border-green-600/20 rounded-2xl p-6 mb-4">
+              <h3 className="text-lg font-semibold text-white mb-4 flex items-center gap-2">
+                <span className="w-8 h-8 bg-green-600/20 rounded-lg flex items-center justify-center text-green-400">✅</span>
+                Điểm mạnh
+              </h3>
+              <div className="space-y-2">
+                {strongestParts.map((part: any) => (
+                  <div key={part.partNumber} className="flex items-center gap-3 bg-black/30 rounded-lg p-3 border border-green-600/20">
+                    <span className="text-lg">{PART_ICONS[part.partNumber]}</span>
+                    <div className="flex-1">
+                      <p className="text-white text-sm font-medium">Part {part.partNumber}: {part.titleVi}</p>
+                      <p className="text-green-400 text-xs">Điểm: {part.score}%</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
 
           {/* Actions */}
           <div className="flex gap-3">
@@ -708,6 +938,12 @@ export default function PlacementTestPage() {
                 {totalAnswered} / {totalAvailableQuestions}
               </span>
             </div>
+            <div className="flex items-center gap-2">
+              <span className="text-gray-500 text-xs">Đã đánh dấu</span>
+              <span className="bg-yellow-600/20 text-yellow-400 px-2.5 py-0.5 rounded-full text-xs font-semibold">
+                {totalMarked}
+              </span>
+            </div>
             <div className="w-32 bg-zinc-800 rounded-full h-1.5">
               <div
                 className="bg-gradient-to-r from-red-600 to-red-400 h-1.5 rounded-full transition-all duration-300"
@@ -758,9 +994,21 @@ export default function PlacementTestPage() {
           )}
 
           <div className="p-4">
-            <p className="text-gray-500 text-xs uppercase tracking-wider font-semibold mb-3">
-              Danh sách Part
-            </p>
+            <div className="flex items-center justify-between mb-3">
+              <p className="text-gray-500 text-xs uppercase tracking-wider font-semibold">
+                Danh sách Part
+              </p>
+              <button
+                onClick={() => setShowOnlyMarked(!showOnlyMarked)}
+                className={`text-xs px-2 py-1 rounded-lg transition-all ${
+                  showOnlyMarked
+                    ? "bg-yellow-600/20 text-yellow-400 border border-yellow-600/30"
+                    : "bg-zinc-800 text-gray-400 hover:text-white"
+                }`}
+              >
+                {showOnlyMarked ? "📌 Tất cả" : "📌 Đã đánh dấu"}
+              </button>
+            </div>
 
             {testData.parts.map((part, pIdx) => {
               const isActive = pIdx === currentPartIndex;
@@ -768,14 +1016,22 @@ export default function PlacementTestPage() {
               const answeredInPart = part.questions.filter(
                 (q) => answers[`p${part.partNumber}-q${q.questionNumber}`]
               ).length;
+              const markedInPart = part.questions.filter(
+                (q) => markedQuestions.has(`p${part.partNumber}-q${q.questionNumber}`)
+              ).length;
+              const isDisabled = showOnlyMarked && markedInPart === 0;
 
               return (
                 <div key={part.partNumber} className="mb-3">
                   <button
-                    onClick={() => goToPart(pIdx)}
-                    className={`w-full text-left px-3 py-2.5 rounded-xl text-sm font-medium transition-all flex items-center justify-between ${isActive
-                      ? "bg-red-600/20 text-red-400 border border-red-600/30"
-                      : "text-gray-400 hover:bg-zinc-800 hover:text-white"
+                    onClick={() => !isDisabled && goToPart(pIdx)}
+                    disabled={isDisabled}
+                    className={`w-full text-left px-3 py-2.5 rounded-xl text-sm font-medium transition-all flex items-center justify-between ${
+                      isDisabled
+                        ? "opacity-30 cursor-not-allowed text-gray-600"
+                        : isActive
+                        ? "bg-red-600/20 text-red-400 border border-red-600/30"
+                        : "text-gray-400 hover:bg-zinc-800 hover:text-white"
                       }`}
                   >
                     <div className="flex items-center gap-2">
@@ -785,7 +1041,7 @@ export default function PlacementTestPage() {
                     <div className="flex items-center gap-1.5">
                       {hasQuestions ? (
                         <span className="text-xs bg-zinc-800 px-1.5 py-0.5 rounded">
-                          {answeredInPart}/{part.questions.length}
+                          {showOnlyMarked ? `${markedInPart}📌` : `${answeredInPart}/${part.questions.length}`}
                         </span>
                       ) : (
                         <span className="text-xs text-yellow-500">—</span>
@@ -796,26 +1052,35 @@ export default function PlacementTestPage() {
                   {/* Question grid for active part */}
                   {isActive && hasQuestions && (
                     <div className="grid grid-cols-6 gap-1.5 mt-2 px-1">
-                      {part.questions.map((q, qIdx) => {
-                        const key = `p${part.partNumber}-q${q.questionNumber}`;
-                        const isAnswered = !!answers[key];
-                        const isCurrent = qIdx === currentQuestionIndex;
+                      {part.questions
+                        .filter((q) => !showOnlyMarked || markedQuestions.has(`p${part.partNumber}-q${q.questionNumber}`))
+                        .map((q, qIdx) => {
+                          const key = `p${part.partNumber}-q${q.questionNumber}`;
+                          const isAnswered = !!answers[key];
+                          const isMarked = markedQuestions.has(key);
+                          const actualQIdx = part.questions.findIndex((pq) => pq.questionNumber === q.questionNumber);
+                          const isCurrent = actualQIdx === currentQuestionIndex;
 
-                        return (
-                          <button
-                            key={q.questionNumber}
-                            onClick={() => goToQuestion(pIdx, qIdx)}
-                            className={`w-full aspect-square rounded-lg text-xs font-semibold transition-all ${isCurrent
-                              ? "bg-red-600 text-white scale-110 shadow-lg shadow-red-600/30"
-                              : isAnswered
-                                ? "bg-red-600/30 text-red-300 hover:bg-red-600/50"
-                                : "bg-zinc-800 text-gray-500 hover:bg-zinc-700 hover:text-white"
-                              }`}
-                          >
-                            {q.questionNumber}
-                          </button>
-                        );
-                      })}
+                          return (
+                            <button
+                              key={q.questionNumber}
+                              onClick={() => goToQuestion(pIdx, actualQIdx)}
+                              className={`w-full aspect-square rounded-lg text-xs font-semibold transition-all relative ${isCurrent
+                                ? "bg-red-600 text-white scale-110 shadow-lg shadow-red-600/30"
+                                : isAnswered
+                                  ? "bg-red-600/30 text-red-300 hover:bg-red-600/50"
+                                  : "bg-zinc-800 text-gray-500 hover:bg-zinc-700 hover:text-white"
+                                }`}
+                            >
+                              {q.questionNumber}
+                              {isMarked && (
+                                <span className="absolute -top-1 -right-1 w-3 h-3 bg-yellow-500 rounded-full text-[8px] flex items-center justify-center text-black font-bold">
+                                  !
+                                </span>
+                              )}
+                            </button>
+                          );
+                        })}
                     </div>
                   )}
                 </div>
@@ -911,9 +1176,22 @@ export default function PlacementTestPage() {
                       <h3 className="text-white font-semibold">
                         Câu {currentQuestion.questionNumber}
                       </h3>
-                      <span className="text-gray-500 text-xs">
-                        {currentQuestionIndex + 1} / {currentPart.questions.length} (Part {currentPart.partNumber})
-                      </span>
+                      <div className="flex items-center gap-3">
+                        <button
+                          onClick={toggleMarkQuestion}
+                          className={`flex items-center gap-1.5 px-2 py-1 rounded-lg text-xs font-medium transition-all ${
+                            markedQuestions.has(questionKey)
+                              ? "bg-yellow-600/20 text-yellow-400 border border-yellow-600/30"
+                              : "bg-zinc-700 text-gray-400 hover:text-white border border-zinc-600"
+                          }`}
+                          title="Đánh dấu để xem lại"
+                        >
+                          {markedQuestions.has(questionKey) ? "📌 Đã đánh dấu" : "📌 Đánh dấu"}
+                        </button>
+                        <span className="text-gray-500 text-xs">
+                          {currentQuestionIndex + 1} / {currentPart.questions.length} (Part {currentPart.partNumber})
+                        </span>
+                      </div>
                     </div>
 
                     <div className="p-6">
@@ -1003,19 +1281,25 @@ export default function PlacementTestPage() {
                       </button>
 
                       <div className="flex gap-1.5 overflow-x-auto max-w-[200px] sm:max-w-[300px] scrollbar-hide" style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
-                        {currentPart.questions
+                        {(showOnlyMarked
+                          ? currentPart.questions.filter((q) => markedQuestions.has(`p${currentPart.partNumber}-q${q.questionNumber}`))
+                          : currentPart.questions
+                        )
                           .slice(Math.max(0, currentQuestionIndex - 4), currentQuestionIndex + 6)
-                          .map((_, offsetIdx) => {
-                            const actualIdx = Math.max(0, currentQuestionIndex - 4) + offsetIdx;
+                          .map((q, offsetIdx) => {
+                            const actualIdx = currentPart.questions.findIndex((pq) => pq.questionNumber === q.questionNumber);
+                            const key = `p${currentPart.partNumber}-q${q.questionNumber}`;
                             return (
                               <button
-                                key={actualIdx}
+                                key={q.questionNumber}
                                 onClick={() => goToQuestion(currentPartIndex, actualIdx)}
                                 className={`w-2.5 h-2.5 rounded-full transition-all shrink-0 ${actualIdx === currentQuestionIndex
                                   ? "bg-red-500 scale-125"
-                                  : answers[`p${currentPart.partNumber}-q${currentPart.questions[actualIdx].questionNumber}`]
-                                    ? "bg-red-600/50"
-                                    : "bg-zinc-700"
+                                  : markedQuestions.has(key)
+                                    ? "bg-yellow-500"
+                                    : answers[key]
+                                      ? "bg-red-600/50"
+                                      : "bg-zinc-700"
                                   }`}
                               />
                             );
@@ -1045,6 +1329,55 @@ export default function PlacementTestPage() {
           </div>
         </main>
       </div>
+
+      {/* Submit Confirmation Modal */}
+      {showSubmitConfirm && (
+        <div className="fixed inset-0 bg-black/80 backdrop-blur-sm flex items-center justify-center z-50 p-4">
+          <div className="bg-zinc-900 border border-red-600/30 rounded-2xl p-6 max-w-md w-full">
+            <div className="text-center mb-6">
+              <div className="w-16 h-16 rounded-full bg-red-600/20 flex items-center justify-center mx-auto mb-4">
+                <span className="text-3xl">📝</span>
+              </div>
+              <h2 className="text-xl font-bold text-white mb-2">Xác nhận nộp bài</h2>
+              <p className="text-gray-400 text-sm">
+                Bạn có chắc muốn nộp bài? Sau khi nộp, bạn sẽ không thể thay đổi đáp án.
+              </p>
+            </div>
+
+            <div className="bg-black/30 rounded-xl p-4 mb-6 border border-zinc-800">
+              <div className="flex justify-between text-sm mb-2">
+                <span className="text-gray-500">Đã trả lời</span>
+                <span className="text-white font-semibold">{totalAnswered} / {totalAvailableQuestions}</span>
+              </div>
+              <div className="flex justify-between text-sm mb-2">
+                <span className="text-gray-500">Đã đánh dấu</span>
+                <span className="text-yellow-400 font-semibold">{totalMarked}</span>
+              </div>
+              <div className="flex justify-between text-sm">
+                <span className="text-gray-500">Thời gian còn lại</span>
+                <span className={`font-semibold ${timeLeft < 300 ? "text-red-400" : "text-white"}`}>
+                  {formatTime(timeLeft)}
+                </span>
+              </div>
+            </div>
+
+            <div className="flex gap-3">
+              <button
+                onClick={() => setShowSubmitConfirm(false)}
+                className="flex-1 border border-zinc-700 text-gray-400 hover:text-white hover:border-zinc-500 py-3 rounded-xl font-semibold transition-all"
+              >
+                Tiếp tục làm bài
+              </button>
+              <button
+                onClick={confirmSubmit}
+                className="flex-1 bg-red-600 hover:bg-red-700 text-white py-3 rounded-xl font-semibold transition-all"
+              >
+                Nộp bài
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

@@ -31,6 +31,11 @@ export class ProfileController {
       body.dailyStudyTime
         ? Number(body.dailyStudyTime)
         : undefined,
+      body.studySchedule,
+      body.motivationLevel
+        ? Number(body.motivationLevel)
+        : undefined,
+      body.learningStyle,
     );
   }
   @UseGuards(JwtAuthGuard)
@@ -106,5 +111,17 @@ deactivateAccount(@Req() req: any) {
 @Post("delete-account")
 deleteAccount(@Req() req: any, @Body() body: { password?: string }) {
   return this.profileService.deleteAccount(req.user.userId, body.password);
+}
+
+@UseGuards(JwtAuthGuard)
+@Post("save-placement-test-result")
+savePlacementTestResult(@Req() req: any, @Body() body: { score: number }) {
+  return this.profileService.savePlacementTestResult(req.user.userId, body.score);
+}
+
+@UseGuards(JwtAuthGuard)
+@Get("placement-test-cooldown")
+getPlacementTestCooldown(@Req() req: any) {
+  return this.profileService.getPlacementTestCooldown(req.user.userId);
 }
 }

@@ -50,6 +50,45 @@ export class ProfileService {
       },
     });
   }
+
+  async savePlacementTestResult(userId: number, score: number) {
+    return this.prisma.userProfile.upsert({
+      where: {
+        userId,
+      },
+      create: {
+        userId,
+        currentScore: score,
+        lastPlacementTestAt: new Date(),
+      },
+      update: {
+        currentScore: score,
+        lastPlacementTestAt: new Date(),
+      },
+    });
+  }
+
+  async getPlacementTestCooldown(userId: number) {
+    const profile = await this.prisma.userProfile.findUnique({
+      where: { userId },
+    });
+
+    if (!profile || !profile.lastPlacementTestAt) {
+      return { canRetake: true, cooldownDays: 0 };
+    }
+
+    const lastTest = new Date(profile.lastPlacementTestAt);
+    const now = new Date();
+    const daysSinceLastTest = Math.floor((now.getTime() - lastTest.getTime()) / (1000 * 60 * 60 * 24));
+    const cooldownDays = 7;
+    const daysRemaining = Math.max(0, cooldownDays - daysSinceLastTest);
+
+    return {
+      canRetake: daysSinceLastTest >= cooldownDays,
+      cooldownDays: daysRemaining,
+      lastTestDate: profile.lastPlacementTestAt,
+    };
+  }
   async getProfile(userId: number) {
   const user = await this.prisma.user.findUnique({
     where: {
@@ -87,6 +126,7 @@ export class ProfileService {
     studySchedule: user.profile?.studySchedule,
     motivationLevel: user.profile?.motivationLevel,
     learningStyle: user.profile?.learningStyle,
+    lastPlacementTestAt: user.profile?.lastPlacementTestAt,
 
     studyNotification: user.profile?.studyNotification,
 srsNotification: user.profile?.srsNotification,
@@ -166,6 +206,9 @@ async updateProfile(
       : null,
 
       dailyStudyTime:data.dailyStudyTime,
+      studySchedule:data.studySchedule,
+      motivationLevel:data.motivationLevel,
+      learningStyle:data.learningStyle,
 
       studyNotification:data.studyNotification,
 srsNotification:data.srsNotification,
@@ -201,6 +244,9 @@ darkMode:data.darkMode,
       : null,
 
       dailyStudyTime:data.dailyStudyTime,
+      studySchedule:data.studySchedule,
+      motivationLevel:data.motivationLevel,
+      learningStyle:data.learningStyle,
       studyNotification:data.studyNotification,
 srsNotification:data.srsNotification,
 autoPronunciation:data.autoPronunciation,

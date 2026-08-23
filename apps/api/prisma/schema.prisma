@@ -80,6 +80,7 @@ model UserProfile {
   studySchedule       String?   @db.VarChar(20)
   motivationLevel     Int?      @default(5)
   learningStyle       String?   @db.VarChar(20)
+  lastPlacementTestAt DateTime?
   user                User      @relation(fields: [userId], references: [id])
 }
 
