@@ -108,6 +108,8 @@ export default function PlacementTestPage() {
       setTimeLeft((t) => {
         if (t <= 1) {
           clearInterval(timerRef.current!);
+          // Auto-submit when time expires
+          handleSubmit();
           return 0;
         }
         return t - 1;
