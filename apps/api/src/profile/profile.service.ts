@@ -19,6 +19,9 @@ export class ProfileService {
     targetScore: number,
     examDate: string,
     dailyStudyTime?: number,
+    studySchedule?: string,
+    motivationLevel?: number,
+    learningStyle?: string,
   ) {
     return this.prisma.userProfile.upsert({
       where: {
@@ -30,6 +33,9 @@ export class ProfileService {
         targetScore,
         examDate: new Date(examDate),
         dailyStudyTime: dailyStudyTime || null,
+        studySchedule: studySchedule || null,
+        motivationLevel: motivationLevel || 5,
+        learningStyle: learningStyle || null,
         firstLoginCompleted: true,
       },
       update: {
@@ -37,6 +43,9 @@ export class ProfileService {
         targetScore,
         examDate: new Date(examDate),
         dailyStudyTime: dailyStudyTime || null,
+        studySchedule: studySchedule || null,
+        motivationLevel: motivationLevel || 5,
+        learningStyle: learningStyle || null,
         firstLoginCompleted: true,
       },
     });
@@ -75,6 +84,9 @@ export class ProfileService {
     targetScore: user.profile?.targetScore,
     examDate: user.profile?.examDate,
     dailyStudyTime: user.profile?.dailyStudyTime,
+    studySchedule: user.profile?.studySchedule,
+    motivationLevel: user.profile?.motivationLevel,
+    learningStyle: user.profile?.learningStyle,
 
     studyNotification: user.profile?.studyNotification,
 srsNotification: user.profile?.srsNotification,

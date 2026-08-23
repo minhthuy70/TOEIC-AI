@@ -5,6 +5,37 @@ import { useRouter } from "next/navigation";
 export default function OnboardingPage() {
 const router = useRouter();
 
+const handleSkip = async () => {
+  const user = JSON.parse(localStorage.getItem("user") || "{}");
+
+  // Mark first login as completed without saving any data
+  try {
+    const res = await fetch("http://localhost:3001/profile/complete-first-login", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        userId: user.id,
+        currentScore: 0,
+        targetScore: 600,
+        examDate: new Date(Date.now() + 90 * 24 * 60 * 60 * 1000).toISOString().split('T')[0],
+        dailyStudyTime: 60,
+        studySchedule: "morning",
+        motivationLevel: 5,
+        learningStyle: "visual",
+      }),
+    });
+
+    if (res.ok) {
+      router.push("/dashboard");
+    }
+  } catch (error) {
+    console.error("Error skipping onboarding:", error);
+    router.push("/dashboard");
+  }
+};
+
 return ( <div className="min-h-screen bg-black flex items-center justify-center px-6"> <div className="w-full max-w-md text-center">
 
     {/* Logo */}
@@ -44,6 +75,13 @@ return ( <div className="min-h-screen bg-black flex items-center justify-center 
         className="w-full mt-4 border border-red-600 text-red-500 hover:bg-red-950 transition font-semibold py-3 rounded-xl"
       >
         Làm bài test xếp trình độ
+      </button>
+
+      <button
+        onClick={handleSkip}
+        className="w-full mt-6 text-gray-500 hover:text-gray-300 text-sm transition"
+      >
+        Bỏ qua thiết lập lần đầu
       </button>
 
     </div>

@@ -7,6 +7,9 @@ export default function SetupPage() {
   const [targetScore, setTargetScore] = useState("");
   const [examDate, setExamDate] = useState("");
   const [dailyStudyTime, setDailyStudyTime] = useState<number>(60); // default 60 mins
+  const [studySchedule, setStudySchedule] = useState<string>("morning");
+  const [motivationLevel, setMotivationLevel] = useState<number>(5);
+  const [learningStyle, setLearningStyle] = useState<string>("visual");
 
   useEffect(() => {
     if (typeof window !== "undefined") {
@@ -23,6 +26,18 @@ export default function SetupPage() {
     { value: 60, label: "60 phút", desc: "Tiêu chuẩn" },
     { value: 90, label: "90 phút", desc: "Tập trung" },
     { value: 120, label: "120 phút+", desc: "Cấp tốc" },
+  ];
+
+  const studyScheduleOptions = [
+    { value: "morning", label: "Sáng", icon: "🌅", desc: "6:00 - 12:00" },
+    { value: "afternoon", label: "Chiều", icon: "☀️", desc: "12:00 - 18:00" },
+    { value: "evening", label: "Tối", icon: "🌙", desc: "18:00 - 24:00" },
+  ];
+
+  const learningStyleOptions = [
+    { value: "visual", label: "Hình ảnh", icon: "👁️", desc: "Học qua hình ảnh, sơ đồ" },
+    { value: "auditory", label: "Nghe", icon: "🎧", desc: "Học qua âm thanh, hội thoại" },
+    { value: "reading", label: "Đọc", icon: "📖", desc: "Học qua văn bản, bài đọc" },
   ];
 
   async function saveGoal() {
@@ -59,6 +74,9 @@ export default function SetupPage() {
           targetScore: tScore,
           examDate,
           dailyStudyTime,
+          studySchedule,
+          motivationLevel,
+          learningStyle,
         }),
       }
     );
@@ -155,6 +173,75 @@ export default function SetupPage() {
                 >
                   <p className="text-sm font-bold">{opt.label}</p>
                   <p className="text-[10px] text-gray-500 mt-0.5">{opt.desc}</p>
+                </button>
+              ))}
+            </div>
+          </div>
+
+          <div>
+            <label className="block text-xs font-semibold text-gray-400 uppercase tracking-wider mb-2">
+              Ưa thích thời gian học
+            </label>
+            <div className="grid grid-cols-3 gap-2">
+              {studyScheduleOptions.map((opt) => (
+                <button
+                  key={opt.value}
+                  type="button"
+                  onClick={() => setStudySchedule(opt.value)}
+                  className={`p-3 rounded-2xl border text-center transition-all duration-300 ${
+                    studySchedule === opt.value
+                      ? "border-red-500 bg-red-950/20 text-white shadow-md shadow-red-500/10"
+                      : "border-zinc-800 bg-zinc-900 text-gray-400 hover:border-zinc-700 hover:text-white"
+                  }`}
+                >
+                  <p className="text-lg mb-1">{opt.icon}</p>
+                  <p className="text-xs font-bold">{opt.label}</p>
+                  <p className="text-[9px] text-gray-500 mt-0.5">{opt.desc}</p>
+                </button>
+              ))}
+            </div>
+          </div>
+
+          <div>
+            <label className="block text-xs font-semibold text-gray-400 uppercase tracking-wider mb-2">
+              Mức độ động lực ({motivationLevel}/10)
+            </label>
+            <div className="bg-zinc-900 border border-zinc-800 rounded-2xl p-4">
+              <input
+                type="range"
+                min="1"
+                max="10"
+                value={motivationLevel}
+                onChange={(e) => setMotivationLevel(Number(e.target.value))}
+                className="w-full h-2 bg-zinc-700 rounded-lg appearance-none cursor-pointer accent-red-500"
+              />
+              <div className="flex justify-between mt-2 text-xs text-gray-500">
+                <span>1 - Thấp</span>
+                <span className="text-red-400 font-bold">{motivationLevel}</span>
+                <span>10 - Cao</span>
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <label className="block text-xs font-semibold text-gray-400 uppercase tracking-wider mb-2">
+              Phong cách học tập
+            </label>
+            <div className="grid grid-cols-3 gap-2">
+              {learningStyleOptions.map((opt) => (
+                <button
+                  key={opt.value}
+                  type="button"
+                  onClick={() => setLearningStyle(opt.value)}
+                  className={`p-3 rounded-2xl border text-center transition-all duration-300 ${
+                    learningStyle === opt.value
+                      ? "border-red-500 bg-red-950/20 text-white shadow-md shadow-red-500/10"
+                      : "border-zinc-800 bg-zinc-900 text-gray-400 hover:border-zinc-700 hover:text-white"
+                  }`}
+                >
+                  <p className="text-lg mb-1">{opt.icon}</p>
+                  <p className="text-xs font-bold">{opt.label}</p>
+                  <p className="text-[9px] text-gray-500 mt-0.5">{opt.desc}</p>
                 </button>
               ))}
             </div>
