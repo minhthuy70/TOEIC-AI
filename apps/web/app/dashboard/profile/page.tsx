@@ -47,6 +47,9 @@ const [birthday, setBirthday] = useState("");
 const [gender, setGender] = useState("");
 const [address, setAddress] = useState("");
 const [bio, setBio] = useState("");
+const [avatarFile, setAvatarFile] = useState<File | null>(null);
+const [avatarPreview, setAvatarPreview] = useState<string>("");
+const [uploadingAvatar, setUploadingAvatar] = useState(false);
 
   const [oldPassword, setOldPassword] = useState("");
   const [newPassword, setNewPassword] = useState("");
@@ -143,6 +146,9 @@ setDarkMode(
 data.darkMode ?? true
 );
 
+if (data.avatar) {
+  setAvatarPreview(data.avatar);
+}
 
 }
   const showSaved = (msg = "Đã lưu thành công!") => {
@@ -429,6 +435,80 @@ showSaved("Đã lưu cài đặt!");
 }
 
 }
+
+const handleAvatarChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const file = e.target.files?.[0];
+  if (file) {
+    // Validate file type
+    const allowedTypes = ['image/jpeg', 'image/png', 'image/gif', 'image/webp'];
+    if (!allowedTypes.includes(file.type)) {
+      setSaveMsg("Chỉ chấp nhận file ảnh (JPEG, PNG, GIF, WebP)");
+      setTimeout(() => setSaveMsg(""), 3000);
+      return;
+    }
+
+    // Validate file size (max 5MB)
+    const maxSize = 5 * 1024 * 1024; // 5MB
+    if (file.size > maxSize) {
+      setSaveMsg("Kích thước file không được vượt quá 5MB");
+      setTimeout(() => setSaveMsg(""), 3000);
+      return;
+    }
+
+    setAvatarFile(file);
+    setAvatarPreview(URL.createObjectURL(file));
+  }
+};
+
+const uploadAvatar = async () => {
+  if (!avatarFile) {
+    setSaveMsg("Vui lòng chọn ảnh trước");
+    setTimeout(() => setSaveMsg(""), 3000);
+    return;
+  }
+
+  const token = localStorage.getItem("accessToken");
+  if (!token) {
+    router.push("/login");
+    return;
+  }
+
+  setUploadingAvatar(true);
+  setSaveMsg("");
+
+  try {
+    const formData = new FormData();
+    formData.append('avatar', avatarFile);
+
+    const res = await fetch("http://localhost:3001/profile/upload-avatar", {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+      body: formData,
+    });
+
+    const data = await res.json();
+
+    if (!res.ok) {
+      throw new Error(data.message || "Tải lên thất bại");
+    }
+
+    // Update user state and localStorage
+    setUser((prev) => ({ ...prev, avatar: data.avatarUrl }));
+    const localStorageUser = JSON.parse(localStorage.getItem("user") || "{}");
+    const updatedUser = { ...localStorageUser, avatarUrl: data.avatarUrl };
+    localStorage.setItem("user", JSON.stringify(updatedUser));
+
+    showSaved("Đã tải lên avatar thành công!");
+    setAvatarFile(null);
+  } catch (error) {
+    setSaveMsg(error instanceof Error ? error.message : "Tải lên thất bại");
+    setTimeout(() => setSaveMsg(""), 3000);
+  } finally {
+    setUploadingAvatar(false);
+  }
+};
   const handleLogout = () => {
     localStorage.removeItem("user");
     router.push("/login");
@@ -478,8 +558,29 @@ showSaved("Đã lưu cài đặt!");
 
       {/* Profile Card */}
       <div className="bg-zinc-900/60 border border-zinc-800/50 rounded-2xl p-5 flex items-center gap-4">
-        <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-red-600 to-red-500 flex items-center justify-center text-2xl font-bold text-white shadow-lg shadow-red-600/20 shrink-0">
-          {user?.fullName?.charAt(0)?.toUpperCase() || "U"}
+        <div className="relative shrink-0">
+          <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-red-600 to-red-500 flex items-center justify-center text-2xl font-bold text-white shadow-lg shadow-red-600/20 overflow-hidden">
+            {avatarPreview || user?.avatarUrl || user?.avatar ? (
+              <img
+                src={avatarPreview || `http://localhost:3001${user?.avatarUrl || user?.avatar || ""}`}
+                alt="Avatar"
+                className="w-full h-full object-cover"
+              />
+            ) : (
+              user?.fullName?.charAt(0)?.toUpperCase() || "U"
+            )}
+          </div>
+          <label className="absolute -bottom-1 -right-1 w-6 h-6 bg-red-600 rounded-full flex items-center justify-center cursor-pointer hover:bg-red-700 transition-colors shadow-lg">
+            <input
+              type="file"
+              accept="image/jpeg,image/png,image/gif,image/webp"
+              onChange={handleAvatarChange}
+              className="hidden"
+            />
+            <svg className="w-3 h-3 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+              <path d="M12 5v14M5 12h14" strokeLinecap="round" strokeLinejoin="round"/>
+            </svg>
+          </label>
         </div>
         <div className="flex-1 min-w-0">
           <h2 className="text-lg font-bold text-white truncate">{user?.fullName || "User"}</h2>
@@ -497,6 +598,37 @@ showSaved("Đã lưu cài đặt!");
           </div>
         </div>
       </div>
+
+      {/* Avatar Upload Preview */}
+      {avatarPreview && (
+        <div className="bg-zinc-900/60 border border-zinc-800/50 rounded-2xl p-4 flex items-center gap-4">
+          <img
+            src={avatarPreview}
+            alt="Preview"
+            className="w-12 h-12 rounded-xl object-cover"
+          />
+          <div className="flex-1">
+            <p className="text-sm text-white font-medium">Ảnh mới đã chọn</p>
+            <p className="text-xs text-zinc-500">{avatarFile?.name}</p>
+          </div>
+          <button
+            onClick={uploadAvatar}
+            disabled={uploadingAvatar}
+            className="bg-red-600 hover:bg-red-700 disabled:bg-gray-600 text-white px-4 py-2 rounded-xl text-sm font-medium transition-colors"
+          >
+            {uploadingAvatar ? "Đang tải..." : "Tải lên"}
+          </button>
+          <button
+            onClick={() => {
+              setAvatarFile(null);
+              setAvatarPreview("");
+            }}
+            className="bg-zinc-700 hover:bg-zinc-600 text-white px-3 py-2 rounded-xl text-sm transition-colors"
+          >
+            Hủy
+          </button>
+        </div>
+      )}
 
       {/* Toast */}
       {saveMsg && (

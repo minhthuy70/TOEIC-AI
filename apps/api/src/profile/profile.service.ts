@@ -1,6 +1,8 @@
 import { Injectable } from "@nestjs/common";
 import { PrismaService } from "../prisma/prisma.service";
 import * as bcrypt from "bcryptjs";
+import * as fs from 'fs';
+import * as path from 'path';
 import {
   BadRequestException,
   UnauthorizedException,
@@ -59,7 +61,7 @@ export class ProfileService {
     id: user.id,
     fullName: user.fullName,
     email: user.email,
-
+    avatarUrl: user.avatarUrl || user.profile?.avatar,
     avatar: user.profile?.avatar,
     phone: user.profile?.phone,
     birthday: user.profile?.birthday,
@@ -71,7 +73,7 @@ export class ProfileService {
     targetScore: user.profile?.targetScore,
     examDate: user.profile?.examDate,
     dailyStudyTime: user.profile?.dailyStudyTime,
-    
+
     studyNotification: user.profile?.studyNotification,
 srsNotification: user.profile?.srsNotification,
 autoPronunciation: user.profile?.autoPronunciation,
@@ -270,5 +272,37 @@ async changePassword(
 
   };
 
+}
+
+async uploadAvatar(userId: number, file: Express.Multer.File) {
+  if (!file) {
+    throw new BadRequestException("Không có file được tải lên");
+  }
+
+  // File is already saved by multer, just update the database
+  const avatarUrl = `/avatars/${file.filename}`;
+
+  // Update user profile with avatar URL
+  await this.prisma.userProfile.upsert({
+    where: { userId },
+    create: {
+      userId,
+      avatar: avatarUrl,
+    },
+    update: {
+      avatar: avatarUrl,
+    },
+  });
+
+  // Also update User table avatarUrl for backward compatibility
+  await this.prisma.user.update({
+    where: { id: userId },
+    data: { avatarUrl },
+  });
+
+  return {
+    message: "Tải lên avatar thành công",
+    avatarUrl,
+  };
 }
 }

@@ -222,6 +222,15 @@ async function bootstrap() {
     },
   );
 
+  // Avatars
+  const avatarsPath = join(process.cwd(), 'public', 'avatars');
+  app.useStaticAssets(
+    avatarsPath,
+    {
+      prefix: "/avatars",
+    },
+  );
+
   // ============================================================
   // CORS
   // ============================================================
