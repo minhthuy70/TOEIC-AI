@@ -20,6 +20,11 @@ model User {
   avatarUrl                     String?
   createdAt                     DateTime                        @default(now())
   role                          UserRole                        @default(USER)
+  isLocked                      Boolean                         @default(false)
+  lockedUntil                   DateTime?
+  isPermanentlyLocked           Boolean                         @default(false)
+  unlockRequestSent             Boolean                         @default(false)
+  unlockRequestSentAt           DateTime?
   profile                       UserProfile?
   grammarProgress               UserGrammarProgress[]
   user_listening_group_progress user_listening_group_progress[]

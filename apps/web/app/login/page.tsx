@@ -23,6 +23,7 @@ export default function LoginPage() {
   const [isLocked, setIsLocked] = useState(false);
   const [lockedUntil, setLockedUntil] = useState<Date | null>(null);
   const [lockCount, setLockCount] = useState(0);
+  const [isPermanentlyLocked, setIsPermanentlyLocked] = useState(false);
   const [googleLoading, setGoogleLoading] = useState(false);
   const [facebookLoading, setFacebookLoading] = useState(false);
 
@@ -37,7 +38,7 @@ export default function LoginPage() {
 
   // Countdown timer for lock
   useEffect(() => {
-    if (isLocked && lockedUntil) {
+    if (isLocked && lockedUntil && !isPermanentlyLocked) {
       const interval = setInterval(() => {
         const now = Date.now();
         if (lockedUntil.getTime() <= now) {
@@ -51,7 +52,7 @@ export default function LoginPage() {
 
       return () => clearInterval(interval);
     }
-  }, [isLocked, lockedUntil]);
+  }, [isLocked, lockedUntil, isPermanentlyLocked]);
 
   // Load Google Identity Services script
   useEffect(() => {
@@ -238,6 +239,7 @@ export default function LoginPage() {
     setIsLocked(false);
     setLockedUntil(null);
     setLockCount(0);
+    setIsPermanentlyLocked(false);
 
     const res = await fetch(
       "http://localhost:3001/auth/login",
@@ -296,6 +298,7 @@ export default function LoginPage() {
         setIsLocked(true);
         setLockedUntil(data.lockedUntil ? new Date(data.lockedUntil) : null);
         setLockCount(data.lockCount || 1);
+        setIsPermanentlyLocked(data.isPermanentlyLocked || false);
       }
     }
   }
@@ -337,7 +340,7 @@ export default function LoginPage() {
         )}
 
         {/* Lock countdown */}
-        {isLocked && lockedUntil && (
+        {isLocked && lockedUntil && !isPermanentlyLocked && (
           <div className="w-full p-3 rounded-xl bg-orange-600/20 border border-orange-600/40 text-orange-400 text-sm mb-4">
             <div className="font-semibold mb-1">
               Tài khoản bị khóa lần thứ {lockCount}
@@ -352,6 +355,24 @@ export default function LoginPage() {
               {lockCount === 4 && "Thời gian khóa tăng lên 2 giờ"}
               {lockCount >= 5 && "Thời gian khóa tối đa 4 giờ"}
             </div>
+          </div>
+        )}
+
+        {/* Permanent lock message */}
+        {isLocked && isPermanentlyLocked && (
+          <div className="w-full p-4 rounded-xl bg-red-600/20 border border-red-600/40 text-red-400 text-sm mb-4">
+            <div className="font-semibold mb-2">
+              ⚠️ Tài khoản đã bị khóa vĩnh viễn
+            </div>
+            <div className="text-xs mb-3">
+              Tài khoản của bạn đã bị khóa do hoạt động đăng nhập bất thường liên tục.
+            </div>
+            <button
+              onClick={() => router.push(`/unlock-request?email=${encodeURIComponent(email)}`)}
+              className="w-full bg-red-600 hover:bg-red-700 transition text-white font-semibold py-2 rounded-lg text-sm"
+            >
+              Gửi yêu cầu mở khóa
+            </button>
           </div>
         )}
 

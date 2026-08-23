@@ -118,4 +118,24 @@ constructor(
   ) {
     return this.authService.resetPassword(body.token, body.email, body.newPassword);
   }
+
+  @Post('request-unlock')
+  requestUnlock(
+    @Body()
+    body: {
+      email: string;
+    },
+  ) {
+    return this.authService.requestUnlock(body.email);
+  }
+
+  @Post('unlock-account')
+  unlockAccount(
+    @Body()
+    body: {
+      email: string;
+    },
+  ) {
+    return this.authService.unlockAccount(body.email);
+  }
 }

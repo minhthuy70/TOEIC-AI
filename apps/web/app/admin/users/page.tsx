@@ -11,6 +11,10 @@ type User = {
   email: string;
   role: Role;
   createdAt: string;
+  isLocked: boolean;
+  isPermanentlyLocked: boolean;
+  lockedUntil: string | null;
+  unlockRequestSent: boolean;
   profile: {
     currentScore: number | null;
     targetScore: number | null;
@@ -26,6 +30,7 @@ export default function AdminUsersPage() {
   const [search, setSearch] = useState("");
   const [loading, setLoading] = useState(true);
   const [updatingId, setUpdatingId] = useState<number | null>(null);
+  const [unlockingId, setUnlockingId] = useState<number | null>(null);
   const [error, setError] = useState("");
 
   const [currentUserId, setCurrentUserId] =
@@ -160,6 +165,69 @@ export default function AdminUsersPage() {
       );
     } finally {
       setUpdatingId(null);
+    }
+  }
+
+  async function unlockUser(userId: number, email: string) {
+    const token = localStorage.getItem("accessToken");
+
+    if (!token) {
+      router.push("/login");
+      return;
+    }
+
+    if (!confirm(`Bạn có chắc muốn mở khóa tài khoản ${email}?`)) {
+      return;
+    }
+
+    try {
+      setUnlockingId(userId);
+
+      const res = await fetch(
+        `${API_URL}/auth/unlock-account`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ email }),
+        }
+      );
+
+      const data = await res.json();
+
+      if (!res.ok) {
+        throw new Error(
+          data?.message ||
+            "Không thể mở khóa tài khoản"
+        );
+      }
+
+      setUsers((prev) =>
+        prev.map((user) =>
+          user.id === userId
+            ? {
+                ...user,
+                isLocked: false,
+                isPermanentlyLocked: false,
+                lockedUntil: null,
+                unlockRequestSent: false,
+              }
+            : user
+        )
+      );
+
+      alert("Tài khoản đã được mở khóa thành công!");
+    } catch (err) {
+      console.error(err);
+
+      alert(
+        err instanceof Error
+          ? err.message
+          : "Không thể mở khóa tài khoản"
+      );
+    } finally {
+      setUnlockingId(null);
     }
   }
 
@@ -307,6 +375,10 @@ export default function AdminUsersPage() {
                     </th>
 
                     <th className="px-6 py-4 text-sm font-semibold text-zinc-400">
+                      Trạng thái
+                    </th>
+
+                    <th className="px-6 py-4 text-sm font-semibold text-zinc-400">
                       Ngày tạo
                     </th>
                   </tr>
@@ -415,9 +487,48 @@ export default function AdminUsersPage() {
                                 </option>
 
                                 <option value="SUPER_ADMIN">
-                                  SUPER ADMIN
+                                  SUPER_ADMIN
                                 </option>
                               </select>
+                            )}
+                          </td>
+
+                          {/* Status */}
+                          <td className="px-6 py-5">
+                            {user.isPermanentlyLocked ? (
+                              <div className="flex items-center gap-2">
+                                <span className="inline-flex px-3 py-1.5 rounded-lg border text-xs font-semibold bg-red-500/10 text-red-400 border-red-500/30">
+                                  Khóa vĩnh viễn
+                                </span>
+                                {!isCurrentUser && (
+                                  <button
+                                    onClick={() => unlockUser(user.id, user.email)}
+                                    disabled={unlockingId === user.id}
+                                    className="text-xs bg-green-600 hover:bg-green-700 disabled:bg-gray-600 text-white px-3 py-1.5 rounded-lg transition"
+                                  >
+                                    {unlockingId === user.id ? "Đang mở..." : "Mở khóa"}
+                                  </button>
+                                )}
+                              </div>
+                            ) : user.isLocked ? (
+                              <div className="flex items-center gap-2">
+                                <span className="inline-flex px-3 py-1.5 rounded-lg border text-xs font-semibold bg-orange-500/10 text-orange-400 border-orange-500/30">
+                                  Khóa tạm
+                                </span>
+                                {user.lockedUntil && (
+                                  <span className="text-xs text-zinc-500">
+                                    {new Date(user.lockedUntil).toLocaleDateString('vi-VN')}
+                                  </span>
+                                )}
+                              </div>
+                            ) : user.unlockRequestSent ? (
+                              <span className="inline-flex px-3 py-1.5 rounded-lg border text-xs font-semibold bg-yellow-500/10 text-yellow-400 border-yellow-500/30">
+                                Đang chờ
+                              </span>
+                            ) : (
+                              <span className="inline-flex px-3 py-1.5 rounded-lg border text-xs font-semibold bg-green-500/10 text-green-400 border-green-500/30">
+                                Hoạt động
+                              </span>
                             )}
                           </td>
 

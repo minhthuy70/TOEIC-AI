@@ -8,6 +8,7 @@ import * as nodemailer from "nodemailer";
 const loginAttempts = new Map<string, { count: number; lockedUntil: number; lockCount: number }>();
 const MAX_ATTEMPTS = 5;
 const BASE_LOCK_TIME = 15 * 60 * 1000; // 15 minutes base
+const PERMANENT_LOCK_THRESHOLD = 5; // Number of temporary locks before permanent lock
 
 @Injectable()
 export class AuthService {
@@ -35,7 +36,29 @@ export class AuthService {
     return lockTimes[index];
   }
 
-  private checkLoginAttempts(email: string): { allowed: boolean; remainingAttempts?: number; lockedUntil?: Date; lockCount?: number } {
+  private async checkLoginAttempts(email: string): Promise<{ allowed: boolean; remainingAttempts?: number; lockedUntil?: Date; lockCount?: number; isPermanentlyLocked?: boolean }> {
+    // Check database for permanent lock first
+    const user = await this.prisma.user.findUnique({
+      where: { email },
+      select: { isPermanentlyLocked: true, isLocked: true, lockedUntil: true }
+    });
+
+    if (user?.isPermanentlyLocked) {
+      return {
+        allowed: false,
+        isPermanentlyLocked: true,
+      };
+    }
+
+    // Check database for temporary lock
+    if (user?.isLocked && user.lockedUntil && user.lockedUntil > new Date()) {
+      return {
+        allowed: false,
+        lockedUntil: user.lockedUntil,
+      };
+    }
+
+    // Check in-memory attempts
     const attempts = loginAttempts.get(email);
 
     if (!attempts) {
@@ -63,17 +86,131 @@ export class AuthService {
     return { allowed: true, remainingAttempts, lockCount: attempts.lockCount };
   }
 
-  private recordFailedAttempt(email: string): void {
+  private async recordFailedAttempt(email: string): Promise<void> {
     const attempts = loginAttempts.get(email) || { count: 0, lockedUntil: 0, lockCount: 0 };
     attempts.count++;
 
     // Lock account after max attempts
     if (attempts.count >= MAX_ATTEMPTS) {
       attempts.lockCount = (attempts.lockCount || 0) + 1;
-      attempts.lockedUntil = Date.now() + this.calculateLockTime(attempts.lockCount);
+
+      // Check if this should be a permanent lock
+      if (attempts.lockCount >= PERMANENT_LOCK_THRESHOLD) {
+        await this.setPermanentLock(email);
+      } else {
+        attempts.lockedUntil = Date.now() + this.calculateLockTime(attempts.lockCount);
+        await this.setTemporaryLock(email, attempts.lockedUntil, attempts.lockCount);
+        await this.sendLockNotification(email, attempts.lockCount, attempts.lockedUntil);
+      }
     }
 
     loginAttempts.set(email, attempts);
+  }
+
+  private async setTemporaryLock(email: string, lockedUntil: number, lockCount: number): Promise<void> {
+    try {
+      await this.prisma.user.update({
+        where: { email },
+        data: {
+          isLocked: true,
+          lockedUntil: new Date(lockedUntil),
+        },
+      });
+    } catch (error) {
+      console.error('Error setting temporary lock:', error);
+    }
+  }
+
+  private async setPermanentLock(email: string): Promise<void> {
+    try {
+      await this.prisma.user.update({
+        where: { email },
+        data: {
+          isLocked: true,
+          isPermanentlyLocked: true,
+          lockedUntil: null,
+        },
+      });
+      await this.sendPermanentLockNotification(email);
+    } catch (error) {
+      console.error('Error setting permanent lock:', error);
+    }
+  }
+
+  private async sendLockNotification(email: string, lockCount: number, lockedUntil: number): Promise<void> {
+    const user = await this.prisma.user.findUnique({ where: { email } });
+    if (!user) return;
+
+    const lockTimeMinutes = Math.ceil((lockedUntil - Date.now()) / 60000);
+    const transporter = nodemailer.createTransport({
+      service: process.env.SMTP_SERVICE || 'gmail',
+      auth: {
+        user: process.env.EMAIL_USER,
+        pass: process.env.EMAIL_PASS
+      }
+    });
+
+    try {
+      await transporter.sendMail({
+        from: '"Bella AI Security" <security@bella-ai.com>',
+        to: user.email,
+        subject: `Cảnh báo bảo mật: Tài khoản của bạn đã bị khóa lần thứ ${lockCount}`,
+        html: `
+          <h3>Chào ${user.fullName},</h3>
+          <p>Tài khoản của bạn vừa bị khóa tạm thời do nhiều lần đăng nhập thất bại.</p>
+          <p><strong>Chi tiết:</strong></p>
+          <ul>
+            <li>Lần khóa thứ: ${lockCount}</li>
+            <li>Thời gian khóa: ${lockTimeMinutes} phút</li>
+            <li>Số lần thử tối đa: ${MAX_ATTEMPTS}</li>
+          </ul>
+          <p>Tài khoản sẽ tự động mở khóa sau thời gian trên.</p>
+          <p style="color: #dc2626; font-weight: bold;">Lưu ý: Nếu bạn không thực hiện các lần đăng nhập này, tài khoản của bạn có thể đang bị tấn công. Vui lòng đổi mật khẩu ngay khi có thể.</p>
+          <p>Nếu bạn cần hỗ trợ, vui lòng liên hệ: support@bella-ai.com</p>
+        `
+      });
+      console.log('Lock notification sent to:', email);
+    } catch (error) {
+      console.error('Error sending lock notification:', error);
+    }
+  }
+
+  private async sendPermanentLockNotification(email: string): Promise<void> {
+    const user = await this.prisma.user.findUnique({ where: { email } });
+    if (!user) return;
+
+    const transporter = nodemailer.createTransport({
+      service: process.env.SMTP_SERVICE || 'gmail',
+      auth: {
+        user: process.env.EMAIL_USER,
+        pass: process.env.EMAIL_PASS
+      }
+    });
+
+    try {
+      await transporter.sendMail({
+        from: '"Bella AI Security" <security@bella-ai.com>',
+        to: user.email,
+        subject: 'BẢO MẬT QUAN TRỌNG: Tài khoản của bạn đã bị khóa vĩnh viễn',
+        html: `
+          <h3 style="color: #dc2626;">CẢNH BÁO BẢO MẬT QUAN TRỌNG</h3>
+          <p>Tài khoản của bạn đã bị khóa vĩnh viễn do hoạt động đăng nhập bất thường liên tục.</p>
+          <p><strong>Chi tiết:</strong></p>
+          <ul>
+            <li>Tổng số lần khóa: ${PERMANENT_LOCK_THRESHOLD} lần</li>
+            <li>Trạng thái: Khóa vĩnh viễn</li>
+            <li>Thời gian khóa: Không giới hạn</li>
+          </ul>
+          <p>Để mở khóa tài khoản, bạn cần gửi yêu cầu mở khóa:</p>
+          <a href="http://localhost:3000/unlock-request?email=${encodeURIComponent(email)}" style="padding: 12px 24px; background-color: #dc2626; color: white; text-decoration: none; border-radius: 5px; display: inline-block; margin: 10px 0;">Gửi yêu cầu mở khóa</a>
+          <p style="color: #dc2626; font-weight: bold;">Đây là biện pháp bảo vệ để ngăn chặn tấn công brute force vào tài khoản của bạn.</p>
+          <p>Nếu bạn cần hỗ trợ khẩn cấp, vui lòng liên hệ: security@bella-ai.com</p>
+        `
+      });
+      console.log('Permanent lock notification sent to:', email);
+    } catch (error) {
+      console.error('Error sending permanent lock notification:', error);
+    }
   }
 
   private resetLoginAttempts(email: string): void {
@@ -83,6 +220,143 @@ export class AuthService {
       attempts.count = 0;
       attempts.lockedUntil = 0;
       loginAttempts.set(email, attempts);
+    }
+  }
+
+  async requestUnlock(email: string): Promise<{ success: boolean; message: string }> {
+    const user = await this.prisma.user.findUnique({ where: { email } });
+
+    if (!user) {
+      return { success: false, message: "Không tìm thấy tài khoản" };
+    }
+
+    if (!user.isPermanentlyLocked) {
+      return { success: false, message: "Tài khoản không bị khóa vĩnh viễn" };
+    }
+
+    if (user.unlockRequestSent) {
+      return { success: false, message: "Bạn đã gửi yêu cầu mở khóa. Vui lòng chờ xử lý." };
+    }
+
+    await this.prisma.user.update({
+      where: { email },
+      data: {
+        unlockRequestSent: true,
+        unlockRequestSentAt: new Date(),
+      },
+    });
+
+    await this.sendUnlockRequestNotification(email, user.fullName);
+
+    return { success: true, message: "Yêu cầu mở khóa đã được gửi. Chúng tôi sẽ liên hệ với bạn trong vòng 24-48 giờ." };
+  }
+
+  private async sendUnlockRequestNotification(email: string, fullName: string): Promise<void> {
+    const transporter = nodemailer.createTransport({
+      service: process.env.SMTP_SERVICE || 'gmail',
+      auth: {
+        user: process.env.EMAIL_USER,
+        pass: process.env.EMAIL_PASS
+      }
+    });
+
+    try {
+      // Send to user
+      await transporter.sendMail({
+        from: '"Bella AI Support" <support@bella-ai.com>',
+        to: email,
+        subject: 'Xác nhận yêu cầu mở khóa tài khoản',
+        html: `
+          <h3>Chào ${fullName},</h3>
+          <p>Yêu cầu mở khóa tài khoản của bạn đã được nhận.</p>
+          <p><strong>Thông tin yêu cầu:</strong></p>
+          <ul>
+            <li>Email: ${email}</li>
+            <li>Thời gian gửi: ${new Date().toLocaleString('vi-VN')}</li>
+            <li>Trạng thái: Đang chờ xử lý</li>
+          </ul>
+          <p>Đội ngũ hỗ trợ sẽ xem xét yêu cầu của bạn trong vòng 24-48 giờ làm việc.</p>
+          <p>Bạn sẽ nhận được email thông báo khi yêu cầu được xử lý.</p>
+          <p>Nếu cần hỗ trợ khẩn cấp, vui lòng liên hệ: support@bella-ai.com</p>
+        `
+      });
+
+      // Send to admin
+      await transporter.sendMail({
+        from: '"Bella AI Security" <security@bella-ai.com>',
+        to: process.env.ADMIN_EMAIL || 'admin@bella-ai.com',
+        subject: `Yêu cầu mở khóa tài khoản - ${email}`,
+        html: `
+          <h3>Yêu cầu mở khóa tài khoản mới</h3>
+          <p><strong>Thông tin người dùng:</strong></p>
+          <ul>
+            <li>Họ tên: ${fullName}</li>
+            <li>Email: ${email}</li>
+            <li>Thời gian gửi: ${new Date().toLocaleString('vi-VN')}</li>
+          </ul>
+          <p>Vui lòng đăng nhập vào admin panel để xem và xử lý yêu cầu này.</p>
+          <a href="http://localhost:3000/admin/users" style="padding: 12px 24px; background-color: #dc2626; color: white; text-decoration: none; border-radius: 5px; display: inline-block; margin: 10px 0;">Xem yêu cầu</a>
+        `
+      });
+
+      console.log('Unlock request notifications sent for:', email);
+    } catch (error) {
+      console.error('Error sending unlock request notifications:', error);
+    }
+  }
+
+  async unlockAccount(email: string): Promise<{ success: boolean; message: string }> {
+    const user = await this.prisma.user.findUnique({ where: { email } });
+
+    if (!user) {
+      return { success: false, message: "Không tìm thấy tài khoản" };
+    }
+
+    await this.prisma.user.update({
+      where: { email },
+      data: {
+        isLocked: false,
+        isPermanentlyLocked: false,
+        lockedUntil: null,
+        unlockRequestSent: false,
+        unlockRequestSentAt: null,
+      },
+    });
+
+    // Reset in-memory attempts
+    loginAttempts.delete(email);
+
+    await this.sendUnlockConfirmationNotification(email, user.fullName);
+
+    return { success: true, message: "Tài khoản đã được mở khóa thành công" };
+  }
+
+  private async sendUnlockConfirmationNotification(email: string, fullName: string): Promise<void> {
+    const transporter = nodemailer.createTransport({
+      service: process.env.SMTP_SERVICE || 'gmail',
+      auth: {
+        user: process.env.EMAIL_USER,
+        pass: process.env.EMAIL_PASS
+      }
+    });
+
+    try {
+      await transporter.sendMail({
+        from: '"Bella AI Support" <support@bella-ai.com>',
+        to: email,
+        subject: 'Tài khoản của bạn đã được mở khóa',
+        html: `
+          <h3 style="color: #16a34a;">Tài khoản đã được mở khóa</h3>
+          <p>Chào ${fullName},</p>
+          <p>Tài khoản của bạn đã được mở khóa thành công.</p>
+          <p>Bạn có thể đăng nhập lại ngay bây giờ.</p>
+          <a href="http://localhost:3000/login" style="padding: 12px 24px; background-color: #16a34a; color: white; text-decoration: none; border-radius: 5px; display: inline-block; margin: 10px 0;">Đăng nhập ngay</a>
+          <p>Nếu bạn không thực hiện yêu cầu này, vui lòng liên hệ ngay: security@bella-ai.com</p>
+        `
+      });
+      console.log('Unlock confirmation sent to:', email);
+    } catch (error) {
+      console.error('Error sending unlock confirmation:', error);
     }
   }
 
@@ -169,8 +443,16 @@ export class AuthService {
     rememberMe: boolean = false,
   ) {
     // Check login attempts
-    const attemptCheck = this.checkLoginAttempts(email);
+    const attemptCheck = await this.checkLoginAttempts(email);
     if (!attemptCheck.allowed) {
+      if (attemptCheck.isPermanentlyLocked) {
+        return {
+          message: "Tài khoản của bạn đã bị khóa vĩnh viễn do hoạt động bất thường. Vui lòng gửi yêu cầu mở khóa.",
+          locked: true,
+          isPermanentlyLocked: true,
+        };
+      }
+
       const lockTimeMinutes = Math.ceil((attemptCheck.lockedUntil!.getTime() - Date.now()) / 60000);
       const lockCount = attemptCheck.lockCount || 1;
       return {
