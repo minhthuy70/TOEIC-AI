@@ -28,6 +28,7 @@ model User {
   isPermanentlyLocked           Boolean                         @default(false)
   unlockRequestSent             Boolean                         @default(false)
   unlockRequestSentAt           DateTime?
+  sessions                      UserSession[]
   profile                       UserProfile?
   grammarProgress               UserGrammarProgress[]
   user_listening_group_progress user_listening_group_progress[]
@@ -36,6 +37,24 @@ model User {
   vocabularyProgress            UserVocabularyProgress[]
   practice_sessions             practice_sessions[]
   mock_test_attempts            mock_test_attempts[]
+}
+
+model UserSession {
+  id        Int      @id @default(autoincrement())
+  userId    Int
+  token     String   @unique
+  deviceInfo String?
+  ipAddress String?
+  userAgent String?
+  expiresAt DateTime
+  createdAt DateTime @default(now())
+  lastUsedAt DateTime @default(now())
+
+  user      User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@index([token])
+  @@map("user_sessions")
 }
 
 model UserProfile {

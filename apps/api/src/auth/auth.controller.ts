@@ -40,11 +40,17 @@ constructor(
       password: string;
       rememberMe?: boolean;
     },
+    @Req() req: any,
   ) {
+    const userAgent = req.headers['user-agent'] || 'unknown';
+    const acceptLanguage = req.headers['accept-language'] || 'unknown';
+
     return this.authService.login(
       body.email,
       body.password,
       body.rememberMe || false,
+      userAgent,
+      acceptLanguage,
     );
   }
 
@@ -55,8 +61,12 @@ constructor(
       idToken: string;
       rememberMe?: boolean;
     },
+    @Req() req: any,
   ) {
-    return this.authService.googleLogin(body.idToken, body.rememberMe || false);
+    const userAgent = req.headers['user-agent'] || 'unknown';
+    const acceptLanguage = req.headers['accept-language'] || 'unknown';
+
+    return this.authService.googleLogin(body.idToken, body.rememberMe || false, userAgent, acceptLanguage);
   }
 
   @Post('facebook')
@@ -66,8 +76,12 @@ constructor(
       accessToken: string;
       rememberMe?: boolean;
     },
+    @Req() req: any,
   ) {
-    return this.authService.facebookLogin(body.accessToken, body.rememberMe || false);
+    const userAgent = req.headers['user-agent'] || 'unknown';
+    const acceptLanguage = req.headers['accept-language'] || 'unknown';
+
+    return this.authService.facebookLogin(body.accessToken, body.rememberMe || false, userAgent, acceptLanguage);
   }
 
   @Post('verify-email')
@@ -137,5 +151,20 @@ constructor(
     },
   ) {
     return this.authService.unlockAccount(body.email);
+  }
+
+  @UseGuards(JwtAuthGuard)
+  @Post('logout-all')
+  logoutAll(@Req() req: any) {
+    return this.authService.logoutFromAllDevices(req.user.id);
+  }
+
+  @UseGuards(JwtAuthGuard)
+  @Get('sessions')
+  getSessions(@Req() req: any) {
+    const userAgent = req.headers['user-agent'] || 'unknown';
+    const acceptLanguage = req.headers['accept-language'] || 'unknown';
+
+    return this.authService.getActiveSessions(req.user.id, userAgent, acceptLanguage);
   }
 }

@@ -223,6 +223,38 @@ export class AuthService {
     }
   }
 
+  private generateDeviceId(): string {
+    // Generate a device ID based on browser fingerprint
+    // In production, you might use a more sophisticated fingerprinting library
+    if (typeof window !== 'undefined') {
+      const fingerprint = [
+        navigator.userAgent,
+        navigator.language,
+        screen.width + 'x' + screen.height,
+        new Date().getTimezoneOffset(),
+      ].join('|');
+      return this.hashString(fingerprint);
+    }
+    return 'unknown-device';
+  }
+
+  private getUserAgent(): string {
+    if (typeof window !== 'undefined') {
+      return navigator.userAgent;
+    }
+    return 'unknown';
+  }
+
+  private hashString(str: string): string {
+    let hash = 0;
+    for (let i = 0; i < str.length; i++) {
+      const char = str.charCodeAt(i);
+      hash = ((hash << 5) - hash) + char;
+      hash = hash & hash; // Convert to 32bit integer
+    }
+    return hash.toString(16);
+  }
+
   async requestUnlock(email: string): Promise<{ success: boolean; message: string }> {
     const user = await this.prisma.user.findUnique({ where: { email } });
 
@@ -441,6 +473,8 @@ export class AuthService {
     email: string,
     password: string,
     rememberMe: boolean = false,
+    userAgent?: string,
+    acceptLanguage?: string,
   ) {
     // Check login attempts
     const attemptCheck = await this.checkLoginAttempts(email);
@@ -563,6 +597,21 @@ export class AuthService {
     const expiresIn = rememberMe ? '30d' : '1d';
     const accessToken = this.jwtService.sign(payload, { expiresIn });
 
+    // Create session record
+    const deviceId = this.generateDeviceId(userAgent || 'unknown', acceptLanguage || 'unknown');
+    const expiresAt = new Date(Date.now() + (rememberMe ? 30 * 24 * 60 * 60 * 1000 : 24 * 60 * 60 * 1000));
+
+    await this.prisma.userSession.create({
+      data: {
+        userId: user.id,
+        token: accessToken,
+        deviceInfo: deviceId,
+        userAgent: userAgent || 'unknown',
+        ipAddress: 'IP_PLACEHOLDER', // In production, get real IP
+        expiresAt,
+      },
+    });
+
     return {
       accessToken,
       user: {
@@ -577,7 +626,7 @@ export class AuthService {
     };
   }
 
-  async googleLogin(idToken: string, rememberMe: boolean = false) {
+  async googleLogin(idToken: string, rememberMe: boolean = false, userAgent?: string, acceptLanguage?: string) {
     // Verify Google idToken qua Google tokeninfo API
     const googleRes = await fetch(
       `https://oauth2.googleapis.com/tokeninfo?id_token=${idToken}`,
@@ -668,6 +717,22 @@ export class AuthService {
     const expiresIn = rememberMe ? '30d' : '1d';
     const accessToken = this.jwtService.sign(payload, { expiresIn });
 
+    // Create session record
+    const deviceId = this.generateDeviceId();
+    const userAgent = this.getUserAgent();
+    const expiresAt = new Date(Date.now() + (rememberMe ? 30 * 24 * 60 * 60 * 1000 : 24 * 60 * 60 * 1000));
+
+    await this.prisma.userSession.create({
+      data: {
+        userId: user.id,
+        token: accessToken,
+        deviceInfo: deviceId,
+        userAgent,
+        ipAddress: 'IP_PLACEHOLDER',
+        expiresAt,
+      },
+    });
+
     return {
       accessToken,
       user: {
@@ -681,7 +746,7 @@ export class AuthService {
     };
   }
 
-  async facebookLogin(accessToken: string, rememberMe: boolean = false) {
+  async facebookLogin(accessToken: string, rememberMe: boolean = false, userAgent?: string, acceptLanguage?: string) {
     const fbRes = await fetch(
       `https://graph.facebook.com/me?fields=id,name,email,picture.type(large)&access_token=${accessToken}`
     );
@@ -760,6 +825,21 @@ export class AuthService {
     // Nếu rememberMe = true, token có hiệu lực 30 ngày, ngược lại 1 ngày
     const expiresIn = rememberMe ? '30d' : '1d';
     const jwtToken = this.jwtService.sign(payload, { expiresIn });
+
+    // Create session record
+    const deviceId = this.generateDeviceId(userAgent || 'unknown', acceptLanguage || 'unknown');
+    const expiresAt = new Date(Date.now() + (rememberMe ? 30 * 24 * 60 * 60 * 1000 : 24 * 60 * 60 * 1000));
+
+    await this.prisma.userSession.create({
+      data: {
+        userId: user.id,
+        token: jwtToken,
+        deviceInfo: deviceId,
+        userAgent: userAgent || 'unknown',
+        ipAddress: 'IP_PLACEHOLDER',
+        expiresAt,
+      },
+    });
 
     return {
       accessToken: jwtToken,
@@ -959,5 +1039,64 @@ export class AuthService {
     }
 
     return { success: true, message: "Đã gửi lại mã xác thực thành công." };
+  }
+
+  private generateDeviceId(userAgent: string, acceptLanguage: string): string {
+    // Generate a unique device ID based on request headers
+    const language = acceptLanguage || 'unknown';
+    return this.hashString(`${userAgent}-${language}`);
+  }
+
+  private hashString(str: string): string {
+    let hash = 0;
+    for (let i = 0; i < str.length; i++) {
+      const char = str.charCodeAt(i);
+      hash = ((hash << 5) - hash) + char;
+      hash = hash & hash;
+    }
+    return Math.abs(hash).toString(36);
+  }
+
+  async logoutFromAllDevices(userId: number): Promise<{ success: boolean; message: string; sessionsDeleted: number }> {
+    // Delete all sessions for this user
+    const result = await this.prisma.userSession.deleteMany({
+      where: { userId },
+    });
+
+    return {
+      success: true,
+      message: "Đã đăng xuất khỏi tất cả thiết bị thành công",
+      sessionsDeleted: result.count,
+    };
+  }
+
+  async getActiveSessions(userId: number, userAgent?: string, acceptLanguage?: string): Promise<any[]> {
+    const sessions = await this.prisma.userSession.findMany({
+      where: {
+        userId,
+        expiresAt: {
+          gte: new Date(),
+        },
+      },
+      orderBy: {
+        lastUsedAt: 'desc',
+      },
+      select: {
+        id: true,
+        deviceInfo: true,
+        userAgent: true,
+        ipAddress: true,
+        lastUsedAt: true,
+        createdAt: true,
+        expiresAt: true,
+      },
+    });
+
+    const currentDeviceId = this.generateDeviceId(userAgent || 'unknown', acceptLanguage || 'unknown');
+
+    return sessions.map(session => ({
+      ...session,
+      isCurrent: session.userAgent === userAgent && session.deviceInfo === currentDeviceId,
+    }));
   }
 }

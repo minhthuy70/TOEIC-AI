@@ -55,9 +55,13 @@ const [avatarPreview, setAvatarPreview] = useState<string>("");
 const [uploadingAvatar, setUploadingAvatar] = useState(false);
 const [showDeleteModal, setShowDeleteModal] = useState(false);
 const [showDeactivateModal, setShowDeactivateModal] = useState(false);
+const [showLogoutAllModal, setShowLogoutAllModal] = useState(false);
 const [deletePassword, setDeletePassword] = useState("");
 const [isDeleting, setIsDeleting] = useState(false);
 const [isDeactivating, setIsDeactivating] = useState(false);
+const [isLoggingOutAll, setIsLoggingOutAll] = useState(false);
+const [sessions, setSessions] = useState<any[]>([]);
+const [showSessions, setShowSessions] = useState(false);
 
   const [oldPassword, setOldPassword] = useState("");
   const [newPassword, setNewPassword] = useState("");
@@ -596,7 +600,68 @@ const handleDeleteAccount = async () => {
 };
   const handleLogout = () => {
     localStorage.removeItem("user");
+    localStorage.removeItem("accessToken");
     router.push("/login");
+  };
+
+  const loadSessions = async () => {
+    const token = localStorage.getItem("accessToken");
+    if (!token) {
+      router.push("/login");
+      return;
+    }
+
+    try {
+      const res = await fetch("http://localhost:3001/auth/sessions", {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+
+      if (res.ok) {
+        const data = await res.json();
+        setSessions(data);
+      }
+    } catch (error) {
+      console.error("Failed to load sessions:", error);
+    }
+  };
+
+  const handleLogoutAll = async () => {
+    const token = localStorage.getItem("accessToken");
+    if (!token) {
+      router.push("/login");
+      return;
+    }
+
+    setIsLoggingOutAll(true);
+    setSaveMsg("");
+
+    try {
+      const res = await fetch("http://localhost:3001/auth/logout-all", {
+        method: "POST",
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+
+      const data = await res.json();
+
+      if (!res.ok) {
+        throw new Error(data.message || "Đăng xuất thất bại");
+      }
+
+      // Clear local storage and redirect to login
+      localStorage.removeItem("user");
+      localStorage.removeItem("accessToken");
+      router.push("/login");
+    } catch (error) {
+      setSaveMsg(error instanceof Error ? error.message : "Đăng xuất thất bại");
+      setTimeout(() => setSaveMsg(""), 3000);
+    } finally {
+      setIsLoggingOutAll(false);
+      setShowLogoutAllModal(false);
+    }
   };
 
   const currentStage = (() => {
@@ -1096,6 +1161,88 @@ className="w-full bg-zinc-800/60 border border-zinc-700/60 text-white rounded-xl
           <div className="bg-zinc-900/60 border border-zinc-800/50 rounded-2xl p-6 space-y-4">
             <h3 className="text-sm font-semibold text-white">Quản lý tài khoản</h3>
 
+            {/* Active Sessions */}
+            <div className="bg-blue-600/5 border border-blue-600/15 rounded-xl p-4">
+              <div className="flex items-start gap-3">
+                <div className="w-10 h-10 rounded-lg bg-blue-600/10 flex items-center justify-center shrink-0">
+                  <svg className="w-5 h-5 text-blue-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                  </svg>
+                </div>
+                <div className="flex-1">
+                  <h4 className="text-sm font-semibold text-white mb-1">Phiên đăng nhập</h4>
+                  <p className="text-xs text-zinc-400 mb-3">Quản lý các thiết bị đang đăng nhập vào tài khoản của bạn.</p>
+                  <button
+                    onClick={() => {
+                      setShowSessions(!showSessions);
+                      if (!showSessions) loadSessions();
+                    }}
+                    className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg text-xs font-medium transition-colors"
+                  >
+                    {showSessions ? "Ẩn danh sách" : "Xem phiên đăng nhập"}
+                  </button>
+                </div>
+              </div>
+
+              {/* Sessions List */}
+              {showSessions && (
+                <div className="mt-4 space-y-2">
+                  {sessions.length === 0 ? (
+                    <p className="text-xs text-zinc-500 text-center py-4">Không có phiên đăng nhập nào</p>
+                  ) : (
+                    sessions.map((session) => (
+                      <div
+                        key={session.id}
+                        className={`flex items-center justify-between p-3 rounded-lg border ${
+                          session.isCurrent
+                            ? "bg-green-600/10 border-green-600/20"
+                            : "bg-zinc-800/30 border-zinc-700/30"
+                        }`}
+                      >
+                        <div className="flex-1">
+                          <div className="flex items-center gap-2">
+                            <span className="text-xs text-white font-medium">
+                              {session.isCurrent ? "Thiết bị hiện tại" : "Thiết bị khác"}
+                            </span>
+                            {session.isCurrent && (
+                              <span className="text-[10px] bg-green-600/20 text-green-400 px-2 py-0.5 rounded-full">Active</span>
+                            )}
+                          </div>
+                          <p className="text-[10px] text-zinc-500 mt-1">
+                            {session.userAgent?.substring(0, 50) || "Unknown"}
+                          </p>
+                          <p className="text-[10px] text-zinc-600 mt-0.5">
+                            Đăng nhập: {session.createdAt ? new Date(session.createdAt).toLocaleString('vi-VN') : '—'}
+                          </p>
+                        </div>
+                      </div>
+                    ))
+                  )}
+                </div>
+              )}
+            </div>
+
+            {/* Logout All Devices */}
+            <div className="bg-purple-600/5 border border-purple-600/15 rounded-xl p-4">
+              <div className="flex items-start gap-3">
+                <div className="w-10 h-10 rounded-lg bg-purple-600/10 flex items-center justify-center shrink-0">
+                  <svg className="w-5 h-5 text-purple-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
+                  </svg>
+                </div>
+                <div className="flex-1">
+                  <h4 className="text-sm font-semibold text-white mb-1">Đăng xuất khỏi tất cả thiết bị</h4>
+                  <p className="text-xs text-zinc-400 mb-3">Đăng xuất khỏi tất cả các thiết bị đang đăng nhập vào tài khoản của bạn.</p>
+                  <button
+                    onClick={() => setShowLogoutAllModal(true)}
+                    className="bg-purple-600 hover:bg-purple-700 text-white px-4 py-2 rounded-lg text-xs font-medium transition-colors"
+                  >
+                    Đăng xuất tất cả
+                  </button>
+                </div>
+              </div>
+            </div>
+
             {/* Deactivate Account */}
             <div className="bg-orange-600/5 border border-orange-600/15 rounded-xl p-4">
               <div className="flex items-start gap-3">
@@ -1219,6 +1366,33 @@ className="w-full bg-zinc-800/60 border border-zinc-700/60 text-white rounded-xl
                 className="flex-1 bg-red-600 hover:bg-red-700 disabled:bg-gray-600 text-white py-3 rounded-xl text-sm font-medium transition-colors"
               >
                 {isDeleting ? "Đang xóa..." : "Xóa tài khoản"}
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Logout All Modal */}
+      {showLogoutAllModal && (
+        <div className="fixed inset-0 bg-black/70 flex items-center justify-center z-50 p-4">
+          <div className="bg-zinc-900 border border-zinc-800 rounded-2xl p-6 max-w-md w-full">
+            <h3 className="text-lg font-bold text-white mb-2">Đăng xuất khỏi tất cả thiết bị</h3>
+            <p className="text-sm text-zinc-400 mb-6">
+              Bạn có chắc muốn đăng xuất khỏi tất cả các thiết bị đang đăng nhập vào tài khoản của mình? Bạn sẽ cần đăng nhập lại trên mỗi thiết bị.
+            </p>
+            <div className="flex gap-3">
+              <button
+                onClick={() => setShowLogoutAllModal(false)}
+                className="flex-1 bg-zinc-700 hover:bg-zinc-600 text-white py-3 rounded-xl text-sm font-medium transition-colors"
+              >
+                Hủy
+              </button>
+              <button
+                onClick={handleLogoutAll}
+                disabled={isLoggingOutAll}
+                className="flex-1 bg-purple-600 hover:bg-purple-700 disabled:bg-gray-600 text-white py-3 rounded-xl text-sm font-medium transition-colors"
+              >
+                {isLoggingOutAll ? "Đang xử lý..." : "Đăng xuất tất cả"}
               </button>
             </div>
           </div>
