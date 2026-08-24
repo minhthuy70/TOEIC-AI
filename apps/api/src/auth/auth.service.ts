@@ -598,40 +598,20 @@ export class AuthService {
   }
 
   async googleLogin(idToken: string, rememberMe: boolean = false, userAgentParam?: string, acceptLanguageParam?: string) {
-    console.log('=== Google Login Debug ===');
-    console.log('ID Token exists:', !!idToken);
-    console.log('ID Token length:', idToken?.length);
-    console.log('Environment GOOGLE_CLIENT_ID:', process.env.GOOGLE_CLIENT_ID);
-    
     // Verify Google idToken qua Google tokeninfo API
     const googleRes = await fetch(
       `https://oauth2.googleapis.com/tokeninfo?id_token=${idToken}`,
     );
 
-    console.log('Google API response status:', googleRes.status);
-    console.log('Google API response ok:', googleRes.ok);
-
     if (!googleRes.ok) {
-      const errorText = await googleRes.text();
-      console.log('Google API error response:', errorText);
       return { message: "Google token không hợp lệ" };
     }
 
     const googleData = await googleRes.json();
-    console.log('Google token info - aud:', googleData.aud);
-    console.log('Google token info - iss:', googleData.iss);
-    console.log('Google token info - email:', googleData.email);
-    console.log('Google token info - email_verified:', googleData.email_verified);
 
     // Kiểm tra client_id khớp (bảo mật)
     const clientId = process.env.GOOGLE_CLIENT_ID;
-    console.log('Client ID from env:', clientId);
-    console.log('Audience check:', googleData.aud === clientId);
-    
     if (clientId && googleData.aud !== clientId) {
-      console.log('Audience mismatch!');
-      console.log('Expected:', clientId);
-      console.log('Got:', googleData.aud);
       return { message: "Google token không hợp lệ" };
     }
 
@@ -737,27 +717,52 @@ export class AuthService {
   }
 
   async facebookLogin(accessToken: string, rememberMe: boolean = false, userAgent?: string, acceptLanguage?: string) {
-    const fbRes = await fetch(
-      `https://graph.facebook.com/me?fields=id,name,email,picture.type(large)&access_token=${accessToken}`
+    const appId = process.env.FACEBOOK_APP_ID;
+    const appSecret = process.env.FACEBOOK_APP_SECRET;
+    
+    if (!appId || !appSecret) {
+      return { message: "Facebook App chưa được cấu hình ở backend" };
+    }
+
+    // Step 1: Debug token to verify it's valid and for our app
+    const debugRes = await fetch(
+      `https://graph.facebook.com/debug_token?input_token=${accessToken}&access_token=${appId}|${appSecret}`
     );
 
-    if (!fbRes.ok) {
+    if (!debugRes.ok) {
       return { message: "Facebook token không hợp lệ" };
     }
 
-    const fbData = await fbRes.json();
-    const { id: facebookId, name, email: fbEmail, picture } = fbData;
+    const debugData = await debugRes.json();
     
-    // Facebook có thể không trả về email nếu user đăng ký bằng sđt
-    const email = fbEmail || `fb_${facebookId}@facebook-placeholder.com`;
+    if (!debugData.data?.is_valid) {
+      return { message: "Facebook token không hợp lệ hoặc đã hết hạn" };
+    }
 
+    if (debugData.data.app_id !== appId) {
+      return { message: "Facebook token không được cấp cho ứng dụng này" };
+    }
+
+    const facebookId = debugData.data.user_id;
+
+    // Step 2: Get user info from Facebook
+    const fbRes = await fetch(
+      `https://graph.facebook.com/${facebookId}?fields=id,name,email,picture.type(large)&access_token=${accessToken}`
+    );
+
+    if (!fbRes.ok) {
+      return { message: "Không lấy được thông tin Facebook" };
+    }
+
+    const fbData = await fbRes.json();
+    const { name, email: fbEmail, picture } = fbData;
+    
+    // Only use email if Facebook provides it
+    const email = fbEmail || null;
+
+    // Step 3: Find user ONLY by facebookId (NOT by email to prevent account takeover)
     let user = await this.prisma.user.findFirst({
-      where: {
-        OR: [
-          { facebookId },
-          { email },
-        ],
-      },
+      where: { facebookId },
       include: { profile: true },
     });
 
@@ -771,25 +776,33 @@ export class AuthService {
           deactivated: true,
         };
       }
-
-      if (!user.facebookId) {
-        user = await this.prisma.user.update({
-          where: { id: user.id },
-          data: {
-            facebookId,
-            avatarUrl: avatarUrl || user.avatarUrl,
-          },
-          include: { profile: true },
-        });
-      }
     } else {
+      // Create new user with Facebook ID only
+      // Generate unique email if Facebook doesn't provide one
+      const uniqueEmail = email || `fb_${facebookId}@bella-app.ai`;
+      
+      // Check if email already exists (but user doesn't have facebookId)
+      if (email) {
+        const existingUser = await this.prisma.user.findUnique({
+          where: { email },
+        });
+        
+        if (existingUser) {
+          // Email already exists with different auth method
+          // Require user to link manually or use different email
+          return { 
+            message: "Email này đã được đăng ký bằng phương thức khác. Vui lòng đăng nhập bằng phương thức đó rồi liên kết Facebook trong profile." 
+          };
+        }
+      }
+
       user = await this.prisma.user.create({
         data: {
           fullName: name || "Người dùng Facebook",
-          email,
+          email: uniqueEmail,
           facebookId,
           avatarUrl,
-          isEmailVerified: true,
+          isEmailVerified: !!email, // Only mark as verified if real email
           profile: {
             create: {
               firstLoginCompleted: false,

@@ -13,6 +13,7 @@ declare global {
 }
 
 export default function RegisterPage() {
+  console.log('=== RegisterPage rendered ===');
   const router = useRouter();
 
   const [fullName, setFullName] = useState("");
@@ -25,6 +26,7 @@ export default function RegisterPage() {
   const [error, setError] = useState("");
   const [googleLoading, setGoogleLoading] = useState(false);
   const [facebookLoading, setFacebookLoading] = useState(false);
+  const [facebookSdkReady, setFacebookSdkReady] = useState(false);
   
   // Ref to track Google GIS initialization status
   const googleInitialized = useRef(false);
@@ -34,12 +36,6 @@ export default function RegisterPage() {
     setGoogleLoading(true);
     setError("");
 
-    console.log('=== Frontend Google Debug ===');
-    console.log('Response from Google:', response);
-    console.log('Credential exists:', !!response.credential);
-    console.log('Credential length:', response.credential?.length);
-    console.log('Google Client ID:', process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID);
-
     try {
       const res = await fetch("http://localhost:3001/auth/google", {
         method: "POST",
@@ -48,7 +44,6 @@ export default function RegisterPage() {
       });
 
       const data = await res.json();
-      console.log('Backend response:', data);
 
       if (data.accessToken) {
         localStorage.setItem("accessToken", data.accessToken);
@@ -107,26 +102,45 @@ export default function RegisterPage() {
 
   // Load Facebook JS SDK
   useEffect(() => {
+    console.log('=== Facebook SDK Loading Debug ===');
+    console.log('Current URL:', window.location.href);
+    console.log('Protocol:', window.location.protocol);
+    console.log('Host:', window.location.host);
+    console.log('Facebook App ID:', process.env.NEXT_PUBLIC_FACEBOOK_APP_ID);
+
+    // Define fbAsyncInit globally - called by Facebook SDK when loaded
     window.fbAsyncInit = function () {
+      console.log('fbAsyncInit called');
+      console.log('window.FB exists:', !!window.FB);
       window.FB.init({
         appId: process.env.NEXT_PUBLIC_FACEBOOK_APP_ID || "",
         cookie: true,
         xfbml: true,
         version: "v20.0",
       });
+      console.log('FB.init called');
+      setFacebookSdkReady(true);
+      console.log('facebookSdkReady set to true');
     };
 
-    (function (d, s, id) {
-      var js: any,
-        fjs = d.getElementsByTagName(s)[0];
-      if (d.getElementById(id)) {
-        return;
+    // Load Facebook SDK script
+    console.log('Creating Facebook SDK script element');
+    const script = document.createElement('script');
+    script.id = 'facebook-jssdk';
+    script.src = 'https://connect.facebook.net/vi_VN/sdk.js';
+    script.async = true;
+    script.onload = () => console.log('Facebook SDK script loaded');
+    script.onerror = () => console.error('Facebook SDK script failed to load');
+    document.head.appendChild(script);
+    console.log('Facebook SDK script inserted into DOM');
+
+    // Cleanup on unmount
+    return () => {
+      if (script.parentNode) {
+        document.head.removeChild(script);
       }
-      js = d.createElement(s);
-      js.id = id;
-      js.src = "https://connect.facebook.net/vi_VN/sdk.js";
-      fjs.parentNode?.insertBefore(js, fjs);
-    })(document, "script", "facebook-jssdk");
+      delete window.fbAsyncInit;
+    };
   }, []);
 
   function loginWithGoogle() {
@@ -167,6 +181,12 @@ export default function RegisterPage() {
 
     if (!window.FB) {
       setError("Facebook SDK chưa tải xong. Vui lòng thử lại.");
+      return;
+    }
+
+    // Check if running on HTTPS
+    if (typeof window !== 'undefined' && window.location.protocol !== 'https:') {
+      setError("Facebook Login yêu cầu HTTPS. Vui lòng chạy development server với HTTPS tunnel (ngrok/localtunnel).");
       return;
     }
 
@@ -329,8 +349,8 @@ export default function RegisterPage() {
         {/* Facebook OAuth Button */}
         <button
           onClick={loginWithFacebook}
-          disabled={facebookLoading || googleLoading}
-          className="w-full flex items-center justify-center gap-3 bg-[#1877F2] hover:bg-[#166FE5] disabled:bg-[#7baaf7] transition text-white font-semibold py-3.5 rounded-xl mb-4 shadow-sm"
+          disabled={facebookLoading || googleLoading || !facebookSdkReady}
+          className="w-full flex items-center justify-center gap-3 bg-[#1877F2] hover:bg-[#166FE5] disabled:bg-[#7baaf7] disabled:opacity-50 transition text-white font-semibold py-3.5 rounded-xl mb-4 shadow-sm"
         >
           {facebookLoading ? (
             <svg className="animate-spin h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
@@ -342,7 +362,7 @@ export default function RegisterPage() {
               <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.469h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.469h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
             </svg>
           )}
-          <span>{facebookLoading ? "Đang xử lý..." : "Đăng ký bằng Facebook"}</span>
+          <span>{facebookLoading ? "Đang xử lý..." : !facebookSdkReady ? "Đang tải Facebook SDK..." : "Đăng ký bằng Facebook"}</span>
         </button>
 
         {/* Divider */}
