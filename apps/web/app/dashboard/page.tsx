@@ -163,6 +163,42 @@ export default function DashboardPage() {
             </div>
           </div>
 
+          {/* Vocabulary Stats Row */}
+          {statistics.vocabulary && (
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 lg:gap-4">
+              <div className="bg-zinc-900/60 border border-zinc-800/50 rounded-2xl p-4 text-center">
+                <span className="text-[10px] text-zinc-500 uppercase tracking-wider font-medium block mb-2">Tổng từ vựng</span>
+                <p className="text-2xl font-bold text-white">{statistics.vocabulary.total}</p>
+              </div>
+              <div className="bg-zinc-900/60 border border-zinc-800/50 rounded-2xl p-4 text-center">
+                <span className="text-[10px] text-zinc-500 uppercase tracking-wider font-medium block mb-2">Thành thạo</span>
+                <p className="text-2xl font-bold text-green-400">{statistics.vocabulary.mastered}</p>
+              </div>
+              <div className="bg-zinc-900/60 border border-zinc-800/50 rounded-2xl p-4 text-center">
+                <span className="text-[10px] text-zinc-500 uppercase tracking-wider font-medium block mb-2">Đang học</span>
+                <p className="text-2xl font-bold text-blue-400">{statistics.vocabulary.learning}</p>
+              </div>
+              <div className="bg-zinc-900/60 border border-zinc-800/50 rounded-2xl p-4 text-center">
+                <span className="text-[10px] text-zinc-500 uppercase tracking-wider font-medium block mb-2">Cần ôn</span>
+                <p className="text-2xl font-bold text-orange-400">{statistics.vocabulary.review}</p>
+              </div>
+            </div>
+          )}
+
+          {/* New Vocabulary Stats Row */}
+          {statistics.vocabulary && (
+            <div className="grid grid-cols-2 sm:grid-cols-2 gap-3 lg:gap-4">
+              <div className="bg-zinc-900/60 border border-zinc-800/50 rounded-2xl p-4 text-center">
+                <span className="text-[10px] text-zinc-500 uppercase tracking-wider font-medium block mb-2">Mới</span>
+                <p className="text-2xl font-bold text-purple-400">{statistics.vocabulary.new}</p>
+              </div>
+              <div className="bg-zinc-900/60 border border-zinc-800/50 rounded-2xl p-4 text-center">
+                <span className="text-[10px] text-zinc-500 uppercase tracking-wider font-medium block mb-2">Đã học tổng</span>
+                <p className="text-2xl font-bold text-pink-400">{statistics.learnedVocabulary}</p>
+              </div>
+            </div>
+          )}
+
           {/* Progress Bar Score */}
           <div className="bg-zinc-900/60 border border-zinc-800/50 rounded-2xl p-5 lg:p-6">
             <div className="flex items-center justify-between mb-4">
@@ -294,6 +330,37 @@ export default function DashboardPage() {
               )
             )}
           </div>
+
+          {/* Vocabulary Daily Stats */}
+          {daily.vocabulary && (
+            <div className="bg-zinc-900/60 border border-zinc-800/50 rounded-2xl p-5 lg:p-6">
+              <h3 className="text-sm font-semibold text-white mb-4 flex items-center gap-2">
+                <span className="w-7 h-7 rounded-lg bg-purple-600/15 flex items-center justify-center text-xs text-purple-500">📚</span>
+                Từ vựng hôm nay
+              </h3>
+              <div className="grid grid-cols-3 gap-3">
+                <div className="bg-zinc-800/40 p-3 rounded-xl border border-zinc-700/30 text-center">
+                  <p className="text-xl font-bold text-green-400">{daily.vocabulary.learnedToday}</p>
+                  <p className="text-xs text-zinc-400 mt-1">Đã học</p>
+                </div>
+                <div className="bg-zinc-800/40 p-3 rounded-xl border border-zinc-700/30 text-center">
+                  <p className="text-xl font-bold text-blue-400">{daily.vocabulary.reviewedToday}</p>
+                  <p className="text-xs text-zinc-400 mt-1">Đã ôn</p>
+                </div>
+                <div className="bg-zinc-800/40 p-3 rounded-xl border border-zinc-700/30 text-center">
+                  <p className="text-xl font-bold text-orange-400">{daily.vocabulary.remaining}</p>
+                  <p className="text-xs text-zinc-400 mt-1">Còn lại</p>
+                </div>
+              </div>
+              <div className="flex items-center justify-between mt-3 text-xs text-zinc-400">
+                <span>Mục tiêu: {daily.vocabulary.goal} từ/ngày</span>
+                <span className="text-purple-400 font-bold">{Math.round(((daily.vocabulary.learnedToday + daily.vocabulary.reviewedToday) / daily.vocabulary.goal) * 100)}%</span>
+              </div>
+              <div className="w-full bg-zinc-800/80 rounded-full h-2 mt-2">
+                <div className="bg-purple-500 h-2 rounded-full transition-all" style={{ width: `${((daily.vocabulary.learnedToday + daily.vocabulary.reviewedToday) / daily.vocabulary.goal) * 100}%` }}></div>
+              </div>
+            </div>
+          )}
           
         </div>
 

@@ -76,6 +76,7 @@ const [srsNotification, setSrsNotification] = useState(true);
 const [autoPronunciation, setAutoPronunciation] = useState(false);
 
 const [darkMode, setDarkMode] = useState(true);
+const [dailyVocabularyGoal, setDailyVocabularyGoal] = useState(20);
 
  useEffect(() => {
   loadProfile();
@@ -125,6 +126,8 @@ setExamDate(
     ? data.examDate.substring(0,10)
     : ""
 );
+
+setDailyVocabularyGoal(data.dailyVocabularyGoal || 20);
 
 
 setDailyStudyTime(
@@ -244,6 +247,8 @@ targetScore,
 examDate,
 
 dailyStudyTime,
+
+dailyVocabularyGoal,
 
 })
 
@@ -1121,6 +1126,27 @@ className="w-full bg-zinc-800/60 border border-zinc-700/60 text-white rounded-xl
                   }`}
                 >
                   {t} phút
+                </button>
+              ))}
+            </div>
+          </div>
+
+          <div>
+            <label className="text-[11px] text-zinc-500 uppercase tracking-wider font-medium block mb-3">
+              Mục tiêu từ vựng hàng ngày
+            </label>
+            <div className="flex gap-2 flex-wrap">
+              {[20, 30, 40].map((t) => (
+                <button
+                  key={t}
+                  onClick={() => setDailyVocabularyGoal(t)}
+                  className={`px-4 py-2 rounded-xl text-[13px] font-semibold border transition-all ${
+                    dailyVocabularyGoal === t
+                      ? "bg-purple-600 border-purple-500 text-white shadow-sm"
+                      : "bg-zinc-800/60 border-zinc-700/50 text-zinc-400 hover:border-zinc-600 hover:text-white"
+                  }`}
+                >
+                  {t} từ
                 </button>
               ))}
             </div>

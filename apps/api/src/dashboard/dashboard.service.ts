@@ -56,6 +56,25 @@ export class DashboardService {
       where: { userId, status: { not: "NEW" } },
     });
 
+    // Tính số từ theo từng status
+    const masteredVocab = await this.prisma.userVocabularyProgress.count({
+      where: { userId, status: "MASTERED" },
+    });
+    const learningVocab = await this.prisma.userVocabularyProgress.count({
+      where: { userId, status: "LEARNING" },
+    });
+    const newVocab = await this.prisma.userVocabularyProgress.count({
+      where: { userId, status: "NEW" },
+    });
+    const reviewVocab = await this.prisma.userVocabularyProgress.count({
+      where: { 
+        userId, 
+        status: { not: "NEW" },
+        nextReview: { lte: new Date() }
+      },
+    });
+    const totalVocab = await this.prisma.vocabulary.count();
+
     // 3. Tính Grammar Progress
     const totalGrammar = await this.prisma.grammarLesson.count();
     const completedGrammar = await this.prisma.userGrammarProgress.count({
@@ -107,6 +126,7 @@ export class DashboardService {
     const vocabToReviewToday = await this.prisma.userVocabularyProgress.count({
       where: { userId, status: { not: "NEW" }, nextReview: { lte: endOfToday } },
     });
+    const dailyVocabularyGoal = user.profile.dailyVocabularyGoal || 20;
     const vocabReviewGoal = vocabReviewedToday + vocabToReviewToday;
 
     const completedGrammarToday = await this.prisma.userGrammarProgress.count({
@@ -272,14 +292,27 @@ export class DashboardService {
         completedListening: totalCompletedListening,
         completedReading,
         practiceCount,
-        mockTestCount
+        mockTestCount,
+        vocabulary: {
+          total: totalVocab,
+          mastered: masteredVocab,
+          learning: learningVocab,
+          new: newVocab,
+          review: reviewVocab,
+        },
       },
       daily: {
         tasksCompleted: tasksCompletedToday,
         taskGoal: dailyStudyGoal,
         progress: dailyStudyProgress,
         studyTimeGoal: dailyStudyTime,
-        tasks: dailyTasks
+        tasks: dailyTasks,
+        vocabulary: {
+          learnedToday: vocabLearnedToday,
+          reviewedToday: vocabReviewedToday,
+          goal: dailyVocabularyGoal,
+          remaining: Math.max(0, dailyVocabularyGoal - vocabLearnedToday),
+        },
       },
       recentActivities: recentActivities.slice(0, 5)
     };

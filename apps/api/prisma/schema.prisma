@@ -85,6 +85,7 @@ model UserProfile {
   lastPlacementTestAt DateTime?
   currentStage        Int?      @default(1)
   stageAcceptedAt     DateTime?
+  dailyVocabularyGoal Int       @default(20)
   user                User      @relation(fields: [userId], references: [id])
 }
 

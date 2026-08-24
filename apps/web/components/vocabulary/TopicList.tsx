@@ -43,20 +43,20 @@ export default function TopicList({
 
         {topics.map((topic) => (
           <button
-            key={topic.topic}
-            onClick={() => onSelect(topic.topic)}
+            key={topic.label}
+            onClick={() => onSelect(topic.label)}
             className={`flex w-full items-center justify-between rounded-lg px-3 py-2 transition ${
-              selectedTopic === topic.topic
+              selectedTopic === topic.label
                 ? "bg-blue-600 text-white"
                 : "bg-zinc-800 text-gray-300 hover:bg-zinc-700"
             }`}
           >
             <span className="text-left">
-              {topic.topic}
+              {topic.label}
             </span>
 
             <span className="rounded-full bg-zinc-700 px-2 py-1 text-xs">
-              {topic.totalWords}
+              {topic.words}
             </span>
           </button>
         ))}

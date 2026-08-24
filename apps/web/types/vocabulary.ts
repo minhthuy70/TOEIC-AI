@@ -19,6 +19,8 @@ export interface DashboardResponse {
 
   learnedToday: number;
 
+  reviewedToday: number;
+
   dailyGoal: number;
 
   remainToday: number;
@@ -28,6 +30,8 @@ export interface DashboardResponse {
   review: number;
 
   mastered: number;
+
+  new: number;
 
   progress: number;
 }

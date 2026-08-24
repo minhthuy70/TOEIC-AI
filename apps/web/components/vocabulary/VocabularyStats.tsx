@@ -50,6 +50,44 @@ export default function VocabularyStats({
 
       </div>
 
+      {/* ===== Vocabulary Status Breakdown ===== */}
+
+      <div className="grid gap-4 md:grid-cols-4">
+
+        <StatusCard
+          title="Thành thạo"
+          value={data.mastered}
+          color="text-green-400"
+          bgColor="bg-green-600/10"
+          borderColor="border-green-600/20"
+        />
+
+        <StatusCard
+          title="Đang học"
+          value={data.learning}
+          color="text-blue-400"
+          bgColor="bg-blue-600/10"
+          borderColor="border-blue-600/20"
+        />
+
+        <StatusCard
+          title="Mới"
+          value={data.new}
+          color="text-purple-400"
+          bgColor="bg-purple-600/10"
+          borderColor="border-purple-600/20"
+        />
+
+        <StatusCard
+          title="Cần ôn tập"
+          value={data.review}
+          color="text-orange-400"
+          bgColor="bg-orange-600/10"
+          borderColor="border-orange-600/20"
+        />
+
+      </div>
+
       {/* ===== Progress ===== */}
 
       <div className="rounded-xl border border-zinc-800 bg-zinc-900 p-6">
@@ -93,11 +131,16 @@ export default function VocabularyStats({
 
       {/* ===== Học hôm nay ===== */}
 
-      <div className="grid gap-4 md:grid-cols-3">
+      <div className="grid gap-4 md:grid-cols-4">
 
         <SmallCard
           title="Đã học hôm nay"
           value={data.learnedToday}
+        />
+
+        <SmallCard
+          title="Đã ôn hôm nay"
+          value={data.reviewedToday}
         />
 
         <SmallCard
@@ -122,6 +165,14 @@ interface CardProps {
   color: string;
 }
 
+interface StatusCardProps {
+  title: string;
+  value: number;
+  color: string;
+  bgColor: string;
+  borderColor: string;
+}
+
 function StatCard({
   title,
   value,
@@ -140,6 +191,35 @@ function StatCard({
         {value}
       </h2>
 
+    </div>
+  );
+}
+
+interface StatusCardProps {
+  title: string;
+  value: number;
+  color: string;
+  bgColor: string;
+  borderColor: string;
+}
+
+function StatusCard({
+  title,
+  value,
+  color,
+  bgColor,
+  borderColor,
+}: StatusCardProps) {
+  return (
+    <div className={`rounded-xl border ${borderColor} ${bgColor} p-5`}>
+      <p className="text-sm text-gray-400">
+        {title}
+      </p>
+      <h3
+        className={`mt-2 text-2xl font-bold ${color}`}
+      >
+        {value}
+      </h3>
     </div>
   );
 }

@@ -230,6 +230,7 @@ export class ProfileService {
     lastPlacementTestAt: user.profile?.lastPlacementTestAt,
     currentStage: user.profile?.currentStage,
     stageAcceptedAt: user.profile?.stageAcceptedAt,
+    dailyVocabularyGoal: user.profile?.dailyVocabularyGoal,
 
     studyNotification: user.profile?.studyNotification,
 srsNotification: user.profile?.srsNotification,
@@ -312,6 +313,9 @@ async updateProfile(
       studySchedule:data.studySchedule,
       motivationLevel:data.motivationLevel,
       learningStyle:data.learningStyle,
+      dailyVocabularyGoal:data.dailyVocabularyGoal
+        ? Number(data.dailyVocabularyGoal)
+        : undefined,
 
       studyNotification:data.studyNotification,
 srsNotification:data.srsNotification,
@@ -350,6 +354,9 @@ darkMode:data.darkMode,
       studySchedule:data.studySchedule,
       motivationLevel:data.motivationLevel,
       learningStyle:data.learningStyle,
+      dailyVocabularyGoal:data.dailyVocabularyGoal
+        ? Number(data.dailyVocabularyGoal)
+        : undefined,
       studyNotification:data.studyNotification,
 srsNotification:data.srsNotification,
 autoPronunciation:data.autoPronunciation,
