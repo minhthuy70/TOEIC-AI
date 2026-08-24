@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef, useCallback } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 
@@ -25,8 +25,56 @@ export default function RegisterPage() {
   const [error, setError] = useState("");
   const [googleLoading, setGoogleLoading] = useState(false);
   const [facebookLoading, setFacebookLoading] = useState(false);
+  
+  // Ref to track Google GIS initialization status
+  const googleInitialized = useRef(false);
 
-  // Load Google Identity Services script
+  // Google credential handler with stable reference
+  const handleGoogleCredential = useCallback(async (response: any) => {
+    setGoogleLoading(true);
+    setError("");
+
+    console.log('=== Frontend Google Debug ===');
+    console.log('Response from Google:', response);
+    console.log('Credential exists:', !!response.credential);
+    console.log('Credential length:', response.credential?.length);
+    console.log('Google Client ID:', process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID);
+
+    try {
+      const res = await fetch("http://localhost:3001/auth/google", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ idToken: response.credential }),
+      });
+
+      const data = await res.json();
+      console.log('Backend response:', data);
+
+      if (data.accessToken) {
+        localStorage.setItem("accessToken", data.accessToken);
+        localStorage.setItem("user", JSON.stringify(data.user));
+
+        if (
+          data.user.role === "SUPER_ADMIN" ||
+          data.user.role === "CONTENT_ADMIN"
+        ) {
+          router.push("/admin");
+        } else if (!data.user.firstLoginCompleted) {
+          router.push("/onboarding");
+        } else {
+          router.push("/dashboard");
+        }
+      } else {
+        setError(data.message || "Đăng ký Google thất bại");
+      }
+    } catch {
+      setError("Lỗi kết nối. Vui lòng thử lại.");
+    } finally {
+      setGoogleLoading(false);
+    }
+  }, [router]);
+
+  // Load Google Identity Services script and initialize once
   useEffect(() => {
     const script = document.createElement("script");
     script.src = "https://accounts.google.com/gsi/client";
@@ -34,10 +82,28 @@ export default function RegisterPage() {
     script.defer = true;
     document.head.appendChild(script);
 
-    return () => {
-      document.head.removeChild(script);
+    script.onload = () => {
+      const clientId = process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID;
+      if (clientId && clientId !== "your-google-client-id.apps.googleusercontent.com" && window.google) {
+        window.google.accounts.id.initialize({
+          client_id: clientId,
+          callback: handleGoogleCredential,
+        });
+        googleInitialized.current = true;
+      }
     };
-  }, []);
+
+    return () => {
+      if (script.parentNode) {
+        document.head.removeChild(script);
+      }
+      // Reset Google GIS initialization when component unmounts
+      if (window.google && window.google.accounts) {
+        window.google.accounts.id.cancel();
+      }
+      googleInitialized.current = false;
+    };
+  }, [handleGoogleCredential]);
 
   // Load Facebook JS SDK
   useEffect(() => {
@@ -63,43 +129,6 @@ export default function RegisterPage() {
     })(document, "script", "facebook-jssdk");
   }, []);
 
-  async function handleGoogleCredential(response: any) {
-    setGoogleLoading(true);
-    setError("");
-
-    try {
-      const res = await fetch("http://localhost:3001/auth/google", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ idToken: response.credential }),
-      });
-
-      const data = await res.json();
-
-      if (data.accessToken) {
-        localStorage.setItem("accessToken", data.accessToken);
-        localStorage.setItem("user", JSON.stringify(data.user));
-
-        if (
-          data.user.role === "SUPER_ADMIN" ||
-          data.user.role === "CONTENT_ADMIN"
-        ) {
-          router.push("/admin");
-        } else if (!data.user.firstLoginCompleted) {
-          router.push("/onboarding");
-        } else {
-          router.push("/dashboard");
-        }
-      } else {
-        setError(data.message || "Đăng ký Google thất bại");
-      }
-    } catch {
-      setError("Lỗi kết nối. Vui lòng thử lại.");
-    } finally {
-      setGoogleLoading(false);
-    }
-  }
-
   function loginWithGoogle() {
     const clientId = process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID;
     if (!clientId || clientId === "your-google-client-id.apps.googleusercontent.com") {
@@ -112,25 +141,21 @@ export default function RegisterPage() {
       return;
     }
 
-    window.google.accounts.id.initialize({
-      client_id: clientId,
-      callback: handleGoogleCredential,
-    });
+    if (!googleInitialized.current) {
+      setError("Google GIS chưa được khởi tạo. Vui lòng tải lại trang.");
+      return;
+    }
 
-    window.google.accounts.id.prompt((notification: any) => {
-      if (notification.isNotDisplayed() || notification.isSkippedMoment()) {
-        // Fallback: dùng renderButton nếu prompt bị block
-        const buttonDiv = document.getElementById("google-signin-btn-register");
-        if (buttonDiv) {
-          window.google.accounts.id.renderButton(buttonDiv, {
-            theme: "outline",
-            size: "large",
-            width: buttonDiv.offsetWidth,
-          });
-          buttonDiv.click();
-        }
-      }
-    });
+    // Render button and trigger it programmatically
+    const buttonDiv = document.getElementById("google-signin-btn-register");
+    if (buttonDiv) {
+      window.google.accounts.id.renderButton(buttonDiv, {
+        theme: "outline",
+        size: "large",
+        width: buttonDiv.offsetWidth,
+      });
+      buttonDiv.click();
+    }
   }
 
   function loginWithFacebook() {

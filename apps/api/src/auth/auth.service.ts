@@ -598,20 +598,40 @@ export class AuthService {
   }
 
   async googleLogin(idToken: string, rememberMe: boolean = false, userAgentParam?: string, acceptLanguageParam?: string) {
+    console.log('=== Google Login Debug ===');
+    console.log('ID Token exists:', !!idToken);
+    console.log('ID Token length:', idToken?.length);
+    console.log('Environment GOOGLE_CLIENT_ID:', process.env.GOOGLE_CLIENT_ID);
+    
     // Verify Google idToken qua Google tokeninfo API
     const googleRes = await fetch(
       `https://oauth2.googleapis.com/tokeninfo?id_token=${idToken}`,
     );
 
+    console.log('Google API response status:', googleRes.status);
+    console.log('Google API response ok:', googleRes.ok);
+
     if (!googleRes.ok) {
+      const errorText = await googleRes.text();
+      console.log('Google API error response:', errorText);
       return { message: "Google token không hợp lệ" };
     }
 
     const googleData = await googleRes.json();
+    console.log('Google token info - aud:', googleData.aud);
+    console.log('Google token info - iss:', googleData.iss);
+    console.log('Google token info - email:', googleData.email);
+    console.log('Google token info - email_verified:', googleData.email_verified);
 
     // Kiểm tra client_id khớp (bảo mật)
     const clientId = process.env.GOOGLE_CLIENT_ID;
+    console.log('Client ID from env:', clientId);
+    console.log('Audience check:', googleData.aud === clientId);
+    
     if (clientId && googleData.aud !== clientId) {
+      console.log('Audience mismatch!');
+      console.log('Expected:', clientId);
+      console.log('Got:', googleData.aud);
       return { message: "Google token không hợp lệ" };
     }
 

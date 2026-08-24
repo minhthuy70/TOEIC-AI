@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef, useCallback } from "react";
 import { useRouter } from "next/navigation";
 
 declare global {
@@ -26,72 +26,12 @@ export default function LoginPage() {
   const [isPermanentlyLocked, setIsPermanentlyLocked] = useState(false);
   const [googleLoading, setGoogleLoading] = useState(false);
   const [facebookLoading, setFacebookLoading] = useState(false);
+  
+  // Ref to track Google GIS initialization status
+  const googleInitialized = useRef(false);
 
-  // Load saved email on mount
-  useEffect(() => {
-    const savedEmail = localStorage.getItem("rememberedEmail");
-    if (savedEmail) {
-      setEmail(savedEmail);
-      setRememberMe(true);
-    }
-  }, []);
-
-  // Countdown timer for lock
-  useEffect(() => {
-    if (isLocked && lockedUntil && !isPermanentlyLocked) {
-      const interval = setInterval(() => {
-        const now = Date.now();
-        if (lockedUntil.getTime() <= now) {
-          setIsLocked(false);
-          setLockedUntil(null);
-          setRemainingAttempts(null);
-          setLockCount(0);
-          setError("");
-        }
-      }, 1000);
-
-      return () => clearInterval(interval);
-    }
-  }, [isLocked, lockedUntil, isPermanentlyLocked]);
-
-  // Load Google Identity Services script
-  useEffect(() => {
-    const script = document.createElement("script");
-    script.src = "https://accounts.google.com/gsi/client";
-    script.async = true;
-    script.defer = true;
-    document.head.appendChild(script);
-
-    return () => {
-      document.head.removeChild(script);
-    };
-  }, []);
-
-  // Load Facebook JS SDK
-  useEffect(() => {
-    window.fbAsyncInit = function () {
-      window.FB.init({
-        appId: process.env.NEXT_PUBLIC_FACEBOOK_APP_ID || "",
-        cookie: true,
-        xfbml: true,
-        version: "v20.0",
-      });
-    };
-
-    (function (d, s, id) {
-      var js: any,
-        fjs = d.getElementsByTagName(s)[0];
-      if (d.getElementById(id)) {
-        return;
-      }
-      js = d.createElement(s);
-      js.id = id;
-      js.src = "https://connect.facebook.net/vi_VN/sdk.js";
-      fjs.parentNode?.insertBefore(js, fjs);
-    })(document, "script", "facebook-jssdk");
-  }, []);
-
-  async function handleGoogleCredential(response: any) {
+  // Google credential handler with stable reference
+  const handleGoogleCredential = useCallback(async (response: any) => {
     setGoogleLoading(true);
     setError("");
 
@@ -133,7 +73,89 @@ export default function LoginPage() {
     } finally {
       setGoogleLoading(false);
     }
-  }
+  }, [rememberMe, email, router]);
+
+  // Load saved email on mount
+  useEffect(() => {
+    const savedEmail = localStorage.getItem("rememberedEmail");
+    if (savedEmail) {
+      setEmail(savedEmail);
+      setRememberMe(true);
+    }
+  }, []);
+
+  // Countdown timer for lock
+  useEffect(() => {
+    if (isLocked && lockedUntil && !isPermanentlyLocked) {
+      const interval = setInterval(() => {
+        const now = Date.now();
+        if (lockedUntil.getTime() <= now) {
+          setIsLocked(false);
+          setLockedUntil(null);
+          setRemainingAttempts(null);
+          setLockCount(0);
+          setError("");
+        }
+      }, 1000);
+
+      return () => clearInterval(interval);
+    }
+  }, [isLocked, lockedUntil, isPermanentlyLocked]);
+
+  // Load Google Identity Services script and initialize once
+  useEffect(() => {
+    const script = document.createElement("script");
+    script.src = "https://accounts.google.com/gsi/client";
+    script.async = true;
+    script.defer = true;
+    document.head.appendChild(script);
+
+    script.onload = () => {
+      const clientId = process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID;
+      if (clientId && clientId !== "your-google-client-id.apps.googleusercontent.com" && window.google) {
+        window.google.accounts.id.initialize({
+          client_id: clientId,
+          callback: handleGoogleCredential,
+        });
+        googleInitialized.current = true;
+      }
+    };
+
+    return () => {
+      if (script.parentNode) {
+        document.head.removeChild(script);
+      }
+      // Reset Google GIS initialization when component unmounts
+      if (window.google && window.google.accounts) {
+        window.google.accounts.id.cancel();
+      }
+      googleInitialized.current = false;
+    };
+  }, [handleGoogleCredential]);
+
+  // Load Facebook JS SDK
+  useEffect(() => {
+    window.fbAsyncInit = function () {
+      window.FB.init({
+        appId: process.env.NEXT_PUBLIC_FACEBOOK_APP_ID || "",
+        cookie: true,
+        xfbml: true,
+        version: "v20.0",
+      });
+    };
+
+    (function (d, s, id) {
+      var js: any,
+        fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) {
+        return;
+      }
+      js = d.createElement(s);
+      js.id = id;
+      js.src = "https://connect.facebook.net/vi_VN/sdk.js";
+      fjs.parentNode?.insertBefore(js, fjs);
+    })(document, "script", "facebook-jssdk");
+  }, []);
 
   function loginWithGoogle() {
     const clientId = process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID;
@@ -147,25 +169,21 @@ export default function LoginPage() {
       return;
     }
 
-    window.google.accounts.id.initialize({
-      client_id: clientId,
-      callback: handleGoogleCredential,
-    });
+    if (!googleInitialized.current) {
+      setError("Google GIS chưa được khởi tạo. Vui lòng tải lại trang.");
+      return;
+    }
 
-    window.google.accounts.id.prompt((notification: any) => {
-      if (notification.isNotDisplayed() || notification.isSkippedMoment()) {
-        // Fallback: render button nếu One Tap bị block
-        const buttonDiv = document.getElementById("google-signin-btn-login");
-        if (buttonDiv) {
-          window.google.accounts.id.renderButton(buttonDiv, {
-            theme: "outline",
-            size: "large",
-            width: buttonDiv.offsetWidth,
-          });
-          buttonDiv.click();
-        }
-      }
-    });
+    // Render button and trigger it programmatically
+    const buttonDiv = document.getElementById("google-signin-btn-login");
+    if (buttonDiv) {
+      window.google.accounts.id.renderButton(buttonDiv, {
+        theme: "outline",
+        size: "large",
+        width: buttonDiv.offsetWidth,
+      });
+      buttonDiv.click();
+    }
   }
 
   function loginWithFacebook() {
