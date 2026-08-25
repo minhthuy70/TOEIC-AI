@@ -87,7 +87,7 @@ export default function DashboardPage() {
       const res = await apiFetch<any>("/dashboard/overview");
       setData(res);
     } catch (error) {
-      console.error(error);
+      console.error('Dashboard fetch error:', error);
     } finally {
       setLoading(false);
     }

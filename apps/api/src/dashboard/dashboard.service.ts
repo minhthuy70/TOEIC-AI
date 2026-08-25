@@ -21,15 +21,16 @@ export class DashboardService {
   }
 
   async getOverview(userId: number) {
-    // 1. Lấy thông tin user và profile
-    const user = await this.prisma.user.findUnique({
-      where: { id: userId },
-      include: { profile: true },
-    });
+    try {
+      // 1. Lấy thông tin user và profile
+      const user = await this.prisma.user.findUnique({
+        where: { id: userId },
+        include: { profile: true },
+      });
 
-    if (!user || !user.profile) {
-      throw new Error("Không tìm thấy thông tin user");
-    }
+      if (!user || !user.profile) {
+        throw new Error("Không tìm thấy thông tin user");
+      }
 
     const currentScore = user.profile.currentScore ?? 0;
     const targetScore = user.profile.targetScore ?? 600;
@@ -250,16 +251,16 @@ export class DashboardService {
 
     const recentActivities: { id: string; type: string; title: string; date: Date; icon: string }[] = [];
     recentVocab.forEach(v => {
-      if(v.learnedAt) recentActivities.push({ id: `voc_${v.id}`, type: "Vocabulary", title: `Học từ vựng: ${v.vocabulary.english}`, date: v.learnedAt, icon: "📖" })
+      if(v.learnedAt && v.vocabulary) recentActivities.push({ id: `voc_${v.id}`, type: "Vocabulary", title: `Học từ vựng: ${v.vocabulary.english}`, date: v.learnedAt, icon: "📖" })
     });
     recentGrammar.forEach(g => {
-      if(g.lastStudied) recentActivities.push({ id: `gra_${g.id}`, type: "Grammar", title: `Hoàn thành ngữ pháp: ${g.lesson.title}`, date: g.lastStudied, icon: "📝" })
+      if(g.lastStudied && g.lesson) recentActivities.push({ id: `gra_${g.id}`, type: "Grammar", title: `Hoàn thành ngữ pháp: ${g.lesson.title}`, date: g.lastStudied, icon: "📝" })
     });
     recentListening.forEach(l => {
-      if(l.last_studied) recentActivities.push({ id: `lis_${l.id}`, type: "Listening", title: `Hoàn thành Listening: ${l.listening_lessons.title}`, date: l.last_studied, icon: "🎧" })
+      if(l.last_studied && l.listening_lessons) recentActivities.push({ id: `lis_${l.id}`, type: "Listening", title: `Hoàn thành Listening: ${l.listening_lessons.title}`, date: l.last_studied, icon: "🎧" })
     });
     recentReading.forEach(r => {
-      if(r.last_studied) recentActivities.push({ id: `rea_${r.id}`, type: "Reading", title: `Hoàn thành Reading: ${r.lesson.title}`, date: r.last_studied, icon: "📄" })
+      if(r.last_studied && r.lesson) recentActivities.push({ id: `rea_${r.id}`, type: "Reading", title: `Hoàn thành Reading: ${r.lesson.title}`, date: r.last_studied, icon: "📄" })
     });
 
     recentActivities.sort((a, b) => b.date.getTime() - a.date.getTime());
@@ -316,5 +317,9 @@ export class DashboardService {
       },
       recentActivities: recentActivities.slice(0, 5)
     };
+    } catch (error) {
+      console.error('Error in getOverview:', error);
+      throw new Error('Internal server error while fetching dashboard data');
+    }
   }
 }
