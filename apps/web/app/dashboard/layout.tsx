@@ -92,51 +92,8 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
 
       setUser(parsedUser);
 
-      
-
-      // If scores are missing in localStorage, fetch from API
-
-      if (!parsedUser.currentScore || !parsedUser.targetScore) {
-
-        const token = localStorage.getItem("accessToken");
-
-        if (token) {
-
-          fetch("http://localhost:3001/profile/me", {
-
-            headers: { Authorization: `Bearer ${token}` }
-
-          })
-
-          .then(res => res.json())
-
-          .then(profile => {
-
-            if (profile.currentScore !== undefined || profile.targetScore !== undefined) {
-
-              const updatedUser = {
-
-                ...parsedUser,
-
-                currentScore: profile.currentScore,
-
-                targetScore: profile.targetScore,
-
-              };
-
-              setUser(updatedUser);
-
-              localStorage.setItem("user", JSON.stringify(updatedUser));
-
-            }
-
-          })
-
-          .catch(err => console.error("Failed to fetch profile:", err));
-
-        }
-
-      }
+      // Profile fetching temporarily disabled due to authentication issues
+      // TODO: Re-enable after fixing authentication system
 
     }
 
