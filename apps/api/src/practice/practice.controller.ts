@@ -7,6 +7,7 @@ import {
   ParseIntPipe,
   Post,
   Req,
+  Query,
   UnauthorizedException,
   UseGuards,
 } from "@nestjs/common";
@@ -67,6 +68,7 @@ export class PracticeController {
   @Get("start/:part")
   async startPractice(
     @Param("part", ParseIntPipe) part: number,
+    @Query("count") countStr: string,
     @Req() req: any,
   ) {
     if (part < 1 || part > 7) {
@@ -77,9 +79,13 @@ export class PracticeController {
 
     const userId = this.getUserId(req);
 
+    const count = countStr === "all" ? 999 : parseInt(countStr, 10);
+    const validCount = isNaN(count) ? undefined : count;
+
     return this.practiceService.startPractice(
       userId,
       part,
+      validCount,
     );
   }
 

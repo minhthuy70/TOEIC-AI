@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
@@ -162,6 +162,7 @@ export default function ListeningDashboardPage() {
             {/* Radar Chart */}
             <div className="lg:col-span-2 bg-zinc-900/60 border border-zinc-800 rounded-2xl p-5">
               <h2 className="text-sm font-bold text-white mb-4">PhÃ¢n tÃ­ch ká»¹ nÄƒng theo Part (Tá»· lá»‡ chÃ­nh xÃ¡c)</h2>
+              <h2 className="text-sm font-bold text-white mb-4">Phân tích kỹ năng theo Part (Tỷ lệ chính xác)</h2>
               <div className="h-[300px] w-full">
                 <ResponsiveContainer width="100%" height="100%">
                   <RadarChart cx="50%" cy="50%" outerRadius="80%" data={radarData}>
@@ -170,7 +171,7 @@ export default function ListeningDashboardPage() {
                     <PolarRadiusAxis angle={30} domain={[0, 100]} tick={{ fill: '#52525b', fontSize: 10 }} />
                     <Tooltip content={<CustomTooltip />} />
                     <Radar
-                      name="Tá»· lá»‡ chÃ­nh xÃ¡c"
+                      name="Tỷ lệ chính xác"
                       dataKey="A"
                       stroke="#818cf8"
                       fill="#6366f1"
@@ -186,27 +187,48 @@ export default function ListeningDashboardPage() {
       )}
 
       {/* Navigation to Practices */}
-      <h2 className="text-lg font-bold text-white mt-10 mb-4">Báº¯t Ä‘áº§u luyá»‡n táº­p</h2>
+      <h2 className="text-lg font-bold text-white mt-10 mb-4">Bắt đầu luyện tập</h2>
       <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
         <Link href="/dashboard/listening/part-1" className="bg-zinc-900/80 hover:bg-zinc-800 border border-zinc-800 hover:border-zinc-700 rounded-2xl p-5 group transition">
-          <div className="w-12 h-12 bg-indigo-500/20 text-indigo-400 rounded-xl flex items-center justify-center text-xl mb-4 group-hover:scale-110 transition-transform">ðŸ–¼ï¸</div>
+          <div className="w-12 h-12 bg-indigo-500/20 text-indigo-400 rounded-xl flex items-center justify-center text-xl mb-4 group-hover:scale-110 transition-transform">🖼️</div>
           <h3 className="font-bold text-white mb-1">Part 1</h3>
-          <p className="text-xs text-zinc-400">MÃ´ táº£ hÃ¬nh áº£nh (Photographs)</p>
+          <p className="text-xs text-zinc-400">Mô tả hình ảnh (Photographs)</p>
         </Link>
         <Link href="/dashboard/listening/part-2" className="bg-zinc-900/80 hover:bg-zinc-800 border border-zinc-800 hover:border-zinc-700 rounded-2xl p-5 group transition">
-          <div className="w-12 h-12 bg-emerald-500/20 text-emerald-400 rounded-xl flex items-center justify-center text-xl mb-4 group-hover:scale-110 transition-transform">ðŸ’¬</div>
+          <div className="w-12 h-12 bg-emerald-500/20 text-emerald-400 rounded-xl flex items-center justify-center text-xl mb-4 group-hover:scale-110 transition-transform">💬</div>
           <h3 className="font-bold text-white mb-1">Part 2</h3>
-          <p className="text-xs text-zinc-400">Há»i & ÄÃ¡p (Question-Response)</p>
+          <p className="text-xs text-zinc-400">Hỏi & Đáp (Question-Response)</p>
         </Link>
         <Link href="/dashboard/listening/part-3" className="bg-zinc-900/80 hover:bg-zinc-800 border border-zinc-800 hover:border-zinc-700 rounded-2xl p-5 group transition">
-          <div className="w-12 h-12 bg-amber-500/20 text-amber-400 rounded-xl flex items-center justify-center text-xl mb-4 group-hover:scale-110 transition-transform">ðŸ‘¥</div>
+          <div className="w-12 h-12 bg-amber-500/20 text-amber-400 rounded-xl flex items-center justify-center text-xl mb-4 group-hover:scale-110 transition-transform">👥</div>
           <h3 className="font-bold text-white mb-1">Part 3</h3>
-          <p className="text-xs text-zinc-400">Äoáº¡n há»™i thoáº¡i (Conversations)</p>
+          <p className="text-xs text-zinc-400">Đoạn hội thoại (Conversations)</p>
         </Link>
         <Link href="/dashboard/listening/part-4" className="bg-zinc-900/80 hover:bg-zinc-800 border border-zinc-800 hover:border-zinc-700 rounded-2xl p-5 group transition">
-          <div className="w-12 h-12 bg-rose-500/20 text-rose-400 rounded-xl flex items-center justify-center text-xl mb-4 group-hover:scale-110 transition-transform">ðŸŽ¤</div>
+          <div className="w-12 h-12 bg-rose-500/20 text-rose-400 rounded-xl flex items-center justify-center text-xl mb-4 group-hover:scale-110 transition-transform">🎤</div>
           <h3 className="font-bold text-white mb-1">Part 4</h3>
-          <p className="text-xs text-zinc-400">BÃ i nÃ³i chuyá»‡n (Talks)</p>
+          <p className="text-xs text-zinc-400">Bài nói chuyện (Talks)</p>
+        </Link>
+      </div>
+
+      <div className="grid sm:grid-cols-2 gap-4 mt-4">
+        <Link href="/dashboard/listening/mixed" className="bg-gradient-to-br from-purple-900/40 to-indigo-900/40 hover:from-purple-900/60 hover:to-indigo-900/60 border border-purple-800/30 rounded-2xl p-5 group transition">
+          <div className="flex items-center gap-4">
+            <div className="w-12 h-12 bg-purple-500/20 text-purple-400 rounded-xl flex items-center justify-center text-xl group-hover:scale-110 transition-transform">🎯</div>
+            <div>
+              <h3 className="font-bold text-white">Luyện hỗn hợp</h3>
+              <p className="text-xs text-zinc-400">Kết hợp Part 1-4 tùy chọn</p>
+            </div>
+          </div>
+        </Link>
+        <Link href="/dashboard/listening/settings" className="bg-zinc-900/80 hover:bg-zinc-800 border border-zinc-800 hover:border-zinc-700 rounded-2xl p-5 group transition">
+          <div className="flex items-center gap-4">
+            <div className="w-12 h-12 bg-zinc-700/50 text-zinc-400 rounded-xl flex items-center justify-center text-xl group-hover:scale-110 transition-transform">⚙️</div>
+            <div>
+              <h3 className="font-bold text-white">Cài đặt</h3>
+              <p className="text-xs text-zinc-400">Tốc độ, âm lượng, transcript...</p>
+            </div>
+          </div>
         </Link>
       </div>
     </div>

@@ -109,9 +109,11 @@ export type PracticeHistoryItem = {
 
 export async function startPractice(
   part: number,
+  count?: number,
 ): Promise<PracticeStartResponse> {
+  const url = count ? `/practice/start/${part}?count=${count}` : `/practice/start/${part}`;
   return apiFetch(
-    `/practice/start/${part}`,
+    url,
     {
       method: "GET",
     },

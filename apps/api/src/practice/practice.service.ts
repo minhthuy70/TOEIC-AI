@@ -116,6 +116,7 @@ export class PracticeService {
   async startPractice(
     userId: number,
     part: number,
+    requestedCount?: number,
   ) {
     // ----------------------------------------------------------
     // Kiểm tra part
@@ -135,12 +136,20 @@ export class PracticeService {
       this.PRACTICE_CONFIG[
         part as keyof typeof this.PRACTICE_CONFIG
       ];
+      
+    const finalCount = requestedCount || config.count;
 
     // ----------------------------------------------------------
-    // Chọn test ngẫu nhiên
+    // Nếu không có requestedCount, chọn random 1 test để luyện
+    // Nếu có requestedCount, lấy trên toàn bộ các test
     // ----------------------------------------------------------
 
-    const test = await this.getRandomTest();
+    const whereClause: any = { part };
+    let test;
+    if (!requestedCount) {
+      test = await this.getRandomTest();
+      whereClause.test_id = test.id;
+    }
 
     // ----------------------------------------------------------
     // Lấy toàn bộ group của part
@@ -148,10 +157,7 @@ export class PracticeService {
 
     const groups =
       await this.prisma.question_groups.findMany({
-        where: {
-          test_id: test.id,
-          part,
-        },
+        where: whereClause,
 
         include: {
           questions: {
@@ -193,7 +199,7 @@ export class PracticeService {
 
     if (groups.length === 0) {
       throw new NotFoundException(
-        `Test "${test.title}" không có dữ liệu Part ${part}.`,
+        test ? `Test "${test.title}" không có dữ liệu Part ${part}.` : `Không có dữ liệu Part ${part}.`,
       );
     }
 
@@ -221,7 +227,7 @@ export class PracticeService {
     if (config.type === "group") {
       selectedGroups = this.shuffle(
         validGroups,
-      ).slice(0, config.count);
+      ).slice(0, finalCount);
     }
 
     // ----------------------------------------------------------
@@ -245,7 +251,7 @@ export class PracticeService {
       const selectedQuestions =
         this.shuffle(
           allQuestions,
-        ).slice(0, config.count);
+        ).slice(0, finalCount);
 
       // Gom lại theo group gốc
       const groupMap = new Map<
