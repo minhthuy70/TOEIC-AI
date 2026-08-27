@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import React, { useState, useEffect, useRef } from "react";
 import Link from "next/link";
@@ -29,6 +29,7 @@ function ConversationPractice({ part }: Props) {
   const [notes, setNotes] = useState<string>("");
   const [savedNote, setSavedNote] = useState(false);
   const [markedGroups, setMarkedGroups] = useState<Set<number>>(new Set());
+  const [showTranscript, setShowTranscript] = useState(false);
 
   useEffect(() => {
     let timer: NodeJS.Timeout;
@@ -131,22 +132,45 @@ function ConversationPractice({ part }: Props) {
             <button onClick={() => { setMarkedGroups(prev => { const n = new Set(prev); n.has(currentGroupIdx) ? n.delete(currentGroupIdx) : n.add(currentGroupIdx); return n; }); }}
               className={`px-4 py-2 rounded-lg text-sm font-bold ${markedGroups.has(currentGroupIdx) ? "bg-amber-600 text-white" : "bg-zinc-800 text-zinc-400"}`}>ðŸš© ÄÃ¡nh dáº¥u</button>
             <button onClick={handleSubmit} disabled={submitting} className="px-4 py-2 bg-purple-600 hover:bg-purple-500 text-white text-sm font-bold rounded-lg disabled:opacity-50">
-              {submitting ? "Äang ná»™p..." : "Ná»™p bÃ i"}
+              {submitting ? "Đang nộp..." : "Nộp bài"}
             </button>
           </div>
         </div>
 
         <div className="grid lg:grid-cols-2 gap-6 flex-1">
-          {/* Left: Audio + Notes */}
+          {/* Left: Context + Audio + Transcript + Notes */}
           <div className="space-y-4">
+            {/* Conversation context (knowledge) */}
+            {currentGroup.knowledge && (
+              <div className="bg-zinc-800/60 border border-zinc-700 rounded-2xl p-4">
+                <h4 className="text-xs font-bold text-zinc-400 uppercase tracking-wider mb-2">📍 Bối cảnh {isP3 ? "hội thoại" : "bài nói"}</h4>
+                <p className="text-zinc-200 text-sm leading-relaxed">{currentGroup.knowledge}</p>
+              </div>
+            )}
             {currentGroup.audio_url ? (
               <AudioPlayer src={currentGroup.audio_url} autoPlay={false} />
             ) : (
-              <div className="h-24 bg-zinc-800/50 rounded-xl flex items-center justify-center text-zinc-500">KhÃ´ng cÃ³ audio</div>
+              <div className="h-24 bg-zinc-800/50 rounded-xl flex items-center justify-center text-zinc-500">Không có audio</div>
             )}
+            {/* Transcript Toggle */}
+            <div className="bg-zinc-900 border border-zinc-800 rounded-2xl overflow-hidden">
+              <button onClick={() => setShowTranscript(s => !s)}
+                className="w-full flex items-center justify-between p-4 hover:bg-zinc-800/50 transition">
+                <span className="text-sm font-bold text-zinc-300">📄 Bản ghi {isP3 ? "hội thoại" : "bài nói"}</span>
+                <span className="text-zinc-500 text-xs">{showTranscript ? "▲ Ẩn" : "▼ Xem"}</span>
+              </button>
+              {showTranscript && currentGroup.title && (
+                <div className="px-4 pb-4">
+                  <p className="text-sm text-zinc-300 leading-relaxed whitespace-pre-wrap">{currentGroup.title}</p>
+                </div>
+              )}
+              {showTranscript && !currentGroup.title && (
+                <p className="px-4 pb-4 text-xs text-zinc-500 italic">Chưa có bản ghi cho đoạn này.</p>
+              )}
+            </div>
             {/* Note-taking area */}
             <div className="bg-zinc-900 border border-zinc-800 rounded-2xl p-4">
-              <h4 className="text-sm font-bold text-zinc-400 mb-3">ðŸ“ Ghi chÃº</h4>
+              <h4 className="text-sm font-bold text-zinc-400 mb-3">📝 Ghi chú</h4>
               <textarea
                 value={notes}
                 onChange={e => { setNotes(e.target.value); setSavedNote(false); }}
@@ -235,7 +259,25 @@ function ConversationPractice({ part }: Props) {
 
         <div className="grid lg:grid-cols-2 gap-6">
           <div className="space-y-4">
+            {currentGroup.knowledge && (
+              <div className="bg-zinc-800/60 border border-zinc-700 rounded-2xl p-4">
+                <h4 className="text-xs font-bold text-zinc-400 uppercase tracking-wider mb-2">📍 Bối cảnh</h4>
+                <p className="text-zinc-200 text-sm leading-relaxed">{currentGroup.knowledge}</p>
+              </div>
+            )}
             {currentGroup.audio_url && <AudioPlayer src={currentGroup.audio_url} autoPlay={false} />}
+            {/* Transcript with keyword highlighting */}
+            {currentGroup.title && (
+              <div className="bg-zinc-900 border border-zinc-800 rounded-2xl p-4">
+                <h4 className="text-xs font-bold text-zinc-400 uppercase tracking-wider mb-2">📄 Bản ghi</h4>
+                <p className="text-sm text-zinc-300 leading-relaxed whitespace-pre-wrap"
+                  dangerouslySetInnerHTML={{
+                    __html: currentGroup.title
+                      .replace(/(\b[A-Z][a-z]+(?:\s[A-Z][a-z]+)*\b)/g, '<mark class="bg-amber-400/20 text-amber-300 rounded px-0.5">$1</mark>')
+                  }}
+                />
+              </div>
+            )}
           </div>
           <div className="space-y-6">
             {currentGroup.questions.map((q, qIdx) => {
