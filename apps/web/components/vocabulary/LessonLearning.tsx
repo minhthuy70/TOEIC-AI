@@ -9,6 +9,8 @@ interface Props {
   words: VocabularyWordWithProgress[];
   onClose: () => void;
   onReload: () => void;
+  /** Initial autoPlay preference from VocabSettings */
+  autoPlay?: boolean;
 }
 
 export default function LessonLearning({
@@ -16,12 +18,13 @@ export default function LessonLearning({
   words,
   onClose,
   onReload,
+  autoPlay: autoPlayProp = false,
 }: Props) {
   const [viewMode, setViewMode] = useState<"flashcard" | "list" | "quiz">("flashcard");
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isFlipped, setIsFlipped] = useState(false);
   const [loadingMap, setLoadingMap] = useState<Record<number, boolean>>({});
-  const [autoPlay, setAutoPlay] = useState(false);
+  const [autoPlay, setAutoPlay] = useState(autoPlayProp);
   const [quizOptions, setQuizOptions] = useState<string[]>([]);
   const [quizAnswered, setQuizAnswered] = useState<string | null>(null);
   const [favorites, setFavorites] = useState<Record<number, boolean>>({});

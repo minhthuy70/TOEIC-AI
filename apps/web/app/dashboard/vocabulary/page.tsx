@@ -18,10 +18,14 @@ import LessonGrid from "@/components/vocabulary/LessonGrid";
 import LessonLearning from "@/components/vocabulary/LessonLearning";
 import VocabularyFilter from "@/components/vocabulary/VocabularyFilter";
 import VocabularyCard from "@/components/vocabulary/VocabularyCard";
+import { loadVocabSettings } from "@/lib/vocab-settings";
 
 export default function VocabularyPage() {
   const [loading, setLoading] = useState(true);
   const [currentStage, setCurrentStage] = useState(1);
+
+  // Load user vocabulary settings from localStorage
+  const vocabSettings = typeof window !== "undefined" ? loadVocabSettings() : undefined;
 
   // Lessons
   const [lessons, setLessons] = useState<Lesson[]>([]);
@@ -199,19 +203,25 @@ export default function VocabularyPage() {
           </p>
         </div>
 
-        {/* Link to Review Page */}
+        {/* Links */}
         <div className="flex items-center gap-3">
+          <Link
+            href="/dashboard/vocabulary/settings"
+            className="flex items-center gap-2 px-4 py-2.5 bg-zinc-800 hover:bg-zinc-700 text-zinc-300 hover:text-white font-bold text-xs rounded-xl transition"
+          >
+            &#9881;&#65039; Cài đặt
+          </Link>
           <Link
             href="/dashboard/vocabulary/statistics"
             className="flex items-center gap-2 px-4 py-2.5 bg-gradient-to-r from-purple-700 to-purple-600 hover:from-purple-600 hover:to-purple-500 text-white font-bold text-xs rounded-xl shadow-lg shadow-purple-700/10 hover:shadow-purple-700/20 transition-all hover:scale-[1.02] active:scale-[0.98]"
           >
-            📊 Thống kê từ vựng
+            &#128202; Thống kê từ vựng
           </Link>
           <Link
             href="/dashboard/review"
             className="flex items-center gap-2 px-4 py-2.5 bg-gradient-to-r from-amber-600 to-amber-500 hover:from-amber-500 hover:to-amber-450 text-white font-bold text-xs rounded-xl shadow-lg shadow-amber-600/10 hover:shadow-amber-600/20 transition-all hover:scale-[1.02] active:scale-[0.98]"
           >
-            🧠 Đi đến Trang Ôn Tập (SRS)
+            &#129504; Đi đến Trang Ôn Tập (SRS)
           </Link>
         </div>
       </div>
@@ -228,6 +238,7 @@ export default function VocabularyPage() {
             words={lessonWords}
             onClose={handleCloseLearning}
             onReload={loadLessonsAndTopics}
+            autoPlay={vocabSettings?.autoPlay ?? true}
           />
         )
       ) : (
