@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
@@ -14,6 +14,7 @@ interface ListeningSettings {
   autoSaveNotes: boolean;
   showTimer: boolean;
   soundEffects: boolean;
+  backgroundMusic: boolean;
 }
 
 const DEFAULT_SETTINGS: ListeningSettings = {
@@ -25,6 +26,7 @@ const DEFAULT_SETTINGS: ListeningSettings = {
   autoSaveNotes: true,
   showTimer: true,
   soundEffects: false,
+  backgroundMusic: false,
 };
 
 function Toggle({ checked, onChange }: { checked: boolean; onChange: () => void }) {
@@ -97,18 +99,22 @@ export default function ListeningSettingsPage() {
               className="w-full accent-indigo-500 h-1.5 rounded-lg bg-zinc-800 cursor-pointer appearance-none" />
           </div>
           <div className="flex items-center justify-between">
-            <div><p className="text-zinc-300 text-sm font-medium">Tá»± Ä‘á»™ng phÃ¡t cÃ¢u tiáº¿p theo</p><p className="text-zinc-500 text-xs">Tá»± Ä‘á»™ng chuyá»ƒn sang cÃ¢u há»i káº¿ tiáº¿p sau khi audio káº¿t thÃºc</p></div>
+            <div><p className="text-zinc-300 text-sm font-medium">Tá»± Ä‘á»™ng phÃ¡t cÃ¢u tiáº¿p theo</p><p className="text-zinc-500 text-xs">Tá»± Ä‘á»™ng chuyá»ƒn sang cÃ¢u há» i káº¿ tiáº¿p sau khi audio káº¿t thÃºc</p></div>
             <Toggle checked={settings.autoPlayNext} onChange={() => update("autoPlayNext", !settings.autoPlayNext)} />
           </div>
           <div className="flex items-center justify-between">
-            <div><p className="text-zinc-300 text-sm font-medium">Hiá»‡u á»©ng Ã¢m thanh</p><p className="text-zinc-500 text-xs">PhÃ¡t Ã¢m thanh khi tráº£ lá»i Ä‘Ãºng/sai</p></div>
+            <div><p className="text-zinc-300 text-sm font-medium">Hiệu ứng âm thanh</p><p className="text-zinc-500 text-xs">Phát âm thanh khi trả lời đúng/sai</p></div>
             <Toggle checked={settings.soundEffects} onChange={() => update("soundEffects", !settings.soundEffects)} />
+          </div>
+          <div className="flex items-center justify-between">
+            <div><p className="text-zinc-300 text-sm font-medium">Nhạc nền (Lofi)</p><p className="text-zinc-500 text-xs">Phát nhạc lofi nhẹ nhàng trong lúc làm bài</p></div>
+            <Toggle checked={settings.backgroundMusic} onChange={() => update("backgroundMusic", !settings.backgroundMusic)} />
           </div>
         </div>
 
         {/* Transcript & Display */}
         <div className="bg-zinc-900/60 border border-zinc-800 rounded-2xl p-6 space-y-5">
-          <h2 className="text-white font-bold">ðŸ“ Báº£n ghi & Hiá»ƒn thá»‹</h2>
+          <h2 className="text-white font-bold">ðŸ“  Báº£n ghi & Hiá»ƒn thá»‹</h2>
           <div className="flex items-center justify-between">
             <div><p className="text-zinc-300 text-sm font-medium">Hiá»ƒn thá»‹ báº£n ghi máº·c Ä‘á»‹nh</p><p className="text-zinc-500 text-xs">Tá»± Ä‘á»™ng má»Ÿ transcript khi Ã´n táº­p</p></div>
             <Toggle checked={settings.showTranscriptByDefault} onChange={() => update("showTranscriptByDefault", !settings.showTranscriptByDefault)} />
