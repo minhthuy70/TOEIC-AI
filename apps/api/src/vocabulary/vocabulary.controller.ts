@@ -60,6 +60,19 @@ srs(
 }
 
   // =====================================================
+  // Statistics
+  // =====================================================
+
+  @Get("statistics")
+  statistics(
+    @Request() req,
+  ) {
+    return this.vocabularyService.getStatistics(
+      req.user?.userId || 1, // Default to user ID 1 for testing
+    );
+  }
+
+  // =====================================================
   // Topic List
   // =====================================================
 

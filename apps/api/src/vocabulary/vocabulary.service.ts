@@ -1282,4 +1282,172 @@ const nextReview = new Date();
       message: `Đã ${action === 'delete' ? 'xóa' : 'đặt lại'} tiến trình ${vocabularyIds.length} từ vựng`,
     };
   }
+
+  // =====================================================
+  // STATISTICS
+  // =====================================================
+
+  async getStatistics(userId: number) {
+    const profile = await this.getProfile(userId);
+    const stage = this.getStage(profile.currentScore ?? 0);
+
+    // 1. Vocabulary Growth (Group by learnedAt)
+    const allProgress = await this.prisma.userVocabularyProgress.findMany({
+      where: {
+        userId,
+        learnedAt: { not: null },
+      },
+      select: {
+        learnedAt: true,
+        status: true,
+        reviewLevel: true,
+        reviewCount: true,
+        vocabulary: {
+          select: {
+            topic: true,
+          }
+        }
+      },
+      orderBy: {
+        learnedAt: 'asc',
+      }
+    });
+
+    const growthMap: Record<string, number> = {};
+    let cumulative = 0;
+    allProgress.forEach(p => {
+      if (p.learnedAt) {
+        const dateStr = p.learnedAt.toISOString().split('T')[0];
+        growthMap[dateStr] = (growthMap[dateStr] || 0) + 1;
+      }
+    });
+
+    const growthData = Object.keys(growthMap).map(date => {
+      cumulative += growthMap[date];
+      return {
+        date,
+        newWords: growthMap[date],
+        totalWords: cumulative
+      };
+    });
+
+    // 2. SRS Level Distribution
+    const srsDistributionMap: Record<string, number> = {
+      '1': 0, '2': 0, '3': 0, '4': 0, '5': 0, '6': 0, '7': 0, '8': 0 // 8 is Mastered
+    };
+    
+    let totalReviews = 0;
+    let totalLevels = 0; // Sum of levels to estimate success/accuracy
+    let masteredCount = 0;
+
+    const topicStats: Record<string, { total: number, mastered: number, learning: number }> = {};
+
+    allProgress.forEach(p => {
+      srsDistributionMap[p.reviewLevel.toString()] = (srsDistributionMap[p.reviewLevel.toString()] || 0) + 1;
+      
+      totalReviews += (p.reviewCount || 0);
+      totalLevels += p.reviewLevel;
+
+      if (p.status === 'MASTERED') masteredCount++;
+
+      // Topic Mastery
+      if (p.vocabulary?.topic) {
+        const topic = p.vocabulary.topic;
+        if (!topicStats[topic]) {
+          topicStats[topic] = { total: 0, mastered: 0, learning: 0 };
+        }
+        topicStats[topic].total++;
+        if (p.status === 'MASTERED') {
+          topicStats[topic].mastered++;
+        } else {
+          topicStats[topic].learning++;
+        }
+      }
+    });
+
+    const srsDistribution = Object.keys(srsDistributionMap).map(level => ({
+      level: level === '8' ? 'Thành thạo' : `Cấp độ ${level}`,
+      count: srsDistributionMap[level]
+    }));
+
+    // 3. Topic Mastery Breakdown & Weak Topics
+    const topicsBreakdown = Object.keys(topicStats).map(topic => {
+      const stats = topicStats[topic];
+      return {
+        topic,
+        total: stats.total,
+        mastered: stats.mastered,
+        learning: stats.learning,
+        masteryRate: stats.total > 0 ? Math.round((stats.mastered / stats.total) * 100) : 0
+      };
+    }).sort((a, b) => b.masteryRate - a.masteryRate);
+
+    const weakTopics = [...topicsBreakdown].sort((a, b) => a.masteryRate - b.masteryRate).slice(0, 3);
+
+    // 4. Rates (Mocked based on review count and levels)
+    // If a user has high levels with low review counts, they are accurate.
+    // Optimal reviews for level 8 is 8.
+    const expectedReviews = totalLevels; 
+    let accuracyRate = 100;
+    let successRate = 100;
+    
+    if (totalReviews > 0) {
+      // Very rough approximation: 
+      // If reviewCount is much higher than reviewLevel, it means they failed often.
+      const ratio = expectedReviews / (totalReviews === 0 ? 1 : totalReviews);
+      accuracyRate = Math.min(Math.round(ratio * 100), 100);
+      successRate = Math.min(Math.round((ratio + 0.1) * 100), 100); // usually success > accuracy slightly
+    }
+
+    const retentionRate = allProgress.length > 0 
+      ? Math.round((masteredCount / allProgress.length) * 100) 
+      : 0;
+
+    // 5. Streaks
+    const currentStreak = await this.getStreak(userId);
+    // Rough longest streak approximation (just for UI completeness, calculating exact longest streak needs full date sorting)
+    let longestStreak = currentStreak;
+    let tempStreak = 0;
+    let lastDate: Date | null = null;
+    
+    const uniqueDates = [...new Set(allProgress.filter(p => p.learnedAt).map(p => p.learnedAt!.toISOString().split('T')[0]))].sort();
+    
+    for (let i = 0; i < uniqueDates.length; i++) {
+      const currentDate = new Date(uniqueDates[i]);
+      if (!lastDate) {
+        tempStreak = 1;
+      } else {
+        const diffTime = Math.abs(currentDate.getTime() - lastDate.getTime());
+        const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+        if (diffDays === 1) {
+          tempStreak++;
+        } else if (diffDays > 1) {
+          tempStreak = 1;
+        }
+      }
+      if (tempStreak > longestStreak) {
+        longestStreak = tempStreak;
+      }
+      lastDate = currentDate;
+    }
+
+    return {
+      success: true,
+      growthData,
+      srsDistribution,
+      topicsBreakdown,
+      weakTopics,
+      rates: {
+        accuracyRate,
+        successRate,
+        retentionRate,
+      },
+      streaks: {
+        currentStreak,
+        longestStreak
+      },
+      masteredCount,
+      totalLearned: allProgress.length
+    };
+  }
 }

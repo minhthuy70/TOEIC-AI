@@ -242,3 +242,26 @@ export interface ReviewWordsResponse {
   level: number;
   words: VocabularyWordWithProgress[];
 }
+
+// ===========================================
+// Statistics
+// ===========================================
+
+export interface VocabularyStatisticsResponse {
+  success: boolean;
+  growthData: { date: string; newWords: number; totalWords: number }[];
+  srsDistribution: { level: string; count: number }[];
+  topicsBreakdown: { topic: string; total: number; mastered: number; learning: number; masteryRate: number }[];
+  weakTopics: { topic: string; total: number; mastered: number; learning: number; masteryRate: number }[];
+  rates: {
+    accuracyRate: number;
+    successRate: number;
+    retentionRate: number;
+  };
+  streaks: {
+    currentStreak: number;
+    longestStreak: number;
+  };
+  masteredCount: number;
+  totalLearned: number;
+}

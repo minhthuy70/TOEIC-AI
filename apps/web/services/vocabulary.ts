@@ -13,6 +13,7 @@ import type {
   LessonWordsResponse,
   ReviewLevelsResponse,
   ReviewWordsResponse,
+  VocabularyStatisticsResponse,
 } from "@/types/vocabulary";
 
 // ======================================================
@@ -212,4 +213,12 @@ export async function bulkResetVocabularyProgress(
       body: JSON.stringify({ vocabularyIds, action }),
     }
   );
+}
+
+// ======================================================
+// Statistics
+// ======================================================
+
+export async function getVocabularyStatistics() {
+  return apiFetch<VocabularyStatisticsResponse>("/vocabulary/statistics");
 }

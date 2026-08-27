@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useState } from "react";
 import {
@@ -6,10 +6,16 @@ import {
   reviewWord,
   updateVocabularyNotes,
 } from "@/services/vocabulary";
-import { VocabularyWordWithProgress } from "@/types/vocabulary";
+import { VocabularyWord, VocabularyWordWithProgress } from "@/types/vocabulary";
+
+type WordProp = VocabularyWord | VocabularyWordWithProgress;
+
+function asProgress(w: WordProp): VocabularyWordWithProgress {
+  return w as VocabularyWordWithProgress;
+}
 
 interface Props {
-  word: VocabularyWordWithProgress;
+  word: WordProp;
   onReload?: () => void;
   selectable?: boolean;
   selected?: boolean;
@@ -23,16 +29,17 @@ export default function VocabularyCard({
   selected,
   onSelect,
 }: Props) {
+  const pw = asProgress(word);
   const [loading, setLoading] = useState(false);
   const [isEditingNotes, setIsEditingNotes] = useState(false);
-  const [notesInput, setNotesInput] = useState(word.notes || "");
-  const [exampleInput, setExampleInput] = useState(word.customExample || "");
+  const [notesInput, setNotesInput] = useState(pw.notes || "");
+  const [exampleInput, setExampleInput] = useState(pw.customExample || "");
 
   async function handleLearn() {
     try {
       setLoading(true);
 
-      if (word.isReview) {
+      if (pw.isReview) {
         await reviewWord(word.id);
       } else {
         await learnWord(word.id);
@@ -41,7 +48,7 @@ export default function VocabularyCard({
       onReload?.();
     } catch (error) {
       console.error(error);
-      alert("Có lỗi xảy ra.");
+      alert("CÃ³ lá»—i xáº£y ra.");
     } finally {
       setLoading(false);
     }
@@ -55,7 +62,7 @@ export default function VocabularyCard({
       onReload?.();
     } catch (error) {
       console.error(error);
-      alert("Lỗi khi lưu ghi chú");
+      alert("Lá»—i khi lÆ°u ghi chÃº");
     } finally {
       setLoading(false);
     }
@@ -82,13 +89,13 @@ export default function VocabularyCard({
 
           <h2 className="text-2xl font-bold text-white flex items-center gap-2">
             {word.english}
-            {word.status && word.status !== 'NEW' && (
+            {pw.status && pw.status !== 'NEW' && (
               <span className={`text-[10px] px-2 py-0.5 rounded-full font-bold ${
-                word.status === 'MASTERED' ? 'bg-amber-500/20 text-amber-400' :
-                word.status === 'REVIEW' ? 'bg-blue-500/20 text-blue-400' :
+                pw.status === 'MASTERED' ? 'bg-amber-500/20 text-amber-400' :
+                pw.status === 'REVIEW' ? 'bg-blue-500/20 text-blue-400' :
                 'bg-green-500/20 text-green-400'
               }`}>
-                {word.status}
+                {pw.status}
               </span>
             )}
           </h2>
@@ -117,7 +124,7 @@ export default function VocabularyCard({
 
       </div>
 
-      {/* Nghĩa */}
+      {/* NghÄ©a */}
 
       <div className="mt-4">
 
@@ -127,7 +134,7 @@ export default function VocabularyCard({
 
       </div>
 
-      {/* Giải thích */}
+      {/* Giáº£i thÃ­ch */}
 
       {word.explain && (
         <div className="mt-4">
@@ -139,7 +146,7 @@ export default function VocabularyCard({
         </div>
       )}
 
-      {/* Ví dụ */}
+      {/* VÃ­ dá»¥ */}
 
       {word.example && (
         <div className="mt-5 rounded-lg bg-zinc-800 p-4">
@@ -158,18 +165,18 @@ export default function VocabularyCard({
       )}
 
       {/* Personal Notes & Custom Example (Read Mode) */}
-      {!isEditingNotes && (word.notes || word.customExample) && (
+      {!isEditingNotes && (pw.notes || pw.customExample) && (
         <div className="mt-4 p-3 bg-zinc-800/50 rounded-lg border border-zinc-700/50 space-y-2">
-          {word.notes && (
+          {pw.notes && (
             <div>
-              <p className="text-[10px] text-amber-400 uppercase font-bold">Ghi chú cá nhân</p>
-              <p className="text-xs text-zinc-300 mt-1 whitespace-pre-wrap">{word.notes}</p>
+              <p className="text-[10px] text-amber-400 uppercase font-bold">Ghi chÃº cÃ¡ nhÃ¢n</p>
+              <p className="text-xs text-zinc-300 mt-1 whitespace-pre-wrap">{pw.notes}</p>
             </div>
           )}
-          {word.customExample && (
+          {pw.customExample && (
             <div>
-              <p className="text-[10px] text-amber-400 uppercase font-bold">Ví dụ tùy chỉnh</p>
-              <p className="text-xs text-zinc-300 mt-1 italic whitespace-pre-wrap">{word.customExample}</p>
+              <p className="text-[10px] text-amber-400 uppercase font-bold">VÃ­ dá»¥ tÃ¹y chá»‰nh</p>
+              <p className="text-xs text-zinc-300 mt-1 italic whitespace-pre-wrap">{pw.customExample}</p>
             </div>
           )}
         </div>
@@ -179,41 +186,41 @@ export default function VocabularyCard({
       {isEditingNotes && (
         <div className="mt-4 p-3 bg-zinc-800/80 rounded-lg border border-zinc-700 space-y-3">
           <div>
-            <label className="text-[10px] text-amber-400 uppercase font-bold block mb-1">Ghi chú cá nhân</label>
+            <label className="text-[10px] text-amber-400 uppercase font-bold block mb-1">Ghi chÃº cÃ¡ nhÃ¢n</label>
             <textarea
               value={notesInput}
               onChange={(e) => setNotesInput(e.target.value)}
               className="w-full bg-zinc-950 border border-zinc-700 rounded-md p-2 text-xs text-white outline-none min-h-[60px]"
-              placeholder="Nhập ghi chú cho từ này..."
+              placeholder="Nháº­p ghi chÃº cho tá»« nÃ y..."
             />
           </div>
           <div>
-            <label className="text-[10px] text-amber-400 uppercase font-bold block mb-1">Ví dụ tùy chỉnh</label>
+            <label className="text-[10px] text-amber-400 uppercase font-bold block mb-1">VÃ­ dá»¥ tÃ¹y chá»‰nh</label>
             <textarea
               value={exampleInput}
               onChange={(e) => setExampleInput(e.target.value)}
               className="w-full bg-zinc-950 border border-zinc-700 rounded-md p-2 text-xs text-white outline-none min-h-[60px]"
-              placeholder="Nhập câu ví dụ tùy chỉnh của bạn..."
+              placeholder="Nháº­p cÃ¢u vÃ­ dá»¥ tÃ¹y chá»‰nh cá»§a báº¡n..."
             />
           </div>
           <div className="flex justify-end gap-2">
             <button
               onClick={() => {
                 setIsEditingNotes(false);
-                setNotesInput(word.notes || "");
-                setExampleInput(word.customExample || "");
+                setNotesInput(pw.notes || "");
+                setExampleInput(pw.customExample || "");
               }}
               className="text-[11px] text-zinc-400 hover:text-white px-3 py-1.5"
               disabled={loading}
             >
-              Hủy
+              Há»§y
             </button>
             <button
               onClick={handleSaveNotes}
               disabled={loading}
               className="text-[11px] bg-amber-600 hover:bg-amber-500 text-white font-bold px-3 py-1.5 rounded-md transition"
             >
-              {loading ? "Đang lưu..." : "Lưu thay đổi"}
+              {loading ? "Äang lÆ°u..." : "LÆ°u thay Ä‘á»•i"}
             </button>
           </div>
         </div>
@@ -253,28 +260,28 @@ export default function VocabularyCard({
             onClick={() => setIsEditingNotes(true)}
             className="text-xs text-zinc-400 hover:text-amber-400 font-semibold flex items-center gap-1 transition"
           >
-            ✏️ Ghi chú cá nhân
+            âœï¸ Ghi chÃº cÃ¡ nhÃ¢n
           </button>
         ) : <div />}
 
         <button
           onClick={handleLearn}
-          disabled={loading || word.status === 'MASTERED'}
+          disabled={loading || pw.status === 'MASTERED'}
           className={`rounded-lg px-5 py-2 text-xs font-semibold text-white transition ${
-            word.status === 'MASTERED'
+            pw.status === 'MASTERED'
               ? "bg-zinc-800 text-zinc-500 cursor-not-allowed"
-              : word.isReview
+              : pw.isReview
               ? "bg-orange-600 hover:bg-orange-500"
               : "bg-green-600 hover:bg-green-500"
           } disabled:opacity-60`}
         >
           {loading
-            ? "Đang xử lý..."
-            : word.status === 'MASTERED'
-            ? "Đã thành thạo"
-            : word.isReview
-            ? "Ôn xong"
-            : "Đánh dấu đã học"}
+            ? "Äang xá»­ lÃ½..."
+            : pw.status === 'MASTERED'
+            ? "ÄÃ£ thÃ nh tháº¡o"
+            : pw.isReview
+            ? "Ã”n xong"
+            : "ÄÃ¡nh dáº¥u Ä‘Ã£ há»c"}
         </button>
 
       </div>

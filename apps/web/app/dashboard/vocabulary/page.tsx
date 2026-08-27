@@ -200,12 +200,20 @@ export default function VocabularyPage() {
         </div>
 
         {/* Link to Review Page */}
-        <Link
-          href="/dashboard/review"
-          className="flex items-center gap-2 px-4 py-2.5 bg-gradient-to-r from-amber-600 to-amber-500 hover:from-amber-500 hover:to-amber-450 text-white font-bold text-xs rounded-xl shadow-lg shadow-amber-600/10 hover:shadow-amber-600/20 transition-all hover:scale-[1.02] active:scale-[0.98]"
-        >
-          🧠 Đi đến Trang Ôn Tập (SRS)
-        </Link>
+        <div className="flex items-center gap-3">
+          <Link
+            href="/dashboard/vocabulary/statistics"
+            className="flex items-center gap-2 px-4 py-2.5 bg-gradient-to-r from-purple-700 to-purple-600 hover:from-purple-600 hover:to-purple-500 text-white font-bold text-xs rounded-xl shadow-lg shadow-purple-700/10 hover:shadow-purple-700/20 transition-all hover:scale-[1.02] active:scale-[0.98]"
+          >
+            📊 Thống kê từ vựng
+          </Link>
+          <Link
+            href="/dashboard/review"
+            className="flex items-center gap-2 px-4 py-2.5 bg-gradient-to-r from-amber-600 to-amber-500 hover:from-amber-500 hover:to-amber-450 text-white font-bold text-xs rounded-xl shadow-lg shadow-amber-600/10 hover:shadow-amber-600/20 transition-all hover:scale-[1.02] active:scale-[0.98]"
+          >
+            🧠 Đi đến Trang Ôn Tập (SRS)
+          </Link>
+        </div>
       </div>
 
       {/* 1. LESSON LEARNING OR LESSON GRID */}
