@@ -26,6 +26,7 @@ export default function ReviewSession({
 
   // Local state for words progress in this review session
   const [localWords, setLocalWords] = useState<VocabularyWordWithProgress[]>(words);
+  const [masteredSessionCount, setMasteredSessionCount] = useState(0);
 
 const reviewWords = useMemo(
   () => localWords.filter((w) => w.isReview),
@@ -55,6 +56,10 @@ useEffect(() => {
     const res = await reviewWord(wordId);
 
     if (res.success) {
+      if (res.status === "MASTERED") {
+        setMasteredSessionCount(prev => prev + 1);
+      }
+      
       // cập nhật local
       const updatedWords: VocabularyWordWithProgress[] =
         localWords.map((w) =>
@@ -115,18 +120,24 @@ setCurrentIndex(0);
 
   const reviewedCount = localWords.filter((w) => !w.isReview).length;
 const isSessionCompleted = reviewWords.length === 0;
+const progressPercent = Math.round((reviewedCount / localWords.length) * 100) || 0;
 
   return (
     <div className="bg-zinc-950/60 border border-zinc-800/80 rounded-2xl p-6 shadow-xl space-y-6">
       {/* Header */}
       <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 border-b border-zinc-800/60 pb-4">
-        <div>
+        <div className="w-full sm:w-auto">
           <h2 className="text-xl font-bold text-white flex items-center gap-2">
             <span>🧠</span> Ôn tập: Hộp {label} (Cấp độ {level})
           </h2>
-          <p className="text-xs text-zinc-400 mt-1">
-            Tiến trình ôn tập: <span className="text-amber-400 font-semibold">{reviewedCount}/{localWords.length} từ đã ôn</span>
-          </p>
+          <div className="flex items-center gap-3 mt-2">
+             <div className="flex-1 w-full sm:w-48 h-2 bg-zinc-900 rounded-full overflow-hidden border border-zinc-800">
+               <div className="h-full bg-amber-500 transition-all duration-500" style={{ width: `${progressPercent}%` }} />
+             </div>
+             <p className="text-xs text-zinc-400 min-w-max">
+               <span className="text-amber-400 font-semibold">{reviewedCount}/{localWords.length}</span> từ đã ôn ({progressPercent}%)
+             </p>
+          </div>
         </div>
 
         <div className="flex items-center gap-2 w-full sm:w-auto">
@@ -264,6 +275,10 @@ const isSessionCompleted = reviewWords.length === 0;
                       )}
                     </div>
                   )}
+                  
+                  {currentWord.nextReview && (
+                     <div className="text-[10px] text-zinc-500 mt-2">Ngày ôn tiếp theo: {new Date(currentWord.nextReview).toLocaleDateString("vi-VN")}</div>
+                  )}
                 </div>
 
                 <span className="text-xs text-zinc-500 font-medium">💡 Bấm vào thẻ để quay lại</span>
@@ -272,40 +287,64 @@ const isSessionCompleted = reviewWords.length === 0;
           </div>
 
           {/* Navigation Controls */}
-          <div className="flex items-center gap-4 w-full max-w-[480px]">
-            <button
-              onClick={handlePrev}
-              disabled={currentIndex === 0}
-              className="flex-1 px-4 py-2.5 border border-zinc-850 bg-zinc-900 text-zinc-300 hover:text-white rounded-xl text-xs font-bold transition disabled:opacity-40"
-            >
-              ← Trước
-            </button>
-
-            <button
-              onClick={() => handleReviewWord(currentWord.id)}
-              disabled={loadingMap[currentWord.id] || !currentWord.isReview}
-              className={`flex-2 px-6 py-2.5 rounded-xl text-xs font-bold text-white transition flex items-center justify-center gap-1.5 shadow ${
-                !currentWord.isReview
-                  ? "bg-zinc-800 text-green-400 cursor-default border border-green-500/20"
-                  : "bg-amber-600 hover:bg-amber-500 hover:scale-[1.02] active:scale-[0.98]"
-              }`}
-            >
-              {!currentWord.isReview ? (
-                <>✓ Đã ôn xong</>
-              ) : loadingMap[currentWord.id] ? (
-                <>Đang lưu...</>
-              ) : (
-                <>⚡ Xác nhận ĐÃ ÔN</>
-              )}
-            </button>
-
-            <button
-              onClick={handleNext}
-              disabled={currentIndex === reviewWords.length - 1}
-              className="flex-1 px-4 py-2.5 border border-zinc-850 bg-zinc-900 text-zinc-300 hover:text-white rounded-xl text-xs font-bold transition disabled:opacity-40"
-            >
-              Sau →
-            </button>
+          <div className="flex flex-col gap-3 w-full max-w-[480px]">
+            {!isFlipped ? (
+              <div className="flex items-center gap-3 w-full">
+                <button
+                  onClick={handleNext}
+                  className="flex-1 px-4 py-3 border border-zinc-800 bg-zinc-900 text-zinc-400 hover:text-white rounded-xl text-xs font-bold transition disabled:opacity-40"
+                >
+                  Bỏ qua ôn
+                </button>
+                <button
+                  onClick={() => setIsFlipped(true)}
+                  className="flex-2 px-6 py-3 rounded-xl text-xs font-bold text-white transition flex items-center justify-center gap-1.5 shadow bg-amber-600 hover:bg-amber-500 active:scale-[0.98] w-full"
+                >
+                  Hiển thị đáp án
+                </button>
+              </div>
+            ) : (
+              <div className="grid grid-cols-3 gap-2 w-full">
+                <button
+                  onClick={() => handleReviewWord(currentWord.id)}
+                  disabled={loadingMap[currentWord.id]}
+                  className="px-2 py-3 rounded-xl border border-red-500/20 bg-red-600/10 hover:bg-red-600/20 text-red-400 text-xs font-bold transition"
+                >
+                  Khó (Lặp lại)
+                </button>
+                <button
+                  onClick={() => handleReviewWord(currentWord.id)}
+                  disabled={loadingMap[currentWord.id]}
+                  className="px-2 py-3 rounded-xl border border-amber-500/20 bg-amber-600/10 hover:bg-amber-600/20 text-amber-400 text-xs font-bold transition"
+                >
+                  Tốt
+                </button>
+                <button
+                  onClick={() => handleReviewWord(currentWord.id)}
+                  disabled={loadingMap[currentWord.id]}
+                  className="px-2 py-3 rounded-xl border border-green-500/20 bg-green-600/10 hover:bg-green-600/20 text-green-400 text-xs font-bold transition"
+                >
+                  Dễ
+                </button>
+              </div>
+            )}
+            
+            <div className="flex items-center gap-3 w-full mt-2">
+              <button
+                onClick={handlePrev}
+                disabled={currentIndex === 0}
+                className="flex-1 px-4 py-2 border border-zinc-850 bg-zinc-900 text-zinc-300 hover:text-white rounded-xl text-[10px] font-bold transition disabled:opacity-40"
+              >
+                ← Trước
+              </button>
+              <button
+                onClick={handleNext}
+                disabled={currentIndex === reviewWords.length - 1}
+                className="flex-1 px-4 py-2 border border-zinc-850 bg-zinc-900 text-zinc-300 hover:text-white rounded-xl text-[10px] font-bold transition disabled:opacity-40"
+              >
+                Sau →
+              </button>
+            </div>
           </div>
 
           {/* Progress Indicator */}
@@ -397,17 +436,21 @@ const isSessionCompleted = reviewWords.length === 0;
 
       {/* Completion Modal/Notice */}
       {isSessionCompleted && (
-        <div className="bg-green-950/20 border border-green-500/30 rounded-xl p-4 flex items-center justify-between gap-4">
-          <div className="flex items-center gap-3">
-            <span className="text-2xl">🎉</span>
+        <div className="bg-green-950/20 border border-green-500/30 rounded-xl p-6 flex flex-col sm:flex-row items-center justify-between gap-6">
+          <div className="flex items-start gap-4">
+            <span className="text-4xl leading-none">🎉</span>
             <div>
-              <p className="text-sm font-bold text-white">Chúc mừng! Bạn đã ôn tập xong các từ ở Hộp {label}</p>
-              <p className="text-xs text-green-400/80 mt-0.5">Tiến trình đã được lưu. Từ vựng sẽ quay lại khi đến hạn ôn tiếp theo.</p>
+              <p className="text-lg font-bold text-white">Chúc mừng! Bạn đã ôn tập xong hộp này.</p>
+              <div className="mt-2 space-y-1">
+                <p className="text-sm text-green-400/80">✅ Tổng số từ đã ôn: <strong>{reviewedCount}</strong></p>
+                <p className="text-sm text-amber-400/80">🏆 Số từ đạt mức thành thạo: <strong>{masteredSessionCount}</strong></p>
+                <p className="text-xs text-zinc-400 mt-2">Các từ chưa thuộc sẽ quay lại vào đợt ôn tiếp theo.</p>
+              </div>
             </div>
           </div>
           <button
             onClick={onClose}
-            className="px-4 py-2 bg-green-600 hover:bg-green-500 text-white text-xs font-bold rounded-xl transition"
+            className="px-6 py-3 bg-green-600 hover:bg-green-500 text-white text-sm font-bold rounded-xl transition w-full sm:w-auto text-center"
           >
             Quay lại hộp ôn tập
           </button>

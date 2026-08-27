@@ -10,7 +10,9 @@ interface Props {
     stage?: number;
     topic?: string;
     search?: string;
-    sort?: "asc" | "desc";
+    sort?: "alphabet_asc" | "alphabet_desc" | "learned_asc" | "learned_desc" | "review_asc" | "review_desc";
+    status?: string;
+    srsLevel?: number;
     page: number;
   }) => void;
 }
@@ -23,7 +25,9 @@ export default function VocabularyFilter({
   const [selectedStage, setSelectedStage] = useState<number | undefined>(undefined);
   const [selectedTopic, setSelectedTopic] = useState<string>("");
   const [search, setSearch] = useState<string>("");
-  const [sort, setSort] = useState<"asc" | "desc">("asc");
+  const [sort, setSort] = useState<"alphabet_asc" | "alphabet_desc" | "learned_asc" | "learned_desc" | "review_asc" | "review_desc">("alphabet_asc");
+  const [status, setStatus] = useState<string>("");
+  const [srsLevel, setSrsLevel] = useState<number | undefined>(undefined);
 
   // Debounce search input to avoid hitting database on every keystroke
   useEffect(() => {
@@ -33,12 +37,14 @@ export default function VocabularyFilter({
         topic: selectedTopic || undefined,
         search: search.trim() || undefined,
         sort,
+        status: status || undefined,
+        srsLevel: srsLevel,
         page: 1, // Reset page on filter change
       });
     }, 400);
 
     return () => clearTimeout(timer);
-  }, [selectedStage, selectedTopic, search, sort]);
+  }, [selectedStage, selectedTopic, search, sort, status, srsLevel]);
 
   return (
     <div className="bg-zinc-900/60 border border-zinc-800/80 backdrop-blur-md rounded-2xl p-5 space-y-4">
@@ -102,17 +108,55 @@ export default function VocabularyFilter({
           </select>
         </div>
 
+        {/* Status Filter */}
+        <div className="flex flex-col space-y-1">
+          <label className="text-[11px] text-zinc-400 font-semibold uppercase">Trạng thái</label>
+          <select
+            value={status}
+            onChange={(e) => setStatus(e.target.value)}
+            className="w-full text-xs text-white bg-zinc-950 border border-zinc-800 focus:border-red-500/50 rounded-xl px-3 py-2.5 outline-none transition cursor-pointer"
+          >
+            <option value="">Tất cả trạng thái</option>
+            <option value="NEW">Chưa học (New)</option>
+            <option value="LEARNING">Đang học (Learning)</option>
+            <option value="REVIEW">Cần ôn tập (Review)</option>
+            <option value="MASTERED">Thành thạo (Mastered)</option>
+          </select>
+        </div>
+
+        {/* SRS Level Filter */}
+        <div className="flex flex-col space-y-1">
+          <label className="text-[11px] text-zinc-400 font-semibold uppercase">Mức SRS (1-7)</label>
+          <select
+            value={srsLevel === undefined ? "" : srsLevel}
+            onChange={(e) => {
+              const val = e.target.value;
+              setSrsLevel(val === "" ? undefined : Number(val));
+            }}
+            className="w-full text-xs text-white bg-zinc-950 border border-zinc-800 focus:border-red-500/50 rounded-xl px-3 py-2.5 outline-none transition cursor-pointer"
+          >
+            <option value="">Tất cả cấp độ</option>
+            {[1, 2, 3, 4, 5, 6, 7].map((l) => (
+              <option key={l} value={l}>Cấp độ {l}</option>
+            ))}
+          </select>
+        </div>
+
         {/* Sort Filter */}
         <div className="flex flex-col space-y-1">
-          <label className="text-[11px] text-zinc-400 font-semibold uppercase">Sắp xếp bảng chữ cái</label>
-          <button
-            type="button"
-            onClick={() => setSort((prev) => (prev === "asc" ? "desc" : "asc"))}
-            className="w-full text-xs text-white bg-zinc-950 border border-zinc-800 hover:border-zinc-700/80 rounded-xl px-4 py-2.5 flex items-center justify-between transition"
+          <label className="text-[11px] text-zinc-400 font-semibold uppercase">Sắp xếp</label>
+          <select
+            value={sort}
+            onChange={(e) => setSort(e.target.value as any)}
+            className="w-full text-xs text-white bg-zinc-950 border border-zinc-800 focus:border-red-500/50 rounded-xl px-3 py-2.5 outline-none transition cursor-pointer"
           >
-            <span>Tên từ vựng (A-Z)</span>
-            <span className="text-red-400 font-bold">{sort === "asc" ? "↑ A-Z" : "↓ Z-A"}</span>
-          </button>
+            <option value="alphabet_asc">A-Z (Tăng dần)</option>
+            <option value="alphabet_desc">Z-A (Giảm dần)</option>
+            <option value="learned_desc">Ngày học: Mới nhất</option>
+            <option value="learned_asc">Ngày học: Cũ nhất</option>
+            <option value="review_asc">Ngày ôn: Gần nhất</option>
+            <option value="review_desc">Ngày ôn: Xa nhất</option>
+          </select>
         </div>
       </div>
     </div>

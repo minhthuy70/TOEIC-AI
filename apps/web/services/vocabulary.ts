@@ -160,7 +160,9 @@ export async function getWordsFiltered(query: {
   stage?: number;
   topic?: string;
   search?: string;
-  sort?: "asc" | "desc";
+  sort?: "alphabet_asc" | "alphabet_desc" | "learned_asc" | "learned_desc" | "review_asc" | "review_desc";
+  status?: string;
+  srsLevel?: number;
 }) {
   let url = "/vocabulary/filtered?";
   const params = [];
@@ -170,7 +172,44 @@ export async function getWordsFiltered(query: {
   if (query.topic) params.push(`topic=${encodeURIComponent(query.topic)}`);
   if (query.search) params.push(`search=${encodeURIComponent(query.search)}`);
   if (query.sort) params.push(`sort=${query.sort}`);
+  if (query.status) params.push(`status=${query.status}`);
+  if (query.srsLevel) params.push(`srsLevel=${query.srsLevel}`);
 
   url += params.join("&");
   return apiFetch<VocabularyListResponse>(url);
 }
+
+// ======================================================
+// Update Notes
+// ======================================================
+
+export async function updateVocabularyNotes(
+  vocabularyId: number,
+  notes: string | null,
+  customExample: string | null
+) {
+  return apiFetch<{ success: boolean; message: string }>(
+    "/vocabulary/notes",
+    {
+      method: "POST",
+      body: JSON.stringify({ vocabularyId, notes, customExample }),
+    }
+  );
+}
+
+// ======================================================
+// Bulk Operations
+// ======================================================
+
+export async function bulkResetVocabularyProgress(
+  vocabularyIds: number[],
+  action: "reset" | "delete"
+) {
+  return apiFetch<{ success: boolean; message: string }>(
+    "/vocabulary/bulk-reset",
+    {
+      method: "POST",
+      body: JSON.stringify({ vocabularyIds, action }),
+    }
+  );
+}

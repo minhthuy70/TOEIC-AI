@@ -1049,9 +1049,11 @@ const nextReview = new Date();
       stage?: number;
       topic?: string;
       search?: string;
-      sort?: 'asc' | 'desc';
+      sort?: 'alphabet_asc' | 'alphabet_desc' | 'learned_asc' | 'learned_desc' | 'review_asc' | 'review_desc';
       page?: number;
       limit?: number;
+      status?: string;
+      srsLevel?: number;
     },
   ) {
     const profile = await this.getProfile(userId);
@@ -1059,7 +1061,7 @@ const nextReview = new Date();
 
     const page = Number(query.page ?? 1);
     const limit = Number(query.limit ?? 20);
-    const sort = query.sort === 'desc' ? 'desc' : 'asc';
+    const sort = query.sort || 'alphabet_asc';
 
     // Build Prisma where conditions
     const where: any = {};
@@ -1084,14 +1086,86 @@ const nextReview = new Date();
       ];
     }
 
+    const isProgressSort = sort !== 'alphabet_asc' && sort !== 'alphabet_desc';
+
+    if (isProgressSort) {
+      const progWhere: any = { userId };
+      if (query.status && query.status !== 'NEW') progWhere.status = query.status;
+      if (query.srsLevel) progWhere.reviewLevel = Number(query.srsLevel);
+      progWhere.vocabulary = { ...where }; // Apply stage, topic, search to vocabulary relation
+
+      // If user wants 'NEW' words but sorts by learned/review date, it makes no sense as NEW words don't have progress.
+      // We will just return empty if they force status=NEW and sort by progress dates.
+      if (query.status === 'NEW') {
+        return { success: true, total: 0, page, limit, totalPages: 0, items: [] };
+      }
+
+      const progOrderBy: any = {};
+      if (sort === 'learned_asc') progOrderBy.learnedAt = 'asc';
+      if (sort === 'learned_desc') progOrderBy.learnedAt = 'desc';
+      if (sort === 'review_asc') progOrderBy.nextReview = 'asc';
+      if (sort === 'review_desc') progOrderBy.nextReview = 'desc';
+
+      const [progs, total] = await Promise.all([
+        this.prisma.userVocabularyProgress.findMany({
+          where: progWhere,
+          orderBy: progOrderBy,
+          skip: (page - 1) * limit,
+          take: limit,
+          include: { vocabulary: true },
+        }),
+        this.prisma.userVocabularyProgress.count({
+          where: progWhere,
+        }),
+      ]);
+
+      const itemsWithProgress = progs.map((p) => ({
+        ...p.vocabulary,
+        status: p.status,
+        reviewLevel: p.reviewLevel,
+        learnedAt: p.learnedAt,
+        nextReview: p.nextReview,
+        notes: p.notes,
+        customExample: p.customExample,
+        isReview: (p.nextReview) ? p.nextReview <= new Date() && p.status !== 'MASTERED' : false,
+      }));
+
+      return {
+        success: true,
+        total,
+        page,
+        limit,
+        totalPages: Math.ceil(total / limit),
+        items: itemsWithProgress,
+      };
+    }
+
+    // Default Alphabetical Sort Logic (also handles 'NEW' status filter)
+    const progressFilter: any = { userId };
+    let hasProgressFilter = false;
+    if (query.status && query.status !== 'NEW') {
+      progressFilter.status = query.status;
+      hasProgressFilter = true;
+    }
+    if (query.srsLevel) {
+      progressFilter.reviewLevel = Number(query.srsLevel);
+      hasProgressFilter = true;
+    }
+
+    if (query.status === 'NEW') {
+      where.progresses = { none: { userId } };
+    } else if (hasProgressFilter) {
+      where.progresses = { some: progressFilter };
+    }
+
+    const orderBy = { english: sort === 'alphabet_desc' ? 'desc' as const : 'asc' as const };
+
     const [items, total] = await Promise.all([
       this.prisma.vocabulary.findMany({
         where,
         skip: (page - 1) * limit,
         take: limit,
-        orderBy: {
-          english: sort,
-        },
+        orderBy,
       }),
       this.prisma.vocabulary.count({
         where,
@@ -1115,6 +1189,10 @@ const nextReview = new Date();
         ...w,
         status: prog?.status || 'NEW',
         reviewLevel: prog?.reviewLevel || 0,
+        learnedAt: prog?.learnedAt || null,
+        nextReview: prog?.nextReview || null,
+        notes: prog?.notes || null,
+        customExample: prog?.customExample || null,
         isReview: (prog && prog.nextReview) ? prog.nextReview <= new Date() && prog.status !== 'MASTERED' : false,
       };
     });
@@ -1126,6 +1204,82 @@ const nextReview = new Date();
       limit,
       totalPages: Math.ceil(total / limit),
       items: itemsWithProgress,
+    };
+  }
+
+  // =====================================================
+  // VOCABULARY NOTES & EXAMPLES
+  // =====================================================
+
+  async updateNotes(userId: number, vocabularyId: number, notes: string | null, customExample: string | null) {
+    const exist = await this.prisma.userVocabularyProgress.findUnique({
+      where: {
+        userId_vocabularyId: {
+          userId,
+          vocabularyId,
+        },
+      },
+    });
+
+    if (!exist) {
+      // Create progress if it doesn't exist, though typically they edit learned words
+      await this.prisma.userVocabularyProgress.create({
+        data: {
+          userId,
+          vocabularyId,
+          status: 'NEW',
+          notes,
+          customExample,
+        },
+      });
+    } else {
+      await this.prisma.userVocabularyProgress.update({
+        where: { id: exist.id },
+        data: {
+          notes,
+          customExample,
+        },
+      });
+    }
+
+    return {
+      success: true,
+      message: 'Đã cập nhật ghi chú thành công',
+    };
+  }
+
+  // =====================================================
+  // BULK OPERATIONS
+  // =====================================================
+
+  async bulkResetProgress(userId: number, vocabularyIds: number[], action: 'reset' | 'delete') {
+    if (action === 'delete') {
+      await this.prisma.userVocabularyProgress.deleteMany({
+        where: {
+          userId,
+          vocabularyId: { in: vocabularyIds },
+        },
+      });
+    } else {
+      await this.prisma.userVocabularyProgress.updateMany({
+        where: {
+          userId,
+          vocabularyId: { in: vocabularyIds },
+        },
+        data: {
+          status: 'NEW',
+          reviewLevel: 0,
+          reviewCount: 0,
+          learnedAt: null,
+          lastReview: null,
+          nextReview: null,
+        },
+      });
+    }
+
+    return {
+      success: true,
+      message: `Đã ${action === 'delete' ? 'xóa' : 'đặt lại'} tiến trình ${vocabularyIds.length} từ vựng`,
     };
   }
 }

@@ -140,7 +140,9 @@ today(
     @Query('stage') stage?: string,
     @Query('topic') topic?: string,
     @Query('search') search?: string,
-    @Query('sort') sort?: 'asc' | 'desc',
+    @Query('sort') sort?: 'alphabet_asc' | 'alphabet_desc' | 'learned_asc' | 'learned_desc' | 'review_asc' | 'review_desc',
+    @Query('status') status?: string,
+    @Query('srsLevel') srsLevel?: string,
   ) {
     return this.vocabularyService.getWordsFiltered(req.user?.userId || 1, { // Default to user ID 1 for testing
       page: page ? Number(page) : undefined,
@@ -149,6 +151,8 @@ today(
       topic,
       search,
       sort,
+      status,
+      srsLevel: srsLevel ? Number(srsLevel) : undefined,
     });
   }
 
@@ -207,4 +211,35 @@ review(
 
   return this.vocabularyService.review(dto);
 }
+
+  // =====================================================
+  // Update Notes
+  // =====================================================
+  @Post("notes")
+  updateNotes(
+    @Request() req,
+    @Body() body: { vocabularyId: number; notes: string | null; customExample: string | null },
+  ) {
+    return this.vocabularyService.updateNotes(
+      req.user?.userId || 1,
+      body.vocabularyId,
+      body.notes,
+      body.customExample
+    );
+  }
+
+  // =====================================================
+  // Bulk Operations
+  // =====================================================
+  @Post("bulk-reset")
+  bulkReset(
+    @Request() req,
+    @Body() body: { vocabularyIds: number[]; action: 'reset' | 'delete' },
+  ) {
+    return this.vocabularyService.bulkResetProgress(
+      req.user?.userId || 1,
+      body.vocabularyIds,
+      body.action
+    );
+  }
 }

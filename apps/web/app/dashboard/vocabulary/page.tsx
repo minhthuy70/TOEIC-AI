@@ -7,6 +7,7 @@ import {
   getLessonWords,
   getWordsFiltered,
   getTopics,
+  bulkResetVocabularyProgress,
 } from "@/services/vocabulary";
 import {
   Lesson,
@@ -39,11 +40,18 @@ export default function VocabularyPage() {
     stage?: number;
     topic?: string;
     search?: string;
-    sort?: "asc" | "desc";
+    sort?: "alphabet_asc" | "alphabet_desc" | "learned_asc" | "learned_desc" | "review_asc" | "review_desc";
+    status?: string;
+    srsLevel?: number;
     page: number;
   }>({
     page: 1,
+    sort: "alphabet_asc",
   });
+
+  // Bulk Selection
+  const [selectedIds, setSelectedIds] = useState<number[]>([]);
+  const [bulkLoading, setBulkLoading] = useState(false);
 
   // Calculate current stage from user localStorage
   useEffect(() => {
@@ -99,12 +107,15 @@ export default function VocabularyPage() {
         topic: activeFilters.topic,
         search: activeFilters.search,
         sort: activeFilters.sort,
+        status: activeFilters.status,
+        srsLevel: activeFilters.srsLevel,
       });
 
       if (res.success) {
         setFilteredWords(res.items as VocabularyWordWithProgress[]);
         setTotalWords(res.total);
         setTotalPages(res.totalPages);
+        setSelectedIds([]); // reset selection on query change
       }
     } catch (err) {
       console.error(err);
@@ -140,6 +151,31 @@ export default function VocabularyPage() {
     setLessonWords([]);
     loadLessonsAndTopics(); // Reload lessons grid stats
     fetchFilteredWords(); // Reload words list to sync status
+  };
+
+  const handleToggleSelect = (wordId: number, isSelected: boolean) => {
+    if (isSelected) {
+      setSelectedIds((prev) => [...prev, wordId]);
+    } else {
+      setSelectedIds((prev) => prev.filter((id) => id !== wordId));
+    }
+  };
+
+  const handleBulkAction = async (action: 'reset' | 'delete') => {
+    if (!confirm(`Bạn có chắc chắn muốn ${action === 'reset' ? 'đặt lại' : 'xóa'} tiến độ của ${selectedIds.length} từ này?`)) return;
+    
+    try {
+      setBulkLoading(true);
+      await bulkResetVocabularyProgress(selectedIds, action);
+      setSelectedIds([]);
+      fetchFilteredWords();
+      loadLessonsAndTopics(); // To update topic counts
+    } catch (err) {
+      console.error(err);
+      alert("Lỗi thao tác hàng loạt");
+    } finally {
+      setBulkLoading(false);
+    }
   };
 
   if (loading) {
@@ -224,6 +260,9 @@ export default function VocabularyPage() {
                   key={word.id}
                   word={word}
                   onReload={fetchFilteredWords}
+                  selectable={true}
+                  selected={selectedIds.includes(word.id)}
+                  onSelect={(checked) => handleToggleSelect(word.id, checked)}
                 />
               ))}
             </div>
@@ -257,6 +296,37 @@ export default function VocabularyPage() {
           </div>
         )}
       </div>
+
+      {/* Bulk Actions Toolbar */}
+      {selectedIds.length > 0 && (
+        <div className="fixed bottom-6 left-1/2 -translate-x-1/2 bg-zinc-900 border border-amber-500/50 shadow-2xl shadow-amber-900/20 px-6 py-4 rounded-2xl flex items-center gap-6 z-50 animate-in slide-in-from-bottom-5">
+          <div className="flex flex-col">
+            <span className="text-white font-bold text-sm">Đã chọn {selectedIds.length} từ</span>
+            <button 
+              onClick={() => setSelectedIds([])} 
+              className="text-[10px] text-zinc-400 hover:text-white text-left mt-0.5"
+            >
+              Bỏ chọn tất cả
+            </button>
+          </div>
+          <div className="flex items-center gap-3 border-l border-zinc-800 pl-6">
+            <button
+              onClick={() => handleBulkAction('reset')}
+              disabled={bulkLoading}
+              className="px-4 py-2 bg-zinc-800 hover:bg-zinc-700 text-zinc-300 hover:text-white text-xs font-bold rounded-xl transition"
+            >
+              Làm mới tiến độ
+            </button>
+            <button
+              onClick={() => handleBulkAction('delete')}
+              disabled={bulkLoading}
+              className="px-4 py-2 bg-red-600/10 hover:bg-red-600/20 border border-red-500/20 text-red-500 text-xs font-bold rounded-xl transition"
+            >
+              Xóa tiến độ
+            </button>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

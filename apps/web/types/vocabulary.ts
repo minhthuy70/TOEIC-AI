@@ -208,6 +208,10 @@ export interface VocabularyWordWithProgress extends VocabularyWord {
 
   nextReview: string | null;
 
+  notes?: string | null;
+
+  customExample?: string | null;
+
   isReview: boolean;
 }
 

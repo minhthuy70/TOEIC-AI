@@ -17,16 +17,40 @@ export default function LessonLearning({
   onClose,
   onReload,
 }: Props) {
-  const [viewMode, setViewMode] = useState<"flashcard" | "list">("flashcard");
+  const [viewMode, setViewMode] = useState<"flashcard" | "list" | "quiz">("flashcard");
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isFlipped, setIsFlipped] = useState(false);
   const [loadingMap, setLoadingMap] = useState<Record<number, boolean>>({});
+  const [autoPlay, setAutoPlay] = useState(false);
+  const [quizOptions, setQuizOptions] = useState<string[]>([]);
+  const [quizAnswered, setQuizAnswered] = useState<string | null>(null);
+  const [favorites, setFavorites] = useState<Record<number, boolean>>({});
 
   // Local state for words progress to reflect changes instantly without full API reload until close
   const [localWords, setLocalWords] = useState<VocabularyWordWithProgress[]>(words);
 
   const activeWords = localWords.filter((w) => w.status === "NEW");
   const currentWord = activeWords[currentIndex];
+
+  useEffect(() => {
+    if (viewMode === "quiz" && currentWord) {
+      setQuizAnswered(null);
+      const options = new Set<string>();
+      options.add(currentWord.vietnamese);
+      while(options.size < Math.min(4, localWords.length)) {
+        const randomWord = localWords[Math.floor(Math.random() * localWords.length)];
+        options.add(randomWord.vietnamese);
+      }
+      setQuizOptions(Array.from(options).sort(() => Math.random() - 0.5));
+    }
+  }, [currentIndex, viewMode, currentWord, localWords]);
+
+  useEffect(() => {
+    if (autoPlay && currentWord?.audioUrl && viewMode === "flashcard") {
+      playAudio(currentWord.audioUrl);
+    }
+  }, [currentIndex, currentWord?.audioUrl, autoPlay, viewMode]);
+
 useEffect(() => {
   if (currentIndex >= activeWords.length) {
     setCurrentIndex(
@@ -128,11 +152,22 @@ useEffect(() => {
         </div>
 
         <div className="flex items-center gap-2 w-full sm:w-auto">
+          <button
+            onClick={() => setAutoPlay(!autoPlay)}
+            className={`px-3 py-1.5 border rounded-xl text-xs font-semibold transition flex items-center gap-1.5 ${
+              autoPlay 
+                ? "bg-blue-600/20 border-blue-500/30 text-blue-400" 
+                : "bg-zinc-900 border-zinc-800 text-zinc-400 hover:text-white"
+            }`}
+          >
+            {autoPlay ? "🔊 Tự động phát" : "🔈 Tự động phát"}
+          </button>
+
           {/* View Mode Toggle */}
           <div className="flex bg-zinc-900 border border-zinc-800 p-1 rounded-xl w-full sm:w-auto">
             <button
               onClick={() => setViewMode("flashcard")}
-              className={`flex-1 sm:flex-initial px-4 py-1.5 rounded-lg text-xs font-semibold transition ${
+              className={`flex-1 sm:flex-initial px-3 py-1.5 rounded-lg text-xs font-semibold transition ${
                 viewMode === "flashcard"
                   ? "bg-red-600 text-white shadow-sm"
                   : "text-zinc-400 hover:text-white"
@@ -142,13 +177,23 @@ useEffect(() => {
             </button>
             <button
               onClick={() => setViewMode("list")}
-              className={`flex-1 sm:flex-initial px-4 py-1.5 rounded-lg text-xs font-semibold transition ${
+              className={`flex-1 sm:flex-initial px-3 py-1.5 rounded-lg text-xs font-semibold transition ${
                 viewMode === "list"
                   ? "bg-red-600 text-white shadow-sm"
                   : "text-zinc-400 hover:text-white"
               }`}
             >
-              📋 Danh sách
+              📋 DS
+            </button>
+            <button
+              onClick={() => setViewMode("quiz")}
+              className={`flex-1 sm:flex-initial px-3 py-1.5 rounded-lg text-xs font-semibold transition ${
+                viewMode === "quiz"
+                  ? "bg-red-600 text-white shadow-sm"
+                  : "text-zinc-400 hover:text-white"
+              }`}
+            >
+              📝 Quiz
             </button>
           </div>
 
@@ -220,8 +265,31 @@ useEffect(() => {
                     </button>
                   )}
                 </div>
+                
+                {currentWord.imageUrl && (
+                   <div className="w-24 h-24 rounded-xl overflow-hidden mt-2">
+                     <img src={currentWord.imageUrl} alt={currentWord.english} className="w-full h-full object-cover" />
+                   </div>
+                )}
 
-                <span className="text-xs text-zinc-500 font-medium">💡 Bấm vào thẻ để xem nghĩa</span>
+                <div className="flex justify-between items-center w-full mt-4">
+                  <button 
+                    onClick={(e) => { e.stopPropagation(); alert("Đã báo cáo từ này."); }}
+                    className="text-[10px] text-zinc-500 hover:text-red-400 flex items-center gap-1"
+                  >
+                    🚩 Báo cáo
+                  </button>
+                  <span className="text-xs text-zinc-500 font-medium">💡 Bấm vào thẻ để xem nghĩa</span>
+                  <button 
+                    onClick={(e) => { 
+                      e.stopPropagation(); 
+                      setFavorites(prev => ({ ...prev, [currentWord.id]: !prev[currentWord.id] }));
+                    }}
+                    className={`text-[12px] flex items-center gap-1 ${favorites[currentWord.id] ? "text-pink-500" : "text-zinc-500 hover:text-pink-400"}`}
+                  >
+                    {favorites[currentWord.id] ? "❤️" : "🤍"} Lưu
+                  </button>
+                </div>
               </div>
 
               {/* Back side */}
@@ -274,9 +342,16 @@ useEffect(() => {
             <button
               onClick={handlePrev}
               disabled={currentIndex === 0}
-              className="flex-1 px-4 py-2.5 border border-zinc-850 bg-zinc-900 text-zinc-300 hover:text-white rounded-xl text-xs font-bold transition disabled:opacity-40"
+              className="px-4 py-2.5 border border-zinc-850 bg-zinc-900 text-zinc-300 hover:text-white rounded-xl text-xs font-bold transition disabled:opacity-40"
             >
               ← Trước
+            </button>
+            
+            <button
+              onClick={handleNext}
+              className="px-4 py-2.5 border border-zinc-850 bg-zinc-900 text-zinc-300 hover:text-white rounded-xl text-xs font-bold transition disabled:opacity-40"
+            >
+              Bỏ qua
             </button>
 
             <button
@@ -300,7 +375,7 @@ useEffect(() => {
             <button
               onClick={handleNext}
               disabled={currentIndex === activeWords.length - 1 || activeWords.length === 0}
-              className="flex-1 px-4 py-2.5 border border-zinc-850 bg-zinc-900 text-zinc-300 hover:text-white rounded-xl text-xs font-bold transition disabled:opacity-40"
+              className="px-4 py-2.5 border border-zinc-850 bg-zinc-900 text-zinc-300 hover:text-white rounded-xl text-xs font-bold transition disabled:opacity-40"
             >
               Sau →
             </button>
@@ -310,6 +385,87 @@ useEffect(() => {
           <span className="text-xs text-zinc-500 font-medium">
             Còn lại {activeWords.length} từ chưa học trong bài
           </span>
+        </div>
+      )}
+
+      {/* QUIZ MODE */}
+      {viewMode === "quiz" && currentWord && (
+        <div className="flex flex-col items-center justify-center space-y-6 py-4">
+          <div className="w-full max-w-[480px] bg-gradient-to-br from-zinc-900 to-zinc-950 border border-zinc-800 rounded-3xl p-6 text-center space-y-4 shadow-lg">
+            <div className="flex justify-between items-center w-full mb-2">
+               <span className="text-[10px] bg-purple-600/20 text-purple-400 font-semibold px-2 py-0.5 rounded">
+                 Trắc nghiệm
+               </span>
+               <span className="text-[10px] bg-zinc-800 text-zinc-400 font-semibold px-2 py-0.5 rounded">
+                 Bài {lessonNumber}
+               </span>
+            </div>
+            <h3 className="text-3xl font-extrabold text-white">{currentWord.english}</h3>
+            {currentWord.pronounce && <p className="text-zinc-400">{currentWord.pronounce}</p>}
+            {currentWord.audioUrl && (
+              <button
+                onClick={() => playAudio(currentWord.audioUrl)}
+                className="mx-auto w-8 h-8 rounded-full bg-zinc-800/80 hover:bg-zinc-700 text-red-400 flex items-center justify-center transition border border-zinc-700/30"
+              >
+                🔊
+              </button>
+            )}
+            
+            <div className="grid grid-cols-1 gap-3 mt-6">
+              {quizOptions.map((opt, idx) => {
+                const isCorrect = opt === currentWord.vietnamese;
+                const isSelected = quizAnswered === opt;
+                
+                let btnClass = "border-zinc-800 bg-zinc-800/50 hover:bg-zinc-700 hover:border-zinc-600 text-zinc-300";
+                if (quizAnswered) {
+                  if (isCorrect) btnClass = "border-green-500 bg-green-500/20 text-green-400 font-bold";
+                  else if (isSelected) btnClass = "border-red-500 bg-red-500/20 text-red-400";
+                  else btnClass = "border-zinc-800 bg-zinc-900/50 opacity-50 text-zinc-500";
+                }
+                
+                return (
+                  <button
+                    key={idx}
+                    disabled={!!quizAnswered}
+                    onClick={() => {
+                      setQuizAnswered(opt);
+                      if (isCorrect) {
+                        setTimeout(() => handleNext(), 1500);
+                      }
+                    }}
+                    className={`px-4 py-3 rounded-xl border text-sm transition text-left shadow-sm ${btnClass}`}
+                  >
+                    {opt}
+                  </button>
+                );
+              })}
+            </div>
+            
+            {quizAnswered && (
+              <div className="pt-4 flex justify-end">
+                 <button onClick={handleNext} className="px-4 py-2 bg-zinc-800 hover:bg-zinc-700 text-white rounded-lg text-xs font-bold transition">
+                   Tiếp tục →
+                 </button>
+              </div>
+            )}
+          </div>
+          
+          <div className="flex items-center gap-4 w-full max-w-[480px]">
+            <button
+              onClick={handlePrev}
+              disabled={currentIndex === 0}
+              className="flex-1 px-4 py-2.5 border border-zinc-850 bg-zinc-900 text-zinc-300 hover:text-white rounded-xl text-xs font-bold transition disabled:opacity-40"
+            >
+              ← Trước
+            </button>
+            <button
+              onClick={handleNext}
+              disabled={currentIndex === activeWords.length - 1 || activeWords.length === 0}
+              className="flex-1 px-4 py-2.5 border border-zinc-850 bg-zinc-900 text-zinc-300 hover:text-white rounded-xl text-xs font-bold transition disabled:opacity-40"
+            >
+              Sau →
+            </button>
+          </div>
         </div>
       )}
 
