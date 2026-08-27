@@ -141,10 +141,17 @@ function ConversationPractice({ part }: Props) {
           {/* Left: Context + Audio + Transcript + Notes */}
           <div className="space-y-4">
             {/* Conversation context (knowledge) */}
-            {currentGroup.knowledge && (
+            {(currentGroup.knowledge || currentGroup.group_type) && (
               <div className="bg-zinc-800/60 border border-zinc-700 rounded-2xl p-4">
-                <h4 className="text-xs font-bold text-zinc-400 uppercase tracking-wider mb-2">📍 Bối cảnh {isP3 ? "hội thoại" : "bài nói"}</h4>
-                <p className="text-zinc-200 text-sm leading-relaxed">{currentGroup.knowledge}</p>
+                <h4 className="text-xs font-bold text-zinc-400 uppercase tracking-wider mb-2">📍 {isP3 ? "Bối cảnh hội thoại" : "Thông tin bài nói"}</h4>
+                {currentGroup.group_type && (
+                  <span className="inline-block px-3 py-1 bg-rose-600/20 text-rose-400 text-xs font-bold rounded-full mb-3">
+                    {currentGroup.group_type}
+                  </span>
+                )}
+                {currentGroup.knowledge && (
+                  <p className="text-zinc-200 text-sm leading-relaxed">{currentGroup.knowledge}</p>
+                )}
               </div>
             )}
             {currentGroup.audio_url ? (
@@ -259,10 +266,17 @@ function ConversationPractice({ part }: Props) {
 
         <div className="grid lg:grid-cols-2 gap-6">
           <div className="space-y-4">
-            {currentGroup.knowledge && (
+            {(currentGroup.knowledge || currentGroup.group_type) && (
               <div className="bg-zinc-800/60 border border-zinc-700 rounded-2xl p-4">
-                <h4 className="text-xs font-bold text-zinc-400 uppercase tracking-wider mb-2">📍 Bối cảnh</h4>
-                <p className="text-zinc-200 text-sm leading-relaxed">{currentGroup.knowledge}</p>
+                <h4 className="text-xs font-bold text-zinc-400 uppercase tracking-wider mb-2">📍 {isP3 ? "Bối cảnh" : "Thông tin"}</h4>
+                {currentGroup.group_type && (
+                  <span className="inline-block px-3 py-1 bg-rose-600/20 text-rose-400 text-xs font-bold rounded-full mb-3">
+                    {currentGroup.group_type}
+                  </span>
+                )}
+                {currentGroup.knowledge && (
+                  <p className="text-zinc-200 text-sm leading-relaxed">{currentGroup.knowledge}</p>
+                )}
               </div>
             )}
             {currentGroup.audio_url && <AudioPlayer src={currentGroup.audio_url} autoPlay={false} />}
