@@ -458,4 +458,129 @@ export class ListeningService {
       message: 'Group submitted successfully',
     };
   }
+
+  // ==========================================================
+  // DASHBOARD
+  // ==========================================================
+  async getListeningDashboard(userId: number) {
+    // 1. Overall Score from mock tests
+    const mockTests = await this.prisma.mock_test_attempts.findMany({
+      where: { user_id: userId, listening_score: { not: null } },
+      orderBy: { started_at: 'desc' },
+      take: 1,
+    });
+    const overallScore = mockTests.length > 0 ? mockTests[0].listening_score || 0 : 0;
+
+    // 2. Practice sessions for Listening Parts (1-4)
+    const practiceSessions = await this.prisma.practice_sessions.findMany({
+      where: {
+        user_id: userId,
+        part: { in: [1, 2, 3, 4] },
+      },
+      orderBy: { created_at: 'asc' },
+    });
+
+    let totalQuestions = 0;
+    let totalCorrect = 0;
+    let totalTimeSecs = 0;
+    let timeTrackedQuestions = 0;
+
+    const partStats: Record<number, { correct: number; total: number; scoreSum: number; count: number }> = {
+      1: { correct: 0, total: 0, scoreSum: 0, count: 0 },
+      2: { correct: 0, total: 0, scoreSum: 0, count: 0 },
+      3: { correct: 0, total: 0, scoreSum: 0, count: 0 },
+      4: { correct: 0, total: 0, scoreSum: 0, count: 0 },
+    };
+
+    const uniqueDates = new Set<string>();
+
+    for (const session of practiceSessions) {
+      const part = session.part;
+      totalQuestions += session.question_count;
+      totalCorrect += session.correct_count;
+
+      if (partStats[part]) {
+        partStats[part].correct += session.correct_count;
+        partStats[part].total += session.question_count;
+        partStats[part].scoreSum += session.score;
+        partStats[part].count += 1;
+      }
+
+      if (session.completed_at && session.started_at) {
+        const diffSecs = (session.completed_at.getTime() - session.started_at.getTime()) / 1000;
+        if (diffSecs > 0) {
+          totalTimeSecs += diffSecs;
+          timeTrackedQuestions += session.question_count;
+        }
+      }
+
+      // Format YYYY-MM-DD for streak calculation
+      uniqueDates.add(session.created_at.toISOString().split('T')[0]);
+    }
+
+    // Include mock test dates for streak
+    const allMocks = await this.prisma.mock_test_attempts.findMany({
+      where: { user_id: userId },
+      select: { created_at: true },
+    });
+    for (const m of allMocks) {
+      uniqueDates.add(m.created_at.toISOString().split('T')[0]);
+    }
+
+    // 3. Accuracy Rate
+    const accuracyRate = totalQuestions > 0 ? Math.round((totalCorrect / totalQuestions) * 100) : 0;
+
+    // 4. Average Time per Question
+    const avgTimePerQuestion = timeTrackedQuestions > 0 ? Math.round(totalTimeSecs / timeTrackedQuestions) : 0;
+
+    // 5. Streak calculation
+    const datesArr = Array.from(uniqueDates).sort((a, b) => b.localeCompare(a)); // Descending
+    let streak = 0;
+    const todayStr = new Date().toISOString().split('T')[0];
+    const yesterdayStr = new Date(Date.now() - 86400000).toISOString().split('T')[0];
+
+    if (datesArr.includes(todayStr) || datesArr.includes(yesterdayStr)) {
+      let currentDate = new Date(datesArr[0]);
+      for (const d of datesArr) {
+        const dt = new Date(d);
+        const diffDays = Math.round((currentDate.getTime() - dt.getTime()) / 86400000);
+        if (diffDays <= 1) {
+          streak++;
+          currentDate = dt;
+        } else {
+          break;
+        }
+      }
+    }
+
+    // 6. Score by Part and Weak Parts
+    const scoreByPart = [1, 2, 3, 4].map(part => {
+      const stats = partStats[part];
+      const acc = stats.total > 0 ? Math.round((stats.correct / stats.total) * 100) : 0;
+      const avgScore = stats.count > 0 ? Math.round(stats.scoreSum / stats.count) : 0;
+      return {
+        part,
+        score: avgScore,
+        accuracy: acc,
+        totalQuestions: stats.total,
+      };
+    });
+
+    // Identify weak parts (only consider parts with at least 1 question)
+    const activeParts = scoreByPart.filter(p => p.totalQuestions > 0);
+    const weakParts = activeParts.length > 0
+      ? activeParts.sort((a, b) => a.accuracy - b.accuracy).slice(0, 1).map(p => p.part)
+      : [];
+
+    return {
+      success: true,
+      overallScore,
+      scoreByPart,
+      accuracyRate,
+      averageTimePerQuestion: avgTimePerQuestion,
+      streak,
+      totalQuestionsCompleted: totalQuestions,
+      weakParts,
+    };
+  }
 }

@@ -1,4 +1,5 @@
 import { apiFetch } from "@/lib/api";
+import { ListeningDashboardResponse } from "@/types/listening";
 
 // ===========================================
 // Types
@@ -226,4 +227,12 @@ export async function submitListeningGroup(
       }),
     },
   );
+}
+
+// ===========================================
+// Dashboard
+// ===========================================
+
+export async function getListeningDashboard() {
+  return apiFetch<ListeningDashboardResponse>("/listening/dashboard");
 }

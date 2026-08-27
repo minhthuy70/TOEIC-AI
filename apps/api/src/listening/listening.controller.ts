@@ -8,6 +8,11 @@ import { JwtAuthGuard } from '../auth/jwt-auth.guard';
 export class ListeningController {
   constructor(private readonly listeningService: ListeningService) {}
 
+  @Get('dashboard')
+  async getDashboard(@Request() req) {
+    return this.listeningService.getListeningDashboard(req.user?.userId || 1); // Default to user ID 1 for testing
+  }
+
   @Get('daily-status')
   async getDailyStatus(@Request() req) {
     return this.listeningService.getDailyStatus(req.user?.userId || 1); // Default to user ID 1 for testing
