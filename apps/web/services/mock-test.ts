@@ -530,3 +530,86 @@ export async function submitMiniTest(dto: {
     body: JSON.stringify(dto),
   });
 }
+
+// ============================================================
+// 7.4 TEST ANALYTICS TYPES & API
+// ============================================================
+
+export interface MockTestAnalyticsResponse {
+  totalTests: number;
+  scoreTrends: Array<{
+    attemptIndex: number;
+    attemptId: number;
+    testTitle: string;
+    date: string;
+    totalScore: number;
+    listeningScore: number;
+    readingScore: number;
+  }>;
+  accuracyTrends: Array<{
+    attemptIndex: number;
+    attemptId: number;
+    date: string;
+    overallAccuracy: number;
+    listeningAccuracy: number;
+    readingAccuracy: number;
+  }>;
+  timeTrends: Array<{
+    attemptIndex: number;
+    attemptId: number;
+    date: string;
+    durationMinutes: number;
+    totalScore: number;
+  }>;
+  partPerformance: Array<{
+    part: number;
+    name: string;
+    total: number;
+    correct: number;
+    accuracy: number;
+  }>;
+  strengths: Array<{
+    part: number;
+    name: string;
+    accuracy: number;
+    tip: string;
+  }>;
+  weaknesses: Array<{
+    part: number;
+    name: string;
+    accuracy: number;
+    tip: string;
+  }>;
+  progressOverTime: {
+    firstScore: number;
+    latestScore: number;
+    improvementPoints: number;
+    trendDirection: "improving" | "stable" | "declining";
+  };
+  predictedScore: {
+    score: number;
+    minScore: number;
+    maxScore: number;
+    confidence: string;
+  };
+  goalProgress: {
+    targetScore: number;
+    currentScore: number;
+    gap: number;
+    percentage: number;
+    listeningTarget: number;
+    readingTarget: number;
+    listeningCurrent: number;
+    readingCurrent: number;
+  };
+  studyTimeVsScoreCorrelation: Array<{
+    attemptId: number;
+    cumulativeHours: number;
+    score: number;
+    date: string;
+  }>;
+}
+
+export async function getMockTestAnalytics(): Promise<MockTestAnalyticsResponse> {
+  return apiFetch<MockTestAnalyticsResponse>("/mock-test/analytics");
+}

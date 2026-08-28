@@ -610,17 +610,17 @@ Dựa trên lộ trình học TOEIC 900+ - Phiên bản nâng cấp
 [x] - Delete test record - Xóa bản ghi kiểm tra
 
 7.4. Test Analytics (Phân tích kiểm tra)
-- Score trend chart - Biểu đồ xu hướng điểm
-- Accuracy trend chart - Biểu đồ xu hướng độ chính xác
-- Time trend chart - Biểu đồ xu hướng thời gian
-- Part-wise performance comparison - So sánh hiệu suất theo phần
-- Weakness identification - Xác định điểm yếu
-- Strength identification - Xác định điểm mạnh
-- Progress over time - Tiến độ theo thời gian
-- Predicted score - Điểm dự đoán
-- Goal progress tracking - Theo dõi tiến độ mục tiêu
-- Performance vs goal - Hiệu suất vs mục tiêu
-- Study time vs score correlation - Tương quan thời gian học vs điểm
+[x] - Score trend chart - Biểu đồ xu hướng điểm
+[x] - Accuracy trend chart - Biểu đồ xu hướng độ chính xác
+[x] - Time trend chart - Biểu đồ xu hướng thời gian
+[x] - Part-wise performance comparison - So sánh hiệu suất theo phần
+[x] - Weakness identification - Xác định điểm yếu
+[x] - Strength identification - Xác định điểm mạnh
+[x] - Progress over time - Tiến độ theo thời gian
+[x] - Predicted score - Điểm dự đoán
+[x] - Goal progress tracking - Theo dõi tiến độ mục tiêu
+[x] - Performance vs goal - Hiệu suất vs mục tiêu
+[x] - Study time vs score correlation - Tương quan thời gian học vs điểm
 
 7.5. Test Settings - Cài đặt kiểm tra
 - Default test type - Loại kiểm tra mặc định

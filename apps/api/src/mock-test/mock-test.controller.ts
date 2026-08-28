@@ -225,6 +225,19 @@ export class MockTestController {
   }
 
   // ==========================================================
+  // PHÂN TÍCH THI THỬ
+  // GET /mock-test/analytics
+  // ==========================================================
+
+  @Get("analytics")
+  async getAnalytics(
+    @Req() req: any,
+  ) {
+    const userId = this.getUserId(req);
+    return this.mockTestService.getAnalytics(userId);
+  }
+
+  // ==========================================================
   // KẾT QUẢ CHI TIẾT
   //
   // GET /mock-test/result/:attemptId
