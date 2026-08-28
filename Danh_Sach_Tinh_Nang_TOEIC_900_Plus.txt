@@ -457,12 +457,12 @@ Dựa trên lộ trình học TOEIC 900+ - Phiên bản nâng cấp
 ================================================================================
 
 6.1. Grammar Dashboard (Bảng điều khiển ngữ pháp)
-- Grammar topics overview - Tổng quan chủ đề ngữ pháp
-- Mastered grammar topics - Chủ đề ngữ pháp đã thành thạo
-- Learning grammar topics - Chủ đề ngữ pháp đang học
-- Grammar accuracy rate - Tỷ lệ chính xác ngữ pháp
-- Weak grammar topics identification - Xác định chủ đề ngữ pháp yếu
-- Grammar progress by stage - Tiến độ ngữ pháp theo chặng
+[x] - Grammar topics overview - Tổng quan chủ đề ngữ pháp
+[x] - Mastered grammar topics - Chủ đề ngữ pháp đã thành thạo
+[x] - Learning grammar topics - Chủ đề ngữ pháp đang học
+[x] - Grammar accuracy rate - Tỷ lệ chính xác ngữ pháp
+[x] - Weak grammar topics identification - Xác định chủ đề ngữ pháp yếu
+[x] - Grammar progress by stage - Tiến độ ngữ pháp theo chặng
 
 6.2. Grammar Lessons (Bài học ngữ pháp)
 - Browse grammar topics by category - Duyệt chủ đề ngữ pháp theo danh mục

@@ -19,6 +19,7 @@ const NAV_MAIN = [
   { label: "Tổng quan", icon: "🏠", href: "/dashboard" },
   { label: "Học tập", icon: "📚", href: "/dashboard/courses" },
   { label: "Từ vựng", icon: "📖", href: "/dashboard/vocabulary" },
+  { label: "Ngữ pháp", icon: "📝", href: "/dashboard/grammar" },
   { label: "Luyện nghe", icon: "🎧", href: "/dashboard/listening" },
   { label: "Luyện đọc", icon: "📖", href: "/dashboard/reading" },
   { label: "Luyện tập", icon: "✍️", href: "/dashboard/practice" },

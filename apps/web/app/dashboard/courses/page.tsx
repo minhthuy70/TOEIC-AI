@@ -563,20 +563,41 @@ useEffect(() => {
 
       {/* ── Grammar ── */}
       {activeTab === "grammar" && (
-  <div className="space-y-3">
+        <div className="space-y-4">
+          {/* Dashboard Quick Banner */}
+          <div className="bg-gradient-to-r from-red-950/40 via-zinc-900 to-zinc-900 border border-red-800/40 rounded-2xl p-5 flex flex-col sm:flex-row sm:items-center justify-between gap-4 shadow-lg">
+            <div className="flex items-center gap-3.5">
+              <div className="w-12 h-12 rounded-2xl bg-red-600/20 border border-red-500/30 flex items-center justify-center text-2xl shrink-0">
+                📊
+              </div>
+              <div>
+                <h3 className="text-base font-bold text-white">Bảng Điều Khiển Ngữ Pháp Chuyên Sâu</h3>
+                <p className="text-xs text-zinc-400 mt-0.5">
+                  Phân tích tỷ lệ chính xác, phát hiện chủ đề yếu, theo dõi các chủ đề đã thành thạo theo 5 chặng.
+                </p>
+              </div>
+            </div>
+            <Link
+              href="/dashboard/grammar"
+              className="px-4 py-2.5 bg-red-600 hover:bg-red-500 text-white text-xs font-bold rounded-xl shrink-0 transition-all flex items-center justify-center gap-1.5 shadow"
+            >
+              <span>Mở Grammar Dashboard</span>
+              <span>→</span>
+            </Link>
+          </div>
 
-    {/* Header */}
-    <div className="flex items-center justify-between">
-      <p className="text-sm text-zinc-300 font-medium">
-        Ngữ pháp TOEIC từ cơ bản đến nâng cao
-      </p>
+          {/* Header */}
+          <div className="flex items-center justify-between">
+            <p className="text-sm text-zinc-300 font-medium">
+              Danh sách chủ đề ngữ pháp TOEIC từ cơ bản đến nâng cao
+            </p>
 
-      {!grammarLoading && !grammarError && (
-        <span className="text-xs text-zinc-500 bg-zinc-900/60 border border-zinc-800/50 px-3 py-1 rounded-full">
-          {grammarTopics.length} chủ đề
-        </span>
-      )}
-    </div>
+            {!grammarLoading && !grammarError && (
+              <span className="text-xs text-zinc-500 bg-zinc-900/60 border border-zinc-800/50 px-3 py-1 rounded-full">
+                {grammarTopics.length} chủ đề
+              </span>
+            )}
+          </div>
 
     {/* Loading */}
     {grammarLoading && (

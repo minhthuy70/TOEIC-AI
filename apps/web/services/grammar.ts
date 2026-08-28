@@ -4,7 +4,18 @@ import type {
   GrammarCategory,
   GrammarCategoryDetail,
   GrammarLessonDetail,
+  GrammarDashboardData,
 } from "@/types/grammar";
+
+// ===========================================
+// Grammar Dashboard
+// ===========================================
+
+export async function getGrammarDashboard() {
+  return apiFetch<GrammarDashboardData>(
+    "/grammar/dashboard",
+  );
+}
 
 // ===========================================
 // Grammar Categories

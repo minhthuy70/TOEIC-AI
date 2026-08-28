@@ -22,6 +22,17 @@ export class GrammarController {
   ) {}
 
   // =====================================================
+  // GET /grammar/dashboard
+  // =====================================================
+
+  @Get("dashboard")
+  getDashboard(@Request() req) {
+    return this.grammarService.getDashboard(
+      req.user.userId,
+    );
+  }
+
+  // =====================================================
   // GET /grammar/categories
   // =====================================================
 
