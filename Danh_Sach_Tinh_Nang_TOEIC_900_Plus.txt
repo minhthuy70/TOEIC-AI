@@ -465,21 +465,21 @@ Dựa trên lộ trình học TOEIC 900+ - Phiên bản nâng cấp
 [x] - Grammar progress by stage - Tiến độ ngữ pháp theo chặng
 
 6.2. Grammar Lessons (Bài học ngữ pháp)
-- Browse grammar topics by category - Duyệt chủ đề ngữ pháp theo danh mục
-- Search grammar topics - Tìm kiếm chủ đề ngữ pháp
-- Filter by stage (1-5) - Lọc theo chặng (1-5)
-- Filter by difficulty (basic/intermediate/advanced) - Lọc theo độ khó
-- Lesson list view - Chế độ xem danh sách bài học
-- Lesson detail view - Chế độ xem chi tiết bài học
-- Lesson title - Tiêu đề bài học
-- Lesson explanation - Giải thích bài học
-- Examples with explanations - Ví dụ với giải thích
-- Common mistakes - Lỗi thường gặp
-- Tips and tricks - Mẹo và thủ thuật
-- Related topics links - Link chủ đề liên quan
-- Mark lesson as complete - Đánh dấu bài học hoàn thành
-- Add lesson to favorites - Thêm bài học vào yêu thích
-- Share lesson button - Nút chia sẻ bài học
+[x] - Browse grammar topics by category - Duyệt chủ đề ngữ pháp theo danh mục
+[x] - Search grammar topics - Tìm kiếm chủ đề ngữ pháp
+[x] - Filter by stage (1-5) - Lọc theo chặng (1-5)
+[x] - Filter by difficulty (basic/intermediate/advanced) - Lọc theo độ khó
+[x] - Lesson list view - Chế độ xem danh sách bài học
+[x] - Lesson detail view - Chế độ xem chi tiết bài học
+[x] - Lesson title - Tiêu đề bài học
+[x] - Lesson explanation - Giải thích bài học
+[x] - Examples with explanations - Ví dụ với giải thích
+[x] - Common mistakes - Lỗi thường gặp
+[x] - Tips and tricks - Mẹo và thủ thuật
+[x] - Related topics links - Link chủ đề liên quan
+[x] - Mark lesson as complete - Đánh dấu bài học hoàn thành
+[x] - Add lesson to favorites - Thêm bài học vào yêu thích
+[x] - Share lesson button - Nút chia sẻ bài học
 
 6.3. Grammar Exercises (Bài tập ngữ pháp)
 - Exercise list by topic - Danh sách bài tập theo chủ đề

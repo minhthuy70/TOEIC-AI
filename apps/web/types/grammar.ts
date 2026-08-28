@@ -109,6 +109,8 @@ export interface GrammarLesson {
   completed: boolean;
   score: number;
   lastStudied: string | null;
+  difficulty?: string;
+  isFavorite?: boolean;
 }
 
 // ===========================================
@@ -121,6 +123,7 @@ export interface GrammarCategoryDetail {
   description: string | null;
   stage: number;
   displayOrder: number | null;
+  difficulty?: string;
 
   totalLessons: number;
   completedLessons: number;
@@ -139,10 +142,15 @@ export interface GrammarLessonDetail {
   content: string | null;
   displayOrder: number | null;
   testId: number | null;
+  difficulty: string;
+  lessonIndex: number;
+  totalLessonsInCategory: number;
 
   category: {
     id: number;
     name: string;
+    description?: string | null;
+    stage: number;
   };
 
   progress: {
@@ -150,4 +158,29 @@ export interface GrammarLessonDetail {
     score: number;
     lastStudied: string | null;
   };
+
+  previousLesson: {
+    id: number;
+    title: string;
+  } | null;
+
+  nextLesson: {
+    id: number;
+    title: string;
+  } | null;
+
+  siblingLessons: {
+    id: number;
+    title: string;
+    order: number;
+    completed: boolean;
+    score: number;
+  }[];
+
+  relatedCategories: {
+    id: number;
+    name: string;
+    stage: number;
+    description: string | null;
+  }[];
 }

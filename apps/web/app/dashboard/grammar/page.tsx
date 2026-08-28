@@ -82,6 +82,7 @@ export default function GrammarDashboardPage() {
     "all" | "learning" | "mastered" | "weak" | "not_started"
   >("all");
   const [selectedStage, setSelectedStage] = useState<number>(0);
+  const [selectedDifficulty, setSelectedDifficulty] = useState<"all" | "basic" | "intermediate" | "advanced">("all");
   const [searchQuery, setSearchQuery] = useState("");
 
   useEffect(() => {
@@ -131,6 +132,14 @@ export default function GrammarDashboardPage() {
       list = list.filter((t) => t.stage === selectedStage);
     }
 
+    if (selectedDifficulty === "basic") {
+      list = list.filter((t) => t.stage <= 2);
+    } else if (selectedDifficulty === "intermediate") {
+      list = list.filter((t) => t.stage === 3 || t.stage === 4);
+    } else if (selectedDifficulty === "advanced") {
+      list = list.filter((t) => t.stage >= 5);
+    }
+
     if (searchQuery.trim()) {
       const q = searchQuery.toLowerCase().trim();
       list = list.filter(
@@ -141,7 +150,7 @@ export default function GrammarDashboardPage() {
     }
 
     return list;
-  }, [data, activeTab, selectedStage, searchQuery]);
+  }, [data, activeTab, selectedStage, selectedDifficulty, searchQuery]);
 
   if (loading) {
     return (
@@ -429,6 +438,17 @@ export default function GrammarDashboardPage() {
                   <option value={3}>Chặng 3 (500–650)</option>
                   <option value={4}>Chặng 4 (650–800)</option>
                   <option value={5}>Chặng 5 (800–990)</option>
+                </select>
+
+                <select
+                  value={selectedDifficulty}
+                  onChange={(e) => setSelectedDifficulty(e.target.value as any)}
+                  className="bg-zinc-900/90 border border-zinc-800 rounded-xl px-3 py-1.5 text-xs text-zinc-300 focus:outline-none focus:border-red-500 transition-all cursor-pointer"
+                >
+                  <option value="all">Tất cả độ khó</option>
+                  <option value="basic">Cơ bản (Chặng 1-2)</option>
+                  <option value="intermediate">Trung cấp (Chặng 3-4)</option>
+                  <option value="advanced">Nâng cao (Chặng 5)</option>
                 </select>
               </div>
             </div>

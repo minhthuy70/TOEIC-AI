@@ -416,10 +416,8 @@ export class GrammarService {
         where: {
           id: lessonId,
         },
-
         include: {
           category: true,
-
           progresses: {
             where: {
               userId,
@@ -434,28 +432,88 @@ export class GrammarService {
       );
     }
 
+    // Lấy các bài học cùng chủ đề để điều hướng và hiển thị danh sách
+    const siblingLessons = await this.prisma.grammarLesson.findMany({
+      where: { categoryId: lesson.categoryId },
+      orderBy: [{ displayOrder: "asc" }, { id: "asc" }],
+      include: {
+        progresses: {
+          where: { userId },
+        },
+      },
+    });
+
+    const currentIndex = siblingLessons.findIndex((l) => l.id === lessonId);
+    const previousLesson =
+      currentIndex > 0
+        ? {
+            id: siblingLessons[currentIndex - 1].id,
+            title: siblingLessons[currentIndex - 1].title,
+          }
+        : null;
+    const nextLesson =
+      currentIndex >= 0 && currentIndex < siblingLessons.length - 1
+        ? {
+            id: siblingLessons[currentIndex + 1].id,
+            title: siblingLessons[currentIndex + 1].title,
+          }
+        : null;
+
+    // Lấy các chủ đề liên quan trong cùng chặng
+    const relatedCategories = await this.prisma.grammarCategory.findMany({
+      where: {
+        stage: lesson.category.stage,
+        id: { not: lesson.categoryId },
+      },
+      take: 4,
+      select: {
+        id: true,
+        name: true,
+        stage: true,
+        description: true,
+      },
+    });
+
+    let difficulty = "Cơ bản";
+    if (lesson.category.stage >= 5) difficulty = "Nâng cao";
+    else if (lesson.category.stage >= 3) difficulty = "Trung cấp";
+
     return {
       id: lesson.id,
       title: lesson.title,
       content: lesson.content,
       displayOrder: lesson.displayOrder,
       testId: lesson.testId,
+      difficulty,
+      lessonIndex: currentIndex + 1,
+      totalLessonsInCategory: siblingLessons.length,
 
       category: {
         id: lesson.category.id,
         name: lesson.category.name,
+        description: lesson.category.description,
+        stage: lesson.category.stage,
       },
 
       progress: {
         completed:
           lesson.progresses[0]?.completed ?? false,
-
         score:
           lesson.progresses[0]?.score ?? 0,
-
         lastStudied:
           lesson.progresses[0]?.lastStudied ?? null,
       },
+
+      previousLesson,
+      nextLesson,
+      siblingLessons: siblingLessons.map((s, idx) => ({
+        id: s.id,
+        title: s.title,
+        order: idx + 1,
+        completed: s.progresses[0]?.completed ?? false,
+        score: s.progresses[0]?.score ?? 0,
+      })),
+      relatedCategories,
     };
   }
 
@@ -496,22 +554,20 @@ export class GrammarService {
           userId,
           lessonId,
           completed: true,
-          score: dto.score,
+          score: dto.score ?? 100,
           lastStudied: new Date(),
         },
 
         update: {
           completed: true,
-          score: dto.score,
+          score: dto.score ?? 100,
           lastStudied: new Date(),
         },
       });
 
     return {
       success: true,
-
       message: "Đã hoàn thành bài học",
-
       progress: {
         id: progress.id,
         lessonId: progress.lessonId,
