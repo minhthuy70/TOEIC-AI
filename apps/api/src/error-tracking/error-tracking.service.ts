@@ -58,12 +58,12 @@ export class ErrorTrackingService implements OnModuleInit {
           updated_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
           source_type VARCHAR(50) DEFAULT 'mock_test',
           source_id INTEGER
-        );
-        CREATE INDEX IF NOT EXISTS idx_error_logs_user ON error_logs(user_id);
-        CREATE INDEX IF NOT EXISTS idx_error_logs_status ON error_logs(status);
-        CREATE INDEX IF NOT EXISTS idx_error_logs_type ON error_logs(error_type);
-        CREATE INDEX IF NOT EXISTS idx_error_logs_part ON error_logs(part);
+        )
       `);
+      await this.prisma.$executeRawUnsafe(`CREATE INDEX IF NOT EXISTS idx_error_logs_user ON error_logs(user_id)`);
+      await this.prisma.$executeRawUnsafe(`CREATE INDEX IF NOT EXISTS idx_error_logs_status ON error_logs(status)`);
+      await this.prisma.$executeRawUnsafe(`CREATE INDEX IF NOT EXISTS idx_error_logs_type ON error_logs(error_type)`);
+      await this.prisma.$executeRawUnsafe(`CREATE INDEX IF NOT EXISTS idx_error_logs_part ON error_logs(part)`);
     } catch (err) {
       console.error("Error creating error_logs table:", err);
     }
