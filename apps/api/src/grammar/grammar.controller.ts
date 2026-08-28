@@ -75,6 +75,34 @@ export class GrammarController {
   }
 
   // =====================================================
+  // GET /grammar/reference
+  // =====================================================
+
+  @Get("reference")
+  getReferenceRules(
+    @Request() req,
+  ) {
+    const search = req.query?.search;
+    const category = req.query?.category;
+    return this.grammarService.getReferenceRules(
+      req.user.userId,
+      search,
+      category,
+    );
+  }
+
+  // =====================================================
+  // GET /grammar/reference/:id
+  // =====================================================
+
+  @Get("reference/:id")
+  getReferenceRuleDetail(
+    @Param("id", ParseIntPipe) id: number,
+  ) {
+    return this.grammarService.getReferenceRuleDetail(id);
+  }
+
+  // =====================================================
   // GET /grammar/categories
   // =====================================================
 

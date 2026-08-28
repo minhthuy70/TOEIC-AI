@@ -507,17 +507,17 @@ Dựa trên lộ trình học TOEIC 900+ - Phiên bản nâng cấp
 [x] - Retry incorrect answers - Thử lại câu sai
 
 6.4. Grammar Reference (Tài liệu tham khảo ngữ pháp)
-- Grammar rules index - Chỉ mục quy tắc ngữ pháp
-- Search grammar rules - Tìm kiếm quy tắc ngữ pháp
-- Browse by category (tenses, clauses, etc.) - Duyệt theo danh mục
-- Rule detail view - Chế độ xem chi tiết quy tắc
-- Rule explanation - Giải thích quy tắc
-- Examples - Ví dụ
-- Exceptions - Ngoại lệ
-- Common errors - Lỗi thường gặp
-- Quick reference tables - Bảng tham khảo nhanh
-- Bookmark rules - Đánh dấu quy tắc
-- Print-friendly view - Chế độ xem in ấn
+[x] - Grammar rules index - Chỉ mục quy tắc ngữ pháp
+[x] - Search grammar rules - Tìm kiếm quy tắc ngữ pháp
+[x] - Browse by category (tenses, clauses, etc.) - Duyệt theo danh mục
+[x] - Rule detail view - Chế độ xem chi tiết quy tắc
+[x] - Rule explanation - Giải thích quy tắc
+[x] - Examples - Ví dụ
+[x] - Exceptions - Ngoại lệ
+[x] - Common errors - Lỗi thường gặp
+[x] - Quick reference tables - Bảng tham khảo nhanh
+[x] - Bookmark rules - Đánh dấu quy tắc
+[x] - Print-friendly view - Chế độ xem in ấn
 
 6.5. Grammar Settings - Cài đặt ngữ pháp
 - Exercise difficulty preference - Ưa thích độ khó bài tập

@@ -277,3 +277,46 @@ export interface SubmitGrammarExerciseDto {
   }[];
   durationSeconds?: number;
 }
+
+// ===========================================
+// Grammar Reference Types
+// ===========================================
+
+export interface GrammarReferenceRuleSummary {
+  id: number;
+  title: string;
+  category: string;
+  categoryLabel: string;
+  stage: number;
+  summary: string;
+  formula: string;
+  examplesCount: number;
+  exceptionsCount: number;
+}
+
+export interface GrammarReferenceDetail {
+  id: number;
+  title: string;
+  category: string;
+  categoryLabel: string;
+  stage: number;
+  summary: string;
+  formula: string;
+  explanation: string;
+  quickTable: {
+    headers: string[];
+    rows: string[][];
+  };
+  examples: {
+    en: string;
+    vi: string;
+    analysis?: string;
+  }[];
+  exceptions: string[];
+  commonErrors: {
+    incorrect: string;
+    correct: string;
+    note: string;
+  }[];
+  toeicTips: string[];
+}

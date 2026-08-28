@@ -10,6 +10,8 @@ import type {
   GrammarExerciseSubmitResult,
   StartGrammarExerciseDto,
   SubmitGrammarExerciseDto,
+  GrammarReferenceRuleSummary,
+  GrammarReferenceDetail,
 } from "@/types/grammar";
 
 // ===========================================
@@ -100,5 +102,26 @@ export async function completeGrammarLesson(
       method: "POST",
       body: JSON.stringify({ score }),
     },
+  );
+}
+
+// ===========================================
+// Grammar Reference
+// ===========================================
+
+export async function getGrammarReferenceRules(params?: { search?: string; category?: string }) {
+  const query = new URLSearchParams();
+  if (params?.search) query.append("search", params.search);
+  if (params?.category) query.append("category", params.category);
+  const qs = query.toString();
+
+  return apiFetch<GrammarReferenceRuleSummary[]>(
+    `/grammar/reference${qs ? `?${qs}` : ""}`,
+  );
+}
+
+export async function getGrammarReferenceDetail(id: number) {
+  return apiFetch<GrammarReferenceDetail>(
+    `/grammar/reference/${id}`,
   );
 }
