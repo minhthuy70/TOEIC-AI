@@ -3,6 +3,12 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+
+  /* Reading Settings */
+  --reading-font-size: 16px;
+  --reading-font-family: Inter, sans-serif;
+  --reading-line-height: 1.6;
+  --reading-highlight-color: #FFD700;
 }
 
 @theme inline {

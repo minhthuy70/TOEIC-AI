@@ -442,14 +442,14 @@ Dựa trên lộ trình học TOEIC 900+ - Phiên bản nâng cấp
 [x] - Add to error log - Thêm vào nhật ký lỗi
 
 5.6. Reading Settings - Cài đặt đọc
-- Default font size - Cỡ chữ mặc định
-- Font family selection - Chọn font chữ
-- Line height adjustment - Chỉnh độ cao dòng
-- Text highlighting color - Màu highlight văn bản
-- Auto-scroll speed - Tốc độ cuộn tự động
-- Show questions inline vs below - Hiển thị câu hỏi nội tuyến vs dưới
-- Timer display preference - Ưa thích hiển thị đồng hồ
-- Text-to-speech option - Tùy chọn văn bản thành giọng nói
+[x] - Default font size - Cỡ chữ mặc định
+[x] - Font family selection - Chọn font chữ
+[x] - Line height adjustment - Chỉnh độ cao dòng
+[x] - Text highlighting color - Màu highlight văn bản
+[x] - Auto-scroll speed - Tốc độ cuộn tự động
+[x] - Show questions inline vs below - Hiển thị câu hỏi nội tuyến vs dưới
+[x] - Timer display preference - Ưa thích hiển thị đồng hồ
+[x] - Text-to-speech option - Tùy chọn văn bản thành giọng nói
 
 ================================================================================
 

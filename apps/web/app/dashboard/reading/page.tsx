@@ -98,12 +98,20 @@ export default function ReadingDashboardPage() {
           <h1 className="text-2xl font-bold text-white">📖 Luyện Đọc (Reading)</h1>
           <p className="text-zinc-400 text-sm mt-1">Bảng điều khiển và phân tích kỹ năng đọc của bạn</p>
         </div>
-        <Link
-          href="/dashboard"
-          className="flex items-center gap-2 px-4 py-2.5 bg-zinc-800 hover:bg-zinc-700 text-zinc-300 hover:text-white font-bold text-xs rounded-xl transition"
-        >
-          ← Trở về Dashboard
-        </Link>
+        <div className="flex items-center gap-2">
+          <Link
+            href="/dashboard/reading/settings"
+            className="flex items-center gap-2 px-4 py-2.5 bg-indigo-700 hover:bg-indigo-600 text-white font-bold text-xs rounded-xl transition"
+          >
+            ⚙️ Cài đặt đọc
+          </Link>
+          <Link
+            href="/dashboard"
+            className="flex items-center gap-2 px-4 py-2.5 bg-zinc-800 hover:bg-zinc-700 text-zinc-300 hover:text-white font-bold text-xs rounded-xl transition"
+          >
+            ← Trở về Dashboard
+          </Link>
+        </div>
       </div>
 
       {!hasData && (
