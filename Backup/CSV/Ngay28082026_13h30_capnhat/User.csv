@@ -1,0 +1,9 @@
+id,fullName,email,password,createdAt,role,avatarUrl,googleId,facebookId,isEmailVerified,verificationCode,verificationCodeExpiresAt,isLocked,isPermanentlyLocked,lockedUntil,unlockRequestSent,unlockRequestSentAt,deactivatedAt,isActive,lastLoginAt
+9,User Test,user_test_unique@example.com,$2b$10$.aIPDrqqhgr0zZSu084y..viQIZ6M8NxRBdQbcP6Xqc3IdaHOvd2K,2026-08-19 07:47:55.059,USER,,,,f,,,f,f,,f,,,t,
+2,Nguyen Minh Thuy,TUVUNG1@gmail.com,$2b$10$evUJojF8VZ8xNBnETAwzoOkaGgLZdr.EVXtL6dkABzFmhJvgvOkqm,2026-07-24 16:26:45.552,USER,,,,f,,,f,f,,f,,,t,
+1,user1,user1@gmail.com,$2b$10$wQblVvUA0v.4gJ9ejghpPenYmfIaFVNgdyr1U./i6HZ4Qa7qXR53u,2026-07-24 06:16:24.669,CONTENT_ADMIN,,,,f,,,f,f,,f,,,t,
+10,Tie N,n.tie7625@gmail.com,,2026-08-24 16:07:34.096,USER,https://lh3.googleusercontent.com/a/ACg8ocJJcIDMLsSE8NBZEzXPvNJFgVXu7GhRgI7m-IZ3qu7lxe4hjw=s96-c,106038042852762407482,,t,,,f,f,,f,,,t,2026-08-24 18:42:29.862
+5,Nguyễn Minh Thùy,nmthuycntt2311090@student.ctuet.edu.vn,$2b$10$pdFTg3a2t8piEaUqd7Zf9Oo.KMbdeHu82xOoC9EgLU/xbiXmTk87K,2026-08-18 12:01:16.068,USER,,,,t,,,f,f,,f,,,t,2026-08-25 17:48:47.893
+8,Nguyễn Minh Thùy,nguyenminhthuy155319@gmail.com,$2b$10$s/4ELLelQ9t01ikLyDto..iKNwMIWINQVzA7CrATogBVbBuZLLzwe,2026-08-18 17:47:27.829,USER,,,,f,540521,2026-08-25 18:12:52.678,f,f,,f,,,t,
+4,TAI KHOAN CONTENT ADMIN,Contentadmin123@gmail.com,$2b$10$govbb5TgambvL98kqZvEYeTMK0Rl4UNlg77WZHBHIqUZz4X8TvJSC,2026-08-12 04:51:30.442,CONTENT_ADMIN,,,,t,,,f,f,,f,,,t,
+3,TAI KHAON SUPER ADMIN,Superadmin123@gmail.com,$2b$10$zD1B.rs/jqhWh0n6aeOokOqdmH76ehzkAHq2FReQ/NivqZdZC.AtW,2026-08-12 04:49:25.237,SUPER_ADMIN,,,,t,714245,2026-08-25 17:53:55.143,f,f,,f,,,t,2026-08-25 18:02:44.415

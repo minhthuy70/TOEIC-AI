@@ -1,0 +1,84 @@
+id,name,description,display_order,created_at,updated_at,stage
+2,Từ loại,Nhận biết và sử dụng các loại từ cơ bản trong tiếng Anh.,2,2026-08-08 17:48:19.226059,2026-08-08 17:48:19.226059,1
+3,Danh từ,"Danh từ số ít, số nhiều, đếm được, không đếm được và danh từ ghép.",3,2026-08-08 17:48:19.226059,2026-08-08 17:48:19.226059,1
+4,Đại từ,Các loại đại từ và cách sử dụng trong câu.,4,2026-08-08 17:48:19.226059,2026-08-08 17:48:19.226059,1
+5,Động từ,"Động từ thường, động từ be, have, do, nội động từ và ngoại động từ.",5,2026-08-08 17:48:19.226059,2026-08-08 17:48:19.226059,1
+6,Tính từ,Vị trí và cách sử dụng tính từ trong câu.,6,2026-08-08 17:48:19.226059,2026-08-08 17:48:19.226059,1
+7,Trạng từ,Các loại trạng từ và vị trí của trạng từ trong câu.,7,2026-08-08 17:48:19.226059,2026-08-08 17:48:19.226059,1
+8,Mạo từ,"Cách sử dụng a, an, the và trường hợp không dùng mạo từ.",8,2026-08-08 17:48:19.226059,2026-08-08 17:48:19.226059,1
+9,Giới từ cơ bản,"Các giới từ cơ bản như in, on, at, from, to, for, with, by, about, of.",9,2026-08-08 17:48:19.226059,2026-08-08 17:48:19.226059,1
+10,Liên từ cơ bản,"Các liên từ cơ bản như and, but, or, so, because, although.",10,2026-08-08 17:48:19.226059,2026-08-08 17:48:19.226059,1
+11,Thì hiện tại đơn,"Cấu trúc, cách dùng, phủ định, nghi vấn và dấu hiệu nhận biết.",11,2026-08-08 17:48:19.226059,2026-08-08 17:48:19.226059,1
+12,Thì hiện tại tiếp diễn,"Cấu trúc be + V-ing, cách dùng và dấu hiệu nhận biết.",12,2026-08-08 17:48:19.226059,2026-08-08 17:48:19.226059,1
+13,Thì quá khứ đơn,"Cách sử dụng V-ed, động từ bất quy tắc, did và dấu hiệu nhận biết.",13,2026-08-08 17:48:19.226059,2026-08-08 17:48:19.226059,1
+14,Thì tương lai cơ bản,Will và be going to cùng các cách sử dụng cơ bản.,14,2026-08-08 17:48:19.226059,2026-08-08 17:48:19.226059,1
+15,So sánh cơ bản,"So sánh hơn, so sánh nhất và cấu trúc as...as.",15,2026-08-08 17:48:19.226059,2026-08-08 17:48:19.226059,1
+16,Từ chỉ số lượng,"Some, any, much, many, few, little, a lot of và các từ chỉ lượng cơ bản.",16,2026-08-08 17:48:19.226059,2026-08-08 17:48:19.226059,1
+17,Hệ thống 12 thì,"Hệ thống đầy đủ các thì hiện tại, quá khứ và tương lai.",1,2026-08-08 17:48:19.226059,2026-08-08 17:48:19.226059,2
+18,Sự phối hợp các thì,Cách phối hợp thì và các dấu hiệu thời gian trong câu.,2,2026-08-08 17:48:19.226059,2026-08-08 17:48:19.226059,2
+19,Modal Verbs,"Can, could, may, might, must, should, will, would và các động từ khuyết thiếu khác.",3,2026-08-08 17:48:19.226059,2026-08-08 17:48:19.226059,2
+20,Gerund,"Cách sử dụng V-ing làm chủ ngữ, tân ngữ và sau giới từ.",4,2026-08-08 17:48:19.226059,2026-08-08 17:48:19.226059,2
+21,Infinitive,"To-infinitive, bare infinitive và các cấu trúc động từ đi với infinitive.",5,2026-08-08 17:48:19.226059,2026-08-08 17:48:19.226059,2
+22,Gerund và Infinitive,Phân biệt các động từ đi với gerund và infinitive.,6,2026-08-08 17:48:19.226059,2026-08-08 17:48:19.226059,2
+23,Passive Voice,Câu bị động ở các thì và với modal verbs.,7,2026-08-08 17:48:19.226059,2026-08-08 17:48:19.226059,2
+24,Câu hỏi,"Yes/No questions, Wh-questions, subject questions, object questions và tag questions.",8,2026-08-08 17:48:19.226059,2026-08-08 17:48:19.226059,2
+25,Relative Clauses,"Mệnh đề quan hệ với who, whom, which, that, whose, where và when.",9,2026-08-08 17:48:19.226059,2026-08-08 17:48:19.226059,2
+26,Reduced Relative Clauses,"Rút gọn mệnh đề quan hệ bằng V-ing, V3/ed và to-infinitive.",10,2026-08-08 17:48:19.226059,2026-08-08 17:48:19.226059,2
+27,Liên từ nâng cao,"Các liên từ chỉ nguyên nhân, thời gian, điều kiện, tương phản và mục đích.",11,2026-08-08 17:48:19.226059,2026-08-08 17:48:19.226059,2
+28,Giới từ nâng cao,Các giới từ và cụm giới từ thường gặp trong TOEIC.,12,2026-08-08 17:48:19.226059,2026-08-08 17:48:19.226059,2
+29,Adjective và Adverb,Phân biệt tính từ và trạng từ cùng các trường hợp dễ nhầm.,13,2026-08-08 17:48:19.226059,2026-08-08 17:48:19.226059,2
+30,Word Forms,"Nhận biết và biến đổi noun, verb, adjective và adverb.",14,2026-08-08 17:48:19.226059,2026-08-08 17:48:19.226059,2
+31,Comparisons,Các cấu trúc so sánh nâng cao.,15,2026-08-08 17:48:19.226059,2026-08-08 17:48:19.226059,2
+32,Quantity,"Each, every, either, neither, both, all, none, another, other và others.",16,2026-08-08 17:48:19.226059,2026-08-08 17:48:19.226059,2
+33,Noun Clauses,"Mệnh đề danh từ với that, whether, if và wh-clauses.",1,2026-08-08 17:48:19.226059,2026-08-08 17:48:19.226059,3
+34,Adverbial Clauses,"Mệnh đề trạng ngữ chỉ thời gian, nguyên nhân, điều kiện, nhượng bộ, mục đích và kết quả.",2,2026-08-08 17:48:19.226059,2026-08-08 17:48:19.226059,3
+35,Conditionals,"Câu điều kiện loại 0, 1, 2, 3 và mixed conditionals.",3,2026-08-08 17:48:19.226059,2026-08-08 17:48:19.226059,3
+36,Wish,"Cấu trúc wish với hiện tại, quá khứ và would.",4,2026-08-08 17:48:19.226059,2026-08-08 17:48:19.226059,3
+37,Causative,"Cấu trúc have, get, make, let và help.",5,2026-08-08 17:48:19.226059,2026-08-08 17:48:19.226059,3
+38,Participles,"Present participle, past participle và perfect participle.",6,2026-08-08 17:48:19.226059,2026-08-08 17:48:19.226059,3
+39,Participle Clauses,Rút gọn mệnh đề bằng participle.,7,2026-08-08 17:48:19.226059,2026-08-08 17:48:19.226059,3
+40,Appositives,Danh từ và cụm danh từ đồng vị.,8,2026-08-08 17:48:19.226059,2026-08-08 17:48:19.226059,3
+41,Parallel Structure,Cấu trúc song song với các liên từ và cấu trúc tương quan.,9,2026-08-08 17:48:19.226059,2026-08-08 17:48:19.226059,3
+42,Subject-Verb Agreement,Quy tắc hòa hợp giữa chủ ngữ và động từ.,10,2026-08-08 17:48:19.226059,2026-08-08 17:48:19.226059,3
+43,Articles nâng cao,Cách sử dụng mạo từ trong các trường hợp đặc biệt.,11,2026-08-08 17:48:19.226059,2026-08-08 17:48:19.226059,3
+44,Determiners,"Each, every, either, neither, enough, sufficient và các từ hạn định.",12,2026-08-08 17:48:19.226059,2026-08-08 17:48:19.226059,3
+45,Quantifiers nâng cao,"Phân biệt few, a few, little, a little, fewer, less, number và amount.",13,2026-08-08 17:48:19.226059,2026-08-08 17:48:19.226059,3
+46,Preposition Collocations,Các cụm từ cố định đi với giới từ thường gặp trong TOEIC.,14,2026-08-08 17:48:19.226059,2026-08-08 17:48:19.226059,3
+47,Verb Patterns,Các mẫu cấu trúc động từ thường gặp.,15,2026-08-08 17:48:19.226059,2026-08-08 17:48:19.226059,3
+48,Phrasal Verbs,Các cụm động từ thường xuất hiện trong tiếng Anh công sở và TOEIC.,16,2026-08-08 17:48:19.226059,2026-08-08 17:48:19.226059,3
+49,Advanced Passive,Các cấu trúc bị động nâng cao và passive reporting.,1,2026-08-08 17:48:19.226059,2026-08-08 17:48:19.226059,4
+50,Reporting Verbs,"Say, tell, report, claim, announce, suggest, recommend, advise và các động từ tường thuật.",2,2026-08-08 17:48:19.226059,2026-08-08 17:48:19.226059,4
+51,Reported Speech,"Câu tường thuật và sự thay đổi thì, đại từ và trạng từ thời gian.",3,2026-08-08 17:48:19.226059,2026-08-08 17:48:19.226059,4
+52,Subjunctive,"Cấu trúc giả định sau recommend, suggest, insist, demand và require.",4,2026-08-08 17:48:19.226059,2026-08-08 17:48:19.226059,4
+53,Inversion,Đảo ngữ với trạng từ phủ định và các cấu trúc đặc biệt.,5,2026-08-08 17:48:19.226059,2026-08-08 17:48:19.226059,4
+54,Emphasis,"Các cấu trúc nhấn mạnh bằng do/does/did, cleft sentences và pseudo-cleft.",6,2026-08-08 17:48:19.226059,2026-08-08 17:48:19.226059,4
+55,Advanced Relative Clauses,Mệnh đề quan hệ nâng cao và các trường hợp đặc biệt.,7,2026-08-08 17:48:19.226059,2026-08-08 17:48:19.226059,4
+56,Advanced Conditionals,Đảo ngữ trong câu điều kiện và các cấu trúc điều kiện nâng cao.,8,2026-08-08 17:48:19.226059,2026-08-08 17:48:19.226059,4
+57,Mixed Conditionals,Câu điều kiện hỗn hợp giữa quá khứ và hiện tại.,9,2026-08-08 17:48:19.226059,2026-08-08 17:48:19.226059,4
+58,Ellipsis,Lược bỏ các thành phần lặp lại trong câu.,10,2026-08-08 17:48:19.226059,2026-08-08 17:48:19.226059,4
+59,Fronting,Đưa thành phần câu lên đầu để nhấn mạnh.,11,2026-08-08 17:48:19.226059,2026-08-08 17:48:19.226059,4
+60,Advanced Comparison,Các cấu trúc so sánh nâng cao và các trạng từ bổ nghĩa cho so sánh.,12,2026-08-08 17:48:19.226059,2026-08-08 17:48:19.226059,4
+61,Advanced Conjunctions,"Provided that, as long as, in case, even if, so that và các liên từ nâng cao.",13,2026-08-08 17:48:19.226059,2026-08-08 17:48:19.226059,4
+62,Complex Prepositions,Các cụm giới từ trang trọng thường gặp trong văn phong học thuật và công việc.,14,2026-08-08 17:48:19.226059,2026-08-08 17:48:19.226059,4
+63,Formal English,Các cấu trúc tiếng Anh trang trọng thường xuất hiện trong văn bản công việc.,15,2026-08-08 17:48:19.226059,2026-08-08 17:48:19.226059,4
+64,Fine Grammar Distinctions,Phân biệt các cấu trúc và từ ngữ có cách dùng gần giống nhau.,1,2026-08-08 17:48:19.226059,2026-08-08 17:48:19.226059,5
+65,Advanced Verb Complementation,"Phân biệt các mẫu động từ đi với to V, V-ing, O + to V, O + V và mệnh đề that.",2,2026-08-08 17:48:19.226059,2026-08-08 17:48:19.226059,5
+66,Subtle Tense Distinctions,Phân biệt sắc thái sử dụng giữa các thì gần giống nhau.,3,2026-08-08 17:48:19.226059,2026-08-08 17:48:19.226059,5
+67,Advanced Article Usage,Cách dùng mạo từ trong các trường hợp tinh vi và văn phong nâng cao.,4,2026-08-08 17:48:19.226059,2026-08-08 17:48:19.226059,5
+68,Advanced Noun Structures,"Cấu trúc danh từ ghép, sở hữu cách, of-phrase và các cấu trúc danh từ phức tạp.",5,2026-08-08 17:48:19.226059,2026-08-08 17:48:19.226059,5
+69,Nominalization,Chuyển đổi động từ và tính từ thành danh từ trong văn phong học thuật và công việc.,6,2026-08-08 17:48:19.226059,2026-08-08 17:48:19.226059,5
+70,Dangling Modifiers,Nhận biết và sửa lỗi cụm bổ nghĩa không có chủ thể phù hợp.,7,2026-08-08 17:48:19.226059,2026-08-08 17:48:19.226059,5
+71,Modifier Placement,"Vị trí của tính từ, trạng từ và các cụm bổ nghĩa.",8,2026-08-08 17:48:19.226059,2026-08-08 17:48:19.226059,5
+72,Advanced Parallelism,Các cấu trúc song song nâng cao trong câu phức tạp.,9,2026-08-08 17:48:19.226059,2026-08-08 17:48:19.226059,5
+73,Advanced Agreement,Các trường hợp hòa hợp chủ ngữ - động từ phức tạp.,10,2026-08-08 17:48:19.226059,2026-08-08 17:48:19.226059,5
+74,Formal Inversion,Các cấu trúc đảo ngữ trang trọng và nâng cao.,11,2026-08-08 17:48:19.226059,2026-08-08 17:48:19.226059,5
+75,Advanced Emphasis,"Cleft, pseudo-cleft, fronting và inversion để nhấn mạnh.",12,2026-08-08 17:48:19.226059,2026-08-08 17:48:19.226059,5
+76,Concessive Structures,"Although, despite, in spite of, regardless of, notwithstanding và các cấu trúc nhượng bộ.",13,2026-08-08 17:48:19.226059,2026-08-08 17:48:19.226059,5
+77,Advanced Result Structures,"So...that, such...that, too...to và enough...to.",14,2026-08-08 17:48:19.226059,2026-08-08 17:48:19.226059,5
+78,Advanced Purpose,Các cấu trúc chỉ mục đích nâng cao.,15,2026-08-08 17:48:19.226059,2026-08-08 17:48:19.226059,5
+79,Advanced Cause and Reason,Các cấu trúc chỉ nguyên nhân và lý do nâng cao.,16,2026-08-08 17:48:19.226059,2026-08-08 17:48:19.226059,5
+80,Advanced Discourse Grammar,"Các từ và cấu trúc liên kết như however, therefore, moreover, nevertheless và consequently.",17,2026-08-08 17:48:19.226059,2026-08-08 17:48:19.226059,5
+81,Punctuation Grammar,"Dấu phẩy, chấm phẩy, dấu hai chấm và các quy tắc dấu câu liên quan đến ngữ pháp.",18,2026-08-08 17:48:19.226059,2026-08-08 17:48:19.226059,5
+82,Business English,"Các cấu trúc ngữ pháp thường gặp trong email, thông báo, báo cáo và văn bản công việc.",19,2026-08-08 17:48:19.226059,2026-08-08 17:48:19.226059,5
+83,TOEIC Grammar Traps,Các dạng bẫy ngữ pháp thường gặp trong Part 5 và Part 6.,20,2026-08-08 17:48:19.226059,2026-08-08 17:48:19.226059,5
+1,Test Danh mục ngữ pháp - Đã sửa,Nội dung đã được cập nhật,2,2026-08-08 17:48:19.226059,2026-08-12 11:38:51.075,2

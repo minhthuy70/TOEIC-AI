@@ -1,0 +1,9 @@
+id,currentScore,targetScore,examDate,dailyStudyTime,firstLoginCompleted,userId,createdAt,updatedAt,avatar,phone,birthday,gender,address,bio,studyNotification,srsNotification,autoPronunciation,darkMode,learningStyle,motivationLevel,studySchedule,lastPlacementTestAt,currentStage,stageAcceptedAt,dailyVocabularyGoal
+1,100,648,2030-10-11 00:00:00,120,t,1,2026-07-24 06:16:24.669,2026-07-24 06:16:55.605,,,,,,,t,t,f,t,,5,,,1,,20
+12,,,,,f,3,2026-08-12 04:49:25.237,2026-08-12 04:49:25.237,,,,,,,t,t,f,t,,5,,,1,,20
+13,,,,,f,4,2026-08-12 04:51:30.442,2026-08-12 04:51:30.442,,,,,,,t,t,f,t,,5,,,1,,20
+14,250,650,2030-12-12 00:00:00,60,t,5,2026-08-18 12:01:16.068,2026-08-18 12:15:40.992,,,,,,,t,t,f,t,,5,,,1,,20
+21,243,650,2030-12-12 00:00:00,120,t,8,2026-08-19 07:35:05.424,2026-08-19 07:35:05.424,,,,,,,t,t,f,t,,5,,,1,,20
+22,,,,,f,9,2026-08-19 07:47:55.059,2026-08-19 07:47:55.059,,,,,,,t,t,f,t,,5,,,1,,20
+3,400,900,2031-03-01 00:00:00,90,t,2,2026-07-24 16:26:45.552,2026-08-19 18:03:29.32,,0901234567,,female,TP.HCM,Đang học TOEIC cùng BELLA 123,t,t,f,f,,5,,,1,,20
+27,,,,,f,10,2026-08-24 16:07:34.096,2026-08-24 16:07:34.096,,,,,,,t,t,f,t,,5,,,1,,20
