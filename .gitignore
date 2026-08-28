@@ -5,3 +5,6 @@ env/
 
 __pycache__/
 *.pyc
+
+# Google OAuth secrets
+client_secret_*.json
