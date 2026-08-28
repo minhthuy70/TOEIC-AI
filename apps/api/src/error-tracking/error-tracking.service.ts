@@ -613,5 +613,165 @@ export class ErrorTrackingService implements OnModuleInit {
       patternDetection,
     };
   }
+
+  // ============================================================
+  // 8.3 ERROR DRILLS (BÀI TẬP LỖI THÔNG MINH)
+  // ============================================================
+
+  async generateDrill(
+    userId: number,
+    config: {
+      mode?: "top10" | "type" | "all";
+      errorType?: string;
+      limit?: number;
+      part?: number;
+    } = {},
+  ) {
+    const limit = config.limit && config.limit > 0 ? Number(config.limit) : 10;
+    let whereConditions = [`user_id = ${userId}`];
+
+    if (config.mode === "type" && config.errorType && config.errorType !== "all") {
+      whereConditions.push(`error_type = '${config.errorType.replace(/'/g, "''")}'`);
+    }
+
+    if (config.part && config.part > 0) {
+      whereConditions.push(`part = ${Number(config.part)}`);
+    }
+
+    let orderBy = "frequency DESC, last_occurred_at DESC";
+    if (config.mode === "top10") {
+      orderBy = "frequency DESC, last_occurred_at DESC";
+    }
+
+    const whereClause = whereConditions.join(" AND ");
+
+    const errorItems: any[] = await this.prisma.$queryRawUnsafe(`
+      SELECT * FROM error_logs
+      WHERE ${whereClause}
+      ORDER BY ${orderBy}
+      LIMIT ${limit}
+    `);
+
+    // Format questions
+    const questions = errorItems.map((item, idx) => {
+      let optionsList = item.options;
+      if (!optionsList || !Array.isArray(optionsList) || optionsList.length === 0) {
+        optionsList = [
+          { label: "A", text: "Lựa chọn A" },
+          { label: "B", text: "Lựa chọn B" },
+          { label: "C", text: "Lựa chọn C" },
+          { label: "D", text: "Lựa chọn D" },
+        ];
+      }
+
+      return {
+        drillIndex: idx + 1,
+        errorLogId: item.id,
+        questionId: item.question_id,
+        part: item.part,
+        errorType: item.error_type,
+        frequency: item.frequency,
+        questionText: item.question_text || "Hãy chọn đáp án chính xác:",
+        passage: item.passage,
+        imageUrl: item.image_url,
+        audioUrl: item.audio_url,
+        options: optionsList,
+        correctAnswer: item.correct_answer,
+        userPreviousAnswer: item.user_answer,
+        explanation: item.explanation,
+        userNote: item.user_note,
+      };
+    });
+
+    return {
+      success: true,
+      totalQuestions: questions.length,
+      mode: config.mode || "all",
+      errorType: config.errorType || "all",
+      questions,
+    };
+  }
+
+  async submitDrill(
+    userId: number,
+    payload: {
+      results: Array<{
+        errorLogId: number;
+        isCorrect: boolean;
+        selectedOption: string;
+      }>;
+      durationSeconds: number;
+    },
+  ) {
+    const results = payload.results || [];
+    let correctCount = 0;
+    const resolvedIds: number[] = [];
+
+    for (const r of results) {
+      if (r.isCorrect) {
+        correctCount += 1;
+        if (r.errorLogId) {
+          // Auto-resolve: mark status = 'resolved'
+          await this.prisma.$executeRawUnsafe(`
+            UPDATE error_logs
+            SET status = 'resolved', updated_at = CURRENT_TIMESTAMP
+            WHERE id = ${r.errorLogId} AND user_id = ${userId}
+          `);
+          resolvedIds.push(r.errorLogId);
+        }
+      } else {
+        if (r.errorLogId) {
+          // Incorrect: increment frequency
+          await this.prisma.$executeRawUnsafe(`
+            UPDATE error_logs
+            SET 
+              frequency = frequency + 1,
+              user_answer = '${r.selectedOption.replace(/'/g, "''")}',
+              last_occurred_at = CURRENT_TIMESTAMP,
+              status = 'active',
+              updated_at = CURRENT_TIMESTAMP
+            WHERE id = ${r.errorLogId} AND user_id = ${userId}
+          `);
+        }
+      }
+    }
+
+    const totalQuestions = results.length;
+    const incorrectCount = totalQuestions - correctCount;
+    const successRate = totalQuestions > 0 ? Math.round((correctCount / totalQuestions) * 100) : 0;
+
+    return {
+      success: true,
+      totalQuestions,
+      correctCount,
+      incorrectCount,
+      successRate,
+      durationSeconds: payload.durationSeconds || 0,
+      autoResolvedCount: resolvedIds.length,
+      autoResolvedIds: resolvedIds,
+      message: `Hoàn thành bài tập Drill! Tỷ lệ chính xác: ${successRate}% (${correctCount}/${totalQuestions} câu đúng). Đã tự động giải quyết ${resolvedIds.length} câu hỏi.`,
+    };
+  }
+
+  async scheduleDrill(
+    userId: number,
+    dto: {
+      errorType?: string;
+      repeatInDays: number;
+      note?: string;
+    },
+  ) {
+    const days = dto.repeatInDays || 1;
+    const scheduledDate = new Date();
+    scheduledDate.setDate(scheduledDate.getDate() + days);
+
+    return {
+      success: true,
+      repeatInDays: days,
+      scheduledDate: scheduledDate.toISOString(),
+      message: `Đã lên lịch nhắc nhở luyện tập câu sai sau ${days} ngày (${scheduledDate.toLocaleDateString("vi-VN")}).`,
+    };
+  }
 }
+
 

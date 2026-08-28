@@ -1,17 +1,23 @@
 "use client";
 
-import React, { useEffect, useState, useCallback } from "react";
+import React, { useEffect, useState, useCallback, useRef } from "react";
 import Link from "next/link";
 import {
   getErrorLogs,
   getErrorAnalysis,
+  generateErrorDrill,
+  submitErrorDrill,
+  scheduleRepeatDrill,
   updateErrorLogStatus,
   updateErrorLogNote,
   deleteErrorLog,
   type ErrorLogItem,
   type ErrorLogSummaryStats,
   type ErrorAnalysisResponse,
+  type ErrorDrillQuestion,
+  type ErrorDrillSubmitResponse,
 } from "@/services/error-tracking";
+import { playTestSoundEffect } from "@/lib/test-settings";
 
 const ERROR_TYPE_CONFIG: Record<
   string,
@@ -44,7 +50,7 @@ const ERROR_TYPE_CONFIG: Record<
 };
 
 export default function ErrorLogPage() {
-  const [activeTab, setActiveTab] = useState<"list" | "analysis">("list");
+  const [activeTab, setActiveTab] = useState<"list" | "analysis" | "drills">("list");
   const [items, setItems] = useState<ErrorLogItem[]>([]);
   const [stats, setStats] = useState<ErrorLogSummaryStats>({
     total: 0,
@@ -61,7 +67,7 @@ export default function ErrorLogPage() {
   const [loadingAnalysis, setLoadingAnalysis] = useState<boolean>(false);
   const [error, setError] = useState<string>("");
 
-  // Filters & Sorting State
+  // Filters & Sorting State (8.1)
   const [errorTypeFilter, setErrorTypeFilter] = useState<"all" | "grammar" | "vocabulary" | "careless" | "timing">("all");
   const [partFilter, setPartFilter] = useState<number | "all">("all");
   const [dateRangeFilter, setDateRangeFilter] = useState<"all" | "7d" | "30d" | "90d">("all");
@@ -70,7 +76,7 @@ export default function ErrorLogPage() {
   const [sortOrder, setSortOrder] = useState<"desc" | "asc">("desc");
   const [searchQuery, setSearchQuery] = useState<string>("");
 
-  // Modals State
+  // Modals State (8.1)
   const [detailItem, setDetailItem] = useState<ErrorLogItem | null>(null);
   const [deleteConfirmItem, setDeleteConfirmItem] = useState<ErrorLogItem | null>(null);
   const [isDeleting, setIsDeleting] = useState<boolean>(false);
@@ -78,6 +84,27 @@ export default function ErrorLogPage() {
   const [editingType, setEditingType] = useState<string>("grammar");
   const [isSavingNote, setIsSavingNote] = useState<boolean>(false);
   const [toastMessage, setToastMessage] = useState<string | null>(null);
+
+  // ── ERROR DRILLS STATE (8.3) ──
+  const [drillStep, setDrillStep] = useState<"config" | "running" | "summary">("config");
+  const [drillMode, setDrillMode] = useState<"top10" | "type" | "all">("top10");
+  const [drillErrorType, setDrillErrorType] = useState<string>("all");
+  const [drillQuestionCount, setDrillQuestionCount] = useState<number>(10);
+  const [drillPart, setDrillPart] = useState<number | "all">("all");
+  const [isGeneratingDrill, setIsGeneratingDrill] = useState<boolean>(false);
+  const [drillQuestions, setDrillQuestions] = useState<ErrorDrillQuestion[]>([]);
+  const [drillCurrentIdx, setDrillCurrentIdx] = useState<number>(0);
+  const [drillSelectedOption, setDrillSelectedOption] = useState<string | null>(null);
+  const [drillAnsweredResults, setDrillAnsweredResults] = useState<
+    Array<{ errorLogId: number; isCorrect: boolean; selectedOption: string }>
+  >([]);
+  const [drillChecked, setDrillChecked] = useState<boolean>(false);
+  const [drillSeconds, setDrillSeconds] = useState<number>(0);
+  const [drillSummary, setDrillSummary] = useState<ErrorDrillSubmitResponse | null>(null);
+  const [isSubmittingDrill, setIsSubmittingDrill] = useState<boolean>(false);
+  const [isScheduling, setIsScheduling] = useState<boolean>(false);
+
+  const timerRef = useRef<NodeJS.Timeout | null>(null);
 
   const showToast = (msg: string) => {
     setToastMessage(msg);
@@ -130,6 +157,20 @@ export default function ErrorLogPage() {
     }
   }, [activeTab, loadAnalysis]);
 
+  // Drill Timer Effect
+  useEffect(() => {
+    if (drillStep === "running") {
+      timerRef.current = setInterval(() => {
+        setDrillSeconds((s) => s + 1);
+      }, 1000);
+    } else {
+      if (timerRef.current) clearInterval(timerRef.current);
+    }
+    return () => {
+      if (timerRef.current) clearInterval(timerRef.current);
+    };
+  }, [drillStep]);
+
   // Open Detail Modal
   const openDetail = (item: ErrorLogItem) => {
     setDetailItem(item);
@@ -143,7 +184,6 @@ export default function ErrorLogPage() {
     try {
       await updateErrorLogStatus(item.id, newStatus);
       showToast(`Đã chuyển trạng thái thành "${newStatus === "resolved" ? "Đã giải quyết" : "Đang theo dõi"}".`);
-      // Update local state
       setItems((prev) =>
         prev.map((x) => (x.id === item.id ? { ...x, status: newStatus } : x))
       );
@@ -213,6 +253,109 @@ export default function ErrorLogPage() {
     }
   };
 
+  // ── 8.3 DRILL CONTROLS ──
+  const handleStartDrill = async () => {
+    try {
+      setIsGeneratingDrill(true);
+      const res = await generateErrorDrill({
+        mode: drillMode,
+        errorType: drillMode === "type" ? drillErrorType : undefined,
+        limit: drillQuestionCount,
+        part: drillPart !== "all" ? drillPart : undefined,
+      });
+
+      if (!res.questions || res.questions.length === 0) {
+        alert("Không tìm thấy câu hỏi sai phù hợp để tạo bài tập. Hãy chọn chế độ khác hoặc thêm câu sai vào sổ tay!");
+        return;
+      }
+
+      setDrillQuestions(res.questions);
+      setDrillCurrentIdx(0);
+      setDrillSelectedOption(null);
+      setDrillChecked(false);
+      setDrillAnsweredResults([]);
+      setDrillSeconds(0);
+      setDrillSummary(null);
+      setDrillStep("running");
+      playTestSoundEffect("click");
+    } catch (err: any) {
+      alert(err?.message || "Không thể khởi tạo bài tập lỗi.");
+    } finally {
+      setIsGeneratingDrill(false);
+    }
+  };
+
+  const handleSelectDrillOption = (optionLabel: string) => {
+    if (drillChecked) return;
+    setDrillSelectedOption(optionLabel);
+    setDrillChecked(true);
+
+    const currentQ = drillQuestions[drillCurrentIdx];
+    const isCorrect = optionLabel.toUpperCase() === currentQ.correctAnswer.toUpperCase();
+
+    if (isCorrect) {
+      playTestSoundEffect("complete");
+    } else {
+      playTestSoundEffect("warning");
+    }
+
+    setDrillAnsweredResults((prev) => [
+      ...prev,
+      {
+        errorLogId: currentQ.errorLogId,
+        isCorrect,
+        selectedOption: optionLabel,
+      },
+    ]);
+  };
+
+  const handleNextDrillQuestion = async () => {
+    if (drillCurrentIdx < drillQuestions.length - 1) {
+      setDrillCurrentIdx((idx) => idx + 1);
+      setDrillSelectedOption(null);
+      setDrillChecked(false);
+      playTestSoundEffect("click");
+    } else {
+      // Finish Drill
+      try {
+        setIsSubmittingDrill(true);
+        const res = await submitErrorDrill({
+          results: drillAnsweredResults,
+          durationSeconds: drillSeconds,
+        });
+        setDrillSummary(res);
+        setDrillStep("summary");
+        playTestSoundEffect("complete");
+        loadData(); // reload log list
+      } catch (err: any) {
+        alert(err?.message || "Lỗi khi nộp bài tập Drill!");
+      } finally {
+        setIsSubmittingDrill(false);
+      }
+    }
+  };
+
+  const handleScheduleRepeat = async (days: number) => {
+    try {
+      setIsScheduling(true);
+      const res = await scheduleRepeatDrill({
+        errorType: drillMode === "type" ? drillErrorType : undefined,
+        repeatInDays: days,
+      });
+      showToast(res.message);
+    } catch (err: any) {
+      alert(err?.message || "Lỗi khi lên lịch ôn tập!");
+    } finally {
+      setIsScheduling(false);
+    }
+  };
+
+  const formatTime = (secs: number) => {
+    const m = Math.floor(secs / 60);
+    const s = secs % 60;
+    return `${m.toString().padStart(2, "0")}:${s.toString().padStart(2, "0")}`;
+  };
+
   return (
     <div className="min-h-screen bg-[#09090b] text-white">
       <main className="mx-auto max-w-6xl px-6 py-8 space-y-8 animate-fade-in">
@@ -227,14 +370,14 @@ export default function ErrorLogPage() {
             <div>
               <div className="flex items-center gap-2">
                 <h1 className="text-2xl sm:text-3xl font-bold text-white">
-                  Sổ Tay Lỗi (Error Log & Analytics)
+                  Sổ Tay Lỗi (Error Tracking System)
                 </h1>
                 <span className="px-2.5 py-0.5 rounded-full text-[10px] font-extrabold bg-red-600/20 text-red-400 border border-red-500/30">
                   Hệ thống 8
                 </span>
               </div>
               <p className="mt-1 text-xs sm:text-sm text-zinc-400">
-                Ghi nhận, phân tích AI và khắc phục triệt để các câu làm sai để bứt phá 900+ TOEIC
+                Ghi nhận, phân tích AI và luyện tập chuyên sâu các câu làm sai để bứt phá 900+ TOEIC
               </p>
             </div>
           </div>
@@ -258,31 +401,43 @@ export default function ErrorLogPage() {
         )}
 
         {/* ================================================== */}
-        {/* TAB SWITCHER */}
+        {/* TAB SWITCHER (8.1, 8.2, 8.3) */}
         {/* ================================================== */}
-        <div className="grid grid-cols-2 rounded-2xl border border-white/5 bg-[#121214] p-1">
+        <div className="grid grid-cols-3 rounded-2xl border border-white/5 bg-[#121214] p-1">
           <button
             type="button"
             onClick={() => setActiveTab("list")}
-            className={`rounded-xl px-5 py-3 text-xs sm:text-sm font-medium transition ${
+            className={`rounded-xl px-4 py-3 text-xs sm:text-sm font-medium transition ${
               activeTab === "list"
-                ? "bg-red-600 text-white shadow-lg"
+                ? "bg-red-600 text-white shadow-lg font-bold"
                 : "text-zinc-400 hover:text-white"
             }`}
           >
-            📓 Sổ tay câu sai ({stats.total})
+            📓 Sổ tay ({stats.total})
           </button>
 
           <button
             type="button"
             onClick={() => setActiveTab("analysis")}
-            className={`rounded-xl px-5 py-3 text-xs sm:text-sm font-medium transition ${
+            className={`rounded-xl px-4 py-3 text-xs sm:text-sm font-medium transition ${
               activeTab === "analysis"
-                ? "bg-red-600 text-white shadow-lg"
+                ? "bg-red-600 text-white shadow-lg font-bold"
                 : "text-zinc-400 hover:text-white"
             }`}
           >
-            📊 Phân tích lỗi (Error Analysis 8.2)
+            📊 Phân tích lỗi (8.2)
+          </button>
+
+          <button
+            type="button"
+            onClick={() => setActiveTab("drills")}
+            className={`rounded-xl px-4 py-3 text-xs sm:text-sm font-medium transition ${
+              activeTab === "drills"
+                ? "bg-red-600 text-white shadow-lg font-bold"
+                : "text-zinc-400 hover:text-white"
+            }`}
+          >
+            ⚡ Luyện tập Drill (8.3)
           </button>
         </div>
 
@@ -291,7 +446,7 @@ export default function ErrorLogPage() {
         {/* ================================================== */}
         {activeTab === "list" && (
           <div className="space-y-6 animate-fade-in">
-            {/* 1. SUMMARY STATISTICS (4 CARDS) */}
+            {/* Summary statistics */}
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
               <div className="rounded-2xl border border-white/5 bg-[#121214] p-5 text-center">
                 <div className="text-3xl font-black text-white">{stats.total}</div>
@@ -314,9 +469,8 @@ export default function ErrorLogPage() {
               </div>
             </div>
 
-            {/* 2. FILTER & TOOLBAR */}
+            {/* Filter toolbar */}
             <div className="rounded-3xl border border-white/5 bg-[#121214] p-6 space-y-4">
-              {/* Search bar */}
               <div className="relative">
                 <span className="absolute left-4 top-1/2 -translate-y-1/2 text-zinc-500 text-sm">🔍</span>
                 <input
@@ -328,9 +482,7 @@ export default function ErrorLogPage() {
                 />
               </div>
 
-              {/* Filters row */}
               <div className="grid grid-cols-2 sm:grid-cols-5 gap-3 pt-1">
-                {/* Error Type */}
                 <div>
                   <label className="text-[10px] text-zinc-500 font-bold uppercase block mb-1.5">Loại lỗi</label>
                   <select
@@ -347,7 +499,6 @@ export default function ErrorLogPage() {
                   </select>
                 </div>
 
-                {/* Part (1-7) */}
                 <div>
                   <label className="text-[10px] text-zinc-500 font-bold uppercase block mb-1.5">Phần thi (Part)</label>
                   <select
@@ -367,7 +518,6 @@ export default function ErrorLogPage() {
                   </select>
                 </div>
 
-                {/* Date Range */}
                 <div>
                   <label className="text-[10px] text-zinc-500 font-bold uppercase block mb-1.5">Khoảng ngày</label>
                   <select
@@ -383,7 +533,6 @@ export default function ErrorLogPage() {
                   </select>
                 </div>
 
-                {/* Status */}
                 <div>
                   <label className="text-[10px] text-zinc-500 font-bold uppercase block mb-1.5">Trạng thái</label>
                   <select
@@ -398,7 +547,6 @@ export default function ErrorLogPage() {
                   </select>
                 </div>
 
-                {/* Sort By */}
                 <div>
                   <label className="text-[10px] text-zinc-500 font-bold uppercase block mb-1.5">Sắp xếp</label>
                   <select
@@ -420,7 +568,7 @@ export default function ErrorLogPage() {
               </div>
             </div>
 
-            {/* 3. ERROR LIST */}
+            {/* Error List */}
             {loading ? (
               <div className="space-y-4">
                 {[1, 2, 3].map((i) => (
@@ -464,7 +612,6 @@ export default function ErrorLogPage() {
                       }`}
                     >
                       <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4">
-                        {/* Left details */}
                         <div className="space-y-2 flex-1">
                           <div className="flex items-center gap-2 flex-wrap">
                             <span className="px-2.5 py-0.5 rounded-full text-[10px] font-extrabold bg-white/5 text-zinc-300 border border-white/10">
@@ -525,7 +672,6 @@ export default function ErrorLogPage() {
                           )}
                         </div>
 
-                        {/* Right actions */}
                         <div className="flex items-center gap-2 shrink-0">
                           <button
                             type="button"
@@ -592,7 +738,7 @@ export default function ErrorLogPage() {
               </div>
             ) : (
               <>
-                {/* 1. RESOLUTION RATE KPI & SUMMARY */}
+                {/* 1. Resolution Rate KPI */}
                 <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
                   <div className="rounded-3xl border border-emerald-500/30 bg-gradient-to-br from-emerald-950/20 via-zinc-900 to-zinc-950 p-6 flex flex-col justify-between">
                     <span className="text-xs text-emerald-400 font-bold uppercase tracking-wider">🎯 Tỷ Lệ Giải Quyết Lỗi</span>
@@ -630,7 +776,7 @@ export default function ErrorLogPage() {
                   </div>
                 </div>
 
-                {/* 2. RECURRING ERROR ALERTS BANNER (8.2) */}
+                {/* 2. Recurring Error Alerts */}
                 {analysisData.recurringAlerts.length > 0 && (
                   <div className="rounded-3xl border border-rose-500/30 bg-gradient-to-br from-rose-950/20 via-zinc-900 to-zinc-950 p-6 space-y-4">
                     <div className="flex items-center gap-2">
@@ -662,7 +808,7 @@ export default function ErrorLogPage() {
                   </div>
                 )}
 
-                {/* 3. AI PATTERN DETECTION (8.2) */}
+                {/* 3. AI Pattern Detection */}
                 <div className="rounded-3xl border border-purple-500/20 bg-gradient-to-br from-purple-950/20 to-zinc-950 p-6 space-y-4">
                   <div className="flex items-center gap-2">
                     <span className="text-2xl">🤖</span>
@@ -705,9 +851,8 @@ export default function ErrorLogPage() {
                   </div>
                 </div>
 
-                {/* 4. CHARTS: ERROR TYPE DISTRIBUTION & FREQUENCY CHART (8.2) */}
+                {/* 4. Type & Frequency Charts */}
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-                  {/* Error Type Distribution */}
                   <div className="rounded-3xl border border-white/5 bg-[#121214] p-6 space-y-4">
                     <div>
                       <h3 className="text-sm font-bold text-white flex items-center gap-2">
@@ -737,7 +882,6 @@ export default function ErrorLogPage() {
                     </div>
                   </div>
 
-                  {/* Error Frequency Chart */}
                   <div className="rounded-3xl border border-white/5 bg-[#121214] p-6 space-y-4">
                     <div>
                       <h3 className="text-sm font-bold text-white flex items-center gap-2">
@@ -767,7 +911,7 @@ export default function ErrorLogPage() {
                   </div>
                 </div>
 
-                {/* 5. ERROR TREND OVER TIME (8.2) */}
+                {/* 5. Trend Over Time */}
                 {analysisData.trendOverTime.length > 0 && (
                   <div className="rounded-3xl border border-white/5 bg-[#121214] p-6 space-y-4">
                     <div>
@@ -789,15 +933,13 @@ export default function ErrorLogPage() {
                   </div>
                 )}
 
-                {/* 6. TOP 10 ERRORS LIST (8.2) */}
+                {/* 6. Top 10 Errors List */}
                 <div className="rounded-3xl border border-white/5 bg-[#121214] p-6 space-y-4">
-                  <div className="flex items-center justify-between">
-                    <div>
-                      <h3 className="text-base font-bold text-white flex items-center gap-2">
-                        <span>🔥</span> <span>Danh Sách 10 Lỗi Hàng Đầu (Top 10 Errors List)</span>
-                      </h3>
-                      <p className="text-xs text-zinc-400 mt-0.5">Các câu hỏi bị làm sai nhiều lần nhất cần đặc biệt chú ý</p>
-                    </div>
+                  <div>
+                    <h3 className="text-base font-bold text-white flex items-center gap-2">
+                      <span>🔥</span> <span>Danh Sách 10 Lỗi Hàng Đầu (Top 10 Errors List)</span>
+                    </h3>
+                    <p className="text-xs text-zinc-400 mt-0.5">Các câu hỏi bị làm sai nhiều lần nhất cần đặc biệt chú ý</p>
                   </div>
 
                   <div className="space-y-3 pt-2">
@@ -841,9 +983,8 @@ export default function ErrorLogPage() {
                   </div>
                 </div>
 
-                {/* 7. WEAKNESS IDENTIFICATION BY PART & TOPIC (8.2) */}
+                {/* 7. Weakness by Part & Topic */}
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-                  {/* Weakness by Part */}
                   <div className="rounded-3xl border border-white/5 bg-[#121214] p-6 space-y-4">
                     <div>
                       <h3 className="text-base font-bold text-white flex items-center gap-2">
@@ -868,7 +1009,6 @@ export default function ErrorLogPage() {
                     </div>
                   </div>
 
-                  {/* Weakness by Topic */}
                   <div className="rounded-3xl border border-white/5 bg-[#121214] p-6 space-y-4">
                     <div>
                       <h3 className="text-base font-bold text-white flex items-center gap-2">
@@ -898,12 +1038,429 @@ export default function ErrorLogPage() {
         )}
 
         {/* ================================================== */}
+        {/* TAB 3: ERROR DRILLS (8.3) */}
+        {/* ================================================== */}
+        {activeTab === "drills" && (
+          <div className="space-y-6 animate-fade-in">
+            {/* STEP 1: DRILL CONFIGURATION */}
+            {drillStep === "config" && (
+              <div className="rounded-3xl border border-white/5 bg-[#121214] p-6 sm:p-8 space-y-6">
+                <div>
+                  <div className="flex items-center gap-2">
+                    <span className="text-2xl">⚡</span>
+                    <h3 className="text-lg font-bold text-white">Cấu Hình Bài Tập Lỗi (Error Drill Setup)</h3>
+                  </div>
+                  <p className="text-xs text-zinc-400 mt-1">
+                    Tạo phiên luyện tập phản hồi tức thì với các câu hỏi bạn từng làm sai để khắc phục điểm yếu
+                  </p>
+                </div>
+
+                {/* Mode Selector */}
+                <div className="space-y-2">
+                  <label className="text-xs font-bold uppercase tracking-wider text-zinc-400">
+                    1. Chế Độ Luyện Tập (Drill Mode)
+                  </label>
+                  <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                    <button
+                      type="button"
+                      onClick={() => setDrillMode("top10")}
+                      className={`p-4 rounded-2xl border text-left transition ${
+                        drillMode === "top10"
+                          ? "bg-red-600/10 border-red-500 text-white shadow-lg"
+                          : "bg-zinc-900 border-zinc-800 text-zinc-400 hover:border-zinc-700"
+                      }`}
+                    >
+                      <div className="text-xl">🔥</div>
+                      <div className="text-xs font-bold text-white mt-2">Top 10 Câu Sai Nhiều Nhất</div>
+                      <p className="text-[11px] text-zinc-400 mt-1">Ưu tiên các câu bị sai lặp lại nhiều lần nhất</p>
+                    </button>
+
+                    <button
+                      type="button"
+                      onClick={() => setDrillMode("type")}
+                      className={`p-4 rounded-2xl border text-left transition ${
+                        drillMode === "type"
+                          ? "bg-red-600/10 border-red-500 text-white shadow-lg"
+                          : "bg-zinc-900 border-zinc-800 text-zinc-400 hover:border-zinc-700"
+                      }`}
+                    >
+                      <div className="text-xl">🎯</div>
+                      <div className="text-xs font-bold text-white mt-2">Theo Loại Lỗi Cụ Thể</div>
+                      <p className="text-[11px] text-zinc-400 mt-1">Luyện riêng Ngữ pháp, Từ vựng hoặc Bất cẩn</p>
+                    </button>
+
+                    <button
+                      type="button"
+                      onClick={() => setDrillMode("all")}
+                      className={`p-4 rounded-2xl border text-left transition ${
+                        drillMode === "all"
+                          ? "bg-red-600/10 border-red-500 text-white shadow-lg"
+                          : "bg-zinc-900 border-zinc-800 text-zinc-400 hover:border-zinc-700"
+                      }`}
+                    >
+                      <div className="text-xl">🎲</div>
+                      <div className="text-xs font-bold text-white mt-2">Toàn Bộ Sổ Tay Lỗi</div>
+                      <p className="text-[11px] text-zinc-400 mt-1">Luyện ngẫu nhiên từ toàn bộ câu sai đang theo dõi</p>
+                    </button>
+                  </div>
+                </div>
+
+                {/* Sub-selectors */}
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-2 border-t border-zinc-800">
+                  {/* Specific Error Type if mode == type */}
+                  {drillMode === "type" && (
+                    <div>
+                      <label className="text-xs font-bold uppercase tracking-wider text-zinc-400 block mb-2">
+                        Chọn loại lỗi
+                      </label>
+                      <select
+                        value={drillErrorType}
+                        onChange={(e) => setDrillErrorType(e.target.value)}
+                        aria-label="Chọn loại lỗi luyện tập"
+                        className="w-full bg-zinc-900 border border-zinc-800 rounded-xl p-3 text-xs text-white focus:outline-none focus:border-red-500/50"
+                      >
+                        <option value="grammar">📝 Ngữ pháp (Grammar)</option>
+                        <option value="vocabulary">📖 Từ vựng (Vocabulary)</option>
+                        <option value="careless">⚡ Bất cẩn (Careless)</option>
+                        <option value="timing">⏱️ Thiếu thời gian (Timing)</option>
+                      </select>
+                    </div>
+                  )}
+
+                  {/* Part Selector */}
+                  <div>
+                    <label className="text-xs font-bold uppercase tracking-wider text-zinc-400 block mb-2">
+                      Phần thi (Part)
+                    </label>
+                    <select
+                      value={drillPart}
+                      onChange={(e) => setDrillPart(e.target.value === "all" ? "all" : Number(e.target.value))}
+                      aria-label="Chọn phần thi TOEIC"
+                      className="w-full bg-zinc-900 border border-zinc-800 rounded-xl p-3 text-xs text-white focus:outline-none focus:border-red-500/50"
+                    >
+                      <option value="all">Tất cả Part (1–7)</option>
+                      <option value="1">Part 1: Photographs</option>
+                      <option value="2">Part 2: Question-Response</option>
+                      <option value="3">Part 3: Conversations</option>
+                      <option value="4">Part 4: Short Talks</option>
+                      <option value="5">Part 5: Incomplete Sentences</option>
+                      <option value="6">Part 6: Text Completion</option>
+                      <option value="7">Part 7: Reading Comprehension</option>
+                    </select>
+                  </div>
+
+                  {/* Question Count */}
+                  <div>
+                    <label className="text-xs font-bold uppercase tracking-wider text-zinc-400 block mb-2">
+                      Số câu hỏi (Question Count)
+                    </label>
+                    <div className="grid grid-cols-4 gap-2">
+                      {[5, 10, 15, 20].map((cnt) => (
+                        <button
+                          key={cnt}
+                          type="button"
+                          onClick={() => setDrillQuestionCount(cnt)}
+                          className={`py-2.5 rounded-xl border text-xs font-bold transition ${
+                            drillQuestionCount === cnt
+                              ? "bg-red-600 text-white border-red-500 shadow"
+                              : "bg-zinc-900 border-zinc-800 text-zinc-400 hover:border-zinc-700"
+                          }`}
+                        >
+                          {cnt} câu
+                        </button>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+
+                {/* Features Note */}
+                <div className="p-4 rounded-2xl bg-zinc-950 border border-zinc-800 text-xs text-zinc-400 space-y-1.5">
+                  <div className="font-bold text-white flex items-center gap-1.5">
+                    <span>✨</span> <span>Quy chế tự động giải quyết (Auto-Resolve Threshold):</span>
+                  </div>
+                  <p className="text-[11px] leading-relaxed">
+                    • Trả lời đúng câu hỏi trong bài tập Drill sẽ <strong>tự động chuyển trạng thái câu thành &quot;Đã giải quyết ✓&quot;</strong>.
+                    <br />
+                    • Phản hồi đúng/sai và giải thích chi tiết được hiển thị tức thì theo thời gian thực (Real-time feedback).
+                  </p>
+                </div>
+
+                {/* Start Drill Button */}
+                <div className="pt-4 flex justify-end">
+                  <button
+                    type="button"
+                    onClick={handleStartDrill}
+                    disabled={isGeneratingDrill}
+                    className="px-8 py-4 rounded-2xl bg-red-600 hover:bg-red-500 text-white font-extrabold text-sm shadow-xl transition disabled:opacity-50 flex items-center gap-2"
+                  >
+                    <span>{isGeneratingDrill ? "⏳ Đang tạo bài tập..." : "🚀 Bắt đầu luyện tập (Start Drill)"}</span>
+                  </button>
+                </div>
+              </div>
+            )}
+
+            {/* STEP 2: ACTIVE DRILL PLAYER */}
+            {drillStep === "running" && drillQuestions.length > 0 && (
+              <div className="space-y-6">
+                {/* Drill Top Bar: Timer, Progress, Exit */}
+                <div className="rounded-2xl border border-white/5 bg-[#121214] p-4 flex items-center justify-between gap-4">
+                  <div className="flex items-center gap-3">
+                    <span className="px-3 py-1 rounded-xl bg-red-600/20 text-red-400 border border-red-500/30 text-xs font-bold">
+                      Câu {drillCurrentIdx + 1} / {drillQuestions.length}
+                    </span>
+                    <span className="text-xs text-zinc-400 hidden sm:inline">
+                      Part {drillQuestions[drillCurrentIdx].part} • {ERROR_TYPE_CONFIG[drillQuestions[drillCurrentIdx].errorType]?.label}
+                    </span>
+                  </div>
+
+                  {/* Progress Bar */}
+                  <div className="flex-1 max-w-xs mx-auto hidden md:block">
+                    <div className="h-2 rounded-full bg-zinc-900 overflow-hidden">
+                      <div
+                        className="h-full rounded-full bg-red-500 transition-all duration-300"
+                        style={{ width: `${((drillCurrentIdx + 1) / drillQuestions.length) * 100}%` }}
+                      />
+                    </div>
+                  </div>
+
+                  <div className="flex items-center gap-4">
+                    {/* Drill Timer */}
+                    <div className="flex items-center gap-1.5 text-xs font-mono font-bold text-amber-400 bg-amber-950/30 px-3 py-1.5 rounded-xl border border-amber-800/30">
+                      <span>⏱️</span>
+                      <span>{formatTime(drillSeconds)}</span>
+                    </div>
+
+                    <button
+                      type="button"
+                      onClick={() => setDrillStep("config")}
+                      className="text-xs text-zinc-500 hover:text-white px-2 py-1 rounded-lg"
+                    >
+                      Thoát ✕
+                    </button>
+                  </div>
+                </div>
+
+                {/* Question Card */}
+                {(() => {
+                  const q = drillQuestions[drillCurrentIdx];
+                  const currentAnswered = drillAnsweredResults.find((r) => r.errorLogId === q.errorLogId);
+                  const isCurrentCorrect = currentAnswered?.isCorrect;
+
+                  return (
+                    <div className="rounded-3xl border border-white/5 bg-[#121214] p-6 sm:p-8 space-y-6">
+                      {/* Media */}
+                      {q.passage && (
+                        <div className="p-4 rounded-2xl bg-zinc-950 border border-zinc-800 text-xs text-zinc-300 leading-relaxed max-h-48 overflow-y-auto whitespace-pre-line">
+                          {q.passage}
+                        </div>
+                      )}
+
+                      {q.imageUrl && (
+                        <div className="rounded-2xl overflow-hidden border border-zinc-800 max-w-sm">
+                          {/* eslint-disable-next-line @next/next/no-img-element */}
+                          <img src={q.imageUrl} alt="Question media" className="w-full h-auto object-cover" />
+                        </div>
+                      )}
+
+                      {q.audioUrl && (
+                        <div className="p-3 rounded-2xl bg-zinc-950 border border-zinc-800">
+                          <audio controls className="w-full h-8">
+                            <source src={q.audioUrl} type="audio/mpeg" />
+                            Trình duyệt không hỗ trợ phát audio.
+                          </audio>
+                        </div>
+                      )}
+
+                      {/* Question text */}
+                      <p className="text-base font-bold text-white leading-relaxed">
+                        {q.questionText}
+                      </p>
+
+                      {/* Options Grid */}
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                        {q.options.map((opt: any, idx: number) => {
+                          const optLabel = opt.label || String.fromCharCode(65 + idx);
+                          const optText = typeof opt === "string" ? opt : opt.text || opt.content || "";
+                          const isSelected = drillSelectedOption === optLabel;
+                          const isCorrectOption = optLabel.toUpperCase() === q.correctAnswer.toUpperCase();
+
+                          let buttonStyle = "bg-zinc-900 border-zinc-800 text-zinc-300 hover:border-zinc-700";
+                          if (drillChecked) {
+                            if (isCorrectOption) {
+                              buttonStyle = "bg-emerald-950/40 border-emerald-500 text-emerald-300 font-bold shadow-lg";
+                            } else if (isSelected && !isCorrectOption) {
+                              buttonStyle = "bg-rose-950/40 border-rose-500 text-rose-300 font-bold shadow-lg";
+                            } else {
+                              buttonStyle = "bg-zinc-950 border-zinc-900 text-zinc-600 opacity-60";
+                            }
+                          }
+
+                          return (
+                            <button
+                              key={idx}
+                              type="button"
+                              onClick={() => handleSelectDrillOption(optLabel)}
+                              disabled={drillChecked}
+                              className={`p-4 rounded-2xl border text-left text-xs transition flex items-center justify-between ${buttonStyle}`}
+                            >
+                              <div className="flex items-center gap-3">
+                                <span className="w-6 h-6 rounded-full bg-white/5 border border-white/10 flex items-center justify-center font-mono font-bold shrink-0">
+                                  {optLabel}
+                                </span>
+                                <span>{optText}</span>
+                              </div>
+
+                              {drillChecked && isCorrectOption && (
+                                <span className="text-emerald-400 font-bold shrink-0">✓ Đúng</span>
+                              )}
+                              {drillChecked && isSelected && !isCorrectOption && (
+                                <span className="text-rose-400 font-bold shrink-0">✗ Sai</span>
+                              )}
+                            </button>
+                          );
+                        })}
+                      </div>
+
+                      {/* REAL-TIME FEEDBACK CARD (7. Real-time feedback) */}
+                      {drillChecked && (
+                        <div className={`p-5 rounded-2xl border space-y-3 animate-fade-in ${
+                          isCurrentCorrect
+                            ? "bg-emerald-950/20 border-emerald-500/40"
+                            : "bg-rose-950/20 border-rose-500/40"
+                        }`}>
+                          <div className="flex items-center justify-between">
+                            <div className="flex items-center gap-2">
+                              <span className="text-xl">{isCurrentCorrect ? "🎉" : "💡"}</span>
+                              <span className={`text-xs font-black uppercase ${isCurrentCorrect ? "text-emerald-400" : "text-rose-400"}`}>
+                                {isCurrentCorrect ? "Chính xác! Tự động đánh dấu Đã giải quyết ✓" : "Chưa chính xác! Cùng xem giải thích bên dưới"}
+                              </span>
+                            </div>
+                            <span className="text-xs font-bold text-emerald-400">Đáp án đúng: {q.correctAnswer}</span>
+                          </div>
+
+                          {q.explanation && (
+                            <p className="text-xs text-zinc-300 leading-relaxed whitespace-pre-line bg-black/20 p-3.5 rounded-xl border border-white/5">
+                              {q.explanation}
+                            </p>
+                          )}
+
+                          {q.userNote && (
+                            <p className="text-[11px] text-amber-300 italic bg-amber-950/20 p-2 rounded-lg border border-amber-800/20">
+                              📌 Ghi chú cá nhân của bạn: {q.userNote}
+                            </p>
+                          )}
+
+                          <div className="flex justify-end pt-2">
+                            <button
+                              type="button"
+                              onClick={handleNextDrillQuestion}
+                              disabled={isSubmittingDrill}
+                              className="px-6 py-3 rounded-xl bg-red-600 hover:bg-red-500 text-white font-bold text-xs shadow-lg transition flex items-center gap-2"
+                            >
+                              <span>
+                                {drillCurrentIdx === drillQuestions.length - 1
+                                  ? isSubmittingDrill ? "Đang hoàn tất..." : "Xem kết quả Drill 🎉"
+                                  : "Câu tiếp theo →"}
+                              </span>
+                            </button>
+                          </div>
+                        </div>
+                      )}
+                    </div>
+                  );
+                })()}
+              </div>
+            )}
+
+            {/* STEP 3: DRILL SUMMARY & RESULTS */}
+            {drillStep === "summary" && drillSummary && (
+              <div className="rounded-3xl border border-white/5 bg-[#121214] p-6 sm:p-8 space-y-6 animate-fade-in">
+                <div className="text-center space-y-2">
+                  <div className="text-5xl">🏆</div>
+                  <h3 className="text-2xl font-black text-white">Hoàn Thành Phiên Luyện Tập Drill!</h3>
+                  <p className="text-xs text-zinc-400 max-w-md mx-auto">{drillSummary.message}</p>
+                </div>
+
+                {/* Score Cards */}
+                <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
+                  <div className="p-5 rounded-2xl bg-zinc-900 border border-zinc-800 text-center">
+                    <div className="text-3xl font-black text-purple-400">{drillSummary.successRate}%</div>
+                    <span className="text-[10px] text-zinc-500 font-bold uppercase mt-1 block">Tỷ lệ chính xác</span>
+                  </div>
+
+                  <div className="p-5 rounded-2xl bg-emerald-950/20 border border-emerald-800/30 text-center">
+                    <div className="text-3xl font-black text-emerald-400">{drillSummary.correctCount}</div>
+                    <span className="text-[10px] text-emerald-300 font-bold uppercase mt-1 block">Câu trả lời đúng</span>
+                  </div>
+
+                  <div className="p-5 rounded-2xl bg-rose-950/20 border border-rose-800/30 text-center">
+                    <div className="text-3xl font-black text-rose-400">{drillSummary.incorrectCount}</div>
+                    <span className="text-[10px] text-rose-300 font-bold uppercase mt-1 block">Câu còn sai</span>
+                  </div>
+
+                  <div className="p-5 rounded-2xl bg-amber-950/20 border border-amber-800/30 text-center">
+                    <div className="text-3xl font-black text-amber-400">{drillSummary.autoResolvedCount}</div>
+                    <span className="text-[10px] text-amber-300 font-bold uppercase mt-1 block">Đã tự động giải quyết</span>
+                  </div>
+                </div>
+
+                {/* 12. SCHEDULE REPEAT DRILL (Spaced Repetition) */}
+                <div className="p-6 rounded-2xl bg-zinc-950 border border-zinc-800 space-y-3">
+                  <div className="flex items-center gap-2">
+                    <span className="text-xl">📅</span>
+                    <div>
+                      <h4 className="text-xs font-bold text-white">Lên Lịch Ôn Tập Lặp Lại (Schedule Repeat Drill)</h4>
+                      <p className="text-[11px] text-zinc-400">Áp dụng phương pháp Spaced Repetition để ghi nhớ sâu kiến thức</p>
+                    </div>
+                  </div>
+
+                  <div className="flex items-center gap-3 flex-wrap pt-1">
+                    {[1, 3, 7].map((days) => (
+                      <button
+                        key={days}
+                        type="button"
+                        onClick={() => handleScheduleRepeat(days)}
+                        disabled={isScheduling}
+                        className="px-4 py-2 rounded-xl bg-zinc-900 hover:bg-zinc-800 border border-zinc-700 text-zinc-200 text-xs font-bold transition flex items-center gap-1.5"
+                      >
+                        <span>⏰</span> <span>Nhắc lại sau {days} ngày</span>
+                      </button>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Action Buttons */}
+                <div className="flex items-center justify-between pt-4 border-t border-zinc-800 flex-wrap gap-3">
+                  <button
+                    type="button"
+                    onClick={() => setActiveTab("list")}
+                    className="px-5 py-3 rounded-xl bg-zinc-800 hover:bg-zinc-700 text-zinc-300 font-bold text-xs transition"
+                  >
+                    ← Về Sổ tay câu sai
+                  </button>
+
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setDrillStep("config");
+                      handleStartDrill();
+                    }}
+                    className="px-6 py-3 rounded-xl bg-red-600 hover:bg-red-500 text-white font-bold text-xs shadow-lg transition"
+                  >
+                    Luyện tập lượt mới 🔄
+                  </button>
+                </div>
+              </div>
+            )}
+          </div>
+        )}
+
+        {/* ================================================== */}
         {/* MODALS: DETAIL & DELETE */}
         {/* ================================================== */}
         {detailItem && (
           <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/85 backdrop-blur-sm animate-fade-in">
             <div className="bg-zinc-900 border border-zinc-800 rounded-3xl p-6 sm:p-8 max-w-2xl w-full max-h-[90vh] overflow-y-auto space-y-6 shadow-2xl">
-              {/* Modal Header */}
               <div className="flex items-center justify-between border-b border-zinc-800 pb-4">
                 <div className="flex items-center gap-2 flex-wrap">
                   <span className="px-2.5 py-0.5 rounded-full text-xs font-extrabold bg-red-600/20 text-red-400 border border-red-500/30">
@@ -926,7 +1483,7 @@ export default function ErrorLogPage() {
                 </button>
               </div>
 
-              {/* 10. ORIGINAL QUESTION DISPLAY */}
+              {/* Question display */}
               <div className="space-y-3">
                 <h4 className="text-xs font-bold uppercase tracking-wider text-zinc-400">Câu Hỏi Gốc (Original Question)</h4>
 
@@ -959,7 +1516,7 @@ export default function ErrorLogPage() {
                 </div>
               </div>
 
-              {/* 11 & 12. ANSWERS DISPLAY */}
+              {/* Answers */}
               <div className="space-y-3">
                 <h4 className="text-xs font-bold uppercase tracking-wider text-zinc-400">Lựa Chọn Đáp Án</h4>
 
@@ -967,7 +1524,7 @@ export default function ErrorLogPage() {
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
                     {detailItem.options.map((opt: any, idx: number) => {
                       const optLabel = opt.label || String.fromCharCode(65 + idx);
-                      const optText = opt.text || opt.content || opt;
+                      const optText = typeof opt === "string" ? opt : opt.text || opt.content || "";
                       const isCorrect = optLabel.toUpperCase() === detailItem.correctAnswer.toUpperCase() || opt.isCorrect;
                       const isUserChoice = optLabel.toUpperCase() === detailItem.userAnswer?.toUpperCase();
 
@@ -995,7 +1552,7 @@ export default function ErrorLogPage() {
                 )}
               </div>
 
-              {/* 13. EXPLANATION DISPLAY */}
+              {/* Explanation */}
               {detailItem.explanation && (
                 <div className="space-y-2 p-4 rounded-2xl bg-purple-950/20 border border-purple-800/30">
                   <div className="flex items-center gap-1.5 text-xs font-bold text-purple-300 uppercase">
@@ -1007,7 +1564,7 @@ export default function ErrorLogPage() {
                 </div>
               )}
 
-              {/* 14, 15, 16, 17. ERROR TYPE TAG & PERSONAL NOTE FIELD */}
+              {/* Notes */}
               <div className="space-y-3 pt-3 border-t border-zinc-800">
                 <h4 className="text-xs font-bold uppercase tracking-wider text-zinc-400">
                   Phân Loại & Ghi Chú Cá Nhân

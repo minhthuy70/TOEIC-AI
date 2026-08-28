@@ -64,6 +64,36 @@ export class ErrorTrackingController {
   }
 
   // ==========================================================
+  // 8.3 ERROR DRILLS ENDPOINTS
+  // ==========================================================
+  @Post("drill/generate")
+  async generateDrill(
+    @Req() req: any,
+    @Body() body: { mode?: "top10" | "type" | "all"; errorType?: string; limit?: number; part?: number },
+  ) {
+    const userId = this.getUserId(req);
+    return this.errorTrackingService.generateDrill(userId, body);
+  }
+
+  @Post("drill/submit")
+  async submitDrill(
+    @Req() req: any,
+    @Body() payload: { results: Array<{ errorLogId: number; isCorrect: boolean; selectedOption: string }>; durationSeconds: number },
+  ) {
+    const userId = this.getUserId(req);
+    return this.errorTrackingService.submitDrill(userId, payload);
+  }
+
+  @Post("drill/schedule")
+  async scheduleDrill(
+    @Req() req: any,
+    @Body() dto: { errorType?: string; repeatInDays: number; note?: string },
+  ) {
+    const userId = this.getUserId(req);
+    return this.errorTrackingService.scheduleDrill(userId, dto);
+  }
+
+  // ==========================================================
   // GET /error-log/:id
   // ==========================================================
   @Get(":id")

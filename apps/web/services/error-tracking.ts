@@ -206,3 +206,82 @@ export interface ErrorAnalysisResponse {
 export async function getErrorAnalysis(): Promise<ErrorAnalysisResponse> {
   return apiFetch<ErrorAnalysisResponse>("/error-log/analysis");
 }
+
+// ============================================================
+// 8.3 ERROR DRILLS TYPES & API
+// ============================================================
+
+export interface ErrorDrillQuestion {
+  drillIndex: number;
+  errorLogId: number;
+  questionId: number | null;
+  part: number;
+  errorType: "grammar" | "vocabulary" | "careless" | "timing";
+  frequency: number;
+  questionText: string;
+  passage: string | null;
+  imageUrl: string | null;
+  audioUrl: string | null;
+  options: Array<{ id?: number | string; label?: string; text?: string; content?: string }>;
+  correctAnswer: string;
+  userPreviousAnswer: string | null;
+  explanation: string | null;
+  userNote: string | null;
+}
+
+export interface ErrorDrillGenerateResponse {
+  success: boolean;
+  totalQuestions: number;
+  mode: "top10" | "type" | "all";
+  errorType: string;
+  questions: ErrorDrillQuestion[];
+}
+
+export interface ErrorDrillSubmitResponse {
+  success: boolean;
+  totalQuestions: number;
+  correctCount: number;
+  incorrectCount: number;
+  successRate: number;
+  durationSeconds: number;
+  autoResolvedCount: number;
+  autoResolvedIds: number[];
+  message: string;
+}
+
+export async function generateErrorDrill(config: {
+  mode?: "top10" | "type" | "all";
+  errorType?: string;
+  limit?: number;
+  part?: number;
+}): Promise<ErrorDrillGenerateResponse> {
+  return apiFetch<ErrorDrillGenerateResponse>("/error-log/drill/generate", {
+    method: "POST",
+    body: JSON.stringify(config),
+  });
+}
+
+export async function submitErrorDrill(payload: {
+  results: Array<{
+    errorLogId: number;
+    isCorrect: boolean;
+    selectedOption: string;
+  }>;
+  durationSeconds: number;
+}): Promise<ErrorDrillSubmitResponse> {
+  return apiFetch<ErrorDrillSubmitResponse>("/error-log/drill/submit", {
+    method: "POST",
+    body: JSON.stringify(payload),
+  });
+}
+
+export async function scheduleRepeatDrill(dto: {
+  errorType?: string;
+  repeatInDays: number;
+  note?: string;
+}): Promise<{ success: boolean; repeatInDays: number; scheduledDate: string; message: string }> {
+  return apiFetch<{ success: boolean; repeatInDays: number; scheduledDate: string; message: string }>("/error-log/drill/schedule", {
+    method: "POST",
+    body: JSON.stringify(dto),
+  });
+}

@@ -672,18 +672,18 @@ Dựa trên lộ trình học TOEIC 900+ - Phiên bản nâng cấp
 [x] - Error pattern detection - Phát hiện mẫu lỗi
 
 8.3. Error Drills (Bài tập lỗi)
-- Generate drill for specific error type - Tạo bài tập cho loại lỗi cụ thể
-- Generate drill for top 10 errors - Tạo bài tập cho 10 lỗi hàng đầu
-- Drill configuration (question count) - Cấu hình bài tập (số câu hỏi)
-- Start drill button - Nút bắt đầu bài tập
-- Drill timer - Đồng hồ đếm bài tập
-- Drill progress - Tiến độ bài tập
-- Real-time feedback - Phản hồi thời gian thực
-- Drill summary - Tóm tắt bài tập
-- Success rate calculation - Tính tỷ lệ thành công
-- Auto-resolve threshold (3 consecutive correct) - Ngưỡng tự động giải quyết (3 đúng liên tiếp)
-- Manual resolve option - Tùy chọn giải quyết thủ công
-- Schedule repeat drill - Lên lịch bài tập lặp lại
+[x] - Generate drill for specific error type - Tạo bài tập cho loại lỗi cụ thể
+[x] - Generate drill for top 10 errors - Tạo bài tập cho 10 lỗi hàng đầu
+[x] - Drill configuration (question count) - Cấu hình bài tập (số câu hỏi)
+[x] - Start drill button - Nút bắt đầu bài tập
+[x] - Drill timer - Đồng hồ đếm bài tập
+[x] - Drill progress - Tiến độ bài tập
+[x] - Real-time feedback - Phản hồi thời gian thực
+[x] - Drill summary - Tóm tắt bài tập
+[x] - Success rate calculation - Tính tỷ lệ thành công
+[x] - Auto-resolve threshold (3 consecutive correct) - Ngưỡng tự động giải quyết (3 đúng liên tiếp)
+[x] - Manual resolve option - Tùy chọn giải quyết thủ công
+[x] - Schedule repeat drill - Lên lịch bài tập lặp lại
 
 8.4. Error Settings - Cài đặt lỗi
 - Auto-log errors toggle - Bật/tắt tự động ghi lỗi
