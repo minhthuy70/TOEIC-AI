@@ -232,6 +232,8 @@ export type MockTestResultQuestion = {
   isAnswered: boolean;
 
   options: MockTestResultOption[];
+  transcript?: string | null;
+  evidence?: string | null;
 };
 
 // ============================================================
@@ -282,6 +284,15 @@ export type MockTestResultResponse = {
 
   totalScore: number;
 
+  percentileRanking?: number;
+
+  performanceComparison?: {
+    systemAverage: number;
+    userDelta: number;
+    targetScore: number;
+    targetDelta: number;
+  };
+
   startedAt: string;
 
   submittedAt: string;
@@ -317,12 +328,25 @@ export async function startMockTest(
     "/mock-test/start",
     {
       method: "POST",
-
       body: JSON.stringify({
         testId,
       }),
     },
   );
+}
+
+export async function startCustomFullTest(dto: {
+  testId?: number;
+  mode?: "standard" | "custom";
+  parts?: number[];
+  listeningDuration?: number;
+  readingDuration?: number;
+  totalQuestions?: number;
+}): Promise<MockTestStartResponse> {
+  return apiFetch<MockTestStartResponse>("/mock-test/custom-test/start", {
+    method: "POST",
+    body: JSON.stringify(dto),
+  });
 }
 
 // ============================================================

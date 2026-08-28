@@ -13,6 +13,7 @@ import {
   getMockTestHistory,
   getMockTests,
   startMockTest,
+  startCustomFullTest,
   type MockTest,
   type MockTestHistoryItem,
 } from "@/services/mock-test";
@@ -48,6 +49,14 @@ export default function MockTestPage() {
 
   const [error, setError] =
     useState("");
+
+  // Modal State for Full Test Config & Instructions
+  const [configModalTest, setConfigModalTest] = useState<MockTest | null>(null);
+  const [testMode, setTestMode] = useState<"standard" | "custom">("standard");
+  const [selectedParts, setSelectedParts] = useState<number[]>([1, 2, 3, 4, 5, 6, 7]);
+  const [listeningMinutes, setListeningMinutes] = useState<number>(45);
+  const [readingMinutes, setReadingMinutes] = useState<number>(75);
+  const [showInstructions, setShowInstructions] = useState<boolean>(false);
 
   // ==========================================================
   // LOAD
@@ -408,24 +417,40 @@ export default function MockTestPage() {
                           </div>
                         </div>
 
-                        <button
-                          type="button"
-                          disabled={
-                            startingTestId ===
+                        <div className="flex items-center gap-2">
+                          <button
+                            type="button"
+                            onClick={() => {
+                              setConfigModalTest(test);
+                              setTestMode("standard");
+                              setSelectedParts([1, 2, 3, 4, 5, 6, 7]);
+                              setListeningMinutes(45);
+                              setReadingMinutes(75);
+                            }}
+                            className="rounded-xl border border-zinc-700 bg-zinc-800 hover:bg-zinc-700 px-4 py-3 text-xs font-semibold text-zinc-300 transition"
+                          >
+                            ⚙️ Cấu hình & Hướng dẫn
+                          </button>
+
+                          <button
+                            type="button"
+                            disabled={
+                              startingTestId ===
+                              test.id
+                            }
+                            onClick={() =>
+                              handleStartTest(
+                                test.id,
+                              )
+                            }
+                            className="rounded-xl bg-red-600 px-6 py-3 text-sm font-semibold transition hover:bg-red-500 disabled:cursor-not-allowed disabled:opacity-50"
+                          >
+                            {startingTestId ===
                             test.id
-                          }
-                          onClick={() =>
-                            handleStartTest(
-                              test.id,
-                            )
-                          }
-                          className="rounded-xl bg-red-600 px-6 py-3 text-sm font-semibold transition hover:bg-red-500 disabled:cursor-not-allowed disabled:opacity-50"
-                        >
-                          {startingTestId ===
-                          test.id
-                            ? "Đang chuẩn bị..."
-                            : "Bắt đầu thi →"}
-                        </button>
+                              ? "Đang chuẩn bị..."
+                              : "Thi chuẩn 120p →"}
+                          </button>
+                        </div>
                       </div>
                     </div>
                   ),
@@ -433,6 +458,178 @@ export default function MockTestPage() {
               )}
             </div>
           </>
+        )}
+
+        {/* ── FULL TEST CONFIG & INSTRUCTIONS MODAL ── */}
+        {configModalTest && (
+          <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm animate-fade-in">
+            <div className="bg-zinc-900 border border-zinc-800 rounded-3xl p-6 sm:p-8 max-w-xl w-full space-y-6 shadow-2xl">
+              <div className="flex items-center justify-between border-b border-zinc-800 pb-3">
+                <div>
+                  <h3 className="text-lg font-bold text-white">
+                    Cấu Hình Bài Thi #{configModalTest.id}
+                  </h3>
+                  <p className="text-xs text-zinc-400 mt-0.5">
+                    {configModalTest.title ?? `TOEIC Full Test ${configModalTest.id}`}
+                  </p>
+                </div>
+                <button
+                  type="button"
+                  onClick={() => setConfigModalTest(null)}
+                  className="text-zinc-400 hover:text-white text-sm"
+                >
+                  ✕
+                </button>
+              </div>
+
+              {/* Mode Selector */}
+              <div>
+                <label className="text-xs font-bold text-zinc-300 block mb-2">
+                  1. Chế độ kiểm tra (Test Mode):
+                </label>
+                <div className="grid grid-cols-2 gap-3">
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setTestMode("standard");
+                      setSelectedParts([1, 2, 3, 4, 5, 6, 7]);
+                      setListeningMinutes(45);
+                      setReadingMinutes(75);
+                    }}
+                    className={`p-3.5 rounded-2xl border text-left transition ${
+                      testMode === "standard"
+                        ? "bg-red-600/15 border-red-500 text-white"
+                        : "bg-zinc-950/60 border-zinc-800 text-zinc-400 hover:text-white"
+                    }`}
+                  >
+                    <span className="text-xs font-bold block">📄 Tiêu chuẩn (Standard)</span>
+                    <span className="text-[10px] text-zinc-400">Part 1–7 theo thứ tự • 200 câu • 120 phút</span>
+                  </button>
+
+                  <button
+                    type="button"
+                    onClick={() => setTestMode("custom")}
+                    className={`p-3.5 rounded-2xl border text-left transition ${
+                      testMode === "custom"
+                        ? "bg-purple-600/15 border-purple-500 text-white"
+                        : "bg-zinc-950/60 border-zinc-800 text-zinc-400 hover:text-white"
+                    }`}
+                  >
+                    <span className="text-xs font-bold block">⚡ Tùy chỉnh (Custom)</span>
+                    <span className="text-[10px] text-zinc-400">Chọn Parts và thời gian theo nhu cầu</span>
+                  </button>
+                </div>
+              </div>
+
+              {/* Custom Part selection */}
+              {testMode === "custom" && (
+                <div className="space-y-3">
+                  <label className="text-xs font-bold text-zinc-300 block">
+                    2. Chọn phần thi (Select Parts):
+                  </label>
+                  <div className="grid grid-cols-4 sm:grid-cols-7 gap-2">
+                    {[1, 2, 3, 4, 5, 6, 7].map((p) => {
+                      const isSel = selectedParts.includes(p);
+                      return (
+                        <button
+                          key={p}
+                          type="button"
+                          onClick={() => {
+                            setSelectedParts((prev) =>
+                              prev.includes(p)
+                                ? prev.length > 1
+                                  ? prev.filter((x) => x !== p)
+                                  : prev
+                                : [...prev, p].sort((a, b) => a - b)
+                            );
+                          }}
+                          className={`py-2 px-1 rounded-xl text-xs font-bold border transition ${
+                            isSel
+                              ? "bg-purple-600 text-white border-purple-400"
+                              : "bg-zinc-800 text-zinc-400 border-zinc-700"
+                          }`}
+                        >
+                          Part {p}
+                        </button>
+                      );
+                    })}
+                  </div>
+
+                  <div className="grid grid-cols-2 gap-3 pt-2">
+                    <div>
+                      <span className="text-[11px] text-zinc-400 block mb-1">🎧 Thời gian Nghe (phút):</span>
+                      <input
+                        type="number"
+                        min={5}
+                        max={90}
+                        value={listeningMinutes}
+                        onChange={(e) => setListeningMinutes(Number(e.target.value))}
+                        className="w-full bg-zinc-950 border border-zinc-800 rounded-xl px-3 py-2 text-xs text-white"
+                      />
+                    </div>
+                    <div>
+                      <span className="text-[11px] text-zinc-400 block mb-1">📖 Thời gian Đọc (phút):</span>
+                      <input
+                        type="number"
+                        min={5}
+                        max={120}
+                        value={readingMinutes}
+                        onChange={(e) => setReadingMinutes(Number(e.target.value))}
+                        className="w-full bg-zinc-950 border border-zinc-800 rounded-xl px-3 py-2 text-xs text-white"
+                      />
+                    </div>
+                  </div>
+                </div>
+              )}
+
+              {/* Instructions Accordion / Toggle */}
+              <div className="bg-zinc-950/60 border border-zinc-800 rounded-2xl p-4 text-xs text-zinc-300 space-y-2 leading-relaxed max-h-36 overflow-y-auto">
+                <p className="font-bold text-white flex items-center gap-1.5">
+                  <span>ℹ️</span> <span>Quy chế thi TOEIC Full Test:</span>
+                </p>
+                <p>• Phần Listening (Part 1–4, 100 câu, 45 phút): Audio tự động phát 1 lần.</p>
+                <p>• Section break: Sau khi hoàn tất Listening, bạn sẽ có thông báo nghỉ 1–2 phút trước khi chuyển sang Reading (Part 5–7, 100 câu, 75 phút).</p>
+                <p>• Chức năng Tạm dừng (Pause): Giới hạn tối đa 3 lần trong suốt bài thi.</p>
+              </div>
+
+              {/* Modal Actions */}
+              <div className="flex items-center justify-end gap-3 pt-2 border-t border-zinc-800">
+                <button
+                  type="button"
+                  onClick={() => setConfigModalTest(null)}
+                  className="px-4 py-2.5 rounded-xl text-xs font-semibold text-zinc-400 hover:text-white bg-zinc-800 transition"
+                >
+                  Hủy
+                </button>
+                <button
+                  type="button"
+                  disabled={startingTestId === configModalTest.id}
+                  onClick={async () => {
+                    if (!configModalTest) return;
+                    setStartingTestId(configModalTest.id);
+                    try {
+                      const res = await startCustomFullTest({
+                        testId: configModalTest.id,
+                        mode: testMode,
+                        parts: selectedParts,
+                        listeningDuration: listeningMinutes,
+                        readingDuration: readingMinutes,
+                      });
+                      setConfigModalTest(null);
+                      router.push(`/dashboard/mock-test/${res.attemptId}`);
+                    } catch (err: any) {
+                      alert(err?.message || "Lỗi khởi tạo bài thi!");
+                    } finally {
+                      setStartingTestId(null);
+                    }
+                  }}
+                  className="px-6 py-2.5 rounded-xl text-xs font-bold text-white bg-red-600 hover:bg-red-500 shadow-lg shadow-red-600/20 transition disabled:opacity-50"
+                >
+                  {startingTestId === configModalTest.id ? "Đang tạo bài thi..." : "🚀 Bắt đầu làm bài thi"}
+                </button>
+              </div>
+            </div>
+          </div>
         )}
 
         {/* ================================================== */}

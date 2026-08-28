@@ -55,6 +55,27 @@ export class MockTestController {
   }
 
   // ==========================================================
+  // FULL TEST (STANDARD / CUSTOM 200 CÂU)
+  // ==========================================================
+
+  @Post("custom-test/start")
+  async startCustomFullTest(
+    @Req() req: any,
+    @Body()
+    body: {
+      testId?: number;
+      mode?: "standard" | "custom";
+      parts?: number[];
+      listeningDuration?: number;
+      readingDuration?: number;
+      totalQuestions?: number;
+    },
+  ) {
+    const userId = this.getUserId(req);
+    return this.mockTestService.startCustomFullTest(userId, body);
+  }
+
+  // ==========================================================
   // MINI TEST (50 CÂU)
   // ==========================================================
 

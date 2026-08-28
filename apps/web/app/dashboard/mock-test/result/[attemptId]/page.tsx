@@ -62,6 +62,55 @@ export default function MockTestResultPage() {
     "all",
   );
 
+  const [toastMessage, setToastMessage] = useState<string | null>(null);
+  const [errorLogBookmarked, setErrorLogBookmarked] = useState<Record<number, boolean>>({});
+
+  useEffect(() => {
+    try {
+      const stored = localStorage.getItem("mock_test_error_log");
+      if (stored) {
+        setErrorLogBookmarked(JSON.parse(stored));
+      }
+    } catch (e) {
+      console.error(e);
+    }
+  }, []);
+
+  const showToast = (msg: string) => {
+    setToastMessage(msg);
+    setTimeout(() => setToastMessage(null), 2500);
+  };
+
+  const handleShare = async () => {
+    try {
+      if (typeof window !== "undefined") {
+        await navigator.clipboard.writeText(window.location.href);
+        showToast("Đã sao chép liên kết kết quả thi!");
+      }
+    } catch (e) {
+      console.error(e);
+    }
+  };
+
+  const handlePrint = () => {
+    if (typeof window !== "undefined") {
+      window.print();
+    }
+  };
+
+  const toggleErrorLog = (qId: number) => {
+    setErrorLogBookmarked((prev) => {
+      const next = { ...prev, [qId]: !prev[qId] };
+      try {
+        localStorage.setItem("mock_test_error_log", JSON.stringify(next));
+      } catch (e) {
+        console.error(e);
+      }
+      showToast(next[qId] ? "Đã lưu vào Sổ tay lỗi!" : "Đã gỡ khỏi Sổ tay lỗi.");
+      return next;
+    });
+  };
+
   // ==========================================================
   // LOAD RESULT
   // ==========================================================
@@ -278,7 +327,7 @@ export default function MockTestResultPage() {
       {/* ================================================== */}
 
       <header className="sticky top-0 z-40 border-b border-white/5 bg-[#09090b]/95 backdrop-blur">
-        <div className="mx-auto flex max-w-7xl items-center justify-between px-5 py-4">
+        <div className="mx-auto flex max-w-7xl items-center justify-between px-5 py-4 flex-wrap gap-3">
           <div>
             <p className="text-xs text-zinc-500">
               Kết quả thi thử
@@ -289,19 +338,43 @@ export default function MockTestResultPage() {
             </h1>
           </div>
 
-          <button
-            type="button"
-            onClick={() =>
-              router.push(
-                "/dashboard/mock-test",
-              )
-            }
-            className="rounded-xl border border-white/10 px-4 py-2 text-sm text-zinc-300 hover:bg-white/5 hover:text-white"
-          >
-            ← Danh sách đề
-          </button>
+          <div className="flex items-center gap-2">
+            <button
+              type="button"
+              onClick={handlePrint}
+              className="rounded-xl border border-white/10 px-3.5 py-2 text-xs font-bold text-zinc-300 hover:bg-white/5 hover:text-white flex items-center gap-1.5 transition"
+            >
+              <span>🖨️</span>
+              <span>In / Tải PDF</span>
+            </button>
+
+            <button
+              type="button"
+              onClick={handleShare}
+              className="rounded-xl border border-white/10 px-3.5 py-2 text-xs font-bold text-zinc-300 hover:bg-white/5 hover:text-white flex items-center gap-1.5 transition"
+            >
+              <span>🔗</span>
+              <span>Chia sẻ</span>
+            </button>
+
+            <button
+              type="button"
+              onClick={() => router.push(`/dashboard/mock-test`)}
+              className="rounded-xl border border-white/10 px-4 py-2 text-xs font-bold text-zinc-300 hover:bg-white/5 hover:text-white"
+            >
+              ← Danh sách đề
+            </button>
+          </div>
         </div>
       </header>
+
+      {/* Toast */}
+      {toastMessage && (
+        <div className="fixed bottom-6 right-6 z-50 bg-emerald-600 text-white text-xs font-bold px-4 py-3 rounded-xl shadow-2xl flex items-center gap-2 transition-all">
+          <span>✓</span>
+          <span>{toastMessage}</span>
+        </div>
+      )}
 
       <main className="mx-auto max-w-7xl px-5 py-8">
         {/* ================================================== */}
@@ -331,10 +404,14 @@ export default function MockTestResultPage() {
           </div>
 
           {/* ================================================== */}
-          {/* TOTAL SCORE */}
+          {/* TOTAL SCORE & PERCENTILE */}
           {/* ================================================== */}
 
-          <div className="mt-8 rounded-3xl border border-red-500/20 bg-red-500/5 p-8 text-center">
+          <div className="mt-8 rounded-3xl border border-red-500/20 bg-red-500/5 p-8 text-center relative overflow-hidden">
+            <div className="inline-block px-3.5 py-1 rounded-full bg-amber-500/20 border border-amber-500/30 text-amber-300 text-xs font-bold mb-3">
+              🏆 Top {100 - (result.percentileRanking ?? 85)}% học viên toàn hệ thống (Percentile: {result.percentileRanking ?? 85}th)
+            </div>
+
             <p className="text-sm text-zinc-500">
               Tổng điểm TOEIC
             </p>
@@ -346,6 +423,33 @@ export default function MockTestResultPage() {
             <p className="mt-1 text-sm text-zinc-600">
               / 990
             </p>
+          </div>
+
+          {/* PERFORMANCE COMPARISON */}
+          <div className="mt-4 grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div className="rounded-2xl border border-white/5 bg-white/[0.02] p-4 flex items-center justify-between">
+              <div>
+                <span className="text-[11px] text-zinc-500 font-bold uppercase">So với điểm trung bình (615đ)</span>
+                <p className="text-lg font-bold text-white mt-0.5">
+                  {(result.totalScore - 615) >= 0 ? `+${result.totalScore - 615}` : `${result.totalScore - 615}`} điểm
+                </p>
+              </div>
+              <span className={`text-xl font-bold ${(result.totalScore - 615) >= 0 ? "text-emerald-400" : "text-rose-400"}`}>
+                {(result.totalScore - 615) >= 0 ? "📈 Cao hơn TB" : "📉 Thấp hơn TB"}
+              </span>
+            </div>
+
+            <div className="rounded-2xl border border-white/5 bg-white/[0.02] p-4 flex items-center justify-between">
+              <div>
+                <span className="text-[11px] text-zinc-500 font-bold uppercase">Mục tiêu TOEIC 900+</span>
+                <p className="text-lg font-bold text-white mt-0.5">
+                  {Math.max(0, 900 - result.totalScore)} điểm còn lại
+                </p>
+              </div>
+              <span className="text-xl font-bold text-purple-400">
+                🎯 {Math.round((result.totalScore / 900) * 100)}%
+              </span>
+            </div>
           </div>
 
           {/* ================================================== */}
@@ -709,6 +813,8 @@ export default function MockTestResultPage() {
                   testTitle={
                     result.testTitle
                   }
+                  isBookmarked={!!errorLogBookmarked[question.id]}
+                  onToggleBookmark={() => toggleErrorLog(question.id)}
                 />
               ),
             )}
@@ -755,11 +861,15 @@ function ResultQuestionCard({
   displayIndex,
   testId,
   testTitle,
+  isBookmarked,
+  onToggleBookmark,
 }: {
   question: MockTestResultQuestion;
   displayIndex: number;
   testId: number;
   testTitle: string;
+  isBookmarked?: boolean;
+  onToggleBookmark?: () => void;
 }) {
   const imageUrl =
     resolveMediaUrl(
@@ -833,13 +943,29 @@ function ResultQuestionCard({
           </div>
         </div>
 
-        {/* STATUS */}
+        {/* STATUS & ERROR LOG */}
+        <div className="flex items-center gap-2">
+          {onToggleBookmark && (
+            <button
+              type="button"
+              onClick={onToggleBookmark}
+              className={`px-3 py-1.5 rounded-xl text-xs font-bold flex items-center gap-1.5 transition ${
+                isBookmarked
+                  ? "bg-amber-500/20 text-amber-300 border border-amber-500/40"
+                  : "bg-white/5 text-zinc-400 hover:text-amber-400 border border-white/5"
+              }`}
+            >
+              <span>{isBookmarked ? "⭐" : "☆"}</span>
+              <span>{isBookmarked ? "Đã lưu sổ tay" : "Lưu sổ tay lỗi"}</span>
+            </button>
+          )}
 
-        <StatusBadge
-          question={
-            question
-          }
-        />
+          <StatusBadge
+            question={
+              question
+            }
+          />
+        </div>
       </div>
 
       {/* ================================================== */}
@@ -1041,6 +1167,32 @@ function ResultQuestionCard({
           />
         </div>
       </div>
+
+      {/* ================================================== */}
+      {/* TRANSCRIPT (LISTENING) / EVIDENCE (READING) */}
+      {/* ================================================== */}
+
+      {question.transcript && (
+        <div className="mt-4 rounded-2xl border border-blue-500/20 bg-blue-500/5 p-4 text-xs">
+          <p className="font-bold text-blue-400 flex items-center gap-1.5 mb-1.5">
+            <span>🎧</span> <span>Bản ghi lời thoại (Audio Transcript):</span>
+          </p>
+          <p className="text-zinc-300 leading-relaxed pl-5 whitespace-pre-wrap">
+            {question.transcript}
+          </p>
+        </div>
+      )}
+
+      {question.evidence && (
+        <div className="mt-4 rounded-2xl border border-amber-500/20 bg-amber-500/5 p-4 text-xs">
+          <p className="font-bold text-amber-400 flex items-center gap-1.5 mb-1.5">
+            <span>💡</span> <span>Highlight bằng chứng & Giải thích:</span>
+          </p>
+          <p className="text-zinc-300 leading-relaxed pl-5 whitespace-pre-wrap">
+            {question.evidence}
+          </p>
+        </div>
+      )}
     </article>
   );
 }

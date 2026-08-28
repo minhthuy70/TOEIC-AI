@@ -85,6 +85,15 @@ export default function MockTestAttemptPage() {
     setAudioError,
   ] = useState(false);
 
+  // Additional 7.2 Features State
+  const [markedForReview, setMarkedForReview] = useState<Record<number, boolean>>({});
+  const [isPaused, setIsPaused] = useState<boolean>(false);
+  const [pausesRemaining, setPausesRemaining] = useState<number>(3);
+  const [showSubmitModal, setShowSubmitModal] = useState<boolean>(false);
+  const [showSectionBreakModal, setShowSectionBreakModal] = useState<boolean>(false);
+  const [filterMarkedOnly, setFilterMarkedOnly] = useState<boolean>(false);
+  const [sectionBreakTimer, setSectionBreakTimer] = useState<number>(60); // 60s break
+
   // ==========================================================
   // LOAD ATTEMPT
   // ==========================================================
@@ -263,7 +272,9 @@ export default function MockTestAttemptPage() {
     if (
       !practice ||
       submitted ||
-      submitting
+      submitting ||
+      isPaused ||
+      showSectionBreakModal
     ) {
       return;
     }
@@ -298,7 +309,20 @@ export default function MockTestAttemptPage() {
     practice,
     submitted,
     submitting,
+    isPaused,
+    showSectionBreakModal,
   ]);
+
+  // Section break countdown
+  useEffect(() => {
+    let t: NodeJS.Timeout;
+    if (showSectionBreakModal && sectionBreakTimer > 0) {
+      t = setInterval(() => {
+        setSectionBreakTimer((prev) => Math.max(0, prev - 1));
+      }, 1000);
+    }
+    return () => clearInterval(t);
+  }, [showSectionBreakModal, sectionBreakTimer]);
 
   // ==========================================================
   // QUESTIONS
@@ -1087,47 +1111,186 @@ router.push(
     "======================================",
   );
 
+  const isListeningSection = part <= 4;
+  const answeredCount = Object.keys(answers).length;
+  const totalCount = questions.length;
+  const markedCount = Object.values(markedForReview).filter(Boolean).length;
+
   return (
-    <div className="min-h-screen bg-[#09090b] text-white">
+    <div className="min-h-screen bg-[#09090b] text-white relative">
+      {/* ── PAUSE MODAL ── */}
+      {isPaused && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/85 backdrop-blur-md">
+          <div className="bg-zinc-900 border border-zinc-800 rounded-3xl p-8 max-w-md w-full text-center space-y-4 shadow-2xl">
+            <div className="text-4xl">⏸️</div>
+            <h3 className="text-xl font-bold text-white">Bài thi đang tạm dừng</h3>
+            <p className="text-xs text-zinc-400">
+              Đồng hồ đã tạm dừng đếm. Bạn còn <strong className="text-amber-400">{pausesRemaining} lượt tạm dừng</strong>.
+            </p>
+            <button
+              type="button"
+              onClick={() => setIsPaused(false)}
+              className="w-full py-3 bg-red-600 hover:bg-red-500 text-white font-bold text-xs rounded-xl shadow-lg transition"
+            >
+              ▶️ Tiếp tục làm bài thi
+            </button>
+          </div>
+        </div>
+      )}
+
+      {/* ── SECTION BREAK NOTIFICATION MODAL ── */}
+      {showSectionBreakModal && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/85 backdrop-blur-md animate-fade-in">
+          <div className="bg-zinc-900 border border-zinc-800 rounded-3xl p-8 max-w-lg w-full text-center space-y-5 shadow-2xl">
+            <div className="text-4xl">☕</div>
+            <h3 className="text-xl font-bold text-white">Hoàn Thành Phần Thi Listening!</h3>
+            <p className="text-xs text-zinc-300 leading-relaxed">
+              Bạn có <strong>{sectionBreakTimer} giây</strong> nghỉ ngơi trước khi bước vào <strong>Phần thi Reading (Part 5, 6, 7 - 75 phút)</strong>.
+            </p>
+            <div className="text-2xl font-mono font-bold text-amber-400">
+              ⏳ 00:{sectionBreakTimer.toString().padStart(2, "0")}
+            </div>
+            <button
+              type="button"
+              onClick={() => {
+                setShowSectionBreakModal(false);
+                setSelectedPart(5);
+                // Jump to first question of Reading
+                const firstReadingIdx = questions.findIndex((q) => q.part === 5);
+                if (firstReadingIdx >= 0) setCurrentIndex(firstReadingIdx);
+              }}
+              className="w-full py-3 bg-gradient-to-r from-red-600 to-red-500 hover:from-red-500 hover:to-red-400 text-white font-bold text-xs rounded-xl shadow-lg transition"
+            >
+              📖 Bắt đầu phần thi Reading ngay →
+            </button>
+          </div>
+        </div>
+      )}
+
+      {/* ── SUBMIT CONFIRMATION MODAL ── */}
+      {showSubmitModal && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm animate-fade-in">
+          <div className="bg-zinc-900 border border-zinc-800 rounded-3xl p-6 sm:p-8 max-w-md w-full space-y-5 shadow-2xl">
+            <div className="text-center space-y-2">
+              <div className="text-3xl">📝</div>
+              <h3 className="text-lg font-bold text-white">Xác nhận nộp bài thi TOEIC?</h3>
+              <p className="text-xs text-zinc-400">
+                Bạn đã làm <strong className="text-white">{answeredCount}/{totalCount} câu hỏi</strong> • Đánh dấu <strong className="text-amber-400">{markedCount} câu</strong>.
+              </p>
+              {totalCount - answeredCount > 0 && (
+                <p className="text-xs text-amber-400 bg-amber-950/40 p-2.5 rounded-xl border border-amber-800/40">
+                  ⚠️ Còn <strong>{totalCount - answeredCount} câu chưa trả lời</strong>. Bạn có chắc chắn muốn nộp bài?
+                </p>
+              )}
+            </div>
+
+            <div className="flex items-center gap-3 pt-2">
+              <button
+                type="button"
+                onClick={() => setShowSubmitModal(false)}
+                className="flex-1 py-2.5 rounded-xl bg-zinc-800 hover:bg-zinc-700 text-zinc-300 font-bold text-xs transition"
+              >
+                Làm tiếp
+              </button>
+              <button
+                type="button"
+                onClick={() => {
+                  setShowSubmitModal(false);
+                  handleSubmit(false);
+                }}
+                disabled={submitting}
+                className="flex-1 py-2.5 rounded-xl bg-red-600 hover:bg-red-500 text-white font-bold text-xs shadow-lg transition disabled:opacity-50"
+              >
+                {submitting ? "Đang nộp..." : "Xác nhận nộp bài"}
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
       {/* ================================================== */}
       {/* HEADER */}
       {/* ================================================== */}
 
       <header className="sticky top-0 z-30 border-b border-white/5 bg-[#09090b]/95 backdrop-blur">
-        <div className="mx-auto flex max-w-7xl items-center justify-between px-5 py-4">
+        <div className="mx-auto flex max-w-7xl items-center justify-between px-5 py-4 flex-wrap gap-3">
           <div>
-            <p className="text-xs text-zinc-500">
-              {practice.testTitle}
-            </p>
+            <div className="flex items-center gap-2">
+              <p className="text-xs text-zinc-500">
+                {practice.testTitle}
+              </p>
+              <span className={`px-2 py-0.5 rounded-full text-[10px] font-extrabold ${isListeningSection ? "bg-blue-600/20 text-blue-400 border border-blue-500/30" : "bg-purple-600/20 text-purple-400 border border-purple-500/30"}`}>
+                {isListeningSection ? "🎧 Listening Section (Part 1–4)" : "📖 Reading Section (Part 5–7)"}
+              </span>
+            </div>
 
-            <h1 className="font-bold">
-              Full TOEIC Test
+            <h1 className="font-bold text-sm sm:text-base">
+              Câu {currentIndex + 1} / {filteredQuestions.length}
             </h1>
           </div>
 
-          <div className="text-center">
-            <p className="text-xs text-zinc-500">
-              Câu
-            </p>
+          <div className="flex items-center gap-2.5 flex-wrap">
+            {/* Mark for review */}
+            <button
+              type="button"
+              onClick={() => setMarkedForReview((prev) => ({ ...prev, [currentQuestion.id]: !prev[currentQuestion.id] }))}
+              className={`px-3 py-1.5 rounded-xl text-xs font-bold transition flex items-center gap-1.5 ${
+                markedForReview[currentQuestion.id]
+                  ? "bg-amber-500/20 text-amber-400 border border-amber-500/40"
+                  : "bg-white/5 text-zinc-400 hover:text-white"
+              }`}
+            >
+              <span>{markedForReview[currentQuestion.id] ? "🚩 Đã đánh dấu" : "🏳️ Đánh dấu cờ"}</span>
+            </button>
 
-            <p className="font-bold">
-              {currentIndex + 1} /{" "}
-              {filteredQuestions.length}
-            </p>
-          </div>
+            {/* Pause button */}
+            <button
+              type="button"
+              disabled={pausesRemaining <= 0}
+              onClick={() => {
+                if (pausesRemaining > 0) {
+                  setPausesRemaining((prev) => prev - 1);
+                  setIsPaused(true);
+                }
+              }}
+              className="px-3 py-1.5 bg-zinc-800 hover:bg-zinc-700 text-zinc-300 text-xs font-semibold rounded-xl transition disabled:opacity-40"
+            >
+              ⏸️ Tạm dừng ({pausesRemaining}/3)
+            </button>
 
-          <div
-            className={`rounded-xl px-4 py-2 font-mono font-bold ${
-              remainingSeconds <=
-              300
-                ? "bg-red-600 text-white"
-                : "bg-white/5 text-zinc-200"
-            }`}
-          >
-            ⏱{" "}
-            {formatTime(
-              remainingSeconds,
+            {/* Overall Timer */}
+            <div
+              className={`rounded-xl px-3.5 py-1.5 font-mono font-bold text-xs sm:text-sm ${
+                remainingSeconds <= 300
+                  ? "bg-red-600 text-white animate-pulse"
+                  : "bg-white/5 text-zinc-200"
+              }`}
+            >
+              ⏱ {formatTime(remainingSeconds)}
+            </div>
+
+            {/* Submit section button (if in listening) */}
+            {isListeningSection && (
+              <button
+                type="button"
+                onClick={() => {
+                  setShowSectionBreakModal(true);
+                  setSectionBreakTimer(60);
+                }}
+                className="px-3.5 py-1.5 bg-blue-600 hover:bg-blue-500 text-white font-bold text-xs rounded-xl shadow transition"
+              >
+                Nộp phần Nghe →
+              </button>
             )}
+
+            {/* Submit full test button */}
+            <button
+              type="button"
+              onClick={() => setShowSubmitModal(true)}
+              className="px-4 py-1.5 bg-red-600 hover:bg-red-500 text-white font-bold text-xs rounded-xl shadow transition"
+            >
+              Nộp bài thi
+            </button>
           </div>
         </div>
 
@@ -1423,90 +1586,108 @@ router.push(
         {/* ================================================== */}
 
         <div className="mt-8 rounded-2xl border border-white/5 bg-[#121214] p-5">
-          {/* PART FILTER TABS */}
-          <div className="mb-4 flex flex-wrap gap-2">
+          {/* PART FILTER TABS & MARKED FILTER */}
+          <div className="mb-4 flex flex-wrap items-center justify-between gap-2">
+            <div className="flex flex-wrap gap-2">
+              <button
+                type="button"
+                onClick={() => {
+                  setSelectedPart("all");
+                  setFilterMarkedOnly(false);
+                }}
+                className={`rounded-lg px-3 py-1.5 text-xs font-medium transition ${
+                  selectedPart === "all" && !filterMarkedOnly
+                    ? "bg-red-600 text-white"
+                    : "bg-white/5 text-zinc-400 hover:bg-white/10"
+                }`}
+              >
+                Tất cả
+              </button>
+
+              {availableParts.map(
+                (part) => (
+                  <button
+                    key={part}
+                    type="button"
+                    onClick={() => {
+                      setSelectedPart(part);
+                      setFilterMarkedOnly(false);
+                    }}
+                    className={`rounded-lg px-3 py-1.5 text-xs font-medium transition ${
+                      selectedPart ===
+                      part && !filterMarkedOnly
+                        ? "bg-red-600 text-white"
+                        : "bg-white/5 text-zinc-400 hover:bg-white/10"
+                    }`}
+                  >
+                    Part {part}
+                  </button>
+                ),
+              )}
+            </div>
+
             <button
               type="button"
-              onClick={() =>
-                setSelectedPart("all")
-              }
-              className={`rounded-lg px-3 py-1.5 text-xs font-medium transition ${
-                selectedPart === "all"
-                  ? "bg-red-600 text-white"
-                  : "bg-white/5 text-zinc-400 hover:bg-white/10"
+              onClick={() => setFilterMarkedOnly(!filterMarkedOnly)}
+              className={`rounded-lg px-3 py-1.5 text-xs font-bold transition flex items-center gap-1 border ${
+                filterMarkedOnly
+                  ? "bg-amber-500/20 text-amber-300 border-amber-500/40"
+                  : "bg-white/5 text-zinc-400 hover:text-white border-white/5"
               }`}
             >
-              Tất cả
+              <span>🚩</span>
+              <span>Chỉ xem câu có cờ ({markedCount})</span>
             </button>
-
-            {availableParts.map(
-              (part) => (
-                <button
-                  key={part}
-                  type="button"
-                  onClick={() =>
-                    setSelectedPart(
-                      part,
-                    )
-                  }
-                  className={`rounded-lg px-3 py-1.5 text-xs font-medium transition ${
-                    selectedPart ===
-                    part
-                      ? "bg-red-600 text-white"
-                      : "bg-white/5 text-zinc-400 hover:bg-white/10"
-                  }`}
-                >
-                  Part {part}
-                </button>
-              ),
-            )}
           </div>
 
           <p className="mb-4 text-sm font-semibold">
             Danh sách câu
             {selectedPart !== "all" &&
               ` (Part ${selectedPart})`}
+            {filterMarkedOnly && " [Đã đánh dấu]"}
           </p>
 
           <div className="flex flex-wrap gap-2">
-            {filteredQuestions.map(
-              (
-                question,
-                index,
-              ) => {
-                const answered =
-                  Boolean(
-                    answers[
-                      question.id
-                    ],
-                  );
+            {filteredQuestions
+              .filter((q) => !filterMarkedOnly || !!markedForReview[q.id])
+              .map(
+                (
+                  question,
+                  index,
+                ) => {
+                  const actualIdx = filteredQuestions.findIndex((item) => item.id === question.id);
+                  const answered = Boolean(answers[question.id]);
+                  const isMarked = Boolean(markedForReview[question.id]);
 
-                return (
-                  <button
-                    key={
-                      question.id
-                    }
-                    type="button"
-                    onClick={() =>
-                      setCurrentIndex(
-                        index,
-                      )
-                    }
-                    className={`h-9 w-9 rounded-lg text-xs font-semibold ${
-                      index ===
-                      currentIndex
-                        ? "bg-red-600 text-white"
-                        : answered
-                        ? "bg-green-600/20 text-green-400"
-                        : "bg-white/5 text-zinc-500"
-                    }`}
-                  >
-                    {question.questionNumber ||
-                      index + 1}
-                  </button>
-                );
-              },
-            )}
+                  return (
+                    <button
+                      key={
+                        question.id
+                      }
+                      type="button"
+                      onClick={() =>
+                        setCurrentIndex(
+                          actualIdx,
+                        )
+                      }
+                      className={`h-9 w-9 rounded-lg text-xs font-semibold relative transition ${
+                        actualIdx ===
+                        currentIndex
+                          ? "bg-red-600 text-white ring-2 ring-red-400"
+                          : answered
+                          ? "bg-green-600/20 text-green-400"
+                          : "bg-white/5 text-zinc-500 hover:bg-white/10"
+                      }`}
+                    >
+                      {question.questionNumber ||
+                        actualIdx + 1}
+                      {isMarked && (
+                        <span className="absolute -top-1 -right-1 w-2.5 h-2.5 bg-amber-400 rounded-full" />
+                      )}
+                    </button>
+                  );
+                },
+              )}
           </div>
         </div>
       </main>

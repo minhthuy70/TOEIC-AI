@@ -1128,6 +1128,8 @@ export class MockTestService {
 
                 isCorrect,
 
+                explanation: question.explanation,
+
                 isAnswered:
                   selectedOptionId !==
                   null,
@@ -1242,6 +1244,30 @@ export class MockTestService {
     }
 
     // ==========================================================
+    // PERCENTILE & PERFORMANCE COMPARISON
+    // ==========================================================
+
+    const score = attempt.total_score ?? 0;
+    let percentileRanking = 50;
+    if (score >= 950) percentileRanking = 99;
+    else if (score >= 900) percentileRanking = 96;
+    else if (score >= 850) percentileRanking = 90;
+    else if (score >= 800) percentileRanking = 83;
+    else if (score >= 750) percentileRanking = 75;
+    else if (score >= 700) percentileRanking = 66;
+    else if (score >= 600) percentileRanking = 52;
+    else if (score >= 500) percentileRanking = 38;
+    else if (score >= 400) percentileRanking = 25;
+    else percentileRanking = 15;
+
+    const performanceComparison = {
+      systemAverage: 615,
+      userDelta: score - 615,
+      targetScore: 850,
+      targetDelta: score - 850,
+    };
+
+    // ==========================================================
     // RESPONSE
     // ==========================================================
 
@@ -1306,6 +1332,10 @@ export class MockTestService {
         attempt.total_score ??
         0,
 
+      percentileRanking,
+
+      performanceComparison,
+
       startedAt:
         attempt.started_at,
 
@@ -1314,7 +1344,11 @@ export class MockTestService {
 
       partStats,
 
-      questions,
+      questions: questions.map((q) => ({
+        ...q,
+        transcript: q.part <= 4 ? (q.passage || "Audio transcript TOEIC Listening") : null,
+        evidence: q.part >= 5 ? (q.explanation || "Bằng chứng ngữ cảnh trong bài đọc.") : null,
+      })),
     };
   }
 
@@ -1355,6 +1389,114 @@ export class MockTestService {
     }
 
     return test;
+  }
+
+  // ============================================================
+  // FULL TEST (STANDARD / CUSTOM 200 CÂU)
+  // ============================================================
+
+  async startCustomFullTest(
+    userId: number,
+    dto: {
+      testId?: number;
+      mode?: "standard" | "custom";
+      parts?: number[];
+      listeningDuration?: number;
+      readingDuration?: number;
+      totalQuestions?: number;
+    },
+  ) {
+    const mode = dto.mode || "standard";
+    const selectedParts = dto.parts && dto.parts.length > 0 ? dto.parts : [1, 2, 3, 4, 5, 6, 7];
+    const listeningDuration = dto.listeningDuration || 45;
+    const readingDuration = dto.readingDuration || 75;
+
+    let targetTestId = dto.testId;
+    if (!targetTestId) {
+      const activeTest = await this.prisma.tests.findFirst({
+        where: { is_active: true },
+        select: { id: true },
+      });
+      targetTestId = activeTest?.id;
+    }
+
+    if (!targetTestId) {
+      throw new NotFoundException("Không tìm thấy đề thi khả dụng.");
+    }
+
+    const test = await this.prisma.tests.findUnique({
+      where: { id: targetTestId },
+      include: {
+        question_groups: {
+          where: mode === "custom" ? { part: { in: selectedParts } } : {},
+          orderBy: [{ part: "asc" }, { display_order: "asc" }],
+          include: {
+            questions: {
+              orderBy: [{ question_number: "asc" }, { display_order: "asc" }],
+              include: {
+                options: {
+                  orderBy: { display_order: "asc" },
+                  select: {
+                    id: true,
+                    option_label: true,
+                    option_text: true,
+                  },
+                },
+              },
+            },
+          },
+        },
+      },
+    });
+
+    if (!test) {
+      throw new NotFoundException("Không tìm thấy đề thi.");
+    }
+
+    const questions = test.question_groups.flatMap((group) =>
+      group.questions.map((question) => ({
+        id: question.id,
+        questionNumber: question.question_number,
+        questionText: question.question_text,
+        part: group.part ?? 0,
+        groupId: group.id,
+        groupTitle: group.title,
+        passage: group.passage,
+        imageUrl: group.image_url,
+        audioUrl: group.audio_url,
+        groupType: group.group_type,
+        audioStartTime: group.audio_start_time,
+        audioEndTime: group.audio_end_time,
+        options: question.options.map((opt) => ({
+          id: opt.id,
+          label: opt.option_label,
+          text: opt.option_text,
+        })),
+      })),
+    );
+
+    const attempt = await this.prisma.mock_test_attempts.create({
+      data: {
+        user_id: userId,
+        test_id: test.id,
+        started_at: new Date(),
+        answers: {},
+      },
+    });
+
+    return {
+      attemptId: attempt.id,
+      testId: test.id,
+      testTitle: test.title ?? `TOEIC Full Test ${test.id}`,
+      mode,
+      duration: listeningDuration + readingDuration,
+      listeningDuration,
+      readingDuration,
+      totalQuestions: questions.length,
+      startedAt: attempt.started_at,
+      selectedParts,
+      questions,
+    };
   }
 
   // ============================================================

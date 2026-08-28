@@ -557,44 +557,44 @@ Dựa trên lộ trình học TOEIC 900+ - Phiên bản nâng cấp
 [x] - Share results - Chia sẻ kết quả
 
 7.2. Full Tests (Kiểm tra đầy đủ)
-- Start full test button (200 questions) - Nút bắt đầu kiểm tra đầy đủ (200 câu)
-- Test configuration (standard/custom) - Cấu hình kiểm tra (chuẩn/tùy chỉnh)
-- Standard test (Part 1-7 in order) - Kiểm tra chuẩn (Part 1-7 theo thứ tự)
-- Custom test (select parts and counts) - Kiểm tra tùy chỉnh (chọn phần và số lượng)
-- Time limits: - Giới hạn thời gian:
-  - Listening: 45 minutes - Nghe: 45 phút
-  - Reading: 75 minutes - Đọc: 75 phút
-  - Custom: user-defined - Tùy chỉnh: do người dùng định nghĩa
-- Test instructions modal - Hộp thoại hướng dẫn kiểm tra
-- Section break notification - Thông báo nghỉ giữa phần
-- Reading section start button - Nút bắt đầu phần đọc
-- Test timer display (section-specific) - Hiển thị đồng hồ (theo phần)
-- Overall timer display - Hiển thị đồng hồ tổng thể
-- Pause/resume (limited uses) - Tạm dừng/tiếp tục (giới hạn sử dụng)
-- Question navigation - Điều hướng câu hỏi
-- Mark for review - Đánh dấu xem lại
-- Review marked questions - Xem lại câu đã đánh dấu
-- Progress indicator - Chỉ số tiến độ
-- Submit section button - Nút nộp phần
-- Submit test button - Nút nộp kiểm tra
-- Submit confirmation modal - Hộp thoại xác nhận nộp
-- Auto-submit on timeout - Tự động nộp khi hết giờ
-- Score display after submission - Hiển thị điểm sau khi nộp
-- Detailed score breakdown by part - Phân tích chi tiết điểm theo phần
-- Score breakdown by section - Phân tích chi tiết điểm theo phần
-- Time analysis per part - Phân tích thời gian theo phần
-- Accuracy analysis per part - Phân tích độ chính xác theo phần
-- Percentile ranking - Xếp hạng phần trăm
-- Performance comparison - So sánh hiệu suất
-- Incorrect answers review - Xem lại câu sai
-- Correct answers display - Hiển thị đáp án đúng
-- Explanations display - Hiển thị giải thích
-- Transcript display (listening) - Hiển thị bản ghi (nghe)
-- Evidence highlighting (reading) - Highlight bằng chứng (đọc)
-- Add to error log - Thêm vào nhật ký lỗi
-- Retest option - Tùy chọn kiểm tra lại
-- Share results - Chia sẻ kết quả
-- Download report PDF - Tải báo cáo PDF
+[x] - Start full test button (200 questions) - Nút bắt đầu kiểm tra đầy đủ (200 câu)
+[x] - Test configuration (standard/custom) - Cấu hình kiểm tra (chuẩn/tùy chỉnh)
+[x] - Standard test (Part 1-7 in order) - Kiểm tra chuẩn (Part 1-7 theo thứ tự)
+[x] - Custom test (select parts and counts) - Kiểm tra tùy chỉnh (chọn phần và số lượng)
+[x] - Time limits: - Giới hạn thời gian:
+  [x] - Listening: 45 minutes - Nghe: 45 phút
+  [x] - Reading: 75 minutes - Đọc: 75 phút
+  [x] - Custom: user-defined - Tùy chỉnh: do người dùng định nghĩa
+[x] - Test instructions modal - Hộp thoại hướng dẫn kiểm tra
+[x] - Section break notification - Thông báo nghỉ giữa phần
+[x] - Reading section start button - Nút bắt đầu phần đọc
+[x] - Test timer display (section-specific) - Hiển thị đồng hồ (theo phần)
+[x] - Overall timer display - Hiển thị đồng hồ tổng thể
+[x] - Pause/resume (limited uses) - Tạm dừng/tiếp tục (giới hạn sử dụng)
+[x] - Question navigation - Điều hướng câu hỏi
+[x] - Mark for review - Đánh dấu xem lại
+[x] - Review marked questions - Xem lại câu đã đánh dấu
+[x] - Progress indicator - Chỉ số tiến độ
+[x] - Submit section button - Nút nộp phần
+[x] - Submit test button - Nút nộp kiểm tra
+[x] - Submit confirmation modal - Hộp thoại xác nhận nộp
+[x] - Auto-submit on timeout - Tự động nộp khi hết giờ
+[x] - Score display after submission - Hiển thị điểm sau khi nộp
+[x] - Detailed score breakdown by part - Phân tích chi tiết điểm theo phần
+[x] - Score breakdown by section - Phân tích chi tiết điểm theo phần
+[x] - Time analysis per part - Phân tích thời gian theo phần
+[x] - Accuracy analysis per part - Phân tích độ chính xác theo phần
+[x] - Percentile ranking - Xếp hạng phần trăm
+[x] - Performance comparison - So sánh hiệu suất
+[x] - Incorrect answers review - Xem lại câu sai
+[x] - Correct answers display - Hiển thị đáp án đúng
+[x] - Explanations display - Hiển thị giải thích
+[x] - Transcript display (listening) - Hiển thị bản ghi (nghe)
+[x] - Evidence highlighting (reading) - Highlight bằng chứng (đọc)
+[x] - Add to error log - Thêm vào nhật ký lỗi
+[x] - Retest option - Tùy chọn kiểm tra lại
+[x] - Share results - Chia sẻ kết quả
+[x] - Download report PDF - Tải báo cáo PDF
 
 7.3. Test History (Lịch sử kiểm tra)
 - View all past tests - Xem tất cả kiểm tra trước
