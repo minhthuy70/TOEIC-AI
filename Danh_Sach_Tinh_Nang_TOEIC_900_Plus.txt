@@ -597,17 +597,17 @@ Dựa trên lộ trình học TOEIC 900+ - Phiên bản nâng cấp
 [x] - Download report PDF - Tải báo cáo PDF
 
 7.3. Test History (Lịch sử kiểm tra)
-- View all past tests - Xem tất cả kiểm tra trước
-- Filter by test type (mini/full) - Lọc theo loại kiểm tra (nhỏ/đầy đủ)
-- Filter by date range - Lọc theo khoảng ngày
-- Filter by score range - Lọc theo khoảng điểm
-- Sort by date/score - Sắp xếp theo ngày/điểm
-- Test list view with summary - Chế độ xem danh sách với tóm tắt
-- Test detail view - Chế độ xem chi tiết kiểm tra
-- Review specific test - Xem lại kiểm tra cụ thể
-- Compare tests - So sánh kiểm tra
-- Export test history - Xuất lịch sử kiểm tra
-- Delete test record - Xóa bản ghi kiểm tra
+[x] - View all past tests - Xem tất cả kiểm tra trước
+[x] - Filter by test type (mini/full) - Lọc theo loại kiểm tra (nhỏ/đầy đủ)
+[x] - Filter by date range - Lọc theo khoảng ngày
+[x] - Filter by score range - Lọc theo khoảng điểm
+[x] - Sort by date/score - Sắp xếp theo ngày/điểm
+[x] - Test list view with summary - Chế độ xem danh sách với tóm tắt
+[x] - Test detail view - Chế độ xem chi tiết kiểm tra
+[x] - Review specific test - Xem lại kiểm tra cụ thể
+[x] - Compare tests - So sánh kiểm tra
+[x] - Export test history - Xuất lịch sử kiểm tra
+[x] - Delete test record - Xóa bản ghi kiểm tra
 
 7.4. Test Analytics (Phân tích kiểm tra)
 - Score trend chart - Biểu đồ xu hướng điểm

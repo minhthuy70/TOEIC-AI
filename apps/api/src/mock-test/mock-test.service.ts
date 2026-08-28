@@ -651,6 +651,40 @@ export class MockTestService {
   }
 
   // ============================================================
+  // XÓA BẢN GHI LỊCH SỬ THI
+  // DELETE /mock-test/history/:attemptId
+  // ============================================================
+
+  async deleteAttempt(
+    userId: number,
+    attemptId: number,
+  ) {
+    const attempt =
+      await this.prisma.mock_test_attempts.findFirst({
+        where: {
+          id: attemptId,
+          user_id: userId,
+        },
+      });
+
+    if (!attempt) {
+      throw new NotFoundException("Không tìm thấy bài thi hoặc bạn không có quyền xóa bài thi này.");
+    }
+
+    // Xóa attempt (answers được lưu dưới dạng JSON trong attempt)
+    await this.prisma.mock_test_attempts.delete({
+      where: {
+        id: attemptId,
+      },
+    });
+
+    return {
+      success: true,
+      message: "Đã xóa bản ghi bài thi thành công.",
+    };
+  }
+
+  // ============================================================
   // CHI TIẾT ATTEMPT
   //
   // API NÀY DÙNG KHI ĐANG THI / XEM LẠI BÀI

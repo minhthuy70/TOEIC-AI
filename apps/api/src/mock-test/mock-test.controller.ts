@@ -3,6 +3,7 @@ import {
   BadRequestException,
   Body,
   Controller,
+  Delete,
   Get,
   Param,
   ParseIntPipe,
@@ -207,6 +208,20 @@ export class MockTestController {
     return this.mockTestService.getHistory(
       userId,
     );
+  }
+
+  // ==========================================================
+  // XÓA BẢN GHI LỊCH SỬ THI
+  // DELETE /mock-test/history/:attemptId
+  // ==========================================================
+
+  @Delete("history/:attemptId")
+  async deleteAttempt(
+    @Req() req: any,
+    @Param("attemptId", ParseIntPipe) attemptId: number,
+  ) {
+    const userId = this.getUserId(req);
+    return this.mockTestService.deleteAttempt(userId, attemptId);
   }
 
   // ==========================================================

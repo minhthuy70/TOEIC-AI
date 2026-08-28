@@ -384,6 +384,22 @@ export async function getMockTestHistory(): Promise<
 }
 
 // ============================================================
+// DELETE HISTORY ITEM
+// DELETE /mock-test/history/:attemptId
+// ============================================================
+
+export async function deleteMockTestAttempt(
+  attemptId: number,
+): Promise<{ success: boolean; message: string }> {
+  return apiFetch<{ success: boolean; message: string }>(
+    `/mock-test/history/${attemptId}`,
+    {
+      method: "DELETE",
+    },
+  );
+}
+
+// ============================================================
 // ATTEMPT
 // ============================================================
 

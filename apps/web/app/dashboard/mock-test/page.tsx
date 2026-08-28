@@ -14,6 +14,7 @@ import {
   getMockTests,
   startMockTest,
   startCustomFullTest,
+  deleteMockTestAttempt,
   type MockTest,
   type MockTestHistoryItem,
 } from "@/services/mock-test";
@@ -56,7 +57,25 @@ export default function MockTestPage() {
   const [selectedParts, setSelectedParts] = useState<number[]>([1, 2, 3, 4, 5, 6, 7]);
   const [listeningMinutes, setListeningMinutes] = useState<number>(45);
   const [readingMinutes, setReadingMinutes] = useState<number>(75);
-  const [showInstructions, setShowInstructions] = useState<boolean>(false);
+
+  // 7.3 History Feature States
+  const [historyTypeFilter, setHistoryTypeFilter] = useState<"all" | "full" | "mini">("all");
+  const [historyDateFilter, setHistoryDateFilter] = useState<"all" | "7d" | "30d" | "90d">("all");
+  const [historyScoreFilter, setHistoryScoreFilter] = useState<"all" | "low" | "mid" | "high" | "expert">("all");
+  const [historySort, setHistorySort] = useState<"newest" | "oldest" | "highest" | "lowest">("newest");
+  const [historySearch, setHistorySearch] = useState<string>("");
+
+  const [selectedForCompare, setSelectedForCompare] = useState<number[]>([]);
+  const [showCompareModal, setShowCompareModal] = useState<boolean>(false);
+  const [quickDetailItem, setQuickDetailItem] = useState<MockTestHistoryItem | null>(null);
+  const [deleteConfirmItem, setDeleteConfirmItem] = useState<MockTestHistoryItem | null>(null);
+  const [isDeleting, setIsDeleting] = useState<boolean>(false);
+  const [toastMessage, setToastMessage] = useState<string | null>(null);
+
+  const showToast = (msg: string) => {
+    setToastMessage(msg);
+    setTimeout(() => setToastMessage(null), 2500);
+  };
 
   // ==========================================================
   // LOAD
@@ -188,6 +207,132 @@ export default function MockTestPage() {
   }, [history]);
 
   // ==========================================================
+  // FILTERED & SORTED HISTORY (7.3)
+  // ==========================================================
+
+  const filteredHistory = useMemo(() => {
+    return history
+      .filter((item) => {
+        // Search filter
+        if (historySearch.trim()) {
+          const q = historySearch.toLowerCase();
+          const matchesTitle = item.testTitle?.toLowerCase().includes(q);
+          const matchesId = item.id.toString().includes(q);
+          if (!matchesTitle && !matchesId) return false;
+        }
+
+        // Test Type filter (mini vs full)
+        if (historyTypeFilter === "mini" && (item.totalQuestions > 50)) return false;
+        if (historyTypeFilter === "full" && (item.totalQuestions <= 50)) return false;
+
+        // Date range filter
+        if (historyDateFilter !== "all") {
+          const itemDate = new Date(item.createdAt).getTime();
+          const now = Date.now();
+          const dayMs = 24 * 60 * 60 * 1000;
+          if (historyDateFilter === "7d" && now - itemDate > 7 * dayMs) return false;
+          if (historyDateFilter === "30d" && now - itemDate > 30 * dayMs) return false;
+          if (historyDateFilter === "90d" && now - itemDate > 90 * dayMs) return false;
+        }
+
+        // Score range filter
+        if (historyScoreFilter !== "all") {
+          const score = item.totalScore ?? 0;
+          if (historyScoreFilter === "low" && score >= 500) return false;
+          if (historyScoreFilter === "mid" && (score < 500 || score >= 700)) return false;
+          if (historyScoreFilter === "high" && (score < 700 || score >= 850)) return false;
+          if (historyScoreFilter === "expert" && score < 850) return false;
+        }
+
+        return true;
+      })
+      .sort((a, b) => {
+        if (historySort === "newest") {
+          return new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime();
+        }
+        if (historySort === "oldest") {
+          return new Date(a.createdAt).getTime() - new Date(b.createdAt).getTime();
+        }
+        if (historySort === "highest") {
+          return (b.totalScore ?? 0) - (a.totalScore ?? 0);
+        }
+        if (historySort === "lowest") {
+          return (a.totalScore ?? 0) - (b.totalScore ?? 0);
+        }
+        return 0;
+      });
+  }, [history, historySearch, historyTypeFilter, historyDateFilter, historyScoreFilter, historySort]);
+
+  const toggleCompare = (id: number) => {
+    setSelectedForCompare((prev) => {
+      if (prev.includes(id)) {
+        return prev.filter((x) => x !== id);
+      }
+      if (prev.length >= 2) {
+        showToast("Chỉ có thể so sánh tối đa 2 bài thi cùng lúc.");
+        return [prev[1], id];
+      }
+      return [...prev, id];
+    });
+  };
+
+  const handleDeleteAttempt = async () => {
+    if (!deleteConfirmItem) return;
+    try {
+      setIsDeleting(true);
+      await deleteMockTestAttempt(deleteConfirmItem.id);
+      setHistory((prev) => prev.filter((item) => item.id !== deleteConfirmItem.id));
+      setSelectedForCompare((prev) => prev.filter((id) => id !== deleteConfirmItem.id));
+      showToast(`Đã xóa bài thi #${deleteConfirmItem.id} thành công.`);
+      setDeleteConfirmItem(null);
+    } catch (err: any) {
+      alert(err?.message || "Lỗi khi xóa bài thi!");
+    } finally {
+      setIsDeleting(false);
+    }
+  };
+
+  const exportHistory = (format: "csv" | "json") => {
+    if (filteredHistory.length === 0) {
+      showToast("Không có dữ liệu bài thi để xuất!");
+      return;
+    }
+
+    if (format === "json") {
+      const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(filteredHistory, null, 2));
+      const downloadAnchor = document.createElement("a");
+      downloadAnchor.setAttribute("href", dataStr);
+      downloadAnchor.setAttribute("download", `TOEIC_Test_History_${Date.now()}.json`);
+      document.body.appendChild(downloadAnchor);
+      downloadAnchor.click();
+      downloadAnchor.remove();
+      showToast("Đã xuất lịch sử dạng JSON thành công!");
+    } else {
+      const headers = ["Attempt ID", "Test Title", "Total Questions", "Listening Score", "Reading Score", "Total Score", "Correct Count", "Date"];
+      const rows = filteredHistory.map((item) => [
+        item.id,
+        `"${(item.testTitle || "").replace(/"/g, '""')}"`,
+        item.totalQuestions,
+        item.listeningScore ?? 0,
+        item.readingScore ?? 0,
+        item.totalScore ?? 0,
+        `${item.totalCorrect ?? 0}/${item.totalQuestions}`,
+        `"${new Date(item.createdAt).toLocaleString("vi-VN")}"`,
+      ]);
+
+      const csvContent = "data:text/csv;charset=utf-8,\uFEFF" + [headers.join(","), ...rows.map((e) => e.join(","))].join("\n");
+      const encodedUri = encodeURI(csvContent);
+      const link = document.createElement("a");
+      link.setAttribute("href", encodedUri);
+      link.setAttribute("download", `TOEIC_Test_History_${Date.now()}.csv`);
+      document.body.appendChild(link);
+      link.click();
+      link.remove();
+      showToast("Đã xuất lịch sử dạng CSV thành công!");
+    }
+  };
+
+  // ==========================================================
   // LOADING
   // ==========================================================
 
@@ -292,7 +437,7 @@ export default function MockTestPage() {
                 : "text-zinc-400 hover:text-white"
             }`}
           >
-            📊 Lịch sử thi
+            📊 Lịch sử thi ({history.length})
           </button>
         </div>
 
@@ -633,46 +778,537 @@ export default function MockTestPage() {
         )}
 
         {/* ================================================== */}
-        {/* HISTORY */}
+        {/* HISTORY (7.3) */}
         {/* ================================================== */}
 
         {tab === "history" && (
-          <div className="mt-6 space-y-4">
-            {history.length === 0 ? (
-              <div className="rounded-2xl border border-white/5 bg-[#121214] p-12 text-center">
-                <div className="text-5xl">
-                  📋
+          <div className="mt-6 space-y-6">
+            {/* 1. SUMMARY STATS CARDS */}
+            <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
+              <div className="rounded-2xl border border-white/5 bg-[#121214] p-5">
+                <p className="text-xs text-zinc-500 font-bold uppercase">Tổng lượt thi</p>
+                <p className="text-2xl sm:text-3xl font-black text-white mt-1.5">{stats.count}</p>
+                <p className="text-[11px] text-zinc-400 mt-1">Lần thi đã hoàn thành</p>
+              </div>
+
+              <div className="rounded-2xl border border-white/5 bg-[#121214] p-5">
+                <p className="text-xs text-zinc-500 font-bold uppercase">Điểm cao nhất</p>
+                <p className="text-2xl sm:text-3xl font-black text-amber-400 mt-1.5">{stats.highest}</p>
+                <p className="text-[11px] text-zinc-400 mt-1">Kỷ lục cá nhân</p>
+              </div>
+
+              <div className="rounded-2xl border border-white/5 bg-[#121214] p-5">
+                <p className="text-xs text-zinc-500 font-bold uppercase">Điểm trung bình</p>
+                <p className="text-2xl sm:text-3xl font-black text-blue-400 mt-1.5">{stats.average}</p>
+                <p className="text-[11px] text-zinc-400 mt-1">Trên tất cả các bài thi</p>
+              </div>
+
+              <div className="rounded-2xl border border-white/5 bg-[#121214] p-5">
+                <p className="text-xs text-zinc-500 font-bold uppercase">Bài thi khớp lọc</p>
+                <p className="text-2xl sm:text-3xl font-black text-emerald-400 mt-1.5">{filteredHistory.length}</p>
+                <p className="text-[11px] text-zinc-400 mt-1">Đang hiển thị</p>
+              </div>
+            </div>
+
+            {/* 2. FILTER & TOOLBAR */}
+            <div className="rounded-2xl border border-white/5 bg-[#121214] p-5 space-y-4">
+              <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
+                {/* Search input */}
+                <div className="relative flex-1">
+                  <input
+                    type="text"
+                    placeholder="🔍 Tìm theo tên đề hoặc mã bài thi..."
+                    value={historySearch}
+                    onChange={(e) => setHistorySearch(e.target.value)}
+                    className="w-full bg-zinc-900 border border-zinc-800 rounded-xl px-4 py-2.5 text-xs text-white placeholder-zinc-500 focus:outline-none focus:border-red-500"
+                  />
+                  {historySearch && (
+                    <button
+                      type="button"
+                      onClick={() => setHistorySearch("")}
+                      className="absolute right-3 top-2.5 text-zinc-500 hover:text-white text-xs"
+                    >
+                      ✕
+                    </button>
+                  )}
                 </div>
 
-                <p className="mt-4 text-zinc-400">
-                  Bạn chưa có lần thi nào.
-                </p>
+                {/* Compare & Export action buttons */}
+                <div className="flex items-center gap-2 flex-wrap">
+                  <button
+                    type="button"
+                    disabled={selectedForCompare.length !== 2}
+                    onClick={() => setShowCompareModal(true)}
+                    className={`px-3.5 py-2.5 rounded-xl text-xs font-bold transition flex items-center gap-1.5 ${
+                      selectedForCompare.length === 2
+                        ? "bg-purple-600 hover:bg-purple-500 text-white shadow-lg shadow-purple-600/20"
+                        : "bg-zinc-800 text-zinc-500 border border-zinc-700 cursor-not-allowed"
+                    }`}
+                  >
+                    <span>📊</span>
+                    <span>So sánh ({selectedForCompare.length}/2)</span>
+                  </button>
 
-                <button
-                  type="button"
-                  onClick={() =>
-                    setTab("tests")
-                  }
-                  className="mt-5 rounded-xl bg-red-600 px-5 py-3 text-sm font-medium"
-                >
-                  Thi thử ngay
-                </button>
+                  <button
+                    type="button"
+                    onClick={() => exportHistory("csv")}
+                    className="px-3.5 py-2.5 rounded-xl text-xs font-semibold bg-zinc-800 hover:bg-zinc-700 text-zinc-300 border border-zinc-700 transition flex items-center gap-1.5"
+                  >
+                    <span>📥</span>
+                    <span>Xuất CSV</span>
+                  </button>
+
+                  <button
+                    type="button"
+                    onClick={() => exportHistory("json")}
+                    className="px-3.5 py-2.5 rounded-xl text-xs font-semibold bg-zinc-800 hover:bg-zinc-700 text-zinc-300 border border-zinc-700 transition flex items-center gap-1.5"
+                  >
+                    <span>📄</span>
+                    <span>Xuất JSON</span>
+                  </button>
+                </div>
+              </div>
+
+              {/* Filter controls row */}
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-2 border-t border-white/5">
+                {/* Type Filter */}
+                <div>
+                  <span className="text-[11px] text-zinc-500 font-bold block mb-1">Loại bài thi:</span>
+                  <select
+                    value={historyTypeFilter}
+                    onChange={(e) => setHistoryTypeFilter(e.target.value as any)}
+                    className="w-full bg-zinc-900 border border-zinc-800 rounded-xl px-3 py-2 text-xs text-zinc-300 focus:outline-none focus:border-red-500"
+                  >
+                    <option value="all">Tất cả loại bài</option>
+                    <option value="full">Full Test (200 câu)</option>
+                    <option value="mini">Mini Test (50 câu)</option>
+                  </select>
+                </div>
+
+                {/* Date Filter */}
+                <div>
+                  <span className="text-[11px] text-zinc-500 font-bold block mb-1">Thời gian:</span>
+                  <select
+                    value={historyDateFilter}
+                    onChange={(e) => setHistoryDateFilter(e.target.value as any)}
+                    className="w-full bg-zinc-900 border border-zinc-800 rounded-xl px-3 py-2 text-xs text-zinc-300 focus:outline-none focus:border-red-500"
+                  >
+                    <option value="all">Tất cả thời gian</option>
+                    <option value="7d">7 ngày qua</option>
+                    <option value="30d">30 ngày qua</option>
+                    <option value="90d">90 ngày qua</option>
+                  </select>
+                </div>
+
+                {/* Score Filter */}
+                <div>
+                  <span className="text-[11px] text-zinc-500 font-bold block mb-1">Mức điểm:</span>
+                  <select
+                    value={historyScoreFilter}
+                    onChange={(e) => setHistoryScoreFilter(e.target.value as any)}
+                    className="w-full bg-zinc-900 border border-zinc-800 rounded-xl px-3 py-2 text-xs text-zinc-300 focus:outline-none focus:border-red-500"
+                  >
+                    <option value="all">Tất cả mức điểm</option>
+                    <option value="low">&lt; 500 điểm</option>
+                    <option value="mid">500 – 695 điểm</option>
+                    <option value="high">700 – 845 điểm</option>
+                    <option value="expert">850+ điểm</option>
+                  </select>
+                </div>
+
+                {/* Sort Control */}
+                <div>
+                  <span className="text-[11px] text-zinc-500 font-bold block mb-1">Sắp xếp:</span>
+                  <select
+                    value={historySort}
+                    onChange={(e) => setHistorySort(e.target.value as any)}
+                    className="w-full bg-zinc-900 border border-zinc-800 rounded-xl px-3 py-2 text-xs text-zinc-300 focus:outline-none focus:border-red-500"
+                  >
+                    <option value="newest">📅 Mới nhất</option>
+                    <option value="oldest">📅 Cũ nhất</option>
+                    <option value="highest">📈 Điểm cao nhất</option>
+                    <option value="lowest">📉 Điểm thấp nhất</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+
+            {/* 3. TEST LIST */}
+            {filteredHistory.length === 0 ? (
+              <div className="rounded-2xl border border-white/5 bg-[#121214] p-12 text-center">
+                <div className="text-5xl">📋</div>
+                <p className="mt-4 text-zinc-400">
+                  Không tìm thấy bài thi nào phù hợp với bộ lọc.
+                </p>
+                {(historySearch || historyTypeFilter !== "all" || historyDateFilter !== "all" || historyScoreFilter !== "all") && (
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setHistorySearch("");
+                      setHistoryTypeFilter("all");
+                      setHistoryDateFilter("all");
+                      setHistoryScoreFilter("all");
+                    }}
+                    className="mt-4 px-4 py-2 text-xs font-semibold text-red-400 bg-red-600/10 hover:bg-red-600/20 rounded-xl transition"
+                  >
+                    Đặt lại bộ lọc
+                  </button>
+                )}
               </div>
             ) : (
-              history.map(
-                (item) => (
-                  <HistoryCard
-                    key={item.id}
-                    item={item}
-                    onView={() =>
-                      router.push(
-                        `/dashboard/mock-test/result/${item.id}`,
-                      )
-                    }
-                  />
-                ),
-              )
+              <div className="space-y-3">
+                {filteredHistory.map((item) => {
+                  const isSelected = selectedForCompare.includes(item.id);
+                  const isMini = (item.totalQuestions <= 50);
+
+                  return (
+                    <div
+                      key={item.id}
+                      className={`rounded-2xl border bg-[#121214] p-5 transition ${
+                        isSelected ? "border-purple-500/50 bg-purple-950/10" : "border-white/5 hover:border-white/10"
+                      }`}
+                    >
+                      <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4">
+                        {/* Info Column */}
+                        <div className="flex items-start gap-4">
+                          {/* Checkbox for compare */}
+                          <button
+                            type="button"
+                            onClick={() => toggleCompare(item.id)}
+                            title="Chọn để so sánh bài thi"
+                            className={`mt-1 h-5 w-5 rounded-md border flex items-center justify-center text-xs transition ${
+                              isSelected
+                                ? "bg-purple-600 border-purple-400 text-white font-bold"
+                                : "bg-zinc-800 border-zinc-700 text-transparent hover:border-zinc-500"
+                            }`}
+                          >
+                            ✓
+                          </button>
+
+                          <div>
+                            <div className="flex items-center gap-2 flex-wrap">
+                              <span
+                                className={`px-2.5 py-0.5 rounded-full text-[10px] font-extrabold border ${
+                                  isMini
+                                    ? "bg-amber-500/15 text-amber-300 border-amber-500/30"
+                                    : "bg-red-500/15 text-red-300 border-red-500/30"
+                                }`}
+                              >
+                                {isMini ? "⚡ Mini Test (50 câu)" : "📄 Full Test (200 câu)"}
+                              </span>
+                              <span className="text-xs text-zinc-500">Attempt #{item.id}</span>
+                            </div>
+
+                            <h3 className="font-bold text-white text-base mt-1.5">
+                              {item.testTitle || `TOEIC Test ${item.testId}`}
+                            </h3>
+
+                            <p className="text-xs text-zinc-500 mt-1">
+                              📅 {new Date(item.createdAt).toLocaleString("vi-VN")}
+                            </p>
+                          </div>
+                        </div>
+
+                        {/* Stats Breakdown Column */}
+                        <div className="flex items-center gap-3 sm:gap-6 flex-wrap">
+                          <div className="rounded-xl bg-white/[0.03] px-3.5 py-2 text-center min-w-[70px]">
+                            <span className="text-[10px] text-zinc-500 font-bold uppercase block">🎧 Nghe</span>
+                            <span className="text-sm font-bold text-blue-400">{item.listeningScore ?? 0}</span>
+                          </div>
+
+                          <div className="rounded-xl bg-white/[0.03] px-3.5 py-2 text-center min-w-[70px]">
+                            <span className="text-[10px] text-zinc-500 font-bold uppercase block">📖 Đọc</span>
+                            <span className="text-sm font-bold text-purple-400">{item.readingScore ?? 0}</span>
+                          </div>
+
+                          <div className="rounded-xl bg-red-500/10 border border-red-500/20 px-4 py-2 text-center min-w-[80px]">
+                            <span className="text-[10px] text-red-300 font-bold uppercase block">Tổng điểm</span>
+                            <span className="text-lg font-black text-red-400">{item.totalScore ?? 0}</span>
+                          </div>
+
+                          <div className="rounded-xl bg-white/[0.03] px-3.5 py-2 text-center min-w-[75px]">
+                            <span className="text-[10px] text-zinc-500 font-bold uppercase block">Số câu đúng</span>
+                            <span className="text-xs font-bold text-emerald-400">
+                              {item.totalCorrect ?? 0}/{item.totalQuestions}
+                            </span>
+                          </div>
+                        </div>
+
+                        {/* Action Buttons Column */}
+                        <div className="flex items-center gap-2 flex-wrap">
+                          <button
+                            type="button"
+                            onClick={() => setQuickDetailItem(item)}
+                            className="px-3 py-2 rounded-xl text-xs font-semibold bg-zinc-800 hover:bg-zinc-700 text-zinc-300 transition"
+                          >
+                            🔍 Xem nhanh
+                          </button>
+
+                          <button
+                            type="button"
+                            onClick={() => router.push(`/dashboard/mock-test/result/${item.id}`)}
+                            className="px-4 py-2 rounded-xl text-xs font-bold bg-red-600 hover:bg-red-500 text-white transition shadow"
+                          >
+                            Xem kết quả →
+                          </button>
+
+                          <button
+                            type="button"
+                            onClick={() => setDeleteConfirmItem(item)}
+                            title="Xóa bài thi này"
+                            className="p-2 rounded-xl text-zinc-500 hover:text-red-400 hover:bg-red-500/10 transition text-xs"
+                          >
+                            🗑️
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
             )}
+          </div>
+        )}
+
+        {/* ── QUICK DETAIL MODAL ── */}
+        {quickDetailItem && (
+          <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm animate-fade-in">
+            <div className="bg-zinc-900 border border-zinc-800 rounded-3xl p-6 sm:p-8 max-w-md w-full space-y-6 shadow-2xl">
+              <div className="flex items-center justify-between border-b border-zinc-800 pb-3">
+                <div>
+                  <h3 className="text-base font-bold text-white">Tóm Tắt Bài Thi #{quickDetailItem.id}</h3>
+                  <p className="text-xs text-zinc-400 mt-0.5">{quickDetailItem.testTitle}</p>
+                </div>
+                <button
+                  type="button"
+                  onClick={() => setQuickDetailItem(null)}
+                  className="text-zinc-400 hover:text-white text-sm"
+                >
+                  ✕
+                </button>
+              </div>
+
+              <div className="grid grid-cols-2 gap-3">
+                <div className="p-4 rounded-2xl bg-zinc-950/60 border border-zinc-800 text-center">
+                  <span className="text-xs text-zinc-400 block">🎧 Điểm Listening</span>
+                  <span className="text-2xl font-black text-blue-400 mt-1 block">
+                    {quickDetailItem.listeningScore ?? 0}
+                  </span>
+                  <span className="text-[10px] text-zinc-500">Đúng {quickDetailItem.listeningCorrect ?? 0} câu</span>
+                </div>
+
+                <div className="p-4 rounded-2xl bg-zinc-950/60 border border-zinc-800 text-center">
+                  <span className="text-xs text-zinc-400 block">📖 Điểm Reading</span>
+                  <span className="text-2xl font-black text-purple-400 mt-1 block">
+                    {quickDetailItem.readingScore ?? 0}
+                  </span>
+                  <span className="text-[10px] text-zinc-500">Đúng {quickDetailItem.readingCorrect ?? 0} câu</span>
+                </div>
+              </div>
+
+              <div className="p-5 rounded-2xl bg-red-600/10 border border-red-500/20 text-center">
+                <span className="text-xs text-zinc-400 block">Tổng Điểm TOEIC</span>
+                <span className="text-4xl font-black text-red-400 mt-1 block">
+                  {quickDetailItem.totalScore ?? 0} <span className="text-sm font-normal text-zinc-500">/ 990</span>
+                </span>
+                <span className="text-xs text-emerald-400 font-semibold mt-1 block">
+                  Tổng đúng {quickDetailItem.totalCorrect ?? 0}/{quickDetailItem.totalQuestions} câu (
+                  {Math.round(((quickDetailItem.totalCorrect ?? 0) / quickDetailItem.totalQuestions) * 100)}%)
+                </span>
+              </div>
+
+              <div className="space-y-1.5 text-xs text-zinc-400 bg-zinc-950/40 p-3.5 rounded-xl border border-zinc-800/60">
+                <p>• Ngày làm bài: <strong className="text-zinc-200">{new Date(quickDetailItem.createdAt).toLocaleString("vi-VN")}</strong></p>
+                <p>• Loại bài: <strong className="text-zinc-200">{quickDetailItem.totalQuestions <= 50 ? "Mini Test (50 câu)" : "Full Test (200 câu)"}</strong></p>
+              </div>
+
+              <div className="flex items-center justify-end gap-3 pt-2 border-t border-zinc-800">
+                <button
+                  type="button"
+                  onClick={() => setQuickDetailItem(null)}
+                  className="px-4 py-2.5 rounded-xl text-xs font-semibold text-zinc-400 hover:text-white bg-zinc-800 transition"
+                >
+                  Đóng
+                </button>
+                <button
+                  type="button"
+                  onClick={() => {
+                    const id = quickDetailItem.id;
+                    setQuickDetailItem(null);
+                    router.push(`/dashboard/mock-test/result/${id}`);
+                  }}
+                  className="px-5 py-2.5 rounded-xl text-xs font-bold text-white bg-red-600 hover:bg-red-500 shadow transition"
+                >
+                  Xem phân tích đầy đủ →
+                </button>
+              </div>
+            </div>
+          </div>
+        )}
+
+        {/* ── COMPARE TESTS MODAL ── */}
+        {showCompareModal && selectedForCompare.length === 2 && (() => {
+          const testA = history.find((h) => h.id === selectedForCompare[0]);
+          const testB = history.find((h) => h.id === selectedForCompare[1]);
+          if (!testA || !testB) return null;
+
+          const scoreDiff = (testB.totalScore ?? 0) - (testA.totalScore ?? 0);
+          const listenDiff = (testB.listeningScore ?? 0) - (testA.listeningScore ?? 0);
+          const readDiff = (testB.readingScore ?? 0) - (testA.readingScore ?? 0);
+          const correctDiff = (testB.totalCorrect ?? 0) - (testA.totalCorrect ?? 0);
+
+          return (
+            <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/85 backdrop-blur-md animate-fade-in">
+              <div className="bg-zinc-900 border border-zinc-800 rounded-3xl p-6 sm:p-8 max-w-2xl w-full space-y-6 shadow-2xl">
+                <div className="flex items-center justify-between border-b border-zinc-800 pb-3">
+                  <div>
+                    <h3 className="text-lg font-bold text-white flex items-center gap-2">
+                      <span>📊</span> <span>So Sánh Kết Quả 2 Lần Thi</span>
+                    </h3>
+                    <p className="text-xs text-zinc-400 mt-0.5">
+                      Đối chiếu sự tiến bộ giữa Attempt #{testA.id} và Attempt #{testB.id}
+                    </p>
+                  </div>
+                  <button
+                    type="button"
+                    onClick={() => setShowCompareModal(false)}
+                    className="text-zinc-400 hover:text-white text-sm"
+                  >
+                    ✕
+                  </button>
+                </div>
+
+                {/* Comparison Table */}
+                <div className="overflow-hidden rounded-2xl border border-zinc-800">
+                  <table className="w-full text-xs text-left">
+                    <thead className="bg-zinc-950/80 text-zinc-400 border-b border-zinc-800">
+                      <tr>
+                        <th className="p-3.5 font-bold">Chỉ số so sánh</th>
+                        <th className="p-3.5 font-bold text-center text-blue-400">
+                          Bài 1 (#{testA.id})
+                        </th>
+                        <th className="p-3.5 font-bold text-center text-purple-400">
+                          Bài 2 (#{testB.id})
+                        </th>
+                        <th className="p-3.5 font-bold text-right">Chênh lệch</th>
+                      </tr>
+                    </thead>
+                    <tbody className="divide-y divide-zinc-800 text-zinc-300">
+                      <tr>
+                        <td className="p-3.5 font-semibold text-white">Tổng điểm TOEIC</td>
+                        <td className="p-3.5 text-center font-bold text-lg">{testA.totalScore ?? 0}</td>
+                        <td className="p-3.5 text-center font-bold text-lg">{testB.totalScore ?? 0}</td>
+                        <td className={`p-3.5 text-right font-black ${scoreDiff >= 0 ? "text-emerald-400" : "text-rose-400"}`}>
+                          {scoreDiff >= 0 ? `+${scoreDiff}` : scoreDiff}
+                        </td>
+                      </tr>
+                      <tr>
+                        <td className="p-3.5">Điểm Listening</td>
+                        <td className="p-3.5 text-center">{testA.listeningScore ?? 0}</td>
+                        <td className="p-3.5 text-center">{testB.listeningScore ?? 0}</td>
+                        <td className={`p-3.5 text-right font-bold ${listenDiff >= 0 ? "text-emerald-400" : "text-rose-400"}`}>
+                          {listenDiff >= 0 ? `+${listenDiff}` : listenDiff}
+                        </td>
+                      </tr>
+                      <tr>
+                        <td className="p-3.5">Điểm Reading</td>
+                        <td className="p-3.5 text-center">{testA.readingScore ?? 0}</td>
+                        <td className="p-3.5 text-center">{testB.readingScore ?? 0}</td>
+                        <td className={`p-3.5 text-right font-bold ${readDiff >= 0 ? "text-emerald-400" : "text-rose-400"}`}>
+                          {readDiff >= 0 ? `+${readDiff}` : readDiff}
+                        </td>
+                      </tr>
+                      <tr>
+                        <td className="p-3.5">Số câu trả lời đúng</td>
+                        <td className="p-3.5 text-center">{testA.totalCorrect ?? 0}/{testA.totalQuestions}</td>
+                        <td className="p-3.5 text-center">{testB.totalCorrect ?? 0}/{testB.totalQuestions}</td>
+                        <td className={`p-3.5 text-right font-bold ${correctDiff >= 0 ? "text-emerald-400" : "text-rose-400"}`}>
+                          {correctDiff >= 0 ? `+${correctDiff}` : correctDiff}
+                        </td>
+                      </tr>
+                      <tr>
+                        <td className="p-3.5">Ngày nộp bài</td>
+                        <td className="p-3.5 text-center text-[10px] text-zinc-400">
+                          {new Date(testA.createdAt).toLocaleDateString("vi-VN")}
+                        </td>
+                        <td className="p-3.5 text-center text-[10px] text-zinc-400">
+                          {new Date(testB.createdAt).toLocaleDateString("vi-VN")}
+                        </td>
+                        <td className="p-3.5 text-right text-[10px] text-zinc-400">
+                          —
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+
+                {/* Verdict message */}
+                <div className={`p-4 rounded-2xl border text-xs leading-relaxed ${
+                  scoreDiff >= 0
+                    ? "bg-emerald-950/20 border-emerald-500/30 text-emerald-300"
+                    : "bg-rose-950/20 border-rose-500/30 text-rose-300"
+                }`}>
+                  {scoreDiff > 0 && `🎉 Điểm số đã tăng trưởng +${scoreDiff} điểm so với lần thi trước. Hãy tiếp tục duy trì phong độ!`}
+                  {scoreDiff === 0 && `⚖️ Điểm số duy trì ổn định bằng nhau (${testA.totalScore}đ). Hãy tập trung luyện thêm các phần điểm yếu để bứt phá!`}
+                  {scoreDiff < 0 && `⚠️ Điểm số giảm ${Math.abs(scoreDiff)} điểm. Khuyến nghị ôn lại các câu sai trong Sổ tay lỗi trước khi thi lại.`}
+                </div>
+
+                <div className="flex items-center justify-end gap-3 pt-2 border-t border-zinc-800">
+                  <button
+                    type="button"
+                    onClick={() => setShowCompareModal(false)}
+                    className="px-5 py-2.5 rounded-xl text-xs font-semibold text-zinc-400 hover:text-white bg-zinc-800 transition"
+                  >
+                    Đóng
+                  </button>
+                </div>
+              </div>
+            </div>
+          );
+        })()}
+
+        {/* ── DELETE CONFIRMATION MODAL ── */}
+        {deleteConfirmItem && (
+          <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/85 backdrop-blur-sm animate-fade-in">
+            <div className="bg-zinc-900 border border-zinc-800 rounded-3xl p-6 sm:p-8 max-w-md w-full space-y-5 shadow-2xl">
+              <div className="text-center space-y-2">
+                <div className="text-3xl">🗑️</div>
+                <h3 className="text-lg font-bold text-white">Xác nhận xóa bài thi?</h3>
+                <p className="text-xs text-zinc-400">
+                  Bạn có chắc muốn xóa bản ghi <strong>Attempt #{deleteConfirmItem.id}</strong> ({deleteConfirmItem.testTitle})?
+                </p>
+                <p className="text-[11px] text-rose-400 bg-rose-950/40 p-2.5 rounded-xl border border-rose-800/40">
+                  ⚠️ Hành động này không thể hoàn tác. Toàn bộ câu trả lời và kết quả sẽ bị xóa vĩnh viễn.
+                </p>
+              </div>
+
+              <div className="flex items-center gap-3 pt-2">
+                <button
+                  type="button"
+                  onClick={() => setDeleteConfirmItem(null)}
+                  disabled={isDeleting}
+                  className="flex-1 py-2.5 rounded-xl bg-zinc-800 hover:bg-zinc-700 text-zinc-300 font-bold text-xs transition"
+                >
+                  Hủy
+                </button>
+                <button
+                  type="button"
+                  onClick={handleDeleteAttempt}
+                  disabled={isDeleting}
+                  className="flex-1 py-2.5 rounded-xl bg-rose-600 hover:bg-rose-500 text-white font-bold text-xs shadow-lg transition disabled:opacity-50"
+                >
+                  {isDeleting ? "Đang xóa..." : "Xác nhận xóa"}
+                </button>
+              </div>
+            </div>
+          </div>
+        )}
+
+        {/* Toast */}
+        {toastMessage && (
+          <div className="fixed bottom-6 right-6 z-50 bg-emerald-600 text-white text-xs font-bold px-4 py-3 rounded-xl shadow-2xl flex items-center gap-2 transition-all">
+            <span>✓</span>
+            <span>{toastMessage}</span>
           </div>
         )}
       </main>
@@ -704,69 +1340,6 @@ function StatCard({
       <p className="mt-2 text-sm text-zinc-500">
         {label}
       </p>
-    </div>
-  );
-}
-
-// ============================================================
-// HISTORY CARD
-// ============================================================
-
-function HistoryCard({
-  item,
-  onView,
-}: {
-  item: MockTestHistoryItem;
-  onView: () => void;
-}) {
-  const date =
-    new Date(
-      item.createdAt,
-    ).toLocaleString(
-      "vi-VN",
-    );
-
-  return (
-    <div className="rounded-2xl border border-white/5 bg-[#121214] p-6">
-      <div className="flex flex-col justify-between gap-5 md:flex-row md:items-center">
-        <div>
-          <h3 className="font-semibold">
-            {item.testTitle}
-          </h3>
-
-          <p className="mt-1 text-sm text-zinc-500">
-            {date}
-          </p>
-
-          <div className="mt-4 flex flex-wrap gap-3 text-sm">
-            <span className="rounded-lg bg-white/5 px-3 py-2 text-zinc-400">
-              Đúng:{" "}
-              <strong className="text-white">
-                {item.totalCorrect ??
-                  0}
-                /
-                {item.totalQuestions}
-              </strong>
-            </span>
-
-            <span className="rounded-lg bg-white/5 px-3 py-2 text-zinc-400">
-              Điểm:{" "}
-              <strong className="text-green-400">
-                {item.totalScore ??
-                  0}
-              </strong>
-            </span>
-          </div>
-        </div>
-
-        <button
-          type="button"
-          onClick={onView}
-          className="rounded-xl border border-white/10 px-5 py-3 text-sm font-medium text-zinc-300 hover:bg-white/5 hover:text-white"
-        >
-          Xem kết quả
-        </button>
-      </div>
     </div>
   );
 }
