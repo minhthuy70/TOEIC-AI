@@ -17,6 +17,7 @@ import { ProfileModule } from "./profile/profile.module";
 import { AdminModule } from "./admin/admin.module";
 import { DashboardModule } from "./dashboard/dashboard.module";
 import { SettingsModule } from "./settings/settings.module";
+import { ErrorTrackingModule } from "./error-tracking/error-tracking.module";
 
 @Module({
   imports: [
@@ -45,6 +46,7 @@ import { SettingsModule } from "./settings/settings.module";
     AdminModule,
     DashboardModule,
     SettingsModule,
+    ErrorTrackingModule,
   ],
 })
 export class AppModule {}

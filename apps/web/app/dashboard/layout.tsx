@@ -24,6 +24,7 @@ const NAV_MAIN = [
   { label: "Luyện đọc", icon: "📖", href: "/dashboard/reading" },
   { label: "Luyện tập", icon: "✍️", href: "/dashboard/practice" },
   { label: "Thi thử", icon: "📝", href: "/dashboard/mock-test" },
+  { label: "Sổ tay lỗi", icon: "📓", href: "/dashboard/error-log" },
 ];
 
 

@@ -637,28 +637,28 @@ Dựa trên lộ trình học TOEIC 900+ - Phiên bản nâng cấp
 ================================================================================
 
 8.1. Error Log (Nhật ký lỗi)
-- View all logged errors - Xem tất cả lỗi đã ghi
-- Filter by error type (grammar/vocabulary/careless/timing) - Lọc theo loại lỗi
-- Filter by part (1-7) - Lọc theo phần (1-7)
-- Filter by date range - Lọc theo khoảng ngày
-- Filter by status (active/resolved) - Lọc theo trạng thái (hoạt động/đã giải quyết)
-- Sort by frequency - Sắp xếp theo tần suất
-- Sort by date - Sắp xếp theo ngày
-- Error list view - Chế độ xem danh sách lỗi
-- Error detail view - Chế độ xem chi tiết lỗi
-- Original question display - Hiển thị câu hỏi gốc
-- User's answer display - Hiển thị đáp án người dùng
-- Correct answer display - Hiển thị đáp án đúng
-- Explanation display - Hiển thị giải thích
-- Error type tag - Thẻ loại lỗi
-- Error note field - Trường ghi chú lỗi
-- Add personal note - Thêm ghi chú cá nhân
-- Edit error note - Chỉnh sửa ghi chú lỗi
-- Mark as resolved - Đánh dấu đã giải quyết
-- Mark as unresolved - Đánh dấu chưa giải quyết
-- Delete error record - Xóa bản ghi lỗi
-- Error frequency counter - Bộ đếm tần suất lỗi
-- Last occurrence date - Ngày xảy ra lần cuối
+[x] - View all logged errors - Xem tất cả lỗi đã ghi
+[x] - Filter by error type (grammar/vocabulary/careless/timing) - Lọc theo loại lỗi
+[x] - Filter by part (1-7) - Lọc theo phần (1-7)
+[x] - Filter by date range - Lọc theo khoảng ngày
+[x] - Filter by status (active/resolved) - Lọc theo trạng thái (hoạt động/đã giải quyết)
+[x] - Sort by frequency - Sắp xếp theo tần suất
+[x] - Sort by date - Sắp xếp theo ngày
+[x] - Error list view - Chế độ xem danh sách lỗi
+[x] - Error detail view - Chế độ xem chi tiết lỗi
+[x] - Original question display - Hiển thị câu hỏi gốc
+[x] - User's answer display - Hiển thị đáp án người dùng
+[x] - Correct answer display - Hiển thị đáp án đúng
+[x] - Explanation display - Hiển thị giải thích
+[x] - Error type tag - Thẻ loại lỗi
+[x] - Error note field - Trường ghi chú lỗi
+[x] - Add personal note - Thêm ghi chú cá nhân
+[x] - Edit error note - Chỉnh sửa ghi chú lỗi
+[x] - Mark as resolved - Đánh dấu đã giải quyết
+[x] - Mark as unresolved - Đánh dấu chưa giải quyết
+[x] - Delete error record - Xóa bản ghi lỗi
+[x] - Error frequency counter - Bộ đếm tần suất lỗi
+[x] - Last occurrence date - Ngày xảy ra lần cuối
 
 8.2. Error Analysis (Phân tích lỗi)
 - Error type distribution chart - Biểu đồ phân phối loại lỗi
