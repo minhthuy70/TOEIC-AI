@@ -384,6 +384,14 @@ export default function ErrorLogPage() {
 
           <div className="flex items-center gap-3">
             <Link
+              href="/dashboard/error-log/settings"
+              className="px-4 py-2.5 rounded-xl border border-zinc-800 bg-zinc-900/80 hover:bg-zinc-800 text-zinc-300 hover:text-white text-xs font-bold transition flex items-center gap-1.5"
+            >
+              <span>⚙️</span>
+              <span>Cài đặt</span>
+            </Link>
+
+            <Link
               href="/dashboard/mock-test"
               className="px-4 py-2.5 rounded-xl border border-zinc-800 bg-zinc-900/80 hover:bg-zinc-800 text-zinc-300 hover:text-white text-xs font-bold transition flex items-center gap-2"
             >

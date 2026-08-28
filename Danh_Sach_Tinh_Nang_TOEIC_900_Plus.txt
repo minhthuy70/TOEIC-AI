@@ -686,10 +686,10 @@ Dựa trên lộ trình học TOEIC 900+ - Phiên bản nâng cấp
 [x] - Schedule repeat drill - Lên lịch bài tập lặp lại
 
 8.4. Error Settings - Cài đặt lỗi
-- Auto-log errors toggle - Bật/tắt tự động ghi lỗi
-- Error notification preference - Ưa thích thông báo lỗi
-- Drill suggestion preference - Ưa thích gợi ý bài tập
-- Auto-resolve threshold setting - Cài đặt ngưỡng tự động giải quyết
+[x] - Auto-log errors toggle - Bật/tắt tự động ghi lỗi
+[x] - Error notification preference - Ưa thích thông báo lỗi
+[x] - Drill suggestion preference - Ưa thích gợi ý bài tập
+[x] - Auto-resolve threshold setting - Cài đặt ngưỡng tự động giải quyết
 
 ================================================================================
 
