@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { useParams, useRouter } from "next/navigation";
+import { BookOpen, Check } from "lucide-react";
 
 const API_URL = "http://localhost:3001";
 
@@ -813,9 +814,9 @@ export default function ReadingLessonGroupsPage() {
             Đang tải group...
           </div>
         ) : groups.length === 0 ? (
-          <div className="bg-zinc-900 border border-zinc-800 rounded-2xl p-12 text-center">
-            <div className="text-5xl mb-4">
-              📕
+          <div className="bg-zinc-900 border border-zinc-800 rounded-2xl p-12 text-center flex flex-col items-center">
+            <div className="w-16 h-16 rounded-2xl bg-red-600/15 border border-red-600/20 text-red-400 flex items-center justify-center mb-4">
+              <BookOpen className="w-8 h-8" />
             </div>
 
             <h2 className="text-xl font-semibold mb-2">
@@ -950,8 +951,8 @@ export default function ReadingLessonGroupsPage() {
         {option.option_text}
 
         {option.is_correct && (
-          <span className="ml-2 text-xs text-green-400">
-            ✓
+          <span className="ml-2 inline-flex items-center text-xs text-green-400">
+            <Check className="w-3.5 h-3.5" />
           </span>
         )}
       </div>
@@ -1264,8 +1265,9 @@ export default function ReadingLessonGroupsPage() {
                                       </span>
 
                                       {option.isCorrect && (
-                                        <span className="text-xs text-green-400 font-medium">
-                                          ✓ Đáp án đúng
+                                        <span className="inline-flex items-center gap-1 text-xs text-green-400 font-medium">
+                                          <Check className="w-3 h-3" />
+                                          <span>Đáp án đúng</span>
                                         </span>
                                       )}
                                     </div>

@@ -2,6 +2,19 @@
 
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import {
+  ImageIcon,
+  MessageSquare,
+  Users,
+  Mic,
+  Edit3,
+  FileText,
+  BookOpen,
+  Target,
+  History as HistoryIcon,
+  ArrowRight,
+  Loader2,
+} from "lucide-react";
 
 import {
   getPracticeHistory,
@@ -17,7 +30,7 @@ type PartItem = {
   title: string;
   description: string;
   section: "listening" | "reading";
-  icon: string;
+  icon: React.ElementType;
 };
 
 const PARTS: PartItem[] = [
@@ -27,7 +40,7 @@ const PARTS: PartItem[] = [
     description:
       "Chọn ảnh phù hợp với âm thanh nghe được",
     section: "listening",
-    icon: "🖼️",
+    icon: ImageIcon,
   },
 
   {
@@ -36,7 +49,7 @@ const PARTS: PartItem[] = [
     description:
       "Chọn câu trả lời phù hợp nhất cho câu hỏi",
     section: "listening",
-    icon: "💬",
+    icon: MessageSquare,
   },
 
   {
@@ -45,7 +58,7 @@ const PARTS: PartItem[] = [
     description:
       "Nghe hội thoại và trả lời câu hỏi",
     section: "listening",
-    icon: "👥",
+    icon: Users,
   },
 
   {
@@ -54,7 +67,7 @@ const PARTS: PartItem[] = [
     description:
       "Nghe bài nói đơn và trả lời câu hỏi",
     section: "listening",
-    icon: "🎙️",
+    icon: Mic,
   },
 
   {
@@ -63,7 +76,7 @@ const PARTS: PartItem[] = [
     description:
       "Điền từ thích hợp vào chỗ trống",
     section: "reading",
-    icon: "✏️",
+    icon: Edit3,
   },
 
   {
@@ -72,7 +85,7 @@ const PARTS: PartItem[] = [
     description:
       "Điền từ/câu vào đoạn văn có chỗ trống",
     section: "reading",
-    icon: "📄",
+    icon: FileText,
   },
 
   {
@@ -81,7 +94,7 @@ const PARTS: PartItem[] = [
     description:
       "Đọc hiểu đơn, kép và ba đoạn văn",
     section: "reading",
-    icon: "📖",
+    icon: BookOpen,
   },
 ];
 
@@ -120,19 +133,23 @@ export default function PracticePage() {
         setLoadingHistory(true);
         setHistoryError("");
 
-        const data =
+        const result =
           await getPracticeHistory();
 
-        if (!cancelled) {
-          setHistory(data);
+        if (cancelled) {
+          return;
         }
-      } catch (error) {
+
+        setHistory(
+          Array.isArray(result) ? result : [],
+        );
+      } catch (error: any) {
         if (!cancelled) {
           setHistoryError(
-            error instanceof Error
-              ? error.message
-              : "Không thể tải lịch sử.",
+            error?.message ||
+              "Không thể kết nối tới server.",
           );
+          setHistory([]);
         }
       } finally {
         if (!cancelled) {
@@ -150,32 +167,26 @@ export default function PracticePage() {
 
   const listeningParts =
     PARTS.filter(
-      (item) =>
-        item.section ===
-        "listening",
+      (p) =>
+        p.section === "listening",
     );
 
   const readingParts =
     PARTS.filter(
-      (item) =>
-        item.section ===
-        "reading",
+      (p) =>
+        p.section === "reading",
     );
 
   return (
-    <div className="min-h-screen bg-[#09090b] text-white">
-      {/* ======================================================
-          CONTENT
-      ====================================================== */}
-
+    <div className="min-h-screen bg-[#0a0a0c] text-white">
       <main className="mx-auto max-w-7xl px-6 py-10">
         {/* TITLE */}
 
         <div className="mb-8">
           <div className="flex items-center gap-3">
-            <span className="text-3xl">
-              ✍️
-            </span>
+            <div className="w-10 h-10 rounded-xl bg-red-600/15 border border-red-600/20 text-red-400 flex items-center justify-center">
+              <Edit3 className="w-5 h-5" />
+            </div>
 
             <h2 className="text-3xl font-bold">
               Luyện tập
@@ -197,13 +208,14 @@ export default function PracticePage() {
             onClick={() =>
               setActiveTab("practice")
             }
-            className={`flex-1 rounded-xl px-5 py-3 text-sm font-medium transition ${
+            className={`flex-1 inline-flex items-center justify-center gap-2 rounded-xl px-5 py-3 text-sm font-medium transition ${
               activeTab === "practice"
                 ? "bg-red-600 text-white"
                 : "text-zinc-400 hover:bg-white/5 hover:text-white"
             }`}
           >
-            🎯 Luyện theo Part
+            <Target className="w-4 h-4" />
+            <span>Luyện theo Part</span>
           </button>
 
           <button
@@ -211,13 +223,14 @@ export default function PracticePage() {
             onClick={() =>
               setActiveTab("history")
             }
-            className={`flex-1 rounded-xl px-5 py-3 text-sm font-medium transition ${
+            className={`flex-1 inline-flex items-center justify-center gap-2 rounded-xl px-5 py-3 text-sm font-medium transition ${
               activeTab === "history"
                 ? "bg-red-600 text-white"
                 : "text-zinc-400 hover:bg-white/5 hover:text-white"
             }`}
           >
-            🕘 Lịch sử
+            <HistoryIcon className="w-4 h-4" />
+            <span>Lịch sử</span>
           </button>
         </div>
 
@@ -322,13 +335,15 @@ function PartCard({
 }: {
   part: PartItem;
 }) {
+  const Icon = part.icon;
+
   return (
     <div className="rounded-2xl border border-white/5 bg-[#121214] p-5 transition hover:border-white/10 hover:bg-[#151517]">
       <div className="flex items-start gap-4">
         {/* ICON */}
 
-        <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-blue-600 text-2xl">
-          {part.icon}
+        <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-blue-600/15 border border-blue-500/20 text-blue-400">
+          <Icon className="w-6 h-6" />
         </div>
 
         {/* TEXT */}
@@ -360,9 +375,10 @@ function PartCard({
 
         <Link
           href={`/dashboard/practice/part/${part.part}`}
-          className="flex flex-1 items-center justify-center rounded-xl bg-red-600 px-4 py-3 text-sm font-medium transition hover:bg-red-500"
+          className="inline-flex flex-1 items-center justify-center gap-1.5 rounded-xl bg-red-600 px-4 py-3 text-sm font-medium transition hover:bg-red-500"
         >
-          Bắt đầu →
+          <span>Bắt đầu</span>
+          <ArrowRight className="w-4 h-4" />
         </Link>
       </div>
     </div>
@@ -384,8 +400,9 @@ function HistoryTab({
 }) {
   if (loading) {
     return (
-      <div className="rounded-2xl border border-white/5 bg-[#121214] p-10 text-center text-zinc-500">
-        Đang tải lịch sử...
+      <div className="rounded-2xl border border-white/5 bg-[#121214] p-10 text-center text-zinc-500 flex items-center justify-center gap-2">
+        <Loader2 className="w-4 h-4 animate-spin text-red-500" />
+        <span>Đang tải lịch sử...</span>
       </div>
     );
   }
@@ -400,12 +417,12 @@ function HistoryTab({
 
   if (history.length === 0) {
     return (
-      <div className="rounded-2xl border border-white/5 bg-[#121214] p-10 text-center">
-        <div className="text-4xl">
-          📝
+      <div className="rounded-2xl border border-white/5 bg-[#121214] p-10 text-center flex flex-col items-center">
+        <div className="w-12 h-12 rounded-2xl bg-zinc-800 text-zinc-400 flex items-center justify-center mb-4">
+          <FileText className="w-6 h-6" />
         </div>
 
-        <h3 className="mt-4 font-semibold">
+        <h3 className="font-semibold">
           Chưa có lịch sử luyện tập
         </h3>
 

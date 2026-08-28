@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import AdminSidebar from "@/components/admin-sidebar";
 import { useAutoLogout } from "../../hooks/useAutoLogout";
 import { useSessionWarning } from "../../hooks/useSessionWarning";
+import { Clock, X } from "lucide-react";
 
 type UserRole =
   | "USER"
@@ -81,9 +82,7 @@ export default function ContentAdminLayout({
           <div className="bg-zinc-900 border border-zinc-800 rounded-2xl p-6 max-w-md w-full">
             <div className="flex items-center gap-3 mb-4">
               <div className="w-12 h-12 rounded-full bg-orange-600/20 flex items-center justify-center">
-                <svg className="w-6 h-6 text-orange-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-                </svg>
+                <Clock className="w-6 h-6 text-orange-400" />
               </div>
               <div>
                 <h3 className="text-lg font-bold text-white">Sắp đăng xuất tự động</h3>
@@ -124,9 +123,7 @@ export default function ContentAdminLayout({
           <div className="bg-orange-600/95 border border-orange-500/30 rounded-xl p-4 shadow-xl shadow-orange-600/20 max-w-sm">
             <div className="flex items-start gap-3">
               <div className="w-8 h-8 rounded-lg bg-orange-500/20 flex items-center justify-center shrink-0">
-                <svg className="w-4 h-4 text-orange-200" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-                </svg>
+                <Clock className="w-4 h-4 text-orange-200" />
               </div>
               <div className="flex-1">
                 <h4 className="text-sm font-semibold text-white mb-1">Phiên đăng nhập sắp hết hạn</h4>
@@ -138,9 +135,7 @@ export default function ContentAdminLayout({
                 onClick={dismissWarning}
                 className="text-orange-200 hover:text-white transition-colors"
               >
-                <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
-                </svg>
+                <X className="w-4 h-4" />
               </button>
             </div>
           </div>

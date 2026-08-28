@@ -3,6 +3,14 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { getAdminStats } from "@/services/admin";
+import {
+  Users,
+  BookOpen,
+  FileText,
+  Headphones,
+  BookMarked,
+  Edit3,
+} from "lucide-react";
 
 type User = {
   fullName: string;
@@ -85,25 +93,25 @@ export default function AdminPage() {
       {/* STATISTICS */}
       <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-5">
         <StatCard
-          icon="👥"
+          icon={Users}
           title="Người dùng"
           value={loading ? "--" : stats?.users.toString() || "0"}
         />
 
         <StatCard
-          icon="📚"
+          icon={BookOpen}
           title="Từ vựng"
           value={loading ? "--" : stats?.vocabulary.toString() || "0"}
         />
 
         <StatCard
-          icon="📖"
+          icon={BookMarked}
           title="Bài ngữ pháp"
           value={loading ? "--" : stats?.grammarLessons.toString() || "0"}
         />
 
         <StatCard
-          icon="📝"
+          icon={FileText}
           title="Đề thi"
           value={loading ? "--" : stats?.tests.toString() || "0"}
         />
@@ -118,7 +126,7 @@ export default function AdminPage() {
         <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-5">
           <Link href="/content-admin/vocabulary">
             <ModuleCard
-              icon="📚"
+              icon={BookOpen}
               title="Từ vựng"
               description="Quản lý kho từ vựng TOEIC"
             />
@@ -126,7 +134,7 @@ export default function AdminPage() {
 
           <Link href="/content-admin/grammar/categories">
             <ModuleCard
-              icon="📖"
+              icon={BookMarked}
               title="Ngữ pháp"
               description="Quản lý danh mục và bài học"
             />
@@ -134,7 +142,7 @@ export default function AdminPage() {
 
           <Link href="/content-admin/listening">
             <ModuleCard
-              icon="🎧"
+              icon={Headphones}
               title="Listening"
               description="Quản lý bài nghe và câu hỏi"
             />
@@ -142,7 +150,7 @@ export default function AdminPage() {
 
           <Link href="/content-admin/reading">
             <ModuleCard
-              icon="📕"
+              icon={FileText}
               title="Reading"
               description="Quản lý bài đọc và câu hỏi"
             />
@@ -150,7 +158,7 @@ export default function AdminPage() {
 
           <Link href="/admin/tests">
             <ModuleCard
-              icon="📝"
+              icon={Edit3}
               title="Đề thi"
               description="Quản lý đề và bộ câu hỏi"
             />
@@ -162,18 +170,18 @@ export default function AdminPage() {
 }
 
 function StatCard({
-  icon,
+  icon: Icon,
   title,
   value,
 }: {
-  icon: string;
+  icon: React.ElementType;
   title: string;
   value: string;
 }) {
   return (
     <div className="bg-zinc-900 border border-zinc-800 rounded-2xl p-5">
-      <div className="text-2xl">
-        {icon}
+      <div className="w-10 h-10 rounded-xl bg-red-600/15 border border-red-600/20 text-red-400 flex items-center justify-center">
+        <Icon className="w-5 h-5" />
       </div>
 
       <p className="text-zinc-500 text-sm mt-4">
@@ -188,18 +196,18 @@ function StatCard({
 }
 
 function ModuleCard({
-  icon,
+  icon: Icon,
   title,
   description,
 }: {
-  icon: string;
+  icon: React.ElementType;
   title: string;
   description: string;
 }) {
   return (
     <div className="bg-zinc-900 border border-zinc-800 rounded-2xl p-6 hover:border-zinc-700 transition">
-      <div className="text-3xl">
-        {icon}
+      <div className="w-12 h-12 rounded-xl bg-red-600/15 border border-red-600/20 text-red-400 flex items-center justify-center">
+        <Icon className="w-6 h-6" />
       </div>
 
       <h3 className="font-bold text-lg mt-4">

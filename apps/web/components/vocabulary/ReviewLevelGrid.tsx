@@ -1,6 +1,7 @@
 "use client";
 
 import { ReviewLevel } from "@/types/vocabulary";
+import { Brain, Zap, CheckCircle2, Clock, Layers } from "lucide-react";
 
 interface Props {
   levels: ReviewLevel[];
@@ -12,7 +13,8 @@ export default function ReviewLevelGrid({ levels, onSelectLevel }: Props) {
     <div className="space-y-4">
       <div>
         <h2 className="text-lg font-bold text-white flex items-center gap-2">
-          <span>🧠</span> Lộ trình ôn tập Spaced Repetition (SRS)
+          <Brain className="w-5 h-5 text-amber-500" />
+          <span>Lộ trình ôn tập Spaced Repetition (SRS)</span>
         </h2>
         <p className="text-xs text-zinc-500 mt-0.5">
           Ôn tập các từ vựng đã học đúng lúc trước khi quên. Chọn một hộp có từ cần ôn để tiến hành ôn tập.
@@ -37,7 +39,9 @@ export default function ReviewLevelGrid({ levels, onSelectLevel }: Props) {
               {/* Top Row: Icon and Timing */}
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-2">
-                  <span className="text-xl">{lvl.icon}</span>
+                  <span className="w-8 h-8 rounded-lg bg-amber-500/10 border border-amber-500/20 flex items-center justify-center text-amber-400">
+                    <Clock className="w-4 h-4" />
+                  </span>
                   <span className="text-sm font-bold text-white">Sau {lvl.label}</span>
                 </div>
                 {hasWords && (
@@ -61,13 +65,15 @@ export default function ReviewLevelGrid({ levels, onSelectLevel }: Props) {
                 {hasWords ? (
                   <button
                     onClick={() => onSelectLevel(lvl.level)}
-                    className="w-full text-center py-2 bg-gradient-to-r from-amber-600 to-amber-500 hover:from-amber-500 hover:to-amber-450 text-white text-xs font-bold rounded-xl shadow-lg shadow-amber-600/10 hover:shadow-amber-600/20 transition-all active:scale-[0.98]"
+                    className="w-full text-center py-2 bg-gradient-to-r from-amber-600 to-amber-500 hover:from-amber-500 hover:to-amber-400 text-white text-xs font-bold rounded-xl shadow-lg shadow-amber-600/10 hover:shadow-amber-600/20 transition-all active:scale-[0.98] flex items-center justify-center gap-1.5"
                   >
-                    ⚡ Ôn tập ngay
+                    <Zap className="w-3.5 h-3.5" />
+                    <span>Ôn tập ngay</span>
                   </button>
                 ) : (
-                  <div className="w-full text-center py-2 border border-zinc-800 bg-zinc-950 text-zinc-500 text-xs font-semibold rounded-xl select-none">
-                    ✅ Đã hoàn thành
+                  <div className="w-full text-center py-2 border border-zinc-800 bg-zinc-950 text-zinc-500 text-xs font-semibold rounded-xl select-none flex items-center justify-center gap-1.5">
+                    <CheckCircle2 className="w-3.5 h-3.5 text-green-500" />
+                    <span>Đã hoàn thành</span>
                   </div>
                 )}
               </div>

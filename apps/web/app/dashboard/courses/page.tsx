@@ -20,41 +20,67 @@ import {
   type ReadingDailyStatus,
   type ReadingLesson,
 } from "@/services/reading";
+import {
+  BookOpen,
+  FileText,
+  Headphones,
+  FileEdit,
+  ImageIcon,
+  MessageSquare,
+  Users,
+  Mic,
+  Volume2,
+  Edit3,
+  Zap,
+  Eye,
+  Search,
+  Newspaper,
+  Flame,
+  RotateCcw,
+  Check,
+  Brain,
+  Bell,
+  Clock,
+  Moon,
+  Calendar,
+  BarChart3,
+  ArrowRight,
+  ChevronRight,
+  Sparkles,
+} from "lucide-react";
 
 const TABS = [
-  { id: "vocabulary", label: "Từ vựng", icon: "📖" },
-  { id: "grammar", label: "Ngữ pháp", icon: "📝" },
-  { id: "listening", label: "Listening", icon: "🎧" },
-  { id: "reading", label: "Reading", icon: "📄" },
+  { id: "vocabulary", label: "Từ vựng", icon: BookOpen },
+  { id: "grammar", label: "Ngữ pháp", icon: FileText },
+  { id: "listening", label: "Listening", icon: Headphones },
+  { id: "reading", label: "Reading", icon: FileEdit },
 ];
 
-
-
 const LISTENING_PARTS = [
-  { part: 1, label: "Photographs", icon: "🖼️", questions: 6, desc: "Nghe và chọn ảnh phù hợp", done: 4 },
-  { part: 2, label: "Question-Response", icon: "💬", questions: 25, desc: "Nghe câu hỏi và chọn câu trả lời đúng", done: 10 },
-  { part: 3, label: "Conversations", icon: "🗣️", questions: 39, desc: "Hội thoại 2-3 người", done: 5 },
-  { part: 4, label: "Talks", icon: "🎙️", questions: 30, desc: "Bài nói đơn", done: 0 },
+  { part: 1, label: "Photographs", icon: ImageIcon, questions: 6, desc: "Nghe và chọn ảnh phù hợp", done: 4 },
+  { part: 2, label: "Question-Response", icon: MessageSquare, questions: 25, desc: "Nghe câu hỏi và chọn câu trả lời đúng", done: 10 },
+  { part: 3, label: "Conversations", icon: Users, questions: 39, desc: "Hội thoại 2-3 người", done: 5 },
+  { part: 4, label: "Talks", icon: Mic, questions: 30, desc: "Bài nói đơn", done: 0 },
 ];
 
 const LISTENING_SKILLS = [
-  { label: "Shadowing", icon: "🔊", desc: "Luyện phát âm theo người bản ngữ" },
-  { label: "Dictation", icon: "✍️", desc: "Nghe và chép lại từng câu" },
-  { label: "Speed Training", icon: "⚡", desc: "Nghe theo tốc độ tăng dần 0.75x→1.25x" },
+  { label: "Shadowing", icon: Volume2, desc: "Luyện phát âm theo người bản ngữ" },
+  { label: "Dictation", icon: Edit3, desc: "Nghe và chép lại từng câu" },
+  { label: "Speed Training", icon: Zap, desc: "Nghe theo tốc độ tăng dần 0.75x→1.25x" },
 ];
 
 const READING_PARTS = [
-  { part: 5, label: "Incomplete Sentences", icon: "✏️", questions: 30, desc: "Điền từ vào câu", done: 20 },
-  { part: 6, label: "Text Completion", icon: "📝", questions: 16, desc: "Điền vào đoạn văn", done: 8 },
-  { part: 7, label: "Reading Comprehension", icon: "📖", questions: 54, desc: "Đọc hiểu đơn, kép, ba đoạn", done: 5 },
+  { part: 5, label: "Incomplete Sentences", icon: Edit3, questions: 30, desc: "Điền từ vào câu", done: 20 },
+  { part: 6, label: "Text Completion", icon: FileText, questions: 16, desc: "Điền vào đoạn văn", done: 8 },
+  { part: 7, label: "Reading Comprehension", icon: BookOpen, questions: 54, desc: "Đọc hiểu đơn, kép, ba đoạn", done: 5 },
 ];
 
 const READING_SKILLS = [
-  { label: "Skimming", icon: "👁️", desc: "Đọc lướt nắm ý chính" },
-  { label: "Scanning", icon: "🔍", desc: "Đọc quét tìm thông tin cụ thể" },
-  { label: "Single Passage", icon: "📃", desc: "Luyện đọc 1 đoạn văn" },
-  { label: "Double Passage", icon: "📄📄", desc: "Luyện đọc 2 đoạn văn liên kết" },
-  { label: "Triple Passage", icon: "📰", desc: "Luyện đọc 3 đoạn văn liên kết" },
+  { label: "Skimming", icon: Eye, desc: "Đọc lướt nắm ý chính" },
+  { label: "Scanning", icon: Search, desc: "Đọc quét tìm thông tin cụ thể" },
+  { label: "Single Passage", icon: FileText, desc: "Luyện đọc 1 đoạn văn" },
+  { label: "Double Passage", icon: FileText, desc: "Luyện đọc 2 đoạn văn liên kết" },
+  { label: "Triple Passage", icon: Newspaper, desc: "Luyện đọc 3 đoạn văn liên kết" },
 ];
 
 const LEVEL_COLORS: Record<string, string> = {
@@ -65,14 +91,14 @@ const LEVEL_COLORS: Record<string, string> = {
 
 /* ─── SRS Timeline steps ─── */
 const SRS_STEPS = [
-  { label: "Học mới", sub: "20 từ/ngày", icon: "📖", color: "from-emerald-500 to-emerald-400" },
-  { label: "Lần 1", sub: "30 phút", icon: "🔔", color: "from-yellow-500 to-amber-400" },
-  { label: "Lần 2", sub: "3 giờ", icon: "⏰", color: "from-orange-500 to-orange-400" },
-  { label: "Lần 3", sub: "10 giờ", icon: "🌙", color: "from-red-500 to-rose-400" },
-  { label: "Lần 4", sub: "24 giờ", icon: "📅", color: "from-pink-500 to-pink-400" },
-  { label: "Lần 5", sub: "3 ngày", icon: "🗓️", color: "from-purple-500 to-violet-400" },
-  { label: "Ôn kỳ", sub: "5 ngày/lần", icon: "🔄", color: "from-blue-500 to-blue-400" },
-  { label: "Thuộc", sub: "20 ngày/lần", icon: "✅", color: "from-emerald-600 to-green-500" },
+  { label: "Học mới", sub: "20 từ/ngày", icon: BookOpen, color: "from-emerald-500 to-emerald-400" },
+  { label: "Lần 1", sub: "30 phút", icon: Bell, color: "from-yellow-500 to-amber-400" },
+  { label: "Lần 2", sub: "3 giờ", icon: Clock, color: "from-orange-500 to-orange-400" },
+  { label: "Lần 3", sub: "10 giờ", icon: Moon, color: "from-red-500 to-rose-400" },
+  { label: "Lần 4", sub: "24 giờ", icon: Calendar, color: "from-pink-500 to-pink-400" },
+  { label: "Lần 5", sub: "3 ngày", icon: Calendar, color: "from-purple-500 to-violet-400" },
+  { label: "Ôn kỳ", sub: "5 ngày/lần", icon: RotateCcw, color: "from-blue-500 to-blue-400" },
+  { label: "Thuộc", sub: "20 ngày/lần", icon: Check, color: "from-emerald-600 to-green-500" },
 ];
 
 interface SrsStatus {
@@ -145,12 +171,8 @@ export default function CoursesPage() {
   const [countdown, setCountdown] = useState("");
   const [vocabTopics, setVocabTopics] = useState<Topic[]>([]);
   const [vocabTopicsLoading, setVocabTopicsLoading] = useState(true);
-  const [grammarTopics, setGrammarTopics] = useState<
-  GrammarCategory[]
->([]);
-
-const [grammarLoading, setGrammarLoading] =
-  useState(false);
+  const [grammarTopics, setGrammarTopics] = useState<GrammarCategory[]>([]);
+  const [grammarLoading, setGrammarLoading] = useState(false);
 
   // ─── Listening state ───
   const [listeningStatus, setListeningStatus] = useState<ListeningDailyStatus | null>(null);
@@ -164,8 +186,7 @@ const [grammarLoading, setGrammarLoading] =
   const [readingReviewLessons, setReadingReviewLessons] = useState<ReadingLesson[]>([]);
   const [readingLoading, setReadingLoading] = useState(false);
 
-const [grammarError, setGrammarError] =
-  useState<string | null>(null);
+  const [grammarError, setGrammarError] = useState<string | null>(null);
 
   const loadSrsAndTopics = useCallback(async () => {
     try {
@@ -186,33 +207,29 @@ const [grammarError, setGrammarError] =
   useEffect(() => {
     loadSrsAndTopics();
   }, [loadSrsAndTopics]);
-useEffect(() => {
-  if (activeTab !== "grammar") return;
 
-  const loadGrammar = async () => {
-    try {
-      setGrammarLoading(true);
-      setGrammarError(null);
+  useEffect(() => {
+    if (activeTab !== "grammar") return;
 
-      const data = await getGrammarCategories();
+    const loadGrammar = async () => {
+      try {
+        setGrammarLoading(true);
+        setGrammarError(null);
 
-      setGrammarTopics(data);
-    } catch (error) {
-      console.error(
-        "Load grammar categories error:",
-        error,
-      );
+        const data = await getGrammarCategories();
 
-      setGrammarError(
-        "Không thể tải dữ liệu ngữ pháp.",
-      );
-    } finally {
-      setGrammarLoading(false);
-    }
-  };
+        setGrammarTopics(data);
+      } catch (error) {
+        console.error("Load grammar categories error:", error);
+        setGrammarError("Không thể tải dữ liệu ngữ pháp.");
+      } finally {
+        setGrammarLoading(false);
+      }
+    };
 
-  loadGrammar();
-}, [activeTab]);
+    loadGrammar();
+  }, [activeTab]);
+
   // Live countdown ticker
   useEffect(() => {
     if (!srsStatus?.nextReview) return;
@@ -276,35 +293,39 @@ useEffect(() => {
     <div className="space-y-6 max-w-5xl mx-auto">
       {/* Header */}
       <div>
-        <h1 className="text-2xl font-bold text-white">📚 Học tập</h1>
+        <h1 className="text-2xl font-bold text-white flex items-center gap-2.5">
+          <BookOpen className="w-7 h-7 text-red-500" />
+          <span>Học tập</span>
+        </h1>
         <p className="text-zinc-400 text-sm mt-1">Từ vựng · Ngữ pháp · Listening · Reading</p>
       </div>
 
       {/* Tabs */}
       <div className="flex gap-1 bg-zinc-900/60 border border-zinc-800/50 rounded-2xl p-1.5">
-        {TABS.map((tab) => (
-          <button
-            key={tab.id}
-            onClick={() => setActiveTab(tab.id)}
-            className={`flex-1 flex items-center justify-center gap-2 py-2.5 rounded-xl text-[13px] font-medium transition-all duration-200 ${
-              activeTab === tab.id
-                ? "bg-red-600 text-white shadow-lg shadow-red-600/20"
-                : "text-zinc-400 hover:text-white hover:bg-zinc-800/60"
-            }`}
-          >
-            <span>{tab.icon}</span>
-            <span className="hidden sm:inline">{tab.label}</span>
-          </button>
-        ))}
+        {TABS.map((tab) => {
+          const TabIcon = tab.icon;
+          return (
+            <button
+              key={tab.id}
+              onClick={() => setActiveTab(tab.id)}
+              className={`flex-1 flex items-center justify-center gap-2 py-2.5 rounded-xl text-[13px] font-medium transition-all duration-200 ${
+                activeTab === tab.id
+                  ? "bg-red-600 text-white shadow-lg shadow-red-600/20"
+                  : "text-zinc-400 hover:text-white hover:bg-zinc-800/60"
+              }`}
+            >
+              <TabIcon className="w-4 h-4" />
+              <span className="hidden sm:inline">{tab.label}</span>
+            </button>
+          );
+        })}
       </div>
 
       {/* ── Vocabulary ── */}
       {activeTab === "vocabulary" && (
         <div className="space-y-5">
-
           {/* ─────── 1. HERO: Tiến trình hôm nay + Ôn tập ─────── */}
           <div className="grid sm:grid-cols-2 gap-4">
-
             {/* Card: Học từ mới hôm nay */}
             <div className="relative overflow-hidden bg-gradient-to-br from-zinc-900 to-zinc-900/80 border border-zinc-800/60 rounded-2xl p-5">
               <div className="absolute top-0 right-0 w-40 h-40 bg-gradient-to-br from-red-600/8 to-transparent rounded-full -translate-y-10 translate-x-10" />
@@ -330,14 +351,16 @@ useEffect(() => {
                   </p>
                   {srsStatus && srsStatus.streak > 0 && (
                     <p className="text-[11px] text-orange-400 mt-1.5 flex items-center gap-1">
-                      <span className="text-base">🔥</span> Streak {srsStatus.streak} ngày liên tục
+                      <Flame className="w-3.5 h-3.5" />
+                      <span>Streak {srsStatus.streak} ngày liên tục</span>
                     </p>
                   )}
                   <Link
                     href="/dashboard/vocabulary"
                     className="mt-3 inline-flex items-center gap-2 text-[12px] font-semibold bg-gradient-to-r from-red-600 to-red-500 hover:from-red-500 hover:to-red-400 text-white px-4 py-2 rounded-xl shadow-lg shadow-red-600/20 transition-all duration-200 hover:shadow-red-600/30 hover:scale-[1.02]"
                   >
-                    📖 {(srsStatus?.remainToday ?? 20) > 0 ? "Học từ mới" : "Đã hoàn thành!"}
+                    <BookOpen className="w-3.5 h-3.5" />
+                    <span>{(srsStatus?.remainToday ?? 20) > 0 ? "Học từ mới" : "Đã hoàn thành!"}</span>
                   </Link>
                 </div>
               </div>
@@ -370,20 +393,23 @@ useEffect(() => {
                     href="/dashboard/review"
                     className="mt-3 inline-flex items-center gap-2 text-[12px] font-semibold bg-gradient-to-r from-amber-600 to-amber-500 hover:from-amber-500 hover:to-amber-400 text-white px-4 py-2 rounded-xl shadow-lg shadow-amber-600/20 transition-all duration-200 hover:shadow-amber-600/30 hover:scale-[1.02]"
                   >
-                    🧠 Ôn tập ngay
+                    <Brain className="w-3.5 h-3.5" />
+                    <span>Ôn tập ngay</span>
                   </Link>
                 </div>
               ) : (
                 <div>
                   <p className="text-[13px] text-zinc-400 font-medium">Ôn tập SRS</p>
                   <p className="text-lg font-bold text-emerald-400 mt-1 flex items-center gap-2">
-                    <span>✅</span> Đã ôn xong!
+                    <Check className="w-4 h-4" />
+                    <span>Đã ôn xong!</span>
                   </p>
                   <p className="text-[11px] text-zinc-500 mt-1">
                     Lần ôn tiếp theo: <span className="text-zinc-300 font-medium">{countdown || "—"}</span>
                   </p>
                   <div className="mt-3 inline-flex items-center gap-2 text-[11px] text-zinc-500 bg-zinc-800/60 px-3 py-1.5 rounded-lg border border-zinc-700/30">
-                    🧠 Hệ thống SRS sẽ nhắc bạn đúng lúc
+                    <Brain className="w-3.5 h-3.5 text-amber-400" />
+                    <span>Hệ thống SRS sẽ nhắc bạn đúng lúc</span>
                   </div>
                 </div>
               )}
@@ -394,7 +420,10 @@ useEffect(() => {
           <div className="bg-zinc-900/60 border border-zinc-800/50 rounded-2xl p-5">
             <div className="flex items-center justify-between mb-4">
               <div>
-                <p className="text-[13px] text-white font-semibold">🧠 Lộ trình ôn tập Spaced Repetition</p>
+                <p className="text-[13px] text-white font-semibold flex items-center gap-1.5">
+                  <Brain className="w-4 h-4 text-amber-400" />
+                  <span>Lộ trình ôn tập Spaced Repetition</span>
+                </p>
                 <p className="text-[11px] text-zinc-500 mt-0.5">Mỗi từ trải qua 8 giai đoạn – ôn đúng lúc trước khi quên</p>
               </div>
             </div>
@@ -405,39 +434,47 @@ useEffect(() => {
                 {/* Line */}
                 <div className="absolute top-5 left-0 right-0 h-0.5 bg-zinc-800 rounded-full" />
                 <div className="flex justify-between relative">
-                  {SRS_STEPS.map((step, i) => (
-                    <div key={i} className="flex flex-col items-center group relative" style={{ width: `${100 / SRS_STEPS.length}%` }}>
-                      {/* Dot */}
-                      <div className={`w-10 h-10 rounded-xl bg-gradient-to-br ${step.color} flex items-center justify-center text-base shadow-sm group-hover:scale-110 transition-transform z-10`}>
-                        {step.icon}
+                  {SRS_STEPS.map((step, i) => {
+                    const StepIcon = step.icon;
+                    return (
+                      <div key={i} className="flex flex-col items-center group relative" style={{ width: `${100 / SRS_STEPS.length}%` }}>
+                        {/* Dot */}
+                        <div className={`w-10 h-10 rounded-xl bg-gradient-to-br ${step.color} flex items-center justify-center text-white shadow-sm group-hover:scale-110 transition-transform z-10`}>
+                          <StepIcon className="w-5 h-5" />
+                        </div>
+                        {/* Connector arrow */}
+                        {i < SRS_STEPS.length - 1 && (
+                          <div className="absolute top-5 -right-0.5 text-zinc-700 text-[10px] z-0">
+                            <ChevronRight className="w-3 h-3" />
+                          </div>
+                        )}
+                        {/* Label */}
+                        <p className="text-[10px] text-zinc-300 font-semibold mt-2 text-center">{step.label}</p>
+                        <p className="text-[9px] text-zinc-600 text-center">{step.sub}</p>
                       </div>
-                      {/* Connector arrow */}
-                      {i < SRS_STEPS.length - 1 && (
-                        <div className="absolute top-5 -right-0.5 text-zinc-700 text-[10px] z-0">→</div>
-                      )}
-                      {/* Label */}
-                      <p className="text-[10px] text-zinc-300 font-semibold mt-2 text-center">{step.label}</p>
-                      <p className="text-[9px] text-zinc-600 text-center">{step.sub}</p>
-                    </div>
-                  ))}
+                    );
+                  })}
                 </div>
               </div>
             </div>
 
             {/* Mobile timeline (vertical) */}
             <div className="sm:hidden space-y-2">
-              {SRS_STEPS.map((step, i) => (
-                <div key={i} className="flex items-center gap-3">
-                  <div className={`w-8 h-8 rounded-lg bg-gradient-to-br ${step.color} flex items-center justify-center text-sm shrink-0`}>
-                    {step.icon}
+              {SRS_STEPS.map((step, i) => {
+                const StepIcon = step.icon;
+                return (
+                  <div key={i} className="flex items-center gap-3">
+                    <div className={`w-8 h-8 rounded-lg bg-gradient-to-br ${step.color} flex items-center justify-center text-white shrink-0`}>
+                      <StepIcon className="w-4 h-4" />
+                    </div>
+                    <div className="flex-1 min-w-0">
+                      <p className="text-[11px] text-zinc-300 font-semibold">{step.label}</p>
+                      <p className="text-[10px] text-zinc-600">{step.sub}</p>
+                    </div>
+                    {i < SRS_STEPS.length - 1 && <ChevronRight className="w-3 h-3 text-zinc-700" />}
                   </div>
-                  <div className="flex-1 min-w-0">
-                    <p className="text-[11px] text-zinc-300 font-semibold">{step.label}</p>
-                    <p className="text-[10px] text-zinc-600">{step.sub}</p>
-                  </div>
-                  {i < SRS_STEPS.length - 1 && <span className="text-zinc-700 text-[10px]">→</span>}
-                </div>
-              ))}
+                );
+              })}
             </div>
           </div>
 
@@ -445,7 +482,7 @@ useEffect(() => {
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
             {[
               {
-                icon: "📚",
+                icon: BookOpen,
                 label: "Tổng đã học",
                 value: srsStatus?.totalLearned ?? 0,
                 sub: `/${srsStatus?.totalStageWords ?? "?"} chặng này`,
@@ -453,7 +490,7 @@ useEffect(() => {
                 textColor: "text-blue-400",
               },
               {
-                icon: "🔄",
+                icon: RotateCcw,
                 label: "Đang ôn tập",
                 value: srsStatus?.learningCount ?? 0,
                 sub: "trong hệ thống SRS",
@@ -461,7 +498,7 @@ useEffect(() => {
                 textColor: "text-amber-400",
               },
               {
-                icon: "✅",
+                icon: Check,
                 label: "Đã thuộc",
                 value: srsStatus?.masteredCount ?? 0,
                 sub: "mastered",
@@ -469,26 +506,29 @@ useEffect(() => {
                 textColor: "text-emerald-400",
               },
               {
-                icon: "🔥",
+                icon: Flame,
                 label: "Streak",
                 value: srsStatus?.streak ?? 0,
                 sub: "ngày liên tục",
                 accent: "from-orange-600/15 to-orange-600/5 border-orange-600/15",
                 textColor: "text-orange-400",
               },
-            ].map((card) => (
-              <div
-                key={card.label}
-                className={`bg-gradient-to-br ${card.accent} border rounded-2xl p-4 transition-all hover:scale-[1.02]`}
-              >
-                <div className="flex items-center gap-2 mb-2">
-                  <span className="text-lg">{card.icon}</span>
-                  <span className="text-[11px] text-zinc-400 font-medium">{card.label}</span>
+            ].map((card) => {
+              const CardIcon = card.icon;
+              return (
+                <div
+                  key={card.label}
+                  className={`bg-gradient-to-br ${card.accent} border rounded-2xl p-4 transition-all hover:scale-[1.02]`}
+                >
+                  <div className="flex items-center gap-2 mb-2">
+                    <CardIcon className="w-4 h-4 text-zinc-400" />
+                    <span className="text-[11px] text-zinc-400 font-medium">{card.label}</span>
+                  </div>
+                  <p className={`text-2xl font-bold ${card.textColor}`}>{srsLoading ? "—" : card.value}</p>
+                  <p className="text-[10px] text-zinc-600 mt-0.5">{card.sub}</p>
                 </div>
-                <p className={`text-2xl font-bold ${card.textColor}`}>{srsLoading ? "—" : card.value}</p>
-                <p className="text-[10px] text-zinc-600 mt-0.5">{card.sub}</p>
-              </div>
-            ))}
+              );
+            })}
           </div>
 
           {/* ─────── 4. TOPICS ─────── */}
@@ -510,52 +550,54 @@ useEffect(() => {
               <div className="grid sm:grid-cols-2 lg:grid-cols-2 gap-3">
                 {vocabTopics.map((topic) => {
                   const progress = topic.words > 0 ? Math.round((topic.done / topic.words) * 100) : 0;
-                return (
-                  <div
-                    key={topic.id}
-                    className="bg-zinc-900/60 border border-zinc-800/50 hover:border-zinc-700/60 rounded-2xl p-4 cursor-pointer transition-all group"
-                  >
-                    <div className="flex items-start gap-3">
-                      <div className={`w-11 h-11 rounded-xl bg-gradient-to-br ${topic.color} flex items-center justify-center text-xl shrink-0 shadow-sm group-hover:scale-105 transition-transform`}>
-                        {topic.icon}
+                  return (
+                    <div
+                      key={topic.id}
+                      className="bg-zinc-900/60 border border-zinc-800/50 hover:border-zinc-700/60 rounded-2xl p-4 cursor-pointer transition-all group"
+                    >
+                      <div className="flex items-start gap-3">
+                        <div className={`w-11 h-11 rounded-xl bg-gradient-to-br ${topic.color} flex items-center justify-center text-white shrink-0 shadow-sm group-hover:scale-105 transition-transform`}>
+                          <BookOpen className="w-5 h-5" />
+                        </div>
+                        <div className="flex-1 min-w-0">
+                          <p className="text-[13px] text-white font-semibold truncate">{topic.label}</p>
+                          <p className="text-[11px] text-zinc-500 mt-0.5">{topic.words} từ</p>
+                        </div>
+                        {progress === 100 && <Check className="w-4 h-4 text-green-400 shrink-0" />}
                       </div>
-                      <div className="flex-1 min-w-0">
-                        <p className="text-[13px] text-white font-semibold truncate">{topic.label}</p>
-                        <p className="text-[11px] text-zinc-500 mt-0.5">{topic.words} từ</p>
+                      <div className="mt-3.5">
+                        <div className="flex justify-between mb-1.5">
+                          <span className="text-[10px] text-zinc-600">{topic.done}/{topic.words} từ</span>
+                          <span className="text-[10px] text-zinc-500 font-medium">{progress}%</span>
+                        </div>
+                        <div className="w-full bg-zinc-800 rounded-full h-1.5">
+                          <div
+                            className={`bg-gradient-to-r ${topic.color} h-1.5 rounded-full transition-all duration-500`}
+                            style={{ width: `${progress}%` }}
+                          />
+                        </div>
                       </div>
-                      {progress === 100 && <span className="text-green-400 text-sm">✓</span>}
+                      {topic.done === 0 ? (
+                        <Link
+                          href="/dashboard/vocabulary"
+                          className="mt-3 block w-full text-center text-[11px] text-zinc-500 hover:text-white py-1.5 rounded-lg border border-zinc-800 hover:border-zinc-700 transition-all"
+                        >
+                          Bắt đầu học
+                        </Link>
+                      ) : (
+                        <Link
+                          href="/dashboard/vocabulary"
+                          className="mt-3 flex items-center justify-center gap-1 w-full text-center text-[11px] text-red-400 hover:text-red-300 py-1.5 rounded-lg border border-red-600/20 hover:border-red-600/40 transition-all"
+                        >
+                          <span>Tiếp tục</span>
+                          <ArrowRight className="w-3 h-3" />
+                          <span>{topic.done}/{topic.words}</span>
+                        </Link>
+                      )}
                     </div>
-                    <div className="mt-3.5">
-                      <div className="flex justify-between mb-1.5">
-                        <span className="text-[10px] text-zinc-600">{topic.done}/{topic.words} từ</span>
-                        <span className="text-[10px] text-zinc-500 font-medium">{progress}%</span>
-                      </div>
-                      <div className="w-full bg-zinc-800 rounded-full h-1.5">
-                        <div
-                          className={`bg-gradient-to-r ${topic.color} h-1.5 rounded-full transition-all duration-500`}
-                          style={{ width: `${progress}%` }}
-                        />
-                      </div>
-                    </div>
-                    {topic.done === 0 ? (
-                      <Link
-                        href="/dashboard/vocabulary"
-                        className="mt-3 block w-full text-center text-[11px] text-zinc-500 hover:text-white py-1.5 rounded-lg border border-zinc-800 hover:border-zinc-700 transition-all"
-                      >
-                        Bắt đầu học
-                      </Link>
-                    ) : (
-                      <Link
-                        href="/dashboard/vocabulary"
-                        className="mt-3 block w-full text-center text-[11px] text-red-400 hover:text-red-300 py-1.5 rounded-lg border border-red-600/20 hover:border-red-600/40 transition-all"
-                      >
-                        Tiếp tục → {topic.done}/{topic.words}
-                      </Link>
-                    )}
-                  </div>
-                );
-              })}
-            </div>
+                  );
+                })}
+              </div>
             )}
           </div>
         </div>
@@ -567,8 +609,8 @@ useEffect(() => {
           {/* Dashboard Quick Banner */}
           <div className="bg-gradient-to-r from-red-950/40 via-zinc-900 to-zinc-900 border border-red-800/40 rounded-2xl p-5 flex flex-col sm:flex-row sm:items-center justify-between gap-4 shadow-lg">
             <div className="flex items-center gap-3.5">
-              <div className="w-12 h-12 rounded-2xl bg-red-600/20 border border-red-500/30 flex items-center justify-center text-2xl shrink-0">
-                📊
+              <div className="w-12 h-12 rounded-2xl bg-red-600/20 border border-red-500/30 text-red-400 flex items-center justify-center shrink-0">
+                <BarChart3 className="w-6 h-6" />
               </div>
               <div>
                 <h3 className="text-base font-bold text-white">Bảng Điều Khiển Ngữ Pháp Chuyên Sâu</h3>
@@ -582,7 +624,7 @@ useEffect(() => {
               className="px-4 py-2.5 bg-red-600 hover:bg-red-500 text-white text-xs font-bold rounded-xl shrink-0 transition-all flex items-center justify-center gap-1.5 shadow"
             >
               <span>Mở Grammar Dashboard</span>
-              <span>→</span>
+              <ArrowRight className="w-3.5 h-3.5" />
             </Link>
           </div>
 
@@ -599,117 +641,100 @@ useEffect(() => {
             )}
           </div>
 
-    {/* Loading */}
-    {grammarLoading && (
-      <div className="space-y-3">
-        {[1, 2, 3, 4].map((item) => (
-          <div
-            key={item}
-            className="h-20 bg-zinc-900/60 border border-zinc-800/50 rounded-xl animate-pulse"
-          />
-        ))}
-      </div>
-    )}
-
-    {/* Error */}
-    {!grammarLoading && grammarError && (
-      <div className="bg-red-950/30 border border-red-800/40 rounded-xl p-5">
-        <p className="text-sm text-red-400">
-          {grammarError}
-        </p>
-      </div>
-    )}
-
-    {/* Empty */}
-    {!grammarLoading &&
-      !grammarError &&
-      grammarTopics.length === 0 && (
-        <div className="bg-zinc-900/60 border border-zinc-800/50 rounded-xl p-6 text-center">
-          <p className="text-zinc-400 text-sm">
-            Chưa có dữ liệu ngữ pháp.
-          </p>
-        </div>
-      )}
-
-    {/* Categories */}
-    {!grammarLoading &&
-      !grammarError &&
-      grammarTopics.map((topic) => (
-        <Link
-          key={topic.id}
-          href={`/dashboard/courses/grammar/${topic.id}`}
-          className="bg-zinc-900/60 border border-zinc-800/50 hover:border-zinc-700/60 rounded-xl p-4 flex items-center gap-4 transition-all group"
-        >
-
-          {/* Icon */}
-          <div className="w-10 h-10 rounded-xl bg-red-600/15 border border-red-600/20 flex items-center justify-center text-lg shrink-0">
-            📝
-          </div>
-
-          {/* Content */}
-          <div className="flex-1 min-w-0">
-
-            <div className="flex items-center gap-2 flex-wrap">
-
-              <p className="text-[13px] text-white font-medium">
-                {topic.name}
-              </p>
-
-              <span className="text-[9px] font-semibold px-2 py-0.5 rounded-full border bg-blue-600/15 text-blue-400 border-blue-600/20">
-                Chặng {topic.stage}
-              </span>
-
+          {/* Loading */}
+          {grammarLoading && (
+            <div className="space-y-3">
+              {[1, 2, 3, 4].map((item) => (
+                <div
+                  key={item}
+                  className="h-20 bg-zinc-900/60 border border-zinc-800/50 rounded-xl animate-pulse"
+                />
+              ))}
             </div>
+          )}
 
-            {topic.description && (
-              <p className="text-[11px] text-zinc-500 mt-1 truncate">
-                {topic.description}
+          {/* Error */}
+          {!grammarLoading && grammarError && (
+            <div className="bg-red-950/30 border border-red-800/40 rounded-xl p-5">
+              <p className="text-sm text-red-400">
+                {grammarError}
               </p>
+            </div>
+          )}
+
+          {/* Empty */}
+          {!grammarLoading &&
+            !grammarError &&
+            grammarTopics.length === 0 && (
+              <div className="bg-zinc-900/60 border border-zinc-800/50 rounded-xl p-6 text-center">
+                <p className="text-zinc-400 text-sm">
+                  Chưa có dữ liệu ngữ pháp.
+                </p>
+              </div>
             )}
 
-            {/* Progress */}
-            <div className="flex items-center gap-2 mt-2">
+          {/* Categories */}
+          {!grammarLoading &&
+            !grammarError &&
+            grammarTopics.map((topic) => (
+              <Link
+                key={topic.id}
+                href={`/dashboard/courses/grammar/${topic.id}`}
+                className="bg-zinc-900/60 border border-zinc-800/50 hover:border-zinc-700/60 rounded-xl p-4 flex items-center gap-4 transition-all group"
+              >
+                {/* Icon */}
+                <div className="w-10 h-10 rounded-xl bg-red-600/15 border border-red-600/20 text-red-400 flex items-center justify-center shrink-0">
+                  <FileText className="w-5 h-5" />
+                </div>
 
-              <div className="flex-1 bg-zinc-800 rounded-full h-1.5">
-                <div
-                  className="bg-gradient-to-r from-red-600 to-red-400 h-1.5 rounded-full transition-all"
-                  style={{
-                    width: `${topic.progress}%`,
-                  }}
-                />
-              </div>
+                {/* Content */}
+                <div className="flex-1 min-w-0">
+                  <div className="flex items-center gap-2 flex-wrap">
+                    <p className="text-[13px] text-white font-medium">
+                      {topic.name}
+                    </p>
+                    <span className="text-[9px] font-semibold px-2 py-0.5 rounded-full border bg-blue-600/15 text-blue-400 border-blue-600/20">
+                      Chặng {topic.stage}
+                    </span>
+                  </div>
 
-              <span className="text-[10px] text-zinc-500 shrink-0">
-                {topic.completedLessons}/
-                {topic.totalLessons} bài
-              </span>
+                  {topic.description && (
+                    <p className="text-[11px] text-zinc-500 mt-1 truncate">
+                      {topic.description}
+                    </p>
+                  )}
 
-            </div>
+                  {/* Progress */}
+                  <div className="flex items-center gap-2 mt-2">
+                    <div className="flex-1 bg-zinc-800 rounded-full h-1.5">
+                      <div
+                        className="bg-gradient-to-r from-red-600 to-red-400 h-1.5 rounded-full transition-all"
+                        style={{
+                          width: `${topic.progress}%`,
+                        }}
+                      />
+                    </div>
+                    <span className="text-[10px] text-zinc-500 shrink-0">
+                      {topic.completedLessons}/{topic.totalLessons} bài
+                    </span>
+                  </div>
+                </div>
 
-          </div>
-
-          {/* Percentage */}
-          <div className="text-right shrink-0">
-
-            <p className="text-xs text-zinc-400">
-              {topic.progress}%
-            </p>
-
-            <span className="text-zinc-600 group-hover:text-zinc-400 transition-colors">
-              ›
-            </span>
-
-          </div>
-
-        </Link>
-      ))}
-  </div>
-)}
+                {/* Percentage */}
+                <div className="text-right shrink-0 flex items-center gap-2">
+                  <p className="text-xs text-zinc-400 font-medium">
+                    {topic.progress}%
+                  </p>
+                  <ChevronRight className="w-4 h-4 text-zinc-600 group-hover:text-zinc-400 transition-colors" />
+                </div>
+              </Link>
+            ))}
+        </div>
+      )}
 
       {/* ── Listening ── */}
       {activeTab === "listening" && (
         <div className="space-y-5">
-
           {/* ─────── HERO: Học tập hàng ngày ─────── */}
           <div className="relative overflow-hidden bg-gradient-to-br from-zinc-900 to-zinc-900/80 border border-zinc-800/60 rounded-2xl p-5">
             <div className="absolute top-0 right-0 w-48 h-48 bg-gradient-to-br from-red-600/8 to-transparent rounded-full -translate-y-12 translate-x-12" />
@@ -724,8 +749,8 @@ useEffect(() => {
               <>
                 {/* Header */}
                 <div className="flex items-center gap-3 mb-4">
-                  <div className="w-11 h-11 rounded-xl bg-gradient-to-br from-red-600 to-red-500 flex items-center justify-center text-xl shadow-lg shadow-red-600/20">
-                    🎧
+                  <div className="w-11 h-11 rounded-xl bg-gradient-to-br from-red-600 to-red-500 flex items-center justify-center text-white shadow-lg shadow-red-600/20">
+                    <Headphones className="w-6 h-6" />
                   </div>
                   <div>
                     <p className="text-[15px] text-white font-bold">Listening hôm nay</p>
@@ -759,7 +784,8 @@ useEffect(() => {
                 {(listeningStatus?.completedToday ?? 0) >= (listeningStatus?.dailyGoal ?? 2) ? (
                   <div className="bg-emerald-950/30 border border-emerald-600/20 rounded-xl p-4 text-center">
                     <p className="text-emerald-400 font-semibold flex items-center justify-center gap-2">
-                      <span className="text-lg">✅</span> Đã hoàn thành Listening hôm nay!
+                      <Check className="w-5 h-5" />
+                      <span>Đã hoàn thành Listening hôm nay!</span>
                     </p>
                     <p className="text-[11px] text-zinc-500 mt-1">Quay lại ngày mai để học 2 Group tiếp theo.</p>
                   </div>
@@ -773,6 +799,7 @@ useEffect(() => {
                     <div className="grid sm:grid-cols-2 gap-3">
                       {listeningGroups.map((group, idx) => {
                         const partInfo = LISTENING_PARTS.find(p => p.part === group.part);
+                        const PartIcon = partInfo?.icon || Headphones;
                         const questionCount = group.listening_lesson_questions?.length ?? 0;
                         return (
                           <Link
@@ -792,8 +819,8 @@ useEffect(() => {
 
                             {/* Icon + Info */}
                             <div className="flex items-center gap-3">
-                              <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-blue-600/20 to-blue-500/10 border border-blue-600/20 flex items-center justify-center text-lg shrink-0">
-                                {partInfo?.icon || "🎧"}
+                              <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-blue-600/20 to-blue-500/10 border border-blue-600/20 text-blue-400 flex items-center justify-center shrink-0">
+                                <PartIcon className="w-5 h-5" />
                               </div>
                               <div className="flex-1 min-w-0">
                                 <p className="text-[13px] text-white font-semibold truncate">
@@ -805,9 +832,7 @@ useEffect(() => {
                                     : `${questionCount} câu hỏi`}
                                 </p>
                               </div>
-                              <div className="text-zinc-600 group-hover/card:text-red-400 transition-colors text-lg">
-                                ›
-                              </div>
+                              <ChevronRight className="w-5 h-5 text-zinc-600 group-hover/card:text-red-400 transition-colors" />
                             </div>
 
                             {/* CTA */}
@@ -823,7 +848,10 @@ useEffect(() => {
                     <div className="mt-6 space-y-4">
                       <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between mb-2 gap-3">
                         <div>
-                          <p className="text-[13px] text-white font-semibold">🔁 Ôn lại Listening</p>
+                          <p className="text-[13px] text-white font-semibold flex items-center gap-1.5">
+                            <RotateCcw className="w-4 h-4 text-red-400" />
+                            <span>Ôn lại Listening</span>
+                          </p>
                           <p className="text-[11px] text-zinc-500 mt-1">
                             Tách riêng khỏi phần học hôm nay, gồm 4 Part review và ôn tập bài đã học.
                           </p>
@@ -839,14 +867,15 @@ useEffect(() => {
                       <div className="grid sm:grid-cols-2 gap-3">
                         {[1, 2, 3, 4].map((part) => {
                           const partInfo = LISTENING_PARTS.find((item) => item.part === part);
+                          const PartIcon = partInfo?.icon || Headphones;
                           const reviewGroup = listeningReviewGroups.find((group) => group.part === part);
                           const questionCount = reviewGroup?.listening_lesson_questions?.length ?? 0;
 
                           const cardBody = (
                             <div className={`relative overflow-hidden bg-zinc-800/50 rounded-2xl p-4 transition-all ${reviewGroup ? 'border border-red-600/20 hover:border-red-500/30 shadow-lg shadow-red-600/10' : 'border border-zinc-700/40'}`}>
                               <div className="flex items-center gap-3 mb-3">
-                                <div className={`w-11 h-11 rounded-xl flex items-center justify-center text-lg ${part <= 2 ? 'bg-red-600/10 border border-red-600/20 text-red-400' : 'bg-sky-600/10 border border-sky-500/20 text-sky-300'}`}>
-                                  {partInfo?.icon || '🎧'}
+                                <div className={`w-11 h-11 rounded-xl flex items-center justify-center ${part <= 2 ? 'bg-red-600/10 border border-red-600/20 text-red-400' : 'bg-sky-600/10 border border-sky-500/20 text-sky-300'}`}>
+                                  <PartIcon className="w-5 h-5" />
                                 </div>
                                 <div className="flex-1 min-w-0">
                                   <p className="text-[13px] text-white font-semibold truncate">
@@ -876,16 +905,16 @@ useEffect(() => {
                           );
 
                           return reviewGroup ? (
-  <Link
-    key={part}
-    href={`/dashboard/courses/listening/review?part=${part}`}
-    className="block"
-  >
-    {cardBody}
-  </Link>
-) : (
-  <div key={part}>{cardBody}</div>
-);
+                            <Link
+                              key={part}
+                              href={`/dashboard/courses/listening/review?part=${part}`}
+                              className="block"
+                            >
+                              {cardBody}
+                            </Link>
+                          ) : (
+                            <div key={part}>{cardBody}</div>
+                          );
                         })}
                       </div>
                     </div>
@@ -900,7 +929,6 @@ useEffect(() => {
       {/* ── Reading ── */}
       {activeTab === "reading" && (
         <div className="space-y-5">
-
           {/* ─────── HERO: Học tập hàng ngày ─────── */}
           <div className="relative overflow-hidden bg-gradient-to-br from-zinc-900 to-zinc-900/80 border border-zinc-800/60 rounded-2xl p-5">
             <div className="absolute top-0 right-0 w-48 h-48 bg-gradient-to-br from-red-600/8 to-transparent rounded-full -translate-y-12 translate-x-12" />
@@ -915,8 +943,8 @@ useEffect(() => {
               <>
                 {/* Header */}
                 <div className="flex items-center gap-3 mb-4">
-                  <div className="w-11 h-11 rounded-xl bg-gradient-to-br from-red-600 to-red-500 flex items-center justify-center text-xl shadow-lg shadow-red-600/20">
-                    📄
+                  <div className="w-11 h-11 rounded-xl bg-gradient-to-br from-red-600 to-red-500 flex items-center justify-center text-white shadow-lg shadow-red-600/20">
+                    <FileEdit className="w-6 h-6" />
                   </div>
                   <div>
                     <p className="text-[15px] text-white font-bold">Reading hôm nay</p>
@@ -947,205 +975,195 @@ useEffect(() => {
                 </div>
 
                 {/* Today's lessons */}
-                {/* Today's lessons */}
-{(readingStatus?.completedToday ?? 0) >=
-(readingStatus?.dailyGoal ?? 2) ? (
-  <div className="bg-emerald-950/30 border border-emerald-600/20 rounded-xl p-4 text-center">
-    <p className="text-emerald-400 font-semibold flex items-center justify-center gap-2">
-      <span className="text-lg">✅</span>
-      Đã hoàn thành Reading hôm nay!
-    </p>
+                {(readingStatus?.completedToday ?? 0) >= (readingStatus?.dailyGoal ?? 2) ? (
+                  <div className="bg-emerald-950/30 border border-emerald-600/20 rounded-xl p-4 text-center">
+                    <p className="text-emerald-400 font-semibold flex items-center justify-center gap-2">
+                      <Check className="w-5 h-5" />
+                      <span>Đã hoàn thành Reading hôm nay!</span>
+                    </p>
+                    <p className="text-[11px] text-zinc-500 mt-1">
+                      Quay lại ngày mai để học bài tiếp theo.
+                    </p>
+                  </div>
+                ) : readingLessons.length === 0 ? (
+                  <div className="bg-zinc-800/40 border border-zinc-700/30 rounded-xl p-4 text-center">
+                    <p className="text-zinc-400 text-sm">
+                      Chưa có dữ liệu bài học cho chặng hiện tại.
+                    </p>
+                    <p className="text-[11px] text-zinc-600 mt-1">
+                      Vui lòng liên hệ admin hoặc kiểm tra data.
+                    </p>
+                  </div>
+                ) : (
+                  <div className="grid sm:grid-cols-2 gap-3">
+                    {readingLessons.map((lesson, idx) => {
+                      const partInfo = READING_PARTS.find(
+                        (p) => p.part === lesson.part
+                      );
+                      const PartIcon = partInfo?.icon || FileText;
 
-    <p className="text-[11px] text-zinc-500 mt-1">
-      Quay lại ngày mai để học bài tiếp theo.
-    </p>
-  </div>
-) : readingLessons.length === 0 ? (
-  <div className="bg-zinc-800/40 border border-zinc-700/30 rounded-xl p-4 text-center">
-    <p className="text-zinc-400 text-sm">
-      Chưa có dữ liệu bài học cho chặng hiện tại.
-    </p>
+                      const questionCount =
+                        lesson.reading_lesson_groups?.reduce(
+                          (sum, group) =>
+                            sum +
+                            (group.reading_questions?.length ?? 0),
+                          0
+                        ) ?? 0;
 
-    <p className="text-[11px] text-zinc-600 mt-1">
-      Vui lòng liên hệ admin hoặc kiểm tra data.
-    </p>
-  </div>
-) : (
-  <div className="grid sm:grid-cols-2 gap-3">
-    {readingLessons.map((lesson, idx) => {
-      const partInfo = READING_PARTS.find(
-        (p) => p.part === lesson.part
-      );
+                      return (
+                        <Link
+                          key={lesson.id}
+                          href={`/dashboard/courses/reading/learn?lesson=${lesson.id}&group=${lesson.groupId}`}
+                          className="relative bg-zinc-800/50 hover:bg-zinc-800/80 border border-zinc-700/40 hover:border-red-600/30 rounded-xl p-4 transition-all group/card hover:shadow-lg hover:shadow-red-600/5"
+                        >
+                          <div className="flex items-center gap-2 mb-2.5">
+                            <span className="text-[10px] font-bold bg-red-600/15 text-red-400 border border-red-600/20 px-2 py-0.5 rounded-md">
+                              Bài {idx + 1}
+                            </span>
+                            <span className="text-[10px] text-zinc-600">
+                              Part {lesson.part}
+                            </span>
+                          </div>
 
-      const questionCount =
-        lesson.reading_lesson_groups?.reduce(
-          (sum, group) =>
-            sum +
-            (group.reading_questions?.length ?? 0),
-          0
-        ) ?? 0;
+                          <div className="flex items-center gap-3">
+                            <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-green-600/20 to-green-500/10 border border-green-600/20 text-emerald-400 flex items-center justify-center shrink-0">
+                              <PartIcon className="w-5 h-5" />
+                            </div>
 
-      return (
-        <Link
-          key={lesson.id}
-          href={`/dashboard/courses/reading/learn?lesson=${lesson.id}&group=${lesson.groupId}`}
-          className="relative bg-zinc-800/50 hover:bg-zinc-800/80 border border-zinc-700/40 hover:border-red-600/30 rounded-xl p-4 transition-all group/card hover:shadow-lg hover:shadow-red-600/5"
-        >
-          <div className="flex items-center gap-2 mb-2.5">
-            <span className="text-[10px] font-bold bg-red-600/15 text-red-400 border border-red-600/20 px-2 py-0.5 rounded-md">
-              Bài {idx + 1}
-            </span>
+                            <div className="flex-1 min-w-0">
+                              <p className="text-[13px] text-white font-semibold truncate">
+                                {partInfo?.label || `Part ${lesson.part}`}
+                              </p>
+                              <p className="text-[11px] text-zinc-500">
+                                {questionCount} câu hỏi
+                              </p>
+                            </div>
 
-            <span className="text-[10px] text-zinc-600">
-              Part {lesson.part}
-            </span>
-          </div>
+                            <ChevronRight className="w-5 h-5 text-zinc-600 group-hover/card:text-red-400 transition-colors" />
+                          </div>
 
-          <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-green-600/20 to-green-500/10 border border-green-600/20 flex items-center justify-center text-lg shrink-0">
-              {partInfo?.icon || "📄"}
-            </div>
+                          <div className="mt-3 text-center text-[11px] font-semibold text-red-400 bg-red-600/8 border border-red-600/15 py-1.5 rounded-lg group-hover/card:bg-red-600/15 transition-all">
+                            Bắt đầu học
+                          </div>
+                        </Link>
+                      );
+                    })}
+                  </div>
+                )}
 
-            <div className="flex-1 min-w-0">
-              <p className="text-[13px] text-white font-semibold truncate">
-                {partInfo?.label || `Part ${lesson.part}`}
-              </p>
+                {/* REVIEW READING - LUÔN HIỂN THỊ */}
+                <div className="mt-6 space-y-4">
+                  <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between mb-2 gap-3">
+                    <div>
+                      <p className="text-[13px] text-white font-semibold flex items-center gap-1.5">
+                        <RotateCcw className="w-4 h-4 text-red-400" />
+                        <span>Ôn lại Reading</span>
+                      </p>
+                      <p className="text-[11px] text-zinc-500 mt-1">
+                        Tách riêng khỏi phần học hôm nay, gồm 3 Part review và ôn tập bài đã học.
+                      </p>
+                    </div>
 
-              <p className="text-[11px] text-zinc-500">
-                {questionCount} câu hỏi
-              </p>
-            </div>
+                    <Link
+                      href="/dashboard/courses/reading/review"
+                      className="inline-flex items-center justify-center rounded-full border border-red-600/20 bg-red-600/10 px-4 py-2 text-[11px] font-semibold text-red-300 hover:bg-red-600/15 transition"
+                    >
+                      Đi tới ôn tập bài đã học
+                    </Link>
+                  </div>
 
-            <div className="text-zinc-600 group-hover/card:text-red-400 transition-colors text-lg">
-              ›
-            </div>
-          </div>
+                  <div className="grid sm:grid-cols-3 gap-3">
+                    {[5, 6, 7].map((part) => {
+                      const partInfo = READING_PARTS.find(
+                        (item) => item.part === part
+                      );
+                      const PartIcon = partInfo?.icon || FileText;
 
-          <div className="mt-3 text-center text-[11px] font-semibold text-red-400 bg-red-600/8 border border-red-600/15 py-1.5 rounded-lg group-hover/card:bg-red-600/15 transition-all">
-            Bắt đầu học
-          </div>
-        </Link>
-      );
-    })}
-  </div>
-)}
+                      const reviewLesson =
+                        readingReviewLessons.find(
+                          (lesson) => lesson.part === part
+                        );
 
-{/* ================================================== */}
-{/* REVIEW READING - LUÔN HIỂN THỊ */}
-{/* ================================================== */}
+                      const questionCount =
+                        reviewLesson?.reading_lesson_groups?.reduce(
+                          (sum, group) =>
+                            sum +
+                            (group.reading_questions?.length ?? 0),
+                          0
+                        ) ?? 0;
 
-<div className="mt-6 space-y-4">
-  <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between mb-2 gap-3">
-    <div>
-      <p className="text-[13px] text-white font-semibold">
-        🔁 Ôn lại Reading
-      </p>
+                      const cardBody = (
+                        <div
+                          className={`relative overflow-hidden bg-zinc-800/50 rounded-2xl p-4 transition-all h-full flex flex-col ${
+                            reviewLesson
+                              ? "border border-red-600/20 hover:border-red-500/30 shadow-lg shadow-red-600/10"
+                              : "border border-zinc-700/40"
+                          }`}
+                        >
+                          <div className="flex items-center gap-3 mb-3">
+                            <div
+                              className={`w-11 h-11 rounded-xl flex items-center justify-center ${
+                                part === 5
+                                  ? "bg-green-600/10 border border-green-600/20 text-green-400"
+                                  : "bg-emerald-600/10 border border-emerald-500/20 text-emerald-300"
+                              }`}
+                            >
+                              <PartIcon className="w-5 h-5" />
+                            </div>
 
-      <p className="text-[11px] text-zinc-500 mt-1">
-        Tách riêng khỏi phần học hôm nay, gồm 3 Part
-        review và ôn tập bài đã học.
-      </p>
-    </div>
+                            <div className="flex-1 min-w-0">
+                              <p className="text-[13px] text-white font-semibold truncate">
+                                {partInfo?.label || `Part ${part}`}
+                              </p>
+                            </div>
 
-    <Link
-      href="/dashboard/courses/reading/review"
-      className="inline-flex items-center justify-center rounded-full border border-red-600/20 bg-red-600/10 px-4 py-2 text-[11px] font-semibold text-red-300 hover:bg-red-600/15 transition"
-    >
-      Đi tới ôn tập bài đã học
-    </Link>
-  </div>
+                            <span className="text-[10px] bg-zinc-900/70 border border-zinc-700/50 text-zinc-400 rounded-full px-2 py-1 shrink-0">
+                              Part {part}
+                            </span>
+                          </div>
 
-  <div className="grid sm:grid-cols-3 gap-3">
-    {[5, 6, 7].map((part) => {
-      const partInfo = READING_PARTS.find(
-        (item) => item.part === part
-      );
+                          <p className="text-[11px] text-zinc-500 mb-3 flex-1">
+                            {partInfo?.desc}
+                          </p>
 
-      const reviewLesson =
-        readingReviewLessons.find(
-          (lesson) => lesson.part === part
-        );
+                          <div className="text-[11px] text-zinc-400 mb-4">
+                            {reviewLesson
+                              ? `Sẵn sàng ôn lại — ${questionCount} câu`
+                              : "Chưa có dữ liệu ôn tập"}
+                          </div>
 
-      const questionCount =
-        reviewLesson?.reading_lesson_groups?.reduce(
-          (sum, group) =>
-            sum +
-            (group.reading_questions?.length ?? 0),
-          0
-        ) ?? 0;
+                          <div className="text-center mt-auto">
+                            <span
+                              className={`inline-flex items-center justify-center w-full rounded-xl py-3 text-[12px] font-semibold ${
+                                reviewLesson
+                                  ? "bg-red-600 text-white"
+                                  : "bg-zinc-800 text-zinc-500"
+                              }`}
+                            >
+                              {reviewLesson
+                                ? "Ôn lại"
+                                : "Chưa có dữ liệu"}
+                            </span>
+                          </div>
+                        </div>
+                      );
 
-      const cardBody = (
-        <div
-          className={`relative overflow-hidden bg-zinc-800/50 rounded-2xl p-4 transition-all h-full flex flex-col ${
-            reviewLesson
-              ? "border border-red-600/20 hover:border-red-500/30 shadow-lg shadow-red-600/10"
-              : "border border-zinc-700/40"
-          }`}
-        >
-          <div className="flex items-center gap-3 mb-3">
-            <div
-              className={`w-11 h-11 rounded-xl flex items-center justify-center text-lg ${
-                part === 5
-                  ? "bg-green-600/10 border border-green-600/20 text-green-400"
-                  : "bg-emerald-600/10 border border-emerald-500/20 text-emerald-300"
-              }`}
-            >
-              {partInfo?.icon || "📄"}
-            </div>
-
-            <div className="flex-1 min-w-0">
-              <p className="text-[13px] text-white font-semibold truncate">
-                {partInfo?.label || `Part ${part}`}
-              </p>
-            </div>
-
-            <span className="text-[10px] bg-zinc-900/70 border border-zinc-700/50 text-zinc-400 rounded-full px-2 py-1 shrink-0">
-              Part {part}
-            </span>
-          </div>
-
-          <p className="text-[11px] text-zinc-500 mb-3 flex-1">
-            {partInfo?.desc}
-          </p>
-
-          <div className="text-[11px] text-zinc-400 mb-4">
-            {reviewLesson
-              ? `Sẵn sàng ôn lại — ${questionCount} câu`
-              : "Chưa có dữ liệu ôn tập"}
-          </div>
-
-          <div className="text-center mt-auto">
-            <span
-              className={`inline-flex items-center justify-center w-full rounded-xl py-3 text-[12px] font-semibold ${
-                reviewLesson
-                  ? "bg-red-600 text-white"
-                  : "bg-zinc-800 text-zinc-500"
-              }`}
-            >
-              {reviewLesson
-                ? "Ôn lại"
-                : "Chưa có dữ liệu"}
-            </span>
-          </div>
-        </div>
-      );
-
-      return reviewLesson ? (
-        <Link
-          key={part}
-          href="/dashboard/courses/reading/review"
-          className="block h-full"
-        >
-          {cardBody}
-        </Link>
-      ) : (
-        <div key={part} className="h-full">
-          {cardBody}
-        </div>
-      );
-    })}
-  </div>
-</div>
+                      return reviewLesson ? (
+                        <Link
+                          key={part}
+                          href="/dashboard/courses/reading/review"
+                          className="block h-full"
+                        >
+                          {cardBody}
+                        </Link>
+                      ) : (
+                        <div key={part} className="h-full">
+                          {cardBody}
+                        </div>
+                      );
+                    })}
+                  </div>
+                </div>
               </>
             )}
           </div>

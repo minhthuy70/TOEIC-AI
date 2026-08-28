@@ -13,13 +13,30 @@ import {
 } from "recharts";
 import { getListeningDashboard } from "@/services/listening";
 import { ListeningDashboardResponse } from "@/types/listening";
+import {
+  Headphones,
+  Trophy,
+  Target,
+  Clock,
+  Flame,
+  BookOpen,
+  AlertTriangle,
+  Sparkles,
+  ArrowLeft,
+  Image as ImageIcon,
+  MessageSquare,
+  Users,
+  Mic,
+  SlidersHorizontal,
+  Settings,
+} from "lucide-react";
 
 function StatCard({
-  label, value, sub, icon, color = "indigo",
+  label, value, sub, icon: Icon, color = "indigo",
 }: {
-  label: string; value: string | number; sub?: string; icon: string; color?: string;
+  label: string; value: string | number; sub?: string; icon: any; color?: string;
 }) {
-  const gradients: Record<string,string> = {
+  const gradients: Record<string, string> = {
     indigo: "from-indigo-600/20 to-indigo-800/10 border-indigo-600/30",
     amber:  "from-amber-600/20 to-amber-800/10 border-amber-500/30",
     green:  "from-emerald-600/20 to-emerald-800/10 border-emerald-600/30",
@@ -29,7 +46,9 @@ function StatCard({
   };
   return (
     <div className={`bg-gradient-to-br ${gradients[color] ?? gradients.indigo} border rounded-2xl p-5 flex flex-col gap-2`}>
-      <div className="text-2xl">{icon}</div>
+      <div className="text-zinc-300">
+        <Icon className="w-5 h-5" />
+      </div>
       <p className="text-[11px] text-zinc-400 uppercase font-bold tracking-wider">{label}</p>
       <p className="text-3xl font-extrabold text-white leading-none">{value}</p>
       {sub && <p className="text-[11px] text-zinc-500">{sub}</p>}
@@ -42,7 +61,7 @@ const CustomTooltip = ({ active, payload }: any) => {
   return (
     <div className="bg-zinc-900 border border-zinc-700 rounded-xl p-3 text-xs shadow-xl">
       <p className="text-white font-bold">{payload[0]?.payload?.subject}</p>
-      <p className="text-indigo-400 font-semibold">Tá»· lá»‡ chÃ­nh xÃ¡c: {payload[0]?.value}%</p>
+      <p className="text-indigo-400 font-semibold">Tỷ lệ chính xác: {payload[0]?.value}%</p>
     </div>
   );
 };
@@ -61,7 +80,7 @@ export default function ListeningDashboardPage() {
   if (loading) {
     return (
       <div className="flex min-h-[60vh] items-center justify-center">
-        <div className="text-zinc-400 text-sm animate-pulse">Äang táº£i dá»¯ liá»‡u luyá»‡n nghe...</div>
+        <div className="text-zinc-400 text-sm animate-pulse">Đang tải dữ liệu luyện nghe...</div>
       </div>
     );
   }
@@ -69,7 +88,7 @@ export default function ListeningDashboardPage() {
   if (!data) {
     return (
       <div className="flex min-h-[60vh] items-center justify-center">
-        <div className="text-zinc-500 text-sm">KhÃ´ng thá»ƒ táº£i dá»¯ liá»‡u.</div>
+        <div className="text-zinc-500 text-sm">Không thể tải dữ liệu.</div>
       </div>
     );
   }
@@ -96,22 +115,26 @@ export default function ListeningDashboardPage() {
       {/* Header */}
       <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
         <div>
-          <h1 className="text-2xl font-bold text-white">ðŸŽ§ Luyá»‡n Nghe (Listening)</h1>
-          <p className="text-zinc-400 text-sm mt-1">Báº£ng Ä‘iá»u khiá»ƒn vÃ  phÃ¢n tÃ­ch ká»¹ nÄƒng nghe cá»§a báº¡n</p>
+          <h1 className="text-2xl font-bold text-white flex items-center gap-2.5">
+            <Headphones className="w-7 h-7 text-red-500" />
+            <span>Luyện Nghe (Listening)</span>
+          </h1>
+          <p className="text-zinc-400 text-sm mt-1">Bảng điều khiển và phân tích kỹ năng nghe của bạn</p>
         </div>
         <Link
           href="/dashboard"
-          className="flex items-center gap-2 px-4 py-2.5 bg-zinc-800 hover:bg-zinc-700 text-zinc-300 hover:text-white font-bold text-xs rounded-xl transition"
+          className="flex items-center gap-1.5 px-4 py-2.5 bg-zinc-800 hover:bg-zinc-700 text-zinc-300 hover:text-white font-bold text-xs rounded-xl transition"
         >
-          â† Trá»Ÿ vá» Dashboard
+          <ArrowLeft className="w-4 h-4" />
+          <span>Trở về Dashboard</span>
         </Link>
       </div>
 
       {!hasData && (
-        <div className="rounded-2xl border border-zinc-800 bg-zinc-900/60 p-10 text-center">
-          <p className="text-4xl mb-3">ðŸŽ§</p>
-          <p className="text-white font-bold text-lg">ChÆ°a cÃ³ dá»¯ liá»‡u luyá»‡n nghe</p>
-          <p className="text-zinc-500 text-sm mt-1">HÃ£y lÃ m bÃ i táº­p Ä‘á»ƒ há»‡ thá»‘ng cÃ³ thá»ƒ phÃ¢n tÃ­ch ká»¹ nÄƒng cá»§a báº¡n.</p>
+        <div className="rounded-2xl border border-zinc-800 bg-zinc-900/60 p-10 text-center flex flex-col items-center">
+          <Headphones className="w-12 h-12 text-zinc-600 mb-3" />
+          <p className="text-white font-bold text-lg">Chưa có dữ liệu luyện nghe</p>
+          <p className="text-zinc-500 text-sm mt-1">Hãy làm bài tập để hệ thống có thể phân tích kỹ năng của bạn.</p>
         </div>
       )}
 
@@ -119,11 +142,11 @@ export default function ListeningDashboardPage() {
         <>
           {/* Stat Cards */}
           <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4">
-            <StatCard icon="ðŸ†" label="Äiá»ƒm TOEIC (Nghe)" value={data.overallScore} sub="Æ¯á»›c tÃ­nh tá»« thi thá»­" color="amber" />
-            <StatCard icon="ðŸŽ¯" label="Äá»™ chÃ­nh xÃ¡c" value={`${data.accuracyRate}%`} sub="Táº¥t cáº£ bÃ i táº­p" color="green" />
-            <StatCard icon="â±ï¸" label="Thá»i gian trung bÃ¬nh" value={`${data.averageTimePerQuestion}s`} sub="Má»—i cÃ¢u há»i" color="sky" />
-            <StatCard icon="ðŸ”¥" label="Chuá»—i luyá»‡n táº­p" value={`${data.streak} ngÃ y`} sub="LiÃªn tiáº¿p" color="purple" />
-            <StatCard icon="ðŸ“š" label="ÄÃ£ hoÃ n thÃ nh" value={data.totalQuestionsCompleted} sub="CÃ¢u há»i" color="indigo" />
+            <StatCard icon={Trophy} label="Điểm TOEIC (Nghe)" value={data.overallScore} sub="Ước tính từ thi thử" color="amber" />
+            <StatCard icon={Target} label="Độ chính xác" value={`${data.accuracyRate}%`} sub="Tất cả bài tập" color="green" />
+            <StatCard icon={Clock} label="Thời gian TB" value={`${data.averageTimePerQuestion}s`} sub="Mỗi câu hỏi" color="sky" />
+            <StatCard icon={Flame} label="Chuỗi luyện tập" value={`${data.streak} ngày`} sub="Liên tiếp" color="purple" />
+            <StatCard icon={BookOpen} label="Đã hoàn thành" value={data.totalQuestionsCompleted} sub="Câu hỏi" color="indigo" />
           </div>
 
           <div className="grid lg:grid-cols-3 gap-6">
@@ -132,28 +155,28 @@ export default function ListeningDashboardPage() {
             <div className="lg:col-span-1 flex flex-col gap-4">
               {data.weakParts.length > 0 ? (
                 <div className="bg-rose-950/30 border border-rose-800/30 rounded-2xl p-5 flex-1 flex flex-col justify-center text-center">
-                  <div className="w-16 h-16 bg-rose-500/20 rounded-full flex items-center justify-center mx-auto mb-4">
-                    <span className="text-3xl">âš ï¸</span>
+                  <div className="w-14 h-14 bg-rose-500/20 text-rose-400 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <AlertTriangle className="w-7 h-7" />
                   </div>
-                  <h3 className="text-lg font-bold text-rose-300 mb-2">Ká»¹ nÄƒng yáº¿u: Part {data.weakParts.join(", ")}</h3>
+                  <h3 className="text-lg font-bold text-rose-300 mb-2">Kỹ năng yếu: Part {data.weakParts.join(", ")}</h3>
                   <p className="text-sm text-rose-200/70 mb-5">
-                    Há»‡ thá»‘ng nháº­n tháº¥y báº¡n cÃ³ tá»· lá»‡ chÃ­nh xÃ¡c tháº¥p nháº¥t á»Ÿ pháº§n nÃ y. HÃ£y dÃ nh thÃªm thá»i gian luyá»‡n táº­p!
+                    Hệ thống nhận thấy bạn có tỷ lệ chính xác thấp nhất ở phần này. Hãy dành thêm thời gian luyện tập!
                   </p>
                   <Link 
                     href={`/dashboard/listening/part-${data.weakParts[0]}`}
                     className="mx-auto px-6 py-2.5 bg-rose-600 hover:bg-rose-500 text-white font-bold text-sm rounded-xl transition"
                   >
-                    Luyá»‡n táº­p ngay Part {data.weakParts[0]}
+                    Luyện tập ngay Part {data.weakParts[0]}
                   </Link>
                 </div>
               ) : (
                 <div className="bg-emerald-950/30 border border-emerald-800/30 rounded-2xl p-5 flex-1 flex flex-col justify-center text-center">
-                  <div className="w-16 h-16 bg-emerald-500/20 rounded-full flex items-center justify-center mx-auto mb-4">
-                    <span className="text-3xl">ðŸŒŸ</span>
+                  <div className="w-14 h-14 bg-emerald-500/20 text-emerald-400 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <Sparkles className="w-7 h-7" />
                   </div>
-                  <h3 className="text-lg font-bold text-emerald-300 mb-2">Ráº¥t tá»‘t!</h3>
+                  <h3 className="text-lg font-bold text-emerald-300 mb-2">Rất tốt!</h3>
                   <p className="text-sm text-emerald-200/70 mb-5">
-                    Báº¡n Ä‘ang duy trÃ¬ tá»· lá»‡ chÃ­nh xÃ¡c khÃ¡ Ä‘á»“ng Ä‘á»u. Tiáº¿p tá»¥c phÃ¡t huy nhÃ©!
+                    Bạn đang duy trì tỷ lệ chính xác khá đồng đều. Tiếp tục phát huy nhé!
                   </p>
                 </div>
               )}
@@ -161,7 +184,6 @@ export default function ListeningDashboardPage() {
 
             {/* Radar Chart */}
             <div className="lg:col-span-2 bg-zinc-900/60 border border-zinc-800 rounded-2xl p-5">
-              <h2 className="text-sm font-bold text-white mb-4">PhÃ¢n tÃ­ch ká»¹ nÄƒng theo Part (Tá»· lá»‡ chÃ­nh xÃ¡c)</h2>
               <h2 className="text-sm font-bold text-white mb-4">Phân tích kỹ năng theo Part (Tỷ lệ chính xác)</h2>
               <div className="h-[300px] w-full">
                 <ResponsiveContainer width="100%" height="100%">
@@ -173,9 +195,9 @@ export default function ListeningDashboardPage() {
                     <Radar
                       name="Tỷ lệ chính xác"
                       dataKey="A"
-                      stroke="#818cf8"
-                      fill="#6366f1"
-                      fillOpacity={0.5}
+                      stroke="#ef4444"
+                      fill="#ef4444"
+                      fillOpacity={0.4}
                     />
                   </RadarChart>
                 </ResponsiveContainer>
@@ -190,22 +212,30 @@ export default function ListeningDashboardPage() {
       <h2 className="text-lg font-bold text-white mt-10 mb-4">Bắt đầu luyện tập</h2>
       <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
         <Link href="/dashboard/listening/part-1" className="bg-zinc-900/80 hover:bg-zinc-800 border border-zinc-800 hover:border-zinc-700 rounded-2xl p-5 group transition">
-          <div className="w-12 h-12 bg-indigo-500/20 text-indigo-400 rounded-xl flex items-center justify-center text-xl mb-4 group-hover:scale-110 transition-transform">🖼️</div>
+          <div className="w-12 h-12 bg-indigo-500/20 text-indigo-400 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+            <ImageIcon className="w-6 h-6" />
+          </div>
           <h3 className="font-bold text-white mb-1">Part 1</h3>
           <p className="text-xs text-zinc-400">Mô tả hình ảnh (Photographs)</p>
         </Link>
         <Link href="/dashboard/listening/part-2" className="bg-zinc-900/80 hover:bg-zinc-800 border border-zinc-800 hover:border-zinc-700 rounded-2xl p-5 group transition">
-          <div className="w-12 h-12 bg-emerald-500/20 text-emerald-400 rounded-xl flex items-center justify-center text-xl mb-4 group-hover:scale-110 transition-transform">💬</div>
+          <div className="w-12 h-12 bg-emerald-500/20 text-emerald-400 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+            <MessageSquare className="w-6 h-6" />
+          </div>
           <h3 className="font-bold text-white mb-1">Part 2</h3>
           <p className="text-xs text-zinc-400">Hỏi & Đáp (Question-Response)</p>
         </Link>
         <Link href="/dashboard/listening/part-3" className="bg-zinc-900/80 hover:bg-zinc-800 border border-zinc-800 hover:border-zinc-700 rounded-2xl p-5 group transition">
-          <div className="w-12 h-12 bg-amber-500/20 text-amber-400 rounded-xl flex items-center justify-center text-xl mb-4 group-hover:scale-110 transition-transform">👥</div>
+          <div className="w-12 h-12 bg-amber-500/20 text-amber-400 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+            <Users className="w-6 h-6" />
+          </div>
           <h3 className="font-bold text-white mb-1">Part 3</h3>
           <p className="text-xs text-zinc-400">Đoạn hội thoại (Conversations)</p>
         </Link>
         <Link href="/dashboard/listening/part-4" className="bg-zinc-900/80 hover:bg-zinc-800 border border-zinc-800 hover:border-zinc-700 rounded-2xl p-5 group transition">
-          <div className="w-12 h-12 bg-rose-500/20 text-rose-400 rounded-xl flex items-center justify-center text-xl mb-4 group-hover:scale-110 transition-transform">🎤</div>
+          <div className="w-12 h-12 bg-rose-500/20 text-rose-400 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+            <Mic className="w-6 h-6" />
+          </div>
           <h3 className="font-bold text-white mb-1">Part 4</h3>
           <p className="text-xs text-zinc-400">Bài nói chuyện (Talks)</p>
         </Link>
@@ -214,7 +244,9 @@ export default function ListeningDashboardPage() {
       <div className="grid sm:grid-cols-2 gap-4 mt-4">
         <Link href="/dashboard/listening/mixed" className="bg-gradient-to-br from-purple-900/40 to-indigo-900/40 hover:from-purple-900/60 hover:to-indigo-900/60 border border-purple-800/30 rounded-2xl p-5 group transition">
           <div className="flex items-center gap-4">
-            <div className="w-12 h-12 bg-purple-500/20 text-purple-400 rounded-xl flex items-center justify-center text-xl group-hover:scale-110 transition-transform">🎯</div>
+            <div className="w-12 h-12 bg-purple-500/20 text-purple-400 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform">
+              <SlidersHorizontal className="w-6 h-6" />
+            </div>
             <div>
               <h3 className="font-bold text-white">Luyện hỗn hợp</h3>
               <p className="text-xs text-zinc-400">Kết hợp Part 1-4 tùy chọn</p>
@@ -223,7 +255,9 @@ export default function ListeningDashboardPage() {
         </Link>
         <Link href="/dashboard/listening/settings" className="bg-zinc-900/80 hover:bg-zinc-800 border border-zinc-800 hover:border-zinc-700 rounded-2xl p-5 group transition">
           <div className="flex items-center gap-4">
-            <div className="w-12 h-12 bg-zinc-700/50 text-zinc-400 rounded-xl flex items-center justify-center text-xl group-hover:scale-110 transition-transform">⚙️</div>
+            <div className="w-12 h-12 bg-zinc-700/50 text-zinc-400 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform">
+              <Settings className="w-6 h-6" />
+            </div>
             <div>
               <h3 className="font-bold text-white">Cài đặt</h3>
               <p className="text-xs text-zinc-400">Tốc độ, âm lượng, transcript...</p>

@@ -20,6 +20,32 @@ import {
   type MockTestHistoryItem,
   type MockTestAnalyticsResponse,
 } from "@/services/mock-test";
+import {
+  ClipboardList,
+  Settings,
+  Zap,
+  AlertTriangle,
+  FileText,
+  Clock,
+  Headphones,
+  BookOpen,
+  Rocket,
+  Search,
+  BarChart3,
+  TrendingUp,
+  Download,
+  Calendar,
+  Trash2,
+  Check,
+  X,
+  Target,
+  Sparkles,
+  Lightbulb,
+  Info,
+  Scale,
+  TrendingDown,
+  ArrowRight,
+} from "lucide-react";
 
 export default function MockTestPage() {
   const router = useRouter();
@@ -352,7 +378,10 @@ export default function MockTestPage() {
   if (loading) {
     return (
       <div className="flex min-h-screen items-center justify-center bg-[#09090b] text-zinc-400">
-        Đang tải dữ liệu thi thử...
+        <div className="animate-pulse flex items-center gap-2">
+          <Clock className="w-5 h-5 animate-spin" />
+          <span>Đang tải dữ liệu thi thử...</span>
+        </div>
       </div>
     );
   }
@@ -370,9 +399,7 @@ export default function MockTestPage() {
 
         <div className="mb-8 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
           <div className="flex items-center gap-3">
-            <span className="text-3xl">
-              📋
-            </span>
+            <ClipboardList className="w-8 h-8 text-red-500" />
 
             <div>
               <h1 className="text-3xl font-bold">
@@ -389,7 +416,7 @@ export default function MockTestPage() {
             href="/dashboard/mock-test/settings"
             className="flex items-center gap-2 px-4 py-2.5 rounded-xl border border-zinc-800 bg-zinc-900/80 hover:bg-zinc-800 text-zinc-300 hover:text-white text-xs font-bold transition w-fit"
           >
-            <span>⚙️</span>
+            <Settings className="w-4 h-4" />
             <span>Cài đặt thi thử</span>
           </Link>
         </div>
@@ -399,8 +426,9 @@ export default function MockTestPage() {
         {/* ================================================== */}
 
         {error && (
-          <div className="mb-6 rounded-2xl border border-red-500/20 bg-red-500/5 p-4 text-sm text-red-400">
-            {error}
+          <div className="mb-6 rounded-2xl border border-red-500/20 bg-red-500/5 p-4 text-sm text-red-400 flex items-center gap-2">
+            <AlertTriangle className="w-5 h-5 shrink-0" />
+            <span>{error}</span>
           </div>
         )}
 
@@ -438,13 +466,14 @@ export default function MockTestPage() {
             onClick={() =>
               setTab("tests")
             }
-            className={`rounded-xl px-4 sm:px-5 py-3 text-xs sm:text-sm font-medium transition ${
+            className={`rounded-xl px-4 sm:px-5 py-3 text-xs sm:text-sm font-medium transition flex items-center justify-center gap-2 ${
               tab === "tests"
                 ? "bg-red-600 text-white"
                 : "text-zinc-400 hover:text-white"
             }`}
           >
-            📄 Full TOEIC Test
+            <FileText className="w-4 h-4" />
+            <span>Full TOEIC Test</span>
           </button>
 
           <button
@@ -452,13 +481,14 @@ export default function MockTestPage() {
             onClick={() =>
               setTab("history")
             }
-            className={`rounded-xl px-4 sm:px-5 py-3 text-xs sm:text-sm font-medium transition ${
+            className={`rounded-xl px-4 sm:px-5 py-3 text-xs sm:text-sm font-medium transition flex items-center justify-center gap-2 ${
               tab === "history"
                 ? "bg-red-600 text-white"
                 : "text-zinc-400 hover:text-white"
             }`}
           >
-            📊 Lịch sử ({history.length})
+            <BarChart3 className="w-4 h-4" />
+            <span>Lịch sử ({history.length})</span>
           </button>
 
           <button
@@ -466,13 +496,14 @@ export default function MockTestPage() {
             onClick={() =>
               setTab("analytics")
             }
-            className={`rounded-xl px-4 sm:px-5 py-3 text-xs sm:text-sm font-medium transition ${
+            className={`rounded-xl px-4 sm:px-5 py-3 text-xs sm:text-sm font-medium transition flex items-center justify-center gap-2 ${
               tab === "analytics"
                 ? "bg-red-600 text-white"
                 : "text-zinc-400 hover:text-white"
             }`}
           >
-            📈 Phân tích thi thử
+            <TrendingUp className="w-4 h-4" />
+            <span>Phân tích thi thử</span>
           </button>
         </div>
 
@@ -487,7 +518,7 @@ export default function MockTestPage() {
               <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-5">
                 <div className="flex items-start gap-4">
                   <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-red-600/20 text-2xl font-bold text-red-400 border border-red-500/30 shrink-0">
-                    ⚡
+                    <Zap className="w-7 h-7" />
                   </div>
                   <div>
                     <div className="flex items-center gap-2">
@@ -506,17 +537,18 @@ export default function MockTestPage() {
 
                 <Link
                   href="/dashboard/mock-test/mini-test"
-                  className="px-6 py-3 rounded-xl bg-gradient-to-r from-red-600 to-red-500 hover:from-red-500 hover:to-red-400 text-white font-bold text-xs shadow-lg shadow-red-600/20 transition whitespace-nowrap"
+                  className="px-6 py-3 rounded-xl bg-gradient-to-r from-red-600 to-red-500 hover:from-red-500 hover:to-red-400 text-white font-bold text-xs shadow-lg shadow-red-600/20 transition whitespace-nowrap flex items-center gap-2"
                 >
-                  🚀 Bắt đầu Mini Test ngay →
+                  <Rocket className="w-4 h-4" />
+                  <span>Bắt đầu Mini Test ngay →</span>
                 </Link>
               </div>
             </div>
 
             <div className="mt-6 rounded-2xl border border-red-500/20 bg-red-500/5 p-5">
               <div className="flex gap-4">
-                <div className="text-2xl">
-                  ⚠️
+                <div className="text-red-400">
+                  <AlertTriangle className="w-6 h-6" />
                 </div>
 
                 <div>
@@ -536,12 +568,10 @@ export default function MockTestPage() {
 
             <div className="mt-6 space-y-4">
               {tests.length === 0 ? (
-                <div className="rounded-2xl border border-white/5 bg-[#121214] p-12 text-center">
-                  <div className="text-5xl">
-                    📋
-                  </div>
+                <div className="rounded-2xl border border-white/5 bg-[#121214] p-12 text-center flex flex-col items-center">
+                  <ClipboardList className="w-12 h-12 text-zinc-600 mb-4" />
 
-                  <p className="mt-4 text-zinc-400">
+                  <p className="text-zinc-400">
                     Chưa có đề thi nào.
                   </p>
                 </div>
@@ -573,26 +603,28 @@ export default function MockTestPage() {
                           </div>
 
                           <div className="mt-4 flex flex-wrap gap-3 text-xs text-zinc-500">
-                            <span className="rounded-lg bg-white/5 px-3 py-1.5">
-                              📝{" "}
-                              {test.total_questions ??
-                                200}{" "}
-                              câu
+                            <span className="rounded-lg bg-white/5 px-3 py-1.5 flex items-center gap-1.5">
+                              <FileText className="w-3.5 h-3.5" />
+                              <span>
+                                {test.total_questions ?? 200} câu
+                              </span>
                             </span>
 
-                            <span className="rounded-lg bg-white/5 px-3 py-1.5">
-                              ⏱{" "}
-                              {test.duration ??
-                                120}{" "}
-                              phút
+                            <span className="rounded-lg bg-white/5 px-3 py-1.5 flex items-center gap-1.5">
+                              <Clock className="w-3.5 h-3.5" />
+                              <span>
+                                {test.duration ?? 120} phút
+                              </span>
                             </span>
 
-                            <span className="rounded-lg bg-white/5 px-3 py-1.5">
-                              🎧 Listening
+                            <span className="rounded-lg bg-white/5 px-3 py-1.5 flex items-center gap-1.5">
+                              <Headphones className="w-3.5 h-3.5" />
+                              <span>Listening</span>
                             </span>
 
-                            <span className="rounded-lg bg-white/5 px-3 py-1.5">
-                              📖 Reading
+                            <span className="rounded-lg bg-white/5 px-3 py-1.5 flex items-center gap-1.5">
+                              <BookOpen className="w-3.5 h-3.5" />
+                              <span>Reading</span>
                             </span>
                           </div>
                         </div>
@@ -607,9 +639,10 @@ export default function MockTestPage() {
                               setListeningMinutes(45);
                               setReadingMinutes(75);
                             }}
-                            className="rounded-xl border border-zinc-700 bg-zinc-800 hover:bg-zinc-700 px-4 py-3 text-xs font-semibold text-zinc-300 transition"
+                            className="rounded-xl border border-zinc-700 bg-zinc-800 hover:bg-zinc-700 px-4 py-3 text-xs font-semibold text-zinc-300 transition flex items-center gap-1.5"
                           >
-                            ⚙️ Cấu hình & Hướng dẫn
+                            <Settings className="w-3.5 h-3.5" />
+                            <span>Cấu hình & Hướng dẫn</span>
                           </button>
 
                           <button
@@ -656,9 +689,9 @@ export default function MockTestPage() {
                 <button
                   type="button"
                   onClick={() => setConfigModalTest(null)}
-                  className="text-zinc-400 hover:text-white text-sm"
+                  className="text-zinc-400 hover:text-white text-sm p-1 rounded-lg hover:bg-zinc-800"
                 >
-                  ✕
+                  <X className="w-5 h-5" />
                 </button>
               </div>
 
@@ -682,7 +715,7 @@ export default function MockTestPage() {
                         : "bg-zinc-950/60 border-zinc-800 text-zinc-400 hover:text-white"
                     }`}
                   >
-                    <span className="text-xs font-bold block">📄 Tiêu chuẩn (Standard)</span>
+                    <span className="text-xs font-bold block">Tiêu chuẩn (Standard)</span>
                     <span className="text-[10px] text-zinc-400">Part 1–7 theo thứ tự • 200 câu • 120 phút</span>
                   </button>
 
@@ -695,7 +728,7 @@ export default function MockTestPage() {
                         : "bg-zinc-950/60 border-zinc-800 text-zinc-400 hover:text-white"
                     }`}
                   >
-                    <span className="text-xs font-bold block">⚡ Tùy chỉnh (Custom)</span>
+                    <span className="text-xs font-bold block">Tùy chỉnh (Custom)</span>
                     <span className="text-[10px] text-zinc-400">Chọn Parts và thời gian theo nhu cầu</span>
                   </button>
                 </div>
@@ -737,7 +770,7 @@ export default function MockTestPage() {
 
                   <div className="grid grid-cols-2 gap-3 pt-2">
                     <div>
-                      <span className="text-[11px] text-zinc-400 block mb-1">🎧 Thời gian Nghe (phút):</span>
+                      <span className="text-[11px] text-zinc-400 block mb-1">Thời gian Nghe (phút):</span>
                       <input
                         type="number"
                         min={5}
@@ -748,7 +781,7 @@ export default function MockTestPage() {
                       />
                     </div>
                     <div>
-                      <span className="text-[11px] text-zinc-400 block mb-1">📖 Thời gian Đọc (phút):</span>
+                      <span className="text-[11px] text-zinc-400 block mb-1">Thời gian Đọc (phút):</span>
                       <input
                         type="number"
                         min={5}
@@ -765,7 +798,8 @@ export default function MockTestPage() {
               {/* Instructions Accordion / Toggle */}
               <div className="bg-zinc-950/60 border border-zinc-800 rounded-2xl p-4 text-xs text-zinc-300 space-y-2 leading-relaxed max-h-36 overflow-y-auto">
                 <p className="font-bold text-white flex items-center gap-1.5">
-                  <span>ℹ️</span> <span>Quy chế thi TOEIC Full Test:</span>
+                  <Info className="w-4 h-4 text-indigo-400" />
+                  <span>Quy chế thi TOEIC Full Test:</span>
                 </p>
                 <p>• Phần Listening (Part 1–4, 100 câu, 45 phút): Audio tự động phát 1 lần.</p>
                 <p>• Section break: Sau khi hoàn tất Listening, bạn sẽ có thông báo nghỉ 1–2 phút trước khi chuyển sang Reading (Part 5–7, 100 câu, 75 phút).</p>
@@ -803,9 +837,10 @@ export default function MockTestPage() {
                       setStartingTestId(null);
                     }
                   }}
-                  className="px-6 py-2.5 rounded-xl text-xs font-bold text-white bg-red-600 hover:bg-red-500 shadow-lg shadow-red-600/20 transition disabled:opacity-50"
+                  className="flex items-center gap-1.5 px-6 py-2.5 rounded-xl text-xs font-bold text-white bg-red-600 hover:bg-red-500 shadow-lg shadow-red-600/20 transition disabled:opacity-50"
                 >
-                  {startingTestId === configModalTest.id ? "Đang tạo bài thi..." : "🚀 Bắt đầu làm bài thi"}
+                  <Rocket className="w-4 h-4" />
+                  <span>{startingTestId === configModalTest.id ? "Đang tạo bài thi..." : "Bắt đầu làm bài thi"}</span>
                 </button>
               </div>
             </div>
@@ -850,12 +885,13 @@ export default function MockTestPage() {
               <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
                 {/* Search input */}
                 <div className="relative flex-1">
+                  <Search className="w-4 h-4 text-zinc-500 absolute left-3 top-3" />
                   <input
                     type="text"
-                    placeholder="🔍 Tìm theo tên đề hoặc mã bài thi..."
+                    placeholder="Tìm theo tên đề hoặc mã bài thi..."
                     value={historySearch}
                     onChange={(e) => setHistorySearch(e.target.value)}
-                    className="w-full bg-zinc-900 border border-zinc-800 rounded-xl px-4 py-2.5 text-xs text-white placeholder-zinc-500 focus:outline-none focus:border-red-500"
+                    className="w-full bg-zinc-900 border border-zinc-800 rounded-xl pl-9 pr-8 py-2.5 text-xs text-white placeholder-zinc-500 focus:outline-none focus:border-red-500"
                   />
                   {historySearch && (
                     <button
@@ -863,7 +899,7 @@ export default function MockTestPage() {
                       onClick={() => setHistorySearch("")}
                       className="absolute right-3 top-2.5 text-zinc-500 hover:text-white text-xs"
                     >
-                      ✕
+                      <X className="w-4 h-4" />
                     </button>
                   )}
                 </div>
@@ -880,7 +916,7 @@ export default function MockTestPage() {
                         : "bg-zinc-800 text-zinc-500 border border-zinc-700 cursor-not-allowed"
                     }`}
                   >
-                    <span>📊</span>
+                    <BarChart3 className="w-3.5 h-3.5" />
                     <span>So sánh ({selectedForCompare.length}/2)</span>
                   </button>
 
@@ -889,7 +925,7 @@ export default function MockTestPage() {
                     onClick={() => exportHistory("csv")}
                     className="px-3.5 py-2.5 rounded-xl text-xs font-semibold bg-zinc-800 hover:bg-zinc-700 text-zinc-300 border border-zinc-700 transition flex items-center gap-1.5"
                   >
-                    <span>📥</span>
+                    <Download className="w-3.5 h-3.5" />
                     <span>Xuất CSV</span>
                   </button>
 
@@ -898,7 +934,7 @@ export default function MockTestPage() {
                     onClick={() => exportHistory("json")}
                     className="px-3.5 py-2.5 rounded-xl text-xs font-semibold bg-zinc-800 hover:bg-zinc-700 text-zinc-300 border border-zinc-700 transition flex items-center gap-1.5"
                   >
-                    <span>📄</span>
+                    <FileText className="w-3.5 h-3.5" />
                     <span>Xuất JSON</span>
                   </button>
                 </div>
@@ -959,10 +995,10 @@ export default function MockTestPage() {
                     onChange={(e) => setHistorySort(e.target.value as any)}
                     className="w-full bg-zinc-900 border border-zinc-800 rounded-xl px-3 py-2 text-xs text-zinc-300 focus:outline-none focus:border-red-500"
                   >
-                    <option value="newest">📅 Mới nhất</option>
-                    <option value="oldest">📅 Cũ nhất</option>
-                    <option value="highest">📈 Điểm cao nhất</option>
-                    <option value="lowest">📉 Điểm thấp nhất</option>
+                    <option value="newest">Mới nhất</option>
+                    <option value="oldest">Cũ nhất</option>
+                    <option value="highest">Điểm cao nhất</option>
+                    <option value="lowest">Điểm thấp nhất</option>
                   </select>
                 </div>
               </div>
@@ -970,9 +1006,9 @@ export default function MockTestPage() {
 
             {/* 3. TEST LIST */}
             {filteredHistory.length === 0 ? (
-              <div className="rounded-2xl border border-white/5 bg-[#121214] p-12 text-center">
-                <div className="text-5xl">📋</div>
-                <p className="mt-4 text-zinc-400">
+              <div className="rounded-2xl border border-white/5 bg-[#121214] p-12 text-center flex flex-col items-center">
+                <ClipboardList className="w-12 h-12 text-zinc-600 mb-3" />
+                <p className="text-zinc-400">
                   Không tìm thấy bài thi nào phù hợp với bộ lọc.
                 </p>
                 {(historySearch || historyTypeFilter !== "all" || historyDateFilter !== "all" || historyScoreFilter !== "all") && (
@@ -1017,7 +1053,7 @@ export default function MockTestPage() {
                                 : "bg-zinc-800 border-zinc-700 text-transparent hover:border-zinc-500"
                             }`}
                           >
-                            ✓
+                            <Check className="w-3.5 h-3.5" />
                           </button>
 
                           <div>
@@ -1029,7 +1065,7 @@ export default function MockTestPage() {
                                     : "bg-red-500/15 text-red-300 border-red-500/30"
                                 }`}
                               >
-                                {isMini ? "⚡ Mini Test (50 câu)" : "📄 Full Test (200 câu)"}
+                                {isMini ? "Mini Test (50 câu)" : "Full Test (200 câu)"}
                               </span>
                               <span className="text-xs text-zinc-500">Attempt #{item.id}</span>
                             </div>
@@ -1038,8 +1074,9 @@ export default function MockTestPage() {
                               {item.testTitle || `TOEIC Test ${item.testId}`}
                             </h3>
 
-                            <p className="text-xs text-zinc-500 mt-1">
-                              📅 {new Date(item.createdAt).toLocaleString("vi-VN")}
+                            <p className="text-xs text-zinc-500 mt-1 flex items-center gap-1">
+                              <Calendar className="w-3.5 h-3.5" />
+                              <span>{new Date(item.createdAt).toLocaleString("vi-VN")}</span>
                             </p>
                           </div>
                         </div>
@@ -1047,12 +1084,12 @@ export default function MockTestPage() {
                         {/* Stats Breakdown Column */}
                         <div className="flex items-center gap-3 sm:gap-6 flex-wrap">
                           <div className="rounded-xl bg-white/[0.03] px-3.5 py-2 text-center min-w-[70px]">
-                            <span className="text-[10px] text-zinc-500 font-bold uppercase block">🎧 Nghe</span>
+                            <span className="text-[10px] text-zinc-500 font-bold uppercase block">Nghe</span>
                             <span className="text-sm font-bold text-blue-400">{item.listeningScore ?? 0}</span>
                           </div>
 
                           <div className="rounded-xl bg-white/[0.03] px-3.5 py-2 text-center min-w-[70px]">
-                            <span className="text-[10px] text-zinc-500 font-bold uppercase block">📖 Đọc</span>
+                            <span className="text-[10px] text-zinc-500 font-bold uppercase block">Đọc</span>
                             <span className="text-sm font-bold text-purple-400">{item.readingScore ?? 0}</span>
                           </div>
 
@@ -1074,17 +1111,19 @@ export default function MockTestPage() {
                           <button
                             type="button"
                             onClick={() => setQuickDetailItem(item)}
-                            className="px-3 py-2 rounded-xl text-xs font-semibold bg-zinc-800 hover:bg-zinc-700 text-zinc-300 transition"
+                            className="flex items-center gap-1 px-3 py-2 rounded-xl text-xs font-semibold bg-zinc-800 hover:bg-zinc-700 text-zinc-300 transition"
                           >
-                            🔍 Xem nhanh
+                            <Search className="w-3.5 h-3.5" />
+                            <span>Xem nhanh</span>
                           </button>
 
                           <button
                             type="button"
                             onClick={() => router.push(`/dashboard/mock-test/result/${item.id}`)}
-                            className="px-4 py-2 rounded-xl text-xs font-bold bg-red-600 hover:bg-red-500 text-white transition shadow"
+                            className="px-4 py-2 rounded-xl text-xs font-bold bg-red-600 hover:bg-red-500 text-white transition shadow flex items-center gap-1"
                           >
-                            Xem kết quả →
+                            <span>Xem kết quả</span>
+                            <ArrowRight className="w-3.5 h-3.5" />
                           </button>
 
                           <button
@@ -1093,7 +1132,7 @@ export default function MockTestPage() {
                             title="Xóa bài thi này"
                             className="p-2 rounded-xl text-zinc-500 hover:text-red-400 hover:bg-red-500/10 transition text-xs"
                           >
-                            🗑️
+                            <Trash2 className="w-4 h-4" />
                           </button>
                         </div>
                       </div>
@@ -1112,18 +1151,19 @@ export default function MockTestPage() {
         {tab === "analytics" && (
           <div className="mt-6 space-y-6 animate-fade-in">
             {!analyticsData || analyticsData.totalTests === 0 ? (
-              <div className="rounded-2xl border border-white/5 bg-[#121214] p-12 text-center">
-                <div className="text-5xl">📈</div>
-                <h3 className="text-lg font-bold text-white mt-4">Chưa có dữ liệu phân tích</h3>
+              <div className="rounded-2xl border border-white/5 bg-[#121214] p-12 text-center flex flex-col items-center">
+                <TrendingUp className="w-12 h-12 text-zinc-600 mb-3" />
+                <h3 className="text-lg font-bold text-white mt-1">Chưa có dữ liệu phân tích</h3>
                 <p className="mt-2 text-xs text-zinc-400 max-w-md mx-auto">
                   Hãy hoàn thành ít nhất 1 bài kiểm tra (Mini Test hoặc Full Test) để hệ thống AI phân tích điểm mạnh, điểm yếu và xu hướng điểm số của bạn.
                 </p>
                 <button
                   type="button"
                   onClick={() => setTab("tests")}
-                  className="mt-6 px-6 py-3 rounded-xl bg-red-600 hover:bg-red-500 text-white font-bold text-xs shadow-lg transition"
+                  className="mt-6 px-6 py-3 rounded-xl bg-red-600 hover:bg-red-500 text-white font-bold text-xs shadow-lg transition flex items-center gap-1.5"
                 >
-                  Làm bài thi ngay →
+                  <span>Làm bài thi ngay</span>
+                  <ArrowRight className="w-4 h-4" />
                 </button>
               </div>
             ) : (
@@ -1134,7 +1174,8 @@ export default function MockTestPage() {
                   <div className="rounded-3xl border border-purple-500/30 bg-gradient-to-br from-purple-950/30 via-zinc-900 to-zinc-950 p-6 flex flex-col justify-between relative overflow-hidden">
                     <div className="flex items-center justify-between">
                       <span className="text-xs text-purple-300 font-bold uppercase tracking-wider flex items-center gap-1.5">
-                        <span>🔮</span> <span>Điểm Dự Đoán Thực Tế</span>
+                        <Sparkles className="w-4 h-4 text-purple-400" />
+                        <span>Điểm Dự Đoán Thực Tế</span>
                       </span>
                       <span className="px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-purple-500/20 text-purple-300 border border-purple-500/30">
                         AI Prediction
@@ -1161,7 +1202,8 @@ export default function MockTestPage() {
                     <div>
                       <div className="flex items-center justify-between">
                         <span className="text-xs text-zinc-400 font-bold uppercase tracking-wider flex items-center gap-1.5">
-                          <span>🎯</span> <span>Tiến Độ Mục Tiêu (Target: {analyticsData.goalProgress.targetScore} TOEIC)</span>
+                          <Target className="w-4 h-4 text-red-500" />
+                          <span>Tiến Độ Mục Tiêu (Target: {analyticsData.goalProgress.targetScore} TOEIC)</span>
                         </span>
                         <span className="text-sm font-black text-red-400">
                           {analyticsData.goalProgress.percentage}%
@@ -1184,7 +1226,7 @@ export default function MockTestPage() {
                     {/* Skill targets */}
                     <div className="grid grid-cols-2 gap-3 mt-4 pt-3 border-t border-zinc-800">
                       <div className="rounded-xl bg-white/[0.02] p-3 border border-white/5">
-                        <span className="text-[10px] text-zinc-500 font-bold uppercase block">🎧 Listening Target</span>
+                        <span className="text-[10px] text-zinc-500 font-bold uppercase block">Listening Target</span>
                         <div className="flex items-baseline justify-between mt-1">
                           <span className="text-sm font-bold text-blue-400">{analyticsData.goalProgress.listeningCurrent}đ</span>
                           <span className="text-[11px] text-zinc-500">Mục tiêu {analyticsData.goalProgress.listeningTarget}đ</span>
@@ -1192,7 +1234,7 @@ export default function MockTestPage() {
                       </div>
 
                       <div className="rounded-xl bg-white/[0.02] p-3 border border-white/5">
-                        <span className="text-[10px] text-zinc-500 font-bold uppercase block">📖 Reading Target</span>
+                        <span className="text-[10px] text-zinc-500 font-bold uppercase block">Reading Target</span>
                         <div className="flex items-baseline justify-between mt-1">
                           <span className="text-sm font-bold text-purple-400">{analyticsData.goalProgress.readingCurrent}đ</span>
                           <span className="text-[11px] text-zinc-500">Mục tiêu {analyticsData.goalProgress.readingTarget}đ</span>
@@ -1223,8 +1265,23 @@ export default function MockTestPage() {
 
                   <div className="rounded-2xl border border-white/5 bg-[#121214] p-4 text-center">
                     <span className="text-[10px] text-zinc-500 font-bold uppercase block">Quỹ đạo phong độ</span>
-                    <p className="text-sm font-bold text-purple-400 mt-1.5">
-                      {analyticsData.progressOverTime.trendDirection === "improving" ? "📈 Đang tăng trưởng" : analyticsData.progressOverTime.trendDirection === "declining" ? "📉 Cần cải thiện" : "⚖️ Ổn định"}
+                    <p className="text-sm font-bold text-purple-400 mt-1.5 flex items-center justify-center gap-1">
+                      {analyticsData.progressOverTime.trendDirection === "improving" ? (
+                        <>
+                          <TrendingUp className="w-4 h-4 text-emerald-400" />
+                          <span>Đang tăng trưởng</span>
+                        </>
+                      ) : analyticsData.progressOverTime.trendDirection === "declining" ? (
+                        <>
+                          <TrendingDown className="w-4 h-4 text-rose-400" />
+                          <span>Cần cải thiện</span>
+                        </>
+                      ) : (
+                        <>
+                          <Scale className="w-4 h-4 text-amber-400" />
+                          <span>Ổn định</span>
+                        </>
+                      )}
                     </p>
                   </div>
                 </div>
@@ -1234,7 +1291,8 @@ export default function MockTestPage() {
                   <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-white/5 pb-4">
                     <div>
                       <h3 className="text-base font-bold text-white flex items-center gap-2">
-                        <span>📈</span> <span>Biểu Đồ Xu Hướng Điểm Số (Score Trend)</span>
+                        <TrendingUp className="w-5 h-5 text-red-500" />
+                        <span>Biểu Đồ Xu Hướng Điểm Số (Score Trend)</span>
                       </h3>
                       <p className="text-xs text-zinc-400 mt-0.5">Theo dõi lịch sử điểm số qua các lần làm bài thi</p>
                     </div>
@@ -1333,7 +1391,8 @@ export default function MockTestPage() {
                   <div className="rounded-3xl border border-white/5 bg-[#121214] p-6 space-y-4">
                     <div>
                       <h3 className="text-sm font-bold text-white flex items-center gap-2">
-                        <span>🎯</span> <span>Tỷ Lệ Chính Xác (%) Qua Các Lần Thi</span>
+                        <Target className="w-4 h-4 text-emerald-400" />
+                        <span>Tỷ Lệ Chính Xác (%) Qua Các Lần Thi</span>
                       </h3>
                       <p className="text-xs text-zinc-500 mt-0.5">Accuracy Trend Chart</p>
                     </div>
@@ -1362,7 +1421,8 @@ export default function MockTestPage() {
                   <div className="rounded-3xl border border-white/5 bg-[#121214] p-6 space-y-4">
                     <div>
                       <h3 className="text-sm font-bold text-white flex items-center gap-2">
-                        <span>⏱️</span> <span>Thời Gian Làm Bài (Phút) Qua Các Lần Thi</span>
+                        <Clock className="w-4 h-4 text-blue-400" />
+                        <span>Thời Gian Làm Bài (Phút) Qua Các Lần Thi</span>
                       </h3>
                       <p className="text-xs text-zinc-500 mt-0.5">Time Trend Chart</p>
                     </div>
@@ -1392,7 +1452,8 @@ export default function MockTestPage() {
                 <div className="rounded-3xl border border-white/5 bg-[#121214] p-6 space-y-4">
                   <div>
                     <h3 className="text-base font-bold text-white flex items-center gap-2">
-                      <span>📊</span> <span>So Sánh Hiệu Suất Từng Phần (Part 1–7 Performance)</span>
+                      <BarChart3 className="w-5 h-5 text-indigo-400" />
+                      <span>So Sánh Hiệu Suất Từng Phần (Part 1–7 Performance)</span>
                     </h3>
                     <p className="text-xs text-zinc-400 mt-0.5">Tỷ lệ chính xác trung bình trên 7 phần thi TOEIC</p>
                   </div>
@@ -1430,7 +1491,7 @@ export default function MockTestPage() {
                   {/* Strengths */}
                   <div className="rounded-3xl border border-emerald-500/20 bg-gradient-to-br from-emerald-950/20 to-zinc-950 p-6 space-y-4">
                     <div className="flex items-center gap-2">
-                      <span className="text-xl">🌟</span>
+                      <Sparkles className="w-5 h-5 text-emerald-400" />
                       <div>
                         <h3 className="text-sm font-bold text-emerald-400">Điểm Mạnh (Strength Identification)</h3>
                         <p className="text-[11px] text-zinc-400">Các phần bạn đang đạt độ chính xác cao nhất</p>
@@ -1453,7 +1514,7 @@ export default function MockTestPage() {
                   {/* Weaknesses */}
                   <div className="rounded-3xl border border-rose-500/20 bg-gradient-to-br from-rose-950/20 to-zinc-950 p-6 space-y-4">
                     <div className="flex items-center gap-2">
-                      <span className="text-xl">⚠️</span>
+                      <AlertTriangle className="w-5 h-5 text-rose-400" />
                       <div>
                         <h3 className="text-sm font-bold text-rose-400">Điểm Yếu Cần Cải Thiện (Weakness Identification)</h3>
                         <p className="text-[11px] text-zinc-400">Tập trung ôn luyện các phần này để bứt phá điểm số</p>
@@ -1480,7 +1541,8 @@ export default function MockTestPage() {
                     <div className="flex items-center justify-between">
                       <div>
                         <h3 className="text-base font-bold text-white flex items-center gap-2">
-                          <span>💡</span> <span>Tương Quan Thời Gian Luyện Thi vs Điểm Số (Study Time Correlation)</span>
+                          <Lightbulb className="w-5 h-5 text-amber-400" />
+                          <span>Tương Quan Thời Gian Luyện Thi vs Điểm Số (Study Time Correlation)</span>
                         </h3>
                         <p className="text-xs text-zinc-400 mt-0.5">
                           Chứng minh mức độ tăng trưởng điểm TOEIC tỷ lệ thuận với số giờ luyện đề thực tế
@@ -1518,15 +1580,15 @@ export default function MockTestPage() {
                 <button
                   type="button"
                   onClick={() => setQuickDetailItem(null)}
-                  className="text-zinc-400 hover:text-white text-sm"
+                  className="text-zinc-400 hover:text-white text-sm p-1 rounded-lg hover:bg-zinc-800"
                 >
-                  ✕
+                  <X className="w-5 h-5" />
                 </button>
               </div>
 
               <div className="grid grid-cols-2 gap-3">
                 <div className="p-4 rounded-2xl bg-zinc-950/60 border border-zinc-800 text-center">
-                  <span className="text-xs text-zinc-400 block">🎧 Điểm Listening</span>
+                  <span className="text-xs text-zinc-400 block">Điểm Listening</span>
                   <span className="text-2xl font-black text-blue-400 mt-1 block">
                     {quickDetailItem.listeningScore ?? 0}
                   </span>
@@ -1534,7 +1596,7 @@ export default function MockTestPage() {
                 </div>
 
                 <div className="p-4 rounded-2xl bg-zinc-950/60 border border-zinc-800 text-center">
-                  <span className="text-xs text-zinc-400 block">📖 Điểm Reading</span>
+                  <span className="text-xs text-zinc-400 block">Điểm Reading</span>
                   <span className="text-2xl font-black text-purple-400 mt-1 block">
                     {quickDetailItem.readingScore ?? 0}
                   </span>
@@ -1573,9 +1635,10 @@ export default function MockTestPage() {
                     setQuickDetailItem(null);
                     router.push(`/dashboard/mock-test/result/${id}`);
                   }}
-                  className="px-5 py-2.5 rounded-xl text-xs font-bold text-white bg-red-600 hover:bg-red-500 shadow transition"
+                  className="flex items-center gap-1.5 px-5 py-2.5 rounded-xl text-xs font-bold text-white bg-red-600 hover:bg-red-500 shadow transition"
                 >
-                  Xem phân tích đầy đủ →
+                  <span>Xem phân tích đầy đủ</span>
+                  <ArrowRight className="w-4 h-4" />
                 </button>
               </div>
             </div>
@@ -1599,7 +1662,8 @@ export default function MockTestPage() {
                 <div className="flex items-center justify-between border-b border-zinc-800 pb-3">
                   <div>
                     <h3 className="text-lg font-bold text-white flex items-center gap-2">
-                      <span>📊</span> <span>So Sánh Kết Quả 2 Lần Thi</span>
+                      <BarChart3 className="w-5 h-5 text-purple-400" />
+                      <span>So Sánh Kết Quả 2 Lần Thi</span>
                     </h3>
                     <p className="text-xs text-zinc-400 mt-0.5">
                       Đối chiếu sự tiến bộ giữa Attempt #{testA.id} và Attempt #{testB.id}
@@ -1608,9 +1672,9 @@ export default function MockTestPage() {
                   <button
                     type="button"
                     onClick={() => setShowCompareModal(false)}
-                    className="text-zinc-400 hover:text-white text-sm"
+                    className="text-zinc-400 hover:text-white text-sm p-1 rounded-lg hover:bg-zinc-800"
                   >
-                    ✕
+                    <X className="w-5 h-5" />
                   </button>
                 </div>
 
@@ -1684,9 +1748,9 @@ export default function MockTestPage() {
                     ? "bg-emerald-950/20 border-emerald-500/30 text-emerald-300"
                     : "bg-rose-950/20 border-rose-500/30 text-rose-300"
                 }`}>
-                  {scoreDiff > 0 && `🎉 Điểm số đã tăng trưởng +${scoreDiff} điểm so với lần thi trước. Hãy tiếp tục duy trì phong độ!`}
-                  {scoreDiff === 0 && `⚖️ Điểm số duy trì ổn định bằng nhau (${testA.totalScore}đ). Hãy tập trung luyện thêm các phần điểm yếu để bứt phá!`}
-                  {scoreDiff < 0 && `⚠️ Điểm số giảm ${Math.abs(scoreDiff)} điểm. Khuyến nghị ôn lại các câu sai trong Sổ tay lỗi trước khi thi lại.`}
+                  {scoreDiff > 0 && `Điểm số đã tăng trưởng +${scoreDiff} điểm so với lần thi trước. Hãy tiếp tục duy trì phong độ!`}
+                  {scoreDiff === 0 && `Điểm số duy trì ổn định bằng nhau (${testA.totalScore}đ). Hãy tập trung luyện thêm các phần điểm yếu để bứt phá!`}
+                  {scoreDiff < 0 && `Điểm số giảm ${Math.abs(scoreDiff)} điểm. Khuyến nghị ôn lại các câu sai trong Sổ tay lỗi trước khi thi lại.`}
                 </div>
 
                 <div className="flex items-center justify-end gap-3 pt-2 border-t border-zinc-800">
@@ -1705,16 +1769,18 @@ export default function MockTestPage() {
 
         {/* ── DELETE CONFIRMATION MODAL ── */}
         {deleteConfirmItem && (
-          <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/85 backdrop-blur-sm animate-fade-in">
+          <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/85 backdrop-blur-md animate-fade-in">
             <div className="bg-zinc-900 border border-zinc-800 rounded-3xl p-6 sm:p-8 max-w-md w-full space-y-5 shadow-2xl">
-              <div className="text-center space-y-2">
-                <div className="text-3xl">🗑️</div>
+              <div className="text-center space-y-2 flex flex-col items-center">
+                <div className="w-12 h-12 rounded-full bg-rose-500/10 text-rose-400 flex items-center justify-center mb-1">
+                  <Trash2 className="w-6 h-6" />
+                </div>
                 <h3 className="text-lg font-bold text-white">Xác nhận xóa bài thi?</h3>
                 <p className="text-xs text-zinc-400">
                   Bạn có chắc muốn xóa bản ghi <strong>Attempt #{deleteConfirmItem.id}</strong> ({deleteConfirmItem.testTitle})?
                 </p>
                 <p className="text-[11px] text-rose-400 bg-rose-950/40 p-2.5 rounded-xl border border-rose-800/40">
-                  ⚠️ Hành động này không thể hoàn tác. Toàn bộ câu trả lời và kết quả sẽ bị xóa vĩnh viễn.
+                  Hành động này không thể hoàn tác. Toàn bộ câu trả lời và kết quả sẽ bị xóa vĩnh viễn.
                 </p>
               </div>
 
@@ -1743,7 +1809,7 @@ export default function MockTestPage() {
         {/* Toast */}
         {toastMessage && (
           <div className="fixed bottom-6 right-6 z-50 bg-emerald-600 text-white text-xs font-bold px-4 py-3 rounded-xl shadow-2xl flex items-center gap-2 transition-all">
-            <span>✓</span>
+            <Check className="w-4 h-4" />
             <span>{toastMessage}</span>
           </div>
         )}

@@ -3,6 +3,32 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { apiFetch } from "@/lib/api";
+import {
+  Flame,
+  Lightbulb,
+  FileText,
+  Rocket,
+  Calendar,
+  BarChart3,
+  Clock,
+  BookOpen,
+  FileEdit,
+  Target,
+  Zap,
+  RotateCcw,
+  BookMarked,
+  Bell,
+  Trophy,
+  Check,
+  Lock,
+  ChevronDown,
+  Map,
+  TrendingUp,
+  Sparkles,
+  Award,
+  ArrowRight,
+  ClipboardList,
+} from "lucide-react";
 
 const STAGES = [
   {
@@ -88,7 +114,7 @@ export default function DashboardPage() {
       const res = await apiFetch<any>("/dashboard/overview");
       setData(res);
     } catch (error) {
-      console.error('Dashboard fetch error:', error);
+      console.error("Dashboard fetch error:", error);
     } finally {
       setLoading(false);
     }
@@ -99,7 +125,9 @@ export default function DashboardPage() {
       <div className="space-y-6 animate-pulse">
         <div className="h-40 bg-zinc-900 rounded-2xl"></div>
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
-          {[1,2,3,4].map(i => <div key={i} className="h-24 bg-zinc-900 rounded-2xl"></div>)}
+          {[1, 2, 3, 4].map((i) => (
+            <div key={i} className="h-24 bg-zinc-900 rounded-2xl"></div>
+          ))}
         </div>
         <div className="h-32 bg-zinc-900 rounded-2xl"></div>
       </div>
@@ -108,8 +136,8 @@ export default function DashboardPage() {
 
   if (!data) return <div className="text-zinc-400 p-8 text-center">Không thể tải dữ liệu Bảng điều khiển.</div>;
 
-  const { user, score, progress, statistics, daily, weekly, recentActivities } = data;
-  const currentStageId = score.stage;
+  const { user, score, daily, weekly, recentActivities } = data;
+  const currentStageId = score?.stage || 1;
 
   return (
     <div className="space-y-8 animate-fade-in">
@@ -118,7 +146,7 @@ export default function DashboardPage() {
       {/* ================================================== */}
       <div className="relative overflow-hidden bg-gradient-to-br from-red-600/15 via-zinc-900/90 to-zinc-950 border border-red-600/20 rounded-3xl p-6 lg:p-8 shadow-xl">
         <div className="absolute top-0 right-0 w-96 h-96 bg-red-600/10 rounded-full -translate-y-1/2 translate-x-1/3 blur-3xl" />
-        
+
         <div className="relative flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
           <div className="space-y-2 max-w-2xl">
             <div className="flex items-center gap-2 flex-wrap">
@@ -126,12 +154,13 @@ export default function DashboardPage() {
                 Hệ Thống Theo Dõi Tiến Độ • 9.1 & 9.2
               </span>
               <span className="px-3 py-1 rounded-full text-[10px] font-black bg-amber-500/20 text-amber-300 border border-amber-500/30 flex items-center gap-1">
-                🔥 Chuỗi {daily?.streak?.current || 5} ngày liên tục
+                <Flame className="w-3 h-3 text-amber-400 fill-amber-400" />
+                <span>Chuỗi {daily?.streak?.current || 5} ngày liên tục</span>
               </span>
             </div>
 
             <h1 className="text-2xl lg:text-3xl font-black text-white">
-              Xin chào, {user?.fullName || "Học viên TOEIC"} 👋
+              Xin chào, {user?.fullName || "Học viên TOEIC"}
             </h1>
 
             {/* 11. DAILY MOTIVATION QUOTE */}
@@ -140,8 +169,9 @@ export default function DashboardPage() {
                 <p className="text-xs italic text-zinc-300 font-medium leading-relaxed">
                   &quot;{daily.dailyMotivationQuote.quote}&quot; — <span className="text-red-400 font-bold">{daily.dailyMotivationQuote.author}</span>
                 </p>
-                <p className="text-[11px] text-zinc-400">
-                  💡 {daily.dailyMotivationQuote.translation}
+                <p className="text-[11px] text-zinc-400 flex items-center gap-1">
+                  <Lightbulb className="w-3.5 h-3.5 text-amber-400 shrink-0" />
+                  <span>{daily.dailyMotivationQuote.translation}</span>
                 </p>
               </div>
             )}
@@ -152,7 +182,7 @@ export default function DashboardPage() {
               href="/dashboard/mock-test"
               className="px-5 py-3 rounded-2xl border border-zinc-700 bg-zinc-900/90 hover:bg-zinc-800 text-zinc-200 hover:text-white text-xs font-bold transition flex items-center gap-2"
             >
-              <span>📝</span>
+              <FileText className="w-4 h-4 text-indigo-400" />
               <span>Thi thử TOEIC</span>
             </Link>
 
@@ -160,7 +190,7 @@ export default function DashboardPage() {
               href="/dashboard/courses"
               className="px-6 py-3 rounded-2xl bg-red-600 hover:bg-red-500 text-white text-xs font-extrabold shadow-xl shadow-red-600/25 transition active:scale-95 flex items-center gap-2"
             >
-              <span>🚀</span>
+              <Rocket className="w-4 h-4" />
               <span>Tiếp tục học ngay</span>
             </Link>
           </div>
@@ -174,25 +204,27 @@ export default function DashboardPage() {
         <button
           type="button"
           onClick={() => setPeriod("daily")}
-          className={`rounded-xl px-4 py-2.5 text-xs sm:text-sm font-bold transition ${
+          className={`flex items-center justify-center gap-1.5 rounded-xl px-4 py-2.5 text-xs sm:text-sm font-bold transition ${
             period === "daily"
               ? "bg-red-600 text-white shadow-md"
               : "text-zinc-400 hover:text-white"
           }`}
         >
-          📅 Hôm nay (Daily 9.1)
+          <Calendar className="w-4 h-4" />
+          <span>Hôm nay (Daily 9.1)</span>
         </button>
 
         <button
           type="button"
           onClick={() => setPeriod("weekly")}
-          className={`rounded-xl px-4 py-2.5 text-xs sm:text-sm font-bold transition ${
+          className={`flex items-center justify-center gap-1.5 rounded-xl px-4 py-2.5 text-xs sm:text-sm font-bold transition ${
             period === "weekly"
               ? "bg-red-600 text-white shadow-md"
               : "text-zinc-400 hover:text-white"
           }`}
         >
-          📊 Tuần này (Weekly 9.2)
+          <BarChart3 className="w-4 h-4" />
+          <span>Tuần này (Weekly 9.2)</span>
         </button>
       </div>
 
@@ -204,7 +236,10 @@ export default function DashboardPage() {
           {/* 5 CARDS ROW */}
           <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3.5">
             <div className="bg-zinc-900/60 border border-zinc-800/60 rounded-2xl p-4.5 text-center transition hover:border-zinc-700">
-              <span className="text-[10px] text-zinc-500 uppercase tracking-wider font-bold block mb-1.5">⏱️ Thời gian học hôm nay</span>
+              <span className="text-[10px] text-zinc-500 uppercase tracking-wider font-bold block mb-1.5 flex items-center justify-center gap-1">
+                <Clock className="w-3.5 h-3.5 text-amber-400" />
+                <span>Thời gian học hôm nay</span>
+              </span>
               <p className="text-2xl font-black text-white">
                 {daily?.studyTime?.todayMinutes || 0} <span className="text-xs text-zinc-400 font-normal">/ {daily?.studyTime?.goalMinutes || 30}p</span>
               </p>
@@ -214,7 +249,10 @@ export default function DashboardPage() {
             </div>
 
             <div className="bg-zinc-900/60 border border-zinc-800/60 rounded-2xl p-4.5 text-center transition hover:border-zinc-700">
-              <span className="text-[10px] text-zinc-500 uppercase tracking-wider font-bold block mb-1.5">📖 Từ vựng (Mới + Ôn)</span>
+              <span className="text-[10px] text-zinc-500 uppercase tracking-wider font-bold block mb-1.5 flex items-center justify-center gap-1">
+                <BookOpen className="w-3.5 h-3.5 text-purple-400" />
+                <span>Từ vựng (Mới + Ôn)</span>
+              </span>
               <p className="text-2xl font-black text-purple-400">
                 {daily?.vocabulary?.totalToday || 0} <span className="text-xs text-zinc-400 font-normal">/ {daily?.vocabulary?.goal || 20} từ</span>
               </p>
@@ -224,7 +262,10 @@ export default function DashboardPage() {
             </div>
 
             <div className="bg-zinc-900/60 border border-zinc-800/60 rounded-2xl p-4.5 text-center transition hover:border-zinc-700">
-              <span className="text-[10px] text-zinc-500 uppercase tracking-wider font-bold block mb-1.5">✍️ Câu luyện tập hôm nay</span>
+              <span className="text-[10px] text-zinc-500 uppercase tracking-wider font-bold block mb-1.5 flex items-center justify-center gap-1">
+                <FileEdit className="w-3.5 h-3.5 text-blue-400" />
+                <span>Câu luyện tập hôm nay</span>
+              </span>
               <p className="text-2xl font-black text-blue-400">
                 {daily?.practiceQuestions?.count || 0} <span className="text-xs text-zinc-400 font-normal">câu</span>
               </p>
@@ -234,15 +275,24 @@ export default function DashboardPage() {
             </div>
 
             <div className="bg-zinc-900/60 border border-zinc-800/60 rounded-2xl p-4.5 text-center transition hover:border-zinc-700">
-              <span className="text-[10px] text-zinc-500 uppercase tracking-wider font-bold block mb-1.5">🎯 Tỷ lệ chính xác</span>
+              <span className="text-[10px] text-zinc-500 uppercase tracking-wider font-bold block mb-1.5 flex items-center justify-center gap-1">
+                <Target className="w-3.5 h-3.5 text-emerald-400" />
+                <span>Tỷ lệ chính xác</span>
+              </span>
               <p className="text-2xl font-black text-emerald-400">
                 {daily?.accuracyRate || 85}%
               </p>
-              <span className="text-[10px] text-emerald-300/70 font-semibold block mt-1.5">Phản xạ rất tốt ⚡</span>
+              <span className="text-[10px] text-emerald-300/70 font-semibold block mt-1.5 flex items-center justify-center gap-1">
+                <span>Phản xạ rất tốt</span>
+                <Zap className="w-3 h-3 text-amber-400" />
+              </span>
             </div>
 
             <div className="bg-zinc-900/60 border border-zinc-800/60 rounded-2xl p-4.5 text-center transition hover:border-zinc-700 col-span-2 sm:col-span-1">
-              <span className="text-[10px] text-zinc-500 uppercase tracking-wider font-bold block mb-1.5">🔥 Chuỗi ngày học</span>
+              <span className="text-[10px] text-zinc-500 uppercase tracking-wider font-bold block mb-1.5 flex items-center justify-center gap-1">
+                <Flame className="w-3.5 h-3.5 text-amber-400" />
+                <span>Chuỗi ngày học</span>
+              </span>
               <p className="text-2xl font-black text-amber-400">
                 {daily?.streak?.current || 5} <span className="text-xs text-zinc-400 font-normal">ngày</span>
               </p>
@@ -253,31 +303,32 @@ export default function DashboardPage() {
           {/* QUICK ACTIONS */}
           <div className="rounded-3xl border border-white/5 bg-[#121214] p-5 space-y-3">
             <h3 className="text-xs font-bold uppercase tracking-wider text-zinc-400 flex items-center gap-2">
-              <span>⚡</span> <span>Hành Động Nhanh (Quick Actions)</span>
+              <Zap className="w-4 h-4 text-amber-400" />
+              <span>Hành Động Nhanh (Quick Actions)</span>
             </h3>
             <div className="grid grid-cols-2 sm:grid-cols-5 gap-3">
               <Link href="/dashboard/vocabulary" className="p-3.5 rounded-2xl bg-zinc-900/80 hover:bg-zinc-800 border border-zinc-800/80 text-center transition flex flex-col items-center justify-center gap-1.5 group">
-                <span className="text-2xl group-hover:scale-110 transition">📖</span>
+                <BookOpen className="w-6 h-6 text-purple-400 group-hover:scale-110 transition" />
                 <span className="text-xs font-bold text-white">Học từ mới</span>
                 <span className="text-[10px] text-zinc-500">Flashcard SRS</span>
               </Link>
               <Link href="/dashboard/vocabulary/review" className="p-3.5 rounded-2xl bg-zinc-900/80 hover:bg-zinc-800 border border-zinc-800/80 text-center transition flex flex-col items-center justify-center gap-1.5 group">
-                <span className="text-2xl group-hover:scale-110 transition">🔄</span>
+                <RotateCcw className="w-6 h-6 text-indigo-400 group-hover:scale-110 transition" />
                 <span className="text-xs font-bold text-white">Ôn tập từ vựng</span>
                 <span className="text-[10px] text-zinc-500">Spaced Repetition</span>
               </Link>
               <Link href="/dashboard/practice" className="p-3.5 rounded-2xl bg-zinc-900/80 hover:bg-zinc-800 border border-zinc-800/80 text-center transition flex flex-col items-center justify-center gap-1.5 group">
-                <span className="text-2xl group-hover:scale-110 transition">✍️</span>
+                <FileEdit className="w-6 h-6 text-blue-400 group-hover:scale-110 transition" />
                 <span className="text-xs font-bold text-white">Luyện tập câu</span>
                 <span className="text-[10px] text-zinc-500">Part 1 - 7</span>
               </Link>
               <Link href="/dashboard/mock-test" className="p-3.5 rounded-2xl bg-zinc-900/80 hover:bg-zinc-800 border border-zinc-800/80 text-center transition flex flex-col items-center justify-center gap-1.5 group">
-                <span className="text-2xl group-hover:scale-110 transition">📝</span>
+                <FileText className="w-6 h-6 text-red-400 group-hover:scale-110 transition" />
                 <span className="text-xs font-bold text-white">Thi thử Mini/Full</span>
                 <span className="text-[10px] text-zinc-500">Chuẩn format ETS</span>
               </Link>
               <Link href="/dashboard/error-log" className="p-3.5 rounded-2xl bg-zinc-900/80 hover:bg-zinc-800 border border-zinc-800/80 text-center transition flex flex-col items-center justify-center gap-1.5 group col-span-2 sm:col-span-1">
-                <span className="text-2xl group-hover:scale-110 transition">📓</span>
+                <BookMarked className="w-6 h-6 text-amber-400 group-hover:scale-110 transition" />
                 <span className="text-xs font-bold text-white">Sổ tay câu sai</span>
                 <span className="text-[10px] text-zinc-500">Luyện Drill & Phân tích</span>
               </Link>
@@ -291,7 +342,8 @@ export default function DashboardPage() {
               <div className="rounded-3xl border border-white/5 bg-[#121214] p-6 space-y-5">
                 <div className="flex items-center justify-between">
                   <h3 className="text-sm font-bold text-white flex items-center gap-2">
-                    <span>🎯</span> <span>Tiến Độ Mục Tiêu Hàng Ngày (Daily Goals)</span>
+                    <Target className="w-4 h-4 text-red-500" />
+                    <span>Tiến Độ Mục Tiêu Hàng Ngày (Daily Goals)</span>
                   </h3>
                   <span className="text-xs font-black text-red-400">
                     {daily?.tasksCompleted || 0} / {daily?.taskGoal || 4} mục tiêu
@@ -302,7 +354,7 @@ export default function DashboardPage() {
                     <div key={g.id} className="p-4 rounded-2xl bg-zinc-950 border border-zinc-800/80 space-y-2">
                       <div className="flex items-center justify-between text-xs">
                         <span className="font-semibold text-zinc-300 flex items-center gap-1.5">
-                          <span>{g.icon}</span> <span>{g.title}</span>
+                          <span>{g.title}</span>
                         </span>
                         <span className="font-bold text-white">{g.current} / {g.target} {g.unit}</span>
                       </div>
@@ -311,7 +363,7 @@ export default function DashboardPage() {
                       </div>
                       <div className="flex justify-between items-center text-[10px]">
                         <span className="text-zinc-500">{g.progress}% hoàn thành</span>
-                        {g.isCompleted ? <span className="text-emerald-400 font-bold">✓ Đạt mục tiêu</span> : <span className="text-zinc-400">Còn {Math.max(0, g.target - g.current)} {g.unit}</span>}
+                        {g.isCompleted ? <span className="text-emerald-400 font-bold flex items-center gap-1"><Check className="w-3 h-3" /> Đạt mục tiêu</span> : <span className="text-zinc-400">Còn {Math.max(0, g.target - g.current)} {g.unit}</span>}
                       </div>
                     </div>
                   ))}
@@ -321,7 +373,8 @@ export default function DashboardPage() {
               {/* Today's Schedule */}
               <div className="rounded-3xl border border-white/5 bg-[#121214] p-6 space-y-4">
                 <h3 className="text-sm font-bold text-white flex items-center gap-2">
-                  <span>📅</span> <span>Lịch Trình Học Tập Hôm Nay (Today&apos;s Schedule)</span>
+                  <Calendar className="w-4 h-4 text-blue-400" />
+                  <span>Lịch Trình Học Tập Hôm Nay (Today&apos;s Schedule)</span>
                 </h3>
                 <div className="space-y-3">
                   {daily?.todaySchedule?.map((s: any, idx: number) => (
@@ -333,8 +386,15 @@ export default function DashboardPage() {
                           <span className="text-[10px] text-zinc-500">{s.category}</span>
                         </div>
                       </div>
-                      <span className={`text-[10px] font-bold px-2.5 py-0.5 rounded-full border ${s.status === "completed" ? "bg-emerald-500/20 text-emerald-300 border-emerald-500/30" : "bg-zinc-800 text-zinc-400 border-zinc-700"}`}>
-                        {s.status === "completed" ? "✓ Đã hoàn thành" : "○ Sắp tới"}
+                      <span className={`text-[10px] font-bold px-2.5 py-0.5 rounded-full border flex items-center gap-1 ${s.status === "completed" ? "bg-emerald-500/20 text-emerald-300 border-emerald-500/30" : "bg-zinc-800 text-zinc-400 border-zinc-700"}`}>
+                        {s.status === "completed" ? (
+                          <>
+                            <Check className="w-3 h-3" />
+                            <span>Đã hoàn thành</span>
+                          </>
+                        ) : (
+                          <span>Sắp tới</span>
+                        )}
                       </span>
                     </div>
                   ))}
@@ -346,13 +406,14 @@ export default function DashboardPage() {
                 <div className="rounded-3xl border border-purple-500/30 bg-gradient-to-br from-purple-950/20 via-zinc-900 to-zinc-950 p-6 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
                   <div className="space-y-1 flex-1">
                     <div className="flex items-center gap-2">
-                      <span className="text-2xl">🔔</span>
+                      <Bell className="w-5 h-5 text-purple-400" />
                       <h3 className="text-sm font-bold text-purple-300">Thông Báo Ôn Tập Sắp Tới (Upcoming Reviews)</h3>
                     </div>
                     <p className="text-xs text-zinc-300 leading-relaxed">{daily.upcomingReviews.message}</p>
                   </div>
-                  <Link href="/dashboard/vocabulary/review" className="px-5 py-2.5 rounded-xl bg-purple-600 hover:bg-purple-500 text-white font-bold text-xs shadow-lg transition shrink-0">
-                    Ôn tập ngay →
+                  <Link href="/dashboard/vocabulary/review" className="flex items-center gap-1.5 px-5 py-2.5 rounded-xl bg-purple-600 hover:bg-purple-500 text-white font-bold text-xs shadow-lg transition shrink-0">
+                    <span>Ôn tập ngay</span>
+                    <ArrowRight className="w-3.5 h-3.5" />
                   </Link>
                 </div>
               )}
@@ -360,12 +421,15 @@ export default function DashboardPage() {
               {/* Today's Achievements */}
               <div className="rounded-3xl border border-white/5 bg-[#121214] p-6 space-y-4">
                 <h3 className="text-sm font-bold text-white flex items-center gap-2">
-                  <span>🏆</span> <span>Thành Tích Đạt Được Hôm Nay (Today&apos;s Achievements)</span>
+                  <Trophy className="w-4 h-4 text-amber-400" />
+                  <span>Thành Tích Đạt Được Hôm Nay (Today&apos;s Achievements)</span>
                 </h3>
                 <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
                   {daily?.todayAchievements?.map((a: any) => (
-                    <div key={a.id} className="p-4 rounded-2xl border text-center space-y-1.5 bg-amber-950/10 border-amber-500/30">
-                      <div className="text-2xl">{a.icon}</div>
+                    <div key={a.id} className="p-4 rounded-2xl border text-center space-y-1.5 bg-amber-950/10 border-amber-500/30 flex flex-col items-center">
+                      <div className="w-9 h-9 rounded-xl bg-amber-500/20 text-amber-400 flex items-center justify-center mb-1">
+                        <Award className="w-5 h-5" />
+                      </div>
                       <h4 className="text-xs font-bold text-white">{a.title}</h4>
                       <p className="text-[10px] text-zinc-400">{a.desc}</p>
                     </div>
@@ -379,35 +443,41 @@ export default function DashboardPage() {
               <div className="bg-zinc-900/60 border border-zinc-800/50 rounded-2xl p-5 lg:p-6">
                 <div className="flex items-center justify-between mb-4">
                   <h3 className="text-sm font-semibold text-white flex items-center gap-2">
-                    <span className="w-7 h-7 rounded-lg bg-red-600/15 flex items-center justify-center text-xs">📊</span>
-                    Tiến độ đến mục tiêu điểm
+                    <span className="w-7 h-7 rounded-lg bg-red-600/15 flex items-center justify-center text-xs text-red-400">
+                      <BarChart3 className="w-4 h-4" />
+                    </span>
+                    <span>Tiến độ đến mục tiêu điểm</span>
                   </h3>
-                  <span className="text-sm font-bold text-red-400">{score.progress}%</span>
+                  <span className="text-sm font-bold text-red-400">{score?.progress || 0}%</span>
                 </div>
                 <div className="w-full bg-zinc-800/80 rounded-full h-3">
-                  <div className="bg-gradient-to-r from-red-600 to-red-400 h-3 rounded-full transition-all duration-700 relative" style={{ width: `${score.progress}%` }}>
+                  <div className="bg-gradient-to-r from-red-600 to-red-400 h-3 rounded-full transition-all duration-700 relative" style={{ width: `${score?.progress || 0}%` }}>
                     <span className="absolute right-0 top-1/2 -translate-y-1/2 w-4 h-4 bg-white rounded-full shadow-lg shadow-red-600/30 border-2 border-red-500" />
                   </div>
                 </div>
                 <div className="flex justify-between text-xs text-zinc-400 mt-3">
-                  <span>Hiện tại: <strong className="text-white">{score.current || 0}</strong></span>
-                  <span>Mục tiêu: <strong className="text-green-400">{score.target}</strong></span>
+                  <span>Hiện tại: <strong className="text-white">{score?.current || 0}</strong></span>
+                  <span>Mục tiêu: <strong className="text-green-400">{score?.target || 900}</strong></span>
                 </div>
               </div>
 
               {/* Recent Activities */}
               <div className="bg-zinc-900/60 border border-zinc-800/50 rounded-2xl p-5">
                 <h3 className="text-sm font-semibold text-white mb-4 flex items-center gap-2">
-                  <span className="w-7 h-7 rounded-lg bg-cyan-600/15 flex items-center justify-center text-xs text-cyan-500">📋</span>
-                  Hoạt động gần đây
+                  <span className="w-7 h-7 rounded-lg bg-cyan-600/15 flex items-center justify-center text-xs text-cyan-500">
+                    <ClipboardList className="w-4 h-4" />
+                  </span>
+                  <span>Hoạt động gần đây</span>
                 </h3>
-                {recentActivities.length === 0 ? (
+                {recentActivities?.length === 0 ? (
                   <p className="text-xs text-zinc-500 italic">Chưa có hoạt động nào.</p>
                 ) : (
                   <div className="space-y-3">
-                    {recentActivities.map((act: any) => (
+                    {recentActivities?.map((act: any) => (
                       <div key={act.id} className="flex items-start gap-3 bg-zinc-800/30 p-3 rounded-xl border border-zinc-700/30">
-                        <span className="text-xl shrink-0">{act.icon}</span>
+                        <span className="w-7 h-7 rounded-lg bg-zinc-800 flex items-center justify-center text-xs text-zinc-400 shrink-0">
+                          <Check className="w-3.5 h-3.5 text-emerald-400" />
+                        </span>
                         <div className="flex-1 min-w-0">
                           <p className="text-[13px] font-medium text-zinc-200 line-clamp-2 leading-snug">{act.title}</p>
                           <p className="text-[10px] text-zinc-500 mt-1">{new Date(act.date).toLocaleDateString('vi-VN')} {new Date(act.date).toLocaleTimeString('vi-VN')}</p>
@@ -420,7 +490,8 @@ export default function DashboardPage() {
 
               {/* Roadmap stages */}
               <h3 className="text-base font-semibold text-white flex items-center gap-2 px-1 pt-2">
-                🗺️ Lộ trình học TOEIC
+                <Map className="w-4 h-4 text-red-500" />
+                <span>Lộ trình học TOEIC</span>
               </h3>
               <div className="space-y-3">
                 {STAGES.map((stage) => {
@@ -433,7 +504,7 @@ export default function DashboardPage() {
                     <div key={stage.id} className={`rounded-2xl border transition-all duration-300 ${isActive ? `${stage.bg} ${stage.border} shadow-lg ${stage.glow}` : isDone ? "bg-zinc-900/40 border-zinc-800/30" : "bg-zinc-900/20 border-zinc-800/20 opacity-60"}`}>
                       <button onClick={() => setExpandedStage(isOpen ? null : stage.id)} className="w-full flex items-center gap-3 p-4 text-left" disabled={isLocked}>
                         <div className={`w-10 h-10 rounded-xl flex items-center justify-center text-sm font-bold shrink-0 shadow-sm ${isDone ? "bg-green-600/20 text-green-400 border border-green-600/25" : isActive ? `bg-gradient-to-br ${stage.color} text-white shadow-lg` : "bg-zinc-800 text-zinc-600 border border-zinc-700"}`}>
-                          {isDone ? "✓" : isLocked ? "🔒" : stage.id}
+                          {isDone ? <Check className="w-4 h-4 text-green-400" /> : isLocked ? <Lock className="w-3.5 h-3.5 text-zinc-500" /> : stage.id}
                         </div>
                         <div className="flex-1 min-w-0">
                           <div className="flex items-center gap-2 flex-wrap mb-0.5">
@@ -442,15 +513,23 @@ export default function DashboardPage() {
                           </div>
                           <p className="text-[11px] text-zinc-400 truncate">{stage.title}</p>
                         </div>
-                        {!isLocked && <span className="text-zinc-600 text-xs shrink-0 transition-transform duration-200" style={{ transform: isOpen ? "rotate(180deg)" : "rotate(0deg)" }}>▼</span>}
+                        {!isLocked && (
+                          <ChevronDown
+                            className="w-4 h-4 text-zinc-600 shrink-0 transition-transform duration-200"
+                            style={{ transform: isOpen ? "rotate(180deg)" : "rotate(0deg)" }}
+                          />
+                        )}
                       </button>
                       {isOpen && !isLocked && (
                         <div className="px-4 pb-4 pt-1 border-t border-zinc-800/30 mt-1">
-                          <p className="text-[10px] font-semibold text-zinc-500 uppercase tracking-wider mb-2 mt-3">🎯 Mục tiêu cần đạt</p>
+                          <p className="text-[10px] font-semibold text-zinc-500 uppercase tracking-wider mb-2 mt-3 flex items-center gap-1">
+                            <Target className="w-3 h-3 text-red-400" />
+                            <span>Mục tiêu cần đạt</span>
+                          </p>
                           <ul className="space-y-1.5">
                             {stage.goals.map((goal, i) => (
                               <li key={i} className="flex items-start gap-2 text-[12px] text-zinc-300">
-                                <span className="text-green-500/70 shrink-0">✓</span>
+                                <Check className="w-3.5 h-3.5 text-green-500/70 shrink-0 mt-0.5" />
                                 <span className="leading-snug">{goal}</span>
                               </li>
                             ))}
@@ -475,7 +554,10 @@ export default function DashboardPage() {
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
             {/* 1. Weekly study time */}
             <div className="bg-zinc-900/60 border border-white/5 rounded-3xl p-5 space-y-2">
-              <span className="text-[10px] text-zinc-500 font-bold uppercase tracking-wider">⏱️ Thời gian học tuần</span>
+              <span className="text-[10px] text-zinc-500 font-bold uppercase tracking-wider flex items-center gap-1">
+                <Clock className="w-3.5 h-3.5 text-amber-400" />
+                <span>Thời gian học tuần</span>
+              </span>
               <div className="text-3xl font-black text-white">
                 {weekly?.studyTimeSummary?.totalHours || 5.2}h
                 <span className="text-xs text-zinc-400 font-normal"> / {weekly?.studyTimeSummary?.goalHours || 6.0}h</span>
@@ -488,7 +570,10 @@ export default function DashboardPage() {
 
             {/* 2. Weekly vocabulary total */}
             <div className="bg-zinc-900/60 border border-white/5 rounded-3xl p-5 space-y-2">
-              <span className="text-[10px] text-zinc-500 font-bold uppercase tracking-wider">📖 Tổng từ vựng tuần</span>
+              <span className="text-[10px] text-zinc-500 font-bold uppercase tracking-wider flex items-center gap-1">
+                <BookOpen className="w-3.5 h-3.5 text-purple-400" />
+                <span>Tổng từ vựng tuần</span>
+              </span>
               <div className="text-3xl font-black text-purple-400">
                 {weekly?.vocabularyTotal?.totalCount || 140}
                 <span className="text-xs text-zinc-400 font-normal"> từ</span>
@@ -501,7 +586,10 @@ export default function DashboardPage() {
 
             {/* 3. Weekly practice total */}
             <div className="bg-zinc-900/60 border border-white/5 rounded-3xl p-5 space-y-2">
-              <span className="text-[10px] text-zinc-500 font-bold uppercase tracking-wider">✍️ Tổng câu luyện tập</span>
+              <span className="text-[10px] text-zinc-500 font-bold uppercase tracking-wider flex items-center gap-1">
+                <FileEdit className="w-3.5 h-3.5 text-blue-400" />
+                <span>Tổng câu luyện tập</span>
+              </span>
               <div className="text-3xl font-black text-blue-400">
                 {weekly?.practiceTotal?.totalQuestions || 210}
                 <span className="text-xs text-zinc-400 font-normal"> câu</span>
@@ -514,7 +602,10 @@ export default function DashboardPage() {
 
             {/* 4. Weekly accuracy rate */}
             <div className="bg-zinc-900/60 border border-white/5 rounded-3xl p-5 space-y-2">
-              <span className="text-[10px] text-zinc-500 font-bold uppercase tracking-wider">🎯 Tỷ lệ chính xác tuần</span>
+              <span className="text-[10px] text-zinc-500 font-bold uppercase tracking-wider flex items-center gap-1">
+                <Target className="w-3.5 h-3.5 text-emerald-400" />
+                <span>Tỷ lệ chính xác tuần</span>
+              </span>
               <div className="text-3xl font-black text-emerald-400">
                 {weekly?.accuracyRate?.current || 86}%
               </div>
@@ -527,15 +618,17 @@ export default function DashboardPage() {
 
           {/* 7. WEEKLY STREAK VISUALIZATION (Trực quan hóa chuỗi hàng tuần T2-CN) */}
           <div className="rounded-3xl border border-white/5 bg-[#121214] p-6 space-y-4">
-            <div className="flex items-center justify-between">
+            <div className="flex items-center justify-between flex-wrap gap-2">
               <div>
                 <h3 className="text-base font-bold text-white flex items-center gap-2">
-                  <span>🔥</span> <span>Trực Quan Hóa Chuỗi Học Tuần (Weekly Streak Visualization)</span>
+                  <Flame className="w-5 h-5 text-amber-400" />
+                  <span>Trực Quan Hóa Chuỗi Học Tuần (Weekly Streak Visualization)</span>
                 </h3>
                 <p className="text-xs text-zinc-400 mt-0.5">Theo dõi phong độ học tập 7 ngày trong tuần từ Thứ 2 đến Chủ nhật</p>
               </div>
-              <span className="px-3 py-1 rounded-full text-xs font-black bg-amber-500/20 text-amber-300 border border-amber-500/30">
-                5 / 7 ngày tích cực 🔥
+              <span className="px-3 py-1 rounded-full text-xs font-black bg-amber-500/20 text-amber-300 border border-amber-500/30 flex items-center gap-1">
+                <Flame className="w-3.5 h-3.5 text-amber-400 fill-amber-400" />
+                <span>5 / 7 ngày tích cực</span>
               </span>
             </div>
 
@@ -543,7 +636,7 @@ export default function DashboardPage() {
               {weekly?.streakVisualization?.map((s: any, idx: number) => (
                 <div
                   key={idx}
-                  className={`p-3.5 rounded-2xl border text-center space-y-1.5 transition ${
+                  className={`p-3.5 rounded-2xl border text-center space-y-1.5 transition flex flex-col items-center ${
                     s.isToday
                       ? "bg-red-600/20 border-red-500 shadow-lg shadow-red-600/20"
                       : s.active
@@ -552,7 +645,9 @@ export default function DashboardPage() {
                   }`}
                 >
                   <span className="text-[10px] text-zinc-400 font-bold block">{s.day}</span>
-                  <div className="text-2xl">{s.active ? "🔥" : "⚪"}</div>
+                  <div className="w-7 h-7 rounded-lg flex items-center justify-center">
+                    {s.active ? <Flame className="w-5 h-5 text-amber-400 fill-amber-400" /> : <div className="w-2.5 h-2.5 rounded-full bg-zinc-700" />}
+                  </div>
                   <span className="text-[11px] font-bold text-white block">{s.minutes > 0 ? `${s.minutes}p` : "—"}</span>
                   <span className="text-[9px] text-zinc-500 block">{s.date}</span>
                 </div>
@@ -567,7 +662,8 @@ export default function DashboardPage() {
               <div className="flex items-center justify-between">
                 <div>
                   <h3 className="text-base font-bold text-white flex items-center gap-2">
-                    <span>🏆</span> <span>Điểm Kiểm Tra Hàng Tuần (Weekly Test Scores)</span>
+                    <Trophy className="w-4 h-4 text-amber-400" />
+                    <span>Điểm Kiểm Tra Hàng Tuần (Weekly Test Scores)</span>
                   </h3>
                   <p className="text-xs text-zinc-400 mt-0.5">Kết quả các bài thi thử đã hoàn thành trong 7 ngày qua</p>
                 </div>
@@ -586,7 +682,10 @@ export default function DashboardPage() {
                 <div className="p-4 rounded-2xl bg-zinc-950 border border-zinc-800 text-center">
                   <span className="text-[10px] text-zinc-500 font-bold uppercase block mb-1">Cao nhất</span>
                   <div className="text-2xl font-black text-emerald-400">{weekly?.weeklyTestScores?.highestScore || 780}</div>
-                  <span className="text-[10px] text-emerald-300/70 font-semibold">Kỷ lục tuần 🌟</span>
+                  <span className="text-[10px] text-emerald-300/70 font-semibold flex items-center justify-center gap-1">
+                    <span>Kỷ lục tuần</span>
+                    <Sparkles className="w-3 h-3 text-amber-400" />
+                  </span>
                 </div>
 
                 <div className="p-4 rounded-2xl bg-zinc-950 border border-zinc-800 text-center">
@@ -601,7 +700,8 @@ export default function DashboardPage() {
             <div className="rounded-3xl border border-white/5 bg-[#121214] p-6 space-y-4">
               <div>
                 <h3 className="text-base font-bold text-white flex items-center gap-2">
-                  <span>🎯</span> <span>Tiến Độ Mục Tiêu Tuần (Weekly Goals Progress)</span>
+                  <Target className="w-4 h-4 text-red-500" />
+                  <span>Tiến Độ Mục Tiêu Tuần (Weekly Goals Progress)</span>
                 </h3>
                 <p className="text-xs text-zinc-400 mt-0.5">Các cột mốc mục tiêu đã đề ra trong tuần</p>
               </div>
@@ -631,7 +731,8 @@ export default function DashboardPage() {
           <div className="rounded-3xl border border-white/5 bg-[#121214] p-6 space-y-4">
             <div>
               <h3 className="text-base font-bold text-white flex items-center gap-2">
-                <span>📈</span> <span>Phân Tích Từng Ngày Trong Tuần (Day-by-Day Breakdown)</span>
+                <TrendingUp className="w-4 h-4 text-indigo-400" />
+                <span>Phân Tích Từng Ngày Trong Tuần (Day-by-Day Breakdown)</span>
               </h3>
               <p className="text-xs text-zinc-400 mt-0.5">Chi tiết số phút học, từ vựng tích lũy và số câu hỏi làm theo từng ngày</p>
             </div>
@@ -660,7 +761,19 @@ export default function DashboardPage() {
                       <td className="py-3 px-4 text-blue-400 font-semibold">{d.questions > 0 ? `${d.questions} câu` : "—"}</td>
                       <td className="py-3 px-4 text-emerald-400 font-semibold">{d.accuracy > 0 ? `${d.accuracy}%` : "—"}</td>
                       <td className="py-3 px-4 text-zinc-400">
-                        {d.minutes >= 50 ? "🌟 Xuất sắc" : d.minutes > 0 ? "✓ Tốt" : "Nghỉ ngơi"}
+                        {d.minutes >= 50 ? (
+                          <span className="text-amber-400 font-semibold flex items-center gap-1">
+                            <Sparkles className="w-3 h-3" />
+                            <span>Xuất sắc</span>
+                          </span>
+                        ) : d.minutes > 0 ? (
+                          <span className="text-emerald-400 font-semibold flex items-center gap-1">
+                            <Check className="w-3 h-3" />
+                            <span>Tốt</span>
+                          </span>
+                        ) : (
+                          <span>Nghỉ ngơi</span>
+                        )}
                       </td>
                     </tr>
                   ))}
@@ -673,7 +786,8 @@ export default function DashboardPage() {
           <div className="rounded-3xl border border-white/5 bg-[#121214] p-6 space-y-4">
             <div>
               <h3 className="text-base font-bold text-white flex items-center gap-2">
-                <span>🔄</span> <span>So Sánh Hiệu Suất Tuần Này vs Tuần Trước (Weekly Comparison)</span>
+                <RotateCcw className="w-4 h-4 text-indigo-400" />
+                <span>So Sánh Hiệu Suất Tuần Này vs Tuần Trước (Weekly Comparison)</span>
               </h3>
               <p className="text-xs text-zinc-400 mt-0.5">Mức độ tăng trưởng và tiến bộ của bạn sau 7 ngày rèn luyện</p>
             </div>
@@ -710,12 +824,15 @@ export default function DashboardPage() {
             {/* 10. Weekly Achievements */}
             <div className="rounded-3xl border border-white/5 bg-[#121214] p-6 space-y-4">
               <h3 className="text-base font-bold text-white flex items-center gap-2">
-                <span>🏆</span> <span>Thành Tích Hàng Tuần (Weekly Achievements)</span>
+                <Trophy className="w-4 h-4 text-amber-400" />
+                <span>Thành Tích Hàng Tuần (Weekly Achievements)</span>
               </h3>
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
                 {weekly?.weeklyAchievements?.map((a: any) => (
-                  <div key={a.id} className="p-4 rounded-2xl border text-center space-y-1.5 bg-amber-950/10 border-amber-500/30">
-                    <div className="text-2xl">{a.icon}</div>
+                  <div key={a.id} className="p-4 rounded-2xl border text-center space-y-1.5 bg-amber-950/10 border-amber-500/30 flex flex-col items-center">
+                    <div className="w-9 h-9 rounded-xl bg-amber-500/20 text-amber-400 flex items-center justify-center mb-1">
+                      <Award className="w-5 h-5" />
+                    </div>
                     <h4 className="text-xs font-bold text-white">{a.title}</h4>
                     <p className="text-[10px] text-zinc-400">{a.desc}</p>
                   </div>
@@ -726,12 +843,14 @@ export default function DashboardPage() {
             {/* 11. Weekly Highlights */}
             <div className="rounded-3xl border border-white/5 bg-[#121214] p-6 space-y-4">
               <h3 className="text-base font-bold text-white flex items-center gap-2">
-                <span>🌟</span> <span>Điểm Nổi Bật Hàng Tuần (Weekly Highlights)</span>
+                <Sparkles className="w-4 h-4 text-amber-400" />
+                <span>Điểm Nổi Bật Hàng Tuần (Weekly Highlights)</span>
               </h3>
               <div className="space-y-2.5">
                 {weekly?.weeklyHighlights?.map((h: string, idx: number) => (
-                  <div key={idx} className="p-3 rounded-2xl bg-zinc-950 border border-zinc-800/80 text-xs text-zinc-200 leading-relaxed">
-                    {h}
+                  <div key={idx} className="p-3 rounded-2xl bg-zinc-950 border border-zinc-800/80 text-xs text-zinc-200 leading-relaxed flex items-start gap-2">
+                    <Sparkles className="w-3.5 h-3.5 text-amber-400 shrink-0 mt-0.5" />
+                    <span>{h}</span>
                   </div>
                 ))}
               </div>

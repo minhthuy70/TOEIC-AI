@@ -19,6 +19,22 @@ import {
   type ListeningLessonSummary,
 } from "@/services/listening";
 
+import {
+  ImageIcon,
+  MessageSquare,
+  Users,
+  Mic,
+  Headphones,
+  ArrowLeft,
+  ArrowRight,
+  Check,
+  X,
+  RotateCcw,
+  PartyPopper,
+  Play,
+  Pause,
+} from "lucide-react";
+
 type ReviewMode = "part" | "lesson" | "all";
 
 const PART_LABELS: Record<number, string> = {
@@ -28,11 +44,11 @@ const PART_LABELS: Record<number, string> = {
   4: "Part 4: Talks",
 };
 
-const PART_ICONS: Record<number, string> = {
-  1: "🖼️",
-  2: "💬",
-  3: "🗣️",
-  4: "🎙️",
+const PART_ICONS: Record<number, any> = {
+  1: ImageIcon,
+  2: MessageSquare,
+  3: Users,
+  4: Mic,
 };
 
 const QUESTION_LIMITS = [5, 10, 15, 20];
@@ -943,14 +959,15 @@ function ListeningReviewContent() {
         <div>
           <Link
             href="/dashboard/courses"
-            className="inline-flex items-center gap-2 text-xs font-medium text-zinc-500 hover:text-white transition mb-4"
+            className="inline-flex items-center gap-1.5 text-xs font-medium text-zinc-500 hover:text-white transition mb-4"
           >
-            ← Quay lại Học tập
+            <ArrowLeft className="w-4 h-4" />
+            <span>Quay lại Học tập</span>
           </Link>
 
           <div className="flex items-center gap-3">
-            <div className="h-11 w-11 rounded-2xl bg-red-600/15 border border-red-600/20 flex items-center justify-center text-xl">
-              🎧
+            <div className="h-11 w-11 rounded-2xl bg-red-600/15 border border-red-600/20 text-red-400 flex items-center justify-center">
+              <Headphones className="w-6 h-6" />
             </div>
 
             <div>
@@ -994,17 +1011,16 @@ function ListeningReviewContent() {
               >
                 <div className="flex items-center gap-3">
                   <div
-                    className={`h-10 w-10 rounded-xl flex items-center justify-center text-lg ${
+                    className={`h-10 w-10 rounded-xl flex items-center justify-center ${
                       active
                         ? "bg-red-600 text-white"
                         : "bg-zinc-800 text-zinc-400"
                     }`}
                   >
-                    {
-                      PART_ICONS[
-                        part
-                      ]
-                    }
+                    {(() => {
+                      const Icon = PART_ICONS[part] || Headphones;
+                      return <Icon className="w-5 h-5" />;
+                    })()}
                   </div>
 
                   <div>
@@ -1081,10 +1097,10 @@ function ListeningReviewContent() {
            EMPTY
            =================================================== */
 
-        <div className="rounded-3xl border border-zinc-800 bg-zinc-900/60 p-12 text-center">
+        <div className="rounded-3xl border border-zinc-800 bg-zinc-900/60 p-12 text-center flex flex-col items-center">
 
-          <div className="text-5xl mb-5">
-            🎧
+          <div className="w-16 h-16 rounded-2xl bg-red-600/15 border border-red-600/20 text-red-400 flex items-center justify-center mb-5">
+            <Headphones className="w-8 h-8" />
           </div>
 
           <h2 className="text-lg font-semibold text-white">
@@ -1102,9 +1118,10 @@ function ListeningReviewContent() {
               onClick={
                 handleSelectAll
               }
-              className="inline-flex mt-6 rounded-xl bg-red-600 px-5 py-3 text-sm font-semibold text-white hover:bg-red-700 transition"
+              className="inline-flex items-center gap-2 mt-6 rounded-xl bg-red-600 px-5 py-3 text-sm font-semibold text-white hover:bg-red-700 transition"
             >
-              🔁 Tải lại nội dung đã học
+              <RotateCcw className="w-4 h-4" />
+              <span>Tải lại nội dung đã học</span>
             </button>
           )}
 
@@ -1123,10 +1140,10 @@ function ListeningReviewContent() {
            =================================================== */
 
         <div className="rounded-3xl border border-zinc-800 bg-zinc-900/60 overflow-hidden">
-          <div className="max-w-xl mx-auto p-10 text-center">
+          <div className="max-w-xl mx-auto p-10 text-center flex flex-col items-center">
 
-            <div className="mx-auto h-20 w-20 rounded-full bg-emerald-600/10 border border-emerald-500/20 flex items-center justify-center text-4xl">
-              🎉
+            <div className="mx-auto h-20 w-20 rounded-full bg-emerald-600/10 border border-emerald-500/20 text-emerald-400 flex items-center justify-center">
+              <PartyPopper className="w-10 h-10" />
             </div>
 
             <p className="text-[11px] uppercase tracking-[0.25em] text-zinc-600 mt-6">
@@ -1282,14 +1299,15 @@ function ListeningReviewContent() {
                       className="h-12 w-12 shrink-0 rounded-full bg-red-600 flex items-center justify-center text-white text-lg hover:bg-red-700 transition shadow-lg shadow-red-600/20"
                     >
                       {isPlaying
-                        ? "⏸"
-                        : "▶"}
+                        ? <Pause className="w-5 h-5" />
+                        : <Play className="w-5 h-5 ml-0.5" />}
                     </button>
 
                     <div className="flex-1 min-w-0">
 
-                      <p className="text-xs font-semibold text-white mb-2">
-                        🎧 Nghe audio
+                      <p className="text-xs font-semibold text-white mb-2 flex items-center gap-1.5">
+                        <Headphones className="w-3.5 h-3.5 text-red-500" />
+                        <span>Nghe audio</span>
                       </p>
 
                       <div
@@ -1387,15 +1405,23 @@ function ListeningReviewContent() {
 
                 {submitted && (
                   <span
-                    className={`rounded-full px-3 py-1 text-[10px] font-semibold border ${
+                    className={`inline-flex items-center gap-1 rounded-full px-3 py-1 text-[10px] font-semibold border ${
                       isCurrentCorrect
                         ? "bg-emerald-600/10 text-emerald-300 border-emerald-500/20"
                         : "bg-red-600/10 text-red-300 border-red-500/20"
                     }`}
                   >
-                    {isCurrentCorrect
-                      ? "✓ Chính xác"
-                      : "✕ Chưa chính xác"}
+                    {isCurrentCorrect ? (
+                      <>
+                        <Check className="w-3 h-3" />
+                        <span>Chính xác</span>
+                      </>
+                    ) : (
+                      <>
+                        <X className="w-3 h-3" />
+                        <span>Chưa chính xác</span>
+                      </>
+                    )}
                   </span>
                 )}
 
@@ -1508,15 +1534,23 @@ function ListeningReviewContent() {
                   >
 
                     <p
-                      className={`text-sm font-bold ${
+                      className={`text-sm font-bold flex items-center gap-1.5 ${
                         isCurrentCorrect
                           ? "text-emerald-300"
                           : "text-red-300"
                       }`}
                     >
-                      {isCurrentCorrect
-                        ? "✓ Chính xác!"
-                        : "✕ Chưa chính xác"}
+                      {isCurrentCorrect ? (
+                        <>
+                          <Check className="w-4 h-4" />
+                          <span>Chính xác!</span>
+                        </>
+                      ) : (
+                        <>
+                          <X className="w-4 h-4" />
+                          <span>Chưa chính xác</span>
+                        </>
+                      )}
                     </p>
 
                     {!isCurrentCorrect &&
@@ -1750,9 +1784,10 @@ function ListeningReviewContent() {
               onClick={
                 handleSelectAll
               }
-              className="text-[11px] font-semibold text-zinc-500 hover:text-white transition"
+              className="inline-flex items-center gap-1 text-[11px] font-semibold text-zinc-500 hover:text-white transition"
             >
-              🔁 Ôn tất cả bài đã học
+              <RotateCcw className="w-3 h-3" />
+              <span>Ôn tất cả bài đã học</span>
             </button>
 
           </div>

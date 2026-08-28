@@ -15,6 +15,18 @@ import {
   type ReadingLessonSummary,
 } from "@/services/reading";
 
+import {
+  Edit3,
+  FileText,
+  BookOpen,
+  ArrowLeft,
+  ArrowRight,
+  Check,
+  X,
+  RotateCcw,
+  PartyPopper,
+} from "lucide-react";
+
 type ReviewMode = "part" | "lesson" | "all";
 
 const PART_LABELS: Record<number, string> = {
@@ -23,10 +35,10 @@ const PART_LABELS: Record<number, string> = {
   7: "Part 7: Reading Comprehension",
 };
 
-const PART_ICONS: Record<number, string> = {
-  5: "📝",
-  6: "📄",
-  7: "📚",
+const PART_ICONS: Record<number, any> = {
+  5: Edit3,
+  6: FileText,
+  7: BookOpen,
 };
 
 const VALID_PARTS = [5, 6, 7];
@@ -902,14 +914,15 @@ function ReadingReviewContent() {
         <div>
           <Link
             href="/dashboard/courses"
-            className="inline-flex items-center gap-2 text-xs font-medium text-zinc-500 hover:text-white transition mb-4"
+            className="inline-flex items-center gap-1.5 text-xs font-medium text-zinc-500 hover:text-white transition mb-4"
           >
-            ← Quay lại Học tập
+            <ArrowLeft className="w-4 h-4" />
+            <span>Quay lại Học tập</span>
           </Link>
 
           <div className="flex items-center gap-3">
-            <div className="h-11 w-11 rounded-2xl bg-red-600/15 border border-red-600/20 flex items-center justify-center text-xl">
-              📖
+            <div className="h-11 w-11 rounded-2xl bg-red-600/15 border border-red-600/20 text-red-400 flex items-center justify-center">
+              <BookOpen className="w-6 h-6" />
             </div>
 
             <div>
@@ -949,7 +962,7 @@ function ReadingReviewContent() {
             >
               <div className="flex items-center gap-3">
                 <div
-                  className={`h-10 w-10 rounded-xl flex items-center justify-center text-lg ${
+                  className={`h-10 w-10 rounded-xl flex items-center justify-center ${
                     active
                       ? "bg-red-600 text-white"
                       : "bg-zinc-800 text-zinc-400"
@@ -1027,9 +1040,9 @@ function ReadingReviewContent() {
            EMPTY
            =================================================== */
 
-        <div className="rounded-3xl border border-zinc-800 bg-zinc-900/60 p-12 text-center">
-          <div className="text-5xl mb-5">
-            📖
+        <div className="rounded-3xl border border-zinc-800 bg-zinc-900/60 p-12 text-center flex flex-col items-center">
+          <div className="w-16 h-16 rounded-2xl bg-red-600/15 border border-red-600/20 text-red-400 flex items-center justify-center mb-5">
+            <BookOpen className="w-8 h-8" />
           </div>
 
           <h2 className="text-lg font-semibold text-white">
@@ -1045,9 +1058,10 @@ function ReadingReviewContent() {
           {lessons.length > 0 && (
             <button
               onClick={handleSelectAll}
-              className="inline-flex mt-6 rounded-xl bg-red-600 px-5 py-3 text-sm font-semibold text-white hover:bg-red-700 transition"
+              className="inline-flex items-center gap-2 mt-6 rounded-xl bg-red-600 px-5 py-3 text-sm font-semibold text-white hover:bg-red-700 transition"
             >
-              🔁 Tải lại nội dung đã học
+              <RotateCcw className="w-4 h-4" />
+              <span>Tải lại nội dung đã học</span>
             </button>
           )}
 
@@ -1066,9 +1080,9 @@ function ReadingReviewContent() {
            =================================================== */
 
         <div className="rounded-3xl border border-zinc-800 bg-zinc-900/60 overflow-hidden">
-          <div className="max-w-xl mx-auto p-10 text-center">
-            <div className="mx-auto h-20 w-20 rounded-full bg-emerald-600/10 border border-emerald-500/20 flex items-center justify-center text-4xl">
-              🎉
+          <div className="max-w-xl mx-auto p-10 text-center flex flex-col items-center">
+            <div className="mx-auto h-20 w-20 rounded-full bg-emerald-600/10 border border-emerald-500/20 text-emerald-400 flex items-center justify-center">
+              <PartyPopper className="w-10 h-10" />
             </div>
 
             <p className="text-[11px] uppercase tracking-[0.25em] text-zinc-600 mt-6">
@@ -1298,8 +1312,8 @@ function ReadingReviewContent() {
             <div className="rounded-3xl border border-zinc-800 bg-zinc-900/60 overflow-hidden">
               <div className="px-6 py-4 border-b border-zinc-800">
                 <div className="flex items-center gap-2">
-                  <span className="h-8 w-8 rounded-lg bg-red-600/10 border border-red-600/20 flex items-center justify-center">
-                    📄
+                  <span className="h-8 w-8 rounded-lg bg-red-600/10 border border-red-600/20 text-red-400 flex items-center justify-center">
+                    <FileText className="w-4 h-4" />
                   </span>
 
                   <div>
@@ -1362,15 +1376,23 @@ function ReadingReviewContent() {
 
                 {submitted && (
                   <span
-                    className={`rounded-full px-3 py-1 text-[10px] font-semibold border ${
+                    className={`inline-flex items-center gap-1 rounded-full px-3 py-1 text-[10px] font-semibold border ${
                       isCurrentCorrect
                         ? "bg-emerald-600/10 text-emerald-300 border-emerald-500/20"
                         : "bg-red-600/10 text-red-300 border-red-500/20"
                     }`}
                   >
-                    {isCurrentCorrect
-                      ? "✓ Chính xác"
-                      : "✕ Chưa chính xác"}
+                    {isCurrentCorrect ? (
+                      <>
+                        <Check className="w-3 h-3" />
+                        <span>Chính xác</span>
+                      </>
+                    ) : (
+                      <>
+                        <X className="w-3 h-3" />
+                        <span>Chưa chính xác</span>
+                      </>
+                    )}
                   </span>
                 )}
               </div>
@@ -1483,15 +1505,23 @@ function ReadingReviewContent() {
                     }`}
                   >
                     <p
-                      className={`text-sm font-bold ${
+                      className={`text-sm font-bold flex items-center gap-1.5 ${
                         isCurrentCorrect
                           ? "text-emerald-300"
                           : "text-red-300"
                       }`}
                     >
-                      {isCurrentCorrect
-                        ? "✓ Chính xác!"
-                        : "✕ Chưa chính xác"}
+                      {isCurrentCorrect ? (
+                        <>
+                          <Check className="w-4 h-4" />
+                          <span>Chính xác!</span>
+                        </>
+                      ) : (
+                        <>
+                          <X className="w-4 h-4" />
+                          <span>Chưa chính xác</span>
+                        </>
+                      )}
                     </p>
 
                     {!isCurrentCorrect &&
@@ -1660,9 +1690,10 @@ function ReadingReviewContent() {
 
             <button
               onClick={handleSelectAll}
-              className="text-[11px] font-semibold text-zinc-500 hover:text-white transition"
+              className="inline-flex items-center gap-1 text-[11px] font-semibold text-zinc-500 hover:text-white transition"
             >
-              🔁 Ôn tất cả bài đã học
+              <RotateCcw className="w-3 h-3" />
+              <span>Ôn tất cả bài đã học</span>
             </button>
           </div>
         )}

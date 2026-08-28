@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { X } from "lucide-react";
 
 type GrammarCategory = {
   id: number;
@@ -729,9 +730,9 @@ export default function GrammarCategoriesPage() {
                 onClick={() =>
                   setShowForm(false)
                 }
-                className="w-9 h-9 rounded-lg bg-zinc-800 hover:bg-zinc-700 text-zinc-400 hover:text-white"
+                className="w-9 h-9 rounded-lg bg-zinc-800 hover:bg-zinc-700 text-zinc-400 hover:text-white flex items-center justify-center"
               >
-                ✕
+                <X className="w-4 h-4" />
               </button>
 
             </div>

@@ -5,6 +5,17 @@ import Link from "next/link";
 import { useParams } from "next/navigation";
 import { getGrammarCategory } from "@/services/grammar";
 import type { GrammarCategoryDetail } from "@/types/grammar";
+import {
+  FileText,
+  AlertTriangle,
+  BookOpen,
+  Star,
+  Heart,
+  Check,
+  ArrowRight,
+  ArrowLeft,
+  Search,
+} from "lucide-react";
 
 export default function GrammarCategoryPage() {
   const params = useParams();
@@ -148,12 +159,13 @@ export default function GrammarCategoryPage() {
           href="/dashboard/courses"
           className="inline-flex items-center gap-2 text-sm text-zinc-500 hover:text-white transition-colors"
         >
-          ← Quay lại Học tập
+          <ArrowLeft className="w-4 h-4" />
+          <span>Quay lại Học tập</span>
         </Link>
         <div className="bg-red-950/30 border border-red-800/40 rounded-2xl p-6">
           <div className="flex items-center gap-3">
             <div className="w-10 h-10 rounded-xl bg-red-600/15 border border-red-600/20 flex items-center justify-center">
-              ⚠️
+              <AlertTriangle className="w-5 h-5 text-red-400" />
             </div>
             <div>
               <p className="text-sm font-medium text-red-400">Có lỗi xảy ra</p>
@@ -172,10 +184,13 @@ export default function GrammarCategoryPage() {
           href="/dashboard/courses"
           className="inline-flex items-center gap-2 text-sm text-zinc-500 hover:text-white transition-colors"
         >
-          ← Quay lại Học tập
+          <ArrowLeft className="w-4 h-4" />
+          <span>Quay lại Học tập</span>
         </Link>
         <div className="bg-zinc-900/60 border border-zinc-800/50 rounded-2xl p-8 text-center">
-          <div className="text-3xl mb-3">📚</div>
+          <div className="w-12 h-12 rounded-2xl bg-zinc-800 text-zinc-400 flex items-center justify-center mx-auto mb-3">
+            <BookOpen className="w-6 h-6" />
+          </div>
           <p className="text-sm text-zinc-400">Không tìm thấy chủ đề ngữ pháp.</p>
         </div>
       </div>
@@ -193,13 +208,15 @@ export default function GrammarCategoryPage() {
           href="/dashboard/courses"
           className="inline-flex items-center gap-2 text-sm text-zinc-500 hover:text-white transition-colors"
         >
-          ← Quay lại Học tập
+          <ArrowLeft className="w-4 h-4" />
+          <span>Quay lại Học tập</span>
         </Link>
         <Link
           href="/dashboard/grammar"
-          className="text-xs font-semibold text-red-400 hover:text-red-300 transition-colors"
+          className="inline-flex items-center gap-1 text-xs font-semibold text-red-400 hover:text-red-300 transition-colors"
         >
-          Bảng điều khiển ngữ pháp →
+          <span>Bảng điều khiển ngữ pháp</span>
+          <ArrowRight className="w-3.5 h-3.5" />
         </Link>
       </div>
 
@@ -210,8 +227,8 @@ export default function GrammarCategoryPage() {
         <div className="relative">
           <div className="flex items-start gap-4">
             {/* Icon */}
-            <div className="w-12 h-12 rounded-xl bg-red-600/15 border border-red-600/20 flex items-center justify-center text-xl shrink-0">
-              📝
+            <div className="w-12 h-12 rounded-xl bg-red-600/15 border border-red-600/20 text-red-400 flex items-center justify-center shrink-0">
+              <FileText className="w-6 h-6" />
             </div>
 
             {/* Information */}
@@ -276,18 +293,24 @@ export default function GrammarCategoryPage() {
       {/* ── SEARCH & FILTER TOOLBAR ── */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pt-1">
         <div>
-          <p className="text-sm text-zinc-300 font-medium">📚 Danh sách bài học</p>
+          <p className="text-sm text-zinc-300 font-medium flex items-center gap-1.5">
+            <BookOpen className="w-4 h-4 text-red-500" />
+            <span>Danh sách bài học</span>
+          </p>
           <p className="text-[11px] text-zinc-500 mt-0.5">Chọn bài học để bắt đầu học ngữ pháp</p>
         </div>
 
         <div className="flex items-center gap-2">
-          <input
-            type="text"
-            placeholder="Tìm bài học..."
-            value={searchQuery}
-            onChange={(e) => setSearchQuery(e.target.value)}
-            className="bg-zinc-900/90 border border-zinc-800 rounded-xl px-3.5 py-1.5 text-xs text-white placeholder-zinc-500 focus:outline-none focus:border-red-500 transition-all w-40 sm:w-56"
-          />
+          <div className="relative">
+            <Search className="w-3.5 h-3.5 text-zinc-500 absolute left-3 top-1/2 -translate-y-1/2" />
+            <input
+              type="text"
+              placeholder="Tìm bài học..."
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              className="bg-zinc-900/90 border border-zinc-800 rounded-xl pl-8 pr-3.5 py-1.5 text-xs text-white placeholder-zinc-500 focus:outline-none focus:border-red-500 transition-all w-40 sm:w-56"
+            />
+          </div>
         </div>
       </div>
 
@@ -325,20 +348,23 @@ export default function GrammarCategoryPage() {
         </button>
         <button
           onClick={() => setFilterStatus("favorite")}
-          className={`px-3 py-1.5 rounded-xl text-xs font-semibold transition-all shrink-0 ${
+          className={`flex items-center gap-1 px-3 py-1.5 rounded-xl text-xs font-semibold transition-all shrink-0 ${
             filterStatus === "favorite"
               ? "bg-pink-600 text-white shadow"
               : "bg-zinc-900 text-zinc-400 hover:text-white border border-zinc-800"
           }`}
         >
-          ⭐ Yêu thích ({favCount})
+          <Star className="w-3 h-3 text-amber-400 fill-amber-400" />
+          <span>Yêu thích ({favCount})</span>
         </button>
       </div>
 
       {/* Empty */}
       {filteredLessons.length === 0 && (
         <div className="bg-zinc-900/60 border border-zinc-800/50 rounded-2xl p-8 text-center">
-          <div className="text-3xl mb-3">📖</div>
+          <div className="w-12 h-12 rounded-2xl bg-zinc-800 text-zinc-400 flex items-center justify-center mx-auto mb-3">
+            <BookOpen className="w-6 h-6" />
+          </div>
           <p className="text-sm text-zinc-400">Không tìm thấy bài học phù hợp.</p>
         </div>
       )}
@@ -364,7 +390,7 @@ export default function GrammarCategoryPage() {
                       : "bg-red-600/15 text-red-400 border border-red-600/20 group-hover:bg-red-600/20"
                   }`}
                 >
-                  {lesson.completed ? "✓" : lessonNumber}
+                  {lesson.completed ? <Check className="w-4 h-4" /> : lessonNumber}
                 </div>
 
                 {/* Lesson Information */}
@@ -408,7 +434,7 @@ export default function GrammarCategoryPage() {
                         : "text-zinc-600 hover:text-pink-400 hover:bg-zinc-800"
                     }`}
                   >
-                    {isFav ? "❤️" : "🤍"}
+                    <Heart className={`w-4 h-4 ${isFav ? "fill-pink-500 text-pink-500" : ""}`} />
                   </button>
 
                   <div className="hidden sm:block text-right">
@@ -422,7 +448,7 @@ export default function GrammarCategoryPage() {
                   </div>
 
                   <div className="text-zinc-700 group-hover:text-zinc-300 group-hover:translate-x-0.5 transition-all">
-                    →
+                    <ArrowRight className="w-4 h-4" />
                   </div>
                 </div>
               </div>

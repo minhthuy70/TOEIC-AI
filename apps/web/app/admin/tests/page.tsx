@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { getTests, createTest, updateTest, deleteTest, type Test, type TestForm } from "@/services/admin";
+import { X } from "lucide-react";
 
 const EMPTY_FORM: TestForm = {
   title: "",
@@ -416,9 +417,9 @@ export default function TestsAdminPage() {
               <button
                 type="button"
                 onClick={() => setShowForm(false)}
-                className="w-9 h-9 rounded-lg bg-zinc-800 hover:bg-zinc-700 text-zinc-400 hover:text-white"
+                className="w-9 h-9 rounded-lg bg-zinc-800 hover:bg-zinc-700 text-zinc-400 hover:text-white flex items-center justify-center"
               >
-                ✕
+                <X className="w-4 h-4" />
               </button>
             </div>
 

@@ -3,6 +3,20 @@
 import { useEffect, useMemo, useState } from "react";
 import { VocabularyWordWithProgress } from "@/types/vocabulary";
 import { reviewWord } from "@/services/vocabulary";
+import {
+  Brain,
+  Layers,
+  ListOrdered,
+  Volume2,
+  Lightbulb,
+  Check,
+  CheckCircle2,
+  Trophy,
+  ChevronLeft,
+  ChevronRight,
+  PartyPopper,
+  ArrowLeft,
+} from "lucide-react";
 
 interface Props {
   level: number;
@@ -28,75 +42,64 @@ export default function ReviewSession({
   const [localWords, setLocalWords] = useState<VocabularyWordWithProgress[]>(words);
   const [masteredSessionCount, setMasteredSessionCount] = useState(0);
 
-const reviewWords = useMemo(
-  () => localWords.filter((w) => w.isReview),
-  [localWords]
-);
+  const reviewWords = useMemo(
+    () => localWords.filter((w) => w.isReview),
+    [localWords]
+  );
 
-const currentWord = reviewWords[currentIndex];
-useEffect(() => {
-  if (currentIndex >= reviewWords.length) {
-    setCurrentIndex(0);
-  }
-}, [reviewWords.length, currentIndex]);
+  const currentWord = reviewWords[currentIndex];
+  useEffect(() => {
+    if (currentIndex >= reviewWords.length) {
+      setCurrentIndex(0);
+    }
+  }, [reviewWords.length, currentIndex]);
 
   const handleReviewWord = async (wordId: number) => {
-  const word = localWords.find((w) => w.id === wordId);
+    const word = localWords.find((w) => w.id === wordId);
 
-  if (!word || word.status === "MASTERED" || !word.isReview) {
-    return;
-  }
-
-  try {
-    setLoadingMap((prev) => ({
-      ...prev,
-      [wordId]: true,
-    }));
-
-    const res = await reviewWord(wordId);
-
-    if (res.success) {
-      if (res.status === "MASTERED") {
-        setMasteredSessionCount(prev => prev + 1);
-      }
-      
-      // cập nhật local
-      const updatedWords: VocabularyWordWithProgress[] =
-        localWords.map((w) =>
-          w.id === wordId
-            ? {
-                ...w,
-                isReview: false,
-                reviewLevel: res.reviewLevel,
-                status: res.status as VocabularyWordWithProgress["status"],
-              }
-            : w
-        );
-
-      // chỉ còn các từ chưa ôn
-      const remainWords = updatedWords.filter(
-    (w) => w.isReview
-);
-
-setLocalWords(updatedWords);
-
-setIsFlipped(false);
-
-// luôn đứng ở phần tử đầu tiên của danh sách còn lại
-setCurrentIndex(0);
-
-     // onReload();
+    if (!word || word.status === "MASTERED" || !word.isReview) {
+      return;
     }
-  } catch (err) {
-    console.error(err);
-    alert("Không thể lưu tiến trình ôn tập");
-  } finally {
-    setLoadingMap((prev) => ({
-      ...prev,
-      [wordId]: false,
-    }));
-  }
-};
+
+    try {
+      setLoadingMap((prev) => ({
+        ...prev,
+        [wordId]: true,
+      }));
+
+      const res = await reviewWord(wordId);
+
+      if (res.success) {
+        if (res.status === "MASTERED") {
+          setMasteredSessionCount((prev) => prev + 1);
+        }
+
+        const updatedWords: VocabularyWordWithProgress[] =
+          localWords.map((w) =>
+            w.id === wordId
+              ? {
+                  ...w,
+                  isReview: false,
+                  reviewLevel: res.reviewLevel,
+                  status: res.status as VocabularyWordWithProgress["status"],
+                }
+              : w
+          );
+
+        setLocalWords(updatedWords);
+        setIsFlipped(false);
+        setCurrentIndex(0);
+      }
+    } catch (err) {
+      console.error(err);
+      alert("Không thể lưu tiến trình ôn tập");
+    } finally {
+      setLoadingMap((prev) => ({
+        ...prev,
+        [wordId]: false,
+      }));
+    }
+  };
 
   const handleNext = () => {
     setIsFlipped(false);
@@ -119,8 +122,8 @@ setCurrentIndex(0);
   };
 
   const reviewedCount = localWords.filter((w) => !w.isReview).length;
-const isSessionCompleted = reviewWords.length === 0;
-const progressPercent = Math.round((reviewedCount / localWords.length) * 100) || 0;
+  const isSessionCompleted = reviewWords.length === 0;
+  const progressPercent = Math.round((reviewedCount / localWords.length) * 100) || 0;
 
   return (
     <div className="bg-zinc-950/60 border border-zinc-800/80 rounded-2xl p-6 shadow-xl space-y-6">
@@ -128,15 +131,16 @@ const progressPercent = Math.round((reviewedCount / localWords.length) * 100) ||
       <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 border-b border-zinc-800/60 pb-4">
         <div className="w-full sm:w-auto">
           <h2 className="text-xl font-bold text-white flex items-center gap-2">
-            <span>🧠</span> Ôn tập: Hộp {label} (Cấp độ {level})
+            <Brain className="w-5 h-5 text-amber-500" />
+            <span>Ôn tập: Hộp {label} (Cấp độ {level})</span>
           </h2>
           <div className="flex items-center gap-3 mt-2">
-             <div className="flex-1 w-full sm:w-48 h-2 bg-zinc-900 rounded-full overflow-hidden border border-zinc-800">
-               <div className="h-full bg-amber-500 transition-all duration-500" style={{ width: `${progressPercent}%` }} />
-             </div>
-             <p className="text-xs text-zinc-400 min-w-max">
-               <span className="text-amber-400 font-semibold">{reviewedCount}/{localWords.length}</span> từ đã ôn ({progressPercent}%)
-             </p>
+            <div className="flex-1 w-full sm:w-48 h-2 bg-zinc-900 rounded-full overflow-hidden border border-zinc-800">
+              <div className="h-full bg-amber-500 transition-all duration-500" style={{ width: `${progressPercent}%` }} />
+            </div>
+            <p className="text-xs text-zinc-400 min-w-max">
+              <span className="text-amber-400 font-semibold">{reviewedCount}/{localWords.length}</span> từ đã ôn ({progressPercent}%)
+            </p>
           </div>
         </div>
 
@@ -145,31 +149,34 @@ const progressPercent = Math.round((reviewedCount / localWords.length) * 100) ||
           <div className="flex bg-zinc-900 border border-zinc-800 p-1 rounded-xl w-full sm:w-auto">
             <button
               onClick={() => setViewMode("flashcard")}
-              className={`flex-1 sm:flex-initial px-4 py-1.5 rounded-lg text-xs font-semibold transition ${
+              className={`flex-1 sm:flex-initial flex items-center justify-center gap-1.5 px-4 py-1.5 rounded-lg text-xs font-semibold transition ${
                 viewMode === "flashcard"
                   ? "bg-amber-600 text-white shadow-sm"
                   : "text-zinc-400 hover:text-white"
               }`}
             >
-              🎴 Flashcard
+              <Layers className="w-3.5 h-3.5" />
+              <span>Flashcard</span>
             </button>
             <button
               onClick={() => setViewMode("list")}
-              className={`flex-1 sm:flex-initial px-4 py-1.5 rounded-lg text-xs font-semibold transition ${
+              className={`flex-1 sm:flex-initial flex items-center justify-center gap-1.5 px-4 py-1.5 rounded-lg text-xs font-semibold transition ${
                 viewMode === "list"
                   ? "bg-amber-600 text-white shadow-sm"
                   : "text-zinc-400 hover:text-white"
               }`}
             >
-              📋 Danh sách
+              <ListOrdered className="w-3.5 h-3.5" />
+              <span>Danh sách</span>
             </button>
           </div>
 
           <button
             onClick={onClose}
-            className="px-4 py-2 border border-zinc-805 hover:border-zinc-700 bg-zinc-900 text-zinc-300 hover:text-white text-xs font-semibold rounded-xl transition"
+            className="px-4 py-2 border border-zinc-800 hover:border-zinc-700 bg-zinc-900 text-zinc-300 hover:text-white text-xs font-semibold rounded-xl transition flex items-center gap-1.5"
           >
-            Quay lại
+            <ArrowLeft className="w-3.5 h-3.5" />
+            <span>Quay lại</span>
           </button>
         </div>
       </div>
@@ -227,14 +234,17 @@ const progressPercent = Math.round((reviewedCount / localWords.length) * 100) ||
                         e.stopPropagation();
                         playAudio(currentWord.audioUrl);
                       }}
-                      className="w-10 h-10 rounded-full bg-zinc-800/80 hover:bg-zinc-700 text-amber-450 flex items-center justify-center transition border border-zinc-700/30"
+                      className="w-10 h-10 rounded-full bg-zinc-800/80 hover:bg-zinc-700 text-amber-400 flex items-center justify-center transition border border-zinc-700/30"
                     >
-                      🔊
+                      <Volume2 className="w-5 h-5" />
                     </button>
                   )}
                 </div>
 
-                <span className="text-xs text-zinc-500 font-medium">💡 Bấm vào thẻ để xem nghĩa</span>
+                <span className="text-xs text-zinc-500 font-medium flex items-center gap-1">
+                  <Lightbulb className="w-3.5 h-3.5 text-amber-500" />
+                  <span>Bấm vào thẻ để xem nghĩa</span>
+                </span>
               </div>
 
               {/* Back side */}
@@ -281,7 +291,10 @@ const progressPercent = Math.round((reviewedCount / localWords.length) * 100) ||
                   )}
                 </div>
 
-                <span className="text-xs text-zinc-500 font-medium">💡 Bấm vào thẻ để quay lại</span>
+                <span className="text-xs text-zinc-500 font-medium flex items-center gap-1">
+                  <Lightbulb className="w-3.5 h-3.5 text-amber-500" />
+                  <span>Bấm vào thẻ để quay lại</span>
+                </span>
               </div>
             </div>
           </div>
@@ -333,16 +346,18 @@ const progressPercent = Math.round((reviewedCount / localWords.length) * 100) ||
               <button
                 onClick={handlePrev}
                 disabled={currentIndex === 0}
-                className="flex-1 px-4 py-2 border border-zinc-850 bg-zinc-900 text-zinc-300 hover:text-white rounded-xl text-[10px] font-bold transition disabled:opacity-40"
+                className="flex-1 px-4 py-2 border border-zinc-850 bg-zinc-900 text-zinc-300 hover:text-white rounded-xl text-[10px] font-bold transition disabled:opacity-40 flex items-center justify-center gap-1"
               >
-                ← Trước
+                <ChevronLeft className="w-3.5 h-3.5" />
+                <span>Trước</span>
               </button>
               <button
                 onClick={handleNext}
                 disabled={currentIndex === reviewWords.length - 1}
-                className="flex-1 px-4 py-2 border border-zinc-850 bg-zinc-900 text-zinc-300 hover:text-white rounded-xl text-[10px] font-bold transition disabled:opacity-40"
+                className="flex-1 px-4 py-2 border border-zinc-850 bg-zinc-900 text-zinc-300 hover:text-white rounded-xl text-[10px] font-bold transition disabled:opacity-40 flex items-center justify-center gap-1"
               >
-                Sau →
+                <span>Sau</span>
+                <ChevronRight className="w-3.5 h-3.5" />
               </button>
             </div>
           </div>
@@ -403,9 +418,10 @@ const progressPercent = Math.round((reviewedCount / localWords.length) * 100) ||
                 {word.audioUrl ? (
                   <button
                     onClick={() => playAudio(word.audioUrl)}
-                    className="text-xs text-amber-400 hover:text-amber-300 font-semibold flex items-center gap-1"
+                    className="text-xs text-amber-400 hover:text-amber-300 font-semibold flex items-center gap-1.5"
                   >
-                    🔊 Phát âm
+                    <Volume2 className="w-3.5 h-3.5" />
+                    <span>Phát âm</span>
                   </button>
                 ) : (
                   <span />
@@ -414,14 +430,17 @@ const progressPercent = Math.round((reviewedCount / localWords.length) * 100) ||
                 <button
                   onClick={() => handleReviewWord(word.id)}
                   disabled={loadingMap[word.id] || !word.isReview}
-                  className={`px-4 py-1.5 rounded-lg text-xs font-bold text-white transition flex items-center gap-1 ${
+                  className={`px-4 py-1.5 rounded-lg text-xs font-bold text-white transition flex items-center gap-1.5 ${
                     !word.isReview
                       ? "bg-zinc-800 text-green-400 border border-green-500/20"
                       : "bg-amber-600 hover:bg-amber-500 active:scale-[0.98]"
                   }`}
                 >
                   {!word.isReview ? (
-                    <>✓ Đã ôn</>
+                    <>
+                      <Check className="w-3.5 h-3.5" />
+                      <span>Đã ôn</span>
+                    </>
                   ) : loadingMap[word.id] ? (
                     <>Đang lưu...</>
                   ) : (
@@ -438,12 +457,20 @@ const progressPercent = Math.round((reviewedCount / localWords.length) * 100) ||
       {isSessionCompleted && (
         <div className="bg-green-950/20 border border-green-500/30 rounded-xl p-6 flex flex-col sm:flex-row items-center justify-between gap-6">
           <div className="flex items-start gap-4">
-            <span className="text-4xl leading-none">🎉</span>
+            <div className="w-12 h-12 rounded-2xl bg-green-500/20 flex items-center justify-center text-green-400 shrink-0">
+              <PartyPopper className="w-6 h-6" />
+            </div>
             <div>
               <p className="text-lg font-bold text-white">Chúc mừng! Bạn đã ôn tập xong hộp này.</p>
               <div className="mt-2 space-y-1">
-                <p className="text-sm text-green-400/80">✅ Tổng số từ đã ôn: <strong>{reviewedCount}</strong></p>
-                <p className="text-sm text-amber-400/80">🏆 Số từ đạt mức thành thạo: <strong>{masteredSessionCount}</strong></p>
+                <p className="text-sm text-green-400/80 flex items-center gap-1.5">
+                  <CheckCircle2 className="w-4 h-4" />
+                  <span>Tổng số từ đã ôn: <strong>{reviewedCount}</strong></span>
+                </p>
+                <p className="text-sm text-amber-400/80 flex items-center gap-1.5">
+                  <Trophy className="w-4 h-4" />
+                  <span>Số từ đạt mức thành thạo: <strong>{masteredSessionCount}</strong></span>
+                </p>
                 <p className="text-xs text-zinc-400 mt-2">Các từ chưa thuộc sẽ quay lại vào đợt ôn tiếp theo.</p>
               </div>
             </div>

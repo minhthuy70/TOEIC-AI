@@ -4,15 +4,34 @@ import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { startPractice, submitPractice, PracticeStartResponse, SubmitPracticeResponse } from "@/services/practice";
 import AudioPlayer from "@/components/listening/AudioPlayer";
+import {
+  ArrowLeft,
+  Timer,
+  Play,
+  Pause,
+  RotateCcw,
+  BookMarked,
+  BookOpen,
+  Image as ImageIcon,
+  MessageSquare,
+  Users,
+  Mic,
+  SlidersHorizontal,
+  ChevronLeft,
+  ChevronRight,
+  CheckCircle2,
+  XCircle,
+  X,
+} from "lucide-react";
 
 type ScreenState = "config" | "practice" | "review";
 type PracticeMode = "normal" | "timed" | "exam";
 
 const PART_CONFIGS = [
-  { part: 1, label: "Part 1", desc: "Photographs", icon: "🖼️", color: "bg-indigo-600/20 text-indigo-400 border-indigo-600/30" },
-  { part: 2, label: "Part 2", desc: "Question-Response", icon: "💬", color: "bg-emerald-600/20 text-emerald-400 border-emerald-600/30" },
-  { part: 3, label: "Part 3", desc: "Conversations", icon: "👥", color: "bg-amber-600/20 text-amber-400 border-amber-600/30" },
-  { part: 4, label: "Part 4", desc: "Talks", icon: "🎤", color: "bg-rose-600/20 text-rose-400 border-rose-600/30" },
+  { part: 1, label: "Part 1", desc: "Photographs", icon: ImageIcon, color: "bg-indigo-600/20 text-indigo-400 border-indigo-600/30" },
+  { part: 2, label: "Part 2", desc: "Question-Response", icon: MessageSquare, color: "bg-emerald-600/20 text-emerald-400 border-emerald-600/30" },
+  { part: 3, label: "Part 3", desc: "Conversations", icon: Users, color: "bg-amber-600/20 text-amber-400 border-amber-600/30" },
+  { part: 4, label: "Part 4", desc: "Talks", icon: Mic, color: "bg-rose-600/20 text-rose-400 border-rose-600/30" },
 ];
 
 export default function MixedPracticePage() {
@@ -104,16 +123,21 @@ export default function MixedPracticePage() {
     finally { setSubmitting(false); }
   };
 
-  const formatTime = (s: number) => `${Math.floor(s/60).toString().padStart(2,"0")}:${(s%60).toString().padStart(2,"0")}`;
+  const formatTime = (s: number) => `${Math.floor(s / 60).toString().padStart(2, "0")}:${(s % 60).toString().padStart(2, "0")}`;
 
   // ---- CONFIG ----
   if (screen === "config") {
     return (
       <div className="max-w-3xl mx-auto py-10 px-4">
         <div className="flex items-center gap-4 mb-8">
-          <Link href="/dashboard/listening" className="w-10 h-10 rounded-full bg-zinc-800 flex items-center justify-center hover:bg-zinc-700 transition">←</Link>
+          <Link href="/dashboard/listening" className="w-10 h-10 rounded-full bg-zinc-800 flex items-center justify-center text-zinc-400 hover:text-white hover:bg-zinc-700 transition">
+            <ArrowLeft className="w-5 h-5" />
+          </Link>
           <div>
-            <h1 className="text-2xl font-bold text-white">🎯 Luyện nghe Hỗn hợp</h1>
+            <h1 className="text-2xl font-bold text-white flex items-center gap-2.5">
+              <SlidersHorizontal className="w-6 h-6 text-purple-400" />
+              <span>Luyện nghe Hỗn hợp</span>
+            </h1>
             <p className="text-zinc-400 text-sm">Chọn nhiều phần và luyện tập cùng một lúc</p>
           </div>
         </div>
@@ -123,10 +147,13 @@ export default function MixedPracticePage() {
             <div className="grid grid-cols-2 gap-3">
               {PART_CONFIGS.map(pc => {
                 const sel = selectedParts.includes(pc.part);
+                const Icon = pc.icon;
                 return (
                   <button key={pc.part} onClick={() => togglePart(pc.part)}
                     className={`p-4 rounded-2xl border-2 text-left transition-all ${sel ? pc.color : "bg-zinc-800 text-zinc-500 border-zinc-700"}`}>
-                    <div className="text-xl mb-1">{pc.icon}</div>
+                    <div className="mb-2">
+                      <Icon className="w-5 h-5" />
+                    </div>
                     <p className="font-bold">{pc.label}</p>
                     <p className="text-xs opacity-70">{pc.desc}</p>
                   </button>
@@ -184,18 +211,24 @@ export default function MixedPracticePage() {
       <div className="max-w-4xl mx-auto py-6 px-4 flex flex-col min-h-[80vh]">
         <div className="flex items-center justify-between bg-zinc-900 border border-zinc-800 p-4 rounded-2xl mb-6">
           <div className="flex items-center gap-3">
-            <button onClick={() => { if(confirm("Thoát?")) setScreen("config"); }} className="text-zinc-400 hover:text-white">✕</button>
+            <button onClick={() => { if (confirm("Thoát?")) setScreen("config"); }} className="text-zinc-400 hover:text-white p-1">
+              <X className="w-4 h-4" />
+            </button>
             <span className={`px-3 py-1 rounded-full text-xs font-bold border ${partInfo?.color || ""}`}>{partInfo?.label}</span>
             <span className="text-white font-bold">Câu {currentQIndex + 1}/{flatQuestions.length}</span>
           </div>
           <div className="flex items-center gap-4">
             <div className="text-xs text-zinc-400">Đã làm: <span className="text-white font-bold">{answeredCount}/{flatQuestions.length}</span></div>
             {practiceMode !== "normal" && timeRemaining !== null && (
-              <span className={`font-mono font-bold text-sm ${timeRemaining < 60 ? "text-rose-500" : "text-amber-400"}`}>⏳ {formatTime(timeRemaining)}</span>
+              <span className={`font-mono font-bold text-sm flex items-center gap-1 ${timeRemaining < 60 ? "text-rose-500" : "text-amber-400"}`}>
+                <Timer className="w-4 h-4" />
+                <span>{formatTime(timeRemaining)}</span>
+              </span>
             )}
             {practiceMode !== "exam" && (
-               <button onClick={() => setIsPaused(!isPaused)} className="px-3 py-1.5 bg-zinc-800 text-white text-xs font-bold rounded-lg hover:bg-zinc-700">
-                 {isPaused ? "▶ Tiếp tục" : "⏸ Tạm dừng"}
+               <button onClick={() => setIsPaused(!isPaused)} className="flex items-center gap-1.5 px-3 py-1.5 bg-zinc-800 text-white text-xs font-bold rounded-lg hover:bg-zinc-700">
+                 {isPaused ? <Play className="w-3.5 h-3.5" /> : <Pause className="w-3.5 h-3.5" />}
+                 <span>{isPaused ? "Tiếp tục" : "Tạm dừng"}</span>
                </button>
             )}
             <button onClick={handleSubmitAll} disabled={submitting} className="px-4 py-2 bg-white text-black text-sm font-extrabold rounded-lg disabled:opacity-50">
@@ -210,12 +243,15 @@ export default function MixedPracticePage() {
         </div>
 
         {isPaused ? (
-           <div className="flex-1 flex flex-col items-center justify-center bg-zinc-900/50 rounded-3xl border border-zinc-800">
-             <div className="text-4xl mb-4">⏸</div>
+           <div className="flex-1 flex flex-col items-center justify-center bg-zinc-900/50 rounded-3xl border border-zinc-800 p-8">
+             <div className="w-16 h-16 bg-zinc-800 rounded-full flex items-center justify-center text-zinc-400 mb-4">
+               <Pause className="w-8 h-8" />
+             </div>
              <h2 className="text-xl font-bold text-white mb-2">Đã tạm dừng</h2>
              <p className="text-zinc-400 mb-6 text-sm">Thời gian làm bài đang được giữ lại.</p>
-             <button onClick={() => setIsPaused(false)} className="px-8 py-3 bg-white text-black font-extrabold rounded-xl hover:bg-zinc-200">
-               Tiếp tục làm bài
+             <button onClick={() => setIsPaused(false)} className="flex items-center gap-2 px-8 py-3 bg-white text-black font-extrabold rounded-xl hover:bg-zinc-200">
+               <Play className="w-4 h-4 fill-black" />
+               <span>Tiếp tục làm bài</span>
              </button>
            </div>
         ) : (
@@ -245,8 +281,14 @@ export default function MixedPracticePage() {
                 })}
               </div>
               <div className="flex justify-between mt-8 pt-6 border-t border-zinc-800">
-                <button onClick={() => setCurrentQIndex(p => p - 1)} disabled={currentQIndex === 0} className="px-6 py-3 rounded-xl bg-zinc-800 hover:bg-zinc-700 text-white font-bold disabled:opacity-50">← Trước</button>
-                <button onClick={() => setCurrentQIndex(p => p + 1)} disabled={currentQIndex === flatQuestions.length - 1} className="px-6 py-3 rounded-xl bg-zinc-800 hover:bg-zinc-700 text-white font-bold disabled:opacity-50">Tiếp →</button>
+                <button onClick={() => setCurrentQIndex(p => p - 1)} disabled={currentQIndex === 0} className="px-6 py-3 rounded-xl bg-zinc-800 hover:bg-zinc-700 text-white font-bold disabled:opacity-50 flex items-center gap-1.5">
+                  <ChevronLeft className="w-4 h-4" />
+                  <span>Trước</span>
+                </button>
+                <button onClick={() => setCurrentQIndex(p => p + 1)} disabled={currentQIndex === flatQuestions.length - 1} className="px-6 py-3 rounded-xl bg-zinc-800 hover:bg-zinc-700 text-white font-bold disabled:opacity-50 flex items-center gap-1.5">
+                  <span>Tiếp</span>
+                  <ChevronRight className="w-4 h-4" />
+                </button>
               </div>
             </div>
           </div>
@@ -275,8 +317,14 @@ export default function MixedPracticePage() {
     return (
       <div className="max-w-4xl mx-auto py-6 px-4">
         <div className="flex items-center justify-between mb-6">
-          <h2 className="text-xl font-bold text-white">📊 Kết quả luyện nghe hỗn hợp</h2>
-          <button onClick={() => setScreen("config")} className="px-5 py-2 bg-zinc-800 hover:bg-zinc-700 text-white font-bold rounded-lg">Luyện lại</button>
+          <h2 className="text-xl font-bold text-white flex items-center gap-2">
+            <SlidersHorizontal className="w-5 h-5 text-purple-400" />
+            <span>Kết quả luyện nghe hỗn hợp</span>
+          </h2>
+          <button onClick={() => setScreen("config")} className="flex items-center gap-1.5 px-5 py-2 bg-zinc-800 hover:bg-zinc-700 text-white font-bold rounded-lg transition">
+            <RotateCcw className="w-4 h-4" />
+            <span>Luyện lại</span>
+          </button>
         </div>
 
         <div className="grid sm:grid-cols-4 gap-4 mb-8">
@@ -305,8 +353,9 @@ export default function MixedPracticePage() {
               </div>
               <span className="text-zinc-300 font-bold text-sm">Chỉ hiển thị câu sai</span>
             </label>
-            <button className="text-xs px-4 py-2 bg-zinc-800 text-zinc-300 rounded-lg hover:bg-zinc-700 transition">
-                📓 Thêm câu sai vào sổ tay lỗi
+            <button className="flex items-center gap-1.5 text-xs px-4 py-2 bg-zinc-800 text-zinc-300 rounded-lg hover:bg-zinc-700 transition">
+                <BookMarked className="w-3.5 h-3.5 text-amber-400" />
+                <span>Thêm câu sai vào sổ tay lỗi</span>
             </button>
         </div>
 
@@ -320,7 +369,9 @@ export default function MixedPracticePage() {
                         <span className={`px-2 py-1 rounded text-xs font-bold border ${partInfo?.color || ""}`}>{partInfo?.label}</span>
                         <p className="text-white font-semibold text-sm">Câu {qIdx + 1}: {q.question.question_text || "(Nghe audio)"}</p>
                     </div>
-                    <span className={`text-xs font-bold px-2 py-1 rounded-full ${q.resultItem?.isCorrect ? "bg-emerald-900/50 text-emerald-400" : "bg-rose-900/50 text-rose-400"}`}>{q.resultItem?.isCorrect ? "✓" : "✗"}</span>
+                    <span className={`text-xs font-bold px-2 py-1 rounded-full flex items-center gap-1 ${q.resultItem?.isCorrect ? "bg-emerald-900/50 text-emerald-400" : "bg-rose-900/50 text-rose-400"}`}>
+                      {q.resultItem?.isCorrect ? <CheckCircle2 className="w-3.5 h-3.5" /> : <XCircle className="w-3.5 h-3.5" />}
+                    </span>
                   </div>
                   
                   <div className="grid lg:grid-cols-2 gap-6">
@@ -358,7 +409,10 @@ export default function MixedPracticePage() {
                   
                   {q.question.explanation && (
                     <div className="mt-4 bg-blue-950/30 border border-blue-900/50 rounded-xl p-4 text-sm text-blue-200">
-                      <h4 className="font-bold text-blue-400 mb-1">📖 Giải thích</h4>
+                      <h4 className="font-bold text-blue-400 mb-1 flex items-center gap-1.5">
+                        <BookOpen className="w-4 h-4" />
+                        <span>Giải thích</span>
+                      </h4>
                       <p dangerouslySetInnerHTML={{ __html: q.question.explanation.replace(/\n/g, "<br/>") }} />
                     </div>
                   )}

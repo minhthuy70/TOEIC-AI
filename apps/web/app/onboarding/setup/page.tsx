@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { Sunrise, Sun, Moon, Eye, Headphones, BookOpen } from "lucide-react";
 
 export default function SetupPage() {
   const [currentScore, setCurrentScore] = useState("");
@@ -29,15 +30,15 @@ export default function SetupPage() {
   ];
 
   const studyScheduleOptions = [
-    { value: "morning", label: "Sáng", icon: "🌅", desc: "6:00 - 12:00" },
-    { value: "afternoon", label: "Chiều", icon: "☀️", desc: "12:00 - 18:00" },
-    { value: "evening", label: "Tối", icon: "🌙", desc: "18:00 - 24:00" },
+    { value: "morning", label: "Sáng", icon: Sunrise, desc: "6:00 - 12:00" },
+    { value: "afternoon", label: "Chiều", icon: Sun, desc: "12:00 - 18:00" },
+    { value: "evening", label: "Tối", icon: Moon, desc: "18:00 - 24:00" },
   ];
 
   const learningStyleOptions = [
-    { value: "visual", label: "Hình ảnh", icon: "👁️", desc: "Học qua hình ảnh, sơ đồ" },
-    { value: "auditory", label: "Nghe", icon: "🎧", desc: "Học qua âm thanh, hội thoại" },
-    { value: "reading", label: "Đọc", icon: "📖", desc: "Học qua văn bản, bài đọc" },
+    { value: "visual", label: "Hình ảnh", icon: Eye, desc: "Học qua hình ảnh, sơ đồ" },
+    { value: "auditory", label: "Nghe", icon: Headphones, desc: "Học qua âm thanh, hội thoại" },
+    { value: "reading", label: "Đọc", icon: BookOpen, desc: "Học qua văn bản, bài đọc" },
   ];
 
   async function saveGoal() {
@@ -183,22 +184,25 @@ export default function SetupPage() {
               Ưa thích thời gian học
             </label>
             <div className="grid grid-cols-3 gap-2">
-              {studyScheduleOptions.map((opt) => (
-                <button
-                  key={opt.value}
-                  type="button"
-                  onClick={() => setStudySchedule(opt.value)}
-                  className={`p-3 rounded-2xl border text-center transition-all duration-300 ${
-                    studySchedule === opt.value
-                      ? "border-red-500 bg-red-950/20 text-white shadow-md shadow-red-500/10"
-                      : "border-zinc-800 bg-zinc-900 text-gray-400 hover:border-zinc-700 hover:text-white"
-                  }`}
-                >
-                  <p className="text-lg mb-1">{opt.icon}</p>
-                  <p className="text-xs font-bold">{opt.label}</p>
-                  <p className="text-[9px] text-gray-500 mt-0.5">{opt.desc}</p>
-                </button>
-              ))}
+              {studyScheduleOptions.map((opt) => {
+                const Icon = opt.icon;
+                return (
+                  <button
+                    key={opt.value}
+                    type="button"
+                    onClick={() => setStudySchedule(opt.value)}
+                    className={`p-3 rounded-2xl border flex flex-col items-center justify-center transition-all duration-300 ${
+                      studySchedule === opt.value
+                        ? "border-red-500 bg-red-950/20 text-white shadow-md shadow-red-500/10"
+                        : "border-zinc-800 bg-zinc-900 text-gray-400 hover:border-zinc-700 hover:text-white"
+                    }`}
+                  >
+                    <Icon className="w-5 h-5 mb-1 text-amber-400" />
+                    <p className="text-xs font-bold">{opt.label}</p>
+                    <p className="text-[9px] text-gray-500 mt-0.5">{opt.desc}</p>
+                  </button>
+                );
+              })}
             </div>
           </div>
 
@@ -228,22 +232,25 @@ export default function SetupPage() {
               Phong cách học tập
             </label>
             <div className="grid grid-cols-3 gap-2">
-              {learningStyleOptions.map((opt) => (
-                <button
-                  key={opt.value}
-                  type="button"
-                  onClick={() => setLearningStyle(opt.value)}
-                  className={`p-3 rounded-2xl border text-center transition-all duration-300 ${
-                    learningStyle === opt.value
-                      ? "border-red-500 bg-red-950/20 text-white shadow-md shadow-red-500/10"
-                      : "border-zinc-800 bg-zinc-900 text-gray-400 hover:border-zinc-700 hover:text-white"
-                  }`}
-                >
-                  <p className="text-lg mb-1">{opt.icon}</p>
-                  <p className="text-xs font-bold">{opt.label}</p>
-                  <p className="text-[9px] text-gray-500 mt-0.5">{opt.desc}</p>
-                </button>
-              ))}
+              {learningStyleOptions.map((opt) => {
+                const Icon = opt.icon;
+                return (
+                  <button
+                    key={opt.value}
+                    type="button"
+                    onClick={() => setLearningStyle(opt.value)}
+                    className={`p-3 rounded-2xl border flex flex-col items-center justify-center transition-all duration-300 ${
+                      learningStyle === opt.value
+                        ? "border-red-500 bg-red-950/20 text-white shadow-md shadow-red-500/10"
+                        : "border-zinc-800 bg-zinc-900 text-gray-400 hover:border-zinc-700 hover:text-white"
+                    }`}
+                  >
+                    <Icon className="w-5 h-5 mb-1 text-blue-400" />
+                    <p className="text-xs font-bold">{opt.label}</p>
+                    <p className="text-[9px] text-gray-500 mt-0.5">{opt.desc}</p>
+                  </button>
+                );
+              })}
             </div>
           </div>
 

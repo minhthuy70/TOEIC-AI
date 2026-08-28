@@ -10,6 +10,32 @@ import {
   type MiniTestSubmitResponse,
   type MiniTestResultItem,
 } from "@/services/mock-test";
+import {
+  Zap,
+  Info,
+  Clock,
+  Timer,
+  Play,
+  Pause,
+  Flag,
+  Trophy,
+  Target,
+  Share2,
+  RotateCcw,
+  Check,
+  CheckCircle2,
+  X,
+  XCircle,
+  Star,
+  BookOpen,
+  Volume2,
+  BarChart3,
+  AlertTriangle,
+  FileText,
+  ArrowLeft,
+  ArrowRight,
+  Rocket,
+} from "lucide-react";
 
 type ScreenMode = "config" | "test" | "result";
 
@@ -182,7 +208,7 @@ export default function MiniTestPage() {
   };
 
   const handleAutoSubmit = () => {
-    showToast("⏰ Đã hết thời gian làm bài! Hệ thống đang tự động nộp bài...");
+    showToast("Đã hết thời gian làm bài! Hệ thống đang tự động nộp bài...");
     handleSubmitTest();
   };
 
@@ -228,8 +254,9 @@ export default function MiniTestPage() {
         <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
           <div>
             <div className="flex items-center gap-2">
-              <h1 className="text-2xl font-bold text-white">
-                ⚡ TOEIC Mini Test (50 Câu)
+              <h1 className="text-2xl font-bold text-white flex items-center gap-2.5">
+                <Zap className="w-6 h-6 text-red-500" />
+                <span>TOEIC Mini Test (50 Câu)</span>
               </h1>
               <span className="px-2.5 py-0.5 rounded-full text-[10px] font-extrabold bg-red-600/20 text-red-400 border border-red-500/30">
                 Fast Exam
@@ -246,14 +273,15 @@ export default function MiniTestPage() {
               onClick={() => setShowInstructionsModal(true)}
               className="px-4 py-2 bg-zinc-800 hover:bg-zinc-700 text-zinc-300 hover:text-white font-bold text-xs rounded-xl transition flex items-center gap-1.5"
             >
-              <span>ℹ️</span>
+              <Info className="w-4 h-4 text-zinc-400" />
               <span>Hướng dẫn thi</span>
             </button>
             <Link
               href="/dashboard/mock-test"
-              className="px-4 py-2 bg-zinc-800 hover:bg-zinc-700 text-zinc-300 hover:text-white font-bold text-xs rounded-xl transition"
+              className="flex items-center gap-1.5 px-4 py-2 bg-zinc-800 hover:bg-zinc-700 text-zinc-300 hover:text-white font-bold text-xs rounded-xl transition"
             >
-              ← Danh sách thi thử
+              <ArrowLeft className="w-4 h-4" />
+              <span>Danh sách thi thử</span>
             </Link>
           </div>
         </div>
@@ -315,23 +343,27 @@ export default function MiniTestPage() {
             <h3 className="text-white font-bold text-sm mb-3">2. Giới hạn thời gian</h3>
             <div className="flex flex-wrap gap-3">
               {[
-                { m: 30, label: "⚡ 30 Phút (Nhanh)" },
-                { m: 45, label: "⏱️ 45 Phút (Chuẩn)" },
-                { m: 60, label: "⏳ 60 Phút (Thoải mái)" },
-              ].map((t) => (
-                <button
-                  key={t.m}
-                  type="button"
-                  onClick={() => setTimeLimitMinutes(t.m)}
-                  className={`px-5 py-2.5 rounded-xl text-xs font-bold transition-all ${
-                    timeLimitMinutes === t.m
-                      ? "bg-amber-600 text-white shadow-lg shadow-amber-600/20"
-                      : "bg-zinc-800 text-zinc-400 hover:bg-zinc-700 hover:text-white"
-                  }`}
-                >
-                  {t.label}
-                </button>
-              ))}
+                { m: 30, label: "30 Phút (Nhanh)", icon: Zap },
+                { m: 45, label: "45 Phút (Chuẩn)", icon: Clock },
+                { m: 60, label: "60 Phút (Thoải mái)", icon: Timer },
+              ].map((t) => {
+                const Icon = t.icon;
+                return (
+                  <button
+                    key={t.m}
+                    type="button"
+                    onClick={() => setTimeLimitMinutes(t.m)}
+                    className={`px-5 py-2.5 rounded-xl text-xs font-bold transition-all flex items-center gap-1.5 ${
+                      timeLimitMinutes === t.m
+                        ? "bg-amber-600 text-white shadow-lg shadow-amber-600/20"
+                        : "bg-zinc-800 text-zinc-400 hover:bg-zinc-700 hover:text-white"
+                    }`}
+                  >
+                    <Icon className="w-3.5 h-3.5" />
+                    <span>{t.label}</span>
+                  </button>
+                );
+              })}
             </div>
           </div>
 
@@ -365,9 +397,10 @@ export default function MiniTestPage() {
               type="button"
               onClick={handleStartTest}
               disabled={loadingStart}
-              className="px-8 py-3 bg-gradient-to-r from-red-600 to-red-500 hover:from-red-500 hover:to-red-400 text-white font-bold text-sm rounded-xl shadow-lg shadow-red-600/25 transition disabled:opacity-50"
+              className="flex items-center gap-2 px-8 py-3 bg-gradient-to-r from-red-600 to-red-500 hover:from-red-500 hover:to-red-400 text-white font-bold text-sm rounded-xl shadow-lg shadow-red-600/25 transition disabled:opacity-50"
             >
-              {loadingStart ? "Đang tạo đề thi..." : "🚀 Bắt đầu làm bài Mini Test"}
+              <Rocket className="w-4 h-4" />
+              <span>{loadingStart ? "Đang tạo đề thi..." : "Bắt đầu làm bài Mini Test"}</span>
             </button>
           </div>
         </div>
@@ -378,15 +411,15 @@ export default function MiniTestPage() {
             <div className="bg-zinc-900 border border-zinc-800 rounded-3xl p-6 sm:p-8 max-w-lg w-full space-y-5 shadow-2xl">
               <div className="flex items-center justify-between border-b border-zinc-800 pb-3">
                 <h3 className="text-lg font-bold text-white flex items-center gap-2">
-                  <span>ℹ️</span>
+                  <Info className="w-5 h-5 text-indigo-400" />
                   <span>Quy chế & Hướng dẫn thi Mini Test</span>
                 </h3>
                 <button
                   type="button"
                   onClick={() => setShowInstructionsModal(false)}
-                  className="text-zinc-400 hover:text-white text-sm"
+                  className="text-zinc-400 hover:text-white text-sm p-1 rounded-lg hover:bg-zinc-800"
                 >
-                  ✕
+                  <X className="w-5 h-5" />
                 </button>
               </div>
 
@@ -401,7 +434,7 @@ export default function MiniTestPage() {
                   • <strong>Tạm dừng (Pause):</strong> Bạn có thể bấm nút Tạm dừng nếu có việc đột xuất. Nội dung đề sẽ tạm mờ và dừng đếm giờ.
                 </p>
                 <p>
-                  • <strong>Đánh dấu cờ (Flag 🚩):</strong> Gắn cờ những câu hỏi bạn còn phân vân để dễ dàng rà soát lại trước khi nộp.
+                  • <strong>Đánh dấu cờ (Flag):</strong> Gắn cờ những câu hỏi bạn còn phân vân để dễ dàng rà soát lại trước khi nộp.
                 </p>
                 <p>
                   • <strong>Bảng câu hỏi (Palette):</strong> Nhấp vào bất kỳ số câu nào để nhảy ngay đến câu hỏi đó.
@@ -447,8 +480,10 @@ export default function MiniTestPage() {
         {/* ── PAUSE OVERLAY ── */}
         {isPaused && (
           <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/85 backdrop-blur-md">
-            <div className="bg-zinc-900 border border-zinc-800 rounded-3xl p-8 max-w-md w-full text-center space-y-4 shadow-2xl">
-              <div className="text-4xl">⏸️</div>
+            <div className="bg-zinc-900 border border-zinc-800 rounded-3xl p-8 max-w-md w-full text-center space-y-4 shadow-2xl flex flex-col items-center">
+              <div className="w-14 h-14 rounded-full bg-zinc-800 flex items-center justify-center text-zinc-400 mb-1">
+                <Pause className="w-7 h-7" />
+              </div>
               <h3 className="text-xl font-bold text-white">Bài thi đang tạm dừng</h3>
               <p className="text-xs text-zinc-400">
                 Đồng hồ đã tạm dừng đếm. Bạn có thể nhấn Tiếp tục để quay trở lại làm bài thi bất cứ lúc nào.
@@ -456,9 +491,10 @@ export default function MiniTestPage() {
               <button
                 type="button"
                 onClick={() => setIsPaused(false)}
-                className="w-full py-3 bg-red-600 hover:bg-red-500 text-white font-bold text-xs rounded-xl shadow-lg transition"
+                className="flex items-center justify-center gap-2 w-full py-3 bg-red-600 hover:bg-red-500 text-white font-bold text-xs rounded-xl shadow-lg transition"
               >
-                ▶️ Tiếp tục làm bài
+                <Play className="w-4 h-4 fill-white" />
+                <span>Tiếp tục làm bài</span>
               </button>
             </div>
           </div>
@@ -467,7 +503,7 @@ export default function MiniTestPage() {
         {/* ── TOP LIVE TEST BAR ── */}
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 bg-zinc-900/85 border border-zinc-800 rounded-2xl p-4 sticky top-4 z-40 backdrop-blur-md">
           <div className="flex items-center gap-3">
-            <span className="text-xl">⚡</span>
+            <Zap className="w-5 h-5 text-red-500" />
             <div>
               <h2 className="text-sm font-bold text-white">{session.testTitle}</h2>
               <p className="text-[11px] text-zinc-400">
@@ -493,7 +529,7 @@ export default function MiniTestPage() {
                     : "bg-amber-600/15 text-amber-400 border-amber-500/30"
                 }`}
               >
-                <span>⏳</span>
+                <Timer className="w-4 h-4" />
                 <span>{formatTime(timeRemaining)}</span>
               </div>
             )}
@@ -502,10 +538,11 @@ export default function MiniTestPage() {
             <button
               type="button"
               onClick={() => setIsPaused(true)}
-              className="px-3 py-1.5 bg-zinc-800 hover:bg-zinc-700 text-zinc-300 text-xs font-semibold rounded-xl transition"
+              className="flex items-center gap-1 px-3 py-1.5 bg-zinc-800 hover:bg-zinc-700 text-zinc-300 text-xs font-semibold rounded-xl transition"
               title="Tạm dừng bài thi"
             >
-              ⏸️ Tạm dừng
+              <Pause className="w-3.5 h-3.5" />
+              <span>Tạm dừng</span>
             </button>
 
             {/* Submit Button */}
@@ -545,14 +582,18 @@ export default function MiniTestPage() {
                       : "bg-zinc-800 text-zinc-400 hover:text-white"
                   }`}
                 >
-                  <span>{isCurrentMarked ? "🚩 Đã đánh dấu" : "🏳️ Đánh dấu xem lại"}</span>
+                  <Flag className={`w-3.5 h-3.5 ${isCurrentMarked ? "fill-amber-400" : ""}`} />
+                  <span>{isCurrentMarked ? "Đã đánh dấu" : "Đánh dấu xem lại"}</span>
                 </button>
               </div>
 
               {/* Passage / Image / Audio (If listening / reading part) */}
               {currentQ.audioUrl && (
                 <div className="bg-zinc-950/80 border border-zinc-800 rounded-2xl p-4 space-y-2">
-                  <p className="text-xs text-zinc-400 font-semibold">🔊 Audio đoạn hội thoại / bài nói:</p>
+                  <p className="text-xs text-zinc-400 font-semibold flex items-center gap-1.5">
+                    <Volume2 className="w-4 h-4 text-blue-400" />
+                    <span>Audio đoạn hội thoại / bài nói:</span>
+                  </p>
                   <audio controls className="w-full h-8" src={currentQ.audioUrl} />
                 </div>
               )}
@@ -568,7 +609,7 @@ export default function MiniTestPage() {
               )}
 
               {currentQ.passage && (
-                <div className="bg-zinc-950/80 border border-zinc-800/80 rounded-2xl p-5 text-xs sm:text-sm text-zinc-300 leading-relaxed max-h-72 overflow-y-auto whitespace-pre-wrap">
+                <div className="bg-zinc-950/80 border border-zinc-800/80 rounded-2xl p-5 text-xs sm:text-sm text-zinc-300 leading-relaxed max-h-72 overflow-y-auto whitespace-pre-wrap font-serif">
                   {currentQ.passage}
                 </div>
               )}
@@ -618,26 +659,29 @@ export default function MiniTestPage() {
                   type="button"
                   onClick={() => setCurrentQIndex((prev) => Math.max(prev - 1, 0))}
                   disabled={currentQIndex === 0}
-                  className="px-4 py-2.5 bg-zinc-800 hover:bg-zinc-700 text-zinc-300 font-bold text-xs rounded-xl transition disabled:opacity-40"
+                  className="flex items-center gap-1.5 px-4 py-2.5 bg-zinc-800 hover:bg-zinc-700 text-zinc-300 font-bold text-xs rounded-xl transition disabled:opacity-40"
                 >
-                  ← Câu trước
+                  <ArrowLeft className="w-3.5 h-3.5" />
+                  <span>Câu trước</span>
                 </button>
 
                 {currentQIndex < totalQ - 1 ? (
                   <button
                     type="button"
                     onClick={() => setCurrentQIndex((prev) => Math.min(prev + 1, totalQ - 1))}
-                    className="px-5 py-2.5 bg-red-600 hover:bg-red-500 text-white font-bold text-xs rounded-xl shadow transition"
+                    className="flex items-center gap-1.5 px-5 py-2.5 bg-red-600 hover:bg-red-500 text-white font-bold text-xs rounded-xl shadow transition"
                   >
-                    Câu tiếp theo →
+                    <span>Câu tiếp theo</span>
+                    <ArrowRight className="w-3.5 h-3.5" />
                   </button>
                 ) : (
                   <button
                     type="button"
                     onClick={() => setShowSubmitModal(true)}
-                    className="px-5 py-2.5 bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs rounded-xl shadow transition"
+                    className="flex items-center gap-1.5 px-5 py-2.5 bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs rounded-xl shadow transition"
                   >
-                    Hoàn thành & Nộp bài ✓
+                    <Check className="w-4 h-4" />
+                    <span>Hoàn thành & Nộp bài</span>
                   </button>
                 )}
               </div>
@@ -665,13 +709,14 @@ export default function MiniTestPage() {
                 <button
                   type="button"
                   onClick={() => setFilterMarkedOnly(!filterMarkedOnly)}
-                  className={`text-[11px] font-semibold px-2 py-0.5 rounded-lg border transition ${
+                  className={`text-[11px] font-semibold px-2 py-0.5 rounded-lg border transition flex items-center gap-1 ${
                     filterMarkedOnly
                       ? "bg-amber-600/20 text-amber-400 border-amber-500/40"
                       : "bg-zinc-800 text-zinc-400 hover:text-white"
                   }`}
                 >
-                  🚩 Chỉ xem câu có cờ
+                  <Flag className="w-3 h-3 text-amber-400" />
+                  <span>Chỉ xem có cờ</span>
                 </button>
               </div>
 
@@ -728,15 +773,18 @@ export default function MiniTestPage() {
         {showSubmitModal && (
           <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm animate-fade-in">
             <div className="bg-zinc-900 border border-zinc-800 rounded-3xl p-6 sm:p-8 max-w-md w-full space-y-5 shadow-2xl">
-              <div className="text-center space-y-2">
-                <div className="text-3xl">📝</div>
+              <div className="text-center space-y-2 flex flex-col items-center">
+                <div className="w-12 h-12 rounded-full bg-red-500/10 text-red-400 flex items-center justify-center mb-1">
+                  <FileText className="w-6 h-6" />
+                </div>
                 <h3 className="text-lg font-bold text-white">Xác nhận nộp bài thi?</h3>
                 <p className="text-xs text-zinc-400">
                   Bạn đã hoàn thành <strong className="text-white">{answeredCount}/{totalQ} câu hỏi</strong>.
                 </p>
                 {totalQ - answeredCount > 0 && (
-                  <p className="text-xs text-amber-400 bg-amber-950/40 p-2.5 rounded-xl border border-amber-800/40">
-                    ⚠️ Còn <strong>{totalQ - answeredCount} câu chưa làm</strong>. Bạn có chắc chắn muốn nộp bài?
+                  <p className="text-xs text-amber-400 bg-amber-950/40 p-2.5 rounded-xl border border-amber-800/40 flex items-center gap-1.5">
+                    <AlertTriangle className="w-4 h-4 shrink-0" />
+                    <span>Còn <strong>{totalQ - answeredCount} câu chưa làm</strong>. Bạn có chắc muốn nộp?</span>
                   </p>
                 )}
               </div>
@@ -785,7 +833,7 @@ export default function MiniTestPage() {
         {/* Toast */}
         {toastMessage && (
           <div className="fixed bottom-6 right-6 z-50 bg-emerald-600 text-white text-xs font-bold px-4 py-3 rounded-xl shadow-2xl flex items-center gap-2 transition-all">
-            <span>✓</span>
+            <Check className="w-4 h-4" />
             <span>{toastMessage}</span>
           </div>
         )}
@@ -797,7 +845,8 @@ export default function MiniTestPage() {
             onClick={() => setScreen("config")}
             className="flex items-center gap-2 text-sm text-zinc-400 hover:text-white font-semibold transition"
           >
-            ← Làm bài Mini Test khác
+            <ArrowLeft className="w-4 h-4" />
+            <span>Làm bài Mini Test khác</span>
           </button>
 
           <div className="flex items-center gap-2">
@@ -806,7 +855,7 @@ export default function MiniTestPage() {
               onClick={handleShare}
               className="px-3.5 py-2 rounded-xl text-xs font-bold bg-zinc-800 hover:bg-zinc-700 text-zinc-200 transition flex items-center gap-1.5"
             >
-              <span>🔗</span>
+              <Share2 className="w-3.5 h-3.5" />
               <span>Chia sẻ kết quả</span>
             </button>
             <button
@@ -814,7 +863,7 @@ export default function MiniTestPage() {
               onClick={handleStartTest}
               className="px-4 py-2 rounded-xl text-xs font-bold bg-red-600 hover:bg-red-500 text-white transition shadow flex items-center gap-1.5"
             >
-              <span>🔄</span>
+              <RotateCcw className="w-3.5 h-3.5" />
               <span>Làm lại đề này</span>
             </button>
           </div>
@@ -825,13 +874,13 @@ export default function MiniTestPage() {
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
             <div className="flex items-center gap-4">
               <div
-                className={`w-16 h-16 rounded-2xl flex items-center justify-center text-3xl shrink-0 ${
+                className={`w-16 h-16 rounded-2xl flex items-center justify-center shrink-0 ${
                   isHigh
                     ? "bg-emerald-500/20 border border-emerald-500/30 text-emerald-400"
                     : "bg-amber-500/20 border border-amber-500/30 text-amber-400"
                 }`}
               >
-                {isHigh ? "🏆" : "🎯"}
+                {isHigh ? <Trophy className="w-8 h-8" /> : <Target className="w-8 h-8" />}
               </div>
               <div>
                 <h2 className="text-xl sm:text-2xl font-extrabold text-white">
@@ -880,7 +929,7 @@ export default function MiniTestPage() {
         {/* ── DETAILED SCORE BREAKDOWN & TIME ANALYSIS PER PART ── */}
         <div className="bg-zinc-900/70 border border-zinc-800 rounded-3xl p-6 space-y-4">
           <h3 className="text-base font-bold text-white flex items-center gap-2">
-            <span>📊</span>
+            <BarChart3 className="w-5 h-5 text-indigo-400" />
             <span>Phân tích chi tiết điểm số & thời gian theo từng Part</span>
           </h3>
 
@@ -924,7 +973,7 @@ export default function MiniTestPage() {
         <div className="space-y-4">
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
             <h3 className="text-lg font-bold text-white flex items-center gap-2">
-              <span>📖</span>
+              <BookOpen className="w-5 h-5 text-indigo-400" />
               <span>Xem lại chi tiết câu hỏi & Lời giải</span>
             </h3>
 
@@ -966,13 +1015,14 @@ export default function MiniTestPage() {
               <button
                 type="button"
                 onClick={() => setReviewFilter("marked")}
-                className={`px-3 py-1.5 rounded-xl text-xs font-bold transition ${
+                className={`px-3 py-1.5 rounded-xl text-xs font-bold transition flex items-center gap-1 ${
                   reviewFilter === "marked"
                     ? "bg-amber-600 text-white"
                     : "bg-zinc-900 border border-zinc-800 text-zinc-400 hover:text-white"
                 }`}
               >
-                Đã đánh dấu 🚩
+                <Flag className="w-3.5 h-3.5" />
+                <span>Đã đánh dấu</span>
               </button>
             </div>
           </div>
@@ -1006,13 +1056,23 @@ export default function MiniTestPage() {
                         Part {item.part}
                       </span>
                       <span
-                        className={`text-xs font-bold px-2.5 py-0.5 rounded-full ${
+                        className={`text-xs font-bold px-2.5 py-0.5 rounded-full flex items-center gap-1 ${
                           item.isCorrect
                             ? "bg-emerald-500/10 text-emerald-400"
                             : "bg-rose-500/10 text-rose-400"
                         }`}
                       >
-                        {item.isCorrect ? "✓ Trả lời đúng" : "✗ Trả lời sai"}
+                        {item.isCorrect ? (
+                          <>
+                            <CheckCircle2 className="w-3.5 h-3.5" />
+                            <span>Trả lời đúng</span>
+                          </>
+                        ) : (
+                          <>
+                            <XCircle className="w-3.5 h-3.5" />
+                            <span>Trả lời sai</span>
+                          </>
+                        )}
                       </span>
                     </div>
 
@@ -1025,7 +1085,7 @@ export default function MiniTestPage() {
                           : "bg-zinc-800 text-zinc-400 hover:text-amber-400"
                       }`}
                     >
-                      <span>{isBookmarked ? "⭐" : "☆"}</span>
+                      <Star className={`w-3.5 h-3.5 ${isBookmarked ? "fill-amber-400 text-amber-400" : ""}`} />
                       <span>{isBookmarked ? "Đã lưu sổ tay lỗi" : "Lưu vào sổ tay lỗi"}</span>
                     </button>
                   </div>
@@ -1046,7 +1106,7 @@ export default function MiniTestPage() {
                   )}
 
                   {item.passage && (
-                    <div className="p-4 bg-zinc-950/80 border border-zinc-800 rounded-2xl text-xs text-zinc-300 leading-relaxed whitespace-pre-wrap">
+                    <div className="p-4 bg-zinc-950/80 border border-zinc-800 rounded-2xl text-xs text-zinc-300 leading-relaxed whitespace-pre-wrap font-serif">
                       {item.passage}
                     </div>
                   )}
@@ -1087,8 +1147,8 @@ export default function MiniTestPage() {
                             {opt.label}
                           </span>
                           <span className="flex-1">{opt.text}</span>
-                          {isCorrectChoice && <span className="text-emerald-400 font-bold">✓ Đúng</span>}
-                          {isUserChoice && !isCorrectChoice && <span className="text-rose-400">✗ Bạn chọn</span>}
+                          {isCorrectChoice && <span className="text-emerald-400 font-bold flex items-center gap-1"><Check className="w-3.5 h-3.5" /> Đúng</span>}
+                          {isUserChoice && !isCorrectChoice && <span className="text-rose-400 flex items-center gap-1"><X className="w-3.5 h-3.5" /> Bạn chọn</span>}
                         </div>
                       );
                     })}
@@ -1097,7 +1157,7 @@ export default function MiniTestPage() {
                   {/* Explanation */}
                   <div className="bg-zinc-950/80 border border-zinc-800 rounded-2xl p-4 space-y-2 text-xs">
                     <div className="flex items-center gap-2 text-red-400 font-bold uppercase tracking-wider">
-                      <span>📖</span>
+                      <BookOpen className="w-4 h-4" />
                       <span>Giải thích chi tiết</span>
                     </div>
                     <p className="text-zinc-300 leading-relaxed pl-6">{item.explanation}</p>

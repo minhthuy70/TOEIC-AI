@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { apiFetch } from "@/lib/api";
+import { Settings, BookOpen, Loader2, Check, AlertTriangle, Save } from "lucide-react";
 
 type SettingsMap = Record<string, string>;
 
@@ -55,7 +56,7 @@ export default function AdminSettingsPage() {
   if (loading) {
     return (
       <div className="p-8 flex justify-center items-center h-full">
-        <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-red-500"></div>
+        <Loader2 className="w-8 h-8 animate-spin text-red-500" />
       </div>
     );
   }
@@ -74,15 +75,17 @@ export default function AdminSettingsPage() {
         <button
           onClick={handleSave}
           disabled={saving}
-          className="px-6 py-2 bg-red-600 hover:bg-red-700 text-white font-medium rounded-xl transition disabled:opacity-50"
+          className="inline-flex items-center gap-1.5 px-6 py-2 bg-red-600 hover:bg-red-700 text-white font-medium rounded-xl transition disabled:opacity-50"
         >
-          {saving ? 'Đang lưu...' : 'Lưu thay đổi'}
+          {saving ? <Loader2 className="w-4 h-4 animate-spin" /> : <Save className="w-4 h-4" />}
+          <span>{saving ? 'Đang lưu...' : 'Lưu thay đổi'}</span>
         </button>
       </div>
 
       {message && (
-        <div className={`mb-6 p-4 rounded-xl ${message.type === 'success' ? 'bg-green-600/20 text-green-400 border border-green-600/30' : 'bg-red-600/20 text-red-400 border border-red-600/30'}`}>
-          {message.text}
+        <div className={`mb-6 p-4 rounded-xl flex items-center gap-2 ${message.type === 'success' ? 'bg-green-600/20 text-green-400 border border-green-600/30' : 'bg-red-600/20 text-red-400 border border-red-600/30'}`}>
+          {message.type === 'success' ? <Check className="w-4 h-4" /> : <AlertTriangle className="w-4 h-4" />}
+          <span>{message.text}</span>
         </div>
       )}
 
@@ -90,7 +93,8 @@ export default function AdminSettingsPage() {
         {/* Hệ thống */}
         <div className="bg-zinc-900 border border-zinc-800 rounded-2xl p-6">
           <h2 className="text-lg font-semibold text-white mb-4 flex items-center gap-2">
-            <span>⚙️</span> Hệ thống
+            <Settings className="w-5 h-5 text-red-500" />
+            <span>Hệ thống</span>
           </h2>
           
           <div className="space-y-4">
@@ -127,7 +131,8 @@ export default function AdminSettingsPage() {
         {/* Học tập */}
         <div className="bg-zinc-900 border border-zinc-800 rounded-2xl p-6">
           <h2 className="text-lg font-semibold text-white mb-4 flex items-center gap-2">
-            <span>📚</span> Học tập
+            <BookOpen className="w-5 h-5 text-blue-500" />
+            <span>Học tập</span>
           </h2>
           
           <div className="space-y-4">

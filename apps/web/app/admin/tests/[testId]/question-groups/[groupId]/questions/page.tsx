@@ -14,6 +14,7 @@ import {
   type QuestionGroup,
   type Test,
 } from "@/services/admin";
+import { X, Check, Circle } from "lucide-react";
 
 const EMPTY_OPTION = {
   option_label: "A",
@@ -535,9 +536,9 @@ export default function QuestionsPage() {
               <button
                 type="button"
                 onClick={() => setShowForm(false)}
-                className="w-9 h-9 rounded-lg bg-zinc-800 hover:bg-zinc-700 text-zinc-400 hover:text-white"
+                className="w-9 h-9 rounded-lg bg-zinc-800 hover:bg-zinc-700 text-zinc-400 hover:text-white flex items-center justify-center"
               >
-                ✕
+                <X className="w-4 h-4" />
               </button>
             </div>
 
@@ -687,7 +688,7 @@ export default function QuestionsPage() {
                                 : "bg-zinc-900 border-zinc-600 text-zinc-400 hover:border-zinc-500"
                             }`}
                           >
-                            {option.is_correct ? "✓" : "○"}
+                            {option.is_correct ? <Check className="w-4 h-4" /> : <Circle className="w-3.5 h-3.5" />}
                           </button>
                           
                           <span className="text-xs text-zinc-500 text-center">

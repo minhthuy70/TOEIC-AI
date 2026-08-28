@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useRef, useCallback } from "react";
 import { useRouter } from "next/navigation";
+import { AlertTriangle, Eye, EyeOff, Check } from "lucide-react";
 
 declare global {
   interface Window {
@@ -405,8 +406,9 @@ export default function LoginPage() {
         {/* Permanent lock message */}
         {isLocked && isPermanentlyLocked && (
           <div className="w-full p-4 rounded-xl bg-red-600/20 border border-red-600/40 text-red-400 text-sm mb-4">
-            <div className="font-semibold mb-2">
-              ⚠️ Tài khoản đã bị khóa vĩnh viễn
+            <div className="font-semibold mb-2 flex items-center gap-2">
+              <AlertTriangle className="w-5 h-5 text-red-400" />
+              <span>Tài khoản đã bị khóa vĩnh viễn</span>
             </div>
             <div className="text-xs mb-3">
               Tài khoản của bạn đã bị khóa do hoạt động đăng nhập bất thường liên tục.
@@ -496,15 +498,9 @@ export default function LoginPage() {
             className="absolute right-4 top-1/2 -translate-y-1/2 text-zinc-400 hover:text-red-500 transition-colors"
           >
             {showPassword ? (
-              <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                <path d="M17.94 17.94A10.07 10.07 0 0112 20c-7 0-11-8-11-8a18.45 18.45 0 015.06-5.94M9.9 4.24A9.12 9.12 0 0112 4c7 0 11 8 11 8a18.5 18.5 0 01-2.16 3.19m-6.72-1.07a3 3 0 11-4.24-4.24" strokeLinecap="round" strokeLinejoin="round"/>
-                <path d="M1 1l22 22" strokeLinecap="round" strokeLinejoin="round"/>
-              </svg>
+              <EyeOff className="w-5 h-5" />
             ) : (
-              <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" strokeLinecap="round" strokeLinejoin="round"/>
-                <circle cx="12" cy="12" r="3" strokeLinecap="round" strokeLinejoin="round"/>
-              </svg>
+              <Eye className="w-5 h-5" />
             )}
           </button>
         </div>
@@ -519,9 +515,7 @@ export default function LoginPage() {
                 className="absolute opacity-0 cursor-pointer w-full h-full"
               />
               {rememberMe && (
-                <svg className="w-3.5 h-3.5 text-red-500 pointer-events-none" viewBox="0 0 14 14" fill="none">
-                  <path d="M2.5 7.5L5.5 10.5L11.5 3.5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                </svg>
+                <Check className="w-3.5 h-3.5 text-red-500 pointer-events-none" />
               )}
             </div>
             <span className="text-zinc-400 text-sm group-hover:text-zinc-300 transition-colors">

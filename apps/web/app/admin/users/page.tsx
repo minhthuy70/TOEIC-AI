@@ -2,6 +2,7 @@
 
 import { useEffect, useMemo, useState } from "react";
 import { useRouter } from "next/navigation";
+import { Search } from "lucide-react";
 
 type Role = "USER" | "CONTENT_ADMIN" | "SUPER_ADMIN";
 
@@ -314,7 +315,7 @@ export default function AdminUsersPage() {
         <div className="bg-zinc-900 border border-zinc-800 rounded-2xl p-4 mb-6">
           <div className="relative">
             <span className="absolute left-4 top-1/2 -translate-y-1/2 text-zinc-500">
-              🔍
+              <Search className="w-4 h-4" />
             </span>
 
             <input

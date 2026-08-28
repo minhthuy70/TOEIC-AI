@@ -12,13 +12,28 @@ import {
   Tooltip,
 } from "recharts";
 import { getReadingDashboard, ReadingDashboardResponse } from "@/services/reading";
+import {
+  BookOpen,
+  Trophy,
+  Target,
+  Clock,
+  Flame,
+  AlertTriangle,
+  Sparkles,
+  Settings,
+  ArrowLeft,
+  Puzzle,
+  FileText,
+  FileCheck,
+  SlidersHorizontal,
+} from "lucide-react";
 
 function StatCard({
-  label, value, sub, icon, color = "indigo",
+  label, value, sub, icon: Icon, color = "indigo",
 }: {
-  label: string; value: string | number; sub?: string; icon: string; color?: string;
+  label: string; value: string | number; sub?: string; icon: any; color?: string;
 }) {
-  const gradients: Record<string,string> = {
+  const gradients: Record<string, string> = {
     indigo: "from-indigo-600/20 to-indigo-800/10 border-indigo-600/30",
     amber:  "from-amber-600/20 to-amber-800/10 border-amber-500/30",
     green:  "from-emerald-600/20 to-emerald-800/10 border-emerald-600/30",
@@ -28,7 +43,9 @@ function StatCard({
   };
   return (
     <div className={`bg-gradient-to-br ${gradients[color] ?? gradients.indigo} border rounded-2xl p-5 flex flex-col gap-2`}>
-      <div className="text-2xl">{icon}</div>
+      <div className="text-zinc-300">
+        <Icon className="w-5 h-5" />
+      </div>
       <p className="text-[11px] text-zinc-400 uppercase font-bold tracking-wider">{label}</p>
       <p className="text-3xl font-extrabold text-white leading-none">{value}</p>
       {sub && <p className="text-[11px] text-zinc-500">{sub}</p>}
@@ -95,28 +112,33 @@ export default function ReadingDashboardPage() {
       {/* Header */}
       <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
         <div>
-          <h1 className="text-2xl font-bold text-white">📖 Luyện Đọc (Reading)</h1>
+          <h1 className="text-2xl font-bold text-white flex items-center gap-2.5">
+            <BookOpen className="w-7 h-7 text-red-500" />
+            <span>Luyện Đọc (Reading)</span>
+          </h1>
           <p className="text-zinc-400 text-sm mt-1">Bảng điều khiển và phân tích kỹ năng đọc của bạn</p>
         </div>
         <div className="flex items-center gap-2">
           <Link
             href="/dashboard/reading/settings"
-            className="flex items-center gap-2 px-4 py-2.5 bg-indigo-700 hover:bg-indigo-600 text-white font-bold text-xs rounded-xl transition"
+            className="flex items-center gap-2 px-4 py-2.5 bg-red-600 hover:bg-red-500 text-white font-bold text-xs rounded-xl transition"
           >
-            ⚙️ Cài đặt đọc
+            <Settings className="w-4 h-4" />
+            <span>Cài đặt đọc</span>
           </Link>
           <Link
             href="/dashboard"
             className="flex items-center gap-2 px-4 py-2.5 bg-zinc-800 hover:bg-zinc-700 text-zinc-300 hover:text-white font-bold text-xs rounded-xl transition"
           >
-            ← Trở về Dashboard
+            <ArrowLeft className="w-4 h-4" />
+            <span>Trở về Dashboard</span>
           </Link>
         </div>
       </div>
 
       {!hasData && (
-        <div className="rounded-2xl border border-zinc-800 bg-zinc-900/60 p-10 text-center">
-          <p className="text-4xl mb-3">📖</p>
+        <div className="rounded-2xl border border-zinc-800 bg-zinc-900/60 p-10 text-center flex flex-col items-center">
+          <BookOpen className="w-12 h-12 text-zinc-600 mb-3" />
           <p className="text-white font-bold text-lg">Chưa có dữ liệu luyện đọc</p>
           <p className="text-zinc-500 text-sm mt-1">Hãy làm bài tập để hệ thống có thể phân tích kỹ năng của bạn.</p>
         </div>
@@ -126,11 +148,11 @@ export default function ReadingDashboardPage() {
         <>
           {/* Stat Cards */}
           <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4">
-            <StatCard icon="🏆" label="Điểm TOEIC (Đọc)" value={data.overallScore} sub="Ước tính từ thi thử" color="amber" />
-            <StatCard icon="🎯" label="Độ chính xác" value={`${data.accuracyRate}%`} sub="Tất cả bài tập" color="green" />
-            <StatCard icon="⏱️" label="Thời gian trung bình" value={`${data.averageTimePerQuestion}s`} sub="Mỗi câu hỏi" color="sky" />
-            <StatCard icon="🔥" label="Chuỗi luyện tập" value={`${data.streak} ngày`} sub="Liên tiếp" color="purple" />
-            <StatCard icon="📚" label="Đã hoàn thành" value={data.totalQuestionsCompleted} sub="Câu hỏi" color="indigo" />
+            <StatCard icon={Trophy} label="Điểm TOEIC (Đọc)" value={data.overallScore} sub="Ước tính từ thi thử" color="amber" />
+            <StatCard icon={Target} label="Độ chính xác" value={`${data.accuracyRate}%`} sub="Tất cả bài tập" color="green" />
+            <StatCard icon={Clock} label="Thời gian TB" value={`${data.averageTimePerQuestion}s`} sub="Mỗi câu hỏi" color="sky" />
+            <StatCard icon={Flame} label="Chuỗi luyện tập" value={`${data.streak} ngày`} sub="Liên tiếp" color="purple" />
+            <StatCard icon={BookOpen} label="Đã hoàn thành" value={data.totalQuestionsCompleted} sub="Câu hỏi" color="indigo" />
           </div>
 
           <div className="grid lg:grid-cols-3 gap-6">
@@ -139,8 +161,8 @@ export default function ReadingDashboardPage() {
             <div className="lg:col-span-1 flex flex-col gap-4">
               {data.weakParts.length > 0 ? (
                 <div className="bg-rose-950/30 border border-rose-800/30 rounded-2xl p-5 flex-1 flex flex-col justify-center text-center">
-                  <div className="w-16 h-16 bg-rose-500/20 rounded-full flex items-center justify-center mx-auto mb-4">
-                    <span className="text-3xl">⚠️</span>
+                  <div className="w-14 h-14 bg-rose-500/20 text-rose-400 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <AlertTriangle className="w-7 h-7" />
                   </div>
                   <h3 className="text-lg font-bold text-rose-300 mb-2">Kỹ năng yếu: Part {data.weakParts.join(", ")}</h3>
                   <p className="text-sm text-rose-200/70 mb-5">
@@ -155,8 +177,8 @@ export default function ReadingDashboardPage() {
                 </div>
               ) : (
                 <div className="bg-emerald-950/30 border border-emerald-800/30 rounded-2xl p-5 flex-1 flex flex-col justify-center text-center">
-                  <div className="w-16 h-16 bg-emerald-500/20 rounded-full flex items-center justify-center mx-auto mb-4">
-                    <span className="text-3xl">🌟</span>
+                  <div className="w-14 h-14 bg-emerald-500/20 text-emerald-400 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <Sparkles className="w-7 h-7" />
                   </div>
                   <h3 className="text-lg font-bold text-emerald-300 mb-2">Rất tốt!</h3>
                   <p className="text-sm text-emerald-200/70 mb-5">
@@ -179,9 +201,9 @@ export default function ReadingDashboardPage() {
                     <Radar
                       name="Tỷ lệ chính xác"
                       dataKey="A"
-                      stroke="#818cf8"
-                      fill="#6366f1"
-                      fillOpacity={0.5}
+                      stroke="#ef4444"
+                      fill="#ef4444"
+                      fillOpacity={0.4}
                     />
                   </RadarChart>
                 </ResponsiveContainer>
@@ -196,17 +218,23 @@ export default function ReadingDashboardPage() {
       <h2 className="text-lg font-bold text-white mt-10 mb-4">Bắt đầu luyện tập</h2>
       <div className="grid sm:grid-cols-3 gap-4">
         <Link href="/dashboard/reading/part-5" className="bg-zinc-900/80 hover:bg-zinc-800 border border-zinc-800 hover:border-zinc-700 rounded-2xl p-5 group transition">
-          <div className="w-12 h-12 bg-indigo-500/20 text-indigo-400 rounded-xl flex items-center justify-center text-xl mb-4 group-hover:scale-110 transition-transform">🧩</div>
+          <div className="w-12 h-12 bg-indigo-500/20 text-indigo-400 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+            <Puzzle className="w-6 h-6" />
+          </div>
           <h3 className="font-bold text-white mb-1">Part 5</h3>
           <p className="text-xs text-zinc-400">Hoàn thành câu (Incomplete Sentences)</p>
         </Link>
         <Link href="/dashboard/reading/part-6" className="bg-zinc-900/80 hover:bg-zinc-800 border border-zinc-800 hover:border-zinc-700 rounded-2xl p-5 group transition">
-          <div className="w-12 h-12 bg-emerald-500/20 text-emerald-400 rounded-xl flex items-center justify-center text-xl mb-4 group-hover:scale-110 transition-transform">📝</div>
+          <div className="w-12 h-12 bg-emerald-500/20 text-emerald-400 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+            <FileText className="w-6 h-6" />
+          </div>
           <h3 className="font-bold text-white mb-1">Part 6</h3>
           <p className="text-xs text-zinc-400">Hoàn thành đoạn văn (Text Completion)</p>
         </Link>
         <Link href="/dashboard/reading/part-7" className="bg-zinc-900/80 hover:bg-zinc-800 border border-zinc-800 hover:border-zinc-700 rounded-2xl p-5 group transition">
-          <div className="w-12 h-12 bg-amber-500/20 text-amber-400 rounded-xl flex items-center justify-center text-xl mb-4 group-hover:scale-110 transition-transform">📄</div>
+          <div className="w-12 h-12 bg-amber-500/20 text-amber-400 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+            <FileCheck className="w-6 h-6" />
+          </div>
           <h3 className="font-bold text-white mb-1">Part 7</h3>
           <p className="text-xs text-zinc-400">Đọc hiểu (Reading Comprehension)</p>
         </Link>
@@ -215,7 +243,9 @@ export default function ReadingDashboardPage() {
       <div className="grid sm:grid-cols-2 gap-4 mt-4">
         <Link href="/dashboard/reading/mixed" className="bg-gradient-to-br from-purple-900/40 to-indigo-900/40 hover:from-purple-900/60 hover:to-indigo-900/60 border border-purple-800/30 rounded-2xl p-5 group transition">
           <div className="flex items-center gap-4">
-            <div className="w-12 h-12 bg-purple-500/20 text-purple-400 rounded-xl flex items-center justify-center text-xl group-hover:scale-110 transition-transform">🎯</div>
+            <div className="w-12 h-12 bg-purple-500/20 text-purple-400 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform">
+              <SlidersHorizontal className="w-6 h-6" />
+            </div>
             <div>
               <h3 className="font-bold text-white">Luyện hỗn hợp</h3>
               <p className="text-xs text-zinc-400">Kết hợp Part 5-7 tùy chọn</p>
@@ -224,7 +254,9 @@ export default function ReadingDashboardPage() {
         </Link>
         <Link href="/dashboard/reading/settings" className="bg-zinc-900/80 hover:bg-zinc-800 border border-zinc-800 hover:border-zinc-700 rounded-2xl p-5 group transition">
           <div className="flex items-center gap-4">
-            <div className="w-12 h-12 bg-zinc-700/50 text-zinc-400 rounded-xl flex items-center justify-center text-xl group-hover:scale-110 transition-transform">⚙️</div>
+            <div className="w-12 h-12 bg-zinc-700/50 text-zinc-400 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform">
+              <Settings className="w-6 h-6" />
+            </div>
             <div>
               <h3 className="font-bold text-white">Cài đặt</h3>
               <p className="text-xs text-zinc-400">Cỡ chữ, chế độ tối/sáng...</p>

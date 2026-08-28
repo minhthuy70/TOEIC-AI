@@ -2,6 +2,30 @@
 
 import { useState, useEffect, useRef, useCallback } from "react";
 import { useRouter } from "next/navigation";
+import {
+  ImageIcon,
+  MessageSquare,
+  Users,
+  Mic,
+  Edit3,
+  FileText,
+  BookOpen,
+  AlertTriangle,
+  ClipboardList,
+  Headphones,
+  Rocket,
+  Target,
+  BarChart3,
+  TrendingUp,
+  CheckCircle,
+  Menu,
+  Clock,
+  Bookmark,
+  Music,
+  ArrowLeft,
+  ArrowRight,
+  X,
+} from "lucide-react";
 
 /* ───────── Types ───────── */
 interface Question {
@@ -37,15 +61,20 @@ interface TestData {
 /* ───────── Constants ───────── */
 const API = "http://localhost:3001";
 
-const PART_ICONS: Record<number, string> = {
-  1: "🖼️",
-  2: "💬",
-  3: "🗣️",
-  4: "🎙️",
-  5: "✏️",
-  6: "📝",
-  7: "📖",
+const PART_ICONS: Record<number, React.ElementType> = {
+  1: ImageIcon,
+  2: MessageSquare,
+  3: Users,
+  4: Mic,
+  5: Edit3,
+  6: FileText,
+  7: BookOpen,
 };
+
+function PartIcon({ partNumber, className = "w-5 h-5" }: { partNumber: number; className?: string }) {
+  const Icon = PART_ICONS[partNumber] || FileText;
+  return <Icon className={className} />;
+}
 
 /* ────────────────────────────────────────── */
 /*           MAIN COMPONENT                   */
@@ -418,11 +447,14 @@ export default function PlacementTestPage() {
   if (error || !testData) {
     return (
       <div className="min-h-screen bg-black flex items-center justify-center">
-        <div className="text-center">
-          <p className="text-red-500 text-xl mb-4">⚠️ {error || "Lỗi tải dữ liệu"}</p>
+        <div className="text-center flex flex-col items-center">
+          <p className="text-red-500 text-xl mb-4 flex items-center justify-center gap-2">
+            <AlertTriangle className="w-6 h-6" />
+            <span>{error || "Lỗi tải dữ liệu"}</span>
+          </p>
           <button
             onClick={() => window.location.reload()}
-            className="px-6 py-3 bg-red-600 text-white rounded-xl hover:bg-red-700"
+            className="px-6 py-3 bg-red-600 text-white rounded-xl hover:bg-red-700 font-semibold"
           >
             Thử lại
           </button>
@@ -443,16 +475,16 @@ export default function PlacementTestPage() {
             <div className="bg-zinc-900 border border-red-600/30 rounded-2xl p-6 max-w-2xl w-full max-h-[90vh] overflow-y-auto">
               <div className="flex items-center justify-between mb-6">
                 <h2 className="text-2xl font-bold text-white flex items-center gap-2">
-                  <span className="w-10 h-10 bg-red-600/20 rounded-xl flex items-center justify-center text-red-400">📋</span>
-                  Hướng dẫn làm bài test
+                  <span className="w-10 h-10 bg-red-600/20 rounded-xl flex items-center justify-center text-red-400">
+                    <ClipboardList className="w-5 h-5" />
+                  </span>
+                  <span>Hướng dẫn làm bài test</span>
                 </h2>
                 <button
                   onClick={() => setShowInstructions(false)}
                   className="text-gray-400 hover:text-white transition-colors"
                 >
-                  <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
-                  </svg>
+                  <X className="w-6 h-6" />
                 </button>
               </div>
 
@@ -483,7 +515,8 @@ export default function PlacementTestPage() {
                 {/* Section A - Listening */}
                 <div className="bg-blue-600/10 rounded-xl p-4 border border-blue-600/20">
                   <h3 className="text-lg font-semibold text-blue-400 mb-3 flex items-center gap-2">
-                    <span>🎧</span> Section A - Listening
+                    <Headphones className="w-5 h-5" />
+                    <span>Section A - Listening</span>
                   </h3>
                   <ul className="space-y-2 text-sm text-gray-300">
                     <li className="flex items-start gap-2">
@@ -504,8 +537,9 @@ export default function PlacementTestPage() {
                     </li>
                   </ul>
                   <div className="mt-3 p-3 bg-blue-600/10 rounded-lg border border-blue-600/20">
-                    <p className="text-xs text-blue-300">
-                      ⚠️ Lưu ý: Audio chỉ phát một lần. Hãy tập trung nghe kỹ trước khi chọn đáp án.
+                    <p className="text-xs text-blue-300 flex items-center gap-1.5">
+                      <AlertTriangle className="w-3.5 h-3.5 shrink-0" />
+                      <span>Lưu ý: Audio chỉ phát một lần. Hãy tập trung nghe kỹ trước khi chọn đáp án.</span>
                     </p>
                   </div>
                 </div>
@@ -513,7 +547,8 @@ export default function PlacementTestPage() {
                 {/* Section B - Reading */}
                 <div className="bg-green-600/10 rounded-xl p-4 border border-green-600/20">
                   <h3 className="text-lg font-semibold text-green-400 mb-3 flex items-center gap-2">
-                    <span>📖</span> Section B - Reading
+                    <BookOpen className="w-5 h-5" />
+                    <span>Section B - Reading</span>
                   </h3>
                   <ul className="space-y-2 text-sm text-gray-300">
                     <li className="flex items-start gap-2">
@@ -534,7 +569,8 @@ export default function PlacementTestPage() {
                 {/* Important Notes */}
                 <div className="bg-yellow-600/10 rounded-xl p-4 border border-yellow-600/20">
                   <h3 className="text-lg font-semibold text-yellow-400 mb-3 flex items-center gap-2">
-                    <span>⚠️</span> Lưu ý quan trọng
+                    <AlertTriangle className="w-5 h-5" />
+                    <span>Lưu ý quan trọng</span>
                   </h3>
                   <ul className="space-y-2 text-sm text-gray-300">
                     <li className="flex items-start gap-2">
@@ -601,8 +637,10 @@ export default function PlacementTestPage() {
           {/* Test Info Card */}
           <div className="bg-zinc-900/80 backdrop-blur border border-red-600/20 rounded-2xl p-6 mb-6">
             <h2 className="text-lg font-semibold text-white mb-4 flex items-center gap-2">
-              <span className="w-8 h-8 bg-red-600/20 rounded-lg flex items-center justify-center text-red-400">📋</span>
-              Thông tin bài test
+              <span className="w-8 h-8 bg-red-600/20 rounded-lg flex items-center justify-center text-red-400">
+                <ClipboardList className="w-4 h-4" />
+              </span>
+              <span>Thông tin bài test</span>
             </h2>
 
             <div className="grid grid-cols-2 gap-3">
@@ -628,8 +666,10 @@ export default function PlacementTestPage() {
           {/* Parts Overview */}
           <div className="bg-zinc-900/80 backdrop-blur border border-red-600/20 rounded-2xl p-6 mb-6">
             <h2 className="text-lg font-semibold text-white mb-4 flex items-center gap-2">
-              <span className="w-8 h-8 bg-red-600/20 rounded-lg flex items-center justify-center text-red-400">📊</span>
-              Cấu trúc bài test
+              <span className="w-8 h-8 bg-red-600/20 rounded-lg flex items-center justify-center text-red-400">
+                <BarChart3 className="w-4 h-4" />
+              </span>
+              <span>Cấu trúc bài test</span>
             </h2>
 
             <div className="space-y-2">
@@ -647,7 +687,9 @@ export default function PlacementTestPage() {
                       className="flex items-center justify-between py-2 px-3 rounded-lg hover:bg-zinc-800/50 group"
                     >
                       <div className="flex items-center gap-3">
-                        <span className="text-lg">{PART_ICONS[part.partNumber]}</span>
+                        <div className="w-8 h-8 rounded-lg bg-zinc-800 flex items-center justify-center text-red-400">
+                          <PartIcon partNumber={part.partNumber} className="w-4 h-4" />
+                        </div>
                         <div>
                           <p className="text-white text-sm font-medium">
                             Part {part.partNumber}: {part.title}
@@ -681,7 +723,9 @@ export default function PlacementTestPage() {
                       className="flex items-center justify-between py-2 px-3 rounded-lg hover:bg-zinc-800/50 group"
                     >
                       <div className="flex items-center gap-3">
-                        <span className="text-lg">{PART_ICONS[part.partNumber]}</span>
+                        <div className="w-8 h-8 rounded-lg bg-zinc-800 flex items-center justify-center text-red-400">
+                          <PartIcon partNumber={part.partNumber} className="w-4 h-4" />
+                        </div>
                         <div>
                           <p className="text-white text-sm font-medium">
                             Part {part.partNumber}: {part.title}
@@ -707,21 +751,24 @@ export default function PlacementTestPage() {
           <div className="flex gap-3">
             <button
               onClick={() => router.back()}
-              className="flex-1 border border-zinc-700 text-gray-400 hover:text-white hover:border-zinc-500 py-3.5 rounded-xl font-semibold transition-all"
+              className="inline-flex items-center justify-center gap-1.5 flex-1 border border-zinc-700 text-gray-400 hover:text-white hover:border-zinc-500 py-3.5 rounded-xl font-semibold transition-all"
             >
-              ← Quay lại
+              <ArrowLeft className="w-4 h-4" />
+              <span>Quay lại</span>
             </button>
             <button
               onClick={() => setShowInstructions(true)}
-              className="flex-1 bg-zinc-800 hover:bg-zinc-700 text-white py-3.5 rounded-xl font-semibold transition-all"
+              className="inline-flex items-center justify-center gap-1.5 flex-1 bg-zinc-800 hover:bg-zinc-700 text-white py-3.5 rounded-xl font-semibold transition-all"
             >
-              📋 Xem hướng dẫn
+              <ClipboardList className="w-4 h-4" />
+              <span>Xem hướng dẫn</span>
             </button>
             <button
               onClick={startTest}
-              className="flex-1 bg-red-600 hover:bg-red-700 text-white py-3.5 rounded-xl font-semibold transition-all shadow-lg shadow-red-600/25 hover:shadow-red-600/40 active:scale-[0.98]"
+              className="inline-flex items-center justify-center gap-1.5 flex-1 bg-red-600 hover:bg-red-700 text-white py-3.5 rounded-xl font-semibold transition-all shadow-lg shadow-red-600/25 hover:shadow-red-600/40 active:scale-[0.98]"
             >
-              🚀 Bắt đầu làm bài
+              <Rocket className="w-4 h-4" />
+              <span>Bắt đầu làm bài</span>
             </button>
           </div>
         </div>
@@ -755,8 +802,8 @@ export default function PlacementTestPage() {
         <div className="w-full max-w-2xl">
           {/* Header */}
           <div className="text-center mb-8">
-            <div className="w-20 h-20 rounded-full bg-red-600 flex items-center justify-center mx-auto shadow-lg shadow-red-600/30 mb-4">
-              <span className="text-4xl">🎯</span>
+            <div className="w-20 h-20 rounded-full bg-red-600 flex items-center justify-center mx-auto shadow-lg shadow-red-600/30 mb-4 text-white">
+              <Target className="w-10 h-10" />
             </div>
             <h1 className="text-3xl font-bold text-white">Kết quả bài test</h1>
           </div>
@@ -772,7 +819,10 @@ export default function PlacementTestPage() {
 
             {/* Level Badge */}
             <div className={`${level.bg} rounded-xl p-3 text-center mb-6`}>
-              <p className={`${level.color} font-semibold text-lg`}>📊 {level.level}</p>
+              <p className={`${level.color} font-semibold text-lg flex items-center justify-center gap-2`}>
+                <BarChart3 className="w-5 h-5" />
+                <span>{level.level}</span>
+              </p>
               <p className="text-xs text-gray-400 mt-1">Chặng đề xuất: {level.stage}</p>
             </div>
 
@@ -808,15 +858,19 @@ export default function PlacementTestPage() {
           {/* Performance Analysis */}
           <div className="bg-zinc-900/80 backdrop-blur border border-zinc-800 rounded-2xl p-6 mb-4">
             <h3 className="text-lg font-semibold text-white mb-4 flex items-center gap-2">
-              <span className="w-8 h-8 bg-blue-600/20 rounded-lg flex items-center justify-center text-blue-400">📈</span>
-              Phân tích hiệu suất theo Part
+              <span className="w-8 h-8 bg-blue-600/20 rounded-lg flex items-center justify-center text-blue-400">
+                <TrendingUp className="w-4 h-4" />
+              </span>
+              <span>Phân tích hiệu suất theo Part</span>
             </h3>
             <div className="space-y-3">
               {score.partScores.map((part: any) => (
                 <div key={part.partNumber} className="bg-black/30 rounded-xl p-4 border border-zinc-800">
                   <div className="flex items-center justify-between mb-2">
                     <div className="flex items-center gap-2">
-                      <span className="text-lg">{PART_ICONS[part.partNumber]}</span>
+                      <div className="w-7 h-7 rounded-lg bg-zinc-800 flex items-center justify-center text-red-400">
+                        <PartIcon partNumber={part.partNumber} className="w-3.5 h-3.5" />
+                      </div>
                       <div>
                         <p className="text-white text-sm font-medium">Part {part.partNumber}: {part.title}</p>
                         <p className="text-gray-500 text-xs">{part.titleVi}</p>
@@ -846,13 +900,17 @@ export default function PlacementTestPage() {
           {weakParts.length > 0 && (
             <div className="bg-red-600/10 border border-red-600/20 rounded-2xl p-6 mb-4">
               <h3 className="text-lg font-semibold text-white mb-4 flex items-center gap-2">
-                <span className="w-8 h-8 bg-red-600/20 rounded-lg flex items-center justify-center text-red-400">⚠️</span>
-                Điểm yếu cần cải thiện
+                <span className="w-8 h-8 bg-red-600/20 rounded-lg flex items-center justify-center text-red-400">
+                  <AlertTriangle className="w-4 h-4" />
+                </span>
+                <span>Điểm yếu cần cải thiện</span>
               </h3>
               <div className="space-y-2">
                 {weakParts.map((part: any) => (
                   <div key={part.partNumber} className="flex items-center gap-3 bg-black/30 rounded-lg p-3 border border-red-600/20">
-                    <span className="text-lg">{PART_ICONS[part.partNumber]}</span>
+                    <div className="w-7 h-7 rounded-lg bg-zinc-800 flex items-center justify-center text-red-400">
+                      <PartIcon partNumber={part.partNumber} className="w-3.5 h-3.5" />
+                    </div>
                     <div className="flex-1">
                       <p className="text-white text-sm font-medium">Part {part.partNumber}: {part.titleVi}</p>
                       <p className="text-red-400 text-xs">Điểm: {part.score}%</p>
@@ -867,13 +925,17 @@ export default function PlacementTestPage() {
           {strongestParts.length > 0 && (
             <div className="bg-green-600/10 border border-green-600/20 rounded-2xl p-6 mb-4">
               <h3 className="text-lg font-semibold text-white mb-4 flex items-center gap-2">
-                <span className="w-8 h-8 bg-green-600/20 rounded-lg flex items-center justify-center text-green-400">✅</span>
-                Điểm mạnh
+                <span className="w-8 h-8 bg-green-600/20 rounded-lg flex items-center justify-center text-green-400">
+                  <CheckCircle className="w-4 h-4" />
+                </span>
+                <span>Điểm mạnh</span>
               </h3>
               <div className="space-y-2">
                 {strongestParts.map((part: any) => (
                   <div key={part.partNumber} className="flex items-center gap-3 bg-black/30 rounded-lg p-3 border border-green-600/20">
-                    <span className="text-lg">{PART_ICONS[part.partNumber]}</span>
+                    <div className="w-7 h-7 rounded-lg bg-zinc-800 flex items-center justify-center text-green-400">
+                      <PartIcon partNumber={part.partNumber} className="w-3.5 h-3.5" />
+                    </div>
                     <div className="flex-1">
                       <p className="text-white text-sm font-medium">Part {part.partNumber}: {part.titleVi}</p>
                       <p className="text-green-400 text-xs">Điểm: {part.score}%</p>
@@ -891,9 +953,10 @@ export default function PlacementTestPage() {
                 const estimatedScore = calculateScore().estimatedScore;
                 router.push(`/onboarding/stage-assignment?score=${estimatedScore}`);
               }}
-              className="flex-1 bg-red-600 hover:bg-red-700 text-white py-3.5 rounded-xl font-semibold transition-all shadow-lg shadow-red-600/25"
+              className="inline-flex items-center justify-center gap-1.5 flex-1 bg-red-600 hover:bg-red-700 text-white py-3.5 rounded-xl font-semibold transition-all shadow-lg shadow-red-600/25"
             >
-              Tiếp tục →
+              <span>Tiếp tục</span>
+              <ArrowRight className="w-4 h-4" />
             </button>
           </div>
         </div>
@@ -915,7 +978,7 @@ export default function PlacementTestPage() {
               onClick={() => setSidebarOpen(!sidebarOpen)}
               className="lg:hidden w-9 h-9 bg-zinc-800 rounded-lg flex items-center justify-center text-gray-400 hover:text-white"
             >
-              ☰
+              <Menu className="w-5 h-5" />
             </button>
             <div className="flex items-center gap-2">
               <div className="w-8 h-8 rounded-full bg-red-600 flex items-center justify-center text-xs font-bold text-white">B</div>
@@ -960,7 +1023,7 @@ export default function PlacementTestPage() {
                 : "bg-zinc-800 text-white"
                 }`}
             >
-              <span>⏱</span>
+              <Clock className="w-4 h-4" />
               {formatTime(timeLeft)}
             </div>
             <button
@@ -998,13 +1061,14 @@ export default function PlacementTestPage() {
               </p>
               <button
                 onClick={() => setShowOnlyMarked(!showOnlyMarked)}
-                className={`text-xs px-2 py-1 rounded-lg transition-all ${
+                className={`inline-flex items-center gap-1 text-xs px-2 py-1 rounded-lg transition-all ${
                   showOnlyMarked
                     ? "bg-yellow-600/20 text-yellow-400 border border-yellow-600/30"
                     : "bg-zinc-800 text-gray-400 hover:text-white"
                 }`}
               >
-                {showOnlyMarked ? "📌 Tất cả" : "📌 Đã đánh dấu"}
+                <Bookmark className="w-3.5 h-3.5" />
+                <span>{showOnlyMarked ? "Tất cả" : "Đã đánh dấu"}</span>
               </button>
             </div>
 
@@ -1033,13 +1097,20 @@ export default function PlacementTestPage() {
                       }`}
                   >
                     <div className="flex items-center gap-2">
-                      <span>{PART_ICONS[part.partNumber]}</span>
+                      <PartIcon partNumber={part.partNumber} className="w-4 h-4" />
                       <span>Part {part.partNumber}</span>
                     </div>
                     <div className="flex items-center gap-1.5">
                       {hasQuestions ? (
-                        <span className="text-xs bg-zinc-800 px-1.5 py-0.5 rounded">
-                          {showOnlyMarked ? `${markedInPart}📌` : `${answeredInPart}/${part.questions.length}`}
+                        <span className="text-xs bg-zinc-800 px-1.5 py-0.5 rounded flex items-center gap-1">
+                          {showOnlyMarked ? (
+                            <>
+                              <span>{markedInPart}</span>
+                              <Bookmark className="w-3 h-3 text-yellow-400" />
+                            </>
+                          ) : (
+                            `${answeredInPart}/${part.questions.length}`
+                          )}
                         </span>
                       ) : (
                         <span className="text-xs text-yellow-500">—</span>
@@ -1094,8 +1165,8 @@ export default function PlacementTestPage() {
             {!currentPart || currentPart.questions.length === 0 ? (
               <div className="flex flex-col items-center justify-center min-h-[60vh]">
                 <div className="bg-zinc-900/80 backdrop-blur border border-yellow-600/20 rounded-2xl p-10 text-center max-w-md">
-                  <div className="w-20 h-20 bg-yellow-600/10 rounded-2xl flex items-center justify-center mx-auto mb-4">
-                    <span className="text-4xl">🚧</span>
+                  <div className="w-20 h-20 bg-yellow-600/10 rounded-2xl flex items-center justify-center mx-auto mb-4 text-yellow-400">
+                    <AlertTriangle className="w-10 h-10" />
                   </div>
                   <h2 className="text-xl font-bold text-white mb-2">
                     Part {currentPart?.partNumber}: {currentPart?.title}
@@ -1116,17 +1187,19 @@ export default function PlacementTestPage() {
                     {currentPartIndex > 0 && (
                       <button
                         onClick={() => goToPart(currentPartIndex - 1)}
-                        className="px-4 py-2 border border-zinc-700 text-gray-400 hover:text-white rounded-lg text-sm transition-all"
+                        className="inline-flex items-center gap-1.5 px-4 py-2 border border-zinc-700 text-gray-400 hover:text-white rounded-lg text-sm transition-all"
                       >
-                        ← Part trước
+                        <ArrowLeft className="w-3.5 h-3.5" />
+                        <span>Part trước</span>
                       </button>
                     )}
                     {currentPartIndex < testData.parts.length - 1 && (
                       <button
                         onClick={() => goToPart(currentPartIndex + 1)}
-                        className="px-4 py-2 border border-zinc-700 text-gray-400 hover:text-white rounded-lg text-sm transition-all"
+                        className="inline-flex items-center gap-1.5 px-4 py-2 border border-zinc-700 text-gray-400 hover:text-white rounded-lg text-sm transition-all"
                       >
-                        Part sau →
+                        <span>Part sau</span>
+                        <ArrowRight className="w-3.5 h-3.5" />
                       </button>
                     )}
                   </div>
@@ -1138,12 +1211,22 @@ export default function PlacementTestPage() {
                 {/* Section badge */}
                 <div className="flex items-center gap-2 mb-4">
                   <span
-                    className={`text-xs uppercase tracking-wider font-semibold px-2.5 py-1 rounded-full ${currentPart.section === "listening"
+                    className={`text-xs uppercase tracking-wider font-semibold px-2.5 py-1 rounded-full inline-flex items-center gap-1.5 ${currentPart.section === "listening"
                       ? "bg-blue-600/20 text-blue-400"
                       : "bg-green-600/20 text-green-400"
                       }`}
                   >
-                    {currentPart.section === "listening" ? "🎧 Listening" : "📖 Reading"}
+                    {currentPart.section === "listening" ? (
+                      <>
+                        <Headphones className="w-3.5 h-3.5" />
+                        <span>Listening</span>
+                      </>
+                    ) : (
+                      <>
+                        <BookOpen className="w-3.5 h-3.5" />
+                        <span>Reading</span>
+                      </>
+                    )}
                   </span>
                   <span className="text-gray-600 text-xs">
                     Part {currentPart.partNumber} • {currentPart.titleVi}
@@ -1154,7 +1237,7 @@ export default function PlacementTestPage() {
                 {currentPart.section === "listening" && currentPart.audio && (
                   <div className="bg-zinc-900/80 backdrop-blur border border-zinc-800 rounded-xl p-4 mb-6">
                     <div className="flex items-center gap-3">
-                      <span className="text-red-400 text-lg">🎵</span>
+                      <Music className="w-5 h-5 text-red-400" />
                       <audio
                         ref={audioRef}
                         src={`${API}${currentPart.audio}`}
@@ -1184,7 +1267,8 @@ export default function PlacementTestPage() {
                           }`}
                           title="Đánh dấu để xem lại"
                         >
-                          {markedQuestions.has(questionKey) ? "📌 Đã đánh dấu" : "📌 Đánh dấu"}
+                          <Bookmark className={`w-3.5 h-3.5 ${markedQuestions.has(questionKey) ? "fill-yellow-400 text-yellow-400" : ""}`} />
+                          <span>{markedQuestions.has(questionKey) ? "Đã đánh dấu" : "Đánh dấu"}</span>
                         </button>
                         <span className="text-gray-500 text-xs">
                           {currentQuestionIndex + 1} / {currentPart.questions.length} (Part {currentPart.partNumber})
@@ -1200,7 +1284,7 @@ export default function PlacementTestPage() {
                             <img
                               src={
                                 currentQuestion.image.startsWith("http")
-                                  ? currentQuestion.image
+                                   ? currentQuestion.image
                                   : `${API}${currentQuestion.image.startsWith("/") ? "" : "/"}${currentQuestion.image}`
                               }
                               alt={`Question ${currentQuestion.questionNumber}`}
@@ -1273,9 +1357,10 @@ export default function PlacementTestPage() {
                       <button
                         onClick={goPrev}
                         disabled={currentPartIndex === 0 && currentQuestionIndex === 0}
-                        className="flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium text-gray-400 hover:text-white hover:bg-zinc-800 transition-all disabled:opacity-30 disabled:cursor-not-allowed"
+                        className="inline-flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium text-gray-400 hover:text-white hover:bg-zinc-800 transition-all disabled:opacity-30 disabled:cursor-not-allowed"
                       >
-                        ← Câu trước
+                        <ArrowLeft className="w-4 h-4" />
+                        <span>Câu trước</span>
                       </button>
 
                       <div className="flex gap-1.5 overflow-x-auto max-w-[200px] sm:max-w-[300px] scrollbar-hide" style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
@@ -1307,16 +1392,17 @@ export default function PlacementTestPage() {
                       {isLastPart && isLastQuestion ? (
                         <button
                           onClick={handleSubmit}
-                          className="flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium bg-red-600 hover:bg-red-700 text-white transition-all"
+                          className="inline-flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium bg-red-600 hover:bg-red-700 text-white transition-all"
                         >
                           Nộp bài
                         </button>
                       ) : (
                         <button
                           onClick={goNext}
-                          className="flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium text-gray-400 hover:text-white hover:bg-zinc-800 transition-all"
+                          className="inline-flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium text-gray-400 hover:text-white hover:bg-zinc-800 transition-all"
                         >
-                          Câu sau →
+                          <span>Câu sau</span>
+                          <ArrowRight className="w-4 h-4" />
                         </button>
                       )}
                     </div>
@@ -1333,8 +1419,8 @@ export default function PlacementTestPage() {
         <div className="fixed inset-0 bg-black/80 backdrop-blur-sm flex items-center justify-center z-50 p-4">
           <div className="bg-zinc-900 border border-red-600/30 rounded-2xl p-6 max-w-md w-full">
             <div className="text-center mb-6">
-              <div className="w-16 h-16 rounded-full bg-red-600/20 flex items-center justify-center mx-auto mb-4">
-                <span className="text-3xl">📝</span>
+              <div className="w-16 h-16 rounded-full bg-red-600/20 flex items-center justify-center mx-auto mb-4 text-red-400">
+                <FileText className="w-8 h-8" />
               </div>
               <h2 className="text-xl font-bold text-white mb-2">Xác nhận nộp bài</h2>
               <p className="text-gray-400 text-sm">

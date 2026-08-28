@@ -5,6 +5,20 @@ import Link from "next/link";
 import { useGrammarSettings } from "@/hooks/useGrammarSettings";
 import { playSoundFeedback } from "@/lib/grammar-settings";
 import { updateGrammarSettings } from "@/services/grammar";
+import {
+  Settings,
+  Target,
+  BookOpen,
+  Zap,
+  Volume2,
+  Bell,
+  AlertTriangle,
+  Trophy,
+  RotateCcw,
+  Check,
+  ArrowLeft,
+  Loader2,
+} from "lucide-react";
 
 export default function GrammarSettingsPage() {
   const { settings, updateSettings, resetSettings, loaded } = useGrammarSettings();
@@ -55,7 +69,7 @@ export default function GrammarSettingsPage() {
       {/* Toast Notification */}
       {toastMessage && (
         <div className="fixed bottom-6 right-6 z-50 bg-emerald-600 text-white text-xs font-bold px-4 py-3 rounded-xl shadow-2xl flex items-center gap-2 transition-all">
-          <span>✓</span>
+          <Check className="w-4 h-4" />
           <span>{toastMessage}</span>
         </div>
       )}
@@ -64,8 +78,9 @@ export default function GrammarSettingsPage() {
       <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
         <div>
           <div className="flex items-center gap-2">
-            <h1 className="text-2xl font-bold text-white">
-              ⚙️ Cài Đặt Ngữ Pháp (Grammar Settings)
+            <h1 className="text-2xl font-bold text-white flex items-center gap-2">
+              <Settings className="w-6 h-6 text-red-500" />
+              <span>Cài Đặt Ngữ Pháp (Grammar Settings)</span>
             </h1>
             <span className="px-2.5 py-0.5 rounded-full text-[10px] font-extrabold bg-red-600/20 text-red-400 border border-red-500/30">
               Tùy chỉnh cá nhân
@@ -78,9 +93,10 @@ export default function GrammarSettingsPage() {
 
         <Link
           href="/dashboard/grammar"
-          className="flex items-center gap-2 px-4 py-2.5 bg-zinc-800 hover:bg-zinc-700 text-zinc-300 hover:text-white font-bold text-xs rounded-xl transition"
+          className="inline-flex items-center gap-1.5 px-4 py-2.5 bg-zinc-800 hover:bg-zinc-700 text-zinc-300 hover:text-white font-bold text-xs rounded-xl transition"
         >
-          ← Bảng điều khiển ngữ pháp
+          <ArrowLeft className="w-4 h-4" />
+          <span>Bảng điều khiển ngữ pháp</span>
         </Link>
       </div>
 
@@ -90,8 +106,8 @@ export default function GrammarSettingsPage() {
         <div className="bg-zinc-900/70 border border-zinc-800 rounded-3xl p-6 sm:p-7 space-y-4">
           <div className="flex items-start justify-between gap-4">
             <div className="flex items-start gap-3.5">
-              <div className="w-10 h-10 rounded-2xl bg-purple-600/15 border border-purple-600/20 text-purple-400 flex items-center justify-center text-lg shrink-0">
-                🎯
+              <div className="w-10 h-10 rounded-2xl bg-purple-600/15 border border-purple-600/20 text-purple-400 flex items-center justify-center shrink-0">
+                <Target className="w-5 h-5" />
               </div>
               <div>
                 <h2 className="text-base font-bold text-white">
@@ -162,8 +178,8 @@ export default function GrammarSettingsPage() {
         {/* ── SETTING 2: SHOW EXPLANATIONS BY DEFAULT ── */}
         <div className="bg-zinc-900/70 border border-zinc-800 rounded-3xl p-6 sm:p-7 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
           <div className="flex items-start gap-3.5">
-            <div className="w-10 h-10 rounded-2xl bg-blue-600/15 border border-blue-600/20 text-blue-400 flex items-center justify-center text-lg shrink-0">
-              📖
+            <div className="w-10 h-10 rounded-2xl bg-blue-600/15 border border-blue-600/20 text-blue-400 flex items-center justify-center shrink-0">
+              <BookOpen className="w-5 h-5" />
             </div>
             <div>
               <h2 className="text-base font-bold text-white">
@@ -196,8 +212,8 @@ export default function GrammarSettingsPage() {
         {/* ── SETTING 3: AUTO-ADVANCE AFTER CORRECT ANSWER ── */}
         <div className="bg-zinc-900/70 border border-zinc-800 rounded-3xl p-6 sm:p-7 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
           <div className="flex items-start gap-3.5">
-            <div className="w-10 h-10 rounded-2xl bg-emerald-600/15 border border-emerald-600/20 text-emerald-400 flex items-center justify-center text-lg shrink-0">
-              ⚡
+            <div className="w-10 h-10 rounded-2xl bg-emerald-600/15 border border-emerald-600/20 text-emerald-400 flex items-center justify-center shrink-0">
+              <Zap className="w-5 h-5" />
             </div>
             <div>
               <h2 className="text-base font-bold text-white">
@@ -231,8 +247,8 @@ export default function GrammarSettingsPage() {
         <div className="bg-zinc-900/70 border border-zinc-800 rounded-3xl p-6 sm:p-7 space-y-4">
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
             <div className="flex items-start gap-3.5">
-              <div className="w-10 h-10 rounded-2xl bg-amber-600/15 border border-amber-600/20 text-amber-400 flex items-center justify-center text-lg shrink-0">
-                🔊
+              <div className="w-10 h-10 rounded-2xl bg-amber-600/15 border border-amber-600/20 text-amber-400 flex items-center justify-center shrink-0">
+                <Volume2 className="w-5 h-5" />
               </div>
               <div>
                 <h2 className="text-base font-bold text-white">
@@ -270,23 +286,26 @@ export default function GrammarSettingsPage() {
               <button
                 type="button"
                 onClick={() => handleTestSound("correct")}
-                className="px-3 py-1.5 rounded-xl text-xs font-semibold bg-emerald-950/50 border border-emerald-800/60 text-emerald-300 hover:bg-emerald-900/50 transition"
+                className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-semibold bg-emerald-950/50 border border-emerald-800/60 text-emerald-300 hover:bg-emerald-900/50 transition"
               >
-                🔔 Câu đúng
+                <Bell className="w-3.5 h-3.5" />
+                <span>Câu đúng</span>
               </button>
               <button
                 type="button"
                 onClick={() => handleTestSound("incorrect")}
-                className="px-3 py-1.5 rounded-xl text-xs font-semibold bg-rose-950/50 border border-rose-800/60 text-rose-300 hover:bg-rose-900/50 transition"
+                className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-semibold bg-rose-950/50 border border-rose-800/60 text-rose-300 hover:bg-rose-900/50 transition"
               >
-                ⚠️ Câu sai
+                <AlertTriangle className="w-3.5 h-3.5" />
+                <span>Câu sai</span>
               </button>
               <button
                 type="button"
                 onClick={() => handleTestSound("complete")}
-                className="px-3 py-1.5 rounded-xl text-xs font-semibold bg-purple-950/50 border border-purple-800/60 text-purple-300 hover:bg-purple-900/50 transition"
+                className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-semibold bg-purple-950/50 border border-purple-800/60 text-purple-300 hover:bg-purple-900/50 transition"
               >
-                🏆 Hoàn thành bài
+                <Trophy className="w-3.5 h-3.5" />
+                <span>Hoàn thành bài</span>
               </button>
             </div>
           )}
@@ -298,18 +317,20 @@ export default function GrammarSettingsPage() {
         <button
           type="button"
           onClick={handleReset}
-          className="px-4 py-2.5 rounded-xl text-xs font-semibold text-zinc-400 hover:text-white bg-zinc-850 hover:bg-zinc-800 transition"
+          className="inline-flex items-center gap-1.5 px-4 py-2.5 rounded-xl text-xs font-semibold text-zinc-400 hover:text-white bg-zinc-850 hover:bg-zinc-800 transition"
         >
-          🔄 Khôi phục cài đặt gốc
+          <RotateCcw className="w-3.5 h-3.5" />
+          <span>Khôi phục cài đặt gốc</span>
         </button>
 
         <button
           type="button"
           onClick={handleSave}
           disabled={saving}
-          className="px-6 py-2.5 rounded-xl text-xs font-bold text-white bg-gradient-to-r from-red-600 to-red-500 hover:from-red-500 hover:to-red-400 shadow-lg shadow-red-600/20 transition disabled:opacity-50"
+          className="inline-flex items-center gap-1.5 px-6 py-2.5 rounded-xl text-xs font-bold text-white bg-gradient-to-r from-red-600 to-red-500 hover:from-red-500 hover:to-red-400 shadow-lg shadow-red-600/20 transition disabled:opacity-50"
         >
-          {saving ? "Đang lưu..." : "✓ Lưu cấu hình cài đặt"}
+          {saving ? <Loader2 className="w-3.5 h-3.5 animate-spin" /> : <Check className="w-3.5 h-3.5" />}
+          <span>{saving ? "Đang lưu..." : "Lưu cấu hình cài đặt"}</span>
         </button>
       </div>
     </div>

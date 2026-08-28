@@ -16,35 +16,52 @@ import type {
   GrammarDashboardData,
   GrammarTopicSummary,
 } from "@/types/grammar";
+import {
+  FileText,
+  Settings,
+  BookOpen,
+  Edit3,
+  ArrowLeft,
+  Trophy,
+  Zap,
+  Target,
+  AlertTriangle,
+  Sparkles,
+  Search,
+  Clock,
+  ArrowRight,
+  Loader2,
+} from "lucide-react";
 
 function StatCard({
   label,
   value,
   sub,
-  icon,
+  icon: Icon,
   color = "indigo",
 }: {
   label: string;
   value: string | number;
   sub?: string;
-  icon: string;
+  icon: React.ElementType;
   color?: string;
 }) {
   const gradients: Record<string, string> = {
-    indigo: "from-indigo-600/20 to-indigo-800/10 border-indigo-600/30",
-    amber: "from-amber-600/20 to-amber-800/10 border-amber-500/30",
-    green: "from-emerald-600/20 to-emerald-800/10 border-emerald-600/30",
-    purple: "from-purple-600/20 to-purple-800/10 border-purple-600/30",
-    rose: "from-rose-600/20 to-rose-800/10 border-rose-600/30",
-    sky: "from-sky-600/20 to-sky-800/10 border-sky-600/30",
+    indigo: "from-indigo-600/20 to-indigo-800/10 border-indigo-600/30 text-indigo-400",
+    amber: "from-amber-600/20 to-amber-800/10 border-amber-500/30 text-amber-400",
+    green: "from-emerald-600/20 to-emerald-800/10 border-emerald-600/30 text-emerald-400",
+    purple: "from-purple-600/20 to-purple-800/10 border-purple-600/30 text-purple-400",
+    rose: "from-rose-600/20 to-rose-800/10 border-rose-600/30 text-rose-400",
+    sky: "from-sky-600/20 to-sky-800/10 border-sky-600/30 text-sky-400",
   };
+  const theme = gradients[color] ?? gradients.indigo;
   return (
     <div
-      className={`bg-gradient-to-br ${
-        gradients[color] ?? gradients.indigo
-      } border rounded-2xl p-5 flex flex-col gap-2`}
+      className={`bg-gradient-to-br ${theme} border rounded-2xl p-5 flex flex-col gap-2`}
     >
-      <div className="text-2xl">{icon}</div>
+      <div className="w-8 h-8 rounded-xl bg-black/20 flex items-center justify-center">
+        <Icon className="w-5 h-5" />
+      </div>
       <p className="text-[11px] text-zinc-400 uppercase font-bold tracking-wider">
         {label}
       </p>
@@ -155,8 +172,9 @@ export default function GrammarDashboardPage() {
   if (loading) {
     return (
       <div className="flex min-h-[60vh] items-center justify-center">
-        <div className="text-zinc-400 text-sm animate-pulse">
-          Đang tải dữ liệu bảng điều khiển ngữ pháp...
+        <div className="flex items-center gap-2 text-zinc-400 text-sm animate-pulse">
+          <Loader2 className="w-5 h-5 animate-spin text-red-500" />
+          <span>Đang tải dữ liệu bảng điều khiển ngữ pháp...</span>
         </div>
       </div>
     );
@@ -192,8 +210,9 @@ export default function GrammarDashboardPage() {
       <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
         <div>
           <div className="flex items-center gap-2">
-            <h1 className="text-2xl font-bold text-white">
-              📝 Bảng Điều Khiển Ngữ Pháp
+            <h1 className="text-2xl font-bold text-white flex items-center gap-2">
+              <FileText className="w-6 h-6 text-red-500" />
+              <span>Bảng Điều Khiển Ngữ Pháp</span>
             </h1>
             <span className="px-2.5 py-0.5 rounded-full text-[10px] font-extrabold bg-red-600/20 text-red-400 border border-red-500/30">
               Chặng mục tiêu: Chặng {userStage}
@@ -206,37 +225,40 @@ export default function GrammarDashboardPage() {
         <div className="flex items-center gap-2 flex-wrap">
           <Link
             href="/dashboard/grammar/settings"
-            className="flex items-center gap-1 px-3 py-2 bg-zinc-800 hover:bg-zinc-700 text-zinc-300 hover:text-white font-bold text-xs rounded-xl transition"
+            className="flex items-center gap-1.5 px-3 py-2 bg-zinc-800 hover:bg-zinc-700 text-zinc-300 hover:text-white font-bold text-xs rounded-xl transition"
           >
-            <span>⚙️</span>
+            <Settings className="w-3.5 h-3.5" />
             <span>Cài đặt</span>
           </Link>
           <Link
             href="/dashboard/grammar/reference"
             className="flex items-center gap-1.5 px-3.5 py-2 bg-zinc-800 hover:bg-zinc-700 text-zinc-200 hover:text-white font-bold text-xs rounded-xl transition"
           >
-            <span>📖</span>
+            <BookOpen className="w-3.5 h-3.5" />
             <span>Tra cứu</span>
           </Link>
           <Link
             href="/dashboard/grammar/exercises"
             className="flex items-center gap-1.5 px-3.5 py-2 bg-red-600 hover:bg-red-500 text-white font-bold text-xs rounded-xl shadow transition"
           >
-            <span>✍️</span>
+            <Edit3 className="w-3.5 h-3.5" />
             <span>Luyện bài tập</span>
           </Link>
           <Link
             href="/dashboard/courses"
             className="flex items-center gap-1.5 px-3.5 py-2 bg-zinc-850 hover:bg-zinc-750 text-zinc-400 hover:text-white font-bold text-xs rounded-xl transition"
           >
-            ← Khóa học
+            <ArrowLeft className="w-3.5 h-3.5" />
+            <span>Khóa học</span>
           </Link>
         </div>
       </div>
 
       {!hasData && (
-        <div className="rounded-2xl border border-zinc-800 bg-zinc-900/60 p-10 text-center">
-          <p className="text-4xl mb-3">📝</p>
+        <div className="rounded-2xl border border-zinc-800 bg-zinc-900/60 p-10 text-center flex flex-col items-center">
+          <div className="w-12 h-12 rounded-2xl bg-zinc-800 text-zinc-400 flex items-center justify-center mb-3">
+            <FileText className="w-6 h-6" />
+          </div>
           <p className="text-white font-bold text-lg">Chưa có dữ liệu ngữ pháp</p>
           <p className="text-zinc-500 text-sm mt-1">
             Hãy bắt đầu học bài để hệ thống phân tích kỹ năng của bạn.
@@ -249,35 +271,35 @@ export default function GrammarDashboardPage() {
           {/* ── 5 STAT CARDS ── */}
           <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4">
             <StatCard
-              icon="📚"
+              icon={BookOpen}
               label="Tổng bài học"
               value={`${overview.completedLessons}/${overview.totalLessons}`}
               sub={`${overview.overallProgress}% hoàn thành`}
               color="indigo"
             />
             <StatCard
-              icon="🏆"
+              icon={Trophy}
               label="Thành thạo"
               value={overview.masteredCategories}
               sub={`/${overview.totalCategories} chủ đề`}
               color="green"
             />
             <StatCard
-              icon="⚡"
+              icon={Zap}
               label="Đang học"
               value={overview.learningCategories}
               sub="Chủ đề đang tiến hành"
               color="amber"
             />
             <StatCard
-              icon="🎯"
+              icon={Target}
               label="Độ chính xác"
               value={`${accuracy.overall}%`}
               sub={`${accuracy.totalScored} bài kiểm tra`}
               color="purple"
             />
             <StatCard
-              icon="⚠️"
+              icon={AlertTriangle}
               label="Cần cải thiện"
               value={overview.weakCategories}
               sub="Điểm dưới 60%"
@@ -291,8 +313,8 @@ export default function GrammarDashboardPage() {
             <div className="lg:col-span-1 flex flex-col gap-4">
               {weakTopics.length > 0 ? (
                 <div className="bg-rose-950/30 border border-rose-800/30 rounded-2xl p-5 flex-1 flex flex-col justify-center text-center">
-                  <div className="w-14 h-14 bg-rose-500/20 rounded-full flex items-center justify-center mx-auto mb-3">
-                    <span className="text-2xl">⚠️</span>
+                  <div className="w-14 h-14 bg-rose-500/20 text-rose-400 rounded-full flex items-center justify-center mx-auto mb-3">
+                    <AlertTriangle className="w-7 h-7" />
                   </div>
                   <h3 className="text-base font-bold text-rose-300 mb-1">
                     Cần củng cố: {weakTopics.length} chủ đề
@@ -313,8 +335,8 @@ export default function GrammarDashboardPage() {
                 </div>
               ) : (
                 <div className="bg-emerald-950/30 border border-emerald-800/30 rounded-2xl p-5 flex-1 flex flex-col justify-center text-center">
-                  <div className="w-14 h-14 bg-emerald-500/20 rounded-full flex items-center justify-center mx-auto mb-3">
-                    <span className="text-2xl">🌟</span>
+                  <div className="w-14 h-14 bg-emerald-500/20 text-emerald-400 rounded-full flex items-center justify-center mx-auto mb-3">
+                    <Sparkles className="w-7 h-7" />
                   </div>
                   <h3 className="text-base font-bold text-emerald-300 mb-1">
                     Rất tốt!
@@ -398,33 +420,20 @@ export default function GrammarDashboardPage() {
                   <div className="space-y-1">
                     <div className="flex items-center gap-1.5">
                       <span className="text-xs font-bold text-white">
-                        {st.name}
+                        Chặng {st.stage}
                       </span>
                       <span className="text-[10px] text-zinc-500">
-                        ({st.range})
+                        ({st.completedLessons}/{st.totalLessons})
                       </span>
                     </div>
-                    <p className="text-[11px] text-zinc-400 truncate">{st.title}</p>
-                  </div>
-
-                  <div className="mt-3 space-y-2">
-                    <div className="flex items-center justify-between text-xs">
-                      <span className="text-zinc-500 text-[11px]">Hoàn thành:</span>
-                      <span className="font-bold text-white">{st.progress}%</span>
-                    </div>
-                    <div className="bg-zinc-800 h-1.5 rounded-full overflow-hidden">
+                    <p className="text-[11px] text-zinc-400 font-medium">
+                      {st.progress}% hoàn thành
+                    </p>
+                    <div className="w-full bg-zinc-800 rounded-full h-1.5 mt-2">
                       <div
-                        className={`h-full rounded-full bg-gradient-to-r ${st.color} transition-all duration-500`}
+                        className="bg-red-500 h-1.5 rounded-full transition-all duration-500"
                         style={{ width: `${st.progress}%` }}
                       />
-                    </div>
-                    <div className="flex items-center justify-between text-[10px] text-zinc-400 pt-1 border-t border-zinc-800/60">
-                      <span>
-                        {st.completedLessons}/{st.totalLessons} bài
-                      </span>
-                      <span className="font-semibold text-zinc-300">
-                        Độ c/x: {st.accuracy}%
-                      </span>
                     </div>
                   </div>
                 </div>
@@ -432,49 +441,34 @@ export default function GrammarDashboardPage() {
             </div>
           </div>
 
-          {/* ── BỘ LỌC VÀ DANH SÁCH CHỦ ĐỀ NGỮ PHÁP ── */}
+          {/* ── TOPICS LIST & FILTER ── */}
           <div className="space-y-4">
-            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
-              <h2 className="text-lg font-bold text-white">
-                Danh sách chủ đề ngữ pháp
-              </h2>
+            <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3">
+              <div>
+                <h2 className="text-lg font-bold text-white">
+                  Danh sách chủ đề ngữ pháp
+                </h2>
+                <p className="text-xs text-zinc-400 mt-0.5">
+                  Lựa chọn và theo dõi tiến độ từng chủ điểm
+                </p>
+              </div>
 
-              <div className="flex items-center gap-2">
-                <input
-                  type="text"
-                  placeholder="Tìm chủ đề..."
-                  value={searchQuery}
-                  onChange={(e) => setSearchQuery(e.target.value)}
-                  className="bg-zinc-900/90 border border-zinc-800 rounded-xl px-3.5 py-1.5 text-xs text-white placeholder-zinc-500 focus:outline-none focus:border-red-500 transition-all w-44 sm:w-56"
-                />
-
-                <select
-                  value={selectedStage}
-                  onChange={(e) => setSelectedStage(Number(e.target.value))}
-                  className="bg-zinc-900/90 border border-zinc-800 rounded-xl px-3 py-1.5 text-xs text-zinc-300 focus:outline-none focus:border-red-500 transition-all cursor-pointer"
-                >
-                  <option value={0}>Tất cả chặng (1–5)</option>
-                  <option value={1}>Chặng 1 (0–300)</option>
-                  <option value={2}>Chặng 2 (300–500)</option>
-                  <option value={3}>Chặng 3 (500–650)</option>
-                  <option value={4}>Chặng 4 (650–800)</option>
-                  <option value={5}>Chặng 5 (800–990)</option>
-                </select>
-
-                <select
-                  value={selectedDifficulty}
-                  onChange={(e) => setSelectedDifficulty(e.target.value as any)}
-                  className="bg-zinc-900/90 border border-zinc-800 rounded-xl px-3 py-1.5 text-xs text-zinc-300 focus:outline-none focus:border-red-500 transition-all cursor-pointer"
-                >
-                  <option value="all">Tất cả độ khó</option>
-                  <option value="basic">Cơ bản (Chặng 1-2)</option>
-                  <option value="intermediate">Trung cấp (Chặng 3-4)</option>
-                  <option value="advanced">Nâng cao (Chặng 5)</option>
-                </select>
+              {/* Search & Difficulties */}
+              <div className="flex items-center gap-2 w-full sm:w-auto">
+                <div className="relative flex-1 sm:w-64">
+                  <Search className="w-3.5 h-3.5 text-zinc-500 absolute left-3 top-1/2 -translate-y-1/2" />
+                  <input
+                    type="text"
+                    placeholder="Tìm kiếm chủ đề..."
+                    value={searchQuery}
+                    onChange={(e) => setSearchQuery(e.target.value)}
+                    className="w-full bg-zinc-900 border border-zinc-800 rounded-xl pl-8 pr-3 py-1.5 text-xs text-white placeholder-zinc-500 focus:outline-none focus:border-red-500 transition-all"
+                  />
+                </div>
               </div>
             </div>
 
-            {/* Filter Buttons */}
+            {/* Filter Tabs */}
             <div className="flex items-center gap-2 overflow-x-auto pb-1">
               <button
                 onClick={() => setActiveTab("all")}
@@ -530,8 +524,8 @@ export default function GrammarDashboardPage() {
 
             {/* Grid */}
             {filteredTopics.length === 0 ? (
-              <div className="bg-zinc-900/40 border border-zinc-800/60 rounded-2xl p-10 text-center">
-                <p className="text-2xl mb-2">🔍</p>
+              <div className="bg-zinc-900/40 border border-zinc-800/60 rounded-2xl p-10 text-center flex flex-col items-center">
+                <Search className="w-8 h-8 text-zinc-600 mb-2" />
                 <p className="text-sm text-zinc-400 font-medium">
                   Không tìm thấy chủ đề phù hợp với bộ lọc.
                 </p>
@@ -574,18 +568,21 @@ export default function GrammarDashboardPage() {
                           </span>
                           <div className="flex items-center gap-1">
                             {isMastered && (
-                              <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-emerald-500/15 text-emerald-400 border border-emerald-500/30">
-                                🏆 Thành thạo
+                              <span className="inline-flex items-center gap-1 text-[10px] font-bold px-2 py-0.5 rounded-full bg-emerald-500/15 text-emerald-400 border border-emerald-500/30">
+                                <Trophy className="w-3 h-3" />
+                                <span>Thành thạo</span>
                               </span>
                             )}
                             {isLearning && (
-                              <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-amber-500/15 text-amber-400 border border-amber-500/30">
-                                ⚡ Đang học
+                              <span className="inline-flex items-center gap-1 text-[10px] font-bold px-2 py-0.5 rounded-full bg-amber-500/15 text-amber-400 border border-amber-500/30">
+                                <Zap className="w-3 h-3" />
+                                <span>Đang học</span>
                               </span>
                             )}
                             {isWeak && (
-                              <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-rose-500/15 text-rose-400 border border-rose-500/30">
-                                ⚠️ Cần củng cố
+                              <span className="inline-flex items-center gap-1 text-[10px] font-bold px-2 py-0.5 rounded-full bg-rose-500/15 text-rose-400 border border-rose-500/30">
+                                <AlertTriangle className="w-3 h-3" />
+                                <span>Cần củng cố</span>
                               </span>
                             )}
                           </div>
@@ -651,9 +648,10 @@ export default function GrammarDashboardPage() {
                       <div className="mt-4 pt-3 border-t border-zinc-800 flex items-center justify-between gap-2">
                         <Link
                           href={`/dashboard/courses/grammar/${t.id}`}
-                          className="text-xs text-zinc-400 hover:text-white font-medium transition"
+                          className="inline-flex items-center gap-1 text-xs text-zinc-400 hover:text-white font-medium transition"
                         >
-                          Chi tiết →
+                          <span>Chi tiết</span>
+                          <ArrowRight className="w-3 h-3" />
                         </Link>
                         {t.nextLesson ? (
                           <Link
@@ -683,7 +681,7 @@ export default function GrammarDashboardPage() {
             <div className="bg-zinc-900/60 border border-zinc-800 rounded-2xl p-5 space-y-4">
               <div className="flex items-center justify-between">
                 <h3 className="text-sm font-bold text-white flex items-center gap-2">
-                  <span>🕒</span>
+                  <Clock className="w-4 h-4 text-purple-400" />
                   <span>Hoạt động gần đây</span>
                 </h3>
                 <span className="text-xs text-zinc-500">5 bài học mới nhất</span>
@@ -696,8 +694,8 @@ export default function GrammarDashboardPage() {
                     className="bg-zinc-900 border border-zinc-800/70 rounded-xl p-3 flex items-center justify-between gap-4 hover:border-zinc-700 transition"
                   >
                     <div className="flex items-center gap-3 min-w-0">
-                      <div className="w-8 h-8 rounded-lg bg-red-500/10 border border-red-500/20 flex items-center justify-center text-sm shrink-0">
-                        📖
+                      <div className="w-8 h-8 rounded-lg bg-red-500/10 border border-red-500/20 text-red-400 flex items-center justify-center shrink-0">
+                        <BookOpen className="w-4 h-4" />
                       </div>
                       <div className="min-w-0">
                         <p className="text-xs font-bold text-white truncate">
@@ -725,9 +723,10 @@ export default function GrammarDashboardPage() {
                       )}
                       <Link
                         href={`/dashboard/courses/grammar/${act.categoryId}/lessons/${act.lessonId}`}
-                        className="text-xs text-red-400 hover:text-red-300 font-bold"
+                        className="inline-flex items-center gap-1 text-xs text-red-400 hover:text-red-300 font-bold"
                       >
-                        Xem lại →
+                        <span>Xem lại</span>
+                        <ArrowRight className="w-3 h-3" />
                       </Link>
                     </div>
                   </div>

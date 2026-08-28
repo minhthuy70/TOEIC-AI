@@ -1,6 +1,7 @@
-﻿"use client";
+"use client";
 
 import React, { useState, useRef, useEffect } from "react";
+import { Play, Pause, RotateCcw, RotateCw, Volume2, Volume1, VolumeX } from "lucide-react";
 
 interface AudioPlayerProps {
   src: string;
@@ -120,7 +121,7 @@ export default function AudioPlayer({ src, autoPlay = false, onEnded, className 
           max="100"
           value={progress || 0}
           onChange={handleSeek}
-          className="flex-1 h-1.5 bg-zinc-800 rounded-lg appearance-none cursor-pointer accent-indigo-500 hover:accent-indigo-400"
+          className="flex-1 h-1.5 bg-zinc-800 rounded-lg appearance-none cursor-pointer accent-red-500 hover:accent-red-400"
         />
         <span className="text-xs text-zinc-400 font-mono w-10">{formatTime(duration)}</span>
       </div>
@@ -128,33 +129,33 @@ export default function AudioPlayer({ src, autoPlay = false, onEnded, className 
       {/* Controls */}
       <div className="flex items-center justify-between">
         
-        {/* Play/Pause */}
+        {/* Play/Pause & Skip */}
         <div className="flex flex-1 items-center gap-4">
           <button
             onClick={togglePlay}
-            className="w-10 h-10 flex items-center justify-center rounded-full bg-indigo-600 hover:bg-indigo-500 text-white transition-transform active:scale-95 shadow-md shadow-indigo-600/20"
+            className="w-10 h-10 flex items-center justify-center rounded-full bg-red-600 hover:bg-red-500 text-white transition-transform active:scale-95 shadow-md shadow-red-600/20"
           >
             {isPlaying ? (
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+              <Pause className="w-4 h-4 fill-white" />
             ) : (
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" className="ml-1"><path d="M8 5v14l11-7z"/></svg>
+              <Play className="w-4 h-4 fill-white ml-0.5" />
             )}
           </button>
           
           <button 
-            onClick={() => { if(audioRef.current) audioRef.current.currentTime -= 5; }} 
-            className="text-zinc-400 hover:text-white transition"
-            title="LÃ¹i 5 giÃ¢y"
+            onClick={() => { if (audioRef.current) audioRef.current.currentTime -= 5; }} 
+            className="text-zinc-400 hover:text-white transition p-1.5 rounded-lg hover:bg-zinc-800"
+            title="Lùi 5 giây"
           >
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M11 17l-5-5 5-5M18 17l-5-5 5-5"/></svg>
+            <RotateCcw className="w-4 h-4" />
           </button>
           
           <button 
-            onClick={() => { if(audioRef.current) audioRef.current.currentTime += 5; }} 
-            className="text-zinc-400 hover:text-white transition"
-            title="Tiáº¿n 5 giÃ¢y"
+            onClick={() => { if (audioRef.current) audioRef.current.currentTime += 5; }} 
+            className="text-zinc-400 hover:text-white transition p-1.5 rounded-lg hover:bg-zinc-800"
+            title="Tiến 5 giây"
           >
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M13 17l5-5-5-5M6 17l5-5-5-5"/></svg>
+            <RotateCw className="w-4 h-4" />
           </button>
         </div>
 
@@ -164,7 +165,7 @@ export default function AudioPlayer({ src, autoPlay = false, onEnded, className 
           <div className="relative">
             <button
               onClick={() => setShowSpeedMenu(!showSpeedMenu)}
-              className="px-2 py-1 rounded text-xs font-bold bg-zinc-800 text-zinc-300 hover:bg-zinc-700 hover:text-white transition w-12 text-center"
+              className="px-2.5 py-1 rounded-lg text-xs font-bold bg-zinc-800 text-zinc-300 hover:bg-zinc-700 hover:text-white transition w-12 text-center"
             >
               {speed}x
             </button>
@@ -174,7 +175,7 @@ export default function AudioPlayer({ src, autoPlay = false, onEnded, className 
                   <button
                     key={s}
                     onClick={() => { setSpeed(s); setShowSpeedMenu(false); }}
-                    className={`block w-full text-center px-2 py-1.5 text-xs hover:bg-zinc-700 ${speed === s ? 'text-indigo-400 font-bold bg-zinc-900/50' : 'text-zinc-300'}`}
+                    className={`block w-full text-center px-2 py-1.5 text-xs hover:bg-zinc-700 ${speed === s ? 'text-red-400 font-bold bg-zinc-900/50' : 'text-zinc-300'}`}
                   >
                     {s}x
                   </button>
@@ -185,13 +186,13 @@ export default function AudioPlayer({ src, autoPlay = false, onEnded, className 
 
           {/* Volume Control */}
           <div className="flex items-center gap-2 w-28">
-            <button onClick={toggleMute} className="text-zinc-400 hover:text-white transition">
+            <button onClick={toggleMute} className="text-zinc-400 hover:text-white transition p-1 rounded hover:bg-zinc-800">
               {isMuted || volume === 0 ? (
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M11 5L6 9H2v6h4l5 4V5zM23 9l-6 6M17 9l6 6"/></svg>
+                <VolumeX className="w-4 h-4 text-zinc-500" />
               ) : volume < 0.5 ? (
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M11 5L6 9H2v6h4l5 4V5zM15.54 8.46a5 5 0 0 1 0 7.07"/></svg>
+                <Volume1 className="w-4 h-4" />
               ) : (
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M11 5L6 9H2v6h4l5 4V5zM19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"/></svg>
+                <Volume2 className="w-4 h-4" />
               )}
             </button>
             <input

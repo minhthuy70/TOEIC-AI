@@ -1,9 +1,21 @@
-﻿"use client";
+"use client";
 
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { startPractice, submitPractice, PracticeStartResponse, SubmitPracticeResponse } from "@/services/practice";
 import AudioPlayer from "@/components/listening/AudioPlayer";
+import {
+  ArrowLeft,
+  Timer,
+  Infinity as InfinityIcon,
+  X,
+  ChevronLeft,
+  ChevronRight,
+  RotateCcw,
+  CheckCircle2,
+  XCircle,
+  BookOpen,
+} from "lucide-react";
 
 type ScreenState = "config" | "practice" | "review";
 
@@ -44,13 +56,12 @@ export default function Part1PracticePage() {
       setAnswers({});
       setCurrentQIndex(0);
       if (isTimed) {
-        // Part 1 usually gives ~30-40 seconds per question
         setTimeRemaining(res.questionCount * 40); 
       }
       setScreen("practice");
     } catch (err) {
       console.error(err);
-      alert("Lá»—i khi táº£i bÃ i táº­p. Vui lÃ²ng thá»­ láº¡i.");
+      alert("Lỗi khi tải bài tập. Vui lòng thử lại.");
     } finally {
       setLoading(false);
     }
@@ -71,10 +82,10 @@ export default function Part1PracticePage() {
       const res = await submitPractice({ sessionId: session.sessionId, answers: answersArr });
       setReviewData(res);
       setScreen("review");
-      setCurrentQIndex(0); // Reset index for review navigation
+      setCurrentQIndex(0);
     } catch (err) {
       console.error(err);
-      alert("Lá»—i khi ná»™p bÃ i. Vui lÃ²ng thá»­ láº¡i.");
+      alert("Lỗi khi nộp bài. Vui lòng thử lại.");
     } finally {
       setSubmitting(false);
     }
@@ -83,7 +94,7 @@ export default function Part1PracticePage() {
   const formatTime = (secs: number) => {
     const m = Math.floor(secs / 60);
     const s = secs % 60;
-    return `${m.toString().padStart(2,"0")}:${s.toString().padStart(2,"0")}`;
+    return `${m.toString().padStart(2, "0")}:${s.toString().padStart(2, "0")}`;
   };
 
   // -----------------------------------------------------
@@ -93,16 +104,18 @@ export default function Part1PracticePage() {
     return (
       <div className="max-w-3xl mx-auto py-10 px-4">
         <div className="flex items-center gap-4 mb-8">
-          <Link href="/dashboard/listening" className="w-10 h-10 rounded-full bg-zinc-800 flex items-center justify-center hover:bg-zinc-700 transition">â†</Link>
+          <Link href="/dashboard/listening" className="w-10 h-10 rounded-full bg-zinc-800 flex items-center justify-center text-zinc-400 hover:text-white hover:bg-zinc-700 transition">
+            <ArrowLeft className="w-5 h-5" />
+          </Link>
           <div>
             <h1 className="text-2xl font-bold text-white">Part 1: Photographs</h1>
-            <p className="text-zinc-400 text-sm">Cáº¥u hÃ¬nh bÃ i luyá»‡n táº­p</p>
+            <p className="text-zinc-400 text-sm">Cấu hình bài luyện tập</p>
           </div>
         </div>
 
         <div className="bg-zinc-900/60 border border-zinc-800 rounded-3xl p-8 space-y-8">
           <div>
-            <h3 className="text-white font-bold mb-4">Sá»‘ lÆ°á»£ng cÃ¢u há»i</h3>
+            <h3 className="text-white font-bold mb-4">Số lượng câu hỏi</h3>
             <div className="flex flex-wrap gap-3">
               {[5, 10, 20, 999].map(c => (
                 <button
@@ -110,26 +123,28 @@ export default function Part1PracticePage() {
                   onClick={() => setCount(c)}
                   className={`px-6 py-3 rounded-xl font-bold transition-all ${count === c ? 'bg-indigo-600 text-white shadow-lg shadow-indigo-600/30' : 'bg-zinc-800 text-zinc-400 hover:bg-zinc-700 hover:text-white'}`}
                 >
-                  {c === 999 ? "Táº¥t cáº£" : `${c} cÃ¢u`}
+                  {c === 999 ? "Tất cả" : `${c} câu`}
                 </button>
               ))}
             </div>
           </div>
 
           <div>
-            <h3 className="text-white font-bold mb-4">Cháº¿ Ä‘á»™ thá»i gian</h3>
+            <h3 className="text-white font-bold mb-4">Chế độ thời gian</h3>
             <div className="flex flex-wrap gap-3">
               <button
                 onClick={() => setIsTimed(true)}
                 className={`px-6 py-3 rounded-xl font-bold transition-all flex items-center gap-2 ${isTimed ? 'bg-amber-600 text-white shadow-lg shadow-amber-600/30' : 'bg-zinc-800 text-zinc-400 hover:bg-zinc-700 hover:text-white'}`}
               >
-                â³ Giá»›i háº¡n thá»i gian
+                <Timer className="w-4 h-4" />
+                <span>Giới hạn thời gian</span>
               </button>
               <button
                 onClick={() => setIsTimed(false)}
                 className={`px-6 py-3 rounded-xl font-bold transition-all flex items-center gap-2 ${!isTimed ? 'bg-emerald-600 text-white shadow-lg shadow-emerald-600/30' : 'bg-zinc-800 text-zinc-400 hover:bg-zinc-700 hover:text-white'}`}
               >
-                â™¾ï¸ KhÃ´ng giá»›i háº¡n
+                <InfinityIcon className="w-4 h-4" />
+                <span>Không giới hạn</span>
               </button>
             </div>
           </div>
@@ -139,7 +154,7 @@ export default function Part1PracticePage() {
             disabled={loading}
             className="w-full py-4 rounded-xl bg-white text-black font-extrabold text-lg hover:bg-zinc-200 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
           >
-            {loading ? "Äang táº¡o bÃ i táº­p..." : "Báº¯t Ä‘áº§u luyá»‡n táº­p"}
+            {loading ? "Đang tạo bài tập..." : "Bắt đầu luyện tập"}
           </button>
         </div>
       </div>
@@ -150,7 +165,6 @@ export default function Part1PracticePage() {
   // RENDER PRACTICE SCREEN
   // -----------------------------------------------------
   if (screen === "practice" && session) {
-    // Flatten questions from groups (Part 1 usually has 1 question per group, but we flatten to be safe)
     const questions = session.groups.flatMap(g => g.questions.map(q => ({ group: g, question: q })));
     const currentItem = questions[currentQIndex];
     
@@ -159,14 +173,18 @@ export default function Part1PracticePage() {
         {/* Header */}
         <div className="flex items-center justify-between bg-zinc-900 border border-zinc-800 p-4 rounded-2xl mb-6">
           <div className="flex items-center gap-4">
-            <button onClick={() => { if(confirm("Báº¡n cÃ³ cháº¯c muá»‘n thoÃ¡t? Káº¿t quáº£ sáº½ khÃ´ng Ä‘Æ°á»£c lÆ°u.")) setScreen("config"); }} className="text-zinc-400 hover:text-white">âœ• ThoÃ¡t</button>
+            <button onClick={() => { if (confirm("Bạn có chắc muốn thoát? Kết quả sẽ không được lưu.")) setScreen("config"); }} className="text-zinc-400 hover:text-white flex items-center gap-1 text-sm font-medium">
+              <X className="w-4 h-4" />
+              <span>Thoát</span>
+            </button>
             <div className="h-6 w-px bg-zinc-800"></div>
-            <span className="font-bold text-white">CÃ¢u {currentQIndex + 1} / {questions.length}</span>
+            <span className="font-bold text-white">Câu {currentQIndex + 1} / {questions.length}</span>
           </div>
           <div className="flex items-center gap-4">
             {isTimed && timeRemaining !== null && (
-              <span className={`font-mono font-bold ${timeRemaining < 60 ? 'text-rose-500' : 'text-amber-400'}`}>
-                â³ {formatTime(timeRemaining)}
+              <span className={`font-mono font-bold flex items-center gap-1 ${timeRemaining < 60 ? 'text-rose-500' : 'text-amber-400'}`}>
+                <Timer className="w-4 h-4" />
+                <span>{formatTime(timeRemaining)}</span>
               </span>
             )}
             <button 
@@ -174,7 +192,7 @@ export default function Part1PracticePage() {
               disabled={submitting}
               className="px-4 py-2 bg-indigo-600 hover:bg-indigo-500 text-white text-sm font-bold rounded-lg disabled:opacity-50"
             >
-              {submitting ? "Äang ná»™p..." : "Ná»™p bÃ i"}
+              {submitting ? "Đang nộp..." : "Nộp bài"}
             </button>
           </div>
         </div>
@@ -187,7 +205,7 @@ export default function Part1PracticePage() {
               {currentItem.group.image_url ? (
                 <img src={currentItem.group.image_url} alt="Question" className="w-full h-full object-cover" />
               ) : (
-                <div className="absolute inset-0 flex items-center justify-center text-zinc-500">KhÃ´ng cÃ³ hÃ¬nh áº£nh</div>
+                <div className="absolute inset-0 flex items-center justify-center text-zinc-500">Không có hình ảnh</div>
               )}
             </div>
             {currentItem.group.audio_url && (
@@ -197,7 +215,7 @@ export default function Part1PracticePage() {
 
           {/* Options */}
           <div className="flex flex-col">
-            <h3 className="text-xl font-bold text-white mb-6">Chá»n Ä‘Ã¡p Ã¡n Ä‘Ãºng:</h3>
+            <h3 className="text-xl font-bold text-white mb-6">Chọn đáp án đúng:</h3>
             <div className="space-y-3 flex-1">
               {currentItem.question.options.map(opt => {
                 const isSelected = answers[currentItem.question.id] === opt.id;
@@ -214,9 +232,8 @@ export default function Part1PracticePage() {
                     <div className={`w-8 h-8 rounded-full flex items-center justify-center font-bold text-sm ${isSelected ? 'bg-indigo-600 text-white' : 'bg-zinc-800 text-zinc-400'}`}>
                       {opt.option_label}
                     </div>
-                    {/* In real Part 1, text is usually hidden until review, but if it exists in DB, we can show it or hide it. We'll show a placeholder if option_text is null or empty */}
                     <span className="text-left font-medium">
-                      (Nghe bÄƒng Ä‘Ã i)
+                      (Nghe băng đài)
                     </span>
                   </button>
                 );
@@ -228,16 +245,18 @@ export default function Part1PracticePage() {
               <button 
                 onClick={() => setCurrentQIndex(prev => prev - 1)} 
                 disabled={currentQIndex === 0}
-                className="px-6 py-3 rounded-xl bg-zinc-800 hover:bg-zinc-700 text-white font-bold disabled:opacity-50 disabled:cursor-not-allowed"
+                className="px-6 py-3 rounded-xl bg-zinc-800 hover:bg-zinc-700 text-white font-bold disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-1.5"
               >
-                â† TrÆ°á»›c
+                <ChevronLeft className="w-4 h-4" />
+                <span>Trước</span>
               </button>
               <button 
                 onClick={() => setCurrentQIndex(prev => prev + 1)} 
                 disabled={currentQIndex === questions.length - 1}
-                className="px-6 py-3 rounded-xl bg-zinc-800 hover:bg-zinc-700 text-white font-bold disabled:opacity-50 disabled:cursor-not-allowed"
+                className="px-6 py-3 rounded-xl bg-zinc-800 hover:bg-zinc-700 text-white font-bold disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-1.5"
               >
-                Tiáº¿p â†’
+                <span>Tiếp</span>
+                <ChevronRight className="w-4 h-4" />
               </button>
             </div>
           </div>
@@ -256,7 +275,6 @@ export default function Part1PracticePage() {
 
     return (
       <div className="max-w-4xl mx-auto py-6 px-4 flex flex-col min-h-[80vh]">
-        
         {/* Review Header */}
         <div className="flex items-center justify-between bg-zinc-900 border border-zinc-800 p-4 rounded-2xl mb-6">
           <div className="flex items-center gap-4">
@@ -264,12 +282,13 @@ export default function Part1PracticePage() {
               <span className="text-sm font-bold">{reviewData.correct}/{reviewData.total}</span>
             </div>
             <div>
-              <h2 className="font-bold text-white text-lg">Káº¿t quáº£ bÃ i lÃ m</h2>
-              <p className="text-zinc-400 text-xs">Äiá»ƒm: {reviewData.score}</p>
+              <h2 className="font-bold text-white text-lg">Kết quả bài làm</h2>
+              <p className="text-zinc-400 text-xs">Điểm: {reviewData.score}</p>
             </div>
           </div>
-          <button onClick={() => setScreen("config")} className="px-5 py-2 bg-zinc-800 hover:bg-zinc-700 text-white font-bold rounded-lg transition">
-            Luyá»‡n táº­p láº¡i
+          <button onClick={() => setScreen("config")} className="flex items-center gap-1.5 px-5 py-2 bg-zinc-800 hover:bg-zinc-700 text-white font-bold rounded-lg transition">
+            <RotateCcw className="w-4 h-4" />
+            <span>Luyện tập lại</span>
           </button>
         </div>
 
@@ -312,12 +331,6 @@ export default function Part1PracticePage() {
             <div className="space-y-3">
               {currentItem.question.options.map(opt => {
                 const isUserChoice = resultItem?.optionId === opt.id;
-                // Since API doesn't return the correct option ID directly in options array, we rely on option_text or we just show if it's the user choice.
-                // Actually, the resultItem only tells us if user choice is correct. We don't have the correct option ID for sure unless the backend sends it. 
-                // But wait, the PracticeAnswer from backend does NOT send the correct option id! It just says `isCorrect`.
-                // Let's just highlight the user's choice and if it's wrong, we might not know the exact right one unless it's in the explanation.
-                // Assuming `opt.option_label` equals `currentItem.question.correct_answer` might not exist in the frontend type, but let's check.
-                
                 const isSelected = isUserChoice;
                 let bgClass = 'bg-zinc-900 border-zinc-800 text-zinc-300';
                 if (isSelected && resultItem?.isCorrect) bgClass = 'bg-emerald-900/40 border-emerald-500 text-emerald-300';
@@ -332,7 +345,7 @@ export default function Part1PracticePage() {
                       {opt.option_label}
                     </div>
                     <span className="text-left font-medium">
-                      {opt.option_text || "(Nghe bÄƒng Ä‘Ã i)"}
+                      {opt.option_text || "(Nghe băng đài)"}
                     </span>
                   </div>
                 );
@@ -342,12 +355,13 @@ export default function Part1PracticePage() {
             {/* Explanation / Transcript */}
             <div className="bg-blue-950/30 border border-blue-900/50 rounded-2xl p-5 text-sm text-blue-200">
               <h4 className="font-bold text-blue-400 mb-2 flex items-center gap-2">
-                <span>ðŸ“–</span> Transcript & Giáº£i thÃ­ch
+                <BookOpen className="w-4 h-4" />
+                <span>Transcript & Giải thích</span>
               </h4>
               {currentItem.question.explanation ? (
                 <div dangerouslySetInnerHTML={{ __html: currentItem.question.explanation.replace(/\n/g, '<br/>') }} />
               ) : (
-                <p className="text-blue-300/60 italic">KhÃ´ng cÃ³ giáº£i thÃ­ch chi tiáº¿t cho cÃ¢u há»i nÃ y.</p>
+                <p className="text-blue-300/60 italic">Không có giải thích chi tiết cho câu hỏi này.</p>
               )}
             </div>
 

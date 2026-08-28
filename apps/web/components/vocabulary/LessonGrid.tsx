@@ -1,6 +1,7 @@
 "use client";
 
 import { Lesson } from "@/types/vocabulary";
+import { Calendar, CheckCircle2, Lock, BookOpen } from "lucide-react";
 
 interface Props {
   lessons: Lesson[];
@@ -13,7 +14,8 @@ export default function LessonGrid({ lessons, onSelectLesson }: Props) {
       <div className="flex items-center justify-between">
         <div>
           <h2 className="text-lg font-bold text-white flex items-center gap-2">
-            <span>📅</span> Bài học hàng ngày
+            <Calendar className="w-5 h-5 text-red-500" />
+            <span>Bài học hàng ngày</span>
           </h2>
           <p className="text-xs text-zinc-500 mt-0.5">
             Mỗi bài gồm 20 từ. Học xong bài trước để mở khóa bài tiếp theo.
@@ -56,8 +58,14 @@ export default function LessonGrid({ lessons, onSelectLesson }: Props) {
                 <span className="text-xs text-zinc-400 font-semibold uppercase tracking-wider">
                   Bài {lesson.lessonNumber}
                 </span>
-                <span className="text-lg">
-                  {isCompleted ? "✅" : isLocked ? "🔒" : "📖"}
+                <span className="flex items-center justify-center">
+                  {isCompleted ? (
+                    <CheckCircle2 className="w-4 h-4 text-green-400" />
+                  ) : isLocked ? (
+                    <Lock className="w-4 h-4 text-zinc-600" />
+                  ) : (
+                    <BookOpen className="w-4 h-4 text-red-400" />
+                  )}
                 </span>
               </div>
 

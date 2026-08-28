@@ -21,6 +21,22 @@ import {
   playTestSoundEffect,
   type TestSettings,
 } from "@/lib/test-settings";
+import {
+  Pause,
+  Play,
+  Timer,
+  Clock,
+  Flag,
+  AlertTriangle,
+  PartyPopper,
+  Check,
+  X,
+  ImageIcon,
+  Headphones,
+  BookOpen,
+  ArrowLeft,
+  ArrowRight,
+} from "lucide-react";
 
 export default function MockTestAttemptPage() {
   const params = useParams();
@@ -1141,8 +1157,10 @@ router.push(
       {/* ── PAUSE MODAL ── */}
       {isPaused && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/85 backdrop-blur-md">
-          <div className="bg-zinc-900 border border-zinc-800 rounded-3xl p-8 max-w-md w-full text-center space-y-4 shadow-2xl">
-            <div className="text-4xl">⏸️</div>
+          <div className="bg-zinc-900 border border-zinc-800 rounded-3xl p-8 max-w-md w-full text-center space-y-4 shadow-2xl flex flex-col items-center">
+            <div className="w-14 h-14 rounded-full bg-zinc-800 flex items-center justify-center text-zinc-400 mb-1">
+              <Pause className="w-7 h-7" />
+            </div>
             <h3 className="text-xl font-bold text-white">Bài thi đang tạm dừng</h3>
             <p className="text-xs text-zinc-400">
               Đồng hồ đã tạm dừng đếm. Bạn còn <strong className="text-amber-400">{pausesRemaining} lượt tạm dừng</strong>.
@@ -1150,9 +1168,10 @@ router.push(
             <button
               type="button"
               onClick={() => setIsPaused(false)}
-              className="w-full py-3 bg-red-600 hover:bg-red-500 text-white font-bold text-xs rounded-xl shadow-lg transition"
+              className="flex items-center justify-center gap-2 w-full py-3 bg-red-600 hover:bg-red-500 text-white font-bold text-xs rounded-xl shadow-lg transition"
             >
-              ▶️ Tiếp tục làm bài thi
+              <Play className="w-4 h-4 fill-white" />
+              <span>Tiếp tục làm bài thi</span>
             </button>
           </div>
         </div>
@@ -1161,14 +1180,17 @@ router.push(
       {/* ── SECTION BREAK NOTIFICATION MODAL ── */}
       {showSectionBreakModal && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/85 backdrop-blur-md animate-fade-in">
-          <div className="bg-zinc-900 border border-zinc-800 rounded-3xl p-8 max-w-lg w-full text-center space-y-5 shadow-2xl">
-            <div className="text-4xl">☕</div>
+          <div className="bg-zinc-900 border border-zinc-800 rounded-3xl p-8 max-w-lg w-full text-center space-y-5 shadow-2xl flex flex-col items-center">
+            <div className="w-14 h-14 rounded-full bg-blue-600/10 text-blue-400 flex items-center justify-center mb-1">
+              <Clock className="w-7 h-7" />
+            </div>
             <h3 className="text-xl font-bold text-white">Hoàn Thành Phần Thi Listening!</h3>
             <p className="text-xs text-zinc-300 leading-relaxed">
               Bạn có <strong>{sectionBreakTimer} giây</strong> nghỉ ngơi trước khi bước vào <strong>Phần thi Reading (Part 5, 6, 7 - 75 phút)</strong>.
             </p>
-            <div className="text-2xl font-mono font-bold text-amber-400">
-              ⏳ 00:{sectionBreakTimer.toString().padStart(2, "0")}
+            <div className="text-2xl font-mono font-bold text-amber-400 flex items-center justify-center gap-2">
+              <Timer className="w-6 h-6" />
+              <span>00:{sectionBreakTimer.toString().padStart(2, "0")}</span>
             </div>
             <button
               type="button"
@@ -1179,9 +1201,10 @@ router.push(
                 const firstReadingIdx = questions.findIndex((q) => q.part === 5);
                 if (firstReadingIdx >= 0) setCurrentIndex(firstReadingIdx);
               }}
-              className="w-full py-3 bg-gradient-to-r from-red-600 to-red-500 hover:from-red-500 hover:to-red-400 text-white font-bold text-xs rounded-xl shadow-lg transition"
+              className="flex items-center justify-center gap-2 w-full py-3 bg-gradient-to-r from-red-600 to-red-500 hover:from-red-500 hover:to-red-400 text-white font-bold text-xs rounded-xl shadow-lg transition"
             >
-              📖 Bắt đầu phần thi Reading ngay →
+              <BookOpen className="w-4 h-4" />
+              <span>Bắt đầu phần thi Reading ngay →</span>
             </button>
           </div>
         </div>
@@ -1192,14 +1215,14 @@ router.push(
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm animate-fade-in">
           <div className="bg-zinc-900 border border-zinc-800 rounded-3xl p-6 sm:p-8 max-w-md w-full space-y-5 shadow-2xl">
             <div className="text-center space-y-2">
-              <div className="text-3xl">📝</div>
               <h3 className="text-lg font-bold text-white">Xác nhận nộp bài thi TOEIC?</h3>
               <p className="text-xs text-zinc-400">
                 Bạn đã làm <strong className="text-white">{answeredCount}/{totalCount} câu hỏi</strong> • Đánh dấu <strong className="text-amber-400">{markedCount} câu</strong>.
               </p>
               {totalCount - answeredCount > 0 && (
-                <p className="text-xs text-amber-400 bg-amber-950/40 p-2.5 rounded-xl border border-amber-800/40">
-                  ⚠️ Còn <strong>{totalCount - answeredCount} câu chưa trả lời</strong>. Bạn có chắc chắn muốn nộp bài?
+                <p className="text-xs text-amber-400 bg-amber-950/40 p-2.5 rounded-xl border border-amber-800/40 flex items-center gap-1.5 justify-center">
+                  <AlertTriangle className="w-4 h-4 shrink-0" />
+                  <span>Còn <strong>{totalCount - answeredCount} câu chưa trả lời</strong>. Bạn có chắc chắn muốn nộp bài?</span>
                 </p>
               )}
             </div>
@@ -1239,8 +1262,18 @@ router.push(
               <p className="text-xs text-zinc-500">
                 {practice.testTitle}
               </p>
-              <span className={`px-2 py-0.5 rounded-full text-[10px] font-extrabold ${isListeningSection ? "bg-blue-600/20 text-blue-400 border border-blue-500/30" : "bg-purple-600/20 text-purple-400 border border-purple-500/30"}`}>
-                {isListeningSection ? "🎧 Listening Section (Part 1–4)" : "📖 Reading Section (Part 5–7)"}
+              <span className={`px-2 py-0.5 rounded-full text-[10px] font-extrabold flex items-center gap-1 ${isListeningSection ? "bg-blue-600/20 text-blue-400 border border-blue-500/30" : "bg-purple-600/20 text-purple-400 border border-purple-500/30"}`}>
+                {isListeningSection ? (
+                  <>
+                    <Headphones className="w-3 h-3" />
+                    <span>Listening Section (Part 1–4)</span>
+                  </>
+                ) : (
+                  <>
+                    <BookOpen className="w-3 h-3" />
+                    <span>Reading Section (Part 5–7)</span>
+                  </>
+                )}
               </span>
             </div>
 
@@ -1260,7 +1293,8 @@ router.push(
                   : "bg-white/5 text-zinc-400 hover:text-white"
               }`}
             >
-              <span>{markedForReview[currentQuestion.id] ? "🚩 Đã đánh dấu" : "🏳️ Đánh dấu cờ"}</span>
+              <Flag className={`w-3.5 h-3.5 ${markedForReview[currentQuestion.id] ? "fill-amber-400 text-amber-400" : ""}`} />
+              <span>{markedForReview[currentQuestion.id] ? "Đã đánh dấu" : "Đánh dấu cờ"}</span>
             </button>
 
             {/* Pause button */}
@@ -1273,20 +1307,22 @@ router.push(
                   setIsPaused(true);
                 }
               }}
-              className="px-3 py-1.5 bg-zinc-800 hover:bg-zinc-700 text-zinc-300 text-xs font-semibold rounded-xl transition disabled:opacity-40"
+              className="flex items-center gap-1 px-3 py-1.5 bg-zinc-800 hover:bg-zinc-700 text-zinc-300 text-xs font-semibold rounded-xl transition disabled:opacity-40"
             >
-              ⏸️ Tạm dừng ({pausesRemaining}/3)
+              <Pause className="w-3.5 h-3.5" />
+              <span>Tạm dừng ({pausesRemaining}/3)</span>
             </button>
 
             {/* Overall Timer */}
             <div
-              className={`rounded-xl px-3.5 py-1.5 font-mono font-bold text-xs sm:text-sm ${
+              className={`flex items-center gap-1 rounded-xl px-3.5 py-1.5 font-mono font-bold text-xs sm:text-sm ${
                 remainingSeconds <= 300
                   ? "bg-red-600 text-white animate-pulse"
                   : "bg-white/5 text-zinc-200"
               }`}
             >
-              ⏱ {formatTime(remainingSeconds)}
+              <Timer className="w-3.5 h-3.5" />
+              <span>{formatTime(remainingSeconds)}</span>
             </div>
 
             {/* Submit section button (if in listening) */}
@@ -1380,8 +1416,9 @@ router.push(
         {part === 1 &&
           imageUrl && (
             <div className="mb-6 overflow-hidden rounded-2xl border border-white/5 bg-[#121214] p-5">
-              <p className="mb-4 text-sm font-medium text-zinc-300">
-                🖼️ Hình ảnh
+              <p className="mb-4 text-sm font-medium text-zinc-300 flex items-center gap-2">
+                <ImageIcon className="w-4 h-4 text-indigo-400" />
+                <span>Hình ảnh</span>
               </p>
 
               <div className="flex min-h-[250px] items-center justify-center">
@@ -1418,16 +1455,20 @@ router.push(
         {part <= 4 &&
           audioUrl && (
             <div className="mb-6 rounded-2xl border border-white/5 bg-[#121214] p-5">
-              <p className="mb-3 text-sm font-medium text-zinc-300">
-                🎧 Audio
+              <p className="mb-3 text-sm font-medium text-zinc-300 flex items-center gap-2">
+                <Headphones className="w-4 h-4 text-blue-400" />
+                <span>Audio</span>
               </p>
 
               {audioError ? (
-                <div className="rounded-xl border border-red-500/20 bg-red-500/5 p-4 text-sm text-red-400">
-                  <p>⚠️ Không thể tải file audio</p>
-                  <p className="mt-1 text-xs text-zinc-500">
-                    URL: {audioUrl}
-                  </p>
+                <div className="rounded-xl border border-red-500/20 bg-red-500/5 p-4 text-sm text-red-400 flex items-center gap-2">
+                  <AlertTriangle className="w-4 h-4" />
+                  <div>
+                    <p>Không thể tải file audio</p>
+                    <p className="mt-1 text-xs text-zinc-500">
+                      URL: {audioUrl}
+                    </p>
+                  </div>
                 </div>
               ) : (
                 <audio
@@ -1550,9 +1591,10 @@ router.push(
                   prev - 1,
               )
             }
-            className="rounded-xl border border-white/10 px-5 py-3 text-sm text-zinc-300 disabled:opacity-30"
+            className="flex items-center gap-1.5 rounded-xl border border-white/10 px-5 py-3 text-sm text-zinc-300 disabled:opacity-30"
           >
-            ← Trước
+            <ArrowLeft className="w-4 h-4" />
+            <span>Trước</span>
           </button>
 
           <div className="hidden text-sm text-zinc-500 md:block">
@@ -1579,9 +1621,10 @@ router.push(
                     prev + 1,
                 )
               }
-              className="rounded-xl bg-red-600 px-6 py-3 text-sm font-semibold hover:bg-red-500"
+              className="flex items-center gap-1.5 rounded-xl bg-red-600 px-6 py-3 text-sm font-semibold hover:bg-red-500"
             >
-              Tiếp →
+              <span>Tiếp</span>
+              <ArrowRight className="w-4 h-4" />
             </button>
           ) : (
             <button
@@ -1592,11 +1635,10 @@ router.push(
               onClick={() =>
                 handleSubmit()
               }
-              className="rounded-xl bg-green-600 px-6 py-3 text-sm font-semibold hover:bg-green-500 disabled:opacity-50"
+              className="flex items-center gap-1.5 rounded-xl bg-green-600 px-6 py-3 text-sm font-semibold hover:bg-green-500 disabled:opacity-50"
             >
-              {submitting
-                ? "Đang chấm..."
-                : "Nộp bài ✓"}
+              <Check className="w-4 h-4" />
+              <span>{submitting ? "Đang chấm..." : "Nộp bài"}</span>
             </button>
           )}
         </div>
@@ -1655,7 +1697,7 @@ router.push(
                   : "bg-white/5 text-zinc-400 hover:text-white border-white/5"
               }`}
             >
-              <span>🚩</span>
+              <Flag className="w-3.5 h-3.5 text-amber-400" />
               <span>Chỉ xem câu có cờ ({markedCount})</span>
             </button>
           </div>
@@ -1730,12 +1772,12 @@ function ResultScreen({
     <div className="min-h-screen bg-[#09090b] px-5 py-12 text-white">
       <div className="mx-auto max-w-4xl">
         <div className="rounded-3xl border border-white/5 bg-[#121214] p-8">
-          <div className="text-center">
-            <div className="text-5xl">
-              🎉
+          <div className="text-center flex flex-col items-center">
+            <div className="w-14 h-14 rounded-full bg-red-600/10 text-red-500 flex items-center justify-center mb-2">
+              <PartyPopper className="w-7 h-7" />
             </div>
 
-            <h1 className="mt-5 text-3xl font-bold">
+            <h1 className="mt-2 text-3xl font-bold">
               Hoàn thành bài thi!
             </h1>
 

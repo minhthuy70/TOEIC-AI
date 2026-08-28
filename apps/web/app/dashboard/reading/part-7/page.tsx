@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect, useRef, useCallback } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import {
   startPractice,
@@ -9,12 +9,33 @@ import {
   SubmitPracticeResponse,
   PracticeGroup,
 } from "@/services/practice";
+import {
+  ArrowLeft,
+  Timer,
+  Infinity as InfinityIcon,
+  X,
+  Star,
+  FileText,
+  Files,
+  Highlighter,
+  StickyNote,
+  Search,
+  BookOpen,
+  RotateCcw,
+  CheckCircle2,
+  XCircle,
+  Plus,
+  Minus,
+  Columns2,
+  GitCompare,
+  ChevronLeft,
+  ChevronRight,
+} from "lucide-react";
 
 type ScreenState = "config" | "practice" | "review";
 type PracticeType = "single" | "multiple";
-type ViewMode = "split" | "compare"; // for multiple passages
+type ViewMode = "split" | "compare";
 
-// ─── Types ──────────────────────────────────────────────────────────────
 interface HighlightRange {
   start: number;
   end: number;
@@ -35,7 +56,6 @@ const HIGHLIGHT_COLORS = [
   { name: "Hồng", value: "bg-rose-400/30 text-rose-200", border: "border-rose-500/40" },
 ];
 
-// ─── Highlightable Passage Component ────────────────────────────────────
 function HighlightablePassage({
   text,
   highlights,
@@ -68,7 +88,6 @@ function HighlightablePassage({
     }
   };
 
-  // Build highlighted segments
   const segments: { text: string; highlighted: boolean; color?: string }[] = [];
   if (highlights.length === 0) {
     segments.push({ text, highlighted: false });
@@ -99,7 +118,10 @@ function HighlightablePassage({
       )}
       {evidenceText && (
         <div className="mt-4 p-3 bg-indigo-950/40 border border-indigo-800/30 rounded-xl">
-          <p className="text-[11px] text-indigo-400 font-bold uppercase mb-1">🔍 Bằng chứng trong văn bản</p>
+          <p className="text-[11px] text-indigo-400 font-bold uppercase mb-1 flex items-center gap-1">
+            <Search className="w-3 h-3" />
+            <span>Bằng chứng trong văn bản</span>
+          </p>
           <p className="text-indigo-200/80 text-xs italic">"{evidenceText}"</p>
         </div>
       )}
@@ -107,7 +129,6 @@ function HighlightablePassage({
   );
 }
 
-// ─── Main Component ──────────────────────────────────────────────────────
 export default function Part7PracticePage() {
   const [screen, setScreen] = useState<ScreenState>("config");
 
@@ -139,7 +160,7 @@ export default function Part7PracticePage() {
   // Multiple passage
   const [activePassageTab, setActivePassageTab] = useState(0);
   const [viewMode, setViewMode] = useState<ViewMode>("split");
-  const [multiSetSize] = useState(2); // group 2 passages per set for "multiple" mode
+  const [multiSetSize] = useState(2);
 
   // Review
   const [showEvidence, setShowEvidence] = useState<Record<number, boolean>>({});
@@ -168,7 +189,6 @@ export default function Part7PracticePage() {
       setHighlights({});
       setPassageNotes({});
       if (isTimed) {
-        // Part 7: ~75 secs per question (more reading required)
         setTimeRemaining(res.questionCount * 75);
       }
       setScreen("practice");
@@ -230,7 +250,6 @@ export default function Part7PracticePage() {
     setPassageNotes(p => ({ ...p, [groupId]: (p[groupId] || []).filter(n => n.id !== noteId) }));
   };
 
-  // For multiple passage mode, get sets of groups
   const getMultipleSets = (groups: PracticeGroup[]) => {
     const sets: PracticeGroup[][] = [];
     for (let i = 0; i < groups.length; i += multiSetSize) {
@@ -244,9 +263,14 @@ export default function Part7PracticePage() {
     return (
       <div className="max-w-3xl mx-auto py-10 px-4">
         <div className="flex items-center gap-4 mb-8">
-          <Link href="/dashboard/reading" className="w-10 h-10 rounded-full bg-zinc-800 flex items-center justify-center hover:bg-zinc-700 transition">←</Link>
+          <Link href="/dashboard/reading" className="w-10 h-10 rounded-full bg-zinc-800 flex items-center justify-center text-zinc-400 hover:text-white hover:bg-zinc-700 transition">
+            <ArrowLeft className="w-5 h-5" />
+          </Link>
           <div>
-            <h1 className="text-2xl font-bold text-white">Part 7: Đọc hiểu</h1>
+            <h1 className="text-2xl font-bold text-white flex items-center gap-2">
+              <FileText className="w-6 h-6 text-amber-400" />
+              <span>Part 7: Đọc hiểu</span>
+            </h1>
             <p className="text-zinc-400 text-sm">Reading Comprehension — Cấu hình bài luyện tập</p>
           </div>
         </div>
@@ -258,13 +282,13 @@ export default function Part7PracticePage() {
             <div className="grid sm:grid-cols-2 gap-3">
               <button onClick={() => setPracticeType("single")}
                 className={`px-5 py-5 rounded-xl font-bold transition-all flex flex-col gap-2 text-left border-2 ${practiceType === "single" ? "bg-amber-600/20 border-amber-500 text-white" : "bg-zinc-800 border-transparent text-zinc-400 hover:bg-zinc-700 hover:text-white"}`}>
-                <span className="text-2xl">📄</span>
+                <FileText className="w-6 h-6 text-amber-400" />
                 <span>Đoạn văn đơn</span>
                 <span className="text-xs font-normal opacity-70">Single Passage — 1 bài đọc, 2-4 câu hỏi</span>
               </button>
               <button onClick={() => setPracticeType("multiple")}
                 className={`px-5 py-5 rounded-xl font-bold transition-all flex flex-col gap-2 text-left border-2 ${practiceType === "multiple" ? "bg-purple-600/20 border-purple-500 text-white" : "bg-zinc-800 border-transparent text-zinc-400 hover:bg-zinc-700 hover:text-white"}`}>
-                <span className="text-2xl">📑</span>
+                <Files className="w-6 h-6 text-purple-400" />
                 <span>Đoạn văn kép</span>
                 <span className="text-xs font-normal opacity-70">Multiple Passages — 2-3 bài đọc liên quan</span>
               </button>
@@ -300,11 +324,13 @@ export default function Part7PracticePage() {
             <div className="flex flex-wrap gap-3">
               <button onClick={() => setIsTimed(true)}
                 className={`px-6 py-3 rounded-xl font-bold transition-all flex items-center gap-2 ${isTimed ? "bg-amber-600 text-white shadow-lg shadow-amber-600/30" : "bg-zinc-800 text-zinc-400 hover:bg-zinc-700 hover:text-white"}`}>
-                ⏳ Giới hạn thời gian
+                <Timer className="w-4 h-4" />
+                <span>Giới hạn thời gian</span>
               </button>
               <button onClick={() => setIsTimed(false)}
                 className={`px-6 py-3 rounded-xl font-bold transition-all flex items-center gap-2 ${!isTimed ? "bg-emerald-600 text-white shadow-lg shadow-emerald-600/30" : "bg-zinc-800 text-zinc-400 hover:bg-zinc-700 hover:text-white"}`}>
-                ♾️ Không giới hạn
+                <InfinityIcon className="w-4 h-4" />
+                <span>Không giới hạn</span>
               </button>
             </div>
           </div>
@@ -336,7 +362,10 @@ export default function Part7PracticePage() {
           {/* Header */}
           <div className="flex items-center justify-between bg-zinc-900 border border-zinc-800 p-3 rounded-2xl mb-4 flex-wrap gap-2">
             <div className="flex items-center gap-3 flex-wrap">
-              <button onClick={() => { if (confirm("Thoát?")) setScreen("config"); }} className="text-zinc-400 hover:text-white text-sm">✕ Thoát</button>
+              <button onClick={() => { if (confirm("Thoát?")) setScreen("config"); }} className="text-zinc-400 hover:text-white text-sm flex items-center gap-1">
+                <X className="w-4 h-4" />
+                <span>Thoát</span>
+              </button>
               <div className="h-5 w-px bg-zinc-800" />
               <span className="font-bold text-white text-sm">Đoạn {currentGroupIndex + 1}/{groups.length}</span>
               <span className="text-zinc-500 text-xs">Câu {currentQIndex + 1}/{currentGroup?.questions.length}</span>
@@ -345,23 +374,26 @@ export default function Part7PracticePage() {
             <div className="flex items-center gap-2 flex-wrap">
               {/* Font size */}
               <div className="flex items-center gap-1 bg-zinc-800 rounded-lg px-2 py-1">
-                <button onClick={() => setFontSize(s => Math.max(12, s - 1))} className="text-zinc-400 hover:text-white w-5 h-5 flex items-center justify-center font-bold text-lg">−</button>
+                <button onClick={() => setFontSize(s => Math.max(12, s - 1))} className="text-zinc-400 hover:text-white p-0.5"><Minus className="w-3.5 h-3.5" /></button>
                 <span className="text-zinc-300 text-xs w-6 text-center">{fontSize}</span>
-                <button onClick={() => setFontSize(s => Math.min(22, s + 1))} className="text-zinc-400 hover:text-white w-5 h-5 flex items-center justify-center font-bold text-lg">+</button>
+                <button onClick={() => setFontSize(s => Math.min(22, s + 1))} className="text-zinc-400 hover:text-white p-0.5"><Plus className="w-3.5 h-3.5" /></button>
               </div>
               {/* Highlight */}
               <button onClick={() => setShowHighlightToolbar(p => !p)}
-                className={`px-3 py-1.5 rounded-lg text-xs font-bold transition ${showHighlightToolbar ? "bg-yellow-500/20 text-yellow-300 border border-yellow-500/40" : "bg-zinc-800 text-zinc-400 hover:text-white"}`}>
-                🖊 Highlight
+                className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-bold transition ${showHighlightToolbar ? "bg-yellow-500/20 text-yellow-300 border border-yellow-500/40" : "bg-zinc-800 text-zinc-400 hover:text-white"}`}>
+                <Highlighter className="w-3.5 h-3.5" />
+                <span>Highlight</span>
               </button>
               {/* Note */}
               <button onClick={() => setShowNoteInput(p => !p)}
-                className={`px-3 py-1.5 rounded-lg text-xs font-bold transition ${showNoteInput ? "bg-indigo-600/30 text-indigo-300 border border-indigo-600/40" : "bg-zinc-800 text-zinc-400 hover:text-white"}`}>
-                📝 Ghi chú
+                className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-bold transition ${showNoteInput ? "bg-indigo-600/30 text-indigo-300 border border-indigo-600/40" : "bg-zinc-800 text-zinc-400 hover:text-white"}`}>
+                <StickyNote className="w-3.5 h-3.5" />
+                <span>Ghi chú</span>
               </button>
               {isTimed && timeRemaining !== null && (
-                <span className={`font-mono font-bold text-sm ${timeRemaining < 60 ? "text-rose-500" : "text-amber-400"}`}>
-                  ⏳ {formatTime(timeRemaining)}
+                <span className={`font-mono font-bold text-sm flex items-center gap-1 ${timeRemaining < 60 ? "text-rose-500" : "text-amber-400"}`}>
+                  <Timer className="w-4 h-4" />
+                  <span>{formatTime(timeRemaining)}</span>
                 </span>
               )}
               <button onClick={handleSubmit} disabled={submitting}
@@ -404,8 +436,8 @@ export default function Part7PracticePage() {
             <div className="flex flex-wrap gap-2 mb-3">
               {groupNotes.map(note => (
                 <div key={note.id} className="flex items-center gap-2 bg-indigo-900/20 border border-indigo-800/30 rounded-lg px-3 py-1.5">
-                  <span className="text-indigo-300 text-xs">📝 {note.text}</span>
-                  <button onClick={() => removeNote(currentGroup?.id, note.id)} className="text-zinc-600 hover:text-rose-400 text-xs">✕</button>
+                  <span className="text-indigo-300 text-xs flex items-center gap-1"><StickyNote className="w-3 h-3 text-amber-400" /> {note.text}</span>
+                  <button onClick={() => removeNote(currentGroup?.id, note.id)} className="text-zinc-600 hover:text-rose-400 text-xs flex items-center justify-center"><X className="w-3 h-3" /></button>
                 </div>
               ))}
             </div>
@@ -416,7 +448,10 @@ export default function Part7PracticePage() {
             {/* Left: Passage */}
             <div className="bg-zinc-900/60 border border-zinc-800 rounded-2xl flex flex-col overflow-hidden">
               <div className="bg-zinc-800/60 px-4 py-2.5 border-b border-zinc-700">
-                <h3 className="text-white font-bold text-sm">📄 {currentGroup?.title || `Đoạn văn ${currentGroupIndex + 1}`}</h3>
+                <h3 className="text-white font-bold text-sm flex items-center gap-1.5">
+                  <FileText className="w-4 h-4 text-zinc-400" />
+                  <span>{currentGroup?.title || `Đoạn văn ${currentGroupIndex + 1}`}</span>
+                </h3>
               </div>
               <div className="p-5 flex-1 overflow-y-auto">
                 {currentGroup?.passage ? (
@@ -434,7 +469,6 @@ export default function Part7PracticePage() {
 
             {/* Right: Questions */}
             <div className="flex flex-col gap-4 overflow-y-auto">
-              {/* Question navigation dots */}
               <div className="flex gap-2 flex-wrap">
                 {currentGroup?.questions.map((q, i) => (
                   <button key={q.id} onClick={() => setCurrentQIndex(i)}
@@ -448,14 +482,13 @@ export default function Part7PracticePage() {
                 ))}
               </div>
 
-              {/* Current question */}
               {currentQuestion && (
                 <div className="bg-zinc-900/60 border border-zinc-800 rounded-2xl p-5 flex flex-col gap-4">
                   <div className="flex items-start justify-between gap-2">
                     <h4 className="text-white font-medium leading-relaxed">{currentQuestion.question_text || "Câu hỏi"}</h4>
                     <button onClick={() => toggleMark(currentQuestion.id)}
                       className={`shrink-0 px-2 py-1 rounded-lg text-sm transition-colors ${markedForReview[currentQuestion.id] ? "bg-amber-500/20 text-amber-400" : "bg-zinc-800 text-zinc-500 hover:text-zinc-300"}`}>
-                      {markedForReview[currentQuestion.id] ? "★" : "☆"}
+                      <Star className={`w-4 h-4 ${markedForReview[currentQuestion.id] ? "fill-amber-400 text-amber-400" : ""}`} />
                     </button>
                   </div>
                   <div className="space-y-2">
@@ -474,15 +507,16 @@ export default function Part7PracticePage() {
                       );
                     })}
                   </div>
-                  {/* Prev/Next Q */}
                   <div className="flex justify-between">
                     <button onClick={() => setCurrentQIndex(i => i - 1)} disabled={currentQIndex === 0}
-                      className="px-4 py-2 rounded-lg bg-zinc-800 hover:bg-zinc-700 text-white text-sm font-bold disabled:opacity-40">
-                      ← Trước
+                      className="px-4 py-2 rounded-lg bg-zinc-800 hover:bg-zinc-700 text-white text-sm font-bold disabled:opacity-40 flex items-center gap-1">
+                      <ChevronLeft className="w-4 h-4" />
+                      <span>Trước</span>
                     </button>
                     <button onClick={() => setCurrentQIndex(i => i + 1)} disabled={currentQIndex === (currentGroup?.questions.length || 1) - 1}
-                      className="px-4 py-2 rounded-lg bg-zinc-800 hover:bg-zinc-700 text-white text-sm font-bold disabled:opacity-40">
-                      Tiếp →
+                      className="px-4 py-2 rounded-lg bg-zinc-800 hover:bg-zinc-700 text-white text-sm font-bold disabled:opacity-40 flex items-center gap-1">
+                      <span>Tiếp</span>
+                      <ChevronRight className="w-4 h-4" />
                     </button>
                   </div>
                 </div>
@@ -493,8 +527,9 @@ export default function Part7PracticePage() {
           {/* Passage Navigation */}
           <div className="flex items-center justify-between mt-4 pt-4 border-t border-zinc-800">
             <button onClick={() => { setCurrentGroupIndex(i => i - 1); setCurrentQIndex(0); }} disabled={currentGroupIndex === 0}
-              className="px-5 py-2.5 rounded-xl bg-zinc-800 hover:bg-zinc-700 text-white font-bold text-sm disabled:opacity-40">
-              ← Đoạn trước
+              className="px-5 py-2.5 rounded-xl bg-zinc-800 hover:bg-zinc-700 text-white font-bold text-sm disabled:opacity-40 flex items-center gap-1.5">
+              <ChevronLeft className="w-4 h-4" />
+              <span>Đoạn trước</span>
             </button>
             <div className="flex gap-2">
               {groups.map((g, idx) => {
@@ -504,14 +539,15 @@ export default function Part7PracticePage() {
                   <button key={idx} onClick={() => { setCurrentGroupIndex(idx); setCurrentQIndex(0); }}
                     className={`relative w-9 h-9 rounded-lg font-bold text-xs transition-all ${currentGroupIndex === idx ? "bg-amber-600 text-white" : allAnswered ? "bg-zinc-600 text-white" : "bg-zinc-900 text-zinc-500 border border-zinc-800"}`}>
                     {idx + 1}
-                    {hasMarked && <span className="absolute -top-1 -right-1 text-amber-400 text-[9px]">★</span>}
+                    {hasMarked && <span className="absolute -top-1 -right-1 text-amber-400"><Star className="w-2.5 h-2.5 fill-amber-400 text-amber-400" /></span>}
                   </button>
                 );
               })}
             </div>
             <button onClick={() => { setCurrentGroupIndex(i => i + 1); setCurrentQIndex(0); }} disabled={currentGroupIndex === groups.length - 1}
-              className="px-5 py-2.5 rounded-xl bg-zinc-800 hover:bg-zinc-700 text-white font-bold text-sm disabled:opacity-40">
-              Đoạn tiếp →
+              className="px-5 py-2.5 rounded-xl bg-zinc-800 hover:bg-zinc-700 text-white font-bold text-sm disabled:opacity-40 flex items-center gap-1.5">
+              <span>Đoạn tiếp</span>
+              <ChevronRight className="w-4 h-4" />
             </button>
           </div>
         </div>
@@ -530,7 +566,10 @@ export default function Part7PracticePage() {
         {/* Header */}
         <div className="flex items-center justify-between bg-zinc-900 border border-zinc-800 p-3 rounded-2xl mb-4 flex-wrap gap-2">
           <div className="flex items-center gap-3 flex-wrap">
-            <button onClick={() => { if (confirm("Thoát?")) setScreen("config"); }} className="text-zinc-400 hover:text-white text-sm">✕ Thoát</button>
+            <button onClick={() => { if (confirm("Thoát?")) setScreen("config"); }} className="text-zinc-400 hover:text-white text-sm flex items-center gap-1">
+              <X className="w-4 h-4" />
+              <span>Thoát</span>
+            </button>
             <div className="h-5 w-px bg-zinc-800" />
             <span className="font-bold text-white text-sm">Bộ {currentSetIndex + 1}/{sets.length}</span>
             <span className="text-zinc-500 text-xs">({currentSet.length} đoạn văn)</span>
@@ -538,15 +577,21 @@ export default function Part7PracticePage() {
           </div>
           <div className="flex items-center gap-2 flex-wrap">
             <button onClick={() => setViewMode(v => v === "split" ? "compare" : "split")}
-              className={`px-3 py-1.5 rounded-lg text-xs font-bold transition ${viewMode === "compare" ? "bg-purple-600/30 text-purple-300 border border-purple-600/40" : "bg-zinc-800 text-zinc-400 hover:text-white"}`}>
-              {viewMode === "compare" ? "⧉ So sánh" : "⧉ So sánh"}
+              className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-bold transition ${viewMode === "compare" ? "bg-purple-600/30 text-purple-300 border border-purple-600/40" : "bg-zinc-800 text-zinc-400 hover:text-white"}`}>
+              {viewMode === "compare" ? <Columns2 className="w-3.5 h-3.5" /> : <GitCompare className="w-3.5 h-3.5" />}
+              <span>{viewMode === "compare" ? "Dạng thẻ" : "So sánh"}</span>
             </button>
-            <button onClick={() => setFontSize(s => Math.max(12, s - 1))} className="w-7 h-7 bg-zinc-800 rounded text-white text-sm flex items-center justify-center hover:bg-zinc-700">−</button>
+            <button onClick={() => setFontSize(s => Math.max(12, s - 1))} className="w-7 h-7 bg-zinc-800 rounded text-white text-sm flex items-center justify-center hover:bg-zinc-700">
+              <Minus className="w-3 h-3" />
+            </button>
             <span className="text-zinc-400 text-xs">{fontSize}px</span>
-            <button onClick={() => setFontSize(s => Math.min(22, s + 1))} className="w-7 h-7 bg-zinc-800 rounded text-white text-sm flex items-center justify-center hover:bg-zinc-700">+</button>
+            <button onClick={() => setFontSize(s => Math.min(22, s + 1))} className="w-7 h-7 bg-zinc-800 rounded text-white text-sm flex items-center justify-center hover:bg-zinc-700">
+              <Plus className="w-3 h-3" />
+            </button>
             {isTimed && timeRemaining !== null && (
-              <span className={`font-mono font-bold text-sm ${timeRemaining < 60 ? "text-rose-500" : "text-purple-400"}`}>
-                ⏳ {formatTime(timeRemaining)}
+              <span className={`font-mono font-bold text-sm flex items-center gap-1 ${timeRemaining < 60 ? "text-rose-500" : "text-purple-400"}`}>
+                <Timer className="w-4 h-4" />
+                <span>{formatTime(timeRemaining)}</span>
               </span>
             )}
             <button onClick={handleSubmit} disabled={submitting}
@@ -557,9 +602,8 @@ export default function Part7PracticePage() {
         </div>
 
         {/* Passages: tab or compare mode */}
-        <div className={`flex-1 flex flex-col gap-4 overflow-hidden ${viewMode === "compare" ? "" : ""}`}>
+        <div className={`flex-1 flex flex-col gap-4 overflow-hidden`}>
           {viewMode === "compare" ? (
-            /* COMPARE VIEW: passages side by side */
             <div className={`grid gap-4 overflow-hidden`} style={{ gridTemplateColumns: `repeat(${currentSet.length}, 1fr)` }}>
               {currentSet.map((g, idx) => (
                 <div key={g.id} className="bg-zinc-900/60 border border-zinc-800 rounded-2xl flex flex-col overflow-hidden max-h-[45vh]">
@@ -579,14 +623,13 @@ export default function Part7PracticePage() {
               ))}
             </div>
           ) : (
-            /* SPLIT VIEW: tabs for passages */
             <div className="bg-zinc-900/60 border border-zinc-800 rounded-2xl flex flex-col overflow-hidden max-h-[48vh]">
-              {/* Tabs */}
               <div className="flex bg-zinc-800/60 border-b border-zinc-700">
                 {currentSet.map((g, idx) => (
                   <button key={g.id} onClick={() => setActivePassageTab(idx)}
-                    className={`flex-1 py-2.5 text-xs font-bold transition border-b-2 ${activePassageTab === idx ? "border-purple-500 text-purple-300 bg-purple-900/10" : "border-transparent text-zinc-500 hover:text-zinc-300"}`}>
-                    📄 Đoạn {idx + 1}{g.title ? ` — ${g.title.slice(0, 20)}` : ""}
+                    className={`flex-1 py-2.5 text-xs font-bold transition border-b-2 inline-flex items-center justify-center gap-1.5 ${activePassageTab === idx ? "border-purple-500 text-purple-300 bg-purple-900/10" : "border-transparent text-zinc-500 hover:text-zinc-300"}`}>
+                    <FileText className="w-3.5 h-3.5" />
+                    <span>Đoạn {idx + 1}{g.title ? ` — ${g.title.slice(0, 20)}` : ""}</span>
                   </button>
                 ))}
               </div>
@@ -605,10 +648,8 @@ export default function Part7PracticePage() {
 
           {/* Questions for the set */}
           <div className="flex flex-col gap-4">
-            {/* Q dots */}
             <div className="flex gap-2 flex-wrap">
               {allSetQuestions.map((q, i) => {
-                // Which passage does this question belong to?
                 const passageIdx = currentSet.findIndex(g => g.questions.some(qq => qq.id === q.id));
                 return (
                   <button key={q.id} onClick={() => setCurrentQIndex(i)}
@@ -639,7 +680,7 @@ export default function Part7PracticePage() {
                   </div>
                   <button onClick={() => toggleMark(currentQuestion.id)}
                     className={`shrink-0 px-2 py-1 rounded-lg text-sm ${markedForReview[currentQuestion.id] ? "bg-amber-500/20 text-amber-400" : "bg-zinc-800 text-zinc-500 hover:text-zinc-300"}`}>
-                    {markedForReview[currentQuestion.id] ? "★" : "☆"}
+                    <Star className={`w-4 h-4 ${markedForReview[currentQuestion.id] ? "fill-amber-400 text-amber-400" : ""}`} />
                   </button>
                 </div>
                 <div className="grid sm:grid-cols-2 gap-2">
@@ -660,9 +701,15 @@ export default function Part7PracticePage() {
                 </div>
                 <div className="flex justify-between">
                   <button onClick={() => setCurrentQIndex(i => i - 1)} disabled={currentQIndex === 0}
-                    className="px-4 py-2 rounded-lg bg-zinc-800 hover:bg-zinc-700 text-white text-sm font-bold disabled:opacity-40">← Trước</button>
+                    className="px-4 py-2 rounded-lg bg-zinc-800 hover:bg-zinc-700 text-white text-sm font-bold disabled:opacity-40 flex items-center gap-1">
+                    <ChevronLeft className="w-4 h-4" />
+                    <span>Trước</span>
+                  </button>
                   <button onClick={() => setCurrentQIndex(i => i + 1)} disabled={currentQIndex === allSetQuestions.length - 1}
-                    className="px-4 py-2 rounded-lg bg-zinc-800 hover:bg-zinc-700 text-white text-sm font-bold disabled:opacity-40">Tiếp →</button>
+                    className="px-4 py-2 rounded-lg bg-zinc-800 hover:bg-zinc-700 text-white text-sm font-bold disabled:opacity-40 flex items-center gap-1">
+                    <span>Tiếp</span>
+                    <ChevronRight className="w-4 h-4" />
+                  </button>
                 </div>
               </div>
             )}
@@ -672,8 +719,9 @@ export default function Part7PracticePage() {
         {/* Set Navigation */}
         <div className="flex items-center justify-between mt-4 pt-4 border-t border-zinc-800">
           <button onClick={() => { setCurrentGroupIndex(i => i - 1); setCurrentQIndex(0); setActivePassageTab(0); }} disabled={currentSetIndex === 0}
-            className="px-5 py-2.5 rounded-xl bg-zinc-800 hover:bg-zinc-700 text-white font-bold text-sm disabled:opacity-40">
-            ← Bộ trước
+            className="px-5 py-2.5 rounded-xl bg-zinc-800 hover:bg-zinc-700 text-white font-bold text-sm disabled:opacity-40 flex items-center gap-1.5">
+            <ChevronLeft className="w-4 h-4" />
+            <span>Bộ trước</span>
           </button>
           <div className="flex gap-2">
             {sets.map((_, idx) => {
@@ -688,8 +736,9 @@ export default function Part7PracticePage() {
             })}
           </div>
           <button onClick={() => { setCurrentGroupIndex(i => i + 1); setCurrentQIndex(0); setActivePassageTab(0); }} disabled={currentSetIndex === sets.length - 1}
-            className="px-5 py-2.5 rounded-xl bg-zinc-800 hover:bg-zinc-700 text-white font-bold text-sm disabled:opacity-40">
-            Bộ tiếp →
+            className="px-5 py-2.5 rounded-xl bg-zinc-800 hover:bg-zinc-700 text-white font-bold text-sm disabled:opacity-40 flex items-center gap-1.5">
+            <span>Bộ tiếp</span>
+            <ChevronRight className="w-4 h-4" />
           </button>
         </div>
       </div>
@@ -722,8 +771,9 @@ export default function Part7PracticePage() {
               <p className="text-zinc-400 text-sm">Độ chính xác: <span className={`font-bold ${accuracy >= 80 ? "text-emerald-400" : accuracy >= 60 ? "text-amber-400" : "text-rose-400"}`}>{accuracy}%</span></p>
             </div>
           </div>
-          <button onClick={() => setScreen("config")} className="px-5 py-2.5 bg-zinc-800 hover:bg-zinc-700 text-white font-bold rounded-xl text-sm">
-            Luyện tập lại
+          <button onClick={() => setScreen("config")} className="flex items-center gap-1.5 px-5 py-2.5 bg-zinc-800 hover:bg-zinc-700 text-white font-bold rounded-xl text-sm transition">
+            <RotateCcw className="w-4 h-4" />
+            <span>Luyện tập lại</span>
           </button>
         </div>
 
@@ -744,13 +794,16 @@ export default function Part7PracticePage() {
 
         {/* Main review content */}
         <div className="flex-1 grid lg:grid-cols-2 gap-5 items-start overflow-hidden">
-          {/* Left: Passage(s) with highlights restored */}
+          {/* Left: Passage(s) */}
           <div className="flex flex-col gap-3 max-h-[75vh] overflow-y-auto">
             {displayGroups.map((g, idx) => (
               <div key={g.id} className="bg-zinc-900/60 border border-zinc-800 rounded-2xl overflow-hidden">
                 <div className="bg-zinc-800/60 px-4 py-2.5 border-b border-zinc-700 flex items-center gap-2">
                   {displayGroups.length > 1 && <span className="text-[10px] text-purple-400 font-bold">Đoạn {idx + 1}</span>}
-                  <h3 className="text-white font-bold text-sm">{g.title || `Passage ${idx + 1}`}</h3>
+                  <h3 className="text-white font-bold text-sm flex items-center gap-1.5">
+                    <FileText className="w-4 h-4 text-zinc-400" />
+                    <span>{g.title || `Passage ${idx + 1}`}</span>
+                  </h3>
                 </div>
                 <div className="p-5 overflow-y-auto max-h-60">
                   <HighlightablePassage
@@ -762,10 +815,12 @@ export default function Part7PracticePage() {
                 </div>
               </div>
             ))}
-            {/* Saved notes for current group */}
             {currentGroup && (passageNotes[currentGroup.id] || []).length > 0 && (
               <div className="bg-indigo-950/20 border border-indigo-800/20 rounded-xl p-3">
-                <p className="text-indigo-400 text-xs font-bold mb-2">📝 Ghi chú của bạn</p>
+                <p className="text-indigo-400 text-xs font-bold mb-2 flex items-center gap-1.5">
+                  <StickyNote className="w-3.5 h-3.5" />
+                  <span>Ghi chú của bạn</span>
+                </p>
                 {(passageNotes[currentGroup.id] || []).map(n => (
                   <p key={n.id} className="text-indigo-200/70 text-xs mb-1">• {n.text}</p>
                 ))}
@@ -775,7 +830,6 @@ export default function Part7PracticePage() {
 
           {/* Right: Questions with answers */}
           <div className="flex flex-col gap-3 overflow-y-auto max-h-[75vh]">
-            {/* Q navigator */}
             <div className="flex gap-1.5 flex-wrap">
               {allQsInView.map((q, i) => {
                 const r = reviewData.answers.find(a => a.questionId === q.id);
@@ -795,8 +849,11 @@ export default function Part7PracticePage() {
               return (
                 <div className={`bg-zinc-900/60 border rounded-2xl overflow-hidden ${isCorrect ? "border-emerald-800/40" : "border-rose-800/40"}`}>
                   <div className={`px-4 py-3 border-b flex items-center gap-2 flex-wrap ${isCorrect ? "bg-emerald-900/20 border-emerald-800/30" : "bg-rose-900/20 border-rose-800/30"}`}>
-                    <span className={`font-bold text-sm ${isCorrect ? "text-emerald-400" : "text-rose-400"}`}>{isCorrect ? "✓" : "✗"} Câu {currentQIndex + 1}</span>
-                    {markedForReview[currentQuestion.id] && <span className="text-amber-400 text-xs">★ Đánh dấu</span>}
+                    <span className={`font-bold text-sm flex items-center gap-1 ${isCorrect ? "text-emerald-400" : "text-rose-400"}`}>
+                      {isCorrect ? <CheckCircle2 className="w-4 h-4" /> : <XCircle className="w-4 h-4" />}
+                      <span>Câu {currentQIndex + 1}</span>
+                    </span>
+                    {markedForReview[currentQuestion.id] && <span className="text-amber-400 text-xs flex items-center gap-0.5"><Star className="w-3 h-3 fill-amber-400" /> Đánh dấu</span>}
                     {displayGroups.length > 1 && <span className="text-purple-400 text-xs ml-auto">Đoạn {passageIdx + 1}</span>}
                   </div>
                   <div className="p-4 space-y-3">
@@ -812,7 +869,7 @@ export default function Part7PracticePage() {
                           <div key={opt.id} className={`p-3 rounded-xl border flex items-center gap-3 text-sm ${cls}`}>
                             <span className={`w-7 h-7 rounded-full flex items-center justify-center font-bold text-xs shrink-0 ${iconCls}`}>{opt.option_label}</span>
                             <span className="break-words flex-1">{opt.option_text}</span>
-                            {isUserChoice && <span>{isCorrect ? "✓" : "✗"}</span>}
+                            {isUserChoice && <span className="shrink-0">{isCorrect ? <CheckCircle2 className="w-4 h-4 text-emerald-400" /> : <XCircle className="w-4 h-4 text-rose-400" />}</span>}
                           </div>
                         );
                       })}
@@ -820,19 +877,23 @@ export default function Part7PracticePage() {
                     {/* Explanation */}
                     {currentQuestion.explanation && (
                       <div className="bg-indigo-950/30 border border-indigo-900/30 rounded-xl p-3">
-                        <h5 className="text-indigo-400 font-bold text-[11px] uppercase mb-2">📖 Giải thích</h5>
+                        <h5 className="text-indigo-400 font-bold text-[11px] uppercase mb-2 flex items-center gap-1.5">
+                          <BookOpen className="w-3.5 h-3.5" />
+                          <span>Giải thích</span>
+                        </h5>
                         <p className="text-indigo-100/70 text-xs leading-relaxed"
                           dangerouslySetInnerHTML={{ __html: currentQuestion.explanation.replace(/\n/g, "<br/>") }} />
                       </div>
                     )}
                     {/* Evidence toggle */}
                     <button onClick={() => setShowEvidence(p => ({ ...p, [currentQuestion.id]: !p[currentQuestion.id] }))}
-                      className={`w-full py-2 text-xs font-bold rounded-lg transition ${showEvidence[currentQuestion.id] ? "bg-amber-600/20 text-amber-300 border border-amber-600/30" : "bg-zinc-800 hover:bg-zinc-700 text-zinc-300"}`}>
-                      🔍 {showEvidence[currentQuestion.id] ? "Ẩn" : "Xem"} bằng chứng trong văn bản
+                      className={`w-full py-2 text-xs font-bold rounded-lg transition flex items-center justify-center gap-1.5 ${showEvidence[currentQuestion.id] ? "bg-amber-600/20 text-amber-300 border border-amber-600/30" : "bg-zinc-800 hover:bg-zinc-700 text-zinc-300"}`}>
+                      <Search className="w-3.5 h-3.5" />
+                      <span>{showEvidence[currentQuestion.id] ? "Ẩn" : "Xem"} bằng chứng trong văn bản</span>
                     </button>
                     {showEvidence[currentQuestion.id] && (
                       <div className="bg-amber-950/20 border border-amber-800/20 rounded-xl p-3">
-                        <p className="text-amber-400 text-[11px] font-bold mb-1">🔗 Bằng chứng (từ giải thích)</p>
+                        <p className="text-amber-400 text-[11px] font-bold mb-1">Bằng chứng (từ giải thích)</p>
                         <p className="text-amber-200/70 text-xs leading-relaxed italic">
                           {currentQuestion.explanation
                             ? currentQuestion.explanation.slice(0, 200) + (currentQuestion.explanation.length > 200 ? "..." : "")
@@ -843,16 +904,22 @@ export default function Part7PracticePage() {
                     {/* Cross-reference for multiple */}
                     {practiceType === "multiple" && displayGroups.length > 1 && (
                       <div className="bg-purple-950/20 border border-purple-800/20 rounded-xl p-3">
-                        <p className="text-purple-400 text-[11px] font-bold mb-1">⇄ Tham chiếu chéo (Cross-reference)</p>
+                        <p className="text-purple-400 text-[11px] font-bold mb-1">Tham chiếu chéo (Cross-reference)</p>
                         <p className="text-purple-200/60 text-xs">Câu này liên quan đến <strong>Đoạn {passageIdx + 1}</strong>. Hãy đối chiếu với các đoạn văn khác để hiểu ngữ cảnh đầy đủ.</p>
                       </div>
                     )}
                     {/* Nav */}
                     <div className="flex justify-between pt-1">
                       <button onClick={() => setCurrentQIndex(i => i - 1)} disabled={currentQIndex === 0}
-                        className="px-4 py-2 rounded-lg bg-zinc-800 hover:bg-zinc-700 text-white text-xs font-bold disabled:opacity-40">← Trước</button>
+                        className="px-4 py-2 rounded-lg bg-zinc-800 hover:bg-zinc-700 text-white text-xs font-bold disabled:opacity-40 flex items-center gap-1">
+                        <ChevronLeft className="w-3.5 h-3.5" />
+                        <span>Trước</span>
+                      </button>
                       <button onClick={() => setCurrentQIndex(i => i + 1)} disabled={currentQIndex === allQsInView.length - 1}
-                        className="px-4 py-2 rounded-lg bg-zinc-800 hover:bg-zinc-700 text-white text-xs font-bold disabled:opacity-40">Tiếp →</button>
+                        className="px-4 py-2 rounded-lg bg-zinc-800 hover:bg-zinc-700 text-white text-xs font-bold disabled:opacity-40 flex items-center gap-1">
+                        <span>Tiếp</span>
+                        <ChevronRight className="w-3.5 h-3.5" />
+                      </button>
                     </div>
                   </div>
                 </div>

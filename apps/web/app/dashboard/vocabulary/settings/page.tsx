@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
@@ -8,6 +8,7 @@ import {
   loadVocabSettings,
   saveVocabSettings,
 } from "@/lib/vocab-settings";
+import { Settings, ArrowLeft, Check, RotateCcw, Volume2, Bell, Sparkles } from "lucide-react";
 
 // ---- Small UI helpers -------------------------------------------------------
 
@@ -63,7 +64,7 @@ function Toggle({
       type="button"
       onClick={() => onChange(!checked)}
       className={`relative inline-flex h-6 w-11 items-center rounded-full transition-colors duration-200 focus:outline-none ${
-        checked ? "bg-indigo-600" : "bg-zinc-700"
+        checked ? "bg-red-600" : "bg-zinc-700"
       }`}
     >
       <span
@@ -88,7 +89,7 @@ function Select<T extends string>({
     <select
       value={value}
       onChange={(e) => onChange(e.target.value as T)}
-      className="bg-zinc-950 border border-zinc-700 hover:border-zinc-600 focus:border-indigo-500 text-white text-xs rounded-xl px-3 py-2 outline-none transition cursor-pointer"
+      className="bg-zinc-950 border border-zinc-700 hover:border-zinc-600 focus:border-red-500 text-white text-xs rounded-xl px-3 py-2 outline-none transition cursor-pointer"
     >
       {options.map((o) => (
         <option key={o.value} value={o.value}>
@@ -121,7 +122,7 @@ export default function VocabularySettingsPage() {
   }
 
   function handleReset() {
-    if (!confirm("Reset toÃ n bá»™ vá» máº·c Ä‘á»‹nh?")) return;
+    if (!confirm("Đặt lại toàn bộ về mặc định?")) return;
     setSettings(DEFAULT_VOCAB_SETTINGS);
     saveVocabSettings(DEFAULT_VOCAB_SETTINGS);
     setSaved(true);
@@ -130,14 +131,14 @@ export default function VocabularySettingsPage() {
 
   async function handleRequestNotification() {
     if (!("Notification" in window)) {
-      alert("TrÃ¬nh duyá»‡t cá»§a báº¡n khÃ´ng há»— trá»£ thÃ´ng bÃ¡o.");
+      alert("Trình duyệt của bạn không hỗ trợ thông báo.");
       return;
     }
     const permission = await Notification.requestPermission();
     if (permission === "granted") {
       set("reviewNotifications", true);
     } else {
-      alert("Quyá»n thÃ´ng bÃ¡o bá»‹ tá»« chá»‘i. Vui lÃ²ng báº­t trong cÃ i Ä‘áº·t trÃ¬nh duyá»‡t.");
+      alert("Quyền thông báo bị từ chối. Vui lòng bật trong cài đặt trình duyệt.");
     }
   }
 
@@ -146,26 +147,30 @@ export default function VocabularySettingsPage() {
       {/* Header */}
       <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
         <div>
-          <h1 className="text-2xl font-bold text-white">&#9881;&#65039; CÃ i Ä‘áº·t tá»« vá»±ng</h1>
+          <h1 className="text-2xl font-bold text-white flex items-center gap-2.5">
+            <Settings className="w-6 h-6 text-red-500" />
+            <span>Cài đặt từ vựng</span>
+          </h1>
           <p className="text-zinc-400 text-sm mt-1">
-            TÃ¹y chá»‰nh tráº£i nghiá»‡m há»c vÃ  Ã´n táº­p tá»« vá»±ng cá»§a báº¡n
+            Tùy chỉnh trải nghiệm học và ôn tập từ vựng của bạn
           </p>
         </div>
         <Link
           href="/dashboard/vocabulary"
-          className="px-4 py-2.5 bg-zinc-800 hover:bg-zinc-700 text-zinc-300 hover:text-white font-bold text-xs rounded-xl transition"
+          className="flex items-center gap-1.5 px-4 py-2.5 bg-zinc-800 hover:bg-zinc-700 text-zinc-300 hover:text-white font-bold text-xs rounded-xl transition"
         >
-          &#8592; Quay láº¡i
+          <ArrowLeft className="w-4 h-4" />
+          <span>Quay lại</span>
         </Link>
       </div>
 
-      {/* â”€â”€ LEARNING GOALS â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
-      <SectionTitle>Má»¥c tiÃªu há»c táº­p</SectionTitle>
+      {/* ── LEARNING GOALS ────────────────────────────────────────── */}
+      <SectionTitle>Mục tiêu học tập</SectionTitle>
       <Card>
         {/* Daily goal slider */}
         <Row
-          label="Má»¥c tiÃªu tá»« má»›i hÃ ng ngÃ y"
-          description="Sá»‘ tá»« má»›i báº¡n muá»‘n há»c má»—i ngÃ y (10 â€“ 50)"
+          label="Mục tiêu từ mới hàng ngày"
+          description="Số từ mới bạn muốn học mỗi ngày (10 – 50)"
         >
           <div className="flex items-center gap-3">
             <input
@@ -175,7 +180,7 @@ export default function VocabularySettingsPage() {
               step={5}
               value={settings.dailyGoal}
               onChange={(e) => set("dailyGoal", Number(e.target.value))}
-              className="w-28 accent-indigo-500"
+              className="w-28 accent-red-500"
             />
             <span className="text-white font-bold text-sm w-8 text-right">
               {settings.dailyGoal}
@@ -185,43 +190,43 @@ export default function VocabularySettingsPage() {
 
         {/* Review priority */}
         <Row
-          label="Æ¯u tiÃªn Ã´n táº­p"
-          description="Thá»© tá»± Æ°u tiÃªn giá»¯a tá»« má»›i vÃ  tá»« cáº§n Ã´n"
+          label="Ưu tiên ôn tập"
+          description="Thứ tự ưu tiên giữa từ mới và từ cần ôn"
         >
           <Select
             value={settings.reviewPriority}
             onChange={(v) => set("reviewPriority", v)}
             options={[
-              { value: "review_first", label: "Ã”n trÆ°á»›c, há»c sau" },
-              { value: "new_first",    label: "Há»c má»›i trÆ°á»›c" },
-              { value: "mixed",        label: "Xen káº½ (Mixed)" },
+              { value: "review_first", label: "Ôn trước, học sau" },
+              { value: "new_first",    label: "Học mới trước" },
+              { value: "mixed",        label: "Xen kẽ (Mixed)" },
             ]}
           />
         </Row>
 
         {/* Display mode */}
         <Row
-          label="Cháº¿ Ä‘á»™ hiá»ƒn thá»‹ tá»« vá»±ng"
-          description="Giao diá»‡n máº·c Ä‘á»‹nh khi xem danh sÃ¡ch tá»« vá»±ng"
+          label="Chế độ hiển thị từ vựng"
+          description="Giao diện mặc định khi xem danh sách từ vựng"
         >
           <Select
             value={settings.displayMode}
             onChange={(v) => set("displayMode", v)}
             options={[
               { value: "flashcard", label: "Flashcard" },
-              { value: "list",      label: "Danh sÃ¡ch" },
+              { value: "list",      label: "Danh sách" },
             ]}
           />
         </Row>
       </Card>
 
-      {/* â”€â”€ AUDIO â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
-      <SectionTitle>Ã‚m thanh & phÃ¡t Ã¢m</SectionTitle>
+      {/* ── AUDIO ─────────────────────────────────────────────────── */}
+      <SectionTitle>Âm thanh & phát âm</SectionTitle>
       <Card>
         {/* Auto-play */}
         <Row
-          label="Tá»± Ä‘á»™ng phÃ¡t Ã¢m thanh"
-          description="Tá»± Ä‘á»™ng phÃ¡t Ã¢m khi chuyá»ƒn sang tá»« má»›i"
+          label="Tự động phát âm thanh"
+          description="Tự động phát âm khi chuyển sang từ mới"
         >
           <Toggle
             checked={settings.autoPlay}
@@ -231,8 +236,8 @@ export default function VocabularySettingsPage() {
 
         {/* Accent */}
         <Row
-          label="Giá»ng phÃ¡t Ã¢m"
-          description="Chá»n giá»ng Má»¹ (US) hoáº·c Anh (UK)"
+          label="Giọng phát âm"
+          description="Chọn giọng Mỹ (US) hoặc Anh (UK)"
         >
           <div className="flex gap-2">
             {(["US", "UK"] as const).map((acc) => (
@@ -242,48 +247,48 @@ export default function VocabularySettingsPage() {
                 onClick={() => set("accent", acc)}
                 className={`px-4 py-2 rounded-xl text-xs font-bold transition border ${
                   settings.accent === acc
-                    ? "bg-indigo-600 border-indigo-500 text-white shadow-md shadow-indigo-900/40"
+                    ? "bg-red-600 border-red-500 text-white shadow-md shadow-red-900/40"
                     : "bg-zinc-800 border-zinc-700 text-zinc-400 hover:text-white hover:border-zinc-600"
                 }`}
               >
-                {acc === "US" ? "&#127482;&#127480; Má»¹" : "&#127468;&#127463; Anh"}
+                {acc === "US" ? "Mỹ (US)" : "Anh (UK)"}
               </button>
             ))}
           </div>
         </Row>
       </Card>
 
-      {/* â”€â”€ REVIEW SCHEDULE â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
-      <SectionTitle>Lá»‹ch Ã´n táº­p</SectionTitle>
+      {/* ── REVIEW SCHEDULE ──────────────────────────────────────── */}
+      <SectionTitle>Lịch ôn tập</SectionTitle>
       <Card>
         {/* Review time preference */}
         <Row
-          label="Thá»i gian Ã´n yÃªu thÃ­ch"
-          description="GiÃºp há»‡ thá»‘ng gá»£i Ã½ thá»i Ä‘iá»ƒm phÃ¹ há»£p Ä‘á»ƒ Ã´n táº­p"
+          label="Thời gian ôn yêu thích"
+          description="Giúp hệ thống gợi ý thời điểm phù hợp để ôn tập"
         >
           <Select
             value={settings.reviewTime}
             onChange={(v) => set("reviewTime", v)}
             options={[
-              { value: "morning", label: "Buá»•i sÃ¡ng (6hâ€“12h)" },
-              { value: "evening", label: "Buá»•i tá»‘i (18hâ€“23h)" },
-              { value: "anytime", label: "Báº¥t ká»³ lÃºc nÃ o" },
+              { value: "morning", label: "Buổi sáng (6h–12h)" },
+              { value: "evening", label: "Buổi tối (18h–23h)" },
+              { value: "anytime", label: "Bất kỳ lúc nào" },
             ]}
           />
         </Row>
 
         {/* SRS Algorithm */}
         <Row
-          label="Thuáº­t toÃ¡n SRS"
-          description="Äiá»u chá»‰nh khoáº£ng thá»i gian giá»¯a cÃ¡c láº§n Ã´n táº­p"
+          label="Thuật toán SRS"
+          description="Điều chỉnh khoảng thời gian giữa các lần ôn tập"
         >
           <Select
             value={settings.srsAlgorithm}
             onChange={(v) => set("srsAlgorithm", v)}
             options={[
-              { value: "standard",     label: "TiÃªu chuáº©n (SM-2)" },
-              { value: "aggressive",   label: "TÄƒng tá»‘c (Aggressive)" },
-              { value: "conservative", label: "á»”n Ä‘á»‹nh (Conservative)" },
+              { value: "standard",     label: "Tiêu chuẩn (SM-2)" },
+              { value: "aggressive",   label: "Tăng tốc (Aggressive)" },
+              { value: "conservative", label: "Ổn định (Conservative)" },
             ]}
           />
         </Row>
@@ -297,27 +302,27 @@ export default function VocabularySettingsPage() {
             : "bg-indigo-950/30 border-indigo-800/30 text-indigo-300"
         }`}>
           {settings.srsAlgorithm === "standard" && (
-            <><strong>TiÃªu chuáº©n (SM-2):</strong> Khoáº£ng cÃ¡ch Ã´n táº­p tÄƒng dáº§n theo hiá»‡u suáº¥t. CÃ¢n báº±ng giá»¯a tá»‘c Ä‘á»™ há»c vÃ  Ä‘á»™ ghi nhá»›.</>
+            <><strong>Tiêu chuẩn (SM-2):</strong> Khoảng cách ôn tập tăng dần theo hiệu suất. Cân bằng giữa tốc độ học và độ ghi nhớ.</>
           )}
           {settings.srsAlgorithm === "aggressive" && (
-            <><strong>TÄƒng tá»‘c:</strong> Khoáº£ng cÃ¡ch Ã´n táº­p dÃ i hÆ¡n, há»c Ã­t láº§n hÆ¡n nhÆ°ng Ä‘Ã²i há»i ghi nhá»› tá»‘t hÆ¡n. PhÃ¹ há»£p vá»›i ngÆ°á»i cÃ³ thá»i gian háº¡n cháº¿.</>
+            <><strong>Tăng tốc:</strong> Khoảng cách ôn tập dài hơn, học ít lần hơn nhưng đòi hỏi ghi nhớ tốt hơn. Phù hợp với người có thời gian hạn chế.</>
           )}
           {settings.srsAlgorithm === "conservative" && (
-            <><strong>á»”n Ä‘á»‹nh:</strong> Ã”n táº­p thÆ°á»ng xuyÃªn hÆ¡n vá»›i khoáº£ng cÃ¡ch ngáº¯n hÆ¡n. PhÃ¹ há»£p vá»›i ngÆ°á»i muá»‘n cá»§ng cá»‘ cháº¯c cháº¯n trÆ°á»›c khi chuyá»ƒn sang tá»« má»›i.</>
+            <><strong>Ổn định:</strong> Ôn tập thường xuyên hơn với khoảng cách ngắn hơn. Phù hợp với người muốn củng cố chắc chắn trước khi chuyển sang từ mới.</>
           )}
         </div>
       </Card>
 
-      {/* â”€â”€ NOTIFICATIONS â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
-      <SectionTitle>ThÃ´ng bÃ¡o</SectionTitle>
+      {/* ── NOTIFICATIONS ────────────────────────────────────────── */}
+      <SectionTitle>Thông báo</SectionTitle>
       <Card>
         <Row
-          label="ThÃ´ng bÃ¡o khi Ä‘áº¿n háº¡n Ã´n"
-          description="Nháº­n thÃ´ng bÃ¡o trÃ¬nh duyá»‡t khi cÃ³ tá»« vá»±ng cáº§n Ã´n táº­p"
+          label="Thông báo khi đến hạn ôn"
+          description="Nhận thông báo trình duyệt khi có từ vựng cần ôn tập"
         >
           {settings.reviewNotifications ? (
             <div className="flex items-center gap-3">
-              <span className="text-[11px] text-emerald-400 font-bold">ÄÃ£ báº­t</span>
+              <span className="text-[11px] text-emerald-400 font-bold">Đã bật</span>
               <Toggle
                 checked={true}
                 onChange={() => set("reviewNotifications", false)}
@@ -327,46 +332,58 @@ export default function VocabularySettingsPage() {
             <button
               type="button"
               onClick={handleRequestNotification}
-              className="px-3 py-1.5 bg-zinc-800 hover:bg-zinc-700 border border-zinc-700 hover:border-zinc-600 text-zinc-300 hover:text-white text-xs font-bold rounded-xl transition"
+              className="px-3 py-1.5 bg-zinc-800 hover:bg-zinc-700 border border-zinc-700 hover:border-zinc-600 text-zinc-300 hover:text-white text-xs font-bold rounded-xl transition flex items-center gap-1.5"
             >
-              YÃªu cáº§u quyá»n
+              <Bell className="w-3.5 h-3.5" />
+              <span>Yêu cầu quyền</span>
             </button>
           )}
         </Row>
 
         {settings.reviewNotifications && (
-          <div className="rounded-xl bg-emerald-950/30 border border-emerald-800/30 p-3 text-[11px] text-emerald-300">
-            &#9989; ThÃ´ng bÃ¡o Ä‘Ã£ Ä‘Æ°á»£c báº­t. á»¨ng dá»¥ng sáº½ nháº¯c báº¡n Ã´n táº­p vÃ o buá»•i{" "}
-            {settings.reviewTime === "morning"
-              ? "sÃ¡ng"
-              : settings.reviewTime === "evening"
-              ? "tá»‘i"
-              : "thÃ­ch há»£p"}
-            .
+          <div className="rounded-xl bg-emerald-950/30 border border-emerald-800/30 p-3 text-[11px] text-emerald-300 flex items-center gap-2">
+            <Check className="w-4 h-4 text-emerald-400 shrink-0" />
+            <span>
+              Thông báo đã được bật. Ứng dụng sẽ nhắc bạn ôn tập vào buổi{" "}
+              {settings.reviewTime === "morning"
+                ? "sáng"
+                : settings.reviewTime === "evening"
+                ? "tối"
+                : "thích hợp"}
+              .
+            </span>
           </div>
         )}
       </Card>
 
-      {/* â”€â”€ Action Buttons â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
+      {/* ── Action Buttons ───────────────────────────────────────── */}
       <div className="flex items-center justify-between pt-2 pb-8">
         <button
           type="button"
           onClick={handleReset}
-          className="text-xs text-zinc-500 hover:text-rose-400 font-semibold transition"
+          className="text-xs text-zinc-500 hover:text-rose-400 font-semibold transition flex items-center gap-1.5"
         >
-          &#8635; Äáº·t láº¡i máº·c Ä‘á»‹nh
+          <RotateCcw className="w-3.5 h-3.5" />
+          <span>Đặt lại mặc định</span>
         </button>
 
         <button
           type="button"
           onClick={handleSave}
-          className={`px-6 py-3 rounded-xl text-sm font-bold transition-all shadow-lg ${
+          className={`px-6 py-3 rounded-xl text-sm font-bold transition-all shadow-lg flex items-center gap-2 ${
             saved
               ? "bg-emerald-600 text-white shadow-emerald-900/30"
-              : "bg-indigo-600 hover:bg-indigo-500 text-white shadow-indigo-900/30 hover:shadow-indigo-900/50 hover:scale-[1.02] active:scale-[0.98]"
+              : "bg-red-600 hover:bg-red-500 text-white shadow-red-900/30 hover:shadow-red-900/50 hover:scale-[1.02] active:scale-[0.98]"
           }`}
         >
-          {saved ? "&#10003; ÄÃ£ lÆ°u!" : "LÆ°u cÃ i Ä‘áº·t"}
+          {saved ? (
+            <>
+              <Check className="w-4 h-4" />
+              <span>Đã lưu!</span>
+            </>
+          ) : (
+            <span>Lưu cài đặt</span>
+          )}
         </button>
       </div>
     </div>

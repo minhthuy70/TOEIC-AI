@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { User } from "lucide-react";
 
 const API = process.env.NEXT_PUBLIC_API_URL || "http://localhost:3001";
 
@@ -214,8 +215,8 @@ export default function StageRequestsPage() {
               >
                 <div className="flex items-start justify-between mb-4">
                   <div className="flex items-center gap-4">
-                    <div className="w-12 h-12 rounded-full bg-red-600/20 flex items-center justify-center text-red-400 text-xl">
-                      👤
+                    <div className="w-12 h-12 rounded-full bg-red-600/20 flex items-center justify-center text-red-400">
+                      <User className="w-6 h-6" />
                     </div>
                     <div>
                       <p className="text-white font-semibold">{request.user.fullName}</p>

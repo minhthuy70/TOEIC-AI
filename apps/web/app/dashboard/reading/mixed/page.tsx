@@ -7,8 +7,29 @@ import {
   submitPractice,
   PracticeStartResponse,
   PracticeQuestion,
-  PracticeOption,
 } from "@/services/practice";
+import {
+  ArrowLeft,
+  Timer,
+  Clock,
+  Play,
+  Pause,
+  Shuffle,
+  ListOrdered,
+  Puzzle,
+  FileText,
+  FileCheck,
+  Star,
+  BookOpen,
+  RotateCcw,
+  CheckCircle2,
+  XCircle,
+  FolderPlus,
+  SlidersHorizontal,
+  ChevronLeft,
+  ChevronRight,
+  X,
+} from "lucide-react";
 
 // ─── Types ────────────────────────────────────────────────────────────────
 type PracticeMode = "normal" | "timed" | "exam";
@@ -36,10 +57,10 @@ interface ErrorLogEntry {
   addedAt: string;
 }
 
-const PART_LABELS: Record<number, { label: string; color: string; bg: string; icon: string }> = {
-  5: { label: "Part 5", color: "text-indigo-400", bg: "bg-indigo-600", icon: "🧩" },
-  6: { label: "Part 6", color: "text-emerald-400", bg: "bg-emerald-600", icon: "📝" },
-  7: { label: "Part 7", color: "text-amber-400", bg: "bg-amber-600", icon: "📄" },
+const PART_LABELS: Record<number, { label: string; color: string; bg: string; icon: any }> = {
+  5: { label: "Part 5", color: "text-indigo-400", bg: "bg-indigo-600", icon: Puzzle },
+  6: { label: "Part 6", color: "text-emerald-400", bg: "bg-emerald-600", icon: FileText },
+  7: { label: "Part 7", color: "text-amber-400", bg: "bg-amber-600", icon: FileCheck },
 };
 
 function shuffleArray<T>(arr: T[]): T[] {
@@ -84,9 +105,6 @@ export default function ReadingMixedPage() {
   const [paused, setPaused] = useState(false);
   const [submitting, setSubmitting] = useState(false);
 
-  // Real-time score
-  const [liveScore, setLiveScore] = useState<{ correct: number; total: number }>({ correct: 0, total: 0 });
-
   // Time tracking per question
   const questionStartTime = useRef<number>(Date.now());
   const [timeSpent, setTimeSpent] = useState<TimeEntry[]>([]);
@@ -100,7 +118,6 @@ export default function ReadingMixedPage() {
   }
   const [reviewResults, setReviewResults] = useState<ReviewResult[]>([]);
   const [reviewFilter, setReviewFilter] = useState<"all" | "wrong" | "marked">("all");
-  const [errorLog, setErrorLog] = useState<ErrorLogEntry[]>([]);
   const [addedToLog, setAddedToLog] = useState<Record<number, boolean>>({});
 
   // Timer
@@ -114,7 +131,6 @@ export default function ReadingMixedPage() {
     return () => clearInterval(timer);
   }, [screen, paused, mode, timeRemaining]);
 
-  // Record time for current question on navigation
   const recordTimeForCurrent = () => {
     const elapsed = Math.round((Date.now() - questionStartTime.current) / 1000);
     if (questions[currentQIndex]) {
@@ -139,13 +155,6 @@ export default function ReadingMixedPage() {
   };
 
   const toggleMark = (qId: number) => setMarkedForReview(p => ({ ...p, [qId]: !p[qId] }));
-
-  // Update live score whenever answers change
-  useEffect(() => {
-    // We don't have correct answers during practice — show answered count vs total
-    const answered = Object.keys(answers).length;
-    setLiveScore({ correct: answered, total: questions.length });
-  }, [answers, questions.length]);
 
   const handleStart = async () => {
     if (selectedParts.length === 0) { alert("Vui lòng chọn ít nhất 1 phần."); return; }
@@ -198,7 +207,6 @@ export default function ReadingMixedPage() {
     recordTimeForCurrent();
     setSubmitting(true);
 
-    // Submit each session's answers
     const allResults: ReviewResult[] = [];
     try {
       for (const { part, sessionId } of sessions) {
@@ -212,7 +220,6 @@ export default function ReadingMixedPage() {
         allResults.push(...res.answers);
       }
       setReviewResults(allResults);
-      setErrorLog(loadErrorLog());
       setScreen("review");
       setCurrentQIndex(0);
     } catch (err) {
@@ -254,9 +261,14 @@ export default function ReadingMixedPage() {
     return (
       <div className="max-w-3xl mx-auto py-10 px-4">
         <div className="flex items-center gap-4 mb-8">
-          <Link href="/dashboard/reading" className="w-10 h-10 rounded-full bg-zinc-800 flex items-center justify-center hover:bg-zinc-700 transition">←</Link>
+          <Link href="/dashboard/reading" className="w-10 h-10 rounded-full bg-zinc-800 flex items-center justify-center text-zinc-400 hover:text-white hover:bg-zinc-700 transition">
+            <ArrowLeft className="w-5 h-5" />
+          </Link>
           <div>
-            <h1 className="text-2xl font-bold text-white">🎯 Luyện đọc hỗn hợp</h1>
+            <h1 className="text-2xl font-bold text-white flex items-center gap-2">
+              <SlidersHorizontal className="w-6 h-6 text-purple-400" />
+              <span>Luyện đọc hỗn hợp</span>
+            </h1>
             <p className="text-zinc-400 text-sm">Reading Mixed Practice — Part 5, 6, 7</p>
           </div>
         </div>
@@ -268,12 +280,13 @@ export default function ReadingMixedPage() {
             <div className="flex flex-wrap gap-3">
               {[5, 6, 7].map(p => {
                 const info = PART_LABELS[p];
+                const Icon = info.icon;
                 const selected = selectedParts.includes(p);
                 return (
                   <button key={p}
                     onClick={() => setSelectedParts(prev => selected ? prev.filter(x => x !== p) : [...prev, p])}
-                    className={`px-5 py-4 rounded-xl font-bold transition-all border-2 flex flex-col items-center gap-1 min-w-[100px] ${selected ? `${info.bg}/20 border-current ${info.color}` : "bg-zinc-800 border-transparent text-zinc-500 hover:bg-zinc-700 hover:text-white"}`}>
-                    <span className="text-xl">{info.icon}</span>
+                    className={`px-5 py-4 rounded-xl font-bold transition-all border-2 flex flex-col items-center gap-1.5 min-w-[100px] ${selected ? `${info.bg}/20 border-current ${info.color}` : "bg-zinc-800 border-transparent text-zinc-500 hover:bg-zinc-700 hover:text-white"}`}>
+                    <Icon className="w-5 h-5" />
                     <span>{info.label}</span>
                   </button>
                 );
@@ -300,21 +313,20 @@ export default function ReadingMixedPage() {
             <h3 className="text-white font-bold mb-4">Chế độ luyện tập</h3>
             <div className="grid sm:grid-cols-3 gap-3">
               {([
-                { value: "normal" as PracticeMode, label: "Bình thường", icon: "🌙", desc: "Không giới hạn thời gian" },
-                { value: "timed" as PracticeMode, label: "Giới hạn giờ", icon: "⏱️", desc: "Có đồng hồ đếm ngược, có thể tạm dừng" },
-                { value: "exam" as PracticeMode, label: "Thi thử", icon: "🎓", desc: "Nghiêm ngặt, tự động nộp khi hết giờ" },
+                { value: "normal" as PracticeMode, label: "Bình thường", desc: "Không giới hạn thời gian" },
+                { value: "timed" as PracticeMode, label: "Giới hạn giờ", desc: "Có đồng hồ đếm ngược, có thể tạm dừng" },
+                { value: "exam" as PracticeMode, label: "Thi thử", desc: "Nghiêm ngặt, tự động nộp khi hết giờ" },
               ] as const).map(m => (
                 <button key={m.value} onClick={() => setMode(m.value)}
                   className={`px-4 py-4 rounded-xl font-bold transition-all border-2 flex flex-col gap-1 text-left ${mode === m.value ? "bg-purple-600/20 border-purple-500 text-white" : "bg-zinc-800 border-transparent text-zinc-400 hover:bg-zinc-700 hover:text-white"}`}>
-                  <span className="text-xl">{m.icon}</span>
-                  <span>{m.label}</span>
+                  <span className="font-bold">{m.label}</span>
                   <span className="text-[11px] font-normal opacity-70">{m.desc}</span>
                 </button>
               ))}
             </div>
           </div>
 
-          {/* Time limit (for timed/exam) */}
+          {/* Time limit */}
           {mode !== "normal" && (
             <div>
               <h3 className="text-white font-bold mb-4">Thời gian giới hạn</h3>
@@ -335,11 +347,13 @@ export default function ReadingMixedPage() {
             <div className="flex gap-3">
               <button onClick={() => setOrder("shuffle")}
                 className={`flex-1 py-3 rounded-xl font-bold transition-all flex items-center justify-center gap-2 ${order === "shuffle" ? "bg-purple-600 text-white" : "bg-zinc-800 text-zinc-400 hover:bg-zinc-700 hover:text-white"}`}>
-                🔀 Xáo trộn
+                <Shuffle className="w-4 h-4" />
+                <span>Xáo trộn</span>
               </button>
               <button onClick={() => setOrder("sequential")}
                 className={`flex-1 py-3 rounded-xl font-bold transition-all flex items-center justify-center gap-2 ${order === "sequential" ? "bg-purple-600 text-white" : "bg-zinc-800 text-zinc-400 hover:bg-zinc-700 hover:text-white"}`}>
-                📋 Tuần tự
+                <ListOrdered className="w-4 h-4" />
+                <span>Tuần tự</span>
               </button>
             </div>
           </div>
@@ -357,6 +371,7 @@ export default function ReadingMixedPage() {
   if (screen === "practice" && questions.length > 0) {
     const currentQ = questions[currentQIndex];
     const info = PART_LABELS[currentQ?.part] || PART_LABELS[5];
+    const Icon = info.icon;
     const answeredCount = Object.keys(answers).length;
     const progressAnswered = Math.round((answeredCount / questions.length) * 100);
 
@@ -366,25 +381,31 @@ export default function ReadingMixedPage() {
         <div className="flex items-center justify-between bg-zinc-900 border border-zinc-800 p-3 rounded-2xl mb-4 flex-wrap gap-2">
           <div className="flex items-center gap-3 flex-wrap">
             {mode !== "exam" && (
-              <button onClick={() => { if (confirm("Thoát?")) setScreen("config"); }} className="text-zinc-400 hover:text-white text-sm">✕ Thoát</button>
+              <button onClick={() => { if (confirm("Thoát?")) setScreen("config"); }} className="text-zinc-400 hover:text-white text-sm flex items-center gap-1">
+                <X className="w-4 h-4" />
+                <span>Thoát</span>
+              </button>
             )}
             <div className="h-5 w-px bg-zinc-800" />
             <span className="font-bold text-white text-sm">Câu {currentQIndex + 1}/{questions.length}</span>
-            <span className={`text-xs px-2 py-0.5 rounded-full font-bold ${info.bg}/20 ${info.color}`}>{info.icon} {info.label}</span>
-            {/* Real-time score */}
-            <span className="text-zinc-500 text-xs">✍️ {answeredCount}/{questions.length} đã trả lời</span>
+            <span className={`text-xs px-2 py-0.5 rounded-full font-bold flex items-center gap-1 ${info.bg}/20 ${info.color}`}>
+              <Icon className="w-3.5 h-3.5" />
+              <span>{info.label}</span>
+            </span>
+            <span className="text-zinc-500 text-xs">{answeredCount}/{questions.length} đã trả lời</span>
           </div>
           <div className="flex items-center gap-2">
-            {/* Pause/Resume */}
             {mode !== "exam" && mode !== "normal" && (
               <button onClick={() => setPaused(p => !p)}
-                className={`px-3 py-1.5 rounded-lg text-xs font-bold transition ${paused ? "bg-emerald-600/30 text-emerald-300 border border-emerald-600/40 animate-pulse" : "bg-zinc-800 text-zinc-400 hover:text-white"}`}>
-                {paused ? "▶ Tiếp tục" : "⏸ Tạm dừng"}
+                className={`flex items-center gap-1 px-3 py-1.5 rounded-lg text-xs font-bold transition ${paused ? "bg-emerald-600/30 text-emerald-300 border border-emerald-600/40 animate-pulse" : "bg-zinc-800 text-zinc-400 hover:text-white"}`}>
+                {paused ? <Play className="w-3.5 h-3.5" /> : <Pause className="w-3.5 h-3.5" />}
+                <span>{paused ? "Tiếp tục" : "Tạm dừng"}</span>
               </button>
             )}
             {timeRemaining !== null && (
-              <span className={`font-mono font-bold text-sm ${timeRemaining < 60 ? "text-rose-500 animate-pulse" : "text-amber-400"}`}>
-                ⏳ {formatTime(timeRemaining)}
+              <span className={`font-mono font-bold text-sm flex items-center gap-1 ${timeRemaining < 60 ? "text-rose-500 animate-pulse" : "text-amber-400"}`}>
+                <Timer className="w-4 h-4" />
+                <span>{formatTime(timeRemaining)}</span>
               </span>
             )}
             <button onClick={handleSubmit} disabled={submitting}
@@ -416,11 +437,14 @@ export default function ReadingMixedPage() {
         {paused && (
           <div className="fixed inset-0 bg-black/80 backdrop-blur-md z-50 flex items-center justify-center">
             <div className="bg-zinc-900 border border-zinc-700 rounded-3xl p-10 text-center max-w-sm mx-4">
-              <p className="text-5xl mb-4">⏸</p>
+              <div className="w-16 h-16 bg-zinc-800 rounded-full flex items-center justify-center mx-auto mb-4 text-zinc-400">
+                <Pause className="w-8 h-8" />
+              </div>
               <h3 className="text-2xl font-bold text-white mb-2">Đang tạm dừng</h3>
               <p className="text-zinc-400 text-sm mb-6">Nhấn "Tiếp tục" để tiếp tục làm bài.</p>
-              <button onClick={() => setPaused(false)} className="w-full py-3 bg-emerald-600 hover:bg-emerald-500 text-white font-bold rounded-xl transition">
-                ▶ Tiếp tục
+              <button onClick={() => setPaused(false)} className="w-full flex items-center justify-center gap-2 py-3 bg-emerald-600 hover:bg-emerald-500 text-white font-bold rounded-xl transition">
+                <Play className="w-4 h-4 fill-white" />
+                <span>Tiếp tục</span>
               </button>
             </div>
           </div>
@@ -428,7 +452,7 @@ export default function ReadingMixedPage() {
 
         {/* Main Q area */}
         <div className="flex-1 grid lg:grid-cols-2 gap-5">
-          {/* Left: Passage (if part 6 or 7) */}
+          {/* Left: Passage */}
           {currentQ?.passage ? (
             <div className="bg-zinc-900/60 border border-zinc-800 rounded-2xl flex flex-col overflow-hidden">
               <div className="bg-zinc-800/60 px-4 py-2.5 border-b border-zinc-700 flex items-center gap-2">
@@ -441,9 +465,9 @@ export default function ReadingMixedPage() {
             </div>
           ) : (
             <div className="bg-zinc-900/60 border border-zinc-800 rounded-2xl flex items-center justify-center min-h-[200px]">
-              <div className="text-center p-6">
-                <span className="text-4xl">{info.icon}</span>
-                <p className={`text-sm font-bold mt-2 ${info.color}`}>{info.label} — Incomplete Sentence</p>
+              <div className="text-center p-6 flex flex-col items-center">
+                <Icon className={`w-10 h-10 ${info.color} mb-2`} />
+                <p className={`text-sm font-bold ${info.color}`}>{info.label} — Incomplete Sentence</p>
                 <p className="text-zinc-500 text-xs mt-1">Không có đoạn văn — chọn đáp án bên phải</p>
               </div>
             </div>
@@ -451,15 +475,16 @@ export default function ReadingMixedPage() {
 
           {/* Right: Question */}
           <div className="flex flex-col gap-4">
-            {/* Part quick nav */}
             <div className="flex gap-1 overflow-x-auto pb-1">
               {selectedParts.map(p => {
                 const pInfo = PART_LABELS[p];
+                const PIcon = pInfo.icon;
                 const pQs = questions.filter(q => q.part === p);
                 const pAnswered = pQs.filter(q => answers[q.id]).length;
                 return (
                   <div key={p} className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg ${pInfo.bg}/10 border border-current/20 ${pInfo.color} text-xs font-bold shrink-0`}>
-                    {pInfo.icon} {pAnswered}/{pQs.length}
+                    <PIcon className="w-3.5 h-3.5" />
+                    <span>{pAnswered}/{pQs.length}</span>
                   </div>
                 );
               })}
@@ -471,7 +496,7 @@ export default function ReadingMixedPage() {
                   <h4 className="text-white font-medium leading-relaxed">{currentQ.question_text || "Điền vào chỗ trống"}</h4>
                   <button onClick={() => toggleMark(currentQ.id)}
                     className={`shrink-0 px-2 py-1 rounded-lg text-sm ${markedForReview[currentQ.id] ? "bg-amber-500/20 text-amber-400" : "bg-zinc-800 text-zinc-500 hover:text-zinc-300"}`}>
-                    {markedForReview[currentQ.id] ? "★" : "☆"}
+                    <Star className={`w-4 h-4 ${markedForReview[currentQ.id] ? "fill-amber-400 text-amber-400" : ""}`} />
                   </button>
                 </div>
                 <div className="space-y-2">
@@ -496,9 +521,15 @@ export default function ReadingMixedPage() {
             {/* Navigation */}
             <div className="flex justify-between">
               <button onClick={() => navigateTo(currentQIndex - 1)} disabled={currentQIndex === 0}
-                className="px-5 py-2.5 rounded-xl bg-zinc-800 hover:bg-zinc-700 text-white font-bold text-sm disabled:opacity-40">← Trước</button>
+                className="px-5 py-2.5 rounded-xl bg-zinc-800 hover:bg-zinc-700 text-white font-bold text-sm disabled:opacity-40 flex items-center gap-1.5">
+                <ChevronLeft className="w-4 h-4" />
+                <span>Trước</span>
+              </button>
               <button onClick={() => navigateTo(currentQIndex + 1)} disabled={currentQIndex === questions.length - 1}
-                className="px-5 py-2.5 rounded-xl bg-zinc-800 hover:bg-zinc-700 text-white font-bold text-sm disabled:opacity-40">Tiếp →</button>
+                className="px-5 py-2.5 rounded-xl bg-zinc-800 hover:bg-zinc-700 text-white font-bold text-sm disabled:opacity-40 flex items-center gap-1.5">
+                <span>Tiếp</span>
+                <ChevronRight className="w-4 h-4" />
+              </button>
             </div>
           </div>
         </div>
@@ -533,7 +564,6 @@ export default function ReadingMixedPage() {
     const totalQ = reviewResults.length;
     const accuracy = Math.round((totalCorrect / totalQ) * 100);
 
-    // Score by part
     const partStats = selectedParts.map(part => {
       const partQs = questions.filter(q => q.part === part);
       const partResults = reviewResults.filter(r => partQs.some(q => q.id === r.questionId));
@@ -541,12 +571,10 @@ export default function ReadingMixedPage() {
       return { part, correct, total: partResults.length, accuracy: partResults.length ? Math.round((correct / partResults.length) * 100) : 0 };
     });
 
-    // Time analysis
     const avgTime = timeSpent.length > 0 ? Math.round(timeSpent.reduce((acc, e) => acc + e.seconds, 0) / timeSpent.length) : 0;
     const slowestQ = [...timeSpent].sort((a, b) => b.seconds - a.seconds)[0];
     const slowestQData = slowestQ ? questions.find(q => q.id === slowestQ.questionId) : null;
 
-    // Filtered questions for review
     const filteredQs = questions.filter(q => {
       const r = reviewResults.find(rr => rr.questionId === q.id);
       if (reviewFilter === "wrong") return r && !r.isCorrect;
@@ -568,21 +596,26 @@ export default function ReadingMixedPage() {
               <p className="text-zinc-400 text-sm">{totalCorrect}/{totalQ} câu đúng · {selectedParts.map(p => PART_LABELS[p].label).join(", ")}</p>
             </div>
           </div>
-          <button onClick={() => setScreen("config")} className="px-5 py-2.5 bg-zinc-800 hover:bg-zinc-700 text-white font-bold rounded-xl text-sm">
-            Luyện lại
+          <button onClick={() => setScreen("config")} className="flex items-center gap-1.5 px-5 py-2.5 bg-zinc-800 hover:bg-zinc-700 text-white font-bold rounded-xl text-sm transition">
+            <RotateCcw className="w-4 h-4" />
+            <span>Luyện lại</span>
           </button>
         </div>
 
         {/* Score breakdown by part */}
         <div className="bg-zinc-900/60 border border-zinc-800 rounded-2xl p-5">
-          <h3 className="text-white font-bold mb-4">📊 Phân tích điểm theo phần</h3>
+          <h3 className="text-white font-bold mb-4 flex items-center gap-2">
+            <SlidersHorizontal className="w-5 h-5 text-purple-400" />
+            <span>Phân tích điểm theo phần</span>
+          </h3>
           <div className="grid sm:grid-cols-3 gap-4">
             {partStats.map(({ part, correct, total, accuracy: acc }) => {
               const info = PART_LABELS[part];
+              const Icon = info.icon;
               return (
                 <div key={part} className={`${info.bg}/10 border border-current/20 ${info.color} rounded-xl p-4`}>
                   <div className="flex items-center gap-2 mb-2">
-                    <span className="text-xl">{info.icon}</span>
+                    <Icon className="w-5 h-5" />
                     <span className="font-bold">{info.label}</span>
                   </div>
                   <p className="text-3xl font-extrabold text-white">{acc}%</p>
@@ -598,7 +631,10 @@ export default function ReadingMixedPage() {
 
         {/* Time analysis */}
         <div className="bg-zinc-900/60 border border-zinc-800 rounded-2xl p-5">
-          <h3 className="text-white font-bold mb-4">⏱️ Phân tích thời gian</h3>
+          <h3 className="text-white font-bold mb-4 flex items-center gap-2">
+            <Clock className="w-5 h-5 text-sky-400" />
+            <span>Phân tích thời gian</span>
+          </h3>
           <div className="grid sm:grid-cols-3 gap-4 text-center">
             <div className="bg-zinc-800/50 rounded-xl p-4">
               <p className="text-2xl font-extrabold text-sky-400">{avgTime}s</p>
@@ -621,7 +657,10 @@ export default function ReadingMixedPage() {
         {/* Questions review */}
         <div className="bg-zinc-900/60 border border-zinc-800 rounded-2xl p-5">
           <div className="flex items-center justify-between flex-wrap gap-3 mb-5">
-            <h3 className="text-white font-bold">📝 Xem lại câu hỏi</h3>
+            <h3 className="text-white font-bold flex items-center gap-2">
+              <FileText className="w-5 h-5 text-indigo-400" />
+              <span>Xem lại câu hỏi</span>
+            </h3>
             <div className="flex gap-2">
               {(["all", "wrong", "marked"] as const).map(f => (
                 <button key={f} onClick={() => setReviewFilter(f)}
@@ -636,19 +675,26 @@ export default function ReadingMixedPage() {
             {filteredQs.length === 0 && (
               <p className="text-zinc-500 text-sm text-center py-6">Không có câu hỏi nào phù hợp với bộ lọc.</p>
             )}
-            {filteredQs.map((q, idx) => {
+            {filteredQs.map((q) => {
               const result = reviewResults.find(r => r.questionId === q.id);
               const isCorrect = result?.isCorrect;
               const info = PART_LABELS[q.part];
+              const Icon = info.icon;
               const qTime = timeSpent.find(t => t.questionId === q.id);
               const isInLog = addedToLog[q.id];
 
               return (
                 <div key={q.id} className={`border rounded-2xl overflow-hidden ${isCorrect ? "border-emerald-800/40" : "border-rose-800/40"}`}>
                   <div className={`px-4 py-2.5 border-b flex items-center gap-3 flex-wrap ${isCorrect ? "bg-emerald-900/20 border-emerald-800/30" : "bg-rose-900/20 border-rose-800/30"}`}>
-                    <span className={`font-bold text-sm ${isCorrect ? "text-emerald-400" : "text-rose-400"}`}>{isCorrect ? "✓" : "✗"} Câu {questions.indexOf(q) + 1}</span>
-                    <span className={`text-[10px] font-bold px-2 py-0.5 rounded-full ${info.bg}/20 ${info.color}`}>{info.icon} {info.label}</span>
-                    {markedForReview[q.id] && <span className="text-amber-400 text-[11px]">★ Đánh dấu</span>}
+                    <span className={`font-bold text-sm flex items-center gap-1 ${isCorrect ? "text-emerald-400" : "text-rose-400"}`}>
+                      {isCorrect ? <CheckCircle2 className="w-4 h-4" /> : <XCircle className="w-4 h-4" />}
+                      <span>Câu {questions.indexOf(q) + 1}</span>
+                    </span>
+                    <span className={`text-[10px] font-bold px-2 py-0.5 rounded-full flex items-center gap-1 ${info.bg}/20 ${info.color}`}>
+                      <Icon className="w-3 h-3" />
+                      <span>{info.label}</span>
+                    </span>
+                    {markedForReview[q.id] && <span className="text-amber-400 text-[11px] flex items-center gap-0.5"><Star className="w-3 h-3 fill-amber-400" /> Đánh dấu</span>}
                     {qTime && <span className="text-zinc-500 text-[11px] ml-auto">⏱ {qTime.seconds}s</span>}
                   </div>
                   <div className="p-4">
@@ -663,22 +709,26 @@ export default function ReadingMixedPage() {
                           <div key={opt.id} className={`p-2.5 rounded-xl border flex items-center gap-2 text-xs ${cls}`}>
                             <span className={`w-6 h-6 rounded-full flex items-center justify-center font-bold text-[10px] shrink-0 ${isUser && isCorrect ? "bg-emerald-600 text-white" : isUser ? "bg-rose-600 text-white" : "bg-zinc-700 text-zinc-400"}`}>{opt.option_label}</span>
                             <span className="break-words">{opt.option_text}</span>
-                            {isUser && <span className="ml-auto shrink-0">{isCorrect ? "✓" : "✗"}</span>}
+                            {isUser && <span className="ml-auto shrink-0">{isCorrect ? <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400" /> : <XCircle className="w-3.5 h-3.5 text-rose-400" />}</span>}
                           </div>
                         );
                       })}
                     </div>
                     {q.explanation && (
                       <div className="bg-indigo-950/30 border border-indigo-900/30 rounded-xl p-3 mb-2">
-                        <p className="text-indigo-400 font-bold text-[10px] uppercase mb-1">📖 Giải thích</p>
+                        <p className="text-indigo-400 font-bold text-[10px] uppercase mb-1 flex items-center gap-1">
+                          <BookOpen className="w-3 h-3" />
+                          <span>Giải thích</span>
+                        </p>
                         <p className="text-indigo-100/70 text-xs leading-relaxed" dangerouslySetInnerHTML={{ __html: q.explanation.replace(/\n/g, "<br/>") }} />
                       </div>
                     )}
                     {!isCorrect && (
                       <button onClick={() => handleAddToErrorLog(q)}
-                        className={`w-full py-2 text-xs font-bold rounded-lg transition ${isInLog ? "bg-rose-900/30 text-rose-400 border border-rose-800/30 cursor-default" : "bg-zinc-800 hover:bg-zinc-700 text-zinc-300"}`}
+                        className={`w-full py-2 text-xs font-bold rounded-lg transition flex items-center justify-center gap-1.5 ${isInLog ? "bg-rose-900/30 text-rose-400 border border-rose-800/30 cursor-default" : "bg-zinc-800 hover:bg-zinc-700 text-zinc-300"}`}
                         disabled={isInLog}>
-                        {isInLog ? "✓ Đã thêm vào nhật ký lỗi" : "🗂️ Thêm vào nhật ký lỗi"}
+                        <FolderPlus className="w-3.5 h-3.5" />
+                        <span>{isInLog ? "Đã thêm vào nhật ký lỗi" : "Thêm vào nhật ký lỗi"}</span>
                       </button>
                     )}
                   </div>

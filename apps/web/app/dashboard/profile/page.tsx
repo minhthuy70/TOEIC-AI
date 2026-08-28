@@ -2,15 +2,30 @@
 
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
+import {
+  User,
+  Target,
+  Lock,
+  Settings,
+  ShieldCheck,
+  Plus,
+  Check,
+  X,
+  Laptop,
+  LogOut,
+  AlertTriangle,
+  Trash2,
+  Key,
+} from "lucide-react";
 
 const API = process.env.NEXT_PUBLIC_API_URL || "http://localhost:3001";
 
 const TABS = [
-  { id: "info", label: "Thông tin cá nhân", icon: "👤" },
-  { id: "goal", label: "Mục tiêu TOEIC", icon: "🎯" },
-  { id: "password", label: "Đổi mật khẩu", icon: "🔒" },
-  { id: "settings", label: "Cài đặt", icon: "⚙️" },
-  { id: "account", label: "Quản lý tài khoản", icon: "🔐" },
+  { id: "info", label: "Thông tin cá nhân", icon: User },
+  { id: "goal", label: "Mục tiêu TOEIC", icon: Target },
+  { id: "password", label: "Đổi mật khẩu", icon: Lock },
+  { id: "settings", label: "Cài đặt", icon: Settings },
+  { id: "account", label: "Quản lý tài khoản", icon: ShieldCheck },
 ];
 
 const TARGET_OPTIONS = [400, 500, 600, 700, 750, 800, 850, 900, 950, 990];
@@ -780,7 +795,10 @@ const handleDeleteAccount = async () => {
     <div className="space-y-6 max-w-3xl mx-auto">
       {/* Header */}
       <div>
-        <h1 className="text-2xl font-bold text-white">👤 Hồ sơ cá nhân</h1>
+        <h1 className="text-2xl font-bold text-white flex items-center gap-2.5">
+          <User className="w-7 h-7 text-red-500" />
+          <span>Hồ sơ cá nhân</span>
+        </h1>
         <p className="text-zinc-400 text-sm mt-1">Quản lý thông tin và cài đặt tài khoản</p>
       </div>
 
@@ -805,9 +823,7 @@ const handleDeleteAccount = async () => {
               onChange={handleAvatarChange}
               className="hidden"
             />
-            <svg className="w-3 h-3 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-              <path d="M12 5v14M5 12h14" strokeLinecap="round" strokeLinejoin="round"/>
-            </svg>
+            <Plus className="w-3.5 h-3.5 text-white" />
           </label>
         </div>
         <div className="flex-1 min-w-0">
@@ -866,34 +882,39 @@ const handleDeleteAccount = async () => {
 
       {/* Toast */}
       {saveMsg && (
-        <div className={`flex items-center gap-3 px-4 py-3 rounded-xl border text-[13px] font-medium transition-all ${
+        <div className={`flex items-center gap-2 px-4 py-3 rounded-xl border text-[13px] font-medium transition-all ${
           saveMsg.includes("không khớp") || saveMsg.includes("Vui lòng") || saveMsg.includes("ít nhất")
             ? "bg-red-600/15 border-red-600/25 text-red-300"
             : "bg-green-600/15 border-green-600/25 text-green-300"
         }`}>
-          {saveMsg.includes("không khớp") || saveMsg.includes("Vui lòng") || saveMsg.includes("ít nhất")
-            ? "❌"
-            : "✅"
-          } {saveMsg}
+          {saveMsg.includes("không khớp") || saveMsg.includes("Vui lòng") || saveMsg.includes("ít nhất") ? (
+            <X className="w-4 h-4 text-red-400 shrink-0" />
+          ) : (
+            <Check className="w-4 h-4 text-emerald-400 shrink-0" />
+          )}
+          <span>{saveMsg}</span>
         </div>
       )}
 
       {/* Tabs */}
       <div className="flex gap-1 bg-zinc-900/60 border border-zinc-800/50 rounded-2xl p-1.5 overflow-x-auto">
-        {TABS.map((tab) => (
-          <button
-            key={tab.id}
-            onClick={() => setActiveTab(tab.id)}
-            className={`flex-1 min-w-max flex items-center justify-center gap-2 py-2.5 px-3 rounded-xl text-[13px] font-medium transition-all duration-200 ${
-              activeTab === tab.id
-                ? "bg-red-600 text-white shadow-lg shadow-red-600/20"
-                : "text-zinc-400 hover:text-white hover:bg-zinc-800/60"
-            }`}
-          >
-            <span>{tab.icon}</span>
-            <span className="hidden sm:inline">{tab.label}</span>
-          </button>
-        ))}
+        {TABS.map((tab) => {
+          const TabIcon = tab.icon;
+          return (
+            <button
+              key={tab.id}
+              onClick={() => setActiveTab(tab.id)}
+              className={`flex-1 min-w-max flex items-center justify-center gap-2 py-2.5 px-3 rounded-xl text-[13px] font-medium transition-all duration-200 ${
+                activeTab === tab.id
+                  ? "bg-red-600 text-white shadow-lg shadow-red-600/20"
+                  : "text-zinc-400 hover:text-white hover:bg-zinc-800/60"
+              }`}
+            >
+              <TabIcon className="w-4 h-4" />
+              <span className="hidden sm:inline">{tab.label}</span>
+            </button>
+          );
+        })}
       </div>
 
       {/* ── Personal Info ── */}

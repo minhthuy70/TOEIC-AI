@@ -18,33 +18,62 @@ import {
   type ErrorDrillSubmitResponse,
 } from "@/services/error-tracking";
 import { playTestSoundEffect } from "@/lib/test-settings";
+import {
+  BookMarked,
+  Settings,
+  FileText,
+  BarChart3,
+  Zap,
+  Search,
+  Trash2,
+  Clock,
+  Check,
+  X,
+  RotateCcw,
+  Flame,
+  Target,
+  PartyPopper,
+  Lightbulb,
+  Bot,
+  AlertTriangle,
+  TrendingUp,
+  Calendar,
+  Trophy,
+  Pin,
+  Save,
+  BookOpen,
+  ArrowRight,
+  ArrowLeft,
+  Dice5,
+  Loader2,
+} from "lucide-react";
 
 const ERROR_TYPE_CONFIG: Record<
   string,
-  { label: string; badgeColor: string; icon: string; desc: string }
+  { label: string; badgeColor: string; icon: any; desc: string }
 > = {
   grammar: {
     label: "Ngữ pháp",
     badgeColor: "bg-purple-500/20 text-purple-300 border-purple-500/40",
-    icon: "📝",
+    icon: FileText,
     desc: "Sai cấu trúc, thì, mệnh đề hoặc chia động từ",
   },
   vocabulary: {
     label: "Từ vựng",
     badgeColor: "bg-blue-500/20 text-blue-300 border-blue-500/40",
-    icon: "📖",
+    icon: BookOpen,
     desc: "Chưa nắm rõ nghĩa từ, từ đồng nghĩa hoặc collocations",
   },
   careless: {
     label: "Bất cẩn",
     badgeColor: "bg-amber-500/20 text-amber-300 border-amber-500/40",
-    icon: "⚡",
+    icon: Zap,
     desc: "Đọc thiếu sót đề bài, nhìn nhầm từ khóa hoặc bẫy đề",
   },
   timing: {
     label: "Thiếu thời gian",
     badgeColor: "bg-rose-500/20 text-rose-300 border-rose-500/40",
-    icon: "⏱️",
+    icon: Clock,
     desc: "Hết thời gian làm bài, chọn vội hoặc không kịp phân tích",
   },
 };
@@ -301,11 +330,7 @@ export default function ErrorLogPage() {
 
     setDrillAnsweredResults((prev) => [
       ...prev,
-      {
-        errorLogId: currentQ.errorLogId,
-        isCorrect,
-        selectedOption: optionLabel,
-      },
+      { errorLogId: currentQ.errorLogId, isCorrect, selectedOption: optionLabel },
     ]);
   };
 
@@ -316,7 +341,7 @@ export default function ErrorLogPage() {
       setDrillChecked(false);
       playTestSoundEffect("click");
     } else {
-      // Finish Drill
+      // Submit Drill
       try {
         setIsSubmittingDrill(true);
         const res = await submitErrorDrill({
@@ -326,7 +351,7 @@ export default function ErrorLogPage() {
         setDrillSummary(res);
         setDrillStep("summary");
         playTestSoundEffect("complete");
-        loadData(); // reload log list
+        loadData();
       } catch (err: any) {
         alert(err?.message || "Lỗi khi nộp bài tập Drill!");
       } finally {
@@ -338,11 +363,8 @@ export default function ErrorLogPage() {
   const handleScheduleRepeat = async (days: number) => {
     try {
       setIsScheduling(true);
-      const res = await scheduleRepeatDrill({
-        errorType: drillMode === "type" ? drillErrorType : undefined,
-        repeatInDays: days,
-      });
-      showToast(res.message);
+      await scheduleRepeatDrill({ repeatInDays: days });
+      showToast(`Đã lên lịch nhắc nhở ôn tập sau ${days} ngày!`);
     } catch (err: any) {
       alert(err?.message || "Lỗi khi lên lịch ôn tập!");
     } finally {
@@ -364,8 +386,8 @@ export default function ErrorLogPage() {
         {/* ================================================== */}
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
           <div className="flex items-center gap-3.5">
-            <div className="w-12 h-12 rounded-2xl bg-red-600/15 border border-red-500/30 text-red-400 flex items-center justify-center text-2xl shrink-0">
-              📓
+            <div className="w-12 h-12 rounded-2xl bg-red-600/15 border border-red-500/30 text-red-400 flex items-center justify-center shrink-0">
+              <BookMarked className="w-6 h-6" />
             </div>
             <div>
               <div className="flex items-center gap-2">
@@ -387,7 +409,7 @@ export default function ErrorLogPage() {
               href="/dashboard/error-log/settings"
               className="px-4 py-2.5 rounded-xl border border-zinc-800 bg-zinc-900/80 hover:bg-zinc-800 text-zinc-300 hover:text-white text-xs font-bold transition flex items-center gap-1.5"
             >
-              <span>⚙️</span>
+              <Settings className="w-4 h-4" />
               <span>Cài đặt</span>
             </Link>
 
@@ -395,7 +417,7 @@ export default function ErrorLogPage() {
               href="/dashboard/mock-test"
               className="px-4 py-2.5 rounded-xl border border-zinc-800 bg-zinc-900/80 hover:bg-zinc-800 text-zinc-300 hover:text-white text-xs font-bold transition flex items-center gap-2"
             >
-              <span>📝</span>
+              <FileText className="w-4 h-4 text-indigo-400" />
               <span>Làm bài thi thử</span>
             </Link>
           </div>
@@ -415,37 +437,40 @@ export default function ErrorLogPage() {
           <button
             type="button"
             onClick={() => setActiveTab("list")}
-            className={`rounded-xl px-4 py-3 text-xs sm:text-sm font-medium transition ${
+            className={`flex items-center justify-center gap-1.5 rounded-xl px-4 py-3 text-xs sm:text-sm font-medium transition ${
               activeTab === "list"
                 ? "bg-red-600 text-white shadow-lg font-bold"
                 : "text-zinc-400 hover:text-white"
             }`}
           >
-            📓 Sổ tay ({stats.total})
+            <BookMarked className="w-4 h-4" />
+            <span>Sổ tay ({stats.total})</span>
           </button>
 
           <button
             type="button"
             onClick={() => setActiveTab("analysis")}
-            className={`rounded-xl px-4 py-3 text-xs sm:text-sm font-medium transition ${
+            className={`flex items-center justify-center gap-1.5 rounded-xl px-4 py-3 text-xs sm:text-sm font-medium transition ${
               activeTab === "analysis"
                 ? "bg-red-600 text-white shadow-lg font-bold"
                 : "text-zinc-400 hover:text-white"
             }`}
           >
-            📊 Phân tích lỗi (8.2)
+            <BarChart3 className="w-4 h-4" />
+            <span>Phân tích lỗi (8.2)</span>
           </button>
 
           <button
             type="button"
             onClick={() => setActiveTab("drills")}
-            className={`rounded-xl px-4 py-3 text-xs sm:text-sm font-medium transition ${
+            className={`flex items-center justify-center gap-1.5 rounded-xl px-4 py-3 text-xs sm:text-sm font-medium transition ${
               activeTab === "drills"
                 ? "bg-red-600 text-white shadow-lg font-bold"
                 : "text-zinc-400 hover:text-white"
             }`}
           >
-            ⚡ Luyện tập Drill (8.3)
+            <Zap className="w-4 h-4" />
+            <span>Luyện tập Drill (8.3)</span>
           </button>
         </div>
 
@@ -480,7 +505,7 @@ export default function ErrorLogPage() {
             {/* Filter toolbar */}
             <div className="rounded-3xl border border-white/5 bg-[#121214] p-6 space-y-4">
               <div className="relative">
-                <span className="absolute left-4 top-1/2 -translate-y-1/2 text-zinc-500 text-sm">🔍</span>
+                <Search className="w-4 h-4 absolute left-4 top-1/2 -translate-y-1/2 text-zinc-500" />
                 <input
                   type="text"
                   placeholder="Tìm kiếm câu hỏi, từ khóa, ghi chú cá nhân, giải thích..."
@@ -500,10 +525,10 @@ export default function ErrorLogPage() {
                     className="w-full bg-zinc-900 border border-zinc-800 rounded-xl px-3 py-2 text-xs text-zinc-300 focus:outline-none focus:border-red-500/50"
                   >
                     <option value="all">Tất cả loại lỗi</option>
-                    <option value="grammar">📝 Ngữ pháp ({stats.grammarCount})</option>
-                    <option value="vocabulary">📖 Từ vựng ({stats.vocabularyCount})</option>
-                    <option value="careless">⚡ Bất cẩn ({stats.carelessCount})</option>
-                    <option value="timing">⏱️ Thiếu thời gian ({stats.timingCount})</option>
+                    <option value="grammar">Ngữ pháp ({stats.grammarCount})</option>
+                    <option value="vocabulary">Từ vựng ({stats.vocabularyCount})</option>
+                    <option value="careless">Bất cẩn ({stats.carelessCount})</option>
+                    <option value="timing">Thiếu thời gian ({stats.timingCount})</option>
                   </select>
                 </div>
 
@@ -550,8 +575,8 @@ export default function ErrorLogPage() {
                     className="w-full bg-zinc-900 border border-zinc-800 rounded-xl px-3 py-2 text-xs text-zinc-300 focus:outline-none focus:border-red-500/50"
                   >
                     <option value="all">Tất cả trạng thái</option>
-                    <option value="active">⏳ Đang theo dõi</option>
-                    <option value="resolved">✅ Đã giải quyết</option>
+                    <option value="active">Đang theo dõi</option>
+                    <option value="resolved">Đã giải quyết</option>
                   </select>
                 </div>
 
@@ -567,10 +592,10 @@ export default function ErrorLogPage() {
                     aria-label="Sắp xếp danh sách lỗi"
                     className="w-full bg-zinc-900 border border-zinc-800 rounded-xl px-3 py-2 text-xs text-zinc-300 focus:outline-none focus:border-red-500/50"
                   >
-                    <option value="frequency-desc">🔁 Sai nhiều nhất</option>
-                    <option value="frequency-asc">🔁 Sai ít nhất</option>
-                    <option value="date-desc">📅 Ngày mới nhất</option>
-                    <option value="date-asc">📅 Ngày cũ nhất</option>
+                    <option value="frequency-desc">Sai nhiều nhất</option>
+                    <option value="frequency-asc">Sai ít nhất</option>
+                    <option value="date-desc">Ngày mới nhất</option>
+                    <option value="date-asc">Ngày cũ nhất</option>
                   </select>
                 </div>
               </div>
@@ -585,7 +610,9 @@ export default function ErrorLogPage() {
               </div>
             ) : items.length === 0 ? (
               <div className="rounded-3xl border border-white/5 bg-[#121214] p-12 text-center space-y-3">
-                <div className="text-5xl">🎉</div>
+                <div className="w-14 h-14 rounded-full bg-emerald-500/10 text-emerald-400 flex items-center justify-center mx-auto mb-2">
+                  <Check className="w-7 h-7" />
+                </div>
                 <h3 className="text-base font-bold text-white">Không có câu sai nào khớp bộ lọc</h3>
                 <p className="text-xs text-zinc-400 max-w-md mx-auto">
                   Bạn chưa lưu câu sai nào hoặc các câu sai đã được lọc hết. Hãy tiếp tục làm đề thi thử để củng cố kiến thức!
@@ -608,6 +635,7 @@ export default function ErrorLogPage() {
               <div className="space-y-3.5">
                 {items.map((item) => {
                   const typeCfg = ERROR_TYPE_CONFIG[item.errorType] || ERROR_TYPE_CONFIG.grammar;
+                  const TypeIcon = typeCfg.icon;
                   const isResolved = item.status === "resolved";
 
                   return (
@@ -627,24 +655,35 @@ export default function ErrorLogPage() {
                             </span>
 
                             <span className={`px-2.5 py-0.5 rounded-full text-[10px] font-bold border ${typeCfg.badgeColor} flex items-center gap-1`}>
-                              <span>{typeCfg.icon}</span>
+                              <TypeIcon className="w-3 h-3" />
                               <span>{typeCfg.label}</span>
                             </span>
 
-                            <span className={`px-2.5 py-0.5 rounded-full text-[10px] font-extrabold border ${
+                            <span className={`px-2.5 py-0.5 rounded-full text-[10px] font-extrabold border flex items-center gap-1 ${
                               item.frequency > 1
                                 ? "bg-rose-500/20 text-rose-300 border-rose-500/40"
                                 : "bg-zinc-800 text-zinc-400 border-zinc-700"
                             }`}>
-                              🔁 Sai {item.frequency} lần
+                              <RotateCcw className="w-2.5 h-2.5" />
+                              <span>Sai {item.frequency} lần</span>
                             </span>
 
-                            <span className={`px-2.5 py-0.5 rounded-full text-[10px] font-bold border ${
+                            <span className={`px-2.5 py-0.5 rounded-full text-[10px] font-bold border flex items-center gap-1 ${
                               isResolved
                                 ? "bg-emerald-500/20 text-emerald-300 border-emerald-500/40"
                                 : "bg-amber-500/20 text-amber-300 border-amber-500/40"
                             }`}>
-                              {isResolved ? "✅ Đã giải quyết" : "⏳ Đang theo dõi"}
+                              {isResolved ? (
+                                <>
+                                  <Check className="w-3 h-3" />
+                                  <span>Đã giải quyết</span>
+                                </>
+                              ) : (
+                                <>
+                                  <Clock className="w-3 h-3" />
+                                  <span>Đang theo dõi</span>
+                                </>
+                              )}
                             </span>
                           </div>
 
@@ -674,7 +713,7 @@ export default function ErrorLogPage() {
 
                           {item.userNote && (
                             <div className="text-[11px] text-zinc-300 bg-white/[0.02] px-3 py-1.5 rounded-xl border border-white/5 inline-flex items-center gap-1.5">
-                              <span>📌</span>
+                              <Pin className="w-3 h-3 text-amber-400" />
                               <span className="italic line-clamp-1">{item.userNote}</span>
                             </div>
                           )}
@@ -684,21 +723,23 @@ export default function ErrorLogPage() {
                           <button
                             type="button"
                             onClick={() => handleToggleStatus(item)}
-                            className={`px-3 py-2 rounded-xl text-xs font-bold border transition ${
+                            className={`inline-flex items-center gap-1.5 px-3 py-2 rounded-xl text-xs font-bold border transition ${
                               isResolved
                                 ? "bg-zinc-800 hover:bg-zinc-700 text-zinc-300 border-zinc-700"
                                 : "bg-emerald-600/20 hover:bg-emerald-600/30 text-emerald-300 border-emerald-500/40"
                             }`}
                           >
-                            {isResolved ? "Mở lại ⏳" : "Đã giải quyết ✓"}
+                            {!isResolved && <Check className="w-3.5 h-3.5" />}
+                            <span>{isResolved ? "Mở lại" : "Đã giải quyết"}</span>
                           </button>
 
                           <button
                             type="button"
                             onClick={() => openDetail(item)}
-                            className="px-4 py-2 rounded-xl text-xs font-bold bg-red-600 hover:bg-red-500 text-white transition shadow"
+                            className="flex items-center gap-1.5 px-4 py-2 rounded-xl text-xs font-bold bg-red-600 hover:bg-red-500 text-white transition shadow"
                           >
-                            🔍 Chi tiết & Lời giải
+                            <Search className="w-3.5 h-3.5" />
+                            <span>Chi tiết & Lời giải</span>
                           </button>
 
                           <button
@@ -707,7 +748,7 @@ export default function ErrorLogPage() {
                             title="Xóa câu hỏi này khỏi Sổ tay lỗi"
                             className="p-2 rounded-xl text-zinc-500 hover:text-red-400 hover:bg-red-500/10 transition text-xs"
                           >
-                            🗑️
+                            <Trash2 className="w-4 h-4" />
                           </button>
                         </div>
                       </div>
@@ -732,16 +773,19 @@ export default function ErrorLogPage() {
               </div>
             ) : !analysisData || analysisData.totalErrors === 0 ? (
               <div className="rounded-3xl border border-white/5 bg-[#121214] p-12 text-center space-y-3">
-                <div className="text-5xl">📊</div>
+                <div className="w-14 h-14 rounded-full bg-indigo-500/10 text-indigo-400 flex items-center justify-center mx-auto mb-2">
+                  <BarChart3 className="w-7 h-7" />
+                </div>
                 <h3 className="text-base font-bold text-white">Chưa có dữ liệu phân tích lỗi</h3>
                 <p className="text-xs text-zinc-400 max-w-md mx-auto">
                   Hãy lưu ít nhất 1 câu làm sai vào Sổ tay lỗi để hệ thống AI phân tích biểu đồ phân phối, điểm yếu và mẫu lỗi của bạn.
                 </p>
                 <Link
                   href="/dashboard/mock-test"
-                  className="inline-block mt-2 px-6 py-3 rounded-xl bg-red-600 hover:bg-red-500 text-white font-bold text-xs shadow-lg transition"
+                  className="inline-flex items-center gap-1.5 mt-2 px-6 py-3 rounded-xl bg-red-600 hover:bg-red-500 text-white font-bold text-xs shadow-lg transition"
                 >
-                  Làm đề thi thử ngay →
+                  <span>Làm đề thi thử ngay</span>
+                  <ArrowRight className="w-3.5 h-3.5" />
                 </Link>
               </div>
             ) : (
@@ -749,7 +793,10 @@ export default function ErrorLogPage() {
                 {/* 1. Resolution Rate KPI */}
                 <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
                   <div className="rounded-3xl border border-emerald-500/30 bg-gradient-to-br from-emerald-950/20 via-zinc-900 to-zinc-950 p-6 flex flex-col justify-between">
-                    <span className="text-xs text-emerald-400 font-bold uppercase tracking-wider">🎯 Tỷ Lệ Giải Quyết Lỗi</span>
+                    <span className="text-xs text-emerald-400 font-bold uppercase tracking-wider flex items-center gap-1">
+                      <Target className="w-3.5 h-3.5" />
+                      <span>Tỷ Lệ Giải Quyết Lỗi</span>
+                    </span>
                     <div className="my-2">
                       <div className="text-4xl font-black text-white">{analysisData.resolutionRateStats.resolutionRate}%</div>
                       <p className="text-xs text-emerald-300/80 mt-1">
@@ -762,7 +809,10 @@ export default function ErrorLogPage() {
                   </div>
 
                   <div className="rounded-3xl border border-white/5 bg-[#121214] p-6 flex flex-col justify-between">
-                    <span className="text-xs text-zinc-400 font-bold uppercase tracking-wider">⏳ Câu Sai Cần Xử Lý</span>
+                    <span className="text-xs text-zinc-400 font-bold uppercase tracking-wider flex items-center gap-1">
+                      <Clock className="w-3.5 h-3.5 text-amber-400" />
+                      <span>Câu Sai Cần Xử Lý</span>
+                    </span>
                     <div className="my-2">
                       <div className="text-4xl font-black text-amber-400">{analysisData.resolutionRateStats.active}</div>
                       <p className="text-xs text-zinc-400 mt-1">Câu hỏi cần ôn tập lại và làm bài tập củng cố</p>
@@ -773,10 +823,13 @@ export default function ErrorLogPage() {
                   </div>
 
                   <div className="rounded-3xl border border-white/5 bg-[#121214] p-6 flex flex-col justify-between">
-                    <span className="text-xs text-zinc-400 font-bold uppercase tracking-wider">💡 Đánh Giá Tiến Bộ</span>
+                    <span className="text-xs text-zinc-400 font-bold uppercase tracking-wider flex items-center gap-1">
+                      <Lightbulb className="w-3.5 h-3.5 text-purple-400" />
+                      <span>Đánh Giá Tiến Bộ</span>
+                    </span>
                     <div className="my-2">
                       <div className="text-2xl font-bold text-purple-300">
-                        {analysisData.resolutionRateStats.resolutionRate >= 70 ? "Xuất sắc 🎉" : analysisData.resolutionRateStats.resolutionRate >= 40 ? "Đang tiến bộ 📈" : "Cần tập trung ⚠️"}
+                        {analysisData.resolutionRateStats.resolutionRate >= 70 ? "Xuất sắc" : analysisData.resolutionRateStats.resolutionRate >= 40 ? "Đang tiến bộ" : "Cần tập trung"}
                       </div>
                       <p className="text-xs text-zinc-400 mt-1">Mục tiêu giải quyết trên 80% câu sai trước ngày thi</p>
                     </div>
@@ -788,7 +841,7 @@ export default function ErrorLogPage() {
                 {analysisData.recurringAlerts.length > 0 && (
                   <div className="rounded-3xl border border-rose-500/30 bg-gradient-to-br from-rose-950/20 via-zinc-900 to-zinc-950 p-6 space-y-4">
                     <div className="flex items-center gap-2">
-                      <span className="text-2xl">⚠️</span>
+                      <AlertTriangle className="w-6 h-6 text-rose-400" />
                       <div>
                         <h3 className="text-sm font-bold text-rose-400">Cảnh Báo Lỗi Lặp Lại (Recurring Error Alerts)</h3>
                         <p className="text-xs text-zinc-400">Phát hiện các câu hỏi bạn đã làm sai từ 2 lần trở lên chưa được giải quyết</p>
@@ -801,8 +854,9 @@ export default function ErrorLogPage() {
                           <div>
                             <div className="flex items-center justify-between">
                               <span className="text-[10px] font-bold text-zinc-400">Part {alert.part} • {alert.errorType}</span>
-                              <span className="px-2 py-0.5 rounded-full text-[10px] font-black bg-rose-600/30 text-rose-300 border border-rose-500/50">
-                                🔁 Sai {alert.frequency} lần!
+                              <span className="flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-black bg-rose-600/30 text-rose-300 border border-rose-500/50">
+                                <RotateCcw className="w-2.5 h-2.5" />
+                                <span>Sai {alert.frequency} lần!</span>
                               </span>
                             </div>
                             <p className="text-xs font-semibold text-white mt-1.5 line-clamp-2">{alert.questionText}</p>
@@ -819,7 +873,7 @@ export default function ErrorLogPage() {
                 {/* 3. AI Pattern Detection */}
                 <div className="rounded-3xl border border-purple-500/20 bg-gradient-to-br from-purple-950/20 to-zinc-950 p-6 space-y-4">
                   <div className="flex items-center gap-2">
-                    <span className="text-2xl">🤖</span>
+                    <Bot className="w-6 h-6 text-purple-400" />
                     <div>
                       <h3 className="text-base font-bold text-purple-300">Phát Hiện Mẫu Lỗi AI (Error Pattern Detection)</h3>
                       <p className="text-xs text-zinc-400">AI tự động phân tích và nhận diện thói quen làm sai có hệ thống của bạn</p>
@@ -851,8 +905,9 @@ export default function ErrorLogPage() {
                           <h4 className="text-xs font-bold text-white mt-2 leading-relaxed">{p.title}</h4>
                           <p className="text-xs text-zinc-400 mt-1 leading-relaxed">{p.description}</p>
                         </div>
-                        <div className="pt-2 border-t border-white/5 text-[11px] text-zinc-300">
-                          💡 <strong className="text-white">Khuyến nghị:</strong> {p.recommendation}
+                        <div className="pt-2 border-t border-white/5 text-[11px] text-zinc-300 flex items-start gap-1">
+                          <Lightbulb className="w-3.5 h-3.5 text-amber-400 shrink-0 mt-0.5" />
+                          <span><strong className="text-white">Khuyến nghị:</strong> {p.recommendation}</span>
                         </div>
                       </div>
                     ))}
@@ -864,36 +919,42 @@ export default function ErrorLogPage() {
                   <div className="rounded-3xl border border-white/5 bg-[#121214] p-6 space-y-4">
                     <div>
                       <h3 className="text-sm font-bold text-white flex items-center gap-2">
-                        <span>📊</span> <span>Biểu Đồ Phân Phối Loại Lỗi (Error Type Distribution)</span>
+                        <BarChart3 className="w-4 h-4 text-indigo-400" />
+                        <span>Biểu Đồ Phân Phối Loại Lỗi (Error Type Distribution)</span>
                       </h3>
                       <p className="text-xs text-zinc-500 mt-0.5">Tỷ lệ các nhóm nguyên nhân gây ra câu sai</p>
                     </div>
 
                     <div className="space-y-3 pt-2">
-                      {analysisData.typeDistribution.map((t) => (
-                        <div key={t.type} className="space-y-1.5">
-                          <div className="flex items-center justify-between text-xs">
-                            <span className="text-zinc-300 font-semibold flex items-center gap-1.5">
-                              <span>{ERROR_TYPE_CONFIG[t.type]?.icon}</span>
-                              <span>{t.label}</span>
-                            </span>
-                            <span className="font-bold text-white">{t.count} câu ({t.percentage}%)</span>
+                      {analysisData.typeDistribution.map((t) => {
+                        const Cfg = ERROR_TYPE_CONFIG[t.type];
+                        const Icon = Cfg?.icon || FileText;
+                        return (
+                          <div key={t.type} className="space-y-1.5">
+                            <div className="flex items-center justify-between text-xs">
+                              <span className="text-zinc-300 font-semibold flex items-center gap-1.5">
+                                <Icon className="w-3.5 h-3.5" />
+                                <span>{t.label}</span>
+                              </span>
+                              <span className="font-bold text-white">{t.count} câu ({t.percentage}%)</span>
+                            </div>
+                            <div className="h-2.5 rounded-full bg-zinc-900 overflow-hidden">
+                              <div
+                                className="h-full rounded-full transition-all duration-500"
+                                style={{ width: `${t.percentage}%`, backgroundColor: t.color }}
+                              />
+                            </div>
                           </div>
-                          <div className="h-2.5 rounded-full bg-zinc-900 overflow-hidden">
-                            <div
-                              className="h-full rounded-full transition-all duration-500"
-                              style={{ width: `${t.percentage}%`, backgroundColor: t.color }}
-                            />
-                          </div>
-                        </div>
-                      ))}
+                        );
+                      })}
                     </div>
                   </div>
 
                   <div className="rounded-3xl border border-white/5 bg-[#121214] p-6 space-y-4">
                     <div>
                       <h3 className="text-sm font-bold text-white flex items-center gap-2">
-                        <span>🔁</span> <span>Biểu Đồ Tần Suất Lỗi (Error Frequency Chart)</span>
+                        <RotateCcw className="w-4 h-4 text-indigo-400" />
+                        <span>Biểu Đồ Tần Suất Lỗi (Error Frequency Chart)</span>
                       </h3>
                       <p className="text-xs text-zinc-500 mt-0.5">Phân bổ mức độ lặp lại của các câu sai</p>
                     </div>
@@ -924,7 +985,8 @@ export default function ErrorLogPage() {
                   <div className="rounded-3xl border border-white/5 bg-[#121214] p-6 space-y-4">
                     <div>
                       <h3 className="text-base font-bold text-white flex items-center gap-2">
-                        <span>📈</span> <span>Xu Hướng Lỗi Theo Thời Gian (Error Trend Over Time)</span>
+                        <TrendingUp className="w-4 h-4 text-emerald-400" />
+                        <span>Xu Hướng Lỗi Theo Thời Gian (Error Trend Over Time)</span>
                       </h3>
                       <p className="text-xs text-zinc-400 mt-0.5">Số lượng câu sai ghi nhận và số câu đã giải quyết theo ngày</p>
                     </div>
@@ -934,7 +996,10 @@ export default function ErrorLogPage() {
                         <div key={idx} className="p-3 rounded-2xl bg-zinc-950 border border-zinc-800 text-center space-y-1">
                           <span className="text-[10px] text-zinc-500 block">{item.date}</span>
                           <div className="text-sm font-bold text-rose-400">+{item.loggedCount} lỗi</div>
-                          <div className="text-xs text-emerald-400">✓ {item.resolvedCount} xong</div>
+                          <div className="text-xs text-emerald-400 flex items-center justify-center gap-1">
+                            <Check className="w-3 h-3" />
+                            <span>{item.resolvedCount} xong</span>
+                          </div>
                         </div>
                       ))}
                     </div>
@@ -945,7 +1010,8 @@ export default function ErrorLogPage() {
                 <div className="rounded-3xl border border-white/5 bg-[#121214] p-6 space-y-4">
                   <div>
                     <h3 className="text-base font-bold text-white flex items-center gap-2">
-                      <span>🔥</span> <span>Danh Sách 10 Lỗi Hàng Đầu (Top 10 Errors List)</span>
+                      <Flame className="w-4 h-4 text-amber-400" />
+                      <span>Danh Sách 10 Lỗi Hàng Đầu (Top 10 Errors List)</span>
                     </h3>
                     <p className="text-xs text-zinc-400 mt-0.5">Các câu hỏi bị làm sai nhiều lần nhất cần đặc biệt chú ý</p>
                   </div>
@@ -964,9 +1030,12 @@ export default function ErrorLogPage() {
                             <div className="flex items-center gap-2 flex-wrap">
                               <span className="px-2 py-0.5 rounded-full text-[10px] font-extrabold bg-white/5 text-zinc-300">Part {err.part}</span>
                               <span className="px-2 py-0.5 rounded-full text-[10px] font-bold bg-purple-500/20 text-purple-300 border border-purple-500/30">{err.errorType}</span>
-                              <span className="px-2 py-0.5 rounded-full text-[10px] font-black bg-rose-500/20 text-rose-300 border border-rose-500/40">🔁 Sai {err.frequency} lần</span>
-                              <span className={`px-2 py-0.5 rounded-full text-[10px] font-bold ${err.status === "resolved" ? "text-emerald-400" : "text-amber-400"}`}>
-                                {err.status === "resolved" ? "✓ Đã xong" : "⏳ Đang theo dõi"}
+                              <span className="flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-black bg-rose-500/20 text-rose-300 border border-rose-500/40">
+                                <RotateCcw className="w-2.5 h-2.5" />
+                                <span>Sai {err.frequency} lần</span>
+                              </span>
+                              <span className={`px-2 py-0.5 rounded-full text-[10px] font-bold flex items-center gap-1 ${err.status === "resolved" ? "text-emerald-400" : "text-amber-400"}`}>
+                                {err.status === "resolved" ? <><Check className="w-3 h-3" /> Đã xong</> : "Đang theo dõi"}
                               </span>
                             </div>
                             <p className="text-xs font-semibold text-white mt-1.5 line-clamp-1">{err.questionText}</p>
@@ -981,9 +1050,10 @@ export default function ErrorLogPage() {
                               setActiveTab("list");
                               setSearchQuery(err.questionText.slice(0, 20));
                             }}
-                            className="px-3 py-1.5 rounded-xl bg-zinc-800 hover:bg-zinc-700 text-zinc-300 text-xs font-bold transition"
+                            className="flex items-center gap-1 px-3 py-1.5 rounded-xl bg-zinc-800 hover:bg-zinc-700 text-zinc-300 text-xs font-bold transition"
                           >
-                            Xem trong sổ tay →
+                            <span>Xem trong sổ tay</span>
+                            <ArrowRight className="w-3 h-3" />
                           </button>
                         </div>
                       </div>
@@ -996,7 +1066,8 @@ export default function ErrorLogPage() {
                   <div className="rounded-3xl border border-white/5 bg-[#121214] p-6 space-y-4">
                     <div>
                       <h3 className="text-base font-bold text-white flex items-center gap-2">
-                        <span>🎯</span> <span>Xác Định Điểm Yếu Theo Phần (Weakness by Part)</span>
+                        <Target className="w-4 h-4 text-red-500" />
+                        <span>Xác Định Điểm Yếu Theo Phần (Weakness by Part)</span>
                       </h3>
                       <p className="text-xs text-zinc-400 mt-0.5">Phân bổ câu sai từ Part 1 đến Part 7</p>
                     </div>
@@ -1020,7 +1091,8 @@ export default function ErrorLogPage() {
                   <div className="rounded-3xl border border-white/5 bg-[#121214] p-6 space-y-4">
                     <div>
                       <h3 className="text-base font-bold text-white flex items-center gap-2">
-                        <span>💡</span> <span>Xác Định Điểm Yếu Theo Chủ Đề (Weakness by Topic)</span>
+                        <Lightbulb className="w-4 h-4 text-amber-400" />
+                        <span>Xác Định Điểm Yếu Theo Chủ Đề (Weakness by Topic)</span>
                       </h3>
                       <p className="text-xs text-zinc-400 mt-0.5">Các chủ điểm kiến thức cần củng cố</p>
                     </div>
@@ -1055,7 +1127,7 @@ export default function ErrorLogPage() {
               <div className="rounded-3xl border border-white/5 bg-[#121214] p-6 sm:p-8 space-y-6">
                 <div>
                   <div className="flex items-center gap-2">
-                    <span className="text-2xl">⚡</span>
+                    <Zap className="w-5 h-5 text-amber-400" />
                     <h3 className="text-lg font-bold text-white">Cấu Hình Bài Tập Lỗi (Error Drill Setup)</h3>
                   </div>
                   <p className="text-xs text-zinc-400 mt-1">
@@ -1078,7 +1150,7 @@ export default function ErrorLogPage() {
                           : "bg-zinc-900 border-zinc-800 text-zinc-400 hover:border-zinc-700"
                       }`}
                     >
-                      <div className="text-xl">🔥</div>
+                      <Flame className="w-5 h-5 text-amber-400" />
                       <div className="text-xs font-bold text-white mt-2">Top 10 Câu Sai Nhiều Nhất</div>
                       <p className="text-[11px] text-zinc-400 mt-1">Ưu tiên các câu bị sai lặp lại nhiều lần nhất</p>
                     </button>
@@ -1092,7 +1164,7 @@ export default function ErrorLogPage() {
                           : "bg-zinc-900 border-zinc-800 text-zinc-400 hover:border-zinc-700"
                       }`}
                     >
-                      <div className="text-xl">🎯</div>
+                      <Target className="w-5 h-5 text-purple-400" />
                       <div className="text-xs font-bold text-white mt-2">Theo Loại Lỗi Cụ Thể</div>
                       <p className="text-[11px] text-zinc-400 mt-1">Luyện riêng Ngữ pháp, Từ vựng hoặc Bất cẩn</p>
                     </button>
@@ -1106,7 +1178,7 @@ export default function ErrorLogPage() {
                           : "bg-zinc-900 border-zinc-800 text-zinc-400 hover:border-zinc-700"
                       }`}
                     >
-                      <div className="text-xl">🎲</div>
+                      <Dice5 className="w-5 h-5 text-blue-400" />
                       <div className="text-xs font-bold text-white mt-2">Toàn Bộ Sổ Tay Lỗi</div>
                       <p className="text-[11px] text-zinc-400 mt-1">Luyện ngẫu nhiên từ toàn bộ câu sai đang theo dõi</p>
                     </button>
@@ -1127,10 +1199,10 @@ export default function ErrorLogPage() {
                         aria-label="Chọn loại lỗi luyện tập"
                         className="w-full bg-zinc-900 border border-zinc-800 rounded-xl p-3 text-xs text-white focus:outline-none focus:border-red-500/50"
                       >
-                        <option value="grammar">📝 Ngữ pháp (Grammar)</option>
-                        <option value="vocabulary">📖 Từ vựng (Vocabulary)</option>
-                        <option value="careless">⚡ Bất cẩn (Careless)</option>
-                        <option value="timing">⏱️ Thiếu thời gian (Timing)</option>
+                        <option value="grammar">Ngữ pháp (Grammar)</option>
+                        <option value="vocabulary">Từ vựng (Vocabulary)</option>
+                        <option value="careless">Bất cẩn (Careless)</option>
+                        <option value="timing">Thiếu thời gian (Timing)</option>
                       </select>
                     </div>
                   )}
@@ -1184,10 +1256,11 @@ export default function ErrorLogPage() {
                 {/* Features Note */}
                 <div className="p-4 rounded-2xl bg-zinc-950 border border-zinc-800 text-xs text-zinc-400 space-y-1.5">
                   <div className="font-bold text-white flex items-center gap-1.5">
-                    <span>✨</span> <span>Quy chế tự động giải quyết (Auto-Resolve Threshold):</span>
+                    <Check className="w-4 h-4 text-emerald-400" />
+                    <span>Quy chế tự động giải quyết (Auto-Resolve Threshold):</span>
                   </div>
                   <p className="text-[11px] leading-relaxed">
-                    • Trả lời đúng câu hỏi trong bài tập Drill sẽ <strong>tự động chuyển trạng thái câu thành &quot;Đã giải quyết ✓&quot;</strong>.
+                    • Trả lời đúng câu hỏi trong bài tập Drill sẽ <strong>tự động chuyển trạng thái câu thành &quot;Đã giải quyết&quot;</strong>.
                     <br />
                     • Phản hồi đúng/sai và giải thích chi tiết được hiển thị tức thì theo thời gian thực (Real-time feedback).
                   </p>
@@ -1199,9 +1272,19 @@ export default function ErrorLogPage() {
                     type="button"
                     onClick={handleStartDrill}
                     disabled={isGeneratingDrill}
-                    className="px-8 py-4 rounded-2xl bg-red-600 hover:bg-red-500 text-white font-extrabold text-sm shadow-xl transition disabled:opacity-50 flex items-center gap-2"
+                    className="flex items-center gap-2 px-8 py-4 rounded-2xl bg-red-600 hover:bg-red-500 text-white font-extrabold text-sm shadow-xl transition disabled:opacity-50"
                   >
-                    <span>{isGeneratingDrill ? "⏳ Đang tạo bài tập..." : "🚀 Bắt đầu luyện tập (Start Drill)"}</span>
+                    {isGeneratingDrill ? (
+                      <>
+                        <Loader2 className="w-4 h-4 animate-spin" />
+                        <span>Đang tạo bài tập...</span>
+                      </>
+                    ) : (
+                      <>
+                        <Zap className="w-4 h-4" />
+                        <span>Bắt đầu luyện tập (Start Drill)</span>
+                      </>
+                    )}
                   </button>
                 </div>
               </div>
@@ -1234,16 +1317,17 @@ export default function ErrorLogPage() {
                   <div className="flex items-center gap-4">
                     {/* Drill Timer */}
                     <div className="flex items-center gap-1.5 text-xs font-mono font-bold text-amber-400 bg-amber-950/30 px-3 py-1.5 rounded-xl border border-amber-800/30">
-                      <span>⏱️</span>
+                      <Clock className="w-3.5 h-3.5" />
                       <span>{formatTime(drillSeconds)}</span>
                     </div>
 
                     <button
                       type="button"
                       onClick={() => setDrillStep("config")}
-                      className="text-xs text-zinc-500 hover:text-white px-2 py-1 rounded-lg"
+                      className="flex items-center gap-1 text-xs text-zinc-500 hover:text-white px-2 py-1 rounded-lg"
                     >
-                      Thoát ✕
+                      <X className="w-3.5 h-3.5" />
+                      <span>Thoát</span>
                     </button>
                   </div>
                 </div>
@@ -1258,7 +1342,7 @@ export default function ErrorLogPage() {
                     <div className="rounded-3xl border border-white/5 bg-[#121214] p-6 sm:p-8 space-y-6">
                       {/* Media */}
                       {q.passage && (
-                        <div className="p-4 rounded-2xl bg-zinc-950 border border-zinc-800 text-xs text-zinc-300 leading-relaxed max-h-48 overflow-y-auto whitespace-pre-line">
+                        <div className="p-4 rounded-2xl bg-zinc-950 border border-zinc-800 text-xs text-zinc-300 leading-relaxed max-h-48 overflow-y-auto whitespace-pre-line font-serif">
                           {q.passage}
                         </div>
                       )}
@@ -1319,10 +1403,10 @@ export default function ErrorLogPage() {
                               </div>
 
                               {drillChecked && isCorrectOption && (
-                                <span className="text-emerald-400 font-bold shrink-0">✓ Đúng</span>
+                                <span className="text-emerald-400 font-bold shrink-0 flex items-center gap-1"><Check className="w-3.5 h-3.5" /> Đúng</span>
                               )}
                               {drillChecked && isSelected && !isCorrectOption && (
-                                <span className="text-rose-400 font-bold shrink-0">✗ Sai</span>
+                                <span className="text-rose-400 font-bold shrink-0 flex items-center gap-1"><X className="w-3.5 h-3.5" /> Sai</span>
                               )}
                             </button>
                           );
@@ -1338,9 +1422,9 @@ export default function ErrorLogPage() {
                         }`}>
                           <div className="flex items-center justify-between">
                             <div className="flex items-center gap-2">
-                              <span className="text-xl">{isCurrentCorrect ? "🎉" : "💡"}</span>
+                              {isCurrentCorrect ? <PartyPopper className="w-4 h-4 text-emerald-400" /> : <Lightbulb className="w-4 h-4 text-rose-400" />}
                               <span className={`text-xs font-black uppercase ${isCurrentCorrect ? "text-emerald-400" : "text-rose-400"}`}>
-                                {isCurrentCorrect ? "Chính xác! Tự động đánh dấu Đã giải quyết ✓" : "Chưa chính xác! Cùng xem giải thích bên dưới"}
+                                {isCurrentCorrect ? "Chính xác! Tự động đánh dấu Đã giải quyết" : "Chưa chính xác! Cùng xem giải thích bên dưới"}
                               </span>
                             </div>
                             <span className="text-xs font-bold text-emerald-400">Đáp án đúng: {q.correctAnswer}</span>
@@ -1353,8 +1437,9 @@ export default function ErrorLogPage() {
                           )}
 
                           {q.userNote && (
-                            <p className="text-[11px] text-amber-300 italic bg-amber-950/20 p-2 rounded-lg border border-amber-800/20">
-                              📌 Ghi chú cá nhân của bạn: {q.userNote}
+                            <p className="text-[11px] text-amber-300 italic bg-amber-950/20 p-2 rounded-lg border border-amber-800/20 flex items-center gap-1.5">
+                              <Pin className="w-3.5 h-3.5" />
+                              <span>Ghi chú cá nhân của bạn: {q.userNote}</span>
                             </p>
                           )}
 
@@ -1363,13 +1448,14 @@ export default function ErrorLogPage() {
                               type="button"
                               onClick={handleNextDrillQuestion}
                               disabled={isSubmittingDrill}
-                              className="px-6 py-3 rounded-xl bg-red-600 hover:bg-red-500 text-white font-bold text-xs shadow-lg transition flex items-center gap-2"
+                              className="flex items-center gap-2 px-6 py-3 rounded-xl bg-red-600 hover:bg-red-500 text-white font-bold text-xs shadow-lg transition"
                             >
                               <span>
                                 {drillCurrentIdx === drillQuestions.length - 1
-                                  ? isSubmittingDrill ? "Đang hoàn tất..." : "Xem kết quả Drill 🎉"
-                                  : "Câu tiếp theo →"}
+                                  ? isSubmittingDrill ? "Đang hoàn tất..." : "Xem kết quả Drill"
+                                  : "Câu tiếp theo"}
                               </span>
+                              <ArrowRight className="w-3.5 h-3.5" />
                             </button>
                           </div>
                         </div>
@@ -1383,8 +1469,10 @@ export default function ErrorLogPage() {
             {/* STEP 3: DRILL SUMMARY & RESULTS */}
             {drillStep === "summary" && drillSummary && (
               <div className="rounded-3xl border border-white/5 bg-[#121214] p-6 sm:p-8 space-y-6 animate-fade-in">
-                <div className="text-center space-y-2">
-                  <div className="text-5xl">🏆</div>
+                <div className="text-center space-y-2 flex flex-col items-center">
+                  <div className="w-16 h-16 rounded-2xl bg-amber-500/20 border border-amber-500/30 text-amber-400 flex items-center justify-center mb-1">
+                    <Trophy className="w-8 h-8" />
+                  </div>
                   <h3 className="text-2xl font-black text-white">Hoàn Thành Phiên Luyện Tập Drill!</h3>
                   <p className="text-xs text-zinc-400 max-w-md mx-auto">{drillSummary.message}</p>
                 </div>
@@ -1415,7 +1503,7 @@ export default function ErrorLogPage() {
                 {/* 12. SCHEDULE REPEAT DRILL (Spaced Repetition) */}
                 <div className="p-6 rounded-2xl bg-zinc-950 border border-zinc-800 space-y-3">
                   <div className="flex items-center gap-2">
-                    <span className="text-xl">📅</span>
+                    <Calendar className="w-5 h-5 text-blue-400" />
                     <div>
                       <h4 className="text-xs font-bold text-white">Lên Lịch Ôn Tập Lặp Lại (Schedule Repeat Drill)</h4>
                       <p className="text-[11px] text-zinc-400">Áp dụng phương pháp Spaced Repetition để ghi nhớ sâu kiến thức</p>
@@ -1431,7 +1519,8 @@ export default function ErrorLogPage() {
                         disabled={isScheduling}
                         className="px-4 py-2 rounded-xl bg-zinc-900 hover:bg-zinc-800 border border-zinc-700 text-zinc-200 text-xs font-bold transition flex items-center gap-1.5"
                       >
-                        <span>⏰</span> <span>Nhắc lại sau {days} ngày</span>
+                        <Clock className="w-3.5 h-3.5 text-amber-400" />
+                        <span>Nhắc lại sau {days} ngày</span>
                       </button>
                     ))}
                   </div>
@@ -1442,9 +1531,10 @@ export default function ErrorLogPage() {
                   <button
                     type="button"
                     onClick={() => setActiveTab("list")}
-                    className="px-5 py-3 rounded-xl bg-zinc-800 hover:bg-zinc-700 text-zinc-300 font-bold text-xs transition"
+                    className="flex items-center gap-1.5 px-5 py-3 rounded-xl bg-zinc-800 hover:bg-zinc-700 text-zinc-300 font-bold text-xs transition"
                   >
-                    ← Về Sổ tay câu sai
+                    <ArrowLeft className="w-4 h-4" />
+                    <span>Về Sổ tay câu sai</span>
                   </button>
 
                   <button
@@ -1453,9 +1543,10 @@ export default function ErrorLogPage() {
                       setDrillStep("config");
                       handleStartDrill();
                     }}
-                    className="px-6 py-3 rounded-xl bg-red-600 hover:bg-red-500 text-white font-bold text-xs shadow-lg transition"
+                    className="flex items-center gap-1.5 px-6 py-3 rounded-xl bg-red-600 hover:bg-red-500 text-white font-bold text-xs shadow-lg transition"
                   >
-                    Luyện tập lượt mới 🔄
+                    <span>Luyện tập lượt mới</span>
+                    <RotateCcw className="w-3.5 h-3.5" />
                   </button>
                 </div>
               </div>
@@ -1474,11 +1565,19 @@ export default function ErrorLogPage() {
                   <span className="px-2.5 py-0.5 rounded-full text-xs font-extrabold bg-red-600/20 text-red-400 border border-red-500/30">
                     Part {detailItem.part}
                   </span>
-                  <span className={`px-2.5 py-0.5 rounded-full text-xs font-bold border ${ERROR_TYPE_CONFIG[detailItem.errorType]?.badgeColor}`}>
-                    {ERROR_TYPE_CONFIG[detailItem.errorType]?.icon} {ERROR_TYPE_CONFIG[detailItem.errorType]?.label}
-                  </span>
-                  <span className="px-2.5 py-0.5 rounded-full text-xs font-bold bg-zinc-800 text-zinc-300 border border-zinc-700">
-                    🔁 Sai {detailItem.frequency} lần
+                  {(() => {
+                    const cfg = ERROR_TYPE_CONFIG[detailItem.errorType];
+                    const Icon = cfg?.icon || FileText;
+                    return (
+                      <span className={`px-2.5 py-0.5 rounded-full text-xs font-bold border ${cfg?.badgeColor} flex items-center gap-1`}>
+                        <Icon className="w-3 h-3" />
+                        <span>{cfg?.label}</span>
+                      </span>
+                    );
+                  })()}
+                  <span className="flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-bold bg-zinc-800 text-zinc-300 border border-zinc-700">
+                    <RotateCcw className="w-3 h-3" />
+                    <span>Sai {detailItem.frequency} lần</span>
                   </span>
                 </div>
 
@@ -1487,7 +1586,7 @@ export default function ErrorLogPage() {
                   onClick={() => setDetailItem(null)}
                   className="p-2 rounded-xl text-zinc-400 hover:text-white hover:bg-zinc-800 transition text-sm"
                 >
-                  ✕
+                  <X className="w-5 h-5" />
                 </button>
               </div>
 
@@ -1496,7 +1595,7 @@ export default function ErrorLogPage() {
                 <h4 className="text-xs font-bold uppercase tracking-wider text-zinc-400">Câu Hỏi Gốc (Original Question)</h4>
 
                 {detailItem.passage && (
-                  <div className="p-4 rounded-2xl bg-zinc-950 border border-zinc-800 text-xs text-zinc-300 leading-relaxed max-h-48 overflow-y-auto whitespace-pre-line">
+                  <div className="p-4 rounded-2xl bg-zinc-950 border border-zinc-800 text-xs text-zinc-300 leading-relaxed max-h-48 overflow-y-auto whitespace-pre-line font-serif">
                     {detailItem.passage}
                   </div>
                 )}
@@ -1551,8 +1650,8 @@ export default function ErrorLogPage() {
                             <span className="font-mono font-bold">{optLabel}.</span>
                             <span>{optText}</span>
                           </div>
-                          {isCorrect && <span className="text-[10px] text-emerald-400">✓ Đáp án đúng</span>}
-                          {isUserChoice && !isCorrect && <span className="text-[10px] text-rose-400">✗ Bạn đã chọn</span>}
+                          {isCorrect && <span className="text-[10px] text-emerald-400 font-bold flex items-center gap-1"><Check className="w-3 h-3" /> Đáp án đúng</span>}
+                          {isUserChoice && !isCorrect && <span className="text-[10px] text-rose-400 font-bold flex items-center gap-1"><X className="w-3 h-3" /> Bạn đã chọn</span>}
                         </div>
                       );
                     })}
@@ -1564,7 +1663,8 @@ export default function ErrorLogPage() {
               {detailItem.explanation && (
                 <div className="space-y-2 p-4 rounded-2xl bg-purple-950/20 border border-purple-800/30">
                   <div className="flex items-center gap-1.5 text-xs font-bold text-purple-300 uppercase">
-                    <span>💡</span> <span>Giải Thích Chi Tiết (Explanation)</span>
+                    <Lightbulb className="w-3.5 h-3.5 text-amber-400" />
+                    <span>Giải Thích Chi Tiết (Explanation)</span>
                   </div>
                   <p className="text-xs text-zinc-300 leading-relaxed whitespace-pre-line">
                     {detailItem.explanation}
@@ -1583,6 +1683,7 @@ export default function ErrorLogPage() {
                   <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
                     {Object.entries(ERROR_TYPE_CONFIG).map(([key, cfg]) => {
                       const isSel = editingType === key;
+                      const Icon = cfg.icon;
                       return (
                         <button
                           key={key}
@@ -1594,7 +1695,7 @@ export default function ErrorLogPage() {
                               : "bg-zinc-950 border-zinc-800 text-zinc-400 hover:border-zinc-700"
                           }`}
                         >
-                          <span>{cfg.icon}</span>
+                          <Icon className="w-3.5 h-3.5" />
                           <span>{cfg.label}</span>
                         </button>
                       );
@@ -1618,9 +1719,10 @@ export default function ErrorLogPage() {
                     type="button"
                     onClick={handleSaveNote}
                     disabled={isSavingNote}
-                    className="px-5 py-2.5 rounded-xl bg-red-600 hover:bg-red-500 text-white font-bold text-xs shadow-lg transition disabled:opacity-50"
+                    className="flex items-center gap-1.5 px-5 py-2.5 rounded-xl bg-red-600 hover:bg-red-500 text-white font-bold text-xs shadow-lg transition disabled:opacity-50"
                   >
-                    {isSavingNote ? "Đang lưu..." : "💾 Lưu ghi chú"}
+                    <Save className="w-3.5 h-3.5" />
+                    <span>{isSavingNote ? "Đang lưu..." : "Lưu ghi chú"}</span>
                   </button>
                 </div>
               </div>
@@ -1635,13 +1737,14 @@ export default function ErrorLogPage() {
                   <button
                     type="button"
                     onClick={() => handleToggleStatus(detailItem)}
-                    className={`px-4 py-2 rounded-xl text-xs font-bold border transition ${
+                    className={`inline-flex items-center gap-1.5 px-4 py-2 rounded-xl text-xs font-bold border transition ${
                       detailItem.status === "resolved"
                         ? "bg-zinc-800 hover:bg-zinc-700 text-zinc-300 border-zinc-700"
                         : "bg-emerald-600 hover:bg-emerald-500 text-white border-emerald-500"
                     }`}
                   >
-                    {detailItem.status === "resolved" ? "Chuyển lại Đang theo dõi" : "Đánh dấu Đã giải quyết ✓"}
+                    {detailItem.status !== "resolved" && <Check className="w-3.5 h-3.5" />}
+                    <span>{detailItem.status === "resolved" ? "Chuyển lại Đang theo dõi" : "Đánh dấu Đã giải quyết"}</span>
                   </button>
                 </div>
               </div>
@@ -1652,13 +1755,15 @@ export default function ErrorLogPage() {
         {/* ── DELETE CONFIRMATION MODAL ── */}
         {deleteConfirmItem && (
           <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/85 backdrop-blur-sm animate-fade-in">
-            <div className="bg-zinc-900 border border-zinc-800 rounded-3xl p-6 sm:p-8 max-w-md w-full space-y-5 shadow-2xl text-center">
-              <div className="text-4xl">🗑️</div>
+            <div className="bg-zinc-900 border border-zinc-800 rounded-3xl p-6 sm:p-8 max-w-md w-full space-y-5 shadow-2xl text-center flex flex-col items-center">
+              <div className="w-12 h-12 rounded-full bg-rose-500/10 text-rose-400 flex items-center justify-center mb-1">
+                <Trash2 className="w-6 h-6" />
+              </div>
               <h3 className="text-lg font-bold text-white">Xóa câu hỏi khỏi Sổ tay lỗi?</h3>
               <p className="text-xs text-zinc-400">
                 Bạn có chắc chắn muốn xóa bản ghi câu hỏi này khỏi Sổ tay lỗi?
               </p>
-              <div className="flex items-center gap-3 pt-2">
+              <div className="flex items-center gap-3 pt-2 w-full">
                 <button
                   type="button"
                   onClick={() => setDeleteConfirmItem(null)}
@@ -1683,7 +1788,7 @@ export default function ErrorLogPage() {
         {/* Toast */}
         {toastMessage && (
           <div className="fixed bottom-6 right-6 z-50 bg-emerald-600 text-white text-xs font-bold px-4 py-3 rounded-xl shadow-2xl flex items-center gap-2 transition-all">
-            <span>✓</span>
+            <Check className="w-4 h-4" />
             <span>{toastMessage}</span>
           </div>
         )}

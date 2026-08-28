@@ -16,6 +16,23 @@ import {
   type MockTestResultQuestion,
   type MockTestResultResponse,
 } from "@/services/mock-test";
+import {
+  Printer,
+  Share2,
+  ArrowLeft,
+  Trophy,
+  PartyPopper,
+  TrendingUp,
+  TrendingDown,
+  Target,
+  Headphones,
+  BookOpen,
+  Check,
+  X,
+  Star,
+  ImageIcon,
+  Lightbulb,
+} from "lucide-react";
 
 type FilterType =
   | "all"
@@ -145,24 +162,6 @@ export default function MockTestResultPage() {
           attemptId,
         );
 
-      console.log(
-        "========== MOCK TEST RESULT ==========",
-      );
-
-      console.log(
-        "result:",
-        data,
-      );
-
-      console.log(
-        "questions:",
-        data.questions.length,
-      );
-
-      console.log(
-        "=======================================",
-      );
-
       setResult(data);
     } catch (error) {
       console.error(
@@ -244,7 +243,7 @@ export default function MockTestResultPage() {
   if (loading) {
     return (
       <div className="flex min-h-screen items-center justify-center bg-[#09090b] text-zinc-400">
-        Đang tải toàn bộ kết quả bài thi...
+        <div className="animate-pulse">Đang tải toàn bộ kết quả bài thi...</div>
       </div>
     );
   }
@@ -344,7 +343,7 @@ export default function MockTestResultPage() {
               onClick={handlePrint}
               className="rounded-xl border border-white/10 px-3.5 py-2 text-xs font-bold text-zinc-300 hover:bg-white/5 hover:text-white flex items-center gap-1.5 transition"
             >
-              <span>🖨️</span>
+              <Printer className="w-4 h-4" />
               <span>In / Tải PDF</span>
             </button>
 
@@ -353,16 +352,17 @@ export default function MockTestResultPage() {
               onClick={handleShare}
               className="rounded-xl border border-white/10 px-3.5 py-2 text-xs font-bold text-zinc-300 hover:bg-white/5 hover:text-white flex items-center gap-1.5 transition"
             >
-              <span>🔗</span>
+              <Share2 className="w-4 h-4" />
               <span>Chia sẻ</span>
             </button>
 
             <button
               type="button"
               onClick={() => router.push(`/dashboard/mock-test`)}
-              className="rounded-xl border border-white/10 px-4 py-2 text-xs font-bold text-zinc-300 hover:bg-white/5 hover:text-white"
+              className="flex items-center gap-1.5 rounded-xl border border-white/10 px-4 py-2 text-xs font-bold text-zinc-300 hover:bg-white/5 hover:text-white"
             >
-              ← Danh sách đề
+              <ArrowLeft className="w-4 h-4" />
+              <span>Danh sách đề</span>
             </button>
           </div>
         </div>
@@ -371,7 +371,7 @@ export default function MockTestResultPage() {
       {/* Toast */}
       {toastMessage && (
         <div className="fixed bottom-6 right-6 z-50 bg-emerald-600 text-white text-xs font-bold px-4 py-3 rounded-xl shadow-2xl flex items-center gap-2 transition-all">
-          <span>✓</span>
+          <Check className="w-4 h-4" />
           <span>{toastMessage}</span>
         </div>
       )}
@@ -382,12 +382,12 @@ export default function MockTestResultPage() {
         {/* ================================================== */}
 
         <section className="rounded-3xl border border-white/5 bg-[#121214] p-8">
-          <div className="text-center">
-            <div className="text-6xl">
-              🎉
+          <div className="text-center flex flex-col items-center">
+            <div className="w-16 h-16 rounded-full bg-red-600/10 text-red-500 flex items-center justify-center mb-2">
+              <PartyPopper className="w-8 h-8" />
             </div>
 
-            <h2 className="mt-4 text-3xl font-black">
+            <h2 className="mt-2 text-3xl font-black">
               Hoàn thành bài thi!
             </h2>
 
@@ -408,8 +408,9 @@ export default function MockTestResultPage() {
           {/* ================================================== */}
 
           <div className="mt-8 rounded-3xl border border-red-500/20 bg-red-500/5 p-8 text-center relative overflow-hidden">
-            <div className="inline-block px-3.5 py-1 rounded-full bg-amber-500/20 border border-amber-500/30 text-amber-300 text-xs font-bold mb-3">
-              🏆 Top {100 - (result.percentileRanking ?? 85)}% học viên toàn hệ thống (Percentile: {result.percentileRanking ?? 85}th)
+            <div className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-amber-500/20 border border-amber-500/30 text-amber-300 text-xs font-bold mb-3">
+              <Trophy className="w-4 h-4 text-amber-400" />
+              <span>Top {100 - (result.percentileRanking ?? 85)}% học viên toàn hệ thống (Percentile: {result.percentileRanking ?? 85}th)</span>
             </div>
 
             <p className="text-sm text-zinc-500">
@@ -434,8 +435,18 @@ export default function MockTestResultPage() {
                   {(result.totalScore - 615) >= 0 ? `+${result.totalScore - 615}` : `${result.totalScore - 615}`} điểm
                 </p>
               </div>
-              <span className={`text-xl font-bold ${(result.totalScore - 615) >= 0 ? "text-emerald-400" : "text-rose-400"}`}>
-                {(result.totalScore - 615) >= 0 ? "📈 Cao hơn TB" : "📉 Thấp hơn TB"}
+              <span className={`text-base font-bold flex items-center gap-1 ${(result.totalScore - 615) >= 0 ? "text-emerald-400" : "text-rose-400"}`}>
+                {(result.totalScore - 615) >= 0 ? (
+                  <>
+                    <TrendingUp className="w-4 h-4" />
+                    <span>Cao hơn TB</span>
+                  </>
+                ) : (
+                  <>
+                    <TrendingDown className="w-4 h-4" />
+                    <span>Thấp hơn TB</span>
+                  </>
+                )}
               </span>
             </div>
 
@@ -446,8 +457,9 @@ export default function MockTestResultPage() {
                   {Math.max(0, 900 - result.totalScore)} điểm còn lại
                 </p>
               </div>
-              <span className="text-xl font-bold text-purple-400">
-                🎯 {Math.round((result.totalScore / 900) * 100)}%
+              <span className="text-base font-bold text-purple-400 flex items-center gap-1.5">
+                <Target className="w-4 h-4" />
+                <span>{Math.round((result.totalScore / 900) * 100)}%</span>
               </span>
             </div>
           </div>
@@ -458,7 +470,7 @@ export default function MockTestResultPage() {
 
           <div className="mt-5 grid grid-cols-1 gap-4 md:grid-cols-2">
             <ScoreCard
-              icon="🎧"
+              icon={Headphones}
               title="Listening"
               score={
                 result.listeningScore
@@ -475,7 +487,7 @@ export default function MockTestResultPage() {
             />
 
             <ScoreCard
-              icon="📖"
+              icon={BookOpen}
               title="Reading"
               score={
                 result.readingScore
@@ -748,10 +760,11 @@ export default function MockTestResultPage() {
                   )
                 }
               >
-                ✓ Đúng{" "}
-                {
-                  result.totalCorrect
-                }
+                <span className="inline-flex items-center gap-1">
+                  <Check className="w-3.5 h-3.5" />
+                  <span>Đúng</span>
+                  <span>{result.totalCorrect}</span>
+                </span>
               </FilterButton>
 
               <FilterButton
@@ -762,10 +775,11 @@ export default function MockTestResultPage() {
                   setFilter("wrong")
                 }
               >
-                ✕ Sai{" "}
-                {
-                  result.totalWrong
-                }
+                <span className="inline-flex items-center gap-1">
+                  <X className="w-3.5 h-3.5" />
+                  <span>Sai</span>
+                  <span>{result.totalWrong}</span>
+                </span>
               </FilterButton>
 
               <FilterButton
@@ -842,9 +856,10 @@ export default function MockTestResultPage() {
                 "/dashboard/mock-test",
               )
             }
-            className="rounded-xl bg-red-600 px-8 py-3 font-semibold hover:bg-red-500"
+            className="flex items-center gap-2 rounded-xl bg-red-600 px-8 py-3 font-semibold hover:bg-red-500"
           >
-            ← Về danh sách đề thi
+            <ArrowLeft className="w-4 h-4" />
+            <span>Về danh sách đề thi</span>
           </button>
         </div>
       </main>
@@ -955,7 +970,7 @@ function ResultQuestionCard({
                   : "bg-white/5 text-zinc-400 hover:text-amber-400 border border-white/5"
               }`}
             >
-              <span>{isBookmarked ? "⭐" : "☆"}</span>
+              <Star className={`w-3.5 h-3.5 ${isBookmarked ? "fill-amber-400 text-amber-400" : ""}`} />
               <span>{isBookmarked ? "Đã lưu sổ tay" : "Lưu sổ tay lỗi"}</span>
             </button>
           )}
@@ -973,7 +988,7 @@ function ResultQuestionCard({
       {/* ================================================== */}
 
       {question.passage && (
-        <div className="mt-6 rounded-2xl border border-white/5 bg-black/20 p-5">
+        <div className="mt-6 rounded-2xl border border-white/5 bg-black/20 p-5 font-serif">
           <p className="mb-3 text-xs font-bold uppercase tracking-wider text-zinc-500">
             Reading passage
           </p>
@@ -990,8 +1005,9 @@ function ResultQuestionCard({
 
       {imageUrl && (
         <div className="mt-6 rounded-2xl border border-white/5 bg-black/20 p-5">
-          <p className="mb-4 text-sm font-semibold text-zinc-300">
-            🖼️ Hình ảnh
+          <p className="mb-4 text-sm font-semibold text-zinc-300 flex items-center gap-2">
+            <ImageIcon className="w-4 h-4 text-indigo-400" />
+            <span>Hình ảnh</span>
           </p>
 
           <div className="flex min-h-[220px] items-center justify-center">
@@ -1020,8 +1036,9 @@ function ResultQuestionCard({
 
       {audioUrl && (
         <div className="mt-6 rounded-2xl border border-white/5 bg-black/20 p-5">
-          <p className="mb-3 text-sm font-semibold text-zinc-300">
-            🎧 Audio
+          <p className="mb-3 text-sm font-semibold text-zinc-300 flex items-center gap-2">
+            <Headphones className="w-4 h-4 text-blue-400" />
+            <span>Audio</span>
           </p>
 
           <audio
@@ -1125,16 +1142,16 @@ function ResultQuestionCard({
       <div className="mt-6 rounded-2xl border border-white/5 bg-black/20 p-5">
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
           <InfoItem
-  label="Bạn chọn"
-  value={
-    question.selectedOptionId
-      ? getOptionLabel(
-          question,
-          question.selectedOptionId,
-        ) ?? "Không xác định"
-      : "Chưa trả lời"
-  }
-/>
+            label="Bạn chọn"
+            value={
+              question.selectedOptionId
+                ? getOptionLabel(
+                    question,
+                    question.selectedOptionId,
+                  ) ?? "Không xác định"
+                : "Chưa trả lời"
+            }
+          />
 
           <InfoItem
             label="Đáp án đúng"
@@ -1175,7 +1192,8 @@ function ResultQuestionCard({
       {question.transcript && (
         <div className="mt-4 rounded-2xl border border-blue-500/20 bg-blue-500/5 p-4 text-xs">
           <p className="font-bold text-blue-400 flex items-center gap-1.5 mb-1.5">
-            <span>🎧</span> <span>Bản ghi lời thoại (Audio Transcript):</span>
+            <Headphones className="w-4 h-4" />
+            <span>Bản ghi lời thoại (Audio Transcript):</span>
           </p>
           <p className="text-zinc-300 leading-relaxed pl-5 whitespace-pre-wrap">
             {question.transcript}
@@ -1186,7 +1204,8 @@ function ResultQuestionCard({
       {question.evidence && (
         <div className="mt-4 rounded-2xl border border-amber-500/20 bg-amber-500/5 p-4 text-xs">
           <p className="font-bold text-amber-400 flex items-center gap-1.5 mb-1.5">
-            <span>💡</span> <span>Highlight bằng chứng & Giải thích:</span>
+            <Lightbulb className="w-4 h-4" />
+            <span>Highlight bằng chứng & Giải thích:</span>
           </p>
           <p className="text-zinc-300 leading-relaxed pl-5 whitespace-pre-wrap">
             {question.evidence}
@@ -1208,16 +1227,18 @@ function StatusBadge({
 }) {
   if (question.isCorrect) {
     return (
-      <span className="shrink-0 rounded-full bg-green-500/10 px-3 py-1.5 text-xs font-bold text-green-400">
-        ✓ Đúng
+      <span className="inline-flex items-center gap-1 shrink-0 rounded-full bg-green-500/10 px-3 py-1.5 text-xs font-bold text-green-400">
+        <Check className="w-3 h-3" />
+        <span>Đúng</span>
       </span>
     );
   }
 
   if (question.isAnswered) {
     return (
-      <span className="shrink-0 rounded-full bg-red-500/10 px-3 py-1.5 text-xs font-bold text-red-400">
-        ✕ Sai
+      <span className="inline-flex items-center gap-1 shrink-0 rounded-full bg-red-500/10 px-3 py-1.5 text-xs font-bold text-red-400">
+        <X className="w-3 h-3" />
+        <span>Sai</span>
       </span>
     );
   }
@@ -1234,14 +1255,14 @@ function StatusBadge({
 // ============================================================
 
 function ScoreCard({
-  icon,
+  icon: Icon,
   title,
   score,
   correct,
   total,
   accuracy,
 }: {
-  icon: string;
+  icon: any;
   title: string;
   score: number;
   correct: number;
@@ -1252,9 +1273,7 @@ function ScoreCard({
     <div className="rounded-2xl border border-white/5 bg-white/[0.02] p-6">
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-3">
-          <span className="text-2xl">
-            {icon}
-          </span>
+          <Icon className="w-5 h-5 text-indigo-400" />
 
           <span className="font-bold">
             {title}
@@ -1457,19 +1476,11 @@ function resolveMediaUrl(
     return undefined;
   }
 
-  // ----------------------------------------------------------
-  // Chuẩn hóa slash
-  // ----------------------------------------------------------
-
   value =
     value.replace(
       /\\/g,
       "/",
     );
-
-  // ----------------------------------------------------------
-  // URL đầy đủ
-  // ----------------------------------------------------------
 
   if (
     value.startsWith(
@@ -1482,19 +1493,11 @@ function resolveMediaUrl(
     return value;
   }
 
-  // ----------------------------------------------------------
-  // file://
-  // ----------------------------------------------------------
-
   value =
     value.replace(
       /^file:\/\//i,
       "",
     );
-
-  // ----------------------------------------------------------
-  // API URL
-  // ----------------------------------------------------------
 
   const apiUrl =
     (
@@ -1505,10 +1508,6 @@ function resolveMediaUrl(
       /\/$/,
       "",
     );
-
-  // ==========================================================
-  // PLACEMENT TEST
-  // ==========================================================
 
   const isPlacementTest =
     testId === 5 ||
@@ -1521,10 +1520,6 @@ function resolveMediaUrl(
   if (
     isPlacementTest
   ) {
-    // --------------------------------------------------------
-    // Đã là đường dẫn uploads/tests/placement-test
-    // --------------------------------------------------------
-
     const placementIndex =
       value.indexOf(
         "uploads/tests/placement-test/",
@@ -1541,16 +1536,6 @@ function resolveMediaUrl(
 
       return `${apiUrl}/${relative}`;
     }
-
-    // --------------------------------------------------------
-    // IMAGE
-    //
-    // DB có thể:
-    //
-    // 1.jpg
-    // images/part1/1.jpg
-    // part1/1.jpg
-    // --------------------------------------------------------
 
     if (
       type === "image"
@@ -1573,9 +1558,6 @@ function resolveMediaUrl(
           "",
         );
 
-      // Nếu DB đã chứa part1/...
-      // lấy filename cuối cùng
-
       const filename =
         imageValue
           .split("/")
@@ -1587,15 +1569,6 @@ function resolveMediaUrl(
 
       return `${apiUrl}/uploads/tests/placement-test/images/part${part}/${filename}`;
     }
-
-    // --------------------------------------------------------
-    // AUDIO
-    //
-    // DB có thể:
-    //
-    // placement-test.mp3
-    // audio/placement-test.mp3
-    // --------------------------------------------------------
 
     let audioValue =
       value.replace(
@@ -1621,15 +1594,6 @@ function resolveMediaUrl(
     return `${apiUrl}/uploads/tests/placement-test/audio/${audioFilename}`;
   }
 
-  // ==========================================================
-  // FULL TEST
-  //
-  // Hỗ trợ:
-  //
-  // images/test001/...
-  // audio/test001/...
-  // ==========================================================
-
   const generatedDataIndex =
     value.indexOf(
       "toeic-generated-data/",
@@ -1647,10 +1611,6 @@ function resolveMediaUrl(
       );
   }
 
-  // ----------------------------------------------------------
-  // /images/...
-  // ----------------------------------------------------------
-
   if (
     value.startsWith(
       "/images/",
@@ -1658,10 +1618,6 @@ function resolveMediaUrl(
   ) {
     return `${apiUrl}${value}`;
   }
-
-  // ----------------------------------------------------------
-  // images/...
-  // ----------------------------------------------------------
 
   if (
     value.startsWith(
@@ -1671,10 +1627,6 @@ function resolveMediaUrl(
     return `${apiUrl}/${value}`;
   }
 
-  // ----------------------------------------------------------
-  // /audio/...
-  // ----------------------------------------------------------
-
   if (
     value.startsWith(
       "/audio/",
@@ -1683,10 +1635,6 @@ function resolveMediaUrl(
     return `${apiUrl}${value}`;
   }
 
-  // ----------------------------------------------------------
-  // audio/...
-  // ----------------------------------------------------------
-
   if (
     value.startsWith(
       "audio/",
@@ -1694,10 +1642,6 @@ function resolveMediaUrl(
   ) {
     return `${apiUrl}/${value}`;
   }
-
-  // ----------------------------------------------------------
-  // FILENAME
-  // ----------------------------------------------------------
 
   value =
     value.replace(

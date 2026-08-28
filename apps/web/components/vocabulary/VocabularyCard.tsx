@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import { useState } from "react";
 import {
@@ -7,6 +7,7 @@ import {
   updateVocabularyNotes,
 } from "@/services/vocabulary";
 import { VocabularyWord, VocabularyWordWithProgress } from "@/types/vocabulary";
+import { FileEdit, Check, RotateCcw, CheckCircle2 } from "lucide-react";
 
 type WordProp = VocabularyWord | VocabularyWordWithProgress;
 
@@ -48,7 +49,7 @@ export default function VocabularyCard({
       onReload?.();
     } catch (error) {
       console.error(error);
-      alert("CÃ³ lá»—i xáº£y ra.");
+      alert("Có lỗi xảy ra.");
     } finally {
       setLoading(false);
     }
@@ -62,7 +63,7 @@ export default function VocabularyCard({
       onReload?.();
     } catch (error) {
       console.error(error);
-      alert("Lá»—i khi lÆ°u ghi chÃº");
+      alert("Lỗi khi lưu ghi chú");
     } finally {
       setLoading(false);
     }
@@ -84,9 +85,7 @@ export default function VocabularyCard({
 
       {/* Header */}
       <div className="flex items-start justify-between">
-
         <div className={selectable ? "pr-8" : ""}>
-
           <h2 className="text-2xl font-bold text-white flex items-center gap-2">
             {word.english}
             {pw.status && pw.status !== 'NEW' && (
@@ -105,11 +104,9 @@ export default function VocabularyCard({
               {word.pronounce}
             </p>
           )}
-
         </div>
 
         <div className="flex gap-2">
-
           {word.type && (
             <span className="rounded bg-blue-600 px-2 py-1 text-xs text-white">
               {word.type}
@@ -119,38 +116,28 @@ export default function VocabularyCard({
           <span className="rounded bg-green-600 px-2 py-1 text-xs text-white">
             Stage {word.stage}
           </span>
-
         </div>
-
       </div>
 
-      {/* NghÄ©a */}
-
+      {/* Nghĩa */}
       <div className="mt-4">
-
         <p className="text-lg font-semibold text-green-400">
           {word.vietnamese}
         </p>
-
       </div>
 
-      {/* Giáº£i thÃ­ch */}
-
+      {/* Giải thích */}
       {word.explain && (
         <div className="mt-4">
-
           <p className="text-gray-300">
             {word.explain}
           </p>
-
         </div>
       )}
 
-      {/* VÃ­ dá»¥ */}
-
+      {/* Ví dụ */}
       {word.example && (
         <div className="mt-5 rounded-lg bg-zinc-800 p-4">
-
           <p className="italic text-white">
             {word.example}
           </p>
@@ -160,7 +147,6 @@ export default function VocabularyCard({
               {word.exampleVietnamese}
             </p>
           )}
-
         </div>
       )}
 
@@ -169,13 +155,13 @@ export default function VocabularyCard({
         <div className="mt-4 p-3 bg-zinc-800/50 rounded-lg border border-zinc-700/50 space-y-2">
           {pw.notes && (
             <div>
-              <p className="text-[10px] text-amber-400 uppercase font-bold">Ghi chÃº cÃ¡ nhÃ¢n</p>
+              <p className="text-[10px] text-amber-400 uppercase font-bold">Ghi chú cá nhân</p>
               <p className="text-xs text-zinc-300 mt-1 whitespace-pre-wrap">{pw.notes}</p>
             </div>
           )}
           {pw.customExample && (
             <div>
-              <p className="text-[10px] text-amber-400 uppercase font-bold">VÃ­ dá»¥ tÃ¹y chá»‰nh</p>
+              <p className="text-[10px] text-amber-400 uppercase font-bold">Ví dụ tùy chỉnh</p>
               <p className="text-xs text-zinc-300 mt-1 italic whitespace-pre-wrap">{pw.customExample}</p>
             </div>
           )}
@@ -186,21 +172,21 @@ export default function VocabularyCard({
       {isEditingNotes && (
         <div className="mt-4 p-3 bg-zinc-800/80 rounded-lg border border-zinc-700 space-y-3">
           <div>
-            <label className="text-[10px] text-amber-400 uppercase font-bold block mb-1">Ghi chÃº cÃ¡ nhÃ¢n</label>
+            <label className="text-[10px] text-amber-400 uppercase font-bold block mb-1">Ghi chú cá nhân</label>
             <textarea
               value={notesInput}
               onChange={(e) => setNotesInput(e.target.value)}
               className="w-full bg-zinc-950 border border-zinc-700 rounded-md p-2 text-xs text-white outline-none min-h-[60px]"
-              placeholder="Nháº­p ghi chÃº cho tá»« nÃ y..."
+              placeholder="Nhập ghi chú cho từ này..."
             />
           </div>
           <div>
-            <label className="text-[10px] text-amber-400 uppercase font-bold block mb-1">VÃ­ dá»¥ tÃ¹y chá»‰nh</label>
+            <label className="text-[10px] text-amber-400 uppercase font-bold block mb-1">Ví dụ tùy chỉnh</label>
             <textarea
               value={exampleInput}
               onChange={(e) => setExampleInput(e.target.value)}
               className="w-full bg-zinc-950 border border-zinc-700 rounded-md p-2 text-xs text-white outline-none min-h-[60px]"
-              placeholder="Nháº­p cÃ¢u vÃ­ dá»¥ tÃ¹y chá»‰nh cá»§a báº¡n..."
+              placeholder="Nhập câu ví dụ tùy chỉnh của bạn..."
             />
           </div>
           <div className="flex justify-end gap-2">
@@ -213,61 +199,54 @@ export default function VocabularyCard({
               className="text-[11px] text-zinc-400 hover:text-white px-3 py-1.5"
               disabled={loading}
             >
-              Há»§y
+              Hủy
             </button>
             <button
               onClick={handleSaveNotes}
               disabled={loading}
               className="text-[11px] bg-amber-600 hover:bg-amber-500 text-white font-bold px-3 py-1.5 rounded-md transition"
             >
-              {loading ? "Äang lÆ°u..." : "LÆ°u thay Ä‘á»•i"}
+              {loading ? "Đang lưu..." : "Lưu thay đổi"}
             </button>
           </div>
         </div>
       )}
 
       {/* Topic */}
-
       <div className="mt-4">
-
         <span className="rounded-full bg-zinc-700 px-3 py-1 text-sm text-gray-200">
           {word.topic}
         </span>
-
       </div>
 
       {/* Audio */}
-
       {word.audioUrl && (
         <div className="mt-5">
-
           <audio controls className="w-full">
             <source
               src={word.audioUrl}
               type="audio/mpeg"
             />
           </audio>
-
         </div>
       )}
 
       {/* Action */}
-
       <div className="mt-6 flex flex-wrap items-center justify-between gap-3 border-t border-zinc-800/80 pt-4">
-        
         {!isEditingNotes ? (
           <button
             onClick={() => setIsEditingNotes(true)}
-            className="text-xs text-zinc-400 hover:text-amber-400 font-semibold flex items-center gap-1 transition"
+            className="text-xs text-zinc-400 hover:text-amber-400 font-semibold flex items-center gap-1.5 transition"
           >
-            âœï¸ Ghi chÃº cÃ¡ nhÃ¢n
+            <FileEdit className="w-3.5 h-3.5" />
+            <span>Ghi chú cá nhân</span>
           </button>
         ) : <div />}
 
         <button
           onClick={handleLearn}
           disabled={loading || pw.status === 'MASTERED'}
-          className={`rounded-lg px-5 py-2 text-xs font-semibold text-white transition ${
+          className={`rounded-lg px-5 py-2 text-xs font-semibold text-white transition flex items-center gap-1.5 ${
             pw.status === 'MASTERED'
               ? "bg-zinc-800 text-zinc-500 cursor-not-allowed"
               : pw.isReview
@@ -275,17 +254,26 @@ export default function VocabularyCard({
               : "bg-green-600 hover:bg-green-500"
           } disabled:opacity-60`}
         >
-          {loading
-            ? "Äang xá»­ lÃ½..."
-            : pw.status === 'MASTERED'
-            ? "ÄÃ£ thÃ nh tháº¡o"
-            : pw.isReview
-            ? "Ã”n xong"
-            : "ÄÃ¡nh dáº¥u Ä‘Ã£ há»c"}
+          {loading ? (
+            "Đang xử lý..."
+          ) : pw.status === 'MASTERED' ? (
+            <>
+              <CheckCircle2 className="w-3.5 h-3.5 text-amber-400" />
+              <span>Đã thành thạo</span>
+            </>
+          ) : pw.isReview ? (
+            <>
+              <RotateCcw className="w-3.5 h-3.5" />
+              <span>Ôn xong</span>
+            </>
+          ) : (
+            <>
+              <Check className="w-3.5 h-3.5" />
+              <span>Đánh dấu đã học</span>
+            </>
+          )}
         </button>
-
       </div>
-
     </div>
   );
 }

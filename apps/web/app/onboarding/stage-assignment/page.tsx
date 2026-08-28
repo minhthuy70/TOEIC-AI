@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
+import { Target, Star, Clock, Check, Loader2 } from "lucide-react";
 
 const API = process.env.NEXT_PUBLIC_API_URL || "http://localhost:3001";
 
@@ -194,7 +195,10 @@ export default function StageAssignmentPage() {
   if (loading) {
     return (
       <div className="min-h-screen bg-black flex items-center justify-center">
-        <div className="text-white">Đang tải...</div>
+        <div className="text-white flex items-center gap-2">
+          <Loader2 className="w-5 h-5 animate-spin text-red-500" />
+          <span>Đang tải...</span>
+        </div>
       </div>
     );
   }
@@ -204,8 +208,8 @@ export default function StageAssignmentPage() {
       <div className="max-w-4xl mx-auto">
         {/* Header */}
         <div className="text-center mb-8">
-          <div className="w-20 h-20 rounded-full bg-red-600 flex items-center justify-center mx-auto shadow-lg shadow-red-600/30 mb-4">
-            <span className="text-4xl">🎯</span>
+          <div className="w-20 h-20 rounded-full bg-red-600 flex items-center justify-center mx-auto shadow-lg shadow-red-600/30 mb-4 text-white">
+            <Target className="w-10 h-10" />
           </div>
           <h1 className="text-3xl font-bold text-white mb-2">Gán chặng học tập</h1>
           <p className="text-gray-400">
@@ -217,8 +221,8 @@ export default function StageAssignmentPage() {
         {recommendedStage && (
           <div className="bg-zinc-900/80 backdrop-blur border border-red-600/20 rounded-2xl p-6 mb-6">
             <div className="flex items-center gap-3 mb-4">
-              <span className="w-10 h-10 bg-red-600/20 rounded-xl flex items-center justify-center text-red-400 text-xl">
-                ⭐
+              <span className="w-10 h-10 bg-red-600/20 rounded-xl flex items-center justify-center text-red-400">
+                <Star className="w-5 h-5" />
               </span>
               <div>
                 <h2 className="text-lg font-semibold text-white">Chặng đề xuất</h2>
@@ -243,8 +247,8 @@ export default function StageAssignmentPage() {
         {profile && profile.currentScore && profile.targetScore && profile.dailyStudyTime && (
           <div className="bg-zinc-900/80 backdrop-blur border border-zinc-800 rounded-2xl p-6 mb-6">
             <div className="flex items-center gap-3 mb-4">
-              <span className="w-10 h-10 bg-blue-600/20 rounded-xl flex items-center justify-center text-blue-400 text-xl">
-                ⏱️
+              <span className="w-10 h-10 bg-blue-600/20 rounded-xl flex items-center justify-center text-blue-400">
+                <Clock className="w-5 h-5" />
               </span>
               <div>
                 <h2 className="text-lg font-semibold text-white">Thời gian hoàn thành ước tính</h2>
@@ -305,8 +309,8 @@ export default function StageAssignmentPage() {
                   <ul className="text-gray-400 text-sm space-y-1">
                     {stage.goals.map((goal, idx) => (
                       <li key={idx} className="flex items-center gap-2">
-                        <span className="text-green-400">✓</span>
-                        {goal}
+                        <Check className="w-3.5 h-3.5 text-green-400 shrink-0" />
+                        <span>{goal}</span>
                       </li>
                     ))}
                   </ul>

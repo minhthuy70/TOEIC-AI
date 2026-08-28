@@ -13,6 +13,26 @@ import {
   TTSRate,
   ReadingSettings,
 } from "@/hooks/useReadingSettings";
+import {
+  ArrowLeft,
+  Settings,
+  Check,
+  RotateCcw,
+  Type,
+  Palette,
+  Layout,
+  Clock,
+  Scroll,
+  Volume2,
+  Play,
+  Square,
+  Eye,
+  Puzzle,
+  FileText,
+  FileCheck,
+  SlidersHorizontal,
+  ChevronRight,
+} from "lucide-react";
 
 // ── helpers ────────────────────────────────────────────────────────────────
 const FONT_FAMILIES: { value: FontFamily; label: string }[] = [
@@ -32,11 +52,11 @@ const HIGHLIGHT_COLORS: { value: HighlightColor; label: string }[] = [
   { value: "#DDA0DD", label: "Tím nhạt" },
 ];
 
-const TIMER_STYLES: { value: TimerStyle; label: string; icon: string }[] = [
-  { value: "digital", label: "Số (00:00)", icon: "🕐" },
-  { value: "circular", label: "Tròn", icon: "⭕" },
-  { value: "bar", label: "Thanh tiến độ", icon: "▬" },
-  { value: "hidden", label: "Ẩn", icon: "🙈" },
+const TIMER_STYLES: { value: TimerStyle; label: string }[] = [
+  { value: "digital", label: "Số (00:00)" },
+  { value: "circular", label: "Tròn" },
+  { value: "bar", label: "Thanh tiến độ" },
+  { value: "hidden", label: "Ẩn" },
 ];
 
 const TTS_RATES: { value: TTSRate; label: string }[] = [
@@ -48,10 +68,11 @@ const TTS_RATES: { value: TTSRate; label: string }[] = [
 ];
 
 // ── sub-components ─────────────────────────────────────────────────────────
-function SectionTitle({ children }: { children: React.ReactNode }) {
+function SectionTitle({ icon: Icon, children }: { icon: any; children: React.ReactNode }) {
   return (
-    <h2 className="text-sm font-bold uppercase tracking-widest text-indigo-400 mb-4 mt-2">
-      {children}
+    <h2 className="text-sm font-bold uppercase tracking-widest text-indigo-400 mb-4 mt-2 flex items-center gap-2">
+      <Icon className="w-4 h-4" />
+      <span>{children}</span>
     </h2>
   );
 }
@@ -102,7 +123,7 @@ function SliderInput({
         step={step}
         value={value}
         onChange={(e) => onChange(Number(e.target.value))}
-        className="flex-1 accent-indigo-500 h-1.5 rounded-full cursor-pointer"
+        className="flex-1 accent-indigo-500 h-1.5 rounded-full cursor-pointer bg-zinc-800"
       />
       <span className="text-xs font-bold text-indigo-300 w-12 text-right">
         {display ?? value}
@@ -171,25 +192,30 @@ export default function ReadingSettingsPage() {
             className="text-zinc-400 hover:text-white transition-colors p-2 rounded-lg hover:bg-zinc-800"
             aria-label="Quay lại"
           >
-            ←
+            <ArrowLeft className="w-5 h-5" />
           </Link>
           <div>
-            <h1 className="text-lg font-bold text-white">⚙️ Cài đặt đọc</h1>
+            <h1 className="text-lg font-bold text-white flex items-center gap-2">
+              <Settings className="w-5 h-5 text-indigo-400" />
+              <span>Cài đặt đọc</span>
+            </h1>
             <p className="text-xs text-zinc-500">
               Tùy chỉnh trải nghiệm đọc hiểu TOEIC
             </p>
           </div>
           <div className="ml-auto flex items-center gap-3">
             {saved && (
-              <span className="text-xs text-emerald-400 animate-pulse">
-                ✅ Đã lưu
+              <span className="text-xs text-emerald-400 flex items-center gap-1 animate-pulse font-medium">
+                <Check className="w-3.5 h-3.5" />
+                <span>Đã lưu</span>
               </span>
             )}
             <button
               onClick={handleReset}
-              className="px-3 py-1.5 text-xs rounded-lg border border-zinc-700 text-zinc-400 hover:text-white hover:border-zinc-500 transition"
+              className="flex items-center gap-1.5 px-3 py-1.5 text-xs rounded-lg border border-zinc-700 text-zinc-400 hover:text-white hover:border-zinc-500 transition"
             >
-              Khôi phục mặc định
+              <RotateCcw className="w-3.5 h-3.5" />
+              <span>Khôi phục mặc định</span>
             </button>
           </div>
         </div>
@@ -201,7 +227,7 @@ export default function ReadingSettingsPage() {
 
           {/* Typography */}
           <div className="bg-zinc-900/60 border border-zinc-800 rounded-2xl p-6">
-            <SectionTitle>🔤 Kiểu chữ & kích thước</SectionTitle>
+            <SectionTitle icon={Type}>Kiểu chữ & kích thước</SectionTitle>
 
             <SettingRow
               label="Cỡ chữ mặc định"
@@ -253,7 +279,7 @@ export default function ReadingSettingsPage() {
 
           {/* Highlight */}
           <div className="bg-zinc-900/60 border border-zinc-800 rounded-2xl p-6">
-            <SectionTitle>🎨 Màu highlight văn bản</SectionTitle>
+            <SectionTitle icon={Palette}>Màu highlight văn bản</SectionTitle>
             <SettingRow
               label="Màu highlight"
               description="Màu dùng khi bôi đen văn bản để ghi chú"
@@ -280,7 +306,7 @@ export default function ReadingSettingsPage() {
 
           {/* Display */}
           <div className="bg-zinc-900/60 border border-zinc-800 rounded-2xl p-6">
-            <SectionTitle>📐 Hiển thị câu hỏi & đồng hồ</SectionTitle>
+            <SectionTitle icon={Layout}>Hiển thị câu hỏi & đồng hồ</SectionTitle>
 
             <SettingRow
               label="Vị trí câu hỏi"
@@ -289,8 +315,8 @@ export default function ReadingSettingsPage() {
               <div className="flex gap-2">
                 {(
                   [
-                    { value: "below" as QuestionPlacement, label: "📄 Bên dưới" },
-                    { value: "inline" as QuestionPlacement, label: "⬛ Nội tuyến" },
+                    { value: "below" as QuestionPlacement, label: "Bên dưới" },
+                    { value: "inline" as QuestionPlacement, label: "Nội tuyến" },
                   ] as const
                 ).map((opt) => (
                   <button
@@ -319,13 +345,12 @@ export default function ReadingSettingsPage() {
                   <button
                     key={t.value}
                     onClick={() => handleUpdate({ timerStyle: t.value })}
-                    className={`px-2 py-2 rounded-xl text-xs font-semibold border transition flex items-center gap-1.5 ${
+                    className={`px-3 py-2 rounded-xl text-xs font-semibold border transition flex items-center justify-center gap-1.5 ${
                       settings.timerStyle === t.value
                         ? "bg-indigo-600 border-indigo-500 text-white"
                         : "bg-zinc-800 border-zinc-700 text-zinc-400 hover:text-white hover:border-zinc-500"
                     }`}
                   >
-                    <span>{t.icon}</span>
                     <span>{t.label}</span>
                   </button>
                 ))}
@@ -335,7 +360,7 @@ export default function ReadingSettingsPage() {
 
           {/* Auto-scroll */}
           <div className="bg-zinc-900/60 border border-zinc-800 rounded-2xl p-6">
-            <SectionTitle>📜 Cuộn tự động</SectionTitle>
+            <SectionTitle icon={Scroll}>Cuộn tự động</SectionTitle>
             <SettingRow
               label="Tốc độ cuộn tự động"
               description="0 = tắt. Cuộn đoạn văn tự động khi đọc"
@@ -357,7 +382,7 @@ export default function ReadingSettingsPage() {
 
           {/* Text-to-Speech */}
           <div className="bg-zinc-900/60 border border-zinc-800 rounded-2xl p-6">
-            <SectionTitle>🔊 Văn bản thành giọng nói (TTS)</SectionTitle>
+            <SectionTitle icon={Volume2}>Văn bản thành giọng nói (TTS)</SectionTitle>
 
             <SettingRow
               label="Bật TTS"
@@ -424,15 +449,17 @@ export default function ReadingSettingsPage() {
                 <div className="flex gap-3 mt-4">
                   <button
                     onClick={handleTTSPreview}
-                    className="flex-1 px-4 py-2 bg-indigo-600 hover:bg-indigo-500 text-white text-sm font-semibold rounded-xl transition"
+                    className="flex-1 flex items-center justify-center gap-2 px-4 py-2 bg-indigo-600 hover:bg-indigo-500 text-white text-sm font-semibold rounded-xl transition"
                   >
-                    ▶ Nghe thử
+                    <Play className="w-4 h-4 fill-white" />
+                    <span>Nghe thử</span>
                   </button>
                   <button
                     onClick={handleTTSStop}
-                    className="px-4 py-2 bg-zinc-700 hover:bg-zinc-600 text-white text-sm font-semibold rounded-xl transition"
+                    className="flex items-center justify-center gap-2 px-4 py-2 bg-zinc-700 hover:bg-zinc-600 text-white text-sm font-semibold rounded-xl transition"
                   >
-                    ⏹ Dừng
+                    <Square className="w-4 h-4 fill-white" />
+                    <span>Dừng</span>
                   </button>
                 </div>
               </>
@@ -444,8 +471,9 @@ export default function ReadingSettingsPage() {
         <div className="space-y-4">
           <div className="sticky top-24">
             <div className="bg-zinc-900/60 border border-zinc-800 rounded-2xl p-5">
-              <h3 className="text-xs font-bold uppercase tracking-widest text-zinc-500 mb-3">
-                👁 Xem trước
+              <h3 className="text-xs font-bold uppercase tracking-widest text-zinc-500 mb-3 flex items-center gap-1.5">
+                <Eye className="w-3.5 h-3.5" />
+                <span>Xem trước</span>
               </h3>
 
               {/* Text preview */}
@@ -524,22 +552,22 @@ export default function ReadingSettingsPage() {
                 {settings.questionPlacement === "below" ? (
                   <div className="space-y-1.5">
                     <div className="bg-zinc-700/40 rounded-lg h-12 flex items-center px-3 text-xs text-zinc-400">
-                      📄 Đoạn văn...
+                      Đoạn văn...
                     </div>
                     <div className="bg-indigo-900/30 border border-indigo-800/30 rounded-lg h-8 flex items-center px-3 text-xs text-indigo-300">
-                      ❓ Câu hỏi bên dưới
+                      Câu hỏi bên dưới
                     </div>
                   </div>
                 ) : (
                   <div className="space-y-1.5">
                     <div className="bg-zinc-700/40 rounded-lg h-5 flex items-center px-3 text-xs text-zinc-400">
-                      📄 Văn bản
+                      Văn bản
                     </div>
                     <div className="bg-indigo-900/30 border border-indigo-800/30 rounded-lg h-5 flex items-center px-3 text-xs text-indigo-300">
-                      ❓ Câu hỏi nội tuyến
+                      Câu hỏi nội tuyến
                     </div>
                     <div className="bg-zinc-700/40 rounded-lg h-5 flex items-center px-3 text-xs text-zinc-400">
-                      📄 Văn bản tiếp theo
+                      Văn bản tiếp theo
                     </div>
                   </div>
                 )}
@@ -549,25 +577,28 @@ export default function ReadingSettingsPage() {
             {/* Quick navigation */}
             <div className="bg-zinc-900/60 border border-zinc-800 rounded-2xl p-5 mt-4">
               <h3 className="text-xs font-bold uppercase tracking-widest text-zinc-500 mb-3">
-                🚀 Đi đến bài luyện
+                Đi đến bài luyện
               </h3>
               <div className="space-y-2">
                 {[
-                  { href: "/dashboard/reading/part-5", label: "Part 5 – Hoàn thành câu", icon: "5️⃣" },
-                  { href: "/dashboard/reading/part-6", label: "Part 6 – Hoàn thành đoạn văn", icon: "6️⃣" },
-                  { href: "/dashboard/reading/part-7", label: "Part 7 – Đọc hiểu", icon: "7️⃣" },
-                  { href: "/dashboard/reading/mixed", label: "Luyện hỗn hợp", icon: "🔀" },
-                ].map((link) => (
-                  <Link
-                    key={link.href}
-                    href={link.href}
-                    className="flex items-center gap-2 px-3 py-2 rounded-xl bg-zinc-800/60 hover:bg-zinc-800 border border-zinc-700/50 hover:border-zinc-600 text-xs text-zinc-300 hover:text-white transition"
-                  >
-                    <span>{link.icon}</span>
-                    <span>{link.label}</span>
-                    <span className="ml-auto text-zinc-600">→</span>
-                  </Link>
-                ))}
+                  { href: "/dashboard/reading/part-5", label: "Part 5 – Hoàn thành câu", icon: Puzzle },
+                  { href: "/dashboard/reading/part-6", label: "Part 6 – Hoàn thành đoạn văn", icon: FileText },
+                  { href: "/dashboard/reading/part-7", label: "Part 7 – Đọc hiểu", icon: FileCheck },
+                  { href: "/dashboard/reading/mixed", label: "Luyện hỗn hợp", icon: SlidersHorizontal },
+                ].map((link) => {
+                  const Icon = link.icon;
+                  return (
+                    <Link
+                      key={link.href}
+                      href={link.href}
+                      className="flex items-center gap-2.5 px-3 py-2 rounded-xl bg-zinc-800/60 hover:bg-zinc-800 border border-zinc-700/50 hover:border-zinc-600 text-xs text-zinc-300 hover:text-white transition"
+                    >
+                      <Icon className="w-4 h-4 text-indigo-400" />
+                      <span>{link.label}</span>
+                      <ChevronRight className="w-3.5 h-3.5 ml-auto text-zinc-600" />
+                    </Link>
+                  );
+                })}
               </div>
             </div>
           </div>

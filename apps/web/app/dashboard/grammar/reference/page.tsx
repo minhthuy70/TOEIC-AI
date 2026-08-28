@@ -2,35 +2,49 @@
 
 import React, { useState, useEffect, useMemo } from "react";
 import Link from "next/link";
+import { getGrammarReferenceRules, getGrammarReferenceDetail } from "@/services/grammar";
+import type { GrammarReferenceRuleSummary, GrammarReferenceDetail } from "@/types/grammar";
 import {
-  getGrammarReferenceRules,
-  getGrammarReferenceDetail,
-} from "@/services/grammar";
-import type {
-  GrammarReferenceRuleSummary,
-  GrammarReferenceDetail,
-} from "@/types/grammar";
+  BookOpen,
+  Printer,
+  Star,
+  Layers,
+  Lightbulb,
+  AlertTriangle,
+  X,
+  Check,
+  Pin,
+  Target,
+  ArrowLeft,
+  Search,
+} from "lucide-react";
 
 export default function GrammarReferencePage() {
   const [rules, setRules] = useState<GrammarReferenceRuleSummary[]>([]);
-  const [loadingList, setLoadingList] = useState(true);
-  const [searchQuery, setSearchQuery] = useState("");
-  const [selectedCategory, setSelectedCategory] = useState<string>("all");
   const [selectedRuleId, setSelectedRuleId] = useState<number | null>(null);
-
-  // Detail rule state
   const [detail, setDetail] = useState<GrammarReferenceDetail | null>(null);
+
+  const [loadingList, setLoadingList] = useState(true);
   const [loadingDetail, setLoadingDetail] = useState(false);
 
-  // Bookmarking
-  const [bookmarkedIds, setBookmarkedIds] = useState<Record<number, boolean>>({});
+  // Filters
+  const [selectedCategory, setSelectedCategory] = useState<string>("all");
+  const [searchQuery, setSearchQuery] = useState("");
   const [showOnlyBookmarks, setShowOnlyBookmarks] = useState(false);
+
+  // Bookmarks in LocalStorage
+  const [bookmarkedIds, setBookmarkedIds] = useState<Record<number, boolean>>({});
   const [toastMessage, setToastMessage] = useState<string | null>(null);
 
-  // Load bookmarks from localStorage
+  const showToast = (msg: string) => {
+    setToastMessage(msg);
+    setTimeout(() => setToastMessage(null), 2500);
+  };
+
+  // Load bookmarks on mount
   useEffect(() => {
     try {
-      const stored = localStorage.getItem("grammar_bookmarked_rules");
+      const stored = localStorage.getItem("grammar_handbook_bookmarks");
       if (stored) {
         setBookmarkedIds(JSON.parse(stored));
       }
@@ -39,40 +53,36 @@ export default function GrammarReferencePage() {
     }
   }, []);
 
-  const showToast = (msg: string) => {
-    setToastMessage(msg);
-    setTimeout(() => setToastMessage(null), 2500);
-  };
-
-  const toggleBookmark = (ruleId: number, e?: React.MouseEvent) => {
+  // Toggle bookmark
+  const toggleBookmark = (id: number, e?: React.MouseEvent) => {
     if (e) e.stopPropagation();
     setBookmarkedIds((prev) => {
-      const next = { ...prev, [ruleId]: !prev[ruleId] };
+      const next = { ...prev, [id]: !prev[id] };
       try {
-        localStorage.setItem("grammar_bookmarked_rules", JSON.stringify(next));
+        localStorage.setItem("grammar_handbook_bookmarks", JSON.stringify(next));
       } catch (err) {
         console.error(err);
       }
-      showToast(next[ruleId] ? "Đã lưu quy tắc vào danh sách yêu thích!" : "Đã gỡ quy tắc khỏi danh sách yêu thích.");
+      showToast(next[id] ? "Đã lưu quy tắc vào danh sách yêu thích!" : "Đã bỏ lưu quy tắc.");
       return next;
     });
   };
 
-  // Load rules list
+  // Load Rules list
   useEffect(() => {
     async function loadRules() {
       try {
         setLoadingList(true);
         const data = await getGrammarReferenceRules({
-          category: selectedCategory !== "all" ? selectedCategory : undefined,
-          search: searchQuery.trim() || undefined,
+          category: selectedCategory === "all" ? undefined : selectedCategory,
+          search: searchQuery.trim() ? searchQuery.trim() : undefined,
         });
         setRules(data);
         if (data.length > 0 && !selectedRuleId) {
           setSelectedRuleId(data[0].id);
         }
       } catch (err) {
-        console.error("Load grammar reference rules error:", err);
+        console.error("Error loading grammar rules list:", err);
       } finally {
         setLoadingList(false);
       }
@@ -80,7 +90,7 @@ export default function GrammarReferencePage() {
     loadRules();
   }, [selectedCategory, searchQuery]);
 
-  // Load rule detail when selectedRuleId changes
+  // Load Detail when selectedRuleId changes
   useEffect(() => {
     if (!selectedRuleId) {
       setDetail(null);
@@ -89,10 +99,10 @@ export default function GrammarReferencePage() {
     async function loadDetail() {
       try {
         setLoadingDetail(true);
-        const res = await getGrammarReferenceDetail(selectedRuleId!);
-        setDetail(res);
+        const data = await getGrammarReferenceDetail(selectedRuleId!);
+        setDetail(data);
       } catch (err) {
-        console.error("Load grammar rule detail error:", err);
+        console.error("Error loading rule detail:", err);
       } finally {
         setLoadingDetail(false);
       }
@@ -116,265 +126,258 @@ export default function GrammarReferencePage() {
     }
   };
 
+  // Category filter tabs
+  const categories = [
+    { id: "all", label: "Tất cả quy tắc" },
+    { id: "tenses", label: "Thì động từ" },
+    { id: "parts_of_speech", label: "Từ loại (N/V/Adj/Adv)" },
+    { id: "clauses", label: "Mệnh đề quan hệ & Mệnh đề trạng" },
+    { id: "voice_mood", label: "Bị động & Giả định" },
+    { id: "connectors", label: "Liên từ & Giới từ" },
+  ];
+
   return (
-    <div className="max-w-7xl mx-auto space-y-6 pb-12 print:p-0 print:m-0 print:max-w-none">
+    <div className="max-w-7xl mx-auto space-y-6 pb-12 print:p-0 print:m-0 print:max-w-full">
       {/* Toast Notification */}
       {toastMessage && (
-        <div className="fixed bottom-6 right-6 z-50 bg-emerald-600 text-white text-xs font-bold px-4 py-3 rounded-xl shadow-2xl flex items-center gap-2 transition-all print:hidden">
-          <span>✓</span>
+        <div className="fixed bottom-6 right-6 z-50 bg-emerald-600 text-white text-xs font-bold px-4 py-3 rounded-xl shadow-2xl flex items-center gap-2 transition-all">
+          <Check className="w-4 h-4" />
           <span>{toastMessage}</span>
         </div>
       )}
 
-      {/* ── HEADER (Hidden on Print) ── */}
+      {/* Top Header - Hidden on Print */}
       <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 print:hidden">
         <div>
           <div className="flex items-center gap-2">
-            <h1 className="text-2xl font-bold text-white">
-              📖 Sổ Tay Tra Cứu Ngữ Pháp TOEIC
+            <h1 className="text-2xl font-bold text-white flex items-center gap-2">
+              <BookOpen className="w-6 h-6 text-red-500" />
+              <span>Sổ Tay Tra Cứu Ngữ Pháp TOEIC</span>
             </h1>
-            <span className="px-2.5 py-0.5 rounded-full text-[10px] font-extrabold bg-red-600/20 text-red-400 border border-red-500/30">
-              Grammar Handbook
+            <span className="px-2.5 py-0.5 rounded-full text-[10px] font-extrabold bg-purple-600/20 text-purple-400 border border-purple-500/30">
+              Reference Handbook
             </span>
           </div>
           <p className="text-zinc-400 text-sm mt-1">
-            Tra cứu nhanh các quy tắc ngữ pháp trọng điểm, bảng tóm tắt, ngoại lệ và lỗi thường gặp
+            Tổng hợp công thức, bảng tổng hợp nhanh, bẫy đề thi và mẹo giải quyết câu hỏi Part 5 & 6
           </p>
         </div>
 
-        <div className="flex items-center gap-2.5">
-          {detail && (
-            <button
-              type="button"
-              onClick={handlePrint}
-              className="flex items-center gap-1.5 px-4 py-2.5 bg-zinc-800 hover:bg-zinc-700 text-zinc-200 hover:text-white font-bold text-xs rounded-xl transition shadow"
-            >
-              <span>🖨️</span>
-              <span>In quy tắc / PDF</span>
-            </button>
-          )}
+        <div className="flex items-center gap-2">
+          <button
+            type="button"
+            onClick={handlePrint}
+            className="inline-flex items-center gap-1.5 px-3.5 py-2 bg-zinc-800 hover:bg-zinc-700 text-zinc-300 hover:text-white font-bold text-xs rounded-xl transition"
+          >
+            <Printer className="w-3.5 h-3.5" />
+            <span>In sổ tay (Print / PDF)</span>
+          </button>
           <Link
             href="/dashboard/grammar"
-            className="flex items-center gap-2 px-4 py-2.5 bg-zinc-800 hover:bg-zinc-700 text-zinc-300 hover:text-white font-bold text-xs rounded-xl transition"
+            className="inline-flex items-center gap-1.5 px-4 py-2 bg-zinc-800 hover:bg-zinc-700 text-zinc-300 hover:text-white font-bold text-xs rounded-xl transition"
           >
-            ← Bảng điều khiển
+            <ArrowLeft className="w-4 h-4" />
+            <span>Dashboard</span>
           </Link>
         </div>
       </div>
 
-      {/* ── SEARCH & CATEGORY FILTER BAR (Hidden on Print) ── */}
-      <div className="bg-zinc-900/70 border border-zinc-800 rounded-2xl p-4 flex flex-col md:flex-row items-stretch md:items-center justify-between gap-3 print:hidden">
-        {/* Search input */}
-        <div className="relative flex-1 max-w-md">
-          <input
-            type="text"
-            placeholder="Tìm quy tắc (Ví dụ: thì hiện tại, bị động, mệnh đề, although)..."
-            value={searchQuery}
-            onChange={(e) => setSearchQuery(e.target.value)}
-            className="w-full bg-zinc-950/80 border border-zinc-800 rounded-xl px-4 py-2 text-xs text-white placeholder-zinc-500 focus:outline-none focus:border-red-500 transition-all"
-          />
-          {searchQuery && (
-            <button
-              type="button"
-              onClick={() => setSearchQuery("")}
-              className="absolute right-3 top-2 text-xs text-zinc-500 hover:text-white"
-            >
-              ✕
-            </button>
-          )}
-        </div>
+      {/* Search & Category Filter Bar - Hidden on Print */}
+      <div className="bg-zinc-900/60 border border-zinc-800 rounded-2xl p-4 space-y-3 print:hidden">
+        <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3">
+          {/* Search box */}
+          <div className="relative flex-1">
+            <Search className="w-4 h-4 text-zinc-500 absolute left-3 top-1/2 -translate-y-1/2" />
+            <input
+              type="text"
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              placeholder="Tìm kiếm công thức, quy tắc (vd: Hiện tại hoàn thành, Mệnh đề quan hệ, Trạng từ)..."
+              className="w-full bg-zinc-950 border border-zinc-800 rounded-xl pl-9 pr-4 py-2 text-xs text-white placeholder-zinc-500 focus:outline-none focus:border-red-500 transition"
+            />
+            {searchQuery && (
+              <button
+                type="button"
+                onClick={() => setSearchQuery("")}
+                className="absolute right-3 top-1/2 -translate-y-1/2 text-zinc-500 hover:text-white text-xs"
+              >
+                <X className="w-3.5 h-3.5" />
+              </button>
+            )}
+          </div>
 
-        {/* Category Tabs */}
-        <div className="flex items-center gap-1.5 overflow-x-auto pb-1 md:pb-0">
-          {[
-            { id: "all", label: "Tất cả" },
-            { id: "tenses", label: "Các thì" },
-            { id: "parts_of_speech", label: "Từ loại & Giới từ" },
-            { id: "clauses", label: "Mệnh đề & Đảo ngữ" },
-            { id: "structures", label: "Cấu trúc đặc biệt" },
-          ].map((c) => (
-            <button
-              key={c.id}
-              type="button"
-              onClick={() => {
-                setSelectedCategory(c.id);
-                setShowOnlyBookmarks(false);
-              }}
-              className={`px-3 py-1.5 rounded-xl text-xs font-bold transition shrink-0 ${
-                selectedCategory === c.id && !showOnlyBookmarks
-                  ? "bg-red-600 text-white shadow-md shadow-red-600/20"
-                  : "bg-zinc-800/80 text-zinc-400 hover:text-white hover:bg-zinc-750"
-              }`}
-            >
-              {c.label}
-            </button>
-          ))}
-
-          {/* Bookmarks Filter */}
+          {/* Bookmark filter switch */}
           <button
             type="button"
             onClick={() => setShowOnlyBookmarks(!showOnlyBookmarks)}
-            className={`px-3 py-1.5 rounded-xl text-xs font-bold transition shrink-0 flex items-center gap-1 ${
+            className={`inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl text-xs font-bold transition shrink-0 ${
               showOnlyBookmarks
-                ? "bg-amber-600 text-white shadow-md shadow-amber-600/20"
-                : "bg-zinc-800/80 text-zinc-400 hover:text-amber-300"
+                ? "bg-amber-500/20 text-amber-300 border border-amber-500/40"
+                : "bg-zinc-800 text-zinc-400 hover:text-white"
             }`}
           >
-            <span>⭐</span>
-            <span>Đã lưu</span>
+            <Star className={`w-3.5 h-3.5 ${showOnlyBookmarks ? "fill-amber-400 text-amber-400" : ""}`} />
+            <span>{showOnlyBookmarks ? "Đang lọc: Mục đã lưu" : "Mục đã lưu"}</span>
           </button>
+        </div>
+
+        {/* Category Tabs */}
+        <div className="flex items-center gap-1.5 overflow-x-auto pb-1">
+          {categories.map((cat) => (
+            <button
+              key={cat.id}
+              type="button"
+              onClick={() => setSelectedCategory(cat.id)}
+              className={`px-3 py-1.5 rounded-xl text-xs font-bold whitespace-nowrap transition ${
+                selectedCategory === cat.id
+                  ? "bg-red-600 text-white shadow-md shadow-red-600/20"
+                  : "bg-zinc-800/80 text-zinc-400 hover:bg-zinc-800 hover:text-white"
+              }`}
+            >
+              {cat.label}
+            </button>
+          ))}
         </div>
       </div>
 
-      {/* ── MAIN CONTENT: 2 COLUMNS (SIDEBAR LIST + DETAIL VIEW) ── */}
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
-        {/* Left Column: Rules Index List (Hidden on Print) */}
-        <div className="lg:col-span-4 space-y-3 print:hidden">
-          <div className="flex items-center justify-between px-1">
-            <h2 className="text-xs font-bold text-zinc-400 uppercase tracking-wider">
-              Chỉ mục quy tắc ({displayedRules.length})
-            </h2>
-            <span className="text-[11px] text-zinc-500">Nhấp để xem chi tiết</span>
+      {/* Main 2-Column Handbook Layout */}
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 print:block">
+        {/* Left Column: Rules Navigation Menu - Hidden on print when printing a single rule */}
+        <div className="lg:col-span-4 space-y-2.5 max-h-[calc(100vh-250px)] overflow-y-auto pr-1 print:hidden">
+          <div className="flex items-center justify-between px-1 text-xs font-bold text-zinc-400">
+            <span>Danh mục quy tắc ({displayedRules.length})</span>
           </div>
 
           {loadingList ? (
-            <div className="space-y-2 animate-pulse">
+            <div className="space-y-2.5 animate-pulse">
               {[1, 2, 3, 4, 5].map((i) => (
                 <div key={i} className="h-20 bg-zinc-900/60 border border-zinc-800 rounded-2xl" />
               ))}
             </div>
           ) : displayedRules.length === 0 ? (
-            <div className="bg-zinc-900/40 border border-zinc-800/60 rounded-2xl p-6 text-center text-zinc-500 text-xs">
-              Không tìm thấy quy tắc phù hợp với từ khóa.
+            <div className="p-8 text-center bg-zinc-900/40 border border-zinc-800 rounded-2xl">
+              <BookOpen className="w-8 h-8 text-zinc-600 mx-auto mb-2" />
+              <p className="text-xs text-zinc-500">Không tìm thấy quy tắc ngữ pháp phù hợp.</p>
             </div>
           ) : (
-            <div className="space-y-2.5 max-h-[75vh] overflow-y-auto pr-1">
-              {displayedRules.map((rule) => {
-                const isSelected = selectedRuleId === rule.id;
-                const isBookmarked = !!bookmarkedIds[rule.id];
+            displayedRules.map((rule) => {
+              const isSelected = selectedRuleId === rule.id;
+              const isBookmarked = !!bookmarkedIds[rule.id];
 
-                return (
-                  <div
-                    key={rule.id}
-                    onClick={() => setSelectedRuleId(rule.id)}
-                    className={`p-4 rounded-2xl border cursor-pointer transition-all flex flex-col justify-between gap-2 group ${
-                      isSelected
-                        ? "bg-zinc-900 border-red-500/70 shadow-lg shadow-red-950/20"
-                        : "bg-zinc-900/60 border-zinc-800/80 hover:border-zinc-700 hover:bg-zinc-900/90"
-                    }`}
-                  >
-                    <div className="flex items-start justify-between gap-2">
-                      <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-zinc-800 text-zinc-300 border border-zinc-700/60">
-                        {rule.categoryLabel}
-                      </span>
-                      <button
-                        type="button"
-                        onClick={(e) => toggleBookmark(rule.id, e)}
-                        className={`text-sm transition hover:scale-110 ${
-                          isBookmarked ? "text-amber-400" : "text-zinc-600 hover:text-zinc-400"
-                        }`}
-                        title={isBookmarked ? "Bỏ lưu" : "Lưu quy tắc"}
-                      >
-                        {isBookmarked ? "⭐" : "☆"}
-                      </button>
+              return (
+                <div
+                  key={rule.id}
+                  onClick={() => setSelectedRuleId(rule.id)}
+                  className={`p-4 rounded-2xl border transition-all cursor-pointer flex flex-col justify-between gap-2 group relative ${
+                    isSelected
+                      ? "bg-red-600/15 border-red-500 text-white shadow-lg shadow-red-600/10"
+                      : "bg-zinc-900/70 border-zinc-800/80 text-zinc-300 hover:border-zinc-700 hover:bg-zinc-850"
+                  }`}
+                >
+                  <div className="flex items-start justify-between gap-2">
+                    <div className="space-y-1 pr-6">
+                      <div className="flex items-center gap-1.5">
+                        <span className="text-[9px] font-extrabold uppercase px-2 py-0.5 rounded bg-zinc-800 text-zinc-400">
+                          {rule.categoryLabel}
+                        </span>
+                        <span className="text-[9px] font-bold text-zinc-500">
+                          Chặng {rule.stage}
+                        </span>
+                      </div>
+                      <h3 className="font-bold text-sm text-white group-hover:text-red-400 transition-colors line-clamp-1">
+                        {rule.title}
+                      </h3>
                     </div>
 
-                    <h3
-                      className={`text-xs font-bold transition-colors line-clamp-2 ${
-                        isSelected ? "text-white" : "text-zinc-200 group-hover:text-red-400"
-                      }`}
+                    {/* Bookmark icon */}
+                    <button
+                      type="button"
+                      onClick={(e) => toggleBookmark(rule.id, e)}
+                      className="absolute right-3.5 top-3.5 text-zinc-500 hover:text-amber-400 transition p-1"
+                      title={isBookmarked ? "Bỏ lưu" : "Lưu vào yêu thích"}
                     >
-                      {rule.title}
-                    </h3>
-
-                    <p className="text-[11px] text-zinc-500 line-clamp-1">
-                      {rule.summary}
-                    </p>
+                      <Star className={`w-3.5 h-3.5 ${isBookmarked ? "fill-amber-400 text-amber-400" : ""}`} />
+                    </button>
                   </div>
-                );
-              })}
-            </div>
+
+                  <p className="text-xs text-zinc-400 line-clamp-2 leading-relaxed">
+                    {rule.summary}
+                  </p>
+
+                  <div className="flex items-center justify-between text-[10px] text-zinc-500 pt-1 border-t border-zinc-800/50">
+                    <span>{rule.examplesCount} ví dụ mẫu</span>
+                    {rule.exceptionsCount > 0 && (
+                      <span className="text-amber-400/80 font-semibold">{rule.exceptionsCount} ngoại lệ</span>
+                    )}
+                  </div>
+                </div>
+              );
+            })
           )}
         </div>
 
-        {/* Right Column: Rule Detail View (Print Target) */}
-        <div className="lg:col-span-8 print:col-span-12">
+        {/* Right Column: Detailed Handbook Entry Content */}
+        <div className="lg:col-span-8 print:w-full">
           {loadingDetail ? (
             <div className="bg-zinc-900/60 border border-zinc-800 rounded-3xl p-8 space-y-6 animate-pulse">
-              <div className="h-6 w-3/4 bg-zinc-800 rounded" />
-              <div className="h-20 bg-zinc-800 rounded-2xl" />
-              <div className="h-40 bg-zinc-800 rounded-2xl" />
+              <div className="h-8 bg-zinc-800 rounded-xl w-2/3" />
+              <div className="h-20 bg-zinc-800/60 rounded-xl" />
+              <div className="h-40 bg-zinc-800/60 rounded-xl" />
             </div>
           ) : !detail ? (
-            <div className="bg-zinc-900/40 border border-zinc-800 rounded-3xl p-12 text-center text-zinc-500">
-              <p className="text-3xl mb-2">👈</p>
-              <p className="text-sm font-semibold">Chọn một quy tắc từ danh sách bên trái để tra cứu chi tiết</p>
+            <div className="bg-zinc-900/40 border border-zinc-800 rounded-3xl p-12 text-center">
+              <BookOpen className="w-12 h-12 text-zinc-600 mx-auto mb-3" />
+              <h3 className="text-base font-bold text-white">Chọn một quy tắc ngữ pháp để tra cứu</h3>
+              <p className="text-xs text-zinc-500 mt-1">
+                Xem toàn bộ công thức tóm tắt, bảng tra cứu, ngoại lệ và mẹo thi TOEIC tương ứng
+              </p>
             </div>
           ) : (
-            <div className="bg-zinc-900/80 border border-zinc-800 rounded-3xl p-6 sm:p-8 space-y-7 print:bg-white print:text-black print:border-none print:p-0 print:space-y-4">
-              {/* Top Detail Header */}
-              <div className="space-y-2 border-b border-zinc-800 pb-5 print:border-gray-300">
-                <div className="flex items-center justify-between flex-wrap gap-2">
+            <div className="bg-zinc-900/80 border border-zinc-800 rounded-3xl p-6 sm:p-8 space-y-7 print:bg-transparent print:border-none print:p-0">
+              {/* Header Title & Tags */}
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-zinc-800 pb-5 print:border-gray-300">
+                <div className="space-y-1.5">
                   <div className="flex items-center gap-2">
-                    <span className="text-[10px] font-bold px-2.5 py-0.5 rounded-full bg-red-600/15 text-red-400 border border-red-600/20 print:border-black print:text-black">
+                    <span className="px-2.5 py-0.5 rounded-full text-[10px] font-extrabold bg-red-600/20 text-red-400 border border-red-500/30 print:border-gray-400 print:text-black">
                       {detail.categoryLabel}
                     </span>
-                    <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-blue-600/15 text-blue-400 border border-blue-600/20 print:border-black print:text-black">
+                    <span className="px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-zinc-800 text-zinc-300 print:border-gray-400 print:text-black">
                       Chặng {detail.stage}
                     </span>
                   </div>
-
-                  <div className="flex items-center gap-2 print:hidden">
-                    <button
-                      type="button"
-                      onClick={() => toggleBookmark(detail.id)}
-                      className={`px-3 py-1 rounded-xl text-xs font-bold border flex items-center gap-1.5 transition ${
-                        bookmarkedIds[detail.id]
-                          ? "bg-amber-500/20 text-amber-300 border-amber-500/40"
-                          : "bg-zinc-800 border-zinc-700 text-zinc-400 hover:text-white"
-                      }`}
-                    >
-                      <span>{bookmarkedIds[detail.id] ? "⭐" : "☆"}</span>
-                      <span>{bookmarkedIds[detail.id] ? "Đã lưu" : "Lưu quy tắc"}</span>
-                    </button>
-                    <button
-                      type="button"
-                      onClick={handlePrint}
-                      className="px-3 py-1 rounded-xl text-xs font-bold bg-zinc-800 border border-zinc-700 text-zinc-300 hover:text-white transition"
-                    >
-                      🖨️ In
-                    </button>
-                  </div>
+                  <h2 className="text-xl sm:text-2xl font-extrabold text-white print:text-black">
+                    {detail.title}
+                  </h2>
                 </div>
 
-                <h1 className="text-xl sm:text-2xl font-bold text-white print:text-black pt-1">
-                  {detail.title}
-                </h1>
-                <p className="text-xs text-zinc-400 print:text-gray-600 leading-relaxed">
-                  {detail.summary}
-                </p>
+                <div className="flex items-center gap-2 print:hidden">
+                  <button
+                    type="button"
+                    onClick={() => toggleBookmark(detail.id)}
+                    className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-bold transition border ${
+                      bookmarkedIds[detail.id]
+                        ? "bg-amber-500/20 text-amber-300 border-amber-500/40"
+                        : "bg-zinc-800 text-zinc-400 border-zinc-700 hover:text-white"
+                    }`}
+                  >
+                    <Star className={`w-3.5 h-3.5 ${bookmarkedIds[detail.id] ? "fill-amber-400 text-amber-400" : ""}`} />
+                    <span>{bookmarkedIds[detail.id] ? "Đã lưu" : "Lưu quy tắc"}</span>
+                  </button>
+                </div>
               </div>
 
-              {/* Formula Highlight */}
-              {detail.formula && (
-                <div className="bg-zinc-950/80 border border-zinc-700/60 rounded-2xl p-4 print:bg-gray-100 print:border-gray-300">
-                  <div className="flex items-center gap-2 text-xs font-bold text-red-400 print:text-black uppercase tracking-wider mb-1.5">
-                    <span>📐</span>
-                    <span>Cấu trúc trọng tâm</span>
-                  </div>
-                  <p className="font-mono text-sm sm:text-base font-semibold text-zinc-200 print:text-black leading-relaxed">
+              {/* ── FORMULA HIGHLIGHT BOX ── */}
+              <div className="bg-gradient-to-r from-red-950/40 to-purple-950/30 border border-red-800/40 rounded-2xl p-5 space-y-2 print:border-gray-400 print:bg-gray-100">
+                <div className="flex items-center gap-2 text-xs font-bold text-red-400 print:text-black uppercase tracking-wider">
+                  <Layers className="w-4 h-4" />
+                  <span>1. Công thức & Cấu trúc ngữ pháp trọng tâm</span>
+                </div>
+                <div className="p-3.5 bg-black/50 print:bg-white border border-red-900/30 print:border-gray-300 rounded-xl">
+                  <p className="font-mono text-sm sm:text-base font-bold text-amber-300 print:text-black leading-relaxed">
                     {detail.formula}
                   </p>
                 </div>
-              )}
-
-              {/* ── RULE EXPLANATION ── */}
-              <div className="space-y-2">
-                <h3 className="text-sm font-bold text-white print:text-black flex items-center gap-2">
-                  <span className="w-1.5 h-4 bg-red-500 rounded-full print:hidden" />
-                  <span>1. Giải thích bản chất & Cách dùng</span>
-                </h3>
-                <p className="text-xs sm:text-[13px] text-zinc-300 print:text-gray-800 leading-relaxed pl-3.5">
+                <p className="text-xs text-zinc-300 print:text-gray-700 leading-relaxed pt-1">
                   {detail.explanation}
                 </p>
               </div>
@@ -391,7 +394,7 @@ export default function GrammarReferencePage() {
                     <table className="w-full text-left text-xs border-collapse">
                       <thead>
                         <tr className="bg-zinc-950/90 text-zinc-300 border-b border-zinc-800 print:bg-gray-200 print:text-black print:border-gray-300">
-                          {detail.quickTable.headers.map((h, i) => (
+                          {detail.quickTable.headers.map((h: string, i: number) => (
                             <th key={i} className="py-3 px-4 font-bold">
                               {h}
                             </th>
@@ -399,12 +402,12 @@ export default function GrammarReferencePage() {
                         </tr>
                       </thead>
                       <tbody className="divide-y divide-zinc-800/60 print:divide-gray-300">
-                        {detail.quickTable.rows.map((row, rIdx) => (
+                        {detail.quickTable.rows.map((row: string[], rIdx: number) => (
                           <tr
                             key={rIdx}
                             className="hover:bg-zinc-800/40 transition print:hover:bg-transparent"
                           >
-                            {row.map((cell, cIdx) => (
+                            {row.map((cell: string, cIdx: number) => (
                               <td
                                 key={cIdx}
                                 className={`py-3 px-4 ${
@@ -433,7 +436,7 @@ export default function GrammarReferencePage() {
                   </h3>
 
                   <div className="space-y-2.5">
-                    {detail.examples.map((ex, exIdx) => (
+                    {detail.examples.map((ex: any, exIdx: number) => (
                       <div
                         key={exIdx}
                         className="bg-zinc-950/60 border border-zinc-800/80 rounded-2xl p-4 space-y-1.5 print:border-gray-300 print:bg-gray-50"
@@ -445,8 +448,9 @@ export default function GrammarReferencePage() {
                           → {ex.vi}
                         </p>
                         {ex.analysis && (
-                          <p className="text-[11px] text-emerald-400 print:text-emerald-800 pl-3 pt-1">
-                            💡 <strong>Phân tích:</strong> {ex.analysis}
+                          <p className="flex items-center gap-1 text-[11px] text-emerald-400 print:text-emerald-800 pl-3 pt-1">
+                            <Lightbulb className="w-3.5 h-3.5 text-amber-400 shrink-0" />
+                            <span><strong>Phân tích:</strong> {ex.analysis}</span>
                           </p>
                         )}
                       </div>
@@ -459,11 +463,11 @@ export default function GrammarReferencePage() {
               {detail.exceptions && detail.exceptions.length > 0 && (
                 <div className="bg-amber-950/30 border border-amber-800/40 rounded-2xl p-5 space-y-2 print:border-amber-500 print:bg-amber-50">
                   <div className="flex items-center gap-2 text-xs font-bold text-amber-400 print:text-amber-800 uppercase tracking-wider">
-                    <span>⚠️</span>
+                    <AlertTriangle className="w-4 h-4" />
                     <span>Ngoại lệ cần chú ý (Exceptions)</span>
                   </div>
                   <ul className="space-y-1.5 pl-5 list-disc text-xs text-amber-200/90 print:text-amber-950">
-                    {detail.exceptions.map((exc, excIdx) => (
+                    {detail.exceptions.map((exc: string, excIdx: number) => (
                       <li key={excIdx} className="leading-relaxed">
                         {exc}
                       </li>
@@ -476,24 +480,27 @@ export default function GrammarReferencePage() {
               {detail.commonErrors && detail.commonErrors.length > 0 && (
                 <div className="bg-rose-950/30 border border-rose-800/40 rounded-2xl p-5 space-y-3 print:border-rose-500 print:bg-rose-50">
                   <div className="flex items-center gap-2 text-xs font-bold text-rose-400 print:text-rose-800 uppercase tracking-wider">
-                    <span>❌</span>
+                    <X className="w-4 h-4" />
                     <span>Lỗi thường gặp trong đề thi (Common Errors)</span>
                   </div>
 
                   <div className="space-y-2.5">
-                    {detail.commonErrors.map((err, errIdx) => (
+                    {detail.commonErrors.map((err: any, errIdx: number) => (
                       <div
                         key={errIdx}
                         className="bg-zinc-950/60 border border-rose-900/30 rounded-xl p-3.5 space-y-1 text-xs print:bg-white print:border-gray-300"
                       >
-                        <p className="text-rose-300 print:text-rose-700 font-mono">
-                          ❌ Sai: {err.incorrect}
+                        <p className="text-rose-300 print:text-rose-700 font-mono flex items-center gap-1">
+                          <X className="w-3.5 h-3.5 text-rose-400 shrink-0" />
+                          <span>Sai: {err.incorrect}</span>
                         </p>
-                        <p className="text-emerald-300 print:text-emerald-700 font-mono font-semibold">
-                          ✓ Đúng: {err.correct}
+                        <p className="text-emerald-300 print:text-emerald-700 font-mono font-semibold flex items-center gap-1">
+                          <Check className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
+                          <span>Đúng: {err.correct}</span>
                         </p>
-                        <p className="text-[11px] text-zinc-400 print:text-gray-600 pt-1">
-                          📌 <em>{err.note}</em>
+                        <p className="text-[11px] text-zinc-400 print:text-gray-600 pt-1 flex items-center gap-1">
+                          <Pin className="w-3 h-3 text-zinc-500 shrink-0" />
+                          <em>{err.note}</em>
                         </p>
                       </div>
                     ))}
@@ -505,11 +512,11 @@ export default function GrammarReferencePage() {
               {detail.toeicTips && detail.toeicTips.length > 0 && (
                 <div className="bg-zinc-950/80 border border-zinc-800 rounded-2xl p-5 space-y-2 print:border-gray-300">
                   <div className="flex items-center gap-2 text-xs font-bold text-purple-400 print:text-purple-800 uppercase tracking-wider">
-                    <span>🎯</span>
+                    <Target className="w-4 h-4" />
                     <span>Mẹo xử lý nhanh Part 5 & 6 TOEIC</span>
                   </div>
                   <ul className="space-y-1 pl-5 list-disc text-xs text-zinc-300 print:text-black">
-                    {detail.toeicTips.map((tip, tipIdx) => (
+                    {detail.toeicTips.map((tip: string, tipIdx: number) => (
                       <li key={tipIdx} className="leading-relaxed">
                         {tip}
                       </li>

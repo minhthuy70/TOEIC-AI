@@ -17,6 +17,15 @@ import {
   type SubmitPracticeResponse,
 } from "@/services/practice";
 
+import {
+  Headphones,
+  Check,
+  ArrowLeft,
+  ArrowRight,
+  PartyPopper,
+  Target,
+} from "lucide-react";
+
 export default function PracticePartPage() {
   const params = useParams();
 
@@ -512,8 +521,9 @@ function resolveMediaUrl(
 
         {currentQuestion.audioUrl && (
   <div className="mb-6 rounded-2xl border border-white/5 bg-[#121214] p-5">
-    <p className="mb-3 text-sm text-zinc-400">
-      🎧 Audio
+    <p className="mb-3 text-sm text-zinc-400 flex items-center gap-2">
+      <Headphones className="w-4 h-4 text-red-500" />
+      <span>Audio</span>
     </p>
 
     <audio
@@ -619,9 +629,10 @@ function resolveMediaUrl(
             disabled={
               currentIndex === 0
             }
-            className="rounded-xl border border-white/10 px-5 py-3 text-sm text-zinc-300 disabled:cursor-not-allowed disabled:opacity-30"
+            className="inline-flex items-center gap-1.5 rounded-xl border border-white/10 px-5 py-3 text-sm text-zinc-300 disabled:cursor-not-allowed disabled:opacity-30"
           >
-            ← Câu trước
+            <ArrowLeft className="w-4 h-4" />
+            <span>Câu trước</span>
           </button>
 
           <div className="text-sm text-zinc-500">
@@ -640,9 +651,10 @@ function resolveMediaUrl(
               onClick={
                 handleNext
               }
-              className="rounded-xl bg-red-600 px-5 py-3 text-sm font-medium hover:bg-red-500"
+              className="inline-flex items-center gap-1.5 rounded-xl bg-red-600 px-5 py-3 text-sm font-medium hover:bg-red-500"
             >
-              Câu tiếp →
+              <span>Câu tiếp</span>
+              <ArrowRight className="w-4 h-4" />
             </button>
           ) : (
             <button
@@ -651,11 +663,12 @@ function resolveMediaUrl(
                 handleSubmit
               }
               disabled={submitting}
-              className="rounded-xl bg-green-600 px-6 py-3 text-sm font-semibold hover:bg-green-500 disabled:opacity-50"
+              className="inline-flex items-center gap-1.5 rounded-xl bg-green-600 px-6 py-3 text-sm font-semibold hover:bg-green-500 disabled:opacity-50"
             >
-              {submitting
+              <Check className="w-4 h-4" />
+              <span>{submitting
                 ? "Đang chấm..."
-                : "Nộp bài ✓"}
+                : "Nộp bài"}</span>
             </button>
           )}
         </div>
@@ -728,11 +741,13 @@ function ResultView({
   return (
     <div className="min-h-screen bg-[#09090b] px-6 py-12 text-white">
       <div className="mx-auto max-w-3xl">
-        <div className="rounded-3xl border border-white/5 bg-[#121214] p-8 text-center">
-          <div className="text-5xl">
-            {isGood
-              ? "🎉"
-              : "💪"}
+        <div className="rounded-3xl border border-white/5 bg-[#121214] p-8 text-center flex flex-col items-center">
+          <div className="w-20 h-20 mx-auto rounded-full bg-white/5 flex items-center justify-center">
+            {isGood ? (
+              <PartyPopper className="w-10 h-10 text-emerald-400" />
+            ) : (
+              <Target className="w-10 h-10 text-amber-400" />
+            )}
           </div>
 
           <h1 className="mt-5 text-3xl font-bold">

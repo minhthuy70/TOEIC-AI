@@ -19,6 +19,17 @@ import LessonLearning from "@/components/vocabulary/LessonLearning";
 import VocabularyFilter from "@/components/vocabulary/VocabularyFilter";
 import VocabularyCard from "@/components/vocabulary/VocabularyCard";
 import { loadVocabSettings } from "@/lib/vocab-settings";
+import {
+  BookA,
+  Settings,
+  BarChart3,
+  Brain,
+  ChevronLeft,
+  ChevronRight,
+  RotateCcw,
+  Trash2,
+  BookOpen,
+} from "lucide-react";
 
 export default function VocabularyPage() {
   const [loading, setLoading] = useState(true);
@@ -197,7 +208,10 @@ export default function VocabularyPage() {
       {/* Top Section / Header */}
       <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
         <div>
-          <h1 className="text-2xl font-bold text-white">📚 Luyện từ vựng theo bài</h1>
+          <h1 className="text-2xl font-bold text-white flex items-center gap-2.5">
+            <BookA className="w-7 h-7 text-red-500" />
+            <span>Luyện từ vựng theo bài</span>
+          </h1>
           <p className="text-zinc-400 text-sm mt-1">
             Học từ mới mỗi ngày và lọc tra cứu nhanh kho từ vựng.
           </p>
@@ -209,19 +223,22 @@ export default function VocabularyPage() {
             href="/dashboard/vocabulary/settings"
             className="flex items-center gap-2 px-4 py-2.5 bg-zinc-800 hover:bg-zinc-700 text-zinc-300 hover:text-white font-bold text-xs rounded-xl transition"
           >
-            &#9881;&#65039; Cài đặt
+            <Settings className="w-4 h-4" />
+            <span>Cài đặt</span>
           </Link>
           <Link
             href="/dashboard/vocabulary/statistics"
             className="flex items-center gap-2 px-4 py-2.5 bg-gradient-to-r from-purple-700 to-purple-600 hover:from-purple-600 hover:to-purple-500 text-white font-bold text-xs rounded-xl shadow-lg shadow-purple-700/10 hover:shadow-purple-700/20 transition-all hover:scale-[1.02] active:scale-[0.98]"
           >
-            &#128202; Thống kê từ vựng
+            <BarChart3 className="w-4 h-4" />
+            <span>Thống kê từ vựng</span>
           </Link>
           <Link
             href="/dashboard/review"
             className="flex items-center gap-2 px-4 py-2.5 bg-gradient-to-r from-amber-600 to-amber-500 hover:from-amber-500 hover:to-amber-450 text-white font-bold text-xs rounded-xl shadow-lg shadow-amber-600/10 hover:shadow-amber-600/20 transition-all hover:scale-[1.02] active:scale-[0.98]"
           >
-            &#129504; Đi đến Trang Ôn Tập (SRS)
+            <Brain className="w-4 h-4" />
+            <span>Trang Ôn Tập (SRS)</span>
           </Link>
         </div>
       </div>
@@ -258,11 +275,12 @@ export default function VocabularyPage() {
 
         {/* Word Grid */}
         {loadingFiltered ? (
-          <div className="rounded-2xl border border-zinc-805 bg-zinc-900/40 p-8 text-center text-zinc-500 text-sm">
+          <div className="rounded-2xl border border-zinc-800 bg-zinc-900/40 p-8 text-center text-zinc-500 text-sm">
             Đang tìm kiếm và lọc từ vựng...
           </div>
         ) : filteredWords.length === 0 ? (
-          <div className="rounded-2xl border border-zinc-805 bg-zinc-900/40 p-8 text-center">
+          <div className="rounded-2xl border border-zinc-800 bg-zinc-900/40 p-8 text-center flex flex-col items-center">
+            <BookOpen className="w-10 h-10 text-zinc-600 mb-3" />
             <p className="text-white font-bold text-lg">Không tìm thấy từ vựng</p>
             <p className="text-zinc-500 text-sm mt-1">Vui lòng thay đổi từ khóa hoặc bộ lọc của bạn.</p>
           </div>
@@ -294,9 +312,10 @@ export default function VocabularyPage() {
                   onClick={() =>
                     setActiveFilters((prev) => ({ ...prev, page: prev.page - 1 }))
                   }
-                  className="rounded-xl bg-zinc-900 border border-zinc-800 px-4 py-2 text-xs font-semibold text-zinc-300 hover:text-white disabled:opacity-40 disabled:hover:text-zinc-300 transition"
+                  className="rounded-xl bg-zinc-900 border border-zinc-800 px-4 py-2 text-xs font-semibold text-zinc-300 hover:text-white disabled:opacity-40 disabled:hover:text-zinc-300 transition flex items-center gap-1"
                 >
-                  ← Trước
+                  <ChevronLeft className="w-4 h-4" />
+                  <span>Trước</span>
                 </button>
 
                 <span className="text-xs font-bold text-white">{activeFilters.page}</span>
@@ -306,9 +325,10 @@ export default function VocabularyPage() {
                   onClick={() =>
                     setActiveFilters((prev) => ({ ...prev, page: prev.page + 1 }))
                   }
-                  className="rounded-xl bg-zinc-900 border border-zinc-800 px-4 py-2 text-xs font-semibold text-zinc-300 hover:text-white disabled:opacity-40 disabled:hover:text-zinc-300 transition"
+                  className="rounded-xl bg-zinc-900 border border-zinc-800 px-4 py-2 text-xs font-semibold text-zinc-300 hover:text-white disabled:opacity-40 disabled:hover:text-zinc-300 transition flex items-center gap-1"
                 >
-                  Sau →
+                  <span>Sau</span>
+                  <ChevronRight className="w-4 h-4" />
                 </button>
               </div>
             )}
@@ -332,16 +352,18 @@ export default function VocabularyPage() {
             <button
               onClick={() => handleBulkAction('reset')}
               disabled={bulkLoading}
-              className="px-4 py-2 bg-zinc-800 hover:bg-zinc-700 text-zinc-300 hover:text-white text-xs font-bold rounded-xl transition"
+              className="px-4 py-2 bg-zinc-800 hover:bg-zinc-700 text-zinc-300 hover:text-white text-xs font-bold rounded-xl transition flex items-center gap-1.5"
             >
-              Làm mới tiến độ
+              <RotateCcw className="w-3.5 h-3.5" />
+              <span>Làm mới tiến độ</span>
             </button>
             <button
               onClick={() => handleBulkAction('delete')}
               disabled={bulkLoading}
-              className="px-4 py-2 bg-red-600/10 hover:bg-red-600/20 border border-red-500/20 text-red-500 text-xs font-bold rounded-xl transition"
+              className="px-4 py-2 bg-red-600/10 hover:bg-red-600/20 border border-red-500/20 text-red-500 text-xs font-bold rounded-xl transition flex items-center gap-1.5"
             >
-              Xóa tiến độ
+              <Trash2 className="w-3.5 h-3.5" />
+              <span>Xóa tiến độ</span>
             </button>
           </div>
         </div>

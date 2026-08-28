@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { Topic } from "@/types/vocabulary";
+import { Search, SlidersHorizontal } from "lucide-react";
 
 interface Props {
   currentStage: number;
@@ -51,7 +52,8 @@ export default function VocabularyFilter({
       {/* Title */}
       <div>
         <h3 className="text-sm font-bold text-white flex items-center gap-2">
-          <span>🔍</span> Tìm kiếm & Bộ lọc từ vựng
+          <Search className="w-4 h-4 text-red-500" />
+          <span>Tìm kiếm & Bộ lọc từ vựng</span>
         </h3>
         <p className="text-[11px] text-zinc-500 mt-0.5">
           Tra cứu, sắp xếp và lọc từ vựng trong chặng học của bạn.
@@ -62,13 +64,16 @@ export default function VocabularyFilter({
         {/* Search Input */}
         <div className="flex flex-col space-y-1">
           <label className="text-[11px] text-zinc-400 font-semibold uppercase">Tìm kiếm</label>
-          <input
-            type="text"
-            value={search}
-            onChange={(e) => setSearch(e.target.value)}
-            placeholder="Nhập từ Tiếng Anh / Nghĩa..."
-            className="w-full text-xs text-white placeholder-zinc-500 bg-zinc-950 border border-zinc-800 focus:border-red-500/50 rounded-xl px-3 py-2.5 outline-none transition"
-          />
+          <div className="relative">
+            <input
+              type="text"
+              value={search}
+              onChange={(e) => setSearch(e.target.value)}
+              placeholder="Nhập từ Tiếng Anh / Nghĩa..."
+              className="w-full text-xs text-white placeholder-zinc-500 bg-zinc-950 border border-zinc-800 focus:border-red-500/50 rounded-xl pl-8 pr-3 py-2.5 outline-none transition"
+            />
+            <Search className="w-3.5 h-3.5 text-zinc-500 absolute left-2.5 top-3 pointer-events-none" />
+          </div>
         </div>
 
         {/* Stage Filter */}

@@ -18,6 +18,28 @@ import type {
   GrammarExerciseSubmitResult,
   GrammarExerciseResultItem,
 } from "@/types/grammar";
+import {
+  Edit3,
+  Settings,
+  Clock,
+  Infinity as InfinityIcon,
+  Rocket,
+  Flag,
+  Trophy,
+  AlertTriangle,
+  RotateCcw,
+  BookOpen,
+  Star,
+  Layers,
+  Lightbulb,
+  Check,
+  X,
+  ArrowLeft,
+  ArrowRight,
+  Loader2,
+  FileText,
+  Search,
+} from "lucide-react";
 
 type ScreenState = "config" | "exercise" | "summary";
 
@@ -106,167 +128,142 @@ export default function GrammarExercisesPage() {
     return () => clearInterval(timer);
   }, [screen, isTimed, timeRemaining]);
 
-  // Filter topics for config screen
-  const filteredTopics = useMemo(() => {
-    let list = topics;
-    if (selectedDifficulty !== "all") {
-      list = list.filter((t) => {
-        if (selectedDifficulty === "basic") return t.stage <= 2;
-        if (selectedDifficulty === "intermediate") return t.stage === 3 || t.stage === 4;
-        if (selectedDifficulty === "advanced") return t.stage >= 5;
-        return true;
-      });
-    }
-    if (searchTopic.trim()) {
-      const q = searchTopic.toLowerCase().trim();
-      list = list.filter(
-        (t) =>
-          t.name.toLowerCase().includes(q) ||
-          (t.description && t.description.toLowerCase().includes(q))
-      );
-    }
-    return list;
-  }, [topics, selectedDifficulty, searchTopic]);
-
-  // Start Exercise
-  const handleStart = async (topicId?: number) => {
-    const tId = topicId !== undefined ? topicId : selectedTopicId;
-    setLoadingSession(true);
+  // Start Session handler
+  const handleStart = async (topicIdParam?: number) => {
     try {
+      setLoadingSession(true);
+      const chosenTopicId = topicIdParam !== undefined ? topicIdParam : selectedTopicId;
       const res = await startGrammarExercise({
-        categoryId: tId > 0 ? tId : undefined,
-        difficulty: selectedDifficulty !== "all" ? selectedDifficulty : undefined,
+        categoryId: chosenTopicId > 0 ? chosenTopicId : undefined,
         questionCount,
+        difficulty: selectedDifficulty === "all" ? undefined : selectedDifficulty,
         isTimed,
       });
 
       setSession(res);
+      setCurrentQIndex(0);
       setAnswers({});
       setMarkedForReview({});
-      setCurrentQIndex(0);
       setElapsedSeconds(0);
-      if (isTimed) {
-        setTimeRemaining(res.timeLimitSeconds || res.totalQuestions * 45);
-      } else {
-        setTimeRemaining(null);
-      }
+      setTimeRemaining(isTimed ? res.timeLimitSeconds : null);
       setScreen("exercise");
+      playSoundFeedback("click");
     } catch (err) {
-      console.error(err);
-      alert("Lỗi khi tải câu hỏi bài tập. Vui lòng thử lại!");
+      console.error("Error starting grammar exercise session:", err);
+      alert("Không thể tải câu hỏi luyện tập. Vui lòng thử lại!");
     } finally {
       setLoadingSession(false);
     }
   };
 
-  // Select Option
-  const handleSelectOption = (qId: number, optId: number) => {
-    setAnswers((prev) => ({ ...prev, [qId]: optId }));
+  // Select Option handler
+  const handleSelectOption = (questionId: number, optionId: number) => {
+    setAnswers((prev) => ({ ...prev, [questionId]: optionId }));
     playSoundFeedback("click");
 
-    // Auto-advance if enabled in settings
     const gs = loadGrammarSettings();
-    if (gs.autoAdvanceAfterCorrect && session && currentQIndex < session.questions.length - 1) {
-      setTimeout(() => {
-        setCurrentQIndex((prev) => Math.min(prev + 1, session.questions.length - 1));
-      }, 250);
+    if (gs.autoAdvanceAfterCorrect && session) {
+      if (currentQIndex < session.questions.length - 1) {
+        setTimeout(() => setCurrentQIndex((prev) => prev + 1), 300);
+      }
     }
   };
 
-  // Toggle Mark for review
-  const toggleMarkForReview = (qId: number) => {
-    setMarkedForReview((prev) => ({ ...prev, [qId]: !prev[qId] }));
+  // Toggle Mark For Review
+  const toggleMarkForReview = (questionId: number) => {
+    setMarkedForReview((prev) => ({ ...prev, [questionId]: !prev[questionId] }));
     playSoundFeedback("click");
   };
 
-  // Submit Exercise
+  // Submit Session handler
   const handleSubmit = async () => {
     if (!session || submitting) return;
-    setSubmitting(true);
     try {
-      const answersArr = Object.entries(answers).map(([qId, oId]) => ({
-        questionId: Number(qId),
-        optionId: Number(oId),
+      setSubmitting(true);
+      const answerList = Object.entries(answers).map(([qid, oid]) => ({
+        questionId: Number(qid),
+        optionId: oid,
       }));
 
       const res = await submitGrammarExercise({
         categoryId: session.categoryId || undefined,
-        answers: answersArr,
+        answers: answerList,
         durationSeconds: elapsedSeconds,
       });
 
       setResult(res);
       setScreen("summary");
-      setCurrentQIndex(0);
-
       if (res.accuracy >= 70) {
         playSoundFeedback("complete");
       } else {
         playSoundFeedback("incorrect");
       }
     } catch (err) {
-      console.error(err);
-      alert("Lỗi khi nộp bài tập. Vui lòng thử lại!");
+      console.error("Error submitting grammar exercise:", err);
+      alert("Có lỗi khi chấm điểm bài tập.");
     } finally {
       setSubmitting(false);
     }
   };
 
-  // Toggle Bookmark to Error Log
-  const toggleErrorLog = (qId: number) => {
+  // Toggle Error Log bookmark
+  const toggleErrorLog = (questionId: number) => {
     setErrorLogBookmarked((prev) => {
-      const next = { ...prev, [qId]: !prev[qId] };
+      const next = { ...prev, [questionId]: !prev[questionId] };
       try {
         localStorage.setItem("grammar_error_log", JSON.stringify(next));
       } catch (e) {
         console.error(e);
       }
-      playSoundFeedback("click");
-      showToast(next[qId] ? "Đã lưu vào Nhật ký lỗi ngữ pháp!" : "Đã gỡ khỏi Nhật ký lỗi.");
+      showToast(next[questionId] ? "Đã lưu câu hỏi vào Sổ tay lỗi sai!" : "Đã bỏ lưu câu hỏi.");
       return next;
     });
   };
 
-  // Retry Incorrect Questions
+  // Retry only incorrect questions
   const handleRetryIncorrect = () => {
-    if (!result || result.incorrectQuestions.length === 0 || !session) return;
+    if (!result) return;
+    const incorrectQIds = result.results
+      .filter((r) => !r.isCorrect)
+      .map((r) => r.questionId);
 
-    const retryQuestions: GrammarExerciseQuestion[] = result.incorrectQuestions.map(
-      (iq, idx) => ({
-        id: iq.questionId,
-        questionNumber: idx + 1,
-        questionText: iq.questionText,
-        options: iq.options.map((o) => ({
-          id: o.id,
-          label: o.label,
-          text: o.text,
-        })),
-        knowledge: iq.grammarRule,
-      })
-    );
+    if (incorrectQIds.length === 0) return;
 
-    const retrySession: GrammarExerciseSession = {
-      ...session,
-      totalQuestions: retryQuestions.length,
-      questions: retryQuestions,
-      timeLimitSeconds: isTimed ? retryQuestions.length * 45 : null,
-    };
-
-    setSession(retrySession);
-    setAnswers({});
-    setMarkedForReview({});
-    setCurrentQIndex(0);
-    setElapsedSeconds(0);
-    setTimeRemaining(isTimed ? retryQuestions.length * 45 : null);
-    setResult(null);
-    setScreen("exercise");
+    if (session) {
+      const subsetQuestions = session.questions.filter((q) =>
+        incorrectQIds.includes(q.id)
+      );
+      setSession({
+        ...session,
+        questions: subsetQuestions,
+        totalQuestions: subsetQuestions.length,
+      });
+      setCurrentQIndex(0);
+      setAnswers({});
+      setMarkedForReview({});
+      setElapsedSeconds(0);
+      setTimeRemaining(isTimed ? subsetQuestions.length * 45 : null);
+      setScreen("exercise");
+    }
   };
 
-  const formatTime = (secs: number) => {
-    const m = Math.floor(secs / 60);
-    const s = secs % 60;
+  // Format time (seconds -> mm:ss)
+  const formatTime = (sec: number) => {
+    const m = Math.floor(sec / 60);
+    const s = sec % 60;
     return `${m.toString().padStart(2, "0")}:${s.toString().padStart(2, "0")}`;
   };
+
+  // Filter topics in list
+  const filteredTopics = useMemo(() => {
+    if (!searchTopic.trim()) return topics;
+    const q = searchTopic.toLowerCase().trim();
+    return topics.filter(
+      (t) =>
+        t.name.toLowerCase().includes(q) ||
+        (t.description && t.description.toLowerCase().includes(q))
+    );
+  }, [topics, searchTopic]);
 
   // =========================================================
   // SCREEN 1: CONFIG & TOPIC SELECTOR
@@ -278,8 +275,9 @@ export default function GrammarExercisesPage() {
         <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
           <div>
             <div className="flex items-center gap-2">
-              <h1 className="text-2xl font-bold text-white">
-                ✍️ Luyện Tập Bài Tập Ngữ Pháp
+              <h1 className="text-2xl font-bold text-white flex items-center gap-2">
+                <Edit3 className="w-6 h-6 text-red-500" />
+                <span>Luyện Tập Bài Tập Ngữ Pháp</span>
               </h1>
               <span className="px-2.5 py-0.5 rounded-full text-[10px] font-extrabold bg-red-600/20 text-red-400 border border-red-500/30">
                 Part 5 & 6 TOEIC
@@ -292,16 +290,17 @@ export default function GrammarExercisesPage() {
           <div className="flex items-center gap-2">
             <Link
               href="/dashboard/grammar/settings"
-              className="flex items-center gap-1.5 px-3.5 py-2.5 bg-zinc-800 hover:bg-zinc-700 text-zinc-300 hover:text-white font-bold text-xs rounded-xl transition"
+              className="inline-flex items-center gap-1.5 px-3.5 py-2.5 bg-zinc-800 hover:bg-zinc-700 text-zinc-300 hover:text-white font-bold text-xs rounded-xl transition"
             >
-              <span>⚙️</span>
+              <Settings className="w-3.5 h-3.5" />
               <span>Cài đặt</span>
             </Link>
             <Link
               href="/dashboard/grammar"
-              className="flex items-center gap-2 px-4 py-2.5 bg-zinc-800 hover:bg-zinc-700 text-zinc-300 hover:text-white font-bold text-xs rounded-xl transition"
+              className="inline-flex items-center gap-1.5 px-4 py-2.5 bg-zinc-800 hover:bg-zinc-700 text-zinc-300 hover:text-white font-bold text-xs rounded-xl transition"
             >
-              ← Bảng điều khiển
+              <ArrowLeft className="w-4 h-4" />
+              <span>Bảng điều khiển</span>
             </Link>
           </div>
         </div>
@@ -331,7 +330,7 @@ export default function GrammarExercisesPage() {
 
           {/* Section: Difficulty */}
           <div>
-            <h3 className="text-white font-bold text-sm mb-3">2. Chọn độ khó bài tập</h3>
+            <h3 className="text-white font-bold text-sm mb-3">2. Độ khó mục tiêu</h3>
             <div className="flex flex-wrap gap-2.5">
               {[
                 { id: "all", label: "Tất cả độ khó" },
@@ -368,7 +367,8 @@ export default function GrammarExercisesPage() {
                     : "bg-zinc-800 text-zinc-400 hover:bg-zinc-700 hover:text-white"
                 }`}
               >
-                <span>⏳ Bấm giờ thi thật (45s/câu)</span>
+                <Clock className="w-4 h-4" />
+                <span>Bấm giờ thi thật (45s/câu)</span>
               </button>
               <button
                 type="button"
@@ -379,7 +379,8 @@ export default function GrammarExercisesPage() {
                     : "bg-zinc-800 text-zinc-400 hover:bg-zinc-700 hover:text-white"
                 }`}
               >
-                <span>♾️ Không giới hạn thời gian</span>
+                <InfinityIcon className="w-4 h-4" />
+                <span>Không giới hạn thời gian</span>
               </button>
             </div>
           </div>
@@ -399,9 +400,10 @@ export default function GrammarExercisesPage() {
               type="button"
               onClick={() => handleStart(0)}
               disabled={loadingSession}
-              className="px-6 py-3 bg-gradient-to-r from-red-600 to-red-500 hover:from-red-500 hover:to-red-400 text-white font-bold text-sm rounded-xl shadow-lg shadow-red-600/25 transition-all disabled:opacity-50"
+              className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-red-600 to-red-500 hover:from-red-500 hover:to-red-400 text-white font-bold text-sm rounded-xl shadow-lg shadow-red-600/25 transition-all disabled:opacity-50"
             >
-              {loadingSession ? "Đang tải câu hỏi..." : "🚀 Bắt đầu luyện tập tổng hợp"}
+              {loadingSession ? <Loader2 className="w-4 h-4 animate-spin" /> : <Rocket className="w-4 h-4" />}
+              <span>{loadingSession ? "Đang tải câu hỏi..." : "Bắt đầu luyện tập tổng hợp"}</span>
             </button>
           </div>
         </div>
@@ -414,13 +416,16 @@ export default function GrammarExercisesPage() {
               <p className="text-xs text-zinc-500 mt-0.5">Nhấp vào chủ đề để luyện chuyên sâu kiến thức đó</p>
             </div>
 
-            <input
-              type="text"
-              placeholder="Tìm chủ đề bài tập..."
-              value={searchTopic}
-              onChange={(e) => setSearchTopic(e.target.value)}
-              className="bg-zinc-900/90 border border-zinc-800 rounded-xl px-3.5 py-1.5 text-xs text-white placeholder-zinc-500 focus:outline-none focus:border-red-500 transition-all w-full sm:w-56"
-            />
+            <div className="relative w-full sm:w-56">
+              <Search className="w-3.5 h-3.5 text-zinc-500 absolute left-3 top-1/2 -translate-y-1/2" />
+              <input
+                type="text"
+                placeholder="Tìm chủ đề bài tập..."
+                value={searchTopic}
+                onChange={(e) => setSearchTopic(e.target.value)}
+                className="bg-zinc-900/90 border border-zinc-800 rounded-xl pl-8 pr-3.5 py-1.5 text-xs text-white placeholder-zinc-500 focus:outline-none focus:border-red-500 transition-all w-full"
+              />
+            </div>
           </div>
 
           {loadingTopics ? (
@@ -470,9 +475,10 @@ export default function GrammarExercisesPage() {
                     <button
                       type="button"
                       onClick={() => handleStart(topic.id)}
-                      className="px-3.5 py-1.5 rounded-xl text-xs font-bold bg-red-600 hover:bg-red-500 text-white shadow transition"
+                      className="inline-flex items-center gap-1 px-3.5 py-1.5 rounded-xl text-xs font-bold bg-red-600 hover:bg-red-500 text-white shadow transition"
                     >
-                      Luyện chủ đề này →
+                      <span>Luyện chủ đề này</span>
+                      <ArrowRight className="w-3 h-3" />
                     </button>
                   </div>
                 </div>
@@ -500,7 +506,9 @@ export default function GrammarExercisesPage() {
         {/* Top Exercise Bar */}
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 bg-zinc-900/80 border border-zinc-800 rounded-2xl p-4">
           <div className="flex items-center gap-3">
-            <span className="text-lg">📝</span>
+            <div className="w-8 h-8 rounded-xl bg-red-600/15 border border-red-600/20 text-red-400 flex items-center justify-center">
+              <FileText className="w-4 h-4" />
+            </div>
             <div>
               <p className="text-xs text-zinc-400">Chủ đề bài tập:</p>
               <h2 className="text-sm font-bold text-white">{session.categoryName}</h2>
@@ -511,7 +519,7 @@ export default function GrammarExercisesPage() {
             {/* Timer */}
             {isTimed && timeRemaining !== null && (
               <div className="flex items-center gap-2 px-3 py-1.5 rounded-xl bg-amber-500/10 border border-amber-500/30 text-amber-400 font-mono font-bold text-sm">
-                <span>⏳</span>
+                <Clock className="w-4 h-4" />
                 <span>{formatTime(timeRemaining)}</span>
               </div>
             )}
@@ -593,7 +601,8 @@ export default function GrammarExercisesPage() {
                   : "bg-zinc-800 text-zinc-400 hover:text-white"
               }`}
             >
-              <span>{isCurrentMarked ? "🚩 Đã đánh dấu" : "🏳️ Đánh dấu xem lại"}</span>
+              <Flag className={`w-3.5 h-3.5 ${isCurrentMarked ? "fill-amber-400 text-amber-400" : ""}`} />
+              <span>{isCurrentMarked ? "Đã đánh dấu" : "Đánh dấu xem lại"}</span>
             </button>
           </div>
 
@@ -643,27 +652,30 @@ export default function GrammarExercisesPage() {
               type="button"
               onClick={() => setCurrentQIndex((prev) => Math.max(prev - 1, 0))}
               disabled={currentQIndex === 0}
-              className="px-4 py-2.5 bg-zinc-800 hover:bg-zinc-700 text-zinc-300 font-bold text-xs rounded-xl transition disabled:opacity-40"
+              className="inline-flex items-center gap-1.5 px-4 py-2.5 bg-zinc-800 hover:bg-zinc-700 text-zinc-300 font-bold text-xs rounded-xl transition disabled:opacity-40"
             >
-              ← Câu trước
+              <ArrowLeft className="w-3.5 h-3.5" />
+              <span>Câu trước</span>
             </button>
 
             {currentQIndex < totalQ - 1 ? (
               <button
                 type="button"
                 onClick={() => setCurrentQIndex((prev) => Math.min(prev + 1, totalQ - 1))}
-                className="px-5 py-2.5 bg-red-600 hover:bg-red-500 text-white font-bold text-xs rounded-xl shadow transition"
+                className="inline-flex items-center gap-1.5 px-5 py-2.5 bg-red-600 hover:bg-red-500 text-white font-bold text-xs rounded-xl shadow transition"
               >
-                Câu tiếp theo →
+                <span>Câu tiếp theo</span>
+                <ArrowRight className="w-3.5 h-3.5" />
               </button>
             ) : (
               <button
                 type="button"
                 onClick={handleSubmit}
                 disabled={submitting}
-                className="px-5 py-2.5 bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs rounded-xl shadow transition"
+                className="inline-flex items-center gap-1.5 px-5 py-2.5 bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs rounded-xl shadow transition"
               >
-                Hoàn thành & Nộp bài ✓
+                <Check className="w-3.5 h-3.5" />
+                <span>Hoàn thành & Nộp bài</span>
               </button>
             )}
           </div>
@@ -690,7 +702,7 @@ export default function GrammarExercisesPage() {
         {/* Toast */}
         {toastMessage && (
           <div className="fixed bottom-6 right-6 z-50 bg-emerald-600 text-white text-xs font-bold px-4 py-3 rounded-xl shadow-2xl flex items-center gap-2 transition-all">
-            <span>✓</span>
+            <Check className="w-4 h-4" />
             <span>{toastMessage}</span>
           </div>
         )}
@@ -700,15 +712,17 @@ export default function GrammarExercisesPage() {
           <button
             type="button"
             onClick={() => setScreen("config")}
-            className="flex items-center gap-2 text-sm text-zinc-400 hover:text-white font-semibold transition"
+            className="inline-flex items-center gap-2 text-sm text-zinc-400 hover:text-white font-semibold transition"
           >
-            ← Chọn bài luyện tập khác
+            <ArrowLeft className="w-4 h-4" />
+            <span>Chọn bài luyện tập khác</span>
           </button>
           <Link
             href="/dashboard/grammar"
-            className="text-xs font-bold text-red-400 hover:text-red-300"
+            className="inline-flex items-center gap-1 text-xs font-bold text-red-400 hover:text-red-300"
           >
-            Về Dashboard Ngữ Pháp →
+            <span>Về Dashboard Ngữ Pháp</span>
+            <ArrowRight className="w-3 h-3" />
           </Link>
         </div>
 
@@ -717,13 +731,13 @@ export default function GrammarExercisesPage() {
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
             <div className="flex items-center gap-4">
               <div
-                className={`w-16 h-16 rounded-2xl flex items-center justify-center text-3xl shrink-0 ${
+                className={`w-16 h-16 rounded-2xl flex items-center justify-center shrink-0 ${
                   isPassed
                     ? "bg-emerald-500/20 border border-emerald-500/30 text-emerald-400"
                     : "bg-rose-500/20 border border-rose-500/30 text-rose-400"
                 }`}
               >
-                {isPassed ? "🏆" : "⚠️"}
+                {isPassed ? <Trophy className="w-8 h-8" /> : <AlertTriangle className="w-8 h-8" />}
               </div>
               <div>
                 <h2 className="text-xl sm:text-2xl font-extrabold text-white">
@@ -743,16 +757,17 @@ export default function GrammarExercisesPage() {
                   onClick={handleRetryIncorrect}
                   className="px-4 py-2.5 rounded-xl text-xs font-bold bg-amber-600 hover:bg-amber-500 text-white shadow transition flex items-center gap-1.5"
                 >
-                  <span>🔄</span>
+                  <RotateCcw className="w-3.5 h-3.5" />
                   <span>Làm lại {result.incorrectCount} câu sai</span>
                 </button>
               )}
               <button
                 type="button"
                 onClick={() => handleStart()}
-                className="px-4 py-2.5 rounded-xl text-xs font-bold bg-red-600 hover:bg-red-500 text-white shadow transition"
+                className="inline-flex items-center gap-1.5 px-4 py-2.5 rounded-xl text-xs font-bold bg-red-600 hover:bg-red-500 text-white shadow transition"
               >
-                Làm lại toàn bộ 🚀
+                <span>Làm lại toàn bộ</span>
+                <Rocket className="w-3.5 h-3.5" />
               </button>
             </div>
           </div>
@@ -788,7 +803,7 @@ export default function GrammarExercisesPage() {
         <div className="space-y-4">
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
             <h3 className="text-lg font-bold text-white flex items-center gap-2">
-              <span>📖</span>
+              <BookOpen className="w-5 h-5 text-red-500" />
               <span>Xem lại chi tiết câu hỏi & Lời giải ngữ pháp</span>
             </h3>
 
@@ -819,13 +834,14 @@ export default function GrammarExercisesPage() {
               <button
                 type="button"
                 onClick={() => setReviewFilter("marked")}
-                className={`px-3 py-1.5 rounded-xl text-xs font-bold transition ${
+                className={`inline-flex items-center gap-1 px-3 py-1.5 rounded-xl text-xs font-bold transition ${
                   reviewFilter === "marked"
                     ? "bg-amber-600 text-white"
                     : "bg-zinc-900 border border-zinc-800 text-zinc-400 hover:text-white"
                 }`}
               >
-                Đã đánh dấu 🚩
+                <Flag className="w-3 h-3" />
+                <span>Đã đánh dấu</span>
               </button>
             </div>
           </div>
@@ -857,13 +873,14 @@ export default function GrammarExercisesPage() {
                         #{idx + 1}
                       </span>
                       <span
-                        className={`text-xs font-bold px-2.5 py-0.5 rounded-full ${
+                        className={`inline-flex items-center gap-1 text-xs font-bold px-2.5 py-0.5 rounded-full ${
                           item.isCorrect
                             ? "bg-emerald-500/10 text-emerald-400"
                             : "bg-rose-500/10 text-rose-400"
                         }`}
                       >
-                        {item.isCorrect ? "✓ Trả lời đúng" : "✗ Trả lời sai"}
+                        {item.isCorrect ? <Check className="w-3 h-3" /> : <X className="w-3 h-3" />}
+                        <span>{item.isCorrect ? "Trả lời đúng" : "Trả lời sai"}</span>
                       </span>
                     </div>
 
@@ -877,7 +894,7 @@ export default function GrammarExercisesPage() {
                           : "bg-zinc-800 text-zinc-400 hover:text-amber-400 hover:bg-zinc-700"
                       }`}
                     >
-                      <span>{isBookmarked ? "⭐" : "☆"}</span>
+                      <Star className={`w-3.5 h-3.5 ${isBookmarked ? "fill-amber-400 text-amber-400" : ""}`} />
                       <span>{isBookmarked ? "Đã lưu vào sổ tay lỗi" : "Lưu vào sổ tay lỗi"}</span>
                     </button>
                   </div>
@@ -919,8 +936,8 @@ export default function GrammarExercisesPage() {
                             {opt.label}
                           </span>
                           <span className="flex-1">{opt.text}</span>
-                          {isCorrectChoice && <span className="text-emerald-400 font-bold">✓ Đúng</span>}
-                          {isUserChoice && !isCorrectChoice && <span className="text-rose-400">✗ Bạn chọn</span>}
+                          {isCorrectChoice && <span className="text-emerald-400 font-bold flex items-center gap-1"><Check className="w-3 h-3" /> Đúng</span>}
+                          {isUserChoice && !isCorrectChoice && <span className="text-rose-400 flex items-center gap-1"><X className="w-3 h-3" /> Bạn chọn</span>}
                         </div>
                       );
                     })}
@@ -929,7 +946,7 @@ export default function GrammarExercisesPage() {
                   {/* Detailed Explanation Box */}
                   <div className="bg-zinc-950/80 border border-zinc-800 rounded-2xl p-4 space-y-3 text-xs">
                     <div className="flex items-center gap-2 text-red-400 font-bold uppercase tracking-wider">
-                      <span>📖</span>
+                      <BookOpen className="w-4 h-4" />
                       <span>Giải thích chi tiết</span>
                     </div>
                     <p className="text-zinc-300 leading-relaxed pl-6">{item.explanation}</p>
@@ -937,7 +954,7 @@ export default function GrammarExercisesPage() {
                     {/* Grammar Rule Reference */}
                     <div className="pt-2 border-t border-zinc-800/60 pl-6 space-y-1">
                       <div className="flex items-center gap-1.5 text-purple-400 font-bold">
-                        <span>📐</span>
+                        <Layers className="w-3.5 h-3.5" />
                         <span>Tham chiếu quy tắc ngữ pháp:</span>
                       </div>
                       <p className="text-zinc-400 leading-relaxed">{item.grammarRule}</p>
@@ -947,7 +964,7 @@ export default function GrammarExercisesPage() {
                     {item.relatedExample && (
                       <div className="pt-2 border-t border-zinc-800/60 pl-6 space-y-1">
                         <div className="flex items-center gap-1.5 text-amber-400 font-bold">
-                          <span>💡</span>
+                          <Lightbulb className="w-3.5 h-3.5" />
                           <span>Ví dụ tương tự:</span>
                         </div>
                         <p className="text-zinc-300 italic leading-relaxed">{item.relatedExample}</p>

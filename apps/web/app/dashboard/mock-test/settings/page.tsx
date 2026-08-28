@@ -4,6 +4,21 @@ import React, { useState } from "react";
 import Link from "next/link";
 import { useTestSettings } from "@/hooks/useTestSettings";
 import { playTestSoundEffect } from "@/lib/test-settings";
+import {
+  Settings,
+  ArrowLeft,
+  FileText,
+  Clock,
+  Timer,
+  Pause,
+  Target,
+  Send,
+  Volume2,
+  Check,
+  AlertTriangle,
+  PartyPopper,
+  RotateCcw,
+} from "lucide-react";
 
 export default function TestSettingsPage() {
   const { settings, updateSettings, resetSettings, loaded } = useTestSettings();
@@ -49,7 +64,7 @@ export default function TestSettingsPage() {
       {/* Toast Notification */}
       {toastMessage && (
         <div className="fixed bottom-6 right-6 z-50 bg-emerald-600 text-white text-xs font-bold px-4 py-3 rounded-xl shadow-2xl flex items-center gap-2 transition-all">
-          <span>✓</span>
+          <Check className="w-4 h-4" />
           <span>{toastMessage}</span>
         </div>
       )}
@@ -58,8 +73,9 @@ export default function TestSettingsPage() {
       <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
         <div>
           <div className="flex items-center gap-2">
-            <h1 className="text-2xl font-bold text-white">
-              ⚙️ Cài Đặt Kiểm Tra (Test Settings)
+            <h1 className="text-2xl font-bold text-white flex items-center gap-2.5">
+              <Settings className="w-6 h-6 text-red-500" />
+              <span>Cài Đặt Kiểm Tra (Test Settings)</span>
             </h1>
             <span className="px-2.5 py-0.5 rounded-full text-[10px] font-extrabold bg-red-600/20 text-red-400 border border-red-500/30">
               Tùy chỉnh cá nhân
@@ -74,7 +90,8 @@ export default function TestSettingsPage() {
           href="/dashboard/mock-test"
           className="flex items-center gap-2 px-4 py-2.5 bg-zinc-800 hover:bg-zinc-700 text-zinc-300 hover:text-white font-bold text-xs rounded-xl transition"
         >
-          ← Bảng thi thử TOEIC
+          <ArrowLeft className="w-4 h-4" />
+          <span>Bảng thi thử TOEIC</span>
         </Link>
       </div>
 
@@ -84,8 +101,8 @@ export default function TestSettingsPage() {
         <div className="bg-zinc-900/70 border border-zinc-800 rounded-3xl p-6 sm:p-7 space-y-4">
           <div className="flex items-start justify-between gap-4">
             <div className="flex items-start gap-3.5">
-              <div className="w-10 h-10 rounded-2xl bg-red-600/15 border border-red-600/20 text-red-400 flex items-center justify-center text-lg shrink-0">
-                📄
+              <div className="w-10 h-10 rounded-2xl bg-red-600/15 border border-red-600/20 text-red-400 flex items-center justify-center shrink-0">
+                <FileText className="w-5 h-5" />
               </div>
               <div>
                 <h2 className="text-base font-bold text-white">
@@ -142,8 +159,8 @@ export default function TestSettingsPage() {
         <div className="bg-zinc-900/70 border border-zinc-800 rounded-3xl p-6 sm:p-7 space-y-4">
           <div className="flex items-start justify-between gap-4">
             <div className="flex items-start gap-3.5">
-              <div className="w-10 h-10 rounded-2xl bg-blue-600/15 border border-blue-600/20 text-blue-400 flex items-center justify-center text-lg shrink-0">
-                ⏱️
+              <div className="w-10 h-10 rounded-2xl bg-blue-600/15 border border-blue-600/20 text-blue-400 flex items-center justify-center shrink-0">
+                <Clock className="w-5 h-5" />
               </div>
               <div>
                 <h2 className="text-base font-bold text-white">
@@ -187,8 +204,8 @@ export default function TestSettingsPage() {
         {/* ── SETTING 3: SHOW TIMER PREFERENCE ── */}
         <div className="bg-zinc-900/70 border border-zinc-800 rounded-3xl p-6 sm:p-7 flex items-center justify-between gap-4">
           <div className="flex items-start gap-3.5">
-            <div className="w-10 h-10 rounded-2xl bg-amber-600/15 border border-amber-600/20 text-amber-400 flex items-center justify-center text-lg shrink-0">
-              ⏳
+            <div className="w-10 h-10 rounded-2xl bg-amber-600/15 border border-amber-600/20 text-amber-400 flex items-center justify-center shrink-0">
+              <Timer className="w-5 h-5" />
             </div>
             <div>
               <h2 className="text-base font-bold text-white">
@@ -214,8 +231,8 @@ export default function TestSettingsPage() {
         {/* ── SETTING 4: ALLOW PAUSE PREFERENCE ── */}
         <div className="bg-zinc-900/70 border border-zinc-800 rounded-3xl p-6 sm:p-7 flex items-center justify-between gap-4">
           <div className="flex items-start gap-3.5">
-            <div className="w-10 h-10 rounded-2xl bg-purple-600/15 border border-purple-600/20 text-purple-400 flex items-center justify-center text-lg shrink-0">
-              ⏸️
+            <div className="w-10 h-10 rounded-2xl bg-purple-600/15 border border-purple-600/20 text-purple-400 flex items-center justify-center shrink-0">
+              <Pause className="w-5 h-5" />
             </div>
             <div>
               <h2 className="text-base font-bold text-white">
@@ -241,8 +258,8 @@ export default function TestSettingsPage() {
         {/* ── SETTING 5: SHOW REAL-TIME SCORE PREFERENCE ── */}
         <div className="bg-zinc-900/70 border border-zinc-800 rounded-3xl p-6 sm:p-7 flex items-center justify-between gap-4">
           <div className="flex items-start gap-3.5">
-            <div className="w-10 h-10 rounded-2xl bg-emerald-600/15 border border-emerald-600/20 text-emerald-400 flex items-center justify-center text-lg shrink-0">
-              🎯
+            <div className="w-10 h-10 rounded-2xl bg-emerald-600/15 border border-emerald-600/20 text-emerald-400 flex items-center justify-center shrink-0">
+              <Target className="w-5 h-5" />
             </div>
             <div>
               <h2 className="text-base font-bold text-white">
@@ -268,8 +285,8 @@ export default function TestSettingsPage() {
         {/* ── SETTING 6: AUTO-SUBMIT PREFERENCE ── */}
         <div className="bg-zinc-900/70 border border-zinc-800 rounded-3xl p-6 sm:p-7 flex items-center justify-between gap-4">
           <div className="flex items-start gap-3.5">
-            <div className="w-10 h-10 rounded-2xl bg-rose-600/15 border border-rose-600/20 text-rose-400 flex items-center justify-center text-lg shrink-0">
-              📤
+            <div className="w-10 h-10 rounded-2xl bg-rose-600/15 border border-rose-600/20 text-rose-400 flex items-center justify-center shrink-0">
+              <Send className="w-5 h-5" />
             </div>
             <div>
               <h2 className="text-base font-bold text-white">
@@ -296,8 +313,8 @@ export default function TestSettingsPage() {
         <div className="bg-zinc-900/70 border border-zinc-800 rounded-3xl p-6 sm:p-7 space-y-4">
           <div className="flex items-center justify-between gap-4">
             <div className="flex items-start gap-3.5">
-              <div className="w-10 h-10 rounded-2xl bg-yellow-600/15 border border-yellow-600/20 text-yellow-400 flex items-center justify-center text-lg shrink-0">
-                🔊
+              <div className="w-10 h-10 rounded-2xl bg-yellow-600/15 border border-yellow-600/20 text-yellow-400 flex items-center justify-center shrink-0">
+                <Volume2 className="w-5 h-5" />
               </div>
               <div>
                 <h2 className="text-base font-bold text-white">
@@ -327,23 +344,26 @@ export default function TestSettingsPage() {
               <button
                 type="button"
                 onClick={() => handleTestSound("tick")}
-                className="px-3 py-1.5 rounded-xl bg-zinc-800 hover:bg-zinc-700 text-zinc-300 font-bold text-xs transition"
+                className="flex items-center gap-1 px-3 py-1.5 rounded-xl bg-zinc-800 hover:bg-zinc-700 text-zinc-300 font-bold text-xs transition"
               >
-                ⏱️ Tick nhịp
+                <Clock className="w-3.5 h-3.5" />
+                <span>Tick nhịp</span>
               </button>
               <button
                 type="button"
                 onClick={() => handleTestSound("warning")}
-                className="px-3 py-1.5 rounded-xl bg-amber-950/40 hover:bg-amber-900/50 text-amber-300 border border-amber-800/40 font-bold text-xs transition"
+                className="flex items-center gap-1 px-3 py-1.5 rounded-xl bg-amber-950/40 hover:bg-amber-900/50 text-amber-300 border border-amber-800/40 font-bold text-xs transition"
               >
-                ⚠️ Cảnh báo 1 phút
+                <AlertTriangle className="w-3.5 h-3.5" />
+                <span>Cảnh báo 1 phút</span>
               </button>
               <button
                 type="button"
                 onClick={() => handleTestSound("complete")}
-                className="px-3 py-1.5 rounded-xl bg-emerald-950/40 hover:bg-emerald-900/50 text-emerald-300 border border-emerald-800/40 font-bold text-xs transition"
+                className="flex items-center gap-1 px-3 py-1.5 rounded-xl bg-emerald-950/40 hover:bg-emerald-900/50 text-emerald-300 border border-emerald-800/40 font-bold text-xs transition"
               >
-                🎉 Hoàn thành & Nộp
+                <PartyPopper className="w-3.5 h-3.5" />
+                <span>Hoàn thành & Nộp</span>
               </button>
             </div>
           )}
@@ -355,18 +375,20 @@ export default function TestSettingsPage() {
         <button
           type="button"
           onClick={handleReset}
-          className="w-full sm:w-auto px-5 py-3 rounded-2xl border border-zinc-800 hover:border-zinc-700 bg-zinc-900 text-zinc-400 hover:text-white text-xs font-bold transition"
+          className="flex items-center gap-1.5 w-full sm:w-auto px-5 py-3 rounded-2xl border border-zinc-800 hover:border-zinc-700 bg-zinc-900 text-zinc-400 hover:text-white text-xs font-bold transition"
         >
-          Khôi phục mặc định
+          <RotateCcw className="w-4 h-4" />
+          <span>Khôi phục mặc định</span>
         </button>
 
         <button
           type="button"
           onClick={handleSave}
           disabled={saving}
-          className="w-full sm:w-auto px-8 py-3 rounded-2xl bg-red-600 hover:bg-red-500 text-white font-bold text-xs shadow-lg shadow-red-600/20 transition disabled:opacity-50"
+          className="flex items-center justify-center gap-1.5 w-full sm:w-auto px-8 py-3 rounded-2xl bg-red-600 hover:bg-red-500 text-white font-bold text-xs shadow-lg shadow-red-600/20 transition disabled:opacity-50"
         >
-          {saving ? "Đang lưu..." : "✓ Lưu Cài Đặt"}
+          <Check className="w-4 h-4" />
+          <span>{saving ? "Đang lưu..." : "Lưu Cài Đặt"}</span>
         </button>
       </div>
     </div>

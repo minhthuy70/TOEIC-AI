@@ -4,6 +4,18 @@ import React, { useState } from "react";
 import Link from "next/link";
 import { useErrorSettings } from "@/hooks/useErrorSettings";
 import { playTestSoundEffect } from "@/lib/test-settings";
+import {
+  Settings,
+  ArrowLeft,
+  FileText,
+  Bell,
+  Zap,
+  Target,
+  Volume2,
+  RotateCcw,
+  Check,
+  Loader2,
+} from "lucide-react";
 
 export default function ErrorSettingsPage() {
   const { settings, isLoaded, updateSetting, resetSettings } = useErrorSettings();
@@ -41,7 +53,7 @@ export default function ErrorSettingsPage() {
   if (!isLoaded) {
     return (
       <div className="min-h-screen bg-[#09090b] text-white flex items-center justify-center">
-        <div className="animate-spin text-3xl text-red-500">⏳</div>
+        <Loader2 className="w-8 h-8 text-red-500 animate-spin" />
       </div>
     );
   }
@@ -54,8 +66,8 @@ export default function ErrorSettingsPage() {
         {/* ================================================== */}
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
           <div className="flex items-center gap-3.5">
-            <div className="w-12 h-12 rounded-2xl bg-red-600/15 border border-red-500/30 text-red-400 flex items-center justify-center text-2xl shrink-0">
-              ⚙️
+            <div className="w-12 h-12 rounded-2xl bg-red-600/15 border border-red-500/30 text-red-400 flex items-center justify-center shrink-0">
+              <Settings className="w-6 h-6" />
             </div>
             <div>
               <div className="flex items-center gap-2">
@@ -77,7 +89,7 @@ export default function ErrorSettingsPage() {
               href="/dashboard/error-log"
               className="px-4 py-2.5 rounded-xl border border-zinc-800 bg-zinc-900 hover:bg-zinc-800 text-zinc-300 hover:text-white text-xs font-bold transition flex items-center gap-1.5"
             >
-              <span>←</span>
+              <ArrowLeft className="w-4 h-4" />
               <span>Về Sổ tay lỗi</span>
             </Link>
           </div>
@@ -91,7 +103,7 @@ export default function ErrorSettingsPage() {
           <div className="rounded-3xl border border-white/5 bg-[#121214] p-6 flex flex-col sm:flex-row sm:items-center justify-between gap-4 transition hover:border-white/10">
             <div className="space-y-1 flex-1">
               <div className="flex items-center gap-2">
-                <span className="text-xl">📝</span>
+                <FileText className="w-5 h-5 text-indigo-400" />
                 <h3 className="text-sm font-bold text-white">
                   Tự động ghi nhận câu sai (Auto-log errors)
                 </h3>
@@ -116,7 +128,7 @@ export default function ErrorSettingsPage() {
           <div className="rounded-3xl border border-white/5 bg-[#121214] p-6 flex flex-col sm:flex-row sm:items-center justify-between gap-4 transition hover:border-white/10">
             <div className="space-y-1 flex-1">
               <div className="flex items-center gap-2">
-                <span className="text-xl">🔔</span>
+                <Bell className="w-5 h-5 text-amber-400" />
                 <h3 className="text-sm font-bold text-white">
                   Thông báo lỗi sai & cảnh báo lặp lại (Error notification preference)
                 </h3>
@@ -141,7 +153,7 @@ export default function ErrorSettingsPage() {
           <div className="rounded-3xl border border-white/5 bg-[#121214] p-6 flex flex-col sm:flex-row sm:items-center justify-between gap-4 transition hover:border-white/10">
             <div className="space-y-1 flex-1">
               <div className="flex items-center gap-2">
-                <span className="text-xl">⚡</span>
+                <Zap className="w-5 h-5 text-yellow-400" />
                 <h3 className="text-sm font-bold text-white">
                   Gợi ý bài tập Drill thông minh (Drill suggestion preference)
                 </h3>
@@ -166,13 +178,13 @@ export default function ErrorSettingsPage() {
           <div className="rounded-3xl border border-white/5 bg-[#121214] p-6 space-y-4 transition hover:border-white/10">
             <div className="space-y-1">
               <div className="flex items-center gap-2">
-                <span className="text-xl">🎯</span>
+                <Target className="w-5 h-5 text-red-500" />
                 <h3 className="text-sm font-bold text-white">
                   Ngưỡng tự động giải quyết (Auto-resolve threshold setting)
                 </h3>
               </div>
               <p className="text-xs text-zinc-400 leading-relaxed">
-                Số lần làm đúng liên tiếp trong bài tập Drill để hệ thống tự động chuyển câu hỏi sang trạng thái &quot;Đã giải quyết ✓&quot;.
+                Số lần làm đúng liên tiếp trong bài tập Drill để hệ thống tự động chuyển câu hỏi sang trạng thái &quot;Đã giải quyết&quot;.
               </p>
             </div>
 
@@ -196,7 +208,7 @@ export default function ErrorSettingsPage() {
                   >
                     <div className="flex items-center justify-between">
                       <span className="text-xs font-bold text-white">{opt.label}</span>
-                      {isSelected && <span className="text-xs text-red-400 font-bold">✓ Đang chọn</span>}
+                      {isSelected && <span className="text-xs text-red-400 font-bold flex items-center gap-1"><Check className="w-3.5 h-3.5" /> Đang chọn</span>}
                     </div>
                     <p className="text-[11px] text-zinc-400 mt-1.5 leading-relaxed">{opt.desc}</p>
                   </button>
@@ -209,7 +221,7 @@ export default function ErrorSettingsPage() {
           <div className="rounded-3xl border border-white/5 bg-[#121214] p-6 flex flex-col sm:flex-row sm:items-center justify-between gap-4 transition hover:border-white/10">
             <div className="space-y-1 flex-1">
               <div className="flex items-center gap-2">
-                <span className="text-xl">🔊</span>
+                <Volume2 className="w-5 h-5 text-blue-400" />
                 <h3 className="text-sm font-bold text-white">
                   Hiệu ứng âm thanh (Sound effects)
                 </h3>
@@ -238,23 +250,25 @@ export default function ErrorSettingsPage() {
           <button
             type="button"
             onClick={handleReset}
-            className="px-5 py-3 rounded-xl bg-zinc-800 hover:bg-zinc-700 text-zinc-300 font-bold text-xs transition"
+            className="flex items-center gap-1.5 px-5 py-3 rounded-xl bg-zinc-800 hover:bg-zinc-700 text-zinc-300 font-bold text-xs transition"
           >
-            🔄 Khôi phục mặc định
+            <RotateCcw className="w-3.5 h-3.5" />
+            <span>Khôi phục mặc định</span>
           </button>
 
           <Link
             href="/dashboard/error-log"
-            className="px-6 py-3 rounded-xl bg-red-600 hover:bg-red-500 text-white font-bold text-xs shadow-lg transition"
+            className="flex items-center gap-1.5 px-6 py-3 rounded-xl bg-red-600 hover:bg-red-500 text-white font-bold text-xs shadow-lg transition"
           >
-            Lưu & Về Sổ tay lỗi ✓
+            <span>Lưu & Về Sổ tay lỗi</span>
+            <Check className="w-4 h-4" />
           </Link>
         </div>
 
         {/* Toast */}
         {toastMessage && (
           <div className="fixed bottom-6 right-6 z-50 bg-emerald-600 text-white text-xs font-bold px-4 py-3 rounded-xl shadow-2xl flex items-center gap-2 transition-all">
-            <span>✓</span>
+            <Check className="w-4 h-4" />
             <span>{toastMessage}</span>
           </div>
         )}

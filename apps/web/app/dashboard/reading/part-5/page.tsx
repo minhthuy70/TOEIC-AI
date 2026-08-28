@@ -3,6 +3,23 @@
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { startPractice, submitPractice, PracticeStartResponse, SubmitPracticeResponse } from "@/services/practice";
+import {
+  ArrowLeft,
+  Timer,
+  Infinity as InfinityIcon,
+  X,
+  Star,
+  BookOpen,
+  ChevronLeft,
+  ChevronRight,
+  RotateCcw,
+  CheckCircle2,
+  XCircle,
+  Puzzle,
+  BookMarked,
+  Link as LinkIcon,
+  FileEdit,
+} from "lucide-react";
 
 type ScreenState = "config" | "practice" | "review";
 
@@ -104,9 +121,14 @@ export default function Part5PracticePage() {
     return (
       <div className="max-w-3xl mx-auto py-10 px-4">
         <div className="flex items-center gap-4 mb-8">
-          <Link href="/dashboard/reading" className="w-10 h-10 rounded-full bg-zinc-800 flex items-center justify-center hover:bg-zinc-700 transition">←</Link>
+          <Link href="/dashboard/reading" className="w-10 h-10 rounded-full bg-zinc-800 flex items-center justify-center text-zinc-400 hover:text-white hover:bg-zinc-700 transition">
+            <ArrowLeft className="w-5 h-5" />
+          </Link>
           <div>
-            <h1 className="text-2xl font-bold text-white">Part 5: Hoàn thành câu (Incomplete Sentences)</h1>
+            <h1 className="text-2xl font-bold text-white flex items-center gap-2">
+              <Puzzle className="w-6 h-6 text-indigo-400" />
+              <span>Part 5: Hoàn thành câu (Incomplete Sentences)</span>
+            </h1>
             <p className="text-zinc-400 text-sm">Cấu hình bài luyện tập đọc</p>
           </div>
         </div>
@@ -134,13 +156,15 @@ export default function Part5PracticePage() {
                 onClick={() => setIsTimed(true)}
                 className={`px-6 py-3 rounded-xl font-bold transition-all flex items-center gap-2 ${isTimed ? 'bg-amber-600 text-white shadow-lg shadow-amber-600/30' : 'bg-zinc-800 text-zinc-400 hover:bg-zinc-700 hover:text-white'}`}
               >
-                ⏳ Giới hạn thời gian
+                <Timer className="w-4 h-4" />
+                <span>Giới hạn thời gian</span>
               </button>
               <button
                 onClick={() => setIsTimed(false)}
                 className={`px-6 py-3 rounded-xl font-bold transition-all flex items-center gap-2 ${!isTimed ? 'bg-emerald-600 text-white shadow-lg shadow-emerald-600/30' : 'bg-zinc-800 text-zinc-400 hover:bg-zinc-700 hover:text-white'}`}
               >
-                ♾️ Không giới hạn
+                <InfinityIcon className="w-4 h-4" />
+                <span>Không giới hạn</span>
               </button>
             </div>
           </div>
@@ -151,7 +175,7 @@ export default function Part5PracticePage() {
               <select 
                 value={grammarTopic}
                 onChange={e => setGrammarTopic(e.target.value)}
-                className="w-full bg-zinc-800 border-none text-white rounded-xl p-4 cursor-pointer focus:ring-2 focus:ring-indigo-500"
+                className="w-full bg-zinc-800 border border-zinc-700 text-white rounded-xl p-4 cursor-pointer focus:ring-2 focus:ring-indigo-500"
               >
                 <option value="">-- Tất cả chủ đề ngữ pháp --</option>
                 {GRAMMAR_TOPICS.filter(t => t).map(t => (
@@ -164,7 +188,7 @@ export default function Part5PracticePage() {
               <select 
                 value={vocabTopic}
                 onChange={e => setVocabTopic(e.target.value)}
-                className="w-full bg-zinc-800 border-none text-white rounded-xl p-4 cursor-pointer focus:ring-2 focus:ring-indigo-500"
+                className="w-full bg-zinc-800 border border-zinc-700 text-white rounded-xl p-4 cursor-pointer focus:ring-2 focus:ring-indigo-500"
               >
                 <option value="">-- Tất cả chủ đề từ vựng --</option>
                 {VOCAB_TOPICS.filter(t => t).map(t => (
@@ -190,7 +214,6 @@ export default function Part5PracticePage() {
   // RENDER PRACTICE SCREEN
   // -----------------------------------------------------
   if (screen === "practice" && session) {
-    // For Part 5, questions might be grouped or not, but usually 1 question per group
     const questions = session.groups.flatMap(g => g.questions.map(q => ({ group: g, question: q })));
     const currentItem = questions[currentQIndex];
     
@@ -199,14 +222,18 @@ export default function Part5PracticePage() {
         {/* Header */}
         <div className="flex items-center justify-between bg-zinc-900 border border-zinc-800 p-4 rounded-2xl mb-6">
           <div className="flex items-center gap-4">
-            <button onClick={() => { if(confirm("Bạn có chắc muốn thoát? Kết quả sẽ không được lưu.")) setScreen("config"); }} className="text-zinc-400 hover:text-white">✕ Thoát</button>
+            <button onClick={() => { if (confirm("Bạn có chắc muốn thoát? Kết quả sẽ không được lưu.")) setScreen("config"); }} className="text-zinc-400 hover:text-white flex items-center gap-1 text-sm font-medium">
+              <X className="w-4 h-4" />
+              <span>Thoát</span>
+            </button>
             <div className="h-6 w-px bg-zinc-800"></div>
             <span className="font-bold text-white">Câu {currentQIndex + 1} / {questions.length}</span>
           </div>
           <div className="flex items-center gap-4">
             {isTimed && timeRemaining !== null && (
-              <span className={`font-mono font-bold ${timeRemaining < 60 ? 'text-rose-500' : 'text-amber-400'}`}>
-                ⏳ {formatTime(timeRemaining)}
+              <span className={`font-mono font-bold flex items-center gap-1 ${timeRemaining < 60 ? 'text-rose-500' : 'text-amber-400'}`}>
+                <Timer className="w-4 h-4" />
+                <span>{formatTime(timeRemaining)}</span>
               </span>
             )}
             <button 
@@ -227,9 +254,10 @@ export default function Part5PracticePage() {
               <button 
                 onClick={() => toggleMarkForReview(currentItem.question.id)}
                 title="Đánh dấu xem lại"
-                className={`flex items-center gap-2 px-3 py-1.5 rounded-lg text-xs font-bold transition-colors ${markedForReview[currentItem.question.id] ? 'bg-amber-500/20 text-amber-400' : 'bg-zinc-800 text-zinc-400 hover:bg-zinc-700 hover:text-white'}`}
+                className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-bold transition-colors ${markedForReview[currentItem.question.id] ? 'bg-amber-500/20 text-amber-400' : 'bg-zinc-800 text-zinc-400 hover:bg-zinc-700 hover:text-white'}`}
               >
-                {markedForReview[currentItem.question.id] ? "★ Đã đánh dấu" : "☆ Đánh dấu xem lại"}
+                <Star className={`w-3.5 h-3.5 ${markedForReview[currentItem.question.id] ? "fill-amber-400" : ""}`} />
+                <span>{markedForReview[currentItem.question.id] ? "Đã đánh dấu" : "Đánh dấu xem lại"}</span>
               </button>
             </div>
             
@@ -269,9 +297,10 @@ export default function Part5PracticePage() {
             <button 
               onClick={() => setCurrentQIndex(prev => prev - 1)} 
               disabled={currentQIndex === 0}
-              className="px-6 py-3 rounded-xl bg-zinc-800 hover:bg-zinc-700 text-white font-bold disabled:opacity-50 disabled:cursor-not-allowed"
+              className="px-6 py-3 rounded-xl bg-zinc-800 hover:bg-zinc-700 text-white font-bold disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-1.5"
             >
-              ← Trước
+              <ChevronLeft className="w-4 h-4" />
+              <span>Trước</span>
             </button>
             
             {/* Quick navigator */}
@@ -294,9 +323,10 @@ export default function Part5PracticePage() {
             <button 
               onClick={() => setCurrentQIndex(prev => prev + 1)} 
               disabled={currentQIndex === questions.length - 1}
-              className="px-6 py-3 rounded-xl bg-zinc-800 hover:bg-zinc-700 text-white font-bold disabled:opacity-50 disabled:cursor-not-allowed"
+              className="px-6 py-3 rounded-xl bg-zinc-800 hover:bg-zinc-700 text-white font-bold disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-1.5"
             >
-              Tiếp →
+              <span>Tiếp</span>
+              <ChevronRight className="w-4 h-4" />
             </button>
           </div>
         </div>
@@ -326,8 +356,9 @@ export default function Part5PracticePage() {
               <p className="text-zinc-400 text-xs">Độ chính xác: {Math.round((reviewData.correct / reviewData.total) * 100)}%</p>
             </div>
           </div>
-          <button onClick={() => setScreen("config")} className="px-5 py-2 bg-zinc-800 hover:bg-zinc-700 text-white font-bold rounded-lg transition">
-            Luyện tập lại
+          <button onClick={() => setScreen("config")} className="flex items-center gap-1.5 px-5 py-2 bg-zinc-800 hover:bg-zinc-700 text-white font-bold rounded-lg transition">
+            <RotateCcw className="w-4 h-4" />
+            <span>Luyện tập lại</span>
           </button>
         </div>
 
@@ -345,7 +376,7 @@ export default function Part5PracticePage() {
                 } ${isCorrect ? 'bg-emerald-600/20 text-emerald-400' : 'bg-rose-600/20 text-rose-400'}`}
               >
                 {idx + 1}
-                {markedForReview[q.question.id] && <span className="absolute -top-1 -right-1 text-amber-400 text-xs text-[10px]">★</span>}
+                {markedForReview[q.question.id] && <Star className="absolute top-1 right-1 w-2.5 h-2.5 fill-amber-400 text-amber-400" />}
               </button>
             );
           })}
@@ -358,7 +389,10 @@ export default function Part5PracticePage() {
           <div className="flex flex-col space-y-6">
             <div className="bg-zinc-900/60 border border-zinc-800 rounded-2xl p-6 relative">
                {markedForReview[currentItem.question.id] && (
-                 <span className="absolute top-4 right-4 bg-amber-500/20 text-amber-400 px-2 py-1 rounded text-xs font-bold">★ Đánh dấu</span>
+                 <span className="absolute top-4 right-4 bg-amber-500/20 text-amber-400 px-2 py-1 rounded text-xs font-bold flex items-center gap-1">
+                   <Star className="w-3 h-3 fill-amber-400" />
+                   <span>Đánh dấu</span>
+                 </span>
                )}
               <h2 className="text-lg font-medium text-white leading-relaxed mb-6">
                 {currentItem.question.question_text || "(Không có nội dung câu hỏi)"}
@@ -368,7 +402,6 @@ export default function Part5PracticePage() {
                 {currentItem.question.options.map(opt => {
                   const isUserChoice = resultItem?.optionId === opt.id;
                   
-                  // Highlight logic
                   let bgClass = 'bg-zinc-900 border-zinc-800 text-zinc-300';
                   let iconClass = 'bg-zinc-800 text-zinc-400';
                   
@@ -391,8 +424,8 @@ export default function Part5PracticePage() {
                       <span className="text-left font-medium">
                         {opt.option_text || "(Trống)"}
                       </span>
-                      {isUserChoice && resultItem?.isCorrect && <span className="ml-auto text-emerald-400 text-xl shrink-0">✓</span>}
-                      {isUserChoice && !resultItem?.isCorrect && <span className="ml-auto text-rose-400 text-xl shrink-0">✗</span>}
+                      {isUserChoice && resultItem?.isCorrect && <CheckCircle2 className="ml-auto text-emerald-400 w-5 h-5 shrink-0" />}
+                      {isUserChoice && !resultItem?.isCorrect && <XCircle className="ml-auto text-rose-400 w-5 h-5 shrink-0" />}
                     </div>
                   );
                 })}
@@ -406,7 +439,7 @@ export default function Part5PracticePage() {
             {/* Detailed Explanation */}
             <div className="bg-indigo-950/20 border border-indigo-900/30 rounded-2xl overflow-hidden flex flex-col">
               <div className="bg-indigo-900/40 px-5 py-3 border-b border-indigo-900/30 flex items-center gap-2">
-                <span className="text-indigo-400">📖</span>
+                <BookOpen className="w-4 h-4 text-indigo-400" />
                 <h4 className="font-bold text-indigo-300">Giải thích chi tiết</h4>
               </div>
               <div className="p-5 text-sm text-indigo-100/80 leading-relaxed">
@@ -424,7 +457,7 @@ export default function Part5PracticePage() {
                 onClick={() => alert("Tính năng tra cứu điểm ngữ pháp đang được phát triển!")}
                 className="bg-zinc-900 hover:bg-zinc-800 border border-zinc-800 rounded-xl p-4 flex flex-col gap-2 text-left transition group"
               >
-                <span className="text-xl group-hover:scale-110 transition-transform origin-left">🧩</span>
+                <Puzzle className="w-5 h-5 text-indigo-400 group-hover:scale-110 transition-transform origin-left" />
                 <span className="font-bold text-zinc-300 text-sm">Điểm ngữ pháp</span>
                 <span className="text-[10px] text-zinc-500">Xem giải thích ngữ pháp liên quan</span>
               </button>
@@ -433,7 +466,7 @@ export default function Part5PracticePage() {
                 onClick={() => alert("Tính năng tra cứu từ vựng đang được phát triển!")}
                 className="bg-zinc-900 hover:bg-zinc-800 border border-zinc-800 rounded-xl p-4 flex flex-col gap-2 text-left transition group"
               >
-                <span className="text-xl group-hover:scale-110 transition-transform origin-left">📚</span>
+                <BookMarked className="w-5 h-5 text-indigo-400 group-hover:scale-110 transition-transform origin-left" />
                 <span className="font-bold text-zinc-300 text-sm">Giải nghĩa từ vựng</span>
                 <span className="text-[10px] text-zinc-500">Tra cứu các từ mới trong câu</span>
               </button>
@@ -442,7 +475,7 @@ export default function Part5PracticePage() {
                 onClick={() => alert("Tính năng xem quy tắc ngữ pháp đang được phát triển!")}
                 className="bg-zinc-900 hover:bg-zinc-800 border border-zinc-800 rounded-xl p-4 flex flex-col gap-2 text-left transition group"
               >
-                <span className="text-xl group-hover:scale-110 transition-transform origin-left">🔗</span>
+                <LinkIcon className="w-5 h-5 text-indigo-400 group-hover:scale-110 transition-transform origin-left" />
                 <span className="font-bold text-zinc-300 text-sm">Quy tắc liên quan</span>
                 <span className="text-[10px] text-zinc-500">Liên kết tới bài học lý thuyết</span>
               </button>
@@ -451,7 +484,7 @@ export default function Part5PracticePage() {
                 onClick={() => alert("Đã thêm câu này vào Sổ tay ngữ pháp cá nhân (Mock)!")}
                 className="bg-indigo-900/30 hover:bg-indigo-900/50 border border-indigo-800/30 rounded-xl p-4 flex flex-col gap-2 text-left transition group"
               >
-                <span className="text-xl group-hover:scale-110 transition-transform origin-left">📝</span>
+                <FileEdit className="w-5 h-5 text-indigo-300 group-hover:scale-110 transition-transform origin-left" />
                 <span className="font-bold text-indigo-300 text-sm">Thêm vào Sổ tay</span>
                 <span className="text-[10px] text-indigo-300/50">Lưu lại để ôn tập sau</span>
               </button>

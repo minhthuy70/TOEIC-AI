@@ -5,6 +5,20 @@ import Link from "next/link";
 import { useParams } from "next/navigation";
 import { getGrammarLesson, completeGrammarLesson } from "@/services/grammar";
 import type { GrammarLessonDetail } from "@/types/grammar";
+import {
+  FileText,
+  AlertTriangle,
+  Lightbulb,
+  Layers,
+  Heart,
+  Link as LinkIcon,
+  Clock,
+  Inbox,
+  Check,
+  ArrowLeft,
+  ArrowRight,
+  BookOpen,
+} from "lucide-react";
 
 // ======================================================
 // Render nội dung Grammar từ content trong DB
@@ -86,7 +100,7 @@ function GrammarContent({ content }: { content: string }) {
               className="my-3 bg-rose-950/40 border border-rose-800/40 rounded-xl p-4 space-y-1.5"
             >
               <div className="flex items-center gap-2 text-rose-400 font-bold text-xs uppercase tracking-wider">
-                <span>⚠️</span>
+                <AlertTriangle className="w-4 h-4 text-rose-400" />
                 <span>Lỗi thường gặp (Common Mistakes)</span>
               </div>
               <p className="text-sm text-rose-200/90 leading-relaxed pl-6">
@@ -113,7 +127,7 @@ function GrammarContent({ content }: { content: string }) {
               className="my-3 bg-amber-950/30 border border-amber-800/40 rounded-xl p-4 space-y-1.5"
             >
               <div className="flex items-center gap-2 text-amber-400 font-bold text-xs uppercase tracking-wider">
-                <span>💡</span>
+                <Lightbulb className="w-4 h-4 text-amber-400" />
                 <span>Mẹo & Chiến thuật làm bài TOEIC</span>
               </div>
               <p className="text-sm text-amber-200/90 leading-relaxed pl-6">
@@ -135,7 +149,7 @@ function GrammarContent({ content }: { content: string }) {
               key={index}
               className="mt-4 mb-2 flex items-center gap-2 text-sm font-semibold text-zinc-200"
             >
-              <span className="text-lg">📐</span>
+              <Layers className="w-4 h-4 text-red-400" />
               <span>Cấu trúc</span>
             </div>
           );
@@ -154,7 +168,7 @@ function GrammarContent({ content }: { content: string }) {
               key={index}
               className="mt-5 mb-2 flex items-center gap-2 text-sm font-semibold text-zinc-200"
             >
-              <span className="text-lg">💡</span>
+              <Lightbulb className="w-4 h-4 text-amber-400" />
               <span>Ví dụ & Phân tích</span>
             </div>
           );
@@ -419,13 +433,14 @@ export default function GrammarLessonPage() {
           href={`/dashboard/courses/grammar/${categoryId}`}
           className="inline-flex items-center gap-2 text-sm text-zinc-400 hover:text-white transition-colors"
         >
-          ← Quay lại danh sách bài học
+          <ArrowLeft className="w-4 h-4" />
+          <span>Quay lại danh sách bài học</span>
         </Link>
 
         <div className="bg-red-950/30 border border-red-800/40 rounded-2xl p-6">
           <div className="flex items-center gap-3">
             <div className="w-10 h-10 rounded-xl bg-red-600/15 border border-red-600/20 flex items-center justify-center">
-              ⚠️
+              <AlertTriangle className="w-5 h-5 text-red-400" />
             </div>
             <div>
               <p className="text-sm font-semibold text-red-400">Có lỗi xảy ra</p>
@@ -444,7 +459,7 @@ export default function GrammarLessonPage() {
       {/* ── SHARE TOAST ── */}
       {shareToast && (
         <div className="fixed bottom-6 right-6 z-50 bg-emerald-600 text-white text-xs font-bold px-4 py-3 rounded-xl shadow-2xl flex items-center gap-2 transition-all">
-          <span>✓</span>
+          <Check className="w-4 h-4" />
           <span>Đã sao chép liên kết bài học vào clipboard!</span>
         </div>
       )}
@@ -455,7 +470,8 @@ export default function GrammarLessonPage() {
           href={`/dashboard/courses/grammar/${categoryId}`}
           className="inline-flex items-center gap-2 text-sm text-zinc-400 hover:text-white transition-colors"
         >
-          ← Quay lại danh sách bài ({lesson.category.name})
+          <ArrowLeft className="w-4 h-4" />
+          <span>Quay lại danh sách bài ({lesson.category.name})</span>
         </Link>
 
         {/* Toolbar: Favorite, Share */}
@@ -469,7 +485,7 @@ export default function GrammarLessonPage() {
                 : "bg-zinc-900 border-zinc-800 text-zinc-400 hover:text-white"
             }`}
           >
-            <span>{isFavorite ? "❤️" : "🤍"}</span>
+            <Heart className={`w-3.5 h-3.5 ${isFavorite ? "fill-pink-500 text-pink-500" : ""}`} />
             <span>{isFavorite ? "Đã lưu yêu thích" : "Lưu yêu thích"}</span>
           </button>
 
@@ -478,7 +494,7 @@ export default function GrammarLessonPage() {
             onClick={handleShare}
             className="px-3 py-1.5 rounded-xl text-xs font-semibold bg-zinc-900 border border-zinc-800 text-zinc-400 hover:text-white flex items-center gap-1.5 transition-all"
           >
-            <span>🔗</span>
+            <LinkIcon className="w-3.5 h-3.5" />
             <span>Chia sẻ</span>
           </button>
         </div>
@@ -491,8 +507,8 @@ export default function GrammarLessonPage() {
         <div className="relative">
           <div className="flex items-start gap-4">
             {/* Icon */}
-            <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-red-600/15 border border-red-600/20 flex items-center justify-center text-xl sm:text-2xl shrink-0">
-              📝
+            <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-red-600/15 border border-red-600/20 text-red-400 flex items-center justify-center shrink-0">
+              <FileText className="w-7 h-7" />
             </div>
 
             {/* Title & Badges */}
@@ -501,15 +517,16 @@ export default function GrammarLessonPage() {
                 <span className="text-[10px] font-bold px-2.5 py-0.5 rounded-full bg-zinc-800 text-zinc-300 border border-zinc-700/60">
                   Chủ đề: {lesson.category.name}
                 </span>
-                <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-blue-600/15 text-blue-400 border border-blue-600/20">
+                <span className="text-[10px] font-bold px-2.5 py-0.5 rounded-full bg-blue-600/15 text-blue-400 border border-blue-600/20">
                   Chặng {stage}
                 </span>
-                <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-amber-600/15 text-amber-400 border border-amber-600/20">
+                <span className="text-[10px] font-bold px-2.5 py-0.5 rounded-full bg-amber-600/15 text-amber-400 border border-amber-600/20">
                   {lesson.difficulty || "Cơ bản"}
                 </span>
                 {lesson.progress.completed && (
                   <span className="inline-flex items-center gap-1 text-[10px] font-semibold px-2.5 py-0.5 rounded-full bg-green-600/15 text-green-400 border border-green-600/20">
-                    ✓ Đã hoàn thành
+                    <Check className="w-3 h-3" />
+                    <span>Đã hoàn thành</span>
                   </span>
                 )}
               </div>
@@ -550,8 +567,8 @@ export default function GrammarLessonPage() {
       <div className="bg-zinc-900/60 border border-zinc-800/50 rounded-2xl overflow-hidden">
         <div className="px-5 sm:px-7 py-5 border-b border-zinc-800/60 flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <div className="w-9 h-9 rounded-xl bg-red-600/10 border border-red-600/15 flex items-center justify-center">
-              📚
+            <div className="w-9 h-9 rounded-xl bg-red-600/10 border border-red-600/15 text-red-400 flex items-center justify-center">
+              <BookOpen className="w-4 h-4" />
             </div>
             <div>
               <h2 className="text-base sm:text-lg font-semibold text-white">Nội dung bài học</h2>
@@ -565,13 +582,15 @@ export default function GrammarLessonPage() {
               type="button"
               onClick={handleComplete}
               disabled={completing}
-              className="px-4 py-2 rounded-xl bg-red-600 hover:bg-red-500 text-white text-xs font-bold shadow transition-all disabled:opacity-50"
+              className="flex items-center gap-1 px-4 py-2 rounded-xl bg-red-600 hover:bg-red-500 text-white text-xs font-bold shadow transition-all disabled:opacity-50"
             >
-              {completing ? "Đang lưu..." : "✓ Đánh dấu hoàn thành"}
+              <Check className="w-3.5 h-3.5" />
+              <span>{completing ? "Đang lưu..." : "Đánh dấu hoàn thành"}</span>
             </button>
           ) : (
-            <span className="text-xs text-green-400 font-semibold px-3 py-1 bg-green-500/10 border border-green-500/20 rounded-xl">
-              ✓ Đã học xong
+            <span className="flex items-center gap-1 text-xs text-green-400 font-semibold px-3 py-1 bg-green-500/10 border border-green-500/20 rounded-xl">
+              <Check className="w-3.5 h-3.5" />
+              <span>Đã học xong</span>
             </span>
           )}
         </div>
@@ -580,8 +599,8 @@ export default function GrammarLessonPage() {
           {lesson.content ? (
             <GrammarContent content={lesson.content} />
           ) : (
-            <div className="py-12 text-center">
-              <div className="text-4xl mb-3">📭</div>
+            <div className="py-12 text-center flex flex-col items-center">
+              <Inbox className="w-12 h-12 text-zinc-600 mb-3" />
               <p className="text-sm text-zinc-500">Chưa có nội dung bài học.</p>
             </div>
           )}
@@ -591,8 +610,8 @@ export default function GrammarLessonPage() {
       {/* ── LAST STUDIED & COMPLETE ACTION ── */}
       <div className="bg-zinc-900/60 border border-zinc-800/50 rounded-2xl p-4 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div className="flex items-center gap-3">
-          <div className="w-10 h-10 rounded-xl bg-purple-600/10 border border-purple-600/15 flex items-center justify-center">
-            🕐
+          <div className="w-10 h-10 rounded-xl bg-purple-600/10 border border-purple-600/15 text-purple-400 flex items-center justify-center">
+            <Clock className="w-5 h-5" />
           </div>
           <div>
             <p className="text-[11px] text-zinc-500">Lần học gần nhất</p>
@@ -611,7 +630,8 @@ export default function GrammarLessonPage() {
             disabled={completing}
             className="inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl bg-gradient-to-r from-red-600 to-red-500 hover:from-red-500 hover:to-red-400 text-sm font-semibold text-white shadow-lg shadow-red-600/20 transition-all disabled:opacity-50"
           >
-            {completing ? "Đang xử lý..." : "✓ Đánh dấu bài học hoàn thành"}
+            <Check className="w-4 h-4" />
+            <span>{completing ? "Đang xử lý..." : "Đánh dấu bài học hoàn thành"}</span>
           </button>
         )}
       </div>
@@ -623,7 +643,7 @@ export default function GrammarLessonPage() {
             href={`/dashboard/courses/grammar/${categoryId}/lessons/${lesson.previousLesson.id}`}
             className="bg-zinc-900/60 border border-zinc-800/70 hover:border-zinc-700 p-4 rounded-2xl flex items-center gap-3 transition-all group"
           >
-            <span className="text-zinc-500 group-hover:text-white transition-colors text-lg">←</span>
+            <ArrowLeft className="w-5 h-5 text-zinc-500 group-hover:text-white transition-colors" />
             <div className="min-w-0">
               <span className="text-[10px] text-zinc-500 uppercase font-semibold">Bài trước</span>
               <p className="text-xs font-bold text-white truncate group-hover:text-red-400 transition-colors">
@@ -649,7 +669,7 @@ export default function GrammarLessonPage() {
                 {lesson.nextLesson.title}
               </p>
             </div>
-            <span className="text-zinc-500 group-hover:text-white transition-colors text-lg">→</span>
+            <ArrowRight className="w-5 h-5 text-zinc-500 group-hover:text-white transition-colors" />
           </Link>
         ) : (
           <Link
@@ -660,7 +680,7 @@ export default function GrammarLessonPage() {
               <span className="text-[10px] text-emerald-400 uppercase font-semibold">Hoàn thành chủ đề</span>
               <p className="text-xs font-bold text-white">Quay lại danh sách bài</p>
             </div>
-            <span className="text-zinc-500 group-hover:text-white transition-colors text-lg">✓</span>
+            <Check className="w-5 h-5 text-zinc-500 group-hover:text-white transition-colors" />
           </Link>
         )}
       </div>
@@ -670,14 +690,15 @@ export default function GrammarLessonPage() {
         <div className="bg-zinc-900/60 border border-zinc-800/50 rounded-2xl p-5 space-y-3 mt-4">
           <div className="flex items-center justify-between">
             <h3 className="text-sm font-bold text-white flex items-center gap-2">
-              <span>🔗</span>
+              <LinkIcon className="w-4 h-4 text-red-500" />
               <span>Chủ đề ngữ pháp liên quan (Chặng {stage})</span>
             </h3>
             <Link
               href="/dashboard/courses"
-              className="text-xs text-red-400 hover:text-red-300 font-semibold"
+              className="inline-flex items-center gap-1 text-xs text-red-400 hover:text-red-300 font-semibold"
             >
-              Xem tất cả →
+              <span>Xem tất cả</span>
+              <ArrowRight className="w-3 h-3" />
             </Link>
           </div>
 
@@ -701,8 +722,9 @@ export default function GrammarLessonPage() {
                     </p>
                   )}
                 </div>
-                <span className="text-[11px] text-red-400 font-semibold mt-2">
-                  Khám phá chủ đề →
+                <span className="inline-flex items-center gap-1 text-[11px] text-red-400 font-semibold mt-2">
+                  <span>Khám phá chủ đề</span>
+                  <ArrowRight className="w-3 h-3" />
                 </span>
               </Link>
             ))}
