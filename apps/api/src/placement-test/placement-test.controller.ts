@@ -1,4 +1,5 @@
-import { Controller, Get } from '@nestjs/common';
+import { JwtAuthGuard } from "../auth/jwt-auth.guard";
+import { Controller, Post, Body, Get, Param, UseGuards } from '@nestjs/common';
 import { PrismaClient } from '@prisma/client';
 import * as fs from 'fs';
 import * as path from 'path';
@@ -15,6 +16,7 @@ const PART_METADATA: Record<number, any> = {
   7: { title: "Reading Comprehension", titleVi: "Đọc hiểu", section: "reading", description: "Đọc hiểu các đoạn văn. Single Passages (29 câu) và Multiple Passages (25 câu).", totalQuestions: 54 }
 };
 
+@UseGuards(JwtAuthGuard)
 @Controller('placement-test')
 export class PlacementTestController {
   @Get()

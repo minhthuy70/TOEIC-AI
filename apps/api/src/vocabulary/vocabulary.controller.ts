@@ -16,8 +16,7 @@ import { VocabularyService } from './vocabulary.service';
 import { LearnDto } from './dto/learn.dto';
 import { ReviewDto } from './dto/review.dto';
 
-// Temporarily disable auth guard for testing
-// TODO: Re-enable @UseGuards(JwtAuthGuard) after fixing authentication
+@UseGuards(JwtAuthGuard)
 @Controller("vocabulary")
 export class VocabularyController {
   constructor(
@@ -42,7 +41,7 @@ dashboard(
   @Request() req,
 ) {
   return this.vocabularyService.getDashboard(
-    req.user?.userId || 1, // Default to user ID 1 for testing
+    req.user.userId,
   );
 }
 
@@ -55,7 +54,7 @@ srs(
   @Request() req,
 ) {
   return this.vocabularyService.getSrsStatus(
-    req.user?.userId || 1, // Default to user ID 1 for testing
+    req.user.userId,
   );
 }
 
@@ -68,7 +67,7 @@ srs(
     @Request() req,
   ) {
     return this.vocabularyService.getStatistics(
-      req.user?.userId || 1, // Default to user ID 1 for testing
+      req.user.userId,
     );
   }
 
@@ -78,7 +77,7 @@ srs(
 
   @Get('topics')
   topics(@Request() req) {
-    return this.vocabularyService.getTopics(req.user?.userId || 1); // Default to user ID 1 for testing
+    return this.vocabularyService.getTopics(req.user.userId);
   }
 
   // =====================================================
@@ -90,7 +89,7 @@ today(
   @Request() req,
 ) {
   return this.vocabularyService.today(
-    req.user?.userId || 1, // Default to user ID 1 for testing
+    req.user.userId,
   );
 }
 
@@ -103,7 +102,7 @@ today(
   getLessons(
     @Request() req,
   ) {
-    return this.vocabularyService.getLessons(req.user?.userId || 1); // Default to user ID 1 for testing
+    return this.vocabularyService.getLessons(req.user.userId);
   }
 
   // =====================================================
@@ -115,7 +114,7 @@ today(
     @Request() req,
     @Param("lesson", ParseIntPipe) lesson: number,
   ) {
-    return this.vocabularyService.getLessonWords(req.user?.userId || 1, lesson); // Default to user ID 1 for testing
+    return this.vocabularyService.getLessonWords(req.user.userId, lesson);
   }
 
   // =====================================================
@@ -126,7 +125,7 @@ today(
   getReviewLevels(
     @Request() req,
   ) {
-    return this.vocabularyService.getReviewLevels(req.user?.userId || 1); // Default to user ID 1 for testing
+    return this.vocabularyService.getReviewLevels(req.user.userId);
   }
 
   // =====================================================
@@ -138,7 +137,7 @@ today(
     @Request() req,
     @Param("level", ParseIntPipe) level: number,
   ) {
-    return this.vocabularyService.getReviewWords(req.user?.userId || 1, level); // Default to user ID 1 for testing
+    return this.vocabularyService.getReviewWords(req.user.userId, level);
   }
 
   // =====================================================
@@ -157,7 +156,7 @@ today(
     @Query('status') status?: string,
     @Query('srsLevel') srsLevel?: string,
   ) {
-    return this.vocabularyService.getWordsFiltered(req.user?.userId || 1, { // Default to user ID 1 for testing
+    return this.vocabularyService.getWordsFiltered(req.user.userId, {
       page: page ? Number(page) : undefined,
       limit: limit ? Number(limit) : undefined,
       stage: stage ? Number(stage) : undefined,
@@ -206,7 +205,7 @@ learn(
   @Request() req,
   @Body() dto: LearnDto,
 ) {
-  dto.userId = req.user?.userId || 1; // Default to user ID 1 for testing
+  dto.userId = req.user.userId;
 
   return this.vocabularyService.learn(dto);
 }
@@ -220,7 +219,7 @@ review(
   @Request() req,
   @Body() dto: ReviewDto,
 ) {
-  dto.userId = req.user?.userId || 1; // Default to user ID 1 for testing
+  dto.userId = req.user.userId;
 
   return this.vocabularyService.review(dto);
 }
@@ -234,7 +233,7 @@ review(
     @Body() body: { vocabularyId: number; notes: string | null; customExample: string | null },
   ) {
     return this.vocabularyService.updateNotes(
-      req.user?.userId || 1,
+      req.user.userId,
       body.vocabularyId,
       body.notes,
       body.customExample
@@ -250,7 +249,7 @@ review(
     @Body() body: { vocabularyIds: number[]; action: 'reset' | 'delete' },
   ) {
     return this.vocabularyService.bulkResetProgress(
-      req.user?.userId || 1,
+      req.user.userId,
       body.vocabularyIds,
       body.action
     );

@@ -6,6 +6,7 @@ import { Roles } from '../auth/roles.decorator';
 
 // Temporarily disable auth guards for testing
 // TODO: Re-enable @UseGuards after fixing authentication
+@UseGuards(JwtAuthGuard)
 @Controller('settings')
 export class SettingsController {
   constructor(private readonly settingsService: SettingsService) {}

@@ -21,6 +21,7 @@ import { Roles } from "../auth/roles.decorator";
 
 import { UserRole } from "@prisma/client";
 
+@UseGuards(JwtAuthGuard)
 @Controller("admin")
 @UseGuards(JwtAuthGuard, RolesGuard)
 export class AdminController {

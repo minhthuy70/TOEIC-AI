@@ -9,6 +9,7 @@ import { useRouter, usePathname } from "next/navigation";
 import Link from "next/link";
 import { useAutoLogout } from "../../hooks/useAutoLogout";
 import { useSessionWarning } from "../../hooks/useSessionWarning";
+import { apiFetch } from "../../lib/api";
 
 
 
@@ -90,8 +91,16 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
 
       setUser(parsedUser);
 
-      // Profile fetching temporarily disabled due to authentication issues
-      // TODO: Re-enable after fixing authentication system
+      apiFetch("/profile/me")
+        .then((profileData: any) => {
+          setUser((prev) => ({
+            ...prev,
+            ...profileData,
+            currentScore: profileData.currentScore ?? 0,
+            targetScore: profileData.targetScore ?? 600,
+          }));
+        })
+        .catch(console.error);
 
     }
 

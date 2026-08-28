@@ -14,8 +14,7 @@ import { JwtAuthGuard } from "../auth/jwt-auth.guard";
 import { GrammarService } from "./grammar.service";
 import { CompleteLessonDto } from "./dto/complete-lesson.dto";
 
-// Temporarily disable auth guard for testing
-// TODO: Re-enable @UseGuards(JwtAuthGuard) after fixing authentication
+@UseGuards(JwtAuthGuard)
 @Controller("grammar")
 export class GrammarController {
   constructor(
@@ -29,7 +28,7 @@ export class GrammarController {
   @Get("categories")
   getCategories(@Request() req) {
     return this.grammarService.getCategories(
-      req.user?.userId || 1, // Default to user ID 1 for testing
+      req.user.userId,
     );
   }
 
@@ -44,7 +43,7 @@ export class GrammarController {
   ) {
     return this.grammarService.getCategory(
       id,
-      req.user?.userId || 1, // Default to user ID 1 for testing
+      req.user.userId,
     );
   }
 
@@ -59,7 +58,7 @@ export class GrammarController {
   ) {
     return this.grammarService.getLesson(
       id,
-      req.user?.userId || 1, // Default to user ID 1 for testing
+      req.user.userId,
     );
   }
 
@@ -75,7 +74,7 @@ export class GrammarController {
   ) {
     return this.grammarService.completeLesson(
       id,
-      req.user?.userId || 1, // Default to user ID 1 for testing
+      req.user.userId,
       dto,
     );
   }

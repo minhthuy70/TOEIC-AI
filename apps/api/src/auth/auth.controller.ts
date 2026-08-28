@@ -105,7 +105,6 @@ constructor(
     return this.authService.resendVerificationCode(body.email);
   }
 
-  @UseGuards(JwtAuthGuard)
   @Get("me")
   getMe(@Req() req: any) {
     return req.user;
@@ -153,13 +152,11 @@ constructor(
     return this.authService.unlockAccount(body.email);
   }
 
-  @UseGuards(JwtAuthGuard)
   @Post('logout-all')
   logoutAll(@Req() req: any) {
     return this.authService.logoutFromAllDevices(req.user.id);
   }
 
-  @UseGuards(JwtAuthGuard)
   @Get('sessions')
   getSessions(@Req() req: any) {
     const userAgent = req.headers['user-agent'] || 'unknown';
@@ -168,7 +165,6 @@ constructor(
     return this.authService.getActiveSessions(req.user.id, userAgent, acceptLanguage);
   }
 
-  @UseGuards(JwtAuthGuard)
   @Post('revoke-session')
   revokeSession(
     @Body()

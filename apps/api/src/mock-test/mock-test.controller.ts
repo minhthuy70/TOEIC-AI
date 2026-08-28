@@ -1,3 +1,4 @@
+import { JwtAuthGuard } from "../auth/jwt-auth.guard";
 import {
   BadRequestException,
   Body,
@@ -16,6 +17,7 @@ import { MockTestService } from "./mock-test.service";
 
 // Temporarily disable auth guard for testing
 // TODO: Re-enable @UseGuards(AuthGuard("jwt")) after fixing authentication
+@UseGuards(JwtAuthGuard)
 @Controller("mock-test")
 export class MockTestController {
   constructor(
@@ -28,7 +30,7 @@ export class MockTestController {
 
   private getUserId(req: any): number {
     const userId =
-      Number(req?.user?.userId) || 1; // Default to user ID 1 for testing
+      req.user.userId;
 
     if (
       !Number.isInteger(userId) ||

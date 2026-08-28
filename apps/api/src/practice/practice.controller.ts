@@ -16,8 +16,7 @@ import { PracticeService } from "./practice.service";
 import { SubmitPracticeDto } from "./dto/submit-practice.dto";
 import { JwtAuthGuard } from "../auth/jwt-auth.guard";
 
-// Temporarily disable auth guard for testing
-// TODO: Re-enable @UseGuards(JwtAuthGuard) after fixing authentication
+@UseGuards(JwtAuthGuard)
 @Controller("practice")
 export class PracticeController {
   constructor(
@@ -39,7 +38,7 @@ export class PracticeController {
   // ============================================================
 
   private getUserId(req: any): number {
-    const userId = Number(req?.user?.userId) || 1; // Default to user ID 1 for testing
+    const userId = req.user.userId;
 
     if (
       !Number.isInteger(userId) ||
