@@ -424,22 +424,22 @@ Dựa trên lộ trình học TOEIC 900+ - Phiên bản nâng cấp
 [x]   - Set count selector - Chọn số bộ
 
 5.5. Reading Mixed Practice - Luyện đọc hỗn hợp
-- Mixed parts practice (Part 5-7) - Luyện các phần hỗn hợp (Part 5-7)
-- Custom part selection - Chọn phần tùy chỉnh
-- Question count selector - Chọn số câu hỏi
-- Time limit setting - Cài đặt giới hạn thời gian
-- Practice mode (normal/timed/exam) - Chế độ luyện tập (bình thường/giới hạn thời gian/thi)
-- Shuffle questions - Xáo trộn câu hỏi
-- Sequential questions - Câu hỏi tuần tự
-- Real-time scoring - Tính điểm thời gian thực
-- Progress indicator - Chỉ số tiến độ
-- Pause/resume functionality - Chức năng tạm dừng/tiếp tục
-- Submit practice - Nộp bài luyện
-- Practice summary - Tóm tắt bài luyện
-- Score breakdown by part - Phân tích điểm theo phần
-- Time spent analysis - Phân tích thời gian đã dùng
-- Incorrect answers review - Xem lại câu sai
-- Add to error log - Thêm vào nhật ký lỗi
+[x] - Mixed parts practice (Part 5-7) - Luyện các phần hỗn hợp (Part 5-7)
+[x] - Custom part selection - Chọn phần tùy chỉnh
+[x] - Question count selector - Chọn số câu hỏi
+[x] - Time limit setting - Cài đặt giới hạn thời gian
+[x] - Practice mode (normal/timed/exam) - Chế độ luyện tập (bình thường/giới hạn thời gian/thi)
+[x] - Shuffle questions - Xáo trộn câu hỏi
+[x] - Sequential questions - Câu hỏi tuần tự
+[x] - Real-time scoring - Tính điểm thời gian thực
+[x] - Progress indicator - Chỉ số tiến độ
+[x] - Pause/resume functionality - Chức năng tạm dừng/tiếp tục
+[x] - Submit practice - Nộp bài luyện
+[x] - Practice summary - Tóm tắt bài luyện
+[x] - Score breakdown by part - Phân tích điểm theo phần
+[x] - Time spent analysis - Phân tích thời gian đã dùng
+[x] - Incorrect answers review - Xem lại câu sai
+[x] - Add to error log - Thêm vào nhật ký lỗi
 
 5.6. Reading Settings - Cài đặt đọc
 - Default font size - Cỡ chữ mặc định
