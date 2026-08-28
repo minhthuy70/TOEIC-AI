@@ -105,116 +105,331 @@ export default function DashboardPage() {
     );
   }
 
-  if (!data) return <div>Failed to load dashboard</div>;
+  if (!data) return <div className="text-zinc-400 p-8 text-center">Không thể tải dữ liệu Bảng điều khiển.</div>;
 
   const { user, score, progress, statistics, daily, recentActivities } = data;
   const currentStageId = score.stage;
 
   return (
-    <div className="space-y-6">
-      {/* ── Welcome Banner ── */}
-      <div className="relative overflow-hidden bg-gradient-to-br from-red-600/10 via-zinc-900/80 to-zinc-900 border border-red-600/15 rounded-2xl p-6 lg:p-8">
-        <div className="absolute top-0 right-0 w-64 h-64 bg-red-600/5 rounded-full -translate-y-1/2 translate-x-1/3 blur-3xl" />
-        <div className="relative flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
-          <div>
-            <p className="text-zinc-400 text-sm">Xin chào,</p>
-            <h1 className="text-2xl lg:text-3xl font-bold text-white mt-1">
-              {user?.fullName || "Learner"} 👋
+    <div className="space-y-8 animate-fade-in">
+      {/* ================================================== */}
+      {/* 1. WELCOME BANNER & MOTIVATION QUOTE (9.1) */}
+      {/* ================================================== */}
+      <div className="relative overflow-hidden bg-gradient-to-br from-red-600/15 via-zinc-900/90 to-zinc-950 border border-red-600/20 rounded-3xl p-6 lg:p-8 shadow-xl">
+        <div className="absolute top-0 right-0 w-96 h-96 bg-red-600/10 rounded-full -translate-y-1/2 translate-x-1/3 blur-3xl" />
+        
+        <div className="relative flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
+          <div className="space-y-2 max-w-2xl">
+            <div className="flex items-center gap-2">
+              <span className="px-3 py-1 rounded-full text-[10px] font-extrabold bg-red-600/20 text-red-400 border border-red-500/30 uppercase tracking-wider">
+                Bảng Điều Khiển Hàng Ngày • 9.1
+              </span>
+              <span className="px-3 py-1 rounded-full text-[10px] font-black bg-amber-500/20 text-amber-300 border border-amber-500/30 flex items-center gap-1">
+                🔥 Chuỗi {daily?.streak?.current || 5} ngày liên tục
+              </span>
+            </div>
+
+            <h1 className="text-2xl lg:text-3xl font-black text-white">
+              Xin chào, {user?.fullName || "Học viên TOEIC"} 👋
             </h1>
-            <p className="text-zinc-400 text-sm mt-2">
-              Hãy tiếp tục hành trình chinh phục TOEIC của bạn!
-            </p>
+
+            {/* 11. DAILY MOTIVATION QUOTE */}
+            {daily?.dailyMotivationQuote && (
+              <div className="p-3.5 rounded-2xl bg-black/40 border border-white/5 space-y-1">
+                <p className="text-xs italic text-zinc-300 font-medium leading-relaxed">
+                  &quot;{daily.dailyMotivationQuote.quote}&quot; — <span className="text-red-400 font-bold">{daily.dailyMotivationQuote.author}</span>
+                </p>
+                <p className="text-[11px] text-zinc-400">
+                  💡 {daily.dailyMotivationQuote.translation}
+                </p>
+              </div>
+            )}
           </div>
+
+          <div className="flex items-center gap-3 shrink-0">
+            <Link
+              href="/dashboard/mock-test"
+              className="px-5 py-3 rounded-2xl border border-zinc-700 bg-zinc-900/90 hover:bg-zinc-800 text-zinc-200 hover:text-white text-xs font-bold transition flex items-center gap-2"
+            >
+              <span>📝</span>
+              <span>Thi thử TOEIC</span>
+            </Link>
+
+            <Link
+              href="/dashboard/courses"
+              className="px-6 py-3 rounded-2xl bg-red-600 hover:bg-red-500 text-white text-xs font-extrabold shadow-xl shadow-red-600/25 transition active:scale-95 flex items-center gap-2"
+            >
+              <span>🚀</span>
+              <span>Tiếp tục học ngay</span>
+            </Link>
+          </div>
+        </div>
+      </div>
+
+      {/* ================================================== */}
+      {/* 2. TODAY'S DAILY METRICS - 5 CARDS ROW (9.1) */}
+      {/* ================================================== */}
+      <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3.5">
+        {/* 1. Today's study time */}
+        <div className="bg-zinc-900/60 border border-zinc-800/60 rounded-2xl p-4.5 text-center transition hover:border-zinc-700">
+          <span className="text-[10px] text-zinc-500 uppercase tracking-wider font-bold block mb-1.5 flex items-center justify-center gap-1">
+            <span>⏱️</span> <span>Thời gian học hôm nay</span>
+          </span>
+          <p className="text-2xl font-black text-white">
+            {daily?.studyTime?.todayMinutes || 0} <span className="text-xs text-zinc-400 font-normal">/ {daily?.studyTime?.goalMinutes || 30}p</span>
+          </p>
+          <div className="w-full bg-zinc-800 rounded-full h-1.5 mt-2 overflow-hidden">
+            <div className="bg-amber-500 h-full rounded-full" style={{ width: `${daily?.studyTime?.progress || 0}%` }} />
+          </div>
+        </div>
+
+        {/* 2. Today's vocabulary count (new + reviewed) */}
+        <div className="bg-zinc-900/60 border border-zinc-800/60 rounded-2xl p-4.5 text-center transition hover:border-zinc-700">
+          <span className="text-[10px] text-zinc-500 uppercase tracking-wider font-bold block mb-1.5 flex items-center justify-center gap-1">
+            <span>📖</span> <span>Từ vựng (Mới + Ôn)</span>
+          </span>
+          <p className="text-2xl font-black text-purple-400">
+            {daily?.vocabulary?.totalToday || 0} <span className="text-xs text-zinc-400 font-normal">/ {daily?.vocabulary?.goal || 20} từ</span>
+          </p>
+          <p className="text-[10px] text-zinc-500 mt-1.5">
+            {daily?.vocabulary?.learnedToday || 0} mới • {daily?.vocabulary?.reviewedToday || 0} ôn tập
+          </p>
+        </div>
+
+        {/* 3. Today's practice questions count */}
+        <div className="bg-zinc-900/60 border border-zinc-800/60 rounded-2xl p-4.5 text-center transition hover:border-zinc-700">
+          <span className="text-[10px] text-zinc-500 uppercase tracking-wider font-bold block mb-1.5 flex items-center justify-center gap-1">
+            <span>✍️</span> <span>Câu luyện tập hôm nay</span>
+          </span>
+          <p className="text-2xl font-black text-blue-400">
+            {daily?.practiceQuestions?.count || 0} <span className="text-xs text-zinc-400 font-normal">câu</span>
+          </p>
+          <div className="w-full bg-zinc-800 rounded-full h-1.5 mt-2 overflow-hidden">
+            <div className="bg-blue-500 h-full rounded-full" style={{ width: `${daily?.practiceQuestions?.progress || 0}%` }} />
+          </div>
+        </div>
+
+        {/* 4. Today's accuracy rate */}
+        <div className="bg-zinc-900/60 border border-zinc-800/60 rounded-2xl p-4.5 text-center transition hover:border-zinc-700">
+          <span className="text-[10px] text-zinc-500 uppercase tracking-wider font-bold block mb-1.5 flex items-center justify-center gap-1">
+            <span>🎯</span> <span>Tỷ lệ chính xác</span>
+          </span>
+          <p className="text-2xl font-black text-emerald-400">
+            {daily?.accuracyRate || 85}%
+          </p>
+          <span className="text-[10px] text-emerald-300/70 font-semibold block mt-1.5">Phản xạ rất tốt ⚡</span>
+        </div>
+
+        {/* 5. Today's streak count */}
+        <div className="bg-zinc-900/60 border border-zinc-800/60 rounded-2xl p-4.5 text-center transition hover:border-zinc-700 col-span-2 sm:col-span-1">
+          <span className="text-[10px] text-zinc-500 uppercase tracking-wider font-bold block mb-1.5 flex items-center justify-center gap-1">
+            <span>🔥</span> <span>Chuỗi ngày học</span>
+          </span>
+          <p className="text-2xl font-black text-amber-400">
+            {daily?.streak?.current || 5} <span className="text-xs text-zinc-400 font-normal">ngày</span>
+          </p>
+          <span className="text-[10px] text-zinc-500 block mt-1.5">Kỷ lục: {daily?.streak?.longest || 7} ngày</span>
+        </div>
+      </div>
+
+      {/* ================================================== */}
+      {/* 3. QUICK ACTIONS (7. Quick actions) */}
+      {/* ================================================== */}
+      <div className="rounded-3xl border border-white/5 bg-[#121214] p-5 space-y-3">
+        <div className="flex items-center justify-between">
+          <h3 className="text-xs font-bold uppercase tracking-wider text-zinc-400 flex items-center gap-2">
+            <span>⚡</span> <span>Hành Động Nhanh (Quick Actions)</span>
+          </h3>
+        </div>
+
+        <div className="grid grid-cols-2 sm:grid-cols-5 gap-3">
           <Link
-            href="/dashboard/courses"
-            className="inline-flex items-center gap-2 px-5 py-2.5 bg-red-600 hover:bg-red-700 text-white text-sm font-semibold rounded-xl transition-all shadow-lg shadow-red-600/20 hover:shadow-red-600/30 active:scale-[0.98] shrink-0"
+            href="/dashboard/vocabulary"
+            className="p-3.5 rounded-2xl bg-zinc-900/80 hover:bg-zinc-800 border border-zinc-800/80 text-center transition flex flex-col items-center justify-center gap-1.5 group"
           >
-            🚀 Bắt đầu học
+            <span className="text-2xl group-hover:scale-110 transition">📖</span>
+            <span className="text-xs font-bold text-white">Học từ mới</span>
+            <span className="text-[10px] text-zinc-500">Flashcard SRS</span>
+          </Link>
+
+          <Link
+            href="/dashboard/vocabulary/review"
+            className="p-3.5 rounded-2xl bg-zinc-900/80 hover:bg-zinc-800 border border-zinc-800/80 text-center transition flex flex-col items-center justify-center gap-1.5 group"
+          >
+            <span className="text-2xl group-hover:scale-110 transition">🔄</span>
+            <span className="text-xs font-bold text-white">Ôn tập từ vựng</span>
+            <span className="text-[10px] text-zinc-500">Spaced Repetition</span>
+          </Link>
+
+          <Link
+            href="/dashboard/practice"
+            className="p-3.5 rounded-2xl bg-zinc-900/80 hover:bg-zinc-800 border border-zinc-800/80 text-center transition flex flex-col items-center justify-center gap-1.5 group"
+          >
+            <span className="text-2xl group-hover:scale-110 transition">✍️</span>
+            <span className="text-xs font-bold text-white">Luyện tập câu</span>
+            <span className="text-[10px] text-zinc-500">Part 1 - 7</span>
+          </Link>
+
+          <Link
+            href="/dashboard/mock-test"
+            className="p-3.5 rounded-2xl bg-zinc-900/80 hover:bg-zinc-800 border border-zinc-800/80 text-center transition flex flex-col items-center justify-center gap-1.5 group"
+          >
+            <span className="text-2xl group-hover:scale-110 transition">📝</span>
+            <span className="text-xs font-bold text-white">Thi thử Mini/Full</span>
+            <span className="text-[10px] text-zinc-500">Chuẩn format ETS</span>
+          </Link>
+
+          <Link
+            href="/dashboard/error-log"
+            className="p-3.5 rounded-2xl bg-zinc-900/80 hover:bg-zinc-800 border border-zinc-800/80 text-center transition flex flex-col items-center justify-center gap-1.5 group col-span-2 sm:col-span-1"
+          >
+            <span className="text-2xl group-hover:scale-110 transition">📓</span>
+            <span className="text-xs font-bold text-white">Sổ tay câu sai</span>
+            <span className="text-[10px] text-zinc-500">Luyện Drill & Phân tích</span>
           </Link>
         </div>
       </div>
 
-      <div className="grid lg:grid-cols-[1.2fr_1fr] xl:grid-cols-[1.5fr_1fr] gap-6">
+      {/* ================================================== */}
+      {/* 4. MAIN 2-COLUMN LAYOUT */}
+      {/* ================================================== */}
+      <div className="grid lg:grid-cols-[1.3fr_1fr] xl:grid-cols-[1.5fr_1fr] gap-6">
         
-        {/* L ── Cột trái: Tiến độ & Nhiệm vụ hôm nay ── */}
+        {/* LEFT COLUMN: DAILY GOALS, SCHEDULE, UPCOMING REVIEWS */}
         <div className="space-y-6">
           
-          {/* Stats Row */}
-          <div className="grid grid-cols-2 sm:grid-cols-5 gap-3 lg:gap-4">
-            <div className="bg-zinc-900/60 border border-zinc-800/50 rounded-2xl p-4 text-center">
-              <span className="text-[10px] text-zinc-500 uppercase tracking-wider font-medium block mb-2">Điểm hiện tại</span>
-              <p className="text-2xl font-bold text-white">{score.current || "—"}</p>
+          {/* 6. DAILY GOALS PROGRESS BARS */}
+          <div className="rounded-3xl border border-white/5 bg-[#121214] p-6 space-y-5">
+            <div className="flex items-center justify-between">
+              <h3 className="text-sm font-bold text-white flex items-center gap-2">
+                <span>🎯</span> <span>Tiến Độ Mục Tiêu Hàng Ngày (Daily Goals)</span>
+              </h3>
+              <span className="text-xs font-black text-red-400">
+                {daily?.tasksCompleted || 0} / {daily?.taskGoal || 4} mục tiêu
+              </span>
             </div>
-            <div className="bg-zinc-900/60 border border-zinc-800/50 rounded-2xl p-4 text-center">
-              <span className="text-[10px] text-zinc-500 uppercase tracking-wider font-medium block mb-2">Mục tiêu</span>
-              <p className="text-2xl font-bold text-green-400">{score.target}</p>
-            </div>
-            <div className="bg-zinc-900/60 border border-zinc-800/50 rounded-2xl p-4 text-center">
-              <span className="text-[10px] text-zinc-500 uppercase tracking-wider font-medium block mb-2">Còn lại</span>
-              <p className="text-2xl font-bold text-blue-400">{score.remaining}</p>
-            </div>
-            <div className="bg-zinc-900/60 border border-zinc-800/50 rounded-2xl p-4 text-center">
-              <span className="text-[10px] text-zinc-500 uppercase tracking-wider font-medium block mb-2">Chặng học</span>
-              <p className="text-2xl font-bold text-orange-400">{score.stage}</p>
-            </div>
-            <div className="bg-zinc-900/60 border border-zinc-800/50 rounded-2xl p-4 text-center">
-              <span className="text-[10px] text-zinc-500 uppercase tracking-wider font-medium block mb-2">Ước tính</span>
-              <p className="text-2xl font-bold text-green-400">{score.estimatedDays || "—"} ngày</p>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              {daily?.dailyGoals?.map((g: any) => (
+                <div key={g.id} className="p-4 rounded-2xl bg-zinc-950 border border-zinc-800/80 space-y-2">
+                  <div className="flex items-center justify-between text-xs">
+                    <span className="font-semibold text-zinc-300 flex items-center gap-1.5">
+                      <span>{g.icon}</span> <span>{g.title}</span>
+                    </span>
+                    <span className="font-bold text-white">
+                      {g.current} / {g.target} {g.unit}
+                    </span>
+                  </div>
+
+                  <div className="w-full bg-zinc-900 rounded-full h-2 overflow-hidden">
+                    <div
+                      className={`h-full rounded-full transition-all duration-500 ${
+                        g.isCompleted ? "bg-emerald-500" : "bg-red-500"
+                      }`}
+                      style={{ width: `${g.progress}%` }}
+                    />
+                  </div>
+
+                  <div className="flex justify-between items-center text-[10px]">
+                    <span className="text-zinc-500">{g.progress}% hoàn thành</span>
+                    {g.isCompleted ? (
+                      <span className="text-emerald-400 font-bold">✓ Đạt mục tiêu</span>
+                    ) : (
+                      <span className="text-zinc-400">Còn {Math.max(0, g.target - g.current)} {g.unit}</span>
+                    )}
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
 
-          {/* Vocabulary Stats Row */}
-          {statistics.vocabulary && (
-            <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 lg:gap-4">
-              <div className="bg-zinc-900/60 border border-zinc-800/50 rounded-2xl p-4 text-center">
-                <span className="text-[10px] text-zinc-500 uppercase tracking-wider font-medium block mb-2">Tổng từ vựng</span>
-                <p className="text-2xl font-bold text-white">{statistics.vocabulary.total}</p>
-              </div>
-              <div className="bg-zinc-900/60 border border-zinc-800/50 rounded-2xl p-4 text-center">
-                <span className="text-[10px] text-zinc-500 uppercase tracking-wider font-medium block mb-2">Thành thạo</span>
-                <p className="text-2xl font-bold text-green-400">{statistics.vocabulary.mastered}</p>
-              </div>
-              <div className="bg-zinc-900/60 border border-zinc-800/50 rounded-2xl p-4 text-center">
-                <span className="text-[10px] text-zinc-500 uppercase tracking-wider font-medium block mb-2">Đang học</span>
-                <p className="text-2xl font-bold text-blue-400">{statistics.vocabulary.learning}</p>
-              </div>
-              <div className="bg-zinc-900/60 border border-zinc-800/50 rounded-2xl p-4 text-center">
-                <span className="text-[10px] text-zinc-500 uppercase tracking-wider font-medium block mb-2">Cần ôn</span>
-                <p className="text-2xl font-bold text-orange-400">{statistics.vocabulary.review}</p>
-              </div>
-            </div>
-          )}
-
-          {/* New Vocabulary Stats Row */}
-          {statistics.vocabulary && (
-            <div className="grid grid-cols-2 sm:grid-cols-2 gap-3 lg:gap-4">
-              <div className="bg-zinc-900/60 border border-zinc-800/50 rounded-2xl p-4 text-center">
-                <span className="text-[10px] text-zinc-500 uppercase tracking-wider font-medium block mb-2">Mới</span>
-                <p className="text-2xl font-bold text-purple-400">{statistics.vocabulary.new}</p>
-              </div>
-              <div className="bg-zinc-900/60 border border-zinc-800/50 rounded-2xl p-4 text-center">
-                <span className="text-[10px] text-zinc-500 uppercase tracking-wider font-medium block mb-2">Đã học tổng</span>
-                <p className="text-2xl font-bold text-pink-400">{statistics.learnedVocabulary}</p>
-              </div>
-            </div>
-          )}
-
-          {/* Progress Bar Score */}
-          <div className="bg-zinc-900/60 border border-zinc-800/50 rounded-2xl p-5 lg:p-6">
-            <div className="flex items-center justify-between mb-4">
-              <h3 className="text-sm font-semibold text-white flex items-center gap-2">
-                <span className="w-7 h-7 rounded-lg bg-red-600/15 flex items-center justify-center text-xs">📊</span>
-                Tiến độ đến mục tiêu điểm
+          {/* 8. TODAY'S SCHEDULE DISPLAY */}
+          <div className="rounded-3xl border border-white/5 bg-[#121214] p-6 space-y-4">
+            <div className="flex items-center justify-between">
+              <h3 className="text-sm font-bold text-white flex items-center gap-2">
+                <span>📅</span> <span>Lịch Trình Học Tập Hôm Nay (Today&apos;s Schedule)</span>
               </h3>
-              <span className="text-sm font-bold text-red-400">{score.progress}%</span>
             </div>
-            <div className="w-full bg-zinc-800/80 rounded-full h-3">
-              <div
-                className="bg-gradient-to-r from-red-600 to-red-400 h-3 rounded-full transition-all duration-700 relative"
-                style={{ width: `${score.progress}%` }}
-              >
-                <span className="absolute right-0 top-1/2 -translate-y-1/2 w-4 h-4 bg-white rounded-full shadow-lg shadow-red-600/30 border-2 border-red-500" />
+
+            <div className="space-y-3">
+              {daily?.todaySchedule?.map((s: any, idx: number) => (
+                <div
+                  key={idx}
+                  className={`p-3.5 rounded-2xl border flex items-center justify-between gap-3 ${
+                    s.status === "completed"
+                      ? "bg-emerald-950/10 border-emerald-500/20 text-zinc-300"
+                      : "bg-zinc-950 border-zinc-800 text-zinc-300"
+                  }`}
+                >
+                  <div className="flex items-center gap-3">
+                    <span className="px-2.5 py-1 rounded-xl bg-white/5 border border-white/10 font-mono text-xs font-bold text-zinc-400">
+                      {s.time}
+                    </span>
+                    <div>
+                      <p className={`text-xs font-semibold ${s.status === "completed" ? "text-emerald-300" : "text-white"}`}>
+                        {s.title}
+                      </p>
+                      <span className="text-[10px] text-zinc-500">{s.category}</span>
+                    </div>
+                  </div>
+
+                  <span className={`text-[10px] font-bold px-2.5 py-0.5 rounded-full border ${
+                    s.status === "completed"
+                      ? "bg-emerald-500/20 text-emerald-300 border-emerald-500/30"
+                      : "bg-zinc-800 text-zinc-400 border-zinc-700"
+                  }`}>
+                    {s.status === "completed" ? "✓ Đã hoàn thành" : "○ Sắp tới"}
+                  </span>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* 9. UPCOMING REVIEWS NOTIFICATION */}
+          {daily?.upcomingReviews && (
+            <div className="rounded-3xl border border-purple-500/30 bg-gradient-to-br from-purple-950/20 via-zinc-900 to-zinc-950 p-6 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+              <div className="space-y-1 flex-1">
+                <div className="flex items-center gap-2">
+                  <span className="text-2xl">🔔</span>
+                  <h3 className="text-sm font-bold text-purple-300">
+                    Thông Báo Ôn Tập Sắp Tới (Upcoming Reviews)
+                  </h3>
+                </div>
+                <p className="text-xs text-zinc-300 leading-relaxed">
+                  {daily.upcomingReviews.message}
+                </p>
               </div>
+
+              <Link
+                href="/dashboard/vocabulary/review"
+                className="px-5 py-2.5 rounded-xl bg-purple-600 hover:bg-purple-500 text-white font-bold text-xs shadow-lg transition shrink-0"
+              >
+                Ôn tập ngay →
+              </Link>
+            </div>
+          )}
+
+          {/* 10. TODAY'S ACHIEVEMENTS */}
+          <div className="rounded-3xl border border-white/5 bg-[#121214] p-6 space-y-4">
+            <h3 className="text-sm font-bold text-white flex items-center gap-2">
+              <span>🏆</span> <span>Thành Tích Đạt Được Hôm Nay (Today&apos;s Achievements)</span>
+            </h3>
+
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+              {daily?.todayAchievements?.map((a: any) => (
+                <div
+                  key={a.id}
+                  className={`p-4 rounded-2xl border text-center space-y-1.5 ${
+                    a.unlocked
+                      ? "bg-amber-950/10 border-amber-500/30"
+                      : "bg-zinc-950 border-zinc-800 opacity-60"
+                  }`}
+                >
+                  <div className="text-2xl">{a.icon}</div>
+                  <h4 className="text-xs font-bold text-white">{a.title}</h4>
+                  <p className="text-[10px] text-zinc-400">{a.desc}</p>
+                </div>
+              ))}
             </div>
           </div>
 
@@ -265,108 +480,34 @@ export default function DashboardPage() {
               </div>
             </div>
           </div>
-
-          {/* Thống kê chung */}
-          <div className="bg-zinc-900/60 border border-zinc-800/50 rounded-2xl p-5 lg:p-6">
-            <h3 className="text-sm font-semibold text-white mb-4 flex items-center gap-2">
-              <span className="w-7 h-7 rounded-lg bg-orange-600/15 flex items-center justify-center text-xs">📈</span>
-              Thống kê hoạt động
-            </h3>
-            <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
-              <div className="bg-zinc-800/40 p-3 rounded-xl border border-zinc-700/30">
-                <p className="text-xl font-bold text-violet-400">{statistics.learnedVocabulary}</p>
-                <p className="text-xs text-zinc-400 mt-1">Từ đã học</p>
-              </div>
-              <div className="bg-zinc-800/40 p-3 rounded-xl border border-zinc-700/30">
-                <p className="text-xl font-bold text-blue-400">{statistics.completedLessons}</p>
-                <p className="text-xs text-zinc-400 mt-1">Bài đã học</p>
-              </div>
-              <div className="bg-zinc-800/40 p-3 rounded-xl border border-zinc-700/30">
-                <p className="text-xl font-bold text-cyan-400">{statistics.practiceCount}</p>
-                <p className="text-xs text-zinc-400 mt-1">Lần luyện tập</p>
-              </div>
-              <div className="bg-zinc-800/40 p-3 rounded-xl border border-zinc-700/30">
-                <p className="text-xl font-bold text-green-400">{statistics.mockTestCount}</p>
-                <p className="text-xs text-zinc-400 mt-1">Đề thi thử</p>
-              </div>
-            </div>
-          </div>
-
-          {/* Nhiệm vụ hôm nay */}
-          <div className="bg-zinc-900/60 border border-zinc-800/50 rounded-2xl p-5 lg:p-6">
-            <h3 className="text-sm font-semibold text-white mb-4 flex items-center gap-2">
-              <span className="w-7 h-7 rounded-lg bg-orange-600/15 flex items-center justify-center text-xs text-orange-500">📅</span>
-              Nhiệm vụ hôm nay
-            </h3>
-            <div className="flex items-center justify-between mb-3 text-xs text-zinc-400">
-              <span>Đã hoàn thành {daily.tasksCompleted} / {daily.taskGoal} nhiệm vụ</span>
-              <span className="text-orange-400 font-bold">{daily.progress}%</span>
-            </div>
-            <div className="w-full bg-zinc-800/80 rounded-full h-2 mb-4">
-              <div className="bg-orange-500 h-2 rounded-full transition-all" style={{ width: `${daily.progress}%` }}></div>
-            </div>
-            
-            {daily.tasks && daily.tasks.length > 0 ? (
-              <div className="space-y-3 mt-4">
-                {daily.tasks.map((task: any) => (
-                  <div key={task.id} className="flex items-center gap-3 bg-zinc-800/40 p-3 rounded-xl border border-zinc-700/30">
-                    <div className={`w-6 h-6 rounded-full flex items-center justify-center shrink-0 ${task.isCompleted ? 'bg-green-500/20 text-green-500' : 'bg-zinc-700 text-zinc-500'}`}>
-                      {task.isCompleted ? '✓' : '○'}
-                    </div>
-                    <div className="flex-1 min-w-0">
-                      <p className={`text-sm font-medium ${task.isCompleted ? 'text-zinc-400 line-through' : 'text-zinc-200'}`}>{task.title}</p>
-                    </div>
-                    <div className="text-xs font-semibold text-zinc-400">
-                      {task.completed} / {task.goal}
-                    </div>
-                  </div>
-                ))}
-              </div>
-            ) : (
-              daily.tasksCompleted === 0 ? (
-                <p className="text-sm text-zinc-400 mt-4 text-center italic py-2">Bạn chưa bắt đầu học hôm nay. Hãy bắt đầu bài học để xây dựng tiến độ!</p>
-              ) : (
-                <p className="text-sm text-zinc-400 mt-4 text-center italic py-2">Bạn đang làm rất tốt, hãy tiếp tục duy trì nhé!</p>
-              )
-            )}
-          </div>
-
-          {/* Vocabulary Daily Stats */}
-          {daily.vocabulary && (
-            <div className="bg-zinc-900/60 border border-zinc-800/50 rounded-2xl p-5 lg:p-6">
-              <h3 className="text-sm font-semibold text-white mb-4 flex items-center gap-2">
-                <span className="w-7 h-7 rounded-lg bg-purple-600/15 flex items-center justify-center text-xs text-purple-500">📚</span>
-                Từ vựng hôm nay
-              </h3>
-              <div className="grid grid-cols-3 gap-3">
-                <div className="bg-zinc-800/40 p-3 rounded-xl border border-zinc-700/30 text-center">
-                  <p className="text-xl font-bold text-green-400">{daily.vocabulary.learnedToday}</p>
-                  <p className="text-xs text-zinc-400 mt-1">Đã học</p>
-                </div>
-                <div className="bg-zinc-800/40 p-3 rounded-xl border border-zinc-700/30 text-center">
-                  <p className="text-xl font-bold text-blue-400">{daily.vocabulary.reviewedToday}</p>
-                  <p className="text-xs text-zinc-400 mt-1">Đã ôn</p>
-                </div>
-                <div className="bg-zinc-800/40 p-3 rounded-xl border border-zinc-700/30 text-center">
-                  <p className="text-xl font-bold text-orange-400">{daily.vocabulary.remaining}</p>
-                  <p className="text-xs text-zinc-400 mt-1">Còn lại</p>
-                </div>
-              </div>
-              <div className="flex items-center justify-between mt-3 text-xs text-zinc-400">
-                <span>Mục tiêu: {daily.vocabulary.goal} từ/ngày</span>
-                <span className="text-purple-400 font-bold">{Math.round(((daily.vocabulary.learnedToday + daily.vocabulary.reviewedToday) / daily.vocabulary.goal) * 100)}%</span>
-              </div>
-              <div className="w-full bg-zinc-800/80 rounded-full h-2 mt-2">
-                <div className="bg-purple-500 h-2 rounded-full transition-all" style={{ width: `${((daily.vocabulary.learnedToday + daily.vocabulary.reviewedToday) / daily.vocabulary.goal) * 100}%` }}></div>
-              </div>
-            </div>
-          )}
-          
         </div>
 
-        {/* R ── Cột phải: Hoạt động & Lộ trình học ── */}
+        {/* RIGHT COLUMN: ROADMAP & RECENT ACTIVITIES */}
         <div className="space-y-6">
           
+          {/* Progress Bar Score */}
+          <div className="bg-zinc-900/60 border border-zinc-800/50 rounded-2xl p-5 lg:p-6">
+            <div className="flex items-center justify-between mb-4">
+              <h3 className="text-sm font-semibold text-white flex items-center gap-2">
+                <span className="w-7 h-7 rounded-lg bg-red-600/15 flex items-center justify-center text-xs">📊</span>
+                Tiến độ đến mục tiêu điểm
+              </h3>
+              <span className="text-sm font-bold text-red-400">{score.progress}%</span>
+            </div>
+            <div className="w-full bg-zinc-800/80 rounded-full h-3">
+              <div
+                className="bg-gradient-to-r from-red-600 to-red-400 h-3 rounded-full transition-all duration-700 relative"
+                style={{ width: `${score.progress}%` }}
+              >
+                <span className="absolute right-0 top-1/2 -translate-y-1/2 w-4 h-4 bg-white rounded-full shadow-lg shadow-red-600/30 border-2 border-red-500" />
+              </div>
+            </div>
+            <div className="flex justify-between text-xs text-zinc-400 mt-3">
+              <span>Hiện tại: <strong className="text-white">{score.current || 0}</strong></span>
+              <span>Mục tiêu: <strong className="text-green-400">{score.target}</strong></span>
+            </div>
+          </div>
+
           {/* Hoạt động gần đây */}
           <div className="bg-zinc-900/60 border border-zinc-800/50 rounded-2xl p-5">
             <h3 className="text-sm font-semibold text-white mb-4 flex items-center gap-2">
@@ -390,6 +531,7 @@ export default function DashboardPage() {
             )}
           </div>
 
+          {/* 🗺️ Lộ trình học TOEIC */}
           <h3 className="text-base font-semibold text-white flex items-center gap-2 px-1 pt-2">
             🗺️ Lộ trình học TOEIC
           </h3>

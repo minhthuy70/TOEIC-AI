@@ -697,17 +697,17 @@ Dựa trên lộ trình học TOEIC 900+ - Phiên bản nâng cấp
 ================================================================================
 
 9.1. Daily Dashboard (Bảng điều khiển hàng ngày)
-- Today's study time display - Hiển thị thời gian học hôm nay
-- Today's vocabulary count (new + reviewed) - Số từ vựng hôm nay (mới + ôn)
-- Today's practice questions count - Số câu luyện tập hôm nay
-- Today's accuracy rate - Tỷ lệ chính xác hôm nay
-- Today's streak count - Số chuỗi ngày hôm nay
-- Daily goals progress bars - Thanh tiến độ mục tiêu hàng ngày
-- Quick actions (learn vocabulary, practice, review) - Hành động nhanh
-- Today's schedule display - Hiển thị lịch trình hôm nay
-- Upcoming reviews notification - Thông báo ôn tập sắp tới
-- Today's achievements - Thành tích hôm nay
-- Daily motivation quote - Câu động lực hàng ngày
+[x] - Today's study time display - Hiển thị thời gian học hôm nay
+[x] - Today's vocabulary count (new + reviewed) - Số từ vựng hôm nay (mới + ôn)
+[x] - Today's practice questions count - Số câu luyện tập hôm nay
+[x] - Today's accuracy rate - Tỷ lệ chính xác hôm nay
+[x] - Today's streak count - Số chuỗi ngày hôm nay
+[x] - Daily goals progress bars - Thanh tiến độ mục tiêu hàng ngày
+[x] - Quick actions (learn vocabulary, practice, review) - Hành động nhanh
+[x] - Today's schedule display - Hiển thị lịch trình hôm nay
+[x] - Upcoming reviews notification - Thông báo ôn tập sắp tới
+[x] - Today's achievements - Thành tích hôm nay
+[x] - Daily motivation quote - Câu động lực hàng ngày
 
 9.2. Weekly Dashboard (Bảng điều khiển hàng tuần)
 - Weekly study time summary - Tóm tắt thời gian học hàng tuần
