@@ -7,6 +7,7 @@ import {
 } from "react";
 
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 
 import {
   getMockTestHistory,
@@ -292,6 +293,37 @@ export default function MockTestPage() {
 
         {tab === "tests" && (
           <>
+            {/* MINI TEST BANNER */}
+            <div className="mt-6 rounded-3xl border border-red-500/30 bg-gradient-to-br from-red-950/40 via-zinc-900/90 to-zinc-900/90 p-6 transition hover:border-red-500/50 shadow-xl">
+              <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-5">
+                <div className="flex items-start gap-4">
+                  <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-red-600/20 text-2xl font-bold text-red-400 border border-red-500/30 shrink-0">
+                    ⚡
+                  </div>
+                  <div>
+                    <div className="flex items-center gap-2">
+                      <h2 className="text-lg font-bold text-white">
+                        TOEIC Mini Test (50 Câu)
+                      </h2>
+                      <span className="px-2 py-0.5 rounded-full text-[10px] font-extrabold bg-amber-500/20 text-amber-300 border border-amber-500/30">
+                        Nhanh 30–60p
+                      </span>
+                    </div>
+                    <p className="mt-1 text-xs text-zinc-400 leading-relaxed max-w-xl">
+                      Kiểm tra nhanh năng lực với 50 câu hỏi rút gọn, tùy chọn các phần thi (Part 1–7), bấm giờ, tạm dừng, phân tích điểm và lời giải chi tiết.
+                    </p>
+                  </div>
+                </div>
+
+                <Link
+                  href="/dashboard/mock-test/mini-test"
+                  className="px-6 py-3 rounded-xl bg-gradient-to-r from-red-600 to-red-500 hover:from-red-500 hover:to-red-400 text-white font-bold text-xs shadow-lg shadow-red-600/20 transition whitespace-nowrap"
+                >
+                  🚀 Bắt đầu Mini Test ngay →
+                </Link>
+              </div>
+            </div>
+
             <div className="mt-6 rounded-2xl border border-red-500/20 bg-red-500/5 p-5">
               <div className="flex gap-4">
                 <div className="text-2xl">

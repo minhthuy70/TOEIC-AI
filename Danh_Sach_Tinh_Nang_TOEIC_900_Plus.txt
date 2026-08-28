@@ -531,30 +531,30 @@ Dựa trên lộ trình học TOEIC 900+ - Phiên bản nâng cấp
 ================================================================================
 
 7.1. Mini Tests (Kiểm tra nhỏ)
-- Start mini test button (50 questions) - Nút bắt đầu kiểm tra nhỏ (50 câu)
-- Test configuration (select parts) - Cấu hình kiểm tra (chọn phần)
-- Time limit setting (30/45/60 minutes) - Cài đặt giới hạn thời gian
-- Test instructions modal - Hộp thoại hướng dẫn kiểm tra
-- Test timer display - Hiển thị đồng hồ kiểm tra
-- Pause/resume functionality - Chức năng tạm dừng/tiếp tục
-- Question navigation (jump to question) - Điều hướng câu hỏi (nhảy đến câu)
-- Mark for review - Đánh dấu xem lại
-- Review marked questions - Xem lại câu đã đánh dấu
-- Progress indicator - Chỉ số tiến độ
-- Submit test button - Nút nộp kiểm tra
-- Submit confirmation modal - Hộp thoại xác nhận nộp
-- Auto-submit on timeout - Tự động nộp khi hết giờ
-- Real-time scoring (optional) - Tính điểm thời gian thực (tùy chọn)
-- Score display after submission - Hiển thị điểm sau khi nộp
-- Detailed score breakdown - Phân tích chi tiết điểm
-- Time analysis per section - Phân tích thời gian theo phần
-- Accuracy analysis - Phân tích độ chính xác
-- Incorrect answers review - Xem lại câu sai
-- Correct answers display - Hiển thị đáp án đúng
-- Explanations display - Hiển thị giải thích
-- Add to error log - Thêm vào nhật ký lỗi
-- Retest option - Tùy chọn kiểm tra lại
-- Share results - Chia sẻ kết quả
+[x] - Start mini test button (50 questions) - Nút bắt đầu kiểm tra nhỏ (50 câu)
+[x] - Test configuration (select parts) - Cấu hình kiểm tra (chọn phần)
+[x] - Time limit setting (30/45/60 minutes) - Cài đặt giới hạn thời gian
+[x] - Test instructions modal - Hộp thoại hướng dẫn kiểm tra
+[x] - Test timer display - Hiển thị đồng hồ kiểm tra
+[x] - Pause/resume functionality - Chức năng tạm dừng/tiếp tục
+[x] - Question navigation (jump to question) - Điều hướng câu hỏi (nhảy đến câu)
+[x] - Mark for review - Đánh dấu xem lại
+[x] - Review marked questions - Xem lại câu đã đánh dấu
+[x] - Progress indicator - Chỉ số tiến độ
+[x] - Submit test button - Nút nộp kiểm tra
+[x] - Submit confirmation modal - Hộp thoại xác nhận nộp
+[x] - Auto-submit on timeout - Tự động nộp khi hết giờ
+[x] - Real-time scoring (optional) - Tính điểm thời gian thực (tùy chọn)
+[x] - Score display after submission - Hiển thị điểm sau khi nộp
+[x] - Detailed score breakdown - Phân tích chi tiết điểm
+[x] - Time analysis per section - Phân tích thời gian theo phần
+[x] - Accuracy analysis - Phân tích độ chính xác
+[x] - Incorrect answers review - Xem lại câu sai
+[x] - Correct answers display - Hiển thị đáp án đúng
+[x] - Explanations display - Hiển thị giải thích
+[x] - Add to error log - Thêm vào nhật ký lỗi
+[x] - Retest option - Tùy chọn kiểm tra lại
+[x] - Share results - Chia sẻ kết quả
 
 7.2. Full Tests (Kiểm tra đầy đủ)
 - Start full test button (200 questions) - Nút bắt đầu kiểm tra đầy đủ (200 câu)

@@ -1356,4 +1356,242 @@ export class MockTestService {
 
     return test;
   }
+
+  // ============================================================
+  // MINI TEST (50 CÂU)
+  // ============================================================
+
+  private shuffle<T>(array: T[]): T[] {
+    const result = [...array];
+    for (let i = result.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [result[i], result[j]] = [result[j], result[i]];
+    }
+    return result;
+  }
+
+  async startMiniTest(
+    userId: number,
+    dto: {
+      parts?: number[];
+      timeLimitMinutes?: number;
+      totalQuestions?: number;
+      testId?: number;
+    },
+  ) {
+    const selectedParts = dto.parts && dto.parts.length > 0 ? dto.parts : [1, 2, 3, 4, 5, 6, 7];
+    const totalCount = dto.totalQuestions || 50;
+    const timeLimitMinutes = dto.timeLimitMinutes || 45;
+
+    let targetTestId = dto.testId;
+    if (!targetTestId) {
+      const activeTest = await this.prisma.tests.findFirst({
+        where: { is_active: true },
+        select: { id: true },
+      });
+      targetTestId = activeTest?.id;
+    }
+
+    const whereGroup: any = {
+      part: { in: selectedParts },
+    };
+    if (targetTestId) {
+      whereGroup.test_id = targetTestId;
+    }
+
+    const groups = await this.prisma.question_groups.findMany({
+      where: whereGroup,
+      include: {
+        questions: {
+          include: {
+            options: {
+              orderBy: { display_order: "asc" },
+            },
+          },
+          orderBy: { question_number: "asc" },
+        },
+      },
+      orderBy: [{ part: "asc" }, { display_order: "asc" }],
+    });
+
+    const allQuestions: any[] = [];
+    for (const g of groups) {
+      for (const q of g.questions) {
+        allQuestions.push({
+          id: q.id,
+          groupId: g.id,
+          part: g.part || 5,
+          title: g.title,
+          passage: g.passage,
+          imageUrl: g.image_url,
+          audioUrl: g.audio_url,
+          audioStartTime: g.audio_start_time,
+          audioEndTime: g.audio_end_time,
+          questionNumber: q.question_number,
+          questionText: q.question_text,
+          options: q.options.map((opt) => ({
+            id: opt.id,
+            label: opt.option_label || "",
+            text: opt.option_text || "",
+          })),
+        });
+      }
+    }
+
+    let finalQuestions: any[] = [];
+    const questionsByPart: Record<number, any[]> = {};
+    for (const part of selectedParts) {
+      questionsByPart[part] = allQuestions.filter((q) => q.part === part);
+    }
+
+    const perPartTarget = Math.max(1, Math.floor(totalCount / selectedParts.length));
+    for (const part of selectedParts) {
+      const partPool = questionsByPart[part] || [];
+      const shuffledPart = this.shuffle(partPool);
+      finalQuestions.push(...shuffledPart.slice(0, perPartTarget));
+    }
+
+    if (finalQuestions.length < totalCount) {
+      const existingIds = new Set(finalQuestions.map((q) => q.id));
+      const remaining = allQuestions.filter((q) => !existingIds.has(q.id));
+      const shuffledRemaining = this.shuffle(remaining);
+      finalQuestions.push(...shuffledRemaining.slice(0, totalCount - finalQuestions.length));
+    }
+
+    finalQuestions.sort((a, b) => a.part - b.part || a.id - b.id);
+    finalQuestions = finalQuestions.map((q, idx) => ({
+      ...q,
+      testQuestionNumber: idx + 1,
+    }));
+
+    return {
+      success: true,
+      testTitle: "TOEIC Mini Test (50 câu)",
+      totalQuestions: finalQuestions.length,
+      timeLimitMinutes,
+      timeLimitSeconds: timeLimitMinutes * 60,
+      selectedParts,
+      questions: finalQuestions,
+    };
+  }
+
+  async submitMiniTest(
+    userId: number,
+    dto: {
+      answers: Array<{ questionId: number; optionId: number }>;
+      durationSeconds?: number;
+      partTimes?: Record<number, number>;
+      markedQuestionIds?: number[];
+    },
+  ) {
+    const questionIds = dto.answers.map((a) => a.questionId);
+    const questions = await this.prisma.questions.findMany({
+      where: { id: { in: questionIds } },
+      include: {
+        options: true,
+        question_groups: true,
+      },
+    });
+
+    const answerMap = new Map(dto.answers.map((a) => [a.questionId, a.optionId]));
+
+    let correctCount = 0;
+    let listeningCorrect = 0;
+    let listeningTotal = 0;
+    let readingCorrect = 0;
+    let readingTotal = 0;
+
+    const partStatsMap: Record<number, { correct: number; total: number; timeSeconds: number }> = {};
+    for (let p = 1; p <= 7; p++) {
+      partStatsMap[p] = { correct: 0, total: 0, timeSeconds: dto.partTimes?.[p] || 0 };
+    }
+
+    const results: any[] = [];
+    const incorrectQuestions: any[] = [];
+
+    for (const q of questions) {
+      const selectedOptionId = answerMap.get(q.id);
+      const correctOption = q.options.find((o) => o.is_correct);
+      const selectedOption = q.options.find((o) => o.id === selectedOptionId);
+      const isCorrect = !!(selectedOption && selectedOption.is_correct);
+      const part = q.question_groups?.part || 5;
+
+      if (!partStatsMap[part]) {
+        partStatsMap[part] = { correct: 0, total: 0, timeSeconds: 0 };
+      }
+      partStatsMap[part].total++;
+      if (isCorrect) {
+        partStatsMap[part].correct++;
+        correctCount++;
+      }
+
+      if (part <= 4) {
+        listeningTotal++;
+        if (isCorrect) listeningCorrect++;
+      } else {
+        readingTotal++;
+        if (isCorrect) readingCorrect++;
+      }
+
+      const itemResult = {
+        questionId: q.id,
+        part,
+        passage: q.question_groups?.passage || null,
+        imageUrl: q.question_groups?.image_url || null,
+        audioUrl: q.question_groups?.audio_url || null,
+        questionText: q.question_text,
+        selectedOptionId: selectedOptionId || null,
+        selectedLabel: selectedOption?.option_label || "",
+        selectedText: selectedOption?.option_text || "",
+        correctOptionId: correctOption?.id || 0,
+        correctLabel: correctOption?.option_label || "",
+        correctText: correctOption?.option_text || "",
+        isCorrect,
+        explanation: q.explanation || "Xem lại ngữ cảnh và thông tin liên quan trong bài thi.",
+        options: q.options.map((o) => ({
+          id: o.id,
+          label: o.option_label,
+          text: o.option_text,
+          isCorrect: !!o.is_correct,
+        })),
+      };
+
+      results.push(itemResult);
+      if (!isCorrect) {
+        incorrectQuestions.push(itemResult);
+      }
+    }
+
+    const listeningScale = listeningTotal > 0 ? Math.round((listeningCorrect / listeningTotal) * 495) : 0;
+    const readingScale = readingTotal > 0 ? Math.round((readingCorrect / readingTotal) * 495) : 0;
+    const totalScore = Math.min(990, Math.max(10, listeningScale + readingScale));
+    const accuracy = questions.length > 0 ? Math.round((correctCount / questions.length) * 100) : 0;
+
+    const partBreakdown = Object.entries(partStatsMap)
+      .filter(([_, st]) => st.total > 0)
+      .map(([partNum, st]) => ({
+        part: Number(partNum),
+        name: `Part ${partNum}`,
+        correct: st.correct,
+        total: st.total,
+        accuracy: Math.round((st.correct / st.total) * 100),
+        timeSeconds: st.timeSeconds,
+        avgSecondsPerQuestion: st.total > 0 ? Math.round(st.timeSeconds / st.total) : 0,
+      }));
+
+    return {
+      success: true,
+      totalQuestions: questions.length,
+      correctCount,
+      incorrectCount: questions.length - correctCount,
+      accuracy,
+      listeningScore: listeningScale,
+      readingScore: readingScale,
+      totalScore,
+      durationSeconds: dto.durationSeconds || 0,
+      partBreakdown,
+      results,
+      incorrectQuestions,
+    };
+  }
 }

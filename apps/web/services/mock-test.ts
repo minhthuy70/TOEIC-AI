@@ -384,3 +384,109 @@ export async function getMockTestResult(
     `/mock-test/result/${attemptId}`,
   );
 }
+
+// ============================================================
+// MINI TEST TYPES & API
+// ============================================================
+
+export interface MiniTestQuestion {
+  id: number;
+  groupId: number;
+  part: number;
+  title: string | null;
+  passage: string | null;
+  imageUrl: string | null;
+  audioUrl: string | null;
+  audioStartTime: number | null;
+  audioEndTime: number | null;
+  questionNumber: number | null;
+  questionText: string | null;
+  testQuestionNumber: number;
+  options: {
+    id: number;
+    label: string;
+    text: string;
+  }[];
+}
+
+export interface MiniTestStartResponse {
+  success: boolean;
+  testTitle: string;
+  totalQuestions: number;
+  timeLimitMinutes: number;
+  timeLimitSeconds: number;
+  selectedParts: number[];
+  questions: MiniTestQuestion[];
+}
+
+export interface MiniTestResultItem {
+  questionId: number;
+  part: number;
+  passage: string | null;
+  imageUrl: string | null;
+  audioUrl: string | null;
+  questionText: string | null;
+  selectedOptionId: number | null;
+  selectedLabel: string;
+  selectedText: string;
+  correctOptionId: number;
+  correctLabel: string;
+  correctText: string;
+  isCorrect: boolean;
+  explanation: string;
+  options: {
+    id: number;
+    label: string;
+    text: string;
+    isCorrect: boolean;
+  }[];
+}
+
+export interface MiniTestPartBreakdown {
+  part: number;
+  name: string;
+  correct: number;
+  total: number;
+  accuracy: number;
+  timeSeconds: number;
+  avgSecondsPerQuestion: number;
+}
+
+export interface MiniTestSubmitResponse {
+  success: boolean;
+  totalQuestions: number;
+  correctCount: number;
+  incorrectCount: number;
+  accuracy: number;
+  listeningScore: number;
+  readingScore: number;
+  totalScore: number;
+  durationSeconds: number;
+  partBreakdown: MiniTestPartBreakdown[];
+  results: MiniTestResultItem[];
+  incorrectQuestions: MiniTestResultItem[];
+}
+
+export async function startMiniTest(dto: {
+  parts?: number[];
+  timeLimitMinutes?: number;
+  totalQuestions?: number;
+  testId?: number;
+}): Promise<MiniTestStartResponse> {
+  return apiFetch<MiniTestStartResponse>("/mock-test/mini-test/start", {
+    method: "POST",
+    body: JSON.stringify(dto),
+  });
+}
+
+export async function submitMiniTest(dto: {
+  answers: Array<{ questionId: number; optionId: number }>;
+  durationSeconds?: number;
+  partTimes?: Record<number, number>;
+  markedQuestionIds?: number[];
+}): Promise<MiniTestSubmitResponse> {
+  return apiFetch<MiniTestSubmitResponse>("/mock-test/mini-test/submit", {
+    method: "POST",
+    body: JSON.stringify(dto),
+  });
+}

@@ -55,6 +55,40 @@ export class MockTestController {
   }
 
   // ==========================================================
+  // MINI TEST (50 CÂU)
+  // ==========================================================
+
+  @Post("mini-test/start")
+  async startMiniTest(
+    @Req() req: any,
+    @Body()
+    body: {
+      parts?: number[];
+      timeLimitMinutes?: number;
+      totalQuestions?: number;
+      testId?: number;
+    },
+  ) {
+    const userId = this.getUserId(req);
+    return this.mockTestService.startMiniTest(userId, body);
+  }
+
+  @Post("mini-test/submit")
+  async submitMiniTest(
+    @Req() req: any,
+    @Body()
+    body: {
+      answers: Array<{ questionId: number; optionId: number }>;
+      durationSeconds?: number;
+      partTimes?: Record<number, number>;
+      markedQuestionIds?: number[];
+    },
+  ) {
+    const userId = this.getUserId(req);
+    return this.mockTestService.submitMiniTest(userId, body);
+  }
+
+  // ==========================================================
   // BẮT ĐẦU THI
   // POST /mock-test/start
   // ==========================================================
