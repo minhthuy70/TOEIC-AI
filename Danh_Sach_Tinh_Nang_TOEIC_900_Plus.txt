@@ -364,23 +364,23 @@ Dựa trên lộ trình học TOEIC 900+ - Phiên bản nâng cấp
 [x] - Filter by vocabulary topic - Lọc theo chủ đề từ vựng
 
 5.3. Part 6 Practice (Text Completion) - Luyện Part 6: Hoàn thành đoạn văn
-- Select Part 6 practice button - Nút chọn luyện Part 6
-- Display passage with blanks - Hiển thị đoạn văn với chỗ trống
-- Display 4 answer options per blank - Hiển thị 4 lựa chọn mỗi chỗ trống
-- Fill blanks one by one - Điền chỗ trống từng cái một
-- Fill all blanks at once - Điền tất cả chỗ trống cùng lúc
-- Submit answers button - Nút nộp đáp án
-- Show correct answers - Hiển thị đáp án đúng
-- Show explanations - Hiển thị giải thích
-- Display full passage with answers - Hiển thị đoạn văn đầy đủ với đáp án
-- Highlight grammar context - Highlight ngữ cảnh ngữ pháp
-- Show cohesion devices - Hiển thị thiết bị liên kết
-- Add to notes - Thêm vào ghi chú
-- Next/previous passage - Đoạn văn tiếp/trước
-- Mark for review - Đánh dấu xem lại
-- Passage timer - Đồng hồ đếm đoạn văn
-- Practice mode - Chế độ luyện tập
-- Passage count selector - Chọn số đoạn văn
+[x] - Select Part 6 practice button - Nút chọn luyện Part 6
+[x] - Display passage with blanks - Hiển thị đoạn văn với chỗ trống
+[x] - Display 4 answer options per blank - Hiển thị 4 lựa chọn mỗi chỗ trống
+[x] - Fill blanks one by one - Điền chỗ trống từng cái một
+[x] - Fill all blanks at once - Điền tất cả chỗ trống cùng lúc
+[x] - Submit answers button - Nút nộp đáp án
+[x] - Show correct answers - Hiển thị đáp án đúng
+[x] - Show explanations - Hiển thị giải thích
+[x] - Display full passage with answers - Hiển thị đoạn văn đầy đủ với đáp án
+[x] - Highlight grammar context - Highlight ngữ cảnh ngữ pháp
+[x] - Show cohesion devices - Hiển thị thiết bị liên kết
+[x] - Add to notes - Thêm vào ghi chú
+[x] - Next/previous passage - Đoạn văn tiếp/trước
+[x] - Mark for review - Đánh dấu xem lại
+[x] - Passage timer - Đồng hồ đếm đoạn văn
+[x] - Practice mode - Chế độ luyện tập
+[x] - Passage count selector - Chọn số đoạn văn
 
 5.4. Part 7 Practice (Reading Comprehension) - Luyện Part 7: Đọc hiểu
 - Single Passages (Đoạn văn đơn):
