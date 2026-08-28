@@ -110,8 +110,15 @@ export type PracticeHistoryItem = {
 export async function startPractice(
   part: number,
   count?: number,
+  grammarTopic?: string,
+  vocabTopic?: string,
 ): Promise<PracticeStartResponse> {
-  const url = count ? `/practice/start/${part}?count=${count}` : `/practice/start/${part}`;
+  const params = new URLSearchParams();
+  if (count) params.append("count", count.toString());
+  if (grammarTopic) params.append("grammarTopic", grammarTopic);
+  if (vocabTopic) params.append("vocabTopic", vocabTopic);
+
+  const url = `/practice/start/${part}` + (params.toString() ? `?${params.toString()}` : "");
   return apiFetch(
     url,
     {

@@ -344,24 +344,24 @@ Dựa trên lộ trình học TOEIC 900+ - Phiên bản nâng cấp
 [x] - Reading speed (words/minute) - Tốc độ đọc (từ/phút)
 
 5.2. Part 5 Practice (Incomplete Sentences) - Luyện Part 5: Hoàn thành câu
-- Select Part 5 practice button - Nút chọn luyện Part 5
-- Display incomplete sentence - Hiển thị câu chưa hoàn thành
-- Display 4 answer options - Hiển thị 4 lựa chọn đáp án
-- Select answer button - Nút chọn đáp án
-- Submit answer button - Nút nộp đáp án
-- Show correct answer - Hiển thị đáp án đúng
-- Show explanation - Hiển thị giải thích
-- Grammar point explanation - Giải thích điểm ngữ pháp
-- Vocabulary explanation - Giải thích từ vựng
-- Related grammar rules link - Link quy tắc ngữ pháp liên quan
-- Add to grammar notes - Thêm vào ghi chú ngữ pháp
-- Next/previous question - Câu hỏi tiếp/trước
-- Mark for review - Đánh dấu xem lại
-- Question timer - Đồng hồ đếm câu
-- Practice mode - Chế độ luyện tập
-- Question count selector - Chọn số câu hỏi
-- Filter by grammar topic - Lọc theo chủ đề ngữ pháp
-- Filter by vocabulary topic - Lọc theo chủ đề từ vựng
+[x] - Select Part 5 practice button - Nút chọn luyện Part 5
+[x] - Display incomplete sentence - Hiển thị câu chưa hoàn thành
+[x] - Display 4 answer options - Hiển thị 4 lựa chọn đáp án
+[x] - Select answer button - Nút chọn đáp án
+[x] - Submit answer button - Nút nộp đáp án
+[x] - Show correct answer - Hiển thị đáp án đúng
+[x] - Show explanation - Hiển thị giải thích
+[x] - Grammar point explanation - Giải thích điểm ngữ pháp
+[x] - Vocabulary explanation - Giải thích từ vựng
+[x] - Related grammar rules link - Link quy tắc ngữ pháp liên quan
+[x] - Add to grammar notes - Thêm vào ghi chú ngữ pháp
+[x] - Next/previous question - Câu hỏi tiếp/trước
+[x] - Mark for review - Đánh dấu xem lại
+[x] - Question timer - Đồng hồ đếm câu
+[x] - Practice mode - Chế độ luyện tập
+[x] - Question count selector - Chọn số câu hỏi
+[x] - Filter by grammar topic - Lọc theo chủ đề ngữ pháp
+[x] - Filter by vocabulary topic - Lọc theo chủ đề từ vựng
 
 5.3. Part 6 Practice (Text Completion) - Luyện Part 6: Hoàn thành đoạn văn
 - Select Part 6 practice button - Nút chọn luyện Part 6

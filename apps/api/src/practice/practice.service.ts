@@ -117,6 +117,8 @@ export class PracticeService {
     userId: number,
     part: number,
     requestedCount?: number,
+    grammarTopic?: string,
+    vocabTopic?: string,
   ) {
     // ----------------------------------------------------------
     // Kiểm tra part
@@ -146,9 +148,16 @@ export class PracticeService {
 
     const whereClause: any = { part };
     let test;
-    if (!requestedCount) {
+    if (!requestedCount && !grammarTopic && !vocabTopic) {
       test = await this.getRandomTest();
       whereClause.test_id = test.id;
+    }
+
+    if (grammarTopic) {
+      whereClause.knowledge = { contains: grammarTopic, mode: 'insensitive' };
+    }
+    if (vocabTopic) {
+      whereClause.knowledge = { contains: vocabTopic, mode: 'insensitive' };
     }
 
     // ----------------------------------------------------------

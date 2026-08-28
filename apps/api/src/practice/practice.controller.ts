@@ -69,6 +69,8 @@ export class PracticeController {
   async startPractice(
     @Param("part", ParseIntPipe) part: number,
     @Query("count") countStr: string,
+    @Query("grammarTopic") grammarTopic: string,
+    @Query("vocabTopic") vocabTopic: string,
     @Req() req: any,
   ) {
     if (part < 1 || part > 7) {
@@ -86,6 +88,8 @@ export class PracticeController {
       userId,
       part,
       validCount,
+      grammarTopic,
+      vocabTopic,
     );
   }
 
