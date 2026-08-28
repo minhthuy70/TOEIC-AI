@@ -55,6 +55,15 @@ export class ErrorTrackingController {
   }
 
   // ==========================================================
+  // GET /error-log/analysis (8.2 ERROR ANALYSIS)
+  // ==========================================================
+  @Get("analysis")
+  async getErrorAnalysis(@Req() req: any) {
+    const userId = this.getUserId(req);
+    return this.errorTrackingService.getErrorAnalysis(userId);
+  }
+
+  // ==========================================================
   // GET /error-log/:id
   // ==========================================================
   @Get(":id")

@@ -131,3 +131,78 @@ export async function deleteErrorLog(id: number): Promise<{ success: boolean; me
     method: "DELETE",
   });
 }
+
+// ============================================================
+// 8.2 ERROR ANALYSIS TYPES & API
+// ============================================================
+
+export interface ErrorAnalysisResponse {
+  totalErrors: number;
+  resolutionRateStats: {
+    total: number;
+    active: number;
+    resolved: number;
+    resolutionRate: number;
+  };
+  typeDistribution: Array<{
+    type: "grammar" | "vocabulary" | "careless" | "timing";
+    label: string;
+    count: number;
+    percentage: number;
+    color: string;
+  }>;
+  frequencyDistribution: Array<{
+    range: string;
+    count: number;
+    percentage: number;
+  }>;
+  trendOverTime: Array<{
+    date: string;
+    loggedCount: number;
+    resolvedCount: number;
+  }>;
+  top10Errors: Array<{
+    id: number;
+    part: number;
+    errorType: "grammar" | "vocabulary" | "careless" | "timing";
+    questionText: string;
+    userAnswer: string | null;
+    correctAnswer: string;
+    frequency: number;
+    status: "active" | "resolved";
+    lastOccurredAt: string;
+    userNote: string | null;
+  }>;
+  weaknessByPart: Array<{
+    part: number;
+    name: string;
+    errorCount: number;
+    percentage: number;
+    tip: string;
+  }>;
+  weaknessByTopic: Array<{
+    topic: string;
+    category: string;
+    errorCount: number;
+    recommendation: string;
+  }>;
+  recurringAlerts: Array<{
+    id: number;
+    part: number;
+    errorType: string;
+    questionText: string;
+    frequency: number;
+    lastOccurredAt: string;
+    alertMessage: string;
+  }>;
+  patternDetection: Array<{
+    title: string;
+    severity: "info" | "warning" | "critical";
+    description: string;
+    recommendation: string;
+  }>;
+}
+
+export async function getErrorAnalysis(): Promise<ErrorAnalysisResponse> {
+  return apiFetch<ErrorAnalysisResponse>("/error-log/analysis");
+}

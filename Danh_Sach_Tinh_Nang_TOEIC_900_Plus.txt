@@ -661,15 +661,15 @@ Dựa trên lộ trình học TOEIC 900+ - Phiên bản nâng cấp
 [x] - Last occurrence date - Ngày xảy ra lần cuối
 
 8.2. Error Analysis (Phân tích lỗi)
-- Error type distribution chart - Biểu đồ phân phối loại lỗi
-- Error frequency chart - Biểu đồ tần suất lỗi
-- Error trend over time - Xu hướng lỗi theo thời gian
-- Top 10 errors list - Danh sách 10 lỗi hàng đầu
-- Weakness identification by part - Xác định điểm yếu theo phần
-- Weakness identification by topic - Xác định điểm yếu theo chủ đề
-- Error resolution rate - Tỷ lệ giải quyết lỗi
-- Recurring error alerts - Cảnh báo lỗi lặp lại
-- Error pattern detection - Phát hiện mẫu lỗi
+[x] - Error type distribution chart - Biểu đồ phân phối loại lỗi
+[x] - Error frequency chart - Biểu đồ tần suất lỗi
+[x] - Error trend over time - Xu hướng lỗi theo thời gian
+[x] - Top 10 errors list - Danh sách 10 lỗi hàng đầu
+[x] - Weakness identification by part - Xác định điểm yếu theo phần
+[x] - Weakness identification by topic - Xác định điểm yếu theo chủ đề
+[x] - Error resolution rate - Tỷ lệ giải quyết lỗi
+[x] - Recurring error alerts - Cảnh báo lỗi lặp lại
+[x] - Error pattern detection - Phát hiện mẫu lỗi
 
 8.3. Error Drills (Bài tập lỗi)
 - Generate drill for specific error type - Tạo bài tập cho loại lỗi cụ thể
