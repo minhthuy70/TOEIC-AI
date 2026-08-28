@@ -103,6 +103,29 @@ export class GrammarController {
   }
 
   // =====================================================
+  // GET /grammar/settings
+  // =====================================================
+
+  @Get("settings")
+  getSettings(@Request() req) {
+    return this.grammarService.getGrammarSettings(
+      req.user.userId,
+    );
+  }
+
+  // =====================================================
+  // POST /grammar/settings
+  // =====================================================
+
+  @Post("settings")
+  updateSettings(@Request() req, @Body() dto: any) {
+    return this.grammarService.updateGrammarSettings(
+      req.user.userId,
+      dto,
+    );
+  }
+
+  // =====================================================
   // GET /grammar/categories
   // =====================================================
 

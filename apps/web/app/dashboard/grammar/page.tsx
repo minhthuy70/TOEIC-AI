@@ -203,24 +203,31 @@ export default function GrammarDashboardPage() {
             Bảng điều khiển và phân tích kỹ năng ngữ pháp TOEIC theo 5 chặng
           </p>
         </div>
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-2 flex-wrap">
+          <Link
+            href="/dashboard/grammar/settings"
+            className="flex items-center gap-1 px-3 py-2 bg-zinc-800 hover:bg-zinc-700 text-zinc-300 hover:text-white font-bold text-xs rounded-xl transition"
+          >
+            <span>⚙️</span>
+            <span>Cài đặt</span>
+          </Link>
           <Link
             href="/dashboard/grammar/reference"
-            className="flex items-center gap-1.5 px-4 py-2.5 bg-zinc-800 hover:bg-zinc-700 text-zinc-200 hover:text-white font-bold text-xs rounded-xl transition"
+            className="flex items-center gap-1.5 px-3.5 py-2 bg-zinc-800 hover:bg-zinc-700 text-zinc-200 hover:text-white font-bold text-xs rounded-xl transition"
           >
             <span>📖</span>
-            <span>Tra cứu ngữ pháp</span>
+            <span>Tra cứu</span>
           </Link>
           <Link
             href="/dashboard/grammar/exercises"
-            className="flex items-center gap-1.5 px-4 py-2.5 bg-red-600 hover:bg-red-500 text-white font-bold text-xs rounded-xl shadow transition"
+            className="flex items-center gap-1.5 px-3.5 py-2 bg-red-600 hover:bg-red-500 text-white font-bold text-xs rounded-xl shadow transition"
           >
             <span>✍️</span>
             <span>Luyện bài tập</span>
           </Link>
           <Link
             href="/dashboard/courses"
-            className="flex items-center gap-2 px-4 py-2.5 bg-zinc-850 hover:bg-zinc-750 text-zinc-400 hover:text-white font-bold text-xs rounded-xl transition"
+            className="flex items-center gap-1.5 px-3.5 py-2 bg-zinc-850 hover:bg-zinc-750 text-zinc-400 hover:text-white font-bold text-xs rounded-xl transition"
           >
             ← Khóa học
           </Link>

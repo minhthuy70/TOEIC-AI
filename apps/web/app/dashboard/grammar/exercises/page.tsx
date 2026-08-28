@@ -7,6 +7,10 @@ import {
   startGrammarExercise,
   submitGrammarExercise,
 } from "@/services/grammar";
+import {
+  loadGrammarSettings,
+  playSoundFeedback,
+} from "@/lib/grammar-settings";
 import type {
   GrammarExerciseTopic,
   GrammarExerciseSession,
@@ -45,9 +49,13 @@ export default function GrammarExercisesPage() {
   const [errorLogBookmarked, setErrorLogBookmarked] = useState<Record<number, boolean>>({});
   const [toastMessage, setToastMessage] = useState<string | null>(null);
 
-  // Load error log from localStorage
+  // Load settings & error log from localStorage
   useEffect(() => {
     try {
+      const gs = loadGrammarSettings();
+      if (gs.exerciseDifficultyPreference) {
+        setSelectedDifficulty(gs.exerciseDifficultyPreference);
+      }
       const stored = localStorage.getItem("grammar_error_log");
       if (stored) {
         setErrorLogBookmarked(JSON.parse(stored));
@@ -154,11 +162,21 @@ export default function GrammarExercisesPage() {
   // Select Option
   const handleSelectOption = (qId: number, optId: number) => {
     setAnswers((prev) => ({ ...prev, [qId]: optId }));
+    playSoundFeedback("click");
+
+    // Auto-advance if enabled in settings
+    const gs = loadGrammarSettings();
+    if (gs.autoAdvanceAfterCorrect && session && currentQIndex < session.questions.length - 1) {
+      setTimeout(() => {
+        setCurrentQIndex((prev) => Math.min(prev + 1, session.questions.length - 1));
+      }, 250);
+    }
   };
 
   // Toggle Mark for review
   const toggleMarkForReview = (qId: number) => {
     setMarkedForReview((prev) => ({ ...prev, [qId]: !prev[qId] }));
+    playSoundFeedback("click");
   };
 
   // Submit Exercise
@@ -180,6 +198,12 @@ export default function GrammarExercisesPage() {
       setResult(res);
       setScreen("summary");
       setCurrentQIndex(0);
+
+      if (res.accuracy >= 70) {
+        playSoundFeedback("complete");
+      } else {
+        playSoundFeedback("incorrect");
+      }
     } catch (err) {
       console.error(err);
       alert("Lỗi khi nộp bài tập. Vui lòng thử lại!");
@@ -197,6 +221,7 @@ export default function GrammarExercisesPage() {
       } catch (e) {
         console.error(e);
       }
+      playSoundFeedback("click");
       showToast(next[qId] ? "Đã lưu vào Nhật ký lỗi ngữ pháp!" : "Đã gỡ khỏi Nhật ký lỗi.");
       return next;
     });
@@ -264,12 +289,21 @@ export default function GrammarExercisesPage() {
               Rèn luyện phản xạ ngữ pháp theo chủ đề, độ khó, bấm giờ và sửa lỗi chi tiết
             </p>
           </div>
-          <Link
-            href="/dashboard/grammar"
-            className="flex items-center gap-2 px-4 py-2.5 bg-zinc-800 hover:bg-zinc-700 text-zinc-300 hover:text-white font-bold text-xs rounded-xl transition"
-          >
-            ← Bảng điều khiển ngữ pháp
-          </Link>
+          <div className="flex items-center gap-2">
+            <Link
+              href="/dashboard/grammar/settings"
+              className="flex items-center gap-1.5 px-3.5 py-2.5 bg-zinc-800 hover:bg-zinc-700 text-zinc-300 hover:text-white font-bold text-xs rounded-xl transition"
+            >
+              <span>⚙️</span>
+              <span>Cài đặt</span>
+            </Link>
+            <Link
+              href="/dashboard/grammar"
+              className="flex items-center gap-2 px-4 py-2.5 bg-zinc-800 hover:bg-zinc-700 text-zinc-300 hover:text-white font-bold text-xs rounded-xl transition"
+            >
+              ← Bảng điều khiển
+            </Link>
+          </div>
         </div>
 
         {/* Configuration Box */}

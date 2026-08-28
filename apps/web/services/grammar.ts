@@ -125,3 +125,18 @@ export async function getGrammarReferenceDetail(id: number) {
     `/grammar/reference/${id}`,
   );
 }
+
+// ===========================================
+// Grammar Settings
+// ===========================================
+
+export async function getGrammarSettings() {
+  return apiFetch<any>("/grammar/settings");
+}
+
+export async function updateGrammarSettings(settings: any) {
+  return apiFetch<any>("/grammar/settings", {
+    method: "POST",
+    body: JSON.stringify(settings),
+  });
+}

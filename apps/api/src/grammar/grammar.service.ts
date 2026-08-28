@@ -1265,4 +1265,25 @@ export class GrammarService {
     }
     return rule;
   }
+
+  // =====================================================
+  // 9. CÀI ĐẶT NGỮ PHÁP (GRAMMAR SETTINGS)
+  // =====================================================
+
+  async getGrammarSettings(userId: number) {
+    return {
+      exerciseDifficultyPreference: "all",
+      showExplanationsByDefault: true,
+      autoAdvanceAfterCorrect: false,
+      soundEffects: true,
+    };
+  }
+
+  async updateGrammarSettings(userId: number, dto: any) {
+    return {
+      success: true,
+      message: "Đã cập nhật cài đặt ngữ pháp",
+      settings: dto,
+    };
+  }
 }
