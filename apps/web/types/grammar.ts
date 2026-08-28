@@ -184,3 +184,96 @@ export interface GrammarLessonDetail {
     description: string | null;
   }[];
 }
+
+// ===========================================
+// Grammar Exercises Types
+// ===========================================
+
+export interface GrammarExerciseTopic {
+  id: number;
+  name: string;
+  description: string | null;
+  stage: number;
+  difficulty: string;
+  totalLessons: number;
+  completedLessons: number;
+  progress: number;
+  accuracy: number;
+  estimatedQuestions: number;
+}
+
+export interface GrammarExerciseOption {
+  id: number;
+  label: string;
+  text: string;
+}
+
+export interface GrammarExerciseQuestion {
+  id: number;
+  questionNumber: number;
+  questionText: string;
+  options: GrammarExerciseOption[];
+  knowledge?: string;
+}
+
+export interface GrammarExerciseSession {
+  success: boolean;
+  categoryId: number | null;
+  categoryName: string;
+  stage: number;
+  difficulty: string;
+  totalQuestions: number;
+  isTimed: boolean;
+  timeLimitSeconds: number | null;
+  questions: GrammarExerciseQuestion[];
+}
+
+export interface GrammarExerciseResultItem {
+  questionId: number;
+  questionText: string;
+  selectedOptionId: number;
+  selectedLabel: string;
+  selectedText: string;
+  correctOptionId: number;
+  correctLabel: string;
+  correctText: string;
+  isCorrect: boolean;
+  explanation: string;
+  grammarRule: string;
+  relatedExample: string;
+  options: {
+    id: number;
+    label: string;
+    text: string;
+    isCorrect: boolean;
+  }[];
+}
+
+export interface GrammarExerciseSubmitResult {
+  success: boolean;
+  totalQuestions: number;
+  correctCount: number;
+  incorrectCount: number;
+  score: number;
+  accuracy: number;
+  durationSeconds: number;
+  results: GrammarExerciseResultItem[];
+  incorrectQuestions: GrammarExerciseResultItem[];
+}
+
+export interface StartGrammarExerciseDto {
+  categoryId?: number;
+  stage?: number;
+  difficulty?: string;
+  questionCount?: number;
+  isTimed?: boolean;
+}
+
+export interface SubmitGrammarExerciseDto {
+  categoryId?: number;
+  answers: {
+    questionId: number;
+    optionId: number;
+  }[];
+  durationSeconds?: number;
+}

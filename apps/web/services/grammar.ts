@@ -5,6 +5,11 @@ import type {
   GrammarCategoryDetail,
   GrammarLessonDetail,
   GrammarDashboardData,
+  GrammarExerciseTopic,
+  GrammarExerciseSession,
+  GrammarExerciseSubmitResult,
+  StartGrammarExerciseDto,
+  SubmitGrammarExerciseDto,
 } from "@/types/grammar";
 
 // ===========================================
@@ -14,6 +19,36 @@ import type {
 export async function getGrammarDashboard() {
   return apiFetch<GrammarDashboardData>(
     "/grammar/dashboard",
+  );
+}
+
+// ===========================================
+// Grammar Exercises
+// ===========================================
+
+export async function getGrammarExercises() {
+  return apiFetch<GrammarExerciseTopic[]>(
+    "/grammar/exercises",
+  );
+}
+
+export async function startGrammarExercise(dto: StartGrammarExerciseDto) {
+  return apiFetch<GrammarExerciseSession>(
+    "/grammar/exercises/start",
+    {
+      method: "POST",
+      body: JSON.stringify(dto),
+    },
+  );
+}
+
+export async function submitGrammarExercise(dto: SubmitGrammarExerciseDto) {
+  return apiFetch<GrammarExerciseSubmitResult>(
+    "/grammar/exercises/submit",
+    {
+      method: "POST",
+      body: JSON.stringify(dto),
+    },
   );
 }
 

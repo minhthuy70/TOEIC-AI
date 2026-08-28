@@ -13,6 +13,7 @@ import { JwtAuthGuard } from "../auth/jwt-auth.guard";
 
 import { GrammarService } from "./grammar.service";
 import { CompleteLessonDto } from "./dto/complete-lesson.dto";
+import { StartExerciseDto, SubmitExerciseDto } from "./dto/exercise.dto";
 
 @UseGuards(JwtAuthGuard)
 @Controller("grammar")
@@ -29,6 +30,47 @@ export class GrammarController {
   getDashboard(@Request() req) {
     return this.grammarService.getDashboard(
       req.user.userId,
+    );
+  }
+
+  // =====================================================
+  // GET /grammar/exercises
+  // =====================================================
+
+  @Get("exercises")
+  getExercises(@Request() req) {
+    return this.grammarService.getExercisesList(
+      req.user.userId,
+    );
+  }
+
+  // =====================================================
+  // POST /grammar/exercises/start
+  // =====================================================
+
+  @Post("exercises/start")
+  startExercise(
+    @Request() req,
+    @Body() dto: StartExerciseDto,
+  ) {
+    return this.grammarService.startExercise(
+      req.user.userId,
+      dto,
+    );
+  }
+
+  // =====================================================
+  // POST /grammar/exercises/submit
+  // =====================================================
+
+  @Post("exercises/submit")
+  submitExercise(
+    @Request() req,
+    @Body() dto: SubmitExerciseDto,
+  ) {
+    return this.grammarService.submitExercise(
+      req.user.userId,
+      dto,
     );
   }
 

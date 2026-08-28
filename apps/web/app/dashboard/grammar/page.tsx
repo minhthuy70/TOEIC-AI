@@ -205,10 +205,17 @@ export default function GrammarDashboardPage() {
         </div>
         <div className="flex items-center gap-2">
           <Link
+            href="/dashboard/grammar/exercises"
+            className="flex items-center gap-1.5 px-4 py-2.5 bg-red-600 hover:bg-red-500 text-white font-bold text-xs rounded-xl shadow transition"
+          >
+            <span>✍️</span>
+            <span>Luyện bài tập ngữ pháp</span>
+          </Link>
+          <Link
             href="/dashboard/courses"
             className="flex items-center gap-2 px-4 py-2.5 bg-zinc-800 hover:bg-zinc-700 text-zinc-300 hover:text-white font-bold text-xs rounded-xl transition"
           >
-            ← Danh sách khóa học
+            ← Khóa học
           </Link>
         </div>
       </div>
