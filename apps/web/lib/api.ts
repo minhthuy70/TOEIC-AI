@@ -49,7 +49,9 @@ export async function apiFetch<T>(
     if (response.status === 401 && typeof window !== "undefined") {
       localStorage.removeItem("accessToken");
       localStorage.removeItem("user");
-      window.location.href = "/login";
+      if (window.location.pathname !== "/login") {
+        window.location.href = "/login";
+      }
     }
 
     console.error("API Error details:", {

@@ -19,13 +19,14 @@ export class JwtStrategy
 
       secretOrKey:
         "BELLA_SECRET_KEY",
+      passReqToCallback: true,
     });
   }
 
-  async validate(payload: any) {
+  async validate(req: any, payload: any) {
     try {
       // Check if the session exists in the database
-      const token = ExtractJwt.fromAuthHeaderAsBearerToken()(this as any);
+      const token = ExtractJwt.fromAuthHeaderAsBearerToken()(req);
       if (!token) {
         throw new UnauthorizedException('Token not found');
       }
