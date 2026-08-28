@@ -139,4 +139,11 @@ export class ReadingController {
       Number(score),
     );
   }
+
+  @Get('dashboard')
+  async getDashboard(@Request() req) {
+    return this.readingService.getReadingDashboard(
+      req.user?.userId || 1, // Default to user ID 1 for testing
+    );
+  }
 }

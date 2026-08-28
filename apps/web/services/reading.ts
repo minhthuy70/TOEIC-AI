@@ -136,3 +136,23 @@ export const submitReadingLesson = async (
     }),
   });
 };
+
+export interface ReadingDashboardResponse {
+  success: boolean;
+  overallScore: number;
+  scoreByPart: {
+    part: number;
+    score: number;
+    accuracy: number;
+    totalQuestions: number;
+  }[];
+  accuracyRate: number;
+  averageTimePerQuestion: number;
+  streak: number;
+  totalQuestionsCompleted: number;
+  weakParts: number[];
+}
+
+export const getReadingDashboard = async (): Promise<ReadingDashboardResponse> => {
+  return apiFetch<ReadingDashboardResponse>("/reading/dashboard");
+};

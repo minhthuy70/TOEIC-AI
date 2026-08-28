@@ -15,14 +15,13 @@ import { useSessionWarning } from "../../hooks/useSessionWarning";
 /* ───────── Navigation Items ───────── */
 
 const NAV_MAIN = [
-
   { label: "Tổng quan", icon: "🏠", href: "/dashboard" },
   { label: "Học tập", icon: "📚", href: "/dashboard/courses" },
   { label: "Từ vựng", icon: "📖", href: "/dashboard/vocabulary" },
   { label: "Luyện nghe", icon: "🎧", href: "/dashboard/listening" },
+  { label: "Luyện đọc", icon: "📖", href: "/dashboard/reading" },
   { label: "Luyện tập", icon: "✍️", href: "/dashboard/practice" },
   { label: "Thi thử", icon: "📝", href: "/dashboard/mock-test" },
-
 ];
 
 
