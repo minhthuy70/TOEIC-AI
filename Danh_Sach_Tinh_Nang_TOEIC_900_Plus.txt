@@ -384,44 +384,44 @@ Dựa trên lộ trình học TOEIC 900+ - Phiên bản nâng cấp
 
 5.4. Part 7 Practice (Reading Comprehension) - Luyện Part 7: Đọc hiểu
 - Single Passages (Đoạn văn đơn):
-  - Select single passage practice - Chọn luyện đoạn văn đơn
-  - Display passage text - Hiển thị văn bản đoạn văn
-  - Scrollable text area - Khu vực văn bản có thể cuộn
-  - Text zoom in/out - Phóng to/thu nhỏ văn bản
-  - Highlight text tool - Công cụ highlight văn bản
-  - Add note to text - Thêm ghi chú vào văn bản
-  - Display questions below passage - Hiển thị câu hỏi dưới đoạn văn
-  - Question-by-question navigation - Điều hướng theo từng câu hỏi
-  - Display 4 answer options - Hiển thị 4 lựa chọn đáp án
-  - Select answer button - Nút chọn đáp án
-  - Submit answers button - Nút nộp đáp án
-  - Show correct answers - Hiển thị đáp án đúng
-  - Show explanations - Hiển thị giải thích
-  - Highlight evidence in text - Highlight bằng chứng trong văn bản
-  - Link question to text evidence - Link câu hỏi đến bằng chứng văn bản
-  - Next/previous passage - Đoạn văn tiếp/trước
-  - Mark for review - Đánh dấu xem lại
-  - Passage timer - Đồng hồ đếm đoạn văn
-  - Practice mode - Chế độ luyện tập
-  - Passage count selector - Chọn số đoạn văn
+[x]   - Select single passage practice - Chọn luyện đoạn văn đơn
+[x]   - Display passage text - Hiển thị văn bản đoạn văn
+[x]   - Scrollable text area - Khu vực văn bản có thể cuộn
+[x]   - Text zoom in/out - Phóng to/thu nhỏ văn bản
+[x]   - Highlight text tool - Công cụ highlight văn bản
+[x]   - Add note to text - Thêm ghi chú vào văn bản
+[x]   - Display questions below passage - Hiển thị câu hỏi dưới đoạn văn
+[x]   - Question-by-question navigation - Điều hướng theo từng câu hỏi
+[x]   - Display 4 answer options - Hiển thị 4 lựa chọn đáp án
+[x]   - Select answer button - Nút chọn đáp án
+[x]   - Submit answers button - Nút nộp đáp án
+[x]   - Show correct answers - Hiển thị đáp án đúng
+[x]   - Show explanations - Hiển thị giải thích
+[x]   - Highlight evidence in text - Highlight bằng chứng trong văn bản
+[x]   - Link question to text evidence - Link câu hỏi đến bằng chứng văn bản
+[x]   - Next/previous passage - Đoạn văn tiếp/trước
+[x]   - Mark for review - Đánh dấu xem lại
+[x]   - Passage timer - Đồng hồ đếm đoạn văn
+[x]   - Practice mode - Chế độ luyện tập
+[x]   - Passage count selector - Chọn số đoạn văn
 
 - Multiple Passages (Đoạn văn kép):
-  - Select multiple passage practice - Chọn luyện đoạn văn kép
-  - Display 2-3 related passages - Hiển thị 2-3 đoạn văn liên quan
-  - Tab between passages - Chuyển tab giữa các đoạn văn
-  - Compare passages view - Chế độ so sánh đoạn văn
-  - Display questions - Hiển thị câu hỏi
-  - Identify which passage for each question - Xác định đoạn văn cho mỗi câu hỏi
-  - Answer selection - Chọn đáp án
-  - Submit answers - Nộp đáp án
-  - Show correct answers - Hiển thị đáp án đúng
-  - Show explanations - Hiển thị giải thích
-  - Cross-reference evidence - Tham chiếu chéo bằng chứng
-  - Next/previous set - Bộ tiếp/trước
-  - Mark for review - Đánh dấu xem lại
-  - Timer - Đồng hồ đếm
-  - Practice mode - Chế độ luyện tập
-  - Set count selector - Chọn số bộ
+[x]   - Select multiple passage practice - Chọn luyện đoạn văn kép
+[x]   - Display 2-3 related passages - Hiển thị 2-3 đoạn văn liên quan
+[x]   - Tab between passages - Chuyển tab giữa các đoạn văn
+[x]   - Compare passages view - Chế độ so sánh đoạn văn
+[x]   - Display questions - Hiển thị câu hỏi
+[x]   - Identify which passage for each question - Xác định đoạn văn cho mỗi câu hỏi
+[x]   - Answer selection - Chọn đáp án
+[x]   - Submit answers - Nộp đáp án
+[x]   - Show correct answers - Hiển thị đáp án đúng
+[x]   - Show explanations - Hiển thị giải thích
+[x]   - Cross-reference evidence - Tham chiếu chéo bằng chứng
+[x]   - Next/previous set - Bộ tiếp/trước
+[x]   - Mark for review - Đánh dấu xem lại
+[x]   - Timer - Đồng hồ đếm
+[x]   - Practice mode - Chế độ luyện tập
+[x]   - Set count selector - Chọn số bộ
 
 5.5. Reading Mixed Practice - Luyện đọc hỗn hợp
 - Mixed parts practice (Part 5-7) - Luyện các phần hỗn hợp (Part 5-7)
