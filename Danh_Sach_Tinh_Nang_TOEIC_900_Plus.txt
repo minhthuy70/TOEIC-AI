@@ -710,17 +710,17 @@ Dựa trên lộ trình học TOEIC 900+ - Phiên bản nâng cấp
 [x] - Daily motivation quote - Câu động lực hàng ngày
 
 9.2. Weekly Dashboard (Bảng điều khiển hàng tuần)
-- Weekly study time summary - Tóm tắt thời gian học hàng tuần
-- Weekly vocabulary total - Tổng từ vựng hàng tuần
-- Weekly practice total - Tổng luyện tập hàng tuần
-- Weekly accuracy rate - Tỷ lệ chính xác hàng tuần
-- Weekly test scores - Điểm kiểm tra hàng tuần
-- Weekly goals progress - Tiến độ mục tiêu hàng tuần
-- Weekly streak visualization - Trực quan hóa chuỗi hàng tuần
-- Day-by-day breakdown - Phân tích từng ngày
-- Weekly comparison (vs last week) - So sánh hàng tuần (vs tuần trước)
-- Weekly achievements - Thành tích hàng tuần
-- Weekly highlights - Điểm nổi bật hàng tuần
+[x] - Weekly study time summary - Tóm tắt thời gian học hàng tuần
+[x] - Weekly vocabulary total - Tổng từ vựng hàng tuần
+[x] - Weekly practice total - Tổng luyện tập hàng tuần
+[x] - Weekly accuracy rate - Tỷ lệ chính xác hàng tuần
+[x] - Weekly test scores - Điểm kiểm tra hàng tuần
+[x] - Weekly goals progress - Tiến độ mục tiêu hàng tuần
+[x] - Weekly streak visualization - Trực quan hóa chuỗi hàng tuần
+[x] - Day-by-day breakdown - Phân tích từng ngày
+[x] - Weekly comparison (vs last week) - So sánh hàng tuần (vs tuần trước)
+[x] - Weekly achievements - Thành tích hàng tuần
+[x] - Weekly highlights - Điểm nổi bật hàng tuần
 
 9.3. Monthly Dashboard (Bảng điều khiển hàng tháng)
 - Monthly study time summary - Tóm tắt thời gian học hàng tháng

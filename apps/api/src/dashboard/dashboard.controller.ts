@@ -20,4 +20,18 @@ export class DashboardController {
       );
     }
   }
+
+  @Get("weekly")
+  async getWeeklyDashboard(@Req() req: any) {
+    try {
+      const userId = req.user.userId;
+      return this.dashboardService.getWeeklyDashboard(userId);
+    } catch (error) {
+      console.error('Dashboard weekly error:', error);
+      throw new HttpException(
+        { message: error.message || 'Internal server error', statusCode: 500 },
+        HttpStatus.INTERNAL_SERVER_ERROR
+      );
+    }
+  }
 }
