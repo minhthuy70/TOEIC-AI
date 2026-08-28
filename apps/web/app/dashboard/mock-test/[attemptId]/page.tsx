@@ -16,6 +16,11 @@ import {
   submitMockTest,
   type MockTestAttemptResponse,
 } from "@/services/mock-test";
+import {
+  loadTestSettings,
+  playTestSoundEffect,
+  type TestSettings,
+} from "@/lib/test-settings";
 
 export default function MockTestAttemptPage() {
   const params = useParams();
@@ -85,7 +90,7 @@ export default function MockTestAttemptPage() {
     setAudioError,
   ] = useState(false);
 
-  // Additional 7.2 Features State
+  // Additional 7.2 & 7.5 Features State
   const [markedForReview, setMarkedForReview] = useState<Record<number, boolean>>({});
   const [isPaused, setIsPaused] = useState<boolean>(false);
   const [pausesRemaining, setPausesRemaining] = useState<number>(3);
@@ -93,6 +98,11 @@ export default function MockTestAttemptPage() {
   const [showSectionBreakModal, setShowSectionBreakModal] = useState<boolean>(false);
   const [filterMarkedOnly, setFilterMarkedOnly] = useState<boolean>(false);
   const [sectionBreakTimer, setSectionBreakTimer] = useState<number>(60); // 60s break
+  const [testSettings, setTestSettings] = useState<TestSettings | null>(null);
+
+  useEffect(() => {
+    setTestSettings(loadTestSettings());
+  }, []);
 
   // ==========================================================
   // LOAD ATTEMPT
@@ -284,12 +294,18 @@ export default function MockTestAttemptPage() {
         () => {
           setRemainingSeconds(
             (prev) => {
+              if (prev === 61 && testSettings?.soundEffects !== false) {
+                playTestSoundEffect("warning");
+              }
+
               if (prev <= 1) {
                 window.clearInterval(
                   timer,
                 );
 
-                handleSubmit(true);
+                if (testSettings?.autoSubmit !== false) {
+                  handleSubmit(true);
+                }
 
                 return 0;
               }
@@ -922,6 +938,10 @@ export default function MockTestAttemptPage() {
       await submitMockTest(
   payload,
 );
+
+if (testSettings?.soundEffects !== false) {
+  playTestSoundEffect("submit");
+}
 
 router.push(
   `/dashboard/mock-test/result/${attemptId}`,

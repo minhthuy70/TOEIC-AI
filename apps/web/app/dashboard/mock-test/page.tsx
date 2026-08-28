@@ -368,7 +368,7 @@ export default function MockTestPage() {
         {/* HEADER */}
         {/* ================================================== */}
 
-        <div className="mb-8">
+        <div className="mb-8 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
           <div className="flex items-center gap-3">
             <span className="text-3xl">
               📋
@@ -376,14 +376,22 @@ export default function MockTestPage() {
 
             <div>
               <h1 className="text-3xl font-bold">
-                Thi thử
+                Thi thử TOEIC
               </h1>
 
               <p className="mt-1 text-sm text-zinc-500">
-                Full TOEIC Test · Lịch sử thi
+                Full TOEIC Test · Lịch sử thi · Phân tích chuyên sâu
               </p>
             </div>
           </div>
+
+          <Link
+            href="/dashboard/mock-test/settings"
+            className="flex items-center gap-2 px-4 py-2.5 rounded-xl border border-zinc-800 bg-zinc-900/80 hover:bg-zinc-800 text-zinc-300 hover:text-white text-xs font-bold transition w-fit"
+          >
+            <span>⚙️</span>
+            <span>Cài đặt thi thử</span>
+          </Link>
         </div>
 
         {/* ================================================== */}

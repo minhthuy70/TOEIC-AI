@@ -623,13 +623,13 @@ Dựa trên lộ trình học TOEIC 900+ - Phiên bản nâng cấp
 [x] - Study time vs score correlation - Tương quan thời gian học vs điểm
 
 7.5. Test Settings - Cài đặt kiểm tra
-- Default test type - Loại kiểm tra mặc định
-- Default time limit - Giới hạn thời gian mặc định
-- Show timer preference - Ưa thích hiển thị đồng hồ
-- Allow pause preference - Ưa thích cho phép tạm dừng
-- Show real-time score preference - Ưa thích hiển thị điểm thời gian thực
-- Auto-submit preference - Ưa thích tự động nộp
-- Sound effects toggle - Bật/tắt hiệu ứng âm thanh
+[x] - Default test type - Loại kiểm tra mặc định
+[x] - Default time limit - Giới hạn thời gian mặc định
+[x] - Show timer preference - Ưa thích hiển thị đồng hồ
+[x] - Allow pause preference - Ưa thích cho phép tạm dừng
+[x] - Show real-time score preference - Ưa thích hiển thị điểm thời gian thực
+[x] - Auto-submit preference - Ưa thích tự động nộp
+[x] - Sound effects toggle - Bật/tắt hiệu ứng âm thanh
 
 ================================================================================
 
