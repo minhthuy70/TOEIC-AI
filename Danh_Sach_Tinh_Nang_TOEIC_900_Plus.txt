@@ -856,15 +856,15 @@ Dựa trên lộ trình học TOEIC 900+ - Phiên bản nâng cấp
 [x] - Disable reminders - Tắt nhắc nhở
 
 10.4. Smart Recommendations (Gợi ý thông minh)
-- AI-powered study suggestions - Gợi ý học tập AI
-- What to study next - Học gì tiếp theo
-- Weakness-based recommendations - Gợi ý dựa trên điểm yếu
-- Time-based recommendations - Gợi ý dựa trên thời gian
-- Goal-oriented recommendations - Gợi ý hướng mục tiêu
-- Personalized study plan - Kế hoạch học tập cá nhân hóa
-- Adaptive difficulty adjustment - Điều chỉnh độ khó thích ứng
-- Learning path optimization - Tối ưu hóa lộ trình học
-- Priority task ranking - Xếp hạng ưu tiên nhiệm vụ
+[x] - AI-powered study suggestions - Gợi ý học tập AI
+[x] - What to study next - Học gì tiếp theo
+[x] - Weakness-based recommendations - Gợi ý dựa trên điểm yếu
+[x] - Time-based recommendations - Gợi ý dựa trên thời gian
+[x] - Goal-oriented recommendations - Gợi ý hướng mục tiêu
+[x] - Personalized study plan - Kế hoạch học tập cá nhân hóa
+[x] - Adaptive difficulty adjustment - Điều chỉnh độ khó thích ứng
+[x] - Learning path optimization - Tối ưu hóa lộ trình học
+[x] - Priority task ranking - Xếp hạng ưu tiên nhiệm vụ
 
 ================================================================================
 
