@@ -20,6 +20,7 @@ import {
   Clock,
   X,
   Trophy,
+  Calendar,
 } from "lucide-react";
 import { useAutoLogout } from "../../hooks/useAutoLogout";
 import { useSessionWarning } from "../../hooks/useSessionWarning";
@@ -29,6 +30,7 @@ import { apiFetch } from "../../lib/api";
 
 const NAV_MAIN = [
   { label: "Tổng quan", icon: LayoutDashboard, href: "/dashboard" },
+  { label: "Lịch học", icon: Calendar, href: "/dashboard/schedule" },
   { label: "Học tập", icon: GraduationCap, href: "/dashboard/courses" },
   { label: "Từ vựng", icon: BookA, href: "/dashboard/vocabulary" },
   { label: "Ngữ pháp", icon: BookOpen, href: "/dashboard/grammar" },

@@ -814,18 +814,18 @@ Dựa trên lộ trình học TOEIC 900+ - Phiên bản nâng cấp
 ================================================================================
 
 10.1. Study Schedule (Lịch trình học tập)
-- Weekly calendar view - Chế độ xem lịch hàng tuần
-- Daily time slots - Khung giờ hàng ngày
-- Set study time for each day - Đặt thời gian học mỗi ngày
-- Study session types (vocabulary, listening, reading, grammar, test) - Loại phiên học
-- Color-coded session types - Loại phiên được mã màu
-- Drag-and-drop scheduling - Lên lịch kéo thả
-- Copy schedule to other days - Sao chép lịch sang ngày khác
-- Recurring sessions - Phiên lặp lại
-- Schedule reminders - Nhắc nhở lịch trình
-- Schedule conflicts detection - Phát hiện xung đột lịch trình
-- Export schedule - Xuất lịch trình
-- Print schedule - In lịch trình
+[x] - Weekly calendar view - Chế độ xem lịch hàng tuần
+[x] - Daily time slots - Khung giờ hàng ngày
+[x] - Set study time for each day - Đặt thời gian học mỗi ngày
+[x] - Study session types (vocabulary, listening, reading, grammar, test) - Loại phiên học
+[x] - Color-coded session types - Loại phiên được mã màu
+[x] - Drag-and-drop scheduling - Lên lịch kéo thả
+[x] - Copy schedule to other days - Sao chép lịch sang ngày khác
+[x] - Recurring sessions - Phiên lặp lại
+[x] - Schedule reminders - Nhắc nhở lịch trình
+[x] - Schedule conflicts detection - Phát hiện xung đột lịch trình
+[x] - Export schedule - Xuất lịch trình
+[x] - Print schedule - In lịch trình
 
 10.2. Daily Planner (Kế hoạch hàng ngày)
 - Today's schedule timeline - Timeline lịch trình hôm nay

@@ -41,6 +41,7 @@ model User {
   reviewedStageRequests     StageChangeRequest[] @relation("reviewedBy")
   goals                     Goal[]
   userAchievements          UserAchievement[]
+  studySchedules            StudySchedule[]
 }
 
 model UserSession {
@@ -546,4 +547,23 @@ model UserAchievement {
   @@index([userId])
   @@index([achievementId])
   @@map("user_achievements")
+}
+
+model StudySchedule {
+  id          Int      @id @default(autoincrement())
+  userId      Int      @map("user_id")
+  dayOfWeek   Int      // 0 = Sunday, 1 = Monday, ..., 6 = Saturday
+  startTime   String   @db.VarChar(5) // Format "HH:MM"
+  endTime     String   @db.VarChar(5) // Format "HH:MM"
+  title       String   @db.VarChar(255)
+  sessionType String   @db.VarChar(50)  // vocabulary, listening, reading, grammar, test
+  isRecurring Boolean  @default(true)
+  reminder    Boolean  @default(false)
+  createdAt   DateTime @default(now()) @map("created_at") @db.Timestamp(6)
+  updatedAt   DateTime @default(now()) @updatedAt @map("updated_at") @db.Timestamp(6)
+
+  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@map("study_schedules")
 }
