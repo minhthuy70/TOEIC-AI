@@ -40,6 +40,7 @@ model User {
   stageChangeRequests       StageChangeRequest[] @relation("requestedBy")
   reviewedStageRequests     StageChangeRequest[] @relation("reviewedBy")
   goals                     Goal[]
+  userAchievements          UserAchievement[]
 }
 
 model UserSession {
@@ -503,4 +504,40 @@ model Goal {
   @@index([userId])
   @@index([status])
   @@map("goals")
+}
+
+model Achievement {
+  id          Int      @id @default(autoincrement())
+  name        String   @db.VarChar(255)
+  description String?  @db.Text
+  category    String   @db.VarChar(50) // learning, practice, streak, accuracy
+  criteria    String   @db.Text // JSON string containing criteria
+  points      Int      @default(0)
+  icon        String?  @db.VarChar(100)
+  badgeColor  String?  @db.VarChar(20) @default("amber")
+  isActive    Boolean  @default(true)
+  createdAt   DateTime @default(now()) @map("created_at") @db.Timestamp(6)
+
+  userAchievements UserAchievement[]
+
+  @@index([category])
+  @@index([isActive])
+  @@map("achievements")
+}
+
+model UserAchievement {
+  id             Int      @id @default(autoincrement())
+  userId         Int      @map("user_id")
+  achievementId  Int      @map("achievement_id")
+  unlockedAt     DateTime @default(now()) @map("unlocked_at") @db.Timestamp(6)
+  progress       Int      @default(0)
+  shareCount     Int      @default(0) @map("share_count")
+
+  user           User         @relation(fields: [userId], references: [id], onDelete: Cascade)
+  achievement    Achievement  @relation(fields: [achievementId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, achievementId])
+  @@index([userId])
+  @@index([achievementId])
+  @@map("user_achievements")
 }

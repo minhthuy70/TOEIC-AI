@@ -1328,4 +1328,269 @@ export class DashboardService {
       throw new Error('Failed to fetch goal history');
     }
   }
+
+  // Achievement Management Methods
+  private async seedDefaultAchievements() {
+    const existingCount = await this.prisma.achievement.count();
+    if (existingCount > 0) return;
+
+    const defaultAchievements = [
+      // Learning achievements
+      {
+        name: "Người mới bắt đầu",
+        description: "Học 10 từ vựng đầu tiên",
+        category: "learning",
+        criteria: JSON.stringify({ type: "vocabulary", target: 10 }),
+        points: 10,
+        icon: "📚",
+        badgeColor: "blue",
+      },
+      {
+        name: "Bậc thầy từ vựng",
+        description: "Học 500 từ vựng",
+        category: "learning",
+        criteria: JSON.stringify({ type: "vocabulary", target: 500 }),
+        points: 100,
+        icon: "🎓",
+        badgeColor: "purple",
+      },
+      {
+        name: "Ngữ pháp cơ bản",
+        description: "Hoàn thành 10 bài ngữ pháp",
+        category: "learning",
+        criteria: JSON.stringify({ type: "grammar", target: 10 }),
+        points: 25,
+        icon: "📝",
+        badgeColor: "green",
+      },
+      // Practice achievements
+      {
+        name: "Luyện tập chăm chỉ",
+        description: "Làm 100 câu hỏi luyện tập",
+        category: "practice",
+        criteria: JSON.stringify({ type: "practice", target: 100 }),
+        points: 30,
+        icon: "✍️",
+        badgeColor: "amber",
+      },
+      {
+        name: "Chiến binh luyện tập",
+        description: "Làm 500 câu hỏi luyện tập",
+        category: "practice",
+        criteria: JSON.stringify({ type: "practice", target: 500 }),
+        points: 75,
+        icon: "⚔️",
+        badgeColor: "red",
+      },
+      // Streak achievements
+      {
+        name: "Khởi đầu tốt",
+        description: "Chuỗi học 3 ngày liên tục",
+        category: "streak",
+        criteria: JSON.stringify({ type: "streak", target: 3 }),
+        points: 15,
+        icon: "🔥",
+        badgeColor: "orange",
+      },
+      {
+        name: "Kiên trì bền bỉ",
+        description: "Chuỗi học 7 ngày liên tục",
+        category: "streak",
+        criteria: JSON.stringify({ type: "streak", target: 7 }),
+        points: 35,
+        icon: "💪",
+        badgeColor: "red",
+      },
+      {
+        name: "Huyền thoại",
+        description: "Chuỗi học 30 ngày liên tục",
+        category: "streak",
+        criteria: JSON.stringify({ type: "streak", target: 30 }),
+        points: 100,
+        icon: "👑",
+        badgeColor: "yellow",
+      },
+      // Accuracy achievements
+      {
+        name: "Chính xác lần đầu",
+        description: "Đạt 90% độ chính xác trong bài tập",
+        category: "accuracy",
+        criteria: JSON.stringify({ type: "accuracy", target: 90 }),
+        points: 20,
+        icon: "🎯",
+        badgeColor: "emerald",
+      },
+      {
+        name: "Thần chính xác",
+        description: "Đạt 95% độ chính xác trong bài tập",
+        category: "accuracy",
+        criteria: JSON.stringify({ type: "accuracy", target: 95 }),
+        points: 50,
+        icon: "🏆",
+        badgeColor: "gold",
+      },
+    ];
+
+    await this.prisma.achievement.createMany({
+      data: defaultAchievements,
+    });
+  }
+
+  async getAchievements(userId: number) {
+    try {
+      await this.seedDefaultAchievements();
+
+      const achievements = await this.prisma.achievement.findMany({
+        where: { isActive: true },
+        orderBy: { points: 'desc' },
+      });
+
+      const userAchievements = await this.prisma.userAchievement.findMany({
+        where: { userId },
+        include: { achievement: true },
+      });
+
+      const unlockedIds = new Set(userAchievements.map(ua => ua.achievementId));
+
+      // Calculate progress for each achievement
+      const achievementsWithProgress = await Promise.all(achievements.map(async (achievement) => {
+        const criteria = JSON.parse(achievement.criteria);
+        let currentProgress = 0;
+        let isUnlocked = unlockedIds.has(achievement.id);
+
+        if (criteria.type === "vocabulary") {
+          const vocabCount = await this.prisma.userVocabularyProgress.count({
+            where: { userId, status: { not: "NEW" } },
+          });
+          currentProgress = Math.min(Math.round((vocabCount / criteria.target) * 100), 100);
+        } else if (criteria.type === "grammar") {
+          const grammarCount = await this.prisma.userGrammarProgress.count({
+            where: { userId, completed: true },
+          });
+          currentProgress = Math.min(Math.round((grammarCount / criteria.target) * 100), 100);
+        } else if (criteria.type === "practice") {
+          const practiceCount = await this.prisma.practice_sessions.count({
+            where: { user_id: userId },
+          });
+          currentProgress = Math.min(Math.round((practiceCount * 10 / criteria.target) * 100), 100);
+        } else if (criteria.type === "streak") {
+          const user = await this.prisma.user.findUnique({
+            where: { id: userId },
+            include: { profile: true },
+          });
+          const currentStreak = (user?.profile as any)?.streak || 0;
+          currentProgress = Math.min(Math.round((currentStreak / criteria.target) * 100), 100);
+        } else if (criteria.type === "accuracy") {
+          // Simulated accuracy for demo
+          currentProgress = 85; // This would be calculated from actual practice data
+        }
+
+        // Auto-unlock if progress >= 100 and not already unlocked
+        if (currentProgress >= 100 && !isUnlocked) {
+          await this.prisma.userAchievement.create({
+            data: {
+              userId,
+              achievementId: achievement.id,
+              progress: 100,
+            },
+          });
+          isUnlocked = true;
+        }
+
+        const userAchievement = userAchievements.find(ua => ua.achievementId === achievement.id);
+
+        return {
+          ...achievement,
+          criteria,
+          progress: currentProgress,
+          isUnlocked,
+          unlockedAt: userAchievement?.unlockedAt,
+          shareCount: userAchievement?.shareCount || 0,
+        };
+      }));
+
+      // Calculate total points
+      const totalPoints = userAchievements.reduce((sum, ua) => sum + ua.achievement.points, 0);
+
+      // Get leaderboard position
+      const allUserPoints = await this.prisma.userAchievement.groupBy({
+        by: ['userId'],
+        _sum: {
+          achievementId: true,
+        },
+      });
+
+      const userPointsMap = new Map();
+      allUserPoints.forEach((up: any) => {
+        const points = up._sum.achievementId || 0;
+        userPointsMap.set(up.userId, points);
+      });
+
+      const sortedPoints = Array.from(userPointsMap.entries()).sort((a, b) => b[1] - a[1]);
+      const userPoints = userPointsMap.get(userId) || 0;
+      const leaderboardPosition = sortedPoints.findIndex(([id]) => id === userId) + 1;
+
+      return {
+        success: true,
+        achievements: achievementsWithProgress,
+        totalPoints,
+        leaderboardPosition,
+        totalUsers: sortedPoints.length,
+      };
+    } catch (error) {
+      console.error('Error fetching achievements:', error);
+      throw new Error('Failed to fetch achievements');
+    }
+  }
+
+  async shareAchievement(userId: number, achievementId: number) {
+    try {
+      const userAchievement = await this.prisma.userAchievement.findFirst({
+        where: { userId, achievementId },
+      });
+
+      if (!userAchievement) {
+        throw new Error('Achievement not found or not unlocked');
+      }
+
+      const updated = await this.prisma.userAchievement.update({
+        where: { id: userAchievement.id },
+        data: { shareCount: { increment: 1 } },
+      });
+
+      return { success: true, shareCount: updated.shareCount };
+    } catch (error) {
+      console.error('Error sharing achievement:', error);
+      throw new Error('Failed to share achievement');
+    }
+  }
+
+  async getAchievementNotifications(userId: number) {
+    try {
+      const recentlyUnlocked = await this.prisma.userAchievement.findMany({
+        where: { 
+          userId,
+          unlockedAt: {
+            gte: new Date(Date.now() - 7 * 24 * 60 * 60 * 1000), // Last 7 days
+          },
+        },
+        include: { achievement: true },
+        orderBy: { unlockedAt: 'desc' },
+        take: 5,
+      });
+
+      return {
+        success: true,
+        notifications: recentlyUnlocked.map(ua => ({
+          id: ua.id,
+          achievement: ua.achievement,
+          unlockedAt: ua.unlockedAt,
+          message: `Chúc mừng! Bạn đã mở khóa thành tích "${ua.achievement.name}" 🎉`,
+        })),
+      };
+    } catch (error) {
+      console.error('Error fetching achievement notifications:', error);
+      throw new Error('Failed to fetch achievement notifications');
+    }
+  }
 }
