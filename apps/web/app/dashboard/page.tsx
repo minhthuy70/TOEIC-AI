@@ -102,16 +102,27 @@ export default function DashboardPage() {
   const [data, setData] = useState<any>(null);
   const [loading, setLoading] = useState(true);
   const [expandedStage, setExpandedStage] = useState<number | null>(null);
-  const [period, setPeriod] = useState<"daily" | "weekly">("daily");
+  const [period, setPeriod] = useState<"daily" | "weekly" | "monthly">("daily");
 
   useEffect(() => {
     fetchDashboard();
   }, []);
 
+  useEffect(() => {
+    fetchDashboard();
+  }, [period]);
+
   const fetchDashboard = async () => {
     try {
       setLoading(true);
-      const res = await apiFetch<any>("/dashboard/overview");
+      let res;
+      if (period === "monthly") {
+        res = await apiFetch<any>("/dashboard/monthly");
+      } else if (period === "weekly") {
+        res = await apiFetch<any>("/dashboard/weekly");
+      } else {
+        res = await apiFetch<any>("/dashboard/overview");
+      }
       setData(res);
     } catch (error) {
       console.error("Dashboard fetch error:", error);
@@ -198,33 +209,46 @@ export default function DashboardPage() {
       </div>
 
       {/* ================================================== */}
-      {/* PERIOD SWITCHER: DAILY (9.1) VS WEEKLY (9.2) */}
+      {/* PERIOD SWITCHER: DAILY (9.1) VS WEEKLY (9.2) VS MONTHLY (9.3) */}
       {/* ================================================== */}
-      <div className="grid grid-cols-2 rounded-2xl border border-white/5 bg-[#121214] p-1 max-w-md">
+      <div className="grid grid-cols-3 rounded-2xl border border-white/5 bg-[#121214] p-1 max-w-lg">
         <button
           type="button"
           onClick={() => setPeriod("daily")}
-          className={`flex items-center justify-center gap-1.5 rounded-xl px-4 py-2.5 text-xs sm:text-sm font-bold transition ${
+          className={`flex items-center justify-center gap-1.5 rounded-xl px-3 py-2.5 text-xs sm:text-sm font-bold transition ${
             period === "daily"
               ? "bg-red-600 text-white shadow-md"
               : "text-zinc-400 hover:text-white"
           }`}
         >
           <Calendar className="w-4 h-4" />
-          <span>Hôm nay (Daily 9.1)</span>
+          <span>Hôm nay (9.1)</span>
         </button>
 
         <button
           type="button"
           onClick={() => setPeriod("weekly")}
-          className={`flex items-center justify-center gap-1.5 rounded-xl px-4 py-2.5 text-xs sm:text-sm font-bold transition ${
+          className={`flex items-center justify-center gap-1.5 rounded-xl px-3 py-2.5 text-xs sm:text-sm font-bold transition ${
             period === "weekly"
               ? "bg-red-600 text-white shadow-md"
               : "text-zinc-400 hover:text-white"
           }`}
         >
           <BarChart3 className="w-4 h-4" />
-          <span>Tuần này (Weekly 9.2)</span>
+          <span>Tuần này (9.2)</span>
+        </button>
+
+        <button
+          type="button"
+          onClick={() => setPeriod("monthly")}
+          className={`flex items-center justify-center gap-1.5 rounded-xl px-3 py-2.5 text-xs sm:text-sm font-bold transition ${
+            period === "monthly"
+              ? "bg-red-600 text-white shadow-md"
+              : "text-zinc-400 hover:text-white"
+          }`}
+        >
+          <TrendingUp className="w-4 h-4" />
+          <span>Tháng này (9.3)</span>
         </button>
       </div>
 
@@ -854,6 +878,334 @@ export default function DashboardPage() {
                   </div>
                 ))}
               </div>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* ================================================== */}
+      {/* VIEW 3: MONTHLY DASHBOARD (9.3) */}
+      {/* ================================================== */}
+      {period === "monthly" && (
+        <div className="space-y-8 animate-fade-in">
+          {/* 1, 2, 3, 4. MONTHLY SUMMARY 4 CARDS */}
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
+            {/* 1. Monthly study time */}
+            <div className="bg-zinc-900/60 border border-white/5 rounded-3xl p-5 space-y-2">
+              <span className="text-[10px] text-zinc-500 font-bold uppercase tracking-wider flex items-center gap-1">
+                <Clock className="w-3.5 h-3.5 text-amber-400" />
+                <span>Thời gian học tháng</span>
+              </span>
+              <div className="text-3xl font-black text-white">
+                {data?.monthly?.studyTimeSummary?.totalHours || 20.8}h
+                <span className="text-xs text-zinc-400 font-normal"> / {data?.monthly?.studyTimeSummary?.goalHours || 15.0}h</span>
+              </div>
+              <div className="flex items-center justify-between text-[11px]">
+                <span className="text-emerald-400 font-bold">{data?.monthly?.studyTimeSummary?.vsLastMonth} vs tháng trước</span>
+                <span className="text-zinc-500">{data?.monthly?.studyTimeSummary?.progress}%</span>
+              </div>
+            </div>
+
+            {/* 2. Monthly vocabulary total */}
+            <div className="bg-zinc-900/60 border border-white/5 rounded-3xl p-5 space-y-2">
+              <span className="text-[10px] text-zinc-500 font-bold uppercase tracking-wider flex items-center gap-1">
+                <BookOpen className="w-3.5 h-3.5 text-purple-400" />
+                <span>Tổng từ vựng tháng</span>
+              </span>
+              <div className="text-3xl font-black text-purple-400">
+                {data?.monthly?.vocabularyTotal?.totalCount || 460}
+                <span className="text-xs text-zinc-400 font-normal"> từ</span>
+              </div>
+              <div className="flex items-center justify-between text-[11px]">
+                <span className="text-emerald-400 font-bold">{data?.monthly?.vocabularyTotal?.vsLastMonth} vs tháng trước</span>
+                <span className="text-zinc-500">{data?.monthly?.vocabularyTotal?.progress}%</span>
+              </div>
+            </div>
+
+            {/* 3. Monthly practice total */}
+            <div className="bg-zinc-900/60 border border-white/5 rounded-3xl p-5 space-y-2">
+              <span className="text-[10px] text-zinc-500 font-bold uppercase tracking-wider flex items-center gap-1">
+                <FileEdit className="w-3.5 h-3.5 text-blue-400" />
+                <span>Tổng câu luyện tập</span>
+              </span>
+              <div className="text-3xl font-black text-blue-400">
+                {data?.monthly?.practiceTotal?.totalQuestions || 695}
+                <span className="text-xs text-zinc-400 font-normal"> câu</span>
+              </div>
+              <div className="flex items-center justify-between text-[11px]">
+                <span className="text-emerald-400 font-bold">{data?.monthly?.practiceTotal?.vsLastMonth} vs tháng trước</span>
+                <span className="text-zinc-500">{data?.monthly?.practiceTotal?.progress}%</span>
+              </div>
+            </div>
+
+            {/* 4. Monthly accuracy rate */}
+            <div className="bg-zinc-900/60 border border-white/5 rounded-3xl p-5 space-y-2">
+              <span className="text-[10px] text-zinc-500 font-bold uppercase tracking-wider flex items-center gap-1">
+                <Target className="w-3.5 h-3.5 text-emerald-400" />
+                <span>Tỷ lệ chính xác tháng</span>
+              </span>
+              <div className="text-3xl font-black text-emerald-400">
+                {data?.monthly?.accuracyRate?.current || 86}%
+              </div>
+              <div className="flex items-center justify-between text-[11px]">
+                <span className="text-emerald-400 font-bold">{data?.monthly?.accuracyRate?.diff} so với tháng trước</span>
+                <span className="text-zinc-500">83% → 86%</span>
+              </div>
+            </div>
+          </div>
+
+          {/* 7. MONTHLY STREAK VISUALIZATION (Calendar view) */}
+          <div className="rounded-3xl border border-white/5 bg-[#121214] p-6 space-y-4">
+            <div className="flex items-center justify-between flex-wrap gap-2">
+              <div>
+                <h3 className="text-base font-bold text-white flex items-center gap-2">
+                  <Flame className="w-5 h-5 text-amber-400" />
+                  <span>Trực Quan Hóa Chuỗi Học Tháng (Monthly Streak Visualization)</span>
+                </h3>
+                <p className="text-xs text-zinc-400 mt-0.5">Theo dõi phong độ học tập 30 ngày trong tháng</p>
+              </div>
+              <span className="px-3 py-1 rounded-full text-xs font-black bg-amber-500/20 text-amber-300 border border-amber-500/30 flex items-center gap-1">
+                <Flame className="w-3.5 h-3.5 text-amber-400 fill-amber-400" />
+                <span>21 / 30 ngày tích cực</span>
+              </span>
+            </div>
+
+            <div className="grid grid-cols-7 sm:grid-cols-10 gap-2 pt-2">
+              {data?.monthly?.streakVisualization?.map((day: any, idx: number) => (
+                <div
+                  key={idx}
+                  className={`p-2 rounded-xl border text-center space-y-1 transition flex flex-col items-center ${
+                    day.isToday
+                      ? "bg-red-600/20 border-red-500 shadow-lg shadow-red-600/20"
+                      : day.active
+                      ? "bg-amber-950/20 border-amber-500/40"
+                      : "bg-zinc-950 border-zinc-800 opacity-60"
+                  }`}
+                >
+                  <span className="text-[9px] text-zinc-400 font-bold block">{day.day}</span>
+                  <div className="w-5 h-5 rounded-lg flex items-center justify-center">
+                    {day.active ? <Flame className="w-3.5 h-3.5 text-amber-400 fill-amber-400" /> : <div className="w-1.5 h-1.5 rounded-full bg-zinc-700" />}
+                  </div>
+                  <span className="text-[9px] font-bold text-white block">{day.minutes > 0 ? `${day.minutes}p` : "—"}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* 5 & 6. MONTHLY TEST SCORES & GOALS PROGRESS */}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+            {/* 5. Monthly Test Scores */}
+            <div className="rounded-3xl border border-white/5 bg-[#121214] p-6 space-y-4">
+              <div className="flex items-center justify-between">
+                <div>
+                  <h3 className="text-base font-bold text-white flex items-center gap-2">
+                    <Trophy className="w-4 h-4 text-amber-400" />
+                    <span>Điểm Kiểm Tra Hàng Tháng (Monthly Test Scores)</span>
+                  </h3>
+                  <p className="text-xs text-zinc-400 mt-0.5">Kết quả các bài thi thử đã hoàn thành trong tháng</p>
+                </div>
+                <span className="px-2.5 py-1 rounded-xl text-xs font-black bg-emerald-600/20 text-emerald-300 border border-emerald-500/30">
+                  {data?.monthly?.monthlyTestScores?.scoreChange}
+                </span>
+              </div>
+
+              <div className="grid grid-cols-3 gap-3 pt-2">
+                <div className="p-4 rounded-2xl bg-zinc-950 border border-zinc-800 text-center">
+                  <span className="text-[10px] text-zinc-500 font-bold uppercase block mb-1">Mới nhất</span>
+                  <div className="text-2xl font-black text-white">{data?.monthly?.monthlyTestScores?.latestScore || 750}</div>
+                  <span className="text-[10px] text-zinc-400">ETS Test Format</span>
+                </div>
+
+                <div className="p-4 rounded-2xl bg-zinc-950 border border-zinc-800 text-center">
+                  <span className="text-[10px] text-zinc-500 font-bold uppercase block mb-1">Cao nhất</span>
+                  <div className="text-2xl font-black text-emerald-400">{data?.monthly?.monthlyTestScores?.highestScore || 780}</div>
+                  <span className="text-[10px] text-emerald-300/70 font-semibold flex items-center justify-center gap-1">
+                    <span>Kỷ lục tháng</span>
+                    <Sparkles className="w-3 h-3 text-amber-400" />
+                  </span>
+                </div>
+
+                <div className="p-4 rounded-2xl bg-zinc-950 border border-zinc-800 text-center">
+                  <span className="text-[10px] text-zinc-500 font-bold uppercase block mb-1">Đã làm</span>
+                  <div className="text-2xl font-black text-purple-400">{data?.monthly?.monthlyTestScores?.testsTaken || 6} bài</div>
+                  <span className="text-[10px] text-zinc-400">Trung bình: {data?.monthly?.monthlyTestScores?.averageScore || 760}</span>
+                </div>
+              </div>
+            </div>
+
+            {/* 6. Monthly Goals Progress */}
+            <div className="rounded-3xl border border-white/5 bg-[#121214] p-6 space-y-4">
+              <div>
+                <h3 className="text-base font-bold text-white flex items-center gap-2">
+                  <Target className="w-4 h-4 text-red-500" />
+                  <span>Tiến Độ Mục Tiêu Tháng (Monthly Goals Progress)</span>
+                </h3>
+                <p className="text-xs text-zinc-400 mt-0.5">Các cột mốc mục tiêu đã đề ra trong tháng</p>
+              </div>
+
+              <div className="space-y-3 pt-1">
+                {data?.monthly?.monthlyGoalsProgress?.map((g: any) => (
+                  <div key={g.id} className="space-y-1.5">
+                    <div className="flex items-center justify-between text-xs">
+                      <span className="font-semibold text-zinc-300">{g.name}</span>
+                      <span className="font-bold text-white">{g.current} / {g.target} ({g.progress}%)</span>
+                    </div>
+                    <div className="w-full bg-zinc-900 rounded-full h-2 overflow-hidden">
+                      <div
+                        className={`h-full rounded-full transition-all duration-500 ${
+                          g.isCompleted ? "bg-emerald-500" : "bg-red-500"
+                        }`}
+                        style={{ width: `${g.progress}%` }}
+                      />
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          {/* 8. WEEK-BY-WEEK BREAKDOWN */}
+          <div className="rounded-3xl border border-white/5 bg-[#121214] p-6 space-y-4">
+            <div>
+              <h3 className="text-base font-bold text-white flex items-center gap-2">
+                <TrendingUp className="w-4 h-4 text-indigo-400" />
+                <span>Phân Tích Từng Tuần Trong Tháng (Week-by-Week Breakdown)</span>
+              </h3>
+              <p className="text-xs text-zinc-400 mt-0.5">Chi tiết hiệu suất học tập theo từng tuần</p>
+            </div>
+
+            <div className="overflow-x-auto">
+              <table className="w-full text-left text-xs border-collapse">
+                <thead>
+                  <tr className="border-b border-zinc-800 text-zinc-400 font-bold uppercase text-[10px]">
+                    <th className="py-3 px-4">Tuần</th>
+                    <th className="py-3 px-4">Ngày</th>
+                    <th className="py-3 px-4">Thời gian</th>
+                    <th className="py-3 px-4">Từ vựng</th>
+                    <th className="py-3 px-4">Câu làm</th>
+                    <th className="py-3 px-4">Độ chính xác</th>
+                    <th className="py-3 px-4">Bài thi</th>
+                  </tr>
+                </thead>
+                <tbody className="divide-y divide-zinc-800/60">
+                  {data?.monthly?.weekByWeekBreakdown?.map((week: any, idx: number) => (
+                    <tr key={idx} className={`hover:bg-white/[0.02] transition ${week.isCurrent ? "bg-red-600/10 font-bold" : ""}`}>
+                      <td className="py-3 px-4 text-white">
+                        {week.week}
+                        {week.isCurrent && <span className="ml-2 text-[9px] bg-red-600/30 text-red-300 px-1.5 py-0.5 rounded">Hiện tại</span>}
+                      </td>
+                      <td className="py-3 px-4 text-zinc-300">{week.date}</td>
+                      <td className="py-3 px-4 text-amber-400 font-semibold">{week.studyTime > 0 ? `${week.studyTime} phút` : "—"}</td>
+                      <td className="py-3 px-4 text-purple-400 font-semibold">{week.vocab > 0 ? `+${week.vocab} từ` : "—"}</td>
+                      <td className="py-3 px-4 text-blue-400 font-semibold">{week.practice > 0 ? `${week.practice} câu` : "—"}</td>
+                      <td className="py-3 px-4 text-emerald-400 font-semibold">{week.accuracy > 0 ? `${week.accuracy}%` : "—"}</td>
+                      <td className="py-3 px-4 text-zinc-400">{week.tests > 0 ? `${week.tests} bài` : "—"}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          {/* 9. MONTHLY COMPARISON (VS LAST MONTH) */}
+          <div className="rounded-3xl border border-white/5 bg-[#121214] p-6 space-y-4">
+            <div>
+              <h3 className="text-base font-bold text-white flex items-center gap-2">
+                <RotateCcw className="w-4 h-4 text-indigo-400" />
+                <span>So Sánh Hiệu Suất Tháng Này vs Tháng Trước (Monthly Comparison)</span>
+              </h3>
+              <p className="text-xs text-zinc-400 mt-0.5">Mức độ tăng trưởng và tiến bộ của bạn sau 30 ngày rèn luyện</p>
+            </div>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 pt-1">
+              <div className="p-4 rounded-2xl bg-zinc-950 border border-zinc-800 space-y-1">
+                <span className="text-[10px] text-zinc-500 font-bold uppercase">Thời gian học</span>
+                <div className="text-2xl font-black text-emerald-400">{data?.monthly?.monthlyComparison?.studyTime?.value}</div>
+                <p className="text-[11px] text-zinc-400">{data?.monthly?.monthlyComparison?.studyTime?.label}</p>
+              </div>
+
+              <div className="p-4 rounded-2xl bg-zinc-950 border border-zinc-800 space-y-1">
+                <span className="text-[10px] text-zinc-500 font-bold uppercase">Tích lũy từ vựng</span>
+                <div className="text-2xl font-black text-emerald-400">{data?.monthly?.monthlyComparison?.vocabulary?.value}</div>
+                <p className="text-[11px] text-zinc-400">{data?.monthly?.monthlyComparison?.vocabulary?.label}</p>
+              </div>
+
+              <div className="p-4 rounded-2xl bg-zinc-950 border border-zinc-800 space-y-1">
+                <span className="text-[10px] text-zinc-500 font-bold uppercase">Độ chính xác</span>
+                <div className="text-2xl font-black text-emerald-400">{data?.monthly?.monthlyComparison?.accuracy?.value}</div>
+                <p className="text-[11px] text-zinc-400">{data?.monthly?.monthlyComparison?.accuracy?.label}</p>
+              </div>
+
+              <div className="p-4 rounded-2xl bg-zinc-950 border border-zinc-800 space-y-1">
+                <span className="text-[10px] text-zinc-500 font-bold uppercase">Luyện tập</span>
+                <div className="text-2xl font-black text-emerald-400">{data?.monthly?.monthlyComparison?.practice?.value}</div>
+                <p className="text-[11px] text-zinc-400">{data?.monthly?.monthlyComparison?.practice?.label}</p>
+              </div>
+            </div>
+          </div>
+
+          {/* 10. MONTHLY ACHIEVEMENTS */}
+          <div className="rounded-3xl border border-white/5 bg-[#121214] p-6 space-y-4">
+            <h3 className="text-base font-bold text-white flex items-center gap-2">
+              <Trophy className="w-4 h-4 text-amber-400" />
+              <span>Thành Tích Hàng Tháng (Monthly Achievements)</span>
+            </h3>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
+              {data?.monthly?.monthlyAchievements?.map((a: any) => (
+                <div key={a.id} className="p-4 rounded-2xl border text-center space-y-1.5 bg-amber-950/10 border-amber-500/30 flex flex-col items-center">
+                  <div className="w-9 h-9 rounded-xl bg-amber-500/20 text-amber-400 flex items-center justify-center mb-1">
+                    <Award className="w-5 h-5" />
+                  </div>
+                  <h4 className="text-xs font-bold text-white">{a.title}</h4>
+                  <p className="text-[10px] text-zinc-400">{a.desc}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* 11. ADDITIONAL METRICS: Placement Test, Stage Progress, Time to Goal */}
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+            {/* Placement Test Score */}
+            <div className="rounded-3xl border border-white/5 bg-[#121214] p-6 space-y-4">
+              <h3 className="text-base font-bold text-white flex items-center gap-2">
+                <Award className="w-4 h-4 text-amber-400" />
+                <span>Điểm Kiểm Tra Xếp Loại (Placement Test)</span>
+              </h3>
+              <div className="p-4 rounded-2xl bg-zinc-950 border border-zinc-800 text-center">
+                <span className="text-[10px] text-zinc-500 font-bold uppercase block mb-1">Điểm xếp loại hiện tại</span>
+                <div className="text-3xl font-black text-white">{data?.monthly?.placementTestScore || 750}</div>
+                <span className="text-[10px] text-zinc-400">Cấp độ TOEIC</span>
+              </div>
+            </div>
+
+            {/* Stage Progress Percentage */}
+            <div className="rounded-3xl border border-white/5 bg-[#121214] p-6 space-y-4">
+              <h3 className="text-base font-bold text-white flex items-center gap-2">
+                <Map className="w-4 h-4 text-red-500" />
+                <span>Tiến Độ Chặng Hiện Tại (Stage Progress)</span>
+              </h3>
+              <div className="p-4 rounded-2xl bg-zinc-950 border border-zinc-800 text-center">
+                <span className="text-[10px] text-zinc-500 font-bold uppercase block mb-1">Chặng {score?.stage || 3}</span>
+                <div className="text-3xl font-black text-white">{data?.monthly?.stageProgressPercentage || 65}%</div>
+                <span className="text-[10px] text-zinc-400">Hoàn thành chặng hiện tại</span>
+              </div>
+              <div className="w-full bg-zinc-900 rounded-full h-2 overflow-hidden">
+                <div className="bg-gradient-to-r from-red-600 to-red-400 h-2 rounded-full" style={{ width: `${data?.monthly?.stageProgressPercentage || 65}%` }} />
+              </div>
+            </div>
+
+            {/* Time to Goal Estimation */}
+            <div className="rounded-3xl border border-white/5 bg-[#121214] p-6 space-y-4">
+              <h3 className="text-base font-bold text-white flex items-center gap-2">
+                <Target className="w-4 h-4 text-emerald-400" />
+                <span>Ước Tính Thời Gian Đến Mục Tiêu (Time to Goal)</span>
+              </h3>
+              <div className="p-4 rounded-2xl bg-zinc-950 border border-zinc-800 text-center">
+                <span className="text-[10px] text-zinc-500 font-bold uppercase block mb-1">Để đạt {score?.target || 900} điểm</span>
+                <div className="text-3xl font-black text-white">{data?.monthly?.timeToGoalEstimation?.monthsToGoal || 3} tháng</div>
+                <span className="text-[10px] text-zinc-400">{data?.monthly?.timeToGoalEstimation?.daysToGoal || 90} ngày</span>
+              </div>
+              <p className="text-xs text-zinc-400 text-center">Dự kiến hoàn thành: <span className="text-emerald-400 font-bold">{data?.monthly?.timeToGoalEstimation?.targetDate || "30/11/2026"}</span></p>
             </div>
           </div>
         </div>
