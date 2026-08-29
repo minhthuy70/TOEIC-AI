@@ -5,11 +5,13 @@ import { ScheduleController } from "./schedule.controller";
 import { ScheduleService } from "./schedule.service";
 import { PlannerController } from "./planner.controller";
 import { PlannerService } from "./planner.service";
+import { ReminderController } from "./reminder.controller";
+import { ReminderService } from "./reminder.service";
 import { PrismaModule } from "../prisma/prisma.module";
 
 @Module({
   imports: [PrismaModule],
-  controllers: [DashboardController, ScheduleController, PlannerController],
-  providers: [DashboardService, ScheduleService, PlannerService],
+  controllers: [DashboardController, ScheduleController, PlannerController, ReminderController],
+  providers: [DashboardService, ScheduleService, PlannerService, ReminderService],
 })
 export class DashboardModule {}

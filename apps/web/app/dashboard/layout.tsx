@@ -22,6 +22,7 @@ import {
   Trophy,
   Calendar,
   ListTodo,
+  Bell,
 } from "lucide-react";
 import { useAutoLogout } from "../../hooks/useAutoLogout";
 import { useSessionWarning } from "../../hooks/useSessionWarning";
@@ -46,6 +47,7 @@ const NAV_MAIN = [
 const NAV_BOTTOM = [
   { label: "Chuỗi ngày", icon: Flame, href: "/dashboard/streak" },
   { label: "Thành tích", icon: Trophy, href: "/dashboard/achievements" },
+  { label: "Nhắc nhở", icon: Bell, href: "/dashboard/reminders" },
   { label: "Hồ sơ cá nhân", icon: UserIcon, href: "/dashboard/profile" },
 ];
 

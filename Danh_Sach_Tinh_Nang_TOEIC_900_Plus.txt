@@ -843,17 +843,17 @@ Dựa trên lộ trình học TOEIC 900+ - Phiên bản nâng cấp
 [x] - Daily progress bar - Thanh tiến độ hàng ngày
 
 10.3. Study Reminders (Nhắc nhở học tập)
-- Reminder settings - Cài đặt nhắc nhở
-- Reminder time selection - Chọn thời gian nhắc nhở
-- Reminder type (push notification/email) - Loại nhắc nhở
-- Custom reminder message - Thông điệp nhắc nhở tùy chỉnh
-- Reminder frequency (daily/weekly) - Tần suất nhắc nhở
-- Reminder for specific tasks - Nhắc nhở nhiệm vụ cụ thể
-- Reminder for reviews due - Nhắc nhở ôn tập đến hạn
-- Reminder for tests - Nhắc nhở kiểm tra
-- Reminder for streak maintenance - Nhắc nhở duy trì chuỗi
-- Snooze option - Tùy chọn hoãn
-- Disable reminders - Tắt nhắc nhở
+[x] - Reminder settings - Cài đặt nhắc nhở
+[x] - Reminder time selection - Chọn thời gian nhắc nhở
+[x] - Reminder type (push notification/email) - Loại nhắc nhở
+[x] - Custom reminder message - Thông điệp nhắc nhở tùy chỉnh
+[x] - Reminder frequency (daily/weekly) - Tần suất nhắc nhở
+[x] - Reminder for specific tasks - Nhắc nhở nhiệm vụ cụ thể
+[x] - Reminder for reviews due - Nhắc nhở ôn tập đến hạn
+[x] - Reminder for tests - Nhắc nhở kiểm tra
+[x] - Reminder for streak maintenance - Nhắc nhở duy trì chuỗi
+[x] - Snooze option - Tùy chọn hoãn
+[x] - Disable reminders - Tắt nhắc nhở
 
 10.4. Smart Recommendations (Gợi ý thông minh)
 - AI-powered study suggestions - Gợi ý học tập AI

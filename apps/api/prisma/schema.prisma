@@ -43,6 +43,7 @@ model User {
   userAchievements          UserAchievement[]
   studySchedules            StudySchedule[]
   dailyTasks                DailyTask[]
+  reminderSetting           StudyReminderSetting?
 }
 
 model UserSession {
@@ -586,4 +587,25 @@ model DailyTask {
 
   @@index([userId, taskDate])
   @@map("daily_tasks")
+}
+
+model StudyReminderSetting {
+  id                Int      @id @default(autoincrement())
+  userId            Int      @unique @map("user_id")
+  enabled           Boolean  @default(true)
+  reminderTime      String   @default("08:00") @db.VarChar(5) // Định dạng "HH:MM"
+  reminderType      String   @default("push") @db.VarChar(20)  // "push", "email", "both"
+  customMessage     String   @default("Đã đến giờ học TOEIC rồi, hãy cùng vào học nhé!") @db.VarChar(255)
+  frequency         String   @default("daily") @db.VarChar(20) // "daily", "weekly"
+  tasksEnabled      Boolean  @default(true)                    // Nhắc nhở nhiệm vụ tự chọn
+  reviewsEnabled    Boolean  @default(true)                    // Nhắc nhở ôn tập đến hạn
+  testsEnabled      Boolean  @default(true)                    // Nhắc nhở kiểm tra
+  streakEnabled     Boolean  @default(true)                    // Nhắc nhở giữ chuỗi
+  snoozeMinutes     Int      @default(15)                      // Số phút hoãn mặc định
+  createdAt         DateTime @default(now()) @map("created_at") @db.Timestamp(6)
+  updatedAt         DateTime @default(now()) @updatedAt @map("updated_at") @db.Timestamp(6)
+
+  user              User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("study_reminder_settings")
 }
