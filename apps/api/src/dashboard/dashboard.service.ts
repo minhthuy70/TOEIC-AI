@@ -1158,4 +1158,174 @@ export class DashboardService {
       score: overview.score,
     };
   }
+
+  // Goal Management Methods
+  async createGoal(userId: number, goalData: any) {
+    try {
+      const goal = await this.prisma.goal.create({
+        data: {
+          userId,
+          type: goalData.type,
+          targetValue: goalData.targetValue,
+          deadline: goalData.deadline ? new Date(goalData.deadline) : null,
+          title: goalData.title,
+          description: goalData.description,
+          progress: 0,
+          status: 'on_track',
+        },
+      });
+      return { success: true, goal };
+    } catch (error) {
+      console.error('Error creating goal:', error);
+      throw new Error('Failed to create goal');
+    }
+  }
+
+  async getGoals(userId: number) {
+    try {
+      const goals = await this.prisma.goal.findMany({
+        where: { userId },
+        orderBy: { createdAt: 'desc' },
+      });
+
+      // Calculate progress for each goal
+      const goalsWithProgress = await Promise.all(goals.map(async (goal) => {
+        let currentProgress = 0;
+        
+        if (goal.type === 'vocabulary') {
+          const vocabCount = await this.prisma.userVocabularyProgress.count({
+            where: { userId, status: { not: 'NEW' } },
+          });
+          currentProgress = Math.min(Math.round((vocabCount / goal.targetValue) * 100), 100);
+        } else if (goal.type === 'score') {
+          const user = await this.prisma.user.findUnique({
+            where: { id: userId },
+            include: { profile: true },
+          });
+          const currentScore = user?.profile?.currentScore || 0;
+          currentProgress = Math.min(Math.round((currentScore / goal.targetValue) * 100), 100);
+        } else if (goal.type === 'study_time') {
+          // Estimate study time in minutes
+          const vocabCount = await this.prisma.userVocabularyProgress.count({
+            where: { userId, status: { not: 'NEW' } },
+          });
+          const grammarCount = await this.prisma.userGrammarProgress.count({
+            where: { userId, completed: true },
+          });
+          const listeningCount = await this.prisma.user_listening_progress.count({
+            where: { user_id: userId, completed: true },
+          });
+          const readingCount = await this.prisma.user_reading_progress.count({
+            where: { user_id: userId, completed: true },
+          });
+          const practiceCount = await this.prisma.practice_sessions.count({
+            where: { user_id: userId },
+          });
+          const mockTestCount = await this.prisma.mock_test_attempts.count({
+            where: { user_id: userId },
+          });
+          
+          const totalMinutes = vocabCount * 1 + grammarCount * 10 + listeningCount * 10 + readingCount * 10 + practiceCount * 15 + mockTestCount * 45;
+          currentProgress = Math.min(Math.round((totalMinutes / goal.targetValue) * 100), 100);
+        }
+
+        // Update goal status based on progress and deadline
+        let status = goal.status;
+        if (currentProgress >= 100) {
+          status = 'completed';
+        } else if (goal.deadline) {
+          const daysUntilDeadline = Math.ceil((new Date(goal.deadline).getTime() - Date.now()) / (1000 * 60 * 60 * 24));
+          const expectedProgress = 100 - daysUntilDeadline;
+          if (currentProgress < expectedProgress - 20) {
+            status = 'behind';
+          } else if (currentProgress > expectedProgress + 20) {
+            status = 'ahead';
+          } else {
+            status = 'on_track';
+          }
+        }
+
+        // Update goal in database
+        await this.prisma.goal.update({
+          where: { id: goal.id },
+          data: { progress: currentProgress, status },
+        });
+
+        return {
+          ...goal,
+          progress: currentProgress,
+          status,
+          completionPercentage: currentProgress,
+        };
+      }));
+
+      return { success: true, goals: goalsWithProgress };
+    } catch (error) {
+      console.error('Error fetching goals:', error);
+      throw new Error('Failed to fetch goals');
+    }
+  }
+
+  async updateGoal(goalId: number, userId: number, goalData: any) {
+    try {
+      const goal = await this.prisma.goal.findFirst({
+        where: { id: goalId, userId },
+      });
+
+      if (!goal) {
+        throw new Error('Goal not found');
+      }
+
+      const updatedGoal = await this.prisma.goal.update({
+        where: { id: goalId },
+        data: {
+          type: goalData.type || goal.type,
+          targetValue: goalData.targetValue || goal.targetValue,
+          deadline: goalData.deadline ? new Date(goalData.deadline) : goal.deadline,
+          title: goalData.title || goal.title,
+          description: goalData.description || goal.description,
+        },
+      });
+
+      return { success: true, goal: updatedGoal };
+    } catch (error) {
+      console.error('Error updating goal:', error);
+      throw new Error('Failed to update goal');
+    }
+  }
+
+  async deleteGoal(goalId: number, userId: number) {
+    try {
+      const goal = await this.prisma.goal.findFirst({
+        where: { id: goalId, userId },
+      });
+
+      if (!goal) {
+        throw new Error('Goal not found');
+      }
+
+      await this.prisma.goal.delete({
+        where: { id: goalId },
+      });
+
+      return { success: true, message: 'Goal deleted successfully' };
+    } catch (error) {
+      console.error('Error deleting goal:', error);
+      throw new Error('Failed to delete goal');
+    }
+  }
+
+  async getGoalHistory(userId: number) {
+    try {
+      const completedGoals = await this.prisma.goal.findMany({
+        where: { userId, status: 'completed' },
+        orderBy: { completedAt: 'desc' },
+      });
+
+      return { success: true, history: completedGoals };
+    } catch (error) {
+      console.error('Error fetching goal history:', error);
+      throw new Error('Failed to fetch goal history');
+    }
+  }
 }

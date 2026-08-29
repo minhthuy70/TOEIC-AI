@@ -1,4 +1,4 @@
-import { Controller, Get, Req, UseGuards, HttpException, HttpStatus } from "@nestjs/common";
+import { Controller, Get, Req, UseGuards, HttpException, HttpStatus, Post, Put, Delete, Body } from "@nestjs/common";
 import { JwtAuthGuard } from "../auth/jwt-auth.guard";
 import { DashboardService } from "./dashboard.service";
 
@@ -70,6 +70,79 @@ export class DashboardController {
       return this.dashboardService.getDetailedAnalytics(userId);
     } catch (error) {
       console.error('Dashboard analytics error:', error);
+      throw new HttpException(
+        { message: error.message || 'Internal server error', statusCode: 500 },
+        HttpStatus.INTERNAL_SERVER_ERROR
+      );
+    }
+  }
+
+  // Goal Management Endpoints
+  @Post("goals")
+  async createGoal(@Req() req: any, @Body() goalData: any) {
+    try {
+      const userId = req.user.userId;
+      return this.dashboardService.createGoal(userId, goalData);
+    } catch (error) {
+      console.error('Create goal error:', error);
+      throw new HttpException(
+        { message: error.message || 'Internal server error', statusCode: 500 },
+        HttpStatus.INTERNAL_SERVER_ERROR
+      );
+    }
+  }
+
+  @Get("goals")
+  async getGoals(@Req() req: any) {
+    try {
+      const userId = req.user.userId;
+      return this.dashboardService.getGoals(userId);
+    } catch (error) {
+      console.error('Get goals error:', error);
+      throw new HttpException(
+        { message: error.message || 'Internal server error', statusCode: 500 },
+        HttpStatus.INTERNAL_SERVER_ERROR
+      );
+    }
+  }
+
+  @Put("goals/:id")
+  async updateGoal(@Req() req: any, @Body() goalData: any) {
+    try {
+      const userId = req.user.userId;
+      const goalId = parseInt(req.params.id);
+      return this.dashboardService.updateGoal(goalId, userId, goalData);
+    } catch (error) {
+      console.error('Update goal error:', error);
+      throw new HttpException(
+        { message: error.message || 'Internal server error', statusCode: 500 },
+        HttpStatus.INTERNAL_SERVER_ERROR
+      );
+    }
+  }
+
+  @Delete("goals/:id")
+  async deleteGoal(@Req() req: any) {
+    try {
+      const userId = req.user.userId;
+      const goalId = parseInt(req.params.id);
+      return this.dashboardService.deleteGoal(goalId, userId);
+    } catch (error) {
+      console.error('Delete goal error:', error);
+      throw new HttpException(
+        { message: error.message || 'Internal server error', statusCode: 500 },
+        HttpStatus.INTERNAL_SERVER_ERROR
+      );
+    }
+  }
+
+  @Get("goals/history")
+  async getGoalHistory(@Req() req: any) {
+    try {
+      const userId = req.user.userId;
+      return this.dashboardService.getGoalHistory(userId);
+    } catch (error) {
+      console.error('Get goal history error:', error);
       throw new HttpException(
         { message: error.message || 'Internal server error', statusCode: 500 },
         HttpStatus.INTERNAL_SERVER_ERROR

@@ -39,6 +39,7 @@ model User {
   mock_test_attempts            mock_test_attempts[]
   stageChangeRequests       StageChangeRequest[] @relation("requestedBy")
   reviewedStageRequests     StageChangeRequest[] @relation("reviewedBy")
+  goals                     Goal[]
 }
 
 model UserSession {
@@ -481,4 +482,25 @@ model SystemSetting {
   updated_at  DateTime @default(now()) @updatedAt @db.Timestamp(6)
 
   @@map("system_settings")
+}
+
+model Goal {
+  id          Int      @id @default(autoincrement())
+  userId      Int      @map("user_id")
+  type        String   @db.VarChar(50) // score, vocabulary, study_time
+  targetValue Int      @map("target_value")
+  deadline    DateTime? @db.Timestamp(6)
+  progress    Int      @default(0)
+  status      String   @default("on_track") @db.VarChar(20) // on_track, behind, ahead, completed
+  createdAt   DateTime @default(now()) @map("created_at") @db.Timestamp(6)
+  updatedAt   DateTime @default(now()) @updatedAt @map("updated_at") @db.Timestamp(6)
+  completedAt DateTime? @map("completed_at") @db.Timestamp(6)
+  title       String?  @db.VarChar(255)
+  description String?  @db.Text
+
+  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@index([status])
+  @@map("goals")
 }

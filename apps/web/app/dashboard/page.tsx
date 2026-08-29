@@ -30,6 +30,10 @@ import {
   ClipboardList,
   BookA,
   AlertTriangle,
+  Plus,
+  Edit,
+  Trash2,
+  PartyPopper,
 } from "lucide-react";
 
 const STAGES = [
@@ -104,7 +108,11 @@ export default function DashboardPage() {
   const [data, setData] = useState<any>(null);
   const [loading, setLoading] = useState(true);
   const [expandedStage, setExpandedStage] = useState<number | null>(null);
-  const [period, setPeriod] = useState<"daily" | "weekly" | "monthly" | "statistics" | "analytics">("daily");
+  const [period, setPeriod] = useState<"daily" | "weekly" | "monthly" | "statistics" | "analytics" | "goals">("daily");
+  const [showGoalForm, setShowGoalForm] = useState(false);
+  const [editingGoal, setEditingGoal] = useState<any>(null);
+  const [goals, setGoals] = useState<any[]>([]);
+  const [goalHistory, setGoalHistory] = useState<any[]>([]);
 
   useEffect(() => {
     fetchDashboard();
@@ -114,11 +122,85 @@ export default function DashboardPage() {
     fetchDashboard();
   }, [period]);
 
+  // Fetch goals when period is goals
+  useEffect(() => {
+    if (period === "goals") {
+      fetchGoals();
+    }
+  }, [period]);
+
+  const fetchGoals = async () => {
+    try {
+      const res = await apiFetch<any>("/dashboard/goals");
+      if (res.success) {
+        setGoals(res.goals);
+      }
+    } catch (error) {
+      console.error("Error fetching goals:", error);
+    }
+  };
+
+  const fetchGoalHistory = async () => {
+    try {
+      const res = await apiFetch<any>("/dashboard/goals/history");
+      if (res.success) {
+        setGoalHistory(res.history);
+      }
+    } catch (error) {
+      console.error("Error fetching goal history:", error);
+    }
+  };
+
+  const handleCreateGoal = async (goalData: any) => {
+    try {
+      const res = await apiFetch<any>("/dashboard/goals", {
+        method: "POST",
+        body: JSON.stringify(goalData),
+      });
+      if (res.success) {
+        setShowGoalForm(false);
+        fetchGoals();
+      }
+    } catch (error) {
+      console.error("Error creating goal:", error);
+    }
+  };
+
+  const handleUpdateGoal = async (goalId: number, goalData: any) => {
+    try {
+      const res = await apiFetch<any>(`/dashboard/goals/${goalId}`, {
+        method: "PUT",
+        body: JSON.stringify(goalData),
+      });
+      if (res.success) {
+        setEditingGoal(null);
+        fetchGoals();
+      }
+    } catch (error) {
+      console.error("Error updating goal:", error);
+    }
+  };
+
+  const handleDeleteGoal = async (goalId: number) => {
+    try {
+      const res = await apiFetch<any>(`/dashboard/goals/${goalId}`, {
+        method: "DELETE",
+      });
+      if (res.success) {
+        fetchGoals();
+      }
+    } catch (error) {
+      console.error("Error deleting goal:", error);
+    }
+  };
+
   const fetchDashboard = async () => {
     try {
       setLoading(true);
       let res;
-      if (period === "analytics") {
+      if (period === "goals") {
+        res = await apiFetch<any>("/dashboard/goals");
+      } else if (period === "analytics") {
         res = await apiFetch<any>("/dashboard/analytics");
       } else if (period === "statistics") {
         res = await apiFetch<any>("/dashboard/statistics");
@@ -215,9 +297,9 @@ export default function DashboardPage() {
       </div>
 
       {/* ================================================== */}
-      {/* PERIOD SWITCHER: DAILY (9.1) VS WEEKLY (9.2) VS MONTHLY (9.3) VS STATISTICS (9.4) VS ANALYTICS (9.5) */}
+      {/* PERIOD SWITCHER: DAILY (9.1) VS WEEKLY (9.2) VS MONTHLY (9.3) VS STATISTICS (9.4) VS ANALYTICS (9.5) VS GOALS (9.6) */}
       {/* ================================================== */}
-      <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 rounded-2xl border border-white/5 bg-[#121214] p-1 max-w-3xl">
+      <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 rounded-2xl border border-white/5 bg-[#121214] p-1 max-w-4xl">
         <button
           type="button"
           onClick={() => setPeriod("daily")}
@@ -281,6 +363,19 @@ export default function DashboardPage() {
         >
           <Sparkles className="w-4 h-4" />
           <span>Phân tích (9.5)</span>
+        </button>
+
+        <button
+          type="button"
+          onClick={() => setPeriod("goals")}
+          className={`flex items-center justify-center gap-1.5 rounded-xl px-3 py-2.5 text-xs sm:text-sm font-bold transition ${
+            period === "goals"
+              ? "bg-red-600 text-white shadow-md"
+              : "text-zinc-400 hover:text-white"
+          }`}
+        >
+          <Target className="w-4 h-4" />
+          <span>Mục tiêu (9.6)</span>
         </button>
       </div>
 
@@ -1924,6 +2019,302 @@ export default function DashboardPage() {
                   </div>
                 </div>
               </div>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* ================================================== */}
+      {/* VIEW 6: GOAL TRACKING (9.6) */}
+      {/* ================================================== */}
+      {period === "goals" && (
+        <div className="space-y-8 animate-fade-in">
+          {/* Header with Create Button */}
+          <div className="flex justify-between items-center">
+            <div>
+              <h1 className="text-2xl font-bold text-white flex items-center gap-2.5">
+                <Target className="w-6 h-6 text-red-400" />
+                <span>Theo Dõi Mục Tiêu (Goal Tracking)</span>
+              </h1>
+              <p className="text-zinc-400 text-sm mt-1">Quản lý và theo dõi tiến độ các mục tiêu học tập của bạn</p>
+            </div>
+            <button
+              type="button"
+              onClick={() => setShowGoalForm(true)}
+              className="flex items-center gap-2 px-5 py-3 rounded-2xl bg-red-600 hover:bg-red-500 text-white text-xs font-bold shadow-xl shadow-red-600/25 transition active:scale-95"
+            >
+              <Plus className="w-4 h-4" />
+              <span>Đặt mục tiêu mới</span>
+            </button>
+          </div>
+
+          {/* Goal Form Modal */}
+          {showGoalForm && (
+            <div className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-50 p-4">
+              <div className="bg-zinc-900 border border-zinc-800 rounded-3xl p-6 w-full max-w-md space-y-4">
+                <div className="flex justify-between items-center">
+                  <h3 className="text-lg font-bold text-white">
+                    {editingGoal ? "Chỉnh sửa mục tiêu" : "Đặt mục tiêu mới"}
+                  </h3>
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setShowGoalForm(false);
+                      setEditingGoal(null);
+                    }}
+                    className="text-zinc-400 hover:text-white"
+                  >
+                    <Lock className="w-5 h-5" />
+                  </button>
+                </div>
+                <form
+                  onSubmit={(e) => {
+                    e.preventDefault();
+                    const formData = new FormData(e.currentTarget);
+                    const goalData = {
+                      type: formData.get("type") as string,
+                      targetValue: parseInt(formData.get("targetValue") as string),
+                      deadline: formData.get("deadline") as string,
+                      title: formData.get("title") as string,
+                      description: formData.get("description") as string,
+                    };
+                    if (editingGoal) {
+                      handleUpdateGoal(editingGoal.id, goalData);
+                    } else {
+                      handleCreateGoal(goalData);
+                    }
+                  }}
+                  className="space-y-4"
+                >
+                  <div>
+                    <label className="text-xs font-bold text-zinc-400 uppercase block mb-2">Loại mục tiêu</label>
+                    <select
+                      name="type"
+                      defaultValue={editingGoal?.type || "score"}
+                      className="w-full bg-zinc-950 border border-zinc-800 rounded-xl px-4 py-3 text-white text-sm focus:outline-none focus:border-red-500"
+                    >
+                      <option value="score">Điểm số TOEIC</option>
+                      <option value="vocabulary">Số từ vựng</option>
+                      <option value="study_time">Thời gian học (phút)</option>
+                    </select>
+                  </div>
+                  <div>
+                    <label className="text-xs font-bold text-zinc-400 uppercase block mb-2">Giá trị mục tiêu</label>
+                    <input
+                      type="number"
+                      name="targetValue"
+                      defaultValue={editingGoal?.targetValue || ""}
+                      placeholder="Nhập giá trị mục tiêu"
+                      className="w-full bg-zinc-950 border border-zinc-800 rounded-xl px-4 py-3 text-white text-sm focus:outline-none focus:border-red-500"
+                      required
+                    />
+                  </div>
+                  <div>
+                    <label className="text-xs font-bold text-zinc-400 uppercase block mb-2">Hạn mục (tùy chọn)</label>
+                    <input
+                      type="date"
+                      name="deadline"
+                      defaultValue={editingGoal?.deadline ? editingGoal.deadline.split('T')[0] : ""}
+                      className="w-full bg-zinc-950 border border-zinc-800 rounded-xl px-4 py-3 text-white text-sm focus:outline-none focus:border-red-500"
+                    />
+                  </div>
+                  <div>
+                    <label className="text-xs font-bold text-zinc-400 uppercase block mb-2">Tiêu đề</label>
+                    <input
+                      type="text"
+                      name="title"
+                      defaultValue={editingGoal?.title || ""}
+                      placeholder="Tên mục tiêu"
+                      className="w-full bg-zinc-950 border border-zinc-800 rounded-xl px-4 py-3 text-white text-sm focus:outline-none focus:border-red-500"
+                    />
+                  </div>
+                  <div>
+                    <label className="text-xs font-bold text-zinc-400 uppercase block mb-2">Mô tả (tùy chọn)</label>
+                    <textarea
+                      name="description"
+                      defaultValue={editingGoal?.description || ""}
+                      placeholder="Mô tả chi tiết mục tiêu"
+                      rows={3}
+                      className="w-full bg-zinc-950 border border-zinc-800 rounded-xl px-4 py-3 text-white text-sm focus:outline-none focus:border-red-500 resize-none"
+                    />
+                  </div>
+                  <button
+                    type="submit"
+                    className="w-full py-3 rounded-xl bg-red-600 hover:bg-red-500 text-white font-bold text-sm transition"
+                  >
+                    {editingGoal ? "Cập nhật mục tiêu" : "Tạo mục tiêu"}
+                  </button>
+                </form>
+              </div>
+            </div>
+          )}
+
+          {/* Active Goals */}
+          <div className="rounded-3xl border border-white/5 bg-[#121214] p-6 space-y-4">
+            <h3 className="text-base font-bold text-white flex items-center gap-2">
+              <Target className="w-4 h-4 text-red-500" />
+              <span>Mục Tiêu Đang Hoạt Động</span>
+            </h3>
+            {goals.length === 0 ? (
+              <div className="text-center py-8">
+                <Target className="w-12 h-12 text-zinc-600 mx-auto mb-3" />
+                <p className="text-zinc-400 text-sm">Chưa có mục tiêu nào. Hãy đặt mục tiêu đầu tiên của bạn!</p>
+              </div>
+            ) : (
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                {goals.map((goal) => (
+                  <div key={goal.id} className="p-4 rounded-2xl bg-zinc-950 border border-zinc-800 space-y-3">
+                    <div className="flex justify-between items-start">
+                      <div>
+                        <h4 className="text-sm font-bold text-white">{goal.title || `${goal.type} goal`}</h4>
+                        <p className="text-[10px] text-zinc-400 mt-1">{goal.type === 'score' ? 'Điểm số' : goal.type === 'vocabulary' ? 'Từ vựng' : 'Thời gian học'}</p>
+                      </div>
+                      <div className="flex gap-1">
+                        <button
+                          type="button"
+                          onClick={() => {
+                            setEditingGoal(goal);
+                            setShowGoalForm(true);
+                          }}
+                          className="p-1.5 rounded-lg bg-zinc-800 hover:bg-zinc-700 text-zinc-400 hover:text-white transition"
+                        >
+                          <Edit className="w-3.5 h-3.5" />
+                        </button>
+                        <button
+                          type="button"
+                          onClick={() => handleDeleteGoal(goal.id)}
+                          className="p-1.5 rounded-lg bg-zinc-800 hover:bg-rose-900/30 text-zinc-400 hover:text-rose-400 transition"
+                        >
+                          <Trash2 className="w-3.5 h-3.5" />
+                        </button>
+                      </div>
+                    </div>
+                    <div className="space-y-1.5">
+                      <div className="flex justify-between text-xs">
+                        <span className="text-zinc-400">Tiến độ</span>
+                        <span className="font-bold text-white">{goal.progress}%</span>
+                      </div>
+                      <div className="w-full bg-zinc-900 rounded-full h-2 overflow-hidden">
+                        <div
+                          className={`h-full rounded-full transition-all duration-500 ${
+                            goal.status === 'completed' ? "bg-emerald-500" : 
+                            goal.status === 'behind' ? "bg-rose-500" : 
+                            goal.status === 'ahead' ? "bg-amber-500" : "bg-blue-500"
+                          }`}
+                          style={{ width: `${goal.progress}%` }}
+                        />
+                      </div>
+                    </div>
+                    <div className="flex justify-between items-center">
+                      <span className={`text-[10px] font-bold px-2 py-1 rounded-full ${
+                        goal.status === 'completed' ? "bg-emerald-500/20 text-emerald-300" :
+                        goal.status === 'behind' ? "bg-rose-500/20 text-rose-300" :
+                        goal.status === 'ahead' ? "bg-amber-500/20 text-amber-300" :
+                        "bg-blue-500/20 text-blue-300"
+                      }`}>
+                        {goal.status === 'completed' ? "Đã hoàn thành" :
+                         goal.status === 'behind' ? "Lịch trình" :
+                         goal.status === 'ahead' ? "Trước lịch" : "Đúng lịch"}
+                      </span>
+                      {goal.deadline && (
+                        <span className="text-[10px] text-zinc-500">
+                          {new Date(goal.deadline).toLocaleDateString('vi-VN')}
+                        </span>
+                      )}
+                    </div>
+                    {goal.status === 'completed' && (
+                      <div className="p-2 rounded-xl bg-emerald-950/20 border border-emerald-500/30 text-center">
+                        <PartyPopper className="w-5 h-5 text-emerald-400 mx-auto mb-1" />
+                        <p className="text-[10px] font-bold text-emerald-300">Chúc mừng! 🎉</p>
+                      </div>
+                    )}
+                  </div>
+                ))}
+              </div>
+            )}
+          </div>
+
+          {/* Goal History */}
+          <div className="rounded-3xl border border-white/5 bg-[#121214] p-6 space-y-4">
+            <div className="flex justify-between items-center">
+              <h3 className="text-base font-bold text-white flex items-center gap-2">
+                <Award className="w-4 h-4 text-amber-400" />
+                <span>Lịch Sử Mục Tiêu</span>
+              </h3>
+              <button
+                type="button"
+                onClick={fetchGoalHistory}
+                className="text-xs text-zinc-400 hover:text-white transition"
+              >
+                Tải lại
+              </button>
+            </div>
+            {goalHistory.length === 0 ? (
+              <div className="text-center py-6">
+                <Award className="w-10 h-10 text-zinc-600 mx-auto mb-2" />
+                <p className="text-zinc-400 text-sm">Chưa có mục tiêu nào hoàn thành</p>
+              </div>
+            ) : (
+              <div className="space-y-3">
+                {goalHistory.map((goal) => (
+                  <div key={goal.id} className="p-4 rounded-2xl bg-zinc-950 border border-emerald-500/30 flex items-center justify-between">
+                    <div>
+                      <h4 className="text-sm font-bold text-white">{goal.title || `${goal.type} goal`}</h4>
+                      <p className="text-[10px] text-zinc-400 mt-1">Hoàn thành: {new Date(goal.completedAt || goal.createdAt).toLocaleDateString('vi-VN')}</p>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <PartyPopper className="w-5 h-5 text-emerald-400" />
+                      <span className="text-xs font-bold text-emerald-400">100%</span>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            )}
+          </div>
+
+          {/* Goal Notifications */}
+          <div className="rounded-3xl border border-purple-500/30 bg-gradient-to-br from-purple-950/20 via-zinc-900 to-zinc-950 p-6 space-y-4">
+            <h3 className="text-base font-bold text-white flex items-center gap-2">
+              <Bell className="w-4 h-4 text-purple-400" />
+              <span>Thông Báo Mục Tiêu</span>
+            </h3>
+            <div className="space-y-3">
+              {goals.filter(g => g.status === 'behind').length > 0 && (
+                <div className="p-3 rounded-xl bg-rose-950/20 border border-rose-500/30 flex items-start gap-3">
+                  <AlertTriangle className="w-5 h-5 text-rose-400 shrink-0 mt-0.5" />
+                  <div>
+                    <p className="text-xs font-bold text-rose-300">Cảnh báo: Một số mục tiêu đang bị chậm tiến độ</p>
+                    <p className="text-[10px] text-zinc-400 mt-1">Hãy tăng cường học tập để đạt mục tiêu đúng hạn!</p>
+                  </div>
+                </div>
+              )}
+              {goals.filter(g => g.status === 'ahead').length > 0 && (
+                <div className="p-3 rounded-xl bg-emerald-950/20 border border-emerald-500/30 flex items-start gap-3">
+                  <Sparkles className="w-5 h-5 text-emerald-400 shrink-0 mt-0.5" />
+                  <div>
+                    <p className="text-xs font-bold text-emerald-300">Tuyệt vời! Bạn đang tiến bộ nhanh hơn dự kiến</p>
+                    <p className="text-[10px] text-zinc-400 mt-1">Tiếp tục duy trì phong độ học tập xuất sắc!</p>
+                  </div>
+                </div>
+              )}
+              {goals.filter(g => g.status === 'completed').length > 0 && (
+                <div className="p-3 rounded-xl bg-amber-950/20 border border-amber-500/30 flex items-start gap-3">
+                  <PartyPopper className="w-5 h-5 text-amber-400 shrink-0 mt-0.5" />
+                  <div>
+                    <p className="text-xs font-bold text-amber-300">Chúc mừng! Bạn đã hoàn thành mục tiêu</p>
+                    <p className="text-[10px] text-zinc-400 mt-1">Hãy đặt mục tiêu mới để tiếp tục tiến bộ!</p>
+                  </div>
+                </div>
+              )}
+              {goals.filter(g => g.status === 'on_track').length > 0 && goals.filter(g => g.status !== 'completed').length === goals.filter(g => g.status === 'on_track').length && (
+                <div className="p-3 rounded-xl bg-blue-950/20 border border-blue-500/30 flex items-start gap-3">
+                  <Check className="w-5 h-5 text-blue-400 shrink-0 mt-0.5" />
+                  <div>
+                    <p className="text-xs font-bold text-blue-300">Đúng lịch trình</p>
+                    <p className="text-[10px] text-zinc-400 mt-1">Bạn đang đi đúng hướng để đạt mục tiêu!</p>
+                  </div>
+                </div>
+              )}
             </div>
           </div>
         </div>
