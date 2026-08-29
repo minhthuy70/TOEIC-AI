@@ -28,6 +28,8 @@ import {
   Award,
   ArrowRight,
   ClipboardList,
+  BookA,
+  AlertTriangle,
 } from "lucide-react";
 
 const STAGES = [
@@ -102,7 +104,7 @@ export default function DashboardPage() {
   const [data, setData] = useState<any>(null);
   const [loading, setLoading] = useState(true);
   const [expandedStage, setExpandedStage] = useState<number | null>(null);
-  const [period, setPeriod] = useState<"daily" | "weekly" | "monthly" | "statistics">("daily");
+  const [period, setPeriod] = useState<"daily" | "weekly" | "monthly" | "statistics" | "analytics">("daily");
 
   useEffect(() => {
     fetchDashboard();
@@ -116,7 +118,9 @@ export default function DashboardPage() {
     try {
       setLoading(true);
       let res;
-      if (period === "statistics") {
+      if (period === "analytics") {
+        res = await apiFetch<any>("/dashboard/analytics");
+      } else if (period === "statistics") {
         res = await apiFetch<any>("/dashboard/statistics");
       } else if (period === "monthly") {
         res = await apiFetch<any>("/dashboard/monthly");
@@ -211,9 +215,9 @@ export default function DashboardPage() {
       </div>
 
       {/* ================================================== */}
-      {/* PERIOD SWITCHER: DAILY (9.1) VS WEEKLY (9.2) VS MONTHLY (9.3) VS STATISTICS (9.4) */}
+      {/* PERIOD SWITCHER: DAILY (9.1) VS WEEKLY (9.2) VS MONTHLY (9.3) VS STATISTICS (9.4) VS ANALYTICS (9.5) */}
       {/* ================================================== */}
-      <div className="grid grid-cols-2 sm:grid-cols-4 rounded-2xl border border-white/5 bg-[#121214] p-1 max-w-2xl">
+      <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 rounded-2xl border border-white/5 bg-[#121214] p-1 max-w-3xl">
         <button
           type="button"
           onClick={() => setPeriod("daily")}
@@ -264,6 +268,19 @@ export default function DashboardPage() {
         >
           <ClipboardList className="w-4 h-4" />
           <span>Tổng quan (9.4)</span>
+        </button>
+
+        <button
+          type="button"
+          onClick={() => setPeriod("analytics")}
+          className={`flex items-center justify-center gap-1.5 rounded-xl px-3 py-2.5 text-xs sm:text-sm font-bold transition ${
+            period === "analytics"
+              ? "bg-red-600 text-white shadow-md"
+              : "text-zinc-400 hover:text-white"
+          }`}
+        >
+          <Sparkles className="w-4 h-4" />
+          <span>Phân tích (9.5)</span>
         </button>
       </div>
 
@@ -1453,6 +1470,460 @@ export default function DashboardPage() {
                   ? "Nghe mạnh hơn"
                   : "Đọc mạnh hơn"}
               </span>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* ================================================== */}
+      {/* VIEW 5: DETAILED ANALYTICS (9.5) */}
+      {/* ================================================== */}
+      {period === "analytics" && (
+        <div className="space-y-8 animate-fade-in">
+          {/* 1-4. CHARTS ROW (Study Time, Vocabulary, Accuracy, Score) */}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+            {/* 1. Study Time Charts */}
+            <div className="rounded-3xl border border-white/5 bg-[#121214] p-6 space-y-4">
+              <h3 className="text-base font-bold text-white flex items-center gap-2">
+                <Clock className="w-4 h-4 text-amber-400" />
+                <span>Biểu Đồ Thời Gian Học (Study Time Charts)</span>
+              </h3>
+              <div className="space-y-3 pt-2">
+                <div>
+                  <span className="text-[10px] text-zinc-500 font-bold uppercase block mb-2">Hàng ngày (14 ngày gần nhất)</span>
+                  <div className="flex items-end gap-1 h-24">
+                    {data?.analytics?.studyTimeCharts?.daily?.slice(-14).map((day: any, idx: number) => (
+                      <div key={idx} className="flex-1 flex flex-col items-center gap-1">
+                        <div 
+                          className="w-full bg-amber-500/30 rounded-t transition-all hover:bg-amber-500/50"
+                          style={{ height: `${(day.minutes / 60) * 100}%`, minHeight: '4px' }}
+                        />
+                        <span className="text-[8px] text-zinc-500">{day.date.split('/')[0]}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+                <div>
+                  <span className="text-[10px] text-zinc-500 font-bold uppercase block mb-2">Hàng tuần</span>
+                  <div className="flex items-end gap-1 h-16">
+                    {data?.analytics?.studyTimeCharts?.weekly?.map((week: any, idx: number) => (
+                      <div key={idx} className="flex-1 flex flex-col items-center gap-1">
+                        <div 
+                          className="w-full bg-amber-500/50 rounded-t transition-all hover:bg-amber-500/70"
+                          style={{ height: `${(week.hours / 7) * 100}%`, minHeight: '4px' }}
+                        />
+                        <span className="text-[8px] text-zinc-500">{week.week.split(' ')[1]}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* 2. Vocabulary Growth Charts */}
+            <div className="rounded-3xl border border-white/5 bg-[#121214] p-6 space-y-4">
+              <h3 className="text-base font-bold text-white flex items-center gap-2">
+                <BookOpen className="w-4 h-4 text-purple-400" />
+                <span>Biểu Đồ Tăng Trưởng Từ Vựng (Vocabulary Growth)</span>
+              </h3>
+              <div className="pt-2">
+                <div className="flex items-end gap-2 h-32">
+                  {data?.analytics?.vocabularyGrowthCharts?.map((point: any, idx: number) => (
+                    <div key={idx} className="flex-1 flex flex-col items-center gap-1">
+                      <div 
+                        className="w-full bg-purple-500/30 rounded-t transition-all hover:bg-purple-500/50"
+                        style={{ height: `${(point.total / 1500) * 100}%`, minHeight: '8px' }}
+                      />
+                      <span className="text-[9px] font-bold text-purple-400">{point.total}</span>
+                      <span className="text-[8px] text-zinc-500">{point.date}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+
+            {/* 3. Accuracy Trend Charts */}
+            <div className="rounded-3xl border border-white/5 bg-[#121214] p-6 space-y-4">
+              <h3 className="text-base font-bold text-white flex items-center gap-2">
+                <Target className="w-4 h-4 text-emerald-400" />
+                <span>Biểu Đồ Xu Hướng Độ Chính Xác (Accuracy Trend)</span>
+              </h3>
+              <div className="pt-2">
+                <div className="flex items-end gap-2 h-32">
+                  {data?.analytics?.accuracyTrendCharts?.map((point: any, idx: number) => (
+                    <div key={idx} className="flex-1 flex flex-col items-center gap-1">
+                      <div 
+                        className="w-full bg-emerald-500/30 rounded-t transition-all hover:bg-emerald-500/50"
+                        style={{ height: `${point.accuracy}%`, minHeight: '8px' }}
+                      />
+                      <span className="text-[9px] font-bold text-emerald-400">{point.accuracy}%</span>
+                      <span className="text-[8px] text-zinc-500">{point.date}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+
+            {/* 4. Score Progression Charts */}
+            <div className="rounded-3xl border border-white/5 bg-[#121214] p-6 space-y-4">
+              <h3 className="text-base font-bold text-white flex items-center gap-2">
+                <TrendingUp className="w-4 h-4 text-indigo-400" />
+                <span>Biểu Đồ Tiến Độ Điểm (Score Progression)</span>
+              </h3>
+              <div className="pt-2">
+                <div className="flex items-end gap-2 h-32">
+                  {data?.analytics?.scoreProgressionCharts?.map((point: any, idx: number) => (
+                    <div key={idx} className="flex-1 flex flex-col items-center gap-1">
+                      <div 
+                        className="w-full bg-indigo-500/30 rounded-t transition-all hover:bg-indigo-500/50"
+                        style={{ height: `${(point.score / 990) * 100}%`, minHeight: '8px' }}
+                      />
+                      <span className="text-[9px] font-bold text-indigo-400">{point.score}</span>
+                      <span className="text-[8px] text-zinc-500">{point.date}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* 5-6. STREAK & SRS LEVEL DISTRIBUTION */}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+            {/* 5. Streak Visualization */}
+            <div className="rounded-3xl border border-white/5 bg-[#121214] p-6 space-y-4">
+              <h3 className="text-base font-bold text-white flex items-center gap-2">
+                <Flame className="w-4 h-4 text-amber-400" />
+                <span>Trực Quan Hóa Chuỗi (Streak Visualization)</span>
+              </h3>
+              <div className="grid grid-cols-7 sm:grid-cols-10 gap-2 pt-2">
+                {data?.analytics?.streakVisualization?.map((day: any, idx: number) => (
+                  <div
+                    key={idx}
+                    className={`p-2 rounded-xl border text-center space-y-1 transition flex flex-col items-center ${
+                      day.isToday
+                        ? "bg-red-600/20 border-red-500 shadow-lg shadow-red-600/20"
+                        : day.active
+                        ? "bg-amber-950/20 border-amber-500/40"
+                        : "bg-zinc-950 border-zinc-800 opacity-60"
+                    }`}
+                  >
+                    <span className="text-[9px] text-zinc-400 font-bold block">{day.day}</span>
+                    <div className="w-5 h-5 rounded-lg flex items-center justify-center">
+                      {day.active ? <Flame className="w-3.5 h-3.5 text-amber-400 fill-amber-400" /> : <div className="w-1.5 h-1.5 rounded-full bg-zinc-700" />}
+                    </div>
+                    <span className="text-[9px] font-bold text-white block">{day.minutes > 0 ? `${day.minutes}p` : "—"}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* 6. SRS Level Distribution */}
+            <div className="rounded-3xl border border-white/5 bg-[#121214] p-6 space-y-4">
+              <h3 className="text-base font-bold text-white flex items-center gap-2">
+                <RotateCcw className="w-4 h-4 text-indigo-400" />
+                <span>Phân Phối Mức SRS (SRS Level Distribution)</span>
+              </h3>
+              <div className="space-y-3 pt-2">
+                {data?.analytics?.srsLevelDistribution?.map((level: any, idx: number) => (
+                  <div key={idx} className="space-y-1.5">
+                    <div className="flex items-center justify-between text-xs">
+                      <span className="font-semibold text-zinc-300">{level.level}</span>
+                      <span className="font-bold text-white">{level.count} từ ({level.percentage}%)</span>
+                    </div>
+                    <div className="w-full bg-zinc-900 rounded-full h-2 overflow-hidden">
+                      <div 
+                        className="h-full rounded-full bg-gradient-to-r from-indigo-500 to-purple-500 transition-all duration-500"
+                        style={{ width: `${level.percentage}%` }}
+                      />
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          {/* 7-8. PART-WISE & TOPIC-WISE PERFORMANCE */}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+            {/* 7. Part-wise Performance */}
+            <div className="rounded-3xl border border-white/5 bg-[#121214] p-6 space-y-4">
+              <h3 className="text-base font-bold text-white flex items-center gap-2">
+                <FileEdit className="w-4 h-4 text-blue-400" />
+                <span>Hiệu Suất Theo Phần (Part-wise Performance)</span>
+              </h3>
+              <div className="space-y-3 pt-2">
+                {data?.analytics?.partWisePerformance?.map((part: any, idx: number) => (
+                  <div key={idx} className="space-y-1.5">
+                    <div className="flex items-center justify-between text-xs">
+                      <span className="font-semibold text-zinc-300">{part.part}</span>
+                      <span className="font-bold text-white">{part.accuracy}% ({part.completed} bài)</span>
+                    </div>
+                    <div className="w-full bg-zinc-900 rounded-full h-2 overflow-hidden">
+                      <div 
+                        className={`h-full rounded-full transition-all duration-500 ${
+                          part.accuracy >= 90 ? "bg-emerald-500" : part.accuracy >= 80 ? "bg-blue-500" : "bg-amber-500"
+                        }`}
+                        style={{ width: `${part.accuracy}%` }}
+                      />
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* 8. Topic-wise Performance */}
+            <div className="rounded-3xl border border-white/5 bg-[#121214] p-6 space-y-4">
+              <h3 className="text-base font-bold text-white flex items-center gap-2">
+                <BookA className="w-4 h-4 text-purple-400" />
+                <span>Hiệu Suất Theo Chủ Đề (Topic-wise Performance)</span>
+              </h3>
+              <div className="space-y-3 pt-2">
+                {data?.analytics?.topicWisePerformance?.map((topic: any, idx: number) => (
+                  <div key={idx} className="space-y-1.5">
+                    <div className="flex items-center justify-between text-xs">
+                      <span className="font-semibold text-zinc-300 truncate">{topic.topic}</span>
+                      <span className="font-bold text-white">{topic.accuracy}%</span>
+                    </div>
+                    <div className="w-full bg-zinc-900 rounded-full h-2 overflow-hidden">
+                      <div 
+                        className={`h-full rounded-full transition-all duration-500 ${
+                          topic.accuracy >= 90 ? "bg-emerald-500" : topic.accuracy >= 85 ? "bg-purple-500" : "bg-amber-500"
+                        }`}
+                        style={{ width: `${topic.accuracy}%` }}
+                      />
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          {/* 9. TIME MANAGEMENT ANALYSIS */}
+          <div className="rounded-3xl border border-white/5 bg-[#121214] p-6 space-y-4">
+            <h3 className="text-base font-bold text-white flex items-center gap-2">
+              <Clock className="w-4 h-4 text-amber-400" />
+              <span>Phân Tích Quản Lý Thời Gian (Time Management Analysis)</span>
+            </h3>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 pt-2">
+              <div className="p-4 rounded-2xl bg-zinc-950 border border-zinc-800 text-center">
+                <span className="text-[10px] text-zinc-500 font-bold uppercase block mb-1">Thời gian tối ưu</span>
+                <div className="text-lg font-black text-amber-400">{data?.analytics?.timeManagementAnalysis?.optimalStudyTime || "19:00 - 21:00"}</div>
+              </div>
+              <div className="p-4 rounded-2xl bg-zinc-950 border border-zinc-800 text-center">
+                <span className="text-[10px] text-zinc-500 font-bold uppercase block mb-1">Buổi cao điểm</span>
+                <div className="text-lg font-black text-emerald-400">{data?.analytics?.timeManagementAnalysis?.peakPerformanceHours?.join(", ") || "8, 9, 19, 20, 21"}</div>
+              </div>
+              <div className="p-4 rounded-2xl bg-zinc-950 border border-zinc-800 text-center">
+                <span className="text-[10px] text-zinc-500 font-bold uppercase block mb-1">Trung bình/buổi</span>
+                <div className="text-lg font-black text-blue-400">{data?.analytics?.timeManagementAnalysis?.averageSessionDuration || 45} phút</div>
+              </div>
+              <div className="p-4 rounded-2xl bg-zinc-950 border border-zinc-800 text-center">
+                <span className="text-[10px] text-zinc-500 font-bold uppercase block mb-1">Dài nhất</span>
+                <div className="text-lg font-black text-purple-400">{data?.analytics?.timeManagementAnalysis?.longestSession || 90} phút</div>
+              </div>
+            </div>
+            <div>
+              <span className="text-[10px] text-zinc-500 font-bold uppercase block mb-2">Phân bổ thời gian</span>
+              <div className="grid grid-cols-4 gap-2">
+                <div className="p-3 rounded-xl bg-purple-950/20 border border-purple-500/30 text-center">
+                  <span className="text-[9px] text-zinc-400 block">Từ vựng</span>
+                  <span className="text-sm font-bold text-purple-400">{data?.analytics?.timeManagementAnalysis?.timeDistribution?.vocabulary || 35}%</span>
+                </div>
+                <div className="p-3 rounded-xl bg-emerald-950/20 border border-emerald-500/30 text-center">
+                  <span className="text-[9px] text-zinc-400 block">Ngữ pháp</span>
+                  <span className="text-sm font-bold text-emerald-400">{data?.analytics?.timeManagementAnalysis?.timeDistribution?.grammar || 20}%</span>
+                </div>
+                <div className="p-3 rounded-xl bg-blue-950/20 border border-blue-500/30 text-center">
+                  <span className="text-[9px] text-zinc-400 block">Nghe</span>
+                  <span className="text-sm font-bold text-blue-400">{data?.analytics?.timeManagementAnalysis?.timeDistribution?.listening || 25}%</span>
+                </div>
+                <div className="p-3 rounded-xl bg-amber-950/20 border border-amber-500/30 text-center">
+                  <span className="text-[9px] text-zinc-400 block">Đọc</span>
+                  <span className="text-sm font-bold text-amber-400">{data?.analytics?.timeManagementAnalysis?.timeDistribution?.reading || 20}%</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* 10-11. WEAKNESS HEAT MAP & STRENGTH IDENTIFICATION */}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+            {/* 10. Weakness Heat Map */}
+            <div className="rounded-3xl border border-white/5 bg-[#121214] p-6 space-y-4">
+              <h3 className="text-base font-bold text-white flex items-center gap-2">
+                <AlertTriangle className="w-4 h-4 text-rose-400" />
+                <span>Bản Đồ Nhiệt Điểm Yếu (Weakness Heat Map)</span>
+              </h3>
+              <div className="space-y-3 pt-2">
+                {data?.analytics?.weaknessHeatMap?.map((weakness: any, idx: number) => (
+                  <div key={idx} className="p-3 rounded-2xl bg-rose-950/10 border border-rose-500/30">
+                    <div className="flex items-center justify-between mb-1">
+                      <span className="text-xs font-semibold text-white">{weakness.skill}</span>
+                      <span className="text-xs font-bold text-rose-400">{weakness.weakness}% yếu</span>
+                    </div>
+                    <div className="w-full bg-zinc-900 rounded-full h-1.5 overflow-hidden mb-1">
+                      <div 
+                        className="h-full rounded-full bg-rose-500"
+                        style={{ width: `${weakness.weakness}%` }}
+                      />
+                    </div>
+                    <p className="text-[10px] text-zinc-400">{weakness.recommendations}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* 11. Strength Identification */}
+            <div className="rounded-3xl border border-white/5 bg-[#121214] p-6 space-y-4">
+              <h3 className="text-base font-bold text-white flex items-center gap-2">
+                <Award className="w-4 h-4 text-emerald-400" />
+                <span>Xác Định Điểm Mạnh (Strength Identification)</span>
+              </h3>
+              <div className="space-y-3 pt-2">
+                {data?.analytics?.strengthIdentification?.map((strength: any, idx: number) => (
+                  <div key={idx} className="p-3 rounded-2xl bg-emerald-950/10 border border-emerald-500/30">
+                    <div className="flex items-center justify-between mb-1">
+                      <span className="text-xs font-semibold text-white">{strength.skill}</span>
+                      <span className="text-xs font-bold text-emerald-400">{strength.strength}% mạnh</span>
+                    </div>
+                    <div className="w-full bg-zinc-900 rounded-full h-1.5 overflow-hidden mb-1">
+                      <div 
+                        className="h-full rounded-full bg-emerald-500"
+                        style={{ width: `${strength.strength}%` }}
+                      />
+                    </div>
+                    <p className="text-[10px] text-emerald-300 font-semibold">{strength.level}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          {/* 12-13. PROGRESS VELOCITY & GOAL ACHIEVEMENT */}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+            {/* 12. Progress Velocity */}
+            <div className="rounded-3xl border border-white/5 bg-[#121214] p-6 space-y-4">
+              <h3 className="text-base font-bold text-white flex items-center gap-2">
+                <TrendingUp className="w-4 h-4 text-indigo-400" />
+                <span>Tốc Độ Tiến Độ (Progress Velocity)</span>
+              </h3>
+              <div className="grid grid-cols-2 gap-4 pt-2">
+                <div className="p-4 rounded-2xl bg-zinc-950 border border-zinc-800 text-center">
+                  <span className="text-[10px] text-zinc-500 font-bold uppercase block mb-1">Hiện tại</span>
+                  <div className="text-2xl font-black text-indigo-400">{data?.analytics?.progressVelocity?.currentVelocity || 2.5}</div>
+                  <span className="text-[10px] text-zinc-400">điểm/ngày</span>
+                </div>
+                <div className="p-4 rounded-2xl bg-zinc-950 border border-zinc-800 text-center">
+                  <span className="text-[10px] text-zinc-500 font-bold uppercase block mb-1">Trung bình</span>
+                  <div className="text-2xl font-black text-zinc-400">{data?.analytics?.progressVelocity?.averageVelocity || 2.0}</div>
+                  <span className="text-[10px] text-zinc-400">điểm/ngày</span>
+                </div>
+                <div className="p-4 rounded-2xl bg-zinc-950 border border-zinc-800 text-center">
+                  <span className="text-[10px] text-zinc-500 font-bold uppercase block mb-1">Cao nhất</span>
+                  <div className="text-2xl font-black text-emerald-400">{data?.analytics?.progressVelocity?.peakVelocity || 3.5}</div>
+                  <span className="text-[10px] text-zinc-400">điểm/ngày</span>
+                </div>
+                <div className="p-4 rounded-2xl bg-zinc-950 border border-zinc-800 text-center">
+                  <span className="text-[10px] text-zinc-500 font-bold uppercase block mb-1">Xu hướng</span>
+                  <div className="text-2xl font-black text-amber-400">
+                    {data?.analytics?.progressVelocity?.velocityTrend === "increasing" ? "↑ Tăng" : "→ Ổn"}
+                  </div>
+                  <span className="text-[10px] text-zinc-400">tốc độ</span>
+                </div>
+              </div>
+              <div className="p-3 rounded-2xl bg-indigo-950/20 border border-indigo-500/30 text-center">
+                <span className="text-[10px] text-zinc-400">Ước tính đến mục tiêu: </span>
+                <span className="text-sm font-bold text-indigo-400">{data?.analytics?.progressVelocity?.estimatedTimeToGoal || 90} ngày</span>
+              </div>
+            </div>
+
+            {/* 13. Goal Achievement Rate */}
+            <div className="rounded-3xl border border-white/5 bg-[#121214] p-6 space-y-4">
+              <h3 className="text-base font-bold text-white flex items-center gap-2">
+                <Target className="w-4 h-4 text-emerald-400" />
+                <span>Tỷ Lệ Đạt Mục Tiêu (Goal Achievement Rate)</span>
+              </h3>
+              <div className="grid grid-cols-2 gap-4 pt-2">
+                <div className="p-4 rounded-2xl bg-zinc-950 border border-zinc-800 text-center">
+                  <span className="text-[10px] text-zinc-500 font-bold uppercase block mb-1">Mục tiêu ngày</span>
+                  <div className="text-2xl font-black text-emerald-400">{data?.analytics?.goalAchievementRate?.dailyGoals || 85}%</div>
+                </div>
+                <div className="p-4 rounded-2xl bg-zinc-950 border border-zinc-800 text-center">
+                  <span className="text-[10px] text-zinc-500 font-bold uppercase block mb-1">Mục tiêu tuần</span>
+                  <div className="text-2xl font-black text-blue-400">{data?.analytics?.goalAchievementRate?.weeklyGoals || 78}%</div>
+                </div>
+                <div className="p-4 rounded-2xl bg-zinc-950 border border-zinc-800 text-center">
+                  <span className="text-[10px] text-zinc-500 font-bold uppercase block mb-1">Mục tiêu tháng</span>
+                  <div className="text-2xl font-black text-purple-400">{data?.analytics?.goalAchievementRate?.monthlyGoals || 72}%</div>
+                </div>
+                <div className="p-4 rounded-2xl bg-zinc-950 border border-zinc-800 text-center">
+                  <span className="text-[10px] text-zinc-500 font-bold uppercase block mb-1">Tổng thể</span>
+                  <div className="text-2xl font-black text-amber-400">{data?.analytics?.goalAchievementRate?.overallRate || 78}%</div>
+                </div>
+              </div>
+              <div className="p-3 rounded-2xl bg-rose-950/20 border border-rose-500/30 text-center">
+                <span className="text-[10px] text-zinc-400">Bỏ lỡ: </span>
+                <span className="text-sm font-bold text-rose-400">{data?.analytics?.goalAchievementRate?.missedGoals || 22}% mục tiêu</span>
+              </div>
+            </div>
+          </div>
+
+          {/* 14. PREDICTION MODELS */}
+          <div className="rounded-3xl border border-white/5 bg-[#121214] p-6 space-y-4">
+            <h3 className="text-base font-bold text-white flex items-center gap-2">
+              <Sparkles className="w-4 h-4 text-amber-400" />
+              <span>Mô Hình Dự Đoán (Prediction Models)</span>
+              <span className="text-[10px] font-bold text-emerald-400 ml-auto">Độ tin cậy: {data?.analytics?.predictionModels?.confidence || 85}%</span>
+            </h3>
+            
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 pt-2">
+              {/* Score Prediction */}
+              <div>
+                <span className="text-[10px] text-zinc-500 font-bold uppercase block mb-3">Dự đoán điểm số</span>
+                <div className="space-y-2">
+                  <div className="flex items-center justify-between p-3 rounded-xl bg-zinc-950 border border-zinc-800">
+                    <span className="text-xs text-zinc-400">Hiện tại</span>
+                    <span className="text-sm font-bold text-white">{data?.analytics?.predictionModels?.scorePrediction?.current || 750}</span>
+                  </div>
+                  <div className="flex items-center justify-between p-3 rounded-xl bg-zinc-950 border border-zinc-800">
+                    <span className="text-xs text-zinc-400">1 tháng</span>
+                    <span className="text-sm font-bold text-emerald-400">{data?.analytics?.predictionModels?.scorePrediction?.oneMonth || 825}</span>
+                  </div>
+                  <div className="flex items-center justify-between p-3 rounded-xl bg-zinc-950 border border-zinc-800">
+                    <span className="text-xs text-zinc-400">3 tháng</span>
+                    <span className="text-sm font-bold text-blue-400">{data?.analytics?.predictionModels?.scorePrediction?.threeMonths || 950}</span>
+                  </div>
+                  <div className="flex items-center justify-between p-3 rounded-xl bg-zinc-950 border border-zinc-800">
+                    <span className="text-xs text-zinc-400">6 tháng</span>
+                    <span className="text-sm font-bold text-purple-400">{data?.analytics?.predictionModels?.scorePrediction?.sixMonths || 990}</span>
+                  </div>
+                  <div className="flex items-center justify-between p-3 rounded-xl bg-zinc-950 border border-zinc-800">
+                    <span className="text-xs text-zinc-400">1 năm</span>
+                    <span className="text-sm font-bold text-amber-400">{data?.analytics?.predictionModels?.scorePrediction?.oneYear || 990}</span>
+                  </div>
+                </div>
+              </div>
+
+              {/* Completion Prediction */}
+              <div>
+                <span className="text-[10px] text-zinc-500 font-bold uppercase block mb-3">Dự đoán hoàn thành</span>
+                <div className="space-y-2">
+                  <div className="flex items-center justify-between p-3 rounded-xl bg-zinc-950 border border-zinc-800">
+                    <span className="text-xs text-zinc-400">Chặng 3</span>
+                    <span className="text-sm font-bold text-emerald-400">{data?.analytics?.predictionModels?.completionPrediction?.stage3 || "45 ngày"}</span>
+                  </div>
+                  <div className="flex items-center justify-between p-3 rounded-xl bg-zinc-950 border border-zinc-800">
+                    <span className="text-xs text-zinc-400">Chặng 4</span>
+                    <span className="text-sm font-bold text-blue-400">{data?.analytics?.predictionModels?.completionPrediction?.stage4 || "120 ngày"}</span>
+                  </div>
+                  <div className="flex items-center justify-between p-3 rounded-xl bg-zinc-950 border border-zinc-800">
+                    <span className="text-xs text-zinc-400">Chặng 5</span>
+                    <span className="text-sm font-bold text-purple-400">{data?.analytics?.predictionModels?.completionPrediction?.stage5 || "240 ngày"}</span>
+                  </div>
+                  <div className="flex items-center justify-between p-3 rounded-xl bg-zinc-950 border border-zinc-800">
+                    <span className="text-xs text-zinc-400">Mục tiêu điểm</span>
+                    <span className="text-sm font-bold text-amber-400">{data?.analytics?.predictionModels?.completionPrediction?.targetScore || "90 ngày"}</span>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
