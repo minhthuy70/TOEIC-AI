@@ -102,7 +102,7 @@ export default function DashboardPage() {
   const [data, setData] = useState<any>(null);
   const [loading, setLoading] = useState(true);
   const [expandedStage, setExpandedStage] = useState<number | null>(null);
-  const [period, setPeriod] = useState<"daily" | "weekly" | "monthly">("daily");
+  const [period, setPeriod] = useState<"daily" | "weekly" | "monthly" | "statistics">("daily");
 
   useEffect(() => {
     fetchDashboard();
@@ -116,7 +116,9 @@ export default function DashboardPage() {
     try {
       setLoading(true);
       let res;
-      if (period === "monthly") {
+      if (period === "statistics") {
+        res = await apiFetch<any>("/dashboard/statistics");
+      } else if (period === "monthly") {
         res = await apiFetch<any>("/dashboard/monthly");
       } else if (period === "weekly") {
         res = await apiFetch<any>("/dashboard/weekly");
@@ -209,9 +211,9 @@ export default function DashboardPage() {
       </div>
 
       {/* ================================================== */}
-      {/* PERIOD SWITCHER: DAILY (9.1) VS WEEKLY (9.2) VS MONTHLY (9.3) */}
+      {/* PERIOD SWITCHER: DAILY (9.1) VS WEEKLY (9.2) VS MONTHLY (9.3) VS STATISTICS (9.4) */}
       {/* ================================================== */}
-      <div className="grid grid-cols-3 rounded-2xl border border-white/5 bg-[#121214] p-1 max-w-lg">
+      <div className="grid grid-cols-2 sm:grid-cols-4 rounded-2xl border border-white/5 bg-[#121214] p-1 max-w-2xl">
         <button
           type="button"
           onClick={() => setPeriod("daily")}
@@ -249,6 +251,19 @@ export default function DashboardPage() {
         >
           <TrendingUp className="w-4 h-4" />
           <span>Tháng này (9.3)</span>
+        </button>
+
+        <button
+          type="button"
+          onClick={() => setPeriod("statistics")}
+          className={`flex items-center justify-center gap-1.5 rounded-xl px-3 py-2.5 text-xs sm:text-sm font-bold transition ${
+            period === "statistics"
+              ? "bg-red-600 text-white shadow-md"
+              : "text-zinc-400 hover:text-white"
+          }`}
+        >
+          <ClipboardList className="w-4 h-4" />
+          <span>Tổng quan (9.4)</span>
         </button>
       </div>
 
@@ -1206,6 +1221,238 @@ export default function DashboardPage() {
                 <span className="text-[10px] text-zinc-400">{data?.monthly?.timeToGoalEstimation?.daysToGoal || 90} ngày</span>
               </div>
               <p className="text-xs text-zinc-400 text-center">Dự kiến hoàn thành: <span className="text-emerald-400 font-bold">{data?.monthly?.timeToGoalEstimation?.targetDate || "30/11/2026"}</span></p>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* ================================================== */}
+      {/* VIEW 4: STATISTICS OVERVIEW (9.4) */}
+      {/* ================================================== */}
+      {period === "statistics" && (
+        <div className="space-y-8 animate-fade-in">
+          {/* 1-5. OVERALL STATISTICS CARDS */}
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4">
+            {/* 1. Total Study Time */}
+            <div className="bg-zinc-900/60 border border-white/5 rounded-3xl p-5 space-y-2">
+              <span className="text-[10px] text-zinc-500 font-bold uppercase tracking-wider flex items-center gap-1">
+                <Clock className="w-3.5 h-3.5 text-amber-400" />
+                <span>Tổng thời gian học</span>
+              </span>
+              <div className="text-3xl font-black text-white">
+                {data?.statistics?.totalStudyTime?.totalHours || 120.5}h
+              </div>
+              <div className="flex items-center justify-between text-[11px]">
+                <span className="text-zinc-400">{data?.statistics?.totalStudyTime?.totalDays || 5} ngày</span>
+                <span className="text-amber-400 font-semibold">Tất cả thời gian</span>
+              </div>
+            </div>
+
+            {/* 2. Total Vocabulary Learned */}
+            <div className="bg-zinc-900/60 border border-white/5 rounded-3xl p-5 space-y-2">
+              <span className="text-[10px] text-zinc-500 font-bold uppercase tracking-wider flex items-center gap-1">
+                <BookOpen className="w-3.5 h-3.5 text-purple-400" />
+                <span>Tổng từ vựng đã học</span>
+              </span>
+              <div className="text-3xl font-black text-purple-400">
+                {data?.statistics?.totalVocabularyLearned || 1250}
+              </div>
+              <div className="flex items-center justify-between text-[11px]">
+                <span className="text-zinc-400">Từ vựng</span>
+                <span className="text-purple-400 font-semibold">Tích lũy</span>
+              </div>
+            </div>
+
+            {/* 3. Total Practice Questions */}
+            <div className="bg-zinc-900/60 border border-white/5 rounded-3xl p-5 space-y-2">
+              <span className="text-[10px] text-zinc-500 font-bold uppercase tracking-wider flex items-center gap-1">
+                <FileEdit className="w-3.5 h-3.5 text-blue-400" />
+                <span>Tổng câu luyện tập</span>
+              </span>
+              <div className="text-3xl font-black text-blue-400">
+                {data?.statistics?.totalPracticeQuestions || 4500}
+              </div>
+              <div className="flex items-center justify-between text-[11px]">
+                <span className="text-zinc-400">Câu hỏi</span>
+                <span className="text-blue-400 font-semibold">Tất cả</span>
+              </div>
+            </div>
+
+            {/* 4. Total Tests Taken */}
+            <div className="bg-zinc-900/60 border border-white/5 rounded-3xl p-5 space-y-2">
+              <span className="text-[10px] text-zinc-500 font-bold uppercase tracking-wider flex items-center gap-1">
+                <FileText className="w-3.5 h-3.5 text-red-400" />
+                <span>Tổng kiểm tra đã làm</span>
+              </span>
+              <div className="text-3xl font-black text-red-400">
+                {data?.statistics?.totalTestsTaken || 24}
+              </div>
+              <div className="flex items-center justify-between text-[11px]">
+                <span className="text-zinc-400">Bài thi</span>
+                <span className="text-red-400 font-semibold">Thử</span>
+              </div>
+            </div>
+
+            {/* 5. Average Accuracy Rate */}
+            <div className="bg-zinc-900/60 border border-white/5 rounded-3xl p-5 space-y-2">
+              <span className="text-[10px] text-zinc-500 font-bold uppercase tracking-wider flex items-center gap-1">
+                <Target className="w-3.5 h-3.5 text-emerald-400" />
+                <span>Tỷ lệ chính xác TB</span>
+              </span>
+              <div className="text-3xl font-black text-emerald-400">
+                {data?.statistics?.averageAccuracyRate || 85}%
+              </div>
+              <div className="flex items-center justify-between text-[11px]">
+                <span className="text-zinc-400">Trung bình</span>
+                <span className="text-emerald-400 font-semibold">Tất cả</span>
+              </div>
+            </div>
+          </div>
+
+          {/* 6-7. STREAK & STAGE INFORMATION */}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+            {/* 6. Streak Information */}
+            <div className="rounded-3xl border border-white/5 bg-[#121214] p-6 space-y-4">
+              <h3 className="text-base font-bold text-white flex items-center gap-2">
+                <Flame className="w-4 h-4 text-amber-400" />
+                <span>Thông Tin Chuỗi Học (Streak Information)</span>
+              </h3>
+              <div className="grid grid-cols-2 gap-4 pt-2">
+                <div className="p-4 rounded-2xl bg-zinc-950 border border-zinc-800 text-center">
+                  <span className="text-[10px] text-zinc-500 font-bold uppercase block mb-1">Chuỗi hiện tại</span>
+                  <div className="text-3xl font-black text-amber-400">{data?.statistics?.streak?.current || 5}</div>
+                  <span className="text-[10px] text-zinc-400">ngày liên tục</span>
+                </div>
+                <div className="p-4 rounded-2xl bg-zinc-950 border border-zinc-800 text-center">
+                  <span className="text-[10px] text-zinc-500 font-bold uppercase block mb-1">Chuỗi dài nhất</span>
+                  <div className="text-3xl font-black text-red-400">{data?.statistics?.streak?.longest || 7}</div>
+                  <span className="text-[10px] text-zinc-400">ngày kỷ lục</span>
+                </div>
+              </div>
+            </div>
+
+            {/* 7. Stage Information */}
+            <div className="rounded-3xl border border-white/5 bg-[#121214] p-6 space-y-4">
+              <h3 className="text-base font-bold text-white flex items-center gap-2">
+                <Map className="w-4 h-4 text-red-500" />
+                <span>Thông Tin Chặng (Stage Information)</span>
+              </h3>
+              <div className="space-y-3 pt-2">
+                <div className="flex items-center justify-between text-xs">
+                  <span className="font-semibold text-zinc-300">Chặng hiện tại</span>
+                  <span className="font-bold text-white">{data?.statistics?.stage?.label || "Chặng 3: Thành thạo"}</span>
+                </div>
+                <div className="flex items-center justify-between text-xs">
+                  <span className="font-semibold text-zinc-300">Ngày bắt đầu</span>
+                  <span className="font-bold text-white">{data?.statistics?.stage?.startDate || "15/06/2024"}</span>
+                </div>
+                <div className="flex items-center justify-between text-xs">
+                  <span className="font-semibold text-zinc-300">Tiến độ</span>
+                  <span className="font-bold text-white">{data?.statistics?.stage?.progressPercentage || 65}%</span>
+                </div>
+                <div className="w-full bg-zinc-900 rounded-full h-2 overflow-hidden">
+                  <div className="bg-gradient-to-r from-red-600 to-red-400 h-2 rounded-full" style={{ width: `${data?.statistics?.stage?.progressPercentage || 65}%` }} />
+                </div>
+                <div className="flex items-center justify-between text-xs">
+                  <span className="font-semibold text-zinc-300">Ngày hoàn thành ước tính</span>
+                  <span className="font-bold text-emerald-400">{data?.statistics?.stage?.estimatedCompletionDate || "30/11/2026"}</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* 8. OVERALL SCORE PROGRESSION */}
+          <div className="rounded-3xl border border-white/5 bg-[#121214] p-6 space-y-4">
+            <div>
+              <h3 className="text-base font-bold text-white flex items-center gap-2">
+                <TrendingUp className="w-4 h-4 text-indigo-400" />
+                <span>Tiến Độ Điểm Tổng Thể (Overall Score Progression)</span>
+              </h3>
+              <p className="text-xs text-zinc-400 mt-0.5">Lịch sử điểm số TOEIC theo thời gian</p>
+            </div>
+
+            <div className="pt-2">
+              <div className="grid grid-cols-4 sm:grid-cols-8 gap-2">
+                {data?.statistics?.scoreProgression?.map((point: any, idx: number) => (
+                  <div key={idx} className="flex flex-col items-center gap-1">
+                    <div 
+                      className="w-full bg-zinc-900 rounded-t-lg relative overflow-hidden transition-all hover:bg-zinc-800"
+                      style={{ height: `${(point.score / 990) * 100}%`, minHeight: '40px' }}
+                    >
+                      <div className="absolute inset-0 bg-gradient-to-t from-red-600/30 to-red-400/30" />
+                      <span className="absolute bottom-1 left-1/2 -translate-x-1/2 text-[9px] font-bold text-white">{point.score}</span>
+                    </div>
+                    <span className="text-[9px] text-zinc-500 font-semibold">{point.date}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          {/* 9. SKILL BALANCE (LISTENING VS READING) */}
+          <div className="rounded-3xl border border-white/5 bg-[#121214] p-6 space-y-4">
+            <div>
+              <h3 className="text-base font-bold text-white flex items-center gap-2">
+                <Target className="w-4 h-4 text-emerald-400" />
+                <span>Cân Bằng Kỹ Năng (Skill Balance: Listening vs Reading)</span>
+              </h3>
+              <p className="text-xs text-zinc-400 mt-0.5">Phân tích độ cân bằng giữa kỹ năng Nghe và Đọc</p>
+            </div>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 pt-2">
+              {/* Listening */}
+              <div className="p-4 rounded-2xl bg-zinc-950 border border-zinc-800 space-y-3">
+                <div className="flex items-center justify-between">
+                  <span className="text-xs font-bold text-zinc-400 uppercase flex items-center gap-1">
+                    <div className="w-2 h-2 rounded-full bg-blue-400" />
+                    <span>Listening</span>
+                  </span>
+                  <span className="text-xs font-bold text-blue-400">{data?.statistics?.skillBalance?.listening?.progress || 72}%</span>
+                </div>
+                <div className="w-full bg-zinc-900 rounded-full h-2 overflow-hidden">
+                  <div className="bg-blue-500 h-2 rounded-full" style={{ width: `${data?.statistics?.skillBalance?.listening?.progress || 72}%` }} />
+                </div>
+                <div className="flex items-center justify-between text-[10px] text-zinc-400">
+                  <span>{data?.statistics?.skillBalance?.listening?.completedLessons || 45} bài hoàn thành</span>
+                  <span>Điểm TB: {data?.statistics?.skillBalance?.listening?.averageScore || 78}</span>
+                </div>
+              </div>
+
+              {/* Reading */}
+              <div className="p-4 rounded-2xl bg-zinc-950 border border-zinc-800 space-y-3">
+                <div className="flex items-center justify-between">
+                  <span className="text-xs font-bold text-zinc-400 uppercase flex items-center gap-1">
+                    <div className="w-2 h-2 rounded-full bg-purple-400" />
+                    <span>Reading</span>
+                  </span>
+                  <span className="text-xs font-bold text-purple-400">{data?.statistics?.skillBalance?.reading?.progress || 68}%</span>
+                </div>
+                <div className="w-full bg-zinc-900 rounded-full h-2 overflow-hidden">
+                  <div className="bg-purple-500 h-2 rounded-full" style={{ width: `${data?.statistics?.skillBalance?.reading?.progress || 68}%` }} />
+                </div>
+                <div className="flex items-center justify-between text-[10px] text-zinc-400">
+                  <span>{data?.statistics?.skillBalance?.reading?.completedLessons || 42} bài hoàn thành</span>
+                  <span>Điểm TB: {data?.statistics?.skillBalance?.reading?.averageScore || 82}</span>
+                </div>
+              </div>
+            </div>
+
+            {/* Balance Status */}
+            <div className="p-3 rounded-2xl bg-zinc-950 border border-zinc-800 text-center">
+              <span className="text-xs font-bold text-zinc-400 uppercase block mb-1">Trạng thái cân bằng</span>
+              <span className={`text-sm font-black ${
+                data?.statistics?.skillBalance?.balance === "balanced" 
+                  ? "text-emerald-400" 
+                  : data?.statistics?.skillBalance?.balance === "listening_dominant"
+                  ? "text-blue-400"
+                  : "text-purple-400"
+              }`}>
+                {data?.statistics?.skillBalance?.balance === "balanced" 
+                  ? "Cân bằng tốt" 
+                  : data?.statistics?.skillBalance?.balance === "listening_dominant"
+                  ? "Nghe mạnh hơn"
+                  : "Đọc mạnh hơn"}
+              </span>
             </div>
           </div>
         </div>

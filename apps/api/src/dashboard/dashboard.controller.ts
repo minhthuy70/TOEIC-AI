@@ -48,4 +48,18 @@ export class DashboardController {
       );
     }
   }
+
+  @Get("statistics")
+  async getStatisticsOverview(@Req() req: any) {
+    try {
+      const userId = req.user.userId;
+      return this.dashboardService.getStatisticsOverview(userId);
+    } catch (error) {
+      console.error('Dashboard statistics error:', error);
+      throw new HttpException(
+        { message: error.message || 'Internal server error', statusCode: 500 },
+        HttpStatus.INTERNAL_SERVER_ERROR
+      );
+    }
+  }
 }
