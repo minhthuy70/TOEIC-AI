@@ -283,7 +283,7 @@ export class DashboardService {
     );
 
     const todayAccuracyRate = 85; // %
-    const streakCount = (user.profile as any).streak || 5;
+    const streakCount = (await this.getStreak(userId)) || 5;
 
     const dailyGoalsList = [
       {
@@ -1329,6 +1329,88 @@ export class DashboardService {
     }
   }
 
+  private async getStreak(userId: number): Promise<number> {
+    const dates = new Set<string>();
+
+    const addDate = (date: Date | null | undefined) => {
+      if (date) {
+        const d = new Date(date);
+        dates.add(`${d.getFullYear()}-${d.getMonth() + 1}-${d.getDate()}`);
+      }
+    };
+
+    // 1. Vocabulary
+    const vocab = await this.prisma.userVocabularyProgress.findMany({
+      where: { userId, learnedAt: { not: null } },
+      select: { learnedAt: true }
+    });
+    vocab.forEach(v => addDate(v.learnedAt));
+
+    // 2. Practice
+    const practice = await this.prisma.practice_sessions.findMany({
+      where: { user_id: userId },
+      select: { created_at: true }
+    });
+    practice.forEach(p => addDate(p.created_at));
+
+    // 3. Mock Test
+    const mock = await this.prisma.mock_test_attempts.findMany({
+      where: { user_id: userId },
+      select: { created_at: true }
+    });
+    mock.forEach(m => addDate(m.created_at));
+
+    // 4. Grammar
+    const grammar = await this.prisma.userGrammarProgress.findMany({
+      where: { userId, completed: true, lastStudied: { not: null } },
+      select: { lastStudied: true }
+    });
+    grammar.forEach(g => addDate(g.lastStudied));
+
+    // 5. Listening
+    const listening = await this.prisma.user_listening_progress.findMany({
+      where: { user_id: userId, completed: true, last_studied: { not: null } },
+      select: { last_studied: true }
+    });
+    listening.forEach(l => addDate(l.last_studied));
+
+    // 6. Reading
+    const reading = await this.prisma.user_reading_progress.findMany({
+      where: { user_id: userId, completed: true, last_studied: { not: null } },
+      select: { last_studied: true }
+    });
+    reading.forEach(r => addDate(r.last_studied));
+
+    if (dates.size === 0) return 0;
+
+    let streak = 0;
+    const current = new Date();
+    current.setHours(0, 0, 0, 0);
+
+    const todayStr = `${current.getFullYear()}-${current.getMonth() + 1}-${current.getDate()}`;
+    current.setDate(current.getDate() - 1);
+    const yesterdayStr = `${current.getFullYear()}-${current.getMonth() + 1}-${current.getDate()}`;
+
+    if (!dates.has(todayStr) && !dates.has(yesterdayStr)) {
+      return 0;
+    }
+
+    let checkDate = dates.has(todayStr) ? new Date() : current;
+    checkDate.setHours(0, 0, 0, 0);
+
+    while (true) {
+      const dateStr = `${checkDate.getFullYear()}-${checkDate.getMonth() + 1}-${checkDate.getDate()}`;
+      if (dates.has(dateStr)) {
+        streak++;
+        checkDate.setDate(checkDate.getDate() - 1);
+      } else {
+        break;
+      }
+    }
+
+    return streak;
+  }
+
   // Achievement Management Methods
   private async seedDefaultAchievements() {
     const existingCount = await this.prisma.achievement.count();
@@ -1474,11 +1556,7 @@ export class DashboardService {
           });
           currentProgress = Math.min(Math.round((practiceCount * 10 / criteria.target) * 100), 100);
         } else if (criteria.type === "streak") {
-          const user = await this.prisma.user.findUnique({
-            where: { id: userId },
-            include: { profile: true },
-          });
-          const currentStreak = (user?.profile as any)?.streak || 0;
+          const currentStreak = await this.getStreak(userId);
           currentProgress = Math.min(Math.round((currentStreak / criteria.target) * 100), 100);
         } else if (criteria.type === "accuracy") {
           // Simulated accuracy for demo

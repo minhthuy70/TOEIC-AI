@@ -723,50 +723,50 @@ Dựa trên lộ trình học TOEIC 900+ - Phiên bản nâng cấp
 [x] - Weekly highlights - Điểm nổi bật hàng tuần
 
 9.3. Monthly Dashboard (Bảng điều khiển hàng tháng)
-- Monthly study time summary - Tóm tắt thời gian học hàng tháng
-- Monthly vocabulary total - Tổng từ vựng hàng tháng
-- Monthly practice total - Tổng luyện tập hàng tháng
-- Monthly accuracy rate - Tỷ lệ chính xác hàng tháng
-- Monthly test scores - Điểm kiểm tra hàng tháng
-- Monthly goals progress - Tiến độ mục tiêu hàng tháng
-- Monthly streak visualization - Trực quan hóa chuỗi hàng tháng
-- Week-by-week breakdown - Phân tích từng tuần
-- Monthly comparison (vs last month) - So sánh hàng tháng (vs tháng trước)
-- Monthly achievements - Thành tích hàng tháng
-- Placement test score - Điểm kiểm tra xếp loại
-- Stage progress percentage - Phần trăm tiến độ chặng
-- Time to goal estimation - Ước tính thời gian đến mục tiêu
+[x] - Monthly study time summary - Tóm tắt thời gian học hàng tháng
+[x] - Monthly vocabulary total - Tổng từ vựng hàng tháng
+[x] - Monthly practice total - Tổng luyện tập hàng tháng
+[x] - Monthly accuracy rate - Tỷ lệ chính xác hàng tháng
+[x] - Monthly test scores - Điểm kiểm tra hàng tháng
+[x] - Monthly goals progress - Tiến độ mục tiêu hàng tháng
+[x] - Monthly streak visualization - Trực quan hóa chuỗi hàng tháng
+[x] - Week-by-week breakdown - Phân tích từng tuần
+[x] - Monthly comparison (vs last month) - So sánh hàng tháng (vs tháng trước)
+[x] - Monthly achievements - Thành tích hàng tháng
+[x] - Placement test score - Điểm kiểm tra xếp loại
+[x] - Stage progress percentage - Phần trăm tiến độ chặng
+[x] - Time to goal estimation - Ước tính thời gian đến mục tiêu
 
 9.4. Statistics Overview (Tổng quan thống kê)
-- Total study time (all time) - Tổng thời gian học (tất cả thời gian)
-- Total vocabulary learned - Tổng từ vựng đã học
-- Total practice questions - Tổng câu luyện tập
-- Total tests taken - Tổng kiểm tra đã làm
-- Average accuracy rate - Tỷ lệ chính xác trung bình
-- Current streak - Chuỗi hiện tại
-- Longest streak - Chuỗi dài nhất
-- Current stage - Chặng hiện tại
-- Stage start date - Ngày bắt đầu chặng
-- Stage progress percentage - Phần trăm tiến độ chặng
-- Estimated completion date - Ngày hoàn thành ước tính
-- Overall score progression - Tiến độ điểm tổng thể
-- Skill balance (listening vs reading) - Cân bằng kỹ năng (nghe vs đọc)
+[x] - Total study time (all time) - Tổng thời gian học (tất cả thời gian)
+[x] - Total vocabulary learned - Tổng từ vựng đã học
+[x] - Total practice questions - Tổng câu luyện tập
+[x] - Total tests taken - Tổng kiểm tra đã làm
+[x] - Average accuracy rate - Tỷ lệ chính xác trung bình
+[x] - Current streak - Chuỗi hiện tại
+[x] - Longest streak - Chuỗi dài nhất
+[x] - Current stage - Chặng hiện tại
+[x] - Stage start date - Ngày bắt đầu chặng
+[x] - Stage progress percentage - Phần trăm tiến độ chặng
+[x] - Estimated completion date - Ngày hoàn thành ước tính
+[x] - Overall score progression - Tiến độ điểm tổng thể
+[x] - Skill balance (listening vs reading) - Cân bằng kỹ năng (nghe vs đọc)
 
 9.5. Detailed Analytics (Phân tích chi tiết)
-- Study time charts (daily/weekly/monthly) - Biểu đồ thời gian học
-- Vocabulary growth charts - Biểu đồ tăng trưởng từ vựng
-- Accuracy trend charts - Biểu đồ xu hướng độ chính xác
-- Score progression charts - Biểu đồ tiến độ điểm
-- Streak visualization - Trực quan hóa chuỗi
-- SRS level distribution - Phân phối mức SRS
-- Part-wise performance charts - Biểu đồ hiệu suất theo phần
-- Topic-wise performance charts - Biểu đồ hiệu suất theo chủ đề
-- Time management analysis - Phân tích quản lý thời gian
-- Weakness heat map - Bản đồ nhiệt điểm yếu
-- Strength identification - Xác định điểm mạnh
-- Progress velocity - Tốc độ tiến độ
-- Goal achievement rate - Tỷ lệ đạt mục tiêu
-- Prediction models - Mô hình dự đoán
+[x] - Study time charts (daily/weekly/monthly) - Biểu đồ thời gian học
+[x] - Vocabulary growth charts - Biểu đồ tăng trưởng từ vựng
+[x] - Accuracy trend charts - Biểu đồ xu hướng độ chính xác
+[x] - Score progression charts - Biểu đồ tiến độ điểm
+[x] - Streak visualization - Trực quan hóa chuỗi
+[x] - SRS level distribution - Phân phối mức SRS
+[x] - Part-wise performance charts - Biểu đồ hiệu suất theo phần
+[x] - Topic-wise performance charts - Biểu đồ hiệu suất theo chủ đề
+[x] - Time management analysis - Phân tích quản lý thời gian
+[x] - Weakness heat map - Bản đồ nhiệt điểm yếu
+[x] - Strength identification - Xác định điểm mạnh
+[x] - Progress velocity - Tốc độ tiến độ
+[x] - Goal achievement rate - Tỷ lệ đạt mục tiêu
+[x] - Prediction models - Mô hình dự đoán
 
 9.6. Goal Tracking (Theo dõi mục tiêu)
 - Set custom goals - Đặt mục tiêu tùy chỉnh

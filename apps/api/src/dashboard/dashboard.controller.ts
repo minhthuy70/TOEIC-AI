@@ -149,4 +149,47 @@ export class DashboardController {
       );
     }
   }
+
+  @Get("achievements")
+  async getAchievements(@Req() req: any) {
+    try {
+      const userId = req.user.userId;
+      return this.dashboardService.getAchievements(userId);
+    } catch (error) {
+      console.error('Get achievements error:', error);
+      throw new HttpException(
+        { message: error.message || 'Internal server error', statusCode: 500 },
+        HttpStatus.INTERNAL_SERVER_ERROR
+      );
+    }
+  }
+
+  @Post("achievements/:id/share")
+  async shareAchievement(@Req() req: any) {
+    try {
+      const userId = req.user.userId;
+      const achievementId = parseInt(req.params.id);
+      return this.dashboardService.shareAchievement(userId, achievementId);
+    } catch (error) {
+      console.error('Share achievement error:', error);
+      throw new HttpException(
+        { message: error.message || 'Internal server error', statusCode: 500 },
+        HttpStatus.INTERNAL_SERVER_ERROR
+      );
+    }
+  }
+
+  @Get("achievements/notifications")
+  async getAchievementNotifications(@Req() req: any) {
+    try {
+      const userId = req.user.userId;
+      return this.dashboardService.getAchievementNotifications(userId);
+    } catch (error) {
+      console.error('Get achievement notifications error:', error);
+      throw new HttpException(
+        { message: error.message || 'Internal server error', statusCode: 500 },
+        HttpStatus.INTERNAL_SERVER_ERROR
+      );
+    }
+  }
 }

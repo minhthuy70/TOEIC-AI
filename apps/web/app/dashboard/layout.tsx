@@ -19,6 +19,7 @@ import {
   Check,
   Clock,
   X,
+  Trophy,
 } from "lucide-react";
 import { useAutoLogout } from "../../hooks/useAutoLogout";
 import { useSessionWarning } from "../../hooks/useSessionWarning";
@@ -39,6 +40,7 @@ const NAV_MAIN = [
 ];
 
 const NAV_BOTTOM = [
+  { label: "Thành tích", icon: Trophy, href: "/dashboard/achievements" },
   { label: "Hồ sơ cá nhân", icon: UserIcon, href: "/dashboard/profile" },
 ];
 
