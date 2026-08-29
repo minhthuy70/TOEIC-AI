@@ -769,32 +769,32 @@ Dựa trên lộ trình học TOEIC 900+ - Phiên bản nâng cấp
 [x] - Prediction models - Mô hình dự đoán
 
 9.6. Goal Tracking (Theo dõi mục tiêu)
-- Set custom goals - Đặt mục tiêu tùy chỉnh
-- Goal type selection (score, vocabulary, study time) - Chọn loại mục tiêu
-- Goal target value - Giá trị mục tiêu
-- Goal deadline - Hạn mục mục tiêu
-- Goal progress display - Hiển thị tiến độ mục tiêu
-- Goal completion percentage - Phần trăm hoàn thành mục tiêu
-- Goal status (on track/behind/ahead) - Trạng thái mục tiêu (đúng lịch/lịch/trước lịch)
-- Goal history - Lịch sử mục tiêu
-- Edit goals - Chỉnh sửa mục tiêu
-- Delete goals - Xóa mục tiêu
-- Goal notifications - Thông báo mục tiêu
-- Goal celebration - Chúc mừng mục tiêu
+[x] - Set custom goals - Đặt mục tiêu tùy chỉnh
+[x] - Goal type selection (score, vocabulary, study time) - Chọn loại mục tiêu
+[x] - Goal target value - Giá trị mục tiêu
+[x] - Goal deadline - Hạn mục mục tiêu
+[x] - Goal progress display - Hiển thị tiến độ mục tiêu
+[x] - Goal completion percentage - Phần trăm hoàn thành mục tiêu
+[x] - Goal status (on track/behind/ahead) - Trạng thái mục tiêu (đúng lịch/lịch/trước lịch)
+[x] - Goal history - Lịch sử mục tiêu
+[x] - Edit goals - Chỉnh sửa mục tiêu
+[x] - Delete goals - Xóa mục tiêu
+[x] - Goal notifications - Thông báo mục tiêu
+[x] - Goal celebration - Chúc mừng mục tiêu
 
 9.7. Achievements System (Hệ thống thành tích)
-- Achievement list view - Chế độ xem danh sách thành tích
-- Achievement categories (learning, practice, streak, accuracy) - Danh mục thành tích
-- Achievement criteria display - Hiển thị tiêu chí thành tích
-- Achievement progress indicator - Chỉ số tiến độ thành tích
-- Locked achievements - Thành tích bị khóa
-- Unlocked achievements - Thành tích đã mở khóa
-- Achievement date - Ngày thành tích
-- Achievement badge display - Hiển thị huy hiệu thành tích
-- Share achievement - Chia sẻ thành tích
-- Achievement points - Điểm thành tích
-- Leaderboard position - Vị trí bảng xếp hạng
-- Achievement notifications - Thông báo thành tích
+[x] - Achievement list view - Chế độ xem danh sách thành tích
+[x] - Achievement categories (learning, practice, streak, accuracy) - Danh mục thành tích
+[x] - Achievement criteria display - Hiển thị tiêu chí thành tích
+[x] - Achievement progress indicator - Chỉ số tiến độ thành tích
+[x] - Locked achievements - Thành tích bị khóa
+[x] - Unlocked achievements - Thành tích đã mở khóa
+[x] - Achievement date - Ngày thành tích
+[x] - Achievement badge display - Hiển thị huy hiệu thành tích
+[x] - Share achievement - Chia sẻ thành tích
+[x] - Achievement points - Điểm thành tích
+[x] - Leaderboard position - Vị trí bảng xếp hạng
+[x] - Achievement notifications - Thông báo thành tích
 
 9.8. Streak System (Hệ thống chuỗi)
 - Current streak display - Hiển thị chuỗi hiện tại

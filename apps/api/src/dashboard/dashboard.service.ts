@@ -1559,8 +1559,19 @@ export class DashboardService {
           const currentStreak = await this.getStreak(userId);
           currentProgress = Math.min(Math.round((currentStreak / criteria.target) * 100), 100);
         } else if (criteria.type === "accuracy") {
-          // Simulated accuracy for demo
-          currentProgress = 85; // This would be calculated from actual practice data
+          const sessions = await this.prisma.practice_sessions.findMany({
+            where: { user_id: userId, question_count: { gt: 0 } },
+            select: { correct_count: true, question_count: true },
+          });
+          if (sessions.length > 0) {
+            const maxAccuracy = sessions.reduce((max, s) => {
+              const acc = Math.round((s.correct_count / s.question_count) * 100);
+              return acc > max ? acc : max;
+            }, 0);
+            currentProgress = Math.min(Math.round((maxAccuracy / criteria.target) * 100), 100);
+          } else {
+            currentProgress = 0;
+          }
         }
 
         // Auto-unlock if progress >= 100 and not already unlocked
@@ -1591,22 +1602,28 @@ export class DashboardService {
       const totalPoints = userAchievements.reduce((sum, ua) => sum + ua.achievement.points, 0);
 
       // Get leaderboard position
-      const allUserPoints = await this.prisma.userAchievement.groupBy({
-        by: ['userId'],
-        _sum: {
-          achievementId: true,
+      const allUserAchievements = await this.prisma.userAchievement.findMany({
+        select: {
+          userId: true,
+          achievement: {
+            select: {
+              points: true,
+            },
+          },
         },
       });
 
-      const userPointsMap = new Map();
-      allUserPoints.forEach((up: any) => {
-        const points = up._sum.achievementId || 0;
-        userPointsMap.set(up.userId, points);
+      const userPointsMap = new Map<number, number>();
+      allUserAchievements.forEach((ua) => {
+        const points = ua.achievement?.points || 0;
+        userPointsMap.set(ua.userId, (userPointsMap.get(ua.userId) || 0) + points);
       });
 
       const sortedPoints = Array.from(userPointsMap.entries()).sort((a, b) => b[1] - a[1]);
-      const userPoints = userPointsMap.get(userId) || 0;
-      const leaderboardPosition = sortedPoints.findIndex(([id]) => id === userId) + 1;
+      let leaderboardPosition = sortedPoints.findIndex(([id]) => id === userId) + 1;
+      if (leaderboardPosition === 0) {
+        leaderboardPosition = sortedPoints.length + 1;
+      }
 
       return {
         success: true,
