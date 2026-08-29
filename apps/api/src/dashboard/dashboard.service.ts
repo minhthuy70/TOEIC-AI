@@ -328,36 +328,96 @@ export class DashboardService {
       },
     ];
 
-    const todaySchedule = [
-      {
-        time: "08:00",
-        title: "Flashcard SRS Từ Vựng Mục Tiêu",
-        category: "Từ vựng",
-        status: vocabLearnedToday >= 10 ? "completed" : "pending",
-        icon: "📖",
-      },
-      {
-        time: "12:30",
-        title: "Luyện Nghe / Đọc Hiểu Part 3-4 hoặc Part 7",
-        category: "Kỹ năng",
-        status: completedListeningToday > 0 || completedReadingToday > 0 ? "completed" : "pending",
-        icon: "🎧",
-      },
-      {
-        time: "19:30",
-        title: "Ngữ Pháp TOEIC & Bài Tập Thực Hành",
-        category: "Ngữ pháp",
-        status: completedGrammarToday > 0 ? "completed" : "pending",
-        icon: "📝",
-      },
-      {
-        time: "21:30",
-        title: "Luyện Tập Lỗi Sai (Error Drill) & Ôn Tập Ngày",
-        category: "Sổ tay lỗi",
-        status: "pending",
-        icon: "⚡",
-      },
-    ];
+    const dbSchedules = await this.prisma.studySchedule.findMany({
+      where: { userId, dayOfWeek },
+      orderBy: { startTime: "asc" },
+    });
+
+    const dbTasks = await this.prisma.dailyTask.findMany({
+      where: { userId, taskDate: { gte: today, lte: endOfToday } },
+      orderBy: { displayOrder: "asc" },
+    });
+
+    let todaySchedule: any[] = [];
+
+    if (dbSchedules.length > 0 || dbTasks.length > 0) {
+      dbSchedules.forEach(s => {
+        let categoryLabel = "Học tập";
+        let icon = "📖";
+        let status = "pending";
+
+        if (s.sessionType === "vocabulary") {
+          categoryLabel = "Từ vựng";
+          icon = "📖";
+          status = (vocabLearnedToday + vocabReviewedToday) >= 10 ? "completed" : "pending";
+        } else if (s.sessionType === "listening") {
+          categoryLabel = "Luyện nghe";
+          icon = "🎧";
+          status = completedListeningToday > 0 ? "completed" : "pending";
+        } else if (s.sessionType === "reading") {
+          categoryLabel = "Luyện đọc";
+          icon = "📚";
+          status = completedReadingToday > 0 ? "completed" : "pending";
+        } else if (s.sessionType === "grammar") {
+          categoryLabel = "Ngữ pháp";
+          icon = "📝";
+          status = completedGrammarToday > 0 ? "completed" : "pending";
+        } else if (s.sessionType === "test") {
+          categoryLabel = "Thi thử";
+          icon = "🎯";
+          status = mockTestToday > 0 ? "completed" : "pending";
+        }
+
+        todaySchedule.push({
+          time: s.startTime,
+          title: s.title,
+          category: categoryLabel,
+          status,
+          icon,
+        });
+      });
+
+      dbTasks.forEach(t => {
+        todaySchedule.push({
+          time: `Nhiệm vụ (${t.duration}m)`,
+          title: t.title,
+          category: "Nhiệm vụ",
+          status: t.completed ? "completed" : "pending",
+          icon: t.completed ? "✅" : "🔲",
+        });
+      });
+    } else {
+      todaySchedule = [
+        {
+          time: "08:00",
+          title: "Flashcard SRS Từ Vựng Mục Tiêu",
+          category: "Từ vựng",
+          status: vocabLearnedToday >= 10 ? "completed" : "pending",
+          icon: "📖",
+        },
+        {
+          time: "12:30",
+          title: "Luyện Nghe / Đọc Hiểu Part 3-4 hoặc Part 7",
+          category: "Kỹ năng",
+          status: completedListeningToday > 0 || completedReadingToday > 0 ? "completed" : "pending",
+          icon: "🎧",
+        },
+        {
+          time: "19:30",
+          title: "Ngữ Pháp TOEIC & Bài Tập Thực Hành",
+          category: "Ngữ pháp",
+          status: completedGrammarToday > 0 ? "completed" : "pending",
+          icon: "📝",
+        },
+        {
+          time: "21:30",
+          title: "Luyện Tập Lỗi Sai (Error Drill) & Ôn Tập Ngày",
+          category: "Sổ tay lỗi",
+          status: "pending",
+          icon: "⚡",
+        },
+      ];
+    }
 
     const quotes = [
       {

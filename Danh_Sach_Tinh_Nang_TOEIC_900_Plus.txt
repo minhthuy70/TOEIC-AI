@@ -828,19 +828,19 @@ Dựa trên lộ trình học TOEIC 900+ - Phiên bản nâng cấp
 [x] - Print schedule - In lịch trình
 
 10.2. Daily Planner (Kế hoạch hàng ngày)
-- Today's schedule timeline - Timeline lịch trình hôm nay
-- Upcoming tasks - Nhiệm vụ sắp tới
-- Task completion checkbox - Checkbox hoàn thành nhiệm vụ
-- Add custom task - Thêm nhiệm vụ tùy chỉnh
-- Edit task - Chỉnh sửa nhiệm vụ
-- Delete task - Xóa nhiệm vụ
-- Reorder tasks - Sắp xếp lại nhiệm vụ
-- Set task duration - Đặt thời lượng nhiệm vụ
-- Task reminders - Nhắc nhở nhiệm vụ
-- Task notes - Ghi chú nhiệm vụ
-- Mark task as done - Đánh dấu nhiệm vụ hoàn thành
-- Undo task completion - Hoàn tác hoàn thành nhiệm vụ
-- Daily progress bar - Thanh tiến độ hàng ngày
+[x] - Today's schedule timeline - Timeline lịch trình hôm nay
+[x] - Upcoming tasks - Nhiệm vụ sắp tới
+[x] - Task completion checkbox - Checkbox hoàn thành nhiệm vụ
+[x] - Add custom task - Thêm nhiệm vụ tùy chỉnh
+[x] - Edit task - Chỉnh sửa nhiệm vụ
+[x] - Delete task - Xóa nhiệm vụ
+[x] - Reorder tasks - Sắp xếp lại nhiệm vụ
+[x] - Set task duration - Đặt thời lượng nhiệm vụ
+[x] - Task reminders - Nhắc nhở nhiệm vụ
+[x] - Task notes - Ghi chú nhiệm vụ
+[x] - Mark task as done - Đánh dấu nhiệm vụ hoàn thành
+[x] - Undo task completion - Hoàn tác hoàn thành nhiệm vụ
+[x] - Daily progress bar - Thanh tiến độ hàng ngày
 
 10.3. Study Reminders (Nhắc nhở học tập)
 - Reminder settings - Cài đặt nhắc nhở
