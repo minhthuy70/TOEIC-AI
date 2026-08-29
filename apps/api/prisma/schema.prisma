@@ -88,6 +88,12 @@ model UserProfile {
   currentStage        Int?      @default(1)
   stageAcceptedAt     DateTime?
   dailyVocabularyGoal Int       @default(20)
+  streak              Int       @default(0)
+  longestStreak       Int       @default(0)
+  streakFreezeCount   Int       @default(2)
+  streakProtection    Boolean   @default(false)
+  frozenDates         String    @default("")
+  pointsBalance       Int       @default(0)
   user                User      @relation(fields: [userId], references: [id])
 }
 

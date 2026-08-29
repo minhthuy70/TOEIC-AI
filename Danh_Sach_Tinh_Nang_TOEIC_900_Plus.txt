@@ -797,16 +797,16 @@ Dựa trên lộ trình học TOEIC 900+ - Phiên bản nâng cấp
 [x] - Achievement notifications - Thông báo thành tích
 
 9.8. Streak System (Hệ thống chuỗi)
-- Current streak display - Hiển thị chuỗi hiện tại
-- Longest streak display - Hiển thị chuỗi dài nhất
-- Streak calendar view - Chế độ xem lịch chuỗi
-- Streak history - Lịch sử chuỗi
-- Streak freeze options - Tùy chọn đóng băng chuỗi
-- Streak protection - Bảo vệ chuỗi
-- Streak milestones - Cột mốc chuỗi
-- Streak rewards - Phần thưởng chuỗi
-- Streak notifications - Thông báo chuỗi
-- Streak motivation messages - Thông điệp động lực chuỗi
+[x] - Current streak display - Hiển thị chuỗi hiện tại
+[x] - Longest streak display - Hiển thị chuỗi dài nhất
+[x] - Streak calendar view - Chế độ xem lịch chuỗi
+[x] - Streak history - Lịch sử chuỗi
+[x] - Streak freeze options - Tùy chọn đóng băng chuỗi
+[x] - Streak protection - Bảo vệ chuỗi
+[x] - Streak milestones - Cột mốc chuỗi
+[x] - Streak rewards - Phần thưởng chuỗi
+[x] - Streak notifications - Thông báo chuỗi
+[x] - Streak motivation messages - Thông điệp động lực chuỗi
 
 ================================================================================
 

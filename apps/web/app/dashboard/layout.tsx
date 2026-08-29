@@ -40,6 +40,7 @@ const NAV_MAIN = [
 ];
 
 const NAV_BOTTOM = [
+  { label: "Chuỗi ngày", icon: Flame, href: "/dashboard/streak" },
   { label: "Thành tích", icon: Trophy, href: "/dashboard/achievements" },
   { label: "Hồ sơ cá nhân", icon: UserIcon, href: "/dashboard/profile" },
 ];

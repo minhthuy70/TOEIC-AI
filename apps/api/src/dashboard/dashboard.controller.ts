@@ -192,4 +192,64 @@ export class DashboardController {
       );
     }
   }
+
+  @Get("streak")
+  async getStreakData(@Req() req: any) {
+    try {
+      const userId = req.user.userId;
+      return this.dashboardService.getStreakData(userId);
+    } catch (error) {
+      console.error('Get streak error:', error);
+      throw new HttpException(
+        { message: error.message || 'Internal server error', statusCode: 500 },
+        HttpStatus.INTERNAL_SERVER_ERROR
+      );
+    }
+  }
+
+  @Post("streak/freeze/buy")
+  async buyStreakFreeze(@Req() req: any) {
+    try {
+      const userId = req.user.userId;
+      return this.dashboardService.buyStreakFreeze(userId);
+    } catch (error) {
+      console.error('Buy streak freeze error:', error);
+      throw new HttpException(
+        { message: error.message || 'Internal server error', statusCode: 500 },
+        HttpStatus.INTERNAL_SERVER_ERROR
+      );
+    }
+  }
+
+  @Post("streak/freeze/use")
+  async useStreakFreeze(@Req() req: any) {
+    try {
+      const userId = req.user.userId;
+      const dateStr = req.body.date;
+      if (!dateStr) {
+        throw new Error('Date is required');
+      }
+      return this.dashboardService.useStreakFreeze(userId, dateStr);
+    } catch (error) {
+      console.error('Use streak freeze error:', error);
+      throw new HttpException(
+        { message: error.message || 'Internal server error', statusCode: 500 },
+        HttpStatus.INTERNAL_SERVER_ERROR
+      );
+    }
+  }
+
+  @Post("streak/toggle-protection")
+  async toggleStreakProtection(@Req() req: any) {
+    try {
+      const userId = req.user.userId;
+      return this.dashboardService.toggleStreakProtection(userId);
+    } catch (error) {
+      console.error('Toggle streak protection error:', error);
+      throw new HttpException(
+        { message: error.message || 'Internal server error', statusCode: 500 },
+        HttpStatus.INTERNAL_SERVER_ERROR
+      );
+    }
+  }
 }
