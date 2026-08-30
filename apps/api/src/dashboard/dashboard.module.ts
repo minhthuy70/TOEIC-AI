@@ -11,9 +11,11 @@ import { RecommendationController } from "./recommendation.controller";
 import { RecommendationService } from "./recommendation.service";
 import { PrismaModule } from "../prisma/prisma.module";
 import { PointsModule } from "../points/points.module";
+import { LevelsModule } from "../levels/levels.module";
+import { BadgesModule } from "../badges/badges.module";
 
 @Module({
-  imports: [PrismaModule, PointsModule],
+  imports: [PrismaModule, PointsModule, LevelsModule, BadgesModule],
   controllers: [
     DashboardController,
     ScheduleController,

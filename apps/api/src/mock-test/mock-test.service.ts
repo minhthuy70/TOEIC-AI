@@ -6,12 +6,14 @@ import {
 
 import { PrismaService } from "../prisma/prisma.service";
 import { PointsService } from "../points/points.service";
+import { LevelsService } from "../levels/levels.service";
 
 @Injectable()
 export class MockTestService {
   constructor(
     private readonly prisma: PrismaService,
     private readonly pointsService: PointsService,
+    private readonly levelsService: LevelsService,
   ) {}
 
   // ============================================================
@@ -521,10 +523,26 @@ export class MockTestService {
       attempt.test_id
     );
 
+    // Award XP for completing test
+    await this.levelsService.awardXp(
+      userId,
+      'test_complete',
+      'test',
+      attempt.test_id
+    );
+
     // Award bonus points for perfect score
     const totalQuestions = allQuestions.length;
     if (totalCorrect === totalQuestions) {
       await this.pointsService.awardPoints(
+        userId,
+        'test_perfect',
+        'test',
+        attempt.test_id
+      );
+
+      // Award XP for perfect score
+      await this.levelsService.awardXp(
         userId,
         'test_perfect',
         'test',
@@ -2033,6 +2051,15 @@ export class MockTestService {
       25 // Half points for mini test
     );
 
+    // Award XP for completing mini test
+    await this.levelsService.awardXp(
+      userId,
+      'test_complete',
+      'test',
+      undefined,
+      50 // Half XP for mini test
+    );
+
     // Award bonus points for perfect score in mini test
     if (correctCount === questions.length) {
       await this.pointsService.awardPoints(
@@ -2041,6 +2068,15 @@ export class MockTestService {
         'test',
         undefined,
         50 // Half points for mini test perfect
+      );
+
+      // Award XP for perfect score in mini test
+      await this.levelsService.awardXp(
+        userId,
+        'test_perfect',
+        'test',
+        undefined,
+        100 // Half XP for mini test perfect
       );
     }
 

@@ -6,6 +6,7 @@ import {
 
 import { PrismaService } from "../prisma/prisma.service";
 import { PointsService } from "../points/points.service";
+import { LevelsService } from "../levels/levels.service";
 
 import { SubmitPracticeDto } from "./dto/submit-practice.dto";
 
@@ -14,6 +15,7 @@ export class PracticeService {
   constructor(
     private readonly prisma: PrismaService,
     private readonly pointsService: PointsService,
+    private readonly levelsService: LevelsService,
   ) {}
 
   // ============================================================
@@ -646,6 +648,14 @@ export class PracticeService {
 
     // Award points for completing practice session
     await this.pointsService.awardPoints(
+      userId,
+      'practice_complete',
+      'practice',
+      session.id
+    );
+
+    // Award XP for completing practice session
+    await this.levelsService.awardXp(
       userId,
       'practice_complete',
       'practice',

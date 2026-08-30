@@ -19,6 +19,8 @@ import { DashboardModule } from "./dashboard/dashboard.module";
 import { SettingsModule } from "./settings/settings.module";
 import { ErrorTrackingModule } from "./error-tracking/error-tracking.module";
 import { PointsModule } from "./points/points.module";
+import { LevelsModule } from "./levels/levels.module";
+import { BadgesModule } from "./badges/badges.module";
 
 @Module({
   imports: [
@@ -49,6 +51,8 @@ import { PointsModule } from "./points/points.module";
     SettingsModule,
     ErrorTrackingModule,
     PointsModule,
+    LevelsModule,
+    BadgesModule,
   ],
 })
 export class AppModule {}

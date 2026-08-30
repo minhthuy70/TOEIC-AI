@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
+import { apiFetch } from "@/lib/api";
 import {
   User,
   Target,
@@ -16,6 +17,9 @@ import {
   AlertTriangle,
   Trash2,
   Key,
+  Award,
+  Eye,
+  EyeOff,
 } from "lucide-react";
 
 const API = process.env.NEXT_PUBLIC_API_URL || "http://localhost:3001";
@@ -23,6 +27,7 @@ const API = process.env.NEXT_PUBLIC_API_URL || "http://localhost:3001";
 const TABS = [
   { id: "info", label: "Thông tin cá nhân", icon: User },
   { id: "goal", label: "Mục tiêu TOEIC", icon: Target },
+  { id: "badges", label: "Huy hiệu", icon: Award },
   { id: "password", label: "Đổi mật khẩu", icon: Lock },
   { id: "settings", label: "Cài đặt", icon: Settings },
   { id: "account", label: "Quản lý tài khoản", icon: ShieldCheck },
@@ -791,6 +796,109 @@ const handleDeleteAccount = async () => {
     setValue: setDarkMode,
   },
 ];
+
+// Profile Badges Component
+function ProfileBadgesContent() {
+  const [badges, setBadges] = useState<any[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState("");
+
+  useEffect(() => {
+    fetchBadges();
+  }, []);
+
+  const fetchBadges = async () => {
+    try {
+      setLoading(true);
+      const res = await apiFetch("/badges/user") as { success: boolean; badges: any[] };
+      if (res.success) {
+        setBadges(res.badges.filter((b: any) => b.isUnlocked && b.isDisplayed));
+      } else {
+        setError("Không thể tải huy hiệu");
+      }
+    } catch (err: any) {
+      console.error(err);
+      setError(err.message || "Đã xảy ra lỗi khi tải huy hiệu");
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const handleToggleDisplay = async (badge: any) => {
+    try {
+      await apiFetch(`/badges/display/${badge.id}`, {
+        method: "PUT",
+        body: JSON.stringify({ isDisplayed: !badge.isDisplayed }),
+      });
+
+      setBadges(badges.map((b) =>
+        b.id === badge.id ? { ...b, isDisplayed: !b.isDisplayed } : b
+      ));
+    } catch (err) {
+      console.error("Error toggling badge display:", err);
+    }
+  };
+
+  if (loading) {
+    return (
+      <div className="flex flex-col items-center justify-center py-12 gap-4">
+        <div className="w-10 h-10 border-4 border-red-600/30 border-t-red-500 rounded-full animate-spin"></div>
+        <p className="text-zinc-400 text-sm">Đang tải huy hiệu...</p>
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="bg-zinc-900/60 border border-zinc-800/50 rounded-2xl p-6 text-center">
+        <p className="text-red-400 text-sm">{error}</p>
+      </div>
+    );
+  }
+
+  return (
+    <div className="bg-zinc-900/60 border border-zinc-800/50 rounded-2xl p-6 space-y-4">
+      <h3 className="text-sm font-semibold text-white flex items-center gap-2">
+        <Award className="w-4 h-4 text-purple-400" />
+        <span>Huy hiệu hiển thị trên hồ sơ</span>
+      </h3>
+      
+      <p className="text-xs text-zinc-500">
+        Chọn huy hiệu bạn muốn hiển thị trên hồ sơ cá nhân. Các huy hiệu này sẽ xuất hiện bên cạnh tên của bạn.
+      </p>
+
+      {badges.length === 0 ? (
+        <div className="text-center py-8">
+          <Award className="w-12 h-12 text-zinc-700 mx-auto mb-4" />
+          <p className="text-zinc-500 text-sm">Chưa có huy hiệu nào được hiển thị</p>
+          <p className="text-xs text-zinc-600 mt-2">
+            Đi đến trang <span className="text-purple-400">Cấp độ & Huy hiệu</span> để mở khóa huy hiệu
+          </p>
+        </div>
+      ) : (
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+          {badges.map((badge) => (
+            <div
+              key={badge.id}
+              className="relative bg-zinc-900/40 border border-zinc-800/40 rounded-xl p-4 text-center hover:border-zinc-700/60 transition-colors"
+            >
+              <button
+                onClick={() => handleToggleDisplay(badge)}
+                className="absolute top-2 right-2 p-1.5 rounded-lg bg-zinc-800 hover:bg-zinc-700 text-zinc-400 hover:text-white transition-all"
+                title={badge.isDisplayed ? "Ẩn khỏi hồ sơ" : "Hiển thị trên hồ sơ"}
+              >
+                {badge.isDisplayed ? <Eye className="w-3.5 h-3.5" /> : <EyeOff className="w-3.5 h-3.5" />}
+              </button>
+              <div className="text-3xl mb-2">{badge.icon}</div>
+              <p className="text-xs font-medium text-white truncate">{badge.name}</p>
+              <p className="text-[10px] text-zinc-500 mt-1">{badge.rarity}</p>
+            </div>
+          ))}
+        </div>
+      )}
+    </div>
+  );
+}
   return (
     <div className="space-y-6 max-w-3xl mx-auto">
       {/* Header */}
@@ -1204,6 +1312,11 @@ className="w-full bg-zinc-800/60 border border-zinc-700/60 text-white rounded-xl
             Lưu mục tiêu
           </button>
         </div>
+      )}
+
+      {/* ── Badges ── */}
+      {activeTab === "badges" && (
+        <ProfileBadgesContent />
       )}
 
       {/* ── Password ── */}

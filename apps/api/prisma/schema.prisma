@@ -45,6 +45,9 @@ model User {
   dailyTasks                DailyTask[]
   reminderSetting           StudyReminderSetting?
   pointsTransactions        PointsTransaction[]
+  userLevels                UserLevel[]
+  userBadges                UserBadge[]
+  levelUpNotifications      LevelUpNotification[]
 }
 
 model UserSession {
@@ -100,6 +103,10 @@ model UserProfile {
   pointsBalance       Int       @default(0)
   totalPointsEarned   Int       @default(0) @map("total_points_earned")
   currentStreakMultiplier Float  @default(1.0) @map("current_streak_multiplier")
+  xp                  Int       @default(0)
+  level               Int       @default(1)
+  xpToNextLevel       Int       @default(100) @map("xp_to_next_level")
+  totalXpEarned       Int       @default(0) @map("total_xp_earned")
   user                User      @relation(fields: [userId], references: [id])
 }
 
@@ -611,6 +618,101 @@ model StudyReminderSetting {
   user              User     @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   @@map("study_reminder_settings")
+}
+
+model Level {
+  id          Int      @id @default(autoincrement())
+  levelNumber Int      @unique @map("level_number")
+  name        String   @db.VarChar(100)
+  description String?  @db.Text
+  xpRequired  Int      @map("xp_required")
+  rewards     String?  @db.Text // JSON string containing rewards (points, badges, etc.)
+  icon        String?  @db.VarChar(100)
+  color       String?  @db.VarChar(20) @default("blue")
+  isActive    Boolean  @default(true)
+  createdAt   DateTime @default(now()) @map("created_at") @db.Timestamp(6)
+
+  userLevels  UserLevel[]
+
+  @@index([levelNumber])
+  @@index([isActive])
+  @@map("levels")
+}
+
+model UserLevel {
+  id          Int      @id @default(autoincrement())
+  userId      Int      @map("user_id")
+  levelId     Int      @map("level_id")
+  achievedAt  DateTime @default(now()) @map("achieved_at") @db.Timestamp(6)
+  xpEarned    Int      @default(0) @map("xp_earned")
+
+  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  level       Level    @relation(fields: [levelId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, levelId])
+  @@index([userId])
+  @@index([levelId])
+  @@map("user_levels")
+}
+
+model Badge {
+  id          Int      @id @default(autoincrement())
+  name        String   @db.VarChar(255)
+  description String?  @db.Text
+  category    String   @db.VarChar(50) // achievement, milestone, special, rare, limited
+  criteria    String   @db.Text // JSON string containing criteria
+  icon        String?  @db.VarChar(100)
+  badgeColor  String?  @db.VarChar(20) @default("amber")
+  rarity      String   @db.VarChar(20) @default("common") // common, rare, epic, legendary, limited
+  isLimited   Boolean  @default(false) @map("is_limited")
+  limitCount  Int?     @map("limit_count")
+  limitExpiresAt DateTime? @map("limit_expires_at") @db.Timestamp(6)
+  isActive    Boolean  @default(true)
+  createdAt   DateTime @default(now()) @map("created_at") @db.Timestamp(6)
+
+  userBadges  UserBadge[]
+
+  @@index([category])
+  @@index([rarity])
+  @@index([isActive])
+  @@index([isLimited])
+  @@map("badges")
+}
+
+model UserBadge {
+  id             Int      @id @default(autoincrement())
+  userId         Int      @map("user_id")
+  badgeId        Int      @map("badge_id")
+  unlockedAt     DateTime @default(now()) @map("unlocked_at") @db.Timestamp(6)
+  progress       Int      @default(0)
+  shareCount     Int      @default(0) @map("share_count")
+  isDisplayed    Boolean  @default(false) @map("is_displayed") // Whether to show on profile
+
+  user           User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  badge          Badge    @relation(fields: [badgeId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, badgeId])
+  @@index([userId])
+  @@index([badgeId])
+  @@index([isDisplayed])
+  @@map("user_badges")
+}
+
+model LevelUpNotification {
+  id          Int      @id @default(autoincrement())
+  userId      Int      @map("user_id")
+  newLevel    Int      @map("new_level")
+  previousLevel Int    @map("previous_level")
+  xpEarned    Int      @map("xp_earned")
+  rewards     String?  @db.Text // JSON string containing rewards
+  isRead      Boolean  @default(false) @map("is_read")
+  createdAt   DateTime @default(now()) @map("created_at") @db.Timestamp(6)
+
+  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@index([isRead])
+  @@map("level_up_notifications")
 }
 
 model PointsTransaction {

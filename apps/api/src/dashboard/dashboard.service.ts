@@ -1,12 +1,16 @@
 import { Injectable } from "@nestjs/common";
 import { PrismaService } from "../prisma/prisma.service";
 import { PointsService } from "../points/points.service";
+import { LevelsService } from "../levels/levels.service";
+import { BadgesService } from "../badges/badges.service";
 
 @Injectable()
 export class DashboardService {
   constructor(
     private readonly prisma: PrismaService,
     private readonly pointsService: PointsService,
+    private readonly levelsService: LevelsService,
+    private readonly badgesService: BadgesService,
   ) {}
 
   private getStage(score: number): number {
@@ -1692,6 +1696,24 @@ export class DashboardService {
             achievement.points,
             `Mở khóa thành tích: ${achievement.name}`
           );
+
+          // Award XP for achievement unlock
+          await this.levelsService.awardXp(
+            userId,
+            'achievement_unlock',
+            'achievement',
+            achievement.id,
+            achievement.points,
+            `Mở khóa thành tích: ${achievement.name}`
+          );
+
+          // Try to unlock corresponding badge
+          try {
+            await this.badgesService.unlockBadge(userId, achievement.id);
+          } catch (badgeError) {
+            // Badge might not exist or other error, ignore
+            console.log("Could not unlock badge for achievement:", badgeError);
+          }
 
           isUnlocked = true;
         }

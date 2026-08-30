@@ -5,6 +5,7 @@ import {
 
 import { PrismaService } from '../prisma/prisma.service';
 import { PointsService } from '../points/points.service';
+import { LevelsService } from '../levels/levels.service';
 
 import { LearnDto } from './dto/learn.dto';
 import { ReviewDto } from './dto/review.dto';
@@ -14,6 +15,7 @@ export class VocabularyService {
   constructor(
     private readonly prisma: PrismaService,
     private readonly pointsService: PointsService,
+    private readonly levelsService: LevelsService,
   ) {}
 
   // =====================================================
@@ -574,6 +576,14 @@ export class VocabularyService {
       dto.vocabularyId
     );
 
+    // Award XP for learning vocabulary
+    await this.levelsService.awardXp(
+      dto.userId!,
+      'vocabulary_learn',
+      'vocabulary',
+      dto.vocabularyId
+    );
+
     return {
       success: true,
 
@@ -683,6 +693,14 @@ const nextReview = new Date();
 
     // Award points for reviewing vocabulary
     await this.pointsService.awardPoints(
+      dto.userId!,
+      'vocabulary_review',
+      'vocabulary',
+      dto.vocabularyId
+    );
+
+    // Award XP for reviewing vocabulary
+    await this.levelsService.awardXp(
       dto.userId!,
       'vocabulary_review',
       'vocabulary',

@@ -5,6 +5,7 @@ import {
 
 import { PrismaService } from "../prisma/prisma.service";
 import { PointsService } from "../points/points.service";
+import { LevelsService } from "../levels/levels.service";
 import { CompleteLessonDto } from "./dto/complete-lesson.dto";
 import { StartExerciseDto, SubmitExerciseDto } from "./dto/exercise.dto";
 
@@ -13,6 +14,7 @@ export class GrammarService {
   constructor(
     private readonly prisma: PrismaService,
     private readonly pointsService: PointsService,
+    private readonly levelsService: LevelsService,
   ) {}
 
   // =====================================================
@@ -570,6 +572,14 @@ export class GrammarService {
 
     // Award points for completing grammar lesson
     await this.pointsService.awardPoints(
+      userId,
+      'grammar_lesson_complete',
+      'grammar',
+      lessonId
+    );
+
+    // Award XP for completing grammar lesson
+    await this.levelsService.awardXp(
       userId,
       'grammar_lesson_complete',
       'grammar',

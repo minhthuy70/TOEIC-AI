@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { apiFetch } from "@/lib/api";
+import LevelDisplay from "@/components/levels/LevelDisplay";
 import {
   Flame,
   Lightbulb,
@@ -605,6 +606,9 @@ export default function DashboardPage() {
 
             {/* Right Column: Score & Roadmap */}
             <div className="space-y-6">
+              {/* Level Display */}
+              <LevelDisplay />
+
               <div className="bg-zinc-900/60 border border-zinc-800/50 rounded-2xl p-5 lg:p-6">
                 <div className="flex items-center justify-between mb-4">
                   <h3 className="text-sm font-semibold text-white flex items-center gap-2">
