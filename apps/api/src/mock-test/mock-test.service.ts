@@ -5,11 +5,13 @@ import {
 } from "@nestjs/common";
 
 import { PrismaService } from "../prisma/prisma.service";
+import { PointsService } from "../points/points.service";
 
 @Injectable()
 export class MockTestService {
   constructor(
     private readonly prisma: PrismaService,
+    private readonly pointsService: PointsService,
   ) {}
 
   // ============================================================
@@ -510,6 +512,25 @@ export class MockTestService {
             savedAnswers,
         },
       });
+
+    // Award points for completing test
+    await this.pointsService.awardPoints(
+      userId,
+      'test_complete',
+      'test',
+      attempt.test_id
+    );
+
+    // Award bonus points for perfect score
+    const totalQuestions = allQuestions.length;
+    if (totalCorrect === totalQuestions) {
+      await this.pointsService.awardPoints(
+        userId,
+        'test_perfect',
+        'test',
+        attempt.test_id
+      );
+    }
 
     return {
       attemptId:
@@ -2002,6 +2023,26 @@ export class MockTestService {
     const readingScale = readingTotal > 0 ? Math.round((readingCorrect / readingTotal) * 495) : 0;
     const totalScore = Math.min(990, Math.max(10, listeningScale + readingScale));
     const accuracy = questions.length > 0 ? Math.round((correctCount / questions.length) * 100) : 0;
+
+    // Award points for completing mini test
+    await this.pointsService.awardPoints(
+      userId,
+      'test_complete',
+      'test',
+      undefined,
+      25 // Half points for mini test
+    );
+
+    // Award bonus points for perfect score in mini test
+    if (correctCount === questions.length) {
+      await this.pointsService.awardPoints(
+        userId,
+        'test_perfect',
+        'test',
+        undefined,
+        50 // Half points for mini test perfect
+      );
+    }
 
     const partBreakdown = Object.entries(partStatsMap)
       .filter(([_, st]) => st.total > 0)

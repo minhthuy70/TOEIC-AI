@@ -4,6 +4,7 @@ import {
 } from "@nestjs/common";
 
 import { PrismaService } from "../prisma/prisma.service";
+import { PointsService } from "../points/points.service";
 import { CompleteLessonDto } from "./dto/complete-lesson.dto";
 import { StartExerciseDto, SubmitExerciseDto } from "./dto/exercise.dto";
 
@@ -11,6 +12,7 @@ import { StartExerciseDto, SubmitExerciseDto } from "./dto/exercise.dto";
 export class GrammarService {
   constructor(
     private readonly prisma: PrismaService,
+    private readonly pointsService: PointsService,
   ) {}
 
   // =====================================================
@@ -565,6 +567,14 @@ export class GrammarService {
           lastStudied: new Date(),
         },
       });
+
+    // Award points for completing grammar lesson
+    await this.pointsService.awardPoints(
+      userId,
+      'grammar_lesson_complete',
+      'grammar',
+      lessonId
+    );
 
     return {
       success: true,

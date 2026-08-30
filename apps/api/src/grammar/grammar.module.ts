@@ -3,9 +3,10 @@ import { Module } from "@nestjs/common";
 import { PrismaModule } from "../prisma/prisma.module";
 import { GrammarController } from "./grammar.controller";
 import { GrammarService } from "./grammar.service";
+import { PointsModule } from "../points/points.module";
 
 @Module({
-  imports: [PrismaModule],
+  imports: [PrismaModule, PointsModule],
   controllers: [GrammarController],
   providers: [GrammarService],
 })

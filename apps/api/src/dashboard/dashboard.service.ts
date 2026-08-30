@@ -1,9 +1,13 @@
 import { Injectable } from "@nestjs/common";
 import { PrismaService } from "../prisma/prisma.service";
+import { PointsService } from "../points/points.service";
 
 @Injectable()
 export class DashboardService {
-  constructor(private readonly prisma: PrismaService) {}
+  constructor(
+    private readonly prisma: PrismaService,
+    private readonly pointsService: PointsService,
+  ) {}
 
   private getStage(score: number): number {
     if (score >= 800) return 5;
@@ -1484,6 +1488,28 @@ export class DashboardService {
     return streak;
   }
 
+  // Streak multiplier calculation
+  private calculateStreakMultiplier(streak: number): number {
+    const multipliers = {
+      0: 1.0,
+      3: 1.1,  // 3+ days streak
+      7: 1.25, // 7+ days streak
+      14: 1.5, // 14+ days streak
+      30: 2.0, // 30+ days streak
+    };
+
+    const thresholds = Object.keys(multipliers)
+      .map(Number)
+      .sort((a, b) => b - a); // Sort descending
+
+    for (const threshold of thresholds) {
+      if (streak >= threshold) {
+        return multipliers[threshold];
+      }
+    }
+    return 1.0;
+  }
+
   // Achievement Management Methods
   private async seedDefaultAchievements() {
     const existingCount = await this.prisma.achievement.count();
@@ -1656,13 +1682,17 @@ export class DashboardService {
               progress: 100,
             },
           });
-          
-          // Increment points balance in user profile
-          await this.prisma.userProfile.update({
-            where: { userId },
-            data: { pointsBalance: { increment: achievement.points } }
-          });
-          
+
+          // Award points for achievement unlock
+          await this.pointsService.awardPoints(
+            userId,
+            'achievement_unlock',
+            'achievement',
+            achievement.id,
+            achievement.points,
+            `Mở khóa thành tích: ${achievement.name}`
+          );
+
           isUnlocked = true;
         }
 
@@ -2005,9 +2035,13 @@ export class DashboardService {
 
       // Recalculate streak after applying freeze
       const newStreak = await this.getStreak(userId);
+      const newMultiplier = this.calculateStreakMultiplier(newStreak);
       await this.prisma.userProfile.update({
         where: { userId },
-        data: { streak: newStreak }
+        data: {
+          streak: newStreak,
+          currentStreakMultiplier: newMultiplier
+        }
       });
 
       return {
@@ -2015,6 +2049,7 @@ export class DashboardService {
         streakFreezeCount: updated.streakFreezeCount,
         frozenDates: frozenList,
         newStreak,
+        newMultiplier,
         message: `Đóng băng chuỗi cho ngày ${dateStr} thành công! ❄️`
       };
     } catch (error) {

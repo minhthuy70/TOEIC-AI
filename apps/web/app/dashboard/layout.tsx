@@ -24,6 +24,8 @@ import {
   ListTodo,
   Bell,
   Sparkles,
+  Star,
+  TrendingUp,
 } from "lucide-react";
 import { useAutoLogout } from "../../hooks/useAutoLogout";
 import { useSessionWarning } from "../../hooks/useSessionWarning";
@@ -49,6 +51,8 @@ const NAV_MAIN = [
 const NAV_BOTTOM = [
   { label: "Chuỗi ngày", icon: Flame, href: "/dashboard/streak" },
   { label: "Thành tích", icon: Trophy, href: "/dashboard/achievements" },
+  { label: "Hệ thống điểm", icon: Star, href: "/dashboard/points" },
+  { label: "Bảng xếp hạng", icon: TrendingUp, href: "/dashboard/leaderboard" },
   { label: "Nhắc nhở", icon: Bell, href: "/dashboard/reminders" },
   { label: "Hồ sơ cá nhân", icon: UserIcon, href: "/dashboard/profile" },
 ];

@@ -5,6 +5,7 @@ import {
 } from "@nestjs/common";
 
 import { PrismaService } from "../prisma/prisma.service";
+import { PointsService } from "../points/points.service";
 
 import { SubmitPracticeDto } from "./dto/submit-practice.dto";
 
@@ -12,6 +13,7 @@ import { SubmitPracticeDto } from "./dto/submit-practice.dto";
 export class PracticeService {
   constructor(
     private readonly prisma: PrismaService,
+    private readonly pointsService: PointsService,
   ) {}
 
   // ============================================================
@@ -627,6 +629,28 @@ export class PracticeService {
             resultAnswers,
         },
       });
+
+    // ----------------------------------------------------------
+    // Award points
+    // ----------------------------------------------------------
+
+    // Award points for each correct answer
+    for (let i = 0; i < correctCount; i++) {
+      await this.pointsService.awardPoints(
+        userId,
+        'practice_correct',
+        'practice',
+        session.id
+      );
+    }
+
+    // Award points for completing practice session
+    await this.pointsService.awardPoints(
+      userId,
+      'practice_complete',
+      'practice',
+      session.id
+    );
 
     // ----------------------------------------------------------
     // Trả kết quả

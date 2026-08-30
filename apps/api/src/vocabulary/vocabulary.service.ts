@@ -4,6 +4,7 @@ import {
 } from '@nestjs/common';
 
 import { PrismaService } from '../prisma/prisma.service';
+import { PointsService } from '../points/points.service';
 
 import { LearnDto } from './dto/learn.dto';
 import { ReviewDto } from './dto/review.dto';
@@ -12,6 +13,7 @@ import { ReviewDto } from './dto/review.dto';
 export class VocabularyService {
   constructor(
     private readonly prisma: PrismaService,
+    private readonly pointsService: PointsService,
   ) {}
 
   // =====================================================
@@ -564,6 +566,14 @@ export class VocabularyService {
       },
     });
 
+    // Award points for learning vocabulary
+    await this.pointsService.awardPoints(
+      dto.userId!,
+      'vocabulary_learn',
+      'vocabulary',
+      dto.vocabularyId
+    );
+
     return {
       success: true,
 
@@ -670,6 +680,14 @@ const nextReview = new Date();
         status,
       },
     });
+
+    // Award points for reviewing vocabulary
+    await this.pointsService.awardPoints(
+      dto.userId!,
+      'vocabulary_review',
+      'vocabulary',
+      dto.vocabularyId
+    );
 
     return {
       success: true,

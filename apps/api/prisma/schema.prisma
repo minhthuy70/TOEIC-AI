@@ -44,6 +44,7 @@ model User {
   studySchedules            StudySchedule[]
   dailyTasks                DailyTask[]
   reminderSetting           StudyReminderSetting?
+  pointsTransactions        PointsTransaction[]
 }
 
 model UserSession {
@@ -97,6 +98,8 @@ model UserProfile {
   streakProtection    Boolean   @default(false)
   frozenDates         String    @default("")
   pointsBalance       Int       @default(0)
+  totalPointsEarned   Int       @default(0) @map("total_points_earned")
+  currentStreakMultiplier Float  @default(1.0) @map("current_streak_multiplier")
   user                User      @relation(fields: [userId], references: [id])
 }
 
@@ -608,4 +611,24 @@ model StudyReminderSetting {
   user              User     @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   @@map("study_reminder_settings")
+}
+
+model PointsTransaction {
+  id              Int      @id @default(autoincrement())
+  userId          Int      @map("user_id")
+  amount          Int      // Số điểm (dương cho nhận điểm, âm cho tiêu điểm)
+  type            String   @db.VarChar(50) // vocabulary_learn, vocabulary_review, practice_correct, practice_complete, test_complete, achievement_unlock, streak_bonus, etc.
+  description     String?  @db.Text
+  sourceType      String?  @db.VarChar(50) // vocabulary, practice, test, achievement, streak
+  sourceId        Int?     // ID của nguồn (ví dụ: vocabularyId, achievementId)
+  multiplier      Float?   @default(1.0) // Nhân điểm (streak bonus)
+  baseAmount      Int?     // Số điểm gốc trước khi nhân
+  createdAt       DateTime @default(now()) @map("created_at") @db.Timestamp(6)
+
+  user            User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@index([type])
+  @@index([createdAt])
+  @@map("points_transactions")
 }

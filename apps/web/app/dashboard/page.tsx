@@ -34,6 +34,7 @@ import {
   Edit,
   Trash2,
   PartyPopper,
+  Star,
 } from "lucide-react";
 
 const STAGES = [
@@ -448,6 +449,19 @@ export default function DashboardPage() {
                 {daily?.streak?.current || 5} <span className="text-xs text-zinc-400 font-normal">ngày</span>
               </p>
               <span className="text-[10px] text-zinc-500 block mt-1.5">Kỷ lục: {daily?.streak?.longest || 7} ngày</span>
+            </div>
+
+            <div className="bg-zinc-900/60 border border-zinc-800/60 rounded-2xl p-4.5 text-center transition hover:border-zinc-700">
+              <span className="text-[10px] text-zinc-500 uppercase tracking-wider font-bold block mb-1.5 flex items-center justify-center gap-1">
+                <Star className="w-3.5 h-3.5 text-red-400" />
+                <span>Điểm tích lũy</span>
+              </span>
+              <p className="text-2xl font-black text-red-400">
+                <Link href="/dashboard/points" className="hover:text-red-300 transition-colors">
+                  {user?.profile?.pointsBalance || 0} <span className="text-xs text-zinc-400 font-normal">PTS</span>
+                </Link>
+              </p>
+              <span className="text-[10px] text-zinc-500 block mt-1.5">Tổng: {user?.profile?.totalPointsEarned || 0} PTS</span>
             </div>
           </div>
 

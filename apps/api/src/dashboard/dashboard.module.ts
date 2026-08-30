@@ -10,9 +10,10 @@ import { ReminderService } from "./reminder.service";
 import { RecommendationController } from "./recommendation.controller";
 import { RecommendationService } from "./recommendation.service";
 import { PrismaModule } from "../prisma/prisma.module";
+import { PointsModule } from "../points/points.module";
 
 @Module({
-  imports: [PrismaModule],
+  imports: [PrismaModule, PointsModule],
   controllers: [
     DashboardController,
     ScheduleController,
