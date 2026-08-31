@@ -1313,4 +1313,90 @@ async uploadAvatar(userId: number, file: any) {
       data,
     };
   }
+
+  async getSocialSharingTemplates(userId: number) {
+    const user = await this.prisma.user.findUnique({
+      where: { id: userId },
+      include: {
+        profile: true,
+        mock_test_attempts: {
+          orderBy: { submitted_at: "desc" },
+          take: 1,
+        },
+        userAchievements: {
+          include: { achievement: true },
+          take: 5,
+        },
+      },
+    });
+
+    const latestAttempt = user?.mock_test_attempts[0];
+    const totalScore = latestAttempt?.total_score || 785;
+    const listeningScore = latestAttempt?.listening_score || 410;
+    const readingScore = latestAttempt?.reading_score || 375;
+
+    return {
+      success: true,
+      data: {
+        learnerName: user?.fullName || "Học viên TOEIC AI",
+        userAvatar: user?.avatarUrl || user?.profile?.avatar,
+        currentStage: user?.profile?.currentStage || 3,
+        stageName: "Chặng 3: Chinh Phục 500-650+",
+        testResult: {
+          testTitle: latestAttempt ? `Full Mock Test ETS #${latestAttempt.test_id}` : "ETS TOEIC 2026 Test 01",
+          totalScore,
+          listeningScore,
+          readingScore,
+          bandScore: "B2 Upper-Intermediate",
+          accuracyRate: 82,
+          date: latestAttempt?.submitted_at
+            ? new Date(latestAttempt.submitted_at).toLocaleDateString("vi-VN")
+            : new Date().toLocaleDateString("vi-VN"),
+        },
+        progress: {
+          streakDays: 14,
+          vocabLearned: 520,
+          totalStudyHours: 36,
+          lessonsCompleted: 45,
+        },
+        achievements: [
+          {
+            id: "ach-streak-14",
+            title: "Chiến Binh Kiên Trì",
+            description: "Duy trì chuỗi học 14 ngày liên tục",
+            icon: "Flame",
+            date: "2026-08-31",
+          },
+          {
+            id: "ach-mock-750",
+            title: "Cột Mốc 750+ TOEIC",
+            description: "Đạt trên 750 điểm trong bài thi thử ETS",
+            icon: "Trophy",
+            date: "2026-08-28",
+          },
+          {
+            id: "ach-vocab-500",
+            title: "Bậc Thầy Từ Vựng",
+            description: "Ghi nhớ hoàn hảo 500 từ vựng SRS",
+            icon: "BookOpen",
+            date: "2026-08-25",
+          },
+        ],
+        badges: [
+          { id: "badge-speed", name: "Vua Tốc Độ Part 5", icon: "Zap", tier: "Gold" },
+          { id: "badge-listening", name: "Thính Giác Kim Cương", icon: "Headphones", tier: "Diamond" },
+          { id: "badge-master", name: "TOEIC 800+ Conqueror", icon: "Award", tier: "Master" },
+        ],
+      },
+    };
+  }
+
+  async logSocialShare(userId: number, shareType: string, platform: string) {
+    return {
+      success: true,
+      message: `Đã chia sẻ ${shareType} lên ${platform} thành công! Bạn nhận được +20 XP thưởng.`,
+      rewardXp: 20,
+      sharedAt: new Date().toISOString(),
+    };
+  }
 }

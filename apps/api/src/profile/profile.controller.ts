@@ -220,6 +220,16 @@ updateWidgetSettings(@Req() req: any, @Body() body: any) {
   return this.profileService.updateWidgetSettings(req.user.userId, body);
 }
 
+@Get("social-sharing/templates")
+getSocialSharingTemplates(@Req() req: any) {
+  return this.profileService.getSocialSharingTemplates(req.user.userId);
+}
+
+@Post("social-sharing/log")
+logSocialShare(@Req() req: any, @Body() body: { shareType: string; platform: string }) {
+  return this.profileService.logSocialShare(req.user.userId, body.shareType, body.platform);
+}
+
 @Post("delete-account")
 deleteAccount(@Req() req: any, @Body() body: { password?: string; reason?: string }) {
   return this.profileService.deleteAccount(req.user.userId, body.password, body.reason);

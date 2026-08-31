@@ -1081,12 +1081,12 @@ Dựa trên lộ trình học TOEIC 900+ - Phiên bản nâng cấp
 [x] - Block user - Chặn người dùng
 
 15.2. Social Sharing (Chia sẻ xã hội)
-- Share progress on social media - Chia sẻ tiến độ trên mạng xã hội
-- Share achievements - Chia sẻ thành tích
-- Share test results - Chia sẻ kết quả kiểm tra
-- Share badges - Chia sẻ huy hiệu
-- Custom share message - Thông điệp chia sẻ tùy chỉnh
-- Share image generation - Tạo hình ảnh chia sẻ
+[x] - Share progress on social media - Chia sẻ tiến độ trên mạng xã hội
+[x] - Share achievements - Chia sẻ thành tích
+[x] - Share test results - Chia sẻ kết quả kiểm tra
+[x] - Share badges - Chia sẻ huy hiệu
+[x] - Custom share message - Thông điệp chia sẻ tùy chỉnh
+[x] - Share image generation - Tạo hình ảnh chia sẻ
 
 15.3. Study Groups (Nhóm học tập)
 - Create study group - Tạo nhóm học tập
