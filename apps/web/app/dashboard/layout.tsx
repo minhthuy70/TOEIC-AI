@@ -29,6 +29,7 @@ import {
   Award,
   Target,
   Gift,
+  BellRing,
 } from "lucide-react";
 import { useAutoLogout } from "../../hooks/useAutoLogout";
 import { useSessionWarning } from "../../hooks/useSessionWarning";
@@ -59,7 +60,7 @@ const NAV_BOTTOM = [
   { label: "Bảng xếp hạng", icon: TrendingUp, href: "/dashboard/leaderboard" },
   { label: "Thử thách", icon: Target, href: "/dashboard/challenges" },
   { label: "Phần thưởng", icon: Gift, href: "/dashboard/rewards" },
-  { label: "Nhắc nhở", icon: Bell, href: "/dashboard/reminders" },
+  { label: "Thông báo", icon: BellRing, href: "/dashboard/notifications" },
   { label: "Hồ sơ cá nhân", icon: UserIcon, href: "/dashboard/profile" },
 ];
 

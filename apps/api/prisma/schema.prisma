@@ -59,6 +59,8 @@ model User {
   rewardRedemptions         RewardRedemption[]
   rewardShares              RewardShare[]
   rewardNotifications       RewardNotification[]
+  notifications             Notification[]
+  notificationPreferences   NotificationPreference?
 }
 
 model UserSession {
@@ -994,4 +996,61 @@ model RewardNotification {
   @@index([type])
   @@index([createdAt])
   @@map("reward_notifications")
+}
+
+model Notification {
+  id                Int      @id @default(autoincrement())
+  userId            Int      @map("user_id")
+  type              String   @db.VarChar(50) // review_due, study_time, test_reminder, streak_warning, goal_progress, achievement_unlocked, new_content, weekly_summary, monthly_summary, challenge_update, leaderboard_change
+  title             String   @db.VarChar(255)
+  message           String?  @db.Text
+  priority          String   @default("normal") @db.VarChar(20) // low, normal, high, urgent
+  category          String   @default("general") @db.VarChar(50) // study, achievement, social, system, challenge
+  actionUrl         String?  @map("action_url") @db.VarChar(500)
+  actionLabel       String?  @map("action_label") @db.VarChar(50)
+  metadata          String?  @db.Text // JSON string for additional data
+  isRead            Boolean  @default(false) @map("is_read")
+  readAt            DateTime? @map("read_at") @db.Timestamp(6)
+  expiresAt         DateTime? @map("expires_at") @db.Timestamp(6)
+  scheduledFor      DateTime? @map("scheduled_for") @db.Timestamp(6)
+  sentAt            DateTime? @map("sent_at") @db.Timestamp(6)
+  createdAt         DateTime @default(now()) @map("created_at") @db.Timestamp(6)
+
+  user              User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@index([isRead])
+  @@index([type])
+  @@index([category])
+  @@index([priority])
+  @@index([scheduledFor])
+  @@index([expiresAt])
+  @@index([createdAt])
+  @@map("notifications")
+}
+
+model NotificationPreference {
+  id                Int      @id @default(autoincrement())
+  userId            Int      @unique @map("user_id")
+  reviewDueReminders Boolean  @default(true) @map("review_due_reminders")
+  studyTimeReminders Boolean  @default(true) @map("study_time_reminders")
+  testReminders     Boolean  @default(true) @map("test_reminders")
+  streakWarnings     Boolean  @default(true) @map("streak_warnings")
+  goalProgressUpdates Boolean  @default(true) @map("goal_progress_updates")
+  achievementUnlocked Boolean  @default(true) @map("achievement_unlocked")
+  newContentAvailable Boolean @default(true) @map("new_content_available")
+  weeklySummary     Boolean  @default(true) @map("weekly_summary")
+  monthlySummary    Boolean  @default(true) @map("monthly_summary")
+  challengeUpdates  Boolean  @default(true) @map("challenge_updates")
+  leaderboardChanges Boolean  @default(true) @map("leaderboard_changes")
+  emailEnabled      Boolean  @default(false) @map("email_enabled")
+  pushEnabled       Boolean  @default(true) @map("push_enabled")
+  quietHoursStart   String?  @map("quiet_hours_start") @db.VarChar(5) // Format "HH:MM"
+  quietHoursEnd     String?  @map("quiet_hours_end") @db.VarChar(5) // Format "HH:MM"
+  createdAt         DateTime @default(now()) @map("created_at") @db.Timestamp(6)
+  updatedAt         DateTime @default(now()) @updatedAt @map("updated_at") @db.Timestamp(6)
+
+  user              User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("notification_preferences")
 }
