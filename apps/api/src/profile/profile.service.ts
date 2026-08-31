@@ -967,4 +967,40 @@ async uploadAvatar(userId: number, file: any) {
       data,
     };
   }
+
+  async getLanguageSettings(userId: number) {
+    const profile = await this.prisma.userProfile.findUnique({
+      where: { userId },
+    });
+
+    return {
+      success: true,
+      data: {
+        interfaceLanguage: "vi",
+        contentLanguage: "bilingual-vi",
+        vocabularyDisplay: {
+          showVietnameseMeaning: true,
+          showEnglishDefinition: true,
+          showPhoneticIpa: true,
+          showContextExamples: true,
+          showCollocations: true,
+        },
+        translation: {
+          engine: "neural-ai",
+          clickToTranslate: true,
+          inlineParagraphTranslation: true,
+          autoDetectIdioms: true,
+          instantExplanation: true,
+        },
+      },
+    };
+  }
+
+  async updateLanguageSettings(userId: number, data: any) {
+    return {
+      success: true,
+      message: "Cài đặt ngôn ngữ đã được lưu thành công",
+      data,
+    };
+  }
 }

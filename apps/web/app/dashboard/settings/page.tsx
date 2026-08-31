@@ -43,6 +43,10 @@ import {
   Square,
   Radio,
   Activity,
+  Globe2,
+  BookA,
+  Sparkle,
+  Bot,
 } from "lucide-react";
 
 interface StudySettingsData {
@@ -133,6 +137,25 @@ interface AccessibilitySettingsData {
   focusIndicators: boolean;
 }
 
+interface LanguageSettingsData {
+  interfaceLanguage: "vi" | "en" | "ja" | "ko" | "zh";
+  contentLanguage: "bilingual-vi" | "english-only" | "bilingual-ja" | "bilingual-ko" | "bilingual-zh";
+  vocabularyDisplay: {
+    showVietnameseMeaning: boolean;
+    showEnglishDefinition: boolean;
+    showPhoneticIpa: boolean;
+    showContextExamples: boolean;
+    showCollocations: boolean;
+  };
+  translation: {
+    engine: "neural-ai" | "deepl" | "google";
+    clickToTranslate: boolean;
+    inlineParagraphTranslation: boolean;
+    autoDetectIdioms: boolean;
+    instantExplanation: boolean;
+  };
+}
+
 const DEFAULT_STUDY_SETTINGS: StudySettingsData = {
   dailyGoals: {
     dailyVocab: 20,
@@ -221,6 +244,25 @@ const DEFAULT_ACCESSIBILITY_SETTINGS: AccessibilitySettingsData = {
   focusIndicators: true,
 };
 
+const DEFAULT_LANGUAGE_SETTINGS: LanguageSettingsData = {
+  interfaceLanguage: "vi",
+  contentLanguage: "bilingual-vi",
+  vocabularyDisplay: {
+    showVietnameseMeaning: true,
+    showEnglishDefinition: true,
+    showPhoneticIpa: true,
+    showContextExamples: true,
+    showCollocations: true,
+  },
+  translation: {
+    engine: "neural-ai",
+    clickToTranslate: true,
+    inlineParagraphTranslation: true,
+    autoDetectIdioms: true,
+    instantExplanation: true,
+  },
+};
+
 const STUDY_SECTIONS = [
   { id: "dailyGoals", label: "Mục tiêu ngày", icon: Target },
   { id: "studyTime", label: "Thời gian học", icon: Clock },
@@ -256,9 +298,25 @@ const COLOR_BLIND_MODES = [
   { id: "monochrome", name: "Đơn sắc (Monochrome)", desc: "Giao diện thang độ xám Grayscale" },
 ];
 
+const INTERFACE_LANGUAGES = [
+  { id: "vi", name: "Tiếng Việt", native: "Tiếng Việt (Mặc định)", flag: "🇻🇳" },
+  { id: "en", name: "English", native: "English (US)", flag: "🇺🇸" },
+  { id: "ja", name: "Japanese", native: "日本語", flag: "🇯🇵" },
+  { id: "ko", name: "Korean", native: "한국어", flag: "🇰🇷" },
+  { id: "zh", name: "Chinese", native: "简体中文", flag: "🇨🇳" },
+];
+
+const CONTENT_LANGUAGES = [
+  { id: "bilingual-vi", name: "Song ngữ Anh - Việt", desc: "Hiển thị đề tiếng Anh kèm dịch nghĩa và giải thích tiếng Việt (Khuyên dùng)" },
+  { id: "english-only", name: "Chỉ tiếng Anh (English Only)", desc: "Môi trường đắm chìm 100% tiếng Anh cho trình độ 800+ TOEIC" },
+  { id: "bilingual-ja", name: "Song ngữ Anh - Nhật (日英)", desc: "Hiển thị đề thi kèm phụ đề giải thích tiếng Nhật" },
+  { id: "bilingual-ko", name: "Song ngữ Anh - Hàn (영한)", desc: "Hiển thị đề thi kèm phụ đề giải thích tiếng Hàn" },
+  { id: "bilingual-zh", name: "Song ngữ Anh - Trung (英中)", desc: "Hiển thị đề thi kèm phụ đề giải thích tiếng Trung" },
+];
+
 export default function SettingsHubPage() {
   const router = useRouter();
-  const [activeTab, setActiveTab] = useState<"study" | "appearance" | "accessibility">("study");
+  const [activeTab, setActiveTab] = useState<"study" | "appearance" | "accessibility" | "language">("study");
 
   // Study Settings State
   const [studySettings, setStudySettings] = useState<StudySettingsData>(DEFAULT_STUDY_SETTINGS);
@@ -269,6 +327,9 @@ export default function SettingsHubPage() {
 
   // Accessibility Settings State
   const [accessibility, setAccessibility] = useState<AccessibilitySettingsData>(DEFAULT_ACCESSIBILITY_SETTINGS);
+
+  // Language Settings State
+  const [language, setLanguage] = useState<LanguageSettingsData>(DEFAULT_LANGUAGE_SETTINGS);
 
   // Live TTS audio state
   const [isSpeaking, setIsSpeaking] = useState(false);
@@ -295,10 +356,11 @@ export default function SettingsHubPage() {
   const loadAllSettings = async () => {
     try {
       setLoading(true);
-      const [studyRes, appRes, accRes] = await Promise.all([
+      const [studyRes, appRes, accRes, langRes] = await Promise.all([
         apiFetch<{ success: boolean; data: StudySettingsData }>("/profile/study-settings"),
         apiFetch<{ success: boolean; data: AppearanceSettingsData }>("/profile/appearance-settings"),
         apiFetch<{ success: boolean; data: AccessibilitySettingsData }>("/profile/accessibility-settings"),
+        apiFetch<{ success: boolean; data: LanguageSettingsData }>("/profile/language-settings"),
       ]);
 
       if (studyRes.success && studyRes.data) {
@@ -330,6 +392,15 @@ export default function SettingsHubPage() {
           ...accRes.data,
           textToSpeech: { ...DEFAULT_ACCESSIBILITY_SETTINGS.textToSpeech, ...accRes.data.textToSpeech },
           speechToText: { ...DEFAULT_ACCESSIBILITY_SETTINGS.speechToText, ...accRes.data.speechToText },
+        });
+      }
+
+      if (langRes.success && langRes.data) {
+        setLanguage({
+          ...DEFAULT_LANGUAGE_SETTINGS,
+          ...langRes.data,
+          vocabularyDisplay: { ...DEFAULT_LANGUAGE_SETTINGS.vocabularyDisplay, ...langRes.data.vocabularyDisplay },
+          translation: { ...DEFAULT_LANGUAGE_SETTINGS.translation, ...langRes.data.translation },
         });
       }
     } catch (err) {
@@ -388,6 +459,24 @@ export default function SettingsHubPage() {
       }
     } catch (err: any) {
       showToast(err.message || "Lỗi khi lưu cài đặt trợ năng", "error");
+    } finally {
+      setSaving(false);
+    }
+  };
+
+  const handleSaveLanguageSettings = async () => {
+    try {
+      setSaving(true);
+      const res = await apiFetch<{ success: boolean; message: string }>("/profile/language-settings", {
+        method: "PUT",
+        body: JSON.stringify(language),
+      });
+
+      if (res.success) {
+        showToast(res.message || "Đã lưu cài đặt ngôn ngữ thành công!");
+      }
+    } catch (err: any) {
+      showToast(err.message || "Lỗi khi lưu cài đặt ngôn ngữ", "error");
     } finally {
       setSaving(false);
     }
@@ -499,7 +588,7 @@ export default function SettingsHubPage() {
             <span>Trung Tâm Cài Đặt Hệ Thống</span>
           </h1>
           <p className="text-sm text-zinc-400 mt-1">
-            Tùy biến học tập (13.2), giao diện (13.3) và trợ năng truy cập (13.4)
+            Tùy biến học tập (13.2), giao diện (13.3), trợ năng (13.4) và ngôn ngữ (13.5)
           </p>
         </div>
 
@@ -512,9 +601,12 @@ export default function SettingsHubPage() {
               } else if (activeTab === "appearance") {
                 setAppearance(DEFAULT_APPEARANCE_SETTINGS);
                 showToast("Đã khôi phục cài đặt giao diện mặc định");
-              } else {
+              } else if (activeTab === "accessibility") {
                 setAccessibility(DEFAULT_ACCESSIBILITY_SETTINGS);
                 showToast("Đã khôi phục cài đặt trợ năng mặc định");
+              } else {
+                setLanguage(DEFAULT_LANGUAGE_SETTINGS);
+                showToast("Đã khôi phục cài đặt ngôn ngữ mặc định");
               }
             }}
             className="px-4 py-2 bg-zinc-900 hover:bg-zinc-800 border border-zinc-800 text-zinc-400 hover:text-white rounded-lg text-xs font-semibold flex items-center gap-1.5 transition-colors"
@@ -526,7 +618,8 @@ export default function SettingsHubPage() {
             onClick={() => {
               if (activeTab === "study") handleSaveStudySettings();
               else if (activeTab === "appearance") handleSaveAppearanceSettings();
-              else handleSaveAccessibilitySettings();
+              else if (activeTab === "accessibility") handleSaveAccessibilitySettings();
+              else handleSaveLanguageSettings();
             }}
             disabled={saving}
             className="px-5 py-2 bg-red-600 hover:bg-red-700 text-white rounded-lg text-xs font-bold flex items-center gap-1.5 transition-colors disabled:opacity-50"
@@ -538,10 +631,10 @@ export default function SettingsHubPage() {
       </div>
 
       {/* Master Tabs Switcher */}
-      <div className="flex border-b border-zinc-800">
+      <div className="flex border-b border-zinc-800 overflow-x-auto">
         <button
           onClick={() => setActiveTab("study")}
-          className={`px-5 py-3 text-sm font-medium border-b-2 flex items-center gap-2 transition-colors ${
+          className={`px-4 py-3 text-sm font-medium border-b-2 flex items-center gap-2 whitespace-nowrap transition-colors ${
             activeTab === "study"
               ? "border-red-500 text-red-400"
               : "border-transparent text-zinc-400 hover:text-zinc-200"
@@ -552,7 +645,7 @@ export default function SettingsHubPage() {
         </button>
         <button
           onClick={() => setActiveTab("appearance")}
-          className={`px-5 py-3 text-sm font-medium border-b-2 flex items-center gap-2 transition-colors ${
+          className={`px-4 py-3 text-sm font-medium border-b-2 flex items-center gap-2 whitespace-nowrap transition-colors ${
             activeTab === "appearance"
               ? "border-red-500 text-red-400"
               : "border-transparent text-zinc-400 hover:text-zinc-200"
@@ -563,14 +656,25 @@ export default function SettingsHubPage() {
         </button>
         <button
           onClick={() => setActiveTab("accessibility")}
-          className={`px-5 py-3 text-sm font-medium border-b-2 flex items-center gap-2 transition-colors ${
+          className={`px-4 py-3 text-sm font-medium border-b-2 flex items-center gap-2 whitespace-nowrap transition-colors ${
             activeTab === "accessibility"
               ? "border-red-500 text-red-400"
               : "border-transparent text-zinc-400 hover:text-zinc-200"
           }`}
         >
           <Accessibility className="w-4 h-4" />
-          <span>Trợ Năng & Truy Cập (13.4)</span>
+          <span>Trợ Năng (13.4)</span>
+        </button>
+        <button
+          onClick={() => setActiveTab("language")}
+          className={`px-4 py-3 text-sm font-medium border-b-2 flex items-center gap-2 whitespace-nowrap transition-colors ${
+            activeTab === "language"
+              ? "border-red-500 text-red-400"
+              : "border-transparent text-zinc-400 hover:text-zinc-200"
+          }`}
+        >
+          <Globe2 className="w-4 h-4" />
+          <span>Ngôn Ngữ & Dịch (13.5)</span>
         </button>
       </div>
 
@@ -1980,6 +2084,368 @@ export default function SettingsHubPage() {
         </div>
       )}
 
+      {/* TAB 4: LANGUAGE SETTINGS (13.5) */}
+      {activeTab === "language" && (
+        <div className="space-y-6">
+          {/* Live Multilingual Preview Card */}
+          <div className="p-6 rounded-2xl bg-zinc-900/40 border border-zinc-800/60 space-y-4">
+            <div className="flex items-center justify-between">
+              <h3 className="text-xs font-bold uppercase tracking-wider text-zinc-400 flex items-center gap-2">
+                <BookA className="w-4 h-4 text-red-400" />
+                <span>Xem trước từ vựng & Bản dịch đa ngữ (Multilingual Preview)</span>
+              </h3>
+              <span className="text-[11px] text-zinc-500">Mẫu từ vựng TOEIC</span>
+            </div>
+
+            <div className="p-5 rounded-xl bg-zinc-900/80 border border-zinc-800 space-y-3">
+              <div className="flex items-start justify-between">
+                <div>
+                  <div className="flex items-center gap-3">
+                    <span className="text-xl font-bold text-white">Negotiation</span>
+                    {language.vocabularyDisplay.showPhoneticIpa && (
+                      <span className="text-xs font-mono text-zinc-400 bg-zinc-800 px-2 py-0.5 rounded">
+                        /nɪˌɡoʊ.ʃiˈeɪ.ʃən/
+                      </span>
+                    )}
+                    <span className="text-xs text-red-400 bg-red-950/40 border border-red-500/20 px-2 py-0.5 rounded font-semibold">
+                      noun • TOEIC 750+
+                    </span>
+                  </div>
+
+                  {language.vocabularyDisplay.showVietnameseMeaning && (
+                    <p className="text-sm font-semibold text-emerald-400 mt-1.5">
+                      👉 Nghĩa: Sự đàm phán, cuộc thương lượng, hiệp thương
+                    </p>
+                  )}
+
+                  {language.vocabularyDisplay.showEnglishDefinition && (
+                    <p className="text-xs text-zinc-400 mt-1">
+                      Definition: Formal discussion between people who are trying to reach an agreement.
+                    </p>
+                  )}
+                </div>
+
+                <div className="px-2.5 py-1 rounded bg-zinc-800 text-[11px] text-zinc-400 border border-zinc-700 flex items-center gap-1.5">
+                  <Bot className="w-3 h-3 text-yellow-400" />
+                  <span>Dịch bởi: {language.translation.engine.toUpperCase()}</span>
+                </div>
+              </div>
+
+              {language.vocabularyDisplay.showContextExamples && (
+                <div className="pt-2 border-t border-zinc-800 text-xs space-y-1">
+                  <p className="text-zinc-300 italic">
+                    "The contract is currently under <strong className="text-white">negotiation</strong> between the two companies."
+                  </p>
+                  <p className="text-zinc-500">
+                    Bản dịch: Hợp đồng hiện đang trong quá trình đàm phán giữa hai công ty.
+                  </p>
+                </div>
+              )}
+            </div>
+          </div>
+
+          {/* 1. Interface Language */}
+          <div className="p-6 rounded-2xl bg-zinc-900/40 border border-zinc-800/60 space-y-4">
+            <div className="flex items-start gap-3">
+              <div className="w-9 h-9 rounded-xl bg-red-600/10 border border-red-500/20 flex items-center justify-center shrink-0 text-red-400">
+                <Globe2 className="w-4 h-4" />
+              </div>
+              <div>
+                <h3 className="text-base font-bold text-white">1. Chọn ngôn ngữ giao diện (Interface language)</h3>
+                <p className="text-xs text-zinc-400 mt-0.5">
+                  Ngôn ngữ hiển thị cho toàn bộ bảng điều khiển, menu điều hướng, thông báo và trợ giúp.
+                </p>
+              </div>
+            </div>
+
+            <div className="grid grid-cols-1 sm:grid-cols-3 md:grid-cols-5 gap-3">
+              {INTERFACE_LANGUAGES.map((lang) => {
+                const isSelected = language.interfaceLanguage === lang.id;
+                return (
+                  <div
+                    key={lang.id}
+                    onClick={() => setLanguage({ ...language, interfaceLanguage: lang.id as any })}
+                    className={`p-3.5 rounded-xl border cursor-pointer transition-all text-center ${
+                      isSelected
+                        ? "bg-red-950/20 border-red-500/50 shadow-md"
+                        : "bg-zinc-900/50 border-zinc-800 hover:border-zinc-700"
+                    }`}
+                  >
+                    <div className="text-2xl mb-1">{lang.flag}</div>
+                    <div className="text-xs font-bold text-white">{lang.name}</div>
+                    <div className="text-[11px] text-zinc-400 mt-0.5">{lang.native}</div>
+                    {isSelected && (
+                      <span className="inline-block mt-2 px-2 py-0.5 rounded-full bg-red-600/20 text-red-400 text-[10px] font-bold">
+                        Đang chọn
+                      </span>
+                    )}
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+
+          {/* 2. Content Language */}
+          <div className="p-6 rounded-2xl bg-zinc-900/40 border border-zinc-800/60 space-y-4">
+            <div className="flex items-start gap-3">
+              <div className="w-9 h-9 rounded-xl bg-blue-600/10 border border-blue-500/20 flex items-center justify-center shrink-0 text-blue-400">
+                <Languages className="w-4 h-4" />
+              </div>
+              <div>
+                <h3 className="text-base font-bold text-white">2. Chọn ngôn ngữ nội dung (Content language)</h3>
+                <p className="text-xs text-zinc-400 mt-0.5">
+                  Chế độ hiển thị câu hỏi đề thi, đáp án giải thích chi tiết và transcript bài nghe.
+                </p>
+              </div>
+            </div>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              {CONTENT_LANGUAGES.map((cl) => {
+                const isSelected = language.contentLanguage === cl.id;
+                return (
+                  <div
+                    key={cl.id}
+                    onClick={() => setLanguage({ ...language, contentLanguage: cl.id as any })}
+                    className={`p-4 rounded-xl border cursor-pointer transition-all ${
+                      isSelected
+                        ? "bg-red-950/20 border-red-500/50"
+                        : "bg-zinc-900/50 border-zinc-800 hover:border-zinc-700"
+                    }`}
+                  >
+                    <div className="flex items-center justify-between mb-1">
+                      <span className="text-sm font-bold text-white">{cl.name}</span>
+                      {isSelected && <Check className="w-4 h-4 text-red-400" />}
+                    </div>
+                    <p className="text-xs text-zinc-400">{cl.desc}</p>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+
+          {/* 3. Vocabulary Display Language */}
+          <div className="p-6 rounded-2xl bg-zinc-900/40 border border-zinc-800/60 space-y-5">
+            <div className="flex items-start gap-3">
+              <div className="w-9 h-9 rounded-xl bg-purple-600/10 border border-purple-500/20 flex items-center justify-center shrink-0 text-purple-400">
+                <BookA className="w-4 h-4" />
+              </div>
+              <div>
+                <h3 className="text-base font-bold text-white">3. Ngôn ngữ hiển thị từ vựng (Vocabulary display)</h3>
+                <p className="text-xs text-zinc-400 mt-0.5">
+                  Tùy chỉnh các trường thông tin hiển thị trên Flashcard từ vựng và tra từ nhanh.
+                </p>
+              </div>
+            </div>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div className="p-4 rounded-xl bg-zinc-900/60 border border-zinc-800 flex items-center justify-between">
+                <div>
+                  <h4 className="text-sm font-bold text-white">Hiển thị nghĩa Tiếng Việt</h4>
+                  <p className="text-xs text-zinc-400">Bản dịch nghĩa chuẩn tiếng Việt của từ</p>
+                </div>
+                <button
+                  onClick={() =>
+                    setLanguage({
+                      ...language,
+                      vocabularyDisplay: {
+                        ...language.vocabularyDisplay,
+                        showVietnameseMeaning: !language.vocabularyDisplay.showVietnameseMeaning,
+                      },
+                    })
+                  }
+                  className={`w-12 h-6 rounded-full transition-colors relative shrink-0 ${
+                    language.vocabularyDisplay.showVietnameseMeaning ? "bg-red-600" : "bg-zinc-700"
+                  }`}
+                >
+                  <div
+                    className={`w-4 h-4 rounded-full bg-white transition-transform absolute top-1 ${
+                      language.vocabularyDisplay.showVietnameseMeaning ? "translate-x-7" : "translate-x-1"
+                    }`}
+                  />
+                </button>
+              </div>
+
+              <div className="p-4 rounded-xl bg-zinc-900/60 border border-zinc-800 flex items-center justify-between">
+                <div>
+                  <h4 className="text-sm font-bold text-white">Hiển thị định nghĩa Anh - Anh</h4>
+                  <p className="text-xs text-zinc-400">Giải nghĩa từ điển Oxford / Cambridge</p>
+                </div>
+                <button
+                  onClick={() =>
+                    setLanguage({
+                      ...language,
+                      vocabularyDisplay: {
+                        ...language.vocabularyDisplay,
+                        showEnglishDefinition: !language.vocabularyDisplay.showEnglishDefinition,
+                      },
+                    })
+                  }
+                  className={`w-12 h-6 rounded-full transition-colors relative shrink-0 ${
+                    language.vocabularyDisplay.showEnglishDefinition ? "bg-red-600" : "bg-zinc-700"
+                  }`}
+                >
+                  <div
+                    className={`w-4 h-4 rounded-full bg-white transition-transform absolute top-1 ${
+                      language.vocabularyDisplay.showEnglishDefinition ? "translate-x-7" : "translate-x-1"
+                    }`}
+                  />
+                </button>
+              </div>
+
+              <div className="p-4 rounded-xl bg-zinc-900/60 border border-zinc-800 flex items-center justify-between">
+                <div>
+                  <h4 className="text-sm font-bold text-white">Hiển thị phiên âm quốc tế (IPA)</h4>
+                  <p className="text-xs text-zinc-400">Ký hiệu ngữ âm phát âm chuẩn US</p>
+                </div>
+                <button
+                  onClick={() =>
+                    setLanguage({
+                      ...language,
+                      vocabularyDisplay: {
+                        ...language.vocabularyDisplay,
+                        showPhoneticIpa: !language.vocabularyDisplay.showPhoneticIpa,
+                      },
+                    })
+                  }
+                  className={`w-12 h-6 rounded-full transition-colors relative shrink-0 ${
+                    language.vocabularyDisplay.showPhoneticIpa ? "bg-red-600" : "bg-zinc-700"
+                  }`}
+                >
+                  <div
+                    className={`w-4 h-4 rounded-full bg-white transition-transform absolute top-1 ${
+                      language.vocabularyDisplay.showPhoneticIpa ? "translate-x-7" : "translate-x-1"
+                    }`}
+                  />
+                </button>
+              </div>
+
+              <div className="p-4 rounded-xl bg-zinc-900/60 border border-zinc-800 flex items-center justify-between">
+                <div>
+                  <h4 className="text-sm font-bold text-white">Hiển thị ví dụ ngữ cảnh minh họa</h4>
+                  <p className="text-xs text-zinc-400">Câu ví dụ thực tế trong đề thi TOEIC</p>
+                </div>
+                <button
+                  onClick={() =>
+                    setLanguage({
+                      ...language,
+                      vocabularyDisplay: {
+                        ...language.vocabularyDisplay,
+                        showContextExamples: !language.vocabularyDisplay.showContextExamples,
+                      },
+                    })
+                  }
+                  className={`w-12 h-6 rounded-full transition-colors relative shrink-0 ${
+                    language.vocabularyDisplay.showContextExamples ? "bg-red-600" : "bg-zinc-700"
+                  }`}
+                >
+                  <div
+                    className={`w-4 h-4 rounded-full bg-white transition-transform absolute top-1 ${
+                      language.vocabularyDisplay.showContextExamples ? "translate-x-7" : "translate-x-1"
+                    }`}
+                  />
+                </button>
+              </div>
+            </div>
+          </div>
+
+          {/* 4. Translation Settings */}
+          <div className="p-6 rounded-2xl bg-zinc-900/40 border border-zinc-800/60 space-y-5">
+            <div className="flex items-start gap-3">
+              <div className="w-9 h-9 rounded-xl bg-emerald-600/10 border border-emerald-500/20 flex items-center justify-center shrink-0 text-emerald-400">
+                <Bot className="w-4 h-4" />
+              </div>
+              <div>
+                <h3 className="text-base font-bold text-white">4. Cài đặt dịch thuật AI (Translation settings)</h3>
+                <p className="text-xs text-zinc-400 mt-0.5">
+                  Cấu hình công nghệ dịch máy và tính năng tra cứu từ ngữ tức thì khi giải đề.
+                </p>
+              </div>
+            </div>
+
+            <div className="space-y-4">
+              <div>
+                <label className="block text-xs font-semibold text-zinc-400 mb-1.5">
+                  Công cụ dịch AI ưu tiên
+                </label>
+                <select
+                  value={language.translation.engine}
+                  onChange={(e) =>
+                    setLanguage({
+                      ...language,
+                      translation: {
+                        ...language.translation,
+                        engine: e.target.value as any,
+                      },
+                    })
+                  }
+                  className="w-full bg-zinc-900 border border-zinc-800 rounded-lg px-3.5 py-2.5 text-white text-sm focus:outline-none focus:border-red-500/50"
+                >
+                  <option value="neural-ai">TOEIC AI Neural Translation (Tối ưu thuật ngữ đề thi)</option>
+                  <option value="deepl">DeepL Pro Engine (Văn phong tự nhiên)</option>
+                  <option value="google">Google Cloud Translation</option>
+                </select>
+              </div>
+
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div className="p-4 rounded-xl bg-zinc-900/60 border border-zinc-800 flex items-center justify-between">
+                  <div>
+                    <h4 className="text-sm font-bold text-white">Click-to-Translate</h4>
+                    <p className="text-xs text-zinc-400">Click chuột vào từ bất kỳ trong bài đọc để xem nghĩa ngay</p>
+                  </div>
+                  <button
+                    onClick={() =>
+                      setLanguage({
+                        ...language,
+                        translation: {
+                          ...language.translation,
+                          clickToTranslate: !language.translation.clickToTranslate,
+                        },
+                      })
+                    }
+                    className={`w-12 h-6 rounded-full transition-colors relative shrink-0 ${
+                      language.translation.clickToTranslate ? "bg-red-600" : "bg-zinc-700"
+                    }`}
+                  >
+                    <div
+                      className={`w-4 h-4 rounded-full bg-white transition-transform absolute top-1 ${
+                        language.translation.clickToTranslate ? "translate-x-7" : "translate-x-1"
+                      }`}
+                    />
+                  </button>
+                </div>
+
+                <div className="p-4 rounded-xl bg-zinc-900/60 border border-zinc-800 flex items-center justify-between">
+                  <div>
+                    <h4 className="text-sm font-bold text-white">Tự động phát hiện thành ngữ (Idioms)</h4>
+                    <p className="text-xs text-zinc-400">Nhận diện cụm từ cố định và giải nghĩa chuyên sâu</p>
+                  </div>
+                  <button
+                    onClick={() =>
+                      setLanguage({
+                        ...language,
+                        translation: {
+                          ...language.translation,
+                          autoDetectIdioms: !language.translation.autoDetectIdioms,
+                        },
+                      })
+                    }
+                    className={`w-12 h-6 rounded-full transition-colors relative shrink-0 ${
+                      language.translation.autoDetectIdioms ? "bg-red-600" : "bg-zinc-700"
+                    }`}
+                  >
+                    <div
+                      className={`w-4 h-4 rounded-full bg-white transition-transform absolute top-1 ${
+                        language.translation.autoDetectIdioms ? "translate-x-7" : "translate-x-1"
+                      }`}
+                    />
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+
       {/* Floating Save Bar */}
       <div className="p-4 rounded-2xl bg-zinc-900/80 border border-zinc-800 backdrop-blur-md sticky bottom-4 flex items-center justify-between gap-4 shadow-2xl">
         <div className="flex items-center gap-2 text-xs text-zinc-400">
@@ -1995,9 +2461,12 @@ export default function SettingsHubPage() {
               } else if (activeTab === "appearance") {
                 setAppearance(DEFAULT_APPEARANCE_SETTINGS);
                 showToast("Đã khôi phục cài đặt giao diện mặc định");
-              } else {
+              } else if (activeTab === "accessibility") {
                 setAccessibility(DEFAULT_ACCESSIBILITY_SETTINGS);
                 showToast("Đã khôi phục cài đặt trợ năng mặc định");
+              } else {
+                setLanguage(DEFAULT_LANGUAGE_SETTINGS);
+                showToast("Đã khôi phục cài đặt ngôn ngữ mặc định");
               }
             }}
             className="px-4 py-2 bg-zinc-800 hover:bg-zinc-700 text-zinc-300 text-xs font-semibold rounded-lg transition-colors"
@@ -2008,7 +2477,8 @@ export default function SettingsHubPage() {
             onClick={() => {
               if (activeTab === "study") handleSaveStudySettings();
               else if (activeTab === "appearance") handleSaveAppearanceSettings();
-              else handleSaveAccessibilitySettings();
+              else if (activeTab === "accessibility") handleSaveAccessibilitySettings();
+              else handleSaveLanguageSettings();
             }}
             disabled={saving}
             className="px-6 py-2 bg-red-600 hover:bg-red-700 text-white text-xs font-bold rounded-lg transition-colors disabled:opacity-50 flex items-center gap-1.5"
