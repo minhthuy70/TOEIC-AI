@@ -31,6 +31,7 @@ import {
   Gift,
   BellRing,
   Settings,
+  DownloadCloud,
 } from "lucide-react";
 import { useAutoLogout } from "../../hooks/useAutoLogout";
 import { useSessionWarning } from "../../hooks/useSessionWarning";
@@ -62,6 +63,7 @@ const NAV_BOTTOM = [
   { label: "Thử thách", icon: Target, href: "/dashboard/challenges" },
   { label: "Phần thưởng", icon: Gift, href: "/dashboard/rewards" },
   { label: "Thông báo", icon: BellRing, href: "/dashboard/notifications" },
+  { label: "Học Ngoại Tuyến", icon: DownloadCloud, href: "/dashboard/offline" },
   { label: "Cài đặt học tập", icon: Settings, href: "/dashboard/settings" },
   { label: "Hồ sơ cá nhân", icon: UserIcon, href: "/dashboard/profile" },
 ];

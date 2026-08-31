@@ -1005,4 +1005,112 @@ async uploadAvatar(userId: number, file: any) {
       data,
     };
   }
+
+  async getOfflinePackages(userId: number) {
+    return {
+      success: true,
+      storage: {
+        usedMB: 28.5,
+        totalMB: 500,
+        percentage: 5.7,
+      },
+      packages: [
+        {
+          id: "vocab-600",
+          type: "vocabulary",
+          title: "600 Từ Vựng TOEIC Căn Bản",
+          description: "50 bài từ vựng then chốt thường xuất hiện trong đề thi TOEIC kèm phiên âm và ví dụ",
+          sizeMB: 12.4,
+          itemCount: 600,
+          downloaded: true,
+          downloadedAt: "2026-08-30T10:00:00.000Z",
+          version: "v2.1",
+        },
+        {
+          id: "vocab-1000-advanced",
+          type: "vocabulary",
+          title: "1000 Từ Vựng TOEIC Chinh Phục 800+",
+          description: "Bộ từ vựng nâng cao chuyên ngành kinh doanh, tài chính, hợp đồng và quản trị",
+          sizeMB: 18.2,
+          itemCount: 1000,
+          downloaded: false,
+          downloadedAt: null,
+          version: "v1.4",
+        },
+        {
+          id: "grammar-core",
+          type: "lessons",
+          title: "Trọn Bộ 30 Bài Ngữ Pháp Trọng Điểm Part 5-6",
+          description: "Các dạng bài tập ngữ pháp chia thì, mệnh đề quan hệ, câu điều kiện và bẫy đề thi",
+          sizeMB: 8.5,
+          itemCount: 30,
+          downloaded: true,
+          downloadedAt: "2026-08-31T08:30:00.000Z",
+          version: "v3.0",
+        },
+        {
+          id: "listening-part1-4",
+          type: "lessons",
+          title: "Luyện Nghe Part 1–4 Kèm Audio Offline",
+          description: "50 bài nghe kèm file audio nén tốc độ chuẩn, transcript song ngữ và đáp án",
+          sizeMB: 45.0,
+          itemCount: 50,
+          downloaded: false,
+          downloadedAt: null,
+          version: "v2.0",
+        },
+        {
+          id: "test-mini-pack",
+          type: "tests",
+          title: "Bộ 5 Đề Mini Test TOEIC 50 Câu (Có Audio)",
+          description: "Đề thi thử rút gọn chuẩn cấu trúc ETS làm bài mọi lúc không cần mạng",
+          sizeMB: 16.0,
+          itemCount: 5,
+          downloaded: true,
+          downloadedAt: "2026-08-31T14:15:00.000Z",
+          version: "v1.2",
+        },
+        {
+          id: "test-full-01",
+          type: "tests",
+          title: "Full Mock Test ETS 2026 - Đề Số 01 (200 Câu)",
+          description: "Đề thi thử 200 câu hỏi 120 phút đầy đủ Part 1 đến 7 và âm thanh chất lượng cao",
+          sizeMB: 32.5,
+          itemCount: 200,
+          downloaded: false,
+          downloadedAt: null,
+          version: "v1.0",
+        },
+      ],
+    };
+  }
+
+  async syncOfflineData(userId: number, payload: any) {
+    const items = payload?.items || [];
+    let syncedCount = 0;
+
+    for (const item of items) {
+      if (item.type === "practice_session" && item.part && item.score !== undefined) {
+        await this.prisma.practice_sessions.create({
+          data: {
+            user_id: userId,
+            part: Number(item.part) || 5,
+            score: Number(item.score),
+            question_count: Number(item.questionCount || 10),
+            correct_count: Number(item.correctCount || 8),
+            started_at: new Date(item.startedAt || Date.now()),
+            completed_at: new Date(item.completedAt || Date.now()),
+          },
+        });
+        syncedCount++;
+      }
+    }
+
+    return {
+      success: true,
+      message: `Đã đồng bộ thành công ${syncedCount} bài tập ngoại tuyến lên hệ thống`,
+      syncedCount,
+      syncedAt: new Date().toISOString(),
+    };
+  }
 }

@@ -180,6 +180,16 @@ updateLanguageSettings(@Req() req: any, @Body() body: any) {
   return this.profileService.updateLanguageSettings(req.user.userId, body);
 }
 
+@Get("offline/packages")
+getOfflinePackages(@Req() req: any) {
+  return this.profileService.getOfflinePackages(req.user.userId);
+}
+
+@Post("offline/sync")
+syncOfflineData(@Req() req: any, @Body() body: any) {
+  return this.profileService.syncOfflineData(req.user.userId, body);
+}
+
 @Post("delete-account")
 deleteAccount(@Req() req: any, @Body() body: { password?: string; reason?: string }) {
   return this.profileService.deleteAccount(req.user.userId, body.password, body.reason);

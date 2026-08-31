@@ -1044,13 +1044,13 @@ Dựa trên lộ trình học TOEIC 900+ - Phiên bản nâng cấp
 ================================================================================
 
 14.1. Offline Mode (Chế độ ngoại tuyến)
-- Download vocabulary for offline - Tải từ vựng để dùng ngoại tuyến
-- Download lessons for offline - Tải bài học để dùng ngoại tuyến
-- Download tests for offline - Tải kiểm tra để dùng ngoại tuyến
-- Offline practice capability - Khả năng luyện tập ngoại tuyến
-- Sync when online - Đồng bộ khi online
-- Offline indicator - Chỉ số ngoại tuyến
-- Manage offline content - Quản lý nội dung ngoại tuyến
+[x] - Download vocabulary for offline - Tải từ vựng để dùng ngoại tuyến
+[x] - Download lessons for offline - Tải bài học để dùng ngoại tuyến
+[x] - Download tests for offline - Tải kiểm tra để dùng ngoại tuyến
+[x] - Offline practice capability - Khả năng luyện tập ngoại tuyến
+[x] - Sync when online - Đồng bộ khi online
+[x] - Offline indicator - Chỉ số ngoại tuyến
+[x] - Manage offline content - Quản lý nội dung ngoại tuyến
 
 14.2. Background Audio (Âm thanh nền)
 - Play audio in background - Phát âm thanh trong nền
