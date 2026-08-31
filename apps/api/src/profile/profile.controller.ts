@@ -105,9 +105,44 @@ deactivateAccount(@Req() req: any) {
   return this.profileService.deactivateAccount(req.user.userId);
 }
 
+@Put("email")
+updateEmail(@Req() req: any, @Body() body: { email: string; password?: string }) {
+  return this.profileService.updateEmail(req.user.userId, body.email, body.password);
+}
+
+@Get("privacy")
+getPrivacySettings(@Req() req: any) {
+  return this.profileService.getPrivacySettings(req.user.userId);
+}
+
+@Put("privacy")
+updatePrivacySettings(@Req() req: any, @Body() body: any) {
+  return this.profileService.updatePrivacySettings(req.user.userId, body);
+}
+
+@Get("export-data")
+exportUserData(@Req() req: any) {
+  return this.profileService.exportUserData(req.user.userId);
+}
+
+@Get("connected-accounts")
+getConnectedAccounts(@Req() req: any) {
+  return this.profileService.getConnectedAccounts(req.user.userId);
+}
+
+@Post("connected-accounts/unlink")
+unlinkConnectedAccount(@Req() req: any, @Body() body: { provider: string }) {
+  return this.profileService.unlinkConnectedAccount(req.user.userId, body.provider);
+}
+
+@Post("connected-accounts/link")
+linkConnectedAccount(@Req() req: any, @Body() body: { provider: string; email?: string }) {
+  return this.profileService.linkConnectedAccount(req.user.userId, body.provider, body.email);
+}
+
 @Post("delete-account")
-deleteAccount(@Req() req: any, @Body() body: { password?: string }) {
-  return this.profileService.deleteAccount(req.user.userId, body.password);
+deleteAccount(@Req() req: any, @Body() body: { password?: string; reason?: string }) {
+  return this.profileService.deleteAccount(req.user.userId, body.password, body.reason);
 }
 
 @Post("save-placement-test-result")

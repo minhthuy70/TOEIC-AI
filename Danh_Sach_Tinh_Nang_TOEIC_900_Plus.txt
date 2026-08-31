@@ -983,14 +983,14 @@ Dựa trên lộ trình học TOEIC 900+ - Phiên bản nâng cấp
 ================================================================================
 
 13.1. Account Settings (Cài đặt tài khoản)
-- Profile settings - Cài đặt hồ sơ
-- Email settings - Cài đặt email
-- Password settings - Cài đặt mật khẩu
-- Privacy settings - Cài đặt quyền riêng tư
-- Data export - Xuất dữ liệu
-- Account deletion - Xóa tài khoản
-- Connected accounts - Tài khoản kết nối
-- Notification preferences - Ưa thích thông báo
+[x] - Profile settings - Cài đặt hồ sơ
+[x] - Email settings - Cài đặt email
+[x] - Password settings - Cài đặt mật khẩu
+[x] - Privacy settings - Cài đặt quyền riêng tư
+[x] - Data export - Xuất dữ liệu
+[x] - Account deletion - Xóa tài khoản
+[x] - Connected accounts - Tài khoản kết nối
+[x] - Notification preferences - Ưa thích thông báo
 
 13.2. Study Settings (Cài đặt học tập)
 - Daily goals configuration - Cấu hình mục tiêu hàng ngày

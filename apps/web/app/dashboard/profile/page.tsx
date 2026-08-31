@@ -9,7 +9,6 @@ import {
   Lock,
   Settings,
   ShieldCheck,
-  Plus,
   Check,
   X,
   Laptop,
@@ -20,17 +19,37 @@ import {
   Award,
   Eye,
   EyeOff,
+  Mail,
+  Shield,
+  Download,
+  Globe,
+  Bell,
+  RefreshCw,
+  FileJson,
+  FileSpreadsheet,
+  CheckCircle2,
+  AlertCircle,
+  HelpCircle,
+  ExternalLink,
+  ShieldAlert,
+  Flame,
+  Clock,
+  Sparkles,
 } from "lucide-react";
 
 const API = process.env.NEXT_PUBLIC_API_URL || "http://localhost:3001";
 
 const TABS = [
   { id: "info", label: "Thông tin cá nhân", icon: User },
+  { id: "email", label: "Cài đặt Email", icon: Mail },
+  { id: "password", label: "Đổi mật khẩu", icon: Lock },
+  { id: "privacy", label: "Quyền riêng tư", icon: Shield },
+  { id: "connected", label: "Tài khoản kết nối", icon: Globe },
+  { id: "export", label: "Xuất dữ liệu", icon: Download },
   { id: "goal", label: "Mục tiêu TOEIC", icon: Target },
   { id: "badges", label: "Huy hiệu", icon: Award },
-  { id: "password", label: "Đổi mật khẩu", icon: Lock },
-  { id: "settings", label: "Cài đặt", icon: Settings },
-  { id: "account", label: "Quản lý tài khoản", icon: ShieldCheck },
+  { id: "settings", label: "Tùy chọn học tập", icon: Settings },
+  { id: "account", label: "Quản lý & Xóa tài khoản", icon: ShieldAlert },
 ];
 
 const TARGET_OPTIONS = [400, 500, 600, 700, 750, 800, 850, 900, 950, 990];
@@ -39,1659 +58,1296 @@ const STUDY_TIME_OPTIONS = [15, 20, 30, 45, 60, 90, 120];
 export default function ProfilePage() {
   const router = useRouter();
   const [activeTab, setActiveTab] = useState("info");
+  const [loading, setLoading] = useState(true);
   const [user, setUser] = useState<{
-id?: number;
-fullName?: string;
-email?: string;
+    id?: number;
+    fullName?: string;
+    email?: string;
+    avatar?: string;
+    phone?: string;
+    birthday?: string;
+    gender?: string;
+    address?: string;
+    bio?: string;
+    createdAt?: string;
+    lastLoginAt?: string;
+    currentScore?: number;
+    targetScore?: number;
+    examDate?: string;
+    dailyStudyTime?: number;
+    dailyVocabularyGoal?: number;
+    studyNotification?: boolean;
+    srsNotification?: boolean;
+    autoPronunciation?: boolean;
+    darkMode?: boolean;
+  } | null>(null);
 
-avatar?: string;
-phone?: string;
-birthday?: string;
-gender?: string;
-address?: string;
-bio?: string;
-createdAt?: string;
-lastLoginAt?: string;
-
-currentScore?: number;
-targetScore?: number;
-examDate?: string;
-dailyStudyTime?: number;
-
-} | null>(null);
-
-const [fullName, setFullName] = useState("");
-
-const [currentScore, setCurrentScore] = useState(0);
-const [targetScore, setTargetScore] = useState(600);
-const [examDate, setExamDate] = useState("");
-
-const [dailyStudyTime, setDailyStudyTime] = useState(30);
+  // Profile Fields
+  const [fullName, setFullName] = useState("");
   const [phone, setPhone] = useState("");
-const [birthday, setBirthday] = useState("");
-const [gender, setGender] = useState("");
-const [address, setAddress] = useState("");
-const [bio, setBio] = useState("");
-const [avatarFile, setAvatarFile] = useState<File | null>(null);
-const [avatarPreview, setAvatarPreview] = useState<string>("");
-const [uploadingAvatar, setUploadingAvatar] = useState(false);
-const [showDeleteModal, setShowDeleteModal] = useState(false);
-const [showDeactivateModal, setShowDeactivateModal] = useState(false);
-const [showLogoutAllModal, setShowLogoutAllModal] = useState(false);
-const [deletePassword, setDeletePassword] = useState("");
-const [isDeleting, setIsDeleting] = useState(false);
-const [isDeactivating, setIsDeactivating] = useState(false);
-const [isLoggingOutAll, setIsLoggingOutAll] = useState(false);
-const [sessions, setSessions] = useState<any[]>([]);
-const [showSessions, setShowSessions] = useState(false);
+  const [birthday, setBirthday] = useState("");
+  const [gender, setGender] = useState("");
+  const [address, setAddress] = useState("");
+  const [bio, setBio] = useState("");
+  const [avatarPreview, setAvatarPreview] = useState<string>("");
+  const [uploadingAvatar, setUploadingAvatar] = useState(false);
 
+  // TOEIC Goal Fields
+  const [currentScore, setCurrentScore] = useState(0);
+  const [targetScore, setTargetScore] = useState(600);
+  const [examDate, setExamDate] = useState("");
+  const [dailyStudyTime, setDailyStudyTime] = useState(30);
+  const [dailyVocabularyGoal, setDailyVocabularyGoal] = useState(20);
+
+  // Settings & Preferences
+  const [studyNotification, setStudyNotification] = useState(true);
+  const [srsNotification, setSrsNotification] = useState(true);
+  const [autoPronunciation, setAutoPronunciation] = useState(false);
+  const [darkMode, setDarkMode] = useState(true);
+
+  // Password Change Fields
   const [oldPassword, setOldPassword] = useState("");
   const [newPassword, setNewPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
-  const [saveMsg, setSaveMsg] = useState("");
-  const [studyNotification, setStudyNotification] = useState(true);
+  const [showOldPassword, setShowOldPassword] = useState(false);
+  const [showNewPassword, setShowNewPassword] = useState(false);
+  const [isChangingPassword, setIsChangingPassword] = useState(false);
 
-const [srsNotification, setSrsNotification] = useState(true);
+  // Email Settings Fields
+  const [newEmail, setNewEmail] = useState("");
+  const [emailPassword, setEmailPassword] = useState("");
+  const [isUpdatingEmail, setIsUpdatingEmail] = useState(false);
 
-const [autoPronunciation, setAutoPronunciation] = useState(false);
+  // Privacy Settings Fields
+  const [privacySettings, setPrivacySettings] = useState({
+    showOnLeaderboard: true,
+    profileVisibility: "public",
+    showStudyStats: true,
+    allowFriendRequests: true,
+  });
+  const [isSavingPrivacy, setIsSavingPrivacy] = useState(false);
 
-const [darkMode, setDarkMode] = useState(true);
-const [dailyVocabularyGoal, setDailyVocabularyGoal] = useState(20);
+  // Connected Accounts Fields
+  const [connectedAccounts, setConnectedAccounts] = useState<any[]>([]);
+  const [loadingAccounts, setLoadingAccounts] = useState(false);
 
- useEffect(() => {
-  loadProfile();
-}, []);
-async function loadProfile() {
-  const token = localStorage.getItem("accessToken");
+  // Data Export Fields
+  const [isExporting, setIsExporting] = useState(false);
 
-  if (!token) {
-    router.push("/login");
-    return;
-  }
+  // Account Management Modals
+  const [showDeleteModal, setShowDeleteModal] = useState(false);
+  const [showDeactivateModal, setShowDeactivateModal] = useState(false);
+  const [deletePassword, setDeletePassword] = useState("");
+  const [deleteReason, setDeleteReason] = useState("Đã đạt mục tiêu TOEIC");
+  const [isDeleting, setIsDeleting] = useState(false);
+  const [isDeactivating, setIsDeactivating] = useState(false);
 
-  const res = await fetch(
-    "http://localhost:3001/profile/me",
-    {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    }
-  );
+  // Toast / Feedback
+  const [toastMessage, setToastMessage] = useState<string | null>(null);
+  const [toastType, setToastType] = useState<"success" | "error">("success");
 
-  if (!res.ok) {
-    router.push("/login");
-    return;
-  }
-
-  const data = await res.json();
-console.log("Profile API:", data);
-  setUser(data);
-  console.log("Current user state:", data);
-
-setFullName(data.fullName || "");
-
-
-setCurrentScore(
-  data.currentScore || 0
-);
-
-
-setTargetScore(
-  data.targetScore || 600
-);
-
-
-setExamDate(
-  data.examDate
-    ? data.examDate.substring(0,10)
-    : ""
-);
-
-setDailyVocabularyGoal(data.dailyVocabularyGoal || 20);
-
-
-setDailyStudyTime(
-  data.dailyStudyTime || 30
-);
-setPhone(data.phone || "");
-
-setBirthday(
-  data.birthday
-    ? data.birthday.substring(0,10)
-    : ""
-);
-
-setGender(data.gender || "");
-
-setAddress(data.address || "");
-
-setBio(data.bio || "");
-
-setStudyNotification(
-data.studyNotification ?? true
-);
-
-setSrsNotification(
-data.srsNotification ?? true
-);
-
-setAutoPronunciation(
-data.autoPronunciation ?? false
-);
-
-setDarkMode(
-data.darkMode ?? true
-);
-
-if (data.avatar) {
-  setAvatarPreview(data.avatar);
-}
-
-}
-  const showSaved = (msg = "Đã lưu thành công!") => {
-    setSaveMsg(msg);
-    setTimeout(() => setSaveMsg(""), 3000);
+  const showToast = (message: string, type: "success" | "error" = "success") => {
+    setToastMessage(message);
+    setToastType(type);
+    setTimeout(() => {
+      setToastMessage(null);
+    }, 4000);
   };
-
-  const saveInfo = async () => {
-
-const token = localStorage.getItem("accessToken");
-
-
-const res = await fetch(
-"http://localhost:3001/profile/me",
-{
-method:"PUT",
-headers:{
-"Content-Type":"application/json",
-Authorization:`Bearer ${token}`,
-},
-body:JSON.stringify({
-fullName,
-phone,
-birthday,
-gender,
-address,
-bio,
-})
-}
-);
-
-
-if(res.ok){
-
-const profileRes = await fetch(
-"http://localhost:3001/profile/me",
-{
-headers:{
-Authorization:`Bearer ${token}`,
-}
-}
-);
-
-const profile = await profileRes.json();
-
-setUser(profile);
-
-showSaved("Đã cập nhật thông tin!");
-
-}
-
-};
-
-  const saveGoal = async () => {
-
-const token = localStorage.getItem(
-"accessToken"
-);
-
-
-const res = await fetch(
-"http://localhost:3001/profile/me",
-{
-
-method:"PUT",
-
-headers:{
-"Content-Type":"application/json",
-Authorization:`Bearer ${token}`,
-},
-
-
-body:JSON.stringify({
-
-currentScore,
-
-targetScore,
-
-examDate,
-
-dailyStudyTime,
-
-dailyVocabularyGoal,
-
-})
-
-}
-);
-
-
-
-if(res.ok){
-
-const profileRes = await fetch(
-"http://localhost:3001/profile/me",
-{
-headers:{
-Authorization:`Bearer ${token}`,
-}
-}
-);
-
-
-const profile =
-await profileRes.json();
-
-
-setUser(profile);
-
-// Update localStorage with currentScore and targetScore
-const localStorageUser = JSON.parse(localStorage.getItem("user") || "{}");
-const updatedUser = {
-  ...localStorageUser,
-  currentScore: profile.currentScore,
-  targetScore: profile.targetScore,
-};
-localStorage.setItem("user", JSON.stringify(updatedUser));
-
-
-showSaved(
-"Đã cập nhật mục tiêu TOEIC!"
-);
-
-
-}
-
-};
-
-  const savePassword = async () => {
-
-  if (
-    !oldPassword ||
-    !newPassword ||
-    !confirmPassword
-  ) {
-
-    setSaveMsg(
-      "Vui lòng điền đầy đủ thông tin."
-    );
-
-    return;
-
-  }
-
-  if (
-    newPassword !== confirmPassword
-  ) {
-
-    setSaveMsg(
-      "Mật khẩu xác nhận không khớp."
-    );
-
-    return;
-
-  }
-  if (oldPassword === newPassword) {
-
-  setSaveMsg(
-    "Mật khẩu mới phải khác mật khẩu cũ."
-  );
-
-  return;
-
-}
-
-  if (newPassword.length < 6) {
-
-    setSaveMsg(
-      "Mật khẩu phải có ít nhất 6 ký tự."
-    );
-
-    return;
-
-  }
-  const regex =
-/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{6,}$/;
-
-if (!regex.test(newPassword)) {
-
-  setSaveMsg(
-    "Mật khẩu phải có chữ hoa, chữ thường và số."
-  );
-
-  return;
-
-}
-
-  const token =
-    localStorage.getItem(
-      "accessToken"
-    );
-
-  const res =
-    await fetch(
-
-      "http://localhost:3001/profile/change-password",
-
-      {
-
-        method: "PUT",
-
-        headers: {
-
-          "Content-Type":
-            "application/json",
-
-          Authorization:
-            `Bearer ${token}`,
-
-        },
-
-        body: JSON.stringify({
-
-          oldPassword,
-
-          newPassword,
-
-        }),
-
-      }
-
-    );
-
-  const data =
-    await res.json();
-
-  if (!res.ok) {
-
-    setSaveMsg(
-      data.message ||
-      "Đổi mật khẩu thất bại"
-    );
-
-    return;
-
-  }
-
-  setOldPassword("");
-
-  setNewPassword("");
-
-  setConfirmPassword("");
-
-  showSaved(
-    "Đổi mật khẩu thành công!"
-  );
-
-};
-const saveSettings = async () => {
-
-const token =
-localStorage.getItem("accessToken");
-
-const res =
-await fetch(
-"http://localhost:3001/profile/me",
-{
-
-method:"PUT",
-
-headers:{
-Authorization:`Bearer ${token}`,
-"Content-Type":"application/json"
-},
-
-body:JSON.stringify({
-
-studyNotification,
-
-srsNotification,
-
-autoPronunciation,
-
-darkMode
-
-})
-
-}
-
-);
-
-if(res.ok){
-
-showSaved("Đã lưu cài đặt!");
-
-}
-
-}
-
-const handleAvatarChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-  const file = e.target.files?.[0];
-  if (file) {
-    // Validate file type
-    const allowedTypes = ['image/jpeg', 'image/png', 'image/gif', 'image/webp'];
-    if (!allowedTypes.includes(file.type)) {
-      setSaveMsg("Chỉ chấp nhận file ảnh (JPEG, PNG, GIF, WebP)");
-      setTimeout(() => setSaveMsg(""), 3000);
-      return;
-    }
-
-    // Validate file size (max 5MB)
-    const maxSize = 5 * 1024 * 1024; // 5MB
-    if (file.size > maxSize) {
-      setSaveMsg("Kích thước file không được vượt quá 5MB");
-      setTimeout(() => setSaveMsg(""), 3000);
-      return;
-    }
-
-    setAvatarFile(file);
-    setAvatarPreview(URL.createObjectURL(file));
-  }
-};
-
-const uploadAvatar = async () => {
-  if (!avatarFile) {
-    setSaveMsg("Vui lòng chọn ảnh trước");
-    setTimeout(() => setSaveMsg(""), 3000);
-    return;
-  }
-
-  const token = localStorage.getItem("accessToken");
-  if (!token) {
-    router.push("/login");
-    return;
-  }
-
-  setUploadingAvatar(true);
-  setSaveMsg("");
-
-  try {
-    const formData = new FormData();
-    formData.append('avatar', avatarFile);
-
-    const res = await fetch("http://localhost:3001/profile/upload-avatar", {
-      method: "POST",
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-      body: formData,
-    });
-
-    const data = await res.json();
-
-    if (!res.ok) {
-      throw new Error(data.message || "Tải lên thất bại");
-    }
-
-    // Update user state and localStorage
-    setUser((prev) => ({ ...prev, avatar: data.avatarUrl }));
-    const localStorageUser = JSON.parse(localStorage.getItem("user") || "{}");
-    const updatedUser = { ...localStorageUser, avatarUrl: data.avatarUrl };
-    localStorage.setItem("user", JSON.stringify(updatedUser));
-
-    showSaved("Đã tải lên avatar thành công!");
-    setAvatarFile(null);
-  } catch (error) {
-    setSaveMsg(error instanceof Error ? error.message : "Tải lên thất bại");
-    setTimeout(() => setSaveMsg(""), 3000);
-  } finally {
-    setUploadingAvatar(false);
-  }
-};
-
-const handleDeactivateAccount = async () => {
-  const token = localStorage.getItem("accessToken");
-  if (!token) {
-    router.push("/login");
-    return;
-  }
-
-  setIsDeactivating(true);
-  setSaveMsg("");
-
-  try {
-    const res = await fetch("http://localhost:3001/profile/deactivate-account", {
-      method: "POST",
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    });
-
-    const data = await res.json();
-
-    if (!res.ok) {
-      throw new Error(data.message || "Vô hiệu hóa thất bại");
-    }
-
-    // Clear local storage and redirect to login
-    localStorage.removeItem("user");
-    localStorage.removeItem("accessToken");
-    router.push("/login");
-  } catch (error) {
-    setSaveMsg(error instanceof Error ? error.message : "Vô hiệu hóa thất bại");
-    setTimeout(() => setSaveMsg(""), 3000);
-  } finally {
-    setIsDeactivating(false);
-    setShowDeactivateModal(false);
-  }
-};
-
-const handleDeleteAccount = async () => {
-  const token = localStorage.getItem("accessToken");
-  if (!token) {
-    router.push("/login");
-    return;
-  }
-
-  setIsDeleting(true);
-  setSaveMsg("");
-
-  try {
-    const res = await fetch("http://localhost:3001/profile/delete-account", {
-      method: "POST",
-      headers: {
-        Authorization: `Bearer ${token}`,
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ password: deletePassword }),
-    });
-
-    const data = await res.json();
-
-    if (!res.ok) {
-      throw new Error(data.message || "Xóa tài khoản thất bại");
-    }
-
-    // Clear local storage and redirect to login
-    localStorage.removeItem("user");
-    localStorage.removeItem("accessToken");
-    router.push("/login");
-  } catch (error) {
-    setSaveMsg(error instanceof Error ? error.message : "Xóa tài khoản thất bại");
-    setTimeout(() => setSaveMsg(""), 3000);
-  } finally {
-    setIsDeleting(false);
-    setShowDeleteModal(false);
-    setDeletePassword("");
-  }
-};
-  const handleLogout = () => {
-    localStorage.removeItem("user");
-    localStorage.removeItem("accessToken");
-    router.push("/login");
-  };
-
-  const loadSessions = async () => {
-    const token = localStorage.getItem("accessToken");
-    if (!token) {
-      router.push("/login");
-      return;
-    }
-
-    try {
-      const res = await fetch("http://localhost:3001/auth/sessions", {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
-
-      if (res.ok) {
-        const data = await res.json();
-        setSessions(data);
-      }
-    } catch (error) {
-      console.error("Failed to load sessions:", error);
-    }
-  };
-
-  const handleLogoutAll = async () => {
-    const token = localStorage.getItem("accessToken");
-    if (!token) {
-      router.push("/login");
-      return;
-    }
-
-    setIsLoggingOutAll(true);
-    setSaveMsg("");
-
-    try {
-      const res = await fetch("http://localhost:3001/auth/logout-all", {
-        method: "POST",
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
-
-      const data = await res.json();
-
-      if (!res.ok) {
-        throw new Error(data.message || "Đăng xuất thất bại");
-      }
-
-      // Clear local storage and redirect to login
-      localStorage.removeItem("user");
-      localStorage.removeItem("accessToken");
-      router.push("/login");
-    } catch (error) {
-      setSaveMsg(error instanceof Error ? error.message : "Đăng xuất thất bại");
-      setTimeout(() => setSaveMsg(""), 3000);
-    } finally {
-      setIsLoggingOutAll(false);
-      setShowLogoutAllModal(false);
-    }
-  };
-
-  const handleRevokeSession = async (sessionId: number) => {
-    const token = localStorage.getItem("accessToken");
-    if (!token) {
-      router.push("/login");
-      return;
-    }
-
-    try {
-      const res = await fetch("http://localhost:3001/auth/revoke-session", {
-        method: "POST",
-        headers: {
-          Authorization: `Bearer ${token}`,
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ sessionId }),
-      });
-
-      const data = await res.json();
-
-      if (!res.ok) {
-        throw new Error(data.message || "Hủy phiên thất bại");
-      }
-
-      // Reload sessions
-      loadSessions();
-      showSaved("Đã hủy phiên đăng nhập");
-    } catch (error) {
-      setSaveMsg(error instanceof Error ? error.message : "Hủy phiên thất bại");
-      setTimeout(() => setSaveMsg(""), 3000);
-    }
-  };
-
-
-
-  const currentStage = (() => {
-    const score = user?.currentScore ?? 0;
-    if (score >= 800) return { id: 5, label: "Chặng 5 – Hoàn thiện" };
-    if (score >= 650) return { id: 4, label: "Chặng 4 – Nâng cao" };
-    if (score >= 500) return { id: 3, label: "Chặng 3 – Trung bình khá" };
-    if (score >= 300) return { id: 2, label: "Chặng 2 – Củng cố" };
-    return { id: 1, label: "Chặng 1 – Nền tảng" };
-  })();
-
-  const [showStageRequestModal, setShowStageRequestModal] = useState(false);
-  const [requestedStage, setRequestedStage] = useState<number>(currentStage.id);
-  const [requestReason, setRequestReason] = useState("");
-
-  const handleRequestStageChange = async () => {
-    const token = localStorage.getItem("accessToken");
-    if (!token) {
-      alert("Bạn cần đăng nhập để tiếp tục");
-      return;
-    }
-
-    try {
-      const response = await fetch(`${API}/profile/request-stage-change`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
-        },
-        body: JSON.stringify({
-          requestedStage,
-          reason: requestReason,
-        }),
-      });
-
-      if (response.ok) {
-        alert("Đã gửi yêu cầu thay đổi chặng. Yêu cầu sẽ được xem xét trong 24h.");
-        setShowStageRequestModal(false);
-        setRequestReason("");
-      } else {
-        alert("Có lỗi xảy ra. Vui lòng thử lại.");
-      }
-    } catch (error) {
-      console.error("Error requesting stage change:", error);
-      alert("Có lỗi xảy ra. Vui lòng thử lại.");
-    }
-  };
-  const SETTINGS = [
-  {
-    label: "Thông báo học tập",
-    desc: "Nhắc nhở học mỗi ngày",
-    value: studyNotification,
-    setValue: setStudyNotification,
-  },
-  {
-    label: "Thông báo SRS",
-    desc: "Nhắc ôn tập từ vựng theo lịch",
-    value: srsNotification,
-    setValue: setSrsNotification,
-  },
-  {
-    label: "Âm thanh phát âm",
-    desc: "Phát âm khi học flashcard",
-    value: autoPronunciation,
-    setValue: setAutoPronunciation,
-  },
-  {
-    label: "Dark mode",
-    desc: "Giao diện tối (mặc định)",
-    value: darkMode,
-    setValue: setDarkMode,
-  },
-];
-
-// Profile Badges Component
-function ProfileBadgesContent() {
-  const [badges, setBadges] = useState<any[]>([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState("");
 
   useEffect(() => {
-    fetchBadges();
+    loadProfile();
+    loadPrivacySettings();
+    loadConnectedAccounts();
   }, []);
 
-  const fetchBadges = async () => {
+  async function loadProfile() {
     try {
       setLoading(true);
-      const res = await apiFetch("/badges/user") as { success: boolean; badges: any[] };
-      if (res.success) {
-        setBadges(res.badges.filter((b: any) => b.isUnlocked && b.isDisplayed));
-      } else {
-        setError("Không thể tải huy hiệu");
+      const data = await apiFetch<any>("/profile/me");
+      if (data) {
+        setUser(data);
+        setFullName(data.fullName || "");
+        setPhone(data.phone || "");
+        setBirthday(data.birthday ? data.birthday.substring(0, 10) : "");
+        setGender(data.gender || "");
+        setAddress(data.address || "");
+        setBio(data.bio || "");
+        setAvatarPreview(data.avatarUrl || data.avatar || "");
+        setCurrentScore(data.currentScore || 0);
+        setTargetScore(data.targetScore || 600);
+        setExamDate(data.examDate ? data.examDate.substring(0, 10) : "");
+        setDailyStudyTime(data.dailyStudyTime || 30);
+        setDailyVocabularyGoal(data.dailyVocabularyGoal || 20);
+        setStudyNotification(data.studyNotification ?? true);
+        setSrsNotification(data.srsNotification ?? true);
+        setAutoPronunciation(data.autoPronunciation ?? false);
+        setDarkMode(data.darkMode ?? true);
+        setNewEmail(data.email || "");
       }
     } catch (err: any) {
-      console.error(err);
-      setError(err.message || "Đã xảy ra lỗi khi tải huy hiệu");
+      console.error("Error loading profile:", err);
+      showToast("Không thể tải thông tin hồ sơ", "error");
     } finally {
       setLoading(false);
     }
-  };
+  }
 
-  const handleToggleDisplay = async (badge: any) => {
+  async function loadPrivacySettings() {
     try {
-      await apiFetch(`/badges/display/${badge.id}`, {
+      const res = await apiFetch<{ success: boolean; data: any }>("/profile/privacy");
+      if (res.success && res.data) {
+        setPrivacySettings(res.data);
+      }
+    } catch (err) {
+      console.error("Error loading privacy settings:", err);
+    }
+  }
+
+  async function loadConnectedAccounts() {
+    try {
+      setLoadingAccounts(true);
+      const res = await apiFetch<{ success: boolean; accounts: any[] }>("/profile/connected-accounts");
+      if (res.success && res.accounts) {
+        setConnectedAccounts(res.accounts);
+      }
+    } catch (err) {
+      console.error("Error loading connected accounts:", err);
+    } finally {
+      setLoadingAccounts(false);
+    }
+  }
+
+  // 13.1. Profile settings: Save
+  async function handleSaveProfile() {
+    try {
+      const res = await apiFetch<{ message?: string }>("/profile/me", {
         method: "PUT",
-        body: JSON.stringify({ isDisplayed: !badge.isDisplayed }),
+        body: JSON.stringify({
+          fullName,
+          phone,
+          birthday: birthday || null,
+          gender,
+          address,
+          bio,
+          currentScore,
+          targetScore,
+          examDate: examDate || null,
+          dailyStudyTime,
+          dailyVocabularyGoal,
+          studyNotification,
+          srsNotification,
+          autoPronunciation,
+          darkMode,
+        }),
+      });
+      showToast(res.message || "Cập nhật hồ sơ thành công!");
+      loadProfile();
+    } catch (err: any) {
+      showToast(err.message || "Lỗi khi cập nhật hồ sơ", "error");
+    }
+  }
+
+  // Avatar Upload
+  async function handleAvatarChange(e: React.ChangeEvent<HTMLInputElement>) {
+    const file = e.target.files?.[0];
+    if (!file) return;
+
+    const formData = new FormData();
+    formData.append("avatar", file);
+
+    try {
+      setUploadingAvatar(true);
+      const token = localStorage.getItem("accessToken");
+      const res = await fetch(`${API}/profile/upload-avatar`, {
+        method: "POST",
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+        body: formData,
       });
 
-      setBadges(badges.map((b) =>
-        b.id === badge.id ? { ...b, isDisplayed: !b.isDisplayed } : b
-      ));
-    } catch (err) {
-      console.error("Error toggling badge display:", err);
+      const data = await res.json();
+      if (res.ok) {
+        setAvatarPreview(data.avatarUrl);
+        showToast("Tải ảnh đại diện thành công!");
+        loadProfile();
+      } else {
+        showToast(data.message || "Không thể tải lên ảnh đại diện", "error");
+      }
+    } catch (err: any) {
+      showToast("Lỗi khi tải lên ảnh đại diện", "error");
+    } finally {
+      setUploadingAvatar(false);
     }
+  }
+
+  // 13.1. Email settings: Update email
+  async function handleUpdateEmail() {
+    if (!newEmail || !newEmail.includes("@")) {
+      showToast("Vui lòng nhập địa chỉ email hợp lệ", "error");
+      return;
+    }
+
+    try {
+      setIsUpdatingEmail(true);
+      const res = await apiFetch<{ success: boolean; message: string }>("/profile/email", {
+        method: "PUT",
+        body: JSON.stringify({
+          email: newEmail,
+          password: emailPassword || undefined,
+        }),
+      });
+
+      if (res.success) {
+        showToast(res.message || "Đã cập nhật email thành công!");
+        setEmailPassword("");
+        loadProfile();
+      }
+    } catch (err: any) {
+      showToast(err.message || "Lỗi khi cập nhật email", "error");
+    } finally {
+      setIsUpdatingEmail(false);
+    }
+  }
+
+  // 13.1. Password settings: Change password
+  async function handleChangePassword() {
+    if (!oldPassword) {
+      showToast("Vui lòng nhập mật khẩu hiện tại", "error");
+      return;
+    }
+    if (!newPassword || newPassword.length < 6) {
+      showToast("Mật khẩu mới phải có ít nhất 6 ký tự", "error");
+      return;
+    }
+    if (newPassword !== confirmPassword) {
+      showToast("Mật khẩu xác nhận không khớp", "error");
+      return;
+    }
+
+    try {
+      setIsChangingPassword(true);
+      const res = await apiFetch<{ message: string }>("/profile/change-password", {
+        method: "PUT",
+        body: JSON.stringify({
+          oldPassword,
+          newPassword,
+        }),
+      });
+
+      showToast(res.message || "Đổi mật khẩu thành công!");
+      setOldPassword("");
+      setNewPassword("");
+      setConfirmPassword("");
+    } catch (err: any) {
+      showToast(err.message || "Lỗi khi đổi mật khẩu", "error");
+    } finally {
+      setIsChangingPassword(false);
+    }
+  }
+
+  // 13.1. Privacy settings: Update
+  async function handleSavePrivacy(updated: Partial<typeof privacySettings>) {
+    const next = { ...privacySettings, ...updated };
+    setPrivacySettings(next);
+    try {
+      setIsSavingPrivacy(true);
+      const res = await apiFetch<{ success: boolean; message: string }>("/profile/privacy", {
+        method: "PUT",
+        body: JSON.stringify(next),
+      });
+      if (res.success) {
+        showToast(res.message || "Đã cập nhật quyền riêng tư");
+      }
+    } catch (err: any) {
+      showToast("Lỗi khi lưu cài đặt quyền riêng tư", "error");
+    } finally {
+      setIsSavingPrivacy(false);
+    }
+  }
+
+  // 13.1. Data export: Download learning data
+  async function handleExportData(format: "json" | "csv" = "json") {
+    try {
+      setIsExporting(true);
+      const data = await apiFetch<any>("/profile/export-data");
+
+      if (format === "json") {
+        const jsonStr = JSON.stringify(data, null, 2);
+        const blob = new Blob([jsonStr], { type: "application/json" });
+        const url = URL.createObjectURL(blob);
+        const link = document.createElement("a");
+        link.href = url;
+        link.download = `toeic_ai_learning_data_${new Date().toISOString().slice(0, 10)}.json`;
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+        URL.revokeObjectURL(url);
+      } else {
+        // CSV Format Summary
+        const summary = data.userData?.summary;
+        let csvContent = "data:text/csv;charset=utf-8,";
+        csvContent += "Chỉ số,Số lượng\n";
+        csvContent += `Tổng bài thi thử Mock Test,${summary?.totalMockTests || 0}\n`;
+        csvContent += `Tổng bài luyện tập Practice,${summary?.totalPracticeSessions || 0}\n`;
+        csvContent += `Tổng thành tích đạt được,${summary?.totalAchievements || 0}\n`;
+        csvContent += `Mục tiêu đã tạo,${summary?.totalGoals || 0}\n`;
+        csvContent += `Lịch sử tích lũy điểm thưởng,${summary?.totalPointsTransactions || 0}\n`;
+
+        const encodedUri = encodeURI(csvContent);
+        const link = document.createElement("a");
+        link.setAttribute("href", encodedUri);
+        link.setAttribute("download", `toeic_ai_progress_${new Date().toISOString().slice(0, 10)}.csv`);
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+      }
+
+      showToast(`Đã xuất dữ liệu học tập định dạng ${format.toUpperCase()} thành công!`);
+    } catch (err: any) {
+      showToast("Lỗi khi xuất dữ liệu học tập", "error");
+    } finally {
+      setIsExporting(false);
+    }
+  }
+
+  // 13.1. Connected accounts: Unlink
+  async function handleUnlinkAccount(provider: string) {
+    try {
+      const res = await apiFetch<{ success: boolean; message: string }>("/profile/connected-accounts/unlink", {
+        method: "POST",
+        body: JSON.stringify({ provider }),
+      });
+      if (res.success) {
+        showToast(res.message);
+        loadConnectedAccounts();
+      }
+    } catch (err: any) {
+      showToast(err.message || "Lỗi khi hủy liên kết tài khoản", "error");
+    }
+  }
+
+  // 13.1. Account deletion
+  async function handleDeleteAccount() {
+    try {
+      setIsDeleting(true);
+      const res = await apiFetch<{ success: boolean; message: string }>("/profile/delete-account", {
+        method: "POST",
+        body: JSON.stringify({
+          password: deletePassword,
+          reason: deleteReason,
+        }),
+      });
+
+      if (res.success) {
+        localStorage.removeItem("accessToken");
+        localStorage.removeItem("user");
+        router.push("/login");
+      }
+    } catch (err: any) {
+      showToast(err.message || "Không thể xóa tài khoản. Vui lòng kiểm tra mật khẩu.", "error");
+    } finally {
+      setIsDeleting(false);
+    }
+  }
+
+  // Deactivate account
+  async function handleDeactivateAccount() {
+    try {
+      setIsDeactivating(true);
+      const res = await apiFetch<{ message: string }>("/profile/deactivate-account", {
+        method: "POST",
+      });
+      showToast(res.message);
+      localStorage.removeItem("accessToken");
+      router.push("/login");
+    } catch (err: any) {
+      showToast(err.message || "Lỗi khi vô hiệu hóa tài khoản", "error");
+    } finally {
+      setIsDeactivating(false);
+    }
+  }
+
+  // Password strength calculation
+  const getPasswordStrength = (pass: string) => {
+    if (!pass) return { score: 0, text: "", color: "" };
+    let score = 0;
+    if (pass.length >= 6) score += 1;
+    if (pass.length >= 10) score += 1;
+    if (/[A-Z]/.test(pass)) score += 1;
+    if (/[0-9]/.test(pass)) score += 1;
+    if (/[^A-Za-z0-9]/.test(pass)) score += 1;
+
+    if (score <= 2) return { score: 33, text: "Yếu", color: "bg-red-500 text-red-400" };
+    if (score <= 4) return { score: 66, text: "Trung bình", color: "bg-yellow-500 text-yellow-400" };
+    return { score: 100, text: "Rất mạnh", color: "bg-green-500 text-green-400" };
   };
 
-  if (loading) {
-    return (
-      <div className="flex flex-col items-center justify-center py-12 gap-4">
-        <div className="w-10 h-10 border-4 border-red-600/30 border-t-red-500 rounded-full animate-spin"></div>
-        <p className="text-zinc-400 text-sm">Đang tải huy hiệu...</p>
-      </div>
-    );
-  }
-
-  if (error) {
-    return (
-      <div className="bg-zinc-900/60 border border-zinc-800/50 rounded-2xl p-6 text-center">
-        <p className="text-red-400 text-sm">{error}</p>
-      </div>
-    );
-  }
+  const passwordStrength = getPasswordStrength(newPassword);
 
   return (
-    <div className="bg-zinc-900/60 border border-zinc-800/50 rounded-2xl p-6 space-y-4">
-      <h3 className="text-sm font-semibold text-white flex items-center gap-2">
-        <Award className="w-4 h-4 text-purple-400" />
-        <span>Huy hiệu hiển thị trên hồ sơ</span>
-      </h3>
-      
-      <p className="text-xs text-zinc-500">
-        Chọn huy hiệu bạn muốn hiển thị trên hồ sơ cá nhân. Các huy hiệu này sẽ xuất hiện bên cạnh tên của bạn.
-      </p>
-
-      {badges.length === 0 ? (
-        <div className="text-center py-8">
-          <Award className="w-12 h-12 text-zinc-700 mx-auto mb-4" />
-          <p className="text-zinc-500 text-sm">Chưa có huy hiệu nào được hiển thị</p>
-          <p className="text-xs text-zinc-600 mt-2">
-            Đi đến trang <span className="text-purple-400">Cấp độ & Huy hiệu</span> để mở khóa huy hiệu
-          </p>
-        </div>
-      ) : (
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-          {badges.map((badge) => (
-            <div
-              key={badge.id}
-              className="relative bg-zinc-900/40 border border-zinc-800/40 rounded-xl p-4 text-center hover:border-zinc-700/60 transition-colors"
-            >
-              <button
-                onClick={() => handleToggleDisplay(badge)}
-                className="absolute top-2 right-2 p-1.5 rounded-lg bg-zinc-800 hover:bg-zinc-700 text-zinc-400 hover:text-white transition-all"
-                title={badge.isDisplayed ? "Ẩn khỏi hồ sơ" : "Hiển thị trên hồ sơ"}
-              >
-                {badge.isDisplayed ? <Eye className="w-3.5 h-3.5" /> : <EyeOff className="w-3.5 h-3.5" />}
-              </button>
-              <div className="text-3xl mb-2">{badge.icon}</div>
-              <p className="text-xs font-medium text-white truncate">{badge.name}</p>
-              <p className="text-[10px] text-zinc-500 mt-1">{badge.rarity}</p>
-            </div>
-          ))}
+    <div className="space-y-6">
+      {/* Toast Feedback */}
+      {toastMessage && (
+        <div className="fixed top-5 right-5 z-50 animate-in fade-in slide-in-from-top-4 duration-300">
+          <div
+            className={`flex items-center gap-3 px-4 py-3 rounded-xl border shadow-xl ${
+              toastType === "success"
+                ? "bg-zinc-900 border-green-500/30 text-green-400"
+                : "bg-zinc-900 border-red-500/30 text-red-400"
+            }`}
+          >
+            {toastType === "success" ? (
+              <CheckCircle2 className="w-5 h-5 shrink-0 text-green-400" />
+            ) : (
+              <AlertCircle className="w-5 h-5 shrink-0 text-red-400" />
+            )}
+            <span className="text-sm font-medium text-white">{toastMessage}</span>
+          </div>
         </div>
       )}
-    </div>
-  );
-}
-  return (
-    <div className="space-y-6 max-w-3xl mx-auto">
+
       {/* Header */}
       <div>
-        <h1 className="text-2xl font-bold text-white flex items-center gap-2.5">
-          <User className="w-7 h-7 text-red-500" />
-          <span>Hồ sơ cá nhân</span>
+        <h1 className="text-2xl font-bold text-white flex items-center gap-2">
+          <User className="w-6 h-6 text-red-400" />
+          <span>Hồ Sơ & Cài Đặt Tài Khoản (13.1)</span>
         </h1>
-        <p className="text-zinc-400 text-sm mt-1">Quản lý thông tin và cài đặt tài khoản</p>
+        <p className="text-sm text-zinc-400 mt-1">
+          Quản lý thông tin cá nhân, bảo mật, quyền riêng tư, xuất dữ liệu và tài khoản liên kết
+        </p>
       </div>
 
-      {/* Profile Card */}
-      <div className="bg-zinc-900/60 border border-zinc-800/50 rounded-2xl p-5 flex items-center gap-4">
-        <div className="relative shrink-0">
-          <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-red-600 to-red-500 flex items-center justify-center text-2xl font-bold text-white shadow-lg shadow-red-600/20 overflow-hidden">
-            {avatarPreview || user?.avatar ? (
-              <img
-                src={avatarPreview || `http://localhost:3001${user?.avatar || ""}`}
-                alt="Avatar"
-                className="w-full h-full object-cover"
-              />
-            ) : (
-              user?.fullName?.charAt(0)?.toUpperCase() || "U"
-            )}
-          </div>
-          <label className="absolute -bottom-1 -right-1 w-6 h-6 bg-red-600 rounded-full flex items-center justify-center cursor-pointer hover:bg-red-700 transition-colors shadow-lg">
-            <input
-              type="file"
-              accept="image/jpeg,image/png,image/gif,image/webp"
-              onChange={handleAvatarChange}
-              className="hidden"
-            />
-            <Plus className="w-3.5 h-3.5 text-white" />
-          </label>
-        </div>
-        <div className="flex-1 min-w-0">
-          <h2 className="text-lg font-bold text-white truncate">{user?.fullName || "User"}</h2>
-          <p className="text-[13px] text-zinc-400 truncate">{user?.email || ""}</p>
-          <div className="flex items-center gap-3 mt-2 flex-wrap">
-            <span className="text-[11px] bg-red-600/15 text-red-400 border border-red-600/20 px-2.5 py-0.5 rounded-full font-medium">
-              {currentStage.label}
-            </span>
-            <span className="text-[11px] text-zinc-500">
-              Điểm: <span className="text-white font-semibold">{user?.currentScore ?? "—"}</span>
-            </span>
-            <span className="text-[11px] text-zinc-500">
-              Mục tiêu: <span className="text-green-400 font-semibold">{user?.targetScore ?? "—"}</span>
-            </span>
-            <button
-              onClick={() => setShowStageRequestModal(true)}
-              className="text-[11px] text-blue-400 hover:text-blue-300 underline"
-            >
-              Yêu cầu thay đổi chặng
-            </button>
-          </div>
-        </div>
-      </div>
-
-      {/* Avatar Upload Preview */}
-      {avatarPreview && (
-        <div className="bg-zinc-900/60 border border-zinc-800/50 rounded-2xl p-4 flex items-center gap-4">
-          <img
-            src={avatarPreview}
-            alt="Preview"
-            className="w-12 h-12 rounded-xl object-cover"
-          />
-          <div className="flex-1">
-            <p className="text-sm text-white font-medium">Ảnh mới đã chọn</p>
-            <p className="text-xs text-zinc-500">{avatarFile?.name}</p>
-          </div>
-          <button
-            onClick={uploadAvatar}
-            disabled={uploadingAvatar}
-            className="bg-red-600 hover:bg-red-700 disabled:bg-gray-600 text-white px-4 py-2 rounded-xl text-sm font-medium transition-colors"
-          >
-            {uploadingAvatar ? "Đang tải..." : "Tải lên"}
-          </button>
-          <button
-            onClick={() => {
-              setAvatarFile(null);
-              setAvatarPreview("");
-            }}
-            className="bg-zinc-700 hover:bg-zinc-600 text-white px-3 py-2 rounded-xl text-sm transition-colors"
-          >
-            Hủy
-          </button>
-        </div>
-      )}
-
-      {/* Toast */}
-      {saveMsg && (
-        <div className={`flex items-center gap-2 px-4 py-3 rounded-xl border text-[13px] font-medium transition-all ${
-          saveMsg.includes("không khớp") || saveMsg.includes("Vui lòng") || saveMsg.includes("ít nhất")
-            ? "bg-red-600/15 border-red-600/25 text-red-300"
-            : "bg-green-600/15 border-green-600/25 text-green-300"
-        }`}>
-          {saveMsg.includes("không khớp") || saveMsg.includes("Vui lòng") || saveMsg.includes("ít nhất") ? (
-            <X className="w-4 h-4 text-red-400 shrink-0" />
-          ) : (
-            <Check className="w-4 h-4 text-emerald-400 shrink-0" />
-          )}
-          <span>{saveMsg}</span>
-        </div>
-      )}
-
-      {/* Tabs */}
-      <div className="flex gap-1 bg-zinc-900/60 border border-zinc-800/50 rounded-2xl p-1.5 overflow-x-auto">
+      {/* Main Tabs Navigation */}
+      <div className="flex overflow-x-auto border-b border-zinc-800 gap-1 pb-1">
         {TABS.map((tab) => {
-          const TabIcon = tab.icon;
+          const Icon = tab.icon;
+          const isActive = activeTab === tab.id;
           return (
             <button
               key={tab.id}
               onClick={() => setActiveTab(tab.id)}
-              className={`flex-1 min-w-max flex items-center justify-center gap-2 py-2.5 px-3 rounded-xl text-[13px] font-medium transition-all duration-200 ${
-                activeTab === tab.id
-                  ? "bg-red-600 text-white shadow-lg shadow-red-600/20"
-                  : "text-zinc-400 hover:text-white hover:bg-zinc-800/60"
+              className={`px-4 py-2.5 text-xs font-semibold rounded-lg flex items-center gap-2 whitespace-nowrap transition-colors ${
+                isActive
+                  ? "bg-red-600/10 text-red-400 border border-red-500/30"
+                  : "text-zinc-400 hover:text-zinc-200 hover:bg-zinc-800/40"
               }`}
             >
-              <TabIcon className="w-4 h-4" />
-              <span className="hidden sm:inline">{tab.label}</span>
+              <Icon className="w-3.5 h-3.5" />
+              <span>{tab.label}</span>
             </button>
           );
         })}
       </div>
 
-      {/* ── Personal Info ── */}
+      {/* TAB 1: PROFILE SETTINGS (Cài đặt hồ sơ) */}
       {activeTab === "info" && (
-        <div className="bg-zinc-900/60 border border-zinc-800/50 rounded-2xl p-6 space-y-4">
-          <h3 className="text-sm font-semibold text-white">Thông tin cá nhân</h3>
+        <div className="space-y-6">
+          <div className="p-6 rounded-2xl bg-zinc-900/40 border border-zinc-800/60 space-y-6">
+            <h2 className="text-base font-bold text-white flex items-center gap-2">
+              <User className="w-4 h-4 text-red-400" />
+              <span>Thông tin cá nhân</span>
+            </h2>
 
-          {/* Account Info */}
-          <div className="bg-black/30 border border-zinc-800/40 rounded-xl p-4 space-y-2">
-            <div className="flex justify-between items-center">
-              <span className="text-[11px] text-zinc-500">Ngày tạo tài khoản</span>
-              <span className="text-[11px] text-zinc-300">
-                {user?.createdAt ? new Date(user.createdAt).toLocaleDateString('vi-VN') : '—'}
-              </span>
-            </div>
-            <div className="flex justify-between items-center">
-              <span className="text-[11px] text-zinc-500">Đăng nhập gần nhất</span>
-              <span className="text-[11px] text-zinc-300">
-                {user?.lastLoginAt ? new Date(user.lastLoginAt).toLocaleString('vi-VN') : 'Chưa đăng nhập'}
-              </span>
-            </div>
-          </div>
-
-          <div>
-            <label className="text-[11px] text-zinc-500 uppercase tracking-wider font-medium block mb-2">Họ và tên</label>
-            <input
-              type="text"
-              value={fullName}
-              onChange={(e) => setFullName(e.target.value)}
-              placeholder="Nhập họ và tên"
-              className="w-full bg-zinc-800/60 border border-zinc-700/60 focus:border-red-600/50 text-white placeholder-zinc-600 rounded-xl px-4 py-3 text-[13px] outline-none transition-all"
-            />
-          </div>
-          <div>
-            <label className="text-[11px] text-zinc-500 uppercase tracking-wider font-medium block mb-2">Email</label>
-            <input
-              type="email"
-              value={user?.email || ""}
-              disabled
-              className="w-full bg-zinc-800/30 border border-zinc-800/50 text-zinc-500 rounded-xl px-4 py-3 text-[13px] outline-none cursor-not-allowed"
-            />
-            <p className="text-[10px] text-zinc-600 mt-1.5">Email không thể thay đổi</p>
-          </div>
-          <div>
-<label className="text-[11px] text-zinc-500 uppercase tracking-wider font-medium block mb-2">
-Số điện thoại
-</label>
-
-<input
-value={phone}
-onChange={(e)=>setPhone(e.target.value)}
-placeholder="Nhập số điện thoại"
-className="w-full bg-zinc-800/60 border border-zinc-700/60 text-white rounded-xl px-4 py-3 text-[13px]"
-/>
-
-</div>
-
-
-<div>
-<label className="text-[11px] text-zinc-500 uppercase tracking-wider font-medium block mb-2">
-Ngày sinh
-</label>
-
-<input
-type="date"
-value={birthday}
-onChange={(e)=>setBirthday(e.target.value)}
-className="w-full bg-zinc-800/60 border border-zinc-700/60 text-white rounded-xl px-4 py-3 text-[13px]"
-/>
-
-</div>
-
-
-<div>
-<label className="text-[11px] text-zinc-500 uppercase tracking-wider font-medium block mb-2">
-Giới tính
-</label>
-
-<select
-value={gender}
-onChange={(e)=>setGender(e.target.value)}
-className="w-full bg-zinc-800/60 border border-zinc-700/60 text-white rounded-xl px-4 py-3"
->
-
-<option value="">Chọn giới tính</option>
-<option value="male">Nam</option>
-<option value="female">Nữ</option>
-<option value="other">Khác</option>
-
-</select>
-
-</div>
-
-
-<div>
-<label className="text-[11px] text-zinc-500 uppercase tracking-wider font-medium block mb-2">
-Địa chỉ
-</label>
-
-<input
-value={address}
-onChange={(e)=>setAddress(e.target.value)}
-placeholder="Nhập địa chỉ"
-className="w-full bg-zinc-800/60 border border-zinc-700/60 text-white rounded-xl px-4 py-3"
-/>
-
-</div>
-
-
-<div>
-<label className="text-[11px] text-zinc-500 uppercase tracking-wider font-medium block mb-2">
-Giới thiệu
-</label>
-
-<textarea
-value={bio}
-onChange={(e)=>setBio(e.target.value)}
-rows={3}
-placeholder="Viết vài dòng về bạn..."
-className="w-full bg-zinc-800/60 border border-zinc-700/60 text-white rounded-xl px-4 py-3"
-/>
-
-</div>
-          <button
-            onClick={saveInfo}
-            className="w-full bg-red-600 hover:bg-red-700 text-white font-semibold py-3 rounded-xl text-[13px] transition-all shadow-lg shadow-red-600/15"
-          >
-            Lưu thay đổi
-          </button>
-        </div>
-      )}
-
-      {/* ── Goal ── */}
-      {activeTab === "goal" && (
-        <div className="bg-zinc-900/60 border border-zinc-800/50 rounded-2xl p-6 space-y-5">
-          <h3 className="text-sm font-semibold text-white">Mục tiêu TOEIC</h3>
-  {/* Preview */}
-          <div className="bg-black/30 border border-zinc-800/40 rounded-xl p-4">
-            <p className="text-[11px] text-zinc-500 uppercase tracking-wider font-medium mb-2">Xem trước</p>
-         
-              <p className="text-[13px] text-zinc-300">
-
-Hiện tại:
-<span className="text-yellow-400 font-bold">
-{" "}
-{currentScore} điểm
-</span>
-
-{" → "}
-
-Mục tiêu:
-<span className="text-green-400 font-bold">
-{" "}
-{targetScore} điểm
-</span>
-
-</p>
-
-
-<p className="text-[13px] text-zinc-300 mt-2">
-
-Lịch học:
-<span className="text-red-400 font-bold">
-{" "}
-{dailyStudyTime} phút/ngày
-</span>
-
-</p>
-          </div>
-          <div><label className="text-[11px] text-zinc-500 uppercase tracking-wider font-medium block mb-2">
-Điểm TOEIC hiện tại
-</label>
-
-
-<input
-
-type="number"
-
-value={currentScore}
-
-onChange={(e)=>
-setCurrentScore(
-Number(e.target.value)
-)
-}
-
-placeholder="Ví dụ: 450"
-
-className="w-full bg-zinc-800/60 border border-zinc-700/60 text-white rounded-xl px-4 py-3 text-[13px]"
-
- />
-
-</div>
-            <label className="text-[11px] text-zinc-500 uppercase tracking-wider font-medium block mb-3">
-              Mục tiêu điểm TOEIC
-            </label>
-            <div>
-
-
-            <div className="grid grid-cols-5 gap-2">
-              {TARGET_OPTIONS.map((score) => (
-                <button
-                  key={score}
-                  onClick={() => setTargetScore(score)}
-                  className={`py-2.5 rounded-xl text-[13px] font-semibold border transition-all ${
-                    targetScore === score
-                      ? "bg-red-600 border-red-500 text-white shadow-sm shadow-red-600/20"
-                      : "bg-zinc-800/60 border-zinc-700/50 text-zinc-400 hover:border-zinc-600 hover:text-white"
-                  }`}
-                >
-                  {score}
-                </button>
-              ))}
-            </div>
-          </div>
-
-          <div>
-            <label className="text-[11px] text-zinc-500 uppercase tracking-wider font-medium block mb-3">
-              Thời gian học mỗi ngày
-            </label>
-            <div className="flex gap-2 flex-wrap">
-              {STUDY_TIME_OPTIONS.map((t) => (
-                <button
-                  key={t}
-                  onClick={() => setDailyStudyTime(t)}
-                  className={`px-4 py-2 rounded-xl text-[13px] font-semibold border transition-all ${
-                    dailyStudyTime === t
-                      ? "bg-red-600 border-red-500 text-white shadow-sm"
-                      : "bg-zinc-800/60 border-zinc-700/50 text-zinc-400 hover:border-zinc-600 hover:text-white"
-                  }`}
-                >
-                  {t} phút
-                </button>
-              ))}
-            </div>
-          </div>
-
-          <div>
-            <label className="text-[11px] text-zinc-500 uppercase tracking-wider font-medium block mb-3">
-              Mục tiêu từ vựng hàng ngày
-            </label>
-            <div className="flex gap-2 flex-wrap">
-              {[20, 30, 40].map((t) => (
-                <button
-                  key={t}
-                  onClick={() => setDailyVocabularyGoal(t)}
-                  className={`px-4 py-2 rounded-xl text-[13px] font-semibold border transition-all ${
-                    dailyVocabularyGoal === t
-                      ? "bg-purple-600 border-purple-500 text-white shadow-sm"
-                      : "bg-zinc-800/60 border-zinc-700/50 text-zinc-400 hover:border-zinc-600 hover:text-white"
-                  }`}
-                >
-                  {t} từ
-                </button>
-              ))}
-            </div>
-          </div>
-
-        
-          <div>
-
-<label className="text-[11px] text-zinc-500 uppercase tracking-wider font-medium block mb-2">
-Ngày dự thi TOEIC
-</label>
-
-
-<input
-
-type="date"
-
-value={examDate}
-
-onChange={(e)=>
-setExamDate(e.target.value)
-}
-
-className="w-full bg-zinc-800/60 border border-zinc-700/60 text-white rounded-xl px-4 py-3 text-[13px]"
-
-/>
-
-</div>
-
-          <button
-            onClick={saveGoal}
-            className="w-full bg-red-600 hover:bg-red-700 text-white font-semibold py-3 rounded-xl text-[13px] transition-all shadow-lg shadow-red-600/15"
-          >
-            Lưu mục tiêu
-          </button>
-        </div>
-      )}
-
-      {/* ── Badges ── */}
-      {activeTab === "badges" && (
-        <ProfileBadgesContent />
-      )}
-
-      {/* ── Password ── */}
-      {activeTab === "password" && (
-        <div className="bg-zinc-900/60 border border-zinc-800/50 rounded-2xl p-6 space-y-4">
-          <h3 className="text-sm font-semibold text-white">Đổi mật khẩu</h3>
-          {[
-            { label: "Mật khẩu hiện tại", value: oldPassword, onChange: setOldPassword },
-            { label: "Mật khẩu mới", value: newPassword, onChange: setNewPassword },
-            { label: "Xác nhận mật khẩu mới", value: confirmPassword, onChange: setConfirmPassword },
-          ].map((field) => (
-            <div key={field.label}>
-              <label className="text-[11px] text-zinc-500 uppercase tracking-wider font-medium block mb-2">
-                {field.label}
-              </label>
-              <input
-                type="password"
-                value={field.value}
-                onChange={(e) => field.onChange(e.target.value)}
-                placeholder="••••••••"
-                className="w-full bg-zinc-800/60 border border-zinc-700/60 focus:border-red-600/50 text-white placeholder-zinc-600 rounded-xl px-4 py-3 text-[13px] outline-none transition-all"
-              />
-            </div>
-          ))}
-          <div className="bg-zinc-900/40 border border-zinc-800/30 rounded-xl p-3">
-            <p className="text-[11px] text-zinc-500">
-              Mật khẩu phải có ít nhất 6 ký tự, bao gồm chữ hoa, chữ thường và số.
-            </p>
-          </div>
-          <button
-            onClick={savePassword}
-            className="w-full bg-red-600 hover:bg-red-700 text-white font-semibold py-3 rounded-xl text-[13px] transition-all shadow-lg shadow-red-600/15"
-          >
-            Đổi mật khẩu
-          </button>
-        </div>
-      )}
-
-      {/* ── Settings ── */}
-      {activeTab === "settings" && (
-        <div className="space-y-3">
-          <div className="bg-zinc-900/60 border border-zinc-800/50 rounded-2xl p-5 space-y-1">
-            <h3 className="text-sm font-semibold text-white mb-4">Cài đặt tài khoản</h3>
-            {SETTINGS.map((setting, i) => (
-              <div key={i} className="flex items-center justify-between py-3 border-b border-zinc-800/30 last:border-0">
-                <div>
-                  <p className="text-[13px] text-white font-medium">{setting.label}</p>
-                  <p className="text-[11px] text-zinc-500 mt-0.5">{setting.desc}</p>
-                </div>
-<div
-  onClick={() => setting.setValue(!setting.value)}
-  className={`w-11 h-6 rounded-full border cursor-pointer transition-all ${
-    setting.value
-      ? "bg-red-600 border-red-500"
-      : "bg-zinc-800 border-zinc-700"
-  }`}
->
-<div
-  className={`w-4 h-4 rounded-full bg-white shadow-sm m-0.5 transition-all ${
-    setting.value
-      ? "translate-x-5"
-      : "translate-x-0"
-  }`}
-/>
-                </div>
-              </div>
-            ))}
-          </div>
-<button
-  onClick={saveSettings}
-  className="w-full bg-red-600 hover:bg-red-700 text-white font-semibold py-3 rounded-xl text-[13px] transition-all shadow-lg shadow-red-600/15"
->
-  Lưu cài đặt
-</button>
-        </div>
-      )}
-
-      {/* ── Account Management ── */}
-      {activeTab === "account" && (
-        <div className="space-y-4">
-          <div className="bg-zinc-900/60 border border-zinc-800/50 rounded-2xl p-6 space-y-4">
-            <h3 className="text-sm font-semibold text-white">Quản lý tài khoản</h3>
-
-            {/* Active Sessions */}
-            <div className="bg-blue-600/5 border border-blue-600/15 rounded-xl p-4">
-              <div className="flex items-start gap-3">
-                <div className="w-10 h-10 rounded-lg bg-blue-600/10 flex items-center justify-center shrink-0">
-                  <svg className="w-5 h-5 text-blue-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                  </svg>
-                </div>
-                <div className="flex-1">
-                  <h4 className="text-sm font-semibold text-white mb-1">Phiên đăng nhập</h4>
-                  <p className="text-xs text-zinc-400 mb-3">Quản lý các thiết bị đang đăng nhập vào tài khoản của bạn.</p>
-                  <button
-                    onClick={() => {
-                      setShowSessions(!showSessions);
-                      if (!showSessions) loadSessions();
-                    }}
-                    className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg text-xs font-medium transition-colors"
-                  >
-                    {showSessions ? "Ẩn danh sách" : "Xem phiên đăng nhập"}
-                  </button>
-                </div>
-              </div>
-
-              {/* Sessions List */}
-              {showSessions && (
-                <div className="mt-4 space-y-2">
-                  {sessions.length === 0 ? (
-                    <p className="text-xs text-zinc-500 text-center py-4">Không có phiên đăng nhập nào</p>
+            {/* Avatar Section */}
+            <div className="flex flex-col sm:flex-row items-center gap-6 p-4 rounded-xl bg-zinc-900/60 border border-zinc-800">
+              <div className="relative group">
+                <div className="w-24 h-24 rounded-2xl bg-gradient-to-br from-red-600 to-red-500 flex items-center justify-center text-3xl font-bold text-white overflow-hidden shadow-lg border border-zinc-700">
+                  {avatarPreview ? (
+                    <img
+                      src={avatarPreview.startsWith("http") ? avatarPreview : `${API}${avatarPreview}`}
+                      alt="Avatar"
+                      className="w-full h-full object-cover"
+                    />
                   ) : (
-                    sessions.map((session) => (
-                      <div
-                        key={session.id}
-                        className={`flex items-center justify-between p-3 rounded-lg border ${
-                          session.isCurrent
-                            ? "bg-green-600/10 border-green-600/20"
-                            : "bg-zinc-800/30 border-zinc-700/30"
-                        }`}
-                      >
-                        <div className="flex-1">
-                          <div className="flex items-center gap-2">
-                            <span className="text-xs text-white font-medium">
-                              {session.isCurrent ? "Thiết bị hiện tại" : "Thiết bị khác"}
-                            </span>
-                            {session.isCurrent && (
-                              <span className="text-[10px] bg-green-600/20 text-green-400 px-2 py-0.5 rounded-full">Active</span>
-                            )}
-                          </div>
-                          <p className="text-[10px] text-zinc-500 mt-1">
-                            {session.userAgent?.substring(0, 50) || "Unknown"}
-                          </p>
-                          <p className="text-[10px] text-zinc-600 mt-0.5">
-                            Đăng nhập: {session.createdAt ? new Date(session.createdAt).toLocaleString('vi-VN') : '—'}
-                          </p>
-                          <p className="text-[10px] text-zinc-600 mt-0.5">
-                            Hết hạn: {session.expiresAt ? new Date(session.expiresAt).toLocaleString('vi-VN') : '—'}
-                          </p>
-                        </div>
-                        {!session.isCurrent && (
-                          <button
-                            onClick={() => handleRevokeSession(session.id)}
-                            className="ml-3 px-3 py-1.5 bg-red-600/10 hover:bg-red-600/20 text-red-400 rounded-lg text-[10px] font-medium transition-colors"
-                          >
-                            Hủy
-                          </button>
-                        )}
-                      </div>
-                    ))
+                    fullName.charAt(0).toUpperCase() || "U"
                   )}
                 </div>
-              )}
-            </div>
+                {uploadingAvatar && (
+                  <div className="absolute inset-0 bg-black/60 rounded-2xl flex items-center justify-center">
+                    <div className="w-6 h-6 border-2 border-white border-t-transparent rounded-full animate-spin" />
+                  </div>
+                )}
+              </div>
 
-            {/* Logout All Devices */}
-            <div className="bg-purple-600/5 border border-purple-600/15 rounded-xl p-4">
-              <div className="flex items-start gap-3">
-                <div className="w-10 h-10 rounded-lg bg-purple-600/10 flex items-center justify-center shrink-0">
-                  <svg className="w-5 h-5 text-purple-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
-                  </svg>
-                </div>
-                <div className="flex-1">
-                  <h4 className="text-sm font-semibold text-white mb-1">Đăng xuất khỏi tất cả thiết bị</h4>
-                  <p className="text-xs text-zinc-400 mb-3">Đăng xuất khỏi tất cả các thiết bị đang đăng nhập vào tài khoản của bạn.</p>
-                  <button
-                    onClick={() => setShowLogoutAllModal(true)}
-                    className="bg-purple-600 hover:bg-purple-700 text-white px-4 py-2 rounded-lg text-xs font-medium transition-colors"
-                  >
-                    Đăng xuất tất cả
-                  </button>
+              <div className="space-y-2 text-center sm:text-left">
+                <h3 className="text-sm font-semibold text-white">Ảnh đại diện tài khoản</h3>
+                <p className="text-xs text-zinc-400">
+                  Hỗ trợ định dạng JPG, PNG, GIF, WebP (Tối đa 5MB)
+                </p>
+                <div className="flex items-center gap-2 pt-1">
+                  <label className="px-3.5 py-1.5 bg-red-600 hover:bg-red-700 text-white rounded-lg text-xs font-semibold cursor-pointer transition-colors inline-block">
+                    <span>Tải ảnh mới</span>
+                    <input
+                      type="file"
+                      accept="image/*"
+                      onChange={handleAvatarChange}
+                      className="hidden"
+                      disabled={uploadingAvatar}
+                    />
+                  </label>
                 </div>
               </div>
             </div>
 
-            {/* Deactivate Account */}
-            <div className="bg-orange-600/5 border border-orange-600/15 rounded-xl p-4">
-              <div className="flex items-start gap-3">
-                <div className="w-10 h-10 rounded-lg bg-orange-600/10 flex items-center justify-center shrink-0">
-                  <svg className="w-5 h-5 text-orange-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M18.364 18.364A9 9 0 005.636 5.636m12.728 0A9 9 0 015.636 5.636m12.728 12.728A9 9 0 015.636 5.636m0 12.728A9 9 0 0018.364 5.636M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
-                  </svg>
-                </div>
-                <div className="flex-1">
-                  <h4 className="text-sm font-semibold text-white mb-1">Vô hiệu hóa tài khoản</h4>
-                  <p className="text-xs text-zinc-400 mb-3">Tạm thời vô hiệu hóa tài khoản. Bạn có thể kích hoạt lại bằng cách liên hệ hỗ trợ.</p>
-                  <button
-                    onClick={() => setShowDeactivateModal(true)}
-                    className="bg-orange-600 hover:bg-orange-700 text-white px-4 py-2 rounded-lg text-xs font-medium transition-colors"
-                  >
-                    Vô hiệu hóa
-                  </button>
-                </div>
+            {/* Form Fields */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div>
+                <label className="block text-xs font-semibold text-zinc-400 mb-1.5">Họ và tên</label>
+                <input
+                  type="text"
+                  value={fullName}
+                  onChange={(e) => setFullName(e.target.value)}
+                  className="w-full bg-zinc-900 border border-zinc-800 rounded-lg px-3.5 py-2.5 text-white text-sm focus:outline-none focus:border-red-500/50"
+                  placeholder="Nguyễn Văn A"
+                />
+              </div>
+
+              <div>
+                <label className="block text-xs font-semibold text-zinc-400 mb-1.5">Số điện thoại</label>
+                <input
+                  type="text"
+                  value={phone}
+                  onChange={(e) => setPhone(e.target.value)}
+                  className="w-full bg-zinc-900 border border-zinc-800 rounded-lg px-3.5 py-2.5 text-white text-sm focus:outline-none focus:border-red-500/50"
+                  placeholder="0987654321"
+                />
+              </div>
+
+              <div>
+                <label className="block text-xs font-semibold text-zinc-400 mb-1.5">Ngày sinh</label>
+                <input
+                  type="date"
+                  value={birthday}
+                  onChange={(e) => setBirthday(e.target.value)}
+                  className="w-full bg-zinc-900 border border-zinc-800 rounded-lg px-3.5 py-2.5 text-white text-sm focus:outline-none focus:border-red-500/50"
+                />
+              </div>
+
+              <div>
+                <label className="block text-xs font-semibold text-zinc-400 mb-1.5">Giới tính</label>
+                <select
+                  value={gender}
+                  onChange={(e) => setGender(e.target.value)}
+                  className="w-full bg-zinc-900 border border-zinc-800 rounded-lg px-3.5 py-2.5 text-white text-sm focus:outline-none focus:border-red-500/50"
+                >
+                  <option value="">Chọn giới tính</option>
+                  <option value="male">Nam</option>
+                  <option value="female">Nữ</option>
+                  <option value="other">Khác</option>
+                </select>
+              </div>
+
+              <div className="md:col-span-2">
+                <label className="block text-xs font-semibold text-zinc-400 mb-1.5">Địa chỉ</label>
+                <input
+                  type="text"
+                  value={address}
+                  onChange={(e) => setAddress(e.target.value)}
+                  className="w-full bg-zinc-900 border border-zinc-800 rounded-lg px-3.5 py-2.5 text-white text-sm focus:outline-none focus:border-red-500/50"
+                  placeholder="Hà Nội, Việt Nam"
+                />
+              </div>
+
+              <div className="md:col-span-2">
+                <label className="block text-xs font-semibold text-zinc-400 mb-1.5">Tiểu sử (Bio)</label>
+                <textarea
+                  value={bio}
+                  onChange={(e) => setBio(e.target.value)}
+                  rows={3}
+                  className="w-full bg-zinc-900 border border-zinc-800 rounded-lg px-3.5 py-2.5 text-white text-sm focus:outline-none focus:border-red-500/50 resize-none"
+                  placeholder="Mục tiêu đạt 900+ TOEIC trong 3 tháng tới..."
+                />
               </div>
             </div>
 
-            {/* Delete Account */}
-            <div className="bg-red-600/5 border border-red-600/15 rounded-xl p-4">
-              <div className="flex items-start gap-3">
-                <div className="w-10 h-10 rounded-lg bg-red-600/10 flex items-center justify-center shrink-0">
-                  <svg className="w-5 h-5 text-red-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
-                  </svg>
-                </div>
-                <div className="flex-1">
-                  <h4 className="text-sm font-semibold text-white mb-1">Xóa tài khoản</h4>
-                  <p className="text-xs text-zinc-400 mb-3">Xóa vĩnh viễn tài khoản và tất cả dữ liệu liên quan. Hành động này không thể hoàn tác.</p>
-                  <button
-                    onClick={() => setShowDeleteModal(true)}
-                    className="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-lg text-xs font-medium transition-colors"
-                  >
-                    Xóa tài khoản
-                  </button>
-                </div>
-              </div>
+            <div className="flex justify-end pt-2">
+              <button
+                onClick={handleSaveProfile}
+                className="px-6 py-2.5 bg-red-600 hover:bg-red-700 text-white rounded-lg text-xs font-bold transition-colors"
+              >
+                Lưu Thay Đổi Hồ Sơ
+              </button>
             </div>
-          </div>
-
-          {/* Logout */}
-          <div className="bg-zinc-900/60 border border-zinc-800/50 rounded-2xl p-5">
-            <button
-              onClick={handleLogout}
-              className="w-full flex items-center justify-center gap-2 py-3 rounded-xl border border-red-600/25 text-red-400 hover:bg-red-600/10 transition-all text-[13px] font-medium"
-            >
-              <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                <path strokeLinecap="round" strokeLinejoin="round" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
-              </svg>
-              Đăng xuất
-            </button>
           </div>
         </div>
       )}
 
-      {/* Deactivate Modal */}
-      {showDeactivateModal && (
-        <div className="fixed inset-0 bg-black/70 flex items-center justify-center z-50 p-4">
-          <div className="bg-zinc-900 border border-zinc-800 rounded-2xl p-6 max-w-md w-full">
-            <h3 className="text-lg font-bold text-white mb-2">Vô hiệu hóa tài khoản</h3>
-            <p className="text-sm text-zinc-400 mb-6">
-              Bạn có chắc muốn vô hiệu hóa tài khoản? Tài khoản sẽ bị khóa và bạn không thể đăng nhập cho đến khi liên hệ hỗ trợ để kích hoạt lại.
-            </p>
-            <div className="flex gap-3">
+      {/* TAB 2: EMAIL SETTINGS (Cài đặt email) */}
+      {activeTab === "email" && (
+        <div className="space-y-6">
+          <div className="p-6 rounded-2xl bg-zinc-900/40 border border-zinc-800/60 space-y-6">
+            <div className="flex items-start gap-4">
+              <div className="w-10 h-10 rounded-xl bg-red-600/10 border border-red-500/20 flex items-center justify-center shrink-0 text-red-400">
+                <Mail className="w-5 h-5" />
+              </div>
+              <div>
+                <h2 className="text-base font-bold text-white">Cài đặt địa chỉ Email</h2>
+                <p className="text-xs text-zinc-400 mt-0.5">
+                  Email dùng để đăng nhập, nhận báo cáo tiến độ học tập và khôi phục tài khoản.
+                </p>
+              </div>
+            </div>
+
+            {/* Current Email Status */}
+            <div className="p-4 rounded-xl bg-zinc-900/60 border border-zinc-800 flex items-center justify-between">
+              <div>
+                <div className="text-xs text-zinc-400">Email hiện tại</div>
+                <div className="text-sm font-bold text-white mt-0.5">{user?.email || "Chưa có"}</div>
+              </div>
+              <span className="px-2.5 py-1 rounded-full bg-green-500/10 border border-green-500/20 text-green-400 text-xs font-semibold flex items-center gap-1.5">
+                <CheckCircle2 className="w-3.5 h-3.5" />
+                <span>Đã kích hoạt</span>
+              </span>
+            </div>
+
+            {/* Change Email Form */}
+            <div className="space-y-4 max-w-xl">
+              <div>
+                <label className="block text-xs font-semibold text-zinc-400 mb-1.5">Địa chỉ Email mới</label>
+                <input
+                  type="email"
+                  value={newEmail}
+                  onChange={(e) => setNewEmail(e.target.value)}
+                  className="w-full bg-zinc-900 border border-zinc-800 rounded-lg px-3.5 py-2.5 text-white text-sm focus:outline-none focus:border-red-500/50"
+                  placeholder="new-email@example.com"
+                />
+              </div>
+
+              <div>
+                <label className="block text-xs font-semibold text-zinc-400 mb-1.5">
+                  Mật khẩu hiện tại (Xác nhận bảo mật)
+                </label>
+                <input
+                  type="password"
+                  value={emailPassword}
+                  onChange={(e) => setEmailPassword(e.target.value)}
+                  className="w-full bg-zinc-900 border border-zinc-800 rounded-lg px-3.5 py-2.5 text-white text-sm focus:outline-none focus:border-red-500/50"
+                  placeholder="••••••••"
+                />
+              </div>
+
               <button
-                onClick={() => setShowDeactivateModal(false)}
-                className="flex-1 bg-zinc-700 hover:bg-zinc-600 text-white py-3 rounded-xl text-sm font-medium transition-colors"
+                onClick={handleUpdateEmail}
+                disabled={isUpdatingEmail || newEmail === user?.email}
+                className="px-5 py-2.5 bg-red-600 hover:bg-red-700 text-white rounded-lg text-xs font-bold transition-colors disabled:opacity-50"
               >
-                Hủy
-              </button>
-              <button
-                onClick={handleDeactivateAccount}
-                disabled={isDeactivating}
-                className="flex-1 bg-orange-600 hover:bg-orange-700 disabled:bg-gray-600 text-white py-3 rounded-xl text-sm font-medium transition-colors"
-              >
-                {isDeactivating ? "Đang xử lý..." : "Vô hiệu hóa"}
+                {isUpdatingEmail ? "Đang cập nhật..." : "Cập Nhật Email Mới"}
               </button>
             </div>
           </div>
         </div>
       )}
 
-      {/* Delete Modal */}
+      {/* TAB 3: PASSWORD SETTINGS (Cài đặt mật khẩu) */}
+      {activeTab === "password" && (
+        <div className="space-y-6">
+          <div className="p-6 rounded-2xl bg-zinc-900/40 border border-zinc-800/60 space-y-6 max-w-xl">
+            <div className="flex items-start gap-4">
+              <div className="w-10 h-10 rounded-xl bg-red-600/10 border border-red-500/20 flex items-center justify-center shrink-0 text-red-400">
+                <Lock className="w-5 h-5" />
+              </div>
+              <div>
+                <h2 className="text-base font-bold text-white">Đổi mật khẩu tài khoản</h2>
+                <p className="text-xs text-zinc-400 mt-0.5">
+                  Khuyến nghị sử dụng mật khẩu có ít nhất 8 ký tự, bao gồm chữ hoa, số và ký tự đặc biệt.
+                </p>
+              </div>
+            </div>
+
+            <div className="space-y-4">
+              <div>
+                <label className="block text-xs font-semibold text-zinc-400 mb-1.5">Mật khẩu hiện tại</label>
+                <div className="relative">
+                  <input
+                    type={showOldPassword ? "text" : "password"}
+                    value={oldPassword}
+                    onChange={(e) => setOldPassword(e.target.value)}
+                    className="w-full bg-zinc-900 border border-zinc-800 rounded-lg px-3.5 py-2.5 pr-10 text-white text-sm focus:outline-none focus:border-red-500/50"
+                    placeholder="••••••••"
+                  />
+                  <button
+                    type="button"
+                    onClick={() => setShowOldPassword(!showOldPassword)}
+                    className="absolute right-3 top-1/2 -translate-y-1/2 text-zinc-500 hover:text-zinc-300"
+                  >
+                    {showOldPassword ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
+                  </button>
+                </div>
+              </div>
+
+              <div>
+                <label className="block text-xs font-semibold text-zinc-400 mb-1.5">Mật khẩu mới</label>
+                <div className="relative">
+                  <input
+                    type={showNewPassword ? "text" : "password"}
+                    value={newPassword}
+                    onChange={(e) => setNewPassword(e.target.value)}
+                    className="w-full bg-zinc-900 border border-zinc-800 rounded-lg px-3.5 py-2.5 pr-10 text-white text-sm focus:outline-none focus:border-red-500/50"
+                    placeholder="••••••••"
+                  />
+                  <button
+                    type="button"
+                    onClick={() => setShowNewPassword(!showNewPassword)}
+                    className="absolute right-3 top-1/2 -translate-y-1/2 text-zinc-500 hover:text-zinc-300"
+                  >
+                    {showNewPassword ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
+                  </button>
+                </div>
+
+                {/* Password strength indicator */}
+                {newPassword && (
+                  <div className="mt-2 space-y-1">
+                    <div className="flex items-center justify-between text-[11px]">
+                      <span className="text-zinc-400">Độ mạnh mật khẩu:</span>
+                      <span className={`font-semibold ${passwordStrength.color.split(" ")[1]}`}>
+                        {passwordStrength.text}
+                      </span>
+                    </div>
+                    <div className="w-full h-1.5 bg-zinc-800 rounded-full overflow-hidden">
+                      <div
+                        className={`h-full transition-all duration-300 ${passwordStrength.color.split(" ")[0]}`}
+                        style={{ width: `${passwordStrength.score}%` }}
+                      />
+                    </div>
+                  </div>
+                )}
+              </div>
+
+              <div>
+                <label className="block text-xs font-semibold text-zinc-400 mb-1.5">Xác nhận mật khẩu mới</label>
+                <input
+                  type="password"
+                  value={confirmPassword}
+                  onChange={(e) => setConfirmPassword(e.target.value)}
+                  className="w-full bg-zinc-900 border border-zinc-800 rounded-lg px-3.5 py-2.5 text-white text-sm focus:outline-none focus:border-red-500/50"
+                  placeholder="••••••••"
+                />
+              </div>
+
+              <button
+                onClick={handleChangePassword}
+                disabled={isChangingPassword}
+                className="px-6 py-2.5 bg-red-600 hover:bg-red-700 text-white rounded-lg text-xs font-bold transition-colors disabled:opacity-50"
+              >
+                {isChangingPassword ? "Đang xử lý..." : "Cập Nhật Mật Khẩu"}
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* TAB 4: PRIVACY SETTINGS (Cài đặt quyền riêng tư) */}
+      {activeTab === "privacy" && (
+        <div className="space-y-6">
+          <div className="p-6 rounded-2xl bg-zinc-900/40 border border-zinc-800/60 space-y-6">
+            <div className="flex items-start gap-4">
+              <div className="w-10 h-10 rounded-xl bg-red-600/10 border border-red-500/20 flex items-center justify-center shrink-0 text-red-400">
+                <Shield className="w-5 h-5" />
+              </div>
+              <div>
+                <h2 className="text-base font-bold text-white">Quyền riêng tư & Bảo mật dữ liệu</h2>
+                <p className="text-xs text-zinc-400 mt-0.5">
+                  Tùy chỉnh hiển thị hồ sơ, bảng xếp hạng và khả năng kết nối bạn bè trên hệ thống.
+                </p>
+              </div>
+            </div>
+
+            <div className="space-y-4">
+              {/* Leaderboard visibility */}
+              <div className="p-4 rounded-xl bg-zinc-900/60 border border-zinc-800 flex items-center justify-between gap-4">
+                <div>
+                  <h3 className="text-sm font-bold text-white">Hiển thị trên Bảng xếp hạng</h3>
+                  <p className="text-xs text-zinc-400 mt-0.5">
+                    Cho phép tên và điểm số của bạn xuất hiện trên Leaderboard tuần/tháng để thi đua cùng cộng đồng.
+                  </p>
+                </div>
+                <button
+                  onClick={() => handleSavePrivacy({ showOnLeaderboard: !privacySettings.showOnLeaderboard })}
+                  className={`w-12 h-6 rounded-full transition-colors relative shrink-0 ${
+                    privacySettings.showOnLeaderboard ? "bg-red-600" : "bg-zinc-700"
+                  }`}
+                >
+                  <div
+                    className={`w-4 h-4 rounded-full bg-white transition-transform absolute top-1 ${
+                      privacySettings.showOnLeaderboard ? "translate-x-7" : "translate-x-1"
+                    }`}
+                  />
+                </button>
+              </div>
+
+              {/* Show study stats */}
+              <div className="p-4 rounded-xl bg-zinc-900/60 border border-zinc-800 flex items-center justify-between gap-4">
+                <div>
+                  <h3 className="text-sm font-bold text-white">Công khai chuỗi ngày & Huy hiệu</h3>
+                  <p className="text-xs text-zinc-400 mt-0.5">
+                    Cho phép bạn bè xem số ngày Streak và bộ sưu tập huy hiệu thành tích TOEIC của bạn.
+                  </p>
+                </div>
+                <button
+                  onClick={() => handleSavePrivacy({ showStudyStats: !privacySettings.showStudyStats })}
+                  className={`w-12 h-6 rounded-full transition-colors relative shrink-0 ${
+                    privacySettings.showStudyStats ? "bg-red-600" : "bg-zinc-700"
+                  }`}
+                >
+                  <div
+                    className={`w-4 h-4 rounded-full bg-white transition-transform absolute top-1 ${
+                      privacySettings.showStudyStats ? "translate-x-7" : "translate-x-1"
+                    }`}
+                  />
+                </button>
+              </div>
+
+              {/* Friend requests */}
+              <div className="p-4 rounded-xl bg-zinc-900/60 border border-zinc-800 flex items-center justify-between gap-4">
+                <div>
+                  <h3 className="text-sm font-bold text-white">Nhận lời mời kết bạn & Thách đấu</h3>
+                  <p className="text-xs text-zinc-400 mt-0.5">
+                    Cho phép các học viên khác gửi lời mời kết bạn và tham gia các thử thách luyện thi nhóm.
+                  </p>
+                </div>
+                <button
+                  onClick={() => handleSavePrivacy({ allowFriendRequests: !privacySettings.allowFriendRequests })}
+                  className={`w-12 h-6 rounded-full transition-colors relative shrink-0 ${
+                    privacySettings.allowFriendRequests ? "bg-red-600" : "bg-zinc-700"
+                  }`}
+                >
+                  <div
+                    className={`w-4 h-4 rounded-full bg-white transition-transform absolute top-1 ${
+                      privacySettings.allowFriendRequests ? "translate-x-7" : "translate-x-1"
+                    }`}
+                  />
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* TAB 5: CONNECTED ACCOUNTS (Tài khoản kết nối) */}
+      {activeTab === "connected" && (
+        <div className="space-y-6">
+          <div className="p-6 rounded-2xl bg-zinc-900/40 border border-zinc-800/60 space-y-6">
+            <div className="flex items-start gap-4">
+              <div className="w-10 h-10 rounded-xl bg-red-600/10 border border-red-500/20 flex items-center justify-center shrink-0 text-red-400">
+                <Globe className="w-5 h-5" />
+              </div>
+              <div>
+                <h2 className="text-base font-bold text-white">Tài khoản liên kết mạng xã hội</h2>
+                <p className="text-xs text-zinc-400 mt-0.5">
+                  Kết nối tài khoản mạng xã hội để đăng nhập 1-click nhanh chóng và an toàn.
+                </p>
+              </div>
+            </div>
+
+            <div className="space-y-3">
+              {connectedAccounts.map((acc) => (
+                <div
+                  key={acc.provider}
+                  className="p-4 rounded-xl bg-zinc-900/60 border border-zinc-800 flex items-center justify-between gap-4"
+                >
+                  <div className="flex items-center gap-3">
+                    <div className="w-10 h-10 rounded-lg bg-zinc-800 flex items-center justify-center font-bold text-white text-sm">
+                      {acc.name.charAt(0)}
+                    </div>
+                    <div>
+                      <h3 className="text-sm font-bold text-white">{acc.name}</h3>
+                      <p className="text-xs text-zinc-400">
+                        {acc.connected ? `Đã liên kết (${acc.email || "Đang hoạt động"})` : "Chưa kết nối"}
+                      </p>
+                    </div>
+                  </div>
+
+                  <div>
+                    {acc.connected ? (
+                      <button
+                        onClick={() => handleUnlinkAccount(acc.provider)}
+                        className="px-3.5 py-1.5 rounded-lg border border-red-500/30 text-red-400 hover:bg-red-600/20 text-xs font-semibold transition-colors"
+                      >
+                        Hủy liên kết
+                      </button>
+                    ) : (
+                      <button
+                        onClick={() => showToast(`Tính năng liên kết ${acc.name} đang mở phiên OAuth...`)}
+                        className="px-3.5 py-1.5 rounded-lg bg-zinc-800 hover:bg-zinc-700 text-zinc-200 text-xs font-semibold transition-colors border border-zinc-700"
+                      >
+                        Kết nối ngay
+                      </button>
+                    )}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* TAB 6: DATA EXPORT (Xuất dữ liệu) */}
+      {activeTab === "export" && (
+        <div className="space-y-6">
+          <div className="p-6 rounded-2xl bg-zinc-900/40 border border-zinc-800/60 space-y-6">
+            <div className="flex items-start gap-4">
+              <div className="w-10 h-10 rounded-xl bg-red-600/10 border border-red-500/20 flex items-center justify-center shrink-0 text-red-400">
+                <Download className="w-5 h-5" />
+              </div>
+              <div>
+                <h2 className="text-base font-bold text-white">Xuất dữ liệu học tập cá nhân (Data Export)</h2>
+                <p className="text-xs text-zinc-400 mt-0.5">
+                  Tải về toàn bộ lịch sử luyện thi, bảng điểm các bài test, danh sách từ vựng đã ghi nhớ và thành tích của bạn.
+                </p>
+              </div>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              {/* JSON Format Card */}
+              <div className="p-5 rounded-xl bg-zinc-900/60 border border-zinc-800 flex flex-col justify-between gap-4">
+                <div className="space-y-2">
+                  <div className="flex items-center gap-2">
+                    <FileJson className="w-5 h-5 text-yellow-400" />
+                    <h3 className="text-sm font-bold text-white">Định dạng JSON đầy đủ</h3>
+                  </div>
+                  <p className="text-xs text-zinc-400 leading-relaxed">
+                    Chứa trọn vẹn cấu trúc dữ liệu thô: chi tiết từng bài thi, câu trả lời, tiến độ từ vựng, chuỗi ngày, giao dịch điểm thưởng.
+                  </p>
+                </div>
+                <button
+                  onClick={() => handleExportData("json")}
+                  disabled={isExporting}
+                  className="w-full py-2.5 bg-yellow-600 hover:bg-yellow-700 text-white rounded-lg text-xs font-bold flex items-center justify-center gap-2 transition-colors disabled:opacity-50"
+                >
+                  <Download className="w-4 h-4" />
+                  <span>{isExporting ? "Đang tạo gói dữ liệu..." : "Tải về tệp JSON"}</span>
+                </button>
+              </div>
+
+              {/* CSV Format Card */}
+              <div className="p-5 rounded-xl bg-zinc-900/60 border border-zinc-800 flex flex-col justify-between gap-4">
+                <div className="space-y-2">
+                  <div className="flex items-center gap-2">
+                    <FileSpreadsheet className="w-5 h-5 text-emerald-400" />
+                    <h3 className="text-sm font-bold text-white">Bảng tính CSV tổng hợp</h3>
+                  </div>
+                  <p className="text-xs text-zinc-400 leading-relaxed">
+                    Tệp bảng tính chuẩn mở rộng có thể đọc bằng Microsoft Excel hoặc Google Sheets để phân tích tiến độ.
+                  </p>
+                </div>
+                <button
+                  onClick={() => handleExportData("csv")}
+                  disabled={isExporting}
+                  className="w-full py-2.5 bg-emerald-600 hover:bg-emerald-700 text-white rounded-lg text-xs font-bold flex items-center justify-center gap-2 transition-colors disabled:opacity-50"
+                >
+                  <Download className="w-4 h-4" />
+                  <span>{isExporting ? "Đang xuất CSV..." : "Tải về tệp CSV"}</span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* TAB 7: TOEIC GOAL (Mục tiêu TOEIC) */}
+      {activeTab === "goal" && (
+        <div className="space-y-6">
+          <div className="p-6 rounded-2xl bg-zinc-900/40 border border-zinc-800/60 space-y-6">
+            <h2 className="text-base font-bold text-white flex items-center gap-2">
+              <Target className="w-4 h-4 text-red-400" />
+              <span>Mục tiêu học tập & Điểm số TOEIC</span>
+            </h2>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div>
+                <label className="block text-xs font-semibold text-zinc-400 mb-1.5">Điểm TOEIC hiện tại</label>
+                <input
+                  type="number"
+                  value={currentScore}
+                  onChange={(e) => setCurrentScore(Number(e.target.value))}
+                  className="w-full bg-zinc-900 border border-zinc-800 rounded-lg px-3.5 py-2.5 text-white text-sm focus:outline-none focus:border-red-500/50"
+                  placeholder="450"
+                />
+              </div>
+
+              <div>
+                <label className="block text-xs font-semibold text-zinc-400 mb-1.5">Mục tiêu điểm số</label>
+                <select
+                  value={targetScore}
+                  onChange={(e) => setTargetScore(Number(e.target.value))}
+                  className="w-full bg-zinc-900 border border-zinc-800 rounded-lg px-3.5 py-2.5 text-white text-sm focus:outline-none focus:border-red-500/50"
+                >
+                  {TARGET_OPTIONS.map((score) => (
+                    <option key={score} value={score}>
+                      {score}+ Điểm
+                    </option>
+                  ))}
+                </select>
+              </div>
+
+              <div>
+                <label className="block text-xs font-semibold text-zinc-400 mb-1.5">Ngày thi dự kiến</label>
+                <input
+                  type="date"
+                  value={examDate}
+                  onChange={(e) => setExamDate(e.target.value)}
+                  className="w-full bg-zinc-900 border border-zinc-800 rounded-lg px-3.5 py-2.5 text-white text-sm focus:outline-none focus:border-red-500/50"
+                />
+              </div>
+
+              <div>
+                <label className="block text-xs font-semibold text-zinc-400 mb-1.5">Thời gian học mỗi ngày (Phút)</label>
+                <select
+                  value={dailyStudyTime}
+                  onChange={(e) => setDailyStudyTime(Number(e.target.value))}
+                  className="w-full bg-zinc-900 border border-zinc-800 rounded-lg px-3.5 py-2.5 text-white text-sm focus:outline-none focus:border-red-500/50"
+                >
+                  {STUDY_TIME_OPTIONS.map((time) => (
+                    <option key={time} value={time}>
+                      {time} phút / ngày
+                    </option>
+                  ))}
+                </select>
+              </div>
+            </div>
+
+            <div className="flex justify-end pt-2">
+              <button
+                onClick={handleSaveProfile}
+                className="px-6 py-2.5 bg-red-600 hover:bg-red-700 text-white rounded-lg text-xs font-bold transition-colors"
+              >
+                Lưu Mục Tiêu TOEIC
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* TAB 8: BADGES (Huy hiệu) */}
+      {activeTab === "badges" && (
+        <div className="p-6 rounded-2xl bg-zinc-900/40 border border-zinc-800/60 text-center py-12 space-y-3">
+          <Award className="w-12 h-12 text-yellow-400 mx-auto" />
+          <h3 className="text-base font-bold text-white">Bộ sưu tập huy hiệu & Cấp độ</h3>
+          <p className="text-xs text-zinc-400 max-w-md mx-auto">
+            Xem toàn bộ huy hiệu bạn đã mở khóa và khám phá các nhiệm vụ điểm thưởng mới trong trung tâm huy hiệu.
+          </p>
+          <button
+            onClick={() => router.push("/dashboard/badges")}
+            className="px-5 py-2.5 bg-red-600 hover:bg-red-700 text-white rounded-lg text-xs font-bold transition-colors inline-block"
+          >
+            Đến Trang Cấp Độ & Huy Hiệu
+          </button>
+        </div>
+      )}
+
+      {/* TAB 9: SETTINGS & NOTIFICATION PREFERENCES (Tùy chọn học tập) */}
+      {activeTab === "settings" && (
+        <div className="space-y-6">
+          <div className="p-6 rounded-2xl bg-zinc-900/40 border border-zinc-800/60 space-y-6">
+            <h2 className="text-base font-bold text-white flex items-center gap-2">
+              <Settings className="w-4 h-4 text-red-400" />
+              <span>Tùy chọn học tập & Thông báo</span>
+            </h2>
+
+            <div className="space-y-3">
+              <div className="p-4 rounded-xl bg-zinc-900/60 border border-zinc-800 flex items-center justify-between">
+                <div>
+                  <h3 className="text-sm font-bold text-white">Nhắc nhở học tập hàng ngày</h3>
+                  <p className="text-xs text-zinc-400">Gửi thông báo nhắc lịch học để duy trì chuỗi Streak</p>
+                </div>
+                <button
+                  onClick={() => setStudyNotification(!studyNotification)}
+                  className={`w-12 h-6 rounded-full transition-colors relative ${
+                    studyNotification ? "bg-red-600" : "bg-zinc-700"
+                  }`}
+                >
+                  <div
+                    className={`w-4 h-4 rounded-full bg-white transition-transform absolute top-1 ${
+                      studyNotification ? "translate-x-7" : "translate-x-1"
+                    }`}
+                  />
+                </button>
+              </div>
+
+              <div className="p-4 rounded-xl bg-zinc-900/60 border border-zinc-800 flex items-center justify-between">
+                <div>
+                  <h3 className="text-sm font-bold text-white">Tự động phát âm khi học từ mới</h3>
+                  <p className="text-xs text-zinc-400">Phát âm thanh giọng đọc bản xứ mỗi khi chuyển flashcard</p>
+                </div>
+                <button
+                  onClick={() => setAutoPronunciation(!autoPronunciation)}
+                  className={`w-12 h-6 rounded-full transition-colors relative ${
+                    autoPronunciation ? "bg-red-600" : "bg-zinc-700"
+                  }`}
+                >
+                  <div
+                    className={`w-4 h-4 rounded-full bg-white transition-transform absolute top-1 ${
+                      autoPronunciation ? "translate-x-7" : "translate-x-1"
+                    }`}
+                  />
+                </button>
+              </div>
+
+              <div className="p-4 rounded-xl bg-zinc-900/60 border border-zinc-800 flex items-center justify-between">
+                <div>
+                  <h3 className="text-sm font-bold text-white">Trung tâm thông báo nâng cao</h3>
+                  <p className="text-xs text-zinc-400">Cấu hình chi tiết Email, Giờ yên tĩnh và Chế độ không làm phiền (DND)</p>
+                </div>
+                <button
+                  onClick={() => router.push("/dashboard/notifications")}
+                  className="px-4 py-2 bg-zinc-800 hover:bg-zinc-700 border border-zinc-700 text-xs font-semibold text-white rounded-lg transition-colors flex items-center gap-1.5"
+                >
+                  <Bell className="w-3.5 h-3.5 text-red-400" />
+                  <span>Mở Cài Đặt Thông Báo</span>
+                </button>
+              </div>
+            </div>
+
+            <div className="flex justify-end pt-2">
+              <button
+                onClick={handleSaveProfile}
+                className="px-6 py-2.5 bg-red-600 hover:bg-red-700 text-white rounded-lg text-xs font-bold transition-colors"
+              >
+                Lưu Tùy Chọn Học Tập
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* TAB 10: ACCOUNT DELETION & MANAGEMENT (Quản lý & Xóa tài khoản) */}
+      {activeTab === "account" && (
+        <div className="space-y-6">
+          <div className="p-6 rounded-2xl bg-zinc-900/40 border border-zinc-800/60 space-y-6">
+            <div className="flex items-start gap-4">
+              <div className="w-10 h-10 rounded-xl bg-red-600/10 border border-red-500/20 flex items-center justify-center shrink-0 text-red-400">
+                <ShieldAlert className="w-5 h-5" />
+              </div>
+              <div>
+                <h2 className="text-base font-bold text-white">Quản lý trạng thái tài khoản</h2>
+                <p className="text-xs text-zinc-400 mt-0.5">
+                  Tạm ngưng hoạt động hoặc xóa vĩnh viễn tài khoản và toàn bộ dữ liệu khỏi hệ thống.
+                </p>
+              </div>
+            </div>
+
+            {/* Deactivate Option */}
+            <div className="p-5 rounded-xl bg-zinc-900/60 border border-zinc-800 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+              <div>
+                <h3 className="text-sm font-bold text-white">Vô hiệu hóa tài khoản tạm thời</h3>
+                <p className="text-xs text-zinc-400 mt-0.5">
+                  Tài khoản của bạn sẽ tạm ẩn khỏi bảng xếp hạng. Bạn có thể kích hoạt lại bất kỳ lúc nào bằng cách đăng nhập lại.
+                </p>
+              </div>
+              <button
+                onClick={() => setShowDeactivateModal(true)}
+                className="px-4 py-2 bg-zinc-800 hover:bg-zinc-700 border border-zinc-700 text-zinc-300 hover:text-white rounded-lg text-xs font-semibold shrink-0 transition-colors"
+              >
+                Vô hiệu hóa
+              </button>
+            </div>
+
+            {/* Delete Option */}
+            <div className="p-5 rounded-xl bg-red-950/20 border border-red-900/30 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+              <div>
+                <h3 className="text-sm font-bold text-red-400 flex items-center gap-1.5">
+                  <AlertTriangle className="w-4 h-4" />
+                  <span>Xóa tài khoản vĩnh viễn (13.1)</span>
+                </h3>
+                <p className="text-xs text-zinc-400 mt-0.5 leading-relaxed">
+                  Hành động này <span className="text-red-400 font-semibold">không thể hoàn tác</span>. Toàn bộ lịch sử làm bài thi, điểm số, từ vựng, chuỗi ngày và thành tích sẽ bị xóa vĩnh viễn.
+                </p>
+              </div>
+              <button
+                onClick={() => setShowDeleteModal(true)}
+                className="px-4 py-2 bg-red-600 hover:bg-red-700 text-white rounded-lg text-xs font-bold shrink-0 transition-colors"
+              >
+                Xóa tài khoản
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Delete Account Modal */}
       {showDeleteModal && (
         <div className="fixed inset-0 bg-black/70 flex items-center justify-center z-50 p-4">
-          <div className="bg-zinc-900 border border-zinc-800 rounded-2xl p-6 max-w-md w-full">
-            <h3 className="text-lg font-bold text-white mb-2">Xóa tài khoản</h3>
-            <p className="text-sm text-zinc-400 mb-4">
-              Hành động này sẽ xóa vĩnh viễn tài khoản và tất cả dữ liệu liên quan. Hành động này không thể hoàn tác.
+          <div className="bg-[#0d0d14] border border-red-900/40 rounded-2xl max-w-md w-full p-6 space-y-5 shadow-2xl">
+            <div className="flex items-center gap-3 text-red-400">
+              <AlertTriangle className="w-6 h-6 shrink-0" />
+              <h3 className="text-base font-bold text-white">Xác nhận xóa tài khoản</h3>
+            </div>
+
+            <p className="text-xs text-zinc-400 leading-relaxed">
+              Bạn sắp xóa vĩnh viễn tài khoản <strong className="text-white">{user?.email}</strong>. Tất cả tiến trình học tập TOEIC sẽ bị mất và không thể khôi phục.
             </p>
-            {(
-              <div className="mb-4">
-                <label className="text-xs text-zinc-500 uppercase tracking-wider font-medium block mb-2">
+
+            <div className="space-y-3">
+              <div>
+                <label className="block text-xs font-semibold text-zinc-400 mb-1">Lý do bạn muốn xóa?</label>
+                <select
+                  value={deleteReason}
+                  onChange={(e) => setDeleteReason(e.target.value)}
+                  className="w-full bg-zinc-900 border border-zinc-800 rounded-lg px-3 py-2 text-white text-xs focus:outline-none focus:border-red-500/50"
+                >
+                  <option value="Đã đạt mục tiêu TOEIC">Đã đạt mục tiêu điểm số TOEIC</option>
+                  <option value="Chuyển sang nền tảng khác">Chuyển sang nền tảng khác</option>
+                  <option value="Ít có thời gian sử dụng">Ít có thời gian sử dụng</option>
+                  <option value="Vấn đề bảo mật & riêng tư">Vấn đề bảo mật & riêng tư</option>
+                  <option value="Lý do khác">Lý do khác</option>
+                </select>
+              </div>
+
+              <div>
+                <label className="block text-xs font-semibold text-zinc-400 mb-1">
                   Nhập mật khẩu để xác nhận
                 </label>
                 <input
                   type="password"
                   value={deletePassword}
                   onChange={(e) => setDeletePassword(e.target.value)}
-                  placeholder="Mật khẩu"
-                  className="w-full bg-zinc-800 border border-zinc-700 text-white rounded-xl px-4 py-3 text-sm outline-none focus:border-red-500"
+                  className="w-full bg-zinc-900 border border-zinc-800 rounded-lg px-3 py-2 text-white text-xs focus:outline-none focus:border-red-500/50"
+                  placeholder="••••••••"
                 />
               </div>
-            )}
-            <div className="flex gap-3">
+            </div>
+
+            <div className="flex items-center justify-end gap-3 pt-2">
               <button
-                onClick={() => {
-                  setShowDeleteModal(false);
-                  setDeletePassword("");
-                }}
-                className="flex-1 bg-zinc-700 hover:bg-zinc-600 text-white py-3 rounded-xl text-sm font-medium transition-colors"
+                onClick={() => setShowDeleteModal(false)}
+                className="px-4 py-2 rounded-lg bg-zinc-800 hover:bg-zinc-700 text-zinc-300 text-xs font-semibold transition-colors"
               >
-                Hủy
+                Hủy bỏ
               </button>
               <button
                 onClick={handleDeleteAccount}
-                disabled={isDeleting || !deletePassword}
-                className="flex-1 bg-red-600 hover:bg-red-700 disabled:bg-gray-600 text-white py-3 rounded-xl text-sm font-medium transition-colors"
+                disabled={isDeleting}
+                className="px-4 py-2 rounded-lg bg-red-600 hover:bg-red-700 text-white text-xs font-bold transition-colors disabled:opacity-50"
               >
-                {isDeleting ? "Đang xóa..." : "Xóa tài khoản"}
+                {isDeleting ? "Đang xóa..." : "Xác Nhận Xóa Vĩnh Viễn"}
               </button>
             </div>
           </div>
         </div>
       )}
 
-      {/* Logout All Modal */}
-      {showLogoutAllModal && (
+      {/* Deactivate Account Modal */}
+      {showDeactivateModal && (
         <div className="fixed inset-0 bg-black/70 flex items-center justify-center z-50 p-4">
-          <div className="bg-zinc-900 border border-zinc-800 rounded-2xl p-6 max-w-md w-full">
-            <h3 className="text-lg font-bold text-white mb-2">Đăng xuất khỏi tất cả thiết bị</h3>
-            <p className="text-sm text-zinc-400 mb-6">
-              Bạn có chắc muốn đăng xuất khỏi tất cả các thiết bị đang đăng nhập vào tài khoản của mình? Bạn sẽ cần đăng nhập lại trên mỗi thiết bị.
+          <div className="bg-[#0d0d14] border border-zinc-800 rounded-2xl max-w-md w-full p-6 space-y-4 shadow-2xl">
+            <h3 className="text-base font-bold text-white">Vô hiệu hóa tài khoản?</h3>
+            <p className="text-xs text-zinc-400 leading-relaxed">
+              Tài khoản của bạn sẽ bị tạm ngưng và tự động đăng xuất. Bạn có thể kích hoạt lại bất kỳ lúc nào chỉ bằng việc đăng nhập lại bình thường.
             </p>
-            <div className="flex gap-3">
+            <div className="flex items-center justify-end gap-3 pt-2">
               <button
-                onClick={() => setShowLogoutAllModal(false)}
-                className="flex-1 bg-zinc-700 hover:bg-zinc-600 text-white py-3 rounded-xl text-sm font-medium transition-colors"
+                onClick={() => setShowDeactivateModal(false)}
+                className="px-4 py-2 rounded-lg bg-zinc-800 hover:bg-zinc-700 text-zinc-300 text-xs font-semibold transition-colors"
               >
                 Hủy
               </button>
               <button
-                onClick={handleLogoutAll}
-                disabled={isLoggingOutAll}
-                className="flex-1 bg-purple-600 hover:bg-purple-700 disabled:bg-gray-600 text-white py-3 rounded-xl text-sm font-medium transition-colors"
+                onClick={handleDeactivateAccount}
+                disabled={isDeactivating}
+                className="px-4 py-2 rounded-lg bg-red-600 hover:bg-red-700 text-white text-xs font-bold transition-colors disabled:opacity-50"
               >
-                {isLoggingOutAll ? "Đang xử lý..." : "Đăng xuất tất cả"}
-              </button>
-            </div>
-          </div>
-        </div>
-      )}
-
-      {/* Stage Request Modal */}
-      {showStageRequestModal && (
-        <div className="fixed inset-0 bg-black/80 backdrop-blur-sm flex items-center justify-center z-50 p-4">
-          <div className="bg-zinc-900 border border-zinc-800 rounded-2xl p-6 max-w-md w-full">
-            <h3 className="text-lg font-bold text-white mb-2">Yêu cầu thay đổi chặng</h3>
-            <p className="text-sm text-zinc-400 mb-4">
-              Vui lòng chọn chặng bạn muốn và giải thích lý do thay đổi. Yêu cầu sẽ được xem xét trong 24h.
-            </p>
-            <div className="mb-4">
-              <label className="text-gray-400 text-sm mb-2 block">Chặng mong muốn</label>
-              <select
-                value={requestedStage}
-                onChange={(e) => setRequestedStage(parseInt(e.target.value))}
-                className="w-full bg-black border border-zinc-800 rounded-xl px-4 py-3 text-white"
-              >
-                {[1, 2, 3, 4, 5].map((stage) => (
-                  <option key={stage} value={stage}>
-                    Chặng {stage} {stage === 1 ? "(0-299)" : stage === 2 ? "(300-499)" : stage === 3 ? "(500-649)" : stage === 4 ? "(650-799)" : "(800-990)"}
-                  </option>
-                ))}
-              </select>
-            </div>
-            <div className="mb-4">
-              <label className="text-gray-400 text-sm mb-2 block">Lý do thay đổi</label>
-              <textarea
-                value={requestReason}
-                onChange={(e) => setRequestReason(e.target.value)}
-                placeholder="Giải thích lý do bạn muốn thay đổi chặng..."
-                className="w-full bg-black border border-zinc-800 rounded-xl px-4 py-3 text-white min-h-[100px]"
-              />
-            </div>
-            <div className="flex gap-3">
-              <button
-                onClick={() => setShowStageRequestModal(false)}
-                className="flex-1 border border-zinc-700 text-gray-400 hover:text-white hover:border-zinc-500 py-3 rounded-xl font-semibold transition-all"
-              >
-                Hủy
-              </button>
-              <button
-                onClick={handleRequestStageChange}
-                className="flex-1 bg-red-600 hover:bg-red-700 text-white py-3 rounded-xl font-semibold transition-all"
-              >
-                Gửi yêu cầu
+                {isDeactivating ? "Đang xử lý..." : "Vô Hiệu Hóa"}
               </button>
             </div>
           </div>
