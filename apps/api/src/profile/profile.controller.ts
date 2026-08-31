@@ -160,6 +160,16 @@ updateAppearanceSettings(@Req() req: any, @Body() body: any) {
   return this.profileService.updateAppearanceSettings(req.user.userId, body);
 }
 
+@Get("accessibility-settings")
+getAccessibilitySettings(@Req() req: any) {
+  return this.profileService.getAccessibilitySettings(req.user.userId);
+}
+
+@Put("accessibility-settings")
+updateAccessibilitySettings(@Req() req: any, @Body() body: any) {
+  return this.profileService.updateAccessibilitySettings(req.user.userId, body);
+}
+
 @Post("delete-account")
 deleteAccount(@Req() req: any, @Body() body: { password?: string; reason?: string }) {
   return this.profileService.deleteAccount(req.user.userId, body.password, body.reason);

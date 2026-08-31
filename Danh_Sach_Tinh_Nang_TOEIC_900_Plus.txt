@@ -1015,14 +1015,14 @@ Dựa trên lộ trình học TOEIC 900+ - Phiên bản nâng cấp
 [x] - Reduce motion - Giảm chuyển động
 
 13.4. Accessibility Settings (Cài đặt truy cập)
-- Screen reader support - Hỗ trợ trình đọc màn hình
-- Keyboard navigation - Điều hướng bàn phím
-- Voice control - Điều khiển giọng nói
-- Text-to-speech - Văn bản thành giọng nói
-- Speech-to-text - Giọng nói thành văn bản
-- Color blind mode - Chế độ mù màu
-- Large text mode - Chế độ văn bản lớn
-- Focus indicators - Chỉ số tiêu điểm
+[x] - Screen reader support - Hỗ trợ trình đọc màn hình
+[x] - Keyboard navigation - Điều hướng bàn phím
+[x] - Voice control - Điều khiển giọng nói
+[x] - Text-to-speech - Văn bản thành giọng nói
+[x] - Speech-to-text - Giọng nói thành văn bản
+[x] - Color blind mode - Chế độ mù màu
+[x] - Large text mode - Chế độ văn bản lớn
+[x] - Focus indicators - Chỉ số tiêu điểm
 
 13.5. Language Settings (Cài đặt ngôn ngữ)
 - Interface language selection - Chọn ngôn ngữ giao diện

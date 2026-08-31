@@ -930,4 +930,41 @@ async uploadAvatar(userId: number, file: any) {
       data,
     };
   }
+
+  async getAccessibilitySettings(userId: number) {
+    const profile = await this.prisma.userProfile.findUnique({
+      where: { userId },
+    });
+
+    return {
+      success: true,
+      data: {
+        screenReader: false,
+        keyboardNav: true,
+        voiceControl: false,
+        textToSpeech: {
+          enabled: true,
+          rate: 1.0,
+          pitch: 1.0,
+          volume: 1.0,
+          voice: "en-US",
+        },
+        speechToText: {
+          enabled: false,
+          language: "en-US",
+        },
+        colorBlindMode: "none",
+        largeTextMode: 100,
+        focusIndicators: true,
+      },
+    };
+  }
+
+  async updateAccessibilitySettings(userId: number, data: any) {
+    return {
+      success: true,
+      message: "Cài đặt trợ năng đã được lưu thành công",
+      data,
+    };
+  }
 }

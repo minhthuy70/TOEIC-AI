@@ -31,8 +31,18 @@ import {
   Type,
   Eye,
   Contrast,
+  Accessibility,
+  Keyboard,
+  Mic,
+  Volume1,
+  Languages,
+  Focus,
+  Maximize2,
+  Glasses,
+  Play,
+  Square,
+  Radio,
   Activity,
-  Award,
 } from "lucide-react";
 
 interface StudySettingsData {
@@ -103,6 +113,26 @@ interface AppearanceSettingsData {
   reduceMotion: boolean;
 }
 
+interface AccessibilitySettingsData {
+  screenReader: boolean;
+  keyboardNav: boolean;
+  voiceControl: boolean;
+  textToSpeech: {
+    enabled: boolean;
+    rate: number;
+    pitch: number;
+    volume: number;
+    voice: string;
+  };
+  speechToText: {
+    enabled: boolean;
+    language: string;
+  };
+  colorBlindMode: "none" | "protanopia" | "deuteranopia" | "tritanopia" | "monochrome";
+  largeTextMode: 100 | 125 | 150;
+  focusIndicators: boolean;
+}
+
 const DEFAULT_STUDY_SETTINGS: StudySettingsData = {
   dailyGoals: {
     dailyVocab: 20,
@@ -171,6 +201,26 @@ const DEFAULT_APPEARANCE_SETTINGS: AppearanceSettingsData = {
   reduceMotion: false,
 };
 
+const DEFAULT_ACCESSIBILITY_SETTINGS: AccessibilitySettingsData = {
+  screenReader: false,
+  keyboardNav: true,
+  voiceControl: false,
+  textToSpeech: {
+    enabled: true,
+    rate: 1.0,
+    pitch: 1.0,
+    volume: 1.0,
+    voice: "en-US",
+  },
+  speechToText: {
+    enabled: false,
+    language: "en-US",
+  },
+  colorBlindMode: "none",
+  largeTextMode: 100,
+  focusIndicators: true,
+};
+
 const STUDY_SECTIONS = [
   { id: "dailyGoals", label: "Mục tiêu ngày", icon: Target },
   { id: "studyTime", label: "Thời gian học", icon: Clock },
@@ -198,9 +248,17 @@ const BACKGROUND_PRESETS = [
   { id: "charcoal", name: "Charcoal Dark", hex: "#18181b" },
 ];
 
+const COLOR_BLIND_MODES = [
+  { id: "none", name: "Bình thường (Standard)", desc: "Hiển thị màu sắc chuẩn" },
+  { id: "protanopia", name: "Protanopia (Mù màu đỏ)", desc: "Tăng cường độ tương phản sắc tố đỏ" },
+  { id: "deuteranopia", name: "Deuteranopia (Mù màu xanh lá)", desc: "Tối ưu hóa bảng màu lục - lam" },
+  { id: "tritanopia", name: "Tritanopia (Mù màu xanh dương)", desc: "Tối ưu sắc độ vàng - hồng" },
+  { id: "monochrome", name: "Đơn sắc (Monochrome)", desc: "Giao diện thang độ xám Grayscale" },
+];
+
 export default function SettingsHubPage() {
   const router = useRouter();
-  const [activeTab, setActiveTab] = useState<"study" | "appearance">("study");
+  const [activeTab, setActiveTab] = useState<"study" | "appearance" | "accessibility">("study");
 
   // Study Settings State
   const [studySettings, setStudySettings] = useState<StudySettingsData>(DEFAULT_STUDY_SETTINGS);
@@ -208,6 +266,14 @@ export default function SettingsHubPage() {
 
   // Appearance Settings State
   const [appearance, setAppearance] = useState<AppearanceSettingsData>(DEFAULT_APPEARANCE_SETTINGS);
+
+  // Accessibility Settings State
+  const [accessibility, setAccessibility] = useState<AccessibilitySettingsData>(DEFAULT_ACCESSIBILITY_SETTINGS);
+
+  // Live TTS audio state
+  const [isSpeaking, setIsSpeaking] = useState(false);
+  const [isListeningMic, setIsListeningMic] = useState(false);
+  const [recognizedText, setRecognizedText] = useState("");
 
   const [loading, setLoading] = useState(true);
   const [saving, setSaving] = useState(false);
@@ -229,9 +295,10 @@ export default function SettingsHubPage() {
   const loadAllSettings = async () => {
     try {
       setLoading(true);
-      const [studyRes, appRes] = await Promise.all([
+      const [studyRes, appRes, accRes] = await Promise.all([
         apiFetch<{ success: boolean; data: StudySettingsData }>("/profile/study-settings"),
         apiFetch<{ success: boolean; data: AppearanceSettingsData }>("/profile/appearance-settings"),
+        apiFetch<{ success: boolean; data: AccessibilitySettingsData }>("/profile/accessibility-settings"),
       ]);
 
       if (studyRes.success && studyRes.data) {
@@ -254,6 +321,15 @@ export default function SettingsHubPage() {
         setAppearance({
           ...DEFAULT_APPEARANCE_SETTINGS,
           ...appRes.data,
+        });
+      }
+
+      if (accRes.success && accRes.data) {
+        setAccessibility({
+          ...DEFAULT_ACCESSIBILITY_SETTINGS,
+          ...accRes.data,
+          textToSpeech: { ...DEFAULT_ACCESSIBILITY_SETTINGS.textToSpeech, ...accRes.data.textToSpeech },
+          speechToText: { ...DEFAULT_ACCESSIBILITY_SETTINGS.speechToText, ...accRes.data.speechToText },
         });
       }
     } catch (err) {
@@ -299,6 +375,100 @@ export default function SettingsHubPage() {
     }
   };
 
+  const handleSaveAccessibilitySettings = async () => {
+    try {
+      setSaving(true);
+      const res = await apiFetch<{ success: boolean; message: string }>("/profile/accessibility-settings", {
+        method: "PUT",
+        body: JSON.stringify(accessibility),
+      });
+
+      if (res.success) {
+        showToast(res.message || "Đã lưu cài đặt trợ năng thành công!");
+      }
+    } catch (err: any) {
+      showToast(err.message || "Lỗi khi lưu cài đặt trợ năng", "error");
+    } finally {
+      setSaving(false);
+    }
+  };
+
+  // Live TTS Test
+  const handleTestTTS = () => {
+    if (typeof window === "undefined" || !("speechSynthesis" in window)) {
+      showToast("Trình duyệt không hỗ trợ Web Speech API", "error");
+      return;
+    }
+
+    if (isSpeaking) {
+      window.speechSynthesis.cancel();
+      setIsSpeaking(false);
+      return;
+    }
+
+    const text = "Welcome to TOEIC AI Platform. This is a text to speech test audio.";
+    const utterance = new SpeechSynthesisUtterance(text);
+    utterance.rate = accessibility.textToSpeech.rate;
+    utterance.pitch = accessibility.textToSpeech.pitch;
+    utterance.volume = accessibility.textToSpeech.volume;
+    utterance.lang = accessibility.textToSpeech.voice;
+
+    utterance.onend = () => setIsSpeaking(false);
+    utterance.onerror = () => setIsSpeaking(false);
+
+    setIsSpeaking(true);
+    window.speechSynthesis.speak(utterance);
+  };
+
+  // Live Mic STT Test
+  const handleTestMic = () => {
+    if (typeof window === "undefined") return;
+    const SpeechRecognition =
+      (window as any).SpeechRecognition || (window as any).webkitSpeechRecognition;
+
+    if (!SpeechRecognition) {
+      showToast("Trình duyệt không hỗ trợ nhận diện giọng nói (Speech-to-text)", "error");
+      return;
+    }
+
+    if (isListeningMic) {
+      setIsListeningMic(false);
+      return;
+    }
+
+    try {
+      const recognition = new SpeechRecognition();
+      recognition.lang = accessibility.speechToText.language;
+      recognition.interimResults = false;
+
+      recognition.onstart = () => {
+        setIsListeningMic(true);
+        setRecognizedText("Đang lắng nghe... Hãy nói một câu tiếng Anh!");
+      };
+
+      recognition.onresult = (event: any) => {
+        const transcript = event.results[0][0].transcript;
+        setRecognizedText(`Đã nhận diện: "${transcript}"`);
+        setIsListeningMic(false);
+      };
+
+      recognition.onerror = (event: any) => {
+        setRecognizedText(`Lỗi micro: ${event.error}`);
+        setIsListeningMic(false);
+      };
+
+      recognition.onend = () => {
+        setIsListeningMic(false);
+      };
+
+      recognition.start();
+    } catch (e: any) {
+      console.error(e);
+      showToast("Không thể khởi động micro", "error");
+      setIsListeningMic(false);
+    }
+  };
+
   return (
     <div className="space-y-6 max-w-5xl mx-auto pb-12">
       {/* Toast Feedback */}
@@ -329,7 +499,7 @@ export default function SettingsHubPage() {
             <span>Trung Tâm Cài Đặt Hệ Thống</span>
           </h1>
           <p className="text-sm text-zinc-400 mt-1">
-            Tùy biến mục tiêu học tập (13.2) và phong cách giao diện hiển thị (13.3)
+            Tùy biến học tập (13.2), giao diện (13.3) và trợ năng truy cập (13.4)
           </p>
         </div>
 
@@ -339,9 +509,12 @@ export default function SettingsHubPage() {
               if (activeTab === "study") {
                 setStudySettings(DEFAULT_STUDY_SETTINGS);
                 showToast("Đã khôi phục cài đặt học tập mặc định");
-              } else {
+              } else if (activeTab === "appearance") {
                 setAppearance(DEFAULT_APPEARANCE_SETTINGS);
                 showToast("Đã khôi phục cài đặt giao diện mặc định");
+              } else {
+                setAccessibility(DEFAULT_ACCESSIBILITY_SETTINGS);
+                showToast("Đã khôi phục cài đặt trợ năng mặc định");
               }
             }}
             className="px-4 py-2 bg-zinc-900 hover:bg-zinc-800 border border-zinc-800 text-zinc-400 hover:text-white rounded-lg text-xs font-semibold flex items-center gap-1.5 transition-colors"
@@ -350,7 +523,11 @@ export default function SettingsHubPage() {
             <span>Mặc định</span>
           </button>
           <button
-            onClick={() => (activeTab === "study" ? handleSaveStudySettings() : handleSaveAppearanceSettings())}
+            onClick={() => {
+              if (activeTab === "study") handleSaveStudySettings();
+              else if (activeTab === "appearance") handleSaveAppearanceSettings();
+              else handleSaveAccessibilitySettings();
+            }}
             disabled={saving}
             className="px-5 py-2 bg-red-600 hover:bg-red-700 text-white rounded-lg text-xs font-bold flex items-center gap-1.5 transition-colors disabled:opacity-50"
           >
@@ -360,7 +537,7 @@ export default function SettingsHubPage() {
         </div>
       </div>
 
-      {/* Master Tabs: Study (13.2) vs Appearance (13.3) */}
+      {/* Master Tabs Switcher */}
       <div className="flex border-b border-zinc-800">
         <button
           onClick={() => setActiveTab("study")}
@@ -371,7 +548,7 @@ export default function SettingsHubPage() {
           }`}
         >
           <BookOpen className="w-4 h-4" />
-          <span>Cài Đặt Học Tập (13.2)</span>
+          <span>Học Tập (13.2)</span>
         </button>
         <button
           onClick={() => setActiveTab("appearance")}
@@ -382,7 +559,18 @@ export default function SettingsHubPage() {
           }`}
         >
           <Palette className="w-4 h-4" />
-          <span>Cài Đặt Giao Diện (13.3)</span>
+          <span>Giao Diện (13.3)</span>
+        </button>
+        <button
+          onClick={() => setActiveTab("accessibility")}
+          className={`px-5 py-3 text-sm font-medium border-b-2 flex items-center gap-2 transition-colors ${
+            activeTab === "accessibility"
+              ? "border-red-500 text-red-400"
+              : "border-transparent text-zinc-400 hover:text-zinc-200"
+          }`}
+        >
+          <Accessibility className="w-4 h-4" />
+          <span>Trợ Năng & Truy Cập (13.4)</span>
         </button>
       </div>
 
@@ -1344,7 +1532,7 @@ export default function SettingsHubPage() {
                           : "border-zinc-800 bg-zinc-900 text-zinc-400 hover:text-white"
                       }`}
                     >
-                      <div className="w-3 h-3 rounded-full" style={{ backgroundColor: tc.hex }} />
+                      <div className="w-3.5 h-3.5 rounded-full" style={{ backgroundColor: tc.hex }} />
                       <span>{tc.name.split(" ")[0]}</span>
                     </button>
                   ))}
@@ -1407,6 +1595,391 @@ export default function SettingsHubPage() {
         </div>
       )}
 
+      {/* TAB 3: ACCESSIBILITY SETTINGS (13.4) */}
+      {activeTab === "accessibility" && (
+        <div className="space-y-6">
+          {/* Interactive Testing Area */}
+          <div className="p-6 rounded-2xl bg-zinc-900/40 border border-zinc-800/60 space-y-4">
+            <h3 className="text-xs font-bold uppercase tracking-wider text-zinc-400 flex items-center gap-2">
+              <Activity className="w-4 h-4 text-red-400" />
+              <span>Khu vực thử nghiệm trợ năng trực tiếp (Live Accessibility Testing)</span>
+            </h3>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              {/* TTS Live Tester */}
+              <div className="p-4 rounded-xl bg-zinc-900/60 border border-zinc-800 space-y-3">
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center gap-2">
+                    <Volume1 className="w-4 h-4 text-blue-400" />
+                    <h4 className="text-xs font-bold text-white">Thử nghiệm Text-to-Speech</h4>
+                  </div>
+                  <button
+                    onClick={handleTestTTS}
+                    className="px-3 py-1.5 bg-blue-600 hover:bg-blue-700 text-white rounded-lg text-xs font-bold flex items-center gap-1.5 transition-colors"
+                  >
+                    {isSpeaking ? <Square className="w-3 h-3" /> : <Play className="w-3 h-3" />}
+                    <span>{isSpeaking ? "Dừng lại" : "Nghe thử câu mẫu"}</span>
+                  </button>
+                </div>
+                <p className="text-xs text-zinc-400 italic">
+                  "Welcome to TOEIC AI Platform. This is a text to speech test audio."
+                </p>
+              </div>
+
+              {/* STT Live Mic Tester */}
+              <div className="p-4 rounded-xl bg-zinc-900/60 border border-zinc-800 space-y-3">
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center gap-2">
+                    <Mic className="w-4 h-4 text-emerald-400" />
+                    <h4 className="text-xs font-bold text-white">Thử nghiệm Micro nhận diện giọng</h4>
+                  </div>
+                  <button
+                    onClick={handleTestMic}
+                    className={`px-3 py-1.5 rounded-lg text-xs font-bold flex items-center gap-1.5 transition-colors ${
+                      isListeningMic ? "bg-red-600 text-white animate-pulse" : "bg-emerald-600 hover:bg-emerald-700 text-white"
+                    }`}
+                  >
+                    <Mic className="w-3 h-3" />
+                    <span>{isListeningMic ? "Đang thu âm..." : "Bật Mic thử"}</span>
+                  </button>
+                </div>
+                <p className="text-xs text-zinc-400">
+                  {recognizedText || "Nhấn nút 'Bật Mic thử' và nói một từ vựng tiếng Anh bất kỳ để kiểm tra."}
+                </p>
+              </div>
+            </div>
+          </div>
+
+          {/* 1. Screen Reader Support */}
+          <div className="p-6 rounded-2xl bg-zinc-900/40 border border-zinc-800/60 space-y-4">
+            <div className="flex items-start gap-3">
+              <div className="w-9 h-9 rounded-xl bg-red-600/10 border border-red-500/20 flex items-center justify-center shrink-0 text-red-400">
+                <Glasses className="w-4 h-4" />
+              </div>
+              <div>
+                <h3 className="text-base font-bold text-white">1. Hỗ trợ trình đọc màn hình (Screen reader support)</h3>
+                <p className="text-xs text-zinc-400 mt-0.5">
+                  Tối ưu các thuộc tính thẻ ARIA, tự động gán nhãn giải thích cho các hình ảnh đề thi Part 1 & biểu đồ Part 7.
+                </p>
+              </div>
+            </div>
+
+            <div className="p-4 rounded-xl bg-zinc-900/60 border border-zinc-800 flex items-center justify-between">
+              <div>
+                <h4 className="text-sm font-bold text-white">Bật tối ưu hóa Screen Reader</h4>
+                <p className="text-xs text-zinc-400">Hỗ trợ đọc to câu hỏi, các lựa chọn A/B/C/D và giải thích đáp án</p>
+              </div>
+              <button
+                onClick={() =>
+                  setAccessibility({
+                    ...accessibility,
+                    screenReader: !accessibility.screenReader,
+                  })
+                }
+                className={`w-12 h-6 rounded-full transition-colors relative shrink-0 ${
+                  accessibility.screenReader ? "bg-red-600" : "bg-zinc-700"
+                }`}
+              >
+                <div
+                  className={`w-4 h-4 rounded-full bg-white transition-transform absolute top-1 ${
+                    accessibility.screenReader ? "translate-x-7" : "translate-x-1"
+                  }`}
+                />
+              </button>
+            </div>
+          </div>
+
+          {/* 2. Keyboard Navigation */}
+          <div className="p-6 rounded-2xl bg-zinc-900/40 border border-zinc-800/60 space-y-5">
+            <div className="flex items-start gap-3">
+              <div className="w-9 h-9 rounded-xl bg-blue-600/10 border border-blue-500/20 flex items-center justify-center shrink-0 text-blue-400">
+                <Keyboard className="w-4 h-4" />
+              </div>
+              <div>
+                <h3 className="text-base font-bold text-white">2. Điều hướng bàn phím (Keyboard navigation)</h3>
+                <p className="text-xs text-zinc-400 mt-0.5">
+                  Cho phép làm bài thi và điều khiển giao diện hoàn toàn bằng phím tắt mà không cần dùng chuột.
+                </p>
+              </div>
+            </div>
+
+            <div className="p-4 rounded-xl bg-zinc-900/60 border border-zinc-800 flex items-center justify-between mb-3">
+              <div>
+                <h4 className="text-sm font-bold text-white">Kích hoạt phím tắt làm bài thi</h4>
+                <p className="text-xs text-zinc-400">Sử dụng phím A, B, C, D để chọn đáp án tức thì</p>
+              </div>
+              <button
+                onClick={() =>
+                  setAccessibility({
+                    ...accessibility,
+                    keyboardNav: !accessibility.keyboardNav,
+                  })
+                }
+                className={`w-12 h-6 rounded-full transition-colors relative shrink-0 ${
+                  accessibility.keyboardNav ? "bg-red-600" : "bg-zinc-700"
+                }`}
+              >
+                <div
+                  className={`w-4 h-4 rounded-full bg-white transition-transform absolute top-1 ${
+                    accessibility.keyboardNav ? "translate-x-7" : "translate-x-1"
+                  }`}
+                />
+              </button>
+            </div>
+
+            {/* Keyboard Shortcuts Cheatsheet */}
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
+              {[
+                { key: "A / B / C / D", label: "Chọn đáp án tương ứng" },
+                { key: "← / →", label: "Chuyển câu Trước / Sau" },
+                { key: "Space", label: "Phát / Tạm dừng Audio" },
+                { key: "Enter", label: "Xác nhận / Nộp bài" },
+              ].map((sc) => (
+                <div key={sc.key} className="p-3 rounded-lg bg-zinc-900/50 border border-zinc-800/80 text-center">
+                  <span className="px-2 py-0.5 rounded bg-zinc-800 border border-zinc-700 text-xs font-mono font-bold text-red-400 inline-block mb-1">
+                    {sc.key}
+                  </span>
+                  <p className="text-[11px] text-zinc-400">{sc.label}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* 3. Voice Control */}
+          <div className="p-6 rounded-2xl bg-zinc-900/40 border border-zinc-800/60 space-y-4">
+            <div className="flex items-start gap-3">
+              <div className="w-9 h-9 rounded-xl bg-purple-600/10 border border-purple-500/20 flex items-center justify-center shrink-0 text-purple-400">
+                <Mic className="w-4 h-4" />
+              </div>
+              <div>
+                <h3 className="text-base font-bold text-white">3. Điều khiển giọng nói (Voice control)</h3>
+                <p className="text-xs text-zinc-400 mt-0.5">
+                  Điều khiển chuyển câu, chọn đáp án và nghe audio bằng khẩu lệnh giọng nói.
+                </p>
+              </div>
+            </div>
+
+            <div className="p-4 rounded-xl bg-zinc-900/60 border border-zinc-800 flex items-center justify-between">
+              <div>
+                <h4 className="text-sm font-bold text-white">Bật điều khiển khẩu lệnh</h4>
+                <p className="text-xs text-zinc-400">Hỗ trợ các khẩu lệnh: "Next", "Previous", "Play", "Select A/B/C/D"</p>
+              </div>
+              <button
+                onClick={() =>
+                  setAccessibility({
+                    ...accessibility,
+                    voiceControl: !accessibility.voiceControl,
+                  })
+                }
+                className={`w-12 h-6 rounded-full transition-colors relative shrink-0 ${
+                  accessibility.voiceControl ? "bg-red-600" : "bg-zinc-700"
+                }`}
+              >
+                <div
+                  className={`w-4 h-4 rounded-full bg-white transition-transform absolute top-1 ${
+                    accessibility.voiceControl ? "translate-x-7" : "translate-x-1"
+                  }`}
+                />
+              </button>
+            </div>
+          </div>
+
+          {/* 4 & 5. Text-to-Speech & Speech-to-Text */}
+          <div className="p-6 rounded-2xl bg-zinc-900/40 border border-zinc-800/60 space-y-5">
+            <div className="flex items-start gap-3">
+              <div className="w-9 h-9 rounded-xl bg-cyan-600/10 border border-cyan-500/20 flex items-center justify-center shrink-0 text-cyan-400">
+                <Volume2 className="w-4 h-4" />
+              </div>
+              <div>
+                <h3 className="text-base font-bold text-white">4 & 5. Văn bản thành giọng nói & Nhận diện giọng nói</h3>
+                <p className="text-xs text-zinc-400 mt-0.5">
+                  Tùy chỉnh tốc độ đọc TTS và ngôn ngữ nhận diện giọng nói STT để luyện phát âm chuẩn TOEIC.
+                </p>
+              </div>
+            </div>
+
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+              <div>
+                <label className="block text-xs font-semibold text-zinc-400 mb-1.5">
+                  Tốc độ đọc TTS (Rate)
+                </label>
+                <select
+                  value={accessibility.textToSpeech.rate}
+                  onChange={(e) =>
+                    setAccessibility({
+                      ...accessibility,
+                      textToSpeech: {
+                        ...accessibility.textToSpeech,
+                        rate: Number(e.target.value),
+                      },
+                    })
+                  }
+                  className="w-full bg-zinc-900 border border-zinc-800 rounded-lg px-3.5 py-2.5 text-white text-sm focus:outline-none focus:border-red-500/50"
+                >
+                  <option value={0.75}>0.75x (Chậm)</option>
+                  <option value={1.0}>1.0x (Bình thường)</option>
+                  <option value={1.25}>1.25x (Nhanh)</option>
+                </select>
+              </div>
+
+              <div>
+                <label className="block text-xs font-semibold text-zinc-400 mb-1.5">
+                  Cao độ giọng đọc (Pitch)
+                </label>
+                <select
+                  value={accessibility.textToSpeech.pitch}
+                  onChange={(e) =>
+                    setAccessibility({
+                      ...accessibility,
+                      textToSpeech: {
+                        ...accessibility.textToSpeech,
+                        pitch: Number(e.target.value),
+                      },
+                    })
+                  }
+                  className="w-full bg-zinc-900 border border-zinc-800 rounded-lg px-3.5 py-2.5 text-white text-sm focus:outline-none focus:border-red-500/50"
+                >
+                  <option value={0.8}>Trầm (Low)</option>
+                  <option value={1.0}>Tự nhiên (Natural)</option>
+                  <option value={1.2}>Cao (High)</option>
+                </select>
+              </div>
+
+              <div>
+                <label className="block text-xs font-semibold text-zinc-400 mb-1.5">
+                  Ngôn ngữ nhận diện STT
+                </label>
+                <select
+                  value={accessibility.speechToText.language}
+                  onChange={(e) =>
+                    setAccessibility({
+                      ...accessibility,
+                      speechToText: {
+                        ...accessibility.speechToText,
+                        language: e.target.value,
+                      },
+                    })
+                  }
+                  className="w-full bg-zinc-900 border border-zinc-800 rounded-lg px-3.5 py-2.5 text-white text-sm focus:outline-none focus:border-red-500/50"
+                >
+                  <option value="en-US">English (US)</option>
+                  <option value="en-GB">English (UK)</option>
+                  <option value="vi-VN">Tiếng Việt (VN)</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          {/* 6. Color Blind Mode */}
+          <div className="p-6 rounded-2xl bg-zinc-900/40 border border-zinc-800/60 space-y-4">
+            <div className="flex items-start gap-3">
+              <div className="w-9 h-9 rounded-xl bg-amber-600/10 border border-amber-500/20 flex items-center justify-center shrink-0 text-amber-400">
+                <Palette className="w-4 h-4" />
+              </div>
+              <div>
+                <h3 className="text-base font-bold text-white">6. Chế độ mù màu (Color blind mode)</h3>
+                <p className="text-xs text-zinc-400 mt-0.5">
+                  Tối ưu hóa các cặp màu đúng/sai và biểu đồ phân tích điểm để phù hợp với từng dạng thị giác màu.
+                </p>
+              </div>
+            </div>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3">
+              {COLOR_BLIND_MODES.map((mode) => {
+                const isSelected = accessibility.colorBlindMode === mode.id;
+                return (
+                  <div
+                    key={mode.id}
+                    onClick={() =>
+                      setAccessibility({
+                        ...accessibility,
+                        colorBlindMode: mode.id as any,
+                      })
+                    }
+                    className={`p-3.5 rounded-xl border cursor-pointer transition-all ${
+                      isSelected
+                        ? "bg-red-950/20 border-red-500/50"
+                        : "bg-zinc-900/50 border-zinc-800 hover:border-zinc-700"
+                    }`}
+                  >
+                    <div className="flex items-center justify-between mb-1.5">
+                      <span className="text-xs font-bold text-white">{mode.name}</span>
+                      {isSelected && <Check className="w-4 h-4 text-red-400" />}
+                    </div>
+                    <p className="text-[11px] text-zinc-500">{mode.desc}</p>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+
+          {/* 7 & 8. Large Text Mode & Focus Indicators */}
+          <div className="p-6 rounded-2xl bg-zinc-900/40 border border-zinc-800/60 space-y-5">
+            <div className="flex items-start gap-3">
+              <div className="w-9 h-9 rounded-xl bg-emerald-600/10 border border-emerald-500/20 flex items-center justify-center shrink-0 text-emerald-400">
+                <Focus className="w-4 h-4" />
+              </div>
+              <div>
+                <h3 className="text-base font-bold text-white">7 & 8. Chế độ văn bản lớn & Chỉ số tiêu điểm (Focus indicators)</h3>
+                <p className="text-xs text-zinc-400 mt-0.5">
+                  Phóng to văn bản giao diện toàn diện và bật viền sáng tiêu điểm hỗ trợ điều hướng Tab.
+                </p>
+              </div>
+            </div>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div className="p-4 rounded-xl bg-zinc-900/60 border border-zinc-800 space-y-2">
+                <span className="text-xs text-zinc-400">Tỷ lệ phóng to văn bản (Large text mode)</span>
+                <div className="flex items-center gap-2">
+                  {[100, 125, 150].map((scale) => (
+                    <button
+                      key={scale}
+                      onClick={() =>
+                        setAccessibility({
+                          ...accessibility,
+                          largeTextMode: scale as any,
+                        })
+                      }
+                      className={`flex-1 py-2 rounded-lg text-xs font-bold transition-all ${
+                        accessibility.largeTextMode === scale
+                          ? "bg-red-600 text-white shadow-md"
+                          : "bg-zinc-800 text-zinc-400 hover:text-white"
+                      }`}
+                    >
+                      {scale}%
+                    </button>
+                  ))}
+                </div>
+              </div>
+
+              <div className="p-4 rounded-xl bg-zinc-900/60 border border-zinc-800 flex items-center justify-between">
+                <div>
+                  <h4 className="text-sm font-bold text-white">Viền sáng tiêu điểm (Focus ring)</h4>
+                  <p className="text-xs text-zinc-400">Hiển thị viền đỏ nổi bật quanh phần tử đang chọn bằng phím Tab</p>
+                </div>
+                <button
+                  onClick={() =>
+                    setAccessibility({
+                      ...accessibility,
+                      focusIndicators: !accessibility.focusIndicators,
+                    })
+                  }
+                  className={`w-12 h-6 rounded-full transition-colors relative shrink-0 ${
+                    accessibility.focusIndicators ? "bg-red-600" : "bg-zinc-700"
+                  }`}
+                >
+                  <div
+                    className={`w-4 h-4 rounded-full bg-white transition-transform absolute top-1 ${
+                      accessibility.focusIndicators ? "translate-x-7" : "translate-x-1"
+                    }`}
+                  />
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+
       {/* Floating Save Bar */}
       <div className="p-4 rounded-2xl bg-zinc-900/80 border border-zinc-800 backdrop-blur-md sticky bottom-4 flex items-center justify-between gap-4 shadow-2xl">
         <div className="flex items-center gap-2 text-xs text-zinc-400">
@@ -1419,9 +1992,12 @@ export default function SettingsHubPage() {
               if (activeTab === "study") {
                 setStudySettings(DEFAULT_STUDY_SETTINGS);
                 showToast("Đã khôi phục cài đặt học tập mặc định");
-              } else {
+              } else if (activeTab === "appearance") {
                 setAppearance(DEFAULT_APPEARANCE_SETTINGS);
                 showToast("Đã khôi phục cài đặt giao diện mặc định");
+              } else {
+                setAccessibility(DEFAULT_ACCESSIBILITY_SETTINGS);
+                showToast("Đã khôi phục cài đặt trợ năng mặc định");
               }
             }}
             className="px-4 py-2 bg-zinc-800 hover:bg-zinc-700 text-zinc-300 text-xs font-semibold rounded-lg transition-colors"
@@ -1429,7 +2005,11 @@ export default function SettingsHubPage() {
             Khôi phục
           </button>
           <button
-            onClick={() => (activeTab === "study" ? handleSaveStudySettings() : handleSaveAppearanceSettings())}
+            onClick={() => {
+              if (activeTab === "study") handleSaveStudySettings();
+              else if (activeTab === "appearance") handleSaveAppearanceSettings();
+              else handleSaveAccessibilitySettings();
+            }}
             disabled={saving}
             className="px-6 py-2 bg-red-600 hover:bg-red-700 text-white text-xs font-bold rounded-lg transition-colors disabled:opacity-50 flex items-center gap-1.5"
           >
