@@ -1113,4 +1113,91 @@ async uploadAvatar(userId: number, file: any) {
       syncedAt: new Date().toISOString(),
     };
   }
+
+  async getBackgroundAudioTracks(userId: number) {
+    return {
+      success: true,
+      tracks: [
+        {
+          id: "audio-part1-office",
+          title: "Part 1: Office & Workplace Photos",
+          artist: "TOEIC Master Voice (US Accent)",
+          album: "TOEIC Listening Masterclass 2026",
+          duration: 185,
+          category: "Part 1",
+          audioUrl: "https://actions.google.com/sounds/v1/ambiences/office_room.ogg",
+          artwork: "/images/artwork-part1.jpg",
+          description: "Mô tả hình ảnh công sở, hội thảo và môi trường văn phòng quốc tế",
+        },
+        {
+          id: "audio-part2-qa-drill",
+          title: "Part 2: Rapid Question-Response Drill",
+          artist: "Sarah Jenkins & David Miller (UK/US)",
+          album: "TOEIC Rapid Reflex Series",
+          duration: 240,
+          category: "Part 2",
+          audioUrl: "https://actions.google.com/sounds/v1/ambiences/coffee_shop.ogg",
+          artwork: "/images/artwork-part2.jpg",
+          description: "Luyện phản xạ 30 câu hỏi - đáp nhanh Wh-questions và câu hỏi gián tiếp",
+        },
+        {
+          id: "audio-part3-business",
+          title: "Part 3: Business Conversations & Meetings",
+          artist: "Michael Chen & Emma Watson (US/AU)",
+          album: "Corporate TOEIC Mastery",
+          duration: 310,
+          category: "Part 3",
+          audioUrl: "https://actions.google.com/sounds/v1/ambiences/airport_gate.ogg",
+          artwork: "/images/artwork-part3.jpg",
+          description: "Hội thoại đàm phán hợp đồng, logistics, đặt vé và kế hoạch ngân sách",
+        },
+        {
+          id: "audio-part4-broadcast",
+          title: "Part 4: Public Announcements & Radio Reports",
+          artist: "Robert Davis (US Accent)",
+          album: "Advanced TOEIC 900+ Listening",
+          duration: 275,
+          category: "Part 4",
+          audioUrl: "https://actions.google.com/sounds/v1/ambiences/train_station.ogg",
+          artwork: "/images/artwork-part4.jpg",
+          description: "Thông báo tại sân bay, bản tin giao thông, thời tiết và báo cáo thị trường",
+        },
+        {
+          id: "audio-vocab-600-loop",
+          title: "600 Essential Words Audio Loop (Song Ngữ)",
+          artist: "AI Native Speaker & Voice Over",
+          album: "TOEIC Passive Vocabulary Loop",
+          duration: 420,
+          category: "Vocabulary",
+          audioUrl: "https://actions.google.com/sounds/v1/ambiences/outdoor_park.ogg",
+          artwork: "/images/artwork-vocab.jpg",
+          description: "Nghe lặp vô thức 50 chủ đề từ vựng kèm nghĩa tiếng Việt khi đi ngủ hoặc đi xe",
+        },
+      ],
+    };
+  }
+
+  async getBackgroundAudioSettings(userId: number) {
+    return {
+      success: true,
+      data: {
+        playInBackground: true,
+        notificationControls: true,
+        lockScreenControls: true,
+        headphoneControls: true,
+        playbackRate: 1.0,
+        sleepTimerMinutes: 0,
+        autoPlayNext: true,
+        loopMode: "all", // "none" | "one" | "all"
+      },
+    };
+  }
+
+  async updateBackgroundAudioSettings(userId: number, data: any) {
+    return {
+      success: true,
+      message: "Cài đặt âm thanh nền đã được lưu",
+      data,
+    };
+  }
 }

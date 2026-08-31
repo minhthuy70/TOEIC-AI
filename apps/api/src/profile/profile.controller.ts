@@ -190,6 +190,21 @@ syncOfflineData(@Req() req: any, @Body() body: any) {
   return this.profileService.syncOfflineData(req.user.userId, body);
 }
 
+@Get("background-audio/tracks")
+getBackgroundAudioTracks(@Req() req: any) {
+  return this.profileService.getBackgroundAudioTracks(req.user.userId);
+}
+
+@Get("background-audio/settings")
+getBackgroundAudioSettings(@Req() req: any) {
+  return this.profileService.getBackgroundAudioSettings(req.user.userId);
+}
+
+@Put("background-audio/settings")
+updateBackgroundAudioSettings(@Req() req: any, @Body() body: any) {
+  return this.profileService.updateBackgroundAudioSettings(req.user.userId, body);
+}
+
 @Post("delete-account")
 deleteAccount(@Req() req: any, @Body() body: { password?: string; reason?: string }) {
   return this.profileService.deleteAccount(req.user.userId, body.password, body.reason);
