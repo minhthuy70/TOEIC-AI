@@ -993,15 +993,15 @@ Dựa trên lộ trình học TOEIC 900+ - Phiên bản nâng cấp
 [x] - Notification preferences - Ưa thích thông báo
 
 13.2. Study Settings (Cài đặt học tập)
-- Daily goals configuration - Cấu hình mục tiêu hàng ngày
-- Study time preferences - Ưa thích thời gian học
-- Difficulty preferences - Ưa thích độ khó
-- Content preferences - Ưa thích nội dung
-- SRS settings - Cài đặt SRS
-- Audio settings - Cài đặt âm thanh
-- Display settings - Cài đặt hiển thị
-- Timer settings - Cài đặt đồng hồ
-- Auto-advance settings - Cài đặt tự động chuyển
+[x] - Daily goals configuration - Cấu hình mục tiêu hàng ngày
+[x] - Study time preferences - Ưa thích thời gian học
+[x] - Difficulty preferences - Ưa thích độ khó
+[x] - Content preferences - Ưa thích nội dung
+[x] - SRS settings - Cài đặt SRS
+[x] - Audio settings - Cài đặt âm thanh
+[x] - Display settings - Cài đặt hiển thị
+[x] - Timer settings - Cài đặt đồng hồ
+[x] - Auto-advance settings - Cài đặt tự động chuyển
 
 13.3. Appearance Settings (Cài đặt giao diện)
 - Theme selection (light/dark/custom) - Chọn chủ đề (sáng/tối/tùy chỉnh)

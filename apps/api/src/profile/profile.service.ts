@@ -783,4 +783,113 @@ async uploadAvatar(userId: number, file: any) {
       message: "Tài khoản đã được xóa vĩnh viễn cùng toàn bộ dữ liệu",
     };
   }
+
+  async getStudySettings(userId: number) {
+    const profile = await this.prisma.userProfile.findUnique({
+      where: { userId },
+    });
+
+    const pref = await this.prisma.notificationPreference.findUnique({
+      where: { userId },
+    });
+
+    return {
+      success: true,
+      data: {
+        dailyGoals: {
+          dailyVocab: profile?.dailyVocabularyGoal || 20,
+          dailyListeningMinutes: 20,
+          dailyReadingMinutes: 20,
+          weeklyMockTests: 1,
+        },
+        studyTime: {
+          targetDailyMinutes: profile?.dailyStudyTime || 30,
+          preferredTimeSlot: profile?.studySchedule || "evening",
+          reminderTime: "20:00",
+        },
+        difficulty: {
+          level: "adaptive",
+          targetScore: profile?.targetScore || 750,
+          currentScore: profile?.currentScore || 450,
+          adaptiveAiEnabled: true,
+        },
+        content: {
+          focusArea: "all",
+          weakPartFocus: true,
+          includeBusinessVocab: true,
+          grammarTrapFocus: true,
+        },
+        srs: {
+          intervalModifier: 1.0,
+          maxCardsPerSession: 25,
+          reviewIntervals: "1,3,7,14,30",
+          autoScheduleReviews: profile?.srsNotification ?? true,
+        },
+        audio: {
+          speechRate: 1.0,
+          voiceAccent: "us",
+          autoPlayAudio: profile?.autoPronunciation ?? false,
+          soundEffects: true,
+        },
+        display: {
+          fontSize: "md",
+          compactMode: false,
+          showInstantTranslation: true,
+          highlightKeywords: true,
+          darkMode: profile?.darkMode ?? true,
+        },
+        timer: {
+          enabled: true,
+          warnRemainingMinutes: 5,
+          autoSubmitOnTimeOut: true,
+          showCountdown: true,
+        },
+        autoAdvance: {
+          enabled: true,
+          delaySeconds: 1.5,
+          autoPlayNextAudio: true,
+        },
+      },
+    };
+  }
+
+  async updateStudySettings(userId: number, data: any) {
+    const updateData: any = {};
+
+    if (data.dailyGoals?.dailyVocab !== undefined) {
+      updateData.dailyVocabularyGoal = Number(data.dailyGoals.dailyVocab);
+    }
+    if (data.studyTime?.targetDailyMinutes !== undefined) {
+      updateData.dailyStudyTime = Number(data.studyTime.targetDailyMinutes);
+    }
+    if (data.studyTime?.preferredTimeSlot !== undefined) {
+      updateData.studySchedule = String(data.studyTime.preferredTimeSlot);
+    }
+    if (data.difficulty?.targetScore !== undefined) {
+      updateData.targetScore = Number(data.difficulty.targetScore);
+    }
+    if (data.srs?.autoScheduleReviews !== undefined) {
+      updateData.srsNotification = Boolean(data.srs.autoScheduleReviews);
+    }
+    if (data.audio?.autoPlayAudio !== undefined) {
+      updateData.autoPronunciation = Boolean(data.audio.autoPlayAudio);
+    }
+    if (data.display?.darkMode !== undefined) {
+      updateData.darkMode = Boolean(data.display.darkMode);
+    }
+
+    if (Object.keys(updateData).length > 0) {
+      await this.prisma.userProfile.upsert({
+        where: { userId },
+        update: updateData,
+        create: { userId, ...updateData },
+      });
+    }
+
+    return {
+      success: true,
+      message: "Cài đặt học tập đã được lưu thành công",
+      data,
+    };
+  }
 }
