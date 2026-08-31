@@ -1031,12 +1031,12 @@ Dựa trên lộ trình học TOEIC 900+ - Phiên bản nâng cấp
 [x] - Translation settings - Cài đặt dịch
 
 13.6. Privacy Settings (Cài đặt quyền riêng tư)
-- Profile visibility - Khả năng hiển thị hồ sơ
-- Progress visibility - Khả năng hiển thị tiến độ
-- Leaderboard participation - Tham gia bảng xếp hạng
-- Data sharing preferences - Ưa thích chia sẻ dữ liệu
-- Analytics consent - Đồng ý phân tích
-- Cookie preferences - Ưa thích cookie
+[x] - Profile visibility - Khả năng hiển thị hồ sơ
+[x] - Progress visibility - Khả năng hiển thị tiến độ
+[x] - Leaderboard participation - Tham gia bảng xếp hạng
+[x] - Data sharing preferences - Ưa thích chia sẻ dữ liệu
+[x] - Analytics consent - Đồng ý phân tích
+[x] - Cookie preferences - Ưa thích cookie
 
 ================================================================================
 

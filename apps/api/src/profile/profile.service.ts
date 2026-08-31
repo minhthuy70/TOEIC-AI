@@ -550,38 +550,40 @@ async uploadAvatar(userId: number, file: any) {
       where: { userId },
     });
 
-    // Return structured privacy settings
     return {
       success: true,
       data: {
-        showOnLeaderboard: pref?.leaderboardChanges ?? true,
         profileVisibility: "public",
-        showStudyStats: true,
-        allowFriendRequests: true,
-        anonymousMode: false,
+        progressVisibility: true,
+        leaderboardParticipation: pref?.leaderboardChanges ?? true,
+        anonymousOnLeaderboard: false,
+        dataSharing: true,
+        analyticsConsent: true,
+        friendRequests: true,
+        cookiePreferences: {
+          essential: true,
+          functional: true,
+          analytics: true,
+          marketing: false,
+        },
       },
     };
   }
 
   async updatePrivacySettings(userId: number, data: any) {
-    if (data.showOnLeaderboard !== undefined) {
+    if (data.leaderboardParticipation !== undefined || data.showOnLeaderboard !== undefined) {
+      const val = Boolean(data.leaderboardParticipation ?? data.showOnLeaderboard);
       await this.prisma.notificationPreference.upsert({
         where: { userId },
-        update: { leaderboardChanges: Boolean(data.showOnLeaderboard) },
-        create: { userId, leaderboardChanges: Boolean(data.showOnLeaderboard) },
+        update: { leaderboardChanges: val },
+        create: { userId, leaderboardChanges: val },
       });
     }
 
     return {
       success: true,
-      message: "Cập nhật quyền riêng tư thành công",
-      data: {
-        showOnLeaderboard: data.showOnLeaderboard ?? true,
-        profileVisibility: data.profileVisibility ?? "public",
-        showStudyStats: data.showStudyStats ?? true,
-        allowFriendRequests: data.allowFriendRequests ?? true,
-        anonymousMode: data.anonymousMode ?? false,
-      },
+      message: "Cài đặt quyền riêng tư đã được lưu thành công",
+      data,
     };
   }
 

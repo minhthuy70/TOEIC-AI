@@ -47,6 +47,14 @@ import {
   BookA,
   Sparkle,
   Bot,
+  Shield,
+  Lock,
+  UserCheck,
+  Share2,
+  BarChart3,
+  Cookie,
+  UserX,
+  TrendingUp,
 } from "lucide-react";
 
 interface StudySettingsData {
@@ -153,6 +161,22 @@ interface LanguageSettingsData {
     inlineParagraphTranslation: boolean;
     autoDetectIdioms: boolean;
     instantExplanation: boolean;
+  };
+}
+
+interface PrivacySettingsData {
+  profileVisibility: "public" | "friends" | "private";
+  progressVisibility: boolean;
+  leaderboardParticipation: boolean;
+  anonymousOnLeaderboard: boolean;
+  dataSharing: boolean;
+  analyticsConsent: boolean;
+  friendRequests: boolean;
+  cookiePreferences: {
+    essential: boolean;
+    functional: boolean;
+    analytics: boolean;
+    marketing: boolean;
   };
 }
 
@@ -263,6 +287,22 @@ const DEFAULT_LANGUAGE_SETTINGS: LanguageSettingsData = {
   },
 };
 
+const DEFAULT_PRIVACY_SETTINGS: PrivacySettingsData = {
+  profileVisibility: "public",
+  progressVisibility: true,
+  leaderboardParticipation: true,
+  anonymousOnLeaderboard: false,
+  dataSharing: true,
+  analyticsConsent: true,
+  friendRequests: true,
+  cookiePreferences: {
+    essential: true,
+    functional: true,
+    analytics: true,
+    marketing: false,
+  },
+};
+
 const STUDY_SECTIONS = [
   { id: "dailyGoals", label: "Mục tiêu ngày", icon: Target },
   { id: "studyTime", label: "Thời gian học", icon: Clock },
@@ -316,7 +356,7 @@ const CONTENT_LANGUAGES = [
 
 export default function SettingsHubPage() {
   const router = useRouter();
-  const [activeTab, setActiveTab] = useState<"study" | "appearance" | "accessibility" | "language">("study");
+  const [activeTab, setActiveTab] = useState<"study" | "appearance" | "accessibility" | "language" | "privacy">("study");
 
   // Study Settings State
   const [studySettings, setStudySettings] = useState<StudySettingsData>(DEFAULT_STUDY_SETTINGS);
@@ -330,6 +370,9 @@ export default function SettingsHubPage() {
 
   // Language Settings State
   const [language, setLanguage] = useState<LanguageSettingsData>(DEFAULT_LANGUAGE_SETTINGS);
+
+  // Privacy Settings State
+  const [privacy, setPrivacy] = useState<PrivacySettingsData>(DEFAULT_PRIVACY_SETTINGS);
 
   // Live TTS audio state
   const [isSpeaking, setIsSpeaking] = useState(false);
@@ -356,11 +399,12 @@ export default function SettingsHubPage() {
   const loadAllSettings = async () => {
     try {
       setLoading(true);
-      const [studyRes, appRes, accRes, langRes] = await Promise.all([
+      const [studyRes, appRes, accRes, langRes, privRes] = await Promise.all([
         apiFetch<{ success: boolean; data: StudySettingsData }>("/profile/study-settings"),
         apiFetch<{ success: boolean; data: AppearanceSettingsData }>("/profile/appearance-settings"),
         apiFetch<{ success: boolean; data: AccessibilitySettingsData }>("/profile/accessibility-settings"),
         apiFetch<{ success: boolean; data: LanguageSettingsData }>("/profile/language-settings"),
+        apiFetch<{ success: boolean; data: PrivacySettingsData }>("/profile/privacy"),
       ]);
 
       if (studyRes.success && studyRes.data) {
@@ -401,6 +445,17 @@ export default function SettingsHubPage() {
           ...langRes.data,
           vocabularyDisplay: { ...DEFAULT_LANGUAGE_SETTINGS.vocabularyDisplay, ...langRes.data.vocabularyDisplay },
           translation: { ...DEFAULT_LANGUAGE_SETTINGS.translation, ...langRes.data.translation },
+        });
+      }
+
+      if (privRes.success && privRes.data) {
+        setPrivacy({
+          ...DEFAULT_PRIVACY_SETTINGS,
+          ...privRes.data,
+          cookiePreferences: {
+            ...DEFAULT_PRIVACY_SETTINGS.cookiePreferences,
+            ...(privRes.data.cookiePreferences || {}),
+          },
         });
       }
     } catch (err) {
@@ -477,6 +532,24 @@ export default function SettingsHubPage() {
       }
     } catch (err: any) {
       showToast(err.message || "Lỗi khi lưu cài đặt ngôn ngữ", "error");
+    } finally {
+      setSaving(false);
+    }
+  };
+
+  const handleSavePrivacySettings = async () => {
+    try {
+      setSaving(true);
+      const res = await apiFetch<{ success: boolean; message: string }>("/profile/privacy", {
+        method: "PUT",
+        body: JSON.stringify(privacy),
+      });
+
+      if (res.success) {
+        showToast(res.message || "Đã lưu cài đặt quyền riêng tư thành công!");
+      }
+    } catch (err: any) {
+      showToast(err.message || "Lỗi khi lưu cài đặt quyền riêng tư", "error");
     } finally {
       setSaving(false);
     }
@@ -588,7 +661,7 @@ export default function SettingsHubPage() {
             <span>Trung Tâm Cài Đặt Hệ Thống</span>
           </h1>
           <p className="text-sm text-zinc-400 mt-1">
-            Tùy biến học tập (13.2), giao diện (13.3), trợ năng (13.4) và ngôn ngữ (13.5)
+            Quản trị toàn diện: Học tập (13.2), Giao diện (13.3), Trợ năng (13.4), Ngôn ngữ (13.5) và Quyền riêng tư (13.6)
           </p>
         </div>
 
@@ -604,9 +677,12 @@ export default function SettingsHubPage() {
               } else if (activeTab === "accessibility") {
                 setAccessibility(DEFAULT_ACCESSIBILITY_SETTINGS);
                 showToast("Đã khôi phục cài đặt trợ năng mặc định");
-              } else {
+              } else if (activeTab === "language") {
                 setLanguage(DEFAULT_LANGUAGE_SETTINGS);
                 showToast("Đã khôi phục cài đặt ngôn ngữ mặc định");
+              } else {
+                setPrivacy(DEFAULT_PRIVACY_SETTINGS);
+                showToast("Đã khôi phục cài đặt quyền riêng tư mặc định");
               }
             }}
             className="px-4 py-2 bg-zinc-900 hover:bg-zinc-800 border border-zinc-800 text-zinc-400 hover:text-white rounded-lg text-xs font-semibold flex items-center gap-1.5 transition-colors"
@@ -619,7 +695,8 @@ export default function SettingsHubPage() {
               if (activeTab === "study") handleSaveStudySettings();
               else if (activeTab === "appearance") handleSaveAppearanceSettings();
               else if (activeTab === "accessibility") handleSaveAccessibilitySettings();
-              else handleSaveLanguageSettings();
+              else if (activeTab === "language") handleSaveLanguageSettings();
+              else handleSavePrivacySettings();
             }}
             disabled={saving}
             className="px-5 py-2 bg-red-600 hover:bg-red-700 text-white rounded-lg text-xs font-bold flex items-center gap-1.5 transition-colors disabled:opacity-50"
@@ -630,7 +707,7 @@ export default function SettingsHubPage() {
         </div>
       </div>
 
-      {/* Master Tabs Switcher */}
+      {/* Master Tabs Switcher (5 Tabs) */}
       <div className="flex border-b border-zinc-800 overflow-x-auto">
         <button
           onClick={() => setActiveTab("study")}
@@ -674,7 +751,18 @@ export default function SettingsHubPage() {
           }`}
         >
           <Globe2 className="w-4 h-4" />
-          <span>Ngôn Ngữ & Dịch (13.5)</span>
+          <span>Ngôn Ngữ (13.5)</span>
+        </button>
+        <button
+          onClick={() => setActiveTab("privacy")}
+          className={`px-4 py-3 text-sm font-medium border-b-2 flex items-center gap-2 whitespace-nowrap transition-colors ${
+            activeTab === "privacy"
+              ? "border-red-500 text-red-400"
+              : "border-transparent text-zinc-400 hover:text-zinc-200"
+          }`}
+        >
+          <Shield className="w-4 h-4" />
+          <span>Quyền Riêng Tư (13.6)</span>
         </button>
       </div>
 
@@ -1636,7 +1724,7 @@ export default function SettingsHubPage() {
                           : "border-zinc-800 bg-zinc-900 text-zinc-400 hover:text-white"
                       }`}
                     >
-                      <div className="w-3.5 h-3.5 rounded-full" style={{ backgroundColor: tc.hex }} />
+                      <div className="w-3 h-3 rounded-full" style={{ backgroundColor: tc.hex }} />
                       <span>{tc.name.split(" ")[0]}</span>
                     </button>
                   ))}
@@ -2446,6 +2534,328 @@ export default function SettingsHubPage() {
         </div>
       )}
 
+      {/* TAB 5: PRIVACY SETTINGS (13.6) */}
+      {activeTab === "privacy" && (
+        <div className="space-y-6">
+          {/* Privacy & Security Shield Banner */}
+          <div className="p-6 rounded-2xl bg-zinc-900/40 border border-zinc-800/60 space-y-3">
+            <div className="flex items-center justify-between">
+              <div className="flex items-center gap-3">
+                <div className="w-10 h-10 rounded-xl bg-emerald-600/10 border border-emerald-500/20 flex items-center justify-center text-emerald-400">
+                  <Shield className="w-5 h-5" />
+                </div>
+                <div>
+                  <h3 className="text-base font-bold text-white">Bảo Vệ Dữ Liệu & Quyền Riêng Tư</h3>
+                  <p className="text-xs text-zinc-400">
+                    Dữ liệu học tập của bạn được mã hóa an toàn theo tiêu chuẩn GDPR & ISO/IEC 27001.
+                  </p>
+                </div>
+              </div>
+              <span className="px-3 py-1 rounded-full bg-emerald-600/20 text-emerald-400 border border-emerald-500/30 text-xs font-bold flex items-center gap-1.5">
+                <CheckCircle2 className="w-3.5 h-3.5" />
+                <span>Bảo Mật Cao</span>
+              </span>
+            </div>
+          </div>
+
+          {/* 1. Profile Visibility */}
+          <div className="p-6 rounded-2xl bg-zinc-900/40 border border-zinc-800/60 space-y-4">
+            <div className="flex items-start gap-3">
+              <div className="w-9 h-9 rounded-xl bg-blue-600/10 border border-blue-500/20 flex items-center justify-center shrink-0 text-blue-400">
+                <Eye className="w-4 h-4" />
+              </div>
+              <div>
+                <h3 className="text-base font-bold text-white">1. Khả năng hiển thị hồ sơ (Profile visibility)</h3>
+                <p className="text-xs text-zinc-400 mt-0.5">
+                  Quyết định ai có thể tìm kiếm và xem trang hồ sơ học viên của bạn.
+                </p>
+              </div>
+            </div>
+
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+              {[
+                { id: "public", name: "Công khai (Public)", desc: "Mọi học viên đều có thể xem trang cá nhân" },
+                { id: "friends", name: "Bạn bè (Friends Only)", desc: "Chỉ những người đã kết bạn mới có thể xem" },
+                { id: "private", name: "Riêng tư (Private)", desc: "Chỉ một mình bạn có quyền xem hồ sơ" },
+              ].map((pv) => {
+                const isSelected = privacy.profileVisibility === pv.id;
+                return (
+                  <div
+                    key={pv.id}
+                    onClick={() => setPrivacy({ ...privacy, profileVisibility: pv.id as any })}
+                    className={`p-4 rounded-xl border cursor-pointer transition-all ${
+                      isSelected
+                        ? "bg-red-950/20 border-red-500/50"
+                        : "bg-zinc-900/50 border-zinc-800 hover:border-zinc-700"
+                    }`}
+                  >
+                    <div className="flex items-center justify-between mb-1">
+                      <span className="text-sm font-bold text-white">{pv.name}</span>
+                      {isSelected && <Check className="w-4 h-4 text-red-400" />}
+                    </div>
+                    <p className="text-xs text-zinc-400">{pv.desc}</p>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+
+          {/* 2 & 3. Progress Visibility & Leaderboard Participation */}
+          <div className="p-6 rounded-2xl bg-zinc-900/40 border border-zinc-800/60 space-y-4">
+            <div className="flex items-start gap-3">
+              <div className="w-9 h-9 rounded-xl bg-purple-600/10 border border-purple-500/20 flex items-center justify-center shrink-0 text-purple-400">
+                <TrendingUp className="w-4 h-4" />
+              </div>
+              <div>
+                <h3 className="text-base font-bold text-white">2 & 3. Tiến độ học tập & Bảng xếp hạng (Progress & Leaderboard)</h3>
+                <p className="text-xs text-zinc-400 mt-0.5">
+                  Kiểm soát việc hiển thị điểm số thi thử, chuỗi Streak và xếp thứ hạng thi đua.
+                </p>
+              </div>
+            </div>
+
+            <div className="space-y-3">
+              <div className="p-4 rounded-xl bg-zinc-900/60 border border-zinc-800 flex items-center justify-between">
+                <div>
+                  <h4 className="text-sm font-bold text-white">Hiển thị tiến độ học tập (Progress visibility)</h4>
+                  <p className="text-xs text-zinc-400">Cho phép bạn bè xem điểm Mock Test, số từ vựng đã học và chuỗi Streak</p>
+                </div>
+                <button
+                  onClick={() => setPrivacy({ ...privacy, progressVisibility: !privacy.progressVisibility })}
+                  className={`w-12 h-6 rounded-full transition-colors relative shrink-0 ${
+                    privacy.progressVisibility ? "bg-red-600" : "bg-zinc-700"
+                  }`}
+                >
+                  <div
+                    className={`w-4 h-4 rounded-full bg-white transition-transform absolute top-1 ${
+                      privacy.progressVisibility ? "translate-x-7" : "translate-x-1"
+                    }`}
+                  />
+                </button>
+              </div>
+
+              <div className="p-4 rounded-xl bg-zinc-900/60 border border-zinc-800 flex items-center justify-between">
+                <div>
+                  <h4 className="text-sm font-bold text-white">Tham gia Bảng xếp hạng (Leaderboard participation)</h4>
+                  <p className="text-xs text-zinc-400">Hiển thị tên và điểm thi đua trên BXH tuần, tháng và toàn khóa</p>
+                </div>
+                <button
+                  onClick={() =>
+                    setPrivacy({
+                      ...privacy,
+                      leaderboardParticipation: !privacy.leaderboardParticipation,
+                    })
+                  }
+                  className={`w-12 h-6 rounded-full transition-colors relative shrink-0 ${
+                    privacy.leaderboardParticipation ? "bg-red-600" : "bg-zinc-700"
+                  }`}
+                >
+                  <div
+                    className={`w-4 h-4 rounded-full bg-white transition-transform absolute top-1 ${
+                      privacy.leaderboardParticipation ? "translate-x-7" : "translate-x-1"
+                    }`}
+                  />
+                </button>
+              </div>
+
+              <div className="p-4 rounded-xl bg-zinc-900/60 border border-zinc-800 flex items-center justify-between">
+                <div>
+                  <h4 className="text-sm font-bold text-white">Chế độ thi đua ẩn danh (Anonymous Mode)</h4>
+                  <p className="text-xs text-zinc-400">Ẩn tên thật và avatar khi xuất hiện trên Bảng xếp hạng (thay bằng "Học viên ẩn danh")</p>
+                </div>
+                <button
+                  onClick={() =>
+                    setPrivacy({
+                      ...privacy,
+                      anonymousOnLeaderboard: !privacy.anonymousOnLeaderboard,
+                    })
+                  }
+                  className={`w-12 h-6 rounded-full transition-colors relative shrink-0 ${
+                    privacy.anonymousOnLeaderboard ? "bg-red-600" : "bg-zinc-700"
+                  }`}
+                >
+                  <div
+                    className={`w-4 h-4 rounded-full bg-white transition-transform absolute top-1 ${
+                      privacy.anonymousOnLeaderboard ? "translate-x-7" : "translate-x-1"
+                    }`}
+                  />
+                </button>
+              </div>
+            </div>
+          </div>
+
+          {/* 4 & 5. Data Sharing & Analytics Consent */}
+          <div className="p-6 rounded-2xl bg-zinc-900/40 border border-zinc-800/60 space-y-4">
+            <div className="flex items-start gap-3">
+              <div className="w-9 h-9 rounded-xl bg-emerald-600/10 border border-emerald-500/20 flex items-center justify-center shrink-0 text-emerald-400">
+                <Share2 className="w-4 h-4" />
+              </div>
+              <div>
+                <h3 className="text-base font-bold text-white">4 & 5. Chia sẻ dữ liệu & Đồng ý phân tích (Data & Analytics)</h3>
+                <p className="text-xs text-zinc-400 mt-0.5">
+                  Đóng góp dữ liệu ẩn danh để hệ thống AI nâng cao chất lượng bài giảng và gợi ý lộ trình học.
+                </p>
+              </div>
+            </div>
+
+            <div className="space-y-3">
+              <div className="p-4 rounded-xl bg-zinc-900/60 border border-zinc-800 flex items-center justify-between">
+                <div>
+                  <h4 className="text-sm font-bold text-white">Chia sẻ dữ liệu học tập ẩn danh (Data sharing)</h4>
+                  <p className="text-xs text-zinc-400">
+                    Cho phép hệ thống sử dụng kết quả làm bài đã mã hóa ẩn danh để huấn luyện AI dự đoán bẫy đề thi
+                  </p>
+                </div>
+                <button
+                  onClick={() => setPrivacy({ ...privacy, dataSharing: !privacy.dataSharing })}
+                  className={`w-12 h-6 rounded-full transition-colors relative shrink-0 ${
+                    privacy.dataSharing ? "bg-red-600" : "bg-zinc-700"
+                  }`}
+                >
+                  <div
+                    className={`w-4 h-4 rounded-full bg-white transition-transform absolute top-1 ${
+                      privacy.dataSharing ? "translate-x-7" : "translate-x-1"
+                    }`}
+                  />
+                </button>
+              </div>
+
+              <div className="p-4 rounded-xl bg-zinc-900/60 border border-zinc-800 flex items-center justify-between">
+                <div>
+                  <h4 className="text-sm font-bold text-white">Đồng ý thu thập phân tích trải nghiệm (Analytics consent)</h4>
+                  <p className="text-xs text-zinc-400">
+                    Ghi nhận thời lượng giải câu hỏi và thao tác để tự động tối ưu hóa giao diện cho bạn
+                  </p>
+                </div>
+                <button
+                  onClick={() => setPrivacy({ ...privacy, analyticsConsent: !privacy.analyticsConsent })}
+                  className={`w-12 h-6 rounded-full transition-colors relative shrink-0 ${
+                    privacy.analyticsConsent ? "bg-red-600" : "bg-zinc-700"
+                  }`}
+                >
+                  <div
+                    className={`w-4 h-4 rounded-full bg-white transition-transform absolute top-1 ${
+                      privacy.analyticsConsent ? "translate-x-7" : "translate-x-1"
+                    }`}
+                  />
+                </button>
+              </div>
+            </div>
+          </div>
+
+          {/* 6. Cookie Preferences */}
+          <div className="p-6 rounded-2xl bg-zinc-900/40 border border-zinc-800/60 space-y-4">
+            <div className="flex items-start gap-3">
+              <div className="w-9 h-9 rounded-xl bg-amber-600/10 border border-amber-500/20 flex items-center justify-center shrink-0 text-amber-400">
+                <Cookie className="w-4 h-4" />
+              </div>
+              <div>
+                <h3 className="text-base font-bold text-white">6. Quản lý Cookie & Bộ nhớ đệm (Cookie preferences)</h3>
+                <p className="text-xs text-zinc-400 mt-0.5">
+                  Tùy chỉnh các nhóm Cookie lưu trữ cục bộ trên trình duyệt của bạn.
+                </p>
+              </div>
+            </div>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div className="p-4 rounded-xl bg-zinc-900/60 border border-zinc-800 flex items-center justify-between">
+                <div>
+                  <div className="flex items-center gap-2">
+                    <h4 className="text-sm font-bold text-white">Cookie thiết yếu (Essential)</h4>
+                    <span className="px-2 py-0.5 rounded text-[10px] bg-zinc-800 text-zinc-400 font-bold">Bắt buộc</span>
+                  </div>
+                  <p className="text-xs text-zinc-400 mt-0.5">Duy trì phiên đăng nhập và bảo mật tài khoản</p>
+                </div>
+                <div className="w-12 h-6 rounded-full bg-red-600/60 relative cursor-not-allowed">
+                  <div className="w-4 h-4 rounded-full bg-white absolute top-1 translate-x-7" />
+                </div>
+              </div>
+
+              <div className="p-4 rounded-xl bg-zinc-900/60 border border-zinc-800 flex items-center justify-between">
+                <div>
+                  <h4 className="text-sm font-bold text-white">Cookie chức năng (Functional)</h4>
+                  <p className="text-xs text-zinc-400 mt-0.5">Ghi nhớ tùy chọn giao diện và cài đặt học tập</p>
+                </div>
+                <button
+                  onClick={() =>
+                    setPrivacy({
+                      ...privacy,
+                      cookiePreferences: {
+                        ...privacy.cookiePreferences,
+                        functional: !privacy.cookiePreferences.functional,
+                      },
+                    })
+                  }
+                  className={`w-12 h-6 rounded-full transition-colors relative shrink-0 ${
+                    privacy.cookiePreferences.functional ? "bg-red-600" : "bg-zinc-700"
+                  }`}
+                >
+                  <div
+                    className={`w-4 h-4 rounded-full bg-white transition-transform absolute top-1 ${
+                      privacy.cookiePreferences.functional ? "translate-x-7" : "translate-x-1"
+                    }`}
+                  />
+                </button>
+              </div>
+
+              <div className="p-4 rounded-xl bg-zinc-900/60 border border-zinc-800 flex items-center justify-between">
+                <div>
+                  <h4 className="text-sm font-bold text-white">Cookie phân tích (Analytics)</h4>
+                  <p className="text-xs text-zinc-400 mt-0.5">Đo lường hiệu suất tải trang và lỗi hệ thống</p>
+                </div>
+                <button
+                  onClick={() =>
+                    setPrivacy({
+                      ...privacy,
+                      cookiePreferences: {
+                        ...privacy.cookiePreferences,
+                        analytics: !privacy.cookiePreferences.analytics,
+                      },
+                    })
+                  }
+                  className={`w-12 h-6 rounded-full transition-colors relative shrink-0 ${
+                    privacy.cookiePreferences.analytics ? "bg-red-600" : "bg-zinc-700"
+                  }`}
+                >
+                  <div
+                    className={`w-4 h-4 rounded-full bg-white transition-transform absolute top-1 ${
+                      privacy.cookiePreferences.analytics ? "translate-x-7" : "translate-x-1"
+                    }`}
+                  />
+                </button>
+              </div>
+
+              <div className="p-4 rounded-xl bg-zinc-900/60 border border-zinc-800 flex items-center justify-between">
+                <div>
+                  <h4 className="text-sm font-bold text-white">Cookie tiếp thị (Marketing)</h4>
+                  <p className="text-xs text-zinc-400 mt-0.5">Gợi ý ưu đãi và chương trình học bổng phù hợp</p>
+                </div>
+                <button
+                  onClick={() =>
+                    setPrivacy({
+                      ...privacy,
+                      cookiePreferences: {
+                        ...privacy.cookiePreferences,
+                        marketing: !privacy.cookiePreferences.marketing,
+                      },
+                    })
+                  }
+                  className={`w-12 h-6 rounded-full transition-colors relative shrink-0 ${
+                    privacy.cookiePreferences.marketing ? "bg-red-600" : "bg-zinc-700"
+                  }`}
+                >
+                  <div
+                    className={`w-4 h-4 rounded-full bg-white transition-transform absolute top-1 ${
+                      privacy.cookiePreferences.marketing ? "translate-x-7" : "translate-x-1"
+                    }`}
+                  />
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+
       {/* Floating Save Bar */}
       <div className="p-4 rounded-2xl bg-zinc-900/80 border border-zinc-800 backdrop-blur-md sticky bottom-4 flex items-center justify-between gap-4 shadow-2xl">
         <div className="flex items-center gap-2 text-xs text-zinc-400">
@@ -2464,9 +2874,12 @@ export default function SettingsHubPage() {
               } else if (activeTab === "accessibility") {
                 setAccessibility(DEFAULT_ACCESSIBILITY_SETTINGS);
                 showToast("Đã khôi phục cài đặt trợ năng mặc định");
-              } else {
+              } else if (activeTab === "language") {
                 setLanguage(DEFAULT_LANGUAGE_SETTINGS);
                 showToast("Đã khôi phục cài đặt ngôn ngữ mặc định");
+              } else {
+                setPrivacy(DEFAULT_PRIVACY_SETTINGS);
+                showToast("Đã khôi phục cài đặt quyền riêng tư mặc định");
               }
             }}
             className="px-4 py-2 bg-zinc-800 hover:bg-zinc-700 text-zinc-300 text-xs font-semibold rounded-lg transition-colors"
@@ -2478,7 +2891,8 @@ export default function SettingsHubPage() {
               if (activeTab === "study") handleSaveStudySettings();
               else if (activeTab === "appearance") handleSaveAppearanceSettings();
               else if (activeTab === "accessibility") handleSaveAccessibilitySettings();
-              else handleSaveLanguageSettings();
+              else if (activeTab === "language") handleSaveLanguageSettings();
+              else handleSavePrivacySettings();
             }}
             disabled={saving}
             className="px-6 py-2 bg-red-600 hover:bg-red-700 text-white text-xs font-bold rounded-lg transition-colors disabled:opacity-50 flex items-center gap-1.5"
