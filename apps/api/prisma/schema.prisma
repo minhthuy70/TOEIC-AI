@@ -53,6 +53,9 @@ model User {
   leaderboardSnapshots      LeaderboardSnapshot[]
   leaderboardHistory        LeaderboardHistory[]
   leaderboardNotifications  LeaderboardNotification[]
+  userChallenges            UserChallenge[]
+  challengeProgress         ChallengeProgress[]
+  createdChallenges         Challenge[] @relation("ChallengeCreator")
 }
 
 model UserSession {
@@ -676,6 +679,7 @@ model Badge {
   createdAt   DateTime @default(now()) @map("created_at") @db.Timestamp(6)
 
   userBadges  UserBadge[]
+  challengeRewards Challenge[] @relation("ChallengeBadge")
 
   @@index([category])
   @@index([rarity])
@@ -816,4 +820,79 @@ model LeaderboardNotification {
   @@index([type])
   @@index([createdAt])
   @@map("leaderboard_notifications")
+}
+
+model Challenge {
+  id                Int      @id @default(autoincrement())
+  title             String   @db.VarChar(255)
+  description       String?  @db.Text
+  type              String   @db.VarChar(20) // daily, weekly, monthly, special, custom
+  category          String   @db.VarChar(50) // vocabulary, listening, reading, grammar, practice, test
+  criteria          String   @db.Text // JSON string containing challenge criteria
+  targetValue       Int      @map("target_value")
+  rewards           String   @db.Text // JSON string containing rewards (points, badges, etc.)
+  pointsReward      Int      @default(0) @map("points_reward")
+  badgeRewardId     Int?     @map("badge_reward_id")
+  startDate         DateTime @map("start_date") @db.Timestamp(6)
+  endDate           DateTime @map("end_date") @db.Timestamp(6)
+  isActive          Boolean  @default(true) @map("is_active")
+  maxParticipants   Int?     @map("max_participants")
+  currentParticipants Int    @default(0) @map("current_participants")
+  difficulty        String   @default("medium") @db.VarChar(20) // easy, medium, hard, expert
+  createdBy         Int?     @map("created_by") // null for system challenges
+  createdAt         DateTime @default(now()) @map("created_at") @db.Timestamp(6)
+  updatedAt         DateTime @default(now()) @updatedAt @map("updated_at") @db.Timestamp(6)
+
+  userChallenges    UserChallenge[]
+  challengeProgress ChallengeProgress[]
+  badgeReward       Badge?   @relation("ChallengeBadge", fields: [badgeRewardId], references: [id])
+  creator           User?    @relation("ChallengeCreator", fields: [createdBy], references: [id])
+
+  @@index([type])
+  @@index([category])
+  @@index([isActive])
+  @@index([startDate, endDate])
+  @@index([createdBy])
+  @@map("challenges")
+}
+
+model UserChallenge {
+  id                Int      @id @default(autoincrement())
+  userId            Int      @map("user_id")
+  challengeId       Int      @map("challenge_id")
+  status            String   @default("pending") @db.VarChar(20) // pending, accepted, declined, completed, failed
+  acceptedAt        DateTime? @map("accepted_at") @db.Timestamp(6)
+  completedAt       DateTime? @map("completed_at") @db.Timestamp(6)
+  progress          Int      @default(0)
+  score             Int?     // Final score/achievement
+  rewardsReceived   String?  @map("rewards_received") @db.Text // JSON string of received rewards
+  createdAt         DateTime @default(now()) @map("created_at") @db.Timestamp(6)
+  updatedAt         DateTime @default(now()) @updatedAt @map("updated_at") @db.Timestamp(6)
+
+  user              User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  challenge         Challenge @relation(fields: [challengeId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, challengeId])
+  @@index([userId])
+  @@index([challengeId])
+  @@index([status])
+  @@map("user_challenges")
+}
+
+model ChallengeProgress {
+  id                Int      @id @default(autoincrement())
+  userId            Int      @map("user_id")
+  challengeId       Int      @map("challenge_id")
+  progressType      String   @map("progress_type") @db.VarChar(50) // vocabulary_learned, lessons_completed, etc.
+  currentValue      Int      @map("current_value")
+  targetValue       Int      @map("target_value")
+  recordedAt        DateTime @default(now()) @map("recorded_at") @db.Timestamp(6)
+
+  user              User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  challenge         Challenge @relation(fields: [challengeId], references: [id], onDelete: Cascade)
+
+  @@index([userId, challengeId])
+  @@index([challengeId])
+  @@index([recordedAt])
+  @@map("challenge_progress")
 }

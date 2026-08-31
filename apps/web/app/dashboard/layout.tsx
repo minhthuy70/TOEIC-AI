@@ -27,6 +27,7 @@ import {
   Star,
   TrendingUp,
   Award,
+  Target,
 } from "lucide-react";
 import { useAutoLogout } from "../../hooks/useAutoLogout";
 import { useSessionWarning } from "../../hooks/useSessionWarning";
@@ -55,6 +56,7 @@ const NAV_BOTTOM = [
   { label: "Hệ thống điểm", icon: Star, href: "/dashboard/points" },
   { label: "Cấp độ & Huy hiệu", icon: Award, href: "/dashboard/badges" },
   { label: "Bảng xếp hạng", icon: TrendingUp, href: "/dashboard/leaderboard" },
+  { label: "Thử thách", icon: Target, href: "/dashboard/challenges" },
   { label: "Nhắc nhở", icon: Bell, href: "/dashboard/reminders" },
   { label: "Hồ sơ cá nhân", icon: UserIcon, href: "/dashboard/profile" },
 ];
