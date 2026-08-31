@@ -23,6 +23,7 @@ import { LevelsModule } from "./levels/levels.module";
 import { BadgesModule } from "./badges/badges.module";
 import { FriendsModule } from "./friends/friends.module";
 import { ChallengesModule } from "./challenges/challenges.module";
+import { RewardsModule } from "./rewards/rewards.module";
 
 @Module({
   imports: [
@@ -57,6 +58,7 @@ import { ChallengesModule } from "./challenges/challenges.module";
     BadgesModule,
     FriendsModule,
     ChallengesModule,
+    RewardsModule,
   ],
 })
 export class AppModule {}

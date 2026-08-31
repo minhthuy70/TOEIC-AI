@@ -56,6 +56,9 @@ model User {
   userChallenges            UserChallenge[]
   challengeProgress         ChallengeProgress[]
   createdChallenges         Challenge[] @relation("ChallengeCreator")
+  rewardRedemptions         RewardRedemption[]
+  rewardShares              RewardShare[]
+  rewardNotifications       RewardNotification[]
 }
 
 model UserSession {
@@ -895,4 +898,100 @@ model ChallengeProgress {
   @@index([challengeId])
   @@index([recordedAt])
   @@map("challenge_progress")
+}
+
+model Reward {
+  id                Int      @id @default(autoincrement())
+  name              String   @db.VarChar(255)
+  description       String?  @db.Text
+  category          String   @db.VarChar(50) // discount, premium_content, physical_item, digital_item, experience
+  pointsCost        Int      @map("points_cost")
+  value             String?  @db.Text // JSON string containing reward value
+  imageUrl          String?  @map("image_url")
+  isActive          Boolean  @default(true) @map("is_active")
+  isSpecial         Boolean  @default(false) @map("is_special")
+  isLimited         Boolean  @default(false) @map("is_limited")
+  limitedQuantity   Int?     @map("limited_quantity")
+  currentQuantity   Int      @default(0) @map("current_quantity")
+  availableFrom     DateTime? @map("available_from") @db.Timestamp(6)
+  availableUntil    DateTime? @map("available_until") @db.Timestamp(6)
+  terms             String?  @db.Text
+  createdAt         DateTime @default(now()) @map("created_at") @db.Timestamp(6)
+  updatedAt         DateTime @default(now()) @updatedAt @map("updated_at") @db.Timestamp(6)
+
+  rewardRedemptions RewardRedemption[]
+  rewardShares      RewardShare[]
+
+  @@index([category])
+  @@index([isActive])
+  @@index([isSpecial])
+  @@index([isLimited])
+  @@index([availableFrom, availableUntil])
+  @@map("rewards")
+}
+
+model RewardRedemption {
+  id                Int      @id @default(autoincrement())
+  userId            Int      @map("user_id")
+  rewardId          Int      @map("reward_id")
+  pointsSpent       Int      @map("points_spent")
+  status            String   @default("pending") @db.VarChar(20) // pending, completed, cancelled, expired
+  redemptionCode    String?  @map("redemption_code") @db.VarChar(50)
+  redeemedAt        DateTime? @map("redeemed_at") @db.Timestamp(6)
+  expiresAt         DateTime? @map("expires_at") @db.Timestamp(6)
+  notes             String?  @db.Text
+  createdAt         DateTime @default(now()) @map("created_at") @db.Timestamp(6)
+  updatedAt         DateTime @default(now()) @updatedAt @map("updated_at") @db.Timestamp(6)
+
+  user              User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  reward            Reward    @relation(fields: [rewardId], references: [id], onDelete: Cascade)
+
+  @@unique([redemptionCode], map: "uq_reward_redemption_code")
+  @@index([userId])
+  @@index([rewardId])
+  @@index([status])
+  @@index([expiresAt])
+  @@map("reward_redemptions")
+}
+
+model RewardShare {
+  id                Int      @id @default(autoincrement())
+  userId            Int      @map("user_id")
+  rewardId          Int      @map("reward_id")
+  shareCode         String   @map("share_code") @db.VarChar(20)
+  sharedAt          DateTime @default(now()) @map("shared_at") @db.Timestamp(6)
+  expiresAt         DateTime @map("expires_at") @db.Timestamp(6)
+  maxUses           Int      @default(1) @map("max_uses")
+  currentUses       Int      @default(0) @map("current_uses")
+  bonusPoints       Int      @default(0) @map("bonus_points")
+
+  user              User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  reward            Reward    @relation(fields: [rewardId], references: [id], onDelete: Cascade)
+
+  @@unique([shareCode], map: "uq_reward_share_code")
+  @@index([userId])
+  @@index([rewardId])
+  @@index([expiresAt])
+  @@map("reward_shares")
+}
+
+model RewardNotification {
+  id                Int      @id @default(autoincrement())
+  userId            Int      @map("user_id")
+  type              String   @db.VarChar(50) // reward_available, reward_expiring, reward_redeemed, bonus_earned
+  title             String   @db.VarChar(255)
+  message           String?  @db.Text
+  rewardId          Int?     @map("reward_id")
+  redemptionId      Int?     @map("redemption_id")
+  bonusPoints       Int?     @map("bonus_points")
+  isRead            Boolean  @default(false) @map("is_read")
+  createdAt         DateTime @default(now()) @map("created_at") @db.Timestamp(6)
+
+  user              User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@index([isRead])
+  @@index([type])
+  @@index([createdAt])
+  @@map("reward_notifications")
 }

@@ -28,6 +28,7 @@ import {
   TrendingUp,
   Award,
   Target,
+  Gift,
 } from "lucide-react";
 import { useAutoLogout } from "../../hooks/useAutoLogout";
 import { useSessionWarning } from "../../hooks/useSessionWarning";
@@ -57,6 +58,7 @@ const NAV_BOTTOM = [
   { label: "Cấp độ & Huy hiệu", icon: Award, href: "/dashboard/badges" },
   { label: "Bảng xếp hạng", icon: TrendingUp, href: "/dashboard/leaderboard" },
   { label: "Thử thách", icon: Target, href: "/dashboard/challenges" },
+  { label: "Phần thưởng", icon: Gift, href: "/dashboard/rewards" },
   { label: "Nhắc nhở", icon: Bell, href: "/dashboard/reminders" },
   { label: "Hồ sơ cá nhân", icon: UserIcon, href: "/dashboard/profile" },
 ];
