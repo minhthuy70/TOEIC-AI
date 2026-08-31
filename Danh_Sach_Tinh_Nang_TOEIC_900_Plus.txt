@@ -1070,15 +1070,15 @@ Dựa trên lộ trình học TOEIC 900+ - Phiên bản nâng cấp
 ================================================================================
 
 15.1. Friends System (Hệ thống bạn bè)
-- Send friend request - Gửi lời mời kết bạn
-- Accept friend request - Chấp nhận lời mời kết bạn
-- Decline friend request - Từ chối lời mời kết bạn
-- Friend list - Danh sách bạn bè
-- Friend profile view - Xem hồ sơ bạn bè
-- Friend progress view - Xem tiến độ bạn bè
-- Compare with friend - So sánh với bạn bè
-- Remove friend - Xóa bạn bè
-- Block user - Chặn người dùng
+[x] - Send friend request - Gửi lời mời kết bạn
+[x] - Accept friend request - Chấp nhận lời mời kết bạn
+[x] - Decline friend request - Từ chối lời mời kết bạn
+[x] - Friend list - Danh sách bạn bè
+[x] - Friend profile view - Xem hồ sơ bạn bè
+[x] - Friend progress view - Xem tiến độ bạn bè
+[x] - Compare with friend - So sánh với bạn bè
+[x] - Remove friend - Xóa bạn bè
+[x] - Block user - Chặn người dùng
 
 15.2. Social Sharing (Chia sẻ xã hội)
 - Share progress on social media - Chia sẻ tiến độ trên mạng xã hội

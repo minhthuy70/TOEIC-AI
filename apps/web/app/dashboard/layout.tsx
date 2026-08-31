@@ -34,6 +34,7 @@ import {
   DownloadCloud,
   Radio,
   LayoutGrid,
+  Users,
 } from "lucide-react";
 import { useAutoLogout } from "../../hooks/useAutoLogout";
 import { useSessionWarning } from "../../hooks/useSessionWarning";
@@ -65,6 +66,7 @@ const NAV_BOTTOM = [
   { label: "Thử thách", icon: Target, href: "/dashboard/challenges" },
   { label: "Phần thưởng", icon: Gift, href: "/dashboard/rewards" },
   { label: "Thông báo", icon: BellRing, href: "/dashboard/notifications" },
+  { label: "Bạn Bè", icon: Users, href: "/dashboard/friends" },
   { label: "Học Ngoại Tuyến", icon: DownloadCloud, href: "/dashboard/offline" },
   { label: "Âm Thanh Nền", icon: Radio, href: "/dashboard/audio-player" },
   { label: "Tiện Ích Widgets", icon: LayoutGrid, href: "/dashboard/widgets" },
