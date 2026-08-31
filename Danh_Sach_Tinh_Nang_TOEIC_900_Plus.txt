@@ -1004,15 +1004,15 @@ Dựa trên lộ trình học TOEIC 900+ - Phiên bản nâng cấp
 [x] - Auto-advance settings - Cài đặt tự động chuyển
 
 13.3. Appearance Settings (Cài đặt giao diện)
-- Theme selection (light/dark/custom) - Chọn chủ đề (sáng/tối/tùy chỉnh)
-- Font size selection - Chọn cỡ chữ
-- Font family selection - Chọn font chữ
-- Color scheme - Lược màu
-- Background color - Màu nền
-- Text color - Màu văn bản
-- Accent color - Màu nhấn
-- High contrast mode - Chế độ tương phản cao
-- Reduce motion - Giảm chuyển động
+[x] - Theme selection (light/dark/custom) - Chọn chủ đề (sáng/tối/tùy chỉnh)
+[x] - Font size selection - Chọn cỡ chữ
+[x] - Font family selection - Chọn font chữ
+[x] - Color scheme - Lược màu
+[x] - Background color - Màu nền
+[x] - Text color - Màu văn bản
+[x] - Accent color - Màu nhấn
+[x] - High contrast mode - Chế độ tương phản cao
+[x] - Reduce motion - Giảm chuyển động
 
 13.4. Accessibility Settings (Cài đặt truy cập)
 - Screen reader support - Hỗ trợ trình đọc màn hình

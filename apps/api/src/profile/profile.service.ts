@@ -892,4 +892,42 @@ async uploadAvatar(userId: number, file: any) {
       data,
     };
   }
+
+  async getAppearanceSettings(userId: number) {
+    const profile = await this.prisma.userProfile.findUnique({
+      where: { userId },
+    });
+
+    return {
+      success: true,
+      data: {
+        theme: profile?.darkMode === false ? "light" : "dark",
+        fontSize: "md",
+        fontFamily: "inter",
+        colorScheme: "ruby",
+        backgroundColor: "#09090b",
+        textColor: "#ffffff",
+        accentColor: "#dc2626",
+        highContrast: false,
+        reduceMotion: false,
+      },
+    };
+  }
+
+  async updateAppearanceSettings(userId: number, data: any) {
+    if (data.theme !== undefined) {
+      const darkMode = data.theme !== "light";
+      await this.prisma.userProfile.upsert({
+        where: { userId },
+        update: { darkMode },
+        create: { userId, darkMode },
+      });
+    }
+
+    return {
+      success: true,
+      message: "Cài đặt giao diện đã được lưu thành công",
+      data,
+    };
+  }
 }

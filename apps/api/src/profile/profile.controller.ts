@@ -150,6 +150,16 @@ updateStudySettings(@Req() req: any, @Body() body: any) {
   return this.profileService.updateStudySettings(req.user.userId, body);
 }
 
+@Get("appearance-settings")
+getAppearanceSettings(@Req() req: any) {
+  return this.profileService.getAppearanceSettings(req.user.userId);
+}
+
+@Put("appearance-settings")
+updateAppearanceSettings(@Req() req: any, @Body() body: any) {
+  return this.profileService.updateAppearanceSettings(req.user.userId, body);
+}
+
 @Post("delete-account")
 deleteAccount(@Req() req: any, @Body() body: { password?: string; reason?: string }) {
   return this.profileService.deleteAccount(req.user.userId, body.password, body.reason);
