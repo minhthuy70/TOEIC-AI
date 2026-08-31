@@ -1089,14 +1089,14 @@ Dựa trên lộ trình học TOEIC 900+ - Phiên bản nâng cấp
 [x] - Share image generation - Tạo hình ảnh chia sẻ
 
 15.3. Study Groups (Nhóm học tập)
-- Create study group - Tạo nhóm học tập
-- Join study group - Tham gia nhóm học tập
-- Group chat - Trò chuyện nhóm
-- Group challenges - Thử thách nhóm
-- Group leaderboard - Bảng xếp hạng nhóm
-- Group progress tracking - Theo dõi tiến độ nhóm
-- Group activities - Hoạt động nhóm
-- Leave group - Rời nhóm
+[x] - Create study group - Tạo nhóm học tập
+[x] - Join study group - Tham gia nhóm học tập
+[x] - Group chat - Trò chuyện nhóm
+[x] - Group challenges - Thử thách nhóm
+[x] - Group leaderboard - Bảng xếp hạng nhóm
+[x] - Group progress tracking - Theo dõi tiến độ nhóm
+[x] - Group activities - Hoạt động nhóm
+[x] - Leave group - Rời nhóm
 
 ================================================================================
 

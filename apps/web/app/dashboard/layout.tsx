@@ -36,6 +36,7 @@ import {
   LayoutGrid,
   Users,
   Share2,
+  UsersRound,
 } from "lucide-react";
 import { useAutoLogout } from "../../hooks/useAutoLogout";
 import { useSessionWarning } from "../../hooks/useSessionWarning";
@@ -68,6 +69,7 @@ const NAV_BOTTOM = [
   { label: "Phần thưởng", icon: Gift, href: "/dashboard/rewards" },
   { label: "Thông báo", icon: BellRing, href: "/dashboard/notifications" },
   { label: "Bạn Bè", icon: Users, href: "/dashboard/friends" },
+  { label: "Nhóm Học Tập", icon: UsersRound, href: "/dashboard/study-groups" },
   { label: "Chia Sẻ Thành Tích", icon: Share2, href: "/dashboard/social-share" },
   { label: "Học Ngoại Tuyến", icon: DownloadCloud, href: "/dashboard/offline" },
   { label: "Âm Thanh Nền", icon: Radio, href: "/dashboard/audio-player" },
