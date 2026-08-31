@@ -48,6 +48,11 @@ model User {
   userLevels                UserLevel[]
   userBadges                UserBadge[]
   levelUpNotifications      LevelUpNotification[]
+  friendsAsUser             Friend[] @relation("UserFriends")
+  friendsAsFriend           Friend[] @relation("FriendUsers")
+  leaderboardSnapshots      LeaderboardSnapshot[]
+  leaderboardHistory        LeaderboardHistory[]
+  leaderboardNotifications  LeaderboardNotification[]
 }
 
 model UserSession {
@@ -733,4 +738,82 @@ model PointsTransaction {
   @@index([type])
   @@index([createdAt])
   @@map("points_transactions")
+}
+
+model Friend {
+  id         Int      @id @default(autoincrement())
+  userId     Int      @map("user_id")
+  friendId   Int      @map("friend_id")
+  status     String   @default("pending") @db.VarChar(20) // pending, accepted, blocked
+  createdAt  DateTime @default(now()) @map("created_at") @db.Timestamp(6)
+  updatedAt  DateTime @default(now()) @updatedAt @map("updated_at") @db.Timestamp(6)
+
+  user       User     @relation("UserFriends", fields: [userId], references: [id], onDelete: Cascade)
+  friend     User     @relation("FriendUsers", fields: [friendId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, friendId])
+  @@index([userId])
+  @@index([friendId])
+  @@index([status])
+  @@map("friends")
+}
+
+model LeaderboardSnapshot {
+  id              Int      @id @default(autoincrement())
+  userId          Int      @map("user_id")
+  rank            Int
+  pointsBalance   Int      @map("points_balance")
+  category        String   @default("global") @db.VarChar(50) // global, vocabulary, listening, reading
+  period          String   @db.VarChar(20) // all_time, weekly, monthly
+  periodStart     DateTime @map("period_start") @db.Timestamp(6)
+  periodEnd       DateTime @map("period_end") @db.Timestamp(6)
+  createdAt       DateTime @default(now()) @map("created_at") @db.Timestamp(6)
+
+  user            User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@index([category])
+  @@index([period])
+  @@index([periodStart, periodEnd])
+  @@map("leaderboard_snapshots")
+}
+
+model LeaderboardHistory {
+  id              Int      @id @default(autoincrement())
+  userId          Int      @map("user_id")
+  previousRank    Int?     @map("previous_rank")
+  currentRank     Int      @map("current_rank")
+  rankChange      Int      @map("rank_change") // Positive = moved up, Negative = moved down
+  category        String   @default("global") @db.VarChar(50)
+  period          String   @db.VarChar(20)
+  recordedAt      DateTime @default(now()) @map("recorded_at") @db.Timestamp(6)
+
+  user            User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@index([category])
+  @@index([period])
+  @@index([recordedAt])
+  @@map("leaderboard_history")
+}
+
+model LeaderboardNotification {
+  id              Int      @id @default(autoincrement())
+  userId          Int      @map("user_id")
+  type            String   @db.VarChar(50) // rank_up, rank_down, milestone, friend_achievement
+  title           String   @db.VarChar(255)
+  message         String?  @db.Text
+  previousRank    Int?     @map("previous_rank")
+  currentRank     Int?     @map("current_rank")
+  category        String   @default("global") @db.VarChar(50)
+  isRead          Boolean  @default(false) @map("is_read")
+  createdAt       DateTime @default(now()) @map("created_at") @db.Timestamp(6)
+
+  user            User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@index([isRead])
+  @@index([type])
+  @@index([createdAt])
+  @@map("leaderboard_notifications")
 }

@@ -238,8 +238,61 @@ export class PointsService {
   /**
    * Get leaderboard
    */
-  async getLeaderboard(limit: number = 50, offset: number = 0) {
+  async getLeaderboard(
+    limit: number = 50,
+    offset: number = 0,
+    category: string = "global",
+    period: string = "all_time"
+  ) {
     try {
+      let dateFilter = {};
+      
+      if (period === "weekly") {
+        const weekAgo = new Date();
+        weekAgo.setDate(weekAgo.getDate() - 7);
+        dateFilter = {
+          createdAt: { gte: weekAgo },
+        };
+      } else if (period === "monthly") {
+        const monthAgo = new Date();
+        monthAgo.setMonth(monthAgo.getMonth() - 1);
+        dateFilter = {
+          createdAt: { gte: monthAgo },
+        };
+      }
+
+      let pointsQuery = {};
+      
+      if (category === "vocabulary") {
+        pointsQuery = {
+          sourceType: "vocabulary",
+          ...dateFilter,
+        };
+      } else if (category === "listening") {
+        pointsQuery = {
+          sourceType: "listening",
+          ...dateFilter,
+        };
+      } else if (category === "reading") {
+        pointsQuery = {
+          sourceType: "reading",
+          ...dateFilter,
+        };
+      } else {
+        pointsQuery = dateFilter;
+      }
+
+      // Calculate points for each user based on category and period
+      const userPoints = await this.prisma.pointsTransaction.groupBy({
+        by: ["userId"],
+        where: pointsQuery,
+        _sum: { amount: true },
+      });
+
+      const pointsMap = new Map(
+        userPoints.map((up) => [up.userId, up._sum.amount || 0])
+      );
+
       const users = await this.prisma.userProfile.findMany({
         select: {
           userId: true,
@@ -254,27 +307,38 @@ export class PointsService {
             },
           },
         },
-        orderBy: { pointsBalance: "desc" },
         take: limit,
         skip: offset,
       });
+
+      // Sort users by calculated points
+      const sortedUsers = users
+        .map((user) => ({
+          ...user,
+          calculatedPoints: pointsMap.get(user.userId) || 0,
+        }))
+        .sort((a, b) => b.calculatedPoints - a.calculatedPoints);
 
       const total = await this.prisma.userProfile.count();
 
       return {
         success: true,
         data: {
-          leaderboard: users.map((user, index) => ({
+          leaderboard: sortedUsers.map((user, index) => ({
             rank: offset + index + 1,
             userId: user.userId,
             fullName: user.user.fullName,
             avatarUrl: user.user.avatarUrl,
-            pointsBalance: user.pointsBalance,
+            pointsBalance: category === "global" && period === "all_time" 
+              ? user.pointsBalance 
+              : user.calculatedPoints,
             totalPointsEarned: user.totalPointsEarned,
             streak: user.streak,
           })),
           total,
           hasMore: offset + limit < total,
+          category,
+          period,
         },
       };
     } catch (error) {
@@ -286,7 +350,11 @@ export class PointsService {
   /**
    * Get user's position in leaderboard
    */
-  async getUserLeaderboardPosition(userId: number) {
+  async getUserLeaderboardPosition(
+    userId: number,
+    category: string = "global",
+    period: string = "all_time"
+  ) {
     try {
       const userProfile = await this.prisma.userProfile.findUnique({
         where: { userId },
@@ -297,11 +365,58 @@ export class PointsService {
         throw new Error("User profile not found");
       }
 
-      const usersWithHigherPoints = await this.prisma.userProfile.count({
-        where: {
-          pointsBalance: { gt: userProfile.pointsBalance },
-        },
+      let dateFilter = {};
+      
+      if (period === "weekly") {
+        const weekAgo = new Date();
+        weekAgo.setDate(weekAgo.getDate() - 7);
+        dateFilter = {
+          createdAt: { gte: weekAgo },
+        };
+      } else if (period === "monthly") {
+        const monthAgo = new Date();
+        monthAgo.setMonth(monthAgo.getMonth() - 1);
+        dateFilter = {
+          createdAt: { gte: monthAgo },
+        };
+      }
+
+      let pointsQuery = {};
+      
+      if (category === "vocabulary") {
+        pointsQuery = {
+          sourceType: "vocabulary",
+          ...dateFilter,
+        };
+      } else if (category === "listening") {
+        pointsQuery = {
+          sourceType: "listening",
+          ...dateFilter,
+        };
+      } else if (category === "reading") {
+        pointsQuery = {
+          sourceType: "reading",
+          ...dateFilter,
+        };
+      } else {
+        pointsQuery = dateFilter;
+      }
+
+      const userPoints = await this.prisma.pointsTransaction.groupBy({
+        by: ["userId"],
+        where: pointsQuery,
+        _sum: { amount: true },
       });
+
+      const pointsMap = new Map(
+        userPoints.map((up) => [up.userId, up._sum.amount || 0])
+      );
+
+      const userCalculatedPoints = pointsMap.get(userId) || 0;
+
+      const usersWithHigherPoints = userPoints.filter(
+        (up) => (up._sum.amount || 0) > userCalculatedPoints
+      ).length;
 
       const position = usersWithHigherPoints + 1;
       const totalUsers = await this.prisma.userProfile.count();
@@ -311,12 +426,483 @@ export class PointsService {
         data: {
           position,
           totalUsers,
-          pointsBalance: userProfile.pointsBalance,
+          pointsBalance: category === "global" && period === "all_time" 
+            ? userProfile.pointsBalance 
+            : userCalculatedPoints,
+          category,
+          period,
         },
       };
     } catch (error) {
       console.error("Error fetching user leaderboard position:", error);
       throw new Error("Failed to fetch user leaderboard position");
+    }
+  }
+
+  /**
+   * Get friends leaderboard
+   */
+  async getFriendsLeaderboard(
+    userId: number,
+    limit: number = 50,
+    offset: number = 0,
+    category: string = "global",
+    period: string = "all_time"
+  ) {
+    try {
+      const friends = await this.prisma.friend.findMany({
+        where: {
+          userId,
+          status: "accepted",
+        },
+        select: {
+          friendId: true,
+        },
+      });
+
+      const friendIds = friends.map((f) => f.friendId);
+      friendIds.push(userId); // Include current user
+
+      let dateFilter = {};
+      
+      if (period === "weekly") {
+        const weekAgo = new Date();
+        weekAgo.setDate(weekAgo.getDate() - 7);
+        dateFilter = {
+          createdAt: { gte: weekAgo },
+        };
+      } else if (period === "monthly") {
+        const monthAgo = new Date();
+        monthAgo.setMonth(monthAgo.getMonth() - 1);
+        dateFilter = {
+          createdAt: { gte: monthAgo },
+        };
+      }
+
+      let pointsQuery = {
+        userId: { in: friendIds },
+      };
+      
+      if (category === "vocabulary") {
+        pointsQuery = {
+          ...pointsQuery,
+          sourceType: "vocabulary",
+          ...dateFilter,
+        };
+      } else if (category === "listening") {
+        pointsQuery = {
+          ...pointsQuery,
+          sourceType: "listening",
+          ...dateFilter,
+        };
+      } else if (category === "reading") {
+        pointsQuery = {
+          ...pointsQuery,
+          sourceType: "reading",
+          ...dateFilter,
+        };
+      } else {
+        pointsQuery = {
+          ...pointsQuery,
+          ...dateFilter,
+        };
+      }
+
+      const userPoints = await this.prisma.pointsTransaction.groupBy({
+        by: ["userId"],
+        where: pointsQuery,
+        _sum: { amount: true },
+      });
+
+      const pointsMap = new Map(
+        userPoints.map((up) => [up.userId, up._sum.amount || 0])
+      );
+
+      const users = await this.prisma.userProfile.findMany({
+        where: {
+          userId: { in: friendIds },
+        },
+        select: {
+          userId: true,
+          pointsBalance: true,
+          totalPointsEarned: true,
+          streak: true,
+          user: {
+            select: {
+              id: true,
+              fullName: true,
+              avatarUrl: true,
+            },
+          },
+        },
+        take: limit,
+        skip: offset,
+      });
+
+      const sortedUsers = users
+        .map((user) => ({
+          ...user,
+          calculatedPoints: pointsMap.get(user.userId) || 0,
+        }))
+        .sort((a, b) => b.calculatedPoints - a.calculatedPoints);
+
+      return {
+        success: true,
+        data: {
+          leaderboard: sortedUsers.map((user, index) => ({
+            rank: index + 1,
+            userId: user.userId,
+            fullName: user.user.fullName,
+            avatarUrl: user.user.avatarUrl,
+            pointsBalance: category === "global" && period === "all_time" 
+              ? user.pointsBalance 
+              : user.calculatedPoints,
+            totalPointsEarned: user.totalPointsEarned,
+            streak: user.streak,
+            isCurrentUser: user.userId === userId,
+          })),
+          total: friendIds.length,
+          hasMore: offset + limit < friendIds.length,
+          category,
+          period,
+        },
+      };
+    } catch (error) {
+      console.error("Error fetching friends leaderboard:", error);
+      throw new Error("Failed to fetch friends leaderboard");
+    }
+  }
+
+  /**
+   * Search leaderboard
+   */
+  async searchLeaderboard(
+    searchTerm: string,
+    limit: number = 20,
+    category: string = "global",
+    period: string = "all_time"
+  ) {
+    try {
+      const users = await this.prisma.user.findMany({
+        where: {
+          OR: [
+            { fullName: { contains: searchTerm, mode: "insensitive" } },
+            { email: { contains: searchTerm, mode: "insensitive" } },
+          ],
+        },
+        select: {
+          id: true,
+          fullName: true,
+          avatarUrl: true,
+          profile: {
+            select: {
+              userId: true,
+              pointsBalance: true,
+              totalPointsEarned: true,
+              streak: true,
+            },
+          },
+        },
+        take: limit,
+      });
+
+      let dateFilter = {};
+      
+      if (period === "weekly") {
+        const weekAgo = new Date();
+        weekAgo.setDate(weekAgo.getDate() - 7);
+        dateFilter = {
+          createdAt: { gte: weekAgo },
+        };
+      } else if (period === "monthly") {
+        const monthAgo = new Date();
+        monthAgo.setMonth(monthAgo.getMonth() - 1);
+        dateFilter = {
+          createdAt: { gte: monthAgo },
+        };
+      }
+
+      let pointsQuery = {};
+      
+      if (category === "vocabulary") {
+        pointsQuery = {
+          sourceType: "vocabulary",
+          ...dateFilter,
+        };
+      } else if (category === "listening") {
+        pointsQuery = {
+          sourceType: "listening",
+          ...dateFilter,
+        };
+      } else if (category === "reading") {
+        pointsQuery = {
+          sourceType: "reading",
+          ...dateFilter,
+        };
+      } else {
+        pointsQuery = dateFilter;
+      }
+
+      const userPoints = await this.prisma.pointsTransaction.groupBy({
+        by: ["userId"],
+        where: pointsQuery,
+        _sum: { amount: true },
+      });
+
+      const pointsMap = new Map(
+        userPoints.map((up) => [up.userId, up._sum.amount || 0])
+      );
+
+      const usersWithProfiles = users.filter((u) => u.profile !== null);
+
+      const sortedUsers = usersWithProfiles
+        .map((user) => ({
+          ...user,
+          calculatedPoints: pointsMap.get(user.profile.userId) || 0,
+        }))
+        .sort((a, b) => b.calculatedPoints - a.calculatedPoints);
+
+      return {
+        success: true,
+        data: {
+          leaderboard: sortedUsers.map((user, index) => ({
+            rank: index + 1,
+            userId: user.profile.userId,
+            fullName: user.fullName,
+            avatarUrl: user.avatarUrl,
+            pointsBalance: category === "global" && period === "all_time" 
+              ? user.profile.pointsBalance 
+              : user.calculatedPoints,
+            totalPointsEarned: user.profile.totalPointsEarned,
+            streak: user.profile.streak,
+          })),
+          total: sortedUsers.length,
+          category,
+          period,
+        },
+      };
+    } catch (error) {
+      console.error("Error searching leaderboard:", error);
+      throw new Error("Failed to search leaderboard");
+    }
+  }
+
+  /**
+   * Compare user with friends
+   */
+  async compareWithFriends(userId: number) {
+    try {
+      const friends = await this.prisma.friend.findMany({
+        where: {
+          userId,
+          status: "accepted",
+        },
+        select: {
+          friendId: true,
+        },
+      });
+
+      const friendIds = friends.map((f) => f.friendId);
+      friendIds.push(userId);
+
+      const users = await this.prisma.userProfile.findMany({
+        where: {
+          userId: { in: friendIds },
+        },
+        select: {
+          userId: true,
+          pointsBalance: true,
+          totalPointsEarned: true,
+          streak: true,
+          user: {
+            select: {
+              id: true,
+              fullName: true,
+              avatarUrl: true,
+            },
+          },
+        },
+      });
+
+      const sortedUsers = users.sort((a, b) => b.pointsBalance - a.pointsBalance);
+      const currentUserIndex = sortedUsers.findIndex((u) => u.userId === userId);
+      const currentUser = sortedUsers[currentUserIndex];
+
+      const comparison = {
+        currentUser: {
+          rank: currentUserIndex + 1,
+          userId: currentUser.userId,
+          fullName: currentUser.user.fullName,
+          avatarUrl: currentUser.user.avatarUrl,
+          pointsBalance: currentUser.pointsBalance,
+          streak: currentUser.streak,
+        },
+        friendsAbove: sortedUsers.slice(0, currentUserIndex).map((user, index) => ({
+          rank: index + 1,
+          userId: user.userId,
+          fullName: user.user.fullName,
+          avatarUrl: user.user.avatarUrl,
+          pointsBalance: user.pointsBalance,
+          streak: user.streak,
+        })),
+        friendsBelow: sortedUsers.slice(currentUserIndex + 1).map((user, index) => ({
+          rank: currentUserIndex + 2 + index,
+          userId: user.userId,
+          fullName: user.user.fullName,
+          avatarUrl: user.user.avatarUrl,
+          pointsBalance: user.pointsBalance,
+          streak: user.streak,
+        })),
+        totalFriends: friendIds.length - 1,
+      };
+
+      return {
+        success: true,
+        data: comparison,
+      };
+    } catch (error) {
+      console.error("Error comparing with friends:", error);
+      throw new Error("Failed to compare with friends");
+    }
+  }
+
+  /**
+   * Record leaderboard history
+   */
+  async recordLeaderboardHistory() {
+    try {
+      const users = await this.prisma.userProfile.findMany({
+        select: {
+          userId: true,
+          pointsBalance: true,
+        },
+      });
+
+      const sortedUsers = users.sort((a, b) => b.pointsBalance - a.pointsBalance);
+
+      for (const user of sortedUsers) {
+        const currentRank = sortedUsers.findIndex((u) => u.userId === user.userId) + 1;
+
+        const lastHistory = await this.prisma.leaderboardHistory.findFirst({
+          where: {
+            userId: user.userId,
+            category: "global",
+            period: "all_time",
+          },
+          orderBy: {
+            recordedAt: "desc",
+          },
+        });
+
+        const previousRank = lastHistory?.currentRank || null;
+        const rankChange = previousRank ? previousRank - currentRank : 0;
+
+        await this.prisma.leaderboardHistory.create({
+          data: {
+            userId: user.userId,
+            previousRank,
+            currentRank,
+            rankChange,
+            category: "global",
+            period: "all_time",
+          },
+        });
+
+        // Create notification for significant rank changes
+        if (rankChange > 0 && rankChange >= 5) {
+          await this.prisma.leaderboardNotification.create({
+            data: {
+              userId: user.userId,
+              type: "rank_up",
+              title: "Lên hạng!",
+              message: `Bạn đã tăng ${rankChange} hạng trong bảng xếp hạng toàn cầu`,
+              previousRank,
+              currentRank,
+              category: "global",
+            },
+          });
+        } else if (rankChange < 0 && Math.abs(rankChange) >= 5) {
+          await this.prisma.leaderboardNotification.create({
+            data: {
+              userId: user.userId,
+              type: "rank_down",
+              title: "Xuống hạng",
+              message: `Bạn đã giảm ${Math.abs(rankChange)} hạng trong bảng xếp hạng toàn cầu`,
+              previousRank,
+              currentRank,
+              category: "global",
+            },
+          });
+        }
+      }
+
+      return {
+        success: true,
+        message: "Leaderboard history recorded successfully",
+      };
+    } catch (error) {
+      console.error("Error recording leaderboard history:", error);
+      throw new Error("Failed to record leaderboard history");
+    }
+  }
+
+  /**
+   * Get leaderboard notifications
+   */
+  async getLeaderboardNotifications(userId: number, limit: number = 20) {
+    try {
+      const notifications = await this.prisma.leaderboardNotification.findMany({
+        where: {
+          userId,
+        },
+        orderBy: {
+          createdAt: "desc",
+        },
+        take: limit,
+      });
+
+      const unreadCount = await this.prisma.leaderboardNotification.count({
+        where: {
+          userId,
+          isRead: false,
+        },
+      });
+
+      return {
+        success: true,
+        data: {
+          notifications,
+          unreadCount,
+        },
+      };
+    } catch (error) {
+      console.error("Error fetching leaderboard notifications:", error);
+      throw new Error("Failed to fetch leaderboard notifications");
+    }
+  }
+
+  /**
+   * Mark leaderboard notification as read
+   */
+  async markNotificationAsRead(notificationId: number, userId: number) {
+    try {
+      await this.prisma.leaderboardNotification.updateMany({
+        where: {
+          id: notificationId,
+          userId,
+        },
+        data: {
+          isRead: true,
+        },
+      });
+
+      return {
+        success: true,
+        message: "Notification marked as read",
+      };
+    } catch (error) {
+      console.error("Error marking notification as read:", error);
+      throw new Error("Failed to mark notification as read");
     }
   }
 

@@ -21,6 +21,7 @@ import { ErrorTrackingModule } from "./error-tracking/error-tracking.module";
 import { PointsModule } from "./points/points.module";
 import { LevelsModule } from "./levels/levels.module";
 import { BadgesModule } from "./badges/badges.module";
+import { FriendsModule } from "./friends/friends.module";
 
 @Module({
   imports: [
@@ -53,6 +54,7 @@ import { BadgesModule } from "./badges/badges.module";
     PointsModule,
     LevelsModule,
     BadgesModule,
+    FriendsModule,
   ],
 })
 export class AppModule {}
