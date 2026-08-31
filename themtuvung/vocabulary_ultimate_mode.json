@@ -1,0 +1,4414 @@
+[
+  {
+    "id": null,
+    "english": "abide",
+    "type": "verb",
+    "vietnamese": "chịu đựng; ở lại",
+    "pronounce": "/əˈbaɪd/",
+    "explain": "Chịu đựng hoặc tiếp tục tồn tại. Trong cấu trúc 'abide by' có nghĩa tuân thủ.",
+    "example": "She couldn't abide the noise from the construction.",
+    "example_vietnamese": "Cô ấy không thể chịu đựng tiếng ồn từ công trường.",
+    "image_url": null,
+    "audio_url": null,
+    "difficulty": "medium",
+    "cefr_level": "B2",
+    "toeic_level": 600,
+    "frequency": 35,
+    "synonyms": [
+      "tolerate",
+      "endure",
+      "bear"
+    ],
+    "antonyms": [
+      "reject",
+      "refuse"
+    ],
+    "word_family": [
+      "abiding"
+    ],
+    "collocations": [
+      "abide by the rules",
+      "abide by the law"
+    ],
+    "phrasal_verbs": [
+      "abide by"
+    ],
+    "grammar_pattern": "abide by + N (when meaning 'comply')",
+    "common_mistakes": "Thường dùng 'abide by' cho nghĩa tuân thủ, 'abide' ít dùng độc lập.",
+    "usage_note": "Trang trọng, dùng trong văn bản pháp lý hoặc khi nói về chịu đựng.",
+    "topic": "General Business Operations",
+    "mnemonic": null,
+    "mnemonic_type": null,
+    "memory_tip": "Abide = chịu đựng; abide by = tuân thủ.",
+    "is_common": true,
+    "stage": 3,
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": null,
+    "english": "abide by",
+    "type": "phrasal verb",
+    "vietnamese": "tuân thủ; chấp hành",
+    "pronounce": "/əˈbaɪd baɪ/",
+    "explain": "Tuân thủ hoặc làm theo các quy tắc, luật pháp.",
+    "example": "All employees must abide by the company's safety regulations.",
+    "example_vietnamese": "Tất cả nhân viên phải tuân thủ quy định an toàn của công ty.",
+    "image_url": null,
+    "audio_url": null,
+    "difficulty": "medium",
+    "cefr_level": "B2",
+    "toeic_level": 600,
+    "frequency": 40,
+    "synonyms": [
+      "comply with",
+      "follow",
+      "adhere to"
+    ],
+    "antonyms": [
+      "violate",
+      "disregard"
+    ],
+    "word_family": [],
+    "collocations": [
+      "abide by the rules",
+      "abide by the agreement"
+    ],
+    "phrasal_verbs": [],
+    "grammar_pattern": "abide by + N",
+    "common_mistakes": null,
+    "usage_note": "Trang trọng, dùng trong ngữ cảnh pháp lý.",
+    "topic": "General Business Operations",
+    "mnemonic": null,
+    "mnemonic_type": null,
+    "memory_tip": "Abide by = tuân thủ (cụm từ cố định).",
+    "is_common": true,
+    "stage": 3,
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": null,
+    "english": "ability",
+    "type": "noun",
+    "vietnamese": "khả năng; năng lực",
+    "pronounce": "/əˈbɪləti/",
+    "explain": "Sức mạnh hoặc kỹ năng để làm điều gì đó.",
+    "example": "She has the ability to manage complex projects effectively.",
+    "example_vietnamese": "Cô ấy có khả năng quản lý các dự án phức tạp một cách hiệu quả.",
+    "image_url": null,
+    "audio_url": null,
+    "difficulty": "easy",
+    "cefr_level": "A2",
+    "toeic_level": 500,
+    "frequency": 95,
+    "synonyms": [
+      "capability",
+      "skill",
+      "competence"
+    ],
+    "antonyms": [
+      "inability",
+      "incapacity"
+    ],
+    "word_family": [
+      "able",
+      "enable"
+    ],
+    "collocations": [
+      "ability to do something",
+      "demonstrate ability"
+    ],
+    "phrasal_verbs": [],
+    "grammar_pattern": "ability to + V",
+    "common_mistakes": "Thường dùng 'of doing' thay vì 'to do' - cấu trúc 'to do' phổ biến hơn.",
+    "usage_note": "Countable khi nói về khả năng cụ thể.",
+    "topic": "General Business Operations",
+    "mnemonic": null,
+    "mnemonic_type": null,
+    "memory_tip": "Ability = khả năng (nhớ cấu trúc TO DO).",
+    "is_common": true,
+    "stage": 2,
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": null,
+    "english": "abolish",
+    "type": "verb",
+    "vietnamese": "bãi bỏ; xóa bỏ",
+    "pronounce": "/əˈbɒlɪʃ/",
+    "explain": "Chấm dứt chính thức một hệ thống hoặc thực hành.",
+    "example": "The government abolished the outdated tax law.",
+    "example_vietnamese": "Chính phủ đã bãi bỏ luật thuế lỗi thời.",
+    "image_url": null,
+    "audio_url": null,
+    "difficulty": "medium",
+    "cefr_level": "B2",
+    "toeic_level": 700,
+    "frequency": 25,
+    "synonyms": [
+      "eliminate",
+      "terminate"
+    ],
+    "antonyms": [
+      "establish",
+      "implement"
+    ],
+    "word_family": [
+      "abolition"
+    ],
+    "collocations": [
+      "abolish a law",
+      "abolish a system"
+    ],
+    "phrasal_verbs": [],
+    "grammar_pattern": "abolish + N",
+    "common_mistakes": null,
+    "usage_note": "Trang trọng, dùng cho hệ thống hoặc luật.",
+    "topic": "General Business Operations",
+    "mnemonic": null,
+    "mnemonic_type": null,
+    "memory_tip": "Abolish = xóa bỏ hoàn toàn.",
+    "is_common": false,
+    "stage": 4,
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": null,
+    "english": "abrupt",
+    "type": "adjective",
+    "vietnamese": "đột ngột",
+    "pronounce": "/əˈbrʌpt/",
+    "explain": "Xảy ra đột ngột và không mong đợi.",
+    "example": "There was an abrupt change in the schedule.",
+    "example_vietnamese": "Có sự thay đổi đột ngột trong lịch trình.",
+    "image_url": null,
+    "audio_url": null,
+    "difficulty": "medium",
+    "cefr_level": "B2",
+    "toeic_level": 600,
+    "frequency": 30,
+    "synonyms": [
+      "sudden",
+      "unexpected"
+    ],
+    "antonyms": [
+      "gradual",
+      "smooth"
+    ],
+    "word_family": [
+      "abruptly"
+    ],
+    "collocations": [
+      "abrupt change",
+      "abrupt departure"
+    ],
+    "phrasal_verbs": [],
+    "grammar_pattern": "Common usage",
+    "common_mistakes": null,
+    "usage_note": "Dùng cho sự thay đổi đột ngột.",
+    "topic": "General Business Operations",
+    "mnemonic": null,
+    "mnemonic_type": null,
+    "memory_tip": "Abrupt = đột ngột như phanh gấp.",
+    "is_common": true,
+    "stage": 3,
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": null,
+    "english": "absorb",
+    "type": "verb",
+    "vietnamese": "thấm hút; hấp thụ; sáp nhập",
+    "pronounce": "/əbˈzɔːb/",
+    "explain": "Hấp thụ hoặc sáp nhập vào tổ chức.",
+    "example": "The company absorbed the startup last year.",
+    "example_vietnamese": "Công ty đã sáp nhập startup năm ngoái.",
+    "image_url": null,
+    "audio_url": null,
+    "difficulty": "medium",
+    "cefr_level": "B1",
+    "toeic_level": 600,
+    "frequency": 50,
+    "synonyms": [
+      "assimilate",
+      "incorporate"
+    ],
+    "antonyms": [
+      "release",
+      "emit"
+    ],
+    "word_family": [
+      "absorption",
+      "absorbent"
+    ],
+    "collocations": [
+      "absorb information",
+      "absorb costs"
+    ],
+    "phrasal_verbs": [],
+    "grammar_pattern": "absorb + N",
+    "common_mistakes": null,
+    "usage_note": "Dùng trong tài chính khi nói về sáp nhập.",
+    "topic": "Finance & Banking",
+    "mnemonic": null,
+    "mnemonic_type": null,
+    "memory_tip": "Absorb = hút vào hoặc sáp nhập.",
+    "is_common": true,
+    "stage": 3,
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": null,
+    "english": "abundant",
+    "type": "adjective",
+    "vietnamese": "dồi dào; phong phú",
+    "pronounce": "/əˈbʌndənt/",
+    "explain": "Tồn tại với số lượng lớn.",
+    "example": "The region has abundant natural resources.",
+    "example_vietnamese": "Vùng này có tài nguyên thiên nhiên dồi dào.",
+    "image_url": null,
+    "audio_url": null,
+    "difficulty": "medium",
+    "cefr_level": "B2",
+    "toeic_level": 600,
+    "frequency": 45,
+    "synonyms": [
+      "plentiful",
+      "ample"
+    ],
+    "antonyms": [
+      "scarce",
+      "limited"
+    ],
+    "word_family": [
+      "abundance"
+    ],
+    "collocations": [
+      "abundant resources",
+      "abundant evidence"
+    ],
+    "phrasal_verbs": [],
+    "grammar_pattern": "Common usage",
+    "common_mistakes": null,
+    "usage_note": "Dùng để miêu tả số lượng lớn.",
+    "topic": "Manufacturing & Production",
+    "mnemonic": null,
+    "mnemonic_type": null,
+    "memory_tip": "Abundant = nhiều đến mức thừa.",
+    "is_common": true,
+    "stage": 3,
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": null,
+    "english": "accelerate",
+    "type": "verb",
+    "vietnamese": "tăng tốc; thúc đẩy",
+    "pronounce": "/əkˈseləreɪt/",
+    "explain": "Tăng tốc độ hoặc làm quá trình nhanh hơn.",
+    "example": "We need to accelerate the production process.",
+    "example_vietnamese": "Chúng ta cần tăng tốc quy trình sản xuất.",
+    "image_url": null,
+    "audio_url": null,
+    "difficulty": "medium",
+    "cefr_level": "B2",
+    "toeic_level": 600,
+    "frequency": 55,
+    "synonyms": [
+      "speed up",
+      "hasten"
+    ],
+    "antonyms": [
+      "decelerate",
+      "slow down"
+    ],
+    "word_family": [
+      "acceleration",
+      "accelerator"
+    ],
+    "collocations": [
+      "accelerate growth",
+      "accelerate development"
+    ],
+    "phrasal_verbs": [],
+    "grammar_pattern": "accelerate + N",
+    "common_mistakes": "Phát âm thường có vấn đề: /əkˈseləreɪt/.",
+    "usage_note": "Dùng khi nói về tăng tốc độ.",
+    "topic": "Manufacturing & Production",
+    "mnemonic": null,
+    "mnemonic_type": null,
+    "memory_tip": "Accelerate = làm nhanh hơn.",
+    "is_common": true,
+    "stage": 3,
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": null,
+    "english": "accept",
+    "type": "verb",
+    "vietnamese": "chấp nhận; đồng ý",
+    "pronounce": "/əkˈsept/",
+    "explain": "Đồng ý nhận hoặc đồng ý với đề xuất.",
+    "example": "The board accepted the proposal.",
+    "example_vietnamese": "Hội đồng chấp nhận đề xuất.",
+    "image_url": null,
+    "audio_url": null,
+    "difficulty": "easy",
+    "cefr_level": "A1",
+    "toeic_level": 400,
+    "frequency": 98,
+    "synonyms": [
+      "approve",
+      "agree to"
+    ],
+    "antonyms": [
+      "reject",
+      "refuse"
+    ],
+    "word_family": [
+      "acceptable",
+      "acceptance"
+    ],
+    "collocations": [
+      "accept an offer",
+      "accept a proposal"
+    ],
+    "phrasal_verbs": [],
+    "grammar_pattern": "accept + N",
+    "common_mistakes": "Thường nhầm với 'except' (ngoại trừ) - hai từ phát âm giống nhau.",
+    "usage_note": "Động từ cơ bản trong kinh doanh.",
+    "topic": "General Business Operations",
+    "mnemonic": null,
+    "mnemonic_type": null,
+    "memory_tip": "Accept = nói 'có' với cái gì đó.",
+    "is_common": true,
+    "stage": 1,
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": null,
+    "english": "access",
+    "type": "noun",
+    "vietnamese": "quyền truy cập; sự tiếp cận",
+    "pronounce": "/ˈækses/",
+    "explain": "Quyền hoặc cơ hội để sử dụng cái gì đó.",
+    "example": "Employees need access to the database.",
+    "example_vietnamese": "Nhân viên cần quyền truy cập vào cơ sở dữ liệu.",
+    "image_url": null,
+    "audio_url": null,
+    "difficulty": "easy",
+    "cefr_level": "A2",
+    "toeic_level": 500,
+    "frequency": 92,
+    "synonyms": [
+      "entry",
+      "admission"
+    ],
+    "antonyms": [
+      "denial",
+      "restriction"
+    ],
+    "word_family": [
+      "accessible",
+      "accessibility"
+    ],
+    "collocations": [
+      "have access to",
+      "gain access"
+    ],
+    "phrasal_verbs": [],
+    "grammar_pattern": "have access to + N",
+    "common_mistakes": "Thường nhầm với 'excess' (thừa) - hai từ phát âm giống nhau.",
+    "usage_note": "Phổ biến trong IT và kinh doanh.",
+    "topic": "Technical Areas & IT",
+    "mnemonic": null,
+    "mnemonic_type": null,
+    "memory_tip": "Access = quyền vào hoặc được dùng.",
+    "is_common": true,
+    "stage": 2,
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": null,
+    "english": "accessible",
+    "type": "adjective",
+    "vietnamese": "có thể tiếp cận được",
+    "pronounce": "/əkˈsesəbl/",
+    "explain": "Dễ dàng tiếp cận hoặc sử dụng.",
+    "example": "The system is accessible to all users.",
+    "example_vietnamese": "Hệ thống có thể tiếp cận được cho tất cả người dùng.",
+    "image_url": null,
+    "audio_url": null,
+    "difficulty": "medium",
+    "cefr_level": "B1",
+    "toeic_level": 500,
+    "frequency": 60,
+    "synonyms": [
+      "available",
+      "obtainable"
+    ],
+    "antonyms": [
+      "inaccessible",
+      "unavailable"
+    ],
+    "word_family": [
+      "access",
+      "accessibility"
+    ],
+    "collocations": [
+      "accessible to",
+      "easily accessible"
+    ],
+    "phrasal_verbs": [],
+    "grammar_pattern": "accessible to + N",
+    "common_mistakes": null,
+    "usage_note": "Dùng trong IT và dịch vụ.",
+    "topic": "Technical Areas & IT",
+    "mnemonic": null,
+    "mnemonic_type": null,
+    "memory_tip": "Accessible = ai cũng có thể dùng được.",
+    "is_common": true,
+    "stage": 2,
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": null,
+    "english": "accommodate",
+    "type": "verb",
+    "vietnamese": "đáp ứng; cung cấp chỗ ở",
+    "pronounce": "/əˈkɒmədeɪt/",
+    "explain": "Đáp ứng nhu cầu hoặc cung cấp chỗ ở.",
+    "example": "The hotel can accommodate 200 guests.",
+    "example_vietnamese": "Khách sạn có thể đáp ứng 200 khách.",
+    "image_url": null,
+    "audio_url": null,
+    "difficulty": "medium",
+    "cefr_level": "B2",
+    "toeic_level": 600,
+    "frequency": 50,
+    "synonyms": [
+      "house",
+      "suit"
+    ],
+    "antonyms": [
+      "reject",
+      "refuse"
+    ],
+    "word_family": [
+      "accommodation",
+      "accommodating"
+    ],
+    "collocations": [
+      "accommodate requests",
+      "accommodate guests"
+    ],
+    "phrasal_verbs": [],
+    "grammar_pattern": "accommodate + N",
+    "common_mistakes": null,
+    "usage_note": "Dùng trong khách sạn và dịch vụ.",
+    "topic": "Travel & Transportation",
+    "mnemonic": null,
+    "mnemonic_type": null,
+    "memory_tip": "Accommodate = làm cho phù hợp với nhu cầu.",
+    "is_common": true,
+    "stage": 3,
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": null,
+    "english": "accompany",
+    "type": "verb",
+    "vietnamese": "đi cùng; hộ tống",
+    "pronounce": "/əˈkʌmpəni/",
+    "explain": "Đi cùng với ai đó.",
+    "example": "The manager will accompany the delegation.",
+    "example_vietnamese": "Giám đốc sẽ hộ tống phái đoàn.",
+    "image_url": null,
+    "audio_url": null,
+    "difficulty": "medium",
+    "cefr_level": "B1",
+    "toeic_level": 500,
+    "frequency": 55,
+    "synonyms": [
+      "escort",
+      "attend"
+    ],
+    "antonyms": [
+      "leave",
+      "abandon"
+    ],
+    "word_family": [
+      "accompaniment",
+      "accompanying"
+    ],
+    "collocations": [
+      "accompany someone",
+      "be accompanied by"
+    ],
+    "phrasal_verbs": [],
+    "grammar_pattern": "accompany + N",
+    "common_mistakes": null,
+    "usage_note": "Dùng khi đi cùng đối tác.",
+    "topic": "General Business Operations",
+    "mnemonic": null,
+    "mnemonic_type": null,
+    "memory_tip": "Accompany = đi cùng ai đó.",
+    "is_common": true,
+    "stage": 2,
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": null,
+    "english": "accomplish",
+    "type": "verb",
+    "vietnamese": "hoàn thành; đạt được",
+    "pronounce": "/əˈkʌmplɪʃ/",
+    "explain": "Hoàn thành thành công một mục tiêu.",
+    "example": "We accomplished the sales target.",
+    "example_vietnamese": "Chúng ta hoàn thành mục tiêu doanh số.",
+    "image_url": null,
+    "audio_url": null,
+    "difficulty": "medium",
+    "cefr_level": "B2",
+    "toeic_level": 600,
+    "frequency": 45,
+    "synonyms": [
+      "achieve",
+      "complete",
+      "fulfill"
+    ],
+    "antonyms": [
+      "fail",
+      "abandon"
+    ],
+    "word_family": [
+      "accomplishment",
+      "accomplished"
+    ],
+    "collocations": [
+      "accomplish a goal",
+      "accomplish a task"
+    ],
+    "phrasal_verbs": [],
+    "grammar_pattern": "accomplish + N",
+    "common_mistakes": null,
+    "usage_note": "Dùng khi nói về hoàn thành mục tiêu.",
+    "topic": "General Business Operations",
+    "mnemonic": null,
+    "mnemonic_type": null,
+    "memory_tip": "Accomplish = làm xong và làm tốt.",
+    "is_common": true,
+    "stage": 3,
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": null,
+    "english": "accomplishment",
+    "type": "noun",
+    "vietnamese": "thành tựu",
+    "pronounce": "/əˈkʌmplɪʃmənt/",
+    "explain": "Điều gì đó đã đạt được thành công.",
+    "example": "Her promotion was a significant accomplishment.",
+    "example_vietnamese": "Việc thăng chức là một thành tựu đáng kể.",
+    "image_url": null,
+    "audio_url": null,
+    "difficulty": "medium",
+    "cefr_level": "B2",
+    "toeic_level": 600,
+    "frequency": 40,
+    "synonyms": [
+      "achievement",
+      "success",
+      "attainment"
+    ],
+    "antonyms": [
+      "failure",
+      "setback"
+    ],
+    "word_family": [
+      "accomplish",
+      "accomplished"
+    ],
+    "collocations": [
+      "sense of accomplishment",
+      "great accomplishment"
+    ],
+    "phrasal_verbs": [],
+    "grammar_pattern": "Common usage",
+    "common_mistakes": null,
+    "usage_note": "Dùng trong HR và phát triển sự nghiệp.",
+    "topic": "Personnel & Human Resources",
+    "mnemonic": null,
+    "mnemonic_type": null,
+    "memory_tip": "Accomplishment = cái đã làm được thành công.",
+    "is_common": true,
+    "stage": 3,
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": null,
+    "english": "accountant",
+    "type": "noun",
+    "vietnamese": "kế toán viên",
+    "pronounce": "/əˈkaʊntənt/",
+    "explain": "Người chuyên nghiệp chuẩn bị hồ sơ tài chính.",
+    "example": "The accountant reviewed the financial reports.",
+    "example_vietnamese": "Kế toán viên xem xét các báo cáo tài chính.",
+    "image_url": null,
+    "audio_url": null,
+    "difficulty": "easy",
+    "cefr_level": "A2",
+    "toeic_level": 500,
+    "frequency": 65,
+    "synonyms": [
+      "bookkeeper",
+      "auditor"
+    ],
+    "antonyms": [],
+    "word_family": [
+      "account",
+      "accounting"
+    ],
+    "collocations": [
+      "certified accountant",
+      "tax accountant"
+    ],
+    "phrasal_verbs": [],
+    "grammar_pattern": "Common usage",
+    "common_mistakes": null,
+    "usage_note": "Nghề nghiệp trong tài chính.",
+    "topic": "Finance & Banking",
+    "mnemonic": null,
+    "mnemonic_type": null,
+    "memory_tip": "Accountant = người quản lý tài khoản.",
+    "is_common": true,
+    "stage": 2,
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": null,
+    "english": "accounting",
+    "type": "noun",
+    "vietnamese": "kế toán",
+    "pronounce": "/əˈkaʊntɪŋ/",
+    "explain": "Quá trình ghi chép và báo cáo tài chính.",
+    "example": "Proper accounting is essential for business.",
+    "example_vietnamese": "Kế toán đúng cách là thiết yếu cho kinh doanh.",
+    "image_url": null,
+    "audio_url": null,
+    "difficulty": "easy",
+    "cefr_level": "A2",
+    "toeic_level": 500,
+    "frequency": 60,
+    "synonyms": [
+      "bookkeeping"
+    ],
+    "antonyms": [],
+    "word_family": [
+      "account",
+      "accountant"
+    ],
+    "collocations": [
+      "accounting department",
+      "accounting software"
+    ],
+    "phrasal_verbs": [],
+    "grammar_pattern": "Common usage",
+    "common_mistakes": null,
+    "usage_note": "Lĩnh vực tài chính doanh nghiệp.",
+    "topic": "Finance & Banking",
+    "mnemonic": null,
+    "mnemonic_type": null,
+    "memory_tip": "Accounting = việc ghi chép tiền bạc.",
+    "is_common": true,
+    "stage": 2,
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": null,
+    "english": "accumulate",
+    "type": "verb",
+    "vietnamese": "tích lũy; gom góp",
+    "pronounce": "/əˈkjuːmjəleɪt/",
+    "explain": "Tích lũy hoặc thu thập dần dần.",
+    "example": "The company accumulated significant capital.",
+    "example_vietnamese": "Công ty tích lũy vốn đáng kể.",
+    "image_url": null,
+    "audio_url": null,
+    "difficulty": "medium",
+    "cefr_level": "B2",
+    "toeic_level": 600,
+    "frequency": 45,
+    "synonyms": [
+      "gather",
+      "collect",
+      "build up"
+    ],
+    "antonyms": [
+      "distribute",
+      "deplete"
+    ],
+    "word_family": [
+      "accumulation",
+      "accumulative"
+    ],
+    "collocations": [
+      "accumulate wealth",
+      "accumulate data"
+    ],
+    "phrasal_verbs": [],
+    "grammar_pattern": "accumulate + N",
+    "common_mistakes": "Phát âm thường có vấn đề: /əˈkjuːmjəleɪt/.",
+    "usage_note": "Dùng trong tài chính khi nói về tích lũy.",
+    "topic": "Finance & Banking",
+    "mnemonic": null,
+    "mnemonic_type": null,
+    "memory_tip": "Accumulate = gom dần dần.",
+    "is_common": true,
+    "stage": 3,
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": null,
+    "english": "accurately",
+    "type": "adverb",
+    "vietnamese": "chính xác",
+    "pronounce": "/ˈækjərətli/",
+    "explain": "Một cách chính xác, không có sai sót.",
+    "example": "The data was accurately recorded.",
+    "example_vietnamese": "Dữ liệu được ghi chép chính xác.",
+    "image_url": null,
+    "audio_url": null,
+    "difficulty": "medium",
+    "cefr_level": "B1",
+    "toeic_level": 500,
+    "frequency": 55,
+    "synonyms": [
+      "precisely",
+      "correctly",
+      "exactly"
+    ],
+    "antonyms": [
+      "inaccurately",
+      "incorrectly"
+    ],
+    "word_family": [
+      "accurate",
+      "accuracy"
+    ],
+    "collocations": [
+      "report accurately",
+      "measure accurately"
+    ],
+    "phrasal_verbs": [],
+    "grammar_pattern": "Common usage",
+    "common_mistakes": null,
+    "usage_note": "Quan trọng trong báo cáo và phân tích.",
+    "topic": "General Business Operations",
+    "mnemonic": null,
+    "mnemonic_type": null,
+    "memory_tip": "Accurately = làm đúng y như cần.",
+    "is_common": true,
+    "stage": 2,
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": null,
+    "english": "accustom to",
+    "type": "phrase",
+    "vietnamese": "làm quen với",
+    "pronounce": "/əˈkʌstəm tuː/",
+    "explain": "Làm cho ai đó trở nên quen với cái gì đó.",
+    "example": "Employees need time to accustom to the new system.",
+    "example_vietnamese": "Nhân viên cần thời gian để làm quen với hệ thống mới.",
+    "image_url": null,
+    "audio_url": null,
+    "difficulty": "medium",
+    "cefr_level": "B2",
+    "toeic_level": 600,
+    "frequency": 20,
+    "synonyms": [
+      "get used to",
+      "become familiar with"
+    ],
+    "antonyms": [],
+    "word_family": [
+      "custom",
+      "accustomed"
+    ],
+    "collocations": [
+      "accustom to changes",
+      "accustom to new environment"
+    ],
+    "phrasal_verbs": [],
+    "grammar_pattern": "accustom to + N/V-ing",
+    "common_mistakes": null,
+    "usage_note": "Trang trọng, văn nói thường dùng 'get used to'.",
+    "topic": "General Business Operations",
+    "mnemonic": null,
+    "mnemonic_type": null,
+    "memory_tip": "Accustom to = làm cho trở nên quen thuộc.",
+    "is_common": false,
+    "stage": 3,
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": null,
+    "english": "achievement",
+    "type": "noun",
+    "vietnamese": "thành tựu",
+    "pronounce": "/əˈtʃiːvmənt/",
+    "explain": "Một điều đã đạt được thành công.",
+    "example": "The project was a significant achievement.",
+    "example_vietnamese": "Dự án là một thành tựu đáng kể.",
+    "image_url": null,
+    "audio_url": null,
+    "difficulty": "medium",
+    "cefr_level": "B2",
+    "toeic_level": 600,
+    "frequency": 45,
+    "synonyms": [
+      "accomplishment",
+      "success",
+      "attainment"
+    ],
+    "antonyms": [
+      "failure",
+      "setback"
+    ],
+    "word_family": [
+      "achieve",
+      "achievable"
+    ],
+    "collocations": [
+      "great achievement",
+      "significant achievement"
+    ],
+    "phrasal_verbs": [],
+    "grammar_pattern": "Common usage",
+    "common_mistakes": null,
+    "usage_note": "Dùng trong HR và phát triển sự nghiệp.",
+    "topic": "Personnel & Human Resources",
+    "mnemonic": null,
+    "mnemonic_type": null,
+    "memory_tip": "Achievement = cái đã đạt được sau nỗ lực.",
+    "is_common": true,
+    "stage": 3,
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": null,
+    "english": "acknowledge",
+    "type": "verb",
+    "vietnamese": "thừa nhận; công nhận",
+    "pronounce": "/əkˈnɒlɪdʒ/",
+    "explain": "Chấp nhận sự tồn tại hoặc thật của cái gì đó.",
+    "example": "The manager acknowledged the team's contribution.",
+    "example_vietnamese": "Giám đốc công nhận đóng góp của đội.",
+    "image_url": null,
+    "audio_url": null,
+    "difficulty": "medium",
+    "cefr_level": "B2",
+    "toeic_level": 600,
+    "frequency": 50,
+    "synonyms": [
+      "recognize",
+      "admit",
+      "confirm"
+    ],
+    "antonyms": [
+      "deny",
+      "reject",
+      "ignore"
+    ],
+    "word_family": [
+      "acknowledgment",
+      "acknowledged"
+    ],
+    "collocations": [
+      "acknowledge receipt",
+      "acknowledge contribution"
+    ],
+    "phrasal_verbs": [],
+    "grammar_pattern": "acknowledge + N/V-ing",
+    "common_mistakes": null,
+    "usage_note": "Dùng khi xác nhận hoặc công nhận.",
+    "topic": "General Business Operations",
+    "mnemonic": null,
+    "mnemonic_type": null,
+    "memory_tip": "Acknowledge = nói rằng mình biết hoặc nhận.",
+    "is_common": true,
+    "stage": 3,
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": null,
+    "english": "acquire",
+    "type": "verb",
+    "vietnamese": "thu được; mua lại",
+    "pronounce": "/əˈkwaɪə(r)/",
+    "explain": "Có được hoặc mua lại tài sản hoặc công ty.",
+    "example": "The company plans to acquire a competitor.",
+    "example_vietnamese": "Công ty dự định mua lại một đối thủ.",
+    "image_url": null,
+    "audio_url": null,
+    "difficulty": "medium",
+    "cefr_level": "B2",
+    "toeic_level": 700,
+    "frequency": 45,
+    "synonyms": [
+      "obtain",
+      "gain",
+      "purchase"
+    ],
+    "antonyms": [
+      "lose",
+      "sell",
+      "divest"
+    ],
+    "word_family": [
+      "acquisition",
+      "acquired"
+    ],
+    "collocations": [
+      "acquire a company",
+      "acquire skills"
+    ],
+    "phrasal_verbs": [],
+    "grammar_pattern": "acquire + N",
+    "common_mistakes": null,
+    "usage_note": "Thường dùng trong M&A.",
+    "topic": "Finance & Banking",
+    "mnemonic": null,
+    "mnemonic_type": null,
+    "memory_tip": "Acquire = có được cái gì đó.",
+    "is_common": true,
+    "stage": 4,
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": null,
+    "english": "acquisition",
+    "type": "noun",
+    "vietnamese": "sự mua lại",
+    "pronounce": "/ˌækwɪˈzɪʃn/",
+    "explain": "Hành động có được hoặc mua lại.",
+    "example": "The acquisition cost millions of dollars.",
+    "example_vietnamese": "Việc mua lại tốn hàng triệu đô la.",
+    "image_url": null,
+    "audio_url": null,
+    "difficulty": "medium",
+    "cefr_level": "B2",
+    "toeic_level": 700,
+    "frequency": 40,
+    "synonyms": [
+      "purchase",
+      "takeover"
+    ],
+    "antonyms": [
+      "disposal",
+      "sale"
+    ],
+    "word_family": [
+      "acquire",
+      "acquired"
+    ],
+    "collocations": [
+      "make an acquisition",
+      "acquisition cost"
+    ],
+    "phrasal_verbs": [],
+    "grammar_pattern": "Common usage",
+    "common_mistakes": null,
+    "usage_note": "Thuật ngữ quan trọng trong tài chính.",
+    "topic": "Finance & Banking",
+    "mnemonic": null,
+    "mnemonic_type": null,
+    "memory_tip": "Acquisition = việc mua lại.",
+    "is_common": true,
+    "stage": 4,
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": null,
+    "english": "action",
+    "type": "noun",
+    "vietnamese": "hành động",
+    "pronounce": "/ˈækʃn/",
+    "explain": "Việc làm một cái gì đó.",
+    "example": "Immediate action is required.",
+    "example_vietnamese": "Cần hành động ngay lập tức.",
+    "image_url": null,
+    "audio_url": null,
+    "difficulty": "easy",
+    "cefr_level": "A1",
+    "toeic_level": 400,
+    "frequency": 98,
+    "synonyms": [
+      "act",
+      "step",
+      "measure"
+    ],
+    "antonyms": [
+      "inaction",
+      "inactivity"
+    ],
+    "word_family": [
+      "act",
+      "active"
+    ],
+    "collocations": [
+      "take action",
+      "immediate action"
+    ],
+    "phrasal_verbs": [],
+    "grammar_pattern": "take action",
+    "common_mistakes": null,
+    "usage_note": "Từ cơ bản trong kinh doanh.",
+    "topic": "General Business Operations",
+    "mnemonic": null,
+    "mnemonic_type": null,
+    "memory_tip": "Action = làm cái gì đó.",
+    "is_common": true,
+    "stage": 1,
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": null,
+    "english": "activate",
+    "type": "verb",
+    "vietnamese": "kích hoạt",
+    "pronounce": "/ˈæktɪveɪt/",
+    "explain": "Làm cho một cái gì đó trở nên hoạt động.",
+    "example": "Please activate your account.",
+    "example_vietnamese": "Vui lòng kích hoạt tài khoản của bạn.",
+    "image_url": null,
+    "audio_url": null,
+    "difficulty": "medium",
+    "cefr_level": "B1",
+    "toeic_level": 500,
+    "frequency": 45,
+    "synonyms": [
+      "enable",
+      "start",
+      "initiate"
+    ],
+    "antonyms": [
+      "deactivate",
+      "disable"
+    ],
+    "word_family": [
+      "active",
+      "activation"
+    ],
+    "collocations": [
+      "activate account",
+      "activate system"
+    ],
+    "phrasal_verbs": [],
+    "grammar_pattern": "activate + N",
+    "common_mistakes": null,
+    "usage_note": "Thường dùng trong IT.",
+    "topic": "Technical Areas & IT",
+    "mnemonic": null,
+    "mnemonic_type": null,
+    "memory_tip": "Activate = bật lên hoặc làm cho hoạt động.",
+    "is_common": true,
+    "stage": 2,
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": null,
+    "english": "adapt",
+    "type": "verb",
+    "vietnamese": "thích nghi; điều chỉnh",
+    "pronounce": "/əˈdæpt/",
+    "explain": "Thay đổi để phù hợp với điều kiện mới.",
+    "example": "Businesses must adapt to market changes.",
+    "example_vietnamese": "Doanh nghiệp phải thích nghi với thay đổi thị trường.",
+    "image_url": null,
+    "audio_url": null,
+    "difficulty": "medium",
+    "cefr_level": "B2",
+    "toeic_level": 600,
+    "frequency": 55,
+    "synonyms": [
+      "adjust",
+      "modify",
+      "accommodate"
+    ],
+    "antonyms": [
+      "resist",
+      "reject"
+    ],
+    "word_family": [
+      "adaptation",
+      "adaptable"
+    ],
+    "collocations": [
+      "adapt to changes",
+      "adapt to new environment"
+    ],
+    "phrasal_verbs": [],
+    "grammar_pattern": "adapt to + N",
+    "common_mistakes": "Thường nhầm với 'adopt' (chấp nhận) - hai từ phát âm giống nhau.",
+    "usage_note": "Quan trọng trong quản lý thay đổi.",
+    "topic": "General Business Operations",
+    "mnemonic": null,
+    "mnemonic_type": null,
+    "memory_tip": "Adapt = thay đổi để phù hợp.",
+    "is_common": true,
+    "stage": 3,
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": null,
+    "english": "address",
+    "type": "verb",
+    "vietnamese": "giải quyết; xử lý",
+    "pronounce": "/əˈdres/",
+    "explain": "Đối phó với một vấn đề.",
+    "example": "We need to address this issue.",
+    "example_vietnamese": "Chúng ta cần giải quyết vấn đề này.",
+    "image_url": null,
+    "audio_url": null,
+    "difficulty": "medium",
+    "cefr_level": "B1",
+    "toeic_level": 500,
+    "frequency": 65,
+    "synonyms": [
+      "deal with",
+      "handle",
+      "tackle"
+    ],
+    "antonyms": [
+      "ignore",
+      "avoid"
+    ],
+    "word_family": [
+      "addressed",
+      "addressing"
+    ],
+    "collocations": [
+      "address an issue",
+      "address a problem"
+    ],
+    "phrasal_verbs": [],
+    "grammar_pattern": "address + N",
+    "common_mistakes": null,
+    "usage_note": "Dùng khi giải quyết vấn đề.",
+    "topic": "General Business Operations",
+    "mnemonic": null,
+    "mnemonic_type": null,
+    "memory_tip": "Address = giải quyết vấn đề.",
+    "is_common": true,
+    "stage": 2,
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": null,
+    "english": "adequate",
+    "type": "adjective",
+    "vietnamese": "đủ; thích đáng",
+    "pronounce": "/ˈædɪkwət/",
+    "explain": "Đủ cho một mục đích cụ thể.",
+    "example": "The company provides adequate training.",
+    "example_vietnamese": "Công ty cung cấp đào tạo thỏa đáng.",
+    "image_url": null,
+    "audio_url": null,
+    "difficulty": "medium",
+    "cefr_level": "B1",
+    "toeic_level": 500,
+    "frequency": 50,
+    "synonyms": [
+      "sufficient",
+      "enough",
+      "satisfactory"
+    ],
+    "antonyms": [
+      "inadequate",
+      "insufficient"
+    ],
+    "word_family": [
+      "adequacy",
+      "adequately"
+    ],
+    "collocations": [
+      "adequate resources",
+      "adequate time"
+    ],
+    "phrasal_verbs": [],
+    "grammar_pattern": "Common usage",
+    "common_mistakes": "Phát âm thường có vấn đề: /ˈædɪkwət/.",
+    "usage_note": "Dùng khi đánh giá nguồn lực.",
+    "topic": "General Business Operations",
+    "mnemonic": null,
+    "mnemonic_type": null,
+    "memory_tip": "Adequate = đủ dùng.",
+    "is_common": true,
+    "stage": 2,
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": null,
+    "english": "adhere to",
+    "type": "phrasal verb",
+    "vietnamese": "tuân thủ; bám sát",
+    "pronounce": "/ədˈhɪə(r) tuː/",
+    "explain": "Tuân thủ hoặc làm theo quy tắc.",
+    "example": "All staff must adhere to safety guidelines.",
+    "example_vietnamese": "Tất cả nhân viên phải tuân thủ hướng dẫn an toàn.",
+    "image_url": null,
+    "audio_url": null,
+    "difficulty": "medium",
+    "cefr_level": "B2",
+    "toeic_level": 600,
+    "frequency": 35,
+    "synonyms": [
+      "comply with",
+      "follow",
+      "stick to"
+    ],
+    "antonyms": [
+      "violate",
+      "disregard"
+    ],
+    "word_family": [],
+    "collocations": [
+      "adhere to the rules",
+      "adhere to the schedule"
+    ],
+    "phrasal_verbs": [],
+    "grammar_pattern": "adhere to + N",
+    "common_mistakes": null,
+    "usage_note": "Trang trọng hơn 'follow'.",
+    "topic": "General Business Operations",
+    "mnemonic": null,
+    "mnemonic_type": null,
+    "memory_tip": "Adhere to = bám vào và làm theo.",
+    "is_common": true,
+    "stage": 3,
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": null,
+    "english": "adjacent",
+    "type": "adjective",
+    "vietnamese": "kề bên; liền kề",
+    "pronounce": "/əˈdʒeɪsns/",
+    "explain": "Nằm ngay cạnh hoặc gần một cái gì đó.",
+    "example": "The warehouse is adjacent to the factory.",
+    "example_vietnamese": "Kho hàng nằm liền kề nhà máy.",
+    "image_url": null,
+    "audio_url": null,
+    "difficulty": "medium",
+    "cefr_level": "B2",
+    "toeic_level": 600,
+    "frequency": 30,
+    "synonyms": [
+      "next to",
+      "neighboring",
+      "adjoining"
+    ],
+    "antonyms": [
+      "distant",
+      "remote"
+    ],
+    "word_family": [
+      "adjacency"
+    ],
+    "collocations": [
+      "adjacent to",
+      "adjacent room"
+    ],
+    "phrasal_verbs": [],
+    "grammar_pattern": "adjacent to + N",
+    "common_mistakes": null,
+    "usage_note": "Dùng trong bất động sản và logistics.",
+    "topic": "Housing & Real Estate",
+    "mnemonic": null,
+    "mnemonic_type": null,
+    "memory_tip": "Adjacent = ngay bên cạnh.",
+    "is_common": true,
+    "stage": 3,
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": null,
+    "english": "adjourn",
+    "type": "verb",
+    "vietnamese": "hoãn; nghỉ",
+    "pronounce": "/əˈdʒɜːn/",
+    "explain": "Tạm dừng một cuộc họp.",
+    "example": "The meeting was adjourned until Monday.",
+    "example_vietnamese": "Cuộc họp được hoãn đến thứ Hai.",
+    "image_url": null,
+    "audio_url": null,
+    "difficulty": "medium",
+    "cefr_level": "B2",
+    "toeic_level": 700,
+    "frequency": 20,
+    "synonyms": [
+      "postpone",
+      "suspend",
+      "defer"
+    ],
+    "antonyms": [
+      "resume",
+      "continue"
+    ],
+    "word_family": [
+      "adjournment"
+    ],
+    "collocations": [
+      "adjourn the meeting",
+      "adjourn the session"
+    ],
+    "phrasal_verbs": [],
+    "grammar_pattern": "adjourn + N",
+    "common_mistakes": null,
+    "usage_note": "Trang trọng, dùng trong cuộc họp chính thức.",
+    "topic": "General Business Operations",
+    "mnemonic": null,
+    "mnemonic_type": null,
+    "memory_tip": "Adjourn = nghỉ cuộc họp tạm thời.",
+    "is_common": false,
+    "stage": 4,
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": null,
+    "english": "adjustment",
+    "type": "noun",
+    "vietnamese": "sự điều chỉnh",
+    "pronounce": "/əˈdʒʌstmənt/",
+    "explain": "Một sự thay đổi nhỏ.",
+    "example": "We need to make adjustments to the budget.",
+    "example_vietnamese": "Chúng ta cần thực hiện điều chỉnh ngân sách.",
+    "image_url": null,
+    "audio_url": null,
+    "difficulty": "medium",
+    "cefr_level": "B1",
+    "toeic_level": 500,
+    "frequency": 45,
+    "synonyms": [
+      "modification",
+      "alteration",
+      "change"
+    ],
+    "antonyms": [],
+    "word_family": [
+      "adjust",
+      "adjustable"
+    ],
+    "collocations": [
+      "make adjustments",
+      "price adjustment"
+    ],
+    "phrasal_verbs": [],
+    "grammar_pattern": "make adjustments to + N",
+    "common_mistakes": null,
+    "usage_note": "Dùng trong tài chính và dự án.",
+    "topic": "Finance & Banking",
+    "mnemonic": null,
+    "mnemonic_type": null,
+    "memory_tip": "Adjustment = sự sửa đổi nhỏ.",
+    "is_common": true,
+    "stage": 2,
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": null,
+    "english": "administer",
+    "type": "verb",
+    "vietnamese": "quản lý; điều hành",
+    "pronounce": "/ədˈmɪnɪstə(r)/",
+    "explain": "Quản lý hoặc điều hành một tổ chức.",
+    "example": "The department administers the training program.",
+    "example_vietnamese": "Phòng ban quản lý chương trình đào tạo.",
+    "image_url": null,
+    "audio_url": null,
+    "difficulty": "medium",
+    "cefr_level": "B2",
+    "toeic_level": 600,
+    "frequency": 35,
+    "synonyms": [
+      "manage",
+      "oversee",
+      "supervise"
+    ],
+    "antonyms": [
+      "neglect",
+      "ignore"
+    ],
+    "word_family": [
+      "administration",
+      "administrative"
+    ],
+    "collocations": [
+      "administer a program",
+      "administer funds"
+    ],
+    "phrasal_verbs": [],
+    "grammar_pattern": "administer + N",
+    "common_mistakes": null,
+    "usage_note": "Dùng trong quản lý và hành chính.",
+    "topic": "General Business Operations",
+    "mnemonic": null,
+    "mnemonic_type": null,
+    "memory_tip": "Administer = quản lý hoặc điều hành.",
+    "is_common": true,
+    "stage": 3,
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": null,
+    "english": "admire",
+    "type": "verb",
+    "vietnamese": "ngưỡng mộ",
+    "pronounce": "/ədˈmaɪə(r)/",
+    "explain": "Cảm thấy ngưỡng mộ ai đó.",
+    "example": "I admire her dedication to the project.",
+    "example_vietnamese": "Tôi ngưỡng mộ sự tận tâm của cô ấy với dự án.",
+    "image_url": null,
+    "audio_url": null,
+    "difficulty": "easy",
+    "cefr_level": "A2",
+    "toeic_level": 500,
+    "frequency": 55,
+    "synonyms": [
+      "respect",
+      "appreciate",
+      "esteem"
+    ],
+    "antonyms": [
+      "despise",
+      "dislike"
+    ],
+    "word_family": [
+      "admiration",
+      "admirable"
+    ],
+    "collocations": [
+      "admire someone",
+      "greatly admire"
+    ],
+    "phrasal_verbs": [],
+    "grammar_pattern": "admire + N",
+    "common_mistakes": null,
+    "usage_note": "Dùng trong giao tiếp công sở.",
+    "topic": "Personnel & Human Resources",
+    "mnemonic": null,
+    "mnemonic_type": null,
+    "memory_tip": "Admire = nhìn ai đó với sự tôn trọng.",
+    "is_common": true,
+    "stage": 2,
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": null,
+    "english": "admit",
+    "type": "verb",
+    "vietnamese": "thừa nhận; cho vào",
+    "pronounce": "/ədˈmɪt/",
+    "explain": "Thừa nhận một cái gì đó là đúng.",
+    "example": "The manager admitted the mistake.",
+    "example_vietnamese": "Giám đốc thừa nhận sai lầm.",
+    "image_url": null,
+    "audio_url": null,
+    "difficulty": "easy",
+    "cefr_level": "A2",
+    "toeic_level": 500,
+    "frequency": 60,
+    "synonyms": [
+      "acknowledge",
+      "confess",
+      "concede"
+    ],
+    "antonyms": [
+      "deny",
+      "reject"
+    ],
+    "word_family": [
+      "admission",
+      "admissible"
+    ],
+    "collocations": [
+      "admit mistake",
+      "admit fault"
+    ],
+    "phrasal_verbs": [],
+    "grammar_pattern": "admit + N/V-ing",
+    "common_mistakes": null,
+    "usage_note": "Dùng khi thừa nhận sai lầm.",
+    "topic": "General Business Operations",
+    "mnemonic": null,
+    "mnemonic_type": null,
+    "memory_tip": "Admit = nói đúng hoặc cho vào.",
+    "is_common": true,
+    "stage": 2,
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": null,
+    "english": "adopt",
+    "type": "verb",
+    "vietnamese": "thông qua; chấp nhận",
+    "pronounce": "/əˈdɒpt/",
+    "explain": "Chấp nhận hoặc bắt đầu sử dụng phương pháp mới.",
+    "example": "The board adopted the new strategy.",
+    "example_vietnamese": "Hội đồng thông qua chiến lược mới.",
+    "image_url": null,
+    "audio_url": null,
+    "difficulty": "medium",
+    "cefr_level": "B2",
+    "toeic_level": 600,
+    "frequency": 45,
+    "synonyms": [
+      "accept",
+      "implement",
+      "embrace"
+    ],
+    "antonyms": [
+      "reject",
+      "abandon"
+    ],
+    "word_family": [
+      "adoption",
+      "adoptive"
+    ],
+    "collocations": [
+      "adopt a policy",
+      "adopt a method"
+    ],
+    "phrasal_verbs": [],
+    "grammar_pattern": "adopt + N",
+    "common_mistakes": "Thường nhầm với 'adapt' (thích nghi) - hai từ phát âm giống nhau.",
+    "usage_note": "Dùng khi thông qua chính sách.",
+    "topic": "General Business Operations",
+    "mnemonic": null,
+    "mnemonic_type": null,
+    "memory_tip": "Adopt = chấp nhận và bắt đầu dùng.",
+    "is_common": true,
+    "stage": 3,
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": null,
+    "english": "advanced",
+    "type": "adjective",
+    "vietnamese": "nâng cao; tiên tiến",
+    "pronounce": "/ədˈvɑːnst/",
+    "explain": "Có trình độ cao hoặc công nghệ hiện đại.",
+    "example": "The company uses advanced technology.",
+    "example_vietnamese": "Công ty sử dụng công nghệ tiên tiến.",
+    "image_url": null,
+    "audio_url": null,
+    "difficulty": "medium",
+    "cefr_level": "B2",
+    "toeic_level": 600,
+    "frequency": 50,
+    "synonyms": [
+      "sophisticated",
+      "progressive",
+      "high-level"
+    ],
+    "antonyms": [
+      "basic",
+      "elementary"
+    ],
+    "word_family": [
+      "advance",
+      "advancement"
+    ],
+    "collocations": [
+      "advanced technology",
+      "advanced skills"
+    ],
+    "phrasal_verbs": [],
+    "grammar_pattern": "Common usage",
+    "common_mistakes": null,
+    "usage_note": "Dùng để mô tả công nghệ hoặc trình độ cao.",
+    "topic": "Technical Areas & IT",
+    "mnemonic": null,
+    "mnemonic_type": null,
+    "memory_tip": "Advanced = cao cấp hoặc hiện đại.",
+    "is_common": true,
+    "stage": 3,
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": null,
+    "english": "advisory",
+    "type": "adjective",
+    "vietnamese": "tư vấn",
+    "pronounce": "/ədˈvaɪzəri/",
+    "explain": "Cung cấp lời khuyên.",
+    "example": "The company established an advisory board.",
+    "example_vietnamese": "Công ty thành lập hội đồng tư vấn.",
+    "image_url": null,
+    "audio_url": null,
+    "difficulty": "medium",
+    "cefr_level": "B2",
+    "toeic_level": 700,
+    "frequency": 25,
+    "synonyms": [
+      "consultative",
+      "counseling"
+    ],
+    "antonyms": [
+      "mandatory",
+      "compulsory"
+    ],
+    "word_family": [
+      "advise",
+      "advisor"
+    ],
+    "collocations": [
+      "advisory board",
+      "advisory committee"
+    ],
+    "phrasal_verbs": [],
+    "grammar_pattern": "Common usage",
+    "common_mistakes": null,
+    "usage_note": "Dùng trong quản trị khi nói về cơ quan tư vấn.",
+    "topic": "General Business Operations",
+    "mnemonic": null,
+    "mnemonic_type": null,
+    "memory_tip": "Advisory = chỉ đưa lời khuyên.",
+    "is_common": false,
+    "stage": 4,
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": null,
+    "english": "advocate",
+    "type": "verb",
+    "vietnamese": "ủng hộ; cổ vũ",
+    "pronounce": "/ˈædvəkeɪt/",
+    "explain": "Ủng hộ công khai một nguyên nhân.",
+    "example": "The CEO advocates for sustainable practices.",
+    "example_vietnamese": "CEO ủng hộ các thực hành bền vững.",
+    "image_url": null,
+    "audio_url": null,
+    "difficulty": "medium",
+    "cefr_level": "B2",
+    "toeic_level": 700,
+    "frequency": 30,
+    "synonyms": [
+      "support",
+      "promote",
+      "champion"
+    ],
+    "antonyms": [
+      "oppose",
+      "criticize"
+    ],
+    "word_family": [
+      "advocacy",
+      "advocation"
+    ],
+    "collocations": [
+      "advocate for",
+      "advocate change"
+    ],
+    "phrasal_verbs": [],
+    "grammar_pattern": "advocate for + N",
+    "common_mistakes": null,
+    "usage_note": "Dùng trong lãnh đạo và CSR.",
+    "topic": "General Business Operations",
+    "mnemonic": null,
+    "mnemonic_type": null,
+    "memory_tip": "Advocate = nói chuyện ủng hộ cái gì đó.",
+    "is_common": true,
+    "stage": 4,
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": null,
+    "english": "affiliate",
+    "type": "verb",
+    "vietnamese": "liên kết",
+    "pronounce": "/əˈfɪlieɪt/",
+    "explain": "Kết nối chính thức với tổ chức lớn hơn.",
+    "example": "Our company is affiliated with international partners.",
+    "example_vietnamese": "Công ty chúng tôi liên kết với đối tác quốc tế.",
+    "image_url": null,
+    "audio_url": null,
+    "difficulty": "medium",
+    "cefr_level": "B2",
+    "toeic_level": 700,
+    "frequency": 25,
+    "synonyms": [
+      "associate",
+      "connect",
+      "link"
+    ],
+    "antonyms": [
+      "separate",
+      "detach"
+    ],
+    "word_family": [
+      "affiliation",
+      "affiliated"
+    ],
+    "collocations": [
+      "affiliate with",
+      "affiliate company"
+    ],
+    "phrasal_verbs": [],
+    "grammar_pattern": "affiliate with + N",
+    "common_mistakes": null,
+    "usage_note": "Dùng trong mô hình kinh doanh.",
+    "topic": "Sales & Marketing",
+    "mnemonic": null,
+    "mnemonic_type": null,
+    "memory_tip": "Affiliate = liên kết chính thức.",
+    "is_common": false,
+    "stage": 4,
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": null,
+    "english": "affordable",
+    "type": "adjective",
+    "vietnamese": "giá cả phải chăng",
+    "pronounce": "/əˈfɔːdəbl/",
+    "explain": "Giá hợp lý hoặc có đủ tiền để mua.",
+    "example": "The company offers affordable products.",
+    "example_vietnamese": "Công ty cung cấp sản phẩm giá cả phải chăng.",
+    "image_url": null,
+    "audio_url": null,
+    "difficulty": "easy",
+    "cefr_level": "B1",
+    "toeic_level": 500,
+    "frequency": 55,
+    "synonyms": [
+      "reasonable",
+      "inexpensive",
+      "economical"
+    ],
+    "antonyms": [
+      "expensive",
+      "costly"
+    ],
+    "word_family": [
+      "afford",
+      "affordability"
+    ],
+    "collocations": [
+      "affordable price",
+      "affordable housing"
+    ],
+    "phrasal_verbs": [],
+    "grammar_pattern": "Common usage",
+    "common_mistakes": null,
+    "usage_note": "Dùng trong marketing khi nói về giá.",
+    "topic": "Sales & Marketing",
+    "mnemonic": null,
+    "mnemonic_type": null,
+    "memory_tip": "Affordable = giá hợp lý.",
+    "is_common": true,
+    "stage": 2,
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": null,
+    "english": "agenda",
+    "type": "noun",
+    "vietnamese": "chương trình nghị sự",
+    "pronounce": "/əˈdʒendə/",
+    "explain": "Danh sách các vấn đề cần thảo luận.",
+    "example": "The first item on the agenda is the budget.",
+    "example_vietnamese": "Mục đầu tiên trong chương trình nghị sự là ngân sách.",
+    "image_url": null,
+    "audio_url": null,
+    "difficulty": "easy",
+    "cefr_level": "B1",
+    "toeic_level": 500,
+    "frequency": 60,
+    "synonyms": [
+      "schedule",
+      "program",
+      "timetable"
+    ],
+    "antonyms": [],
+    "word_family": [],
+    "collocations": [
+      "set the agenda",
+      "agenda item"
+    ],
+    "phrasal_verbs": [],
+    "grammar_pattern": "on the agenda",
+    "common_mistakes": null,
+    "usage_note": "Từ cơ bản trong tổ chức cuộc họp.",
+    "topic": "General Business Operations",
+    "mnemonic": null,
+    "mnemonic_type": null,
+    "memory_tip": "Agenda = danh sách những gì sẽ làm.",
+    "is_common": true,
+    "stage": 2,
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": null,
+    "english": "agent",
+    "type": "noun",
+    "vietnamese": "đại lý; đại diện",
+    "pronounce": "/ˈeɪdʒənt/",
+    "explain": "Người hành động thay mặt cho tổ chức.",
+    "example": "Our shipping agent handles customs procedures.",
+    "example_vietnamese": "Đại lý vận chuyển của chúng tôi xử lý thủ tục hải quan.",
+    "image_url": null,
+    "audio_url": null,
+    "difficulty": "easy",
+    "cefr_level": "A2",
+    "toeic_level": 500,
+    "frequency": 65,
+    "synonyms": [
+      "representative",
+      "broker",
+      "intermediary"
+    ],
+    "antonyms": [
+      "principal"
+    ],
+    "word_family": [
+      "agency"
+    ],
+    "collocations": [
+      "real estate agent",
+      "travel agent",
+      "shipping agent"
+    ],
+    "phrasal_verbs": [],
+    "grammar_pattern": "Common usage",
+    "common_mistakes": null,
+    "usage_note": "Dùng trong bán hàng và vận chuyển.",
+    "topic": "Sales & Marketing",
+    "mnemonic": null,
+    "mnemonic_type": null,
+    "memory_tip": "Agent = người làm việc cho người khác.",
+    "is_common": true,
+    "stage": 2,
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": null,
+    "english": "aggressively",
+    "type": "adverb",
+    "vietnamese": "một cách quyết liệt",
+    "pronounce": "/əˈɡresɪvli/",
+    "explain": "Một cách mạnh mẽ và quyết tâm.",
+    "example": "The company is aggressively expanding.",
+    "example_vietnamese": "Công ty đang mở rộng quyết liệt.",
+    "image_url": null,
+    "audio_url": null,
+    "difficulty": "medium",
+    "cefr_level": "B2",
+    "toeic_level": 600,
+    "frequency": 35,
+    "synonyms": [
+      "forcefully",
+      "vigorously",
+      "boldly"
+    ],
+    "antonyms": [
+      "passively",
+      "timidly"
+    ],
+    "word_family": [
+      "aggressive",
+      "aggression"
+    ],
+    "collocations": [
+      "aggressively pursue",
+      "aggressively market"
+    ],
+    "phrasal_verbs": [],
+    "grammar_pattern": "Common usage",
+    "common_mistakes": null,
+    "usage_note": "Dùng trong chiến lược kinh doanh.",
+    "topic": "Sales & Marketing",
+    "mnemonic": null,
+    "mnemonic_type": null,
+    "memory_tip": "Aggressively = làm mạnh mẽ.",
+    "is_common": true,
+    "stage": 3,
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": null,
+    "english": "agreement",
+    "type": "noun",
+    "vietnamese": "thỏa thuận",
+    "pronounce": "/əˈɡriːmənt/",
+    "explain": "Một quyết định hoặc thỏa thuận chính thức.",
+    "example": "Both parties signed the agreement.",
+    "example_vietnamese": "Cả hai bên ký thỏa thuận.",
+    "image_url": null,
+    "audio_url": null,
+    "difficulty": "easy",
+    "cefr_level": "A2",
+    "toeic_level": 500,
+    "frequency": 75,
+    "synonyms": [
+      "contract",
+      "deal",
+      "understanding"
+    ],
+    "antonyms": [
+      "disagreement",
+      "dispute"
+    ],
+    "word_family": [
+      "agree",
+      "agreeable"
+    ],
+    "collocations": [
+      "reach an agreement",
+      "sign an agreement"
+    ],
+    "phrasal_verbs": [],
+    "grammar_pattern": "reach/sign + an agreement",
+    "common_mistakes": null,
+    "usage_note": "Từ cơ bản trong kinh doanh.",
+    "topic": "General Business Operations",
+    "mnemonic": null,
+    "mnemonic_type": null,
+    "memory_tip": "Agreement = văn bản hoặc sự đồng ý.",
+    "is_common": true,
+    "stage": 1,
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": null,
+    "english": "align",
+    "type": "verb",
+    "vietnamese": "sắp xếp; điều chỉnh",
+    "pronounce": "/əˈlaɪn/",
+    "explain": "Sắp xếp thẳng hàng hoặc điều chỉnh để phù hợp.",
+    "example": "We need to align our strategy with goals.",
+    "example_vietnamese": "Chúng ta cần liên kết chiến lược với mục tiêu.",
+    "image_url": null,
+    "audio_url": null,
+    "difficulty": "medium",
+    "cefr_level": "B2",
+    "toeic_level": 600,
+    "frequency": 40,
+    "synonyms": [
+      "coordinate",
+      "adjust",
+      "arrange"
+    ],
+    "antonyms": [
+      "misalign",
+      "disarrange"
+    ],
+    "word_family": [
+      "alignment",
+      "aligned"
+    ],
+    "collocations": [
+      "align with",
+      "align objectives"
+    ],
+    "phrasal_verbs": [],
+    "grammar_pattern": "align with + N",
+    "common_mistakes": null,
+    "usage_note": "Quan trọng trong chiến lược.",
+    "topic": "General Business Operations",
+    "mnemonic": null,
+    "mnemonic_type": null,
+    "memory_tip": "Align = sắp xếp cho phù hợp.",
+    "is_common": true,
+    "stage": 3,
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": null,
+    "english": "allocate",
+    "type": "verb",
+    "vietnamese": "phân bổ; phân chia",
+    "pronounce": "/ˈæləkeɪt/",
+    "explain": "Phân chia nguồn lực cho mục đích cụ thể.",
+    "example": "The manager allocated budget for the project.",
+    "example_vietnamese": "Giám đốc phân bổ ngân sách cho dự án.",
+    "image_url": null,
+    "audio_url": null,
+    "difficulty": "medium",
+    "cefr_level": "B2",
+    "toeic_level": 600,
+    "frequency": 45,
+    "synonyms": [
+      "assign",
+      "distribute",
+      "allot"
+    ],
+    "antonyms": [
+      "withhold",
+      "keep"
+    ],
+    "word_family": [
+      "allocation",
+      "allocated"
+    ],
+    "collocations": [
+      "allocate resources",
+      "allocate budget"
+    ],
+    "phrasal_verbs": [],
+    "grammar_pattern": "allocate + N + for/to + N",
+    "common_mistakes": null,
+    "usage_note": "Quan trọng trong quản lý tài nguyên.",
+    "topic": "Finance & Banking",
+    "mnemonic": null,
+    "mnemonic_type": null,
+    "memory_tip": "Allocate = chia cái gì đó cho các mục đích.",
+    "is_common": true,
+    "stage": 3,
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": null,
+    "english": "allow",
+    "type": "verb",
+    "vietnamese": "cho phép; chấp nhận",
+    "pronounce": "/əˈlaʊ/",
+    "explain": "Cho phép ai đó làm cái gì đó.",
+    "example": "The policy allows flexible working hours.",
+    "example_vietnamese": "Chính sách cho phép giờ làm việc linh hoạt.",
+    "image_url": null,
+    "audio_url": null,
+    "difficulty": "easy",
+    "cefr_level": "A1",
+    "toeic_level": 400,
+    "frequency": 95,
+    "synonyms": [
+      "permit",
+      "authorize",
+      "enable"
+    ],
+    "antonyms": [
+      "forbid",
+      "prohibit",
+      "prevent"
+    ],
+    "word_family": [
+      "allowance",
+      "allowable"
+    ],
+    "collocations": [
+      "allow someone to do",
+      "allow for"
+    ],
+    "phrasal_verbs": [],
+    "grammar_pattern": "allow + N + to + V",
+    "common_mistakes": null,
+    "usage_note": "Động từ cơ bản trong chính sách.",
+    "topic": "General Business Operations",
+    "mnemonic": null,
+    "mnemonic_type": null,
+    "memory_tip": "Allow = nói 'có' cho ai đó làm gì.",
+    "is_common": true,
+    "stage": 1,
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": null,
+    "english": "alternate",
+    "type": "verb",
+    "vietnamese": "thay thế luân phiên",
+    "pronounce": "/ˈɔːltəneɪt/",
+    "explain": "Thay đổi luân phiên giữa hai hoặc nhiều thứ.",
+    "example": "The team alternates between remote and office work.",
+    "example_vietnamese": "Đội luân phiên giữa làm việc từ xa và tại văn phòng.",
+    "image_url": null,
+    "audio_url": null,
+    "difficulty": "medium",
+    "cefr_level": "B2",
+    "toeic_level": 600,
+    "frequency": 30,
+    "synonyms": [
+      "rotate",
+      "switch",
+      "take turns"
+    ],
+    "antonyms": [
+      "continue",
+      "persist"
+    ],
+    "word_family": [
+      "alternation",
+      "alternative"
+    ],
+    "collocations": [
+      "alternate between",
+      "alternate days"
+    ],
+    "phrasal_verbs": [],
+    "grammar_pattern": "alternate between + N",
+    "common_mistakes": null,
+    "usage_note": "Dùng trong lịch trình làm việc.",
+    "topic": "General Business Operations",
+    "mnemonic": null,
+    "mnemonic_type": null,
+    "memory_tip": "Alternate = thay đổi luân phiên.",
+    "is_common": true,
+    "stage": 3,
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": null,
+    "english": "alternative",
+    "type": "noun",
+    "vietnamese": "sự lựa chọn thay thế",
+    "pronounce": "/ɔːlˈtɜːnətɪv/",
+    "explain": "Một sự lựa chọn khác có thể được sử dụng.",
+    "example": "We need to consider alternative suppliers.",
+    "example_vietnamese": "Chúng ta cần xem xét các nhà cung cấp thay thế.",
+    "image_url": null,
+    "audio_url": null,
+    "difficulty": "medium",
+    "cefr_level": "B1",
+    "toeic_level": 500,
+    "frequency": 55,
+    "synonyms": [
+      "option",
+      "choice",
+      "substitute"
+    ],
+    "antonyms": [],
+    "word_family": [
+      "alternate",
+      "alternation"
+    ],
+    "collocations": [
+      "alternative option",
+      "no alternative"
+    ],
+    "phrasal_verbs": [],
+    "grammar_pattern": "Common usage",
+    "common_mistakes": null,
+    "usage_note": "Dùng khi đưa ra các lựa chọn.",
+    "topic": "General Business Operations",
+    "mnemonic": null,
+    "mnemonic_type": null,
+    "memory_tip": "Alternative = lựa chọn khác.",
+    "is_common": true,
+    "stage": 2,
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": null,
+    "english": "amend",
+    "type": "verb",
+    "vietnamese": "sửa đổi; điều chỉnh",
+    "pronounce": "/əˈmend/",
+    "explain": "Thay đổi hoặc cải thiện một văn bản.",
+    "example": "The committee amended the proposal.",
+    "example_vietnamese": "Ủy ban sửa đổi đề xuất.",
+    "image_url": null,
+    "audio_url": null,
+    "difficulty": "medium",
+    "cefr_level": "B2",
+    "toeic_level": 700,
+    "frequency": 25,
+    "synonyms": [
+      "modify",
+      "revise",
+      "change"
+    ],
+    "antonyms": [],
+    "word_family": [
+      "amendment",
+      "amended"
+    ],
+    "collocations": [
+      "amend a document",
+      "amend the law"
+    ],
+    "phrasal_verbs": [],
+    "grammar_pattern": "amend + N",
+    "common_mistakes": null,
+    "usage_note": "Trang trọng, dùng trong pháp lý.",
+    "topic": "General Business Operations",
+    "mnemonic": null,
+    "mnemonic_type": null,
+    "memory_tip": "Amend = sửa đổi văn bản.",
+    "is_common": false,
+    "stage": 4,
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": null,
+    "english": "amendment",
+    "type": "noun",
+    "vietnamese": "sự sửa đổi",
+    "pronounce": "/əˈmendmənt/",
+    "explain": "Một sự thay đổi nhỏ trong văn bản.",
+    "example": "The contract includes an amendment.",
+    "example_vietnamese": "Hợp đồng bao gồm một điều khoản sửa đổi.",
+    "image_url": null,
+    "audio_url": null,
+    "difficulty": "medium",
+    "cefr_level": "B2",
+    "toeic_level": 700,
+    "frequency": 20,
+    "synonyms": [
+      "modification",
+      "revision",
+      "change"
+    ],
+    "antonyms": [],
+    "word_family": [
+      "amend",
+      "amended"
+    ],
+    "collocations": [
+      "propose an amendment",
+      "make amendments"
+    ],
+    "phrasal_verbs": [],
+    "grammar_pattern": "Common usage",
+    "common_mistakes": null,
+    "usage_note": "Dùng trong pháp lý và hợp đồng.",
+    "topic": "General Business Operations",
+    "mnemonic": null,
+    "mnemonic_type": null,
+    "memory_tip": "Amendment = phần đã được sửa đổi.",
+    "is_common": false,
+    "stage": 4,
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": null,
+    "english": "announcement",
+    "type": "noun",
+    "vietnamese": "thông báo",
+    "pronounce": "/əˈnaʊnsmənt/",
+    "explain": "Một thông báo chính thức.",
+    "example": "The company made an announcement about the merger.",
+    "example_vietnamese": "Công ty đưa ra thông báo về vụ sáp nhập.",
+    "image_url": null,
+    "audio_url": null,
+    "difficulty": "easy",
+    "cefr_level": "A2",
+    "toeic_level": 500,
+    "frequency": 60,
+    "synonyms": [
+      "declaration",
+      "statement",
+      "notice"
+    ],
+    "antonyms": [],
+    "word_family": [
+      "announce",
+      "announcer"
+    ],
+    "collocations": [
+      "make an announcement",
+      "public announcement"
+    ],
+    "phrasal_verbs": [],
+    "grammar_pattern": "make an announcement",
+    "common_mistakes": null,
+    "usage_note": "Dùng trong truyền thông nội bộ.",
+    "topic": "General Business Operations",
+    "mnemonic": null,
+    "mnemonic_type": null,
+    "memory_tip": "Announcement = thông báo chính thức.",
+    "is_common": true,
+    "stage": 2,
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": null,
+    "english": "annual",
+    "type": "adjective",
+    "vietnamese": "hàng năm",
+    "pronounce": "/ˈænjuəl/",
+    "explain": "Xảy ra mỗi năm một lần.",
+    "example": "The annual report shows growth.",
+    "example_vietnamese": "Báo cáo hàng năm thu được sự tăng trưởng.",
+    "image_url": null,
+    "audio_url": null,
+    "difficulty": "easy",
+    "cefr_level": "A2",
+    "toeic_level": 500,
+    "frequency": 65,
+    "synonyms": [
+      "yearly",
+      "once a year"
+    ],
+    "antonyms": [
+      "monthly",
+      "quarterly"
+    ],
+    "word_family": [
+      "annually",
+      "annuity"
+    ],
+    "collocations": [
+      "annual report",
+      "annual meeting",
+      "annual revenue"
+    ],
+    "phrasal_verbs": [],
+    "grammar_pattern": "Common usage",
+    "common_mistakes": null,
+    "usage_note": "Từ cơ bản trong báo cáo tài chính.",
+    "topic": "Finance & Banking",
+    "mnemonic": null,
+    "mnemonic_type": null,
+    "memory_tip": "Annual = hàng năm.",
+    "is_common": true,
+    "stage": 2,
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": null,
+    "english": "annually",
+    "type": "adverb",
+    "vietnamese": "mỗi năm",
+    "pronounce": "/ˈænjuəli/",
+    "explain": "Mỗi năm một lần.",
+    "example": "The conference is held annually.",
+    "example_vietnamese": "Hội nghị được tổ chức hàng năm.",
+    "image_url": null,
+    "audio_url": null,
+    "difficulty": "easy",
+    "cefr_level": "A2",
+    "toeic_level": 500,
+    "frequency": 55,
+    "synonyms": [
+      "yearly",
+      "once a year"
+    ],
+    "antonyms": [
+      "monthly",
+      "daily"
+    ],
+    "word_family": [
+      "annual",
+      "annuity"
+    ],
+    "collocations": [
+      "meet annually",
+      "paid annually"
+    ],
+    "phrasal_verbs": [],
+    "grammar_pattern": "Common usage",
+    "common_mistakes": null,
+    "usage_note": "Dùng để mô tả tần suất hàng năm.",
+    "topic": "General Business Operations",
+    "mnemonic": null,
+    "mnemonic_type": null,
+    "memory_tip": "Annually = làm mỗi năm một lần.",
+    "is_common": true,
+    "stage": 2,
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": null,
+    "english": "anonymous",
+    "type": "adjective",
+    "vietnamese": "ẩn danh",
+    "pronounce": "/əˈnɒnɪməs/",
+    "explain": "Không có tên hoặc không được biết đến tên.",
+    "example": "The donor wished to remain anonymous.",
+    "example_vietnamese": "Người tặng mong muốn giữ ẩn danh.",
+    "image_url": null,
+    "audio_url": null,
+    "difficulty": "medium",
+    "cefr_level": "B2",
+    "toeic_level": 600,
+    "frequency": 30,
+    "synonyms": [
+      "unnamed",
+      "unidentified"
+    ],
+    "antonyms": [
+      "named",
+      "identified"
+    ],
+    "word_family": [
+      "anonymity",
+      "anonymously"
+    ],
+    "collocations": [
+      "anonymous donor",
+      "anonymous source"
+    ],
+    "phrasal_verbs": [],
+    "grammar_pattern": "Common usage",
+    "common_mistakes": null,
+    "usage_note": "Dùng trong bảo mật và khảo sát.",
+    "topic": "General Business Operations",
+    "mnemonic": null,
+    "mnemonic_type": null,
+    "memory_tip": "Anonymous = không biết tên ai.",
+    "is_common": true,
+    "stage": 3,
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": null,
+    "english": "anticipate",
+    "type": "verb",
+    "vietnamese": "dự đoán; mong đợi",
+    "pronounce": "/ænˈtɪsɪpeɪt/",
+    "explain": "Dự đoán hoặc mong đợi một cái gì đó sẽ xảy ra.",
+    "example": "We anticipate a 10% increase in sales.",
+    "example_vietnamese": "Chúng tôi dự đoán doanh số tăng 10%.",
+    "image_url": null,
+    "audio_url": null,
+    "difficulty": "medium",
+    "cefr_level": "B2",
+    "toeic_level": 600,
+    "frequency": 45,
+    "synonyms": [
+      "expect",
+      "predict",
+      "forecast"
+    ],
+    "antonyms": [
+      "unexpected",
+      "surprise"
+    ],
+    "word_family": [
+      "anticipation",
+      "anticipatory"
+    ],
+    "collocations": [
+      "anticipate problems",
+      "anticipate demand"
+    ],
+    "phrasal_verbs": [],
+    "grammar_pattern": "anticipate + N/V-ing",
+    "common_mistakes": null,
+    "usage_note": "Quan trọng trong lập kế hoạch.",
+    "topic": "General Business Operations",
+    "mnemonic": null,
+    "mnemonic_type": null,
+    "memory_tip": "Anticipate = đoán trước và chuẩn bị.",
+    "is_common": true,
+    "stage": 3,
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": null,
+    "english": "anxious",
+    "type": "adjective",
+    "vietnamese": "lo lắng; bồn chồn",
+    "pronounce": "/ˈæŋkʃəs/",
+    "explain": "Cảm thấy lo lắng về một cái gì đó.",
+    "example": "Investors are anxious about market volatility.",
+    "example_vietnamese": "Nhà đầu tư lo lắng về sự biến động thị trường.",
+    "image_url": null,
+    "audio_url": null,
+    "difficulty": "medium",
+    "cefr_level": "B1",
+    "toeic_level": 500,
+    "frequency": 40,
+    "synonyms": [
+      "worried",
+      "concerned",
+      "nervous"
+    ],
+    "antonyms": [
+      "calm",
+      "relaxed",
+      "confident"
+    ],
+    "word_family": [
+      "anxiety",
+      "anxiously"
+    ],
+    "collocations": [
+      "anxious about",
+      "feel anxious"
+    ],
+    "phrasal_verbs": [],
+    "grammar_pattern": "anxious about + N",
+    "common_mistakes": null,
+    "usage_note": "Dùng trong giao tiếp.",
+    "topic": "General Business Operations",
+    "mnemonic": null,
+    "mnemonic_type": null,
+    "memory_tip": "Anxious = lo lắng, bồn chồn.",
+    "is_common": true,
+    "stage": 2,
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": null,
+    "english": "appeal",
+    "type": "verb",
+    "vietnamese": "kháng cáo; kêu gọi",
+    "pronounce": "/əˈpiːl/",
+    "explain": "Yêu cầu xem xét lại quyết định.",
+    "example": "The company decided to appeal the decision.",
+    "example_vietnamese": "Công ty quyết định kháng cáo quyết định.",
+    "image_url": null,
+    "audio_url": null,
+    "difficulty": "medium",
+    "cefr_level": "B2",
+    "toeic_level": 600,
+    "frequency": 40,
+    "synonyms": [
+      "challenge",
+      "petition",
+      "request"
+    ],
+    "antonyms": [
+      "accept",
+      "ignore"
+    ],
+    "word_family": [
+      "appealing",
+      "appellant"
+    ],
+    "collocations": [
+      "appeal a decision",
+      "file an appeal"
+    ],
+    "phrasal_verbs": [],
+    "grammar_pattern": "appeal + N",
+    "common_mistakes": null,
+    "usage_note": "Có nghĩa pháp lý (kháng cáo).",
+    "topic": "General Business Operations",
+    "mnemonic": null,
+    "mnemonic_type": null,
+    "memory_tip": "Appeal = yêu cầu xem xét lại.",
+    "is_common": true,
+    "stage": 3,
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": null,
+    "english": "applicant",
+    "type": "noun",
+    "vietnamese": "người nộp đơn",
+    "pronounce": "/ˈæplɪkənt/",
+    "explain": "Người nộp đơn xin việc.",
+    "example": "The applicant submitted a comprehensive resume.",
+    "example_vietnamese": "Người ứng tuyển nộp một hồ sơ toàn diện.",
+    "image_url": null,
+    "audio_url": null,
+    "difficulty": "easy",
+    "cefr_level": "A2",
+    "toeic_level": 500,
+    "frequency": 60,
+    "synonyms": [
+      "candidate",
+      "applier"
+    ],
+    "antonyms": [],
+    "word_family": [
+      "apply",
+      "application"
+    ],
+    "collocations": [
+      "job applicant",
+      "successful applicant"
+    ],
+    "phrasal_verbs": [],
+    "grammar_pattern": "Common usage",
+    "common_mistakes": null,
+    "usage_note": "Từ cơ bản trong tuyển dụng.",
+    "topic": "Personnel & Human Resources",
+    "mnemonic": null,
+    "mnemonic_type": null,
+    "memory_tip": "Applicant = người nộp đơn xin việc.",
+    "is_common": true,
+    "stage": 2,
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": null,
+    "english": "apply",
+    "type": "verb",
+    "vietnamese": "nộp đơn; áp dụng",
+    "pronounce": "/əˈplaɪ/",
+    "explain": "Nộp đơn xin việc hoặc áp dụng vào thực tế.",
+    "example": "You can apply for the position online.",
+    "example_vietnamese": "Bạn có thể nộp đơn cho vị trí này trực tuyến.",
+    "image_url": null,
+    "audio_url": null,
+    "difficulty": "easy",
+    "cefr_level": "A1",
+    "toeic_level": 400,
+    "frequency": 95,
+    "synonyms": [
+      "submit",
+      "request",
+      "implement"
+    ],
+    "antonyms": [
+      "reject",
+      "withdraw"
+    ],
+    "word_family": [
+      "application",
+      "applicant"
+    ],
+    "collocations": [
+      "apply for a job",
+      "apply for a loan"
+    ],
+    "phrasal_verbs": [],
+    "grammar_pattern": "apply for + N",
+    "common_mistakes": null,
+    "usage_note": "Động từ cơ bản trong tuyển dụng.",
+    "topic": "Personnel & Human Resources",
+    "mnemonic": null,
+    "mnemonic_type": null,
+    "memory_tip": "Apply = nộp đơn hoặc dùng cái gì đó.",
+    "is_common": true,
+    "stage": 1,
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": null,
+    "english": "appoint",
+    "type": "verb",
+    "vietnamese": "bổ nhiệm; chỉ định",
+    "pronounce": "/əˈpɔɪnt/",
+    "explain": "Chọn ai đó cho một vị trí.",
+    "example": "The board appointed a new CEO.",
+    "example_vietnamese": "Hội đồng bổ nhiệm một CEO mới.",
+    "image_url": null,
+    "audio_url": null,
+    "difficulty": "medium",
+    "cefr_level": "B2",
+    "toeic_level": 600,
+    "frequency": 45,
+    "synonyms": [
+      "assign",
+      "designate",
+      "nominate"
+    ],
+    "antonyms": [
+      "dismiss",
+      "remove"
+    ],
+    "word_family": [
+      "appointment",
+      "appointed"
+    ],
+    "collocations": [
+      "appoint someone",
+      "appoint to a position"
+    ],
+    "phrasal_verbs": [],
+    "grammar_pattern": "appoint + N + to + N",
+    "common_mistakes": null,
+    "usage_note": "Dùng trong bổ nhiệm chức vụ.",
+    "topic": "Personnel & Human Resources",
+    "mnemonic": null,
+    "mnemonic_type": null,
+    "memory_tip": "Appoint = chọn ai đó cho một vị trí.",
+    "is_common": true,
+    "stage": 3,
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": null,
+    "english": "appointment",
+    "type": "noun",
+    "vietnamese": "cuộc hẹn",
+    "pronounce": "/əˈpɔɪntmənt/",
+    "explain": "Một sự sắp xếp để gặp ai đó.",
+    "example": "I have an appointment with the client.",
+    "example_vietnamese": "Tôi có cuộc hẹn với khách hàng.",
+    "image_url": null,
+    "audio_url": null,
+    "difficulty": "easy",
+    "cefr_level": "A2",
+    "toeic_level": 500,
+    "frequency": 70,
+    "synonyms": [
+      "meeting",
+      "engagement",
+      "arrangement"
+    ],
+    "antonyms": [],
+    "word_family": [
+      "appoint",
+      "appointed"
+    ],
+    "collocations": [
+      "make an appointment",
+      "cancel appointment"
+    ],
+    "phrasal_verbs": [],
+    "grammar_pattern": "have/make an appointment",
+    "common_mistakes": null,
+    "usage_note": "Từ cơ bản trong lịch trình.",
+    "topic": "General Business Operations",
+    "mnemonic": null,
+    "mnemonic_type": null,
+    "memory_tip": "Appointment = cuộc hẹn.",
+    "is_common": true,
+    "stage": 2,
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": null,
+    "english": "appraisal",
+    "type": "noun",
+    "vietnamese": "đánh giá",
+    "pronounce": "/əˈpreɪzl/",
+    "explain": "Một đánh giá về chất lượng hoặc hiệu suất.",
+    "example": "The annual performance appraisal is next week.",
+    "example_vietnamese": "Đánh giá hiệu suất hàng năm vào tuần tới.",
+    "image_url": null,
+    "audio_url": null,
+    "difficulty": "medium",
+    "cefr_level": "B2",
+    "toeic_level": 600,
+    "frequency": 30,
+    "synonyms": [
+      "evaluation",
+      "assessment",
+      "review"
+    ],
+    "antonyms": [],
+    "word_family": [
+      "appraise",
+      "appraiser"
+    ],
+    "collocations": [
+      "performance appraisal",
+      "property appraisal"
+    ],
+    "phrasal_verbs": [],
+    "grammar_pattern": "Common usage",
+    "common_mistakes": null,
+    "usage_note": "Quan trọng trong HR.",
+    "topic": "Personnel & Human Resources",
+    "mnemonic": null,
+    "mnemonic_type": null,
+    "memory_tip": "Appraisal = việc đánh giá.",
+    "is_common": true,
+    "stage": 3,
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": null,
+    "english": "appreciation",
+    "type": "noun",
+    "vietnamese": "sự đánh giá cao",
+    "pronounce": "/əˌpriːʃiˈeɪʃn/",
+    "explain": "Sự ghi nhận giá trị của cái gì đó.",
+    "example": "The employee received appreciation for dedication.",
+    "example_vietnamese": "Nhân viên nhận được sự ghi nhận vì sự tận tâm.",
+    "image_url": null,
+    "audio_url": null,
+    "difficulty": "medium",
+    "cefr_level": "B2",
+    "toeic_level": 600,
+    "frequency": 40,
+    "synonyms": [
+      "recognition",
+      "gratitude",
+      "acknowledgment"
+    ],
+    "antonyms": [
+      "depreciation",
+      "criticism"
+    ],
+    "word_family": [
+      "appreciate",
+      "appreciative"
+    ],
+    "collocations": [
+      "show appreciation",
+      "express appreciation"
+    ],
+    "phrasal_verbs": [],
+    "grammar_pattern": "show/express appreciation",
+    "common_mistakes": null,
+    "usage_note": "Có nghĩa nhân sự (ghi nhận).",
+    "topic": "Personnel & Human Resources",
+    "mnemonic": null,
+    "mnemonic_type": null,
+    "memory_tip": "Appreciation = ghi nhận hoặc tăng giá trị.",
+    "is_common": true,
+    "stage": 3,
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": null,
+    "english": "apprehensive",
+    "type": "adjective",
+    "vietnamese": "lo lắng; băn khoăn",
+    "pronounce": "/ˌæprɪˈhensɪv/",
+    "explain": "Cảm thấy lo lắng về tương lai.",
+    "example": "Employees are apprehensive about restructuring.",
+    "example_vietnamese": "Nhân viên lo lắng về việc tái cơ cấu.",
+    "image_url": null,
+    "audio_url": null,
+    "difficulty": "medium",
+    "cefr_level": "B2",
+    "toeic_level": 700,
+    "frequency": 20,
+    "synonyms": [
+      "anxious",
+      "worried",
+      "concerned"
+    ],
+    "antonyms": [
+      "confident",
+      "relaxed"
+    ],
+    "word_family": [
+      "apprehend",
+      "apprehension"
+    ],
+    "collocations": [
+      "apprehensive about",
+      "feel apprehensive"
+    ],
+    "phrasal_verbs": [],
+    "grammar_pattern": "apprehensive about + N",
+    "common_mistakes": null,
+    "usage_note": "Trang trọng hơn 'anxious'.",
+    "topic": "General Business Operations",
+    "mnemonic": null,
+    "mnemonic_type": null,
+    "memory_tip": "Apprehensive = lo lắng về điều sắp xảy ra.",
+    "is_common": false,
+    "stage": 4,
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": null,
+    "english": "apprentice",
+    "type": "noun",
+    "vietnamese": "thực tập sinh",
+    "pronounce": "/əˈprentɪs/",
+    "explain": "Người học một nghề nghiệp thông qua thực hành.",
+    "example": "The company offers apprenticeship programs.",
+    "example_vietnamese": "Công ty cung cấp chương trình học việc.",
+    "image_url": null,
+    "audio_url": null,
+    "difficulty": "medium",
+    "cefr_level": "B2",
+    "toeic_level": 600,
+    "frequency": 25,
+    "synonyms": [
+      "trainee",
+      "intern",
+      "learner"
+    ],
+    "antonyms": [
+      "expert",
+      "master"
+    ],
+    "word_family": [
+      "apprenticeship",
+      "apprenticed"
+    ],
+    "collocations": [
+      "apprentice program",
+      "serve as apprentice"
+    ],
+    "phrasal_verbs": [],
+    "grammar_pattern": "Common usage",
+    "common_mistakes": null,
+    "usage_note": "Dùng trong đào tạo nghề.",
+    "topic": "Personnel & Human Resources",
+    "mnemonic": null,
+    "mnemonic_type": null,
+    "memory_tip": "Apprentice = người học nghề.",
+    "is_common": false,
+    "stage": 3,
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": null,
+    "english": "approach",
+    "type": "verb",
+    "vietnamese": "tiếp cận; giải quyết",
+    "pronounce": "/əˈprəʊtʃ/",
+    "explain": "Đến gần ai đó hoặc bắt đầu giải quyết vấn đề.",
+    "example": "We need to approach this problem systematically.",
+    "example_vietnamese": "Chúng ta cần giải quyết vấn đề này một cách có hệ thống.",
+    "image_url": null,
+    "audio_url": null,
+    "difficulty": "medium",
+    "cefr_level": "B1",
+    "toeic_level": 500,
+    "frequency": 65,
+    "synonyms": [
+      "near",
+      "confront",
+      "tackle"
+    ],
+    "antonyms": [
+      "avoid",
+      "retreat"
+    ],
+    "word_family": [
+      "approachable",
+      "approaching"
+    ],
+    "collocations": [
+      "approach a problem",
+      "approach a client"
+    ],
+    "phrasal_verbs": [],
+    "grammar_pattern": "approach + N",
+    "common_mistakes": null,
+    "usage_note": "Dùng trong bán hàng và giải quyết vấn đề.",
+    "topic": "Sales & Marketing",
+    "mnemonic": null,
+    "mnemonic_type": null,
+    "memory_tip": "Approach = đến gần hoặc bắt đầu giải quyết.",
+    "is_common": true,
+    "stage": 2,
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": null,
+    "english": "approve",
+    "type": "verb",
+    "vietnamese": "phê duyệt; chấp thuận",
+    "pronounce": "/əˈpruːv/",
+    "explain": "Đồng ý chính thức một cái gì đó.",
+    "example": "The manager approved the budget proposal.",
+    "example_vietnamese": "Giám đốc phê duyệt đề xuất ngân sách.",
+    "image_url": null,
+    "audio_url": null,
+    "difficulty": "easy",
+    "cefr_level": "A2",
+    "toeic_level": 500,
+    "frequency": 85,
+    "synonyms": [
+      "authorize",
+      "sanction",
+      "accept"
+    ],
+    "antonyms": [
+      "reject",
+      "deny",
+      "disapprove"
+    ],
+    "word_family": [
+      "approval",
+      "approved"
+    ],
+    "collocations": [
+      "approve a request",
+      "approve a plan"
+    ],
+    "phrasal_verbs": [],
+    "grammar_pattern": "approve + N",
+    "common_mistakes": null,
+    "usage_note": "Động từ cơ bản trong phê duyệt.",
+    "topic": "General Business Operations",
+    "mnemonic": null,
+    "mnemonic_type": null,
+    "memory_tip": "Approve = nói 'có' chính thức.",
+    "is_common": true,
+    "stage": 1,
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": null,
+    "english": "arbitrary",
+    "type": "adjective",
+    "vietnamese": "tùy ý; tùy tiện",
+    "pronounce": "/ˈɑːbɪtrəri/",
+    "explain": "Dựa trên sự lựa chọn ngẫu nhiên.",
+    "example": "The decision seemed arbitrary.",
+    "example_vietnamese": "Quyết định có vẻ tùy ý.",
+    "image_url": null,
+    "audio_url": null,
+    "difficulty": "medium",
+    "cefr_level": "B2",
+    "toeic_level": 700,
+    "frequency": 20,
+    "synonyms": [
+      "random",
+      "capricious",
+      "unreasonable"
+    ],
+    "antonyms": [
+      "logical",
+      "reasonable",
+      "systematic"
+    ],
+    "word_family": [
+      "arbitrarily",
+      "arbitrariness"
+    ],
+    "collocations": [
+      "arbitrary decision",
+      "arbitrary rule"
+    ],
+    "phrasal_verbs": [],
+    "grammar_pattern": "Common usage",
+    "common_mistakes": null,
+    "usage_note": "Thường mang nghĩa tiêu cực.",
+    "topic": "General Business Operations",
+    "mnemonic": null,
+    "mnemonic_type": null,
+    "memory_tip": "Arbitrary = làm theo ý thích.",
+    "is_common": false,
+    "stage": 4,
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": null,
+    "english": "archive",
+    "type": "verb",
+    "vietnamese": "lưu trữ",
+    "pronounce": "/ˈɑːkaɪv/",
+    "explain": "Lưu trữ tài liệu hoặc dữ liệu.",
+    "example": "Please archive the old project files.",
+    "example_vietnamese": "Vui lòng lưu trữ các tệp dự án cũ.",
+    "image_url": null,
+    "audio_url": null,
+    "difficulty": "medium",
+    "cefr_level": "B2",
+    "toeic_level": 600,
+    "frequency": 30,
+    "synonyms": [
+      "store",
+      "file",
+      "preserve"
+    ],
+    "antonyms": [
+      "delete",
+      "discard"
+    ],
+    "word_family": [
+      "archival",
+      "archived"
+    ],
+    "collocations": [
+      "archive data",
+      "archive documents"
+    ],
+    "phrasal_verbs": [],
+    "grammar_pattern": "archive + N",
+    "common_mistakes": null,
+    "usage_note": "Quan trọng trong quản lý tài liệu.",
+    "topic": "Technical Areas & IT",
+    "mnemonic": null,
+    "mnemonic_type": null,
+    "memory_tip": "Archive = lưu trữ để dùng sau.",
+    "is_common": true,
+    "stage": 3,
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": null,
+    "english": "arrangement",
+    "type": "noun",
+    "vietnamese": "sắp xếp; sự bố trí",
+    "pronounce": "/əˈreɪndʒmənt/",
+    "explain": "Một kế hoạch hoặc sự sắp xếp.",
+    "example": "We made special arrangements for the guests.",
+    "example_vietnamese": "Chúng tôi thực hiện sự sắp xếp đặc biệt cho khách.",
+    "image_url": null,
+    "audio_url": null,
+    "difficulty": "medium",
+    "cefr_level": "B1",
+    "toeic_level": 500,
+    "frequency": 50,
+    "synonyms": [
+      "preparation",
+      "organization",
+      "agreement"
+    ],
+    "antonyms": [
+      "disorder",
+      "confusion"
+    ],
+    "word_family": [
+      "arrange",
+      "arranged"
+    ],
+    "collocations": [
+      "make arrangements",
+      "special arrangements"
+    ],
+    "phrasal_verbs": [],
+    "grammar_pattern": "make arrangements for + N",
+    "common_mistakes": null,
+    "usage_note": "Dùng trong tổ chức sự kiện.",
+    "topic": "General Business Operations",
+    "mnemonic": null,
+    "mnemonic_type": null,
+    "memory_tip": "Arrangement = sự bố trí hoặc thỏa thuận.",
+    "is_common": true,
+    "stage": 2,
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": null,
+    "english": "arrive",
+    "type": "verb",
+    "vietnamese": "đến; tới",
+    "pronounce": "/əˈraɪv/",
+    "explain": "Đến một nơi nào đó.",
+    "example": "The delegation will arrive tomorrow.",
+    "example_vietnamese": "Phái đoàn sẽ đến vào ngày mai.",
+    "image_url": null,
+    "audio_url": null,
+    "difficulty": "easy",
+    "cefr_level": "A1",
+    "toeic_level": 400,
+    "frequency": 95,
+    "synonyms": [
+      "reach",
+      "get to",
+      "come"
+    ],
+    "antonyms": [
+      "depart",
+      "leave"
+    ],
+    "word_family": [
+      "arrival",
+      "arrived"
+    ],
+    "collocations": [
+      "arrive at",
+      "arrive in",
+      "arrive on time"
+    ],
+    "phrasal_verbs": [],
+    "grammar_pattern": "arrive at/in + N",
+    "common_mistakes": "Thường nhầm giới từ: 'arrive at' (địa điểm cụ thể), 'arrive in' (thành phố) - cấu trúc khác nhau cho ngữ cảnh khác nhau.",
+    "usage_note": "Động từ cơ bản trong du lịch.",
+    "topic": "Travel & Transportation",
+    "mnemonic": null,
+    "mnemonic_type": null,
+    "memory_tip": "Arrive = đến nơi.",
+    "is_common": true,
+    "stage": 1,
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": null,
+    "english": "as needed",
+    "type": "phrase",
+    "vietnamese": "khi cần thiết",
+    "pronounce": "/æz ˈniːdɪd/",
+    "explain": "Khi cần thiết hoặc khi yêu cầu.",
+    "example": "Staff can work from home as needed.",
+    "example_vietnamese": "Nhân viên có thể làm việc từ xa khi cần thiết.",
+    "image_url": null,
+    "audio_url": null,
+    "difficulty": "easy",
+    "cefr_level": "A2",
+    "toeic_level": 500,
+    "frequency": 45,
+    "synonyms": [
+      "when necessary",
+      "as required",
+      "if needed"
+    ],
+    "antonyms": [
+      "always",
+      "never"
+    ],
+    "word_family": [],
+    "collocations": [
+      "available as needed",
+      "use as needed"
+    ],
+    "phrasal_verbs": [],
+    "grammar_pattern": "Common usage",
+    "common_mistakes": null,
+    "usage_note": "Dùng trong chính sách linh hoạt.",
+    "topic": "General Business Operations",
+    "mnemonic": null,
+    "mnemonic_type": null,
+    "memory_tip": "As needed = tùy lúc, không cố định.",
+    "is_common": true,
+    "stage": 2,
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": null,
+    "english": "ascertain",
+    "type": "verb",
+    "vietnamese": "xác định; làm rõ",
+    "pronounce": "/ˌæsəˈteɪn/",
+    "explain": "Tìm ra hoặc xác định một cái gì đó chắc chắn.",
+    "example": "We need to ascertain the cause of the delay.",
+    "example_vietnamese": "Chúng ta cần xác định nguyên nhân của sự chậm trễ.",
+    "image_url": null,
+    "audio_url": null,
+    "difficulty": "medium",
+    "cefr_level": "B2",
+    "toeic_level": 700,
+    "frequency": 20,
+    "synonyms": [
+      "determine",
+      "establish",
+      "find out"
+    ],
+    "antonyms": [
+      "guess",
+      "assume"
+    ],
+    "word_family": [
+      "ascertainable",
+      "ascertainment"
+    ],
+    "collocations": [
+      "ascertain the facts",
+      "ascertain the truth"
+    ],
+    "phrasal_verbs": [],
+    "grammar_pattern": "ascertain + N",
+    "common_mistakes": null,
+    "usage_note": "Trang trọng, dùng trong điều tra.",
+    "topic": "General Business Operations",
+    "mnemonic": null,
+    "mnemonic_type": null,
+    "memory_tip": "Ascertain = tìm ra cho chắc chắn.",
+    "is_common": false,
+    "stage": 4,
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": null,
+    "english": "aspect",
+    "type": "noun",
+    "vietnamese": "khía cạnh; phương diện",
+    "pronounce": "/ˈæspekt/",
+    "explain": "Một phần hoặc đặc điểm của một cái gì đó.",
+    "example": "We need to consider every aspect of the proposal.",
+    "example_vietnamese": "Chúng ta cần xem xét mọi khía cạnh của đề xuất.",
+    "image_url": null,
+    "audio_url": null,
+    "difficulty": "medium",
+    "cefr_level": "B1",
+    "toeic_level": 500,
+    "frequency": 55,
+    "synonyms": [
+      "feature",
+      "element",
+      "facet"
+    ],
+    "antonyms": [],
+    "word_family": [
+      "aspectual"
+    ],
+    "collocations": [
+      "every aspect",
+      "important aspect"
+    ],
+    "phrasal_verbs": [],
+    "grammar_pattern": "aspect of + N",
+    "common_mistakes": null,
+    "usage_note": "Dùng khi phân tích chi tiết.",
+    "topic": "General Business Operations",
+    "mnemonic": null,
+    "mnemonic_type": null,
+    "memory_tip": "Aspect = một phần hoặc góc nhìn.",
+    "is_common": true,
+    "stage": 2,
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": null,
+    "english": "assemble",
+    "type": "verb",
+    "vietnamese": "lắp ráp; tập hợp",
+    "pronounce": "/əˈsembl/",
+    "explain": "Ghép các phần lại với nhau.",
+    "example": "Workers assemble products in the factory.",
+    "example_vietnamese": "Công nhân lắp ráp sản phẩm trong nhà máy.",
+    "image_url": null,
+    "audio_url": null,
+    "difficulty": "medium",
+    "cefr_level": "B1",
+    "toeic_level": 500,
+    "frequency": 45,
+    "synonyms": [
+      "put together",
+      "gather",
+      "construct"
+    ],
+    "antonyms": [
+      "disassemble",
+      "scatter"
+    ],
+    "word_family": [
+      "assembly",
+      "assembled"
+    ],
+    "collocations": [
+      "assemble a team",
+      "assemble products"
+    ],
+    "phrasal_verbs": [],
+    "grammar_pattern": "assemble + N",
+    "common_mistakes": null,
+    "usage_note": "Dùng trong sản xuất.",
+    "topic": "Manufacturing & Production",
+    "mnemonic": null,
+    "mnemonic_type": null,
+    "memory_tip": "Assemble = lắp ráp hoặc tập hợp.",
+    "is_common": true,
+    "stage": 2,
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": null,
+    "english": "assess",
+    "type": "verb",
+    "vietnamese": "đánh giá; thẩm định",
+    "pronounce": "/əˈses/",
+    "explain": "Đánh giá hoặc xác định chất lượng.",
+    "example": "The consultant will assess our processes.",
+    "example_vietnamese": "Chuyên gia tư vấn sẽ đánh giá quy trình của chúng tôi.",
+    "image_url": null,
+    "audio_url": null,
+    "difficulty": "medium",
+    "cefr_level": "B2",
+    "toeic_level": 600,
+    "frequency": 50,
+    "synonyms": [
+      "evaluate",
+      "appraise",
+      "analyze"
+    ],
+    "antonyms": [
+      "guess",
+      "ignore"
+    ],
+    "word_family": [
+      "assessment",
+      "assessor"
+    ],
+    "collocations": [
+      "assess the situation",
+      "assess performance"
+    ],
+    "phrasal_verbs": [],
+    "grammar_pattern": "assess + N",
+    "common_mistakes": "Thường nhầm với 'access' (truy cập) - hai từ phát âm giống nhau.",
+    "usage_note": "Quan trọng trong quản lý.",
+    "topic": "General Business Operations",
+    "mnemonic": null,
+    "mnemonic_type": null,
+    "memory_tip": "Assess = xem xét và đánh giá.",
+    "is_common": true,
+    "stage": 3,
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": null,
+    "english": "asset",
+    "type": "noun",
+    "vietnamese": "tài sản",
+    "pronounce": "/ˈæset/",
+    "explain": "Một cái gì đó có giá trị cho tổ chức.",
+    "example": "Intellectual property is a valuable asset.",
+    "example_vietnamese": "Sở hữu trí tuệ là tài sản quý giá.",
+    "image_url": null,
+    "audio_url": null,
+    "difficulty": "easy",
+    "cefr_level": "B1",
+    "toeic_level": 500,
+    "frequency": 60,
+    "synonyms": [
+      "resource",
+      "possession",
+      "property"
+    ],
+    "antonyms": [
+      "liability",
+      "debt"
+    ],
+    "word_family": [
+      "assets"
+    ],
+    "collocations": [
+      "valuable asset",
+      "fixed asset",
+      "current asset"
+    ],
+    "phrasal_verbs": [],
+    "grammar_pattern": "Common usage",
+    "common_mistakes": null,
+    "usage_note": "Từ cơ bản trong tài chính.",
+    "topic": "Finance & Banking",
+    "mnemonic": null,
+    "mnemonic_type": null,
+    "memory_tip": "Asset = cái có giá trị.",
+    "is_common": true,
+    "stage": 2,
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": null,
+    "english": "assignment",
+    "type": "noun",
+    "vietnamese": "nhiệm vụ",
+    "pronounce": "/əˈsaɪnmənt/",
+    "explain": "Một nhiệm vụ được giao cho ai đó.",
+    "example": "The employee completed the assignment.",
+    "example_vietnamese": "Nhân viên hoàn thành nhiệm vụ.",
+    "image_url": null,
+    "audio_url": null,
+    "difficulty": "easy",
+    "cefr_level": "A2",
+    "toeic_level": 500,
+    "frequency": 55,
+    "synonyms": [
+      "task",
+      "job",
+      "duty"
+    ],
+    "antonyms": [],
+    "word_family": [
+      "assign",
+      "assigned"
+    ],
+    "collocations": [
+      "complete assignment",
+      "new assignment"
+    ],
+    "phrasal_verbs": [],
+    "grammar_pattern": "Common usage",
+    "common_mistakes": null,
+    "usage_note": "Từ cơ bản trong quản lý công việc.",
+    "topic": "General Business Operations",
+    "mnemonic": null,
+    "mnemonic_type": null,
+    "memory_tip": "Assignment = công việc được giao.",
+    "is_common": true,
+    "stage": 2,
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": null,
+    "english": "assist",
+    "type": "verb",
+    "vietnamese": "hỗ trợ; giúp đỡ",
+    "pronounce": "/əˈsɪst/",
+    "explain": "Giúp đỡ hoặc hỗ trợ ai đó.",
+    "example": "Please assist the customers with inquiries.",
+    "example_vietnamese": "Vui lòng hỗ trợ khách hàng với các thắc mắc.",
+    "image_url": null,
+    "audio_url": null,
+    "difficulty": "easy",
+    "cefr_level": "A1",
+    "toeic_level": 400,
+    "frequency": 90,
+    "synonyms": [
+      "help",
+      "aid",
+      "support"
+    ],
+    "antonyms": [
+      "hinder",
+      "obstruct"
+    ],
+    "word_family": [
+      "assistance",
+      "assistant"
+    ],
+    "collocations": [
+      "assist with",
+      "assist someone"
+    ],
+    "phrasal_verbs": [],
+    "grammar_pattern": "assist + N + with + N",
+    "common_mistakes": null,
+    "usage_note": "Động từ cơ bản trong dịch vụ.",
+    "topic": "General Business Operations",
+    "mnemonic": null,
+    "mnemonic_type": null,
+    "memory_tip": "Assist = giúp đỡ ai đó.",
+    "is_common": true,
+    "stage": 1,
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": null,
+    "english": "association",
+    "type": "noun",
+    "vietnamese": "hiệp hội; sự liên kết",
+    "pronounce": "/əˌsəʊsiˈeɪʃn/",
+    "explain": "Một tổ chức chính thức hoặc mối quan hệ.",
+    "example": "The trade association represents manufacturers.",
+    "example_vietnamese": "Hiệp hội thương mại đại diện cho các nhà sản xuất.",
+    "image_url": null,
+    "audio_url": null,
+    "difficulty": "medium",
+    "cefr_level": "B1",
+    "toeic_level": 500,
+    "frequency": 45,
+    "synonyms": [
+      "organization",
+      "society",
+      "connection"
+    ],
+    "antonyms": [
+      "disconnection",
+      "separation"
+    ],
+    "word_family": [
+      "associate",
+      "associated"
+    ],
+    "collocations": [
+      "trade association",
+      "professional association"
+    ],
+    "phrasal_verbs": [],
+    "grammar_pattern": "Common usage",
+    "common_mistakes": null,
+    "usage_note": "Dùng trong mô tả tổ chức.",
+    "topic": "General Business Operations",
+    "mnemonic": null,
+    "mnemonic_type": null,
+    "memory_tip": "Association = hiệp hội hoặc mối quan hệ.",
+    "is_common": true,
+    "stage": 2,
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": null,
+    "english": "assume",
+    "type": "verb",
+    "vietnamese": "giả định; cho rằng",
+    "pronounce": "/əˈsjuːm/",
+    "explain": "Cho rằng một cái gì đó là đúng.",
+    "example": "We assume the project will be completed on time.",
+    "example_vietnamese": "Chúng tôi giả định dự án sẽ hoàn thành đúng hạn.",
+    "image_url": null,
+    "audio_url": null,
+    "difficulty": "medium",
+    "cefr_level": "B1",
+    "toeic_level": 500,
+    "frequency": 60,
+    "synonyms": [
+      "suppose",
+      "presume",
+      "take for granted"
+    ],
+    "antonyms": [
+      "verify",
+      "confirm"
+    ],
+    "word_family": [
+      "assumption",
+      "assumed"
+    ],
+    "collocations": [
+      "assume responsibility",
+      "safe to assume"
+    ],
+    "phrasal_verbs": [],
+    "grammar_pattern": "assume + N/that clause",
+    "common_mistakes": null,
+    "usage_note": "Có nghĩa 'giả định' hoặc 'nhận trách nhiệm'.",
+    "topic": "General Business Operations",
+    "mnemonic": null,
+    "mnemonic_type": null,
+    "memory_tip": "Assume = cho là đúng hoặc nhận việc.",
+    "is_common": true,
+    "stage": 2,
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": null,
+    "english": "assurance",
+    "type": "noun",
+    "vietnamese": "sự đảm bảo",
+    "pronounce": "/əˈʃʊərəns/",
+    "explain": "Một lời hứa chắc chắn.",
+    "example": "The company provided quality assurance.",
+    "example_vietnamese": "Công ty cung cấp đảm bảo chất lượng.",
+    "image_url": null,
+    "audio_url": null,
+    "difficulty": "medium",
+    "cefr_level": "B2",
+    "toeic_level": 600,
+    "frequency": 35,
+    "synonyms": [
+      "guarantee",
+      "confidence",
+      "certainty"
+    ],
+    "antonyms": [
+      "doubt",
+      "uncertainty"
+    ],
+    "word_family": [
+      "assure",
+      "assured"
+    ],
+    "collocations": [
+      "quality assurance",
+      "give assurance"
+    ],
+    "phrasal_verbs": [],
+    "grammar_pattern": "Common usage",
+    "common_mistakes": null,
+    "usage_note": "Dùng trong QA và cam kết.",
+    "topic": "General Business Operations",
+    "mnemonic": null,
+    "mnemonic_type": null,
+    "memory_tip": "Assurance = lời hứa hoặc sự tự tin.",
+    "is_common": true,
+    "stage": 3,
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": null,
+    "english": "attain",
+    "type": "verb",
+    "vietnamese": "đạt được",
+    "pronounce": "/əˈteɪn/",
+    "explain": "Đạt được sau nỗ lực.",
+    "example": "The company attained its sales target.",
+    "example_vietnamese": "Công ty đạt mục tiêu doanh số.",
+    "image_url": null,
+    "audio_url": null,
+    "difficulty": "medium",
+    "cefr_level": "B2",
+    "toeic_level": 600,
+    "frequency": 30,
+    "synonyms": [
+      "achieve",
+      "accomplish",
+      "reach"
+    ],
+    "antonyms": [
+      "fail",
+      "miss"
+    ],
+    "word_family": [
+      "attainment",
+      "attainable"
+    ],
+    "collocations": [
+      "attain a goal",
+      "attain success"
+    ],
+    "phrasal_verbs": [],
+    "grammar_pattern": "attain + N",
+    "common_mistakes": null,
+    "usage_note": "Trang trọng hơn 'achieve'.",
+    "topic": "General Business Operations",
+    "mnemonic": null,
+    "mnemonic_type": null,
+    "memory_tip": "Attain = đạt được sau nỗ lực.",
+    "is_common": true,
+    "stage": 3,
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": null,
+    "english": "attainment",
+    "type": "noun",
+    "vietnamese": "sự đạt được; trình độ",
+    "pronounce": "/əˈteɪnmənt/",
+    "explain": "Hành động đạt được hoặc trình độ đã đạt.",
+    "example": "Educational attainment is important for careers.",
+    "example_vietnamese": "Trình độ giáo dục quan trọng cho sự nghiệp.",
+    "image_url": null,
+    "audio_url": null,
+    "difficulty": "medium",
+    "cefr_level": "B2",
+    "toeic_level": 700,
+    "frequency": 20,
+    "synonyms": [
+      "achievement",
+      "accomplishment",
+      "level"
+    ],
+    "antonyms": [
+      "failure",
+      "shortcoming"
+    ],
+    "word_family": [
+      "attain",
+      "attainable"
+    ],
+    "collocations": [
+      "educational attainment",
+      "level of attainment"
+    ],
+    "phrasal_verbs": [],
+    "grammar_pattern": "Common usage",
+    "common_mistakes": null,
+    "usage_note": "Dùng trong giáo dục.",
+    "topic": "Personnel & Human Resources",
+    "mnemonic": null,
+    "mnemonic_type": null,
+    "memory_tip": "Attainment = trình độ hoặc thành tựu đã đạt.",
+    "is_common": false,
+    "stage": 4,
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": null,
+    "english": "attend",
+    "type": "verb",
+    "vietnamese": "tham dự",
+    "pronounce": "/əˈtend/",
+    "explain": "Có mặt tại một sự kiện.",
+    "example": "All managers must attend the meeting.",
+    "example_vietnamese": "Tất cả giám đốc phải tham dự cuộc họp.",
+    "image_url": null,
+    "audio_url": null,
+    "difficulty": "easy",
+    "cefr_level": "A1",
+    "toeic_level": 400,
+    "frequency": 95,
+    "synonyms": [
+      "be present at",
+      "go to",
+      "take part in"
+    ],
+    "antonyms": [
+      "miss",
+      "skip",
+      "absent from"
+    ],
+    "word_family": [
+      "attendance",
+      "attendant"
+    ],
+    "collocations": [
+      "attend a meeting",
+      "attend a conference"
+    ],
+    "phrasal_verbs": [],
+    "grammar_pattern": "attend + N",
+    "common_mistakes": null,
+    "usage_note": "Động từ cơ bản trong lịch trình.",
+    "topic": "General Business Operations",
+    "mnemonic": null,
+    "mnemonic_type": null,
+    "memory_tip": "Attend = có mặt tại sự kiện.",
+    "is_common": true,
+    "stage": 1,
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": null,
+    "english": "attendee",
+    "type": "noun",
+    "vietnamese": "người tham dự",
+    "pronounce": "/ˌatenˈdiː/",
+    "explain": "Người có mặt tại một sự kiện.",
+    "example": "Conference attendees received materials.",
+    "example_vietnamese": "Người tham dự hội nghị nhận được tài liệu.",
+    "image_url": null,
+    "audio_url": null,
+    "difficulty": "medium",
+    "cefr_level": "B2",
+    "toeic_level": 600,
+    "frequency": 25,
+    "synonyms": [
+      "participant",
+      "delegate",
+      "guest"
+    ],
+    "antonyms": [
+      "absentee",
+      "non-attendee"
+    ],
+    "word_family": [
+      "attend",
+      "attendance"
+    ],
+    "collocations": [
+      "conference attendee",
+      "event attendee"
+    ],
+    "phrasal_verbs": [],
+    "grammar_pattern": "Common usage",
+    "common_mistakes": null,
+    "usage_note": "Dùng trong tổ chức sự kiện.",
+    "topic": "General Business Operations",
+    "mnemonic": null,
+    "mnemonic_type": null,
+    "memory_tip": "Attendee = người đến dự sự kiện.",
+    "is_common": true,
+    "stage": 3,
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": null,
+    "english": "attentive",
+    "type": "adjective",
+    "vietnamese": "chú ý; chăm chú",
+    "pronounce": "/əˈtentɪv/",
+    "explain": "Chú ý hoặc quan tâm cẩn thận.",
+    "example": "The attentive staff ensured satisfaction.",
+    "example_vietnamese": "Nhân viên ân cần đảm bảo sự hài lòng.",
+    "image_url": null,
+    "audio_url": null,
+    "difficulty": "medium",
+    "cefr_level": "B2",
+    "toeic_level": 600,
+    "frequency": 30,
+    "synonyms": [
+      "observant",
+      "careful",
+      "considerate"
+    ],
+    "antonyms": [
+      "inattentive",
+      "neglectful"
+    ],
+    "word_family": [
+      "attend",
+      "attention"
+    ],
+    "collocations": [
+      "attentive listener",
+      "attentive service"
+    ],
+    "phrasal_verbs": [],
+    "grammar_pattern": "attentive to + N",
+    "common_mistakes": null,
+    "usage_note": "Dùng trong dịch vụ khách hàng.",
+    "topic": "Sales & Marketing",
+    "mnemonic": null,
+    "mnemonic_type": null,
+    "memory_tip": "Attentive = chú ý và quan tâm.",
+    "is_common": true,
+    "stage": 3,
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": null,
+    "english": "attitude",
+    "type": "noun",
+    "vietnamese": "thái độ",
+    "pronounce": "/ˈætɪtjuːd/",
+    "explain": "Cách suy nghĩ hoặc cảm về một cái gì đó.",
+    "example": "A positive attitude is essential for success.",
+    "example_vietnamese": "Thái độ tích cực là thiết yếu cho thành công.",
+    "image_url": null,
+    "audio_url": null,
+    "difficulty": "easy",
+    "cefr_level": "A2",
+    "toeic_level": 500,
+    "frequency": 65,
+    "synonyms": [
+      "mindset",
+      "approach",
+      "outlook"
+    ],
+    "antonyms": [],
+    "word_family": [
+      "attitudinal"
+    ],
+    "collocations": [
+      "positive attitude",
+      "change attitude"
+    ],
+    "phrasal_verbs": [],
+    "grammar_pattern": "attitude towards/to + N",
+    "common_mistakes": null,
+    "usage_note": "Từ cơ bản trong HR.",
+    "topic": "Personnel & Human Resources",
+    "mnemonic": null,
+    "mnemonic_type": null,
+    "memory_tip": "Attitude = cách nhìn hoặc cảm về vấn đề.",
+    "is_common": true,
+    "stage": 2,
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": null,
+    "english": "attract",
+    "type": "verb",
+    "vietnamese": "thu hút; hấp dẫn",
+    "pronounce": "/əˈtrækt/",
+    "explain": "Làm cho ai đó quan tâm.",
+    "example": "The campaign aims to attract younger customers.",
+    "example_vietnamese": "Chiến dịch nhằm thu hút khách hàng trẻ hơn.",
+    "image_url": null,
+    "audio_url": null,
+    "difficulty": "easy",
+    "cefr_level": "A2",
+    "toeic_level": 500,
+    "frequency": 75,
+    "synonyms": [
+      "draw",
+      "pull in",
+      "entice"
+    ],
+    "antonyms": [
+      "repel",
+      "deter"
+    ],
+    "word_family": [
+      "attraction",
+      "attractive"
+    ],
+    "collocations": [
+      "attract customers",
+      "attract attention"
+    ],
+    "phrasal_verbs": [],
+    "grammar_pattern": "attract + N",
+    "common_mistakes": null,
+    "usage_note": "Động từ cơ bản trong marketing.",
+    "topic": "Sales & Marketing",
+    "mnemonic": null,
+    "mnemonic_type": null,
+    "memory_tip": "Attract = làm cho người khác quan tâm.",
+    "is_common": true,
+    "stage": 1,
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": null,
+    "english": "attribute",
+    "type": "verb",
+    "vietnamese": "qui cho; gán cho",
+    "pronounce": "/əˈtrɪbjuːt/",
+    "explain": "Cho rằng một cái gì đó do nguyên nhân cụ thể.",
+    "example": "Analysts attribute the success to management.",
+    "example_vietnamese": "Các nhà phân tích cho rằng thành công là do quản lý.",
+    "image_url": null,
+    "audio_url": null,
+    "difficulty": "medium",
+    "cefr_level": "B2",
+    "toeic_level": 700,
+    "frequency": 25,
+    "synonyms": [
+      "ascribe",
+      "credit",
+      "assign"
+    ],
+    "antonyms": [],
+    "word_family": [
+      "attribution",
+      "attributable"
+    ],
+    "collocations": [
+      "attribute to",
+      "attribute success"
+    ],
+    "phrasal_verbs": [],
+    "grammar_pattern": "attribute + N + to + N",
+    "common_mistakes": null,
+    "usage_note": "Trang trọng, dùng trong phân tích.",
+    "topic": "General Business Operations",
+    "mnemonic": null,
+    "mnemonic_type": null,
+    "memory_tip": "Attribute = cho rằng cái gì đó do nguyên nhân nào.",
+    "is_common": false,
+    "stage": 4,
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": null,
+    "english": "audience",
+    "type": "noun",
+    "vietnamese": "khán giả",
+    "pronounce": "/ˈɔːdiəns/",
+    "explain": "Nhóm người xem hoặc nghe một cái gì đó.",
+    "example": "The presentation was well-received by the audience.",
+    "example_vietnamese": "Bài thuyết trình được đón nhận tốt bởi khán giả.",
+    "image_url": null,
+    "audio_url": null,
+    "difficulty": "easy",
+    "cefr_level": "A2",
+    "toeic_level": 500,
+    "frequency": 60,
+    "synonyms": [
+      "viewers",
+      "listeners",
+      "spectators"
+    ],
+    "antonyms": [],
+    "word_family": [
+      "audiences"
+    ],
+    "collocations": [
+      "target audience",
+      "large audience"
+    ],
+    "phrasal_verbs": [],
+    "grammar_pattern": "Common usage",
+    "common_mistakes": null,
+    "usage_note": "Từ cơ bản trong marketing.",
+    "topic": "Sales & Marketing",
+    "mnemonic": null,
+    "mnemonic_type": null,
+    "memory_tip": "Audience = người xem hoặc nghe.",
+    "is_common": true,
+    "stage": 2,
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": null,
+    "english": "audit",
+    "type": "verb",
+    "vietnamese": "kiểm toán",
+    "pronounce": "/ˈɔːdɪt/",
+    "explain": "Kiểm tra chính thức tài khoản hoặc hồ sơ.",
+    "example": "External auditors will examine our records.",
+    "example_vietnamese": "Kiểm toán viên bên ngoài sẽ kiểm tra hồ sơ của chúng tôi.",
+    "image_url": null,
+    "audio_url": null,
+    "difficulty": "medium",
+    "cefr_level": "B2",
+    "toeic_level": 700,
+    "frequency": 30,
+    "synonyms": [
+      "inspect",
+      "examine",
+      "review"
+    ],
+    "antonyms": [],
+    "word_family": [
+      "auditor",
+      "auditing"
+    ],
+    "collocations": [
+      "audit accounts",
+      "internal audit"
+    ],
+    "phrasal_verbs": [],
+    "grammar_pattern": "audit + N",
+    "common_mistakes": null,
+    "usage_note": "Thuật ngữ quan trọng trong tài chính.",
+    "topic": "Finance & Banking",
+    "mnemonic": null,
+    "mnemonic_type": null,
+    "memory_tip": "Audit = kiểm tra tài chính.",
+    "is_common": true,
+    "stage": 4,
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": null,
+    "english": "authenticate",
+    "type": "verb",
+    "vietnamese": "xác thực",
+    "pronounce": "/ɔːˈθentɪkeɪt/",
+    "explain": "Xác minh rằng một cái gì đó là thật.",
+    "example": "Users must authenticate their identity.",
+    "example_vietnamese": "Người dùng phải xác thực danh tính của họ.",
+    "image_url": null,
+    "audio_url": null,
+    "difficulty": "medium",
+    "cefr_level": "B2",
+    "toeic_level": 700,
+    "frequency": 20,
+    "synonyms": [
+      "verify",
+      "validate",
+      "confirm"
+    ],
+    "antonyms": [
+      "fake",
+      "forge"
+    ],
+    "word_family": [
+      "authentic",
+      "authentication"
+    ],
+    "collocations": [
+      "authenticate identity",
+      "authenticate document"
+    ],
+    "phrasal_verbs": [],
+    "grammar_pattern": "authenticate + N",
+    "common_mistakes": null,
+    "usage_note": "Quan trọng trong bảo mật IT.",
+    "topic": "Technical Areas & IT",
+    "mnemonic": null,
+    "mnemonic_type": null,
+    "memory_tip": "Authenticate = kiểm tra xem có phải thật không.",
+    "is_common": false,
+    "stage": 4,
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": null,
+    "english": "authorize",
+    "type": "verb",
+    "vietnamese": "ủy quyền; cho phép",
+    "pronounce": "/ˈɔːθəraɪz/",
+    "explain": "Cho phép chính thức hoặc cấp quyền.",
+    "example": "Only authorized personnel can access data.",
+    "example_vietnamese": "Chỉ nhân viên được ủy quyền mới có thể truy cập dữ liệu.",
+    "image_url": null,
+    "audio_url": null,
+    "difficulty": "medium",
+    "cefr_level": "B2",
+    "toeic_level": 600,
+    "frequency": 40,
+    "synonyms": [
+      "permit",
+      "approve",
+      "empower"
+    ],
+    "antonyms": [
+      "forbid",
+      "prohibit"
+    ],
+    "word_family": [
+      "authority",
+      "authorization"
+    ],
+    "collocations": [
+      "authorize payment",
+      "authorize access"
+    ],
+    "phrasal_verbs": [],
+    "grammar_pattern": "authorize + N + to + V",
+    "common_mistakes": null,
+    "usage_note": "Quan trọng trong bảo mật và quản lý.",
+    "topic": "General Business Operations",
+    "mnemonic": null,
+    "mnemonic_type": null,
+    "memory_tip": "Authorize = cho phép chính thức.",
+    "is_common": true,
+    "stage": 3,
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": null,
+    "english": "automate",
+    "type": "verb",
+    "vietnamese": "tự động hóa",
+    "pronounce": "/ˈɔːtəmeɪt/",
+    "explain": "Làm cho quy trình hoạt động tự động.",
+    "example": "We plan to automate the invoicing process.",
+    "example_vietnamese": "Chúng tôi kế hoạch tự động hóa quy trình xuất hóa đơn.",
+    "image_url": null,
+    "audio_url": null,
+    "difficulty": "medium",
+    "cefr_level": "B2",
+    "toeic_level": 600,
+    "frequency": 35,
+    "synonyms": [
+      "mechanize",
+      "computerize"
+    ],
+    "antonyms": [
+      "manualize"
+    ],
+    "word_family": [
+      "automatic",
+      "automation"
+    ],
+    "collocations": [
+      "automate process",
+      "automate system"
+    ],
+    "phrasal_verbs": [],
+    "grammar_pattern": "automate + N",
+    "common_mistakes": null,
+    "usage_note": "Quan trọng trong IT.",
+    "topic": "Technical Areas & IT",
+    "mnemonic": null,
+    "mnemonic_type": null,
+    "memory_tip": "Automate = làm cho tự động.",
+    "is_common": true,
+    "stage": 3,
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": null,
+    "english": "automatically",
+    "type": "adverb",
+    "vietnamese": "tự động",
+    "pronounce": "/ˌɔːtəˈmætɪkli/",
+    "explain": "Một cách tự động, không cần can thiệp.",
+    "example": "The system automatically backs up data.",
+    "example_vietnamese": "Hệ thống tự động sao lưu dữ liệu.",
+    "image_url": null,
+    "audio_url": null,
+    "difficulty": "medium",
+    "cefr_level": "B1",
+    "toeic_level": 500,
+    "frequency": 50,
+    "synonyms": [
+      "mechanically",
+      "instinctively"
+    ],
+    "antonyms": [
+      "manually",
+      "deliberately"
+    ],
+    "word_family": [
+      "automatic",
+      "automation"
+    ],
+    "collocations": [
+      "automatically update",
+      "automatically process"
+    ],
+    "phrasal_verbs": [],
+    "grammar_pattern": "Common usage",
+    "common_mistakes": null,
+    "usage_note": "Dùng trong IT và mô tả quy trình.",
+    "topic": "Technical Areas & IT",
+    "mnemonic": null,
+    "mnemonic_type": null,
+    "memory_tip": "Automatically = tự nhiên, không cần người làm.",
+    "is_common": true,
+    "stage": 2,
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": null,
+    "english": "availability",
+    "type": "noun",
+    "vietnamese": "sự có sẵn",
+    "pronounce": "/əˌveɪləˈbɪləti/",
+    "explain": "Trạng thái có thể được sử dụng.",
+    "example": "Product availability affects inventory management.",
+    "example_vietnamese": "Sự có sẵn của sản phẩm ảnh hưởng đến quản lý kho.",
+    "image_url": null,
+    "audio_url": null,
+    "difficulty": "medium",
+    "cefr_level": "B2",
+    "toeic_level": 600,
+    "frequency": 45,
+    "synonyms": [
+      "accessibility",
+      "presence",
+      "readiness"
+    ],
+    "antonyms": [
+      "unavailability",
+      "scarcity"
+    ],
+    "word_family": [
+      "available",
+      "unavailable"
+    ],
+    "collocations": [
+      "check availability",
+      "immediate availability"
+    ],
+    "phrasal_verbs": [],
+    "grammar_pattern": "Common usage",
+    "common_mistakes": null,
+    "usage_note": "Quan trọng trong quản lý kho.",
+    "topic": "General Business Operations",
+    "mnemonic": null,
+    "mnemonic_type": null,
+    "memory_tip": "Availability = có thể dùng hoặc có được.",
+    "is_common": true,
+    "stage": 3,
+    "created_at": null,
+    "updated_at": null
+  }
+]
