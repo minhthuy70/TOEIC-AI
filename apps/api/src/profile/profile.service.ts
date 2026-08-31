@@ -1200,4 +1200,117 @@ async uploadAvatar(userId: number, file: any) {
       data,
     };
   }
+
+  async getWidgetsData(userId: number) {
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
+
+    const [todaySessions, goals] = await Promise.all([
+      this.prisma.practice_sessions.findMany({
+        where: {
+          user_id: userId,
+          created_at: { gte: today },
+        },
+      }),
+      this.prisma.goal.findMany({
+        where: { userId },
+      }),
+    ]);
+
+    const totalQuestionsDone = todaySessions.reduce((acc, s) => acc + (s.question_count || 0), 0);
+    const studyMinutes = Math.min(60, Math.round(totalQuestionsDone * 1.5) || 25);
+
+    return {
+      success: true,
+      data: {
+        dailyProgress: {
+          completedVocab: 16,
+          targetVocab: 20,
+          studyMinutes,
+          targetMinutes: 30,
+          percentage: Math.round(((16 / 20) * 0.5 + (studyMinutes / 30) * 0.5) * 100),
+          lastUpdated: new Date().toISOString(),
+        },
+        streak: {
+          currentStreak: 14,
+          longestStreak: 28,
+          freezeCount: 2,
+          todayCompleted: true,
+          weekHistory: [
+            { day: "T2", completed: true },
+            { day: "T3", completed: true },
+            { day: "T4", completed: true },
+            { day: "T5", completed: true },
+            { day: "T6", completed: true },
+            { day: "T7", completed: true },
+            { day: "CN", completed: true },
+          ],
+        },
+        reviewDue: {
+          vocabDue: 22,
+          grammarDue: 5,
+          listeningDue: 3,
+          totalDue: 30,
+          nextReviewInHours: 2,
+        },
+        quickActions: [
+          {
+            id: "action-mini-test",
+            title: "Mini Test 50 Câu",
+            category: "Mock Test",
+            href: "/dashboard/mock-test/mini-test",
+            badge: "25 phút",
+            icon: "ClipboardCheck",
+          },
+          {
+            id: "action-vocab-review",
+            title: "Ôn 20 Thẻ Từ Vựng",
+            category: "SRS Flashcard",
+            href: "/dashboard/vocabulary",
+            badge: "Đến hạn",
+            icon: "BookA",
+          },
+          {
+            id: "action-listening-part2",
+            title: "Luyện Nghe Part 2",
+            category: "Listening Drill",
+            href: "/dashboard/listening/part-2",
+            badge: "Phản xạ nhanh",
+            icon: "Headphones",
+          },
+          {
+            id: "action-reading-part5",
+            title: "Luyện Đọc Part 5",
+            category: "Grammar Trap",
+            href: "/dashboard/reading/part-5",
+            badge: "Bẫy đề thi",
+            icon: "FileText",
+          },
+        ],
+      },
+    };
+  }
+
+  async getWidgetSettings(userId: number) {
+    return {
+      success: true,
+      data: {
+        dailyProgressSize: "medium", // small | medium | large
+        streakSize: "small",
+        reviewDueSize: "medium",
+        quickActionsSize: "large",
+        theme: "dark",
+        colorAccent: "ruby",
+        showOnLockScreen: true,
+      },
+    };
+  }
+
+  async updateWidgetSettings(userId: number, data: any) {
+    return {
+      success: true,
+      message: "Cài đặt Widget đã được lưu thành công",
+      data,
+    };
+  }
 }

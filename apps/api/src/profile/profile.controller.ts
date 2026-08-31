@@ -205,6 +205,21 @@ updateBackgroundAudioSettings(@Req() req: any, @Body() body: any) {
   return this.profileService.updateBackgroundAudioSettings(req.user.userId, body);
 }
 
+@Get("widgets/data")
+getWidgetsData(@Req() req: any) {
+  return this.profileService.getWidgetsData(req.user.userId);
+}
+
+@Get("widgets/settings")
+getWidgetSettings(@Req() req: any) {
+  return this.profileService.getWidgetSettings(req.user.userId);
+}
+
+@Put("widgets/settings")
+updateWidgetSettings(@Req() req: any, @Body() body: any) {
+  return this.profileService.updateWidgetSettings(req.user.userId, body);
+}
+
 @Post("delete-account")
 deleteAccount(@Req() req: any, @Body() body: { password?: string; reason?: string }) {
   return this.profileService.deleteAccount(req.user.userId, body.password, body.reason);

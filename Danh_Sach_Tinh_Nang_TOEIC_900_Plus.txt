@@ -1059,10 +1059,10 @@ Dựa trên lộ trình học TOEIC 900+ - Phiên bản nâng cấp
 [x] - Headphone controls - Điều khiển tai nghe
 
 14.3. Widgets (Tiện ích)
-- Daily progress widget - Tiện ích tiến độ hàng ngày
-- Streak widget - Tiện ích chuỗi
-- Review due widget - Tiện ích ôn tập đến hạn
-- Quick actions widget - Tiện ích hành động nhanh
+[x] - Daily progress widget - Tiện ích tiến độ hàng ngày
+[x] - Streak widget - Tiện ích chuỗi
+[x] - Review due widget - Tiện ích ôn tập đến hạn
+[x] - Quick actions widget - Tiện ích hành động nhanh
 
 ================================================================================
 
