@@ -110,9 +110,9 @@ export default function RewardsPage() {
     try {
       setLoading(true);
       const [catalogRes, historyRes, notifRes] = await Promise.all([
-        apiFetch(`/rewards/catalog${categoryFilter !== "all" ? `?category=${categoryFilter}` : ""}`),
-        apiFetch("/rewards/history"),
-        apiFetch("/rewards/notifications"),
+        apiFetch<{ success: boolean; data: { rewards: Reward[] } }>(`/rewards/catalog${categoryFilter !== "all" ? `?category=${categoryFilter}` : ""}`),
+        apiFetch<{ success: boolean; data: { history: RewardHistory[] } }>("/rewards/history"),
+        apiFetch<{ success: boolean; data: { notifications: RewardNotification[] } }>("/rewards/notifications"),
       ]);
 
       if (catalogRes.success) {
@@ -134,7 +134,7 @@ export default function RewardsPage() {
 
   const fetchUserPoints = async () => {
     try {
-      const res = await apiFetch("/points/stats");
+      const res = await apiFetch<{ success: boolean; data: { currentBalance: number } }>("/points/stats");
       if (res.success) {
         setUserPoints(res.data.currentBalance);
       }
@@ -145,7 +145,7 @@ export default function RewardsPage() {
 
   const redeemReward = async (rewardId: number) => {
     try {
-      const res = await apiFetch("/rewards/redeem", {
+      const res = await apiFetch<{ success: boolean; data: any }>("/rewards/redeem", {
         method: "POST",
         body: JSON.stringify({ rewardId }),
       });
@@ -164,7 +164,7 @@ export default function RewardsPage() {
 
   const shareReward = async (rewardId: number, bonusPoints: number = 0) => {
     try {
-      const res = await apiFetch("/rewards/share", {
+      const res = await apiFetch<{ success: boolean; data: any }>("/rewards/share", {
         method: "POST",
         body: JSON.stringify({ rewardId, bonusPoints }),
       });

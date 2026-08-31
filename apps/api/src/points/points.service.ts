@@ -479,7 +479,7 @@ export class PointsService {
         };
       }
 
-      let pointsQuery = {
+      let pointsQuery: any = {
         userId: { in: friendIds },
       };
       
@@ -658,7 +658,7 @@ export class PointsService {
       const sortedUsers = usersWithProfiles
         .map((user) => ({
           ...user,
-          calculatedPoints: pointsMap.get(user.profile.userId) || 0,
+          calculatedPoints: pointsMap.get(user.profile!.userId) || 0,
         }))
         .sort((a, b) => b.calculatedPoints - a.calculatedPoints);
 
@@ -667,14 +667,14 @@ export class PointsService {
         data: {
           leaderboard: sortedUsers.map((user, index) => ({
             rank: index + 1,
-            userId: user.profile.userId,
+            userId: user.profile!.userId,
             fullName: user.fullName,
             avatarUrl: user.avatarUrl,
             pointsBalance: category === "global" && period === "all_time" 
-              ? user.profile.pointsBalance 
+              ? user.profile!.pointsBalance 
               : user.calculatedPoints,
-            totalPointsEarned: user.profile.totalPointsEarned,
-            streak: user.profile.streak,
+            totalPointsEarned: user.profile!.totalPointsEarned,
+            streak: user.profile!.streak,
           })),
           total: sortedUsers.length,
           category,

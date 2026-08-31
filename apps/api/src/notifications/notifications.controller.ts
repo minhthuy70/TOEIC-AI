@@ -180,4 +180,173 @@ export class NotificationsController {
       );
     }
   }
+
+  @Get("email-preview/:type")
+  async getEmailPreview(@Req() req: any, @Param("type") type: string) {
+    try {
+      const userId = req.user.userId;
+      return this.notificationsService.getEmailPreview(userId, type);
+    } catch (error) {
+      console.error("Get email preview error:", error);
+      throw new HttpException(
+        { message: error.message || "Internal server error", statusCode: 500 },
+        HttpStatus.INTERNAL_SERVER_ERROR
+      );
+    }
+  }
+
+  @Post("email-test")
+  async sendTestEmail(@Req() req: any, @Body() body: { type: string }) {
+    try {
+      const userId = req.user.userId;
+      const type = body?.type || "daily_progress_report";
+      return this.notificationsService.sendTestEmail(userId, type);
+    } catch (error) {
+      console.error("Send test email error:", error);
+      throw new HttpException(
+        { message: error.message || "Internal server error", statusCode: 500 },
+        HttpStatus.INTERNAL_SERVER_ERROR
+      );
+    }
+  }
+
+  @Post("newsletter/toggle")
+  async toggleNewsletter(@Req() req: any, @Body() body: { subscribe?: boolean }) {
+    try {
+      const userId = req.user.userId;
+      return this.notificationsService.toggleNewsletter(userId, body?.subscribe);
+    } catch (error) {
+      console.error("Toggle newsletter error:", error);
+      throw new HttpException(
+        { message: error.message || "Internal server error", statusCode: 500 },
+        HttpStatus.INTERNAL_SERVER_ERROR
+      );
+    }
+  }
+
+  @Post("send-daily-progress-report")
+  async sendDailyProgressReport(@Req() req: any, @Body() body?: { forceSend?: boolean }) {
+    try {
+      const userId = req.user.userId;
+      return this.notificationsService.sendDailyProgressReport(userId, body?.forceSend);
+    } catch (error) {
+      console.error("Send daily progress report error:", error);
+      throw new HttpException(
+        { message: error.message || "Internal server error", statusCode: 500 },
+        HttpStatus.INTERNAL_SERVER_ERROR
+      );
+    }
+  }
+
+  @Post("send-weekly-progress-report")
+  async sendWeeklyProgressReport(@Req() req: any, @Body() body?: { forceSend?: boolean }) {
+    try {
+      const userId = req.user.userId;
+      return this.notificationsService.sendWeeklyProgressReport(userId, body?.forceSend);
+    } catch (error) {
+      console.error("Send weekly progress report error:", error);
+      throw new HttpException(
+        { message: error.message || "Internal server error", statusCode: 500 },
+        HttpStatus.INTERNAL_SERVER_ERROR
+      );
+    }
+  }
+
+  @Post("send-monthly-progress-report")
+  async sendMonthlyProgressReport(@Req() req: any, @Body() body?: { forceSend?: boolean }) {
+    try {
+      const userId = req.user.userId;
+      return this.notificationsService.sendMonthlyProgressReport(userId, body?.forceSend);
+    } catch (error) {
+      console.error("Send monthly progress report error:", error);
+      throw new HttpException(
+        { message: error.message || "Internal server error", statusCode: 500 },
+        HttpStatus.INTERNAL_SERVER_ERROR
+      );
+    }
+  }
+
+  @Post("send-test-results-email")
+  async sendTestResultsEmail(@Req() req: any, @Body() body?: { attemptId?: number; forceSend?: boolean }) {
+    try {
+      const userId = req.user.userId;
+      return this.notificationsService.sendTestResultsEmail(userId, body?.attemptId, body?.forceSend);
+    } catch (error) {
+      console.error("Send test results email error:", error);
+      throw new HttpException(
+        { message: error.message || "Internal server error", statusCode: 500 },
+        HttpStatus.INTERNAL_SERVER_ERROR
+      );
+    }
+  }
+
+  @Post("send-achievement-unlocked-email")
+  async sendAchievementUnlockedEmail(@Req() req: any, @Body() body?: { achievementId?: number; forceSend?: boolean }) {
+    try {
+      const userId = req.user.userId;
+      return this.notificationsService.sendAchievementUnlockedEmail(userId, body?.achievementId, body?.forceSend);
+    } catch (error) {
+      console.error("Send achievement unlocked email error:", error);
+      throw new HttpException(
+        { message: error.message || "Internal server error", statusCode: 500 },
+        HttpStatus.INTERNAL_SERVER_ERROR
+      );
+    }
+  }
+
+  @Post("send-streak-milestone-email")
+  async sendStreakMilestoneEmail(@Req() req: any, @Body() body?: { milestoneDays?: number; forceSend?: boolean }) {
+    try {
+      const userId = req.user.userId;
+      return this.notificationsService.sendStreakMilestoneEmail(userId, body?.milestoneDays, body?.forceSend);
+    } catch (error) {
+      console.error("Send streak milestone email error:", error);
+      throw new HttpException(
+        { message: error.message || "Internal server error", statusCode: 500 },
+        HttpStatus.INTERNAL_SERVER_ERROR
+      );
+    }
+  }
+
+  @Post("send-goal-achieved-email")
+  async sendGoalAchievedEmail(@Req() req: any, @Body() body?: { goalId?: number; forceSend?: boolean }) {
+    try {
+      const userId = req.user.userId;
+      return this.notificationsService.sendGoalAchievedEmail(userId, body?.goalId, body?.forceSend);
+    } catch (error) {
+      console.error("Send goal achieved email error:", error);
+      throw new HttpException(
+        { message: error.message || "Internal server error", statusCode: 500 },
+        HttpStatus.INTERNAL_SERVER_ERROR
+      );
+    }
+  }
+
+  @Post("send-newsletter-subscription-email")
+  async sendNewsletterSubscriptionEmail(@Req() req: any, @Body() body?: { forceSend?: boolean }) {
+    try {
+      const userId = req.user.userId;
+      return this.notificationsService.sendNewsletterSubscriptionEmail(userId, body?.forceSend);
+    } catch (error) {
+      console.error("Send newsletter subscription email error:", error);
+      throw new HttpException(
+        { message: error.message || "Internal server error", statusCode: 500 },
+        HttpStatus.INTERNAL_SERVER_ERROR
+      );
+    }
+  }
+
+  @Post("send-promotional-content-email")
+  async sendPromotionalContentEmail(@Req() req: any, @Body() body?: { promoCode?: string; forceSend?: boolean }) {
+    try {
+      const userId = req.user.userId;
+      return this.notificationsService.sendPromotionalContentEmail(userId, body?.promoCode, body?.forceSend);
+    } catch (error) {
+      console.error("Send promotional content email error:", error);
+      throw new HttpException(
+        { message: error.message || "Internal server error", statusCode: 500 },
+        HttpStatus.INTERNAL_SERVER_ERROR
+      );
+    }
+  }
 }

@@ -137,7 +137,7 @@ export default function ChallengesPage() {
         }),
       };
 
-      const res = await apiFetch("/challenges/create", {
+      const res = await apiFetch<{ success: boolean }>("/challenges/create", {
         method: "POST",
         body: JSON.stringify(challengeData),
       });
@@ -170,9 +170,9 @@ export default function ChallengesPage() {
     try {
       setLoading(true);
       const [availableRes, myRes, historyRes] = await Promise.all([
-        apiFetch("/challenges/available" + (typeFilter !== "all" ? `?type=${typeFilter}` : "")),
-        apiFetch("/challenges/my"),
-        apiFetch("/challenges/history"),
+        apiFetch<{ success: boolean; data: { challenges: any[] } }>("/challenges/available" + (typeFilter !== "all" ? `?type=${typeFilter}` : "")),
+        apiFetch<{ success: boolean; data: { challenges: any[] } }>("/challenges/my"),
+        apiFetch<{ success: boolean; data: { history: any[] } }>("/challenges/history"),
       ]);
 
       if (availableRes.success) {
@@ -194,7 +194,7 @@ export default function ChallengesPage() {
 
   const acceptChallenge = async (challengeId: number) => {
     try {
-      const res = await apiFetch("/challenges/accept", {
+      const res = await apiFetch<{ success: boolean }>("/challenges/accept", {
         method: "POST",
         body: JSON.stringify({ challengeId }),
       });
@@ -208,7 +208,7 @@ export default function ChallengesPage() {
 
   const declineChallenge = async (challengeId: number) => {
     try {
-      const res = await apiFetch("/challenges/decline", {
+      const res = await apiFetch<{ success: boolean }>("/challenges/decline", {
         method: "POST",
         body: JSON.stringify({ challengeId }),
       });
@@ -222,7 +222,7 @@ export default function ChallengesPage() {
 
   const viewLeaderboard = async (challengeId: number) => {
     try {
-      const res = await apiFetch(`/challenges/${challengeId}/leaderboard`);
+      const res = await apiFetch<{ success: boolean; data: any }>(`/challenges/${challengeId}/leaderboard`);
       if (res.success) {
         setLeaderboardData(res.data);
         setShowLeaderboard(true);

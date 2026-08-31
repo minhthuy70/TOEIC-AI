@@ -872,70 +872,70 @@ Dựa trên lộ trình học TOEIC 900+ - Phiên bản nâng cấp
 ================================================================================
 
 11.1. Points System (Hệ thống điểm)
-- Points for learning vocabulary - Điểm học từ vựng
-- Points for reviewing vocabulary - Điểm ôn từ vựng
-- Points for practice questions - Điểm câu luyện tập
-- Points for correct answers - Điểm câu đúng
-- Points for tests - Điểm kiểm tra
-- Points for streaks - Điểm chuỗi
-- Points for achievements - Điểm thành tích
-- Points multiplier (streak bonus) - Nhân điểm (bonus chuỗi)
-- Points leaderboard - Bảng xếp hạng điểm
-- Points history - Lịch sử điểm
-- Points redemption (future features) - Đổi điểm (tính năng tương lai)
+[x] - Points for learning vocabulary - Điểm học từ vựng
+[x] - Points for reviewing vocabulary - Điểm ôn từ vựng
+[x] - Points for practice questions - Điểm câu luyện tập
+[x] - Points for correct answers - Điểm câu đúng
+[x] - Points for tests - Điểm kiểm tra
+[x] - Points for streaks - Điểm chuỗi
+[x] - Points for achievements - Điểm thành tích
+[x] - Points multiplier (streak bonus) - Nhân điểm (bonus chuỗi)
+[x] - Points leaderboard - Bảng xếp hạng điểm
+[x] - Points history - Lịch sử điểm
+[x] - Points redemption (future features) - Đổi điểm (tính năng tương lai)
 
 11.2. Levels & Badges (Cấp độ & Huy hiệu)
-- User level display - Hiển thị cấp độ người dùng
-- XP (experience points) - Điểm kinh nghiệm
-- Level progression bar - Thanh tiến độ cấp độ
-- Level requirements - Yêu cầu cấp độ
-- Level-up notification - Thông báo lên cấp
-- Badge collection - Bộ sưu tập huy hiệu
-- Badge categories - Danh mục huy hiệu
-- Badge criteria - Tiêu chí huy hiệu
-- Badge display on profile - Hiển thị huy hiệu trên hồ sơ
-- Rare badges - Huy hiệu hiếm
-- Limited edition badges - Huy hiệu phiên bản giới hạn
-- Share badges - Chia sẻ huy hiệu
+[x] - User level display - Hiển thị cấp độ người dùng
+[x] - XP (experience points) - Điểm kinh nghiệm
+[x] - Level progression bar - Thanh tiến độ cấp độ
+[x] - Level requirements - Yêu cầu cấp độ
+[x] - Level-up notification - Thông báo lên cấp
+[x] - Badge collection - Bộ sưu tập huy hiệu
+[x] - Badge categories - Danh mục huy hiệu
+[x] - Badge criteria - Tiêu chí huy hiệu
+[x] - Badge display on profile - Hiển thị huy hiệu trên hồ sơ
+[x] - Rare badges - Huy hiệu hiếm
+[x] - Limited edition badges - Huy hiệu phiên bản giới hạn
+[x] - Share badges - Chia sẻ huy hiệu
 
 11.3. Leaderboard (Bảng xếp hạng)
-- Global leaderboard - Bảng xếp hạng toàn cầu
-- Friends leaderboard - Bảng xếp hạng bạn bè
-- Weekly leaderboard - Bảng xếp hạng hàng tuần
-- Monthly leaderboard - Bảng xếp hạng hàng tháng
-- Leaderboard by category (vocabulary, listening, reading) - Bảng xếp hạng theo danh mục
-- Leaderboard filters - Bộ lọc bảng xếp hạng
-- Leaderboard search - Tìm kiếm bảng xếp hạng
-- Leaderboard ranking - Xếp hạng bảng xếp hạng
-- Rank change indicator - Chỉ số thay đổi xếp hạng
-- Compare with friends - So sánh với bạn bè
-- Leaderboard notifications - Thông báo bảng xếp hạng
+[x] - Global leaderboard - Bảng xếp hạng toàn cầu
+[x] - Friends leaderboard - Bảng xếp hạng bạn bè
+[x] - Weekly leaderboard - Bảng xếp hạng hàng tuần
+[x] - Monthly leaderboard - Bảng xếp hạng hàng tháng
+[x] - Leaderboard by category (vocabulary, listening, reading) - Bảng xếp hạng theo danh mục
+[x] - Leaderboard filters - Bộ lọc bảng xếp hạng
+[x] - Leaderboard search - Tìm kiếm bảng xếp hạng
+[x] - Leaderboard ranking - Xếp hạng bảng xếp hạng
+[x] - Rank change indicator - Chỉ số thay đổi xếp hạng
+[x] - Compare with friends - So sánh với bạn bè
+[x] - Leaderboard notifications - Thông báo bảng xếp hạng
 
 11.4. Challenges (Thử thách)
-- Daily challenges - Thử thách hàng ngày
-- Weekly challenges - Thử thách hàng tuần
-- Monthly challenges - Thử thách hàng tháng
-- Special challenges - Thử thách đặc biệt
-- Challenge criteria - Tiêu chí thử thách
-- Challenge rewards - Phần thưởng thử thách
-- Challenge progress - Tiến độ thử thách
-- Challenge countdown - Đếm ngược thử thách
-- Challenge leaderboard - Bảng xếp hạng thử thách
-- Challenge history - Lịch sử thử thách
-- Accept challenge - Chấp nhận thử thách
-- Decline challenge - Từ chối thử thách
-- Create custom challenge - Tạo thử thách tùy chỉnh
+[x] - Daily challenges - Thử thách hàng ngày
+[x] - Weekly challenges - Thử thách hàng tuần
+[x] - Monthly challenges - Thử thách hàng tháng
+[x] - Special challenges - Thử thách đặc biệt
+[x] - Challenge criteria - Tiêu chí thử thách
+[x] - Challenge rewards - Phần thưởng thử thách
+[x] - Challenge progress - Tiến độ thử thách
+[x] - Challenge countdown - Đếm ngược thử thách
+[x] - Challenge leaderboard - Bảng xếp hạng thử thách
+[x] - Challenge history - Lịch sử thử thách
+[x] - Accept challenge - Chấp nhận thử thách
+[x] - Decline challenge - Từ chối thử thách
+[x] - Create custom challenge - Tạo thử thách tùy chỉnh
 
 11.5. Rewards (Phần thưởng)
-- Reward points - Điểm phần thưởng
-- Reward redemption - Đổi phần thưởng
-- Reward categories - Danh mục phần thưởng
-- Reward catalog - Danh mục phần thưởng
-- Reward history - Lịch sử phần thưởng
-- Reward notifications - Thông báo phần thưởng
-- Special rewards - Phần thưởng đặc biệt
-- Limited-time rewards - Phần thưởng giới hạn thời gian
-- Share rewards - Chia sẻ phần thưởng
+[x] - Reward points - Điểm phần thưởng
+[x] - Reward redemption - Đổi phần thưởng
+[x] - Reward categories - Danh mục phần thưởng
+[x] - Reward catalog - Danh mục phần thưởng
+[x] - Reward history - Lịch sử phần thưởng
+[x] - Reward notifications - Thông báo phần thưởng
+[x] - Special rewards - Phần thưởng đặc biệt
+[x] - Limited-time rewards - Phần thưởng giới hạn thời gian
+[x] - Share rewards - Chia sẻ phần thưởng
 
 ================================================================================
 
@@ -943,28 +943,28 @@ Dựa trên lộ trình học TOEIC 900+ - Phiên bản nâng cấp
 ================================================================================
 
 12.1. Push Notifications (Thông báo đẩy)
-- Review due reminders - Nhắc nhở ôn tập đến hạn
-- Study time reminders - Nhắc nhở thời gian học
-- Test reminders - Nhắc nhở kiểm tra
-- Streak warnings - Cảnh báo chuỗi
-- Goal progress updates - Cập nhật tiến độ mục tiêu
-- Achievement unlocked - Thành tích mở khóa
-- New content available - Nội dung mới có sẵn
-- Weekly summary - Tóm tắt hàng tuần
-- Monthly summary - Tóm tắt hàng tháng
-- Challenge updates - Cập nhật thử thách
-- Leaderboard changes - Thay đổi bảng xếp hạng
+[x] - Review due reminders - Nhắc nhở ôn tập đến hạn
+[x] - Study time reminders - Nhắc nhở thời gian học
+[x] - Test reminders - Nhắc nhở kiểm tra
+[x] - Streak warnings - Cảnh báo chuỗi
+[x] - Goal progress updates - Cập nhật tiến độ mục tiêu
+[x] - Achievement unlocked - Thành tích mở khóa
+[x] - New content available - Nội dung mới có sẵn
+[x] - Weekly summary - Tóm tắt hàng tuần
+[x] - Monthly summary - Tóm tắt hàng tháng
+[x] - Challenge updates - Cập nhật thử thách
+[x] - Leaderboard changes - Thay đổi bảng xếp hạng
 
 12.2. Email Notifications (Thông báo email)
-- Daily progress report - Báo cáo tiến độ hàng ngày
-- Weekly progress report - Báo cáo tiến độ hàng tuần
-- Monthly progress report - Báo cáo tiến độ hàng tháng
-- Test results - Kết quả kiểm tra
-- Achievement unlocked - Thành tích mở khóa
-- Streak milestones - Cột mốc chuỗi
-- Goal achieved - Mục tiêu đạt được
-- Newsletter subscription - Đăng ký bản tin
-- Promotional content - Nội dung quảng cáo
+[x] - Daily progress report - Báo cáo tiến độ hàng ngày
+[x] - Weekly progress report - Báo cáo tiến độ hàng tuần
+[x] - Monthly progress report - Báo cáo tiến độ hàng tháng
+[x] - Test results - Kết quả kiểm tra
+[x] - Achievement unlocked - Thành tích mở khóa
+[x] - Streak milestones - Cột mốc chuỗi
+[x] - Goal achieved - Mục tiêu đạt được
+[x] - Newsletter subscription - Đăng ký bản tin
+[x] - Promotional content - Nội dung quảng cáo
 
 12.3. In-App Notifications (Thông báo trong ứng dụng)
 - Notification center - Trung tâm thông báo
