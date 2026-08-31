@@ -452,6 +452,109 @@ export class NotificationsService {
   }
 
   /**
+   * Delete all read notifications
+   */
+  async deleteReadNotifications(userId: number) {
+    try {
+      const result = await this.prisma.notification.deleteMany({
+        where: {
+          userId,
+          isRead: true,
+        },
+      });
+
+      return {
+        success: true,
+        deletedCount: result.count,
+        message: `Đã xóa ${result.count} thông báo đã đọc`,
+      };
+    } catch (error) {
+      console.error("Error deleting read notifications:", error);
+      throw new Error("Failed to delete read notifications");
+    }
+  }
+
+  /**
+   * Helper to check if current time is within quiet hours
+   */
+  isInQuietHours(start?: string | null, end?: string | null): boolean {
+    if (!start || !end) return false;
+    try {
+      const now = new Date();
+      const currentMinutes = now.getHours() * 60 + now.getMinutes();
+
+      const [startH, startM] = start.split(":").map(Number);
+      const [endH, endM] = end.split(":").map(Number);
+
+      if (isNaN(startH) || isNaN(startM) || isNaN(endH) || isNaN(endM)) return false;
+
+      const startMinutes = startH * 60 + startM;
+      const endMinutes = endH * 60 + endM;
+
+      if (startMinutes <= endMinutes) {
+        return currentMinutes >= startMinutes && currentMinutes <= endMinutes;
+      } else {
+        // Over midnight (e.g. 22:00 to 07:00)
+        return currentMinutes >= startMinutes || currentMinutes <= endMinutes;
+      }
+    } catch {
+      return false;
+    }
+  }
+
+  /**
+   * Get notification center statistics
+   */
+  async getNotificationStats(userId: number) {
+    try {
+      const [total, unreadCount, preferences, categoryCounts] = await Promise.all([
+        this.prisma.notification.count({ where: { userId } }),
+        this.prisma.notification.count({ where: { userId, isRead: false } }),
+        this.prisma.notificationPreference.findUnique({ where: { userId } }),
+        this.prisma.notification.groupBy({
+          by: ["category"],
+          where: { userId },
+          _count: { id: true },
+        }),
+      ]);
+
+      const categoriesMap: Record<string, number> = {
+        study: 0,
+        achievement: 0,
+        social: 0,
+        system: 0,
+        challenge: 0,
+      };
+
+      for (const item of categoryCounts) {
+        if (item.category) {
+          categoriesMap[item.category] = item._count.id;
+        }
+      }
+
+      const isQuiet = this.isInQuietHours(preferences?.quietHoursStart, preferences?.quietHoursEnd);
+
+      return {
+        success: true,
+        data: {
+          total,
+          unreadCount,
+          readCount: total - unreadCount,
+          categories: categoriesMap,
+          quietHoursActive: isQuiet,
+          quietHoursStart: preferences?.quietHoursStart || null,
+          quietHoursEnd: preferences?.quietHoursEnd || null,
+          pushEnabled: preferences?.pushEnabled ?? true,
+          emailEnabled: preferences?.emailEnabled ?? false,
+        },
+      };
+    } catch (error) {
+      console.error("Error getting notification stats:", error);
+      throw new Error("Failed to get notification statistics");
+    }
+  }
+
+  /**
    * Create notification
    */
   async createNotification(data: {

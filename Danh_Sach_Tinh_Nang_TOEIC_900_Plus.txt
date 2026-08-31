@@ -967,15 +967,15 @@ Dựa trên lộ trình học TOEIC 900+ - Phiên bản nâng cấp
 [x] - Promotional content - Nội dung quảng cáo
 
 12.3. In-App Notifications (Thông báo trong ứng dụng)
-- Notification center - Trung tâm thông báo
-- Notification list - Danh sách thông báo
-- Mark as read - Đánh dấu đã đọc
-- Mark all as read - Đánh dấu tất cả đã đọc
-- Delete notification - Xóa thông báo
-- Notification settings - Cài đặt thông báo
-- Notification preferences - Ưa thích thông báo
-- Quiet hours - Giờ yên tĩnh
-- Do not disturb mode - Chế độ không làm phiền
+[x] - Notification center - Trung tâm thông báo
+[x] - Notification list - Danh sách thông báo
+[x] - Mark as read - Đánh dấu đã đọc
+[x] - Mark all as read - Đánh dấu tất cả đã đọc
+[x] - Delete notification - Xóa thông báo
+[x] - Notification settings - Cài đặt thông báo
+[x] - Notification preferences - Ưa thích thông báo
+[x] - Quiet hours - Giờ yên tĩnh
+[x] - Do not disturb mode - Chế độ không làm phiền
 
 ================================================================================
 

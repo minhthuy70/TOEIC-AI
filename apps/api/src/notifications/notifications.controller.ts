@@ -86,6 +86,34 @@ export class NotificationsController {
     }
   }
 
+  @Get("stats")
+  async getNotificationStats(@Req() req: any) {
+    try {
+      const userId = req.user.userId;
+      return this.notificationsService.getNotificationStats(userId);
+    } catch (error) {
+      console.error("Get notification stats error:", error);
+      throw new HttpException(
+        { message: error.message || "Internal server error", statusCode: 500 },
+        HttpStatus.INTERNAL_SERVER_ERROR
+      );
+    }
+  }
+
+  @Delete("clear-read")
+  async deleteReadNotifications(@Req() req: any) {
+    try {
+      const userId = req.user.userId;
+      return this.notificationsService.deleteReadNotifications(userId);
+    } catch (error) {
+      console.error("Clear read notifications error:", error);
+      throw new HttpException(
+        { message: error.message || "Internal server error", statusCode: 500 },
+        HttpStatus.INTERNAL_SERVER_ERROR
+      );
+    }
+  }
+
   @Delete(":id")
   async deleteNotification(@Req() req: any, @Param("id") id: string) {
     try {
