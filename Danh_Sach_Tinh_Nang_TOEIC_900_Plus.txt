@@ -1148,15 +1148,15 @@ Dựa trên lộ trình học TOEIC 900+ - Phiên bản nâng cấp
 ================================================================================
 
 17.1. User Management (Quản lý người dùng)
-- User list view - Chế độ xem danh sách người dùng
-- User search - Tìm kiếm người dùng
-- User filtering - Lọc người dùng
-- User detail view - Chế độ xem chi tiết người dùng
-- User status management - Quản lý trạng thái người dùng
-- User deletion - Xóa người dùng
-- User banning - Cấm người dùng
-- User analytics - Phân tích người dùng
-- User activity log - Nhật ký hoạt động người dùng
+[x] - User list view - Chế độ xem danh sách người dùng
+[x] - User search - Tìm kiếm người dùng
+[x] - User filtering - Lọc người dùng
+[x] - User detail view - Chế độ xem chi tiết người dùng
+[x] - User status management - Quản lý trạng thái người dùng
+[x] - User deletion - Xóa người dùng
+[x] - User banning - Cấm người dùng
+[x] - User analytics - Phân tích người dùng
+[x] - User activity log - Nhật ký hoạt động người dùng
 
 17.2. System Analytics (Phân tích hệ thống)
 - Daily active users - Người dùng hoạt động hàng ngày

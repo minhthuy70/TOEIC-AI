@@ -4,6 +4,7 @@ import { AdminVocabularyController } from "./admin-vocabulary.controller";
 import { AdminQuestionsController } from "./admin-questions.controller";
 import { AdminTestsController } from "./admin-tests.controller";
 import { AdminContentAnalyticsController } from "./admin-content-analytics.controller";
+import { AdminUsersManageController } from "./admin-users-manage.controller";
 import { PrismaModule } from "../prisma/prisma.module";
 
 @Module({
@@ -14,6 +15,7 @@ import { PrismaModule } from "../prisma/prisma.module";
     AdminQuestionsController,
     AdminTestsController,
     AdminContentAnalyticsController,
+    AdminUsersManageController,
   ],
 })
 export class AdminModule {}
