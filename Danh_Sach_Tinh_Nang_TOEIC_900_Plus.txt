@@ -1126,13 +1126,13 @@ Dựa trên lộ trình học TOEIC 900+ - Phiên bản nâng cấp
 [x] - Duplicate detection - Phát hiện trùng lặp
 
 16.3. Test Management (Admin) - Quản lý kiểm tra (Quản trị viên)
-- Create new tests - Tạo kiểm tra mới
-- Edit tests - Chỉnh sửa kiểm tra
-- Delete tests - Xóa kiểm tra
-- Test configuration - Cấu hình kiểm tra
-- Test publication - Xuất bản kiểm tra
-- Test scheduling - Lên lịch kiểm tra
-- Test analytics - Phân tích kiểm tra
+[x] - Create new tests - Tạo kiểm tra mới
+[x] - Edit tests - Chỉnh sửa kiểm tra
+[x] - Delete tests - Xóa kiểm tra
+[x] - Test configuration - Cấu hình kiểm tra
+[x] - Test publication - Xuất bản kiểm tra
+[x] - Test scheduling - Lên lịch kiểm tra
+[x] - Test analytics - Phân tích kiểm tra
 
 16.4. Content Analytics (Admin) - Phân tích nội dung (Quản trị viên)
 - Content usage statistics - Thống kê sử dụng nội dung
