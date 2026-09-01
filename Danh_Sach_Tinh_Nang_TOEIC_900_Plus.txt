@@ -1135,12 +1135,12 @@ Dựa trên lộ trình học TOEIC 900+ - Phiên bản nâng cấp
 [x] - Test analytics - Phân tích kiểm tra
 
 16.4. Content Analytics (Admin) - Phân tích nội dung (Quản trị viên)
-- Content usage statistics - Thống kê sử dụng nội dung
-- Popular content - Nội dung phổ biến
-- Content performance - Hiệu suất nội dung
-- User engagement - Sự tham gia người dùng
-- Content gaps identification - Xác định khoảng trống nội dung
-- Content quality metrics - Chỉ số chất lượng nội dung
+[x] - Content usage statistics - Thống kê sử dụng nội dung
+[x] - Popular content - Nội dung phổ biến
+[x] - Content performance - Hiệu suất nội dung
+[x] - User engagement - Sự tham gia người dùng
+[x] - Content gaps identification - Xác định khoảng trống nội dung
+[x] - Content quality metrics - Chỉ số chất lượng nội dung
 
 ================================================================================
 

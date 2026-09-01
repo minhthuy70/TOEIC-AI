@@ -18,6 +18,7 @@ import {
   ChevronDown,
   ChevronRight,
   Database,
+  TrendingUp,
 } from "lucide-react";
 
 type UserRole =
@@ -191,6 +192,14 @@ export default function AdminSidebar({
           icon={<ClipboardList className="w-4 h-4 shrink-0" />}
         >
           Đề thi
+        </AdminLink>
+
+        <AdminLink
+          href="/admin/content-analytics"
+          active={pathname.startsWith("/admin/content-analytics")}
+          icon={<TrendingUp className="w-4 h-4 shrink-0" />}
+        >
+          Phân tích nội dung
         </AdminLink>
 
         {isSuperAdmin && (
