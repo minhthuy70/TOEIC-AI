@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 import { apiFetch } from "@/lib/api";
 import {
   BookOpen,
@@ -38,6 +39,8 @@ import {
   Languages,
   Focus,
   Maximize2,
+  User,
+  ShieldCheck,
   Glasses,
   Play,
   Square,
@@ -652,6 +655,31 @@ export default function SettingsHubPage() {
           </div>
         </div>
       )}
+
+      {/* Sub-tab Navigation */}
+      <div className="flex rounded-2xl border border-zinc-800/80 bg-[#121218] p-1 max-w-md">
+        <Link
+          href="/dashboard/profile"
+          className="flex-1 flex items-center justify-center gap-2 rounded-xl px-3 py-2 text-xs font-semibold text-zinc-400 hover:text-white transition"
+        >
+          <User className="w-3.5 h-3.5" />
+          <span>Hồ sơ</span>
+        </Link>
+        <Link
+          href="/dashboard/settings"
+          className="flex-1 flex items-center justify-center gap-2 rounded-xl px-3 py-2 text-xs font-semibold bg-red-600 text-white shadow-md transition"
+        >
+          <Sliders className="w-3.5 h-3.5" />
+          <span>Cài đặt</span>
+        </Link>
+        <Link
+          href="/dashboard/security"
+          className="flex-1 flex items-center justify-center gap-2 rounded-xl px-3 py-2 text-xs font-semibold text-zinc-400 hover:text-white transition"
+        >
+          <ShieldCheck className="w-3.5 h-3.5" />
+          <span>Bảo mật</span>
+        </Link>
+      </div>
 
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">

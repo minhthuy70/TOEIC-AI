@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import Link from "next/link";
 import { apiFetch } from "@/lib/api";
 import {
   Bell,
@@ -679,6 +680,14 @@ export default function NotificationsPage() {
             9 loại
           </span>
         </button>
+
+        <Link
+          href="/dashboard/reminders"
+          className="px-5 py-3 text-sm font-medium border-b-2 border-transparent text-zinc-400 hover:text-zinc-200 flex items-center gap-2 transition-colors"
+        >
+          <Clock className="w-4 h-4" />
+          <span>Cài đặt giờ nhắc học</span>
+        </Link>
       </div>
 
       {/* TAB 1: IN-APP NOTIFICATIONS (12.3) */}

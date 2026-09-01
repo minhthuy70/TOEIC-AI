@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import Link from "next/link";
 import { apiFetch } from "@/lib/api";
 import {
   Calendar,
@@ -18,6 +19,8 @@ import {
   Bell,
   BellOff,
   BookOpen,
+  ListTodo,
+  Globe,
 } from "lucide-react";
 
 interface StudySchedule {
@@ -359,6 +362,30 @@ export default function SchedulePage() {
 
   return (
     <div className="space-y-8 animate-in fade-in duration-300 print-container">
+      {/* Sub-tab Navigation (No Print) */}
+      <div className="no-print flex rounded-2xl border border-zinc-800/80 bg-[#121218] p-1 max-w-md">
+        <Link
+          href="/dashboard/schedule"
+          className="flex-1 flex items-center justify-center gap-2 rounded-xl px-3 py-2 text-xs font-semibold bg-red-600 text-white shadow-md transition"
+        >
+          <Calendar className="w-3.5 h-3.5" />
+          <span>Lịch biểu tuần</span>
+        </Link>
+        <Link
+          href="/dashboard/planner"
+          className="flex-1 flex items-center justify-center gap-2 rounded-xl px-3 py-2 text-xs font-semibold text-zinc-400 hover:text-white transition"
+        >
+          <ListTodo className="w-3.5 h-3.5" />
+          <span>Kế hoạch ngày</span>
+        </Link>
+        <Link
+          href="/dashboard/calendar"
+          className="flex-1 flex items-center justify-center gap-2 rounded-xl px-3 py-2 text-xs font-semibold text-zinc-400 hover:text-white transition"
+        >
+          <Globe className="w-3.5 h-3.5" />
+          <span>Đồng bộ Lịch</span>
+        </Link>
+      </div>
       {/* CSS style overrides to style printing neatly */}
       <style jsx global>{`
         @media print {

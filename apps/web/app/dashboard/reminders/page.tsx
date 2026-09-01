@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import Link from "next/link";
 import { apiFetch } from "@/lib/api";
 import {
   Bell,
@@ -185,7 +186,25 @@ export default function RemindersPage() {
   }
 
   return (
-    <div className="space-y-8 animate-in fade-in duration-300 max-w-3xl mx-auto">
+    <div className="space-y-6 animate-fade-in w-full pb-12">
+      {/* Sub-tab Navigation */}
+      <div className="flex rounded-2xl border border-zinc-800/80 bg-[#121218] p-1 max-w-sm">
+        <Link
+          href="/dashboard/notifications"
+          className="flex-1 flex items-center justify-center gap-2 rounded-xl px-4 py-2 text-xs font-semibold text-zinc-400 hover:text-white transition"
+        >
+          <Bell className="w-3.5 h-3.5" />
+          <span>Hộp thư thông báo</span>
+        </Link>
+        <Link
+          href="/dashboard/reminders"
+          className="flex-1 flex items-center justify-center gap-2 rounded-xl px-4 py-2 text-xs font-semibold bg-red-600 text-white shadow-md transition"
+        >
+          <Clock className="w-3.5 h-3.5" />
+          <span>Giờ nhắc học</span>
+        </Link>
+      </div>
+
       {/* Top Header */}
       <div className="flex justify-between items-center border-b border-zinc-800/40 pb-5">
         <div>

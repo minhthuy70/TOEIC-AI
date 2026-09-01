@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Link from "next/link";
 import {
   Calendar as CalendarIcon,
   Globe,
@@ -22,6 +23,7 @@ import {
   Layers,
   ChevronRight,
   ShieldCheck,
+  ListTodo,
 } from "lucide-react";
 import { apiFetch } from "@/lib/api";
 
@@ -134,7 +136,32 @@ export default function CalendarIntegrationPage() {
   };
 
   return (
-    <div className="space-y-6 max-w-6xl mx-auto pb-12">
+    <div className="space-y-6 animate-fade-in w-full pb-12">
+      {/* Sub-tab Navigation */}
+      <div className="flex rounded-2xl border border-zinc-800/80 bg-[#121218] p-1 max-w-md">
+        <Link
+          href="/dashboard/schedule"
+          className="flex-1 flex items-center justify-center gap-2 rounded-xl px-3 py-2 text-xs font-semibold text-zinc-400 hover:text-white transition"
+        >
+          <CalendarIcon className="w-3.5 h-3.5" />
+          <span>Lịch biểu tuần</span>
+        </Link>
+        <Link
+          href="/dashboard/planner"
+          className="flex-1 flex items-center justify-center gap-2 rounded-xl px-3 py-2 text-xs font-semibold text-zinc-400 hover:text-white transition"
+        >
+          <ListTodo className="w-3.5 h-3.5" />
+          <span>Kế hoạch ngày</span>
+        </Link>
+        <Link
+          href="/dashboard/calendar"
+          className="flex-1 flex items-center justify-center gap-2 rounded-xl px-3 py-2 text-xs font-semibold bg-red-600 text-white shadow-md transition"
+        >
+          <Globe className="w-3.5 h-3.5" />
+          <span>Đồng bộ Lịch</span>
+        </Link>
+      </div>
+
       {/* Toast */}
       {toastMessage && (
         <div className="fixed top-5 right-5 z-50 animate-in fade-in slide-in-from-top-4 duration-300">
@@ -160,7 +187,7 @@ export default function CalendarIntegrationPage() {
         <div>
           <h1 className="text-2xl font-bold text-white flex items-center gap-2">
             <CalendarIcon className="w-6 h-6 text-red-400" />
-            <span>Tích Hợp Đồng Bộ Lịch Học (Calendar Integration 18.1)</span>
+            <span>Tích Hợp Đồng Bộ Lịch Học</span>
           </h1>
           <p className="text-sm text-zinc-400 mt-1">
             Đồng bộ hóa lịch ôn thi và nhắc học tự động với Google Calendar, Microsoft Outlook, Apple Calendar hoặc tải file iCal (.ics).
