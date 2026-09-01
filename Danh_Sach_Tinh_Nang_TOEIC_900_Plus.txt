@@ -1186,10 +1186,10 @@ Dựa trên lộ trình học TOEIC 900+ - Phiên bản nâng cấp
 ================================================================================
 
 18.1. Calendar Integration (Tích hợp lịch)
-- Sync with Google Calendar - Đồng bộ với Google Calendar
-- Sync with Outlook Calendar - Đồng bộ với Outlook Calendar
-- Sync with Apple Calendar - Đồng bộ với Apple Calendar
-- Export to iCal - Xuất sang iCal
+[x] - Sync with Google Calendar - Đồng bộ với Google Calendar
+[x] - Sync with Outlook Calendar - Đồng bộ với Outlook Calendar
+[x] - Sync with Apple Calendar - Đồng bộ với Apple Calendar
+[x] - Export to iCal - Xuất sang iCal
 
 18.2. Third-Party Auth (Xác thực bên thứ ba)
 - Google OAuth - Google OAuth

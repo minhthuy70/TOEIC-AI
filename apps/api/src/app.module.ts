@@ -26,6 +26,7 @@ import { ChallengesModule } from "./challenges/challenges.module";
 import { RewardsModule } from "./rewards/rewards.module";
 import { NotificationsModule } from "./notifications/notifications.module";
 import { StudyGroupsModule } from "./study-groups/study-groups.module";
+import { CalendarModule } from "./calendar/calendar.module";
 
 @Module({
   imports: [
@@ -63,6 +64,7 @@ import { StudyGroupsModule } from "./study-groups/study-groups.module";
     RewardsModule,
     NotificationsModule,
     StudyGroupsModule,
+    CalendarModule,
   ],
 })
 export class AppModule {}

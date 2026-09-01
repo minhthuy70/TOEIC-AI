@@ -74,6 +74,7 @@ const NAV_BOTTOM = [
   { label: "Học Ngoại Tuyến", icon: DownloadCloud, href: "/dashboard/offline" },
   { label: "Âm Thanh Nền", icon: Radio, href: "/dashboard/audio-player" },
   { label: "Tiện Ích Widgets", icon: LayoutGrid, href: "/dashboard/widgets" },
+  { label: "Đồng Bộ Lịch", icon: Calendar, href: "/dashboard/calendar" },
   { label: "Cài đặt học tập", icon: Settings, href: "/dashboard/settings" },
   { label: "Hồ sơ cá nhân", icon: UserIcon, href: "/dashboard/profile" },
 ];
