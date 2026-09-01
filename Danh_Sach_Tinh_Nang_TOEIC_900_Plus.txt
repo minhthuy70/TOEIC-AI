@@ -1171,14 +1171,14 @@ Dựa trên lộ trình học TOEIC 900+ - Phiên bản nâng cấp
 [x] - Usage patterns - Mẫu sử dụng
 
 17.3. System Settings (Cài đặt hệ thống)
-- Application configuration - Cấu hình ứng dụng
-- Feature flags - Cờ tính năng
-- Maintenance mode - Chế độ bảo trì
-- API settings - Cài đặt API
-- Email settings - Cài đặt email
-- SMS settings - Cài đặt SMS
-- Payment settings - Cài đặt thanh toán
-- Integration settings - Cài đặt tích hợp
+[x] - Application configuration - Cấu hình ứng dụng
+[x] - Feature flags - Cờ tính năng
+[x] - Maintenance mode - Chế độ bảo trì
+[x] - API settings - Cài đặt API
+[x] - Email settings - Cài đặt email
+[x] - SMS settings - Cài đặt SMS
+[x] - Payment settings - Cài đặt thanh toán
+[x] - Integration settings - Cài đặt tích hợp
 
 ================================================================================
 

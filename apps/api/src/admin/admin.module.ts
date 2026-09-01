@@ -6,6 +6,7 @@ import { AdminTestsController } from "./admin-tests.controller";
 import { AdminContentAnalyticsController } from "./admin-content-analytics.controller";
 import { AdminUsersManageController } from "./admin-users-manage.controller";
 import { AdminSystemAnalyticsController } from "./admin-system-analytics.controller";
+import { AdminSystemSettingsController } from "./admin-system-settings.controller";
 import { PrismaModule } from "../prisma/prisma.module";
 
 @Module({
@@ -18,6 +19,7 @@ import { PrismaModule } from "../prisma/prisma.module";
     AdminContentAnalyticsController,
     AdminUsersManageController,
     AdminSystemAnalyticsController,
+    AdminSystemSettingsController,
   ],
 })
 export class AdminModule {}
