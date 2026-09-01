@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useRef, useCallback } from "react";
 import { useRouter } from "next/navigation";
-import { AlertTriangle, Eye, EyeOff, Check } from "lucide-react";
+import { AlertTriangle, Eye, EyeOff } from "lucide-react";
 
 declare global {
   interface Window {
@@ -20,6 +20,7 @@ export default function LoginPage() {
   const [showPassword, setShowPassword] = useState(false);
   const [rememberMe, setRememberMe] = useState(false);
   const [error, setError] = useState("");
+  const [loginLoading, setLoginLoading] = useState(false);
   const [remainingAttempts, setRemainingAttempts] = useState<number | null>(null);
   const [isLocked, setIsLocked] = useState(false);
   const [lockedUntil, setLockedUntil] = useState<Date | null>(null);
@@ -29,8 +30,7 @@ export default function LoginPage() {
   const [facebookLoading, setFacebookLoading] = useState(false);
   const [appleLoading, setAppleLoading] = useState(false);
   const [microsoftLoading, setMicrosoftLoading] = useState(false);
-  const [facebookSdkReady, setFacebookSdkReady] = useState(false);
-  
+
   // Ref to track Google GIS initialization status
   const googleInitialized = useRef(false);
 
@@ -48,11 +48,10 @@ export default function LoginPage() {
 
       const data = await res.json();
 
-      if (data.accessToken) {
+      if (res.ok && data.accessToken) {
         localStorage.setItem("accessToken", data.accessToken);
         localStorage.setItem("user", JSON.stringify(data.user));
 
-        // Save or remove email based on rememberMe
         if (rememberMe) {
           localStorage.setItem("rememberedEmail", email);
         } else {
@@ -60,20 +59,23 @@ export default function LoginPage() {
         }
 
         if (
-          data.user.role === "SUPER_ADMIN" ||
-          data.user.role === "CONTENT_ADMIN"
+          data.user?.role === "SUPER_ADMIN" ||
+          data.user?.role === "CONTENT_ADMIN"
         ) {
           router.push("/admin");
-        } else if (!data.user.firstLoginCompleted) {
+        } else if (!data.user?.firstLoginCompleted) {
           router.push("/onboarding");
         } else {
           router.push("/dashboard");
         }
       } else {
-        setError(data.message || "Đăng nhập Google thất bại");
+        const msg = Array.isArray(data.message)
+          ? data.message.join(", ")
+          : (data.message || "Đăng nhập Google thất bại");
+        setError(msg);
       }
     } catch {
-      setError("Lỗi kết nối. Vui lòng thử lại.");
+      setError("Lỗi kết nối máy chủ. Vui lòng thử lại.");
     } finally {
       setGoogleLoading(false);
     }
@@ -106,8 +108,13 @@ export default function LoginPage() {
     }
   }, [isLocked, lockedUntil, isPermanentlyLocked]);
 
-  // Load Google Identity Services script and initialize once
+  // Load Google Identity Services script
   useEffect(() => {
+    const clientId = process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID;
+    if (!clientId || clientId === "your-google-client-id.apps.googleusercontent.com") {
+      return;
+    }
+
     const script = document.createElement("script");
     script.src = "https://accounts.google.com/gsi/client";
     script.async = true;
@@ -115,8 +122,7 @@ export default function LoginPage() {
     document.head.appendChild(script);
 
     script.onload = () => {
-      const clientId = process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID;
-      if (clientId && clientId !== "your-google-client-id.apps.googleusercontent.com" && window.google) {
+      if (window.google?.accounts?.id) {
         window.google.accounts.id.initialize({
           client_id: clientId,
           callback: handleGoogleCredential,
@@ -129,8 +135,7 @@ export default function LoginPage() {
       if (script.parentNode) {
         document.head.removeChild(script);
       }
-      // Reset Google GIS initialization when component unmounts
-      if (window.google && window.google.accounts) {
+      if (window.google?.accounts?.id) {
         window.google.accounts.id.cancel();
       }
       googleInitialized.current = false;
@@ -139,39 +144,28 @@ export default function LoginPage() {
 
   // Load Facebook JS SDK
   useEffect(() => {
-    console.log('=== Facebook SDK Loading Debug ===');
-    console.log('Current URL:', window.location.href);
-    console.log('Protocol:', window.location.protocol);
-    console.log('Host:', window.location.host);
-    console.log('Facebook App ID:', process.env.NEXT_PUBLIC_FACEBOOK_APP_ID);
+    const appId = process.env.NEXT_PUBLIC_FACEBOOK_APP_ID;
+    if (!appId || appId === "your-facebook-app-id") {
+      return;
+    }
 
-    // Define fbAsyncInit globally - called by Facebook SDK when loaded
     window.fbAsyncInit = function () {
-      console.log('fbAsyncInit called');
-      console.log('window.FB exists:', !!window.FB);
-      window.FB.init({
-        appId: process.env.NEXT_PUBLIC_FACEBOOK_APP_ID || "",
-        cookie: true,
-        xfbml: true,
-        version: "v20.0",
-      });
-      console.log('FB.init called');
-      setFacebookSdkReady(true);
-      console.log('facebookSdkReady set to true');
+      if (window.FB) {
+        window.FB.init({
+          appId: appId,
+          cookie: true,
+          xfbml: true,
+          version: "v20.0",
+        });
+      }
     };
 
-    // Load Facebook SDK script
-    console.log('Creating Facebook SDK script element');
-    const script = document.createElement('script');
-    script.id = 'facebook-jssdk';
-    script.src = 'https://connect.facebook.net/vi_VN/sdk.js';
+    const script = document.createElement("script");
+    script.id = "facebook-jssdk";
+    script.src = "https://connect.facebook.net/vi_VN/sdk.js";
     script.async = true;
-    script.onload = () => console.log('Facebook SDK script loaded');
-    script.onerror = () => console.error('Facebook SDK script failed to load');
     document.head.appendChild(script);
-    console.log('Facebook SDK script inserted into DOM');
 
-    // Cleanup on unmount
     return () => {
       if (script.parentNode) {
         document.head.removeChild(script);
@@ -187,25 +181,23 @@ export default function LoginPage() {
       return;
     }
 
-    if (!window.google) {
-      setError("Google SDK chưa tải xong. Vui lòng thử lại.");
+    if (!window.google?.accounts?.id) {
+      setError("Google SDK chưa tải xong. Vui lòng thử lại sau vài giây.");
       return;
     }
 
     if (!googleInitialized.current) {
-      setError("Google GIS chưa được khởi tạo. Vui lòng tải lại trang.");
-      return;
+      window.google.accounts.id.initialize({
+        client_id: clientId,
+        callback: handleGoogleCredential,
+      });
+      googleInitialized.current = true;
     }
 
-    // Render button and trigger it programmatically
-    const buttonDiv = document.getElementById("google-signin-btn-login");
-    if (buttonDiv) {
-      window.google.accounts.id.renderButton(buttonDiv, {
-        theme: "outline",
-        size: "large",
-        width: buttonDiv.offsetWidth,
-      });
-      buttonDiv.click();
+    try {
+      window.google.accounts.id.prompt();
+    } catch {
+      setError("Không thể khởi động đăng nhập Google. Vui lòng thử lại.");
     }
   }
 
@@ -217,23 +209,20 @@ export default function LoginPage() {
     }
 
     if (!window.FB) {
-      setError("Facebook SDK chưa tải xong. Vui lòng thử lại.");
+      setError("Facebook SDK chưa tải xong. Vui lòng thử lại sau vài giây.");
       return;
     }
 
-    // Check if running on HTTPS
-    if (typeof window !== 'undefined' && window.location.protocol !== 'https:') {
-      setError("Facebook Login yêu cầu HTTPS. Vui lòng chạy development server với HTTPS tunnel (ngrok/localtunnel).");
-      return;
-    }
-
-    window.FB.login(function (response: any) {
-      if (response.authResponse) {
-        handleFacebookCredential(response.authResponse.accessToken);
-      } else {
-        setError("Đăng nhập Facebook bị huỷ.");
-      }
-    }, { scope: 'public_profile,email' });
+    window.FB.login(
+      function (response: any) {
+        if (response.authResponse) {
+          handleFacebookCredential(response.authResponse.accessToken);
+        } else {
+          setError("Đăng nhập Facebook bị hủy.");
+        }
+      },
+      { scope: "public_profile,email" }
+    );
   }
 
   async function handleFacebookCredential(accessToken: string) {
@@ -249,32 +238,34 @@ export default function LoginPage() {
 
       const data = await res.json();
 
-      if (data.accessToken) {
+      if (res.ok && data.accessToken) {
         localStorage.setItem("accessToken", data.accessToken);
         localStorage.setItem("user", JSON.stringify(data.user));
 
-        // Save or remove email based on rememberMe
         if (rememberMe) {
-          localStorage.setItem("rememberedEmail", data.user.email);
+          localStorage.setItem("rememberedEmail", data.user?.email || email);
         } else {
           localStorage.removeItem("rememberedEmail");
         }
 
         if (
-          data.user.role === "SUPER_ADMIN" ||
-          data.user.role === "CONTENT_ADMIN"
+          data.user?.role === "SUPER_ADMIN" ||
+          data.user?.role === "CONTENT_ADMIN"
         ) {
           router.push("/admin");
-        } else if (!data.user.firstLoginCompleted) {
+        } else if (!data.user?.firstLoginCompleted) {
           router.push("/onboarding");
         } else {
           router.push("/dashboard");
         }
       } else {
-        setError(data.message || "Đăng nhập Facebook thất bại");
+        const msg = Array.isArray(data.message)
+          ? data.message.join(", ")
+          : (data.message || "Đăng nhập Facebook thất bại");
+        setError(msg);
       }
     } catch {
-      setError("Lỗi kết nối. Vui lòng thử lại.");
+      setError("Lỗi kết nối máy chủ. Vui lòng thử lại.");
     } finally {
       setFacebookLoading(false);
     }
@@ -284,7 +275,6 @@ export default function LoginPage() {
     setAppleLoading(true);
     setError("");
     try {
-      // Mock / Real Apple token flow
       const mockApplePayload = {
         idToken: "mock_apple_token." + Buffer.from(JSON.stringify({ sub: "apple_" + Date.now(), email: "apple_user@icloud.com" })).toString("base64") + ".sig",
         user: { name: { firstName: "Apple", lastName: "Learner" } },
@@ -298,18 +288,21 @@ export default function LoginPage() {
       });
 
       const data = await res.json();
-      if (data.accessToken) {
+      if (res.ok && data.accessToken) {
         localStorage.setItem("accessToken", data.accessToken);
         localStorage.setItem("user", JSON.stringify(data.user));
-        if (data.user.role === "SUPER_ADMIN" || data.user.role === "CONTENT_ADMIN") {
+        if (data.user?.role === "SUPER_ADMIN" || data.user?.role === "CONTENT_ADMIN") {
           router.push("/admin");
-        } else if (!data.user.firstLoginCompleted) {
+        } else if (!data.user?.firstLoginCompleted) {
           router.push("/onboarding");
         } else {
           router.push("/dashboard");
         }
       } else {
-        setError(data.message || "Đăng nhập Apple thất bại");
+        const msg = Array.isArray(data.message)
+          ? data.message.join(", ")
+          : (data.message || "Đăng nhập Apple thất bại");
+        setError(msg);
       }
     } catch {
       setError("Lỗi kết nối Apple Sign In. Vui lòng thử lại.");
@@ -332,18 +325,21 @@ export default function LoginPage() {
       });
 
       const data = await res.json();
-      if (data.accessToken) {
+      if (res.ok && data.accessToken) {
         localStorage.setItem("accessToken", data.accessToken);
         localStorage.setItem("user", JSON.stringify(data.user));
-        if (data.user.role === "SUPER_ADMIN" || data.user.role === "CONTENT_ADMIN") {
+        if (data.user?.role === "SUPER_ADMIN" || data.user?.role === "CONTENT_ADMIN") {
           router.push("/admin");
-        } else if (!data.user.firstLoginCompleted) {
+        } else if (!data.user?.firstLoginCompleted) {
           router.push("/onboarding");
         } else {
           router.push("/dashboard");
         }
       } else {
-        setError(data.message || "Đăng nhập Microsoft thất bại");
+        const msg = Array.isArray(data.message)
+          ? data.message.join(", ")
+          : (data.message || "Đăng nhập Microsoft thất bại");
+        setError(msg);
       }
     } catch {
       setError("Lỗi kết nối Microsoft. Vui lòng thử lại.");
@@ -352,82 +348,89 @@ export default function LoginPage() {
     }
   }
 
-  async function login() {
+  async function login(e?: React.FormEvent) {
+    if (e) e.preventDefault();
+    if (isLocked || loginLoading) return;
+
+    if (!email.trim()) {
+      setError("Vui lòng nhập Email.");
+      return;
+    }
+    if (!password) {
+      setError("Vui lòng nhập Mật khẩu.");
+      return;
+    }
+
     setError("");
     setRemainingAttempts(null);
-    setIsLocked(false);
-    setLockedUntil(null);
-    setLockCount(0);
-    setIsPermanentlyLocked(false);
+    setLoginLoading(true);
 
-    const res = await fetch(
-      "http://localhost:3001/auth/login",
-      {
+    try {
+      const res = await fetch("http://localhost:3001/auth/login", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          email,
+          email: email.trim(),
           password,
           rememberMe,
         }),
-      }
-    );
+      });
 
-    const data = await res.json();
+      const data = await res.json();
 
-    if (data.requiresVerification) {
-      router.push(`/verify-email?email=${encodeURIComponent(data.email)}`);
-    } else if (data.accessToken) {
-      // Lưu JWT
-      localStorage.setItem("accessToken", data.accessToken);
+      if (data.requiresVerification) {
+        router.push(`/verify-email?email=${encodeURIComponent(data.email || email)}`);
+      } else if (res.ok && data.accessToken) {
+        localStorage.setItem("accessToken", data.accessToken);
+        localStorage.setItem("user", JSON.stringify(data.user));
 
-      // Lưu thông tin user
-      localStorage.setItem(
-        "user",
-        JSON.stringify(data.user)
-      );
+        if (rememberMe) {
+          localStorage.setItem("rememberedEmail", email);
+        } else {
+          localStorage.removeItem("rememberedEmail");
+        }
 
-      // Save or remove email based on rememberMe
-      if (rememberMe) {
-        localStorage.setItem("rememberedEmail", email);
+        if (
+          data.user?.role === "SUPER_ADMIN" ||
+          data.user?.role === "CONTENT_ADMIN"
+        ) {
+          router.push("/admin");
+        } else if (!data.user?.firstLoginCompleted) {
+          router.push("/onboarding");
+        } else {
+          router.push("/dashboard");
+        }
       } else {
-        localStorage.removeItem("rememberedEmail");
-      }
+        const msg = Array.isArray(data.message)
+          ? data.message.join(", ")
+          : (data.message || "Đăng nhập thất bại");
+        setError(msg);
 
-      if (
-        data.user.role === "SUPER_ADMIN" ||
-        data.user.role === "CONTENT_ADMIN"
-      ) {
-        router.push("/admin");
-      } else if (!data.user.firstLoginCompleted) {
-        router.push("/onboarding");
-      } else {
-        router.push("/dashboard");
+        if (data.remainingAttempts !== undefined) {
+          setRemainingAttempts(data.remainingAttempts);
+        }
+        if (data.locked) {
+          setIsLocked(true);
+          setLockedUntil(data.lockedUntil ? new Date(data.lockedUntil) : null);
+          setLockCount(data.lockCount || 1);
+          setIsPermanentlyLocked(data.isPermanentlyLocked || false);
+        }
       }
-    } else {
-      setError(data.message || "Đăng nhập thất bại");
-
-      // Handle remaining attempts and lock status
-      if (data.remainingAttempts !== undefined) {
-        setRemainingAttempts(data.remainingAttempts);
-      }
-      if (data.locked) {
-        setIsLocked(true);
-        setLockedUntil(data.lockedUntil ? new Date(data.lockedUntil) : null);
-        setLockCount(data.lockCount || 1);
-        setIsPermanentlyLocked(data.isPermanentlyLocked || false);
-      }
+    } catch {
+      setError("Không thể kết nối đến máy chủ. Vui lòng kiểm tra lại kết nối mạng hoặc thử lại sau.");
+    } finally {
+      setLoginLoading(false);
     }
   }
 
   return (
-    <div className="min-h-screen bg-black flex items-center justify-center px-4">
+    <div className="min-h-screen bg-black flex items-center justify-center px-4 py-8">
       <div className="w-full max-w-md bg-zinc-900 rounded-3xl p-8 shadow-2xl border border-red-600">
 
         <div className="flex justify-center mb-6">
-          <div className="w-20 h-20 rounded-full bg-red-600 flex items-center justify-center text-4xl font-bold text-white">
+          <div className="w-20 h-20 rounded-full bg-red-600 flex items-center justify-center text-4xl font-bold text-white shadow-md">
             B
           </div>
         </div>
@@ -465,7 +468,7 @@ export default function LoginPage() {
               Tài khoản bị khóa lần thứ {lockCount}
             </div>
             <div>
-              Mở khóa sau: {Math.ceil((lockedUntil.getTime() - Date.now()) / 60000)} phút
+              Mở khóa sau: {Math.max(1, Math.ceil((lockedUntil.getTime() - Date.now()) / 60000))} phút
             </div>
             <div className="text-xs mt-1 opacity-75">
               {lockCount === 1 && "Lần vi phạm đầu tiên"}
@@ -488,6 +491,7 @@ export default function LoginPage() {
               Tài khoản của bạn đã bị khóa do hoạt động đăng nhập bất thường liên tục.
             </div>
             <button
+              type="button"
               onClick={() => router.push(`/unlock-request?email=${encodeURIComponent(email)}`)}
               className="w-full bg-red-600 hover:bg-red-700 transition text-white font-semibold py-2 rounded-lg text-sm"
             >
@@ -498,10 +502,10 @@ export default function LoginPage() {
 
         {/* Google OAuth Button */}
         <button
-          id="google-signin-btn-login"
+          type="button"
           onClick={loginWithGoogle}
           disabled={googleLoading}
-          className="w-full flex items-center justify-center gap-3 bg-white hover:bg-gray-100 disabled:bg-gray-200 transition text-gray-800 font-semibold py-3.5 rounded-xl mb-4 shadow-sm"
+          className="w-full flex items-center justify-center gap-3 bg-white hover:bg-gray-100 disabled:bg-gray-200 transition text-gray-800 font-semibold py-3.5 rounded-xl mb-4 shadow-sm active:scale-[0.99]"
         >
           {googleLoading ? (
             <svg className="animate-spin h-5 w-5 text-gray-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
@@ -521,9 +525,10 @@ export default function LoginPage() {
 
         {/* Facebook OAuth Button */}
         <button
+          type="button"
           onClick={loginWithFacebook}
-          disabled={facebookLoading || googleLoading || !facebookSdkReady}
-          className="w-full flex items-center justify-center gap-3 bg-[#1877F2] hover:bg-[#166FE5] disabled:bg-[#7baaf7] disabled:opacity-50 transition text-white font-semibold py-3.5 rounded-xl mb-3 shadow-sm"
+          disabled={facebookLoading || googleLoading}
+          className="w-full flex items-center justify-center gap-3 bg-[#1877F2] hover:bg-[#166FE5] disabled:bg-[#7baaf7] disabled:opacity-50 transition text-white font-semibold py-3.5 rounded-xl mb-3 shadow-sm active:scale-[0.99]"
         >
           {facebookLoading ? (
             <svg className="animate-spin h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
@@ -535,7 +540,7 @@ export default function LoginPage() {
               <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.469h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.469h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
             </svg>
           )}
-          <span>{facebookLoading ? "Đang xử lý..." : !facebookSdkReady ? "Đang tải Facebook SDK..." : "Đăng nhập bằng Facebook"}</span>
+          <span>{facebookLoading ? "Đang xử lý..." : "Đăng nhập bằng Facebook"}</span>
         </button>
 
         {/* Apple Sign In & Microsoft Account Grid */}
@@ -545,7 +550,7 @@ export default function LoginPage() {
             type="button"
             onClick={loginWithApple}
             disabled={appleLoading}
-            className="flex items-center justify-center gap-2 bg-black border border-zinc-700 hover:bg-zinc-900 transition text-white font-semibold py-3 rounded-xl text-xs shadow-sm"
+            className="flex items-center justify-center gap-2 bg-black border border-zinc-700 hover:bg-zinc-800 transition text-white font-semibold py-3 rounded-xl text-xs shadow-sm active:scale-[0.99]"
           >
             <span className="text-base font-bold"></span>
             <span>{appleLoading ? "Đang xử lý..." : "Apple Sign In"}</span>
@@ -556,7 +561,7 @@ export default function LoginPage() {
             type="button"
             onClick={loginWithMicrosoft}
             disabled={microsoftLoading}
-            className="flex items-center justify-center gap-2 bg-zinc-800 border border-zinc-700 hover:bg-zinc-750 transition text-white font-semibold py-3 rounded-xl text-xs shadow-sm"
+            className="flex items-center justify-center gap-2 bg-zinc-800 border border-zinc-700 hover:bg-zinc-750 transition text-white font-semibold py-3 rounded-xl text-xs shadow-sm active:scale-[0.99]"
           >
             <svg className="h-4 w-4" viewBox="0 0 21 21">
               <rect x="1" y="1" width="9" height="9" fill="#f25022" />
@@ -575,82 +580,95 @@ export default function LoginPage() {
           <div className="flex-1 h-px bg-zinc-700"></div>
         </div>
 
-        <input
-          type="email"
-          placeholder="Email"
-          value={email}
-          onChange={(e) =>
-            setEmail(e.target.value)
-          }
-          className="w-full p-4 rounded-xl bg-zinc-800 text-white border border-zinc-700 mb-4 focus:outline-none focus:border-red-500"
-        />
-
-        <div className="relative mb-4">
+        {/* Main Login Form */}
+        <form onSubmit={login}>
           <input
-            type={showPassword ? "text" : "password"}
-            placeholder="Mật khẩu"
-            value={password}
-            onChange={(e) =>
-              setPassword(e.target.value)
-            }
-            onKeyDown={(e) => e.key === "Enter" && login()}
-            className="w-full p-4 pr-12 rounded-xl bg-zinc-800 text-white border border-zinc-700 focus:outline-none focus:border-red-500"
+            type="email"
+            placeholder="Email"
+            value={email}
+            onChange={(e) => {
+              setEmail(e.target.value);
+              if (error) setError("");
+            }}
+            required
+            className="w-full p-4 rounded-xl bg-zinc-800 text-white border border-zinc-700 mb-4 focus:outline-none focus:border-red-500"
           />
-          <button
-            type="button"
-            onClick={() => setShowPassword(!showPassword)}
-            className="absolute right-4 top-1/2 -translate-y-1/2 text-zinc-400 hover:text-red-500 transition-colors"
-          >
-            {showPassword ? (
-              <EyeOff className="w-5 h-5" />
-            ) : (
-              <Eye className="w-5 h-5" />
-            )}
-          </button>
-        </div>
 
-        <div className="flex justify-between items-center mb-6">
-          <label className="flex items-center gap-2 cursor-pointer group">
-            <div className="relative flex items-center justify-center w-5 h-5 rounded border border-zinc-600 bg-zinc-800 group-hover:border-red-500 transition-colors">
+          <div className="relative mb-4">
+            <input
+              type={showPassword ? "text" : "password"}
+              placeholder="Mật khẩu"
+              value={password}
+              onChange={(e) => {
+                setPassword(e.target.value);
+                if (error) setError("");
+              }}
+              required
+              className="w-full p-4 pr-12 rounded-xl bg-zinc-800 text-white border border-zinc-700 focus:outline-none focus:border-red-500"
+            />
+            <button
+              type="button"
+              onClick={() => setShowPassword(!showPassword)}
+              className="absolute right-4 top-1/2 -translate-y-1/2 text-zinc-400 hover:text-red-500 transition-colors"
+            >
+              {showPassword ? (
+                <EyeOff className="w-5 h-5" />
+              ) : (
+                <Eye className="w-5 h-5" />
+              )}
+            </button>
+          </div>
+
+          <div className="flex justify-between items-center mb-6">
+            <label className="flex items-center gap-2 cursor-pointer select-none group">
               <input
                 type="checkbox"
                 checked={rememberMe}
                 onChange={(e) => setRememberMe(e.target.checked)}
-                className="absolute opacity-0 cursor-pointer w-full h-full"
+                className="w-4 h-4 rounded border-zinc-600 bg-zinc-800 text-red-600 focus:ring-red-500 focus:ring-offset-zinc-900 cursor-pointer accent-red-600"
               />
-              {rememberMe && (
-                <Check className="w-3.5 h-3.5 text-red-500 pointer-events-none" />
-              )}
-            </div>
-            <span className="text-zinc-400 text-sm group-hover:text-zinc-300 transition-colors">
-              Ghi nhớ đăng nhập
-            </span>
-          </label>
-          <a
-            href="/forgot-password"
-            className="text-sm text-red-500 hover:text-red-400 transition"
-          >
-            Quên mật khẩu?
-          </a>
-        </div>
+              <span className="text-zinc-400 text-sm group-hover:text-zinc-300 transition-colors">
+                Ghi nhớ đăng nhập
+              </span>
+            </label>
+            <a
+              href="/forgot-password"
+              className="text-sm text-red-500 hover:text-red-400 transition"
+            >
+              Quên mật khẩu?
+            </a>
+          </div>
 
-        <button
-          onClick={login}
-          disabled={isLocked}
-          className={`w-full transition text-white font-bold py-4 rounded-xl ${
-            isLocked
-              ? "bg-gray-600 cursor-not-allowed"
-              : "bg-red-600 hover:bg-red-700"
-          }`}
-        >
-          {isLocked ? "Tài khoản bị khóa" : "Đăng nhập"}
-        </button>
+          <button
+            type="submit"
+            disabled={isLocked || loginLoading}
+            className={`w-full transition text-white font-bold py-4 rounded-xl flex items-center justify-center gap-2 ${
+              isLocked || loginLoading
+                ? "bg-gray-600 cursor-not-allowed opacity-75"
+                : "bg-red-600 hover:bg-red-700 active:scale-[0.99]"
+            }`}
+          >
+            {loginLoading ? (
+              <>
+                <svg className="animate-spin h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                  <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                  <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                </svg>
+                <span>Đang xử lý...</span>
+              </>
+            ) : isLocked ? (
+              "Tài khoản bị khóa"
+            ) : (
+              "Đăng nhập"
+            )}
+          </button>
+        </form>
 
         <p className="text-center text-zinc-400 mt-6">
           Chưa có tài khoản?
           <a
             href="/register"
-            className="text-red-500 ml-2"
+            className="text-red-500 ml-2 hover:underline"
           >
             Đăng ký
           </a>
