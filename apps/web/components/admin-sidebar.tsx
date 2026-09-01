@@ -17,6 +17,7 @@ import {
   LogOut,
   ChevronDown,
   ChevronRight,
+  Database,
 } from "lucide-react";
 
 type UserRole =
@@ -174,6 +175,14 @@ export default function AdminSidebar({
           icon={<FileText className="w-4 h-4 shrink-0" />}
         >
           Reading
+        </AdminLink>
+
+        <AdminLink
+          href="/admin/question-bank"
+          active={pathname.startsWith("/admin/question-bank")}
+          icon={<Database className="w-4 h-4 shrink-0" />}
+        >
+          Ngân hàng câu hỏi
         </AdminLink>
 
         <AdminLink

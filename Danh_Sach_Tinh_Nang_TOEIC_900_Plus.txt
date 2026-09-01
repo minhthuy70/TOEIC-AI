@@ -1115,15 +1115,15 @@ Dựa trên lộ trình học TOEIC 900+ - Phiên bản nâng cấp
 [x] - Vocabulary quality check - Kiểm tra chất lượng từ vựng
 
 16.2. Question Bank Management (Admin) - Quản lý ngân hàng câu hỏi (Quản trị viên)
-- Add new questions - Thêm câu hỏi mới
-- Edit questions - Chỉnh sửa câu hỏi
-- Delete questions - Xóa câu hỏi
-- Bulk import questions - Nhập câu hỏi hàng loạt
-- Question categorization - Phân loại câu hỏi
-- Question difficulty rating - Đánh giá độ khó câu hỏi
-- Question quality check - Kiểm tra chất lượng câu hỏi
-- Question statistics - Thống kê câu hỏi
-- Duplicate detection - Phát hiện trùng lặp
+[x] - Add new questions - Thêm câu hỏi mới
+[x] - Edit questions - Chỉnh sửa câu hỏi
+[x] - Delete questions - Xóa câu hỏi
+[x] - Bulk import questions - Nhập câu hỏi hàng loạt
+[x] - Question categorization - Phân loại câu hỏi
+[x] - Question difficulty rating - Đánh giá độ khó câu hỏi
+[x] - Question quality check - Kiểm tra chất lượng câu hỏi
+[x] - Question statistics - Thống kê câu hỏi
+[x] - Duplicate detection - Phát hiện trùng lặp
 
 16.3. Test Management (Admin) - Quản lý kiểm tra (Quản trị viên)
 - Create new tests - Tạo kiểm tra mới
