@@ -1159,16 +1159,16 @@ Dựa trên lộ trình học TOEIC 900+ - Phiên bản nâng cấp
 [x] - User activity log - Nhật ký hoạt động người dùng
 
 17.2. System Analytics (Phân tích hệ thống)
-- Daily active users - Người dùng hoạt động hàng ngày
-- Weekly active users - Người dùng hoạt động hàng tuần
-- Monthly active users - Người dùng hoạt động hàng tháng
-- User retention rate - Tỷ lệ giữ chân người dùng
-- Churn rate - Tỷ lệ rời bỏ
-- Conversion rate - Tỷ lệ chuyển đổi
-- Revenue metrics - Chỉ số doanh thu
-- System performance - Hiệu suất hệ thống
-- Error logs - Nhật ký lỗi
-- Usage patterns - Mẫu sử dụng
+[x] - Daily active users - Người dùng hoạt động hàng ngày
+[x] - Weekly active users - Người dùng hoạt động hàng tuần
+[x] - Monthly active users - Người dùng hoạt động hàng tháng
+[x] - User retention rate - Tỷ lệ giữ chân người dùng
+[x] - Churn rate - Tỷ lệ rời bỏ
+[x] - Conversion rate - Tỷ lệ chuyển đổi
+[x] - Revenue metrics - Chỉ số doanh thu
+[x] - System performance - Hiệu suất hệ thống
+[x] - Error logs - Nhật ký lỗi
+[x] - Usage patterns - Mẫu sử dụng
 
 17.3. System Settings (Cài đặt hệ thống)
 - Application configuration - Cấu hình ứng dụng

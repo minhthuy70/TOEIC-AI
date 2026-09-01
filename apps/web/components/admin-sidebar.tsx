@@ -19,6 +19,7 @@ import {
   ChevronRight,
   Database,
   TrendingUp,
+  Cpu,
 } from "lucide-react";
 
 type UserRole =
@@ -218,6 +219,16 @@ export default function AdminSidebar({
               icon={<Target className="w-4 h-4 shrink-0" />}
             >
               Yêu cầu chặng
+            </AdminLink>
+
+            <AdminLink
+              href="/admin/system-analytics"
+              active={pathname.startsWith(
+                "/admin/system-analytics"
+              )}
+              icon={<Cpu className="w-4 h-4 shrink-0" />}
+            >
+              Phân tích hệ thống
             </AdminLink>
 
             <AdminLink
