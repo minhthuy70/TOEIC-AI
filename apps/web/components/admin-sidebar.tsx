@@ -21,6 +21,7 @@ import {
   TrendingUp,
   Cpu,
   BarChart2,
+  Shield,
 } from "lucide-react";
 
 type UserRole =
@@ -240,6 +241,16 @@ export default function AdminSidebar({
               icon={<BarChart2 className="w-4 h-4 shrink-0" />}
             >
               Tích hợp phân tích
+            </AdminLink>
+
+            <AdminLink
+              href="/dashboard/security"
+              active={pathname.startsWith(
+                "/dashboard/security"
+              )}
+              icon={<Shield className="w-4 h-4 shrink-0" />}
+            >
+              An ninh & Bảo mật
             </AdminLink>
 
             <AdminLink

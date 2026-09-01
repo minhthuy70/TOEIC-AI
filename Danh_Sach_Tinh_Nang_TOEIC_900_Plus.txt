@@ -1209,17 +1209,17 @@ Dựa trên lộ trình học TOEIC 900+ - Phiên bản nâng cấp
 ================================================================================
 
 19.1. Security Features (Tính năng bảo mật)
-- Two-factor authentication - Xác thực hai yếu tố
-- Login notifications - Thông báo đăng nhập
-- Suspicious activity detection - Phát hiện hoạt động đáng ngờ
-- Session management - Quản lý phiên
-- IP whitelist - Danh sách trắng IP
-- Rate limiting - Giới hạn tốc độ
-- DDoS protection - Bảo vệ DDoS
-- Data encryption - Mã hóa dữ liệu
-- Secure headers - Tiêu đề bảo mật
-- CSRF protection - Bảo vệ CSRF
-- XSS protection - Bảo vệ XSS
+[x] - Two-factor authentication - Xác thực hai yếu tố
+[x] - Login notifications - Thông báo đăng nhập
+[x] - Suspicious activity detection - Phát hiện hoạt động đáng ngờ
+[x] - Session management - Quản lý phiên
+[x] - IP whitelist - Danh sách trắng IP
+[x] - Rate limiting - Giới hạn tốc độ
+[x] - DDoS protection - Bảo vệ DDoS
+[x] - Data encryption - Mã hóa dữ liệu
+[x] - Secure headers - Tiêu đề bảo mật
+[x] - CSRF protection - Bảo vệ CSRF
+[x] - XSS protection - Bảo vệ XSS
 
 ================================================================================
 

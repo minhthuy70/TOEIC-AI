@@ -37,6 +37,7 @@ import {
   Users,
   Share2,
   UsersRound,
+  ShieldCheck,
 } from "lucide-react";
 import { useAutoLogout } from "../../hooks/useAutoLogout";
 import { useSessionWarning } from "../../hooks/useSessionWarning";
@@ -75,6 +76,7 @@ const NAV_BOTTOM = [
   { label: "Âm Thanh Nền", icon: Radio, href: "/dashboard/audio-player" },
   { label: "Tiện Ích Widgets", icon: LayoutGrid, href: "/dashboard/widgets" },
   { label: "Đồng Bộ Lịch", icon: Calendar, href: "/dashboard/calendar" },
+  { label: "Bảo Mật & 2FA", icon: ShieldCheck, href: "/dashboard/security" },
   { label: "Cài đặt học tập", icon: Settings, href: "/dashboard/settings" },
   { label: "Hồ sơ cá nhân", icon: UserIcon, href: "/dashboard/profile" },
 ];
