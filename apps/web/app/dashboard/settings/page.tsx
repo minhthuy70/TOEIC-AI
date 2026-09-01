@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 import { apiFetch } from "@/lib/api";
 import {
   BookOpen,
@@ -38,6 +39,8 @@ import {
   Languages,
   Focus,
   Maximize2,
+  User,
+  ShieldCheck,
   Glasses,
   Play,
   Square,
@@ -632,7 +635,7 @@ export default function SettingsHubPage() {
   };
 
   return (
-    <div className="space-y-6 max-w-5xl mx-auto pb-12">
+    <div className="space-y-6 animate-fade-in w-full pb-12">
       {/* Toast Feedback */}
       {toastMessage && (
         <div className="fixed top-5 right-5 z-50 animate-in fade-in slide-in-from-top-4 duration-300">
@@ -653,6 +656,31 @@ export default function SettingsHubPage() {
         </div>
       )}
 
+      {/* Sub-tab Navigation */}
+      <div className="flex rounded-2xl border border-zinc-800/80 bg-[#121218] p-1 max-w-md">
+        <Link
+          href="/dashboard/profile"
+          className="flex-1 flex items-center justify-center gap-2 rounded-xl px-3 py-2 text-xs font-semibold text-zinc-400 hover:text-white transition"
+        >
+          <User className="w-3.5 h-3.5" />
+          <span>Hồ sơ</span>
+        </Link>
+        <Link
+          href="/dashboard/settings"
+          className="flex-1 flex items-center justify-center gap-2 rounded-xl px-3 py-2 text-xs font-semibold bg-red-600 text-white shadow-md transition"
+        >
+          <Sliders className="w-3.5 h-3.5" />
+          <span>Cài đặt</span>
+        </Link>
+        <Link
+          href="/dashboard/security"
+          className="flex-1 flex items-center justify-center gap-2 rounded-xl px-3 py-2 text-xs font-semibold text-zinc-400 hover:text-white transition"
+        >
+          <ShieldCheck className="w-3.5 h-3.5" />
+          <span>Bảo mật</span>
+        </Link>
+      </div>
+
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
@@ -661,7 +689,7 @@ export default function SettingsHubPage() {
             <span>Trung Tâm Cài Đặt Hệ Thống</span>
           </h1>
           <p className="text-sm text-zinc-400 mt-1">
-            Quản trị toàn diện: Học tập (13.2), Giao diện (13.3), Trợ năng (13.4), Ngôn ngữ (13.5) và Quyền riêng tư (13.6)
+            Quản trị toàn diện: Học tập, Giao diện, Trợ năng, Ngôn ngữ và Quyền riêng tư
           </p>
         </div>
 
@@ -718,7 +746,7 @@ export default function SettingsHubPage() {
           }`}
         >
           <BookOpen className="w-4 h-4" />
-          <span>Học Tập (13.2)</span>
+          <span>Học Tập</span>
         </button>
         <button
           onClick={() => setActiveTab("appearance")}
@@ -729,7 +757,7 @@ export default function SettingsHubPage() {
           }`}
         >
           <Palette className="w-4 h-4" />
-          <span>Giao Diện (13.3)</span>
+          <span>Giao Diện</span>
         </button>
         <button
           onClick={() => setActiveTab("accessibility")}
@@ -740,7 +768,7 @@ export default function SettingsHubPage() {
           }`}
         >
           <Accessibility className="w-4 h-4" />
-          <span>Trợ Năng (13.4)</span>
+          <span>Trợ Năng</span>
         </button>
         <button
           onClick={() => setActiveTab("language")}
@@ -751,7 +779,7 @@ export default function SettingsHubPage() {
           }`}
         >
           <Globe2 className="w-4 h-4" />
-          <span>Ngôn Ngữ (13.5)</span>
+          <span>Ngôn Ngữ</span>
         </button>
         <button
           onClick={() => setActiveTab("privacy")}
@@ -762,7 +790,7 @@ export default function SettingsHubPage() {
           }`}
         >
           <Shield className="w-4 h-4" />
-          <span>Quyền Riêng Tư (13.6)</span>
+          <span>Quyền Riêng Tư</span>
         </button>
       </div>
 

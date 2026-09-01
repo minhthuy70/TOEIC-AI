@@ -205,7 +205,7 @@ export default function GrammarDashboardPage() {
   const hasData = overview.totalCategories > 0;
 
   return (
-    <div className="max-w-5xl mx-auto space-y-8 pb-10">
+    <div className="space-y-6 animate-fade-in w-full pb-10">
       {/* ── HEADER ── */}
       <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
         <div>

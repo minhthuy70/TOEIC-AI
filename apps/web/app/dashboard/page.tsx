@@ -116,6 +116,26 @@ export default function DashboardPage() {
   const [goals, setGoals] = useState<any[]>([]);
   const [goalHistory, setGoalHistory] = useState<any[]>([]);
 
+  const [currentUser, setCurrentUser] = useState<any>(null);
+  const [savedMotivationQuote, setSavedMotivationQuote] = useState<{
+    quote: string;
+    author: string;
+    translation: string;
+  }>({
+    quote: "The secret of getting ahead is getting started.",
+    author: "Mark Twain",
+    translation: "Bí quyết để bứt phá điểm số là bắt đầu hành động ngay hôm nay.",
+  });
+
+  useEffect(() => {
+    const stored = localStorage.getItem("user");
+    if (stored) {
+      try {
+        setCurrentUser(JSON.parse(stored));
+      } catch {}
+    }
+  }, []);
+
   useEffect(() => {
     fetchDashboard();
   }, []);
@@ -213,6 +233,13 @@ export default function DashboardPage() {
       } else {
         res = await apiFetch<any>("/dashboard/overview");
       }
+
+      if (res?.user) {
+        setCurrentUser(res.user);
+      }
+      if (res?.daily?.dailyMotivationQuote) {
+        setSavedMotivationQuote(res.daily.dailyMotivationQuote);
+      }
       setData(res);
     } catch (error) {
       console.error("Dashboard fetch error:", error);
@@ -238,41 +265,33 @@ export default function DashboardPage() {
   if (!data) return <div className="text-zinc-400 p-8 text-center">Không thể tải dữ liệu Bảng điều khiển.</div>;
 
   const { user, score, daily, weekly, recentActivities } = data;
+  const displayUser = user || currentUser;
   const currentStageId = score?.stage || 1;
+  const activeQuote = daily?.dailyMotivationQuote || savedMotivationQuote;
 
   return (
     <div className="space-y-8 animate-fade-in">
       {/* ================================================== */}
-      {/* 1. WELCOME BANNER & MOTIVATION QUOTE (9.1) */}
+      {/* 1. WELCOME BANNER & MOTIVATION QUOTE */}
       {/* ================================================== */}
       <div className="relative overflow-hidden bg-gradient-to-br from-red-600/15 via-zinc-900/90 to-zinc-950 border border-red-600/20 rounded-3xl p-6 lg:p-8 shadow-xl">
         <div className="absolute top-0 right-0 w-96 h-96 bg-red-600/10 rounded-full -translate-y-1/2 translate-x-1/3 blur-3xl" />
 
         <div className="relative flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
           <div className="space-y-2 max-w-2xl">
-            <div className="flex items-center gap-2 flex-wrap">
-              <span className="px-3 py-1 rounded-full text-[10px] font-extrabold bg-red-600/20 text-red-400 border border-red-500/30 uppercase tracking-wider">
-                Hệ Thống Theo Dõi Tiến Độ • 9.1 & 9.2
-              </span>
-              <span className="px-3 py-1 rounded-full text-[10px] font-black bg-amber-500/20 text-amber-300 border border-amber-500/30 flex items-center gap-1">
-                <Flame className="w-3 h-3 text-amber-400 fill-amber-400" />
-                <span>Chuỗi {daily?.streak?.current || 5} ngày liên tục</span>
-              </span>
-            </div>
-
             <h1 className="text-2xl lg:text-3xl font-black text-white">
-              Xin chào, {user?.fullName || "Học viên TOEIC"}
+              Xin chào, {displayUser?.fullName || "Học viên TOEIC"}
             </h1>
 
-            {/* 11. DAILY MOTIVATION QUOTE */}
-            {daily?.dailyMotivationQuote && (
-              <div className="p-3.5 rounded-2xl bg-black/40 border border-white/5 space-y-1">
+            {/* DAILY MOTIVATION QUOTE SLOGAN (ALWAYS VISIBLE ACROSS ALL TABS) */}
+            {activeQuote && (
+              <div className="p-3.5 rounded-2xl bg-black/40 border border-white/5 space-y-1 mt-2">
                 <p className="text-xs italic text-zinc-300 font-medium leading-relaxed">
-                  &quot;{daily.dailyMotivationQuote.quote}&quot; — <span className="text-red-400 font-bold">{daily.dailyMotivationQuote.author}</span>
+                  &quot;{activeQuote.quote}&quot; — <span className="text-red-400 font-bold">{activeQuote.author}</span>
                 </p>
-                <p className="text-[11px] text-zinc-400 flex items-center gap-1">
+                <p className="text-[11px] text-zinc-400 flex items-center gap-1.5">
                   <Lightbulb className="w-3.5 h-3.5 text-amber-400 shrink-0" />
-                  <span>{daily.dailyMotivationQuote.translation}</span>
+                  <span>{activeQuote.translation}</span>
                 </p>
               </div>
             )}
@@ -301,413 +320,264 @@ export default function DashboardPage() {
       {/* ================================================== */}
       {/* PERIOD SWITCHER: DAILY (9.1) VS WEEKLY (9.2) VS MONTHLY (9.3) VS STATISTICS (9.4) VS ANALYTICS (9.5) VS GOALS (9.6) */}
       {/* ================================================== */}
-      <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 rounded-2xl border border-white/5 bg-[#121214] p-1 max-w-4xl">
-        <button
-          type="button"
-          onClick={() => setPeriod("daily")}
-          className={`flex items-center justify-center gap-1.5 rounded-xl px-3 py-2.5 text-xs sm:text-sm font-bold transition ${
-            period === "daily"
-              ? "bg-red-600 text-white shadow-md"
-              : "text-zinc-400 hover:text-white"
-          }`}
-        >
-          <Calendar className="w-4 h-4" />
-          <span>Hôm nay (9.1)</span>
-        </button>
-
-        <button
-          type="button"
-          onClick={() => setPeriod("weekly")}
-          className={`flex items-center justify-center gap-1.5 rounded-xl px-3 py-2.5 text-xs sm:text-sm font-bold transition ${
-            period === "weekly"
-              ? "bg-red-600 text-white shadow-md"
-              : "text-zinc-400 hover:text-white"
-          }`}
-        >
-          <BarChart3 className="w-4 h-4" />
-          <span>Tuần này (9.2)</span>
-        </button>
-
-        <button
-          type="button"
-          onClick={() => setPeriod("monthly")}
-          className={`flex items-center justify-center gap-1.5 rounded-xl px-3 py-2.5 text-xs sm:text-sm font-bold transition ${
-            period === "monthly"
-              ? "bg-red-600 text-white shadow-md"
-              : "text-zinc-400 hover:text-white"
-          }`}
-        >
-          <TrendingUp className="w-4 h-4" />
-          <span>Tháng này (9.3)</span>
-        </button>
-
-        <button
-          type="button"
-          onClick={() => setPeriod("statistics")}
-          className={`flex items-center justify-center gap-1.5 rounded-xl px-3 py-2.5 text-xs sm:text-sm font-bold transition ${
-            period === "statistics"
-              ? "bg-red-600 text-white shadow-md"
-              : "text-zinc-400 hover:text-white"
-          }`}
-        >
-          <ClipboardList className="w-4 h-4" />
-          <span>Tổng quan (9.4)</span>
-        </button>
-
-        <button
-          type="button"
-          onClick={() => setPeriod("analytics")}
-          className={`flex items-center justify-center gap-1.5 rounded-xl px-3 py-2.5 text-xs sm:text-sm font-bold transition ${
-            period === "analytics"
-              ? "bg-red-600 text-white shadow-md"
-              : "text-zinc-400 hover:text-white"
-          }`}
-        >
-          <Sparkles className="w-4 h-4" />
-          <span>Phân tích (9.5)</span>
-        </button>
-
-        <button
-          type="button"
-          onClick={() => setPeriod("goals")}
-          className={`flex items-center justify-center gap-1.5 rounded-xl px-3 py-2.5 text-xs sm:text-sm font-bold transition ${
-            period === "goals"
-              ? "bg-red-600 text-white shadow-md"
-              : "text-zinc-400 hover:text-white"
-          }`}
-        >
-          <Target className="w-4 h-4" />
-          <span>Mục tiêu (9.6)</span>
-        </button>
+      {/* ================================================== */}
+      {/* PERIOD SWITCHER: UNIFIED STYLING FOR ALL TABS */}
+      {/* ================================================== */}
+      <div className="flex flex-wrap items-center gap-1.5 p-1.5 rounded-2xl border border-zinc-800/80 bg-zinc-900/80 backdrop-blur-md max-w-full sm:max-w-fit shadow-lg">
+        {[
+          { id: "daily", label: "Hôm nay", icon: Calendar },
+          { id: "weekly", label: "Tuần này", icon: BarChart3 },
+          { id: "monthly", label: "Tháng này", icon: TrendingUp },
+          { id: "statistics", label: "Tổng quan", icon: ClipboardList },
+          { id: "analytics", label: "Phân tích", icon: Sparkles },
+          { id: "goals", label: "Mục tiêu", icon: Target },
+        ].map((tab) => {
+          const Icon = tab.icon;
+          const isActive = period === tab.id;
+          return (
+            <button
+              key={tab.id}
+              type="button"
+              onClick={() => setPeriod(tab.id as any)}
+              className={`flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl text-xs sm:text-sm font-semibold transition-all duration-200 select-none ${
+                isActive
+                  ? "bg-red-600 text-white shadow-md shadow-red-600/25 border border-red-500/30 font-bold"
+                  : "text-zinc-400 hover:text-zinc-200 hover:bg-zinc-800/60 border border-transparent"
+              }`}
+            >
+              <Icon className={`w-4 h-4 shrink-0 transition-colors ${isActive ? "text-white" : "text-zinc-400"}`} />
+              <span>{tab.label}</span>
+            </button>
+          );
+        })}
       </div>
 
       {/* ================================================== */}
-      {/* VIEW 1: DAILY DASHBOARD (9.1) */}
+      {/* VIEW 1: DAILY DASHBOARD (CONSOLIDATED 3-ZONE LAYOUT) */}
       {/* ================================================== */}
       {period === "daily" && (
-        <div className="space-y-8 animate-fade-in">
-          {/* 5 CARDS ROW */}
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3.5">
-            <div className="bg-zinc-900/60 border border-zinc-800/60 rounded-2xl p-4.5 text-center transition hover:border-zinc-700">
-              <span className="text-[10px] text-zinc-500 uppercase tracking-wider font-bold block mb-1.5 flex items-center justify-center gap-1">
-                <Clock className="w-3.5 h-3.5 text-amber-400" />
-                <span>Thời gian học hôm nay</span>
-              </span>
+        <div className="space-y-6 animate-fade-in">
+          {/* ZONE 1: TOP VITAL METRICS (3 KEY CARDS) */}
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+            <div className="bg-zinc-900/60 border border-zinc-800/80 rounded-2xl p-5 card-interactive">
+              <div className="flex items-center justify-between mb-2">
+                <span className="text-xs font-bold text-zinc-400 uppercase tracking-wider flex items-center gap-1.5">
+                  <Clock className="w-4 h-4 text-amber-400" />
+                  <span>Thời gian học hôm nay</span>
+                </span>
+                <span className="text-xs font-bold text-amber-400">{daily?.studyTime?.progress || 0}%</span>
+              </div>
               <p className="text-2xl font-black text-white">
-                {daily?.studyTime?.todayMinutes || 0} <span className="text-xs text-zinc-400 font-normal">/ {daily?.studyTime?.goalMinutes || 30}p</span>
+                {daily?.studyTime?.todayMinutes || 0} <span className="text-xs text-zinc-400 font-normal">/ {daily?.studyTime?.goalMinutes || 30} phút</span>
               </p>
-              <div className="w-full bg-zinc-800 rounded-full h-1.5 mt-2 overflow-hidden">
-                <div className="bg-amber-500 h-full rounded-full" style={{ width: `${daily?.studyTime?.progress || 0}%` }} />
+              <div className="w-full bg-zinc-800/80 rounded-full h-2 mt-3 overflow-hidden">
+                <div className="bg-gradient-to-r from-amber-500 to-orange-500 h-full rounded-full transition-all duration-500" style={{ width: `${daily?.studyTime?.progress || 0}%` }} />
               </div>
             </div>
 
-            <div className="bg-zinc-900/60 border border-zinc-800/60 rounded-2xl p-4.5 text-center transition hover:border-zinc-700">
-              <span className="text-[10px] text-zinc-500 uppercase tracking-wider font-bold block mb-1.5 flex items-center justify-center gap-1">
-                <BookOpen className="w-3.5 h-3.5 text-purple-400" />
-                <span>Từ vựng (Mới + Ôn)</span>
-              </span>
+            <div className="bg-zinc-900/60 border border-zinc-800/80 rounded-2xl p-5 card-interactive">
+              <div className="flex items-center justify-between mb-2">
+                <span className="text-xs font-bold text-zinc-400 uppercase tracking-wider flex items-center gap-1.5">
+                  <BookOpen className="w-4 h-4 text-purple-400" />
+                  <span>Từ vựng tích lũy hôm nay</span>
+                </span>
+                <span className="text-xs font-bold text-purple-400">{daily?.vocabulary?.learnedToday || 0} mới</span>
+              </div>
               <p className="text-2xl font-black text-purple-400">
                 {daily?.vocabulary?.totalToday || 0} <span className="text-xs text-zinc-400 font-normal">/ {daily?.vocabulary?.goal || 20} từ</span>
               </p>
-              <p className="text-[10px] text-zinc-500 mt-1.5">
-                {daily?.vocabulary?.learnedToday || 0} mới • {daily?.vocabulary?.reviewedToday || 0} ôn tập
+              <p className="text-[11px] text-zinc-500 mt-2">
+                Ôn tập: {daily?.vocabulary?.reviewedToday || 0} từ (SRS Spaced Repetition)
               </p>
             </div>
 
-            <div className="bg-zinc-900/60 border border-zinc-800/60 rounded-2xl p-4.5 text-center transition hover:border-zinc-700">
-              <span className="text-[10px] text-zinc-500 uppercase tracking-wider font-bold block mb-1.5 flex items-center justify-center gap-1">
-                <FileEdit className="w-3.5 h-3.5 text-blue-400" />
-                <span>Câu luyện tập hôm nay</span>
-              </span>
-              <p className="text-2xl font-black text-blue-400">
-                {daily?.practiceQuestions?.count || 0} <span className="text-xs text-zinc-400 font-normal">câu</span>
-              </p>
-              <div className="w-full bg-zinc-800 rounded-full h-1.5 mt-2 overflow-hidden">
-                <div className="bg-blue-500 h-full rounded-full" style={{ width: `${daily?.practiceQuestions?.progress || 0}%` }} />
+            <div className="bg-zinc-900/60 border border-zinc-800/80 rounded-2xl p-5 card-interactive">
+              <div className="flex items-center justify-between mb-2">
+                <span className="text-xs font-bold text-zinc-400 uppercase tracking-wider flex items-center gap-1.5">
+                  <Target className="w-4 h-4 text-emerald-400" />
+                  <span>Độ chính xác & Phản xạ</span>
+                </span>
+                <Zap className="w-4 h-4 text-amber-400 animate-pulse" />
               </div>
-            </div>
-
-            <div className="bg-zinc-900/60 border border-zinc-800/60 rounded-2xl p-4.5 text-center transition hover:border-zinc-700">
-              <span className="text-[10px] text-zinc-500 uppercase tracking-wider font-bold block mb-1.5 flex items-center justify-center gap-1">
-                <Target className="w-3.5 h-3.5 text-emerald-400" />
-                <span>Tỷ lệ chính xác</span>
-              </span>
               <p className="text-2xl font-black text-emerald-400">
                 {daily?.accuracyRate || 85}%
               </p>
-              <span className="text-[10px] text-emerald-300/70 font-semibold block mt-1.5 flex items-center justify-center gap-1">
-                <span>Phản xạ rất tốt</span>
-                <Zap className="w-3 h-3 text-amber-400" />
+              <span className="text-[11px] text-emerald-400/80 font-medium block mt-2">
+                Đã hoàn thành {daily?.practiceQuestions?.count || 0} câu luyện tập
               </span>
-            </div>
-
-            <div className="bg-zinc-900/60 border border-zinc-800/60 rounded-2xl p-4.5 text-center transition hover:border-zinc-700 col-span-2 sm:col-span-1">
-              <span className="text-[10px] text-zinc-500 uppercase tracking-wider font-bold block mb-1.5 flex items-center justify-center gap-1">
-                <Flame className="w-3.5 h-3.5 text-amber-400" />
-                <span>Chuỗi ngày học</span>
-              </span>
-              <p className="text-2xl font-black text-amber-400">
-                {daily?.streak?.current || 5} <span className="text-xs text-zinc-400 font-normal">ngày</span>
-              </p>
-              <span className="text-[10px] text-zinc-500 block mt-1.5">Kỷ lục: {daily?.streak?.longest || 7} ngày</span>
-            </div>
-
-            <div className="bg-zinc-900/60 border border-zinc-800/60 rounded-2xl p-4.5 text-center transition hover:border-zinc-700">
-              <span className="text-[10px] text-zinc-500 uppercase tracking-wider font-bold block mb-1.5 flex items-center justify-center gap-1">
-                <Star className="w-3.5 h-3.5 text-red-400" />
-                <span>Điểm tích lũy</span>
-              </span>
-              <p className="text-2xl font-black text-red-400">
-                <Link href="/dashboard/points" className="hover:text-red-300 transition-colors">
-                  {user?.profile?.pointsBalance || 0} <span className="text-xs text-zinc-400 font-normal">PTS</span>
-                </Link>
-              </p>
-              <span className="text-[10px] text-zinc-500 block mt-1.5">Tổng: {user?.profile?.totalPointsEarned || 0} PTS</span>
             </div>
           </div>
 
-          {/* QUICK ACTIONS */}
-          <div className="rounded-3xl border border-white/5 bg-[#121214] p-5 space-y-3">
-            <h3 className="text-xs font-bold uppercase tracking-wider text-zinc-400 flex items-center gap-2">
-              <Zap className="w-4 h-4 text-amber-400" />
-              <span>Hành Động Nhanh (Quick Actions)</span>
-            </h3>
-            <div className="grid grid-cols-2 sm:grid-cols-5 gap-3">
-              <Link href="/dashboard/vocabulary" className="p-3.5 rounded-2xl bg-zinc-900/80 hover:bg-zinc-800 border border-zinc-800/80 text-center transition flex flex-col items-center justify-center gap-1.5 group">
-                <BookOpen className="w-6 h-6 text-purple-400 group-hover:scale-110 transition" />
-                <span className="text-xs font-bold text-white">Học từ mới</span>
-                <span className="text-[10px] text-zinc-500">Flashcard SRS</span>
-              </Link>
-              <Link href="/dashboard/vocabulary/review" className="p-3.5 rounded-2xl bg-zinc-900/80 hover:bg-zinc-800 border border-zinc-800/80 text-center transition flex flex-col items-center justify-center gap-1.5 group">
-                <RotateCcw className="w-6 h-6 text-indigo-400 group-hover:scale-110 transition" />
-                <span className="text-xs font-bold text-white">Ôn tập từ vựng</span>
-                <span className="text-[10px] text-zinc-500">Spaced Repetition</span>
-              </Link>
-              <Link href="/dashboard/practice" className="p-3.5 rounded-2xl bg-zinc-900/80 hover:bg-zinc-800 border border-zinc-800/80 text-center transition flex flex-col items-center justify-center gap-1.5 group">
-                <FileEdit className="w-6 h-6 text-blue-400 group-hover:scale-110 transition" />
-                <span className="text-xs font-bold text-white">Luyện tập câu</span>
-                <span className="text-[10px] text-zinc-500">Part 1 - 7</span>
-              </Link>
-              <Link href="/dashboard/mock-test" className="p-3.5 rounded-2xl bg-zinc-900/80 hover:bg-zinc-800 border border-zinc-800/80 text-center transition flex flex-col items-center justify-center gap-1.5 group">
-                <FileText className="w-6 h-6 text-red-400 group-hover:scale-110 transition" />
-                <span className="text-xs font-bold text-white">Thi thử Mini/Full</span>
-                <span className="text-[10px] text-zinc-500">Chuẩn format ETS</span>
-              </Link>
-              <Link href="/dashboard/error-log" className="p-3.5 rounded-2xl bg-zinc-900/80 hover:bg-zinc-800 border border-zinc-800/80 text-center transition flex flex-col items-center justify-center gap-1.5 group col-span-2 sm:col-span-1">
-                <BookMarked className="w-6 h-6 text-amber-400 group-hover:scale-110 transition" />
-                <span className="text-xs font-bold text-white">Sổ tay câu sai</span>
-                <span className="text-[10px] text-zinc-500">Luyện Drill & Phân tích</span>
-              </Link>
-            </div>
-          </div>
-
-          {/* MAIN 2-COLUMN LAYOUT */}
-          <div className="grid lg:grid-cols-[1.3fr_1fr] xl:grid-cols-[1.5fr_1fr] gap-6">
+          {/* ZONE 2: MAIN 2-COLUMN HUB */}
+          <div className="grid lg:grid-cols-[1.4fr_1fr] gap-6">
+            {/* Left Column: Quick Skill Launchers & Daily Action Checklist */}
             <div className="space-y-6">
-              {/* Daily Goals Progress Bars */}
-              <div className="rounded-3xl border border-white/5 bg-[#121214] p-6 space-y-5">
+              {/* AI BELLA Recommendation Card */}
+              <div className="bg-gradient-to-r from-red-600/15 via-zinc-900/80 to-zinc-900/60 border border-red-500/25 rounded-3xl p-5 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                <div className="flex items-center gap-3.5">
+                  <div className="w-10 h-10 rounded-2xl bg-gradient-to-br from-red-600 to-red-500 flex items-center justify-center text-white shadow-md shadow-red-600/25 shrink-0">
+                    <Sparkles className="w-5 h-5" />
+                  </div>
+                  <div>
+                    <div className="flex items-center gap-2">
+                      <h4 className="text-sm font-bold text-white">Gợi Ý Thông Minh Từ AI BELLA</h4>
+                      <span className="px-2 py-0.5 rounded-full text-[10px] font-semibold bg-red-600/20 text-red-400 border border-red-600/30">
+                        Cá nhân hóa
+                      </span>
+                    </div>
+                    <p className="text-xs text-zinc-400 mt-0.5">
+                      Phân tích lịch sử làm bài & chẩn đoán điểm yếu. Đề xuất hoàn thành bài tập ngữ pháp & từ vựng hôm nay.
+                    </p>
+                  </div>
+                </div>
+                <Link
+                  href="/dashboard/recommendations"
+                  className="inline-flex items-center justify-center gap-1.5 px-4 py-2 rounded-xl bg-red-600 hover:bg-red-500 text-white text-xs font-semibold transition shrink-0 shadow-md shadow-red-600/20"
+                >
+                  <span>Xem chẩn đoán AI</span>
+                  <ArrowRight className="w-3.5 h-3.5" />
+                </Link>
+              </div>
+
+              {/* Quick Skill Launchers */}
+              <div className="bg-zinc-900/60 border border-zinc-800/80 rounded-3xl p-5 lg:p-6 space-y-4">
+                <h3 className="text-sm font-bold text-white flex items-center gap-2">
+                  <Zap className="w-4 h-4 text-red-500" />
+                  <span>Kỹ Năng & Luyện Tập Trọng Tâm</span>
+                </h3>
+                <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
+                  <Link href="/dashboard/vocabulary" className="p-4 rounded-2xl bg-zinc-950/80 hover:bg-zinc-800/80 border border-zinc-800/80 text-center transition flex flex-col items-center justify-center gap-2 group card-interactive">
+                    <div className="w-10 h-10 rounded-xl bg-purple-500/15 flex items-center justify-center text-purple-400 group-hover:scale-110 transition">
+                      <BookOpen className="w-5 h-5" />
+                    </div>
+                    <span className="text-xs font-bold text-white">Từ vựng Flashcard</span>
+                    <span className="text-[10px] text-zinc-500">Học & Ôn SRS</span>
+                  </Link>
+
+                  <Link href="/dashboard/practice" className="p-4 rounded-2xl bg-zinc-950/80 hover:bg-zinc-800/80 border border-zinc-800/80 text-center transition flex flex-col items-center justify-center gap-2 group card-interactive">
+                    <div className="w-10 h-10 rounded-xl bg-blue-500/15 flex items-center justify-center text-blue-400 group-hover:scale-110 transition">
+                      <FileEdit className="w-5 h-5" />
+                    </div>
+                    <span className="text-xs font-bold text-white">Luyện tập Part 1-7</span>
+                    <span className="text-[10px] text-zinc-500">Bài tập phân loại</span>
+                  </Link>
+
+                  <Link href="/dashboard/mock-test" className="p-4 rounded-2xl bg-zinc-950/80 hover:bg-zinc-800/80 border border-zinc-800/80 text-center transition flex flex-col items-center justify-center gap-2 group card-interactive">
+                    <div className="w-10 h-10 rounded-xl bg-red-500/15 flex items-center justify-center text-red-400 group-hover:scale-110 transition">
+                      <FileText className="w-5 h-5" />
+                    </div>
+                    <span className="text-xs font-bold text-white">Thi thử TOEIC</span>
+                    <span className="text-[10px] text-zinc-500">Mini / Full Test</span>
+                  </Link>
+
+                  <Link href="/dashboard/error-log" className="p-4 rounded-2xl bg-zinc-950/80 hover:bg-zinc-800/80 border border-zinc-800/80 text-center transition flex flex-col items-center justify-center gap-2 group card-interactive">
+                    <div className="w-10 h-10 rounded-xl bg-amber-500/15 flex items-center justify-center text-amber-400 group-hover:scale-110 transition">
+                      <BookMarked className="w-5 h-5" />
+                    </div>
+                    <span className="text-xs font-bold text-white">Sổ tay câu sai</span>
+                    <span className="text-[10px] text-zinc-500">Khắc phục bẫy</span>
+                  </Link>
+                </div>
+              </div>
+
+              {/* Daily Action Checklist */}
+              <div className="bg-zinc-900/60 border border-zinc-800/80 rounded-3xl p-5 lg:p-6 space-y-4">
                 <div className="flex items-center justify-between">
                   <h3 className="text-sm font-bold text-white flex items-center gap-2">
                     <Target className="w-4 h-4 text-red-500" />
-                    <span>Tiến Độ Mục Tiêu Hàng Ngày (Daily Goals)</span>
+                    <span>Mục Tiêu Hàng Ngày (Daily Goals)</span>
                   </h3>
-                  <span className="text-xs font-black text-red-400">
-                    {daily?.tasksCompleted || 0} / {daily?.taskGoal || 4} mục tiêu
+                  <span className="text-xs font-bold text-red-400">
+                    {daily?.tasksCompleted || 0} / {daily?.taskGoal || 4} hoàn thành
                   </span>
                 </div>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
                   {daily?.dailyGoals?.map((g: any) => (
-                    <div key={g.id} className="p-4 rounded-2xl bg-zinc-950 border border-zinc-800/80 space-y-2">
+                    <div key={g.id} className="p-3.5 rounded-2xl bg-zinc-950/80 border border-zinc-800/80 space-y-2">
                       <div className="flex items-center justify-between text-xs">
-                        <span className="font-semibold text-zinc-300 flex items-center gap-1.5">
-                          <span>{g.title}</span>
-                        </span>
-                        <span className="font-bold text-white">{g.current} / {g.target} {g.unit}</span>
+                        <span className="font-semibold text-zinc-300 truncate max-w-[180px]">{g.title}</span>
+                        <span className="font-bold text-white shrink-0">{g.current} / {g.target} {g.unit}</span>
                       </div>
-                      <div className="w-full bg-zinc-900 rounded-full h-2 overflow-hidden">
+                      <div className="w-full bg-zinc-900 rounded-full h-1.5 overflow-hidden">
                         <div className={`h-full rounded-full transition-all duration-500 ${g.isCompleted ? "bg-emerald-500" : "bg-red-500"}`} style={{ width: `${g.progress}%` }} />
                       </div>
                       <div className="flex justify-between items-center text-[10px]">
-                        <span className="text-zinc-500">{g.progress}% hoàn thành</span>
-                        {g.isCompleted ? <span className="text-emerald-400 font-bold flex items-center gap-1"><Check className="w-3 h-3" /> Đạt mục tiêu</span> : <span className="text-zinc-400">Còn {Math.max(0, g.target - g.current)} {g.unit}</span>}
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-
-              {/* Today's Schedule */}
-              <div className="rounded-3xl border border-white/5 bg-[#121214] p-6 space-y-4">
-                <h3 className="text-sm font-bold text-white flex items-center gap-2">
-                  <Calendar className="w-4 h-4 text-blue-400" />
-                  <span>Lịch Trình Học Tập Hôm Nay (Today&apos;s Schedule)</span>
-                </h3>
-                <div className="space-y-3">
-                  {daily?.todaySchedule?.map((s: any, idx: number) => (
-                    <div key={idx} className={`p-3.5 rounded-2xl border flex items-center justify-between gap-3 ${s.status === "completed" ? "bg-emerald-950/10 border-emerald-500/20" : "bg-zinc-950 border-zinc-800"}`}>
-                      <div className="flex items-center gap-3">
-                        <span className="px-2.5 py-1 rounded-xl bg-white/5 border border-white/10 font-mono text-xs font-bold text-zinc-400">{s.time}</span>
-                        <div>
-                          <p className={`text-xs font-semibold ${s.status === "completed" ? "text-emerald-300" : "text-white"}`}>{s.title}</p>
-                          <span className="text-[10px] text-zinc-500">{s.category}</span>
-                        </div>
-                      </div>
-                      <span className={`text-[10px] font-bold px-2.5 py-0.5 rounded-full border flex items-center gap-1 ${s.status === "completed" ? "bg-emerald-500/20 text-emerald-300 border-emerald-500/30" : "bg-zinc-800 text-zinc-400 border-zinc-700"}`}>
-                        {s.status === "completed" ? (
-                          <>
-                            <Check className="w-3 h-3" />
-                            <span>Đã hoàn thành</span>
-                          </>
+                        <span className="text-zinc-500">{g.progress}%</span>
+                        {g.isCompleted ? (
+                          <span className="text-emerald-400 font-bold flex items-center gap-1">
+                            <Check className="w-3 h-3" /> Hoàn thành
+                          </span>
                         ) : (
-                          <span>Sắp tới</span>
+                          <span className="text-zinc-400">Còn {Math.max(0, g.target - g.current)} {g.unit}</span>
                         )}
-                      </span>
+                      </div>
                     </div>
                   ))}
                 </div>
               </div>
 
-              {/* Upcoming Reviews */}
+              {/* Upcoming SRS Review Reminder */}
               {daily?.upcomingReviews && (
-                <div className="rounded-3xl border border-purple-500/30 bg-gradient-to-br from-purple-950/20 via-zinc-900 to-zinc-950 p-6 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+                <div className="rounded-3xl border border-purple-500/30 bg-gradient-to-br from-purple-950/25 via-zinc-900/90 to-zinc-950 p-5 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
                   <div className="space-y-1 flex-1">
                     <div className="flex items-center gap-2">
-                      <Bell className="w-5 h-5 text-purple-400" />
-                      <h3 className="text-sm font-bold text-purple-300">Thông Báo Ôn Tập Sắp Tới (Upcoming Reviews)</h3>
+                      <Bell className="w-4 h-4 text-purple-400" />
+                      <h3 className="text-xs font-bold text-purple-300 uppercase tracking-wider">Nhắc Nhở Ôn Tập SRS</h3>
                     </div>
                     <p className="text-xs text-zinc-300 leading-relaxed">{daily.upcomingReviews.message}</p>
                   </div>
-                  <Link href="/dashboard/vocabulary/review" className="flex items-center gap-1.5 px-5 py-2.5 rounded-xl bg-purple-600 hover:bg-purple-500 text-white font-bold text-xs shadow-lg transition shrink-0">
-                    <span>Ôn tập ngay</span>
+                  <Link href="/dashboard/vocabulary/review" className="flex items-center gap-1.5 px-4 py-2 rounded-xl bg-purple-600 hover:bg-purple-500 text-white font-bold text-xs shadow-lg transition shrink-0">
+                    <span>Ôn ngay</span>
                     <ArrowRight className="w-3.5 h-3.5" />
                   </Link>
                 </div>
               )}
-
-              {/* Today's Achievements */}
-              <div className="rounded-3xl border border-white/5 bg-[#121214] p-6 space-y-4">
-                <h3 className="text-sm font-bold text-white flex items-center gap-2">
-                  <Trophy className="w-4 h-4 text-amber-400" />
-                  <span>Thành Tích Đạt Được Hôm Nay (Today&apos;s Achievements)</span>
-                </h3>
-                <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
-                  {daily?.todayAchievements?.map((a: any) => (
-                    <div key={a.id} className="p-4 rounded-2xl border text-center space-y-1.5 bg-amber-950/10 border-amber-500/30 flex flex-col items-center">
-                      <div className="w-9 h-9 rounded-xl bg-amber-500/20 text-amber-400 flex items-center justify-center mb-1">
-                        <Award className="w-5 h-5" />
-                      </div>
-                      <h4 className="text-xs font-bold text-white">{a.title}</h4>
-                      <p className="text-[10px] text-zinc-400">{a.desc}</p>
-                    </div>
-                  ))}
-                </div>
-              </div>
             </div>
 
-            {/* Right Column: Score & Roadmap */}
+            {/* Right Column: Stage Progress Roadmap & Activity */}
             <div className="space-y-6">
-              {/* Level Display */}
-              <LevelDisplay />
 
-              <div className="bg-zinc-900/60 border border-zinc-800/50 rounded-2xl p-5 lg:p-6">
-                <div className="flex items-center justify-between mb-4">
+              {/* Target Score Progress */}
+              <div className="bg-zinc-900/60 border border-zinc-800/80 rounded-3xl p-5 lg:p-6 space-y-4">
+                <div className="flex items-center justify-between">
                   <h3 className="text-sm font-semibold text-white flex items-center gap-2">
-                    <span className="w-7 h-7 rounded-lg bg-red-600/15 flex items-center justify-center text-xs text-red-400">
-                      <BarChart3 className="w-4 h-4" />
-                    </span>
-                    <span>Tiến độ đến mục tiêu điểm</span>
+                    <BarChart3 className="w-4 h-4 text-red-500" />
+                    <span>Tiến độ mục tiêu điểm</span>
                   </h3>
                   <span className="text-sm font-bold text-red-400">{score?.progress || 0}%</span>
                 </div>
-                <div className="w-full bg-zinc-800/80 rounded-full h-3">
-                  <div className="bg-gradient-to-r from-red-600 to-red-400 h-3 rounded-full transition-all duration-700 relative" style={{ width: `${score?.progress || 0}%` }}>
-                    <span className="absolute right-0 top-1/2 -translate-y-1/2 w-4 h-4 bg-white rounded-full shadow-lg shadow-red-600/30 border-2 border-red-500" />
-                  </div>
+                <div className="w-full bg-zinc-800/80 rounded-full h-2.5 overflow-hidden">
+                  <div className="bg-gradient-to-r from-red-600 to-red-400 h-full rounded-full transition-all duration-700" style={{ width: `${score?.progress || 0}%` }} />
                 </div>
-                <div className="flex justify-between text-xs text-zinc-400 mt-3">
+                <div className="flex justify-between text-xs text-zinc-400">
                   <span>Hiện tại: <strong className="text-white">{score?.current || 0}</strong></span>
                   <span>Mục tiêu: <strong className="text-green-400">{score?.target || 900}</strong></span>
                 </div>
               </div>
 
               {/* Recent Activities */}
-              <div className="bg-zinc-900/60 border border-zinc-800/50 rounded-2xl p-5">
-                <h3 className="text-sm font-semibold text-white mb-4 flex items-center gap-2">
-                  <span className="w-7 h-7 rounded-lg bg-cyan-600/15 flex items-center justify-center text-xs text-cyan-500">
-                    <ClipboardList className="w-4 h-4" />
-                  </span>
-                  <span>Hoạt động gần đây</span>
+              <div className="bg-zinc-900/60 border border-zinc-800/80 rounded-3xl p-5 lg:p-6 space-y-3">
+                <h3 className="text-sm font-semibold text-white flex items-center gap-2">
+                  <ClipboardList className="w-4 h-4 text-cyan-400" />
+                  <span>Hoạt động vừa thực hiện</span>
                 </h3>
                 {recentActivities?.length === 0 ? (
                   <p className="text-xs text-zinc-500 italic">Chưa có hoạt động nào.</p>
                 ) : (
-                  <div className="space-y-3">
-                    {recentActivities?.map((act: any) => (
-                      <div key={act.id} className="flex items-start gap-3 bg-zinc-800/30 p-3 rounded-xl border border-zinc-700/30">
-                        <span className="w-7 h-7 rounded-lg bg-zinc-800 flex items-center justify-center text-xs text-zinc-400 shrink-0">
-                          <Check className="w-3.5 h-3.5 text-emerald-400" />
+                  <div className="space-y-2.5">
+                    {recentActivities?.slice(0, 4)?.map((act: any) => (
+                      <div key={act.id} className="flex items-start gap-2.5 bg-zinc-950/60 p-2.5 rounded-xl border border-zinc-800/60">
+                        <span className="w-6 h-6 rounded-lg bg-zinc-800 flex items-center justify-center text-xs text-emerald-400 shrink-0 mt-0.5">
+                          <Check className="w-3.5 h-3.5" />
                         </span>
                         <div className="flex-1 min-w-0">
-                          <p className="text-[13px] font-medium text-zinc-200 line-clamp-2 leading-snug">{act.title}</p>
-                          <p className="text-[10px] text-zinc-500 mt-1">{new Date(act.date).toLocaleDateString('vi-VN')} {new Date(act.date).toLocaleTimeString('vi-VN')}</p>
+                          <p className="text-xs font-medium text-zinc-200 truncate">{act.title}</p>
+                          <p className="text-[10px] text-zinc-500">{new Date(act.date).toLocaleDateString('vi-VN')}</p>
                         </div>
                       </div>
                     ))}
                   </div>
                 )}
-              </div>
-
-              {/* Roadmap stages */}
-              <h3 className="text-base font-semibold text-white flex items-center gap-2 px-1 pt-2">
-                <Map className="w-4 h-4 text-red-500" />
-                <span>Lộ trình học TOEIC</span>
-              </h3>
-              <div className="space-y-3">
-                {STAGES.map((stage) => {
-                  const isActive = stage.id === currentStageId;
-                  const isDone = stage.id < currentStageId;
-                  const isLocked = stage.id > currentStageId;
-                  const isOpen = expandedStage === stage.id;
-
-                  return (
-                    <div key={stage.id} className={`rounded-2xl border transition-all duration-300 ${isActive ? `${stage.bg} ${stage.border} shadow-lg ${stage.glow}` : isDone ? "bg-zinc-900/40 border-zinc-800/30" : "bg-zinc-900/20 border-zinc-800/20 opacity-60"}`}>
-                      <button onClick={() => setExpandedStage(isOpen ? null : stage.id)} className="w-full flex items-center gap-3 p-4 text-left" disabled={isLocked}>
-                        <div className={`w-10 h-10 rounded-xl flex items-center justify-center text-sm font-bold shrink-0 shadow-sm ${isDone ? "bg-green-600/20 text-green-400 border border-green-600/25" : isActive ? `bg-gradient-to-br ${stage.color} text-white shadow-lg` : "bg-zinc-800 text-zinc-600 border border-zinc-700"}`}>
-                          {isDone ? <Check className="w-4 h-4 text-green-400" /> : isLocked ? <Lock className="w-3.5 h-3.5 text-zinc-500" /> : stage.id}
-                        </div>
-                        <div className="flex-1 min-w-0">
-                          <div className="flex items-center gap-2 flex-wrap mb-0.5">
-                            <p className="text-sm font-bold text-white leading-tight">{stage.label}</p>
-                            {isActive && <span className="text-[9px] bg-red-600/20 text-red-400 border border-red-600/25 px-2 py-0.5 rounded-full font-bold uppercase tracking-wider">Đang học</span>}
-                          </div>
-                          <p className="text-[11px] text-zinc-400 truncate">{stage.title}</p>
-                        </div>
-                        {!isLocked && (
-                          <ChevronDown
-                            className="w-4 h-4 text-zinc-600 shrink-0 transition-transform duration-200"
-                            style={{ transform: isOpen ? "rotate(180deg)" : "rotate(0deg)" }}
-                          />
-                        )}
-                      </button>
-                      {isOpen && !isLocked && (
-                        <div className="px-4 pb-4 pt-1 border-t border-zinc-800/30 mt-1">
-                          <p className="text-[10px] font-semibold text-zinc-500 uppercase tracking-wider mb-2 mt-3 flex items-center gap-1">
-                            <Target className="w-3 h-3 text-red-400" />
-                            <span>Mục tiêu cần đạt</span>
-                          </p>
-                          <ul className="space-y-1.5">
-                            {stage.goals.map((goal, i) => (
-                              <li key={i} className="flex items-start gap-2 text-[12px] text-zinc-300">
-                                <Check className="w-3.5 h-3.5 text-green-500/70 shrink-0 mt-0.5" />
-                                <span className="leading-snug">{goal}</span>
-                              </li>
-                            ))}
-                          </ul>
-                        </div>
-                      )}
-                    </div>
-                  );
-                })}
               </div>
             </div>
           </div>

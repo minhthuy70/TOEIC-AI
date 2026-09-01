@@ -23,12 +23,13 @@ export class ProfileController {
   ) {}
 
   @Post("complete-first-login")
-  completeFirstLogin(@Body() body: any) {
+  completeFirstLogin(@Req() req: any, @Body() body: any) {
+    const userId = Number(req.user?.sub || req.user?.id || body.userId);
     return this.profileService.completeFirstLogin(
-      body.userId,
-      body.currentScore,
-      body.targetScore,
-      body.examDate,
+      userId,
+      body.currentScore !== undefined ? Number(body.currentScore) : 0,
+      body.targetScore !== undefined ? Number(body.targetScore) : 600,
+      body.examDate || new Date(Date.now() + 90 * 24 * 60 * 60 * 1000).toISOString().split('T')[0],
       body.dailyStudyTime
         ? Number(body.dailyStudyTime)
         : undefined,

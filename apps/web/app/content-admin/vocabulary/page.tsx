@@ -408,7 +408,7 @@ export default function VocabularyAdminPage() {
         <div>
           <h1 className="text-2xl font-bold text-white flex items-center gap-2">
             <BookA className="w-6 h-6 text-red-400" />
-            <span>Quản Lý Từ Vựng Quản Trị Viên (16.1)</span>
+            <span>Quản Lý Từ Vựng Quản Trị Viên</span>
           </h1>
           <p className="text-sm text-zinc-400 mt-1">
             Quản trị kho từ vựng toàn diện: Thêm, sửa, xóa, nhập/xuất hàng loạt, hàng đợi duyệt, phân loại và kiểm tra chất lượng.

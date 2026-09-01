@@ -52,7 +52,7 @@ export default function TestSettingsPage() {
 
   if (!loaded) {
     return (
-      <div className="max-w-4xl mx-auto space-y-6 pb-12">
+      <div className="w-full space-y-6 pb-12">
         <div className="h-20 bg-zinc-900/60 border border-zinc-800 rounded-3xl animate-pulse" />
         <div className="h-64 bg-zinc-900/60 border border-zinc-800 rounded-3xl animate-pulse" />
       </div>
@@ -60,7 +60,7 @@ export default function TestSettingsPage() {
   }
 
   return (
-    <div className="max-w-4xl mx-auto space-y-8 pb-12 relative animate-fade-in">
+    <div className="w-full space-y-6 pb-12 relative animate-fade-in">
       {/* Toast Notification */}
       {toastMessage && (
         <div className="fixed bottom-6 right-6 z-50 bg-emerald-600 text-white text-xs font-bold px-4 py-3 rounded-xl shadow-2xl flex items-center gap-2 transition-all">

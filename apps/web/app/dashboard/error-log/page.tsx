@@ -379,8 +379,7 @@ export default function ErrorLogPage() {
   };
 
   return (
-    <div className="min-h-screen bg-[#09090b] text-white">
-      <main className="mx-auto max-w-6xl px-6 py-8 space-y-8 animate-fade-in">
+    <div className="space-y-6 animate-fade-in w-full pb-10">
         {/* ================================================== */}
         {/* HEADER */}
         {/* ================================================== */}
@@ -457,7 +456,7 @@ export default function ErrorLogPage() {
             }`}
           >
             <BarChart3 className="w-4 h-4" />
-            <span>Phân tích lỗi (8.2)</span>
+            <span>Phân tích lỗi</span>
           </button>
 
           <button
@@ -470,7 +469,7 @@ export default function ErrorLogPage() {
             }`}
           >
             <Zap className="w-4 h-4" />
-            <span>Luyện tập Drill (8.3)</span>
+            <span>Luyện tập Drill</span>
           </button>
         </div>
 
@@ -1792,7 +1791,6 @@ export default function ErrorLogPage() {
             <span>{toastMessage}</span>
           </div>
         )}
-      </main>
     </div>
   );
 }

@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import Link from "next/link";
 import { apiFetch } from "@/lib/api";
 import {
   Bell,
@@ -658,7 +659,7 @@ export default function NotificationsPage() {
           }`}
         >
           <Bell className="w-4 h-4" />
-          <span>Thông báo trong ứng dụng (12.3)</span>
+          <span>Thông báo trong ứng dụng</span>
           {notifications.filter((n) => !n.isRead).length > 0 && (
             <span className="px-2 py-0.5 text-xs font-semibold rounded-full bg-red-600/20 text-red-400 border border-red-500/30">
               {notifications.filter((n) => !n.isRead).length}
@@ -674,11 +675,19 @@ export default function NotificationsPage() {
           }`}
         >
           <Mail className="w-4 h-4" />
-          <span>Thông báo Email (12.2)</span>
+          <span>Thông báo Email</span>
           <span className="px-2 py-0.5 text-xs font-semibold rounded-full bg-zinc-800 text-zinc-300">
             9 loại
           </span>
         </button>
+
+        <Link
+          href="/dashboard/reminders"
+          className="px-5 py-3 text-sm font-medium border-b-2 border-transparent text-zinc-400 hover:text-zinc-200 flex items-center gap-2 transition-colors"
+        >
+          <Clock className="w-4 h-4" />
+          <span>Cài đặt giờ nhắc học</span>
+        </Link>
       </div>
 
       {/* TAB 1: IN-APP NOTIFICATIONS (12.3) */}

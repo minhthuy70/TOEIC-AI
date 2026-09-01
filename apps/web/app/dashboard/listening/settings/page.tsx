@@ -67,7 +67,7 @@ export default function ListeningSettingsPage() {
   };
 
   return (
-    <div className="max-w-2xl mx-auto py-10 px-4">
+    <div className="space-y-6 animate-fade-in w-full pb-12">
       <div className="flex items-center gap-4 mb-8">
         <Link href="/dashboard/listening" className="w-10 h-10 rounded-full bg-zinc-800 flex items-center justify-center text-zinc-400 hover:text-white hover:bg-zinc-700 transition">
           <ArrowLeft className="w-5 h-5" />

@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Link from "next/link";
 import {
   Shield,
   ShieldCheck,
@@ -25,6 +26,8 @@ import {
   AlertCircle,
   Eye,
   LogOut,
+  User,
+  Sliders,
 } from "lucide-react";
 import { apiFetch } from "@/lib/api";
 
@@ -230,7 +233,7 @@ export default function SecurityCenterPage() {
   };
 
   return (
-    <div className="space-y-6 max-w-6xl mx-auto pb-12">
+    <div className="space-y-6 animate-fade-in w-full pb-12">
       {/* Toast */}
       {toastMessage && (
         <div className="fixed top-5 right-5 z-50 animate-in fade-in slide-in-from-top-4 duration-300">
@@ -251,12 +254,37 @@ export default function SecurityCenterPage() {
         </div>
       )}
 
+      {/* Sub-tab Navigation */}
+      <div className="flex rounded-2xl border border-zinc-800/80 bg-[#121218] p-1 max-w-md">
+        <Link
+          href="/dashboard/profile"
+          className="flex-1 flex items-center justify-center gap-2 rounded-xl px-3 py-2 text-xs font-semibold text-zinc-400 hover:text-white transition"
+        >
+          <User className="w-3.5 h-3.5" />
+          <span>Hồ sơ</span>
+        </Link>
+        <Link
+          href="/dashboard/settings"
+          className="flex-1 flex items-center justify-center gap-2 rounded-xl px-3 py-2 text-xs font-semibold text-zinc-400 hover:text-white transition"
+        >
+          <Sliders className="w-3.5 h-3.5" />
+          <span>Cài đặt</span>
+        </Link>
+        <Link
+          href="/dashboard/security"
+          className="flex-1 flex items-center justify-center gap-2 rounded-xl px-3 py-2 text-xs font-semibold bg-red-600 text-white shadow-md transition"
+        >
+          <ShieldCheck className="w-3.5 h-3.5" />
+          <span>Bảo mật</span>
+        </Link>
+      </div>
+
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
           <h1 className="text-2xl font-bold text-white flex items-center gap-2">
             <ShieldCheck className="w-6 h-6 text-red-400" />
-            <span>Trung Tâm Bảo Mật & An Ninh Hệ Thống (Security 19.1)</span>
+            <span>Trung Tâm Bảo Mật & An Ninh Hệ Thống</span>
           </h1>
           <p className="text-sm text-zinc-400 mt-1">
             Xác thực 2 yếu tố (2FA), Quản lý phiên đăng nhập, Cảnh báo hoạt động đáng ngờ và 11 Lớp phòng thủ hệ thống.

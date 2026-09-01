@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import Link from "next/link";
 import { apiFetch } from "@/lib/api";
 import {
   Calendar,
@@ -21,6 +22,7 @@ import {
   Square,
   Bell,
   Sparkles,
+  Globe,
 } from "lucide-react";
 
 interface DailyTask {
@@ -309,6 +311,30 @@ export default function PlannerPage() {
 
   return (
     <div className="space-y-8 animate-in fade-in duration-300">
+      {/* Sub-tab Navigation */}
+      <div className="flex rounded-2xl border border-zinc-800/80 bg-[#121218] p-1 max-w-md">
+        <Link
+          href="/dashboard/schedule"
+          className="flex-1 flex items-center justify-center gap-2 rounded-xl px-3 py-2 text-xs font-semibold text-zinc-400 hover:text-white transition"
+        >
+          <Calendar className="w-3.5 h-3.5" />
+          <span>Lịch biểu tuần</span>
+        </Link>
+        <Link
+          href="/dashboard/planner"
+          className="flex-1 flex items-center justify-center gap-2 rounded-xl px-3 py-2 text-xs font-semibold bg-red-600 text-white shadow-md transition"
+        >
+          <ListTodo className="w-3.5 h-3.5" />
+          <span>Kế hoạch ngày</span>
+        </Link>
+        <Link
+          href="/dashboard/calendar"
+          className="flex-1 flex items-center justify-center gap-2 rounded-xl px-3 py-2 text-xs font-semibold text-zinc-400 hover:text-white transition"
+        >
+          <Globe className="w-3.5 h-3.5" />
+          <span>Đồng bộ Lịch</span>
+        </Link>
+      </div>
       {/* Top Header Selector */}
       <div className="flex justify-between items-center flex-wrap gap-4 border-b border-zinc-800/40 pb-5">
         <div>

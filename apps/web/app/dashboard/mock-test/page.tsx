@@ -391,8 +391,7 @@ export default function MockTestPage() {
   // ==========================================================
 
   return (
-    <div className="min-h-screen bg-[#09090b] text-white">
-      <main className="mx-auto max-w-6xl px-6 py-8">
+    <div className="space-y-6 animate-fade-in w-full pb-10">
         {/* ================================================== */}
         {/* HEADER */}
         {/* ================================================== */}
@@ -1813,7 +1812,6 @@ export default function MockTestPage() {
             <span>{toastMessage}</span>
           </div>
         )}
-      </main>
     </div>
   );
 }

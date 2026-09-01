@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import Link from "next/link";
 import { apiFetch } from "@/lib/api";
 import {
   Award,
@@ -207,6 +208,23 @@ export default function BadgesPage() {
 
   return (
     <div className="space-y-8 animate-in fade-in duration-300">
+      {/* Sub-tab Navigation */}
+      <div className="flex rounded-2xl border border-zinc-800/80 bg-[#121218] p-1 max-w-xs">
+        <Link
+          href="/dashboard/achievements"
+          className="flex-1 flex items-center justify-center gap-2 rounded-xl px-4 py-2 text-xs font-semibold text-zinc-400 hover:text-white transition"
+        >
+          <Trophy className="w-3.5 h-3.5" />
+          <span>Thành tích</span>
+        </Link>
+        <Link
+          href="/dashboard/badges"
+          className="flex-1 flex items-center justify-center gap-2 rounded-xl px-4 py-2 text-xs font-semibold bg-red-600 text-white shadow-md transition"
+        >
+          <Award className="w-3.5 h-3.5" />
+          <span>Huy hiệu</span>
+        </Link>
+      </div>
       {/* Stats Cards */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
         <div className="bg-[#0d0d14] border border-zinc-800/60 rounded-2xl p-6 flex items-center gap-4">

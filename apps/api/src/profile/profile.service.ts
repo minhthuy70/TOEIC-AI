@@ -222,6 +222,8 @@ export class ProfileService {
 
     currentScore: user.profile?.currentScore,
     targetScore: user.profile?.targetScore,
+    streak: user.profile?.streak ?? 0,
+    pointsBalance: user.profile?.pointsBalance ?? 0,
     examDate: user.profile?.examDate,
     dailyStudyTime: user.profile?.dailyStudyTime,
     studySchedule: user.profile?.studySchedule,
@@ -233,9 +235,9 @@ export class ProfileService {
     dailyVocabularyGoal: user.profile?.dailyVocabularyGoal,
 
     studyNotification: user.profile?.studyNotification,
-srsNotification: user.profile?.srsNotification,
-autoPronunciation: user.profile?.autoPronunciation,
-darkMode: user.profile?.darkMode,
+    srsNotification: user.profile?.srsNotification,
+    autoPronunciation: user.profile?.autoPronunciation,
+    darkMode: user.profile?.darkMode,
   };
 }
 async updateProfile(

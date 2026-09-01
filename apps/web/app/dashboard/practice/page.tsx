@@ -14,6 +14,10 @@ import {
   History as HistoryIcon,
   ArrowRight,
   Loader2,
+  ClipboardCheck,
+  Clock,
+  Sparkles,
+  Award,
 } from "lucide-react";
 
 import {
@@ -23,6 +27,7 @@ import {
 
 type PracticeTab =
   | "practice"
+  | "mocktest"
   | "history";
 
 type PartItem = {
@@ -178,8 +183,7 @@ export default function PracticePage() {
     );
 
   return (
-    <div className="min-h-screen bg-[#0a0a0c] text-white">
-      <main className="mx-auto max-w-7xl px-6 py-10">
+    <div className="space-y-6 animate-fade-in w-full pb-10">
         {/* TITLE */}
 
         <div className="mb-8">
@@ -216,6 +220,21 @@ export default function PracticePage() {
           >
             <Target className="w-4 h-4" />
             <span>Luyện theo Part</span>
+          </button>
+
+          <button
+            type="button"
+            onClick={() =>
+              setActiveTab("mocktest")
+            }
+            className={`flex-1 inline-flex items-center justify-center gap-2 rounded-xl px-5 py-3 text-sm font-medium transition ${
+              activeTab === "mocktest"
+                ? "bg-red-600 text-white"
+                : "text-zinc-400 hover:bg-white/5 hover:text-white"
+            }`}
+          >
+            <ClipboardCheck className="w-4 h-4" />
+            <span>Thi thử TOEIC</span>
           </button>
 
           <button
@@ -282,8 +301,102 @@ export default function PracticePage() {
         )}
 
         {/* ==================================================
-            HISTORY TAB
+            MOCK TEST TAB
         ================================================== */}
+
+        {activeTab === "mocktest" && (
+          <div className="space-y-6">
+            <div className="rounded-2xl bg-gradient-to-r from-red-600/15 via-zinc-900/60 to-zinc-900/40 border border-red-500/20 p-6">
+              <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
+                <div className="flex items-center gap-4">
+                  <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-red-600 to-red-500 flex items-center justify-center text-white shadow-lg shadow-red-600/25">
+                    <ClipboardCheck className="w-6 h-6" />
+                  </div>
+                  <div>
+                    <h3 className="text-xl font-bold text-white">Hệ Thống Thi Thử TOEIC Chuẩn ETS</h3>
+                    <p className="text-sm text-zinc-400 mt-0.5">
+                      Đo lường chính xác năng lực thực tế với bộ đề chuẩn format, đồng hồ đếm ngược và thang điểm quy đổi.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div className="grid md:grid-cols-2 gap-5">
+              {/* Full Test Card */}
+              <div className="bg-[#121218] border border-zinc-800/80 hover:border-zinc-700/80 rounded-2xl p-6 transition flex flex-col justify-between">
+                <div>
+                  <div className="flex items-center justify-between mb-4">
+                    <span className="px-3 py-1 rounded-full text-xs font-semibold bg-red-600/20 text-red-400 border border-red-600/30">
+                      Chuẩn ETS Toàn Diện
+                    </span>
+                    <span className="flex items-center gap-1 text-xs text-zinc-400">
+                      <Clock className="w-3.5 h-3.5" />
+                      120 Phút
+                    </span>
+                  </div>
+
+                  <h4 className="text-lg font-bold text-white">Full Test 200 Câu</h4>
+                  <p className="text-sm text-zinc-400 mt-2 leading-relaxed">
+                    Bài thi mô phỏng 100% kỳ thi thật tại IIG: 100 câu Listening (45 phút) và 100 câu Reading (75 phút). Trải nghiệm áp lực thời gian và nhận bảng điểm dự đoán TOEIC 10–990.
+                  </p>
+
+                  <div className="mt-4 grid grid-cols-2 gap-2 text-xs text-zinc-400 bg-zinc-900/60 p-3 rounded-xl border border-zinc-800/60">
+                    <div>🎧 Listening: Part 1–4 (100 câu)</div>
+                    <div>📖 Reading: Part 5–7 (100 câu)</div>
+                  </div>
+                </div>
+
+                <div className="mt-6 pt-4 border-t border-zinc-800/60 flex items-center justify-between">
+                  <span className="text-xs text-zinc-500">Mô phỏng IIG Vietnam</span>
+                  <Link
+                    href="/dashboard/mock-test"
+                    className="inline-flex items-center gap-1.5 px-5 py-2.5 rounded-xl bg-red-600 hover:bg-red-500 text-white text-xs font-semibold transition shadow-md shadow-red-600/20"
+                  >
+                    <span>Vào phòng thi</span>
+                    <ArrowRight className="w-3.5 h-3.5" />
+                  </Link>
+                </div>
+              </div>
+
+              {/* Mini Test Card */}
+              <div className="bg-[#121218] border border-zinc-800/80 hover:border-zinc-700/80 rounded-2xl p-6 transition flex flex-col justify-between">
+                <div>
+                  <div className="flex items-center justify-between mb-4">
+                    <span className="px-3 py-1 rounded-full text-xs font-semibold bg-blue-600/20 text-blue-400 border border-blue-600/30">
+                      Đánh Giá Nhanh
+                    </span>
+                    <span className="flex items-center gap-1 text-xs text-zinc-400">
+                      <Clock className="w-3.5 h-3.5" />
+                      45 Phút
+                    </span>
+                  </div>
+
+                  <h4 className="text-lg font-bold text-white">Mini Test 50 Câu</h4>
+                  <p className="text-sm text-zinc-400 mt-2 leading-relaxed">
+                    Dành cho những ngày bận rộn: 50 câu hỏi chọn lọc bao gồm cả 7 phần thi, giúp kiểm tra nhanh phong độ phản xạ và cập nhật lại trình độ mà không mất trọn 2 giờ.
+                  </p>
+
+                  <div className="mt-4 grid grid-cols-2 gap-2 text-xs text-zinc-400 bg-zinc-900/60 p-3 rounded-xl border border-zinc-800/60">
+                    <div>🎧 Listening: 25 câu tiêu biểu</div>
+                    <div>📖 Reading: 25 câu tiêu biểu</div>
+                  </div>
+                </div>
+
+                <div className="mt-6 pt-4 border-t border-zinc-800/60 flex items-center justify-between">
+                  <span className="text-xs text-zinc-500">Rút gọn 1/4 đề thi</span>
+                  <Link
+                    href="/dashboard/mock-test/mini-test"
+                    className="inline-flex items-center gap-1.5 px-5 py-2.5 rounded-xl bg-blue-600 hover:bg-blue-500 text-white text-xs font-semibold transition shadow-md shadow-blue-600/20"
+                  >
+                    <span>Làm bài Mini Test</span>
+                    <ArrowRight className="w-3.5 h-3.5" />
+                  </Link>
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
 
         {activeTab ===
           "history" && (
@@ -293,7 +406,6 @@ export default function PracticePage() {
             error={historyError}
           />
         )}
-      </main>
     </div>
   );
 }

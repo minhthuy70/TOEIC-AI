@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 import { apiFetch } from "@/lib/api";
 import {
   User,
@@ -35,6 +36,7 @@ import {
   Flame,
   Clock,
   Sparkles,
+  Sliders,
 } from "lucide-react";
 
 const API = process.env.NEXT_PUBLIC_API_URL || "http://localhost:3001";
@@ -507,11 +509,36 @@ export default function ProfilePage() {
         </div>
       )}
 
+      {/* Sub-tab Navigation */}
+      <div className="flex rounded-2xl border border-zinc-800/80 bg-[#121218] p-1 max-w-md">
+        <Link
+          href="/dashboard/profile"
+          className="flex-1 flex items-center justify-center gap-2 rounded-xl px-3 py-2 text-xs font-semibold bg-red-600 text-white shadow-md transition"
+        >
+          <User className="w-3.5 h-3.5" />
+          <span>Hồ sơ</span>
+        </Link>
+        <Link
+          href="/dashboard/settings"
+          className="flex-1 flex items-center justify-center gap-2 rounded-xl px-3 py-2 text-xs font-semibold text-zinc-400 hover:text-white transition"
+        >
+          <Sliders className="w-3.5 h-3.5" />
+          <span>Cài đặt</span>
+        </Link>
+        <Link
+          href="/dashboard/security"
+          className="flex-1 flex items-center justify-center gap-2 rounded-xl px-3 py-2 text-xs font-semibold text-zinc-400 hover:text-white transition"
+        >
+          <ShieldCheck className="w-3.5 h-3.5" />
+          <span>Bảo mật</span>
+        </Link>
+      </div>
+
       {/* Header */}
       <div>
         <h1 className="text-2xl font-bold text-white flex items-center gap-2">
           <User className="w-6 h-6 text-red-400" />
-          <span>Hồ Sơ & Cài Đặt Tài Khoản (13.1)</span>
+          <span>Hồ Sơ & Cài Đặt Tài Khoản</span>
         </h1>
         <p className="text-sm text-zinc-400 mt-1">
           Quản lý thông tin cá nhân, bảo mật, quyền riêng tư, xuất dữ liệu và tài khoản liên kết
@@ -1248,7 +1275,7 @@ export default function ProfilePage() {
               <div>
                 <h3 className="text-sm font-bold text-red-400 flex items-center gap-1.5">
                   <AlertTriangle className="w-4 h-4" />
-                  <span>Xóa tài khoản vĩnh viễn (13.1)</span>
+                  <span>Xóa tài khoản vĩnh viễn</span>
                 </h3>
                 <p className="text-xs text-zinc-400 mt-0.5 leading-relaxed">
                   Hành động này <span className="text-red-400 font-semibold">không thể hoàn tác</span>. Toàn bộ lịch sử làm bài thi, điểm số, từ vựng, chuỗi ngày và thành tích sẽ bị xóa vĩnh viễn.

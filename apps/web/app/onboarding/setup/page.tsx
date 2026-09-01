@@ -61,6 +61,7 @@ export default function SetupPage() {
     }
 
     const user = JSON.parse(localStorage.getItem("user") || "{}");
+    const token = localStorage.getItem("accessToken");
 
     const res = await fetch(
       "http://localhost:3001/profile/complete-first-login",
@@ -68,6 +69,7 @@ export default function SetupPage() {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
+          ...(token ? { Authorization: `Bearer ${token}` } : {}),
         },
         body: JSON.stringify({
           userId: user.id,
@@ -87,11 +89,12 @@ export default function SetupPage() {
       return;
     }
 
-    // Update localStorage with currentScore and targetScore
+    // Update localStorage with currentScore, targetScore, and firstLoginCompleted
     const updatedUser = {
       ...user,
       currentScore: cScore,
       targetScore: tScore,
+      firstLoginCompleted: true,
     };
     localStorage.setItem("user", JSON.stringify(updatedUser));
 
