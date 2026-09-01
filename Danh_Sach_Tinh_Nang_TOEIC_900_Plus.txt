@@ -1104,15 +1104,15 @@ Dựa trên lộ trình học TOEIC 900+ - Phiên bản nâng cấp
 ================================================================================
 
 16.1. Vocabulary Management (Admin) - Quản lý từ vựng (Quản trị viên)
-- Add new vocabulary - Thêm từ vựng mới
-- Edit vocabulary - Chỉnh sửa từ vựng
-- Delete vocabulary - Xóa từ vựng
-- Bulk import vocabulary - Nhập từ vựng hàng loạt
-- Bulk export vocabulary - Xuất từ vựng hàng loạt
-- Vocabulary approval queue - Hàng đợi phê duyệt từ vựng
-- Vocabulary categorization - Phân loại từ vựng
-- Vocabulary tagging - Gắn thẻ từ vựng
-- Vocabulary quality check - Kiểm tra chất lượng từ vựng
+[x] - Add new vocabulary - Thêm từ vựng mới
+[x] - Edit vocabulary - Chỉnh sửa từ vựng
+[x] - Delete vocabulary - Xóa từ vựng
+[x] - Bulk import vocabulary - Nhập từ vựng hàng loạt
+[x] - Bulk export vocabulary - Xuất từ vựng hàng loạt
+[x] - Vocabulary approval queue - Hàng đợi phê duyệt từ vựng
+[x] - Vocabulary categorization - Phân loại từ vựng
+[x] - Vocabulary tagging - Gắn thẻ từ vựng
+[x] - Vocabulary quality check - Kiểm tra chất lượng từ vựng
 
 16.2. Question Bank Management (Admin) - Quản lý ngân hàng câu hỏi (Quản trị viên)
 - Add new questions - Thêm câu hỏi mới
