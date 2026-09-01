@@ -20,6 +20,7 @@ import {
   Database,
   TrendingUp,
   Cpu,
+  BarChart2,
 } from "lucide-react";
 
 type UserRole =
@@ -229,6 +230,16 @@ export default function AdminSidebar({
               icon={<Cpu className="w-4 h-4 shrink-0" />}
             >
               Phân tích hệ thống
+            </AdminLink>
+
+            <AdminLink
+              href="/admin/analytics-integrations"
+              active={pathname.startsWith(
+                "/admin/analytics-integrations"
+              )}
+              icon={<BarChart2 className="w-4 h-4 shrink-0" />}
+            >
+              Tích hợp phân tích
             </AdminLink>
 
             <AdminLink

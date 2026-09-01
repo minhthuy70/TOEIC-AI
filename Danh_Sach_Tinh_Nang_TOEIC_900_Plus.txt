@@ -1198,10 +1198,10 @@ Dựa trên lộ trình học TOEIC 900+ - Phiên bản nâng cấp
 [x] - Microsoft Account - Tài khoản Microsoft
 
 18.3. Analytics Integration (Tích hợp phân tích)
-- Google Analytics - Google Analytics
-- Mixpanel - Mixpanel
-- Amplitude - Amplitude
-- Custom analytics - Phân tích tùy chỉnh
+[x] - Google Analytics - Google Analytics
+[x] - Mixpanel - Mixpanel
+[x] - Amplitude - Amplitude
+[x] - Custom analytics - Phân tích tùy chỉnh
 
 ================================================================================
 
