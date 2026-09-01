@@ -164,7 +164,6 @@ export default function ReadingSettingsPage() {
   function handleReset() {
     resetSettings();
     setSaved(false);
-    setTimeout(() => setSaved(true), 300);
   }
 
   function handleTTSPreview() {
@@ -183,27 +182,27 @@ export default function ReadingSettingsPage() {
   }
 
   return (
-    <div className="min-h-screen bg-zinc-950 text-white">
+    <div className="space-y-6 animate-fade-in w-full pb-12 text-white">
       {/* Header */}
       <div className="sticky top-0 z-30 bg-zinc-950/95 backdrop-blur border-b border-zinc-800">
-        <div className="max-w-4xl mx-auto px-4 py-4 flex items-center gap-4">
-          <Link
-            href="/dashboard/reading"
-            className="text-zinc-400 hover:text-white transition-colors p-2 rounded-lg hover:bg-zinc-800"
-            aria-label="Quay lại"
-          >
-            <ArrowLeft className="w-5 h-5" />
-          </Link>
-          <div>
-            <h1 className="text-lg font-bold text-white flex items-center gap-2">
-              <Settings className="w-5 h-5 text-indigo-400" />
-              <span>Cài đặt đọc</span>
-            </h1>
-            <p className="text-xs text-zinc-500">
-              Tùy chỉnh trải nghiệm đọc hiểu TOEIC
-            </p>
+        <div className="w-full py-4 flex items-center justify-between gap-4">
+          <div className="flex items-center gap-4">
+            <Link
+              href="/dashboard/reading"
+              className="text-zinc-400 hover:text-white transition-colors p-2 rounded-lg hover:bg-zinc-800"
+              aria-label="Quay lại"
+            >
+              <ArrowLeft className="w-5 h-5" />
+            </Link>
+            <div>
+              <h1 className="text-lg font-bold text-white flex items-center gap-2">
+                <Settings className="w-5 h-5 text-indigo-400" />
+                <span>Cài đặt đọc</span>
+              </h1>
+              <p className="text-xs text-zinc-400">Tùy chỉnh giao diện đọc và công cụ hỗ trợ</p>
+            </div>
           </div>
-          <div className="ml-auto flex items-center gap-3">
+          <div className="flex items-center gap-3">
             {saved && (
               <span className="text-xs text-emerald-400 flex items-center gap-1 animate-pulse font-medium">
                 <Check className="w-3.5 h-3.5" />
@@ -212,7 +211,7 @@ export default function ReadingSettingsPage() {
             )}
             <button
               onClick={handleReset}
-              className="flex items-center gap-1.5 px-3 py-1.5 text-xs rounded-lg border border-zinc-700 text-zinc-400 hover:text-white hover:border-zinc-500 transition"
+              className="flex items-center gap-1.5 px-3 py-2 text-xs rounded-xl border border-zinc-700 text-zinc-400 hover:text-white hover:border-zinc-500 transition"
             >
               <RotateCcw className="w-3.5 h-3.5" />
               <span>Khôi phục mặc định</span>
@@ -221,7 +220,7 @@ export default function ReadingSettingsPage() {
         </div>
       </div>
 
-      <div className="max-w-4xl mx-auto px-4 py-8 grid grid-cols-1 lg:grid-cols-3 gap-8">
+      <div className="w-full grid grid-cols-1 lg:grid-cols-3 gap-8">
         {/* ── Settings Panel ── */}
         <div className="lg:col-span-2 space-y-6">
 

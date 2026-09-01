@@ -59,30 +59,26 @@ export default function ErrorSettingsPage() {
   }
 
   return (
-    <div className="min-h-screen bg-[#09090b] text-white">
-      <main className="mx-auto max-w-4xl px-6 py-8 space-y-8 animate-fade-in">
-        {/* ================================================== */}
-        {/* HEADER */}
-        {/* ================================================== */}
-        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-          <div className="flex items-center gap-3.5">
-            <div className="w-12 h-12 rounded-2xl bg-red-600/15 border border-red-500/30 text-red-400 flex items-center justify-center shrink-0">
-              <Settings className="w-6 h-6" />
-            </div>
-            <div>
-              <div className="flex items-center gap-2">
-                <h1 className="text-2xl sm:text-3xl font-bold text-white">
-                  Cài Đặt Sổ Tay Lỗi (Error Settings)
-                </h1>
-                <span className="px-2.5 py-0.5 rounded-full text-[10px] font-extrabold bg-red-600/20 text-red-400 border border-red-500/30">
-                  Hệ thống 8.4
-                </span>
-              </div>
-              <p className="mt-1 text-xs sm:text-sm text-zinc-400">
-                Tùy chỉnh hành vi tự động ghi nhận, thông báo và ngưỡng giải quyết câu sai
-              </p>
-            </div>
+    <div className="space-y-6 animate-fade-in w-full pb-12 text-white">
+      {/* ================================================== */}
+      {/* HEADER */}
+      {/* ================================================== */}
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+        <div className="flex items-center gap-3.5">
+          <div className="w-12 h-12 rounded-2xl bg-red-600/15 border border-red-500/30 text-red-400 flex items-center justify-center shrink-0">
+            <Settings className="w-6 h-6" />
           </div>
+          <div>
+            <div className="flex items-center gap-2">
+              <h1 className="text-2xl sm:text-3xl font-bold text-white">
+                Cài Đặt Sổ Tay Lỗi
+              </h1>
+            </div>
+            <p className="mt-1 text-xs sm:text-sm text-zinc-400">
+              Tùy chỉnh hành vi tự động ghi nhận, thông báo và ngưỡng giải quyết câu sai
+            </p>
+          </div>
+        </div>
 
           <div className="flex items-center gap-3">
             <Link
@@ -272,7 +268,6 @@ export default function ErrorSettingsPage() {
             <span>{toastMessage}</span>
           </div>
         )}
-      </main>
-    </div>
-  );
+      </div>
+    );
 }
