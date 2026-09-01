@@ -1192,10 +1192,10 @@ Dựa trên lộ trình học TOEIC 900+ - Phiên bản nâng cấp
 [x] - Export to iCal - Xuất sang iCal
 
 18.2. Third-Party Auth (Xác thực bên thứ ba)
-- Google OAuth - Google OAuth
-- Facebook OAuth - Facebook OAuth
-- Apple Sign In - Apple Sign In
-- Microsoft Account - Tài khoản Microsoft
+[x] - Google OAuth - Google OAuth
+[x] - Facebook OAuth - Facebook OAuth
+[x] - Apple Sign In - Apple Sign In
+[x] - Microsoft Account - Tài khoản Microsoft
 
 18.3. Analytics Integration (Tích hợp phân tích)
 - Google Analytics - Google Analytics

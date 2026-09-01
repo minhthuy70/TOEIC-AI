@@ -27,6 +27,8 @@ export default function LoginPage() {
   const [isPermanentlyLocked, setIsPermanentlyLocked] = useState(false);
   const [googleLoading, setGoogleLoading] = useState(false);
   const [facebookLoading, setFacebookLoading] = useState(false);
+  const [appleLoading, setAppleLoading] = useState(false);
+  const [microsoftLoading, setMicrosoftLoading] = useState(false);
   const [facebookSdkReady, setFacebookSdkReady] = useState(false);
   
   // Ref to track Google GIS initialization status
@@ -278,6 +280,78 @@ export default function LoginPage() {
     }
   }
 
+  async function loginWithApple() {
+    setAppleLoading(true);
+    setError("");
+    try {
+      // Mock / Real Apple token flow
+      const mockApplePayload = {
+        idToken: "mock_apple_token." + Buffer.from(JSON.stringify({ sub: "apple_" + Date.now(), email: "apple_user@icloud.com" })).toString("base64") + ".sig",
+        user: { name: { firstName: "Apple", lastName: "Learner" } },
+        rememberMe,
+      };
+
+      const res = await fetch("http://localhost:3001/auth/apple", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(mockApplePayload),
+      });
+
+      const data = await res.json();
+      if (data.accessToken) {
+        localStorage.setItem("accessToken", data.accessToken);
+        localStorage.setItem("user", JSON.stringify(data.user));
+        if (data.user.role === "SUPER_ADMIN" || data.user.role === "CONTENT_ADMIN") {
+          router.push("/admin");
+        } else if (!data.user.firstLoginCompleted) {
+          router.push("/onboarding");
+        } else {
+          router.push("/dashboard");
+        }
+      } else {
+        setError(data.message || "Đăng nhập Apple thất bại");
+      }
+    } catch {
+      setError("Lỗi kết nối Apple Sign In. Vui lòng thử lại.");
+    } finally {
+      setAppleLoading(false);
+    }
+  }
+
+  async function loginWithMicrosoft() {
+    setMicrosoftLoading(true);
+    setError("");
+    try {
+      const res = await fetch("http://localhost:3001/auth/microsoft", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          accessToken: "mock_microsoft_token_" + Date.now(),
+          rememberMe,
+        }),
+      });
+
+      const data = await res.json();
+      if (data.accessToken) {
+        localStorage.setItem("accessToken", data.accessToken);
+        localStorage.setItem("user", JSON.stringify(data.user));
+        if (data.user.role === "SUPER_ADMIN" || data.user.role === "CONTENT_ADMIN") {
+          router.push("/admin");
+        } else if (!data.user.firstLoginCompleted) {
+          router.push("/onboarding");
+        } else {
+          router.push("/dashboard");
+        }
+      } else {
+        setError(data.message || "Đăng nhập Microsoft thất bại");
+      }
+    } catch {
+      setError("Lỗi kết nối Microsoft. Vui lòng thử lại.");
+    } finally {
+      setMicrosoftLoading(false);
+    }
+  }
+
   async function login() {
     setError("");
     setRemainingAttempts(null);
@@ -449,7 +523,7 @@ export default function LoginPage() {
         <button
           onClick={loginWithFacebook}
           disabled={facebookLoading || googleLoading || !facebookSdkReady}
-          className="w-full flex items-center justify-center gap-3 bg-[#1877F2] hover:bg-[#166FE5] disabled:bg-[#7baaf7] disabled:opacity-50 transition text-white font-semibold py-3.5 rounded-xl mb-4 shadow-sm"
+          className="w-full flex items-center justify-center gap-3 bg-[#1877F2] hover:bg-[#166FE5] disabled:bg-[#7baaf7] disabled:opacity-50 transition text-white font-semibold py-3.5 rounded-xl mb-3 shadow-sm"
         >
           {facebookLoading ? (
             <svg className="animate-spin h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
@@ -463,6 +537,36 @@ export default function LoginPage() {
           )}
           <span>{facebookLoading ? "Đang xử lý..." : !facebookSdkReady ? "Đang tải Facebook SDK..." : "Đăng nhập bằng Facebook"}</span>
         </button>
+
+        {/* Apple Sign In & Microsoft Account Grid */}
+        <div className="grid grid-cols-2 gap-3 mb-4">
+          {/* Apple Button */}
+          <button
+            type="button"
+            onClick={loginWithApple}
+            disabled={appleLoading}
+            className="flex items-center justify-center gap-2 bg-black border border-zinc-700 hover:bg-zinc-900 transition text-white font-semibold py-3 rounded-xl text-xs shadow-sm"
+          >
+            <span className="text-base font-bold"></span>
+            <span>{appleLoading ? "Đang xử lý..." : "Apple Sign In"}</span>
+          </button>
+
+          {/* Microsoft Button */}
+          <button
+            type="button"
+            onClick={loginWithMicrosoft}
+            disabled={microsoftLoading}
+            className="flex items-center justify-center gap-2 bg-zinc-800 border border-zinc-700 hover:bg-zinc-750 transition text-white font-semibold py-3 rounded-xl text-xs shadow-sm"
+          >
+            <svg className="h-4 w-4" viewBox="0 0 21 21">
+              <rect x="1" y="1" width="9" height="9" fill="#f25022" />
+              <rect x="11" y="1" width="9" height="9" fill="#7fba00" />
+              <rect x="1" y="11" width="9" height="9" fill="#00a4ef" />
+              <rect x="11" y="11" width="9" height="9" fill="#ffb900" />
+            </svg>
+            <span>{microsoftLoading ? "Đang xử lý..." : "Microsoft"}</span>
+          </button>
+        </div>
 
         {/* Divider */}
         <div className="flex items-center gap-3 mb-4">

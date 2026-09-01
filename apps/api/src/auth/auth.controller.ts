@@ -84,6 +84,51 @@ constructor(
     return this.authService.facebookLogin(body.accessToken, body.rememberMe || false, userAgent, acceptLanguage);
   }
 
+  @Post('apple')
+  appleLogin(
+    @Body()
+    body: {
+      idToken: string;
+      user?: any;
+      rememberMe?: boolean;
+    },
+    @Req() req: any,
+  ) {
+    const userAgent = req.headers['user-agent'] || 'unknown';
+    const acceptLanguage = req.headers['accept-language'] || 'unknown';
+
+    return this.authService.appleLogin(body.idToken, body.user, body.rememberMe || false, userAgent, acceptLanguage);
+  }
+
+  @Post('microsoft')
+  microsoftLogin(
+    @Body()
+    body: {
+      accessToken: string;
+      rememberMe?: boolean;
+    },
+    @Req() req: any,
+  ) {
+    const userAgent = req.headers['user-agent'] || 'unknown';
+    const acceptLanguage = req.headers['accept-language'] || 'unknown';
+
+    return this.authService.microsoftLogin(body.accessToken, body.rememberMe || false, userAgent, acceptLanguage);
+  }
+
+  @UseGuards(JwtAuthGuard)
+  @Get('linked-accounts')
+  getLinkedAccounts(@Req() req: any) {
+    const userId = req.user?.id || 1;
+    return this.authService.getLinkedAccounts(userId);
+  }
+
+  @UseGuards(JwtAuthGuard)
+  @Post('unlink/:provider')
+  unlinkAccount(@Req() req: any, @Body() body: any) {
+    const userId = req.user?.id || 1;
+    return this.authService.unlinkAccount(userId, body.provider);
+  }
+
   @Post('verify-email')
   verifyEmail(
     @Body()
