@@ -412,6 +412,33 @@ export default function DashboardPage() {
           <div className="grid lg:grid-cols-[1.4fr_1fr] gap-6">
             {/* Left Column: Quick Skill Launchers & Daily Action Checklist */}
             <div className="space-y-6">
+              {/* AI BELLA Recommendation Card */}
+              <div className="bg-gradient-to-r from-red-600/15 via-zinc-900/80 to-zinc-900/60 border border-red-500/25 rounded-3xl p-5 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                <div className="flex items-center gap-3.5">
+                  <div className="w-10 h-10 rounded-2xl bg-gradient-to-br from-red-600 to-red-500 flex items-center justify-center text-white shadow-md shadow-red-600/25 shrink-0">
+                    <Sparkles className="w-5 h-5" />
+                  </div>
+                  <div>
+                    <div className="flex items-center gap-2">
+                      <h4 className="text-sm font-bold text-white">Gợi Ý Thông Minh Từ AI BELLA</h4>
+                      <span className="px-2 py-0.5 rounded-full text-[10px] font-semibold bg-red-600/20 text-red-400 border border-red-600/30">
+                        Cá nhân hóa
+                      </span>
+                    </div>
+                    <p className="text-xs text-zinc-400 mt-0.5">
+                      Phân tích lịch sử làm bài & chẩn đoán điểm yếu. Đề xuất hoàn thành bài tập ngữ pháp & từ vựng hôm nay.
+                    </p>
+                  </div>
+                </div>
+                <Link
+                  href="/dashboard/recommendations"
+                  className="inline-flex items-center justify-center gap-1.5 px-4 py-2 rounded-xl bg-red-600 hover:bg-red-500 text-white text-xs font-semibold transition shrink-0 shadow-md shadow-red-600/20"
+                >
+                  <span>Xem chẩn đoán AI</span>
+                  <ArrowRight className="w-3.5 h-3.5" />
+                </Link>
+              </div>
+
               {/* Quick Skill Launchers */}
               <div className="bg-zinc-900/60 border border-zinc-800/80 rounded-3xl p-5 lg:p-6 space-y-4">
                 <h3 className="text-sm font-bold text-white flex items-center gap-2">

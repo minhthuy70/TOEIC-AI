@@ -50,51 +50,24 @@ import { apiFetch } from "../../lib/api";
 
 const NAV_GROUPS = [
   {
-    category: "Tổng quan",
+    category: "Menu Chính",
     items: [
-      { label: "Trang chủ", icon: LayoutDashboard, href: "/dashboard" },
-      { label: "Gợi ý thông minh", icon: Sparkles, href: "/dashboard/recommendations" },
+      { label: "Bảng điều khiển", icon: LayoutDashboard, href: "/dashboard" },
+      { label: "Trung tâm học tập", icon: BookOpen, href: "/dashboard/learning" },
+      { label: "Luyện tập & Thi thử", icon: Target, href: "/dashboard/practice" },
+      { label: "Sổ tay câu sai AI", icon: AlertCircle, href: "/dashboard/error-log" },
+      { label: "Tiến độ & Thành tích", icon: TrendingUp, href: "/dashboard/progress" },
+      { label: "Tài khoản & Cài đặt", icon: UserIcon, href: "/dashboard/account" },
     ],
   },
   {
-    category: "Góc Học Tập & Luyện Thi",
+    category: "Mở rộng & Tiện ích",
     items: [
-      { label: "Lịch học & Kế hoạch", icon: Calendar, href: "/dashboard/schedule" },
-      { label: "Kế hoạch ngày", icon: ListTodo, href: "/dashboard/planner" },
-      { label: "Đồng bộ lịch", icon: Calendar, href: "/dashboard/calendar" },
-      { label: "Khóa học", icon: GraduationCap, href: "/dashboard/courses" },
-      { label: "Từ vựng", icon: BookA, href: "/dashboard/vocabulary" },
-      { label: "Ngữ pháp", icon: BookOpen, href: "/dashboard/grammar" },
-      { label: "Luyện nghe", icon: Headphones, href: "/dashboard/listening" },
-      { label: "Luyện đọc", icon: FileText, href: "/dashboard/reading" },
-      { label: "Luyện tập tổng hợp", icon: Flame, href: "/dashboard/practice" },
-      { label: "Thi thử TOEIC", icon: ClipboardCheck, href: "/dashboard/mock-test" },
-      { label: "Sổ tay lỗi sai", icon: AlertCircle, href: "/dashboard/error-log" },
-    ],
-  },
-  {
-    category: "Động Lực & Đấu Trường",
-    items: [
-      { label: "Thành tích", icon: Trophy, href: "/dashboard/achievements" },
-      { label: "Bảng xếp hạng", icon: TrendingUp, href: "/dashboard/leaderboard" },
-      { label: "Thử thách hàng ngày", icon: Target, href: "/dashboard/challenges" },
-      { label: "Phần thưởng", icon: Gift, href: "/dashboard/rewards" },
-    ],
-  },
-  {
-    category: "Cộng Đồng & Tương Tác",
-    items: [
-      { label: "Bạn bè", icon: Users, href: "/dashboard/friends" },
+      { label: "Gợi ý thông minh AI", icon: Sparkles, href: "/dashboard/recommendations" },
+      { label: "Khóa học tổng hợp", icon: GraduationCap, href: "/dashboard/courses" },
+      { label: "Cộng đồng & Bạn bè", icon: Users, href: "/dashboard/friends" },
       { label: "Nhóm học tập", icon: UsersRound, href: "/dashboard/study-groups" },
-      { label: "Chia sẻ thành tích", icon: Share2, href: "/dashboard/social-share" },
-    ],
-  },
-  {
-    category: "Cá Nhân & Tiện Ích",
-    items: [
-      { label: "Hồ sơ cá nhân", icon: UserIcon, href: "/dashboard/profile" },
-      { label: "Cài đặt học tập", icon: Settings, href: "/dashboard/settings" },
-      { label: "Bảo mật & 2FA", icon: ShieldCheck, href: "/dashboard/security" },
+      { label: "Chia sẻ mạng xã hội", icon: Share2, href: "/dashboard/social-share" },
       { label: "Học ngoại tuyến", icon: DownloadCloud, href: "/dashboard/offline" },
       { label: "Âm thanh nền", icon: Radio, href: "/dashboard/audio-player" },
       { label: "Tiện ích Widgets", icon: LayoutGrid, href: "/dashboard/widgets" },
@@ -115,7 +88,9 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
   const pathname = usePathname();
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
-  const [collapsedGroups, setCollapsedGroups] = useState<Record<string, boolean>>({});
+  const [collapsedGroups, setCollapsedGroups] = useState<Record<string, boolean>>({
+    "Mở rộng & Tiện ích": true,
+  });
   const [unreadCount, setUnreadCount] = useState<number>(0);
   const [user, setUser] = useState<{
     fullName?: string;
@@ -186,8 +161,51 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
     router.push("/login");
   };
 
-  const isActive = (href: string) =>
-    href === "/dashboard" ? pathname === "/dashboard" : pathname.startsWith(href);
+  const isActive = (href: string) => {
+    if (href === "/dashboard") return pathname === "/dashboard";
+    if (href === "/dashboard/learning") {
+      return (
+        pathname.startsWith("/dashboard/learning") ||
+        pathname.startsWith("/dashboard/vocabulary") ||
+        pathname.startsWith("/dashboard/grammar") ||
+        pathname.startsWith("/dashboard/review")
+      );
+    }
+    if (href === "/dashboard/practice") {
+      return (
+        pathname.startsWith("/dashboard/practice") ||
+        pathname.startsWith("/dashboard/listening") ||
+        pathname.startsWith("/dashboard/reading") ||
+        pathname.startsWith("/dashboard/mock-test")
+      );
+    }
+    if (href === "/dashboard/progress") {
+      return (
+        pathname.startsWith("/dashboard/progress") ||
+        pathname.startsWith("/dashboard/streak") ||
+        pathname.startsWith("/dashboard/points") ||
+        pathname.startsWith("/dashboard/badges") ||
+        pathname.startsWith("/dashboard/achievements") ||
+        pathname.startsWith("/dashboard/leaderboard") ||
+        pathname.startsWith("/dashboard/challenges") ||
+        pathname.startsWith("/dashboard/rewards")
+      );
+    }
+    if (href === "/dashboard/account") {
+      return (
+        pathname.startsWith("/dashboard/account") ||
+        pathname.startsWith("/dashboard/profile") ||
+        pathname.startsWith("/dashboard/settings") ||
+        pathname.startsWith("/dashboard/security") ||
+        pathname.startsWith("/dashboard/notifications") ||
+        pathname.startsWith("/dashboard/reminders") ||
+        pathname.startsWith("/dashboard/schedule") ||
+        pathname.startsWith("/dashboard/planner") ||
+        pathname.startsWith("/dashboard/calendar")
+      );
+    }
+    return pathname.startsWith(href);
+  };
 
   // Flatten items for current page label lookup
   const allNavItems = NAV_GROUPS.flatMap((g) => g.items);
