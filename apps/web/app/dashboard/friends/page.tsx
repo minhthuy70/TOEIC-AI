@@ -350,7 +350,7 @@ export default function FriendsHubPage() {
         <div>
           <h1 className="text-2xl font-bold text-white flex items-center gap-2">
             <Users className="w-6 h-6 text-red-400" />
-            <span>Hệ Thống Bạn Bè & Cộng Đồng Học Tập (15.1)</span>
+            <span>Hệ Thống Bạn Bè & Cộng Đồng Học Tập</span>
           </h1>
           <p className="text-sm text-zinc-400 mt-1">
             Kết nối bạn bè, theo dõi tiến độ học tập, so tài điểm số TOEIC và cùng nhau chinh phục mục tiêu 900+.

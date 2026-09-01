@@ -262,7 +262,7 @@ export default function StudyGroupsPage() {
   };
 
   return (
-    <div className="space-y-6 max-w-5xl mx-auto pb-12">
+    <div className="space-y-6 animate-fade-in w-full pb-12">
       {/* Toast */}
       {toastMessage && (
         <div className="fixed top-5 right-5 z-50 animate-in fade-in slide-in-from-top-4 duration-300">
@@ -288,7 +288,7 @@ export default function StudyGroupsPage() {
         <div>
           <h1 className="text-2xl font-bold text-white flex items-center gap-2">
             <UsersRound className="w-6 h-6 text-red-400" />
-            <span>Nhóm Học Tập & Thi Đua Đồng Đội (15.3)</span>
+            <span>Nhóm Học Tập & Thi Đua Đồng Đội</span>
           </h1>
           <p className="text-sm text-zinc-400 mt-1">
             Tham gia nhóm học theo mục tiêu điểm số, thảo luận bài tập theo thời gian thực và cùng hoàn thành thử thách tuần.

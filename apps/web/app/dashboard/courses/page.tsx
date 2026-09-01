@@ -290,7 +290,7 @@ export default function CoursesPage() {
   }, [activeTab]);
 
   return (
-    <div className="space-y-6 max-w-5xl mx-auto">
+    <div className="space-y-6 animate-fade-in w-full">
       {/* Header */}
       <div>
         <h1 className="text-2xl font-bold text-white flex items-center gap-2.5">

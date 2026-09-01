@@ -108,7 +108,7 @@ export default function ReadingDashboardPage() {
   radarData.sort((a, b) => a.subject.localeCompare(b.subject));
 
   return (
-    <div className="max-w-5xl mx-auto space-y-8 pb-10">
+    <div className="space-y-6 animate-fade-in w-full pb-10">
       {/* Header */}
       <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
         <div>

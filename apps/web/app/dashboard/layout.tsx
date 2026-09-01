@@ -22,13 +22,13 @@ import {
   Trophy,
   Calendar,
   ListTodo,
-  Bell,
   Sparkles,
   Star,
   TrendingUp,
   Award,
   Target,
   Gift,
+  Bell,
   BellRing,
   Settings,
   DownloadCloud,
@@ -38,47 +38,68 @@ import {
   Share2,
   UsersRound,
   ShieldCheck,
+  ChevronDown,
+  ChevronRight,
+  Search,
 } from "lucide-react";
 import { useAutoLogout } from "../../hooks/useAutoLogout";
 import { useSessionWarning } from "../../hooks/useSessionWarning";
 import { apiFetch } from "../../lib/api";
 
-/* ───────── Navigation Items ───────── */
+/* ───────── Categorized Navigation Items ───────── */
 
-const NAV_MAIN = [
-  { label: "Tổng quan", icon: LayoutDashboard, href: "/dashboard" },
-  { label: "Lịch học", icon: Calendar, href: "/dashboard/schedule" },
-  { label: "Kế hoạch ngày", icon: ListTodo, href: "/dashboard/planner" },
-  { label: "Gợi ý thông minh", icon: Sparkles, href: "/dashboard/recommendations" },
-  { label: "Học tập", icon: GraduationCap, href: "/dashboard/courses" },
-  { label: "Từ vựng", icon: BookA, href: "/dashboard/vocabulary" },
-  { label: "Ngữ pháp", icon: BookOpen, href: "/dashboard/grammar" },
-  { label: "Luyện nghe", icon: Headphones, href: "/dashboard/listening" },
-  { label: "Luyện đọc", icon: FileText, href: "/dashboard/reading" },
-  { label: "Luyện tập", icon: Flame, href: "/dashboard/practice" },
-  { label: "Thi thử", icon: ClipboardCheck, href: "/dashboard/mock-test" },
-  { label: "Sổ tay lỗi", icon: AlertCircle, href: "/dashboard/error-log" },
-];
-
-const NAV_BOTTOM = [
-  { label: "Chuỗi ngày", icon: Flame, href: "/dashboard/streak" },
-  { label: "Thành tích", icon: Trophy, href: "/dashboard/achievements" },
-  { label: "Hệ thống điểm", icon: Star, href: "/dashboard/points" },
-  { label: "Cấp độ & Huy hiệu", icon: Award, href: "/dashboard/badges" },
-  { label: "Bảng xếp hạng", icon: TrendingUp, href: "/dashboard/leaderboard" },
-  { label: "Thử thách", icon: Target, href: "/dashboard/challenges" },
-  { label: "Phần thưởng", icon: Gift, href: "/dashboard/rewards" },
-  { label: "Thông báo", icon: BellRing, href: "/dashboard/notifications" },
-  { label: "Bạn Bè", icon: Users, href: "/dashboard/friends" },
-  { label: "Nhóm Học Tập", icon: UsersRound, href: "/dashboard/study-groups" },
-  { label: "Chia Sẻ Thành Tích", icon: Share2, href: "/dashboard/social-share" },
-  { label: "Học Ngoại Tuyến", icon: DownloadCloud, href: "/dashboard/offline" },
-  { label: "Âm Thanh Nền", icon: Radio, href: "/dashboard/audio-player" },
-  { label: "Tiện Ích Widgets", icon: LayoutGrid, href: "/dashboard/widgets" },
-  { label: "Đồng Bộ Lịch", icon: Calendar, href: "/dashboard/calendar" },
-  { label: "Bảo Mật & 2FA", icon: ShieldCheck, href: "/dashboard/security" },
-  { label: "Cài đặt học tập", icon: Settings, href: "/dashboard/settings" },
-  { label: "Hồ sơ cá nhân", icon: UserIcon, href: "/dashboard/profile" },
+const NAV_GROUPS = [
+  {
+    category: "Tổng quan",
+    items: [
+      { label: "Trang chủ", icon: LayoutDashboard, href: "/dashboard" },
+      { label: "Gợi ý thông minh", icon: Sparkles, href: "/dashboard/recommendations" },
+    ],
+  },
+  {
+    category: "Góc Học Tập & Luyện Thi",
+    items: [
+      { label: "Lịch học & Kế hoạch", icon: Calendar, href: "/dashboard/schedule" },
+      { label: "Kế hoạch ngày", icon: ListTodo, href: "/dashboard/planner" },
+      { label: "Đồng bộ lịch", icon: Calendar, href: "/dashboard/calendar" },
+      { label: "Khóa học", icon: GraduationCap, href: "/dashboard/courses" },
+      { label: "Từ vựng", icon: BookA, href: "/dashboard/vocabulary" },
+      { label: "Ngữ pháp", icon: BookOpen, href: "/dashboard/grammar" },
+      { label: "Luyện nghe", icon: Headphones, href: "/dashboard/listening" },
+      { label: "Luyện đọc", icon: FileText, href: "/dashboard/reading" },
+      { label: "Luyện tập tổng hợp", icon: Flame, href: "/dashboard/practice" },
+      { label: "Thi thử TOEIC", icon: ClipboardCheck, href: "/dashboard/mock-test" },
+      { label: "Sổ tay lỗi sai", icon: AlertCircle, href: "/dashboard/error-log" },
+    ],
+  },
+  {
+    category: "Động Lực & Đấu Trường",
+    items: [
+      { label: "Thành tích", icon: Trophy, href: "/dashboard/achievements" },
+      { label: "Bảng xếp hạng", icon: TrendingUp, href: "/dashboard/leaderboard" },
+      { label: "Thử thách hàng ngày", icon: Target, href: "/dashboard/challenges" },
+      { label: "Phần thưởng", icon: Gift, href: "/dashboard/rewards" },
+    ],
+  },
+  {
+    category: "Cộng Đồng & Tương Tác",
+    items: [
+      { label: "Bạn bè", icon: Users, href: "/dashboard/friends" },
+      { label: "Nhóm học tập", icon: UsersRound, href: "/dashboard/study-groups" },
+      { label: "Chia sẻ thành tích", icon: Share2, href: "/dashboard/social-share" },
+    ],
+  },
+  {
+    category: "Cá Nhân & Tiện Ích",
+    items: [
+      { label: "Hồ sơ cá nhân", icon: UserIcon, href: "/dashboard/profile" },
+      { label: "Cài đặt học tập", icon: Settings, href: "/dashboard/settings" },
+      { label: "Bảo mật & 2FA", icon: ShieldCheck, href: "/dashboard/security" },
+      { label: "Học ngoại tuyến", icon: DownloadCloud, href: "/dashboard/offline" },
+      { label: "Âm thanh nền", icon: Radio, href: "/dashboard/audio-player" },
+      { label: "Tiện ích Widgets", icon: LayoutGrid, href: "/dashboard/widgets" },
+    ],
+  },
 ];
 
 const STAGES = [
@@ -93,11 +114,17 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
   const router = useRouter();
   const pathname = usePathname();
   const [sidebarOpen, setSidebarOpen] = useState(false);
+  const [searchQuery, setSearchQuery] = useState("");
+  const [collapsedGroups, setCollapsedGroups] = useState<Record<string, boolean>>({});
+  const [unreadCount, setUnreadCount] = useState<number>(0);
   const [user, setUser] = useState<{
     fullName?: string;
     email?: string;
     currentScore?: number;
     targetScore?: number;
+    streak?: number;
+    pointsBalance?: number;
+    currentLevel?: number;
   } | null>(null);
 
   // Auto logout after inactivity
@@ -114,20 +141,35 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
       const parsedUser = JSON.parse(stored);
       setUser(parsedUser);
 
-      apiFetch("/profile/me")
-        .then((profileData: any) => {
-          setUser((prev) => ({
-            ...prev,
-            ...profileData,
-            currentScore: profileData.currentScore ?? 0,
-            targetScore: profileData.targetScore ?? 600,
-          }));
-        })
-        .catch(console.error);
+      Promise.all([
+        apiFetch<any>("/profile/me").catch(() => null),
+        apiFetch<any>("/levels/info").catch(() => null),
+        apiFetch<any>("/notifications?unreadOnly=true").catch(() => null),
+      ]).then(([profileData, levelData, notifData]: [any, any, any]) => {
+        setUser((prev) => ({
+          ...prev,
+          ...(profileData || {}),
+          currentScore: profileData?.currentScore ?? 0,
+          targetScore: profileData?.targetScore ?? 600,
+          currentLevel: levelData?.data?.currentLevel || levelData?.data?.currentLevelInfo?.levelNumber || 1,
+        }));
+        if (notifData && Array.isArray(notifData.notifications)) {
+          setUnreadCount(notifData.notifications.length);
+        } else if (notifData && typeof notifData.unreadCount === "number") {
+          setUnreadCount(notifData.unreadCount);
+        }
+      }).catch(console.error);
     } catch { 
       router.push("/login"); 
     }
   }, [router]);
+
+  const toggleGroup = (category: string) => {
+    setCollapsedGroups((prev) => ({
+      ...prev,
+      [category]: !prev[category],
+    }));
+  };
 
   const currentStage = (() => {
     const score = user?.currentScore ?? 0;
@@ -147,8 +189,10 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
   const isActive = (href: string) =>
     href === "/dashboard" ? pathname === "/dashboard" : pathname.startsWith(href);
 
+  // Flatten items for current page label lookup
+  const allNavItems = NAV_GROUPS.flatMap((g) => g.items);
   const currentPageLabel =
-    [...NAV_MAIN, ...NAV_BOTTOM].find((item) => isActive(item.href))?.label || "Dashboard";
+    allNavItems.find((item) => isActive(item.href))?.label || "Dashboard";
 
   return (
     <div className="min-h-screen bg-[#0a0a0f] flex">
@@ -166,8 +210,8 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
           ${sidebarOpen ? "translate-x-0" : "-translate-x-full"}
         `}
       >
-        {/* Logo */}
-        <div className="px-6 py-5 border-b border-zinc-800/40">
+        {/* Logo Header */}
+        <div className="px-5 py-4 border-b border-zinc-800/40 flex items-center justify-between">
           <div className="flex items-center gap-3">
             <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-red-600 to-red-500 flex items-center justify-center text-lg font-bold text-white shadow-lg shadow-red-600/20">
               B
@@ -177,51 +221,111 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
               <p className="text-[10px] text-zinc-500 uppercase tracking-[0.2em]">TOEIC Platform</p>
             </div>
           </div>
+          <button
+            onClick={() => setSidebarOpen(false)}
+            className="lg:hidden text-zinc-400 hover:text-white p-1 rounded-lg"
+          >
+            <X className="w-5 h-5" />
+          </button>
         </div>
 
-        {/* Main Nav */}
-        <nav className="flex-1 overflow-y-auto px-4 pt-5 pb-2">
-          <p className="text-[10px] text-zinc-600 uppercase tracking-[0.15em] font-semibold mb-3 px-3">
-            Menu chính
-          </p>
-          <div className="space-y-0.5">
-            {NAV_MAIN.map((item) => {
-              const active = isActive(item.href);
-              const Icon = item.icon;
-              return (
-                <Link
-                  key={item.href}
-                  href={item.href}
-                  onClick={() => setSidebarOpen(false)}
-                  className={`
-                    flex items-center gap-3 px-3 py-2.5 rounded-xl text-[13px] font-medium transition-all duration-200
-                    ${active
-                      ? "bg-red-600/12 text-red-400 border border-red-600/15"
-                      : "text-zinc-400 hover:bg-zinc-800/50 hover:text-zinc-200"
-                    }
-                  `}
-                >
-                  <Icon className="w-4 h-4 shrink-0" />
-                  <span>{item.label}</span>
-                  {active && <span className="ml-auto w-1.5 h-1.5 rounded-full bg-red-500" />}
-                </Link>
-              );
-            })}
+        {/* Quick Search */}
+        <div className="px-4 pt-3 pb-1">
+          <div className="relative">
+            <Search className="w-3.5 h-3.5 absolute left-3 top-1/2 -translate-y-1/2 text-zinc-500" />
+            <input
+              type="text"
+              placeholder="Tìm nhanh tính năng..."
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              className="w-full bg-zinc-900/80 border border-zinc-800/80 rounded-xl pl-8 pr-3 py-1.5 text-xs text-zinc-200 placeholder-zinc-500 focus:outline-none focus:border-red-500/50 transition-colors"
+            />
+            {searchQuery && (
+              <button
+                onClick={() => setSearchQuery("")}
+                className="absolute right-2.5 top-1/2 -translate-y-1/2 text-zinc-500 hover:text-zinc-300 text-xs"
+              >
+                ×
+              </button>
+            )}
           </div>
+        </div>
 
-          {/* Stage Progress */}
-          <div className="mt-6 pt-4 border-t border-zinc-800/40">
-            <p className="text-[10px] text-zinc-600 uppercase tracking-[0.15em] font-semibold mb-3 px-3">
-              Lộ trình – Chặng hiện tại
+        {/* Categorized Nav Groups */}
+        <nav className="flex-1 overflow-y-auto px-3 py-2 space-y-4 admin-sidebar-scroll">
+          {NAV_GROUPS.map((group) => {
+            const filteredItems = group.items.filter((item) =>
+              item.label.toLowerCase().includes(searchQuery.toLowerCase())
+            );
+
+            if (searchQuery && filteredItems.length === 0) return null;
+
+            const isCollapsed = collapsedGroups[group.category] && !searchQuery;
+
+            return (
+              <div key={group.category} className="space-y-1">
+                {/* Category Header */}
+                <button
+                  type="button"
+                  onClick={() => toggleGroup(group.category)}
+                  className="w-full flex items-center justify-between px-2.5 py-1 text-[11px] font-semibold text-zinc-500 uppercase tracking-wider hover:text-zinc-300 transition-colors group/hdr"
+                >
+                  <span>{group.category}</span>
+                  {!searchQuery && (
+                    <span className="text-zinc-600 group-hover/hdr:text-zinc-400 transition-colors">
+                      {isCollapsed ? (
+                        <ChevronRight className="w-3.5 h-3.5" />
+                      ) : (
+                        <ChevronDown className="w-3.5 h-3.5" />
+                      )}
+                    </span>
+                  )}
+                </button>
+
+                {/* Category Items */}
+                {!isCollapsed && (
+                  <div className="space-y-0.5 pl-1">
+                    {filteredItems.map((item) => {
+                      const active = isActive(item.href);
+                      const Icon = item.icon;
+                      return (
+                        <Link
+                          key={item.href}
+                          href={item.href}
+                          onClick={() => setSidebarOpen(false)}
+                          className={`
+                            flex items-center gap-3 px-3 py-2 rounded-xl text-[13px] font-medium transition-all duration-200
+                            ${active
+                              ? "bg-red-600/15 text-red-400 border border-red-600/20 font-semibold"
+                              : "text-zinc-400 hover:bg-zinc-800/40 hover:text-zinc-200"
+                            }
+                          `}
+                        >
+                          <Icon className={`w-4 h-4 shrink-0 ${active ? "text-red-400" : "text-zinc-400"}`} />
+                          <span className="truncate">{item.label}</span>
+                          {active && <span className="ml-auto w-1.5 h-1.5 rounded-full bg-red-500 shrink-0" />}
+                        </Link>
+                      );
+                    })}
+                  </div>
+                )}
+              </div>
+            );
+          })}
+
+          {/* Stage Progress Summary Accordion */}
+          <div className="pt-2 border-t border-zinc-800/40">
+            <p className="text-[11px] text-zinc-500 uppercase tracking-wider font-semibold mb-2 px-2.5">
+              Lộ trình hiện tại
             </p>
-            <div className="space-y-0.5">
+            <div className="space-y-0.5 pl-1">
               {STAGES.map((stage) => (
                 <div
                   key={stage.id}
                   className={`
-                    flex items-center gap-2.5 px-3 py-2 rounded-xl text-[13px] transition-all
+                    flex items-center gap-2.5 px-3 py-1.5 rounded-xl text-[12px] transition-all
                     ${stage.id === currentStage
-                      ? "bg-zinc-800/60 text-white"
+                      ? "bg-zinc-800/80 text-white border border-zinc-700/50"
                       : stage.id < currentStage
                       ? "text-zinc-500"
                       : "text-zinc-700"
@@ -230,7 +334,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
                 >
                   <span
                     className={`
-                      w-6 h-6 rounded-lg flex items-center justify-center text-[10px] font-bold shrink-0
+                      w-5 h-5 rounded-md flex items-center justify-center text-[10px] font-bold shrink-0
                       ${stage.id < currentStage
                         ? "bg-green-600/15 text-green-400"
                         : stage.id === currentStage
@@ -242,12 +346,11 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
                     {stage.id < currentStage ? <Check className="w-3 h-3" /> : stage.id}
                   </span>
                   <div className="flex-1 min-w-0">
-                    <p className="text-xs font-medium leading-tight">{stage.label}</p>
-                    <p className="text-[10px] text-zinc-600 leading-tight">{stage.range}</p>
+                    <p className="text-xs font-medium leading-tight truncate">{stage.label}</p>
                   </div>
                   {stage.id === currentStage && (
-                    <span className="text-[9px] bg-red-600/15 text-red-400 px-1.5 py-0.5 rounded-full font-semibold shrink-0">
-                      NOW
+                    <span className="text-[9px] bg-red-600/20 text-red-400 px-1.5 py-0.5 rounded-md font-semibold shrink-0">
+                      Đang học
                     </span>
                   )}
                 </div>
@@ -256,39 +359,14 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
           </div>
         </nav>
 
-        {/* Bottom Nav */}
-        <div className="px-4 py-2 border-t border-zinc-800/40">
-          {NAV_BOTTOM.map((item) => {
-            const active = isActive(item.href);
-            const Icon = item.icon;
-            return (
-              <Link
-                key={item.href}
-                href={item.href}
-                onClick={() => setSidebarOpen(false)}
-                className={`
-                  flex items-center gap-3 px-3 py-2.5 rounded-xl text-[13px] font-medium transition-all duration-200
-                  ${active
-                    ? "bg-red-600/12 text-red-400 border border-red-600/15"
-                    : "text-zinc-400 hover:bg-zinc-800/50 hover:text-zinc-200"
-                  }
-                `}
-              >
-                <Icon className="w-4 h-4 shrink-0" />
-                <span>{item.label}</span>
-              </Link>
-            );
-          })}
-        </div>
-
-        {/* User Info */}
-        <div className="px-4 pb-4 pt-2">
-          <div className="flex items-center gap-3 p-3 rounded-xl bg-zinc-900/60 border border-zinc-800/40">
-            <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-red-600/80 to-red-500/80 flex items-center justify-center text-sm font-bold text-white shrink-0">
+        {/* Footer User Info */}
+        <div className="p-3 border-t border-zinc-800/40">
+          <div className="flex items-center gap-2.5 p-2.5 rounded-xl bg-zinc-900/60 border border-zinc-800/40">
+            <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-red-600/80 to-red-500/80 flex items-center justify-center text-xs font-bold text-white shrink-0">
               {user?.fullName?.charAt(0)?.toUpperCase() || "U"}
             </div>
             <div className="flex-1 min-w-0">
-              <p className="text-[13px] text-white font-medium truncate">{user?.fullName || "User"}</p>
+              <p className="text-xs text-white font-medium truncate">{user?.fullName || "Học viên"}</p>
               <p className="text-[10px] text-zinc-500 truncate">{user?.email || ""}</p>
             </div>
             <button
@@ -314,17 +392,56 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
               >
                 <Menu className="w-5 h-5" />
               </button>
-              <h2 className="text-white font-semibold text-sm lg:text-base">{currentPageLabel}</h2>
             </div>
 
-            <div className="flex items-center gap-2.5">
-              <div className="hidden sm:flex items-center gap-2 bg-zinc-900/60 border border-zinc-800/50 rounded-xl px-3 py-1.5">
-                <span className="text-[10px] text-zinc-500 uppercase tracking-wider">Điểm</span>
-                <span className="text-sm font-bold text-red-400">{user?.currentScore ?? "—"}</span>
-              </div>
-              <div className="hidden sm:flex items-center gap-2 bg-zinc-900/60 border border-zinc-800/50 rounded-xl px-3 py-1.5">
-                <span className="text-[10px] text-zinc-500 uppercase tracking-wider">Mục tiêu</span>
-                <span className="text-sm font-bold text-green-400">{user?.targetScore ?? "—"}</span>
+            <div className="flex items-center gap-2 lg:gap-3">
+              {/* Level Badge (Cấp độ) */}
+              <Link
+                href="/dashboard/levels"
+                className="flex items-center gap-1.5 bg-gradient-to-r from-blue-950/70 to-indigo-950/70 border border-blue-500/35 hover:border-blue-500/70 rounded-xl px-3 py-1.5 transition-all hover:scale-105 active:scale-95 group shadow-lg shadow-blue-950/30"
+                title="Cấp độ học viên"
+              >
+                <Award className="w-4 h-4 text-blue-400 group-hover:scale-110 transition-transform" />
+                <span className="text-xs font-bold text-blue-300">
+                  Lv.{user?.currentLevel ?? 1}
+                </span>
+              </Link>
+
+              {/* Streak Badge (Chuỗi ngày học liên tục) */}
+              <Link
+                href="/dashboard/streak"
+                className="flex items-center gap-1.5 bg-gradient-to-r from-orange-950/70 to-amber-950/70 border border-orange-500/35 hover:border-orange-500/70 rounded-xl px-3 py-1.5 transition-all hover:scale-105 active:scale-95 group shadow-lg shadow-orange-950/30"
+                title="Chuỗi ngày học (Streak)"
+              >
+                <Flame className="w-4 h-4 text-orange-500 fill-orange-500 animate-pulse group-hover:scale-110 transition-transform" />
+                <span className="text-xs font-bold text-orange-400">
+                  {user?.streak ?? 0} <span className="hidden sm:inline font-semibold text-[11px] text-orange-300/80">ngày</span>
+                </span>
+              </Link>
+
+              {/* Notification Bell Button */}
+              <Link
+                href="/dashboard/notifications"
+                className="relative flex items-center justify-center w-9 h-9 bg-zinc-900/80 border border-zinc-800 hover:border-zinc-700 rounded-xl text-zinc-300 hover:text-white transition-all hover:scale-105 active:scale-95 group"
+                title="Thông báo"
+              >
+                <Bell className="w-4 h-4 text-zinc-300 group-hover:text-white transition-colors" />
+                {unreadCount > 0 ? (
+                  <>
+                    <span className="absolute top-1.5 right-1.5 w-2 h-2 bg-red-500 rounded-full animate-ping" />
+                    <span className="absolute top-1.5 right-1.5 w-2 h-2 bg-red-500 rounded-full" />
+                  </>
+                ) : (
+                  <span className="absolute top-2 right-2 w-1.5 h-1.5 bg-amber-400/80 rounded-full" />
+                )}
+              </Link>
+
+              {/* TOEIC Score Target Pill */}
+              <div className="hidden md:flex items-center gap-2 bg-zinc-900/60 border border-zinc-800/60 rounded-xl px-3 py-1.5 text-xs">
+                <span className="text-[10px] text-zinc-500 uppercase tracking-wider font-semibold">Điểm:</span>
+                <span className="font-bold text-red-400">{user?.currentScore ?? "—"}</span>
+                <span className="text-zinc-600">/</span>
+                <span className="font-bold text-green-400">{user?.targetScore ?? "—"}</span>
               </div>
             </div>
           </div>
@@ -406,3 +523,4 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
     </div>
   );
 }
+

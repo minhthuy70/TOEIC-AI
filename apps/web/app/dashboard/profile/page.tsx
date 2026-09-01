@@ -511,7 +511,7 @@ export default function ProfilePage() {
       <div>
         <h1 className="text-2xl font-bold text-white flex items-center gap-2">
           <User className="w-6 h-6 text-red-400" />
-          <span>Hồ Sơ & Cài Đặt Tài Khoản (13.1)</span>
+          <span>Hồ Sơ & Cài Đặt Tài Khoản</span>
         </h1>
         <p className="text-sm text-zinc-400 mt-1">
           Quản lý thông tin cá nhân, bảo mật, quyền riêng tư, xuất dữ liệu và tài khoản liên kết
@@ -1248,7 +1248,7 @@ export default function ProfilePage() {
               <div>
                 <h3 className="text-sm font-bold text-red-400 flex items-center gap-1.5">
                   <AlertTriangle className="w-4 h-4" />
-                  <span>Xóa tài khoản vĩnh viễn (13.1)</span>
+                  <span>Xóa tài khoản vĩnh viễn</span>
                 </h3>
                 <p className="text-xs text-zinc-400 mt-0.5 leading-relaxed">
                   Hành động này <span className="text-red-400 font-semibold">không thể hoàn tác</span>. Toàn bộ lịch sử làm bài thi, điểm số, từ vựng, chuỗi ngày và thành tích sẽ bị xóa vĩnh viễn.

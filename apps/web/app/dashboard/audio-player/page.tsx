@@ -351,7 +351,7 @@ export default function BackgroundAudioPage() {
         <div>
           <h1 className="text-2xl font-bold text-white flex items-center gap-2">
             <Radio className="w-6 h-6 text-red-400" />
-            <span>Âm Thanh Nền & Luyện Nghe Thụ Động (14.2)</span>
+            <span>Âm Thanh Nền & Luyện Nghe Thụ Động</span>
           </h1>
           <p className="text-sm text-zinc-400 mt-1">
             Phát âm thanh trong nền khi tắt màn hình, điều khiển thông báo hệ điều hành, màn hình khóa và tai nghe.

@@ -71,7 +71,7 @@ export default function ReviewPage() {
   }
 
   return (
-    <div className="space-y-6 max-w-5xl mx-auto">
+    <div className="space-y-6 animate-fade-in w-full">
       {/* Back to courses */}
       <div className="flex items-center justify-between">
         <Link

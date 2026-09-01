@@ -178,8 +178,7 @@ export default function PracticePage() {
     );
 
   return (
-    <div className="min-h-screen bg-[#0a0a0c] text-white">
-      <main className="mx-auto max-w-7xl px-6 py-10">
+    <div className="space-y-6 animate-fade-in w-full pb-10">
         {/* TITLE */}
 
         <div className="mb-8">
@@ -293,7 +292,6 @@ export default function PracticePage() {
             error={historyError}
           />
         )}
-      </main>
     </div>
   );
 }

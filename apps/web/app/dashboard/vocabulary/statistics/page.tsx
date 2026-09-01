@@ -153,7 +153,7 @@ export default function VocabularyStatisticsPage() {
   const noData = data.totalLearned === 0;
 
   return (
-    <div className="max-w-5xl mx-auto space-y-8">
+    <div className="space-y-6 animate-fade-in w-full pb-8">
       {/* Header */}
       <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
         <div>

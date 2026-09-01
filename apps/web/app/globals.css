@@ -1,12 +1,12 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #000000;
+  --foreground: #ededed;
 
-  /* Reading Settings */
+  /* Reading & Typography Settings */
   --reading-font-size: 16px;
-  --reading-font-family: Inter, sans-serif;
+  --reading-font-family: var(--font-sans);
   --reading-line-height: 1.6;
   --reading-highlight-color: #FFD700;
 }
@@ -14,32 +14,61 @@
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-sans: var(--font-sans), system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-mono: var(--font-mono), monospace;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+html {
+  font-family: var(--font-sans), system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
 }
 
 body {
-  background: #000;
-  color: white;
+  background: #000000;
+  color: #ffffff;
+  font-family: var(--font-sans), system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  font-size: 15px;
+  line-height: 1.6;
+  letter-spacing: -0.011em;
 }
 
-* {
-  transition: 0.2s;
+/* ───────── Unified Micro-Interactions & Hover Tokens ───────── */
+
+/* Uniform Button Base */
+.btn-interactive {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  font-weight: 600;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  user-select: none;
 }
 
+.btn-interactive:active {
+  transform: scale(0.98);
+}
+
+/* Uniform Card Hover Elevation */
+.card-interactive {
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.card-interactive:hover {
+  border-color: rgba(220, 38, 38, 0.4);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px -5px rgba(220, 38, 38, 0.1);
+}
+
+/* Uniform Focus State Across Inputs & Buttons */
+:focus-visible {
+  outline: 2px solid rgba(239, 68, 68, 0.6) !important;
+  outline-offset: 2px !important;
+}
+
+/* Smooth Custom Scrollbar */
 .admin-sidebar-scroll {
   scrollbar-width: none;
   -ms-overflow-style: none;
@@ -48,3 +77,4 @@ body {
 .admin-sidebar-scroll::-webkit-scrollbar {
   display: none;
 }
+
