@@ -29,7 +29,7 @@
 | 14292 | `ticket office` | `difficulty` | Độ khó không hợp lệ: 'elementary'. Chi chấp nhận: ['easy', 'medium', 'hard'] |
 | 14429 | `track` | `difficulty` | Độ khó không hợp lệ: 'elementary'. Chi chấp nhận: ['easy', 'medium', 'hard'] |
 
-## 🔍 3. Danh Sách Từ Vựng Chưa Có Trong Từ Điển Cổ Điển
+## 🔍 3. Danh Sách Từ Vựng Chưa Có Trong Từ Điển Cổ Điển (Chỉ được gợi ý, chưa đụng đến dữ liệu csv)
 > Các từ này chủ yếu là từ viết tắt công nghệ/kinh doanh (CI/CD, CNC, CTA), từ ghép hiện đại (codebase, countertop) hoặc từ vay mượn.
 
 | Dòng | Từ Tiếng Anh | Chi Tiết | Gợi Ý Sửa |
