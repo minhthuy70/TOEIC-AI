@@ -1,0 +1,4017 @@
+{
+  "file": "D:\\GITHUB\\TOEIC-AI\\csv\\VOCABULARY (DOAN).csv",
+  "timestamp": "2026-09-02T15:42:18.132553",
+  "stats": {
+    "total_rows": 15674,
+    "valid_rows": 15664,
+    "rows_with_errors": 10,
+    "rows_with_warnings": 32,
+    "verified_in_dictionary": 15550,
+    "unrecognized_in_dictionary": 124,
+    "empty_fields_count": {
+      "id": 15674,
+      "image_url": 15674,
+      "audio_url": 15674,
+      "antonyms": 9513,
+      "phrasal_verbs": 11309,
+      "created_at": 15674,
+      "updated_at": 15674,
+      "word_family": 410,
+      "common_mistakes": 217,
+      "grammar_pattern": 166,
+      "synonyms": 153,
+      "vietnamese": 1,
+      "pronounce": 1,
+      "example": 1,
+      "example_vietnamese": 1,
+      "collocations": 2,
+      "mnemonic": 2,
+      "mnemonic_type": 2,
+      "memory_tip": 2
+    },
+    "cefr_distribution": {
+      "C1": 3035,
+      "B2": 5885,
+      "B1": 5532,
+      "A2": 922,
+      "A1": 300
+    },
+    "difficulty_distribution": {
+      "medium": 8450,
+      "easy": 4776,
+      "hard": 2442
+    },
+    "toeic_level_distribution": {
+      "800": 1367,
+      "700": 2715,
+      "750": 2625,
+      "600": 3476,
+      "850": 1215,
+      "400": 874,
+      "500": 1949,
+      "900": 306,
+      "650": 545,
+      "950": 142,
+      "300": 298,
+      "550": 108,
+      "450": 47,
+      "990": 5,
+      "350": 2
+    },
+    "stage_distribution": {
+      "4": 3586,
+      "3": 5276,
+      "2": 4613,
+      "1": 1142,
+      "5": 1057
+    },
+    "part_of_speech_distribution": {
+      "noun": 5880,
+      "noun / adjective": 93,
+      "verb": 350,
+      "phrasal verb": 30,
+      "adjective": 418,
+      "adverb / preposition": 3,
+      "preposition / adverb / adjective": 1,
+      "adverb": 139,
+      "noun phrase": 7986,
+      "adjective / noun": 101,
+      "noun / verb": 388,
+      "preposition / adverb": 9,
+      "verb phrase": 14,
+      "noun / verb / adjective": 3,
+      "preposition / conjunction / adverb": 2,
+      "preposition": 9,
+      "adjective / noun / verb": 8,
+      "adverb / adjective": 9,
+      "adjective / phrase": 4,
+      "adjective / verb": 20,
+      "conjunction": 2,
+      "adjective / noun phrase": 3,
+      "adjective/verb": 1,
+      "adverbial phrase": 2,
+      "verb / noun": 80,
+      "verb / noun / adjective": 1,
+      "noun / adjective / verb": 2,
+      "abbreviation": 12,
+      "adverb/adjective/noun": 1,
+      "phrase": 10,
+      "adjective phrase": 17,
+      "noun / abbreviation": 6,
+      "adjective / verb / noun": 1,
+      "adjective / past participle": 3,
+      "verb / adjective": 4,
+      "adjective / adverb / noun": 6,
+      "abbreviation / trade term": 1,
+      "adjective / verb / adverb": 1,
+      "adverb / adjective / noun": 4,
+      "noun/adjective/adverb": 1,
+      "determiner / pronoun / adverb": 1,
+      "preposition / conjunction": 2,
+      "proper noun": 7,
+      "noun/adjective": 1,
+      "adjective / adverb": 13,
+      "phrase / phrasal verb": 2,
+      "preposition / adverb / noun / adjective": 1,
+      "noun / gerund": 6,
+      "abbreviation / noun": 2,
+      "noun phrase / adjective": 1,
+      "noun / adjective / adverb": 4,
+      "adjective / preposition / noun": 1,
+      "preposition / phrase": 1,
+      "adverb / noun": 2,
+      "adverb / preposition / adjective / noun": 1,
+      "noun / adverb": 1,
+      "adjective / verb / pronoun": 1,
+      "phrasal verb / idiom": 1,
+      "adverb/adjective": 1
+    },
+    "topic_distribution": {
+      "Technology": 1099,
+      "Business": 695,
+      "Health": 185,
+      "Office / Rules": 4,
+      "Work / Skills": 1,
+      "Manufacturing": 773,
+      "Transportation / Travel": 15,
+      "Government / Rules": 1,
+      "Office; General": 6,
+      "Travel; Business": 4,
+      "Business / Events": 1,
+      "Meetings / Safety": 1,
+      "Jobs / Recruitment": 705,
+      "Jobs / Office": 82,
+      "Workplace": 16,
+      "HR / Business": 22,
+      "Training / Finance": 1,
+      "Products / Materials": 1,
+      "Environment / Business": 17,
+      "Education": 97,
+      "Jobs / Education": 16,
+      "Business / Technology": 57,
+      "Business / Strategy": 19,
+      "Transportation": 489,
+      "Office / Communication": 27,
+      "Business; Customer Service": 7,
+      "Awards / Public Speaking": 1,
+      "Technology / Office": 24,
+      "Technology; Safety": 2,
+      "Office": 193,
+      "Security / Workplace": 6,
+      "Safety / Travel": 5,
+      "IT / Security": 16,
+      "Technology / Security": 20,
+      "Security": 7,
+      "Healthcare": 257,
+      "Technology; Communication": 4,
+      "Construction": 52,
+      "Travel": 498,
+      "Technology / Public Services": 1,
+      "Safety, General": 1,
+      "Accessibility; Infrastructure": 1,
+      "Safety / Jobs": 1,
+      "Safety": 154,
+      "Safety; Office": 7,
+      "General; Safety": 1,
+      "Insurance / Property": 2,
+      "Hotel / Customer Service": 1,
+      "Travel / Hotel": 3,
+      "Hospitality / Finance": 4,
+      "Hospitality": 510,
+      "Travel / Business": 16,
+      "Work / Achievement": 1,
+      "Career / Work": 2,
+      "Communication; Business": 9,
+      "Finance; Technology": 9,
+      "Technology; Finance": 3,
+      "Finance": 971,
+      "Sales": 85,
+      "Sales / Marketing": 33,
+      "Banking": 10,
+      "Sales / Technology": 5,
+      "Business / Communication": 29,
+      "Business; Marketing": 14,
+      "Banking / Accounting": 2,
+      "Finance / Jobs": 17,
+      "Finance / Office": 5,
+      "Office; Finance": 4,
+      "Accounting": 6,
+      "Accounting / Technology": 1,
+      "Accounting / Banking": 2,
+      "Finance / Business": 88,
+      "Technology; Business": 20,
+      "Business / Office": 30,
+      "General": 380,
+      "Office / Data": 2,
+      "Work / Adaptation": 1,
+      "Business / Jobs": 9,
+      "Communication": 182,
+      "Business / Learning": 1,
+      "M&A / Corporate": 7,
+      "Business / Finance": 74,
+      "M&A / Legal": 6,
+      "M&A / Management": 6,
+      "M&A / Strategy": 10,
+      "M&A / Finance": 12,
+      "M&A": 2,
+      "Marketing": 475,
+      "Real Estate": 235,
+      "Entertainment": 118,
+      "Places / Travel": 1,
+      "Film / Theater": 1,
+      "Business / General": 35,
+      "Film / Entertainment": 3,
+      "Meetings / Project Management": 1,
+      "Management / Business": 7,
+      "Film": 16,
+      "General / Technology": 3,
+      "Environment": 149,
+      "Travel / Hospitality": 27,
+      "Media": 290,
+      "Marketing / Technology": 31,
+      "Marketing / Media": 20,
+      "Work / Change": 1,
+      "General / Business": 36,
+      "Business / Marketing": 36,
+      "General / Education": 1,
+      "Business; Travel": 3,
+      "Sales / Shopping": 6,
+      "Business / Facilities": 2,
+      "Office / Location": 1,
+      "Grammar": 2,
+      "Meetings / Business": 3,
+      "Office / Technology": 17,
+      "Finance / Real Estate": 36,
+      "Business / Planning": 4,
+      "Management / Office": 5,
+      "Office / Business": 11,
+      "Office / Jobs": 7,
+      "Accounting / Business": 6,
+      "IT": 44,
+      "Healthcare / Office": 2,
+      "Office / Administration": 3,
+      "Workplace / Technology": 10,
+      "Work / Personal Qualities": 2,
+      "Health / Communication": 9,
+      "Travel / Finance": 4,
+      "Events": 7,
+      "Communication / Office": 15,
+      "Business / Policy": 1,
+      "Finance; Travel": 1,
+      "Hospitality / Travel": 14,
+      "Technology / Education": 6,
+      "Travel; Tourism": 3,
+      "Business; Finance": 27,
+      "Marketing / Jobs": 7,
+      "Marketing; Jobs / Recruitment": 1,
+      "Marketing / Communication": 15,
+      "Marketing / Business": 44,
+      "Marketing, Finance": 1,
+      "Marketing / Finance": 14,
+      "Media & Advertising": 3,
+      "Corporate / Management": 9,
+      "Marketing, Sales": 2,
+      "Business / Social Issues": 1,
+      "Safety / General": 2,
+      "Business / Companies": 1,
+      "Corporate / Legal": 1,
+      "Finance / Shopping": 7,
+      "Shopping / Travel": 3,
+      "Safety; Business": 2,
+      "Meetings; Office": 4,
+      "Business; Legal": 3,
+      "Meetings / Office": 11,
+      "Meetings": 44,
+      "Business / Travel": 9,
+      "Meetings / Communication": 6,
+      "Business / Contracts": 4,
+      "Agriculture / Business": 1,
+      "Agriculture / Economy": 1,
+      "Office / Travel": 5,
+      "Manufacturing / Technology": 27,
+      "Technology / AI": 4,
+      "Transportation, Business": 5,
+      "Office / Facilities": 4,
+      "Travel / Airport": 5,
+      "Travel / Transportation": 30,
+      "aviation": 8,
+      "aviation/travel": 1,
+      "aviation; workplace": 1,
+      "Safety / Property": 3,
+      "Music": 36,
+      "Business; Communication": 24,
+      "Food / Safety": 8,
+      "Food Safety / Hospitality": 6,
+      "Health / Safety": 21,
+      "Customer Service": 83,
+      "Hospitality / Safety": 4,
+      "Travel / Real Estate": 4,
+      "travel": 21,
+      "Finance / Workplace": 2,
+      "Work / Schedule": 1,
+      "Business / Problem Solving": 3,
+      "Energy": 7,
+      "Procurement": 122,
+      "Materials / Manufacturing": 2,
+      "Jobs / Recruitment; Office": 12,
+      "Health / Transportation": 1,
+      "Business / Legal": 13,
+      "Property / Hospitality": 8,
+      "Restaurant / Hospitality": 18,
+      "Finance; Business": 55,
+      "Audio": 2,
+      "Shopping": 63,
+      "Travel & Entertainment": 4,
+      "Health / Jobs": 20,
+      "Entertainment / Technology": 6,
+      "Communication / Business": 15,
+      "Banking / Membership": 1,
+      "HR / Workplace": 10,
+      "Business; Meetings": 6,
+      "Banking / Loans": 8,
+      "Procurement / Finance": 39,
+      "Sales, Finance": 3,
+      "Finance / Procurement": 26,
+      "Healthcare / Science": 4,
+      "Legal / Business": 24,
+      "Language": 3,
+      "Work / Emotions": 2,
+      "Real Estate / Housing": 2,
+      "Property": 23,
+      "Marketing / Legal": 1,
+      "Technology; General": 2,
+      "Food / Hospitality": 51,
+      "Shopping, General": 2,
+      "Housing": 52,
+      "Real Estate / Services": 1,
+      "Jobs / Technology": 12,
+      "HR / Administration": 1,
+      "Jobs / Management": 14,
+      "Office / Scheduling": 4,
+      "Health / Technology": 3,
+      "Communication / Customer Service": 3,
+      "Office / Customer Service": 2,
+      "Communication; Customer Service": 4,
+      "Communication / Finance": 2,
+      "Jobs / Training": 1,
+      "Employment": 5,
+      "Management / Finance": 1,
+      "Office / Procurement": 3,
+      "Business / Management": 70,
+      "Procurement / Manufacturing": 17,
+      "Rules / Management": 1,
+      "Construction / Jobs": 4,
+      "Jobs / Sales": 8,
+      "Hospitality, General": 2,
+      "Office / Meetings": 9,
+      "Meetings / Travel": 2,
+      "Finance / Property": 19,
+      "Travel; Transportation": 10,
+      "Travel / Scheduling": 2,
+      "Media / Grammar": 1,
+      "Media / Business": 21,
+      "Art / Design": 1,
+      "Arts / Culture": 1,
+      "Media / Arts": 2,
+      "Office / General": 15,
+      "Business / Investigation": 1,
+      "Property / Finance": 19,
+      "Manufacturing / Work": 1,
+      "Manufacturing; Meetings": 1,
+      "Manufacturing / Assembly": 2,
+      "Safety / Emergency": 3,
+      "Business / Evaluation": 2,
+      "Real Estate / Tax": 1,
+      "Finance / Operations": 2,
+      "Accounting / Finance": 10,
+      "Finance / Accounting": 13,
+      "Work / Education": 2,
+      "Customer Service / Office": 3,
+      "Organizations / Business": 1,
+      "Business / Quality": 2,
+      "Hospitality; Office": 2,
+      "Communication; Office": 10,
+      "Business / Achievement": 1,
+      "Business / Education": 6,
+      "Office / Education": 5,
+      "HR": 4,
+      "HR / Office": 29,
+      "Events / Meetings": 2,
+      "Healthcare / Jobs": 12,
+      "Customer Service / Work": 1,
+      "Travel / Tourism": 4,
+      "Jobs / Marketing": 6,
+      "Business / Analysis": 1,
+      "Media / Marketing": 22,
+      "Media / Events": 4,
+      "Media / Technology": 16,
+      "Technology / Media": 16,
+      "Finance / Technology": 16,
+      "Shopping / Business": 9,
+      "Legal; Business": 1,
+      "Administration / Technology": 1,
+      "Office / Security": 2,
+      "Procurement / Business": 35,
+      "Technology / Manufacturing": 49,
+      "Technology; Procurement": 4,
+      "Manufacturing / Quality": 9,
+      "Technology / Sales": 4,
+      "Transportation; Manufacturing": 4,
+      "hotel; travel": 1,
+      "Logistics / Sales": 1,
+      "Finance; General": 3,
+      "Finance / Restaurant": 3,
+      "Finance / Marketing": 8,
+      "Sales / Analytics": 1,
+      "Transportation; Travel": 7,
+      "Entertainment / Media": 2,
+      "Office / Safety": 11,
+      "Safety / Marketing": 1,
+      "Communication / Safety": 1,
+      "Business / Sales": 8,
+      "Sales / Business": 24,
+      "Office, Safety": 1,
+      "Health / Office": 2,
+      "HR / Recruitment": 10,
+      "Music / Media": 4,
+      "Business / Operations": 3,
+      "Procurement / Logistics": 7,
+      "Food Safety / Health": 1,
+      "Office; Safety": 4,
+      "aviation; travel": 6,
+      "Aviation": 6,
+      "Aviation / Security": 1,
+      "Travel / Technology": 6,
+      "Airport / Travel": 1,
+      "Finance / General": 4,
+      "Finance; Accounting": 6,
+      "Hospitality; Travel": 8,
+      "Arts / Entertainment": 3,
+      "Banking / Payments": 8,
+      "Finance; Banking": 6,
+      "Banking / Monetary Policy": 1,
+      "Banking / Business": 2,
+      "Banking / Regulation": 1,
+      "Finance; Customer Service": 2,
+      "Hospitality / Meetings": 6,
+      "Hospitality / General": 4,
+      "Food / Restaurant": 21,
+      "Property / Sales": 5,
+      "Sales / Real Estate": 3,
+      "Strategy / Negotiation": 1,
+      "Jobs / Finance": 14,
+      "Education / Training": 2,
+      "Infrastructure / Government": 2,
+      "Real Estate / Home": 2,
+      "Property / Housing": 4,
+      "Hospitality, Real Estate": 3,
+      "Energy / Technology": 4,
+      "Manufacturing / Materials": 1,
+      "Travel; Hospitality": 8,
+      "Food": 54,
+      "General / Office": 11,
+      "General / Jobs": 1,
+      "Real Estate / Hospitality": 7,
+      "Hospitality / Food": 19,
+      "Workplace / Society": 1,
+      "Health / Education": 1,
+      "Work / Psychology": 1,
+      "Business; Office": 12,
+      "Business / Performance": 1,
+      "Finance / Economics": 2,
+      "Finance / Charity": 1,
+      "HR / Finance": 23,
+      "Publishing": 8,
+      "General / Time": 1,
+      "Hospitality / Restaurant": 6,
+      "Procurement; Business": 11,
+      "Business / Procurement": 10,
+      "Transportation / Urban Planning": 2,
+      "Workplace / Education": 4,
+      "E-commerce / Payments": 1,
+      "Logistics": 21,
+      "Education / General": 4,
+      "Technology; Education": 1,
+      "Science": 2,
+      "Energy / Environment": 2,
+      "Rules / Business": 1,
+      "Food / Equipment": 3,
+      "Email / Office": 1,
+      "Technology & Media": 6,
+      "Corporate / Governance": 6,
+      "Property / Maintenance": 13,
+      "Investment / Bonds": 1,
+      "Publishing / Marketing": 1,
+      "Accounting / Investment": 1,
+      "Hospitality / Technology": 2,
+      "Technology / Travel": 7,
+      "Shopping / Publishing": 1,
+      "General / Finance": 2,
+      "Banking / Finance": 3,
+      "Travel / Nature": 1,
+      "Places / General": 1,
+      "Recreation": 1,
+      "Shopping, Manufacturing": 2,
+      "Business / Organization": 2,
+      "Marketing, Business": 1,
+      "Marketing / Customer Service": 10,
+      "Branding / Marketing": 2,
+      "Retail / Marketing": 1,
+      "Workplace / Office": 4,
+      "Workplace / Daily Life": 1,
+      "Home / Electricity": 1,
+      "Finance / M&A": 13,
+      "Office; Business": 7,
+      "Meetings / Collaboration": 1,
+      "Technology / Communication": 7,
+      "Communication; Media": 2,
+      "Media / Communication": 10,
+      "Media / Legal": 6,
+      "Education / Business": 7,
+      "Marketing / Travel": 1,
+      "Real Estate / Maintenance": 6,
+      "Investment / Banking": 2,
+      "Safety / Hospitality": 2,
+      "Economics / Government": 3,
+      "Finance / Construction": 2,
+      "Supply Chain": 13,
+      "Business / Growth": 1,
+      "Construction / Office": 2,
+      "Real Estate / Security": 2,
+      "Construction / Real Estate": 1,
+      "Technology / Construction": 1,
+      "Infrastructure / Safety": 3,
+      "Construction / Legal": 3,
+      "Facilities / Office": 1,
+      "Construction / Safety": 5,
+      "Facilities / Workplace": 1,
+      "Office / Property": 1,
+      "Construction / Technology": 2,
+      "Construction / Property": 2,
+      "Business, Shopping": 1,
+      "Procurement / Sales": 5,
+      "Procurement / Shopping": 5,
+      "Procurement; Commerce": 1,
+      "Manufacturing, Transportation": 2,
+      "Communication; Safety": 2,
+      "HR / Safety": 5,
+      "Sales / Retail": 1,
+      "Security / Home": 1,
+      "Safety / Health": 2,
+      "Hospitality, Shopping": 11,
+      "transportation": 23,
+      "Transportation / Property": 2,
+      "Hospitality / Business": 9,
+      "Business / Time": 2,
+      "Jobs / Recruitment, Business": 2,
+      "Business / Real Estate": 10,
+      "Business / Accounting": 1,
+      "Strategy / M&A": 3,
+      "Corporate / Business": 3,
+      "Technology / Business": 61,
+      "Jobs / Business": 15,
+      "Business / Partnerships": 2,
+      "Business / Entrepreneurship": 2,
+      "Business / Reporting": 1,
+      "Business, Finance": 3,
+      "Business Strategy": 1,
+      "Business; Technology": 15,
+      "business; travel": 2,
+      "Real Estate / Business": 15,
+      "Marketing / Shopping": 21,
+      "Procurement / Office": 11,
+      "Procurement; Technology": 2,
+      "Procurement, Office": 2,
+      "Office / Home / Government": 1,
+      "Media / Hospitality": 3,
+      "food": 2,
+      "Office / Hospitality": 7,
+      "Finance / Math": 1,
+      "Office / Maintenance": 2,
+      "Communication / Sales": 3,
+      "Food / Health": 8,
+      "Marketing; Technology": 7,
+      "marketing": 12,
+      "Digital Marketing": 4,
+      "Marketing / Analytics": 3,
+      "Infrastructure / Agriculture": 1,
+      "Travel / Office": 3,
+      "Procurement; Logistics": 3,
+      "Jobs / Recruitment; Technology": 4,
+      "Manufacturing / Business": 25,
+      "Finance / Manufacturing": 8,
+      "Manufacturing / Finance": 15,
+      "Investment / Tax": 2,
+      "Finance; Manufacturing": 12,
+      "Finance / Management": 4,
+      "Transportation / Jobs": 3,
+      "Technology / Marketing": 9,
+      "Transportation / Real Estate": 3,
+      "Finance / Environment": 4,
+      "Office / Email": 1,
+      "Environment / Sustainability": 1,
+      "Business / Environment": 8,
+      "Environment / Finance": 2,
+      "HR / Jobs": 31,
+      "Safety / Office": 3,
+      "General / Workplace": 4,
+      "Transportation / Environment": 1,
+      "Transportation; Business": 5,
+      "Logistics / Transportation": 7,
+      "Aviation / Logistics": 1,
+      "Transportation / Logistics": 4,
+      "transportation; logistics": 1,
+      "logistics": 9,
+      "Events / Entertainment": 3,
+      "Jobs / Construction": 1,
+      "Transportation / Business": 14,
+      "Transportation / Technology": 11,
+      "Finance / Legal": 8,
+      "Retail / Shopping": 2,
+      "Film & Theater": 1,
+      "Jobs / Hospitality": 2,
+      "Workplace / Clothing": 2,
+      "Workplace / Lifestyle": 1,
+      "Office / Work": 2,
+      "Business / Shopping": 3,
+      "Procurement / Planning": 1,
+      "Jobs / Procurement": 1,
+      "Hospitality; Events": 1,
+      "General; Transportation": 2,
+      "Safety; Transportation": 2,
+      "Business / Safety": 5,
+      "Business / Manufacturing": 17,
+      "Household": 6,
+      "real estate": 9,
+      "Media & Entertainment": 3,
+      "Media / Celebrity": 1,
+      "Technology / Infrastructure": 8,
+      "Travel; Office": 3,
+      "Real Estate / Travel": 2,
+      "Events / Education": 1,
+      "International Trade / Logistics": 6,
+      "Employment / Business": 3,
+      "Education; Jobs / Recruitment": 7,
+      "Quality / Compliance": 1,
+      "Business / Logistics": 4,
+      "Business / Places": 1,
+      "events": 2,
+      "Sports / Entertainment": 1,
+      "Home": 12,
+      "Marketing / Sales": 11,
+      "Business / Products": 3,
+      "Technology / Transportation": 5,
+      "General / Events": 1,
+      "Travel / Shopping": 9,
+      "Transportation / Security": 1,
+      "Safety / Manufacturing": 8,
+      "Safety; Manufacturing": 8,
+      "Education / Manufacturing": 1,
+      "Media / Publishing": 8,
+      "Technology / Jobs / Recruitment": 1,
+      "Healthcare / Education": 5,
+      "Food / Travel": 9,
+      "Business / Customer Service": 10,
+      "International Trade / Transportation": 1,
+      "Film Production": 11,
+      "Education; Communication": 1,
+      "Administration / General": 2,
+      "Property / Travel": 2,
+      "Community": 3,
+      "Law / Society": 1,
+      "Finance / Customer Service": 4,
+      "Entertainment / Music": 6,
+      "Business / Data": 6,
+      "Office; Technology": 2,
+      "Hospitality / Office": 5,
+      "Restaurant": 17,
+      "Technology / Environment": 2,
+      "Office / Services": 1,
+      "Office; Customer Service": 5,
+      "Customer Service / Business": 3,
+      "Business / Hospitality": 5,
+      "Environment / Technology": 3,
+      "Health / Business": 4,
+      "Healthcare / Research": 7,
+      "Media / Accessibility": 1,
+      "home": 1,
+      "Real Estate / Finance": 12,
+      "Theater / Entertainment": 1,
+      "Property / Legal": 17,
+      "Workplace / Operations": 1,
+      "sales": 4,
+      "Business / Retail": 3,
+      "General / Restaurant": 1,
+      "Travel; Environment": 1,
+      "Environment / Infrastructure": 13,
+      "Travel / Geography": 4,
+      "Office / Daily Life": 1,
+      "Property / Furniture": 2,
+      "Events / Scheduling": 1,
+      "General; Travel": 2,
+      "Office / Teamwork": 1,
+      "Business / Teamwork": 1,
+      "Office; Communication": 7,
+      "Media / Shopping": 3,
+      "HR / Legal": 16,
+      "Problem Solving / Business": 2,
+      "Office / Events": 2,
+      "Business / Urban Planning": 2,
+      "Trade / Logistics": 1,
+      "M&A / Business": 3,
+      "Sales / Finance": 9,
+      "Business / Workplace": 1,
+      "Meetings; Business": 4,
+      "Finance / Trade": 1,
+      "Finance; Investment": 2,
+      "General / Manufacturing": 2,
+      "Communication / Workplace": 2,
+      "Jobs / Communication": 2,
+      "Communication / Technology": 3,
+      "General / Real Estate": 3,
+      "Real Estate / Community": 1,
+      "Environment / Community": 1,
+      "Environment; Community": 2,
+      "Business / Community": 1,
+      "Environment / General": 9,
+      "Work / Transportation": 1,
+      "Real Estate / Transportation": 6,
+      "Transportation / Work": 2,
+      "Jobs / Transportation": 1,
+      "business": 8,
+      "Technology / Products": 2,
+      "Business / Law": 2,
+      "Strategy / Competition": 4,
+      "Competition / Business": 1,
+      "Competition / Strategy": 2,
+      "Marketing / Competition": 2,
+      "Customer Service / Communication": 4,
+      "Project Management": 12,
+      "Business / Projects": 2,
+      "Business / Regulations": 1,
+      "Compliance": 1,
+      "Manufacturing; Safety": 9,
+      "Legal / Finance": 4,
+      "Legal / Safety": 1,
+      "Business; Education": 6,
+      "Hotel / Travel": 1,
+      "Workplace / Regulations": 1,
+      "Manufacturing / Engineering": 4,
+      "IT / Engineering": 1,
+      "Supply Chain / Manufacturing": 3,
+      "Manufacturing / Supply Chain": 10,
+      "Environment; Manufacturing": 2,
+      "Finance / Investment": 10,
+      "Business / Reports": 2,
+      "Negotiation / Business": 1,
+      "Education / Technology": 2,
+      "Technology / Film": 1,
+      "Workplace / Science": 1,
+      "Music / Marketing": 1,
+      "Construction / Transportation": 1,
+      "Real Estate / Office": 5,
+      "Meetings / Hospitality": 3,
+      "Security / Office": 3,
+      "Business / Security": 1,
+      "Business / Ethics": 1,
+      "Corporate / M&A": 3,
+      "Environment / Hospitality": 3,
+      "Environment / Government": 3,
+      "Environment / Manufacturing": 10,
+      "Business; Quality": 1,
+      "Construction; Transportation": 2,
+      "Business / Construction": 2,
+      "Construction / Engineering": 1,
+      "Construction / Management": 1,
+      "Healthcare / Finance": 7,
+      "Manufacturing / Office": 6,
+      "Banking / Personal Finance": 2,
+      "Marketing / Research": 2,
+      "Marketing / Market Research": 1,
+      "Technology / Finance": 6,
+      "Office; Manufacturing": 3,
+      "Transportation; Logistics": 2,
+      "Environment / Safety": 5,
+      "Marketing / Digital": 1,
+      "Digital / Marketing": 2,
+      "Media / Jobs": 8,
+      "Media / General": 2,
+      "Communication / Education": 3,
+      "Finance; Legal": 2,
+      "Business, Office": 2,
+      "Legal; Procurement": 1,
+      "Legal / Procurement": 3,
+      "Procurement / Technology": 4,
+      "Procurement; Legal": 1,
+      "Legal": 13,
+      "Property / Transportation": 5,
+      "Marketing; Business": 17,
+      "Office; Meetings": 3,
+      "Legal / Technology": 2,
+      "Business / Banking": 1,
+      "Corporate / Strategy": 6,
+      "Corporate / Finance": 5,
+      "Management / Corporate": 2,
+      "Maintenance": 2,
+      "Accounting / Manufacturing": 2,
+      "Customer Service; Hospitality": 4,
+      "Property / Construction": 10,
+      "Shopping / Marketing": 14,
+      "Hospitality; Communication": 1,
+      "Buildings": 4,
+      "Finance / Communication": 1,
+      "Workplace / Business": 3,
+      "Housing / Construction": 2,
+      "Logistics / Packaging": 1,
+      "Business / Media": 7,
+      "Education / Work": 1,
+      "General / Media": 1,
+      "Banking / Credit": 6,
+      "Banking / Shopping": 1,
+      "Finance / Credit": 1,
+      "Film & Work": 1,
+      "Business; Jobs / Recruitment": 12,
+      "Healthcare / Business": 4,
+      "Agriculture": 4,
+      "trade": 4,
+      "Tourism": 5,
+      "Business / CSR": 1,
+      "Office / Workplace": 1,
+      "Culture / Travel": 1,
+      "Culture": 1,
+      "Culture & Events": 1,
+      "HR / M&A": 1,
+      "Shopping / Customer Service": 4,
+      "Finance / Travel": 6,
+      "Forex / Risk Management": 1,
+      "Customer Service; Business": 5,
+      "Customer Service / Legal": 1,
+      "Jobs / Customer Service": 1,
+      "Customer Loyalty": 1,
+      "Supply Chain / Customer Service": 1,
+      "Customer Service / Marketing": 5,
+      "Sales / Customer Service": 10,
+      "customer service": 3,
+      "Customer Service / Sales": 3,
+      "Meetings / Customer Service": 1,
+      "Sales / Communication": 5,
+      "finance": 5,
+      "Customer Service / Hospitality": 3,
+      "Communication, Marketing": 1,
+      "Customer Service / Jobs": 4,
+      "Sales / Customer Relations": 1,
+      "travel; customs": 1,
+      "Logistics / Customs": 1,
+      "travel; government": 1,
+      "Security / Technology": 2,
+      "Travel / Safety": 4,
+      "Hospitality / Entertainment": 2,
+      "Safety / Workplace": 10,
+      "Technology / Data": 3,
+      "Technology / Data Security": 1,
+      "IT / Data": 1,
+      "Technology / Jobs": 6,
+      "Technology / IT": 9,
+      "Workplace / Manufacturing": 1,
+      "Customer Service; Office": 2,
+      "Shopping / Transportation": 2,
+      "Finance / Government": 2,
+      "Finance / Debt": 1,
+      "Business; General": 11,
+      "Environment / Energy": 6,
+      "Procurement / Management": 1,
+      "Business / Meetings": 4,
+      "Travel / Administration": 1,
+      "Jobs / Recruitment; Customer Service": 3,
+      "Finance; Jobs / Recruitment": 5,
+      "Banking / Risk": 2,
+      "Manufacturing; Quality Control": 1,
+      "Customer Service / Manufacturing": 1,
+      "manufacturing": 3,
+      "Manufacturing / Customer Service": 5,
+      "Business / Health": 1,
+      "Communication; Meetings": 2,
+      "Meetings; Jobs / Recruitment": 1,
+      "Technology; Office": 5,
+      "Manufacturing; Communication": 1,
+      "Transportation, Shopping": 1,
+      "Transportation / Hospitality": 3,
+      "Transportation / Shopping": 5,
+      "Transportation / Manufacturing": 6,
+      "Transportation / Safety": 12,
+      "Hospitality / Customer Service": 10,
+      "Logistics / Procurement": 8,
+      "Transportation / Procurement": 4,
+      "Transportation / Restaurant": 1,
+      "Banking / Economics": 2,
+      "Manufacturing, Business": 7,
+      "Manufacturing; Marketing": 2,
+      "Transportation; General": 1,
+      "HR / Benefits": 3,
+      "Health / Dental": 1,
+      "Office / Management": 3,
+      "travel; transportation": 3,
+      "Business; Manufacturing": 11,
+      "Finance / Hospitality": 3,
+      "Jobs / Recruitment; Marketing": 1,
+      "Jobs / Recruitment; Business": 15,
+      "Technology; Manufacturing": 3,
+      "Construction / Business": 3,
+      "General / Reading": 1,
+      "Hospitality / Restaurants": 4,
+      "Office; Jobs / Recruitment": 4,
+      "Construction; General": 2,
+      "Finance / Infrastructure": 1,
+      "HR / Career": 1,
+      "Manufacturing; Technology": 8,
+      "Healthcare / Safety": 10,
+      "Education / Language": 2,
+      "Strategy / Marketing": 4,
+      "General; Education": 2,
+      "Technology / HR": 3,
+      "Healthcare / Technology": 6,
+      "Business / IT": 3,
+      "technology; travel": 1,
+      "Technology / Restaurant": 2,
+      "Technology / Food": 3,
+      "Technology / Healthcare": 2,
+      "Cybersecurity / Business": 1,
+      "Technology / Strategy": 2,
+      "Manufacturing; Shopping": 4,
+      "Restaurant / Hotel": 1,
+      "Facilities / Food": 1,
+      "Education / Hospitality": 1,
+      "Restaurant / General": 1,
+      "Hospitality / Marketing": 4,
+      "government; travel": 1,
+      "Travel / Communication": 2,
+      "Competition / Marketing": 3,
+      "Banking / Payroll": 1,
+      "Manufacturing / Procurement": 7,
+      "Cleaning / Workplace": 1,
+      "General; Office": 2,
+      "Real Estate / Accessibility": 1,
+      "Communication / Meetings": 2,
+      "Business / Emotions": 1,
+      "Safety / Environment": 7,
+      "Safety / Real Estate": 3,
+      "Technology / Safety": 4,
+      "Manufacturing / Environment": 6,
+      "Manufacturing; Business": 10,
+      "Shopping; Sales": 1,
+      "Finance / Sales": 6,
+      "Safety / Food": 1,
+      "Workplace / Employment": 1,
+      "Safety; General": 3,
+      "Shopping; Technology": 1,
+      "Marketing; Shopping": 10,
+      "Finance; Economics": 2,
+      "Communication; Education": 2,
+      "Business; Shopping": 1,
+      "Logistics; Business": 2,
+      "Sales / Strategy": 1,
+      "Business / Transportation": 12,
+      "Marketing / Transportation": 2,
+      "Manufacturing / Transportation": 8,
+      "Office; Hospitality": 1,
+      "Strategy / Business": 5,
+      "Office; Education": 2,
+      "Investment / Finance": 8,
+      "Film & Media": 3,
+      "Business / Market": 2,
+      "Charity / Society": 1,
+      "Finance; Shopping": 4,
+      "Building / Workplace": 1,
+      "Manufacturing / IT": 1,
+      "Infrastructure / Construction": 4,
+      "Office / Furniture": 3,
+      "Theater": 7,
+      "Environment; Health": 1,
+      "Transportation / Documents": 1,
+      "General; Agriculture": 1,
+      "Health / Shopping": 1,
+      "Food / Storage": 3,
+      "Construction; Technology": 1,
+      "Education; Business": 1,
+      "Time / Travel": 1,
+      "International Trade / Finance": 1,
+      "travel; booking": 2,
+      "Logistics / Customer Service": 1,
+      "directions; travel": 1,
+      "Environment / Property": 1,
+      "Environment / Construction": 4,
+      "Economics": 1,
+      "Manufacturing, Finance": 1,
+      "Economics / Finance": 1,
+      "Logistics; Procurement": 1,
+      "Transportation; Finance": 1,
+      "Finance; Office": 5,
+      "travel; aviation": 2,
+      "Environment / Management": 1,
+      "Marketing; Communication": 3,
+      "Education / Society": 1,
+      "Education / Government": 1,
+      "Society / Services": 1,
+      "Energy / Engineering": 1,
+      "Technology / Building": 1,
+      "Energy / Infrastructure": 6,
+      "Utilities / Facilities": 1,
+      "Real Estate / Technology": 6,
+      "Technology / Procurement": 12,
+      "Hospitality; Marketing": 1,
+      "Transportation; Construction": 1,
+      "Jobs / Recruitment; Education": 6,
+      "Technology / Workplace": 6,
+      "Technology; Marketing": 1,
+      "Business Communication": 1,
+      "Travel / Government": 1,
+      "safety; travel": 3,
+      "Safety / Business": 4,
+      "Safety; Technology": 1,
+      "Procurement / Safety": 1,
+      "Economics / International Business": 1,
+      "Meetings; Communication": 2,
+      "Workplace / Security": 1,
+      "Jobs / Benefits": 1,
+      "HR / Data": 1,
+      "HR / Security": 1,
+      "Jobs / HR": 11,
+      "Employment / HR": 1,
+      "Jobs / Legal": 1,
+      "Jobs / Property": 1,
+      "Cybersecurity": 4,
+      "Time / Business": 3,
+      "retail": 2,
+      "Energy / Manufacturing": 3,
+      "Energy / Sustainability": 1,
+      "Manufacturing / Energy": 3,
+      "Energy; Infrastructure": 1,
+      "Energy / Business": 2,
+      "Infrastructure / Environment": 5,
+      "Regulations / Workplace": 1,
+      "General / Travel": 2,
+      "Entertainment / Hospitality": 2,
+      "Entertainment / Business": 2,
+      "Entertainment & Events": 2,
+      "Media / Entertainment": 7,
+      "Media & Journalism": 2,
+      "Tourism / Entertainment": 1,
+      "Business / Benefits": 1,
+      "travel; facilities": 2,
+      "travel; immigration": 2,
+      "Office / Mail": 2,
+      "Environment / Workplace": 1,
+      "Environment / Marketing": 3,
+      "Manufacturing / Safety": 17,
+      "Environment / Healthcare": 1,
+      "Environment / Science": 1,
+      "Environmental": 1,
+      "Office / Manufacturing": 2,
+      "Facilities / Maintenance": 2,
+      "Manufacturing / Jobs / Recruitment": 1,
+      "Jobs / Maintenance": 1,
+      "Customer Service / Management": 1,
+      "Hospitality / Events": 1,
+      "General / Infrastructure": 2,
+      "Property / Business": 3,
+      "Property / Jobs": 2,
+      "Finance / Planning": 2,
+      "Healthcare / Legal": 5,
+      "Management / Jobs": 2,
+      "Events / Business": 3,
+      "Marketing / Events": 5,
+      "Education; General": 1,
+      "Business / Service": 3,
+      "Finance / Markets": 2,
+      "Retail / Customer Service": 1,
+      "Marketing / General": 3,
+      "Shopping / Finance": 2,
+      "Hospitality / Jobs": 9,
+      "Education / Health": 1,
+      "Events / Marketing": 1,
+      "Events / Travel": 1,
+      "Aviation / Safety": 1,
+      "Travel / Immigration": 2,
+      "Travel / Science": 1,
+      "Food / Shopping": 2,
+      "Business / Trade": 2,
+      "Logistics / International Trade": 1,
+      "Training / Technology": 1,
+      "Communication / Transportation": 3,
+      "General; Business": 6,
+      "Business, Transportation": 1,
+      "Architecture / Real Estate": 1,
+      "Manufacturing / Hospitality": 1,
+      "Facilities / Construction": 1,
+      "General; Communication": 1,
+      "Business / Decision Making": 1,
+      "Manufacturing / Operations": 7,
+      "Manufacturing / Management": 7,
+      "Manufacturing / Jobs": 11,
+      "Manufacturing / Logistics": 8,
+      "Manufacturing / Facilities": 1,
+      "Marketing / Trends": 1,
+      "Finance / Data": 1,
+      "Health / General": 5,
+      "General / Hospitality": 2,
+      "Transportation / Finance": 5,
+      "General; Manufacturing": 4,
+      "Restaurant / Food": 2,
+      "Shopping / Procurement": 1,
+      "Customer Service / Shopping": 4,
+      "Finance / Services": 1,
+      "Property / Safety": 2,
+      "Agriculture / Environment": 2,
+      "Culture / Events": 1,
+      "Workplace / Email": 1,
+      "Film & Entertainment": 1,
+      "Entertainment / Marketing": 1,
+      "Film / Marketing": 1,
+      "Film & Music": 2,
+      "Film & Events": 2,
+      "General / Transportation": 1,
+      "Education / Arts": 3,
+      "Work / General": 2,
+      "Inventory / Accounting": 1,
+      "Safety / Building": 1,
+      "Safety / Insurance": 2,
+      "hotel": 5,
+      "Environment / Transportation": 3,
+      "Safety / Infrastructure": 2,
+      "Real Estate / Insurance": 2,
+      "Environment; Safety": 1,
+      "Finance; Commerce": 1,
+      "Construction / Hospitality": 1,
+      "Engineering / Manufacturing": 2,
+      "Workplace / Instructions": 1,
+      "Marketing / Hospitality": 5,
+      "Marketing / Food": 3,
+      "Business / Restaurant": 11,
+      "Manufacturing / Food": 1,
+      "Food Safety": 9,
+      "Food / Manufacturing": 4,
+      "Food / Business": 2,
+      "Restaurant / Business": 3,
+      "Transportation / Food": 2,
+      "Food Safety / Equipment": 1,
+      "Food / Environment": 1,
+      "International Business": 7,
+      "Finance / Forex": 1,
+      "Government / Travel": 1,
+      "Procurement / International Trade": 1,
+      "Environment; Jobs": 1,
+      "Social / Communication": 1,
+      "Office / Forms": 1,
+      "Events / Office": 1,
+      "Business; Hospitality": 1,
+      "Media & Services": 1,
+      "Logistics / Finance": 2,
+      "Logistics / Shipping": 2,
+      "Workplace / Service": 1,
+      "Property / General": 5,
+      "Food / Logistics": 1,
+      "Customer Service; Transportation": 1,
+      "Jobs": 3,
+      "Business / Equipment": 1,
+      "Office / Shopping": 2,
+      "Property / Management": 1,
+      "Shopping / Real Estate": 2,
+      "Technology / Entertainment": 4,
+      "Hospitality / Real Estate": 3,
+      "Housing / General": 3,
+      "Housing / Safety": 1,
+      "Management": 3,
+      "Communication / General": 3,
+      "Social / Charity": 1,
+      "Music & Entertainment": 2,
+      "Strategy / Market": 1,
+      "Shopping / Hospitality": 2,
+      "Procurement / Global Business": 1,
+      "Procurement / Transportation": 3,
+      "Environment; Climate": 1,
+      "Logistics / Business": 2,
+      "Government / Office": 1,
+      "Business / Infrastructure": 5,
+      "Government / Business": 3,
+      "Environment; Agriculture": 1,
+      "Environment; Urban Planning": 1,
+      "construction": 2,
+      "Environment; Construction": 1,
+      "Construction / Environment": 6,
+      "Warehousing": 5,
+      "Shopping / Property": 2,
+      "Finance / Payroll": 1,
+      "Finance; Procurement": 4,
+      "Procurement / Purchasing": 2,
+      "business/travel": 1,
+      "Strategy / Finance": 2,
+      "Economics / Business": 2,
+      "Safety / Construction": 4,
+      "Finance, Transportation": 1,
+      "Meetings / Training": 1,
+      "Real Estate / Construction": 6,
+      "real estate / business": 1,
+      "General; Meetings": 1,
+      "Safety / Risk Management": 2,
+      "Workplace / Safety": 4,
+      "Safety / Restaurant": 5,
+      "Business; Safety": 4,
+      "Education / Healthcare": 1,
+      "Healthcare / Infrastructure": 1,
+      "Property / Technology": 1,
+      "Infrastructure": 12,
+      "Housing / Office": 1,
+      "Travel / Weather": 1,
+      "Business / Formal English": 1,
+      "travel; tourism": 1,
+      "Travel / General": 1,
+      "Music & Culture": 1,
+      "History / Travel": 1,
+      "Film / History": 1,
+      "Travel / Culture": 5,
+      "Housing / Finance": 7,
+      "Property / Shopping": 1,
+      "Property / Marketing": 5,
+      "Banking / Real Estate": 1,
+      "Services / General": 1,
+      "Insurance / Real Estate": 1,
+      "Hospitality / Housing": 1,
+      "Real Estate / General": 10,
+      "Economics / Consumer": 1,
+      "General / Housing": 1,
+      "Real Estate / Government": 2,
+      "Technology; Transportation": 1,
+      "Travel; Safety": 2,
+      "Workplace / Management": 5,
+      "Hospitality / Equipment": 1,
+      "Security / Travel": 2,
+      "travel; security": 1,
+      "Travel; Security": 2,
+      "Banking / Security": 1,
+      "Technology / Management": 2,
+      "Finance / International Trade": 1,
+      "Business; Commerce": 1,
+      "Workplace / Communication": 5,
+      "Logistics / Manufacturing": 6,
+      "Sales / Jobs": 12,
+      "HR / Sales": 2,
+      "Customer Service; Communication": 2,
+      "Workplace / Travel": 2,
+      "Manufacturing / Urban Planning": 1,
+      "Business / Research": 3,
+      "Information / Business": 1,
+      "service": 1,
+      "Jobs; Infrastructure": 1,
+      "Infrastructure / Business": 4,
+      "Infrastructure / Security": 1,
+      "Business; Infrastructure": 1,
+      "Hospitality / Inventory": 1,
+      "Quality / Manufacturing": 1,
+      "Business / Property": 3,
+      "Organizations": 1,
+      "Insurance": 1,
+      "M&A / Operations / Technology": 1,
+      "Business / International": 2,
+      "Business; Transportation": 1,
+      "International Trade": 1,
+      "Banking / International Finance": 1,
+      "Technology / Utilities": 1,
+      "Employment / Education": 2,
+      "Customer Service / Technology": 5,
+      "Office / Operations": 1,
+      "Jobs / Recruitment; Communication": 1,
+      "technology": 17,
+      "Investment / Valuation": 1,
+      "Technology / Administration": 2,
+      "Manufacturing / Shopping": 1,
+      "Logistics; Manufacturing": 1,
+      "Inventory / Logistics": 2,
+      "Logistics / Technology": 1,
+      "Investment / Planning": 1,
+      "Finance; Communication": 2,
+      "Events / Communication": 1,
+      "Accounting / Payments": 2,
+      "Environment / Agriculture": 5,
+      "Workplace / IT": 3,
+      "IT / ITSM": 1,
+      "Technology; Jobs / Recruitment": 2,
+      "IT / Business": 6,
+      "Shopping; Office": 2,
+      "procurement": 2,
+      "Procurement / Products": 1,
+      "ITSM": 2,
+      "Recruitment / HR": 2,
+      "Workplace / HR": 3,
+      "Jobs / Meetings": 2,
+      "Awards / Law": 1,
+      "Entertainment / Travel": 1,
+      "Strategy / Management": 8,
+      "Communication / Marketing": 1,
+      "Restaurant / Manufacturing": 2,
+      "Restaurant / Safety": 1,
+      "Restaurant / Maintenance": 1,
+      "Restaurant / Jobs": 1,
+      "Education; Technology": 3,
+      "Shopping; Manufacturing": 2,
+      "Jobs / Manufacturing": 8,
+      "Manufacturing / HR": 1,
+      "Property / Office": 2,
+      "Urban Planning": 5,
+      "Real Estate / Urban Planning": 1,
+      "Real Estate / Economics": 1,
+      "Restaurant / Office": 3,
+      "Marketing; Office": 1,
+      "Manufacturing; Transportation": 3,
+      "Management / HR": 6,
+      "Marketing; Travel": 1,
+      "Education; Meetings": 1,
+      "Law / Business": 2,
+      "Legal / Property": 4,
+      "Legal / Real Estate": 5,
+      "Education / Places": 1,
+      "Finance; Infrastructure": 1,
+      "Facilities / Building": 1,
+      "Social Media": 4,
+      "Shopping; Safety": 1,
+      "Shopping; Marketing": 4,
+      "Office; Shopping": 1,
+      "Finance / Corporate": 5,
+      "Marketing / Property": 1,
+      "Logistics / Warehouse": 2,
+      "Banking / Legal": 1,
+      "Hospitality; Business": 1,
+      "Property / Community": 5,
+      "Real Estate / Marketing": 10,
+      "Office; Travel": 2,
+      "Logistics / Supply Chain": 1,
+      "Marketing; Customer Service": 1,
+      "travel/airport": 1,
+      "Manufacturing / Maintenance": 1,
+      "Manufacturing / Retail": 1,
+      "Manufacturing; Finance": 1,
+      "Maintenance / Office": 1,
+      "Manufacturing; Infrastructure": 1,
+      "Manufacturing / Administration": 1,
+      "Maintenance / Jobs": 1,
+      "HR / Management": 3,
+      "Safety; Jobs / Recruitment": 1,
+      "Manufacturing / Compliance": 2,
+      "Manufacturing / Control": 1,
+      "Manufacturing / Planning": 2,
+      "Publishing / Writing": 1,
+      "Environment; Marine": 1,
+      "Marketing / Strategy": 8,
+      "Business; Procurement": 9,
+      "Investment / Markets": 2,
+      "Marketing / Economics": 1,
+      "Startup / Marketing": 1,
+      "Business / Competition": 1,
+      "Trading / Investment": 1,
+      "Market / Finance": 1,
+      "Market Research": 1,
+      "Economics / Competition": 1,
+      "Market / Business": 1,
+      "Marketing; Finance": 2,
+      "Marketing / Meetings": 2,
+      "Marketing / Office": 1,
+      "Inventory / Manufacturing": 1,
+      "Manufacturing; Procurement": 1,
+      "Manufacturing / Sustainability": 1,
+      "Manufacturing, Safety": 3,
+      "Food / Marketing": 2,
+      "Engineering": 1,
+      "Advertising": 2,
+      "Jobs / Media": 1,
+      "Media & Marketing": 1,
+      "Media / Office": 1,
+      "Business & Media": 2,
+      "Media & Internet": 1,
+      "Health / Workplace": 1,
+      "health; travel": 1,
+      "health; safety": 1,
+      "Real Estate / Healthcare": 1,
+      "Healthcare / Hospitality": 1,
+      "Health / Home": 1,
+      "Technology / Meetings": 3,
+      "Organizations / General": 1,
+      "Services / Clubs": 1,
+      "Jobs / Career": 4,
+      "Restaurant / Technology": 1,
+      "security; travel": 1,
+      "Environment; Energy": 1,
+      "Meetings; Technology": 1,
+      "Travel; General": 2,
+      "Business / Project": 5,
+      "Food / General": 1,
+      "Jobs / Recruitment; Finance": 4,
+      "General / Administration": 1,
+      "General / Food": 1,
+      "Customer Service / Logistics": 1,
+      "Technology / General": 1,
+      "Finance / Daily Life": 1,
+      "Personal Finance": 1,
+      "E-commerce / Customer Service": 1,
+      "Management / Technology": 2,
+      "Technology / Quality": 1,
+      "Finance / Personal Finance": 1,
+      "Business / Services": 2,
+      "Sales / Office": 1,
+      "Travel / Accommodation": 1,
+      "Film / Shopping": 1,
+      "Film & Marketing": 1,
+      "Government / Public Services": 1,
+      "Government / Urban Planning": 1,
+      "Entertainment / Events": 2,
+      "Music / Awards": 1,
+      "Music & Technology": 2,
+      "Music & Events": 1,
+      "Music & Media": 1,
+      "Business / Relationships": 1,
+      "Events / Workplace": 1,
+      "Business / Recruitment": 2,
+      "Tourism / Nature": 1,
+      "Hospitality / Shopping": 1,
+      "Manufacturing; General": 4,
+      "Travel / Places": 1,
+      "Property / Education": 1,
+      "Business / Negotiation": 1,
+      "Jobs / Emotions": 1,
+      "Technology / Career": 1,
+      "Media & Technology": 3,
+      "Media & Business": 2,
+      "Housing / Environment": 1,
+      "Property / Environment": 2,
+      "Awards / Business": 1,
+      "Awards / Jobs": 1,
+      "Publishing / Education": 1,
+      "Business; Community": 1,
+      "Office Supplies": 3,
+      "Publishing / Entertainment": 1,
+      "Media / Education": 1,
+      "Legal / Contracts": 1,
+      "Legal / Workplace": 2,
+      "Finance / Logistics": 1,
+      "Business / Formal": 1,
+      "Real Estate / Safety": 2,
+      "Safety / HR": 1,
+      "Jobs / Safety": 1,
+      "Property / Transactions": 2,
+      "Workplace Culture": 2,
+      "Office / Facility": 2,
+      "Communication / Administration": 1,
+      "Property / Investment": 1,
+      "Energy / Transportation": 1,
+      "Inventory / Business": 1,
+      "Technology; Shopping": 1,
+      "E-commerce / Retail": 1,
+      "Technology / Property": 3,
+      "Commerce; Technology": 1,
+      "Shopping / Technology": 4,
+      "Travel & Events": 2,
+      "Restaurant / Shopping": 4,
+      "Operations / Strategy": 2,
+      "Business / Regulation": 2,
+      "Operations / Quality": 1,
+      "Operations / Corporate": 1,
+      "Business / Operations / Health": 1,
+      "M&A / Operations": 1,
+      "Operations / Management": 1,
+      "Operations / M&A": 2,
+      "Business / Manufacturing / Jobs": 1,
+      "Communication / Society": 1,
+      "Research / Marketing": 2,
+      "Choices / Business": 1,
+      "Business / Choices": 1,
+      "Logistics / Shopping": 3,
+      "Procurement, Business": 5,
+      "Shopping / Restaurant": 1,
+      "Shopping, Customer Service": 1,
+      "Finance, Procurement": 1,
+      "Investment / Corporate": 3,
+      "Environment; Hospitality": 1,
+      "Business / Society": 1,
+      "Management / Organization": 1,
+      "Business / History": 1,
+      "Travel / Events": 2,
+      "Real Estate / Urban Development": 1,
+      "Procurement / Outsourcing": 1,
+      "Hospitality, Manufacturing": 1,
+      "Real Estate / Law": 3,
+      "Logistics / Travel": 1,
+      "Travel / Marketing": 3,
+      "Packaging / Manufacturing": 1,
+      "Travel / Manufacturing": 1,
+      "Jobs / Home": 1,
+      "Materials / Office": 1,
+      "Shopping / Food": 1,
+      "Administration": 2,
+      "Education / Reading": 1,
+      "Transportation / Office": 1,
+      "Meetings / Education": 1,
+      "Office / Interior": 1,
+      "Business; Sales": 2,
+      "General / Leisure": 1,
+      "Technology / Legal": 1,
+      "Customer Service; Jobs / Recruitment": 1,
+      "Healthcare / Customer Service": 2,
+      "Employment / Finance": 1,
+      "Finance / E-commerce": 1,
+      "Payments / Business": 1,
+      "E-commerce / Finance": 1,
+      "finance/business": 1,
+      "Banking / Technology": 1,
+      "Payments / Retail": 1,
+      "Finance; Human Resources": 1,
+      "Finance / HR": 2,
+      "Travel / Environment": 3,
+      "Restaurant / Transportation": 1,
+      "Transportation; Safety": 1,
+      "Transportation; Shopping": 1,
+      "Finance / Employment": 1,
+      "Hospitality, Business": 1,
+      "Marketing / Pricing": 1,
+      "Procurement / Contracts": 1,
+      "HR / Compensation": 1,
+      "Manufacturing, Procurement": 2,
+      "Entertainment / Arts": 1,
+      "Workplace / Rules": 2,
+      "Real Estate / Legal": 4,
+      "Healthcare / Shopping": 1,
+      "Jobs / Administration": 2,
+      "Sales; Communication": 3,
+      "Energy / Finance": 1,
+      "Office / Equipment": 1,
+      "Security; Business": 1,
+      "aviation; jobs": 1,
+      "Maintenance / Real Estate": 1,
+      "Legal; Urban Planning": 1,
+      "General / Entertainment": 1,
+      "Urban Planning / Travel": 1,
+      "Services / Travel": 1,
+      "Construction; Office": 1,
+      "Retail": 1,
+      "Government / Society": 1,
+      "General / Urban Planning": 1,
+      "Urban Planning / General": 1,
+      "Investment": 1,
+      "Technology / Retail": 1,
+      "Transportation; Office": 1,
+      "Customer Service; Travel": 1,
+      "Film & Production": 1,
+      "Meetings / Presentation": 1,
+      "Public Relations": 1,
+      "Manufacturing / General": 3,
+      "Quality / Safety": 1,
+      "Pricing / Business": 1,
+      "Pricing / Competition": 1,
+      "Media / Manufacturing": 1,
+      "Technology; Hospitality": 2,
+      "Management / Workplace": 1,
+      "Jobs / Skills": 1,
+      "Operations / Manufacturing": 1,
+      "Procurement / Jobs": 3,
+      "Product / Business": 1,
+      "Marketing / Manufacturing": 3,
+      "Manufacturing / Marketing": 1,
+      "Marketing / E-commerce": 1,
+      "Product Development": 1,
+      "Retail, Business": 1,
+      "Sales / Education": 1,
+      "Manufacturing / Workplace": 2,
+      "Manufacturing; Logistics": 1,
+      "Manufacturing / Inventory": 1,
+      "Manufacturing / Training": 1,
+      "Manufacturing / Education": 1,
+      "Manufacturing / Human Resources": 2,
+      "Operations / Technology": 1,
+      "Career / HR": 1,
+      "Finance / Project Management": 1,
+      "Business / Project Management": 1,
+      "Technology / Project Management": 1,
+      "Marketing Planning": 1,
+      "E-commerce / Marketing": 1,
+      "Content Marketing": 2,
+      "Marketing / Restaurant": 4,
+      "Finance / Housing": 2,
+      "Real Estate / Jobs": 2,
+      "Housing / Business": 1,
+      "Housing / Jobs": 1,
+      "Meetings / Marketing": 1,
+      "Real Estate / Sales": 2,
+      "Safety / Finance": 1,
+      "Government; Infrastructure": 1,
+      "Public Services / Travel": 1,
+      "Government; Finance": 1,
+      "Government; Community": 1,
+      "Infrastructure / General": 3,
+      "Government; Communication": 1,
+      "Holidays / Workplace": 1,
+      "PR / Branding": 1,
+      "Infrastructure; Urban Planning": 1,
+      "Procurement / Government": 1,
+      "Business / Government": 1,
+      "General / Government": 1,
+      "Government / Construction": 1,
+      "Legal / M&A": 2,
+      "Shopping / Sales": 1,
+      "Sales / Procurement": 4,
+      "Procurement; Jobs": 2,
+      "Procurement / Data": 2,
+      "Procurement / HR": 1,
+      "Quality Management": 1,
+      "Quality Control": 1,
+      "Quality / Procurement": 1,
+      "General / Places": 1,
+      "Housing / Technology": 1,
+      "Communication / Media": 2,
+      "Radio / Music": 1,
+      "Energy / Safety": 1,
+      "Education, General": 2,
+      "Weather / Environment": 1,
+      "Hospitality; Manufacturing": 1,
+      "Real Estate, Office": 2,
+      "Real Estate, Jobs / Recruitment": 1,
+      "Procurement / Accounting": 1,
+      "Real Estate, Sales": 1,
+      "Hotel / Office": 1,
+      "Office, Finance": 1,
+      "Business / Health / Technology": 1,
+      "Business, Technology": 2,
+      "IT / Backup": 1,
+      "Technology, Safety": 8,
+      "HR / Marketing": 1,
+      "General, Safety": 4,
+      "Education; Office": 1,
+      "Sales, Business": 4,
+      "Food Safety / Storage": 1,
+      "Office / Household": 1,
+      "Urban Planning / Business": 1,
+      "Business, Real Estate": 1,
+      "Meetings; Education": 1,
+      "Legal / Transportation": 1,
+      "Office, Education": 1,
+      "Real Estate, Finance": 7,
+      "Sales, Procurement": 1,
+      "Safety / Transportation": 1,
+      "Finance, Office": 1,
+      "Safety; Education": 2,
+      "Business / Social": 1,
+      "IT / Workplace": 2,
+      "Real Estate, Construction": 2,
+      "Maintenance / Automotive": 1,
+      "Customer Service / Maintenance": 1,
+      "Procurement, Sales": 1,
+      "Customer Loyalty / E-commerce": 1,
+      "Manufacturing; Office": 1,
+      "Maintenance / Manufacturing": 1,
+      "Manufacturing, Office": 3,
+      "Jobs / Recruitment; Sales": 1,
+      "Marketing; Education": 1,
+      "Research / Education": 1,
+      "Technology, Education": 1,
+      "Research": 1,
+      "Travel / Entertainment": 3,
+      "Housing / Forms": 1,
+      "Real Estate; Travel": 1,
+      "Business, Safety": 2,
+      "Customer Service / IT": 1,
+      "Workplace / Behavior": 1,
+      "Communication; Technology": 1,
+      "Employment / Safety": 1,
+      "Hospitality, Travel": 1,
+      "Restaurant / Marketing": 1,
+      "Security / IT": 1,
+      "Shopping; Business": 4,
+      "Accounting / Corporate Finance": 1,
+      "Shopping; Travel": 1,
+      "Customer Service, Transportation": 2,
+      "Finance; Marketing": 1,
+      "Transportation / Customer Service": 2,
+      "Environment / Shopping": 1,
+      "Environment / Food": 1,
+      "Finance; Sales": 1,
+      "Business / Administration": 2,
+      "Reviews / Media": 1,
+      "Marketing / Retail": 1,
+      "Finance; Safety": 1,
+      "Risk Management / Finance": 1,
+      "Transportation / Infrastructure": 3,
+      "Travel, Transportation": 2,
+      "Advertising / Analytics": 1,
+      "Technology, Office": 3,
+      "Construction / Housing": 1,
+      "Office, Hospitality": 1,
+      "hotel; business": 1,
+      "Jobs / Operations": 1,
+      "logistics; technology": 1,
+      "Safety; Maintenance": 1,
+      "IT / Disaster Recovery": 1,
+      "Workplace / General": 1,
+      "Geography / Business": 1,
+      "Jobs / Recruitment, Office": 2,
+      "Sales; Business": 3,
+      "Sales, Jobs / Recruitment": 2,
+      "Sales / Legal": 1,
+      "Technology; Sales": 1,
+      "Sales / Training": 2,
+      "Sales; Technology": 1,
+      "Sales; Jobs / Recruitment": 1,
+      "Sales, Marketing": 2,
+      "Sales / Meetings": 1,
+      "Sales / Jobs / Recruitment": 1,
+      "Customer Service; Marketing": 1,
+      "Finance, Business": 2,
+      "Strategy / Economics": 1,
+      "Technology / Shopping": 1,
+      "Meetings; Travel": 1,
+      "Manufacturing / Infrastructure": 1,
+      "education/transportation": 1,
+      "Tourism / Education": 1,
+      "Science / Technology": 1,
+      "Communication, Technology": 1,
+      "Entertainment / General": 1,
+      "General, Marketing": 4,
+      "Marketing, Shopping": 1,
+      "Public Places / Travel": 1,
+      "Security / Real Estate": 1,
+      "Safety / Technology": 1,
+      "security": 1,
+      "Security / Property": 1,
+      "Communication; Logistics": 1,
+      "Communication / Email": 2,
+      "Communication; General": 1,
+      "Technology, Manufacturing": 2,
+      "Marketing, General": 2,
+      "Transportation / Public Services": 1,
+      "Technology, Business": 8,
+      "Banking / Hospitality": 1,
+      "Technology / Customer Service": 4,
+      "Sales, Communication": 1,
+      "Service / Maintenance": 1,
+      "Customer Service / Procurement": 2,
+      "Service / Marketing": 1,
+      "Procurement / Services": 1,
+      "Trading / Finance": 2,
+      "Construction / General": 1,
+      "Environment; Infrastructure": 1,
+      "Manufacturing, Construction": 1,
+      "Legal / Corporate": 1,
+      "Logistics / E-commerce": 1,
+      "Transportation, Finance": 1,
+      "Retail / E-commerce": 1,
+      "Environment / Geography": 1,
+      "Business / Resources": 1,
+      "Travel, Hospitality": 1,
+      "Hospitality / Transportation": 1,
+      "Office / Legal": 1,
+      "Commodities / Investment": 1,
+      "Business / Construction / Technology": 1,
+      "Education / Employment": 1,
+      "Retail / Inventory": 1,
+      "Meetings / Technology": 1,
+      "transportation; technology": 1,
+      "Technology / Energy": 2,
+      "General, Education": 1,
+      "Technology, Jobs / Recruitment": 2,
+      "Shopping & Events": 1,
+      "Law / Real Estate": 1,
+      "Business / Information": 1,
+      "Technology, Communication": 2,
+      "Hospitality, Marketing": 1,
+      "Sales; Shopping": 1,
+      "Business / Career": 2,
+      "Business / Forms": 1,
+      "Business / Science": 1,
+      "Transportation, Safety": 1,
+      "Media / Sports": 1,
+      "Marketing / Branding": 1,
+      "HR / Personal Information": 1,
+      "Workplace / Meetings": 1,
+      "Entertainment / Theater": 2,
+      "Management / Communication": 1,
+      "Management / Governance": 1,
+      "Mail / Office": 1,
+      "Manufacturing / Sales": 1,
+      "business/hotel": 1,
+      "HR / Project Management": 1,
+      "Business, Education": 2,
+      "Workplace / Productivity": 2,
+      "Construction / Materials": 1,
+      "Retail / Finance": 1,
+      "Retail, Shopping": 1,
+      "Finance / Inventory": 1,
+      "Retail / Logistics": 1,
+      "Technology; Logistics": 1,
+      "Real Estate, Technology": 1,
+      "Retail / Technology": 1,
+      "Shopping, Marketing": 2,
+      "Insurance / Weather": 1,
+      "Safety, Construction": 1,
+      "directions": 2,
+      "Investment / M&A": 1,
+      "Procurement / Strategy": 1,
+      "Strategy / Leadership": 1,
+      "Transportation, General": 1,
+      "Transportation, Travel": 1,
+      "Manufacturing / Construction": 1,
+      "Education; Finance": 1,
+      "Media / Fashion": 1,
+      "Evaluation / Communication": 1,
+      "Office / Applications": 1,
+      "Technology / Services": 2,
+      "Finance / Mathematics": 1,
+      "Real Estate, General": 1,
+      "Business / Statistics": 1,
+      "Business / Requirements": 1,
+      "Business / Documents": 1,
+      "Business, Manufacturing": 2,
+      "Procurement; Ethics": 1,
+      "Procurement; Administration": 1,
+      "Procurement / Supply Chain": 1,
+      "Finance, Manufacturing": 1,
+      "Procurement / Customer Service": 1,
+      "Manufacturing, Education": 1,
+      "Procurement, Manufacturing": 1,
+      "Communication, Jobs / Recruitment": 1,
+      "IT / Customer Service": 1,
+      "General; Jobs / Recruitment": 1,
+      "Safety, Technology": 1,
+      "Infrastructure / Travel": 1,
+      "Business, General": 1,
+      "Environment; Geography": 2,
+      "Derivatives / Finance": 1,
+      "IT / Jobs": 1,
+      "Technology / M&A": 1,
+      "Restaurant / Customer Service": 3,
+      "Productivity / Technology": 1,
+      "Tax / Accounting": 2,
+      "Finance / Tax": 2,
+      "HR / Education": 2,
+      "work": 2,
+      "Workplace / Engineering": 1,
+      "Procurement / Engineering": 1,
+      "Manufacturing, Technology": 1,
+      "Training": 1,
+      "Manufacturing; Education": 1,
+      "communication": 1,
+      "Weather / Science": 1,
+      "Business / Housing": 1,
+      "Travel / Jobs": 1,
+      "Construction / Household": 1,
+      "general": 1,
+      "health": 1,
+      "Jobs / Recruitment; Safety": 2,
+      "tourism": 3,
+      "International Trade / Procurement": 1,
+      "Legal / Marketing": 1,
+      "Transportation / Law": 2,
+      "Education / Office": 1,
+      "Workplace / Training": 1,
+      "Finance / Transportation": 1,
+      "Travel / Documents": 1,
+      "Travel / Customer Service": 2,
+      "travel; weather": 1,
+      "Travel / Health": 1,
+      "Travel / Media": 2,
+      "Workplace / Health": 1,
+      "environment": 1,
+      "cybersecurity": 1,
+      "Transportation / Places": 1,
+      "Construction / Infrastructure": 1,
+      "Business / Problems": 1,
+      "Economy / Employment": 1,
+      "Education / Jobs": 1,
+      "Transportation, Manufacturing": 1,
+      "Manufacturing, Retail": 1,
+      "Urban Planning / Construction": 1,
+      "Environment / Urban Planning": 1,
+      "Urban Planning; Environment": 1,
+      "Jobs; Urban Planning": 1,
+      "urban development": 1,
+      "Marketing & Technology": 1,
+      "Infrastructure; Finance": 1,
+      "Finance / Home": 1,
+      "Finance / Facilities": 1,
+      "Infrastructure; Construction": 1,
+      "Workplace / Property": 1,
+      "Legal / Office": 1,
+      "Procurement / Supplier Management": 1,
+      "Building / Facilities": 1,
+      "Transportation; Commerce": 1,
+      "Transportation / Construction": 1,
+      "Media & Social Media": 1,
+      "Digital / Technology": 1,
+      "Technology; Real Estate": 1,
+      "Technology; Meetings": 1,
+      "Business; Management": 1,
+      "Healthcare / Communication": 1,
+      "Presentation / Education": 1,
+      "Environment / Travel": 1,
+      "Workplace / Community": 1,
+      "Hospitality; Shopping": 1,
+      "Sustainability / Manufacturing": 1,
+      "Home / Utilities": 1,
+      "Utilities; Community": 1,
+      "Environment; Water": 2,
+      "Office / Reporting": 1,
+      "Hospitality, Safety": 1,
+      "Sales / Distribution": 1,
+      "Construction; Shopping": 1,
+      "weather; travel": 1,
+      "Business / Auction": 1,
+      "Engineering / Weather": 1,
+      "Workplace / Quality": 1,
+      "Workplace / Time": 1,
+      "HR / Technology": 1,
+      "Office / Employment": 1,
+      "Office / Training": 1,
+      "General / Communication": 1,
+      "Packaging / Retail": 1,
+      "Accounting / Tax": 1,
+      "Real Estate; Business": 1
+    },
+    "is_common_distribution": {},
+    "elapsed_time": "11.15s"
+  },
+  "total_schema_errors": 11,
+  "total_schema_warnings": 32,
+  "total_fact_check_unrecognized": 124,
+  "total_ipa_issues": 37,
+  "total_pos_issues": 20,
+  "schema_errors": [
+    {
+      "row": 1664,
+      "word": "caf茅",
+      "column": "english",
+      "message": "Dấu hiệu lỗi Mojibake font: 'caf茅'"
+    },
+    {
+      "row": 4722,
+      "word": "entr茅e",
+      "column": "english",
+      "message": "Dấu hiệu lỗi Mojibake font: 'entr茅e'"
+    },
+    {
+      "row": 4722,
+      "word": "entr茅e",
+      "column": "vietnamese",
+      "message": "Nghĩa tiếng Việt bị rỗng!"
+    },
+    {
+      "row": 5214,
+      "word": "film",
+      "column": "difficulty",
+      "message": "Độ khó không hợp lệ: 'elementary'. Chi chấp nhận: ['easy', 'medium', 'hard']"
+    },
+    {
+      "row": 8666,
+      "word": "music group",
+      "column": "difficulty",
+      "message": "Độ khó không hợp lệ: 'elementary'. Chi chấp nhận: ['easy', 'medium', 'hard']"
+    },
+    {
+      "row": 8681,
+      "word": "musical instrument",
+      "column": "difficulty",
+      "message": "Độ khó không hợp lệ: 'elementary'. Chi chấp nhận: ['easy', 'medium', 'hard']"
+    },
+    {
+      "row": 12121,
+      "word": "ros茅",
+      "column": "english",
+      "message": "Dấu hiệu lỗi Mojibake font: 'ros茅'"
+    },
+    {
+      "row": 12404,
+      "word": "saut茅ed",
+      "column": "english",
+      "message": "Dấu hiệu lỗi Mojibake font: 'saut茅ed'"
+    },
+    {
+      "row": 13348,
+      "word": "star",
+      "column": "difficulty",
+      "message": "Độ khó không hợp lệ: 'elementary'. Chi chấp nhận: ['easy', 'medium', 'hard']"
+    },
+    {
+      "row": 14292,
+      "word": "ticket office",
+      "column": "difficulty",
+      "message": "Độ khó không hợp lệ: 'elementary'. Chi chấp nhận: ['easy', 'medium', 'hard']"
+    },
+    {
+      "row": 14429,
+      "word": "track",
+      "column": "difficulty",
+      "message": "Độ khó không hợp lệ: 'elementary'. Chi chấp nhận: ['easy', 'medium', 'hard']"
+    }
+  ],
+  "schema_warnings": [
+    {
+      "row": 28,
+      "word": "abundant",
+      "column": "synonyms",
+      "message": "Mảng synonyms có phần tử lặp: ['plentiful']"
+    },
+    {
+      "row": 137,
+      "word": "acquire",
+      "column": "synonyms",
+      "message": "Mảng synonyms có phần tử lặp: ['obtain']"
+    },
+    {
+      "row": 228,
+      "word": "adoption",
+      "column": "synonyms",
+      "message": "Mảng synonyms có phần tử lặp: ['acceptance']"
+    },
+    {
+      "row": 306,
+      "word": "agent",
+      "column": "synonyms",
+      "message": "Mảng synonyms có phần tử lặp: ['representative']"
+    },
+    {
+      "row": 663,
+      "word": "assess",
+      "column": "synonyms",
+      "message": "Mảng synonyms có phần tử lặp: ['evaluate']"
+    },
+    {
+      "row": 707,
+      "word": "attainment",
+      "column": "synonyms",
+      "message": "Mảng synonyms có phần tử lặp: ['achievement']"
+    },
+    {
+      "row": 727,
+      "word": "attractive",
+      "column": "synonyms",
+      "message": "Mảng synonyms có phần tử lặp: ['appealing']"
+    },
+    {
+      "row": 1014,
+      "word": "beforehand",
+      "column": "antonyms",
+      "message": "Mảng antonyms có phần tử lặp: ['afterward']"
+    },
+    {
+      "row": 1863,
+      "word": "carrier",
+      "column": "synonyms",
+      "message": "Mảng synonyms có phần tử lặp: ['transporter']"
+    },
+    {
+      "row": 1906,
+      "word": "cast",
+      "column": "collocations",
+      "message": "Mảng collocations có phần tử lặp: ['cast member']"
+    },
+    {
+      "row": 2391,
+      "word": "communication channel",
+      "column": "collocations",
+      "message": "Mảng collocations có phần tử lặp: ['communication channel']"
+    },
+    {
+      "row": 3065,
+      "word": "coworker",
+      "column": "synonyms",
+      "message": "Mảng synonyms có phần tử lặp: ['colleague']"
+    },
+    {
+      "row": 3228,
+      "word": "customary",
+      "column": "collocations",
+      "message": "Mảng collocations có phần tử lặp: ['customary practice']"
+    },
+    {
+      "row": 3567,
+      "word": "dedication",
+      "column": "synonyms",
+      "message": "Mảng synonyms có phần tử lặp: ['devotion']"
+    },
+    {
+      "row": 3710,
+      "word": "dependable",
+      "column": "synonyms",
+      "message": "Mảng synonyms có phần tử lặp: ['trustworthy']"
+    },
+    {
+      "row": 3910,
+      "word": "diminish",
+      "column": "antonyms",
+      "message": "Mảng antonyms có phần tử lặp: ['increase']"
+    },
+    {
+      "row": 3967,
+      "word": "disadvantage",
+      "column": "synonyms",
+      "message": "Mảng synonyms có phần tử lặp: ['drawback']"
+    },
+    {
+      "row": 4600,
+      "word": "employment process",
+      "column": "collocations",
+      "message": "Mảng collocations có phần tử lặp: ['employment process']"
+    },
+    {
+      "row": 4722,
+      "word": "entr茅e",
+      "column": "pronounce",
+      "message": "Phiên âm IPA bị rỗng!"
+    },
+    {
+      "row": 5160,
+      "word": "favorable",
+      "column": "word_family",
+      "message": "Mảng word_family có phần tử lặp: ['favor']"
+    },
+    {
+      "row": 5895,
+      "word": "graduation",
+      "column": "collocations",
+      "message": "Mảng collocations có phần tử lặp: ['graduation ceremony']"
+    },
+    {
+      "row": 7773,
+      "word": "magazine issue",
+      "column": "word_family",
+      "message": "Mảng word_family có phần tử lặp: ['issue']"
+    },
+    {
+      "row": 11329,
+      "word": "reaction",
+      "column": "synonyms",
+      "message": "Mảng synonyms có phần tử lặp: ['response']"
+    },
+    {
+      "row": 11986,
+      "word": "reusable container",
+      "column": "word_family",
+      "message": "Mảng word_family có phần tử lặp: ['reuse']"
+    },
+    {
+      "row": 12121,
+      "word": "ros茅",
+      "column": "pronounce",
+      "message": "Thiếu dấu mở / trong IPA: '—'"
+    },
+    {
+      "row": 12745,
+      "word": "settle",
+      "column": "synonyms",
+      "message": "Mảng synonyms có phần tử lặp: ['resolve']"
+    },
+    {
+      "row": 12897,
+      "word": "similarly",
+      "column": "synonyms",
+      "message": "Mảng synonyms có phần tử lặp: ['likewise']"
+    },
+    {
+      "row": 13601,
+      "word": "successive",
+      "column": "synonyms",
+      "message": "Mảng synonyms có phần tử lặp: ['consecutive']"
+    },
+    {
+      "row": 14264,
+      "word": "therefore",
+      "column": "collocations",
+      "message": "Mảng collocations có phần tử lặp: ['therefore']"
+    },
+    {
+      "row": 14274,
+      "word": "thrill",
+      "column": "synonyms",
+      "message": "Mảng synonyms có phần tử lặp: ['excitement']"
+    },
+    {
+      "row": 14833,
+      "word": "uniformly",
+      "column": "synonyms",
+      "message": "Mảng synonyms có phần tử lặp: ['consistently']"
+    },
+    {
+      "row": 14958,
+      "word": "utilize",
+      "column": "word_family",
+      "message": "Mảng word_family có phần tử lặp: ['utilization']"
+    }
+  ],
+  "fact_check_issues": [
+    {
+      "row": 3507,
+      "word": "DDP",
+      "unrecognized": [
+        "ddp"
+      ],
+      "suggestions": [
+        "dp",
+        "dd",
+        "dadap"
+      ],
+      "message": "Từ/token '['ddp']' chưa có trong từ điển chuẩn"
+    },
+    {
+      "row": 3805,
+      "word": "DHCP",
+      "unrecognized": [
+        "dhcp"
+      ],
+      "suggestions": [],
+      "message": "Từ/token '['dhcp']' chưa có trong từ điển chuẩn"
+    },
+    {
+      "row": 4102,
+      "word": "DNS",
+      "unrecognized": [
+        "dns"
+      ],
+      "suggestions": [
+        "duns",
+        "dons",
+        "dins"
+      ],
+      "message": "Từ/token '['dns']' chưa có trong từ điển chuẩn"
+    },
+    {
+      "row": 4103,
+      "word": "DNS server",
+      "unrecognized": [
+        "dns"
+      ],
+      "suggestions": [],
+      "message": "Từ/token '['dns']' chưa có trong từ điển chuẩn"
+    },
+    {
+      "row": 4236,
+      "word": "DVD",
+      "unrecognized": [
+        "dvd"
+      ],
+      "suggestions": [
+        "dd",
+        "divid",
+        "dived"
+      ],
+      "message": "Từ/token '['dvd']' chưa có trong từ điển chuẩn"
+    },
+    {
+      "row": 4268,
+      "word": "EBITDA",
+      "unrecognized": [
+        "ebitda"
+      ],
+      "suggestions": [],
+      "message": "Từ/token '['ebitda']' chưa có trong từ điển chuẩn"
+    },
+    {
+      "row": 4808,
+      "word": "ERP",
+      "unrecognized": [
+        "erp"
+      ],
+      "suggestions": [
+        "er",
+        "ep",
+        "erupt"
+      ],
+      "message": "Từ/token '['erp']' chưa có trong từ điển chuẩn"
+    },
+    {
+      "row": 4809,
+      "word": "ERP system",
+      "unrecognized": [
+        "erp"
+      ],
+      "suggestions": [],
+      "message": "Từ/token '['erp']' chưa có trong từ điển chuẩn"
+    },
+    {
+      "row": 4825,
+      "word": "ESG reporting",
+      "unrecognized": [
+        "esg"
+      ],
+      "suggestions": [],
+      "message": "Từ/token '['esg']' chưa có trong từ điển chuẩn"
+    },
+    {
+      "row": 4826,
+      "word": "ESG strategy",
+      "unrecognized": [
+        "esg"
+      ],
+      "suggestions": [],
+      "message": "Từ/token '['esg']' chưa có trong từ điển chuẩn"
+    },
+    {
+      "row": 4828,
+      "word": "esports",
+      "unrecognized": [
+        "esports"
+      ],
+      "suggestions": [
+        "exports",
+        "esprits",
+        "escorts"
+      ],
+      "message": "Từ/token '['esports']' chưa có trong từ điển chuẩn"
+    },
+    {
+      "row": 4829,
+      "word": "esports event",
+      "unrecognized": [
+        "esports"
+      ],
+      "suggestions": [],
+      "message": "Từ/token '['esports']' chưa có trong từ điển chuẩn"
+    },
+    {
+      "row": 4830,
+      "word": "esports player",
+      "unrecognized": [
+        "esports"
+      ],
+      "suggestions": [],
+      "message": "Từ/token '['esports']' chưa có trong từ điển chuẩn"
+    },
+    {
+      "row": 4831,
+      "word": "esports team",
+      "unrecognized": [
+        "esports"
+      ],
+      "suggestions": [],
+      "message": "Từ/token '['esports']' chưa có trong từ điển chuẩn"
+    },
+    {
+      "row": 4969,
+      "word": "expat employee",
+      "unrecognized": [
+        "expat"
+      ],
+      "suggestions": [],
+      "message": "Từ/token '['expat']' chưa có trong từ điển chuẩn"
+    },
+    {
+      "row": 5037,
+      "word": "extranet",
+      "unrecognized": [
+        "extranet"
+      ],
+      "suggestions": [
+        "extraneity",
+        "extant",
+        "extravert"
+      ],
+      "message": "Từ/token '['extranet']' chưa có trong từ điển chuẩn"
+    },
+    {
+      "row": 5044,
+      "word": "EXW",
+      "unrecognized": [
+        "exw"
+      ],
+      "suggestions": [
+        "ex",
+        "ew",
+        "expwy"
+      ],
+      "message": "Từ/token '['exw']' chưa có trong từ điển chuẩn"
+    },
+    {
+      "row": 5055,
+      "word": "Facebook",
+      "unrecognized": [
+        "facebook"
+      ],
+      "suggestions": [
+        "facebow",
+        "facework"
+      ],
+      "message": "Từ/token '['facebook']' chưa có trong từ điển chuẩn"
+    },
+    {
+      "row": 5103,
+      "word": "failover",
+      "unrecognized": [
+        "failover"
+      ],
+      "suggestions": [
+        "frailer",
+        "flyover",
+        "frailero"
+      ],
+      "message": "Từ/token '['failover']' chưa có trong từ điển chuẩn"
+    },
+    {
+      "row": 5104,
+      "word": "failover system",
+      "unrecognized": [
+        "failover"
+      ],
+      "suggestions": [],
+      "message": "Từ/token '['failover']' chưa có trong từ điển chuẩn"
+    },
+    {
+      "row": 5603,
+      "word": "FPY",
+      "unrecognized": [
+        "fpy"
+      ],
+      "suggestions": [
+        "fy",
+        "fp",
+        "foppy"
+      ],
+      "message": "Từ/token '['fpy']' chưa có trong từ điển chuẩn"
+    },
+    {
+      "row": 5639,
+      "word": "freeware",
+      "unrecognized": [
+        "freeware"
+      ],
+      "suggestions": [
+        "freeward",
+        "fibreware",
+        "freeway"
+      ],
+      "message": "Từ/token '['freeware']' chưa có trong từ điển chuẩn"
+    },
+    {
+      "row": 5690,
+      "word": "FTP",
+      "unrecognized": [
+        "ftp"
+      ],
+      "suggestions": [
+        "ft",
+        "fp"
+      ],
+      "message": "Từ/token '['ftp']' chưa có trong từ điển chuẩn"
+    },
+    {
+      "row": 5827,
+      "word": "GitHub",
+      "unrecognized": [
+        "github"
+      ],
+      "suggestions": [
+        "gith"
+      ],
+      "message": "Từ/token '['github']' chưa có trong từ điển chuẩn"
+    },
+    {
+      "row": 5828,
+      "word": "GitLab",
+      "unrecognized": [
+        "gitlab"
+      ],
+      "suggestions": [
+        "gila"
+      ],
+      "message": "Từ/token '['gitlab']' chưa có trong từ điển chuẩn"
+    },
+    {
+      "row": 5888,
+      "word": "GPU",
+      "unrecognized": [
+        "gpu"
+      ],
+      "suggestions": [
+        "gu",
+        "gp"
+      ],
+      "message": "Từ/token '['gpu']' chưa có trong từ điển chuẩn"
+    },
+    {
+      "row": 5938,
+      "word": "GRN",
+      "unrecognized": [
+        "grn"
+      ],
+      "suggestions": [
+        "grun",
+        "grin",
+        "girn"
+      ],
+      "message": "Từ/token '['grn']' chưa có trong từ điển chuẩn"
+    },
+    {
+      "row": 5992,
+      "word": "GUI",
+      "unrecognized": [
+        "gui"
+      ],
+      "suggestions": [
+        "guti",
+        "gumi",
+        "guid"
+      ],
+      "message": "Từ/token '['gui']' chưa có trong từ điển chuẩn"
+    },
+    {
+      "row": 6028,
+      "word": "handover",
+      "unrecognized": [
+        "handover"
+      ],
+      "suggestions": [
+        "hanover",
+        "hangover",
+        "hander"
+      ],
+      "message": "Từ/token '['handover']' chưa có trong từ điển chuẩn"
+    },
+    {
+      "row": 6029,
+      "word": "handover date",
+      "unrecognized": [
+        "handover"
+      ],
+      "suggestions": [],
+      "message": "Từ/token '['handover']' chưa có trong từ điển chuẩn"
+    },
+    {
+      "row": 6030,
+      "word": "handover document",
+      "unrecognized": [
+        "handover"
+      ],
+      "suggestions": [],
+      "message": "Từ/token '['handover']' chưa có trong từ điển chuẩn"
+    },
+    {
+      "row": 6031,
+      "word": "handwashing",
+      "unrecognized": [
+        "handwashing"
+      ],
+      "suggestions": [
+        "handwaving",
+        "handweaving",
+        "handshaking"
+      ],
+      "message": "Từ/token '['handwashing']' chưa có trong từ điển chuẩn"
+    },
+    {
+      "row": 6065,
+      "word": "HDMI port",
+      "unrecognized": [
+        "hdmi"
+      ],
+      "suggestions": [],
+      "message": "Từ/token '['hdmi']' chưa có trong từ điển chuẩn"
+    },
+    {
+      "row": 6070,
+      "word": "headcount",
+      "unrecognized": [
+        "headcount"
+      ],
+      "suggestions": [
+        "headhunt",
+        "headhunts",
+        "headcloth"
+      ],
+      "message": "Từ/token '['headcount']' chưa có trong từ điển chuẩn"
+    },
+    {
+      "row": 6071,
+      "word": "headcount report",
+      "unrecognized": [
+        "headcount"
+      ],
+      "suggestions": [],
+      "message": "Từ/token '['headcount']' chưa có trong từ điển chuẩn"
+    },
+    {
+      "row": 6153,
+      "word": "heatwave",
+      "unrecognized": [
+        "heatwave"
+      ],
+      "suggestions": [
+        "heartwater",
+        "heatable"
+      ],
+      "message": "Từ/token '['heatwave']' chưa có trong từ điển chuẩn"
+    },
+    {
+      "row": 6222,
+      "word": "HOA",
+      "unrecognized": [
+        "hoa"
+      ],
+      "suggestions": [
+        "hoya",
+        "hova",
+        "hora"
+      ],
+      "message": "Từ/token '['hoa']' chưa có trong từ điển chuẩn"
+    },
+    {
+      "row": 6259,
+      "word": "homebuyer",
+      "unrecognized": [
+        "homebuyer"
+      ],
+      "suggestions": [
+        "homebuilder",
+        "homburg"
+      ],
+      "message": "Từ/token '['homebuyer']' chưa có trong từ điển chuẩn"
+    },
+    {
+      "row": 6265,
+      "word": "homepage",
+      "unrecognized": [
+        "homepage"
+      ],
+      "suggestions": [
+        "homage",
+        "homeplace",
+        "hopsage"
+      ],
+      "message": "Từ/token '['homepage']' chưa có trong từ điển chuẩn"
+    },
+    {
+      "row": 6270,
+      "word": "hors d'oeuvre",
+      "unrecognized": [
+        "d'oeuvre"
+      ],
+      "suggestions": [],
+      "message": "Từ/token '[\"d'oeuvre\"]' chưa có trong từ điển chuẩn"
+    },
+    {
+      "row": 6406,
+      "word": "HRIS",
+      "unrecognized": [
+        "hris"
+      ],
+      "suggestions": [
+        "hrs",
+        "his",
+        "hybris"
+      ],
+      "message": "Từ/token '['hris']' chưa có trong từ điển chuẩn"
+    },
+    {
+      "row": 6407,
+      "word": "HRMS",
+      "unrecognized": [
+        "hrms"
+      ],
+      "suggestions": [
+        "herms",
+        "harms",
+        "hrs"
+      ],
+      "message": "Từ/token '['hrms']' chưa có trong từ điển chuẩn"
+    },
+    {
+      "row": 6440,
+      "word": "hyperlink",
+      "unrecognized": [
+        "hyperlink"
+      ],
+      "suggestions": [
+        "hyperin",
+        "hypernik",
+        "hyperion"
+      ],
+      "message": "Từ/token '['hyperlink']' chưa có trong từ điển chuẩn"
+    },
+    {
+      "row": 6442,
+      "word": "hypervisor",
+      "unrecognized": [
+        "hypervisor"
+      ],
+      "suggestions": [
+        "hyperviscous",
+        "hyperion"
+      ],
+      "message": "Từ/token '['hypervisor']' chưa có trong từ điển chuẩn"
+    },
+    {
+      "row": 6449,
+      "word": "ICU",
+      "unrecognized": [
+        "icu"
+      ],
+      "suggestions": [
+        "ichu",
+        "ic",
+        "incut"
+      ],
+      "message": "Từ/token '['icu']' chưa có trong từ điển chuẩn"
+    },
+    {
+      "row": 6535,
+      "word": "incentivize",
+      "unrecognized": [
+        "incentivize"
+      ],
+      "suggestions": [
+        "incentive",
+        "incentives",
+        "incentively"
+      ],
+      "message": "Từ/token '['incentivize']' chưa có trong từ điển chuẩn"
+    },
+    {
+      "row": 6563,
+      "word": "Incoterms",
+      "unrecognized": [
+        "incoterms"
+      ],
+      "suggestions": [
+        "interims",
+        "incomers",
+        "inciters"
+      ],
+      "message": "Từ/token '['incoterms']' chưa có trong từ điển chuẩn"
+    },
+    {
+      "row": 6764,
+      "word": "Instagram",
+      "unrecognized": [
+        "instagram"
+      ],
+      "suggestions": [
+        "isogram",
+        "intarsa",
+        "intaria"
+      ],
+      "message": "Từ/token '['instagram']' chưa có trong từ điển chuẩn"
+    },
+    {
+      "row": 6818,
+      "word": "integration timeline",
+      "unrecognized": [
+        "timeline"
+      ],
+      "suggestions": [],
+      "message": "Từ/token '['timeline']' chưa có trong từ điển chuẩn"
+    },
+    {
+      "row": 7049,
+      "word": "IPv4",
+      "unrecognized": [
+        "ipv4"
+      ],
+      "suggestions": [
+        "impv"
+      ],
+      "message": "Từ/token '['ipv4']' chưa có trong từ điển chuẩn"
+    },
+    {
+      "row": 7050,
+      "word": "IPv6",
+      "unrecognized": [
+        "ipv6"
+      ],
+      "suggestions": [
+        "impv"
+      ],
+      "message": "Từ/token '['ipv6']' chưa có trong từ điển chuẩn"
+    },
+    {
+      "row": 7093,
+      "word": "ITSM",
+      "unrecognized": [
+        "itsm"
+      ],
+      "suggestions": [
+        "its",
+        "ism",
+        "itoism"
+      ],
+      "message": "Từ/token '['itsm']' chưa có trong từ điển chuẩn"
+    },
+    {
+      "row": 7097,
+      "word": "JavaScript",
+      "unrecognized": [
+        "javascript"
+      ],
+      "suggestions": [],
+      "message": "Từ/token '['javascript']' chưa có trong từ điển chuẩn"
+    },
+    {
+      "row": 7100,
+      "word": "JIT",
+      "unrecognized": [
+        "jit"
+      ],
+      "suggestions": [
+        "jiti",
+        "jilt",
+        "jt"
+      ],
+      "message": "Từ/token '['jit']' chưa có trong từ điển chuẩn"
+    },
+    {
+      "row": 7146,
+      "word": "JSON",
+      "unrecognized": [
+        "json"
+      ],
+      "suggestions": [
+        "jason",
+        "jon",
+        "jobson"
+      ],
+      "message": "Từ/token '['json']' chưa có trong từ điển chuẩn"
+    },
+    {
+      "row": 7147,
+      "word": "JSON format",
+      "unrecognized": [
+        "json"
+      ],
+      "suggestions": [],
+      "message": "Từ/token '['json']' chưa có trong từ điển chuẩn"
+    },
+    {
+      "row": 7160,
+      "word": "Kaizen",
+      "unrecognized": [
+        "kaizen"
+      ],
+      "suggestions": [
+        "khazen",
+        "kain",
+        "kyanize"
+      ],
+      "message": "Từ/token '['kaizen']' chưa có trong từ điển chuẩn"
+    },
+    {
+      "row": 7161,
+      "word": "kanban",
+      "unrecognized": [
+        "kanban"
+      ],
+      "suggestions": [
+        "kansan",
+        "kana",
+        "kiangan"
+      ],
+      "message": "Từ/token '['kanban']' chưa có trong từ điển chuẩn"
+    },
+    {
+      "row": 7162,
+      "word": "kanban card",
+      "unrecognized": [
+        "kanban"
+      ],
+      "suggestions": [],
+      "message": "Từ/token '['kanban']' chưa có trong từ điển chuẩn"
+    },
+    {
+      "row": 7182,
+      "word": "key handover",
+      "unrecognized": [
+        "handover"
+      ],
+      "suggestions": [],
+      "message": "Từ/token '['handover']' chưa có trong từ điển chuẩn"
+    },
+    {
+      "row": 7190,
+      "word": "keycard",
+      "unrecognized": [
+        "keycard"
+      ],
+      "suggestions": [
+        "keyboard",
+        "kaleyard",
+        "keywrd"
+      ],
+      "message": "Từ/token '['keycard']' chưa có trong từ điển chuẩn"
+    },
+    {
+      "row": 7195,
+      "word": "kids' menu",
+      "unrecognized": [
+        "kids'"
+      ],
+      "suggestions": [],
+      "message": "Từ/token '[\"kids'\"]' chưa có trong từ điển chuẩn"
+    },
+    {
+      "row": 7230,
+      "word": "Kotlin",
+      "unrecognized": [
+        "kotlin"
+      ],
+      "suggestions": [
+        "kaolin",
+        "koli",
+        "kotwali"
+      ],
+      "message": "Từ/token '['kotlin']' chưa có trong từ điển chuẩn"
+    },
+    {
+      "row": 7234,
+      "word": "Kubernetes",
+      "unrecognized": [
+        "kubernetes"
+      ],
+      "suggestions": [
+        "kernites"
+      ],
+      "message": "Từ/token '['kubernetes']' chưa có trong từ điển chuẩn"
+    },
+    {
+      "row": 7326,
+      "word": "latte",
+      "unrecognized": [
+        "latte"
+      ],
+      "suggestions": [
+        "latter",
+        "latten",
+        "latite"
+      ],
+      "message": "Từ/token '['latte']' chưa có trong từ điển chuẩn"
+    },
+    {
+      "row": 7508,
+      "word": "Linux",
+      "unrecognized": [
+        "linux"
+      ],
+      "suggestions": [
+        "linus",
+        "linum",
+        "lux"
+      ],
+      "message": "Từ/token '['linux']' chưa có trong từ điển chuẩn"
+    },
+    {
+      "row": 7784,
+      "word": "mailroom",
+      "unrecognized": [
+        "mailroom"
+      ],
+      "suggestions": [
+        "maybloom",
+        "malaroma"
+      ],
+      "message": "Từ/token '['mailroom']' chưa có trong từ điển chuẩn"
+    },
+    {
+      "row": 8166,
+      "word": "ma卯tre d'",
+      "unrecognized": [
+        "matre",
+        "d'"
+      ],
+      "suggestions": [],
+      "message": "Từ/token '['matre', \"d'\"]' chưa có trong từ điển chuẩn"
+    },
+    {
+      "row": 8402,
+      "word": "metadata",
+      "unrecognized": [
+        "metadata"
+      ],
+      "suggestions": [],
+      "message": "Từ/token '['metadata']' chưa có trong từ điển chuẩn"
+    },
+    {
+      "row": 8420,
+      "word": "MFA",
+      "unrecognized": [
+        "mfa"
+      ],
+      "suggestions": [
+        "mf",
+        "ma"
+      ],
+      "message": "Từ/token '['mfa']' chưa có trong từ điển chuẩn"
+    },
+    {
+      "row": 8429,
+      "word": "midsize car",
+      "unrecognized": [
+        "midsize"
+      ],
+      "suggestions": [],
+      "message": "Từ/token '['midsize']' chưa có trong từ điển chuẩn"
+    },
+    {
+      "row": 8447,
+      "word": "minibar",
+      "unrecognized": [
+        "minibar"
+      ],
+      "suggestions": [
+        "minbar",
+        "minicar",
+        "miniard"
+      ],
+      "message": "Từ/token '['minibar']' chưa có trong từ điển chuẩn"
+    },
+    {
+      "row": 8457,
+      "word": "minivan",
+      "unrecognized": [
+        "minivan"
+      ],
+      "suggestions": [
+        "minitant",
+        "minervan",
+        "minyan"
+      ],
+      "message": "Từ/token '['minivan']' chưa có trong từ điển chuẩn"
+    },
+    {
+      "row": 8502,
+      "word": "mocktail",
+      "unrecognized": [
+        "mocktail"
+      ],
+      "suggestions": [
+        "motacil",
+        "monkeytail",
+        "mockable"
+      ],
+      "message": "Từ/token '['mocktail']' chưa có trong từ điển chuẩn"
+    },
+    {
+      "row": 8670,
+      "word": "music playlist",
+      "unrecognized": [
+        "playlist"
+      ],
+      "suggestions": [],
+      "message": "Từ/token '['playlist']' chưa có trong từ điển chuẩn"
+    },
+    {
+      "row": 8697,
+      "word": "NAS",
+      "unrecognized": [
+        "nas"
+      ],
+      "suggestions": [
+        "nyas",
+        "nias",
+        "nays"
+      ],
+      "message": "Từ/token '['nas']' chưa có trong từ điển chuẩn"
+    },
+    {
+      "row": 8884,
+      "word": "NLP",
+      "unrecognized": [
+        "nlp"
+      ],
+      "suggestions": [
+        "np",
+        "nl"
+      ],
+      "message": "Từ/token '['nlp']' chưa có trong từ điển chuẩn"
+    },
+    {
+      "row": 8916,
+      "word": "NoSQL database",
+      "unrecognized": [
+        "nosql"
+      ],
+      "suggestions": [],
+      "message": "Từ/token '['nosql']' chưa có trong từ điển chuẩn"
+    },
+    {
+      "row": 8929,
+      "word": "nurses' station",
+      "unrecognized": [
+        "nurses'"
+      ],
+      "suggestions": [],
+      "message": "Từ/token '[\"nurses'\"]' chưa có trong từ điển chuẩn"
+    },
+    {
+      "row": 8981,
+      "word": "OEE",
+      "unrecognized": [
+        "oee"
+      ],
+      "suggestions": [
+        "okee",
+        "ogee",
+        "oe"
+      ],
+      "message": "Từ/token '['oee']' chưa có trong từ điển chuẩn"
+    },
+    {
+      "row": 9689,
+      "word": "payslip",
+      "unrecognized": [
+        "payslip"
+      ],
+      "suggestions": [
+        "partyship"
+      ],
+      "message": "Từ/token '['payslip']' chưa có trong từ điển chuẩn"
+    },
+    {
+      "row": 9876,
+      "word": "PHP",
+      "unrecognized": [
+        "php"
+      ],
+      "suggestions": [
+        "pp",
+        "ph",
+        "phpht"
+      ],
+      "message": "Từ/token '['php']' chưa có trong từ điển chuẩn"
+    },
+    {
+      "row": 9919,
+      "word": "placemat",
+      "unrecognized": [
+        "placemat"
+      ],
+      "suggestions": [
+        "placeman",
+        "placet",
+        "placement"
+      ],
+      "message": "Từ/token '['placemat']' chưa có trong từ điển chuẩn"
+    },
+    {
+      "row": 9957,
+      "word": "playlist",
+      "unrecognized": [
+        "playlist"
+      ],
+      "suggestions": [
+        "pluralist",
+        "pollist",
+        "playlet"
+      ],
+      "message": "Từ/token '['playlist']' chưa có trong từ điển chuẩn"
+    },
+    {
+      "row": 10086,
+      "word": "PPC advertising",
+      "unrecognized": [
+        "ppc"
+      ],
+      "suggestions": [],
+      "message": "Từ/token '['ppc']' chưa có trong từ điển chuẩn"
+    },
+    {
+      "row": 10087,
+      "word": "PPE",
+      "unrecognized": [
+        "ppe"
+      ],
+      "suggestions": [
+        "pope",
+        "pipe",
+        "pape"
+      ],
+      "message": "Từ/token '['ppe']' chưa có trong từ điển chuẩn"
+    },
+    {
+      "row": 10792,
+      "word": "project timeline",
+      "unrecognized": [
+        "timeline"
+      ],
+      "suggestions": [],
+      "message": "Từ/token '['timeline']' chưa có trong từ điển chuẩn"
+    },
+    {
+      "row": 10889,
+      "word": "property handover",
+      "unrecognized": [
+        "handover"
+      ],
+      "suggestions": [],
+      "message": "Từ/token '['handover']' chưa có trong từ điển chuẩn"
+    },
+    {
+      "row": 11246,
+      "word": "R&B",
+      "unrecognized": [
+        "rb"
+      ],
+      "suggestions": [],
+      "message": "Từ/token '['rb']' chưa có trong từ điển chuẩn"
+    },
+    {
+      "row": 11264,
+      "word": "radio playlist",
+      "unrecognized": [
+        "playlist"
+      ],
+      "suggestions": [],
+      "message": "Từ/token '['playlist']' chưa có trong từ điển chuẩn"
+    },
+    {
+      "row": 11301,
+      "word": "ramen",
+      "unrecognized": [
+        "ramen"
+      ],
+      "suggestions": [
+        "rament",
+        "ramean",
+        "ragmen"
+      ],
+      "message": "Từ/token '['ramen']' chưa có trong từ điển chuẩn"
+    },
+    {
+      "row": 11363,
+      "word": "rearview mirror",
+      "unrecognized": [
+        "rearview"
+      ],
+      "suggestions": [],
+      "message": "Từ/token '['rearview']' chưa có trong từ điển chuẩn"
+    },
+    {
+      "row": 12022,
+      "word": "RFI",
+      "unrecognized": [
+        "rfi"
+      ],
+      "suggestions": [
+        "rifi",
+        "rf",
+        "riffi"
+      ],
+      "message": "Từ/token '['rfi']' chưa có trong từ điển chuẩn"
+    },
+    {
+      "row": 12023,
+      "word": "RFP",
+      "unrecognized": [
+        "rfp"
+      ],
+      "suggestions": [
+        "rf"
+      ],
+      "message": "Từ/token '['rfp']' chưa có trong từ điển chuẩn"
+    },
+    {
+      "row": 12024,
+      "word": "RFQ",
+      "unrecognized": [
+        "rfq"
+      ],
+      "suggestions": [
+        "rf"
+      ],
+      "message": "Từ/token '['rfq']' chưa có trong từ điển chuẩn"
+    },
+    {
+      "row": 12077,
+      "word": "ROAS",
+      "unrecognized": [
+        "roas"
+      ],
+      "suggestions": [
+        "rotas",
+        "roast",
+        "roars"
+      ],
+      "message": "Từ/token '['roas']' chưa có trong từ điển chuẩn"
+    },
+    {
+      "row": 12141,
+      "word": "RPA",
+      "unrecognized": [
+        "rpa"
+      ],
+      "suggestions": [
+        "rupa",
+        "ripa",
+        "ra"
+      ],
+      "message": "Từ/token '['rpa']' chưa có trong từ điển chuẩn"
+    },
+    {
+      "row": 12142,
+      "word": "RPO",
+      "unrecognized": [
+        "rpo"
+      ],
+      "suggestions": [
+        "ro",
+        "repro",
+        "repot"
+      ],
+      "message": "Từ/token '['rpo']' chưa có trong từ điển chuẩn"
+    },
+    {
+      "row": 12143,
+      "word": "RTO",
+      "unrecognized": [
+        "rto"
+      ],
+      "suggestions": [
+        "roto",
+        "rato",
+        "rt"
+      ],
+      "message": "Từ/token '['rto']' chưa có trong từ điển chuẩn"
+    },
+    {
+      "row": 12786,
+      "word": "shareware",
+      "unrecognized": [
+        "shareware"
+      ],
+      "suggestions": [
+        "sharpware",
+        "saleware",
+        "sharefarmer"
+      ],
+      "message": "Từ/token '['shareware']' chưa có trong từ điển chuẩn"
+    },
+    {
+      "row": 12844,
+      "word": "shortlisted candidate",
+      "unrecognized": [
+        "shortlisted"
+      ],
+      "suggestions": [],
+      "message": "Từ/token '['shortlisted']' chưa có trong từ điển chuẩn"
+    },
+    {
+      "row": 12882,
+      "word": "signage",
+      "unrecognized": [
+        "signage"
+      ],
+      "suggestions": [
+        "spinage",
+        "sinkage",
+        "signate"
+      ],
+      "message": "Từ/token '['signage']' chưa có trong từ điển chuẩn"
+    },
+    {
+      "row": 12892,
+      "word": "signup page",
+      "unrecognized": [
+        "signup"
+      ],
+      "suggestions": [],
+      "message": "Từ/token '['signup']' chưa có trong từ điển chuẩn"
+    },
+    {
+      "row": 12937,
+      "word": "skincare",
+      "unrecognized": [
+        "skincare"
+      ],
+      "suggestions": [
+        "sincere",
+        "sinecure",
+        "sincerer"
+      ],
+      "message": "Từ/token '['skincare']' chưa có trong từ điển chuẩn"
+    },
+    {
+      "row": 12938,
+      "word": "SKU",
+      "unrecognized": [
+        "sku"
+      ],
+      "suggestions": [
+        "suku",
+        "skun",
+        "skua"
+      ],
+      "message": "Từ/token '['sku']' chưa có trong từ điển chuẩn"
+    },
+    {
+      "row": 12974,
+      "word": "SMTP",
+      "unrecognized": [
+        "smtp"
+      ],
+      "suggestions": [
+        "sump",
+        "stop",
+        "step"
+      ],
+      "message": "Từ/token '['smtp']' chưa có trong từ điển chuẩn"
+    },
+    {
+      "row": 13252,
+      "word": "SSD",
+      "unrecognized": [
+        "ssd"
+      ],
+      "suggestions": [
+        "ssed",
+        "ss",
+        "sd"
+      ],
+      "message": "Từ/token '['ssd']' chưa có trong từ điển chuẩn"
+    },
+    {
+      "row": 13254,
+      "word": "SSO",
+      "unrecognized": [
+        "sso"
+      ],
+      "suggestions": [
+        "ss",
+        "so",
+        "susso"
+      ],
+      "message": "Từ/token '['sso']' chưa có trong từ điển chuẩn"
+    },
+    {
+      "row": 13447,
+      "word": "stormwater",
+      "unrecognized": [
+        "stormwater"
+      ],
+      "suggestions": [
+        "storemaster",
+        "stormward",
+        "stopwater"
+      ],
+      "message": "Từ/token '['stormwater']' chưa có trong từ điển chuẩn"
+    },
+    {
+      "row": 13500,
+      "word": "streaming playlist",
+      "unrecognized": [
+        "playlist"
+      ],
+      "suggestions": [],
+      "message": "Từ/token '['playlist']' chưa có trong từ điển chuẩn"
+    },
+    {
+      "row": 13804,
+      "word": "SUV",
+      "unrecognized": [
+        "suv"
+      ],
+      "suggestions": [
+        "surv",
+        "sv",
+        "su"
+      ],
+      "message": "Từ/token '['suv']' chưa có trong từ điển chuẩn"
+    },
+    {
+      "row": 13902,
+      "word": "tagline",
+      "unrecognized": [
+        "tagline"
+      ],
+      "suggestions": [
+        "traguline",
+        "talpine",
+        "taglike"
+      ],
+      "message": "Từ/token '['tagline']' chưa có trong từ điển chuẩn"
+    },
+    {
+      "row": 14015,
+      "word": "TCP",
+      "unrecognized": [
+        "tcp"
+      ],
+      "suggestions": [
+        "tp",
+        "tc"
+      ],
+      "message": "Từ/token '['tcp']' chưa có trong từ điển chuẩn"
+    },
+    {
+      "row": 14016,
+      "word": "TCP/IP",
+      "unrecognized": [
+        "tcp"
+      ],
+      "suggestions": [],
+      "message": "Từ/token '['tcp']' chưa có trong từ điển chuẩn"
+    },
+    {
+      "row": 14195,
+      "word": "terabyte",
+      "unrecognized": [
+        "terabyte"
+      ],
+      "suggestions": [
+        "ternate",
+        "trachyte",
+        "trabeate"
+      ],
+      "message": "Từ/token '['terabyte']' chưa có trong từ điển chuẩn"
+    },
+    {
+      "row": 14309,
+      "word": "timeline",
+      "unrecognized": [
+        "timeline"
+      ],
+      "suggestions": [
+        "timeliine",
+        "timeliness",
+        "timberline"
+      ],
+      "message": "Từ/token '['timeline']' chưa có trong từ điển chuẩn"
+    },
+    {
+      "row": 14555,
+      "word": "transaction timeline",
+      "unrecognized": [
+        "timeline"
+      ],
+      "suggestions": [],
+      "message": "Từ/token '['timeline']' chưa có trong từ điển chuẩn"
+    },
+    {
+      "row": 14875,
+      "word": "upselling",
+      "unrecognized": [
+        "upselling"
+      ],
+      "suggestions": [
+        "upswelling",
+        "upwelling",
+        "unselling"
+      ],
+      "message": "Từ/token '['upselling']' chưa có trong từ điển chuẩn"
+    },
+    {
+      "row": 15117,
+      "word": "videographer",
+      "unrecognized": [
+        "videographer"
+      ],
+      "suggestions": [],
+      "message": "Từ/token '['videographer']' chưa có trong từ điển chuẩn"
+    },
+    {
+      "row": 15377,
+      "word": "webcam",
+      "unrecognized": [
+        "webcam"
+      ],
+      "suggestions": [
+        "weam",
+        "webcast"
+      ],
+      "message": "Từ/token '['webcam']' chưa có trong từ điển chuẩn"
+    },
+    {
+      "row": 15469,
+      "word": "WIP",
+      "unrecognized": [
+        "wip"
+      ],
+      "suggestions": [
+        "wisp",
+        "wips",
+        "wipe"
+      ],
+      "message": "Từ/token '['wip']' chưa có trong từ điển chuẩn"
+    },
+    {
+      "row": 15487,
+      "word": "WMS",
+      "unrecognized": [
+        "wms"
+      ],
+      "suggestions": [
+        "ws",
+        "wm",
+        "worms"
+      ],
+      "message": "Từ/token '['wms']' chưa có trong từ điển chuẩn"
+    },
+    {
+      "row": 15525,
+      "word": "workaround",
+      "unrecognized": [
+        "workaround"
+      ],
+      "suggestions": [
+        "wrapround",
+        "wraparound",
+        "workyard"
+      ],
+      "message": "Từ/token '['workaround']' chưa có trong từ điển chuẩn"
+    },
+    {
+      "row": 15630,
+      "word": "worksite",
+      "unrecognized": [
+        "worksite"
+      ],
+      "suggestions": [
+        "wordspite",
+        "worsted",
+        "workmaster"
+      ],
+      "message": "Từ/token '['worksite']' chưa có trong từ điển chuẩn"
+    }
+  ],
+  "ipa_issues": [
+    {
+      "row": 275,
+      "word": "advocate",
+      "ipa": "/ˈædvəkeɪt/ (verb), /ˈædvəkət/ (noun)",
+      "reason": "Ký tự ngoài bảng IPA: [',']"
+    },
+    {
+      "row": 279,
+      "word": "affiliate",
+      "ipa": "/əˈfɪliət/ (noun), /əˈfɪlieɪt/ (verb)",
+      "reason": "Ký tự ngoài bảng IPA: [',']"
+    },
+    {
+      "row": 401,
+      "word": "alternate",
+      "ipa": "/ˈɔːltərnət/ (adj/noun), /ˈɔːltərneɪt/ (verb)",
+      "reason": "Ký tự ngoài bảng IPA: [',']"
+    },
+    {
+      "row": 728,
+      "word": "attribute",
+      "ipa": "/ˈætrɪbjuːt/ (noun), /əˈtrɪbjuːt/ (verb)",
+      "reason": "Ký tự ngoài bảng IPA: [',']"
+    },
+    {
+      "row": 2632,
+      "word": "conduct",
+      "ipa": "/kənˈdʌkt/ (v); /ˈkɒndʌkt/ (n)",
+      "reason": "Ký tự ngoài bảng IPA: [';']"
+    },
+    {
+      "row": 2666,
+      "word": "conflict",
+      "ipa": "/ˈkɑːnflɪkt/ (n), /kənˈflɪkt/ (v)",
+      "reason": "Ký tự ngoài bảng IPA: [',']"
+    },
+    {
+      "row": 2714,
+      "word": "construct",
+      "ipa": "/kənˈstrʌkt/ (v); /ˈkɒnstrʌkt/ (n)",
+      "reason": "Ký tự ngoài bảng IPA: [';']"
+    },
+    {
+      "row": 2782,
+      "word": "content",
+      "ipa": "/ˈkɑːntent/ (n), /kənˈtent/ (adj)",
+      "reason": "Ký tự ngoài bảng IPA: [',']"
+    },
+    {
+      "row": 2804,
+      "word": "contest",
+      "ipa": "/ˈkɒntest/ (n), /kənˈtest/ (v)",
+      "reason": "Ký tự ngoài bảng IPA: [',']"
+    },
+    {
+      "row": 2818,
+      "word": "contract",
+      "ipa": "/ˈkɒntrækt/ (n); /kənˈtrækt/ (v)",
+      "reason": "Ký tự ngoài bảng IPA: [';']"
+    },
+    {
+      "row": 2904,
+      "word": "coordinate",
+      "ipa": "/koʊˈɔːrdɪneɪt/ (v); /koʊˈɔːrdɪnət/ (adj)",
+      "reason": "Ký tự ngoài bảng IPA: [';']"
+    },
+    {
+      "row": 3577,
+      "word": "defect",
+      "ipa": "/ˈdiːfekt/; /dɪˈfekt/",
+      "reason": "Ký tự ngoài bảng IPA: [';']"
+    },
+    {
+      "row": 3603,
+      "word": "delegate",
+      "ipa": "/ˈdelɪɡeɪt/; /ˈdelɪɡət/",
+      "reason": "Ký tự ngoài bảng IPA: [';']"
+    },
+    {
+      "row": 3606,
+      "word": "deliberate",
+      "ipa": "/dɪˈlɪbərət/; /dɪˈlɪbəreɪt/",
+      "reason": "Ký tự ngoài bảng IPA: [';']"
+    },
+    {
+      "row": 4002,
+      "word": "discount",
+      "ipa": "/ˈdɪskaʊnt/; /dɪˈskaʊnt/",
+      "reason": "Ký tự ngoài bảng IPA: [';']"
+    },
+    {
+      "row": 4113,
+      "word": "document",
+      "ipa": "/ˈdɑːkjəmənt/ (n), /ˈdɑːkjəment/ (v)",
+      "reason": "Ký tự ngoài bảng IPA: [',']"
+    },
+    {
+      "row": 4952,
+      "word": "exit",
+      "ipa": "/ˈeɡzɪt/; /ˈeksɪt/",
+      "reason": "Ký tự ngoài bảng IPA: [';']"
+    },
+    {
+      "row": 5035,
+      "word": "extract",
+      "ipa": "/ˈekstrækt/; /ɪkˈstrækt/",
+      "reason": "Ký tự ngoài bảng IPA: [';']"
+    },
+    {
+      "row": 5267,
+      "word": "finance",
+      "ipa": "/ˈfaɪnæns/ (n), /faɪˈnæns/ (v)",
+      "reason": "Ký tự ngoài bảng IPA: [',']"
+    },
+    {
+      "row": 5893,
+      "word": "graduate",
+      "ipa": "/ˈɡrædʒuət/ (n), /ˈɡrædʒueɪt/ (v)",
+      "reason": "Ký tự ngoài bảng IPA: [',']"
+    },
+    {
+      "row": 6489,
+      "word": "impact",
+      "ipa": "/ˈɪmpækt/ (n), /ɪmˈpækt/ (v)",
+      "reason": "Ký tự ngoài bảng IPA: [',']"
+    },
+    {
+      "row": 6564,
+      "word": "increase",
+      "ipa": "/ɪnˈkriːs/ (n), /ɪnˈkriːs/ (v)",
+      "reason": "Ký tự ngoài bảng IPA: [',']"
+    },
+    {
+      "row": 7450,
+      "word": "license",
+      "ipa": "/ˈlaɪsəns/ (noun), /ˈlaɪsəns/ (verb, US); /ˈlaɪsens/ (verb, UK)",
+      "reason": "Ký tự ngoài bảng IPA: [';', 'S', 'U', 'K', ',']"
+    },
+    {
+      "row": 8944,
+      "word": "object",
+      "ipa": "/ˈɑːbdʒekt/; /əbˈdʒekt/",
+      "reason": "Ký tự ngoài bảng IPA: [';']"
+    },
+    {
+      "row": 9794,
+      "word": "permit",
+      "ipa": "/ˈpɜːrmɪt/ (n); /pərˈmɪt/ (v)",
+      "reason": "Ký tự ngoài bảng IPA: [';']"
+    },
+    {
+      "row": 10093,
+      "word": "practice",
+      "ipa": "/ˈpræktɪs/ (n); /ˈpræktɪs/ (v)",
+      "reason": "Ký tự ngoài bảng IPA: [';']"
+    },
+    {
+      "row": 10157,
+      "word": "present",
+      "ipa": "/ˈprezənt/ (adj/n); /prɪˈzent/ (v)",
+      "reason": "Ký tự ngoài bảng IPA: [';']"
+    },
+    {
+      "row": 10409,
+      "word": "produce",
+      "ipa": "/prəˈduːs/ (v), /ˈproʊduːs/ (n)",
+      "reason": "Ký tự ngoài bảng IPA: [',']"
+    },
+    {
+      "row": 10754,
+      "word": "progress",
+      "ipa": "/ˈprɑːɡres/ (n), /prəˈɡres/ (v)",
+      "reason": "Ký tự ngoài bảng IPA: [',']"
+    },
+    {
+      "row": 10760,
+      "word": "project",
+      "ipa": "/ˈprɑːdʒekt/ (n), /prəˈdʒekt/ (v)",
+      "reason": "Ký tự ngoài bảng IPA: [',']"
+    },
+    {
+      "row": 11406,
+      "word": "record",
+      "ipa": "/ˈrekərd/ (n), /rɪˈkɔːrd/ (v)",
+      "reason": "Ký tự ngoài bảng IPA: [',']"
+    },
+    {
+      "row": 11520,
+      "word": "refund",
+      "ipa": "/ˈriːfʌnd/ (n), /rɪˈfʌnd/ (v)",
+      "reason": "Ký tự ngoài bảng IPA: [',']"
+    },
+    {
+      "row": 11930,
+      "word": "resume",
+      "ipa": "/ˈrezəmeɪ/ (n), /rɪˈzuːm/ (v)",
+      "reason": "Ký tự ngoài bảng IPA: [',']"
+    },
+    {
+      "row": 11987,
+      "word": "reuse",
+      "ipa": "/ˌriːˈjuːz/; /ˌriːˈjuːs/",
+      "reason": "Ký tự ngoài bảng IPA: [';']"
+    },
+    {
+      "row": 12121,
+      "word": "ros茅",
+      "ipa": "—",
+      "reason": "Ký tự ngoài bảng IPA: ['—']"
+    },
+    {
+      "row": 12638,
+      "word": "separate",
+      "ipa": "/ˈsepərət/ (adj.), /ˈsepəreɪt/ (verb)",
+      "reason": "Ký tự ngoài bảng IPA: [',']"
+    },
+    {
+      "row": 13775,
+      "word": "survey",
+      "ipa": "/ˈsɜːrveɪ/ (noun), /sərˈveɪ/ (verb)",
+      "reason": "Ký tự ngoài bảng IPA: [',']"
+    }
+  ],
+  "pos_issues": [
+    {
+      "row": 641,
+      "word": "as needed",
+      "pos": "adverbial phrase",
+      "invalid": [
+        "adverbial phrase"
+      ]
+    },
+    {
+      "row": 2889,
+      "word": "cooked",
+      "pos": "adjective / past participle",
+      "invalid": [
+        "past participle"
+      ]
+    },
+    {
+      "row": 3507,
+      "word": "DDP",
+      "pos": "abbreviation / trade term",
+      "invalid": [
+        "trade term"
+      ]
+    },
+    {
+      "row": 4668,
+      "word": "enough",
+      "pos": "determiner / pronoun / adverb",
+      "invalid": [
+        "determiner"
+      ]
+    },
+    {
+      "row": 5055,
+      "word": "Facebook",
+      "pos": "proper noun",
+      "invalid": [
+        "proper noun"
+      ]
+    },
+    {
+      "row": 5827,
+      "word": "GitHub",
+      "pos": "proper noun",
+      "invalid": [
+        "proper noun"
+      ]
+    },
+    {
+      "row": 5828,
+      "word": "GitLab",
+      "pos": "proper noun",
+      "invalid": [
+        "proper noun"
+      ]
+    },
+    {
+      "row": 6764,
+      "word": "Instagram",
+      "pos": "proper noun",
+      "invalid": [
+        "proper noun"
+      ]
+    },
+    {
+      "row": 6964,
+      "word": "inventorying",
+      "pos": "noun / gerund",
+      "invalid": [
+        "gerund"
+      ]
+    },
+    {
+      "row": 7096,
+      "word": "Java",
+      "pos": "proper noun",
+      "invalid": [
+        "proper noun"
+      ]
+    },
+    {
+      "row": 8622,
+      "word": "moving",
+      "pos": "noun / gerund",
+      "invalid": [
+        "gerund"
+      ]
+    },
+    {
+      "row": 9062,
+      "word": "on time",
+      "pos": "adverbial phrase",
+      "invalid": [
+        "adverbial phrase"
+      ]
+    },
+    {
+      "row": 11435,
+      "word": "recruiting",
+      "pos": "noun / gerund",
+      "invalid": [
+        "gerund"
+      ]
+    },
+    {
+      "row": 11769,
+      "word": "required",
+      "pos": "adjective / past participle",
+      "invalid": [
+        "past participle"
+      ]
+    },
+    {
+      "row": 12145,
+      "word": "Ruby",
+      "pos": "proper noun",
+      "invalid": [
+        "proper noun"
+      ]
+    },
+    {
+      "row": 14852,
+      "word": "unpacking",
+      "pos": "noun / gerund",
+      "invalid": [
+        "gerund"
+      ]
+    },
+    {
+      "row": 14875,
+      "word": "upselling",
+      "pos": "noun / gerund",
+      "invalid": [
+        "gerund"
+      ]
+    },
+    {
+      "row": 14876,
+      "word": "up-selling",
+      "pos": "noun / gerund",
+      "invalid": [
+        "gerund"
+      ]
+    },
+    {
+      "row": 15458,
+      "word": "Windows",
+      "pos": "proper noun",
+      "invalid": [
+        "proper noun"
+      ]
+    },
+    {
+      "row": 15653,
+      "word": "written",
+      "pos": "adjective / past participle",
+      "invalid": [
+        "past participle"
+      ]
+    }
+  ]
+}
