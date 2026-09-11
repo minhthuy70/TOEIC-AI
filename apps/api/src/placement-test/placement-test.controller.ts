@@ -1,10 +1,8 @@
 import { JwtAuthGuard } from "../auth/jwt-auth.guard";
 import { Controller, Post, Body, Get, Param, UseGuards } from '@nestjs/common';
-import { PrismaClient } from '@prisma/client';
+import { PrismaService } from '../prisma/prisma.service';
 import * as fs from 'fs';
 import * as path from 'path';
-
-const prisma = new PrismaClient();
 
 const PART_METADATA: Record<number, any> = {
   1: { title: "Photographs", titleVi: "Mô tả hình ảnh", section: "listening", description: "Nghe 4 câu miêu tả ngắn về một bức tranh và chọn câu miêu tả đúng nhất.", totalQuestions: 6 },
@@ -19,17 +17,19 @@ const PART_METADATA: Record<number, any> = {
 @UseGuards(JwtAuthGuard)
 @Controller('placement-test')
 export class PlacementTestController {
+  constructor(private readonly prisma: PrismaService) {}
+
   @Get()
   async getPlacementTest() {
     try {
-      const groups: any[] = await prisma.$queryRaw`SELECT * FROM public.question_groups WHERE test_id = 1 ORDER BY id ASC`;
-      const questions: any[] = await prisma.$queryRaw`
+      const groups: any[] = await this.prisma.$queryRaw`SELECT * FROM public.question_groups WHERE test_id = 1 ORDER BY id ASC`;
+      const questions: any[] = await this.prisma.$queryRaw`
         SELECT q.* FROM public.questions q
         JOIN public.question_groups g ON q.group_id = g.id
         WHERE g.test_id = 1
         ORDER BY q.id ASC
       `;
-      const options: any[] = await prisma.$queryRaw`
+      const options: any[] = await this.prisma.$queryRaw`
         SELECT o.* FROM public.options o
         JOIN public.questions q ON o.question_id = q.id
         JOIN public.question_groups g ON q.group_id = g.id
@@ -140,15 +140,22 @@ export class PlacementTestController {
       console.error('Error loading placement test from database, fallback to JSON:', e);
     }
 
-    const filePath = path.join(
-      process.cwd(),
-      '..',
-      '..',
-      'data',
-      'placement-test.json',
-    );
-    const data = fs.readFileSync(filePath, 'utf-8');
-    return JSON.parse(data);
+    // Robust fallback: try multiple possible paths for the JSON file
+    const possiblePaths = [
+      path.join(process.cwd(), 'data', 'placement-test.json'),
+      path.join(process.cwd(), '..', '..', 'data', 'placement-test.json'),
+      path.join(__dirname, '..', '..', '..', '..', 'data', 'placement-test.json'),
+    ];
+
+    for (const filePath of possiblePaths) {
+      if (fs.existsSync(filePath)) {
+        const data = fs.readFileSync(filePath, 'utf-8');
+        return JSON.parse(data);
+      }
+    }
+
+    throw new Error('Placement test data not found in database or filesystem');
   }
 }
+
 

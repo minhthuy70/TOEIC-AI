@@ -1,4 +1,4 @@
-import { Controller, Get, Req, UseGuards, HttpException, HttpStatus, Post, Put, Delete, Body } from "@nestjs/common";
+import { Controller, Get, Req, UseGuards, HttpException, HttpStatus, Post, Put, Delete, Body, Param, ParseIntPipe } from "@nestjs/common";
 import { JwtAuthGuard } from "../auth/jwt-auth.guard";
 import { DashboardService } from "./dashboard.service";
 
@@ -107,10 +107,9 @@ export class DashboardController {
   }
 
   @Put("goals/:id")
-  async updateGoal(@Req() req: any, @Body() goalData: any) {
+  async updateGoal(@Req() req: any, @Param('id', ParseIntPipe) goalId: number, @Body() goalData: any) {
     try {
       const userId = req.user.userId;
-      const goalId = parseInt(req.params.id);
       return this.dashboardService.updateGoal(goalId, userId, goalData);
     } catch (error) {
       console.error('Update goal error:', error);
@@ -122,10 +121,9 @@ export class DashboardController {
   }
 
   @Delete("goals/:id")
-  async deleteGoal(@Req() req: any) {
+  async deleteGoal(@Req() req: any, @Param('id', ParseIntPipe) goalId: number) {
     try {
       const userId = req.user.userId;
-      const goalId = parseInt(req.params.id);
       return this.dashboardService.deleteGoal(goalId, userId);
     } catch (error) {
       console.error('Delete goal error:', error);
@@ -165,10 +163,9 @@ export class DashboardController {
   }
 
   @Post("achievements/:id/share")
-  async shareAchievement(@Req() req: any) {
+  async shareAchievement(@Req() req: any, @Param('id', ParseIntPipe) achievementId: number) {
     try {
       const userId = req.user.userId;
-      const achievementId = parseInt(req.params.id);
       return this.dashboardService.shareAchievement(userId, achievementId);
     } catch (error) {
       console.error('Share achievement error:', error);

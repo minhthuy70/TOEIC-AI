@@ -49,7 +49,7 @@ export class VocabularyService {
     if (profile.currentStage && profile.currentStage >= 1 && profile.currentStage <= 5) {
       return profile.currentStage;
     }
-    return this.getStage(profile.currentScore ?? 0);
+    return this.getProfileStage(profile);
   }
 
   private async getStreak(userId: number): Promise<number> {
@@ -124,7 +124,7 @@ export class VocabularyService {
   async getDashboard(userId: number) {
     const profile = await this.getProfile(userId);
 
-    const stage = this.getStage(profile.currentScore ?? 0);
+    const stage = this.getProfileStage(profile);
 
     const today = new Date();
     today.setHours(0, 0, 0, 0);
@@ -359,7 +359,7 @@ export class VocabularyService {
   async today(userId: number) {
     const profile = await this.getProfile(userId);
 
-    const stage = this.getStage(profile.currentScore ?? 0);
+    const stage = this.getProfileStage(profile);
 
     // ------------------------------------
     // Ưu tiên từ cần ôn
@@ -733,7 +733,7 @@ const nextReview = new Date();
   async getSrsStatus(userId: number) {
     const profile = await this.getProfile(userId);
 
-    const stage = this.getStage(profile.currentScore ?? 0);
+    const stage = this.getProfileStage(profile);
 
     const now = new Date();
 
@@ -894,7 +894,7 @@ const nextReview = new Date();
 
   async getLessons(userId: number) {
     const profile = await this.getProfile(userId);
-    const stage = this.getStage(profile.currentScore ?? 0);
+    const stage = this.getProfileStage(profile);
 
     // Get all vocabulary words in the stage sorted by ID ascending
     const words = await this.prisma.vocabulary.findMany({
@@ -956,7 +956,7 @@ const nextReview = new Date();
 
   async getLessonWords(userId: number, lessonNumber: number) {
     const profile = await this.getProfile(userId);
-    const stage = this.getStage(profile.currentScore ?? 0);
+    const stage = this.getProfileStage(profile);
 
     const words = await this.prisma.vocabulary.findMany({
       where: { stage },
@@ -1101,7 +1101,7 @@ const nextReview = new Date();
     },
   ) {
     const profile = await this.getProfile(userId);
-    const userMaxStage = this.getStage(profile.currentScore ?? 0);
+    const userMaxStage = this.getProfileStage(profile);
 
     const page = Number(query.page ?? 1);
     const limit = Number(query.limit ?? 20);
@@ -1333,7 +1333,7 @@ const nextReview = new Date();
 
   async getStatistics(userId: number) {
     const profile = await this.getProfile(userId);
-    const stage = this.getStage(profile.currentScore ?? 0);
+    const stage = this.getProfileStage(profile);
 
     // 1. Vocabulary Growth (Group by learnedAt)
     const allProgress = await this.prisma.userVocabularyProgress.findMany({
