@@ -97,6 +97,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
     email?: string;
     currentScore?: number;
     targetScore?: number;
+    currentStage?: number;
     streak?: number;
     pointsBalance?: number;
     currentLevel?: number;
@@ -126,6 +127,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
           ...(profileData || {}),
           currentScore: profileData?.currentScore ?? 0,
           targetScore: profileData?.targetScore ?? 600,
+          currentStage: profileData?.currentStage ?? undefined,
           currentLevel: levelData?.data?.currentLevel || levelData?.data?.currentLevelInfo?.levelNumber || 1,
         }));
         if (notifData && Array.isArray(notifData.notifications)) {
