@@ -304,6 +304,15 @@ export class BadgesService {
         }
       }
 
+      // Security: Validate progress before unlocking
+      const criteria = badge.criteria ? JSON.parse(badge.criteria) : null;
+      if (criteria) {
+        const progress = await this.calculateBadgeProgress(userId, criteria);
+        if (progress < 100) {
+          throw new Error(`Bạn chưa đủ điều kiện để mở khóa huy hiệu này (Tiến độ: ${progress}%)`);
+        }
+      }
+
       // Create user badge
       const userBadge = await this.prisma.userBadge.create({
         data: {

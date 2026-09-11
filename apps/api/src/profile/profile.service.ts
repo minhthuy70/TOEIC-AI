@@ -165,7 +165,6 @@ export class ProfileService {
             reviewedAt: new Date(),
             reviewedBy: adminId,
             adminComment: comment,
-            appliedAt: new Date(),
           },
         })
       ]);

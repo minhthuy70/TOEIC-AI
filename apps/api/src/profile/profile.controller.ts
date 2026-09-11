@@ -260,21 +260,21 @@ requestStageChange(@Req() req: any, @Body() body: { requestedStage: number; reas
 }
 
   @UseGuards(RolesGuard)
-  @Roles(UserRole.SUPER_ADMIN, UserRole.CONTENT_ADMIN, UserRole.ADMIN)
+  @Roles(UserRole.SUPER_ADMIN, UserRole.CONTENT_ADMIN)
   @Get("stage-change-requests")
   getStageChangeRequests(@Req() req: any) {
     return this.profileService.getStageChangeRequests();
   }
 
   @UseGuards(RolesGuard)
-  @Roles(UserRole.SUPER_ADMIN, UserRole.CONTENT_ADMIN, UserRole.ADMIN)
+  @Roles(UserRole.SUPER_ADMIN, UserRole.CONTENT_ADMIN)
   @Post("review-stage-change")
   reviewStageChange(@Req() req: any, @Body() body: { requestId: number; status: 'APPROVED' | 'REJECTED'; comment?: string }) {
     return this.profileService.reviewStageChangeRequest(body.requestId, body.status, req.user.userId, body.comment);
   }
 
   @UseGuards(RolesGuard)
-  @Roles(UserRole.SUPER_ADMIN, UserRole.CONTENT_ADMIN, UserRole.ADMIN)
+  @Roles(UserRole.SUPER_ADMIN, UserRole.CONTENT_ADMIN)
   @Post("apply-stage-change")
   applyStageChange(@Req() req: any, @Body() body: { requestId: number }) {
     return this.profileService.applyStageChange(body.requestId);
