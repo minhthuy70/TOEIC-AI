@@ -15,11 +15,13 @@ async function bootstrap() {
   // PROJECT ROOT
   // ============================================================
 
-  const projectRoot = join(
-    process.cwd(),
-    "..",
-    "..",
-  );
+  const projectRoot = existsSync(join(process.cwd(), "uploads"))
+    ? process.cwd()
+    : existsSync(join(process.cwd(), "..", "..", "uploads"))
+      ? join(process.cwd(), "..", "..")
+      : existsSync(join(__dirname, "..", "..", "..", "uploads"))
+        ? join(__dirname, "..", "..", "..")
+        : join(process.cwd(), "..", "..");
 
   // ============================================================
   // TOEIC GENERATED DATA
@@ -231,14 +233,23 @@ async function bootstrap() {
     },
   );
 
+  // Uploads
+  const uploadsPath = join(projectRoot, "uploads");
+  if (existsSync(uploadsPath)) {
+    app.useStaticAssets(
+      uploadsPath,
+      {
+        prefix: "/uploads",
+      },
+    );
+  }
+
   // ============================================================
   // CORS
   // ============================================================
 
   app.enableCors({
-    origin:
-      "http://localhost:3000",
-
+    origin: process.env.FRONTEND_URL || "http://localhost:3000",
     credentials: true,
   });
 

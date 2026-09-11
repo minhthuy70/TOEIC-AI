@@ -21,10 +21,9 @@ import { Roles } from "../auth/roles.decorator";
 
 import { UserRole } from "@prisma/client";
 
-@UseGuards(JwtAuthGuard)
+@UseGuards(JwtAuthGuard, RolesGuard)
+@Roles(UserRole.SUPER_ADMIN, UserRole.CONTENT_ADMIN)
 @Controller("admin")
-// Temporarily disable auth guards for testing
-// TODO: Re-enable @UseGuards(JwtAuthGuard, RolesGuard) after fixing authentication
 export class AdminController {
   constructor(
     private readonly prisma: PrismaService,
@@ -72,7 +71,7 @@ export class AdminController {
   }
 
   @Get("users")
-// // @Roles(UserRole.SUPER_ADMIN)
+  @Roles(UserRole.SUPER_ADMIN)
 async getUsers() {
   return this.prisma.user.findMany({
     select: {
@@ -94,7 +93,7 @@ async getUsers() {
   });
 }
 @Patch("users/:id/role")
-// // @Roles(UserRole.SUPER_ADMIN)
+  @Roles(UserRole.SUPER_ADMIN)
 async updateUserRole(
   @Param("id") id: string,
   @Body() body: { role: UserRole },

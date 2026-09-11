@@ -147,6 +147,11 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
   };
 
   const currentStage = (() => {
+    // Prefer the stage explicitly assigned via onboarding/placement/admin
+    if (user?.currentStage && user.currentStage >= 1 && user.currentStage <= 5) {
+      return user.currentStage;
+    }
+    // Fallback: derive stage from current score
     const score = user?.currentScore ?? 0;
     if (score >= 800) return 5;
     if (score >= 650) return 4;

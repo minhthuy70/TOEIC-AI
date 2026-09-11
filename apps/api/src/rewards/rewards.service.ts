@@ -220,6 +220,9 @@ export class RewardsService {
    * Share a reward
    */
   async shareReward(userId: number, rewardId: number, bonusPoints: number = 0) {
+    // Security: cap bonusPoints to a system maximum to prevent exploit
+    const MAX_SHARE_BONUS = 50;
+    const sanitizedBonusPoints = Math.min(Math.max(0, bonusPoints), MAX_SHARE_BONUS);
     try {
       const reward = await this.prisma.reward.findUnique({
         where: { id: rewardId },
@@ -240,7 +243,7 @@ export class RewardsService {
           rewardId,
           shareCode,
           expiresAt,
-          bonusPoints,
+          bonusPoints: sanitizedBonusPoints,
         },
       });
 
@@ -251,7 +254,7 @@ export class RewardsService {
           shareCode,
           shareUrl: `/rewards/share/${shareCode}`,
           expiresAt,
-          bonusPoints,
+          bonusPoints: sanitizedBonusPoints,
         },
       };
     } catch (error) {

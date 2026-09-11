@@ -44,6 +44,14 @@ export class VocabularyService {
     return 1;
   }
 
+  private getProfileStage(profile: { currentStage?: number | null; currentScore?: number | null }): number {
+    // Prefer explicitly assigned stage (from onboarding/placement/admin)
+    if (profile.currentStage && profile.currentStage >= 1 && profile.currentStage <= 5) {
+      return profile.currentStage;
+    }
+    return this.getStage(profile.currentScore ?? 0);
+  }
+
   private async getStreak(userId: number): Promise<number> {
     const progress = await this.prisma.userVocabularyProgress.findMany({
       where: {

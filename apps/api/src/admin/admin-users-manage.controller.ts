@@ -12,10 +12,14 @@ import {
   BadRequestException,
 } from "@nestjs/common";
 import { JwtAuthGuard } from "../auth/jwt-auth.guard";
+import { RolesGuard } from "../auth/roles.guard";
+import { Roles } from "../auth/roles.decorator";
+import { UserRole } from "@prisma/client";
 import { PrismaService } from "../prisma/prisma.service";
 
 @Controller("admin/users/manage")
-@UseGuards(JwtAuthGuard)
+@UseGuards(JwtAuthGuard, RolesGuard)
+@Roles(UserRole.SUPER_ADMIN, UserRole.CONTENT_ADMIN)
 export class AdminUsersManageController {
   constructor(private readonly prisma: PrismaService) {}
 
@@ -248,6 +252,7 @@ export class AdminUsersManageController {
 
   // 5. Update Status & Role
   @Put(":id/status")
+  @Roles(UserRole.SUPER_ADMIN)
   async updateStatus(
     @Param("id") id: string,
     @Body() body: { role?: string; isLocked?: boolean }
@@ -277,6 +282,7 @@ export class AdminUsersManageController {
 
   // 7. Ban User
   @Post(":id/ban")
+  @Roles(UserRole.SUPER_ADMIN)
   async banUser(
     @Param("id") id: string,
     @Body() body: { reason?: string; permanent?: boolean; days?: number }
@@ -304,6 +310,7 @@ export class AdminUsersManageController {
 
   // 7. Unban User
   @Post(":id/unban")
+  @Roles(UserRole.SUPER_ADMIN)
   async unbanUser(@Param("id") id: string) {
     await this.prisma.user.update({
       where: { id: parseInt(id, 10) },
@@ -323,6 +330,7 @@ export class AdminUsersManageController {
 
   // 6. Delete User
   @Delete(":id")
+  @Roles(UserRole.SUPER_ADMIN)
   async deleteUser(@Param("id") id: string) {
     await this.prisma.user.delete({
       where: { id: parseInt(id, 10) },

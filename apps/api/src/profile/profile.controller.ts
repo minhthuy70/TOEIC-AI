@@ -13,6 +13,9 @@ import { FileInterceptor } from "@nestjs/platform-express";
 import { diskStorage } from 'multer';
 import { extname } from 'path';
 import { JwtAuthGuard } from "../auth/jwt-auth.guard";
+import { RolesGuard } from "../auth/roles.guard";
+import { Roles } from "../auth/roles.decorator";
+import { UserRole } from "@prisma/client";
 import { ProfileService } from "./profile.service";
 
 @UseGuards(JwtAuthGuard)
@@ -256,18 +259,24 @@ requestStageChange(@Req() req: any, @Body() body: { requestedStage: number; reas
   return this.profileService.requestStageChange(req.user.userId, body.requestedStage, body.reason);
 }
 
-@Get("stage-change-requests")
-getStageChangeRequests(@Req() req: any) {
-  return this.profileService.getStageChangeRequests();
-}
+  @UseGuards(RolesGuard)
+  @Roles(UserRole.SUPER_ADMIN, UserRole.CONTENT_ADMIN, UserRole.ADMIN)
+  @Get("stage-change-requests")
+  getStageChangeRequests(@Req() req: any) {
+    return this.profileService.getStageChangeRequests();
+  }
 
-@Post("review-stage-change")
-reviewStageChange(@Req() req: any, @Body() body: { requestId: number; status: 'APPROVED' | 'REJECTED'; comment?: string }) {
-  return this.profileService.reviewStageChangeRequest(body.requestId, body.status, req.user.userId, body.comment);
-}
+  @UseGuards(RolesGuard)
+  @Roles(UserRole.SUPER_ADMIN, UserRole.CONTENT_ADMIN, UserRole.ADMIN)
+  @Post("review-stage-change")
+  reviewStageChange(@Req() req: any, @Body() body: { requestId: number; status: 'APPROVED' | 'REJECTED'; comment?: string }) {
+    return this.profileService.reviewStageChangeRequest(body.requestId, body.status, req.user.userId, body.comment);
+  }
 
-@Post("apply-stage-change")
-applyStageChange(@Req() req: any, @Body() body: { requestId: number }) {
-  return this.profileService.applyStageChange(body.requestId);
-}
+  @UseGuards(RolesGuard)
+  @Roles(UserRole.SUPER_ADMIN, UserRole.CONTENT_ADMIN, UserRole.ADMIN)
+  @Post("apply-stage-change")
+  applyStageChange(@Req() req: any, @Body() body: { requestId: number }) {
+    return this.profileService.applyStageChange(body.requestId);
+  }
 }

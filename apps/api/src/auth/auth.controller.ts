@@ -9,6 +9,9 @@ import {
 
 import { JwtAuthGuard } from "./jwt-auth.guard";
 import { AuthService } from './auth.service';
+import { RolesGuard } from "./roles.guard";
+import { Roles } from "./roles.decorator";
+import { UserRole } from "@prisma/client";
 
 @Controller('auth')
 export class AuthController {
@@ -118,14 +121,14 @@ constructor(
   @UseGuards(JwtAuthGuard)
   @Get('linked-accounts')
   getLinkedAccounts(@Req() req: any) {
-    const userId = req.user?.id || 1;
+    const userId = req.user.id;
     return this.authService.getLinkedAccounts(userId);
   }
 
   @UseGuards(JwtAuthGuard)
   @Post('unlink/:provider')
   unlinkAccount(@Req() req: any, @Body() body: any) {
-    const userId = req.user?.id || 1;
+    const userId = req.user.id;
     return this.authService.unlinkAccount(userId, body.provider);
   }
 
@@ -150,6 +153,7 @@ constructor(
     return this.authService.resendVerificationCode(body.email);
   }
 
+  @UseGuards(JwtAuthGuard)
   @Get("me")
   getMe(@Req() req: any) {
     return req.user;
@@ -187,6 +191,8 @@ constructor(
     return this.authService.requestUnlock(body.email);
   }
 
+  @UseGuards(JwtAuthGuard, RolesGuard)
+  @Roles(UserRole.SUPER_ADMIN, UserRole.CONTENT_ADMIN)
   @Post('unlock-account')
   unlockAccount(
     @Body()
@@ -197,11 +203,13 @@ constructor(
     return this.authService.unlockAccount(body.email);
   }
 
+  @UseGuards(JwtAuthGuard)
   @Post('logout-all')
   logoutAll(@Req() req: any) {
     return this.authService.logoutFromAllDevices(req.user.id);
   }
 
+  @UseGuards(JwtAuthGuard)
   @Get('sessions')
   getSessions(@Req() req: any) {
     const userAgent = req.headers['user-agent'] || 'unknown';
@@ -210,6 +218,7 @@ constructor(
     return this.authService.getActiveSessions(req.user.id, userAgent, acceptLanguage);
   }
 
+  @UseGuards(JwtAuthGuard)
   @Post('revoke-session')
   revokeSession(
     @Body()

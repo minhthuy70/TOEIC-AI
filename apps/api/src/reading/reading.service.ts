@@ -26,11 +26,18 @@ export class ReadingService {
         },
         select: {
           currentScore: true,
+          currentStage: true,
         },
       });
 
+    if (!profile) return 1;
+
+    // Prioritize explicitly assigned stage (from onboarding/placement/admin)
+    if (profile.currentStage && profile.currentStage >= 1 && profile.currentStage <= 5) {
+      return profile.currentStage;
+    }
+
     if (
-      !profile ||
       profile.currentScore === null ||
       profile.currentScore === undefined
     ) {

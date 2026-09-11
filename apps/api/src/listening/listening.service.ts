@@ -10,9 +10,14 @@ export class ListeningService {
       where: { userId },
     });
 
-    if (!profile || !profile.currentScore) {
-      return 1;
+    if (!profile) return 1;
+
+    // Prioritize explicitly assigned stage (from onboarding/placement/admin)
+    if (profile.currentStage && profile.currentStage >= 1 && profile.currentStage <= 5) {
+      return profile.currentStage;
     }
+
+    if (!profile.currentScore) return 1;
 
     const score = profile.currentScore;
     if (score <= 300) return 1;

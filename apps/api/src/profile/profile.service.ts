@@ -141,15 +141,46 @@ export class ProfileService {
   }
 
   async reviewStageChangeRequest(requestId: number, status: 'APPROVED' | 'REJECTED', adminId: number, comment?: string) {
-    return this.prisma.stageChangeRequest.update({
-      where: { id: requestId },
-      data: {
-        status,
-        reviewedAt: new Date(),
-        reviewedBy: adminId,
-        adminComment: comment,
-      },
+    const request = await this.prisma.stageChangeRequest.findUnique({
+      where: { id: requestId }
     });
+
+    if (!request) {
+      throw new Error("Không tìm thấy yêu cầu thay đổi chặng");
+    }
+
+    if (status === 'APPROVED') {
+      await this.prisma.$transaction([
+        this.prisma.userProfile.update({
+          where: { userId: request.userId },
+          data: {
+            currentStage: request.requestedStage,
+            stageAcceptedAt: new Date(),
+          },
+        }),
+        this.prisma.stageChangeRequest.update({
+          where: { id: requestId },
+          data: {
+            status,
+            reviewedAt: new Date(),
+            reviewedBy: adminId,
+            adminComment: comment,
+            appliedAt: new Date(),
+          },
+        })
+      ]);
+      return { success: true, message: "Đã phê duyệt và cập nhật chặng thành công" };
+    } else {
+      return this.prisma.stageChangeRequest.update({
+        where: { id: requestId },
+        data: {
+          status,
+          reviewedAt: new Date(),
+          reviewedBy: adminId,
+          adminComment: comment,
+        },
+      });
+    }
   }
 
   async applyStageChange(requestId: number) {

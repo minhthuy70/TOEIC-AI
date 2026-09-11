@@ -4,10 +4,14 @@ import {
   UseGuards,
 } from "@nestjs/common";
 import { JwtAuthGuard } from "../auth/jwt-auth.guard";
+import { RolesGuard } from "../auth/roles.guard";
+import { Roles } from "../auth/roles.decorator";
+import { UserRole } from "@prisma/client";
 import { PrismaService } from "../prisma/prisma.service";
 
 @Controller("admin/content-analytics")
-@UseGuards(JwtAuthGuard)
+@UseGuards(JwtAuthGuard, RolesGuard)
+@Roles(UserRole.SUPER_ADMIN, UserRole.CONTENT_ADMIN)
 export class AdminContentAnalyticsController {
   constructor(private readonly prisma: PrismaService) {}
 

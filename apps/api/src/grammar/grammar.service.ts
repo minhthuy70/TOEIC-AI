@@ -29,11 +29,16 @@ export class GrammarService {
     });
 
     const currentScore = user?.profile?.currentScore ?? 0;
-    let userStage = 1;
-    if (currentScore >= 800) userStage = 5;
-    else if (currentScore >= 650) userStage = 4;
-    else if (currentScore >= 500) userStage = 3;
-    else if (currentScore >= 300) userStage = 2;
+    // Prefer explicitly assigned stage (from onboarding/placement/admin)
+    let userStage = user?.profile?.currentStage;
+    if (!userStage || userStage < 1 || userStage > 5) {
+      // Fall back to score-based stage
+      userStage = 1;
+      if (currentScore >= 800) userStage = 5;
+      else if (currentScore >= 650) userStage = 4;
+      else if (currentScore >= 500) userStage = 3;
+      else if (currentScore >= 300) userStage = 2;
+    }
 
     // 2. Lấy tất cả chủ đề ngữ pháp kèm bài học và tiến độ của user
     const categories = await this.prisma.grammarCategory.findMany({
