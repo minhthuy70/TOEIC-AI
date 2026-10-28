@@ -48,14 +48,22 @@ import { apiFetch } from "../../lib/api";
 
 /* ───────── Categorized Navigation Items ───────── */
 
-const NAV_GROUPS = [
+const NAV_GROUPS: {
+  category: string;
+  items: {
+    label: string;
+    icon: any;
+    href: string;
+    badgeKey?: string;
+  }[];
+}[] = [
   {
     category: "Menu Chính",
     items: [
       { label: "Bảng điều khiển", icon: LayoutDashboard, href: "/dashboard" },
-      { label: "Trung tâm học tập", icon: BookOpen, href: "/dashboard/learning" },
+      { label: "Trung tâm học tập", icon: BookOpen, href: "/dashboard/learning", badgeKey: "reviewDue" },
       { label: "Luyện tập & Thi thử", icon: Target, href: "/dashboard/practice" },
-      { label: "Sổ tay câu sai AI", icon: AlertCircle, href: "/dashboard/error-log" },
+      { label: "Sổ tay câu sai AI", icon: AlertCircle, href: "/dashboard/error-log", badgeKey: "activeErrors" },
       { label: "Tiến độ & Thành tích", icon: TrendingUp, href: "/dashboard/progress" },
       { label: "Tài khoản & Cài đặt", icon: UserIcon, href: "/dashboard/account" },
     ],
@@ -92,6 +100,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
     "Mở rộng & Tiện ích": true,
   });
   const [unreadCount, setUnreadCount] = useState<number>(0);
+  const [navBadges, setNavBadges] = useState<{ activeErrors?: number; reviewDue?: number }>({});
   const [user, setUser] = useState<{
     fullName?: string;
     email?: string;
@@ -121,7 +130,9 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
         apiFetch<any>("/profile/me").catch(() => null),
         apiFetch<any>("/levels/info").catch(() => null),
         apiFetch<any>("/notifications?unreadOnly=true").catch(() => null),
-      ]).then(([profileData, levelData, notifData]: [any, any, any]) => {
+        apiFetch<any>("/error-log?status=active").catch(() => null),
+        apiFetch<any>("/vocabulary/srs").catch(() => null),
+      ]).then(([profileData, levelData, notifData, errorLogData, srsData]: [any, any, any, any, any]) => {
         setUser((prev) => ({
           ...prev,
           ...(profileData || {}),
@@ -135,6 +146,10 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
         } else if (notifData && typeof notifData.unreadCount === "number") {
           setUnreadCount(notifData.unreadCount);
         }
+        setNavBadges({
+          activeErrors: errorLogData?.stats?.active ?? (Array.isArray(errorLogData?.items) ? errorLogData.items.length : 0),
+          reviewDue: srsData?.reviewNow ?? 0,
+        });
       }).catch(console.error);
     } catch { 
       router.push("/login"); 
@@ -328,7 +343,20 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
                         >
                           <Icon className={`w-4 h-4 shrink-0 ${active ? "text-red-400" : "text-zinc-400"}`} />
                           <span className="truncate">{item.label}</span>
-                          {active && <span className="ml-auto w-1.5 h-1.5 rounded-full bg-red-500 shrink-0" />}
+                          {(() => {
+                            const badgeVal = item.badgeKey ? navBadges[item.badgeKey as keyof typeof navBadges] : undefined;
+                            if (badgeVal && badgeVal > 0) {
+                              return (
+                                <span className="ml-auto px-1.5 py-0.5 text-[10px] font-bold rounded-full bg-red-500/20 text-red-400 border border-red-500/30">
+                                  {badgeVal > 99 ? "99+" : badgeVal}
+                                </span>
+                              );
+                            }
+                            if (active) {
+                              return <span className="ml-auto w-1.5 h-1.5 rounded-full bg-red-500 shrink-0" />;
+                            }
+                            return null;
+                          })()}
                         </Link>
                       );
                     })}
