@@ -12,12 +12,9 @@ import {
   UseGuards,
 } from "@nestjs/common";
 
-import { AuthGuard } from "@nestjs/passport";
 
 import { MockTestService } from "./mock-test.service";
 
-// Temporarily disable auth guard for testing
-// TODO: Re-enable @UseGuards(AuthGuard("jwt")) after fixing authentication
 @UseGuards(JwtAuthGuard)
 @Controller("mock-test")
 export class MockTestController {
