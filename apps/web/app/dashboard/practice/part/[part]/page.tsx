@@ -24,6 +24,8 @@ import {
   ArrowRight,
   PartyPopper,
   Target,
+  Sparkles,
+  Award,
 } from "lucide-react";
 
 export default function PracticePartPage() {
@@ -775,6 +777,24 @@ function ResultView({
               Độ chính xác
             </p>
           </div>
+
+          {/* REWARDS BADGES */}
+          {((result.pointsAwarded && result.pointsAwarded > 0) || (result.xpAwarded && result.xpAwarded > 0)) && (
+            <div className="mt-6 flex flex-wrap items-center justify-center gap-3">
+              {result.pointsAwarded && result.pointsAwarded > 0 ? (
+                <div className="flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-amber-500/10 border border-amber-500/20 text-amber-400 font-bold text-xs">
+                  <Sparkles className="w-4 h-4 text-amber-400" />
+                  <span>+{result.pointsAwarded} Điểm thưởng</span>
+                </div>
+              ) : null}
+              {result.xpAwarded && result.xpAwarded > 0 ? (
+                <div className="flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-purple-500/10 border border-purple-500/20 text-purple-400 font-bold text-xs">
+                  <Award className="w-4 h-4 text-purple-400" />
+                  <span>+{result.xpAwarded} XP</span>
+                </div>
+              ) : null}
+            </div>
+          )}
 
           {/* STATS */}
 

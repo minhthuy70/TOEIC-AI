@@ -86,6 +86,8 @@ export type SubmitPracticeResponse = {
     optionLabel: string | null;
     isCorrect: boolean;
   }>;
+  pointsAwarded?: number;
+  xpAwarded?: number;
 };
 
 // ============================================================

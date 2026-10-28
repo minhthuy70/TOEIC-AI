@@ -643,34 +643,44 @@ export class PracticeService {
       });
 
     // ----------------------------------------------------------
-    // Award points
+    // Award points & XP
     // ----------------------------------------------------------
 
-    // Award points for each correct answer
-    for (let i = 0; i < correctCount; i++) {
-      await this.pointsService.awardPoints(
+    let totalPointsAwarded = 0;
+    let totalXpAwarded = 0;
+
+    try {
+      // Award points for each correct answer
+      for (let i = 0; i < correctCount; i++) {
+        const p = await this.pointsService.awardPoints(
+          userId,
+          'practice_correct',
+          'practice',
+          session.id
+        );
+        totalPointsAwarded += p?.points || 2;
+      }
+
+      // Award points for completing practice session
+      const completeRes = await this.pointsService.awardPoints(
         userId,
-        'practice_correct',
+        'practice_complete',
         'practice',
         session.id
       );
+      totalPointsAwarded += completeRes?.points || 10;
+
+      // Award XP for completing practice session
+      const xpRes = await this.levelsService.awardXp(
+        userId,
+        'practice_complete',
+        'practice',
+        session.id
+      );
+      totalXpAwarded += xpRes?.xp || 25;
+    } catch (e) {
+      console.error('Lỗi cộng points/XP practice:', e);
     }
-
-    // Award points for completing practice session
-    await this.pointsService.awardPoints(
-      userId,
-      'practice_complete',
-      'practice',
-      session.id
-    );
-
-    // Award XP for completing practice session
-    await this.levelsService.awardXp(
-      userId,
-      'practice_complete',
-      'practice',
-      session.id
-    );
 
     // Auto-capture incorrect questions to Error Log
     for (const res of resultAnswers) {
@@ -729,6 +739,9 @@ export class PracticeService {
 
       answers:
         resultAnswers,
+
+      pointsAwarded: totalPointsAwarded,
+      xpAwarded: totalXpAwarded,
     };
   }
 
