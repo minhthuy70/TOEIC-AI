@@ -99,6 +99,8 @@ function ReadingLearnContent() {
 
   const [correctCount, setCorrectCount] =
     useState(0);
+  const [pointsAwarded, setPointsAwarded] = useState<number | null>(null);
+  const [xpAwarded, setXpAwarded] = useState<number | null>(null);
 
   // =========================================================
   // FLATTEN QUESTIONS
@@ -532,6 +534,10 @@ function ReadingLearnContent() {
         );
 
         console.log("Submit result:", submitResult);
+        if (submitResult) {
+          setPointsAwarded(submitResult.pointsAwarded ?? 20);
+          setXpAwarded(submitResult.xpAwarded ?? 40);
+        }
 
         setSubmitted(true);
 
@@ -725,6 +731,21 @@ function ReadingLearnContent() {
                 {score}%
               </p>
             </div>
+
+            {(pointsAwarded || xpAwarded) ? (
+              <div className="flex items-center justify-center gap-3 mt-4">
+                {pointsAwarded ? (
+                  <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-amber-500/15 border border-amber-500/30 text-amber-400 text-xs font-bold">
+                    ⭐ +{pointsAwarded} Điểm
+                  </span>
+                ) : null}
+                {xpAwarded ? (
+                  <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-purple-500/15 border border-purple-500/30 text-purple-400 text-xs font-bold">
+                    ⚡ +{xpAwarded} XP
+                  </span>
+                ) : null}
+              </div>
+            ) : null}
 
             <div className="flex flex-col sm:flex-row gap-3 justify-center mt-8">
               <button

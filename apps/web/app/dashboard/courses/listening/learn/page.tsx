@@ -59,6 +59,8 @@ function ListeningLearnContent() {
   const [answers, setAnswers] = useState<Record<number, string>>({});
   const [submitted, setSubmitted] = useState(false);
   const [score, setScore] = useState(0);
+  const [pointsAwarded, setPointsAwarded] = useState<number | null>(null);
+  const [xpAwarded, setXpAwarded] = useState<number | null>(null);
 
   // Audio
   const audioRef = useRef<HTMLAudioElement | null>(null);
@@ -130,7 +132,11 @@ function ListeningLearnContent() {
     setSubmitted(true);
 
     try {
-      await submitListeningGroup(groupId, calculatedScore);
+      const res = await submitListeningGroup(groupId, calculatedScore);
+      if (res) {
+        setPointsAwarded(res.pointsAwarded ?? 20);
+        setXpAwarded(res.xpAwarded ?? 40);
+      }
     } catch (error) {
       console.error("Submit error:", error);
     }
@@ -665,6 +671,20 @@ function ListeningLearnContent() {
               <p className="text-[13px] text-zinc-400">
                 Bạn đã hoàn thành Group này với điểm số <span className="text-white font-semibold">{score}%</span>.
               </p>
+              {(pointsAwarded || xpAwarded) ? (
+                <div className="flex items-center justify-center gap-3 mt-4">
+                  {pointsAwarded ? (
+                    <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-amber-500/15 border border-amber-500/30 text-amber-400 text-xs font-bold">
+                      ⭐ +{pointsAwarded} Điểm
+                    </span>
+                  ) : null}
+                  {xpAwarded ? (
+                    <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-purple-500/15 border border-purple-500/30 text-purple-400 text-xs font-bold">
+                      ⚡ +{xpAwarded} XP
+                    </span>
+                  ) : null}
+                </div>
+              ) : null}
             </div>
 
             <div className="flex flex-col gap-3 max-w-xs mx-auto">

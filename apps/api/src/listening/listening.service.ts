@@ -1,9 +1,15 @@
 import { Injectable } from '@nestjs/common';
 import { PrismaService } from '../prisma/prisma.service';
+import { PointsService } from '../points/points.service';
+import { LevelsService } from '../levels/levels.service';
 
 @Injectable()
 export class ListeningService {
-  constructor(private prisma: PrismaService) {}
+  constructor(
+    private prisma: PrismaService,
+    private readonly pointsService: PointsService,
+    private readonly levelsService: LevelsService,
+  ) {}
 
   private async getUserStage(userId: number): Promise<number> {
     const profile = await this.prisma.userProfile.findUnique({
@@ -458,9 +464,47 @@ export class ListeningService {
       });
     }
 
+    // Award points and XP
+    let pointsAwarded = 0;
+    let xpAwarded = 0;
+
+    try {
+      const pointsRes = await this.pointsService.awardPoints(
+        userId,
+        'listening_lesson_complete',
+        'listening',
+        lessonId || groupId,
+      );
+      pointsAwarded += pointsRes?.points || 20;
+
+      const xpRes = await this.levelsService.awardXp(
+        userId,
+        'listening_lesson_complete',
+        'listening',
+        lessonId || groupId,
+      );
+      xpAwarded += xpRes?.xp || 40;
+
+      if (score === 100) {
+        const bonusRes = await this.pointsService.awardPoints(
+          userId,
+          'practice_correct',
+          'listening_perfect',
+          groupId,
+          10,
+          'Thưởng điểm tuyệt đối bài Listening',
+        );
+        pointsAwarded += bonusRes?.points || 10;
+      }
+    } catch (e) {
+      console.error('Lỗi khi cộng điểm/XP Listening:', e);
+    }
+
     return {
       success: true,
       message: 'Group submitted successfully',
+      pointsAwarded,
+      xpAwarded,
     };
   }
 

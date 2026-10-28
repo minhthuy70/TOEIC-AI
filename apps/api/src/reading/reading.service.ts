@@ -5,11 +5,15 @@ import {
 } from '@nestjs/common';
 
 import { PrismaService } from '../prisma/prisma.service';
+import { PointsService } from '../points/points.service';
+import { LevelsService } from '../levels/levels.service';
 
 @Injectable()
 export class ReadingService {
   constructor(
     private readonly prisma: PrismaService,
+    private readonly pointsService: PointsService,
+    private readonly levelsService: LevelsService,
   ) {}
 
   // =========================================================
@@ -1052,6 +1056,44 @@ export class ReadingService {
     }
 
     // -------------------------------------------------------
+    // AWARD POINTS & XP
+    // -------------------------------------------------------
+    let pointsAwarded = 0;
+    let xpAwarded = 0;
+
+    try {
+      const pointsRes = await this.pointsService.awardPoints(
+        userId,
+        'reading_lesson_complete',
+        'reading',
+        group.lesson_id,
+      );
+      pointsAwarded += pointsRes?.points || 20;
+
+      const xpRes = await this.levelsService.awardXp(
+        userId,
+        'reading_lesson_complete',
+        'reading',
+        group.lesson_id,
+      );
+      xpAwarded += xpRes?.xp || 40;
+
+      if (score === 100) {
+        const bonusRes = await this.pointsService.awardPoints(
+          userId,
+          'practice_correct',
+          'reading_perfect',
+          group.id,
+          10,
+          'Thưởng điểm tuyệt đối bài Reading',
+        );
+        pointsAwarded += bonusRes?.points || 10;
+      }
+    } catch (e) {
+      console.error('Lỗi khi cộng điểm/XP Reading:', e);
+    }
+
+    // -------------------------------------------------------
     // RESPONSE
     // -------------------------------------------------------
 
@@ -1073,6 +1115,10 @@ export class ReadingService {
         group.part,
 
       score,
+
+      pointsAwarded,
+
+      xpAwarded,
     };
   }
 

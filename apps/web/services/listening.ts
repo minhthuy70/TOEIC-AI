@@ -68,6 +68,8 @@ export interface ListeningReviewGroups {
 export interface ListeningSubmitResult {
   success: boolean;
   message: string;
+  pointsAwarded?: number;
+  xpAwarded?: number;
 }
 
 // ===========================================

@@ -120,14 +120,24 @@ export const getReadingLessonById =
     );
   };
 
+export interface ReadingSubmitResponse {
+  success: boolean;
+  message?: string;
+  userId?: number;
+  lessonId?: number;
+  groupId?: number;
+  part?: number;
+  score?: number;
+  pointsAwarded?: number;
+  xpAwarded?: number;
+}
+
 export const submitReadingLesson = async (
   lessonId: number,
   groupId: number,
   score: number,
-): Promise<{ success: boolean }> => {
-  return apiFetch<{
-    success: boolean;
-  }>("/reading/submit-lesson", {
+): Promise<ReadingSubmitResponse> => {
+  return apiFetch<ReadingSubmitResponse>("/reading/submit-lesson", {
     method: "POST",
     body: JSON.stringify({
       lessonId,
