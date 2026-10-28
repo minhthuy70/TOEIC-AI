@@ -30,10 +30,6 @@ export class AdminController {
   ) {}
 
   @Get("test")
-  // @Roles(
-//     UserRole.SUPER_ADMIN,
-//     UserRole.CONTENT_ADMIN,
-//   )
   test() {
     return {
       success: true,
@@ -42,10 +38,6 @@ export class AdminController {
   }
 
   @Get("stats")
-  // @Roles(
-//     UserRole.SUPER_ADMIN,
-//     UserRole.CONTENT_ADMIN,
-//   )
   async getStats() {
     const [
       users,
@@ -134,7 +126,6 @@ async updateUserRole(
   };
 }
 @Get("vocabulary")
-// // @Roles(UserRole.SUPER_ADMIN, UserRole.CONTENT_ADMIN)
 async getVocabulary(
   @Query("page") page = "1",
   @Query("limit") limit = "10",
@@ -228,10 +219,6 @@ if (topic?.trim()) {
 }
 
 @Post("vocabulary")
-// // @Roles(
-//   UserRole.SUPER_ADMIN,
-//   UserRole.CONTENT_ADMIN,
-// )
 async createVocabulary(
   @Body()
   body: {
@@ -273,10 +260,6 @@ async createVocabulary(
 }
 
 @Patch("vocabulary/:id")
-// // @Roles(
-//   UserRole.SUPER_ADMIN,
-//   UserRole.CONTENT_ADMIN,
-// )
 async updateVocabulary(
   @Param("id") id: string,
   @Body()
@@ -345,10 +328,6 @@ async updateVocabulary(
 }
 
 @Delete("vocabulary/:id")
-// // @Roles(
-//   UserRole.SUPER_ADMIN,
-//   UserRole.CONTENT_ADMIN,
-// )
 async deleteVocabulary(
   @Param("id") id: string,
 ) {
@@ -400,10 +379,6 @@ async deleteVocabulary(
 }
 
 @Get("grammar/categories")
-// // @Roles(
-//   UserRole.SUPER_ADMIN,
-//   UserRole.CONTENT_ADMIN,
-// )
 async getGrammarCategories(
   @Query("page") page = "1",
   @Query("limit") limit = "10",
@@ -504,10 +479,6 @@ async getGrammarCategories(
 }
 
 @Post("grammar/categories")
-// // @Roles(
-//   UserRole.SUPER_ADMIN,
-//   UserRole.CONTENT_ADMIN,
-// )
 async createGrammarCategory(
   @Body()
   body: {
@@ -560,10 +531,6 @@ async createGrammarCategory(
 }
 
 @Patch("grammar/categories/:id")
-// // @Roles(
-//   UserRole.SUPER_ADMIN,
-//   UserRole.CONTENT_ADMIN,
-// )
 async updateGrammarCategory(
   @Param("id") id: string,
   @Body()
@@ -631,10 +598,6 @@ async updateGrammarCategory(
 }
 
 @Delete("grammar/categories/:id")
-// // @Roles(
-//   UserRole.SUPER_ADMIN,
-//   UserRole.CONTENT_ADMIN,
-// )
 async deleteGrammarCategory(
   @Param("id") id: string,
 ) {
@@ -694,10 +657,6 @@ async deleteGrammarCategory(
 // ======================================================
 
 @Get("grammar/lessons")
-// // @Roles(
-//   UserRole.SUPER_ADMIN,
-//   UserRole.CONTENT_ADMIN,
-// )
 async getGrammarLessons(
   @Query("page") page = "1",
   @Query("limit") limit = "10",
@@ -816,10 +775,6 @@ async getGrammarLessons(
 
 
 @Get("grammar/lessons/:id")
-// // @Roles(
-//   UserRole.SUPER_ADMIN,
-//   UserRole.CONTENT_ADMIN,
-// )
 async getGrammarLesson(
   @Param("id") id: string,
 ) {
@@ -885,10 +840,6 @@ async getGrammarLesson(
 
 
 @Post("grammar/lessons")
-// // @Roles(
-//   UserRole.SUPER_ADMIN,
-//   UserRole.CONTENT_ADMIN,
-// )
 async createGrammarLesson(
   @Body()
   body: {
@@ -1020,10 +971,6 @@ async createGrammarLesson(
 
 
 @Patch("grammar/lessons/:id")
-// // @Roles(
-//   UserRole.SUPER_ADMIN,
-//   UserRole.CONTENT_ADMIN,
-// )
 async updateGrammarLesson(
   @Param("id") id: string,
   @Body()
@@ -1184,10 +1131,6 @@ async updateGrammarLesson(
 
 
 @Delete("grammar/lessons/:id")
-// // @Roles(
-//   UserRole.SUPER_ADMIN,
-//   UserRole.CONTENT_ADMIN,
-// )
 async deleteGrammarLesson(
   @Param("id") id: string,
 ) {
@@ -1253,10 +1196,6 @@ async deleteGrammarLesson(
 // ======================================================
 
 @Get("tests")
-// // @Roles(
-//   UserRole.SUPER_ADMIN,
-//   UserRole.CONTENT_ADMIN,
-// )
 async getTests(
   @Query("page") page = "1",
   @Query("limit") limit = "10",
@@ -1329,10 +1268,6 @@ async getTests(
 }
 
 @Get("tests/:id")
-// // @Roles(
-//   UserRole.SUPER_ADMIN,
-//   UserRole.CONTENT_ADMIN,
-// )
 async getTest(@Param("id") id: string) {
   const testId = Number(id);
 
@@ -1371,10 +1306,6 @@ async getTest(@Param("id") id: string) {
 }
 
 @Post("tests")
-// // @Roles(
-//   UserRole.SUPER_ADMIN,
-//   UserRole.CONTENT_ADMIN,
-// )
 async createTest(
   @Body()
   body: {
@@ -1407,10 +1338,6 @@ async createTest(
 }
 
 @Patch("tests/:id")
-// // @Roles(
-//   UserRole.SUPER_ADMIN,
-//   UserRole.CONTENT_ADMIN,
-// )
 async updateTest(
   @Param("id") id: string,
   @Body()
@@ -1463,10 +1390,6 @@ async updateTest(
 }
 
 @Delete("tests/:id")
-// // @Roles(
-//   UserRole.SUPER_ADMIN,
-//   UserRole.CONTENT_ADMIN,
-// )
 async deleteTest(@Param("id") id: string) {
   const testId = Number(id);
 
@@ -1517,10 +1440,6 @@ async deleteTest(@Param("id") id: string) {
 // ======================================================
 
 @Get("tests/:testId/question-groups")
-// // @Roles(
-//   UserRole.SUPER_ADMIN,
-//   UserRole.CONTENT_ADMIN,
-// )
 async getQuestionGroups(
   @Param("testId") testId: string,
   @Query("page") page = "1",
@@ -1563,10 +1482,6 @@ async getQuestionGroups(
 }
 
 @Post("tests/:testId/question-groups")
-// // @Roles(
-//   UserRole.SUPER_ADMIN,
-//   UserRole.CONTENT_ADMIN,
-// )
 async createQuestionGroup(
   @Param("testId") testId: string,
   @Body()
@@ -1621,10 +1536,6 @@ async createQuestionGroup(
 }
 
 @Patch("question-groups/:groupId")
-// // @Roles(
-//   UserRole.SUPER_ADMIN,
-//   UserRole.CONTENT_ADMIN,
-// )
 async updateQuestionGroup(
   @Param("groupId") groupId: string,
   @Body()
@@ -1679,10 +1590,6 @@ async updateQuestionGroup(
 }
 
 @Delete("question-groups/:groupId")
-// // @Roles(
-//   UserRole.SUPER_ADMIN,
-//   UserRole.CONTENT_ADMIN,
-// )
 async deleteQuestionGroup(@Param("groupId") groupId: string) {
   const groupIdNum = Number(groupId);
 
@@ -1725,10 +1632,6 @@ async deleteQuestionGroup(@Param("groupId") groupId: string) {
 // ======================================================
 
 @Get("question-groups/:groupId/questions")
-// // @Roles(
-//   UserRole.SUPER_ADMIN,
-//   UserRole.CONTENT_ADMIN,
-// )
 async getQuestions(
   @Param("groupId") groupId: string,
   @Query("page") page = "1",
@@ -1771,10 +1674,6 @@ async getQuestions(
 }
 
 @Post("question-groups/:groupId/questions")
-// // @Roles(
-//   UserRole.SUPER_ADMIN,
-//   UserRole.CONTENT_ADMIN,
-// )
 async createQuestion(
   @Param("groupId") groupId: string,
   @Body()
@@ -1842,10 +1741,6 @@ async createQuestion(
 }
 
 @Patch("questions/:questionId")
-// // @Roles(
-//   UserRole.SUPER_ADMIN,
-//   UserRole.CONTENT_ADMIN,
-// )
 async updateQuestion(
   @Param("questionId") questionId: string,
   @Body()
@@ -1890,10 +1785,6 @@ async updateQuestion(
 }
 
 @Delete("questions/:questionId")
-// // @Roles(
-//   UserRole.SUPER_ADMIN,
-//   UserRole.CONTENT_ADMIN,
-// )
 async deleteQuestion(@Param("questionId") questionId: string) {
   const questionIdNum = Number(questionId);
 
@@ -1929,10 +1820,6 @@ async deleteQuestion(@Param("questionId") questionId: string) {
 }
 
 @Get("listening/lessons")
-// // @Roles(
-//   UserRole.SUPER_ADMIN,
-//   UserRole.CONTENT_ADMIN,
-// )
 async getListeningLessons(
   @Query("page") page = "1",
   @Query("limit") limit = "10",
@@ -2044,10 +1931,6 @@ async getListeningLessons(
 }
 
 @Get("listening/lessons/:id")
-// // @Roles(
-//   UserRole.SUPER_ADMIN,
-//   UserRole.CONTENT_ADMIN,
-// )
 async getListeningLesson(
   @Param("id") id: string,
 ) {
@@ -2127,10 +2010,6 @@ async getListeningLesson(
 }
 
 @Post("listening/lessons")
-// // @Roles(
-//   UserRole.SUPER_ADMIN,
-//   UserRole.CONTENT_ADMIN,
-// )
 async createListeningLesson(
   @Body()
   body: {
@@ -2251,10 +2130,6 @@ async createListeningLesson(
 }
 
 @Patch("listening/lessons/:id")
-// // @Roles(
-//   UserRole.SUPER_ADMIN,
-//   UserRole.CONTENT_ADMIN,
-// )
 async updateListeningLesson(
   @Param("id") id: string,
   @Body()
@@ -2404,10 +2279,6 @@ async updateListeningLesson(
 }
 
 @Delete("listening/lessons/:id")
-// // @Roles(
-//   UserRole.SUPER_ADMIN,
-//   UserRole.CONTENT_ADMIN,
-// )
 async deleteListeningLesson(
   @Param("id") id: string,
 ) {
@@ -2473,10 +2344,6 @@ async deleteListeningLesson(
 }
 
 @Get("listening/lessons/:lessonId/groups")
-// // @Roles(
-//   UserRole.SUPER_ADMIN,
-//   UserRole.CONTENT_ADMIN,
-// )
 async getListeningGroups(
   @Param("lessonId") lessonId: string,
 ) {
@@ -2565,11 +2432,6 @@ async getListeningGroups(
 }
 
 @Get("listening/groups/:id")
-// TODO: Re-enable @Roles after fixing authentication
-// // @Roles(
-// //   UserRole.SUPER_ADMIN,
-// //   UserRole.CONTENT_ADMIN,
-// // )
 async getListeningGroup(
   @Param("id") id: string,
 ) {
@@ -2641,11 +2503,6 @@ async getListeningGroup(
 }
 
 @Post("listening/lessons/:lessonId/groups")
-// TODO: Re-enable @Roles after fixing authentication
-// // @Roles(
-// //   UserRole.SUPER_ADMIN,
-// //   UserRole.CONTENT_ADMIN,
-// // )
 async createListeningGroup(
   @Param("lessonId") lessonId: string,
   @Body()
@@ -2868,11 +2725,6 @@ async createListeningGroup(
 }
 
 @Patch("listening/groups/:id")
-// TODO: Re-enable @Roles after fixing authentication
-// // @Roles(
-// //   UserRole.SUPER_ADMIN,
-// //   UserRole.CONTENT_ADMIN,
-// // )
 async updateListeningGroup(
   @Param("id") id: string,
   @Body()
@@ -3491,11 +3343,6 @@ question.id !== null
 }
 
 @Delete("listening/groups/:id")
-// TODO: Re-enable @Roles after fixing authentication
-// // @Roles(
-// //   UserRole.SUPER_ADMIN,
-// //   UserRole.CONTENT_ADMIN,
-// // )
 async deleteListeningGroup(
   @Param("id") id: string,
 ) {
@@ -3573,11 +3420,6 @@ async deleteListeningGroup(
 // ======================================================
 
 @Get("reading/lessons")
-// TODO: Re-enable @Roles after fixing authentication
-// // @Roles(
-// //   UserRole.SUPER_ADMIN,
-// //   UserRole.CONTENT_ADMIN,
-// // )
 async getReadingLessons(
   @Query("page") page = "1",
   @Query("limit") limit = "10",
@@ -3689,11 +3531,6 @@ async getReadingLessons(
 }
 
 @Get("reading/lessons/:id")
-// TODO: Re-enable @Roles after fixing authentication
-// // @Roles(
-// //   UserRole.SUPER_ADMIN,
-// //   UserRole.CONTENT_ADMIN,
-// // )
 async getReadingLesson(
   @Param("id") id: string,
 ) {
@@ -3770,11 +3607,6 @@ async getReadingLesson(
 }
 
 @Post("reading/lessons")
-// TODO: Re-enable @Roles after fixing authentication
-// // @Roles(
-// //   UserRole.SUPER_ADMIN,
-// //   UserRole.CONTENT_ADMIN,
-// // )
 async createReadingLesson(
   @Body()
   body: {
@@ -3860,11 +3692,6 @@ async createReadingLesson(
 }
 
 @Patch("reading/lessons/:id")
-// TODO: Re-enable @Roles after fixing authentication
-// // @Roles(
-// //   UserRole.SUPER_ADMIN,
-// //   UserRole.CONTENT_ADMIN,
-// // )
 async updateReadingLesson(
   @Param("id") id: string,
   @Body()
@@ -3979,11 +3806,6 @@ async updateReadingLesson(
 }
 
 @Delete("reading/lessons/:id")
-// TODO: Re-enable @Roles after fixing authentication
-// // @Roles(
-// //   UserRole.SUPER_ADMIN,
-// //   UserRole.CONTENT_ADMIN,
-// // )
 async deleteReadingLesson(
   @Param("id") id: string,
 ) {
@@ -4053,11 +3875,6 @@ async deleteReadingLesson(
 // ======================================================
 
 @Get("reading/lessons/:lessonId/groups")
-// TODO: Re-enable @Roles after fixing authentication
-// // @Roles(
-// //   UserRole.SUPER_ADMIN,
-// //   UserRole.CONTENT_ADMIN,
-// // )
 async getReadingGroups(
   @Param("lessonId") lessonId: string,
 ) {
@@ -4152,11 +3969,6 @@ async getReadingGroups(
 }
 
 @Get("reading/groups/:id")
-// TODO: Re-enable @Roles after fixing authentication
-// // @Roles(
-// //   UserRole.SUPER_ADMIN,
-// //   UserRole.CONTENT_ADMIN,
-// // )
 async getReadingGroup(
   @Param("id") id: string,
 ) {
@@ -4227,11 +4039,6 @@ async getReadingGroup(
 }
 
 @Post("reading/lessons/:lessonId/groups")
-// TODO: Re-enable @Roles after fixing authentication
-// // @Roles(
-// //   UserRole.SUPER_ADMIN,
-// //   UserRole.CONTENT_ADMIN,
-// // )
 async createReadingGroup(
   @Param("lessonId") lessonId: string,
   @Body()
@@ -4449,11 +4256,6 @@ async createReadingGroup(
 }
 
 @Patch("reading/groups/:id")
-// TODO: Re-enable @Roles after fixing authentication
-// // @Roles(
-// //   UserRole.SUPER_ADMIN,
-// //   UserRole.CONTENT_ADMIN,
-// // )
 async updateReadingGroup(
   @Param("id") id: string,
   @Body()
@@ -4954,10 +4756,6 @@ question.id !== null
 }
 
 @Delete("reading/groups/:id")
-// // @Roles(
-//   UserRole.SUPER_ADMIN,
-//   UserRole.CONTENT_ADMIN,
-// )
 async deleteReadingGroup(
   @Param("id") id: string,
 ) {
