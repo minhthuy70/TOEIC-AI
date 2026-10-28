@@ -7,6 +7,7 @@ import {
 import { PrismaService } from "../prisma/prisma.service";
 import { PointsService } from "../points/points.service";
 import { LevelsService } from "../levels/levels.service";
+import { ErrorTrackingService } from "../error-tracking/error-tracking.service";
 
 import { SubmitPracticeDto } from "./dto/submit-practice.dto";
 
@@ -16,6 +17,7 @@ export class PracticeService {
     private readonly prisma: PrismaService,
     private readonly pointsService: PointsService,
     private readonly levelsService: LevelsService,
+    private readonly errorTrackingService: ErrorTrackingService,
   ) {}
 
   // ============================================================
@@ -502,6 +504,14 @@ export class PracticeService {
               option_text: true,
             },
           },
+          question_groups: {
+            select: {
+              passage: true,
+              image_url: true,
+              audio_url: true,
+              part: true,
+            },
+          },
         },
       });
 
@@ -661,6 +671,38 @@ export class PracticeService {
       'practice',
       session.id
     );
+
+    // Auto-capture incorrect questions to Error Log
+    for (const res of resultAnswers) {
+      if (!res.isCorrect) {
+        const q = questions.find((item) => item.id === res.questionId);
+        if (q) {
+          try {
+            await this.errorTrackingService.addErrorLog(userId, {
+              questionId: q.id,
+              questionText: q.question_text || `Câu hỏi luyện tập Part ${session.part}`,
+              passage: q.question_groups?.passage || undefined,
+              imageUrl: q.question_groups?.image_url || undefined,
+              audioUrl: q.question_groups?.audio_url || undefined,
+              part: q.question_groups?.part || session.part,
+              userAnswer: res.optionLabel || "Chưa trả lời",
+              correctAnswer: q.correct_answer?.trim()?.toUpperCase() || "",
+              options: q.options.map((o) => ({
+                id: o.id,
+                label: o.option_label,
+                text: o.option_text || "",
+              })),
+              explanation: q.explanation || undefined,
+              errorType: "careless",
+              sourceType: "practice",
+              sourceId: session.id,
+            });
+          } catch (err) {
+            // ignore error to not fail practice submission
+          }
+        }
+      }
+    }
 
     // ----------------------------------------------------------
     // Trả kết quả

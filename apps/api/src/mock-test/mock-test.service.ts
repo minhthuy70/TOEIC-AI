@@ -7,6 +7,7 @@ import {
 import { PrismaService } from "../prisma/prisma.service";
 import { PointsService } from "../points/points.service";
 import { LevelsService } from "../levels/levels.service";
+import { ErrorTrackingService } from "../error-tracking/error-tracking.service";
 
 @Injectable()
 export class MockTestService {
@@ -14,6 +15,7 @@ export class MockTestService {
     private readonly prisma: PrismaService,
     private readonly pointsService: PointsService,
     private readonly levelsService: LevelsService,
+    private readonly errorTrackingService: ErrorTrackingService,
   ) {}
 
   // ============================================================
@@ -312,9 +314,10 @@ export class MockTestService {
           group.questions.map(
             (question) => ({
               ...question,
-
-              part:
-                group.part ?? 0,
+              part: group.part ?? 0,
+              passage: group.passage,
+              imageUrl: group.image_url,
+              audioUrl: group.audio_url,
             }),
           ),
       );
@@ -548,6 +551,45 @@ export class MockTestService {
         'test',
         attempt.test_id
       );
+    }
+
+    // Auto-capture incorrect answers into Error Log
+    for (const question of allQuestions) {
+      const selectedOptionId = answerMap.get(question.id);
+      const selectedOption = selectedOptionId
+        ? question.options.find((o) => o.id === selectedOptionId)
+        : undefined;
+      const selectedAnswer =
+        selectedOption?.option_label?.trim()?.toUpperCase() || null;
+      const correctAnswer =
+        question.correct_answer?.trim()?.toUpperCase();
+
+      const isWrong = !selectedAnswer || (correctAnswer && selectedAnswer !== correctAnswer);
+      if (isWrong) {
+        try {
+          await this.errorTrackingService.addErrorLog(userId, {
+            questionId: question.id,
+            questionText: question.question_text || `Câu hỏi Part ${question.part}`,
+            passage: (question as any).passage || undefined,
+            imageUrl: (question as any).imageUrl || undefined,
+            audioUrl: (question as any).audioUrl || undefined,
+            part: question.part,
+            userAnswer: selectedAnswer || "Chưa trả lời",
+            correctAnswer: correctAnswer || "",
+            options: question.options.map((o: any) => ({
+              id: o.id,
+              label: o.option_label,
+              text: o.option_text || "",
+            })),
+            explanation: question.explanation || undefined,
+            errorType: "careless",
+            sourceType: "mock_test",
+            sourceId: attempt.id,
+          });
+        } catch (e) {
+          // ignore error to avoid failing submission
+        }
+      }
     }
 
     return {
@@ -2034,6 +2076,28 @@ export class MockTestService {
       results.push(itemResult);
       if (!isCorrect) {
         incorrectQuestions.push(itemResult);
+      }
+    }
+
+    // Auto-capture incorrect mini-test questions into Error Log
+    for (const item of incorrectQuestions) {
+      try {
+        await this.errorTrackingService.addErrorLog(userId, {
+          questionId: item.questionId,
+          questionText: item.questionText || `Câu hỏi Mini Test Part ${item.part}`,
+          passage: item.passage || undefined,
+          imageUrl: item.imageUrl || undefined,
+          audioUrl: item.audioUrl || undefined,
+          part: item.part,
+          userAnswer: item.selectedLabel || "Chưa trả lời",
+          correctAnswer: item.correctLabel,
+          options: item.options,
+          explanation: item.explanation,
+          errorType: "careless",
+          sourceType: "mini_test",
+        });
+      } catch (e) {
+        // ignore error to avoid failing submission
       }
     }
 
